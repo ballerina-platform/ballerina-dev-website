@@ -17,7 +17,6 @@ jobs:
     - name: Sync production repo with prod-sync branch
       run: |
         cd ballerina-platform.github.io
-        git checkout automate-prod-sync-$GITHUB_SHA 2>/dev/null || git checkout -b automate-prod-sync-$GITHUB_SHA
         git pull origin master
 
         git config --global user.email "ballerina-bot@ballerina.org"
@@ -26,14 +25,11 @@ jobs:
         git remote add dev https://github.com/ballerina-platform/ballerina-dev-website.git
         git pull dev prod-sync -X theirs --no-edit
         
-        git push --set-upstream origin automate-prod-sync-$GITHUB_SHA
-        echo 'Successfully pushed to automate-prod-sync-$GITHUB_SHA branch'
-
-    - name: Create pull request for prod-sync
+    - name: Push changes to prod website
       shell: bash
       run: |
         cd ballerina-platform.github.io
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub pull-request -m '[Automated] Sync production site with dev site'
+        bin/hub push
       env:
         GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

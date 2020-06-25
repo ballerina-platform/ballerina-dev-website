@@ -1,4 +1,4 @@
-name: Create PR for new search index
+name: Push changes of new search index
 
 on:
   push:

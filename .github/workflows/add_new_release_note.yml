@@ -1,4 +1,4 @@
-name: Create PR for new Release-note with template
+name: Push changes of new Release-note with template
 
 on:
   push:

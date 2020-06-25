@@ -1,4 +1,4 @@
-name: Create PR for new Swan Lake Release-notes/Archive pages
+name: Push changes of new Swan Lake Release-notes/Archive pages
 
 on:
   push:

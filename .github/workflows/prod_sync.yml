@@ -1,4 +1,4 @@
-name: Create Production Sync PR
+name: Push changes of prod-sync to prod-site
 
 on:
   push:

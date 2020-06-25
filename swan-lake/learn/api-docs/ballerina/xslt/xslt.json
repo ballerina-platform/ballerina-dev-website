@@ -1,7 +1,7 @@
 {
   "id": "xslt",
   "summary": "\u003cp\u003eThis module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e. For examples on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/xslt-transformation.html\"\u003eXSLT Transformation Example\u003c/a\u003e.\u003c/p\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e. For examples on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/learn/by-example/xslt-transformation.html\"\u003eXSLT Transformation Example\u003c/a\u003e.\u003c/p\u003e\n",
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [],

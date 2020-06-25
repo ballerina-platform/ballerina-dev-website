@@ -208,7 +208,7 @@ service timerService on timer {
     }
 }
 </code></pre>
-<p>For an example on the usage of the <code>task:Listener</code> as a timer, see the <a href="https://ballerina.io/swan-lake/learn/by-example/task-service-timer.html">Task Service Timer Example</a>.</p>
+<p>For an example on the usage of the <code>task:Listener</code> as a timer, see the <a href="https://ballerina.io/learn/by-example/task-service-timer.html">Task Service Timer Example</a>.</p>
 <h4>Task Listener as an Appointment</h4>
 <p>The <code>AppointmentConfiguration</code> can be used to schedule an appointment.</p>
 <p>The following code snippet shows how to create a task appointment, which registers a service using a CRON expression to execute the task every second for 10 times.</p>
@@ -228,7 +228,7 @@ service appointmentService on appointment {
     }
 }
 </code></pre>
-<p>For an example on the usage of the <code>task:Listener</code> as an appointment, see the <a href="https://ballerina.io/swan-lake/learn/by-example/task-service-appointment.html">Task Service Appointment Example</a>.</p>
+<p>For an example on the usage of the <code>task:Listener</code> as an appointment, see the <a href="https://ballerina.io/learn/by-example/task-service-appointment.html">Task Service Appointment Example</a>.</p>
 <h3>Task Schedulers</h3>
 <p>A Task <code>Scheduler</code> can be used to create timers/appointments dynamically. Service(s) can be attached to the <code>Scheduler</code> so that they can be invoked when the Scheduler is triggered.</p>
 <p>Similar to Task Listeners, below are the two types of configurations that can be used to configure a Task Scheduler either as a timer or as an appointment.</p>
@@ -246,7 +246,7 @@ service appointmentService on appointment {
 };
 task:Scheduler timer = new(timerConfiguration);
 </code></pre>
-<p>For an example on the usage of the <code>task:Scheduler</code> as a timer, see the <a href="https://ballerina.io/swan-lake/learn/by-example/task-scheduler-timer.html">Task Scheduler Timer Example</a>.</p>
+<p>For an example on the usage of the <code>task:Scheduler</code> as a timer, see the <a href="https://ballerina.io/learn/by-example/task-scheduler-timer.html">Task Scheduler Timer Example</a>.</p>
 <h3>Task Scheduler as an Appointment</h3>
 <p>A <code>Scheduler</code> can also be used to create appointments via its <code>AppointmentConfiguration</code>.</p>
 <p>The following code snippet shows how to create a Task Scheduler as an appointment.</p>
@@ -256,7 +256,7 @@ task:Scheduler timer = new(timerConfiguration);
 };
 task:Scheduler appointment = new(appointmentConfiguration);
 </code></pre>
-<p>For an example on the usage of the <code>task:Scheduler</code> as an appointment, see the <a href="https://ballerina.io/swan-lake/learn/by-example/task-scheduler-appointment.html">Task Scheduler Appointment Example</a>.</p>
+<p>For an example on the usage of the <code>task:Scheduler</code> as an appointment, see the <a href="https://ballerina.io/learn/by-example/task-scheduler-appointment.html">Task Scheduler Appointment Example</a>.</p>
 
 
             

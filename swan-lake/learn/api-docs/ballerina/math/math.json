@@ -1,7 +1,7 @@
 {
   "id": "math",
   "summary": "\u003cp\u003eThis module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic. It includes functions to get the absolute, cosine, sine, root, tangent, and more for a given value.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic. It includes functions to get the absolute, cosine, sine, root, tangent, and more for a given value.\u003c/p\u003e\n\u003cp\u003eFor information on the operation, which you can perform with this module, see the below Function. For examples on the usage of the operation, see \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/math-functions.html\"\u003eMath Api\u003c/a\u003e.\u003c/p\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic. It includes functions to get the absolute, cosine, sine, root, tangent, and more for a given value.\u003c/p\u003e\n\u003cp\u003eFor information on the operation, which you can perform with this module, see the below Function. For examples on the usage of the operation, see \u003ca href\u003d\"https://ballerina.io/learn/by-example/math-functions.html\"\u003eMath Api\u003c/a\u003e.\u003c/p\u003e\n",
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [],

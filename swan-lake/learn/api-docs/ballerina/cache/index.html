@@ -246,7 +246,7 @@ This is an optional parameter.</li>
 <p>A linked list is used for the eviction of the cache. According to the user-configured eviction policy, when inserting / updating / retrieving cache entries, the linked list will be updated. Therefore, when an eviction happens, cache entries can be removed efficiently without iterating the complete map data structure.</p>
 <p><strong>Example:</strong> If the eviction policy is LRU, the MRU item will always be the head of the linked list. When an eviction happens, nodes from the tail will be deleted without iterating the map.</p>
 <p>Furthermore, you can implement custom caching implementations based on different cache storage mechanisms (file, database. etc.) and different eviction policies (MRU, FIFO, etc.). Ballerina provides a &quot;map-based cache&quot; as the default cache implementation.</p>
-<p>For information on the operations, which you can perform with the cache module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see <a href="https://ballerina.io/swan-lake/learn/by-example/cache.html">Cache Example</a></p>
+<p>For information on the operations, which you can perform with the cache module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see <a href="https://ballerina.io/learn/by-example/cache.html">Cache Example</a></p>
 
 
             

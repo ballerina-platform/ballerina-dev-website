@@ -1,7 +1,7 @@
 {
   "id": "java.arrays",
   "summary": "\u003cp\u003eThis module provides APIs to create new Java array instances, get elements from arrays, set elements, etc.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides APIs to create new Java array instances, get elements from arrays, set elements, etc.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with the java.arrays module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e. For an example on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/java-arrays.html\"\u003eJava Arrays Example\u003c/a\u003e.\u003c/p\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides APIs to create new Java array instances, get elements from arrays, set elements, etc.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with the java.arrays module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e. For an example on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/learn/by-example/java-arrays.html\"\u003eJava Arrays Example\u003c/a\u003e.\u003c/p\u003e\n",
   "orgName": "ballerina",
   "version": "0.9.0",
   "records": [],

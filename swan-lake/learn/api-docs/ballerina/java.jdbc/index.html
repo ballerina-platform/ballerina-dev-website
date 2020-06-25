@@ -181,7 +181,7 @@ target = &quot;java8&quot;
 run the BAL file by executing the <code>ballerina run</code> command.</p>
 <h2>Client</h2>
 <p>To access a database, you must first create a
-<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java.jdbc/clients/Client.html">jdbc:Client</a> object.
+<a href="https://ballerina.io/learn/api-docs/ballerina/api-docs/java.jdbc/clients/Client.html">jdbc:Client</a> object.
 The examples for creating a JDBC client can be found below.</p>
 <h3>Creating a client</h3>
 <p>This example shows the different ways of creating the <code>jdbc:Client</code>. The client can be created by passing
@@ -190,12 +190,12 @@ the JDBC URL, which is a mandatory property and all other fields are optional.</
 If the properties are passed in the same order as it is defined in the <code>jdbc:Client</code>, you can pass it
 without named params.</p>
 <p>The <code>dbClient3</code> uses the named params to pass all the attributes and provides the <code>options</code> property in the type of
-<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java.jdbc/records/Options.html">jdbc:Options</a>
+<a href="https://ballerina.io/learn/api-docs/ballerina/api-docs/java.jdbc/records/Options.html">jdbc:Options</a>
 and also uses the unshared connection pool in the type of
-<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/sql/records/ConnectionPool.html">sql:ConnectionPool</a>.
-For more information about connection pooling, see <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/sql/index.html">SQL Module</a>.</p>
+<a href="https://ballerina.io/learn/api-docs/ballerina/api-docs/sql/records/ConnectionPool.html">sql:ConnectionPool</a>.
+For more information about connection pooling, see <a href="https://ballerina.io/learn/api-docs/ballerina/sql/index.html">SQL Module</a>.</p>
 <p>The <code>dbClient4</code> receives some custom properties within the
-<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java.jdbc/records/Options.html">jdbc:Options</a>
+<a href="https://ballerina.io/learn/api-docs/ballerina/api-docs/java.jdbc/records/Options.html">jdbc:Options</a>
 and those properties will be used by the defined <code>datasourceName</code>.
 As per the provided example, the <code>org.h2.jdbcx.JdbcDataSource</code> datasource  will be configured with a <code>loginTimeout</code>
 of <code>2000</code> milli seconds.</p>
@@ -218,12 +218,12 @@ jdbc:Client|sql:Error dbClient4 = new (url =  &quot;jdbc:h2:~/path/to/database&q
                              });                          
 </code></pre>
 <p>You can find more details about each property in the
-<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java.jdbc/clients/Client.html">jdbc:Client</a> constructor.</p>
-<p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java.jdbc/clients/Client.html">jdbc:Client</a> references
-<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/sql/clients/Client.html">sql:Client</a> and
+<a href="https://ballerina.io/learn/api-docs/ballerina/api-docs/java.jdbc/clients/Client.html">jdbc:Client</a> constructor.</p>
+<p>The <a href="https://ballerina.io/learn/api-docs/ballerina/api-docs/java.jdbc/clients/Client.html">jdbc:Client</a> references
+<a href="https://ballerina.io/learn/api-docs/ballerina/api-docs/sql/clients/Client.html">sql:Client</a> and
 all the operations defined by the <code>sql:Client</code> will be supported by the <code>jdbc:Client</code> as well.</p>
 <p>For more information on all the operations supported by the <code>jdbc:Client</code>, which include the below, see the
-<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/sql/index.html">SQL Module</a>.</p>
+<a href="https://ballerina.io/learn/api-docs/ballerina/sql/index.html">SQL Module</a>.</p>
 <ol>
 <li>Connection Pooling</li>
 <li>Querying data</li>

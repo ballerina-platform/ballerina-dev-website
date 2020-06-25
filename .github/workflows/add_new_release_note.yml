@@ -28,7 +28,6 @@ jobs:
 
     - name: Push changes for the new release note
       run: |
-        git checkout automate-release-folder-$GITHUB_SHA 2>/dev/null || git checkout -b automate-release-folder-$GITHUB_SHA
         git pull origin master
         
         git config --global user.email "ballerina-bot@ballerina.org"
@@ -36,15 +35,12 @@ jobs:
         
         VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
         git add downloads/release-notes/$VERSION
-        git commit --allow-empty -m 'Add releaste note template for the new release'
+        git commit --allow-empty -m '[Automated] Add releaste note template for the new release'
         
-        git push --set-upstream origin automate-release-folder-$GITHUB_SHA
-        echo 'Successfully pushed to automate-release-folder-$GITHUB_SHA branch'
-
-    - name: Create pull request for the new release note
+    - name: Push changes for the new release note
       shell: bash
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub pull-request -m '[Automated] Add release note template for the new release'
+        bin/hub push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

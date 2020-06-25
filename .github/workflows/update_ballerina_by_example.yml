@@ -49,6 +49,8 @@ jobs:
           exit 1
         fi
 
+        mv ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples/index.json ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples/all-bbes.json
+
         echo "------------------------------------------------------------------------------------------------------------------------------------------------"
         echo "go run ballerinaByExample/tools/generate.go ballerina-$BALLERINA_VERSION/distributions/jballerina-$BALLERINA_VERSION/examples $SITE_VERSION $BBE_GEN_DIR $GEN_FOR_JEKYLL $IS_LATEST_VERSION"
         go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples" $SITE_VERSION "by-example" "true" "true"

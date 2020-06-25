@@ -65,7 +65,7 @@ redirect_from:
                             <p><p>HTTP caching is enabled by default in HTTP client endpoints.
  Users can configure caching using the <code>cache</code> field in the endpoint configurations.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -184,16 +184,16 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>HTTP caching is enabled by default for client endpoints. Caching can be
- disabled by setting <code>enabled=false</code> in the <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/CacheConfig.html">cache config</a>
+ disabled by setting <code>enabled=false</code> in the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CacheConfig.html">cache config</a>
  of the client endpoint. In this example, the <code>isShared</code> field of the <code>cacheConfig</code> is set
  to true, as the cache will be a public cache in this particular scenario.</p>
 
 <p>The default caching policy is to cache a response only if it contains a
  <code>cache-control</code> header and either an <code>etag</code> header or a <code>last-modified</code>
- header. The user can control this behaviour by setting the <a href="https://ballerina.io/learn/api-docs/ballerina/http/types.html#CachingPolicy">policy</a>
+ header. The user can control this behaviour by setting the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/types.html#CachingPolicy">policy</a>
  field of the <code>cacheConfig</code>. Currently, there are only 2 policies:
- <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#CACHE_CONTROL_AND_VALIDATORS">CACHE_CONTROL_AND_VALIDATORS</a>
- (the default policy) and <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#RFC_7234">RFC_7234</a>.</p>
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#CACHE_CONTROL_AND_VALIDATORS">CACHE_CONTROL_AND_VALIDATORS</a>
+ (the default policy) and <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#RFC_7234">RFC_7234</a>.</p>
 
                                         </div>
                                     </div>
@@ -374,8 +374,8 @@ service helloWorld on new http:Listener(8080) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseCacheControl.html">ResponseCacheControl</a>
- object in the <a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html">Response</a> object can be
+                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/ResponseCacheControl.html">ResponseCacheControl</a>
+ object in the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Response.html">Response</a> object can be
  used for setting the cache control directives associated with the
  response. In this example, the <code>max-age</code> directive is set to 15 seconds
  indicating that the response will be fresh for 15 seconds. The
@@ -414,7 +414,7 @@ service helloWorld on new http:Listener(8080) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#setETag">setETag()</a>
+                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Response.html#setETag">setETag()</a>
  function can be used for generating ETags for <code>string</code>, <code>json</code>, and <code>xml</code> types. This uses the <code>getCRC32()</code>
  function from the <code>ballerina/crypto</code> module for generating the ETag.</p>
 
@@ -435,7 +435,7 @@ service helloWorld on new http:Listener(8080) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#setLastModified">setLastModified()</a>
+                                            <p>The <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/Response.html#setLastModified">setLastModified()</a>
  function sets the current time as the <code>last-modified</code> header.</p>
 
                                         </div>
@@ -468,7 +468,7 @@ service helloWorld on new http:Listener(8080) {
                                             <p>When sending the response, if the <code>cacheControl</code> field of the
  response is set, and the user has not already set a <code>cache-control</code>
  header, a <code>cache-control</code> header will be set using the directives set
- in the <a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseCacheControl.html">cacheControl</a> object.</p>
+ in the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/objects/ResponseCacheControl.html">cacheControl</a> object.</p>
 
                                         </div>
                                     </div>

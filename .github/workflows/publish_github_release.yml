@@ -6,7 +6,6 @@ on:
       - prod-sync
     paths:
       - '_data/stable-latest/**'
-      - '_data/swanlake-latest/**'
 
 jobs:
   update-github-release:

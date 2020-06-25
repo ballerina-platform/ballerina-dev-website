@@ -228,10 +228,10 @@ var response = clientEndpoint-&gt;get(&quot;/get?id=123&quot;);
 </code></pre>
 <p>For more information, see the following.</p>
 <ul>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/http-client-endpoint.html">Client Endpoint Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/http-circuit-breaker.html">Circuit Breaker Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/http-redirects.html">HTTP Redirects Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/http-cookies.html">HTTP Cookies</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-client-endpoint.html">Client Endpoint Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-circuit-breaker.html">Circuit Breaker Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-redirects.html">HTTP Redirects Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-cookies.html">HTTP Cookies</a></li>
 </ul>
 <h2>Listener</h2>
 <p>A <code>Service</code> represents a collection of network-accessible entry points and can be exposed via a <code>Listener</code> endpoint. A resource represents one such entry point and can have its own path, HTTP methods, body format, 'consumes' and 'produces' content types, CORS headers, etc. In resources, <code>http:caller</code> and <code>http:Request</code> are mandatory parameters while <code>path</code> and <code>body</code> are optional.</p>
@@ -265,14 +265,14 @@ service helloWorld on helloWorldEP {
 </code></pre>
 <p>See the following.</p>
 <ul>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/http-data-binding.html">Listener Endpoint Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/http-cors.html">HTTP CORS Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/http-failover.html">HTTP Failover Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/http-load-balancer.html">HTTP Load Balancer Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-data-binding.html">Listener Endpoint Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-cors.html">HTTP CORS Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-failover.html">HTTP Failover Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-load-balancer.html">HTTP Load Balancer Example</a></li>
 </ul>
 <p><code>Listener</code> endpoints can be exposed via SSL. They support Mutual SSL, Hostname Verification, and Application Layer Protocol Negotiation (ALPN) for HTTP2. <code>Listener</code> endpoints also support Certificate Revocation List (CRL), Online Certificate Status Protocol (OCSP), OCSP Stapling, HTTP2, keep-alive, chunking, HTTP caching, data compression/decompression, and authentication/authorization.</p>
-<p>For more information, see <a href="https://ballerina.io/swan-lake/learn/by-example/mutual-ssl.html">Mutual SSL Example</a>.</p>
-<p>For more information, see <a href="https://ballerina.io/swan-lake/learn/by-example/cache.html">Caching Example</a>, <a href="https://ballerina.io/swan-lake/learn/by-example/http-disable-chunking.html">HTTP Disable Chunking Example</a>.</p>
+<p>For more information, see <a href="https://ballerina.io/learn/by-example/mutual-ssl.html">Mutual SSL Example</a>.</p>
+<p>For more information, see <a href="https://ballerina.io/learn/by-example/cache.html">Caching Example</a>, <a href="https://ballerina.io/learn/by-example/http-disable-chunking.html">HTTP Disable Chunking Example</a>.</p>
 <h2>WebSocket</h2>
 <p>This module also provides support for WebSockets. There are two types of WebSocket endpoints: <code>WebSocketClient</code> and <code>WebSocketListener</code>. Both endpoints support all WebSocket frames. The <code>WebSocketClient</code> has a callback service.</p>
 <p>There are two types of services for WebSockets. The service of the server has the <code>WebSockerCaller</code> as the resource parameter and the callback service of the client has <code>WebSocketClient</code> as the resource parameter. The WebSocket services have a fixed set of resources that do not have a resource config. The incoming messages are passed to these resources.</p>
@@ -296,13 +296,13 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
 <p><strong>onError</strong>: This resource is dispatched when an error occurs in the WebSocket connection. This will always be preceded by a connection closure with an appropriate close frame.</p>
 <p>For more information, see the following.</p>
 <ul>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websocket-basic-sample.html">WebSocket Basic Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/http-to-websocket-upgrade.html">HTTP to WebSocket Upgrade Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websocket-chat-application.html">WebSocket Chat Application</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websocket-proxy-server.html">WebSocket Proxy Server</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websocket-client.html">Client Endpoint</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websocket-retry.html">Retry</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websocket-failover.html">Failover</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-basic-sample.html">WebSocket Basic Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-to-websocket-upgrade.html">HTTP to WebSocket Upgrade Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-chat-application.html">WebSocket Chat Application</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-proxy-server.html">WebSocket Proxy Server</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-client.html">Client Endpoint</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-retry.html">Retry</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-failover.html">Failover</a></li>
 </ul>
 <h2>Logging</h2>
 <p>This module supports two types of logs:</p>
@@ -323,7 +323,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
 </li>
 </ul>
 <p>To publish logs to a socket, both the host and port configurations must be provided.</p>
-<p>See <a href="https://ballerina.io/swan-lake/learn/by-example/http-access-logs.html">HTTP Access Logs Example</a>, <a href="https://ballerina.io/swan-lake/learn/by-example/http-trace-logs.html">HTTP Trace Logs Example</a></p>
+<p>See <a href="https://ballerina.io/learn/by-example/http-access-logs.html">HTTP Access Logs Example</a>, <a href="https://ballerina.io/learn/by-example/http-trace-logs.html">HTTP Trace Logs Example</a></p>
 
 
             

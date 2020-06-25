@@ -230,8 +230,8 @@ message HelloResponse {
 }
 </code></pre>
 <p>gRPC allows client applications to directly call the server-side methods using the auto-generated stubs. Protocol Buffer compiler is used to generate the stubs for the specified language. In Ballerina, the stubs are generated using the built-in proto compiler.</p>
-<p>For the guide on how to generate Ballerina code for Protocol Buffers definition, see <a href="https://ballerina.io/swan-lake/learn/how-to-generate-code-for-protocol-buffers/">how to guide</a>.
-For examples on the usage of the operation, see the <a href="https://ballerina.io/swan-lake/learn/by-example/proto-to-ballerina.html">Proto to Ballerina Example</a>.</p>
+<p>For the guide on how to generate Ballerina code for Protocol Buffers definition, see <a href="https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/">how to guide</a>.
+For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto to Ballerina Example</a>.</p>
 <h2>gRPC Communication Patterns</h2>
 <p>The common communication pattern between client and server is simple request-response style communication. However, with gRPC, you can leverage different inter-process communication patterns other than the simple request-response pattern.
 This module supports four fundamental communication patterns used in gRPC-based applications: simple RPC(unary RPC), server-side streaming, client-side streaming, and bidirectional streaming.</p>
@@ -267,7 +267,7 @@ headers.setEntry(&quot;id&quot;, &quot;newrequest1&quot;);
 // Call the method in the service using a client stub.
 [string, grpc:Headers]|grpc:Error responseFromServer = blockingClient-&gt;hello(&quot;Ballerina&quot;, headers);
 </code></pre>
-<p>For examples on the usage of the operation, see <a href="https://ballerina.io/swan-lake//by-example/grpc-unary-blocking.html">Unary Ballerina Example</a> and <a href="https://ballerina.io/swan-lake/learn/by-example/grpc-unary-non-blocking.html">Unary Non-Ballerina Example</a></p>
+<p>For examples on the usage of the operation, see <a href="https://ballerina.io/learn/by-example/grpc-unary-blocking.html">Unary Ballerina Example</a> and <a href="https://ballerina.io/learn/by-example/grpc-unary-non-blocking.html">Unary Non-Ballerina Example</a></p>
 <h3>Server streaming RPC</h3>
 <p>In server-side streaming RPC, the sends back a sequence of responses after getting the client's request message. After sending all the server responses, the server marks the end of the stream by sending the server status details.
 Users can invoke in a non-blocking manner.</p>
@@ -314,7 +314,7 @@ service HelloWorldMessageListener = service {
    }
 }
 </code></pre>
-<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/swan-lake/learn/by-example/grpc-server-streaming.html">Server Streaming Example</a>.</p>
+<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/grpc-server-streaming.html">Server Streaming Example</a>.</p>
 <h3>Client streaming RPC</h3>
 <p>In client streaming RPC, the client sends multiple messages to the server instead of a single request. The server sends back a single response to the client.</p>
 <pre><code class="language-proto">rpc lotsOfGreetings (stream google.protobuf.StringValue)
@@ -374,7 +374,7 @@ service HelloWorldMessageListener = service {
    }
 }
 </code></pre>
-<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/swan-lake/learn/by-example/grpc-client-streaming.html">Client Streaming Example</a>.</p>
+<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/grpc-client-streaming.html">Client Streaming Example</a>.</p>
 <h3>Bidirectional Streaming RPC</h3>
 <p>In bidirectional streaming RPC, the client is sending a request to the server as a stream of messages. The server also responds with a stream of messages.</p>
 <pre><code class="language-proto">rpc chat (stream ChatMessage)
@@ -436,7 +436,7 @@ service ChatMessageListener = service {
    }
 }
 </code></pre>
-<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/swan-lake/learn/by-example/grpc-bidirectional-streaming.html">Bidirectional Streaming Example</a>.</p>
+<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/grpc-bidirectional-streaming.html">Bidirectional Streaming Example</a>.</p>
 <h2>Advanced Use cases</h2>
 <h3>Using the TLS protocol</h3>
 <p>The Ballerina gRPC module allows the use TLS in communication. This setting expects a secure socket to be
@@ -468,7 +468,7 @@ service HelloWorld on ep {
             }
     });
 </code></pre>
-<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/swan-lake/learn/by-example/grpc-secured-unary.html">Secured Unary Example</a>.</p>
+<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/grpc-secured-unary.html">Secured Unary Example</a>.</p>
 
 
             

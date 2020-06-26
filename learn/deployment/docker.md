@@ -20,13 +20,13 @@ The Ballerina compiler is capable of creating optimized Docker images out of the
 - [Enabling Docker support](#enabling-docker-support)
 - [Usecases](#usecases)
   - [Running a Ballerina service in a Docker container](#running-a-ballerina-service-in-a-docker-container)
-  - [Creating a custom Ballerina Docker image and pushing it autimatically to the Docker registry](#creating-a-custom-ballerina-docker-image and-pushing-it-autimatically-to-the-Docker-registry)
+  - [Creating a custom Ballerina Docker image and pushing it autimatically to the Docker registry](#creating-a-custom-ballerina-docker-image-and-pushing-it-autimatically-to-the-Docker-registry)
   - [Running a Ballerina HTTPS service in a Docker container](#running-a-ballerina-https-service-in-a-docker-container)
   - [Copying additional files to the Ballerina Docker image](#copying-additional-files-to-the-ballerina-docker-image)
   - [Using a custom base image to build Ballerina Docker images](#using-a-custom-base-image-to-build-ballerina-docker-images)
   - [Overriding the CMD of the generated Ballerina Dockerfile](#overriding-the-cmd-of-the-generated-ballerina-dockerfile)
   - [Creating multiple Docker images corresponding to modules of a Ballerina project](#creating-multiple-docker-images-corresponding-to-modules-of-a-ballerina-project)
-- [Troubleshooting](#Troubleshooting)
+- [Troubleshooting](#troubleshooting)
 
 ## Enabling Docker support
 
@@ -48,11 +48,11 @@ This usecase shows how to run a Ballerina service in a Docker container. The sam
 
 You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
-#### Sample source code
+#### Sample source code 
 
-***hello_world_docker.bal***
-
+`hello_world_docker.bal`
 ```ballerina 
+
 import ballerina/http;
 import ballerina/docker;
  
@@ -70,104 +70,109 @@ service hello on new http:Listener(9090){
 
 1. Compile the `hello_world_docker.bal` file.
 
-```
-> ballerina build hello_world_docker.bal 
-Compiling source
-	hello_world_docker.bal
+    ```
+    > ballerina build hello_world_docker.bal 
+    Compiling source
+      hello_world_docker.bal
 
-Generating executables
-	hello_world_docker.jar
+    Generating executables
+      hello_world_docker.jar
 
-Generating docker artifacts...
-	@docker 		 - complete 2/2 
+    Generating docker artifacts...
+      @docker 		 - complete 2/2 
 
-	Run the following command to start a Docker container:
-	docker run -d -p 9090:9090 hello_world_docker:latest
-```
+      Run the following command to start a Docker container:
+      docker run -d -p 9090:9090 hello_world_docker:latest
+    ```
 
-2. The artifacts files below will be generated with the build process.
+    The artifacts files below will be generated with the build process.
 
-```
-> tree
-.
-├── docker
-│   └── Dockerfile
-├── hello_world_docker.bal
-└── hello_world_docker.jar
+    ```
+    > tree
+    .
+    ├── docker
+    │   └── Dockerfile
+    ├── hello_world_docker.bal
+    └── hello_world_docker.jar
 
-1 directory, 3 files
+    1 directory, 3 files
 
-```
+    ```
 
-The build process automatically generates a Dockerfile with the following content:
+    The build process automatically generates a Dockerfile with the following content:
 
-```
-# Auto Generated Dockerfile
-FROM ballerina/jre8:v1
+    ```
+    # Auto Generated Dockerfile
+    FROM ballerina/jre8:v1
 
-LABEL maintainer="dev@ballerina.io"
+    LABEL maintainer="dev@ballerina.io"
 
-RUN addgroup troupe \
-    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-    && apk add --update --no-cache bash \
-    && chown -R ballerina:troupe /usr/bin/java \
-    && rm -rf /var/cache/apk/*
+    RUN addgroup troupe \
+        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+        && apk add --update --no-cache bash \
+        && chown -R ballerina:troupe /usr/bin/java \
+        && rm -rf /var/cache/apk/*
 
-WORKDIR /home/ballerina
+    WORKDIR /home/ballerina
 
-COPY hello_world_docker.jar /home/ballerina
+    COPY hello_world_docker.jar /home/ballerina
 
-USER ballerina
+    USER ballerina
 
-CMD java -jar hello_world_docker.jar
+    CMD java -jar hello_world_docker.jar
 
-```
+    ```
 
-3. Verify that the Docker image is created.
 
-```
-> docker images
-REPOSITORY          TAG         IMAGE ID            CREATED             SIZE
-hello_world_docker  latest      e48123737a65        7 minutes ago       134MB
+2. Verify that the Docker image is created.
 
-```
-Since the annotation is not configured to have a custom Docker image name and tag, the build process will create a Docker image with the default values: the file name of the generated .jar file with the latest tag (e.g., `hello_world_docker:latest`).
+    ```
+    > docker images
+    REPOSITORY          TAG         IMAGE ID            CREATED             SIZE
+    hello_world_docker  latest      e48123737a65        7 minutes ago       134MB
 
-4. Run the Docker image as a container (use the below command printed in step 1).
+    ```
 
-```
-> docker run -d -p 9090:9090 hello_world_docker:latest
-32461676d3c22848088390483a414e5b1d11a7a73c2296eccb18e6c9f27c41c0
-```
+    > Since the annotation is not configured to have a custom Docker image name and tag, the build process will create a Docker image with the default values: the file name of the generated .jar file with the latest tag (e.g., `hello_world_docker:latest`).
 
-5. Verify that the Docker container is running.
+3. Run the Docker image as a container (use the below command printed in step 1).
 
-```
-> docker ps
-CONTAINER ID  IMAGE    		 COMMAND    	      CREATED              STATUS            PORTS     NAMES
-32461676d3c2  hello_world_docker:latest  "/bin/sh -c 'java -j…"   About a minute ago   Up About a minute 0.0.0.0:9090->9090/tcp    lucid_turing
-```
+    ```
+    > docker run -d -p 9090:9090 hello_world_docker:latest
+    32461676d3c22848088390483a414e5b1d11a7a73c2296eccb18e6c9f27c41c0
+    ```
 
-6. Access the hello world service with the cURL command.
 
-```
-> curl http://localhost:9090/hello/sayHello           
-Hello World!
-```
+4. Verify that the Docker container is running.
 
-7. Clean up the used artifacts.
+    ```
+    > docker ps
+    CONTAINER ID  IMAGE    		 COMMAND    	      CREATED              STATUS            PORTS     NAMES
+    32461676d3c2  hello_world_docker:latest  "/bin/sh -c 'java -j…"   About a minute ago   Up About a minute 0.0.0.0:9090->9090/tcp    lucid_turing
+    ```
 
-```
-Stop / kill running docker container
-> docker kill 32461676d3c2
-32461676d3c2
 
-Remove docker container files
-> docker em 32461676d3c2
+5. Access the hello world service with the cURL command.
 
-Remove docker image
-> docker rmi e48123737a65
-```
+    ```
+    > curl http://localhost:9090/hello/sayHello           
+    Hello World!
+    ```
+
+
+6. Clean up the used artifacts.
+
+    ```
+    Stop / kill running docker container
+    > docker kill 32461676d3c2
+    32461676d3c2
+
+    Remove docker container files
+    > docker em 32461676d3c2
+
+    Remove docker image
+    > docker rmi e48123737a65
+  ```
 
 ### Creating a custom Ballerina Docker image and pushing it autimatically to the Docker registry
 
@@ -180,7 +185,7 @@ This usecase shows how to run a simple Ballerina hello world service in a Docker
 
 #### Sample source code
 
-***custom_docker_name.bal***
+`custom_docker_name.bal`
 
 ```ballerina
 import ballerina/http;
@@ -204,53 +209,53 @@ service hello on new http:Listener(9090){
 
 In this sample, the following properties are set in the `@docker:Config` annotation.
 
-- push		  : Enable pushing Docker image to the registry 
-- registry	: Docker registry URL
-- name		  : Name of the Docker image
-- tag		    : Docker image tag (version) 
-- username	: Username for the Docker registry
-- password	: Password for the Docker registry
+- `push`		  : enable pushing the Docker image to the registry 
+- `registry`	: Docker registry URL
+- `name`		  : name of the Docker image
+- `tag`		    : Docker image tag (version) 
+- `username`	: username of the Docker registry
+- `password`	: password of the Docker registry
 
-`$env` is used to read the environment variables values from the system.
+> The `$env` variable is used to read the environment variable values from the system.
 
 #### Steps to run
 
 1. Export the username and password of Docker (registry).
 
-```
-export DOCKER_USERNAME=<username>
-export DOCKER_PASSWORD=<password>
-```
+    ```
+    export DOCKER_USERNAME=<username>
+    export DOCKER_PASSWORD=<password>
+    ```
 
 2. Compile the `custom_docker_name.bal` file.
 
-```ballerina
+    ```ballerina
 
-> ballerina build custom_docker_name.bal
-Compiling source
-	custom_docker_name.bal
+    > ballerina build custom_docker_name.bal
+    Compiling source
+      custom_docker_name.bal
 
-Generating executables
-	custom_docker_name.jar
+    Generating executables
+      custom_docker_name.jar
 
-Generating docker artifacts...
-	@docker 		 - complete 3/3 
+    Generating docker artifacts...
+      @docker 		 - complete 3/3 
 
-	Run the following command to start a Docker container:
-	docker run -d -p 9090:9090 index.docker.io/lakwarus/helloworld:v1.0.0
+      Run the following command to start a Docker container:
+      docker run -d -p 9090:9090 index.docker.io/lakwarus/helloworld:v1.0.0
 
-```
+    ```
 
 3. Verify that the Docker image is created.
 
-```
-REPOSITORY          TAG      IMAGE ID            CREATED             SIZE
-lakwarus/helloworld v1.0.0   7e76efdd33e4        20 minutes ago      134MB
-```
+    ```
+    REPOSITORY          TAG      IMAGE ID            CREATED             SIZE
+    lakwarus/helloworld v1.0.0   7e76efdd33e4        20 minutes ago      134MB
+    ```
 
 4. Log into [Docker Hub](https://hub.docker.com/) and verify that the image is pushed.
 
-![Docker Hub](/learn/images/docker-hub.png)
+    ![Docker Hub](/learn/images/docker-hub.png)
 
 ### Running a Ballerina HTTPS service in a Docker container
 
@@ -264,7 +269,7 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 The sample below uses a separate listener endpoint and it is configured with a custom keystore. In addition to the `@docker:Config` annotation, the `@docker:Expose` annotation is used with the listener endpoint object and it will help to expose the correct service ports when creating the Docker container. 
 
-***https_service_in_docker.bal***
+`https_service_in_docker.bal`
 
 ```ballerina
 
@@ -296,108 +301,108 @@ service hello on helloWorldEP {
 
 1. Compile the `https_service_in_docker.bal` file.
 
-```
-> ballerina build https_service_in_docker.bal 
-Compiling source
-	https_service_in_docker.bal
+    ```
+    > ballerina build https_service_in_docker.bal 
+    Compiling source
+      https_service_in_docker.bal
 
-Generating executables
-	https_service_in_docker.jar
+    Generating executables
+      https_service_in_docker.jar
 
-Generating docker artifacts...
-	@docker 		 - complete 2/2 
+    Generating docker artifacts...
+      @docker 		 - complete 2/2 
 
-	Run the following command to start a Docker container:
-	docker run -d -p 9095:9095 https-helloworld:latest
+      Run the following command to start a Docker container:
+      docker run -d -p 9095:9095 https-helloworld:latest
 
-```
-The artifact files below will be generated with the build process.
+    ```
+    The artifact files below will be generated with the build process.
 
-```
-> tree
-.
-├── ballerinaKeystore.p12
-├── docker
-│   ├── Dockerfile
-│   └── ballerinaKeystore.p12
-├── https_service_in_docker.bal
-└── https_service_in_docker.jar
+    ```
+    > tree
+    .
+    ├── ballerinaKeystore.p12
+    ├── docker
+    │   ├── Dockerfile
+    │   └── ballerinaKeystore.p12
+    ├── https_service_in_docker.bal
+    └── https_service_in_docker.jar
 
-1 directory, 5 files
+    1 directory, 5 files
 
-```
+    ```
 
-> **Note:** It has copied the correct keystore used in the source code into the Docker folder and generated the Dockerfile with the content below.
+    > **Note:** It has copied the correct keystore used in the source code into the Docker folder and generated the Dockerfile with the content below.
 
-```
-# Auto Generated Dockerfile
-FROM ballerina/jre8:v1
+    ```
+    # Auto Generated Dockerfile
+    FROM ballerina/jre8:v1
 
-LABEL maintainer="dev@ballerina.io"
+    LABEL maintainer="dev@ballerina.io"
 
-RUN addgroup troupe \
-    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-    && apk add --update --no-cache bash \
-    && chown -R ballerina:troupe /usr/bin/java \
-    && rm -rf /var/cache/apk/*
+    RUN addgroup troupe \
+        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+        && apk add --update --no-cache bash \
+        && chown -R ballerina:troupe /usr/bin/java \
+        && rm -rf /var/cache/apk/*
 
-WORKDIR /home/ballerina
+    WORKDIR /home/ballerina
 
-COPY https_service_in_docker.jar /home/ballerina
-COPY ballerinaKeystore.p12 ./ballerinaKeystore.p12
+    COPY https_service_in_docker.jar /home/ballerina
+    COPY ballerinaKeystore.p12 ./ballerinaKeystore.p12
 
-EXPOSE  9095
-USER ballerina
+    EXPOSE  9095
+    USER ballerina
 
-CMD java -jar https_service_in_docker.jar
+    CMD java -jar https_service_in_docker.jar
 
-```
+    ```
 
-The Ballerina compiler automatically adds a line to the Dockerfile to copy the required keystore into the Docker image.
+    > The Ballerina compiler automatically adds a line to the Dockerfile to copy the required keystore into the Docker image.
 
 2. Verify that the Docker image is created.
 
-```
-> docker images
-REPOSITORY          TAG        IMAGE ID            CREATED             SIZE
-https-helloworld    latest     ed9bff9fabd7        15 minutes ago      134MB
-```
+    ```
+    > docker images
+    REPOSITORY          TAG        IMAGE ID            CREATED             SIZE
+    https-helloworld    latest     ed9bff9fabd7        15 minutes ago      134MB
+    ```
 
 3. Run the Docker image as a container (use the command below printed in step 1).
 
-```
-> docker run -d -p 9095:9095 https-helloworld:latest
-25dfb84f1c9f3459baf7a4791f9de3cae260d9963e580802253621919d0bd2fb
-```
+    ```
+    > docker run -d -p 9095:9095 https-helloworld:latest
+    25dfb84f1c9f3459baf7a4791f9de3cae260d9963e580802253621919d0bd2fb
+    ```
 
 4. Verify that the Docker container is running.
 
-```
-> docker ps
-CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES
-25dfb84f1c9f        https-helloworld:latest   "/bin/sh -c 'java -j…"   45 seconds ago      Up 45 seconds       0.0.0.0:9095->9095/tcp   charming_visvesvaraya
-```
+    ```
+    > docker ps
+    CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES
+    25dfb84f1c9f        https-helloworld:latest   "/bin/sh -c 'java -j…"   45 seconds ago      Up 45 seconds       0.0.0.0:9095->9095/tcp   charming_visvesvaraya
+    ```
 
 5. Access the hello service with the cURL command.
 
-```
-curl -k https://localhost:9095/hello/sayHello
-Hello World!
-```
-> **Note:** The cURL command is used with the -k option because self signed certificates are used in the keystore.
+    ```
+    curl -k https://localhost:9095/hello/sayHello
+    Hello World!
+    ```
+    > **Note:** The cURL command is used with the -k option because self signed certificates are used in the keystore.
 
 6. Clean up the used artifacts.
 
-```
-> docker kill 25dfb84f1c9f
-25dfb84f1c9f
+    ```
+    > docker kill 25dfb84f1c9f
+    25dfb84f1c9f
 
-> docker rm 25dfb84f1c9f
-25dfb84f1c9f
+    > docker rm 25dfb84f1c9f
+    25dfb84f1c9f
 
-> docker rmi ed9bff9fabd7
-Untagged: https-helloworld:latest
-```
+    > docker rmi ed9bff9fabd7
+    Untagged: https-helloworld:latest
+    ```
 
 ### Copying additional files to the Ballerina Docker image
 
@@ -409,7 +414,7 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 #### Sample source code
 
-***copy_file.bal***
+`copy_file.bal`
 
 ```ballerina
 import ballerina/http;
@@ -463,108 +468,108 @@ This sample sends a greeting to the caller by getting the name from a text file.
 
 1. Create a `name.txt` file in the same directory in which the `copy_file.bal` file resides.
 
-```
-> echo Ballerina > ./name.txt
-```
+    ```
+    > echo Ballerina > ./name.txt
+    ```
 
 2. Compile the `copy_file.bal` file.
 
-```
-> ballerina build copy_file.bal 
-Compiling source
-	copy_file.bal
+    ```
+    > ballerina build copy_file.bal 
+    Compiling source
+      copy_file.bal
 
-Generating executables
-	copy_file.jar
+    Generating executables
+      copy_file.jar
 
-Generating docker artifacts...
-	@docker 		 - complete 2/2 
+    Generating docker artifacts...
+      @docker 		 - complete 2/2 
 
-	Run the following command to start a Docker container:
-	docker run -d -p 9090:9090 copy_file:latest
-```
+      Run the following command to start a Docker container:
+      docker run -d -p 9090:9090 copy_file:latest
+    ```
 
-The artifacts files below will be generated with the build process.
+    The artifacts files below will be generated with the build process.
 
-```
-> tree
-.
-├── copy_file.bal
-├── copy_file.jar
-├── docker
-│   ├── Dockerfile
-│   └── name.txt
-└── name.txt
+    ```
+    > tree
+    .
+    ├── copy_file.bal
+    ├── copy_file.jar
+    ├── docker
+    │   ├── Dockerfile
+    │   └── name.txt
+    └── name.txt
 
-1 directory, 5 files
-```
+    1 directory, 5 files
+    ```
 
->**Note:** The generated Dockerfile includes the COPY command to copy files that are defined by the `@docker:CopyFiles` annotation.
+    > **Note:** The generated Dockerfile includes the COPY command to copy files that are defined by the `@docker:CopyFiles` annotation.
 
-```
-# Auto Generated Dockerfile
-FROM ballerina/jre8:v1
+    ```
+    # Auto Generated Dockerfile
+    FROM ballerina/jre8:v1
 
-LABEL maintainer="dev@ballerina.io"
+    LABEL maintainer="dev@ballerina.io"
 
-RUN addgroup troupe \
-    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-    && apk add --update --no-cache bash \
-    && chown -R ballerina:troupe /usr/bin/java \
-    && rm -rf /var/cache/apk/*
+    RUN addgroup troupe \
+        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+        && apk add --update --no-cache bash \
+        && chown -R ballerina:troupe /usr/bin/java \
+        && rm -rf /var/cache/apk/*
 
-WORKDIR /home/ballerina
+    WORKDIR /home/ballerina
 
-COPY copy_file.jar /home/ballerina
-COPY name.txt /home/ballerina/name.txt
+    COPY copy_file.jar /home/ballerina
+    COPY name.txt /home/ballerina/name.txt
 
-EXPOSE  9090
-USER ballerina
+    EXPOSE  9090
+    USER ballerina
 
-CMD java -jar copy_file.jar
-```
+    CMD java -jar copy_file.jar
+    ```
 
 3. Verify that the Docker image is created.
 
-```
-> docker images
-REPOSITORY          TAG        IMAGE ID            CREATED             SIZE
-copy_file           latest     cc198c0af86e        6 minutes ago       134MB
-```
+    ```
+    > docker images
+    REPOSITORY          TAG        IMAGE ID            CREATED             SIZE
+    copy_file           latest     cc198c0af86e        6 minutes ago       134MB
+    ```
 
 4. Run the Docker image as a container (use the command below printed in step 1).
 
-```
-> docker run -d -p 9090:9090 copy_file:latest
-d9f72d8ef6b2f27df099cc3e57676aeb3110c330004b5539e557ec49cf50878a
-```
+    ```
+    > docker run -d -p 9090:9090 copy_file:latest
+    d9f72d8ef6b2f27df099cc3e57676aeb3110c330004b5539e557ec49cf50878a
+    ```
 
 5. Verify that the Docker container is running.
 
-```
-> docker ps 
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-d9f72d8ef6b2        copy_file:latest    "/bin/sh -c 'java -j…"   15 seconds ago      Up 15 seconds       0.0.0.0:9090->9090/tcp   inspiring_joliot
-```
+    ```
+    > docker ps 
+    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+    d9f72d8ef6b2        copy_file:latest    "/bin/sh -c 'java -j…"   15 seconds ago      Up 15 seconds       0.0.0.0:9090->9090/tcp   inspiring_joliot
+    ```
 
 6. Access the hello service with the cURL command below.
 
-```
-> curl http://localhost:9090/hello/greet
-Hello Ballerina
-```
+    ```
+    > curl http://localhost:9090/hello/greet
+    Hello Ballerina
+    ```
 
 7. Clean up the used artifacts.
 
-```
-> docker kill d9f72d8ef6b2
-d9f72d8ef6b2
+    ```
+    > docker kill d9f72d8ef6b2
+    d9f72d8ef6b2
 
-> docker rm d9f72d8ef6b2
-d9f72d8ef6b2
+    > docker rm d9f72d8ef6b2
+    d9f72d8ef6b2
 
-> docker rmi cc198c0af86e
-```
+    > docker rmi cc198c0af86e
+    ```
 
 ### Using a custom base image to build Ballerina Docker images
 
@@ -576,7 +581,7 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 #### Sample source code
 
-***base_image.bal***
+`base_image.bal`
 
 ```ballerina
 import ballerina/http;
@@ -600,96 +605,96 @@ service hello on new http:Listener(9090){
 
 1.  Compile the `base_image.bal` file.
 
-```
-> ballerina build base_image.bal 
-Compiling source
-	base_image.bal
+    ```
+    > ballerina build base_image.bal 
+    Compiling source
+      base_image.bal
 
-Generating executables
-	base_image.jar
+    Generating executables
+      base_image.jar
 
-Generating docker artifacts...
-	@docker 		 - complete 2/2 
+    Generating docker artifacts...
+      @docker 		 - complete 2/2 
 
-	Run the following command to start a Docker container:
-	docker run -d -p 9090:9090 helloworld_custom_baseimage:latest
-```
+      Run the following command to start a Docker container:
+      docker run -d -p 9090:9090 helloworld_custom_baseimage:latest
+    ```
 
-The artifact files below will be generated with the build process.
+    The artifact files below will be generated with the build process.
 
-```
-tree
-.
-├── base_image.bal
-├── base_image.jar
-└── docker
-    └── Dockerfile
+    ```
+    tree
+    .
+    ├── base_image.bal
+    ├── base_image.jar
+    └── docker
+        └── Dockerfile
 
-1 directory, 3 files
-```
+    1 directory, 3 files
+    ```
 
-The Dockerfile will be generated as follows.
+    The Dockerfile will be generated as follows.
 
-> **Note:**  The FROM section of the Dockerfile has the base image, which is defined by the `@docker:Config` annotation.
+    > **Note:**  The FROM section of the Dockerfile has the base image, which is defined by the `@docker:Config` annotation.
 
-```
-# Auto Generated Dockerfile
-FROM openjdk:8-jre-alpine
+    ```
+    # Auto Generated Dockerfile
+    FROM openjdk:8-jre-alpine
 
-LABEL maintainer="dev@ballerina.io"
+    LABEL maintainer="dev@ballerina.io"
 
-WORKDIR /home/ballerina
+    WORKDIR /home/ballerina
 
-COPY base_image.jar /home/ballerina
+    COPY base_image.jar /home/ballerina
 
-EXPOSE  9090
-CMD java -jar base_image.jar
-```
+    EXPOSE  9090
+    CMD java -jar base_image.jar
+    ```
 
 2. Verify that the Docker image is created.
 
-```
-> docker images
-REPOSITORY     			TAG  		IMAGE ID            CREATED             SIZE
-helloworld_custom_baseimage      latest    	4468889e4ed0        11 minutes ago      109MB
-```
+    ```
+    > docker images
+    REPOSITORY     			TAG  		IMAGE ID            CREATED             SIZE
+    helloworld_custom_baseimage      latest    	4468889e4ed0        11 minutes ago      109MB
+    ```
 
 3. Run the Docker image as a container (use the command below rinted in step 1).
 
-```
-> docker run -d -p 9090:9090 helloworld_custom_baseimage:latest
-0c31cfaf483493988ee9ace73f6bcf9188a80d33ac3640052265c316058ec55a
+    ```
+    > docker run -d -p 9090:9090 helloworld_custom_baseimage:latest
+    0c31cfaf483493988ee9ace73f6bcf9188a80d33ac3640052265c316058ec55a
 
-```
+    ```
 
 4. Verify that the Docker container is running.
 
-```
-> docker ps
-CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                    NAMES
-0c31cfaf4834        helloworld_custom_baseimage:latest   "/bin/sh -c 'java -j…"   17 seconds ago      Up 16 seconds       0.0.0.0:9090->9090/tcp   charming_hypatia
+    ```
+    > docker ps
+    CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                    NAMES
+    0c31cfaf4834        helloworld_custom_baseimage:latest   "/bin/sh -c 'java -j…"   17 seconds ago      Up 16 seconds       0.0.0.0:9090->9090/tcp   charming_hypatia
 
-```
+    ```
 
 5. Access the hello service with the cURL command below.
 
-```
-> curl http://localhost:9090/hello/sayHello
-Hello World!
-```
+    ```
+    > curl http://localhost:9090/hello/sayHello
+    Hello World!
+    ```
 
 6. Clean up the used artifacts.
 
-```
-> docker kill 0c31cfaf4834
-0c31cfaf4834
+    ```
+    > docker kill 0c31cfaf4834
+    0c31cfaf4834
 
-> docker rm 0c31cfaf4834
-0c31cfaf4834
+    > docker rm 0c31cfaf4834
+    0c31cfaf4834
 
-> docker rmi 4468889e4ed0
-Untagged: helloworld_custom_baseimage:latest
-```
+    > docker rmi 4468889e4ed0
+    Untagged: helloworld_custom_baseimage:latest
+    ```
 
 ### Overriding the CMD of the generated Ballerina Dockerfile
 
@@ -701,7 +706,7 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 #### Sample source code
 
-***docker_cmd.bal***
+`docker_cmd.bal`
 
 ```ballerina
 
@@ -720,118 +725,118 @@ service hello on new http:Listener(9090){
 }
 ```
 
-Tis sample enables HTTP trace logs by overriding the CMD value of the generated Dockerfile. The cmd field will be as `CMD java -jar ${APP} --b7a.http.accesslog.console=true` in the `@docker:Config{}` annotation.
+This sample enables HTTP trace logs by overriding the CMD value of the generated Dockerfile. The cmd field will be as `CMD java -jar ${APP} --b7a.http.accesslog.console=true` in the `@docker:Config{}` annotation.
 
 ### Steps to run
 
 1. Compile the `base_image.bal` file.
 
-```
-> ballerina build docker_cmd.bal
-Compiling source
-	docker_cmd.bal
+    ```
+    > ballerina build docker_cmd.bal
+    Compiling source
+      docker_cmd.bal
 
-Generating executables
-	docker_cmd.jar
+    Generating executables
+      docker_cmd.jar
 
-Generating docker artifacts...
-	@docker 		 - complete 2/2 
+    Generating docker artifacts...
+      @docker 		 - complete 2/2 
 
-	Run the following command to start a Docker container:
-	docker run -d -p 9090:9090 custome_cmd:latest
-```
+      Run the following command to start a Docker container:
+      docker run -d -p 9090:9090 custome_cmd:latest
+    ```
 
-The artifact files below will be generated with the build process.
+    The artifact files below will be generated with the build process.
 
-> **Note:** The CMD line will be updated with the custom command defined in the annotation.
+    > **Note:** The CMD line will be updated with the custom command defined in the annotation.
 
-```
-> tree
-.
-├── docker
-│   └── Dockerfile
-├── docker_cmd.bal
-└── docker_cmd.jar
+    ```
+    > tree
+    .
+    ├── docker
+    │   └── Dockerfile
+    ├── docker_cmd.bal
+    └── docker_cmd.jar
 
-1 directory, 3 files
-```
+    1 directory, 3 files
+    ```
 
-The Dockerfile will be generated as follows.
+    The Dockerfile will be generated as follows.
 
-```
-# Auto Generated Dockerfile
-FROM ballerina/jre8:v1
+    ```
+    # Auto Generated Dockerfile
+    FROM ballerina/jre8:v1
 
-LABEL maintainer="dev@ballerina.io"
+    LABEL maintainer="dev@ballerina.io"
 
-RUN addgroup troupe \
-    && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
-    && apk add --update --no-cache bash \
-    && chown -R ballerina:troupe /usr/bin/java \
-    && rm -rf /var/cache/apk/*
+    RUN addgroup troupe \
+        && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+        && apk add --update --no-cache bash \
+        && chown -R ballerina:troupe /usr/bin/java \
+        && rm -rf /var/cache/apk/*
 
-WORKDIR /home/ballerina
+    WORKDIR /home/ballerina
 
-COPY docker_cmd.jar /home/ballerina
+    COPY docker_cmd.jar /home/ballerina
 
-EXPOSE  9090
-USER ballerina
+    EXPOSE  9090
+    USER ballerina
 
-CMD java -jar docker_cmd.jar --b7a.http.accesslog.console=true
-```
+    CMD java -jar docker_cmd.jar --b7a.http.accesslog.console=true
+    ```
 
 2. Verify that the Docker image is created.
 
-```
-> docker images
-REPOSITORY          TAG        IMAGE ID            CREATED             SIZE
-custome_cmd         latest     08611185ed10        10 minutes ago      134MB
-```
+    ```
+    > docker images
+    REPOSITORY          TAG        IMAGE ID            CREATED             SIZE
+    custome_cmd         latest     08611185ed10        10 minutes ago      134MB
+    ```
 
 3. Run the Docker image as a container (use the command below printed in step 1).
 
-```
-> docker run -d -p 9090:9090 custome_cmd:latest
-0f66739200dc07d667229f49b66beaf8135e0f9bb000feea23aaa5f9a7cc1d18
-```
+    ```
+    > docker run -d -p 9090:9090 custome_cmd:latest
+    0f66739200dc07d667229f49b66beaf8135e0f9bb000feea23aaa5f9a7cc1d18
+    ```
 
 4.  Verify that the Docker container is running.
 
-```
-> docker ps
-CONTAINER ID        IMAGE                COMMAND                  CREATED             STATUS              PORTS                    NAMES
-0f66739200dc        custome_cmd:latest   "/bin/sh -c 'java -j…"   55 seconds ago      Up 55 seconds       0.0.0.0:9090->9090/tcp   pensive_jackson
-```
+    ```
+    > docker ps
+    CONTAINER ID        IMAGE                COMMAND                  CREATED             STATUS              PORTS                    NAMES
+    0f66739200dc        custome_cmd:latest   "/bin/sh -c 'java -j…"   55 seconds ago      Up 55 seconds       0.0.0.0:9090->9090/tcp   pensive_jackson
+    ```
 
 5. Access the hello service with the cURL command below.
 
-```
-> curl http://localhost:9090/hello/sayHello
-Hello World!
-```
+    ```
+    > curl http://localhost:9090/hello/sayHello
+    Hello World!
+    ```
 
 6. View the HTTP access logs.
 
-```
-> docker logs 0f66739200dc
-ballerina: HTTP access log enabled
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-172.17.0.1 - - [14/Jun/2020:04:38:22 +0000] "GET /hello/sayHello HTTP/1.1" 200 12 "-" "curl/7.64.1" 
-172.17.0.1 - - [14/Jun/2020:04:38:23 +0000] "GET /hello/sayHello HTTP/1.1" 200 12 "-" "curl/7.64.1"
-```
+    ```
+    > docker logs 0f66739200dc
+    ballerina: HTTP access log enabled
+    [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+    172.17.0.1 - - [14/Jun/2020:04:38:22 +0000] "GET /hello/sayHello HTTP/1.1" 200 12 "-" "curl/7.64.1" 
+    172.17.0.1 - - [14/Jun/2020:04:38:23 +0000] "GET /hello/sayHello HTTP/1.1" 200 12 "-" "curl/7.64.1"
+    ```
 
 7. Clean up the created artifacts.
 
-```
-> docker kill 0f66739200dc
-0f66739200dc
+    ```
+    > docker kill 0f66739200dc
+    0f66739200dc
 
-> docker rm 0f66739200dc
-0f66739200dc
+    > docker rm 0f66739200dc
+    0f66739200dc
 
-> docker rmi 08611185ed10
-Untagged: custome_cmd:latest
-```
+    > docker rmi 08611185ed10
+    Untagged: custome_cmd:latest
+    ```
 
 ### Creating multiple Docker images corresponding to modules of a Ballerina project
 
@@ -845,251 +850,251 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 1. Ballerina project to call the restaurant:
 
-```ballerina
-> ballerina new restaurant
-Created new Ballerina project at restaurant
+    ```ballerina
+    > ballerina new restaurant
+    Created new Ballerina project at restaurant
 
-Next:
-    Move into the project directory and use `ballerina add <module-name>` to
-    add a new Ballerina module.
-```
+    Next:
+        Move into the project directory and use `ballerina add <module-name>` to
+        add a new Ballerina module.
+    ```
 
 2. The two modules to call and order pizza and burger:
 
-```ballerina
-> ballerina add pizza
-Added new ballerina module at 'src/pizza'
+    ```ballerina
+    > ballerina add pizza
+    Added new ballerina module at 'src/pizza'
 
-> ballerina add burger 
-Added new ballerina module at 'src/burger'
-```
+    > ballerina add burger 
+    Added new ballerina module at 'src/burger'
+    ```
 
 3. Source code of `src/pizza` for the order:
 
-***pizza_menu.bal***
+    `pizza_menu.bal`
 
-```ballerina
-import ballerina/http;
-import ballerina/docker;
- 
-@docker:Config {
-   name: "pizza"
-}
-service pizza on new http:Listener(9090){
- 
-   resource function menu(http:Caller caller,http:Request request) returns error? {
-       check result = caller->respond("Pizza Menu");
-   }
-}
-```
+    ```ballerina
+    import ballerina/http;
+    import ballerina/docker;
+    
+    @docker:Config {
+      name: "pizza"
+    }
+    service pizza on new http:Listener(9090){
+    
+      resource function menu(http:Caller caller,http:Request request) returns error? {
+          check result = caller->respond("Pizza Menu");
+      }
+    }
+    ```
 
 4. Source code of `src/burger` for the order:
 
-***burger_menu.bal***
+    `burger_menu.bal`
 
-```ballerina
-import ballerina/http;
-import ballerina/docker;
- 
-@docker:Config {
-   name: "burger"
-}
-service burger on new http:Listener(8080){
- 
-   resource function menu(http:Caller caller,http:Request request) returns error? {
-       check result = caller->respond("Burger Menu");
-   }
-}
-```
+    ```ballerina
+    import ballerina/http;
+    import ballerina/docker;
+    
+    @docker:Config {
+      name: "burger"
+    }
+    service burger on new http:Listener(8080){
+    
+      resource function menu(http:Caller caller,http:Request request) returns error? {
+          check result = caller->respond("Burger Menu");
+      }
+    }
+    ```
 
 #### Steps to run
 
 1. Compile the Ballerina project.
 
-```
-> ballerina build -a
-Compiling source
-	lakmal/burger:0.1.0
-	lakmal/pizza:0.1.0
+    ```
+    > ballerina build -a
+    Compiling source
+      lakmal/burger:0.1.0
+      lakmal/pizza:0.1.0
 
-Creating balos
-	target/balo/burger-2020r1-any-0.1.0.balo
-	target/balo/pizza-2020r1-any-0.1.0.balo
+    Creating balos
+      target/balo/burger-2020r1-any-0.1.0.balo
+      target/balo/pizza-2020r1-any-0.1.0.balo
 
-Running Tests
-	lakmal/burger:0.1.0
-[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-I'm the before suite function!
-I'm the before function!
-I'm in test function!
-I'm the after function!
-I'm the after suite function!
-[ballerina/http] stopped HTTP/WS listener 0.0.0.0:8080
+    Running Tests
+      lakmal/burger:0.1.0
+    [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
+    I'm the before suite function!
+    I'm the before function!
+    I'm in test function!
+    I'm the after function!
+    I'm the after suite function!
+    [ballerina/http] stopped HTTP/WS listener 0.0.0.0:8080
 
-	[pass] testFunction
+      [pass] testFunction
 
-	1 passing
-	0 failing
-	0 skipped
+      1 passing
+      0 failing
+      0 skipped
 
-	lakmal/pizza:0.1.0
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-I'm the before suite function!
-I'm the before function!
-I'm in test function!
-I'm the after function!
-I'm the after suite function!
-[ballerina/http] stopped HTTP/WS listener 0.0.0.0:9090
+      lakmal/pizza:0.1.0
+    [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+    I'm the before suite function!
+    I'm the before function!
+    I'm in test function!
+    I'm the after function!
+    I'm the after suite function!
+    [ballerina/http] stopped HTTP/WS listener 0.0.0.0:9090
 
-	[pass] testFunction
+      [pass] testFunction
 
-	1 passing
-	0 failing
-	0 skipped
-
-
-Generating executables
-	target/bin/burger.jar
-	target/bin/pizza.jar
-
-Generating docker artifacts...
-	@docker 		 - complete 2/2 
-
-	Run the following command to start a Docker container:
-	docker run -d -p 8080:8080 burger:latest
+      1 passing
+      0 failing
+      0 skipped
 
 
-Generating docker artifacts...
-	@docker 		 - complete 2/2 
+    Generating executables
+      target/bin/burger.jar
+      target/bin/pizza.jar
 
-	Run the following command to start a Docker container:
-	docker run -d -p 9090:9090 pizza:latest
-```
+    Generating docker artifacts...
+      @docker 		 - complete 2/2 
 
-The artifact files below will be generated with the build process.
+      Run the following command to start a Docker container:
+      docker run -d -p 8080:8080 burger:latest
 
-```
-> tree
-.
-├── Ballerina.lock
-├── Ballerina.toml
-├── src
-│   ├── burger
-│   │   ├── Module.md
-│   │   ├── burger_menu.bal
-│   │   ├── main.bal
-│   │   ├── resources
-│   │   └── tests
-│   │       ├── main_test.bal
-│   │       └── resources
-│   └── pizza
-│       ├── Module.md
-│       ├── main.bal
-│       ├── pizza_menu.bal
-│       ├── resources
-│       └── tests
-│           ├── main_test.bal
-│           └── resources
-└── target
-    ├── balo
-    │   ├── burger-2020r1-any-0.1.0.balo
-    │   └── pizza-2020r1-any-0.1.0.balo
-    ├── bin
-    │   ├── burger.jar
-    │   └── pizza.jar
-    ├── caches
-    │   ├── bir_cache
-    │   │   └── lakmal
-    │   │       ├── burger
-    │   │       │   └── 0.1.0
-    │   │       │       └── burger.bir
-    │   │       └── pizza
-    │   │           └── 0.1.0
-    │   │               └── pizza.bir
-    │   ├── jar_cache
-    │   │   └── lakmal
-    │   │       ├── burger
-    │   │       │   └── 0.1.0
-    │   │       │       ├── lakmal-burger-0.1.0-testable.jar
-    │   │       │       └── lakmal-burger-0.1.0.jar
-    │   │       └── pizza
-    │   │           └── 0.1.0
-    │   │               ├── lakmal-pizza-0.1.0-testable.jar
-    │   │               └── lakmal-pizza-0.1.0.jar
-    │   └── json_cache
-    │       └── lakmal
-    │           ├── burger
-    │           │   └── 0.1.0
-    │           │       └── test_suit.json
-    │           └── pizza
-    │               └── 0.1.0
-    │                   └── test_suit.json
-    └── docker
-        ├── burger
-        │   └── Dockerfile
-        └── pizza
-            └── Dockerfile
 
-34 directories, 24 files
-```
+    Generating docker artifacts...
+      @docker 		 - complete 2/2 
+
+      Run the following command to start a Docker container:
+      docker run -d -p 9090:9090 pizza:latest
+    ```
+
+    The artifact files below will be generated with the build process.
+
+    ```
+    > tree
+    .
+    ├── Ballerina.lock
+    ├── Ballerina.toml
+    ├── src
+    │   ├── burger
+    │   │   ├── Module.md
+    │   │   ├── burger_menu.bal
+    │   │   ├── main.bal
+    │   │   ├── resources
+    │   │   └── tests
+    │   │       ├── main_test.bal
+    │   │       └── resources
+    │   └── pizza
+    │       ├── Module.md
+    │       ├── main.bal
+    │       ├── pizza_menu.bal
+    │       ├── resources
+    │       └── tests
+    │           ├── main_test.bal
+    │           └── resources
+    └── target
+        ├── balo
+        │   ├── burger-2020r1-any-0.1.0.balo
+        │   └── pizza-2020r1-any-0.1.0.balo
+        ├── bin
+        │   ├── burger.jar
+        │   └── pizza.jar
+        ├── caches
+        │   ├── bir_cache
+        │   │   └── lakmal
+        │   │       ├── burger
+        │   │       │   └── 0.1.0
+        │   │       │       └── burger.bir
+        │   │       └── pizza
+        │   │           └── 0.1.0
+        │   │               └── pizza.bir
+        │   ├── jar_cache
+        │   │   └── lakmal
+        │   │       ├── burger
+        │   │       │   └── 0.1.0
+        │   │       │       ├── lakmal-burger-0.1.0-testable.jar
+        │   │       │       └── lakmal-burger-0.1.0.jar
+        │   │       └── pizza
+        │   │           └── 0.1.0
+        │   │               ├── lakmal-pizza-0.1.0-testable.jar
+        │   │               └── lakmal-pizza-0.1.0.jar
+        │   └── json_cache
+        │       └── lakmal
+        │           ├── burger
+        │           │   └── 0.1.0
+        │           │       └── test_suit.json
+        │           └── pizza
+        │               └── 0.1.0
+        │                   └── test_suit.json
+        └── docker
+            ├── burger
+            │   └── Dockerfile
+            └── pizza
+                └── Dockerfile
+
+    34 directories, 24 files
+    ```
 
 2. Verify that the Docker image is created.
 
-```
-> docker images
-REPOSITORY       TAG           IMAGE ID            CREATED             SIZE
-pizza            latest        72d12aa57bc1        2 minutes ago       134MB
-burger           latest        d3facfd62996        2 minutes ago       134MB
-```
+    ```
+    > docker images
+    REPOSITORY       TAG           IMAGE ID            CREATED             SIZE
+    pizza            latest        72d12aa57bc1        2 minutes ago       134MB
+    burger           latest        d3facfd62996        2 minutes ago       134MB
+    ```
 
 3. Run the Docker image as a container (use the command below printed in step 1).
 
-```
-> docker run -d -p 8080:8080 burger:latest
-1d3b98286a45c2feeae607719c1a58d1c6b9daa57889cff37894cb42490d15de
+    ```
+    > docker run -d -p 8080:8080 burger:latest
+    1d3b98286a45c2feeae607719c1a58d1c6b9daa57889cff37894cb42490d15de
 
-> docker run -d -p 9090:9090 pizza:latest
-c6bfd238515265fb2909d74c3d862830712019c0681f75e7400e7a90833ce84a
-```
+    > docker run -d -p 9090:9090 pizza:latest
+    c6bfd238515265fb2909d74c3d862830712019c0681f75e7400e7a90833ce84a
+    ```
 
 4. Verify that the Docker container is running.
 
-```
-> docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-c6bfd2385152        pizza:latest        "/bin/sh -c 'java -j…"   15 seconds ago      Up 14 seconds       0.0.0.0:9090->9090/tcp   romantic_lovelace
-1d3b98286a45        burger:latest       "/bin/sh -c 'java -j…"   47 seconds ago      Up 46 seconds       0.0.0.0:8080->8080/tcp   priceless_rhodes
-```
+    ```
+    > docker ps
+    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+    c6bfd2385152        pizza:latest        "/bin/sh -c 'java -j…"   15 seconds ago      Up 14 seconds       0.0.0.0:9090->9090/tcp   romantic_lovelace
+    1d3b98286a45        burger:latest       "/bin/sh -c 'java -j…"   47 seconds ago      Up 46 seconds       0.0.0.0:8080->8080/tcp   priceless_rhodes
+    ```
 
 5. Access the pizza service and burger service with the cURL command below.
 
-```
-> curl http://localhost:9090/pizza/menu
-Pizza Menu
+    ```
+    > curl http://localhost:9090/pizza/menu
+    Pizza Menu
 
-> curl http://localhost:8080/burger/menu
-Burger Menu
-```
+    > curl http://localhost:8080/burger/menu
+    Burger Menu
+    ```
 
 6. Clean up the created artifacts.
 
-```
-> docker kill c6bfd2385152
-C6bfd2385152
-> docker kill 1d3b98286a45
-1d3b98286a45
+    ```
+    > docker kill c6bfd2385152
+    C6bfd2385152
+    > docker kill 1d3b98286a45
+    1d3b98286a45
 
-> docker rm c6bfd2385152
-C6bfd2385152
-> docker rm 1d3b98286a45
-1d3b98286a45
+    > docker rm c6bfd2385152
+    C6bfd2385152
+    > docker rm 1d3b98286a45
+    1d3b98286a45
 
 
-> docker rmi 72d12aa57bc1
-Untagged: pizza:latest
-> docker rmi d3facfd62996
-Untagged: burger:latest
-```
+    > docker rmi 72d12aa57bc1
+    Untagged: pizza:latest
+    > docker rmi d3facfd62996
+    Untagged: burger:latest
+    ```
 
 ## Troubleshooting
 

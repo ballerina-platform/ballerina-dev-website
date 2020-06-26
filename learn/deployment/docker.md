@@ -19,8 +19,14 @@ The Ballerina compiler is capable of creating optimized Docker images out of the
 
 - [Enabling Docker support](#enabling-docker-support)
 - [Usecases](#usecases)
+  - [Running a Ballerina service in a Docker container](#running-a-ballerina-service-in-a-docker-container)
+  - [Creating a custom Ballerina Docker image and pushing it autimatically to the Docker registry](#creating-a-custom-ballerina-docker-image and-pushing-it-autimatically-to-the-Docker-registry)
+  - [Running a Ballerina HTTPS service in a Docker container](#running-a-ballerina-https-service-in-a-docker-container)
+  - [Copying additional files to the Ballerina Docker image](#copying-additional-files-to-the-ballerina-docker-image)
+  - [Using a custom base image to build Ballerina Docker images](#using-a-custom-base-image-to-build-ballerina-docker-images)
+  - [Overriding the CMD of the generated Ballerina Dockerfile](#overriding-the-cmd-of-the-generated-ballerina-dockerfile)
+  - [Creating multiple Docker images corresponding to modules of a Ballerina project](#creating-multiple-docker-images-corresponding-to-modules-of-a-ballerina-project)
 - [Troubleshooting](#Troubleshooting)
-
 
 ## Enabling Docker support
 
@@ -34,7 +40,7 @@ Docker support is inbuilt and comes by default in any Ballerina distribution. Yo
 
 ## Usecases
 
-### Run a Ballerina service in a Docker container
+### Running a Ballerina service in a Docker container
 
 This usecase shows how to run a Ballerina service in a Docker container. The sample below demonstrates running a simple Ballerina hello world service in a Docker container. 
 
@@ -162,13 +168,13 @@ Remove docker image
 > docker rmi e48123737a65
 ```
 
-### Creating a Ballerina Docker image with custom image-name and tag, and then push it autimatically to a Docker registry
+### Creating a custom Ballerina Docker image and pushing it autimatically to the Docker registry
 
-This usecase shows how to run a simple Ballerina hello world service in a Docker container with annotation configurations to create a Docker image with the custom image-name, tag, and then automatically push the created image to the Docker registry.
+This usecase shows how to run a simple Ballerina hello world service in a Docker container with annotation configurations to create a Docker image with a custom image-name and tag, and then automatically push the created image to the Docker registry.
 
 #### Prerequisites
 
-- A machine with [Docker](https://docs.docker.com/get-docker/) installed.
+- A machine with [Docker](https://docs.docker.com/get-docker/) installed
 - A [Docker Hub](https://hub.docker.com/) account
 
 #### Sample source code

@@ -15,7 +15,7 @@ redirect_from:
 
 Docker helps to package applications and their dependencies in a binary image, which can run in various locations whether on-premise, in a public cloud, or in a private cloud. To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, youhave to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings. 
 
-The Ballerina compiler is capable of creating optimized Docker images out of the application source code. This guide includes step-by-step instructions on different use cases and executing sample source code with respect to them. 
+The Ballerina compiler is capable of creating optimized Docker images out of the application source code. This guide includes step-by-step instructions on different use cases and executing the corresponding sample source code. 
 
 - [Enabling Docker support](#enabling-docker-support)
 - [Usecases](#usecases)
@@ -50,7 +50,9 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 #### Sample source code
 
-```ballerina
+***hello_world_docker.bal***
+
+```ballerina 
 import ballerina/http;
 import ballerina/docker;
  
@@ -63,7 +65,6 @@ service hello on new http:Listener(9090){
 }
 
 ```
-*code-listing 1:hello_world_docker.bal*
 
 #### Steps to run
 
@@ -179,6 +180,8 @@ This usecase shows how to run a simple Ballerina hello world service in a Docker
 
 #### Sample source code
 
+***custom_docker_name.bal***
+
 ```ballerina
 import ballerina/http;
 import ballerina/docker;
@@ -198,8 +201,6 @@ service hello on new http:Listener(9090){
   }
 }
 ```
-
-*code-listing 2:custom_docker_name.bal*
 
 In this sample, the following properties are set in the `@docker:Config` annotation.
 
@@ -263,6 +264,8 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 The sample below uses a separate listener endpoint and it is configured with a custom keystore. In addition to the `@docker:Config` annotation, the `@docker:Expose` annotation is used with the listener endpoint object and it will help to expose the correct service ports when creating the Docker container. 
 
+***https_service_in_docker.bal***
+
 ```ballerina
 
 import ballerina/http;
@@ -288,8 +291,6 @@ service hello on helloWorldEP {
   }
 }
 ```
-
-*code-listing 3:https_service_in_docker.bal*
 
 #### Steps to run
 
@@ -408,6 +409,8 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 #### Sample source code
 
+***copy_file.bal***
+
 ```ballerina
 import ballerina/http;
 import ballerina/io;
@@ -444,7 +447,6 @@ function readFile(string filePath) returns  string {
    }
 }
 ```
-*code-listing 4:copy_file.bal*
 
 This sample sends a greeting to the caller by getting the name from a text file. When this is run in a container, you need to copy the `name.txt` file into the Docker image. The `@docker:CopyFiles` annotation is uised for this and you can give multiple files by following the syntax below.
 
@@ -574,6 +576,8 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 #### Sample source code
 
+***base_image.bal***
+
 ```ballerina
 import ballerina/http;
 import ballerina/docker;
@@ -589,8 +593,6 @@ service hello on new http:Listener(9090){
   }
 }
 ```
-
-*code-listing 5:base_image.bal*
 
 > **Note:** This sample uses `openjdk:8-jre-alpine` as the custom Docker image by using the `baseImage` property in the `@docker:Config` annotation.
 
@@ -699,6 +701,8 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 #### Sample source code
 
+***docker_cmd.bal***
+
 ```ballerina
 
 import ballerina/http;
@@ -715,8 +719,6 @@ service hello on new http:Listener(9090){
   }
 }
 ```
-
-*code-listing 6:docker_cmd.bal*
 
 Tis sample enables HTTP trace logs by overriding the CMD value of the generated Dockerfile. The cmd field will be as `CMD java -jar ${APP} --b7a.http.accesslog.console=true` in the `@docker:Config{}` annotation.
 
@@ -864,6 +866,8 @@ Added new ballerina module at 'src/burger'
 
 3. Source code of `src/pizza` for the order:
 
+***pizza_menu.bal***
+
 ```ballerina
 import ballerina/http;
 import ballerina/docker;
@@ -879,9 +883,9 @@ service pizza on new http:Listener(9090){
 }
 ```
 
-*code-listing 7:pizza_menu.bal *
-
 4. Source code of `src/burger` for the order:
+
+***burger_menu.bal***
 
 ```ballerina
 import ballerina/http;
@@ -897,8 +901,6 @@ service burger on new http:Listener(8080){
    }
 }
 ```
-
-*code-listing 8:burger_menu.bal*
 
 #### Steps to run
 

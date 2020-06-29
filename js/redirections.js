@@ -126,7 +126,7 @@ let redirections = {
     "/1.0/learn/observing-ballerina-code":"/1.0/learn/how-to-observe-ballerina-code/",
     "/0.991/learn/observing-ballerina-code":"/0.991/learn/how-to-observe-ballerina-code/",
     "/swan-lake/learn/calling-java-code-from-ballerina":"/1.1/page-not-available.html/",
-    "/1.1/learn/calling-java-code-from-ballerina":"/1.1/page-not-available.html/",
+    "/1.1/learn/calling-java-code-from-ballerina":"/1.1/page-not-available.html",
     "/1.0/learn/calling-java-code-from-ballerina":"/1.0/page-not-available.html",
     "/0.991/learn/calling-java-code-from-ballerina":"/0.991/page-not-available.html",
     "/swan-lake/learn/writing-secure-ballerina-code":"/1.1/learn/how-to-write-secure-ballerina-code/",

@@ -18,9 +18,9 @@ Docker helps to package applications and their dependencies in a binary image, w
 The Ballerina compiler is capable of creating optimized Docker images out of the application source code. This guide includes step-by-step instructions on different use cases and executing the corresponding sample source code. 
 
 - [Enabling Docker support](#enabling-docker-support)
-- [Usecases](#usecases)
+- [Use cases](#use-cases)
   - [Running a Ballerina service in a Docker container](#running-a-ballerina-service-in-a-docker-container)
-  - [Creating a custom Ballerina Docker image and pushing it autimatically to the Docker registry](#creating-a-custom-ballerina-docker-image-and-pushing-it-autimatically-to-the-Docker-registry)
+  - [Creating a custom Ballerina Docker image and pushing it automatically to the Docker registry](#creating-a-custom-ballerina-docker-image-and-pushing-it-automatically-to-the-Docker-registry)
   - [Running a Ballerina HTTPS service in a Docker container](#running-a-ballerina-https-service-in-a-docker-container)
   - [Copying additional files to the Ballerina Docker image](#copying-additional-files-to-the-ballerina-docker-image)
   - [Using a custom base image to build Ballerina Docker images](#using-a-custom-base-image-to-build-ballerina-docker-images)
@@ -38,11 +38,11 @@ Docker support is inbuilt and comes by default in any Ballerina distribution. Yo
 
 3. Build the Ballerina source file/project (e.g., `ballerina build source.bal`).
 
-## Usecases
+## Use cases
 
 ### Running a Ballerina service in a Docker container
 
-This usecase shows how to run a Ballerina service in a Docker container. The sample below demonstrates running a simple Ballerina hello world service in a Docker container. 
+This use case shows how to run a Ballerina service in a Docker container. The sample below demonstrates running a simple Ballerina hello world service in a Docker container. 
 
 #### Prerequisites
 
@@ -133,7 +133,7 @@ service hello on new http:Listener(9090){
 
     ```
 
-    > Since the annotation is not configured to have a custom Docker image name and tag, the build process will create a Docker image with the default values: the file name of the generated .jar file with the latest tag (e.g., `hello_world_docker:latest`).
+    > Since the annotation is not configured to have a custom Docker image name and tag, the build process will create a Docker image with the default values: the file name of the generated .jar file with the `latest` tag (e.g., `hello_world_docker:latest`).
 
 3. Run the Docker image as a container (use the below command printed in step 1).
 
@@ -174,9 +174,9 @@ service hello on new http:Listener(9090){
     > docker rmi e48123737a65
   ```
 
-### Creating a custom Ballerina Docker image and pushing it autimatically to the Docker registry
+### Creating a custom Ballerina Docker image and pushing it automatically to the Docker registry
 
-This usecase shows how to run a simple Ballerina hello world service in a Docker container with annotation configurations to create a Docker image with a custom image-name and tag, and then automatically push the created image to the Docker registry.
+This use case shows how to run a simple Ballerina hello world service in a Docker container with annotation configurations, which can be used to create a Docker image with a custom image-name and tag, and then automatically push the created image to the Docker registry.
 
 #### Prerequisites
 
@@ -259,7 +259,7 @@ In this sample, the following properties are set in the `@docker:Config` annotat
 
 ### Running a Ballerina HTTPS service in a Docker container
 
-An HTTP endpoint can be configured to communicate through HTTPS as well. To secure an endpoint using HTTPS, the endpoint needs to be configured with a keystore, a certificate, and a private key for the endpoint. When running this HTTPS service as a Docker container, it is required to copy the keystore with the custom certificate that is used to configure the HTTPS endpoint. 
+An HTTP endpoint can be configured to communicate through HTTPS as well. To secure an endpoint using HTTPS, it needs to be configured with a keystore, a certificate, and a private key for the endpoint. When running this HTTPS service as a Docker container, it is required to copy the keystore with the custom certificate that is used to configure the HTTPS endpoint. 
 
 #### Prerequisites
 
@@ -267,7 +267,7 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
 #### Sample source code
 
-The sample below uses a separate listener endpoint and it is configured with a custom keystore. In addition to the `@docker:Config` annotation, the `@docker:Expose` annotation is used with the listener endpoint object and it will help to expose the correct service ports when creating the Docker container. 
+The sample below uses a separate listener endpoint and it is configured with a custom keystore. In addition to the `@docker:Config` annotation, the `@docker:Expose` annotation is used with the listener endpoint object, which helps to expose the correct service ports when creating the Docker container. 
 
 `https_service_in_docker.bal`
 
@@ -383,7 +383,7 @@ service hello on helloWorldEP {
     25dfb84f1c9f        https-helloworld:latest   "/bin/sh -c 'java -j…"   45 seconds ago      Up 45 seconds       0.0.0.0:9095->9095/tcp   charming_visvesvaraya
     ```
 
-5. Access the hello service with the cURL command.
+5. Access the hello world service with the cURL command.
 
     ```
     curl -k https://localhost:9095/hello/sayHello
@@ -406,7 +406,7 @@ service hello on helloWorldEP {
 
 ### Copying additional files to the Ballerina Docker image
 
-In some use cases, you need to process files in your applications and when these applications are run in a Docker container, you might need to copy these additional files into the image or mount them as external volume. This usecase shows how to copy additional files into the Docker image while compiling the Ballerina source code.
+In some use cases, you need to process files in your applications. When these applications are run in a Docker container, you might need to copy these additional files into the image or mount them as external volume. This use case shows how to copy additional files into the Docker image while compiling the Ballerina source code.
 
 #### Prerequisites
 
@@ -453,7 +453,7 @@ function readFile(string filePath) returns  string {
 }
 ```
 
-This sample sends a greeting to the caller by getting the name from a text file. When this is run in a container, you need to copy the `name.txt` file into the Docker image. The `@docker:CopyFiles` annotation is uised for this and you can give multiple files by following the syntax below.
+This sample sends a greeting to the caller by getting the name from a text file. When this is run in a container, you need to copy the `name.txt` file into the Docker image. The `@docker:CopyFiles` annotation is used for this and you can give multiple files by following the syntax below.
 
 ```
 @docker:CopyFiles {
@@ -552,7 +552,7 @@ This sample sends a greeting to the caller by getting the name from a text file.
     d9f72d8ef6b2        copy_file:latest    "/bin/sh -c 'java -j…"   15 seconds ago      Up 15 seconds       0.0.0.0:9090->9090/tcp   inspiring_joliot
     ```
 
-6. Access the hello service with the cURL command below.
+6. Access the hello world service with the cURL command below.
 
     ```
     > curl http://localhost:9090/hello/greet
@@ -573,7 +573,7 @@ This sample sends a greeting to the caller by getting the name from a text file.
 
 ### Using a custom base image to build Ballerina Docker images
 
-Ballerina ships a base image (e.g., `ballerina/jre8:v1`) with some security hardening and it is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This usecase shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
+Ballerina ships a base image (e.g., `ballerina/jre8:v1`) with some security hardening. It is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
 
 #### Prerequisites
 
@@ -659,7 +659,7 @@ service hello on new http:Listener(9090){
     helloworld_custom_baseimage      latest    	4468889e4ed0        11 minutes ago      109MB
     ```
 
-3. Run the Docker image as a container (use the command below rinted in step 1).
+3. Run the Docker image as a container (use the command below printed in step 1).
 
     ```
     > docker run -d -p 9090:9090 helloworld_custom_baseimage:latest
@@ -676,7 +676,7 @@ service hello on new http:Listener(9090){
 
     ```
 
-5. Access the hello service with the cURL command below.
+5. Access the hello world service with the cURL command below.
 
     ```
     > curl http://localhost:9090/hello/sayHello
@@ -698,7 +698,7 @@ service hello on new http:Listener(9090){
 
 ### Overriding the CMD of the generated Ballerina Dockerfile
 
-The Ballerina Docker image builder uses the generic CMD command to execute the created JAR file. However, sometimes, you might need to override the default CMD command. This usecase shows how to override the default CMD command.
+The Ballerina Docker image builder uses the generic CMD command to execute the created JAR file. However, sometimes, you might need to override the default CMD command. This use case shows how to override the default CMD command.
 
 ### Prerequisites
 
@@ -808,7 +808,7 @@ This sample enables HTTP trace logs by overriding the CMD value of the generated
     0f66739200dc        custome_cmd:latest   "/bin/sh -c 'java -j…"   55 seconds ago      Up 55 seconds       0.0.0.0:9090->9090/tcp   pensive_jackson
     ```
 
-5. Access the hello service with the cURL command below.
+5. Access the hello world service with the cURL command below.
 
     ```
     > curl http://localhost:9090/hello/sayHello
@@ -840,7 +840,7 @@ This sample enables HTTP trace logs by overriding the CMD value of the generated
 
 ### Creating multiple Docker images corresponding to modules of a Ballerina project
 
-This usecase shows how to add the Docker annotation to a Ballerina project to create the corresponding Docker images.
+This use case shows how to add the Docker annotation to a Ballerina project to create the corresponding Docker images.
 
 ### Prerequisites
 
@@ -859,7 +859,7 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
         add a new Ballerina module.
     ```
 
-2. The two modules to call and order pizza and burger:
+2. The two modules to call and order pizzas and burgers:
 
     ```ballerina
     > ballerina add pizza

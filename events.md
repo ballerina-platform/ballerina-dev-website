@@ -20,15 +20,25 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">
-                    <tr class="event-expiry" style="display:none" data-expiry="July 02, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">June 29 - July 2, 2020</span>
-                      <p class="cEventLocation">Online</p>
+                  <tr class="event-expiry" style="display:none" data-expiry="October 21, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">October 19 - 21, 2020</span>
+                      <p class="cEventLocation">Munich, Germany</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://events.linuxfoundation.org/open-source-summit-north-america/"><h4>Open Source Summit + Embedded Linux Conference North America 2020</h4></a>
-                        <h5>Code to Kubernetes: Languages of Infrastructure</h5>
-                            <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                      <td class="cEventDetail"><a target="_blank" href="https://osad-munich.org/en/"><h4>Open Source Automation Days</h4></a>
+                        <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
+                            <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/open-source-summit-north-america/program/schedule/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More Info</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">December 14 - 16, 2020</span>
+                      <p class="cEventLocation">São Paulo, Brazil</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://qconsp.com/"><h4>QCon São Paulo</h4></a>
+                        <h5></h5>
+                            <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="September 29, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">September 28 - 29, 2020</span>

@@ -33,8 +33,7 @@ $(document).ready(function () {
         '                                        <option value="swan-lake">Swan Lake</option>\n' +        
         '                                        <option value="1.1">v1.1</option>\n' +
         '                                        <option value="1.0">v1.0</option>\n' +
-        '                                        <option value="0.991">v0.991</option>\n' +
-        '                                    </select>\n' +
+        '                                     </select>\n' +
         '                                </div>\n' +
         '                            </li>\n' +
         '                           <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>\n' +

@@ -1,4 +1,4 @@
-name: Create PR for new Swan Lake Release-note
+name: Push changes of new Swan Lake Release-note
 
 on:
   push:

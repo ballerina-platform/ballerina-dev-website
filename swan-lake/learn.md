@@ -47,7 +47,7 @@ redirect_from:
    <!--<li><a href="/learn/installing-ballerina//" class="cGreenLinkArrow">Ballerina User Guide</a></li>-->
    <li><a href="/swan-lake/learn/using-the-cli-tools/" class="cGreenLinkArrow">Ballerina CLI Tools</a></li>
    <li><a href="/swan-lake/learn/structuring-ballerina-code/" class="cGreenLinkArrow">Code Organization</a></li>
-    <li><a href="/swan-lake/learn/deploying-ballerina-programs-in-the-cloud/" class="cGreenLinkArrow">Cloud Development</a></li>
+    <li><a href="/swan-lake/learn/deployment/docker/" class="cGreenLinkArrow">Deployment</a></li>
     <li><a href="/swan-lake/learn/observing-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
     <li><a href="/swan-lake/learn/calling-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
     <li><a href="/swan-lake/learn/writing-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>

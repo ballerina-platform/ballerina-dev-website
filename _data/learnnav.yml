@@ -48,12 +48,15 @@
       active: publishing-modules-to-ballerina-central
 
 
-- title: Cloud Development
+- title: Deployment
   url: '#' 
   sublinks:
-    - title: Deploying Ballerina Programs in the Cloud
-      url: /learn/deploying-ballerina-programs-in-the-cloud/
-      active: deploying-ballerina-programs-in-the-cloud
+    - title: Docker
+      url: /learn/deployment/docker/
+      active: docker
+    - title: Kubernetes
+      url: /learn/deployment/kubernetes/
+      active: kubernetes
 
 - title: Observability
   url: '#' 

@@ -29,7 +29,7 @@ jobs:
     - name: Remove unwanted folders from the build
       run: |
         echo | pwd
-        rm -r 0.990/ 0.991/ 1.0/ 1.1/
+        rm -r 0.990/ 1.0/ 1.1/
     
     - name: Build the site
       uses: shafreenAnfar/jekyll-build-action@v5
@@ -59,4 +59,4 @@ jobs:
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
         bin/hub push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

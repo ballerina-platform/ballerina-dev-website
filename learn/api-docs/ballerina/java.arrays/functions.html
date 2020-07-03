@@ -58,13 +58,18 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             <div class="primary-list">
                 <h3>Functions</h3>
                 <ul>
+                    
+                        <li >
+                            <a href="#fromHandle">fromHandle</a>
+                        </li>
                     
                         <li >
                             <a href="#get">get</a>
@@ -82,13 +87,17 @@ redirect_from:
                             <a href="#set">set</a>
                         </li>
                     
+                        <li >
+                            <a href="#toHandle">toHandle</a>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="ui divider"></div>
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -343,13 +352,18 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
                 <div class="primary-list">
                     <h3>Functions</h3>
                     <ul>
+                        
+                            <li >
+                                <a href="#fromHandle">fromHandle</a>
+                            </li>
                         
                             <li >
                                 <a href="#get">get</a>
@@ -367,13 +381,17 @@ redirect_from:
                                 <a href="#set">set</a>
                             </li>
                         
+                            <li >
+                                <a href="#toHandle">toHandle</a>
+                            </li>
+                        
                     </ul>
                 </div>
                 <div class="ui divider"></div>
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -634,7 +652,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../index.html">
+                <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Functions - </span>
@@ -643,60 +662,165 @@ redirect_from:
                 
             </h1>
             <div class="constants">
-                <table class="ui table details-table">
-                    
-                        <tbody>
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#fromHandle">fromHandle</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns a Ballerina array for a handle that holds a Java array.
+                                    </div>
+                                </td>
+                            </tr>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#get">get</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array.
+                                        <p>Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getLength">getLength</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Returns the length of the given Java array.
+                                        <p>Returns the length of the given Java array.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#newInstance">newInstance</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Returns a new Java array instance with the specified element type and dimensions.
+                                        <p>Returns a new Java array instance with the specified element type and dimensions.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#set">set</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Replaces the indexed element at the specified index in the given Java array with the specified element.
+                                        <p>Replaces the indexed element at the specified index in the given Java array with the specified element.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#toHandle">toHandle</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns a handle value representation for a Ballerina array.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
                 </table>
                 <div>
                     
                         <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="fromHandle" title="fromHandle">
+             <a class="url-link" href="#fromHandle">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromHandle </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">handle</span> array, <span class="builtin-type">string</span> jType, <span class="builtin-type">string</span> bType)</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">any</span>[]</span> | <span class="builtin-type">error</span> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns a Ballerina array for a handle that holds a Java array.</p>
+<pre><code class="language-ballerina"> int[] array = &lt;int[]&gt; check jarrays:fromHandle(arrayHandle, &quot;int&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >array</span>
+                        <span class="type">  <span class="builtin-type">handle</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The <code>handle</code>, which refers to the Java array</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >jType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The <code>string</code> parameter provided to specify the Java array element type</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >bType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default default)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The optional <code>string</code> parameter provided to specify the Ballerina array element type</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">any</span>[]</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>Ballerina <code>any[]|error</code> array for the provided handle</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
                             
                                 <div class="method-content">
     <div class="main-method-title here" id="get" title="get">
@@ -715,11 +839,11 @@ redirect_from:
         
         <p>Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array. This function
 completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does not refer
-to a Java array.
+to a Java array.</p>
 <pre><code class="language-ballerina"> handle words = getSortedArray();
  handle firstWord = java.arrays:get(words, 0);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -790,11 +914,11 @@ to a Java array.
     </div>
     <div class="function-desc">
         
-        <p>Returns the length of the given Java array.
+        <p>Returns the length of the given Java array.</p>
 <pre><code class="language-ballerina"> handle array = getArray();
  int length = java.arrays:getLength(array);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -849,11 +973,11 @@ to a Java array.
     <div class="function-desc">
         
         <p>Returns a new Java array instance with the specified element type and dimensions. This function completes abruptly
-with a <code>panic</code> if the specified handle refers to a Java null or if zero dimensions have been provided.
+with a <code>panic</code> if the specified handle refers to a Java null or if zero dimensions have been provided.</p>
 <pre><code class="language-ballerina"> handle stringClass = check java:getClass(&quot;java.lang.String&quot;);
  handle StrArray = java.arrays:newInstance(stringClass, 4);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -921,11 +1045,11 @@ with a <code>panic</code> if the specified handle refers to a Java null or if ze
         
         <p>Replaces the indexed element at the specified index in the given Java array with the specified element. This
 function completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does
-not refer to a Java array.
+not refer to a Java array.</p>
 <pre><code class="language-ballerina"> handle strArray = getStringArray();
  java.arrays:set(strArray, 0, java:fromString(&quot;Ballerina&quot;));
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -985,6 +1109,80 @@ not refer to a Java array.
         </div>
     
 
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toHandle" title="toHandle">
+             <a class="url-link" href="#toHandle">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toHandle </h2>
+        
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">any</span>[]</span> array, <span class="builtin-type">string</span> jType)</p>
+            <b> returns </b><span class="builtin-type">handle</span> | <span class="builtin-type">error</span> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns a handle value representation for a Ballerina array.</p>
+<pre><code class="language-ballerina"> handle handleValue = check java.arrays:toHandle(array, &quot;char&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >array</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">any</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Ballerina array, which is to be converted to a handle reference</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >jType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Java class name or the primitive type of the array elements referenced by the handle</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">handle</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>The <code>handle|error</code> after the conversion</p>
+</li>
+            </ul>
+        </div>
+        
     
 </div>
                             

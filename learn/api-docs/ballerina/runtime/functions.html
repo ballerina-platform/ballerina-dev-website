@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -96,7 +97,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -355,7 +356,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -393,7 +395,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -658,7 +660,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../index.html">
+                <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Functions - </span>
@@ -667,9 +670,9 @@ redirect_from:
                 
             </h1>
             <div class="constants">
-                <table class="ui table details-table">
-                    
-                        <tbody>
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#externGetProperty">externGetProperty</a></td>
                                 <td width="70%">
@@ -679,68 +682,58 @@ redirect_from:
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getCallStack">getCallStack</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Retrieves the array of <code>runtime:CallStackElement</code> instances.
+                                        <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getInvocationContext">getInvocationContext</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Returns the <code>runtime:InvocationContext</code> instance.
+                                        <p>Returns the <code>runtime:InvocationContext</code> instance.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getProperty">getProperty</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Returns the system property value associated with the specified property name.
+                                        <p>Returns the system property value associated with the specified property name.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#sleep">sleep</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Halts the current worker for a predefined amount of time.
+                                        <p>Halts the current worker for a predefined amount of time.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#timeout">timeout</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Gives a timeout to the current worker for a predefined amount of time.
+                                        <p>Gives a timeout to the current worker for a predefined amount of time.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
+                        
+                    </tbody>
                 </table>
                 <div>
                     
@@ -761,7 +754,7 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p></p>
+        
     </div>
     
         <div class="data-wrapper">
@@ -813,10 +806,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.
+        <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.</p>
 <pre><code class="language-ballerina"> runtime:CallStackElement[] callStackElements = runtime:getCallStack();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -848,10 +841,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Returns the <code>runtime:InvocationContext</code> instance.
+        <p>Returns the <code>runtime:InvocationContext</code> instance.</p>
 <pre><code class="language-ballerina"> runtime:InvocationContext invocationContext = runtime:getInvocationContext();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -883,10 +876,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Returns the system property value associated with the specified property name.
+        <p>Returns the system property value associated with the specified property name.</p>
 <pre><code class="language-ballerina"> string userHome = runtime:getProperty(&quot;user.home&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -935,10 +928,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Halts the current worker for a predefined amount of time.
+        <p>Halts the current worker for a predefined amount of time.</p>
 <pre><code class="language-ballerina"> runtime:sleep(1000);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -982,10 +975,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Gives a timeout to the current worker for a predefined amount of time.
+        <p>Gives a timeout to the current worker for a predefined amount of time.</p>
 <pre><code class="language-ballerina"> future&lt;()&gt; f1 = runtime:timeout(2000);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">

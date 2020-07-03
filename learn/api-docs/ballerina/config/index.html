@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -320,7 +321,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -328,7 +330,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -591,7 +593,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -608,7 +611,7 @@ redirect_from:
 </ol>
 <p>This configuration resolution happens at the start of the program execution. Configurations can be set programmatically as well.</p>
 <p>The Config API provides the capability to feed sensitive data (e.g., passwords) to Ballerina programs securely by encrypting them.</p>
-<h2>Setting configurations</h2>
+<h3>Setting configurations</h3>
 <p>To specify a configuration file explicitly, the <code>--b7a.config.file=&lt;path to configuration file&gt;</code> property can be used. If
 this property is not set when
 running a project, Ballerina looks for a <code>ballerina.conf</code> file in the project root. When running a single file or a
@@ -644,7 +647,7 @@ $ set(x) b7a_http_accesslog_path=”./access.log”
 <p>If the configurations need to be shared during runtime, they can be set using the <code>setConfig()</code> function.</p>
 <pre><code class="language-ballerina">config:setConfig(&quot;john.country&quot;, &quot;USA&quot;);
 </code></pre>
-<h2>Reading configurations</h2>
+<h3>Reading configurations</h3>
 <p>The API provides functions to read configurations in their original type. Check function descriptors for example usages.</p>
 <p>A set of configurations belonging to a particular namespace can be retrieved as a <code>map</code> using the <code>getAsMap()</code> function. Here is an example:</p>
 <pre><code class="language-toml">[b7a.http.tracelog]
@@ -664,7 +667,7 @@ map&lt;anydata&gt; serverAlphaMap  = config:getAsMap(&quot;b7a.http.tracelog&quo
 </code></pre>
 <p>In the above configuration file, the <code>host</code> is specified as <code>@env:{TRACE_LOG_READER_HOST}</code>. When resolving the configurations, Ballerina looks for a variable named <code>TRACE_LOG_READER_HOST</code> in the environment variables and maps <code>b7a.http.tracelog.host</code> to its value.</p>
 <p>If the specified environment variable does not exist, it will will treat <code>@env:{TRACE_LOG_READER_HOST}</code> as a normal string value.</p>
-<h2>Securing configuration values</h2>
+<h3>Securing configuration values</h3>
 <p>Sensitive values can be encrypted using the <code>encrypt</code> command as follows:</p>
 <pre><code class="language-sh">$ ballerina encrypt
 Enter value: 
@@ -683,7 +686,7 @@ Or add the following to the runtime command-line:
 <pre><code class="language-bash">[admin]
 password=”@encrypted:{JqlfWNWKM6gYiaGnS0Hse1J9F/v48gUR0Kxfa5gwjcM=}”
 </code></pre>
-<h2>Reading config files with encrypted values</h2>
+<h3>Reading config files with encrypted values</h3>
 <p>When trying to run a Ballerina program with a configuration file or CLI parameters that contain encrypted values, Ballerina will first check to see if the <code>b7a.config.secret</code> configuration is set. This configuration is used to set the path to a file containing the secret required to decrypt the configurations. If it is set, the secret is read, and the secret file is deleted.</p>
 <p>If a secret file is not provided, the user is prompted to enter the secret. Values are decrypted only on demand when an encrypted value is looked up using the <code>getAsString()</code> function.</p>
 <pre><code class="language-bash">$ ballerina run program.bal 
@@ -717,7 +720,7 @@ ballerina: enter secret for config value decryption:
                             </td>
                             <td class="module-desc">
                                 
-                                Checks whether the given key is in the configuration registry.
+                                <p>Checks whether the given key is in the configuration registry.
                             </td>
                         </tr>
                     
@@ -727,7 +730,7 @@ ballerina: enter secret for config value decryption:
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieves the specified configuration value as an array.
+                                <p>Retrieves the specified configuration value as an array.
                             </td>
                         </tr>
                     
@@ -737,7 +740,7 @@ ballerina: enter secret for config value decryption:
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieves the specified configuration value as a boolean.
+                                <p>Retrieves the specified configuration value as a boolean.
                             </td>
                         </tr>
                     
@@ -747,7 +750,7 @@ ballerina: enter secret for config value decryption:
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieves the specified configuration value as a float.
+                                <p>Retrieves the specified configuration value as a float.
                             </td>
                         </tr>
                     
@@ -757,7 +760,7 @@ ballerina: enter secret for config value decryption:
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieves the specified configuration value as an int.
+                                <p>Retrieves the specified configuration value as an int.
                             </td>
                         </tr>
                     
@@ -767,7 +770,7 @@ ballerina: enter secret for config value decryption:
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieves the specified configuration value as a map.
+                                <p>Retrieves the specified configuration value as a map.
                             </td>
                         </tr>
                     
@@ -777,7 +780,7 @@ ballerina: enter secret for config value decryption:
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieves the specified configuration value as a string.
+                                <p>Retrieves the specified configuration value as a string.
                             </td>
                         </tr>
                     
@@ -787,7 +790,7 @@ ballerina: enter secret for config value decryption:
                             </td>
                             <td class="module-desc">
                                 
-                                Sets the specified key/value pair as a configuration.
+                                <p>Sets the specified key/value pair as a configuration.
                             </td>
                         </tr>
                     

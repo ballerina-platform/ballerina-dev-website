@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../../index.html">
+            <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -80,7 +81,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -367,7 +368,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../../index.html">
+                <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -389,7 +391,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -683,7 +685,8 @@ redirect_from:
 
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../../index.html">
+                <a class="breadcrumb-home" href="
+    ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Object - </span>
@@ -694,7 +697,7 @@ redirect_from:
             </h1>
             <p>
                 
-                Provides the actions to read/write header values in a gRPC request/response message.
+                <p>Provides the actions to read/write header values in a gRPC request/response message.</p>
 
             </p>
 
@@ -714,7 +717,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Checks whether the requested header exists.
+        <p>Checks whether the requested header exists.
     </div>
 </div>
 
@@ -726,7 +729,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Returns the header value with the specified header name.
+        <p>Returns the header value with the specified header name.
     </div>
 </div>
 
@@ -738,7 +741,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Gets all the transport headers with the specified header name.
+        <p>Gets all the transport headers with the specified header name.
     </div>
 </div>
 
@@ -750,7 +753,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Sets the value of a transport header.
+        <p>Sets the value of a transport header.
     </div>
 </div>
 
@@ -762,7 +765,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Adds the specified key/value pair as an HTTP header to the request.
+        <p>Adds the specified key/value pair as an HTTP header to the request.
     </div>
 </div>
 
@@ -774,7 +777,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Removes a transport header from the request.
+        <p>Removes a transport header from the request.
     </div>
 </div>
 
@@ -786,7 +789,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Removes all the transport headers from the message.
+        <p>Removes all the transport headers from the message.
     </div>
 </div>
 
@@ -814,10 +817,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Checks whether the requested header exists.
+        <p>Checks whether the requested header exists.</p>
 <pre><code class="language-ballerina"> boolean result = headers.exists(&quot;content-type&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -872,10 +875,10 @@ redirect_from:
     <div class="function-desc">
         
         <p>Returns the header value with the specified header name. If there are more than one header values for the
-specified header name, the first value is returned.
+specified header name, the first value is returned.</p>
 <pre><code class="language-ballerina"> string? result = headers.get(&quot;content-type&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -929,10 +932,10 @@ specified header name, the first value is returned.
     </div>
     <div class="function-desc">
         
-        <p>Gets all the transport headers with the specified header name.
+        <p>Gets all the transport headers with the specified header name.</p>
 <pre><code class="language-ballerina"> string[] result = headers.getAll(&quot;content-type&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -981,10 +984,10 @@ specified header name, the first value is returned.
     </div>
     <div class="function-desc">
         
-        <p>Sets the value of a transport header.
+        <p>Sets the value of a transport header.</p>
 <pre><code class="language-ballerina"> headers.setEntry(&quot;content-type&quot;, &quot;application/grpc&quot;)
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1040,10 +1043,10 @@ specified header name, the first value is returned.
     </div>
     <div class="function-desc">
         
-        <p>Adds the specified key/value pair as an HTTP header to the request.
+        <p>Adds the specified key/value pair as an HTTP header to the request.</p>
 <pre><code class="language-ballerina"> headers.addEntry(&quot;content-type&quot;, &quot;application/grpc&quot;)
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1099,10 +1102,10 @@ specified header name, the first value is returned.
     </div>
     <div class="function-desc">
         
-        <p>Removes a transport header from the request.
+        <p>Removes a transport header from the request.</p>
 <pre><code class="language-ballerina"> headers.remove(&quot;content-type&quot;)
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1141,10 +1144,10 @@ specified header name, the first value is returned.
     </div>
     <div class="function-desc">
         
-        <p>Removes all the transport headers from the message.
+        <p>Removes all the transport headers from the message.</p>
 <pre><code class="language-ballerina"> headers.removeAll()
 </code></pre>
-</p>
+
     </div>
     
 

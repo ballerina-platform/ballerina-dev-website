@@ -16,6 +16,8 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.WEBSITE_TOKEN }}
       
     - name: Set up Python 3.x
       uses: actions/setup-python@v1

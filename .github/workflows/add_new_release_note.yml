@@ -19,6 +19,8 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.WEBSITE_TOKEN }}
 
     - name: Create new release note
       run: |

@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -320,7 +321,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -328,7 +330,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -591,7 +593,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -600,16 +603,16 @@ redirect_from:
                 </h1>
                     <h2>Module Overview</h2>
 <p>This module provides a basic API for logging.</p>
-<h2>Loggers</h2>
+<h3>Loggers</h3>
 <p>Each module in Ballerina has its own dedicated logger. A log record contains the timestamp, log level, module name, and the log message. The <code>printError()</code> function takes an optional <code>error</code> record apart from the log message. A sample log record logged from the <code>foo</code> module would look as follows:</p>
 <pre><code class="language-bash">2018-04-09 11:33:21,300 ERROR [foo] - This is an error log.
 </code></pre>
-<h2>Log Output</h2>
+<h3>Log Output</h3>
 <p>Logs are written to the <code>stderr</code> stream (i.e., the console) by default in order to make the logs more container friendly.</p>
 <p>To publish the logs to a file, redirect the <code>stderr</code> stream to a file.</p>
 <pre><code class="language-bash">$ ballerina run program.bal 2&gt; b7a-user.log
 </code></pre>
-<h2>Log Levels</h2>
+<h3>Log Levels</h3>
 <p>This module provides functions to log at the <code>WARN</code>, <code>ERROR</code>, <code>INFO</code>, <code>DEBUG</code>, and <code>TRACE</code> levels. By default, all log messages are logged to the console at the <code>INFO</code> level. In addition to these, there are two other levels named <code>OFF</code> and <code>ALL</code>. The <code>OFF</code> log level turns off logging, and the <code>ALL</code> log level allows all log levels. The log level can be configured through the Config API.</p>
 <p>The <code>b7a.log.level</code> configuration key can be used to configure the log level for the log API (i.e., for all the modules). The following can be provided in a configuration file.</p>
 <pre><code class="language-toml">b7a.log.level=&quot;&lt;LOG_LEVEL&gt;&quot;
@@ -656,7 +659,7 @@ loglevel=&quot;DEBUG&quot;
                             </td>
                             <td class="module-desc">
                                 
-                                Logs the specified value at DEBUG level.
+                                <p>Logs the specified value at DEBUG level.
                             </td>
                         </tr>
                     
@@ -666,7 +669,7 @@ loglevel=&quot;DEBUG&quot;
                             </td>
                             <td class="module-desc">
                                 
-                                Logs the specified message at ERROR level.
+                                <p>Logs the specified message at ERROR level.
                             </td>
                         </tr>
                     
@@ -676,7 +679,7 @@ loglevel=&quot;DEBUG&quot;
                             </td>
                             <td class="module-desc">
                                 
-                                Logs the specified message at INFO level.
+                                <p>Logs the specified message at INFO level.
                             </td>
                         </tr>
                     
@@ -686,7 +689,7 @@ loglevel=&quot;DEBUG&quot;
                             </td>
                             <td class="module-desc">
                                 
-                                Logs the specified message at TRACE level.
+                                <p>Logs the specified message at TRACE level.
                             </td>
                         </tr>
                     
@@ -696,7 +699,7 @@ loglevel=&quot;DEBUG&quot;
                             </td>
                             <td class="module-desc">
                                 
-                                Logs the specified message at WARN level.
+                                <p>Logs the specified message at WARN level.
                             </td>
                         </tr>
                     

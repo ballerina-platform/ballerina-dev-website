@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -92,7 +93,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -363,7 +364,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -397,7 +399,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -674,7 +676,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../index.html">
+                <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Functions - </span>
@@ -683,21 +686,19 @@ redirect_from:
                 
             </h1>
             <div class="constants">
-                <table class="ui table details-table">
-                    
-                        <tbody>
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#doAuthenticate">doAuthenticate</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Authenticates with the username and password.
+                                        <p>Authenticates with the username and password.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#externDoAuthenticate">externDoAuthenticate</a></td>
                                 <td width="70%">
@@ -707,9 +708,7 @@ redirect_from:
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#externInitLdapConnectionContext">externInitLdapConnectionContext</a></td>
                                 <td width="70%">
@@ -719,32 +718,28 @@ redirect_from:
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getGroups">getGroups</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Retrieves the group(s) of the user related to the provided username.
+                                        <p>Retrieves the group(s) of the user related to the provided username.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#initLdapConnectionContext">initLdapConnectionContext</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Initailizes the LDAP connection context.
+                                        <p>Initailizes the LDAP connection context.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
+                        
+                    </tbody>
                 </table>
                 <div>
                     
@@ -765,10 +760,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Authenticates with the username and password.
+        <p>Authenticates with the username and password.</p>
 <pre><code class="language-ballerina"> boolean|ldap:Error result = ldap:doAuthenticate(ldapConnection, username, password);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -856,7 +851,7 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p></p>
+        
     </div>
     
         <div class="data-wrapper">
@@ -940,7 +935,7 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p></p>
+        
     </div>
     
         <div class="data-wrapper">
@@ -1008,10 +1003,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Retrieves the group(s) of the user related to the provided username.
+        <p>Retrieves the group(s) of the user related to the provided username.</p>
 <pre><code class="language-ballerina"> string[]|ldap:Error groups = ldap:getGroups(ldapConnection, username);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1082,10 +1077,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Initailizes the LDAP connection context.
+        <p>Initailizes the LDAP connection context.</p>
 <pre><code class="language-ballerina"> ldap:LdapConnection|ldap:Error connection = ldap:initLdapConnectionContext(ldapConnectionConfig, instanceId);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">

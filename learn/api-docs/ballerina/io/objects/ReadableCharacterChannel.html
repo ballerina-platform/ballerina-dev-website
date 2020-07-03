@@ -59,7 +59,8 @@ or non-blocking manner.
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../../index.html">
+            <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -117,7 +118,7 @@ or non-blocking manner.
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -392,7 +393,8 @@ or non-blocking manner.
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../../index.html">
+                <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -450,7 +452,7 @@ or non-blocking manner.
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -732,7 +734,8 @@ or non-blocking manner.
 
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../../index.html">
+                <a class="breadcrumb-home" href="
+    ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Object - </span>
@@ -743,7 +746,7 @@ or non-blocking manner.
             </h1>
             <p>
                 
-                Represents a channel, which could be used to read characters through a given ReadableByteChannel.
+                <p>Represents a channel, which could be used to read characters through a given ReadableByteChannel.</p>
 
             </p>
 
@@ -791,7 +794,7 @@ or non-blocking manner.
     </div>
     <div class="param-details"> 
             
-        Reads a given number of characters.
+        <p>Reads a given number of characters.
     </div>
 </div>
 
@@ -803,7 +806,7 @@ or non-blocking manner.
     </div>
     <div class="param-details"> 
             
-        Reads a JSON from the given channel.
+        <p>Reads a JSON from the given channel.
     </div>
 </div>
 
@@ -815,7 +818,7 @@ or non-blocking manner.
     </div>
     <div class="param-details"> 
             
-        Reads an XML from the given channel.
+        <p>Reads an XML from the given channel.
     </div>
 </div>
 
@@ -827,7 +830,7 @@ or non-blocking manner.
     </div>
     <div class="param-details"> 
             
-        Closes a given character channel.
+        <p>Closes a given character channel.
     </div>
 </div>
 
@@ -856,10 +859,10 @@ or non-blocking manner.
     <div class="function-desc">
         
         <p>Reads a given number of characters. This will attempt to read up to the <code>numberOfChars</code> characters of the channel.
-An <code>io:EofError</code> will return once the channel reaches the end.
+An <code>io:EofError</code> will return once the channel reaches the end.</p>
 <pre><code class="language-ballerina"> string|io:Error result = readableCharChannel.read(1000);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -913,10 +916,10 @@ An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        <p>Reads a JSON from the given channel.
+        <p>Reads a JSON from the given channel.</p>
 <pre><code class="language-ballerina"> json|io:Error result = readableCharChannel.readJson();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -948,10 +951,10 @@ An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        <p>Reads an XML from the given channel.
+        <p>Reads an XML from the given channel.</p>
 <pre><code class="language-ballerina"> json|io:Error result = readableCharChannel.readXml();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -983,10 +986,10 @@ An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        <p>Closes a given character channel.
+        <p>Closes a given character channel.</p>
 <pre><code class="language-ballerina"> io:Error? err = readableCharChannel.close();
 </code></pre>
-</p>
+
     </div>
     
 

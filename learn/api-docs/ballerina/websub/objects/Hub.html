@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../../index.html">
+            <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -88,7 +89,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -375,7 +376,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../../index.html">
+                <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -405,7 +407,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -699,7 +701,8 @@ redirect_from:
 
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../../index.html">
+                <a class="breadcrumb-home" href="
+    ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Object - </span>
@@ -710,7 +713,7 @@ redirect_from:
             </h1>
             <p>
                 
-                Represents the Ballerina WebSub Hub.
+                <p>Represents the Ballerina WebSub Hub.</p>
 
             </p>
 
@@ -765,7 +768,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Stops the started up Ballerina WebSub Hub.
+        <p>Stops the started up Ballerina WebSub Hub.
     </div>
 </div>
 
@@ -777,7 +780,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Publishes an update against the topic in the initialized Ballerina Hub.
+        <p>Publishes an update against the topic in the initialized Ballerina Hub.
     </div>
 </div>
 
@@ -789,7 +792,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Registers a topic in the Ballerina Hub.
+        <p>Registers a topic in the Ballerina Hub.
     </div>
 </div>
 
@@ -801,7 +804,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Unregisters a topic in the Ballerina Hub.
+        <p>Unregisters a topic in the Ballerina Hub.
     </div>
 </div>
 
@@ -813,7 +816,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Removes a subscription from the Ballerina Hub, without verifying intent.
+        <p>Removes a subscription from the Ballerina Hub, without verifying intent.
     </div>
 </div>
 
@@ -825,7 +828,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Retrieves topics currently recognized by the Hub.
+        <p>Retrieves topics currently recognized by the Hub.
     </div>
 </div>
 
@@ -837,7 +840,7 @@ redirect_from:
     </div>
     <div class="param-details"> 
             
-        Retrieves details of subscribers registered to receive updates for a particular topic.
+        <p>Retrieves details of subscribers registered to receive updates for a particular topic.
     </div>
 </div>
 
@@ -951,10 +954,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        <p>Stops the started up Ballerina WebSub Hub.
+        <p>Stops the started up Ballerina WebSub Hub.</p>
 <pre><code class="language-ballerina"> error? registrationResponse = webSubHub.stop();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -986,11 +989,11 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        <p>Publishes an update against the topic in the initialized Ballerina Hub.
+        <p>Publishes an update against the topic in the initialized Ballerina Hub.</p>
 <pre><code class="language-ballerina"> error? publishResponse = webSubHub.publishUpdate(&quot;http://websubpubtopic.com&quot;,{&quot;action&quot;: &quot;publish&quot;,
  &quot;mode&quot;: &quot;internal-hub&quot;});
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1078,10 +1081,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        <p>Registers a topic in the Ballerina Hub.
+        <p>Registers a topic in the Ballerina Hub.</p>
 <pre><code class="language-ballerina"> error? registrationResponse = webSubHub.registerTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1135,10 +1138,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        <p>Unregisters a topic in the Ballerina Hub.
+        <p>Unregisters a topic in the Ballerina Hub.</p>
 <pre><code class="language-ballerina"> error? registrationResponse = webSubHub.unregisterTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1192,10 +1195,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        <p>Removes a subscription from the Ballerina Hub, without verifying intent.
+        <p>Removes a subscription from the Ballerina Hub, without verifying intent.</p>
 <pre><code class="language-ballerina"> error? registrationResponse = webSubHub.removeSubscription(&quot;http://websubpubtopic.com&quot;, &quot;removeSubscriptioCallback&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1266,10 +1269,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        <p>Retrieves topics currently recognized by the Hub.
+        <p>Retrieves topics currently recognized by the Hub.</p>
 <pre><code class="language-ballerina"> string[] topic = webSubHub.getAvailableTopics();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -1301,10 +1304,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        <p>Retrieves details of subscribers registered to receive updates for a particular topic.
+        <p>Retrieves details of subscribers registered to receive updates for a particular topic.</p>
 <pre><code class="language-ballerina"> string[] topic = webSubHub.getSubscribers(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">

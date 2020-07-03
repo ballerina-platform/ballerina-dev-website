@@ -105,6 +105,21 @@ p.cTagLine {
     /* margin-bottom: 30px; */
 }
 
+
+.section img {
+    max-width: 100%;
+}
+
+td, th {
+    /* border: 1px solid #e1e4e5 !important; /* csslint allow: important */
+    border-collapse: collapse;
+    padding: 10px; 
+ }
+ th {
+     background-color: #464646;
+     color: #fff;
+ }
+
 .row.cBallerina-io-Nav {
     padding: 36px 0;
 }

@@ -78,9 +78,12 @@ $(document).ready(function() {
     // $("pre").removeClass('line-numbers');
     $("code").removeClass('cBasicCode');
     $(".ballerina").removeClass('cBasicCode');
+    $("pre").addClass('basic');
+    // $(".ballerina").addClass('language-ballerina');
     $(".bash").removeClass('cBasicCode');
 
-
+    
+$("table").addClass('table-striped');
 
 
     $(".cRuntimeContent").addClass('cShow');

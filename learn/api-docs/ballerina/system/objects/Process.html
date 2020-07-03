@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../../index.html">
+            <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -76,7 +77,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -351,7 +352,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../../index.html">
+                <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -369,7 +371,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -651,7 +653,8 @@ redirect_from:
 
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../../index.html">
+                <a class="breadcrumb-home" href="
+    ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Object - </span>
@@ -662,8 +665,8 @@ redirect_from:
             </h1>
             <p>
                 
-                This object contains information on a process being created from Ballerina.
-This is returned from the <code>exec</code> function in the <code>system</code> module.
+                <p>This object contains information on a process being created from Ballerina.
+This is returned from the <code>exec</code> function in the <code>system</code> module.</p>
 
             </p>
 
@@ -683,7 +686,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
     </div>
     <div class="param-details"> 
             
-        Waits for the process to finish its work and exit.
+        <p>Waits for the process to finish its work and exit.
     </div>
 </div>
 
@@ -695,7 +698,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
     </div>
     <div class="param-details"> 
             
-        Returns the exit code of the process when it has finished the execution.
+        <p>Returns the exit code of the process when it has finished the execution.
     </div>
 </div>
 
@@ -707,7 +710,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
     </div>
     <div class="param-details"> 
             
-        Destroys the process.
+        <p>Destroys the process.
     </div>
 </div>
 
@@ -719,7 +722,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
     </div>
     <div class="param-details"> 
             
-        Provides a channel (to write into), which is made available as the 'standard input' for the process.
+        <p>Provides a channel (to write into), which is made available as the 'standard input' for the process.
     </div>
 </div>
 
@@ -731,7 +734,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
     </div>
     <div class="param-details"> 
             
-        Provides a channel (to read from), which is made available as the 'standard output' of the process.
+        <p>Provides a channel (to read from), which is made available as the 'standard output' of the process.
     </div>
 </div>
 
@@ -743,7 +746,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
     </div>
     <div class="param-details"> 
             
-        Provides a channel (to read from), which is made available as the 'standard error' of the process.
+        <p>Provides a channel (to read from), which is made available as the 'standard error' of the process.
     </div>
 </div>
 
@@ -755,7 +758,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
     </div>
     <div class="param-details"> 
             
-        Pipes the standard output of the current process to the standard input of the given process.
+        <p>Pipes the standard output of the current process to the standard input of the given process.
     </div>
 </div>
 
@@ -783,10 +786,10 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
     </div>
     <div class="function-desc">
         
-        <p>Waits for the process to finish its work and exit.
+        <p>Waits for the process to finish its work and exit.</p>
 <pre><code class="language-ballerina"> int|error exitCode = process.waitForExit();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -819,10 +822,10 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
     <div class="function-desc">
         
         <p>Returns the exit code of the process when it has finished the execution.
-Error if the process has not exited yet.
+Error if the process has not exited yet.</p>
 <pre><code class="language-ballerina"> int|error exitCode = process.exitCode();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -849,10 +852,10 @@ Error if the process has not exited yet.
     </div>
     <div class="function-desc">
         
-        <p>Destroys the process.
+        <p>Destroys the process.</p>
 <pre><code class="language-ballerina"> process.destroy();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -874,10 +877,10 @@ Error if the process has not exited yet.
     </div>
     <div class="function-desc">
         
-        <p>Provides a channel (to write into), which is made available as the 'standard input' for the process.
+        <p>Provides a channel (to write into), which is made available as the 'standard input' for the process.</p>
 <pre><code class="language-ballerina"> io:WritableByteChannel output = process.stdin();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -909,10 +912,10 @@ Error if the process has not exited yet.
     </div>
     <div class="function-desc">
         
-        <p>Provides a channel (to read from), which is made available as the 'standard output' of the process.
+        <p>Provides a channel (to read from), which is made available as the 'standard output' of the process.</p>
 <pre><code class="language-ballerina"> io:ReadableByteChannel input = process.stdout();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -944,10 +947,10 @@ Error if the process has not exited yet.
     </div>
     <div class="function-desc">
         
-        <p>Provides a channel (to read from), which is made available as the 'standard error' of the process.
+        <p>Provides a channel (to read from), which is made available as the 'standard error' of the process.</p>
 <pre><code class="language-ballerina"> io:ReadableByteChannel input = process.stderr();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -979,10 +982,10 @@ Error if the process has not exited yet.
     </div>
     <div class="function-desc">
         
-        <p>Pipes the standard output of the current process to the standard input of the given process.
+        <p>Pipes the standard output of the current process to the standard input of the given process.</p>
 <pre><code class="language-ballerina"> var x3out = x1.pipe(x2).pipe(x3).stdout();
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">

@@ -59,7 +59,8 @@ or non-blocking manner.
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../../index.html">
+            <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -117,7 +118,7 @@ or non-blocking manner.
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -392,7 +393,8 @@ or non-blocking manner.
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../../index.html">
+                <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -450,7 +452,7 @@ or non-blocking manner.
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -732,7 +734,8 @@ or non-blocking manner.
 
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../../index.html">
+                <a class="breadcrumb-home" href="
+    ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Object - </span>
@@ -743,7 +746,7 @@ or non-blocking manner.
             </h1>
             <p>
                 
-                ReadableByteChannel represents an input resource (i.e file). which could be used to source bytes.
+                <p>ReadableByteChannel represents an input resource (i.e file). which could be used to source bytes.</p>
 
             </p>
 
@@ -763,7 +766,7 @@ or non-blocking manner.
     </div>
     <div class="param-details"> 
             
-        Source bytes from a given input/output resource.
+        <p>Source bytes from a given input/output resource.
     </div>
 </div>
 
@@ -775,7 +778,7 @@ or non-blocking manner.
     </div>
     <div class="param-details"> 
             
-        Encodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+        <p>Encodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
     </div>
 </div>
 
@@ -787,7 +790,7 @@ or non-blocking manner.
     </div>
     <div class="param-details"> 
             
-        Decodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+        <p>Decodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
     </div>
 </div>
 
@@ -799,7 +802,7 @@ or non-blocking manner.
     </div>
     <div class="param-details"> 
             
-        Closes a given <code>ReadableByteChannel</code>.
+        <p>Closes a given <code>ReadableByteChannel</code>.
     </div>
 </div>
 
@@ -829,10 +832,10 @@ or non-blocking manner.
         
         <p>Source bytes from a given input/output resource. The number of bytes returned will be &lt; 0 if the file reached its end.
 This operation will be asynchronous in which the total number of required bytes might not be returned at a given
-time. An <code>io:EofError</code> will return once the channel reaches the end.
+time. An <code>io:EofError</code> will return once the channel reaches the end.</p>
 <pre><code class="language-ballerina"> byte[]|io:Error result = readableByteChannel.read(1000);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -886,10 +889,10 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        <p>Encodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+        <p>Encodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.</p>
 <pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Encode();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -921,10 +924,10 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        <p>Decodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+        <p>Decodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.</p>
 <pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Decode();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -956,10 +959,10 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        <p>Closes a given <code>ReadableByteChannel</code>.
+        <p>Closes a given <code>ReadableByteChannel</code>.</p>
 <pre><code class="language-ballerina"> io:Error? err = readableByteChannel.close();
 </code></pre>
-</p>
+
     </div>
     
 

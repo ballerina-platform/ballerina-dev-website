@@ -58,13 +58,18 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             <div class="primary-list">
                 <h3>Annotations</h3>
                 <ul>
+                    
+                        <li >
+                            <a href="#Binding">Binding</a>
+                        </li>
                     
                         <li >
                             <a href="#Constructor">Constructor</a>
@@ -88,7 +93,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -104,6 +109,10 @@ redirect_from:
             <a data="records" href="../java/index.html#records">Records</a>
         </li>
         
+        
+            <li>
+                <a  data="objects" href="../java/index.html#objects">Objects</a>
+            </li>
         
         
         
@@ -351,13 +360,18 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
                 <div class="primary-list">
                     <h3>Annotations</h3>
                     <ul>
+                        
+                            <li >
+                                <a href="#Binding">Binding</a>
+                            </li>
                         
                             <li >
                                 <a href="#Constructor">Constructor</a>
@@ -381,7 +395,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -397,6 +411,10 @@ redirect_from:
             <a data="records" href="../java/index.html#records">Records</a>
         </li>
         
+        
+            <li>
+                <a  data="objects" href="../java/index.html#objects">Objects</a>
+            </li>
         
         
         
@@ -650,7 +668,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
              <h1>
-                 <a class="breadcrumb-home" href="../index.html">
+                 <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                  <span class="title-type">Annotations - </span>
@@ -664,17 +683,36 @@ redirect_from:
                         <div class="params-listing">
                             <ul>
                                 <li>
+                                    <b >Binding</b>
+                                    <span class="type"> <span ><a href="../java/records/ObjectData.html">ObjectData</a></span></span>
+                                    <img class="attach-icon" src="../html-template-resources/images/attach.svg">
+                                        objecttype</li>
+                                <li>
+                                    
+                                    <p>Describes the Java class representing a Ballerina binding.</p>
+<pre><code class="language-ballerina"> @java:Binding {
+   class: &quot;java.io.File&quot;
+ }
+</code></pre>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
                                     <b >Constructor</b>
                                     <span class="type"> <span ><a href="../java/records/ConstructorData.html">ConstructorData</a></span></span>
                                     <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                                         external</li>
                                 <li>
                                     
-                                    Describes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as
+                                    <p>Describes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the implementation of the
-function is not provided in the Ballerina source module.
-The following code snippet shows an example usage of this annotation. Here, the <code>newJavaLinkedList</code> Ballerina function's
-implementation is provided by the default constructor of the <code>java.util.LinkedList</code> class.
+function is not provided in the Ballerina source module.</p>
+<p>The following code snippet shows an example usage of this annotation. Here, the <code>newJavaLinkedList</code> Ballerina function's
+implementation is provided by the default constructor of the <code>java.util.LinkedList</code> class.</p>
 <pre><code class="language-ballerina"> function newJavaLinkedList() returns handle = @java:Constructor {
       class: &quot;java.util.LinkedList&quot;
  } external;
@@ -693,8 +731,8 @@ implementation is provided by the default constructor of the <code>java.util.Lin
                                         external</li>
                                 <li>
                                     
-                                    Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as
-<code>external</code>.
+                                    <p>Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>.</p>
 <pre><code class="language-ballerina"> function getError() returns handle = @java:FieldGet {
      name:&quot;err&quot;,
      class:&quot;java/lang/System&quot;
@@ -714,8 +752,8 @@ implementation is provided by the default constructor of the <code>java.util.Lin
                                         external</li>
                                 <li>
                                     
-                                    Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as
-<code>external</code>.
+                                    <p>Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>.</p>
 <pre><code class="language-ballerina"> function setContractId(handle contractId) = @java:FieldSet {
    name:&quot;contractId&quot;,
    class:&quot;org/lang/impl/JavaFieldAccessMutate&quot;
@@ -735,18 +773,18 @@ implementation is provided by the default constructor of the <code>java.util.Lin
                                         external</li>
                                 <li>
                                     
-                                    Describes a Java method, which provides an implementation of a Ballerina function of which the body is marked as
+                                    <p>Describes a Java method, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the implementation of the
-function is not provided in the Ballerina source module.
-The following code snippet shows an example usage of this annotation. Here, the <code>getUUID</code> Ballerina function's
-implementation is provided by the <code>java.util.UUID.randomUUID</code> static method.
+function is not provided in the Ballerina source module.</p>
+<p>The following code snippet shows an example usage of this annotation. Here, the <code>getUUID</code> Ballerina function's
+implementation is provided by the <code>java.util.UUID.randomUUID</code> static method.</p>
 <pre><code class="language-ballerina"> function getUUID() returns handle = @java:Method {
      name: &quot;randomUUID&quot;,
      class: &quot;java.util.UUID&quot;
  } external;
 </code></pre>
-The <code>name</code> field is optional. If it is not provided, the name of the Java method is inferred
-from the Ballerina function.
+<p>The <code>name</code> field is optional. If it is not provided, the name of the Java method is inferred
+from the Ballerina function.</p>
 
                                 </li>
                             </ul>

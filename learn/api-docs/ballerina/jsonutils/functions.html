@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -80,7 +81,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -339,7 +340,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -361,7 +363,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -626,7 +628,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../index.html">
+                <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Functions - </span>
@@ -635,32 +638,30 @@ redirect_from:
                 
             </h1>
             <div class="constants">
-                <table class="ui table details-table">
-                    
-                        <tbody>
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#fromTable">fromTable</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Converts a table to its JSON representation.
+                                        <p>Converts a table to its JSON representation.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#fromXML">fromXML</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Converts an XML object to its JSON representation.
+                                        <p>Converts an XML object to its JSON representation.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
+                        
+                    </tbody>
                 </table>
                 <div>
                     
@@ -681,7 +682,7 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Converts a table to its JSON representation.
+        <p>Converts a table to its JSON representation.</p>
 <pre><code class="language-ballerina"> table&lt;Person&gt; tableValue = table{
      { key id, age, salary, name, married },
      [ { 1, 30,  300.5, &quot;Mary&quot;, true },
@@ -690,7 +691,7 @@ redirect_from:
  };
  json jsonValue = jsonutils:fromTable(tableValue);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -744,11 +745,11 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Converts an XML object to its JSON representation.
+        <p>Converts an XML object to its JSON representation.</p>
 <pre><code class="language-ballerina"> xml xmlValue = xml `&lt;!-- outer comment --&gt;` + xml `&lt;name&gt;supun&lt;/name&gt;`;
  json|error jsonValue = fromXML(mxlValue);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">

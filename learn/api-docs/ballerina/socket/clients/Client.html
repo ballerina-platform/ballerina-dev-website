@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../../index.html">
+            <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -80,7 +81,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -355,7 +356,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../../index.html">
+                <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -377,7 +379,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -658,7 +660,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../../index.html">
+                <a class="breadcrumb-home" href="
+    ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Clients - </span>
@@ -667,7 +670,7 @@ redirect_from:
                 
                 <span class="clients">Client</span>
             </h1>
-            <p>Represents the socket client and related remote functions.
+            <p><p>Represents the socket client and related remote functions.</p>
 </p>
 
             <div class="constants">
@@ -699,7 +702,7 @@ redirect_from:
                                 <tr>
                                     <td class="module-title truncate functions" title="write"><a
                                             class="functions" href="#write">write</a></td>
-                                    <td class="module-desc">Writes the given data to the client socket.
+                                    <td class="module-desc"><p>Writes the given data to the client socket.</p>
 <pre><code class="language-ballerina"> int|socket:Error writeResult = socketClient:write(payloadByte);
 </code></pre>
 </td>
@@ -708,11 +711,11 @@ redirect_from:
                                 <tr>
                                     <td class="module-title truncate functions" title="read"><a
                                             class="functions" href="#read">read</a></td>
-                                    <td class="module-desc">Reads data from the client socket. If the data has the specified length, then it waits until that number of bytes
+                                    <td class="module-desc"><p>Reads data from the client socket. If the data has the specified length, then it waits until that number of bytes
 are received from the client. Else, it returns the data available in the OS buffer.
 In the case of the connection being closed by the client, then return either -1 or the data
 that is currently available in the buffer.
-Number of bytes returned will be &lt; 0 if the client closes the connection.
+Number of bytes returned will be &lt; 0 if the client closes the connection.</p>
 <pre><code class="language-ballerina"> [byte[], int]|socket:ReadTimedOutError result = socketClient-&gt;read();
 </code></pre>
 </td>
@@ -721,7 +724,7 @@ Number of bytes returned will be &lt; 0 if the client closes the connection.
                                 <tr>
                                     <td class="module-title truncate functions" title="close"><a
                                             class="functions" href="#close">close</a></td>
-                                    <td class="module-desc">Closes the client socket connection.
+                                    <td class="module-desc"><p>Closes the client socket connection.</p>
 <pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
 </code></pre>
 </td>
@@ -730,7 +733,7 @@ Number of bytes returned will be &lt; 0 if the client closes the connection.
                                 <tr>
                                     <td class="module-title truncate functions" title="shutdownRead"><a
                                             class="functions" href="#shutdownRead">shutdownRead</a></td>
-                                    <td class="module-desc">Shuts down any further reading from the socket.
+                                    <td class="module-desc"><p>Shuts down any further reading from the socket.</p>
 <pre><code class="language-ballerina"> socket:Error? result = socketClient-&gt;shutdownRead();
 </code></pre>
 </td>
@@ -739,7 +742,7 @@ Number of bytes returned will be &lt; 0 if the client closes the connection.
                                 <tr>
                                     <td class="module-title truncate functions" title="shutdownWrite"><a
                                             class="functions" href="#shutdownWrite">shutdownWrite</a></td>
-                                    <td class="module-desc">Shuts down any further writing from the socket.
+                                    <td class="module-desc"><p>Shuts down any further writing from the socket.</p>
 <pre><code class="language-ballerina"> socket:Error? result = socketClient-&gt;shutdownWrite();
 </code></pre>
 </td>
@@ -907,10 +910,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        <p>Writes the given data to the client socket.
+        <p>Writes the given data to the client socket.</p>
 <pre><code class="language-ballerina"> int|socket:Error writeResult = socketClient:write(payloadByte);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -968,10 +971,10 @@ contentWrapper.addEventListener("scroll", event => {
 are received from the client. Else, it returns the data available in the OS buffer.
 In the case of the connection being closed by the client, then return either -1 or the data
 that is currently available in the buffer.
-Number of bytes returned will be &lt; 0 if the client closes the connection.
+Number of bytes returned will be &lt; 0 if the client closes the connection.</p>
 <pre><code class="language-ballerina"> [byte[], int]|socket:ReadTimedOutError result = socketClient-&gt;read();
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1026,10 +1029,10 @@ can't be read from the client</p>
     </div>
     <div class="function-desc">
         
-        <p>Closes the client socket connection.
+        <p>Closes the client socket connection.</p>
 <pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -1061,10 +1064,10 @@ can't be read from the client</p>
     </div>
     <div class="function-desc">
         
-        <p>Shuts down any further reading from the socket.
+        <p>Shuts down any further reading from the socket.</p>
 <pre><code class="language-ballerina"> socket:Error? result = socketClient-&gt;shutdownRead();
 </code></pre>
-</p>
+
     </div>
     
 
@@ -1096,10 +1099,10 @@ can't be read from the client</p>
     </div>
     <div class="function-desc">
         
-        <p>Shuts down any further writing from the socket.
+        <p>Shuts down any further writing from the socket.</p>
 <pre><code class="language-ballerina"> socket:Error? result = socketClient-&gt;shutdownWrite();
 </code></pre>
-</p>
+
     </div>
     
 

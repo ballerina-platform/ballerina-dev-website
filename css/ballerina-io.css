@@ -775,13 +775,14 @@ a.cMobileLogo {
     padding-left: 30px;
 }
 
+
 .cBBE-body tr:not(.cOutputTr)>td.code {
     background: url("../img/code-bg.gif") #f5f6f6 repeat-y 0 0;
     vertical-align: top;
 }
 
 .cBBE-body tr:not(.cOutputTr)>td.code code {
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
 .cBBE-body tr.cOutputTr>td.code .bbe-code-line-numbers,
@@ -1618,6 +1619,7 @@ li.cSearchMenu .form-control-field {
     
 }
 
+
 code[class*="language-"], pre[class*="language-"] {
     font-size: 14px !important;
     
@@ -1628,6 +1630,13 @@ code {
     color: #555555;
 }
 
+.code.cOutput code {
+    background: transparent !important;
+    color: #555555;
+}
+
 pre {
     border-radius: 0 !important;
 }
+
+

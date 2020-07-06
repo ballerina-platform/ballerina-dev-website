@@ -7,6 +7,8 @@
     "linux-installer-size": "130mb",
     "macos-installer": "ballerina-macos-installer-x64-1.2.5.pkg",
     "macos-installer-size": "145mb",
+    "rpm-installer": "ballerina-linux-installer-x64-1.2.5.rpm",
+    "rpm-installer-size":"142mb",
     "other-artefacts": [
         "ballerina-1.2.5.zip",
         "ballerina-linux-installer-x64-1.2.5.rpm",

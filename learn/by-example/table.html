@@ -175,7 +175,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/jsonutils;
 import ballerina/xmlutils;
 </code></pre></div>
@@ -189,7 +189,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {
     int id;
     string name;
     float salary;
@@ -212,7 +212,7 @@ import ballerina/xmlutils;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -224,7 +224,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Employee&gt; tbEmployee = table {
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;Employee&gt; tbEmployee = table {
         {key id, name, salary},
         [
             {1, &quot;Mary&quot;, 300.5},
@@ -252,7 +252,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:print(&quot;Table Information: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:print(&quot;Table Information: &quot;);
     io:println(tbEmployee);
 </code></pre></div>
 
@@ -272,7 +272,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee e1 = {id: 1, name: &quot;Jane&quot;, salary: 300.50};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee e1 = {id: 1, name: &quot;Jane&quot;, salary: 300.50};
     Employee e2 = {id: 2, name: &quot;Anne&quot;, salary: 100.50};
     Employee e3 = {id: 3, name: &quot;John&quot;, salary: 400.50};
     Employee e4 = {id: 4, name: &quot;Peter&quot;, salary: 150.0};
@@ -294,7 +294,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Employee&gt; tb = table {
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;Employee&gt; tb = table {
         {key id, name, salary},
         [
             e1,
@@ -320,7 +320,7 @@ import ballerina/xmlutils;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee[] employees = [e3, e4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee[] employees = [e3, e4];
 </code></pre></div>
 
                                 </td>
@@ -332,7 +332,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var emp in employees {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var emp in employees {
         var ret = tb.add(emp);
         if (ret is ()) {
             io:println(&quot;Adding record to table successful&quot;);
@@ -358,7 +358,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Table Information: &quot;, tb);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Table Information: &quot;, tb);
 </code></pre></div>
 
                                 </td>
@@ -377,7 +377,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Using foreach:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Using foreach:&quot;);
     foreach var x in tb {
         io:println(&quot;Name: &quot;, x.name);
     }
@@ -399,7 +399,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Using while loop:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Using while loop:&quot;);
     while (tb.hasNext()) {
         var ret = tb.getNext();
         io:println(&quot;Name: &quot;, ret.name);
@@ -422,7 +422,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json retValJson = jsonutils:fromTable(tb);
+                                    <div class="highlight"><pre><code class=language-ballerina>    json retValJson = jsonutils:fromTable(tb);
     io:println(&quot;JSON: &quot;, retValJson.toJsonString());
 </code></pre></div>
 
@@ -442,7 +442,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml retValXml = xmlutils:fromTable(tb);
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml retValXml = xmlutils:fromTable(tb);
     io:println(&quot;XML: &quot;, retValXml);
 </code></pre></div>
 
@@ -462,7 +462,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error count = tb.remove(isHigherSalary);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error count = tb.remove(isHigherSalary);
     io:println(&quot;Deleted Count: &quot;, count);
 </code></pre></div>
 
@@ -483,7 +483,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(tb);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(tb);
 }
 </code></pre></div>
 
@@ -503,7 +503,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function isHigherSalary(Employee emp) returns boolean {
+                                    <div class="highlight"><pre><code class=language-ballerina>function isHigherSalary(Employee emp) returns boolean {
     return emp.salary &gt; 300.0;
 }
 </code></pre></div>

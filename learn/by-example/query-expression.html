@@ -136,7 +136,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -148,7 +148,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string firstName;
     string lastName;
     int intakeYear;
@@ -165,7 +165,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Report record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Report record {
     string name;
     string degree;
     int expectedGradYear;
@@ -181,7 +181,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -193,7 +193,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, intakeYear: 2020, score: 1.5};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, intakeYear: 2020, score: 1.5};
     Student s2 = {firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, intakeYear: 2020, score: 0.9};
     Student s3 = {firstName: &quot;John&quot;, lastName: &quot;David&quot;, intakeYear: 2022, score: 1.2};
 </code></pre></div>
@@ -207,7 +207,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student[] studentList = [s1, s2, s3];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student[] studentList = [s1, s2, s3];
 </code></pre></div>
 
                                 </td>
@@ -219,7 +219,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Report[] reportList = from var student in studentList
+                                    <div class="highlight"><pre><code class=language-ballerina>    Report[] reportList = from var student in studentList
 </code></pre></div>
 
                                 </td>
@@ -240,7 +240,7 @@ The <code>outputStudentList</code> is the result of the <code>query</code> expre
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>       where student.score &gt;= 1
+                                    <div class="highlight"><pre><code class=language-ballerina>       where student.score &gt;= 1
 </code></pre></div>
 
                                 </td>
@@ -261,7 +261,7 @@ When the <code>where</code> condition evaluates to false, the iteration skips fo
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>       let string degreeName = &quot;Bachelor of Medicine&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>       let string degreeName = &quot;Bachelor of Medicine&quot;,
        int graduationYear = calGraduationYear(student.intakeYear)
 </code></pre></div>
 
@@ -281,7 +281,7 @@ When the <code>where</code> condition evaluates to false, the iteration skips fo
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>       select {
+                                    <div class="highlight"><pre><code class=language-ballerina>       select {
               name: student.firstName,
               degree: degreeName,
               expectedGradYear: graduationYear
@@ -305,7 +305,7 @@ The result of the query expression is a list(<code>reportList</code>) whose memb
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var report in reportList {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var report in reportList {
         io:println(report);
     }
 }
@@ -320,7 +320,7 @@ The result of the query expression is a list(<code>reportList</code>) whose memb
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function calGraduationYear(int year) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function calGraduationYear(int year) returns int {
     return year + 5;
 }
 </code></pre></div>

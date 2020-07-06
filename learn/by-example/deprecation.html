@@ -170,7 +170,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -182,7 +182,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina># Country code for Sri Lanka.
+                                    <div class="highlight"><pre><code class=language-ballerina># Country code for Sri Lanka.
 # # Deprecated
 # This constant is deprecated. Use the constant `LK` instead.
 @deprecated
@@ -207,7 +207,7 @@ public const string LKA = &quot;LKA&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina># New country code for Sri Lanka.
+                                    <div class="highlight"><pre><code class=language-ballerina># New country code for Sri Lanka.
 public const string LK = &quot;LK&quot;;
 </code></pre></div>
 
@@ -220,7 +220,7 @@ public const string LK = &quot;LK&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina># Country code for USA.
+                                    <div class="highlight"><pre><code class=language-ballerina># Country code for USA.
 public const string USA = &quot;USA&quot;;
 </code></pre></div>
 
@@ -233,7 +233,7 @@ public const string USA = &quot;USA&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type CountryCode LK|LKA|USA;
+                                    <div class="highlight"><pre><code class=language-ballerina>public type CountryCode LK|LKA|USA;
 </code></pre></div>
 
                                 </td>
@@ -252,7 +252,7 @@ public const string USA = &quot;USA&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@deprecated
+                                    <div class="highlight"><pre><code class=language-ballerina>@deprecated
 public type Address record {|
     string street;
     string city;
@@ -276,7 +276,7 @@ public type Address record {|
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@deprecated
+                                    <div class="highlight"><pre><code class=language-ballerina>@deprecated
 public type Person object {
     public string firstName = &quot;John&quot;;
     public string lastName = &quot;Doe&quot;;
@@ -298,7 +298,7 @@ public type Person object {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Address addr = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Address addr = {
         street: &quot;Palm Grove&quot;,
         city: &quot;Colombo 3&quot;,
 </code></pre></div>
@@ -319,7 +319,7 @@ public type Person object {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        countryCode: LKA
+                                    <div class="highlight"><pre><code class=language-ballerina>        countryCode: LKA
     };
 </code></pre></div>
 
@@ -339,7 +339,7 @@ public type Person object {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @deprecated
+                                    <div class="highlight"><pre><code class=language-ballerina>    @deprecated
     public function getFullName() returns string {
         return self.firstName + &quot; &quot; + self.lastName;
     }
@@ -361,7 +361,7 @@ public type Person object {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>};
+                                    <div class="highlight"><pre><code class=language-ballerina>};
 </code></pre></div>
 
                                 </td>
@@ -373,7 +373,7 @@ public type Person object {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina># Creates and returns a `Person` object given the parameters.
+                                    <div class="highlight"><pre><code class=language-ballerina># Creates and returns a `Person` object given the parameters.
 #
 # + fname - First name of the person
 # + lname - Last name of the person
@@ -406,7 +406,7 @@ public function createPerson(string fname, string lname, string street,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p = new;
 </code></pre></div>
 
                                 </td>
@@ -425,7 +425,7 @@ public function createPerson(string fname, string lname, string street,
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    p.firstName = fname;
+                                    <div class="highlight"><pre><code class=language-ballerina>    p.firstName = fname;
     p.lastName = lname;
     p.addr = {street, city, countryCode};
     return p;
@@ -441,7 +441,7 @@ public function createPerson(string fname, string lname, string street,
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -453,7 +453,7 @@ public function createPerson(string fname, string lname, string street,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p = createPerson(&quot;Jane&quot;, &quot;Doe&quot;, &quot;Castro Street&quot;, &quot;Mountain View&quot;, USA);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p = createPerson(&quot;Jane&quot;, &quot;Doe&quot;, &quot;Castro Street&quot;, &quot;Mountain View&quot;, USA);
 </code></pre></div>
 
                                 </td>
@@ -472,7 +472,7 @@ public function createPerson(string fname, string lname, string street,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(p.getFullName());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(p.getFullName());
 </code></pre></div>
 
                                 </td>
@@ -491,7 +491,7 @@ public function createPerson(string fname, string lname, string street,
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>

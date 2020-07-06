@@ -182,7 +182,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/jsonutils;
 import ballerina/log;
 import ballerinax/java.jdbc;
@@ -197,7 +197,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jdbc:Client testDB = new ({
     url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
     username: &quot;test&quot;,
     password: &quot;test&quot;,
@@ -222,7 +222,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service dataService on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service dataService on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -241,7 +241,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function getData(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getData(http:Caller caller, http:Request req) {
         http:Response res = new;
 </code></pre></div>
 
@@ -254,7 +254,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var selectRet = testDB-&gt;select(&quot;SELECT * FROM Data&quot;, ());
+                                    <div class="highlight"><pre><code class=language-ballerina>        var selectRet = testDB-&gt;select(&quot;SELECT * FROM Data&quot;, ());
         if (selectRet is table&lt;record {}&gt;) {
 </code></pre></div>
 
@@ -275,7 +275,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            json jsonConversionRet = jsonutils:fromTable(selectRet);
+                                    <div class="highlight"><pre><code class=language-ballerina>            json jsonConversionRet = jsonutils:fromTable(selectRet);
 </code></pre></div>
 
                                 </td>
@@ -296,7 +296,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload(&lt;@untainted&gt;jsonConversionRet);
+                                    <div class="highlight"><pre><code class=language-ballerina>            res.setPayload(&lt;@untainted&gt;jsonConversionRet);
         } else {
 </code></pre></div>
 
@@ -317,7 +317,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
+                                    <div class="highlight"><pre><code class=language-ballerina>            res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
             res.setPayload({&quot;Error&quot;: &quot;Error occured while retrieving data &quot; +
                 &quot;from the database&quot;
             });
@@ -341,7 +341,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var respondRet = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var respondRet = caller-&gt;respond(res);
         if (respondRet is error) {
             log:printError(&quot;Sending response failed&quot;, respondRet);
         }
@@ -455,7 +455,7 @@ $ ballerina run big_data_service.bal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerinax/java.jdbc;
 </code></pre></div>
 
@@ -468,7 +468,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     jdbc:Client testDB = new ({
         url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
         username: &quot;test&quot;,
@@ -486,7 +486,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE Data (id INT, field1 &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE Data (id INT, field1 &quot; +
     &quot;VARCHAR(1024), field2 VARCHAR(1024));&quot;);
     handleUpdate(ret, &quot;Create Data table&quot;);
 </code></pre></div>
@@ -507,7 +507,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE PopulateData(IN row_count INT) &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE PopulateData(IN row_count INT) &quot; +
        &quot;BEGIN &quot; +
            &quot;DECLARE count INT; &quot; +
            &quot;DECLARE strDataEntry VARCHAR(1024); &quot; +
@@ -543,7 +543,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var retCall = testDB-&gt;call(&quot;CALL PopulateData(?)&quot;, (), 100000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var retCall = testDB-&gt;call(&quot;CALL PopulateData(?)&quot;, (), 100000);
     if (retCall is error) {
         io:println(&quot;Stored procedure call failed: &quot;,
                     &lt;string&gt;retCall.detail()?.message);
@@ -570,7 +570,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
     if (returned is jdbc:UpdateResult) {
         io:println(message, &quot; status: &quot;, returned.updatedRowCount);
     } else {

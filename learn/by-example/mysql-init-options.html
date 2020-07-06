@@ -188,7 +188,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/mysql;
 import ballerina/sql;
 </code></pre></div>
@@ -202,7 +202,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>string dbUser = &quot;root&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
 string dbPassword = &quot;Test@123&quot;;
 </code></pre></div>
 
@@ -224,7 +224,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initializeClients() returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeClients() returns sql:Error? {
 </code></pre></div>
 
                                 </td>
@@ -236,7 +236,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client|sql:Error mysqlClient1 = new ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client|sql:Error mysqlClient1 = new ();
     if (mysqlClient1 is sql:Error) {
         io:println(&quot;Error when initializing the MySQL client without any &quot; +
             &quot;params. &quot;, mysqlClient1);
@@ -264,7 +264,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client mysqlClient2 = check new (&quot;localhost&quot;, dbUser, dbPassword);
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient2 = check new (&quot;localhost&quot;, dbUser, dbPassword);
     io:println(&quot;MySQL client with user and password created.&quot;);
 </code></pre></div>
 
@@ -284,7 +284,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client mysqlClient3 = check new (user = dbUser,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient3 = check new (user = dbUser,
         password = dbPassword);
     io:println(&quot;MySQL client with user and password created &quot; +
         &quot;with default host.&quot;);
@@ -307,7 +307,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client mysqlClient4 = check new (&quot;localhost&quot;, dbUser, dbPassword,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient4 = check new (&quot;localhost&quot;, dbUser, dbPassword,
         &quot;information_schema&quot;, 3306);
     io:println(&quot;MySQL client with host, user, password, database and &quot; +
         &quot;port created.&quot;);
@@ -330,7 +330,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Options mysqlOptions = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Options mysqlOptions = {
 </code></pre></div>
 
                                 </td>
@@ -350,7 +350,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        ssl: {
+                                    <div class="highlight"><pre><code class=language-ballerina>        ssl: {
 </code></pre></div>
 
                                 </td>
@@ -371,7 +371,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            mode: mysql:SSL_PREFERRED
+                                    <div class="highlight"><pre><code class=language-ballerina>            mode: mysql:SSL_PREFERRED
         },
         connectTimeoutInSeconds: 10
     };
@@ -396,7 +396,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client mysqlClient5 = check new (user = dbUser, password = dbPassword,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient5 = check new (user = dbUser, password = dbPassword,
         options = mysqlOptions);
     io:println(&quot;MySQL client with database options created.&quot;);
 </code></pre></div>
@@ -417,7 +417,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ConnectionPool connPool = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ConnectionPool connPool = {
 </code></pre></div>
 
                                 </td>
@@ -439,7 +439,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        maxOpenConnections: 5,
+                                    <div class="highlight"><pre><code class=language-ballerina>        maxOpenConnections: 5,
 </code></pre></div>
 
                                 </td>
@@ -458,7 +458,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        maxConnectionLifeTimeInSeconds: 2000.0,
+                                    <div class="highlight"><pre><code class=language-ballerina>        maxConnectionLifeTimeInSeconds: 2000.0,
 </code></pre></div>
 
                                 </td>
@@ -478,7 +478,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        minIdleConnections: 5
+                                    <div class="highlight"><pre><code class=language-ballerina>        minIdleConnections: 5
     };
 </code></pre></div>
 
@@ -498,7 +498,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client mysqlClient6 = check new (user = dbUser, password = dbPassword,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient6 = check new (user = dbUser, password = dbPassword,
         options = mysqlOptions, connectionPool = connPool);
     io:println(&quot;MySQL client with connection pool created.&quot;);
 </code></pre></div>
@@ -519,7 +519,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client mysqlClient7 = check new (&quot;localhost&quot;, dbUser, dbPassword,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient7 = check new (&quot;localhost&quot;, dbUser, dbPassword,
         &quot;information_schema&quot;, 3306, mysqlOptions, connPool);
 </code></pre></div>
 
@@ -539,7 +539,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client mysqlClient8 = check new (host = &quot;localhost&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient8 = check new (host = &quot;localhost&quot;,
         user = dbUser, password = dbPassword, database =
         &quot;information_schema&quot;, port = 3306, options = mysqlOptions,
         connectionPool = connPool);
@@ -563,7 +563,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    check mysqlClient2.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient2.close();
     check mysqlClient3.close();
     check mysqlClient4.close();
     check mysqlClient5.close();
@@ -590,7 +590,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     sql:Error? err = initializeClients();
     if (err is sql:Error) {
         io:println(&quot;Error occured, initialization failed! &quot;, err);

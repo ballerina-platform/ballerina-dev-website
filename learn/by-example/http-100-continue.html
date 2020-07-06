@@ -143,7 +143,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -156,7 +156,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service helloWorld on new http:Listener(9090) {
@@ -171,7 +171,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         path: &quot;/&quot;
     }
     resource function hello(http:Caller caller, http:Request request) {
@@ -186,7 +186,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (request.expects100Continue()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (request.expects100Continue()) {
             string mediaType = request.getHeader(&quot;Content-Type&quot;);
             if (mediaType.toLowerAscii() == &quot;text/plain&quot;) {
 </code></pre></div>
@@ -207,7 +207,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                var result = caller-&gt;continue();
+                                    <div class="highlight"><pre><code class=language-ballerina>                var result = caller-&gt;continue();
                 if (result is error) {
                     log:printError(&quot;Error sending response&quot;, result);
                 }
@@ -230,7 +230,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>                http:Response res = new;
                 res.statusCode = 417;
                 res.setPayload(&quot;Unprocessable Entity&quot;);
                 var result = caller-&gt;respond(res);
@@ -259,7 +259,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         var payload = request.getTextPayload();
         if (payload is string) {
             log:printInfo(payload);

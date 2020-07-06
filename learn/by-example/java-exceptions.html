@@ -125,7 +125,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java;
 </code></pre></div>
 
@@ -138,7 +138,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function loadClass(handle className) returns handle|error = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>function loadClass(handle className) returns handle|error = @java:Method {
     name: &quot;forName&quot;,
     class: &quot;java.lang.Class&quot;
 } external;
@@ -162,7 +162,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function newArrayDeque() returns handle = @java:Constructor {
+                                    <div class="highlight"><pre><code class=language-ballerina>function newArrayDeque() returns handle = @java:Constructor {
     class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
@@ -184,7 +184,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function offer(handle receiver, handle e) returns boolean = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>function offer(handle receiver, handle e) returns boolean = @java:Method {
     class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
@@ -205,7 +205,7 @@ import ballerina/java;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -217,7 +217,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var classOrError = loadClass(java:fromString(&quot;a.b.c.z.SomeClass&quot;));
+                                    <div class="highlight"><pre><code class=language-ballerina>    var classOrError = loadClass(java:fromString(&quot;a.b.c.z.SomeClass&quot;));
     if classOrError is error {
         io:println(classOrError);
     }
@@ -239,7 +239,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var arrayDeque = newArrayDeque();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var arrayDeque = newArrayDeque();
     boolean|error e = trap offer(arrayDeque, java:createNull());
     if e is error {
         io:println(e);

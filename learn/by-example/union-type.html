@@ -120,7 +120,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -132,7 +132,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function println(string|int value) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function println(string|int value) {
     io:println(value);
 }
 </code></pre></div>
@@ -153,7 +153,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getValue(string key) returns string|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getValue(string key) returns string|error {
     if (key == &quot;&quot;) {
         error err = error(&quot;key &#39;&quot; + key + &quot;&#39; not found&quot;);
         return err;
@@ -179,7 +179,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -191,7 +191,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    println(&quot;This is a string&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    println(&quot;This is a string&quot;);
 </code></pre></div>
 
                                 </td>
@@ -210,7 +210,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    println(101);
+                                    <div class="highlight"><pre><code class=language-ballerina>    println(101);
 </code></pre></div>
 
                                 </td>
@@ -229,7 +229,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error valueOrError1 = getValue(&quot;name&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error valueOrError1 = getValue(&quot;name&quot;);
     io:println(valueOrError1);
 </code></pre></div>
 
@@ -249,7 +249,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error valueOrError2 = getValue(&quot;&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error valueOrError2 = getValue(&quot;&quot;);
     io:println(valueOrError2);
 }
 </code></pre></div>

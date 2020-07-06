@@ -147,7 +147,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -159,7 +159,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type SampleError error&lt;string, Foo&gt;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type SampleError error&lt;string, Foo&gt;;
 </code></pre></div>
 
                                 </td>
@@ -171,7 +171,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const INVALID_ID = &quot;Invalid ID&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>const INVALID_ID = &quot;Invalid ID&quot;;
 type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
 </code></pre></div>
 
@@ -184,7 +184,7 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Foo record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Foo record {|
     string message?;
     error cause?;
     boolean fatal;
@@ -200,7 +200,7 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type InvalidIdDetail record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type InvalidIdDetail record {|
     string message?;
     error cause?;
     string id;
@@ -216,7 +216,7 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     [string, string] v1 = [&quot;Sample String&quot;, &quot;Sample String 2&quot;];
     Foo v2 = {message: &quot;A&quot;, fatal: false};
     error e1 = error(&quot;Generic Error&quot;, message = &quot;Failed&quot;);
@@ -233,7 +233,7 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    basicMatch(v1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    basicMatch(v1);
     basicMatch(v2);
     basicMatch(e1);
     basicMatch(e2);
@@ -250,7 +250,7 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function basicMatch(any|error v) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function basicMatch(any|error v) {
     match v {
         var [tVar1, tVar2] =&gt; {
             io:println(&quot;Matched a value with a tuple shape&quot;);
@@ -269,7 +269,7 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var InvalidIdError(id = id) =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var InvalidIdError(id = id) =&gt; {
             io:println(&quot;Matched `InvalidError` id=&quot;, id);
         }
 </code></pre></div>
@@ -292,7 +292,7 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var error(reason, message = message) =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var error(reason, message = message) =&gt; {
             io:println(&quot;Matched an error value : &quot;,
             io:sprintf(&quot;reason: %s, message: %s&quot;, reason, message));
         }
@@ -316,7 +316,7 @@ type InvalidIdError error&lt;INVALID_ID, InvalidIdDetail&gt;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var error(reason, message = message, ...rest) =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var error(reason, message = message, ...rest) =&gt; {
             io:println(&quot;Matched an error value : &quot;,
             io:sprintf(&quot;reason: %s, rest detail: %s&quot;, reason, rest));
         }

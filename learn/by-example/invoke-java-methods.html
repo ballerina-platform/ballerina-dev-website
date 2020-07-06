@@ -128,7 +128,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java;
 </code></pre></div>
 
@@ -141,7 +141,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function createRandomUUID() returns handle = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>function createRandomUUID() returns handle = @java:Method {
     name: &quot;randomUUID&quot;,
     class: &quot;java.util.UUID&quot;
 } external;
@@ -165,7 +165,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function newArrayDeque() returns handle = @java:Constructor {
+                                    <div class="highlight"><pre><code class=language-ballerina>function newArrayDeque() returns handle = @java:Constructor {
     class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
@@ -187,7 +187,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function offer(handle receiver, handle e) returns boolean = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>function offer(handle receiver, handle e) returns boolean = @java:Method {
     class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
@@ -209,7 +209,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function poll(handle receiver) returns handle = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>function poll(handle receiver) returns handle = @java:Method {
     class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
@@ -231,7 +231,7 @@ import ballerina/java;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -243,7 +243,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var uuid = createRandomUUID();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var uuid = createRandomUUID();
 </code></pre></div>
 
                                 </td>
@@ -263,7 +263,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var arrayDeque = newArrayDeque();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var arrayDeque = newArrayDeque();
 </code></pre></div>
 
                                 </td>
@@ -282,7 +282,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = offer(arrayDeque, java:fromString(&quot;John&quot;));
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = offer(arrayDeque, java:fromString(&quot;John&quot;));
     _ = offer(arrayDeque, java:fromString(&quot;Jane&quot;));
     _ = offer(arrayDeque, java:fromString(&quot;Peter&quot;));
 </code></pre></div>
@@ -305,7 +305,7 @@ import ballerina/java;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var nextInLineHandle = poll(arrayDeque);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var nextInLineHandle = poll(arrayDeque);
 </code></pre></div>
 
                                 </td>
@@ -317,7 +317,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string? nextInLine = java:toString(nextInLineHandle);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? nextInLine = java:toString(nextInLineHandle);
     io:println(nextInLine);
 }
 </code></pre></div>

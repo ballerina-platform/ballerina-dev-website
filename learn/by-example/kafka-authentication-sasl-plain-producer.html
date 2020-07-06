@@ -118,7 +118,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/kafka;
 </code></pre></div>
 
@@ -131,7 +131,7 @@ import ballerina/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:AuthenticationConfiguration authConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:AuthenticationConfiguration authConfig = {
 </code></pre></div>
 
                                 </td>
@@ -150,7 +150,7 @@ import ballerina/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mechanism: kafka:AUTH_SASL_PLAIN,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mechanism: kafka:AUTH_SASL_PLAIN,
 </code></pre></div>
 
                                 </td>
@@ -169,7 +169,7 @@ import ballerina/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    username: &quot;ballerina&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    username: &quot;ballerina&quot;,
     password: &quot;ballerina-secret&quot;
 };
 </code></pre></div>
@@ -191,7 +191,7 @@ import ballerina/kafka;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:ProducerConfiguration producerConfigs = {
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ProducerConfiguration producerConfigs = {
     bootstrapServers: &quot;localhost:9092&quot;,
     valueSerializerType: kafka:SER_STRING,
 </code></pre></div>
@@ -205,7 +205,7 @@ import ballerina/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    authenticationConfiguration: authConfig
+                                    <div class="highlight"><pre><code class=language-ballerina>    authenticationConfiguration: authConfig
 };
 </code></pre></div>
 
@@ -225,7 +225,7 @@ import ballerina/kafka;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:Producer kafkaProducer = new (producerConfigs);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = new (producerConfigs);
 </code></pre></div>
 
                                 </td>
@@ -237,7 +237,7 @@ import ballerina/kafka;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     var result = kafkaProducer-&gt;send(&quot;Hello from Ballerina&quot;, &quot;topic-sasl&quot;);
     if (result is error) {
         io:println(result);

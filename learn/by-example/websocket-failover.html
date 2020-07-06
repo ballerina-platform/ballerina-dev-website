@@ -243,7 +243,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -256,7 +256,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>final string ASSOCIATED_CONNECTION = &quot;ASSOCIATED_CONNECTION&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>final string ASSOCIATED_CONNECTION = &quot;ASSOCIATED_CONNECTION&quot;;
 </code></pre></div>
 
                                 </td>
@@ -268,7 +268,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:WebSocketServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:WebSocketServiceConfig {
     path: &quot;/failover/ws&quot;
 }
 service failoverProxyService on new http:Listener(9090) {
@@ -283,7 +283,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
 </code></pre></div>
 
                                 </td>
@@ -306,7 +306,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketFailoverClient wsClientEp = new (
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketFailoverClient wsClientEp = new (
         {
             callbackService: failoverClientService,
 </code></pre></div>
@@ -327,7 +327,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            targetUrls: [ &quot;ws://localhost:9095/failover/ws&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>            targetUrls: [ &quot;ws://localhost:9095/failover/ws&quot;,
             &quot;ws://localhost:9096/failover/ws&quot;, &quot;ws://localhost:9094/failover/ws&quot;],
 </code></pre></div>
 
@@ -347,7 +347,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            failoverIntervalInMillis: 2000,
+                                    <div class="highlight"><pre><code class=language-ballerina>            failoverIntervalInMillis: 2000,
 </code></pre></div>
 
                                 </td>
@@ -366,7 +366,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            readyOnConnect: false
+                                    <div class="highlight"><pre><code class=language-ballerina>            readyOnConnect: false
         });
 </code></pre></div>
 
@@ -387,7 +387,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
         caller.setAttribute(ASSOCIATED_CONNECTION, wsClientEp);
 </code></pre></div>
 
@@ -407,7 +407,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var err = wsClientEp-&gt;ready();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var err = wsClientEp-&gt;ready();
         if (err is http:WebSocketError) {
             log:printError(&quot;Error calling ready on client&quot;, err);
         }
@@ -431,7 +431,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text,
                              boolean finalFrame) {
 </code></pre></div>
 
@@ -451,7 +451,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
         var err = clientEp-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when sending text message&quot;, err);
@@ -468,7 +468,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(http:WebSocketCaller caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketCaller caller, error err) {
 </code></pre></div>
 
                                 </td>
@@ -487,7 +487,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
         var e = clientEp-&gt;close(statusCode = 1011, reason = &quot;Unexpected condition&quot;);
         if (e is http:WebSocketError) {
             log:printError(&quot;Error occurred when closing the connection&quot;, e);
@@ -505,7 +505,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
                                  string reason) {
 </code></pre></div>
 
@@ -525,7 +525,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
         var err = clientEp-&gt;close(statusCode = statusCode, reason = reason);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when closing the connection&quot;, err);
@@ -543,7 +543,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service failoverClientService = @http:WebSocketServiceConfig {} service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service failoverClientService = @http:WebSocketServiceConfig {} service {
 </code></pre></div>
 
                                 </td>
@@ -562,7 +562,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketFailoverClient caller, string text,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketFailoverClient caller, string text,
                                 boolean finalFrame) {
 </code></pre></div>
 
@@ -582,7 +582,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
         var err = serverEp-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when sending text message&quot;, err);
@@ -599,7 +599,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(http:WebSocketFailoverClient caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketFailoverClient caller, error err) {
 </code></pre></div>
 
                                 </td>
@@ -618,7 +618,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
         var e = serverEp-&gt;close(statusCode = 1011,
         reason = &quot;Unexpected condition&quot;);
         if (e is http:WebSocketError) {
@@ -638,7 +638,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onClose(http:WebSocketFailoverClient caller, int statusCode,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onClose(http:WebSocketFailoverClient caller, int statusCode,
                                  string reason) {
 </code></pre></div>
 
@@ -659,7 +659,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
         var err = serverEp-&gt;close(statusCode = statusCode, reason = reason);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when closing the connection&quot;, err);
@@ -677,7 +677,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getAssociatedClientEndpoint(http:WebSocketCaller ep)
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAssociatedClientEndpoint(http:WebSocketCaller ep)
                 returns (http:WebSocketFailoverClient) {
     http:WebSocketFailoverClient wsClient = &lt;http:WebSocketFailoverClient&gt;ep.
     getAttribute(ASSOCIATED_CONNECTION);
@@ -701,7 +701,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getAssociatedServerEndpoint(http:WebSocketFailoverClient ep)
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAssociatedServerEndpoint(http:WebSocketFailoverClient ep)
                 returns (http:WebSocketCaller) {
     http:WebSocketCaller wsEndpoint =&lt;http:WebSocketCaller&gt;ep.
     getAttribute(ASSOCIATED_CONNECTION);
@@ -942,7 +942,7 @@ $ ws.close(1000, &quot;I want to go&quot;);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -955,7 +955,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:WebSocketServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:WebSocketServiceConfig {
     path: &quot;/failover/ws&quot;
 }
 </code></pre></div>
@@ -969,7 +969,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service server on new http:Listener(9094) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service server on new http:Listener(9094) {
 </code></pre></div>
 
                                 </td>
@@ -988,7 +988,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
         log:printInfo(&quot;WebSocket client connects wih the server 9094. The Connection ID: &quot;
         + caller.getConnectionId());
     }
@@ -1013,7 +1013,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text, boolean finalFrame) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text, boolean finalFrame) {
         var err = caller-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when sending text message&quot;, err);
@@ -1121,7 +1121,7 @@ $ ballerina run websocket_service_9094.bal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -1134,7 +1134,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:WebSocketServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:WebSocketServiceConfig {
     path: &quot;/failover/ws&quot;
 }
 </code></pre></div>
@@ -1148,7 +1148,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service server on new http:Listener(9095) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service server on new http:Listener(9095) {
 </code></pre></div>
 
                                 </td>
@@ -1167,7 +1167,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
         log:printInfo(&quot;WebSocket client connects wih the server 9095. The Connection ID: &quot;
         + caller.getConnectionId());
     }
@@ -1192,7 +1192,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text, boolean finalFrame) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text, boolean finalFrame) {
         var err = caller-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when sending text message&quot;, err);

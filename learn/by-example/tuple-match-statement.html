@@ -169,7 +169,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -181,7 +181,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -193,7 +193,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [string, int]|[float, string, boolean]|float a1 = 66.6;
+                                    <div class="highlight"><pre><code class=language-ballerina>    [string, int]|[float, string, boolean]|float a1 = 66.6;
     [string, int]|[float, string, boolean]|float a2 = [&quot;Hello&quot;, 12];
     [float, boolean]|[float, string, boolean]|float a3 = [4.5, true];
     [string, int]|[float, string, boolean]|float a4 = [6.7, &quot;Test&quot;, false];
@@ -216,7 +216,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    basicMatch(a1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    basicMatch(a1);
     basicMatch(a2);
     basicMatch(a3);
     basicMatch(a4);
@@ -231,7 +231,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [string, int]|[boolean, int]|[int, boolean]|int|float b1 = [&quot;Hello&quot;, 45];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [string, int]|[boolean, int]|[int, boolean]|int|float b1 = [&quot;Hello&quot;, 45];
     [string, int]|[float, boolean]|[int, boolean]|int|float b2 = [4.5, true];
     [float, boolean]|[boolean, int]|[int, boolean]|int|float b3 = [false, 4];
     [string, int]|[int, boolean]|int|float b4 = [455, true];
@@ -255,7 +255,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    matchWithMatchGuard(b1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    matchWithMatchGuard(b1);
     matchWithMatchGuard(b2);
     matchWithMatchGuard(b3);
     matchWithMatchGuard(b4);
@@ -272,7 +272,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function basicMatch(any a) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function basicMatch(any a) {
     match a {
 </code></pre></div>
 
@@ -294,7 +294,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i, b] =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var [s, i, b] =&gt; {
             io:println(&quot;Matched with three vars : &quot;, io:sprintf(&quot;%s&quot;, a));
         }
 </code></pre></div>
@@ -315,7 +315,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var [s, i] =&gt; {
             io:println(&quot;Matched with two vars : &quot;, io:sprintf(&quot;%s&quot;, a));
         }
 </code></pre></div>
@@ -336,7 +336,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var s =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var s =&gt; {
             io:println(&quot;Matched with single var : &quot;, io:sprintf(&quot;%s&quot;, a));
         }
     }
@@ -359,7 +359,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function matchWithMatchGuard(any b) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function matchWithMatchGuard(any b) {
     match b {
 </code></pre></div>
 
@@ -381,7 +381,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] if (s is string &amp;&amp; i is int) =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var [s, i] if (s is string &amp;&amp; i is int) =&gt; {
             io:println(&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot;, io:sprintf(&quot;%s&quot;, b));
         }
 </code></pre></div>
@@ -402,7 +402,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] if s is float =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var [s, i] if s is float =&gt; {
             io:println(&quot;Only &#39;s&#39; is float : &quot;, io:sprintf(&quot;%s&quot;, b));
         }
 </code></pre></div>
@@ -423,7 +423,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] if i is int =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var [s, i] if i is int =&gt; {
             io:println(&quot;Only &#39;i&#39; is int : &quot;, io:sprintf(&quot;%s&quot;, b));
         }
 </code></pre></div>
@@ -444,7 +444,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var [s, i] =&gt; {
             io:println(&quot;No type guard : &quot;, io:sprintf(&quot;%s&quot;, b));
         }
 </code></pre></div>
@@ -465,7 +465,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var s if s is float =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var s if s is float =&gt; {
             io:println(&quot;&#39;s&#39; is float only : &quot;, io:sprintf(&quot;%s&quot;, b));
         }
 </code></pre></div>
@@ -486,7 +486,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
 }
 </code></pre></div>
 

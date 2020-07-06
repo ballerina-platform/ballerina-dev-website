@@ -191,7 +191,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerinax/java.jdbc;
 </code></pre></div>
 
@@ -204,7 +204,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jdbc:Client testDB = new ({
     url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
     username: &quot;test&quot;,
     password: &quot;test&quot;,
@@ -229,7 +229,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     int id;
     int age;
     string name;
@@ -252,7 +252,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type myBatchType int|string;
+                                    <div class="highlight"><pre><code class=language-ballerina>type myBatchType int|string;
 </code></pre></div>
 
                                 </td>
@@ -264,7 +264,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -276,7 +276,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;The update operation - Creating a table:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;The update operation - Creating a table:&quot;);
     var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot; +
                              &quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
     handleUpdate(ret, &quot;Create student table&quot;);
@@ -298,7 +298,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json jsonMsg = [{
+                                    <div class="highlight"><pre><code class=language-ballerina>    json jsonMsg = [{
         &quot;firstname&quot;: &quot;Peter&quot;,
         &quot;age&quot;: 10
     }, {
@@ -326,7 +326,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    myBatchType[][] dataBatch = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    myBatchType[][] dataBatch = [];
     if (jsonMsg is json[]) {
         foreach (var studentData in jsonMsg) {
             string name = &lt;string&gt;studentData.firstname;
@@ -353,7 +353,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:BatchUpdateResult retBatch = testDB-&gt;batchUpdate(&quot;INSERT INTO student &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:BatchUpdateResult retBatch = testDB-&gt;batchUpdate(&quot;INSERT INTO student &quot; +
             &quot;(age,name) VALUES (?,?)&quot;, false, ...dataBatch);
     error? e = retBatch.returnedError;
     if (e is error) {
@@ -377,7 +377,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Batch 1 update counts: &quot;, retBatch.updatedRowCount[0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Batch 1 update counts: &quot;, retBatch.updatedRowCount[0]);
         io:println(&quot;Batch 2 update counts: &quot;, retBatch.updatedRowCount[1]);
         anydata[]? generatedKeys = retBatch.generatedKeys[&quot;GENERATED_KEY&quot;];
         if (generatedKeys is int[]) {
@@ -406,7 +406,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    checkData();
+                                    <div class="highlight"><pre><code class=language-ballerina>    checkData();
 </code></pre></div>
 
                                 </td>
@@ -425,7 +425,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe update operation - Drop the student table&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe update operation - Drop the student table&quot;);
     ret = testDB-&gt;update(&quot;DROP TABLE student&quot;);
     handleUpdate(ret, &quot;Drop table student&quot;);
 }
@@ -447,7 +447,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
     if (returned is jdbc:UpdateResult) {
         io:println(message, &quot; status: &quot;, returned.updatedRowCount);
     } else {
@@ -472,7 +472,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function checkData() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function checkData() {
     var dtReturned = testDB-&gt;select(&quot;SELECT * FROM student&quot;, Student);
     if (dtReturned is table&lt;record{}&gt;) {
 </code></pre></div>
@@ -493,7 +493,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Data in students table:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Data in students table:&quot;);
         foreach var row in dtReturned {
             io:println(row.toString());
         }

@@ -113,7 +113,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/encoding;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/encoding;
 import ballerina/io;
 import ballerina/lang.&#39;string as str;
 </code></pre></div>
@@ -127,7 +127,7 @@ import ballerina/lang.&#39;string as str;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
     string encodingValue = &quot;abc123!?$*&amp;()&#39;-=@~&quot;;
 </code></pre></div>
 
@@ -140,7 +140,7 @@ import ballerina/lang.&#39;string as str;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string urlEncodedValue = encoding:encodeBase64Url(encodingValue.toBytes());
+                                    <div class="highlight"><pre><code class=language-ballerina>    string urlEncodedValue = encoding:encodeBase64Url(encodingValue.toBytes());
     io:println(&quot;Base64 URL encoded value: &quot; + urlEncodedValue);
 </code></pre></div>
 
@@ -160,7 +160,7 @@ import ballerina/lang.&#39;string as str;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string decodingValue = &quot;YWJjMTIzIT8kKiYoKSctPUB-&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string decodingValue = &quot;YWJjMTIzIT8kKiYoKSctPUB-&quot;;
 </code></pre></div>
 
                                 </td>
@@ -172,7 +172,7 @@ import ballerina/lang.&#39;string as str;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    byte[] urlDecodedValue = check encoding:decodeBase64Url(decodingValue);
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] urlDecodedValue = check encoding:decodeBase64Url(decodingValue);
     io:println(&quot;Base64 URL decoded value: &quot; + check str:fromBytes(urlDecodedValue));
 </code></pre></div>
 
@@ -192,7 +192,7 @@ import ballerina/lang.&#39;string as str;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string encodingUriComp = &quot;data=value&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string encodingUriComp = &quot;data=value&quot;;
 </code></pre></div>
 
                                 </td>
@@ -204,7 +204,7 @@ import ballerina/lang.&#39;string as str;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string encodedUriComponent = check encoding:encodeUriComponent(encodingUriComp, &quot;UTF-8&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string encodedUriComponent = check encoding:encodeUriComponent(encodingUriComp, &quot;UTF-8&quot;);
     io:println(&quot;URI encoded value: &quot; + encodedUriComponent);
 </code></pre></div>
 
@@ -224,7 +224,7 @@ import ballerina/lang.&#39;string as str;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string data = &quot;data%3Dvalue&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string data = &quot;data%3Dvalue&quot;;
 </code></pre></div>
 
                                 </td>
@@ -236,7 +236,7 @@ import ballerina/lang.&#39;string as str;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string decodedUriComponent = check encoding:decodeUriComponent(data, &quot;UTF-8&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string decodedUriComponent = check encoding:decodeUriComponent(data, &quot;UTF-8&quot;);
     io:println(&quot;URI decoded value: &quot; + decodedUriComponent);
 }
 </code></pre></div>

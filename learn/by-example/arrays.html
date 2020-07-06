@@ -142,7 +142,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -154,7 +154,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -166,7 +166,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] a = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] a = [];
     io:println(a.length());
 </code></pre></div>
 
@@ -186,7 +186,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] b = [1, 2, 3, 4, 5, 6, 7, 8];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] b = [1, 2, 3, 4, 5, 6, 7, 8];
     io:println(b[0]);
     io:println(b.length());
 </code></pre></div>
@@ -207,7 +207,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] bReveresed = b.reverse();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] bReveresed = b.reverse();
     io:println(&quot;Reversed: &quot;, bReveresed);
 </code></pre></div>
 
@@ -227,7 +227,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before pop: &quot;, b);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before pop: &quot;, b);
     int poppedValue = b.pop();
     io:println(&quot;Popped value: &quot;, poppedValue);
     io:println(&quot;After pop: &quot;, b);
@@ -242,7 +242,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] doubled = b.map(function (int value) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] doubled = b.map(function (int value) returns int {
             return value * 2;
         });
     io:println(&quot;Doubled: &quot;, doubled);
@@ -265,7 +265,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    b[999] = 23;
+                                    <div class="highlight"><pre><code class=language-ballerina>    b[999] = 23;
     io:println(b[999]);
     io:println(b.length());
 </code></pre></div>
@@ -288,7 +288,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[][] iarray = [[1, 2, 3], [10, 20, 30], [5, 6, 7]];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[][] iarray = [[1, 2, 3], [10, 20, 30], [5, 6, 7]];
     io:println(iarray.length());
     io:println(iarray[0].length());
 </code></pre></div>
@@ -309,7 +309,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    iarray = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    iarray = [];
 </code></pre></div>
 
                                 </td>
@@ -328,7 +328,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] d = [9];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] d = [9];
     iarray[0] = d;
 </code></pre></div>
 
@@ -348,7 +348,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(iarray[0][0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(iarray[0][0]);
 </code></pre></div>
 
                                 </td>
@@ -367,7 +367,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[5] e = [1, 2, 3, 4, 5];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[5] e = [1, 2, 3, 4, 5];
     io:println(e.length());
 </code></pre></div>
 
@@ -387,7 +387,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    int[*] g = [1, 2, 3, 4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[*] g = [1, 2, 3, 4];
     io:println(g.length());
 }
 </code></pre></div>

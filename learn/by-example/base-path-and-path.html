@@ -121,7 +121,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -134,7 +134,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/foo&quot;
 }
 service echo on new http:Listener(9090) {
@@ -157,7 +157,7 @@ service echo on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/bar&quot;
     }
@@ -182,7 +182,7 @@ service echo on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = req.getJsonPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = req.getJsonPayload();
         http:Response res = new;
         if (payload is json) {
 </code></pre></div>
@@ -203,7 +203,7 @@ service echo on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            res.setJsonPayload(&lt;@untainted&gt;payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>            res.setJsonPayload(&lt;@untainted&gt;payload);
         } else {
             res.statusCode = 500;
             res.setPayload(&lt;@untainted string&gt;payload.detail()?.message);
@@ -226,7 +226,7 @@ service echo on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
            log:printError(&quot;Error in responding&quot;, result);
         }

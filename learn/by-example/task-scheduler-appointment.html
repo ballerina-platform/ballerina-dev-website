@@ -149,7 +149,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/runtime;
 import ballerina/task;
 </code></pre></div>
@@ -163,7 +163,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int reminderCount = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int reminderCount = 0;
 </code></pre></div>
 
                                 </td>
@@ -175,7 +175,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -187,7 +187,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    task:AppointmentData appointmentData = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:AppointmentData appointmentData = {
         seconds: &quot;0/2&quot;,
         minutes: &quot;*&quot;,
         hours: &quot;*&quot;,
@@ -214,7 +214,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    task:Scheduler appointment = new ({appointmentDetails: appointmentData});
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:Scheduler appointment = new ({appointmentDetails: appointmentData});
 </code></pre></div>
 
                                 </td>
@@ -233,7 +233,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var attachResult = appointment.attach(appointmentService);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var attachResult = appointment.attach(appointmentService);
     if (attachResult is error) {
         io:println(&quot;Error attaching the service.&quot;);
         return;
@@ -256,7 +256,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var startResult = appointment.start();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var startResult = appointment.start();
     if (startResult is error) {
         io:println(&quot;Starting the task is failed.&quot;);
         return;
@@ -279,7 +279,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(10000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(10000);
 </code></pre></div>
 
                                 </td>
@@ -291,7 +291,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = appointment.stop();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = appointment.stop();
     if (result is error) {
         io:println(&quot;Error occurred while cancelling the task&quot;);
         return;
@@ -316,7 +316,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service appointmentService = service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service appointmentService = service {
 </code></pre></div>
 
                                 </td>
@@ -335,7 +335,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onTrigger() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onTrigger() {
         if (reminderCount &lt; 5) {
             reminderCount = reminderCount + 1;
             io:println(&quot;Schedule is due - Reminder: &quot; + reminderCount.toString());

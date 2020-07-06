@@ -166,7 +166,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -178,7 +178,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -190,7 +190,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string&gt; m;
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt; m;
 </code></pre></div>
 
                                 </td>
@@ -209,7 +209,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string city = &quot;Colombo&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string city = &quot;Colombo&quot;;
     string country = &quot;Sri Lanka&quot;;
     string codeLiteral = &quot;code&quot;;
 </code></pre></div>
@@ -223,7 +223,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string&gt; addrMap = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt; addrMap = {
 </code></pre></div>
 
                                 </td>
@@ -243,7 +243,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        line1: &quot;No. 20&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        line1: &quot;No. 20&quot;,
         line2: &quot;Palm Grove&quot;,
 </code></pre></div>
 
@@ -263,7 +263,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        city: &quot;Colombo 03&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        city: &quot;Colombo 03&quot;,
 </code></pre></div>
 
                                 </td>
@@ -283,7 +283,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        country,
+                                    <div class="highlight"><pre><code class=language-ballerina>        country,
 </code></pre></div>
 
                                 </td>
@@ -305,7 +305,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        [codeLiteral]: &quot;00300&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>        [codeLiteral]: &quot;00300&quot;
     };
     io:println(addrMap);
 </code></pre></div>
@@ -330,7 +330,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? countryValue = addrMap[&quot;country&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? countryValue = addrMap[&quot;country&quot;];
 </code></pre></div>
 
                                 </td>
@@ -353,7 +353,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (countryValue is string) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (countryValue is string) {
         io:println(countryValue);
     } else {
         io:println(&quot;key &#39;country&#39; not found&quot;);
@@ -369,7 +369,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string line2Value = addrMap.get(&quot;line2&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string line2Value = addrMap.get(&quot;line2&quot;);
     io:println(line2Value);
 </code></pre></div>
 
@@ -392,7 +392,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean hasPostalCode = addrMap.hasKey(&quot;postalCode&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean hasPostalCode = addrMap.hasKey(&quot;postalCode&quot;);
     io:println(hasPostalCode);
 </code></pre></div>
 
@@ -412,7 +412,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    addrMap[&quot;postalCode&quot;] = &quot;00300&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    addrMap[&quot;postalCode&quot;] = &quot;00300&quot;;
     io:println(addrMap);
 </code></pre></div>
 
@@ -433,7 +433,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(addrMap.keys());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(addrMap.keys());
 </code></pre></div>
 
                                 </td>
@@ -452,7 +452,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(addrMap.length());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(addrMap.length());
 </code></pre></div>
 
                                 </td>
@@ -471,7 +471,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string removedElement = addrMap.remove(&quot;code&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string removedElement = addrMap.remove(&quot;code&quot;);
     io:println(addrMap);
 </code></pre></div>
 
@@ -491,7 +491,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    addrMap.forEach(function (string value) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    addrMap.forEach(function (string value) {
         io:println(value);
     });
 </code></pre></div>
@@ -512,7 +512,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;int&gt; marks = {sam: 50, jon: 60};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; marks = {sam: 50, jon: 60};
 </code></pre></div>
 
                                 </td>
@@ -524,7 +524,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;int&gt; modifiedMarks = marks.entries().map(function ([string, int] pair)
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; modifiedMarks = marks.entries().map(function ([string, int] pair)
         returns int {
             var [name, score] = pair;
             io:println(io:sprintf(&quot;%s scored: %d&quot;, name, score));
@@ -551,7 +551,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;int&gt; allMarks = {jane: 100, ...modifiedMarks, amy: 75};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; allMarks = {jane: 100, ...modifiedMarks, amy: 75};
     io:println(allMarks);
 }
 </code></pre></div>

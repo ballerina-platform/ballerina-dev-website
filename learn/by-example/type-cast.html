@@ -138,7 +138,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -150,7 +150,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age;
 };
@@ -165,7 +165,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {
     string name;
     int age;
     int empNo;
@@ -181,7 +181,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Department record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Department record {
     string code;
 };
 </code></pre></div>
@@ -195,7 +195,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -207,7 +207,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee employee = {name: &quot;Jane Doe&quot;, age: 25, empNo: 1};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee employee = {name: &quot;Jane Doe&quot;, age: 25, empNo: 1};
     Person person = &lt;Person&gt;employee;
     io:println(&quot;Person Name: &quot;, person.name);
     io:println(&quot;Person Age: &quot;, person.age);
@@ -229,7 +229,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee employeeTwo = &lt;Employee&gt;person;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee employeeTwo = &lt;Employee&gt;person;
     io:println(&quot;Employee Name: &quot;, employeeTwo.name);
     io:println(&quot;Employee Age: &quot;, employeeTwo.age);
 </code></pre></div>
@@ -251,7 +251,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    anydata value = 100;
+                                    <div class="highlight"><pre><code class=language-ballerina>    anydata value = 100;
     int i = &lt;int&gt;value;
     io:println(&quot;Integer Value: &quot;, i);
 </code></pre></div>
@@ -273,7 +273,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float f = &lt;float&gt;value;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float f = &lt;float&gt;value;
     io:println(&quot;Converted Float Value: &quot;, f);
 </code></pre></div>
 
@@ -295,7 +295,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float|boolean u = &lt;float|boolean&gt;value;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float|boolean u = &lt;float|boolean&gt;value;
     io:println(&quot;Converted Float Value: &quot;, u);
 </code></pre></div>
 
@@ -319,7 +319,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value = employee;
+                                    <div class="highlight"><pre><code class=language-ballerina>    value = employee;
 </code></pre></div>
 
                                 </td>
@@ -338,7 +338,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Department department = &lt;Department&gt;value;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Department department = &lt;Department&gt;value;
 }
 </code></pre></div>
 

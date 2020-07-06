@@ -123,7 +123,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.&#39;xml as xmllib;
 </code></pre></div>
 
@@ -136,7 +136,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     xml bookName = xml `&lt;name&gt;Book1&lt;/name&gt;`;
     xml bookComment = xml `&lt;!--some comment--&gt;`;
     xml someText = xml `Hello, World!`;
@@ -152,7 +152,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xmllib:Element book = &lt;xmllib:Element&gt; xml `&lt;book/&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xmllib:Element book = &lt;xmllib:Element&gt; xml `&lt;book/&gt;`;
 </code></pre></div>
 
                                 </td>
@@ -164,7 +164,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xmllib:Element bookNameElem = &lt;xmllib:Element&gt; bookName;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xmllib:Element bookNameElem = &lt;xmllib:Element&gt; bookName;
     io:println(bookNameElem.getName());
 </code></pre></div>
 
@@ -184,7 +184,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml concat = xmllib:concat(someText, bookName, bookComment);
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml concat = xmllib:concat(someText, bookName, bookComment);
     io:println(concat);
     io:println(content == concat);
 </code></pre></div>
@@ -205,7 +205,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(concat.length());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(concat.length());
 </code></pre></div>
 
                                 </td>
@@ -224,7 +224,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x = content.slice(2, 3);
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x = content.slice(2, 3);
     io:println(x);
 </code></pre></div>
 
@@ -244,7 +244,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x = content.elements();
+                                    <div class="highlight"><pre><code class=language-ballerina>    x = content.elements();
     io:println(x);
 </code></pre></div>
 
@@ -264,7 +264,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    book.setChildren(content);
+                                    <div class="highlight"><pre><code class=language-ballerina>    book.setChildren(content);
     io:println(book);
 </code></pre></div>
 
@@ -284,7 +284,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    x = content.strip();
+                                    <div class="highlight"><pre><code class=language-ballerina>    x = content.strip();
     io:println(x);
 }
 </code></pre></div>

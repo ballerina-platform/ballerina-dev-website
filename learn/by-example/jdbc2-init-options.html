@@ -159,7 +159,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java.jdbc;
 import ballerina/sql;
 </code></pre></div>
@@ -173,7 +173,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initializeClients() returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeClients() returns sql:Error? {
 </code></pre></div>
 
                                 </td>
@@ -185,7 +185,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client jdbcClient1 = check new (&quot;jdbc:h2:file:./target/sample1&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client jdbcClient1 = check new (&quot;jdbc:h2:file:./target/sample1&quot;);
     io:println(&quot;Simple JDBC client created.&quot;);
 </code></pre></div>
 
@@ -208,7 +208,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client jdbcClient2 = check new (&quot;jdbc:h2:file:./target/sample2&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client jdbcClient2 = check new (&quot;jdbc:h2:file:./target/sample2&quot;,
         &quot;rootUser&quot;, &quot;rootPass&quot;);
     io:println(&quot;JDBC client with user/password created.&quot;);
 </code></pre></div>
@@ -229,7 +229,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Options h2Options = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Options h2Options = {
         datasourceName: &quot;org.h2.jdbcx.JdbcDataSource&quot;,
         properties: {&quot;loginTimeout&quot;: &quot;2000&quot;}
     };
@@ -256,7 +256,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ConnectionPool connPool = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ConnectionPool connPool = {
 </code></pre></div>
 
                                 </td>
@@ -279,7 +279,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        maxOpenConnections: 5,
+                                    <div class="highlight"><pre><code class=language-ballerina>        maxOpenConnections: 5,
 </code></pre></div>
 
                                 </td>
@@ -298,7 +298,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        maxConnectionLifeTimeInSeconds: 2000.0,
+                                    <div class="highlight"><pre><code class=language-ballerina>        maxConnectionLifeTimeInSeconds: 2000.0,
 </code></pre></div>
 
                                 </td>
@@ -318,7 +318,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        minIdleConnections: 5
+                                    <div class="highlight"><pre><code class=language-ballerina>        minIdleConnections: 5
     };
 </code></pre></div>
 
@@ -338,7 +338,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client jdbcClient4 = check new (&quot;jdbc:h2:file:./target/sample4&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client jdbcClient4 = check new (&quot;jdbc:h2:file:./target/sample4&quot;,
         &quot;rootUser&quot;, &quot;rootPass&quot;, h2Options, connPool);
     io:println(&quot;JDBC client with connection pool created.&quot;);
 </code></pre></div>
@@ -359,7 +359,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client jdbcClient5 = check new (url = &quot;jdbc:h2:file:./target/sample5&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client jdbcClient5 = check new (url = &quot;jdbc:h2:file:./target/sample5&quot;,
         user = &quot;rootUser&quot;, password = &quot;rootPass&quot;, options = h2Options,
         connectionPool = connPool);
 </code></pre></div>
@@ -382,7 +382,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client jdbcClient6 = check new (url = &quot;jdbc:h2:file:./target/sample6&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client jdbcClient6 = check new (url = &quot;jdbc:h2:file:./target/sample6&quot;,
         connectionPool = connPool);
     io:println(&quot;JDBC client with optional params created.&quot;);
 </code></pre></div>
@@ -403,7 +403,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    check jdbcClient1.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    check jdbcClient1.close();
     check jdbcClient2.close();
     check jdbcClient3.close();
     check jdbcClient4.close();
@@ -429,7 +429,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     sql:Error? err = initializeClients();
     if (err is sql:Error) {
         io:println(&quot;Error occured, initialization failed!&quot;, err);

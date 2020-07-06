@@ -138,7 +138,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -150,7 +150,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type SampleErrorData record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type SampleErrorData record {
     string message?;
     error cause?;
     string info;
@@ -167,7 +167,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type SampleError error&lt;string, SampleErrorData&gt;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type SampleError error&lt;string, SampleErrorData&gt;;
 </code></pre></div>
 
                                 </td>
@@ -179,7 +179,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string reason;
     string info;
     boolean fatal;
@@ -194,7 +194,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error(reason, info = info, fatal = fatal) = getSampleError();
+                                    <div class="highlight"><pre><code class=language-ballerina>    error(reason, info = info, fatal = fatal) = getSampleError();
     io:println(&quot;Reason String: &quot; + reason);
     io:println(&quot;Info: &quot;, info);
     io:println(&quot;Fatal: &quot;, fatal);
@@ -219,7 +219,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string reasonTwo;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string reasonTwo;
     map&lt;anydata|error&gt; params;
 </code></pre></div>
 
@@ -232,7 +232,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error(reasonTwo, ...params) = getSampleError();
+                                    <div class="highlight"><pre><code class=language-ballerina>    error(reasonTwo, ...params) = getSampleError();
     io:println(&quot;Reason String: &quot;, reasonTwo);
     io:println(&quot;Detail Map: &quot;, params);
     
@@ -254,7 +254,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? detailMsg;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? detailMsg;
     error(_, detailMsg = detailMsg) = getRecordConstrainedError();
     io:println(&quot;Detail Message: &quot;, detailMsg);
 }
@@ -276,7 +276,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getSampleError() returns SampleError {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getSampleError() returns SampleError {
     SampleError e = error(&quot;Sample Error&quot;, info = &quot;Detail Info&quot;, fatal = true);
     return e;
 }
@@ -291,7 +291,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Foo record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Foo record {|
     string message?;
     error cause?;
     string detailMsg;
@@ -308,7 +308,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getRecordConstrainedError() returns error&lt;string, Foo&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getRecordConstrainedError() returns error&lt;string, Foo&gt; {
     error&lt;string, Foo&gt; e = error(&quot;Some Error&quot;, detailMsg = &quot;Failed Message&quot;, isFatal = true);
     return e;
 }

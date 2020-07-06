@@ -135,7 +135,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/cache;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/cache;
 import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
@@ -149,7 +149,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -161,7 +161,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    cache:Cache cache = new({
+                                    <div class="highlight"><pre><code class=language-ballerina>    cache:Cache cache = new({
         capacity: 10,
         evictionFactor: 0.2,
         defaultMaxAgeInSeconds: 2,
@@ -189,7 +189,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = check cache.put(&quot;key1&quot;, &quot;value1&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.put(&quot;key1&quot;, &quot;value1&quot;);
 </code></pre></div>
 
                                 </td>
@@ -208,7 +208,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = check cache.put(&quot;key2&quot;, &quot;value2&quot;, 3600);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.put(&quot;key2&quot;, &quot;value2&quot;, 3600);
 </code></pre></div>
 
                                 </td>
@@ -227,7 +227,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (cache.hasKey(&quot;key1&quot;)) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (cache.hasKey(&quot;key1&quot;)) {
 </code></pre></div>
 
                                 </td>
@@ -246,7 +246,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string value = &lt;string&gt; check cache.get(&quot;key1&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string value = &lt;string&gt; check cache.get(&quot;key1&quot;);
         io:println(&quot;key1: &quot; + value);
     }
 </code></pre></div>
@@ -267,7 +267,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(4000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(4000);
 </code></pre></div>
 
                                 </td>
@@ -306,7 +306,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string[] keys = cache.keys();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string[] keys = cache.keys();
     io:println(&quot;keys: [&quot; + keys.toString() + &quot;]&quot;);
 </code></pre></div>
 
@@ -326,7 +326,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int size = cache.size();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int size = cache.size();
 </code></pre></div>
 
                                 </td>
@@ -345,7 +345,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int capacity = cache.capacity();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int capacity = cache.capacity();
 </code></pre></div>
 
                                 </td>
@@ -364,7 +364,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = check cache.invalidate(&quot;key2&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.invalidate(&quot;key2&quot;);
 </code></pre></div>
 
                                 </td>
@@ -383,7 +383,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = check cache.invalidateAll();
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.invalidateAll();
 }
 </code></pre></div>
 

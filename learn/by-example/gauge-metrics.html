@@ -209,7 +209,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/observe;
@@ -224,7 +224,7 @@ import ballerina/observe;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>observe:Gauge globalGauge = new (&quot;global_gauge&quot;, &quot;Global gauge defined&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>observe:Gauge globalGauge = new (&quot;global_gauge&quot;, &quot;Global gauge defined&quot;);
 </code></pre></div>
 
                                 </td>
@@ -245,7 +245,7 @@ and default statistics configurations = { timeWindow: 600000, buckets: 5,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/online-store-service&quot;
 }
 service onlineStoreService on new http:Listener(9090) {
@@ -267,7 +267,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         path: &quot;/make-order&quot;
     }
     resource function makeOrder(http:Caller caller, http:Request req) {
@@ -283,7 +283,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        globalGauge.increment(15.0);
+                                    <div class="highlight"><pre><code class=language-ballerina>        globalGauge.increment(15.0);
 </code></pre></div>
 
                                 </td>
@@ -302,7 +302,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        printGauge(globalGauge);
+                                    <div class="highlight"><pre><code class=language-ballerina>        printGauge(globalGauge);
 </code></pre></div>
 
                                 </td>
@@ -321,7 +321,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:Gauge localGauge = new (&quot;local_operations&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        observe:Gauge localGauge = new (&quot;local_operations&quot;);
 </code></pre></div>
 
                                 </td>
@@ -340,7 +340,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        localGauge.increment();
+                                    <div class="highlight"><pre><code class=language-ballerina>        localGauge.increment();
 </code></pre></div>
 
                                 </td>
@@ -359,7 +359,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        localGauge.increment(20.0);
+                                    <div class="highlight"><pre><code class=language-ballerina>        localGauge.increment(20.0);
 </code></pre></div>
 
                                 </td>
@@ -378,7 +378,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        localGauge.decrement();
+                                    <div class="highlight"><pre><code class=language-ballerina>        localGauge.decrement();
 </code></pre></div>
 
                                 </td>
@@ -397,7 +397,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        localGauge.decrement(10.0);
+                                    <div class="highlight"><pre><code class=language-ballerina>        localGauge.decrement(10.0);
 </code></pre></div>
 
                                 </td>
@@ -416,7 +416,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        printGauge(localGauge);
+                                    <div class="highlight"><pre><code class=language-ballerina>        printGauge(localGauge);
 </code></pre></div>
 
                                 </td>
@@ -435,7 +435,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:Gauge registeredGaugeWithTags = new (&quot;registered_gauge_with_tags&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        observe:Gauge registeredGaugeWithTags = new (&quot;registered_gauge_with_tags&quot;,
             &quot;RegisteredGauge&quot;,
             {property: &quot;gaugeProperty&quot;, gaugeType: &quot;RegisterType&quot;});
 </code></pre></div>
@@ -456,7 +456,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        error? result = registeredGaugeWithTags.register();
+                                    <div class="highlight"><pre><code class=language-ballerina>        error? result = registeredGaugeWithTags.register();
         if (result is error) {
             log:printError(&quot;Error in registering gauge&quot;, result);
         }
@@ -483,7 +483,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        registeredGaugeWithTags.increment();
+                                    <div class="highlight"><pre><code class=language-ballerina>        registeredGaugeWithTags.increment();
         float value = registeredGaugeWithTags.getValue();
         float newValue = value * 12;
         registeredGaugeWithTags.setValue(newValue);
@@ -505,7 +505,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        printGauge(registeredGaugeWithTags);
+                                    <div class="highlight"><pre><code class=language-ballerina>        printGauge(registeredGaugeWithTags);
 </code></pre></div>
 
                                 </td>
@@ -524,7 +524,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:StatisticConfig[] statsConfigs = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>        observe:StatisticConfig[] statsConfigs = [];
         observe:Gauge gaugeWithNoStats = new (&quot;gauge_with_no_stats&quot;,
                                         &quot;Some description&quot;, (), statsConfigs);
         gaugeWithNoStats.setValue(100);
@@ -547,7 +547,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:StatisticConfig config = {
+                                    <div class="highlight"><pre><code class=language-ballerina>        observe:StatisticConfig config = {
             timeWindow: 30000,
             percentiles: [0.33, 0.5, 0.9, 0.99],
             buckets: 3
@@ -578,7 +578,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        printGauge(gaugeWithCustomStats);
+                                    <div class="highlight"><pre><code class=language-ballerina>        printGauge(gaugeWithCustomStats);
 </code></pre></div>
 
                                 </td>
@@ -597,7 +597,7 @@ counter instance.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;------------------------------------------&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;------------------------------------------&quot;);
 </code></pre></div>
 
                                 </td>
@@ -609,7 +609,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
 </code></pre></div>
 
                                 </td>
@@ -628,7 +628,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        res.setPayload(&quot;Order Processed!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        res.setPayload(&quot;Order Processed!&quot;);
 </code></pre></div>
 
                                 </td>
@@ -647,7 +647,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        result = caller-&gt;respond(res);
 </code></pre></div>
 
                                 </td>
@@ -666,7 +666,7 @@ counter instance.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
             log:printError(&quot;Error sending response&quot;, result);
         }
     }
@@ -682,7 +682,7 @@ counter instance.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printGauge(observe:Gauge gauge) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printGauge(observe:Gauge gauge) {
 </code></pre></div>
 
                                 </td>
@@ -694,7 +694,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:print(&quot;Gauge - &quot; + gauge.name + &quot; Snapshot: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:print(&quot;Gauge - &quot; + gauge.name + &quot; Snapshot: &quot;);
     observe:Snapshot[]? snapshots = gauge.getSnapshot();
     json|error snapshotAsAJson = json.constructFrom(snapshots);
     if snapshotAsAJson is json {
@@ -718,7 +718,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Gauge - &quot;, gauge.name, &quot; Current Value: &quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Gauge - &quot;, gauge.name, &quot; Current Value: &quot;
         , gauge.getValue());
 }
 </code></pre></div>

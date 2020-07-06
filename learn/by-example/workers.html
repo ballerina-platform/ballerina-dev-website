@@ -129,7 +129,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -141,7 +141,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     io:println(&quot;Worker execution started&quot;);
 </code></pre></div>
 
@@ -165,7 +165,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    worker w1 {
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w1 {
 </code></pre></div>
 
                                 </td>
@@ -184,7 +184,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        int n = 10000000;
+                                    <div class="highlight"><pre><code class=language-ballerina>        int n = 10000000;
         int sum = 0;
         foreach var i in 1 ... n {
             sum += i;
@@ -209,7 +209,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @strand {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @strand {
         thread:&quot;any&quot;
     }
 </code></pre></div>
@@ -232,7 +232,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    worker w2 {
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w2 {
 </code></pre></div>
 
                                 </td>
@@ -251,7 +251,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        int n = 10000000;
+                                    <div class="highlight"><pre><code class=language-ballerina>        int n = 10000000;
         int sum = 0;
         foreach var i in 1 ... n {
             sum += i * i;
@@ -277,7 +277,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = wait {w1, w2};
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = wait {w1, w2};
 </code></pre></div>
 
                                 </td>
@@ -296,7 +296,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Worker execution finished&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Worker execution finished&quot;);
 }
 </code></pre></div>
 

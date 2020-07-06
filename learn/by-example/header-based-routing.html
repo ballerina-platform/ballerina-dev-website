@@ -176,7 +176,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 </code></pre></div>
@@ -190,7 +190,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:ClientConfiguration weatherEPConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:ClientConfiguration weatherEPConfig = {
     followRedirects: {enabled: true, maxCount: 5},
     secureSocket: {
         trustStore: {
@@ -211,7 +211,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hbr&quot;
 }
 </code></pre></div>
@@ -232,7 +232,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service headerBasedRouting on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service headerBasedRouting on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -244,7 +244,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/route&quot;
     }
@@ -267,7 +267,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function hbrResource(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function hbrResource(http:Caller caller, http:Request req) {
         http:Client weatherEP = new (&quot;http://samples.openweathermap.org&quot;,
                                      weatherEPConfig);
         http:Client locationEP = new (&quot;http://www.mocky.io&quot;);
@@ -282,7 +282,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Request newRequest = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Request newRequest = new;
 </code></pre></div>
 
                                 </td>
@@ -301,7 +301,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (!req.hasHeader(&quot;x-type&quot;)) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (!req.hasHeader(&quot;x-type&quot;)) {
             http:Response errorResponse = new;
             errorResponse.statusCode = 500;
             json errMsg = {&quot;error&quot;: &quot;&#39;x-type&#39; header is not found&quot;};
@@ -324,7 +324,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(errorResponse);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(errorResponse);
 </code></pre></div>
 
                                 </td>
@@ -336,7 +336,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
                 log:printError(&quot;Error sending response&quot;, result);
             }
             return;
@@ -352,7 +352,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string nameString = req.getHeader(&quot;x-type&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string nameString = req.getHeader(&quot;x-type&quot;);
 </code></pre></div>
 
                                 </td>
@@ -371,7 +371,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response|error response;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error response;
         if (nameString == &quot;location&quot;) {
 </code></pre></div>
 
@@ -384,7 +384,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            response = locationEP-&gt;post(&quot;/v2/5adddd66300000bd2a4b2912&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>            response = locationEP-&gt;post(&quot;/v2/5adddd66300000bd2a4b2912&quot;,
                                         newRequest);
 </code></pre></div>
 
@@ -406,7 +406,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
 </code></pre></div>
 
                                 </td>
@@ -418,7 +418,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            response =
+                                    <div class="highlight"><pre><code class=language-ballerina>            response =
                 weatherEP-&gt;get(&quot;/data/2.5/weather?lat=35&amp;lon=139&amp;appid=b1b1&quot;,
                                  newRequest);
 </code></pre></div>
@@ -439,7 +439,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        }
 </code></pre></div>
 
                                 </td>
@@ -451,7 +451,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (response is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (response is http:Response) {
 </code></pre></div>
 
                                 </td>
@@ -481,7 +481,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(response);
 </code></pre></div>
 
                                 </td>
@@ -493,7 +493,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
                 log:printError(&quot;Error sending response&quot;, result);
             }
 </code></pre></div>
@@ -507,7 +507,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
             http:Response errorResponse = new;
             errorResponse.statusCode = 500;
             errorResponse.setPayload(&lt;string&gt;response.detail()?.message);
@@ -523,7 +523,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
                 log:printError(&quot;Error sending response&quot;, result);
             }
         }

@@ -167,7 +167,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -179,7 +179,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case1() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case1() {
 </code></pre></div>
 
                                 </td>
@@ -199,7 +199,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;--- case 1 ---&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;--- case 1 ---&quot;);
     future&lt;int&gt; f1 = start multiply(1, 2);
 </code></pre></div>
 
@@ -221,7 +221,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     int result = wait f1;
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -244,7 +244,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case2() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case2() {
 </code></pre></div>
 
                                 </td>
@@ -264,7 +264,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;--- case 2 ---&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;--- case 2 ---&quot;);
     future&lt;int&gt; f1 = @strand {thread: &quot;any&quot;} start multiply(1, 2);
 </code></pre></div>
 
@@ -285,7 +285,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     int result = wait f1;
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -300,7 +300,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case3() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case3() {
     io:println(&quot;--- case 3 ---&quot;);
     future&lt;int&gt; f1 = @strand {thread: &quot;any&quot;} start multiply(1, 2);
     future&lt;int&gt; f2 = @strand {thread: &quot;any&quot;} start multiply(4, 5);
@@ -322,7 +322,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     map&lt;int&gt; results = wait {f1, f2};
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -337,7 +337,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case4() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case4() {
     io:println(&quot;--- case 4 ---&quot;);
     future&lt;int&gt; f1 = @strand {thread: &quot;any&quot;} start multiply(1, 2);
     future&lt;int&gt; f2 = start multiply(4, 5);
@@ -360,7 +360,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     map&lt;int&gt; results = wait {f1, f2};
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -375,7 +375,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case5() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case5() {
     io:println(&quot;--- case 5 ---&quot;);
     future&lt;int&gt; f1 = start multiply(1, 2);
     future&lt;int&gt; f2 = start multiply(4, 5);
@@ -397,7 +397,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     map&lt;int&gt; results = wait {f1, f2};
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -412,7 +412,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     case1();
     case2();
     case3();
@@ -430,7 +430,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function multiply(int x, int y) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function multiply(int x, int y) returns int {
     io:println(string `Multiplying ${x} * ${y}`);
     return x * y;
 }

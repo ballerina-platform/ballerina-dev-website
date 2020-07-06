@@ -182,7 +182,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -195,7 +195,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener listenerEndpoint = new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener listenerEndpoint = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -207,7 +207,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     compression: {
         enable: http:COMPRESSION_AUTO
     }
@@ -238,7 +238,7 @@ service autoCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
             log:printError(&quot;Error sending response&quot;, result);
         }
     }
@@ -254,7 +254,7 @@ service autoCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     compression: {
         enable: http:COMPRESSION_ALWAYS,
         contentTypes: [&quot;text/plain&quot;]
@@ -284,7 +284,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function getJson(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getJson(http:Caller caller, http:Request req) {
         json msg = {&quot;Type&quot;: &quot;Always but constrained by content-type&quot;};
         var result = caller-&gt;respond(msg);
         if (result is error) {
@@ -310,7 +310,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function getString(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getString(http:Caller caller, http:Request req) {
         var result = caller-&gt;respond(&quot;Type : This is a string&quot;);
         if (result is error) {
             log:printError(&quot;Error sending response&quot;, result);
@@ -335,7 +335,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;, {
         compression: http:COMPRESSION_ALWAYS
     }
 );
@@ -362,7 +362,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service passthrough on new http:Listener(9092) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service passthrough on new http:Listener(9092) {
     @http:ResourceConfig {
         path: &quot;/&quot;
     }
@@ -393,7 +393,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service backend on listenerEndpoint {
+                                    <div class="highlight"><pre><code class=language-ballerina>service backend on listenerEndpoint {
     resource function echo(http:Caller caller, http:Request req) {
         http:Response res = new;
         if (req.hasHeader(&quot;accept-encoding&quot;)) {
@@ -421,7 +421,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Error sending response&quot;, result);
         }

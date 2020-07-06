@@ -128,7 +128,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -140,7 +140,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person object {
 </code></pre></div>
 
                                 </td>
@@ -161,7 +161,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public string name;
+                                    <div class="highlight"><pre><code class=language-ballerina>    public string name;
     private int age;
 </code></pre></div>
 
@@ -174,7 +174,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function __init(string name, int age) returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function __init(string name, int age) returns error? {
         self.name = name;
         self.age = check validateAge(age);
     }
@@ -190,7 +190,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function validateAge(int age) returns int|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function validateAge(int age) returns int|error {
     if (age &gt; 0 &amp;&amp; age &lt; 100) {
         return age;
     }
@@ -205,7 +205,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error invalidAge = error(&quot;The age should be between 0-100&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    error invalidAge = error(&quot;The age should be between 0-100&quot;);
     return invalidAge;
 }
 </code></pre></div>
@@ -219,7 +219,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -231,7 +231,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person|error p1 = new(&quot;John&quot;, 25);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person|error p1 = new(&quot;John&quot;, 25);
     if (p1 is Person) {
         io:println(p1.name);
     } else {
@@ -256,7 +256,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Person|error p2 = new(&quot;Sam&quot;, -20);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person|error p2 = new(&quot;Sam&quot;, -20);
     if (p2 is Person) {
         io:println(p2.name);
     } else {

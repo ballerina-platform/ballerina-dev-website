@@ -226,7 +226,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/mysql;
 import ballerina/sql;
 </code></pre></div>
@@ -240,7 +240,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>string dbUser = &quot;root&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
 string dbPassword = &quot;Test@123&quot;;
 </code></pre></div>
 
@@ -262,7 +262,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function simpleQuery(mysql:Client mysqlClient) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function simpleQuery(mysql:Client mysqlClient) {
     io:println(&quot;------ Start Simple Query -------&quot;);
 </code></pre></div>
 
@@ -275,7 +275,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;record{}, error&gt; resultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
         mysqlClient-&gt;query(&quot;Select * from Customers&quot;);
 </code></pre></div>
 
@@ -297,7 +297,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? e = resultStream.forEach(function(record {} result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = resultStream.forEach(function(record {} result) {
         io:println(&quot;Customer full details: &quot;, result);
         io:println(&quot;Customer first name: &quot;, result[&quot;FirstName&quot;]);
         io:println(&quot;Customer last name: &quot;, result[&quot;LastName&quot;]);
@@ -322,7 +322,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (e is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (e is error) {
         io:println(&quot;ForEach operation on the stream failed!&quot;, e);
     }
 </code></pre></div>
@@ -344,7 +344,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    e = resultStream.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    e = resultStream.close();
     io:println(&quot;------ End Simple Query -------&quot;);
 }
 </code></pre></div>
@@ -368,7 +368,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function countRows(mysql:Client mysqlClient) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function countRows(mysql:Client mysqlClient) {
     io:println(&quot;------ Start Count Total Rows -------&quot;);
 </code></pre></div>
 
@@ -381,7 +381,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;record{}, error&gt; resultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
         mysqlClient-&gt;query(&quot;Select count(*) as Total from Customers&quot;);
 </code></pre></div>
 
@@ -401,7 +401,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {|record {} value;|}|error? result = resultStream.next();
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {|record {} value;|}|error? result = resultStream.next();
 </code></pre></div>
 
                                 </td>
@@ -421,7 +421,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is record {|record {} value;|}) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is record {|record {} value;|}) {
         io:println(&quot;Total rows in customer table : &quot;, result.value[&quot;Total&quot;]);
     } else if (result is error) {
         io:println(&quot;Next operation on the stream failed!&quot;, result);
@@ -446,7 +446,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? e = resultStream.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = resultStream.close();
     io:println(&quot;------ End Count Total Rows -------&quot;);
 }
 </code></pre></div>
@@ -467,7 +467,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Customer record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Customer record {|
     int customerId;
     string lastName;
     string firstName;
@@ -496,7 +496,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function typedQuery(mysql:Client mysqlClient) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function typedQuery(mysql:Client mysqlClient) {
     io:println(&quot;------ Start Query With Type Description -------&quot;);
 </code></pre></div>
 
@@ -509,7 +509,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;record{}, error&gt; resultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
         mysqlClient-&gt;query(&quot;Select * from Customers&quot;, Customer);
 </code></pre></div>
 
@@ -530,7 +530,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;Customer, sql:Error&gt; customerStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Customer, sql:Error&gt; customerStream =
         &lt;stream&lt;Customer, sql:Error&gt;&gt;resultStream;
 </code></pre></div>
 
@@ -550,7 +550,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? e = customerStream.forEach(function(Customer customer) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = customerStream.forEach(function(Customer customer) {
         io:println(customer);
     });
     if (e is error) {
@@ -574,7 +574,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    e = resultStream.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    e = resultStream.close();
 </code></pre></div>
 
                                 </td>
@@ -593,7 +593,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;------ End Query With Type Description -------&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;------ End Query With Type Description -------&quot;);
 }
 </code></pre></div>
 
@@ -606,7 +606,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initializeTable() returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeTable() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
     sql:ExecuteResult? result =
         check mysqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;);
@@ -643,7 +643,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -655,7 +655,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:Error? err = initializeTable();
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:Error? err = initializeTable();
     if (err is sql:Error) {
         io:println(&quot;Sample data initialization failed!&quot;);
         io:println(err);
@@ -681,7 +681,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            simpleQuery(mysqlClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>            simpleQuery(mysqlClient);
             countRows(mysqlClient);
             typedQuery(mysqlClient);
             io:println(&quot;Queried the database successfully!&quot;);
@@ -703,7 +703,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            sql:Error? e = mysqlClient.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>            sql:Error? e = mysqlClient.close();
         } else {
             io:println(&quot;MySQL Client initialization for &quot; +
                 &quot;querying data failed!&quot;, mysqlClient);

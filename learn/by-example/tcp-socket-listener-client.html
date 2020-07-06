@@ -195,7 +195,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/socket;
 </code></pre></div>
 
@@ -215,7 +215,7 @@ import ballerina/socket;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -227,7 +227,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    socket:Client socketClient = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>    socket:Client socketClient = new ({
         host: &quot;localhost&quot;,
         port: 61598
     });
@@ -251,7 +251,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int i = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int i = 0;
     int arrayLength = payloadByte.length();
     while (i &lt; arrayLength) {
         var writeResult = socketClient-&gt;write(payloadByte);
@@ -280,7 +280,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = socketClient-&gt;read();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = socketClient-&gt;read();
     if (result is [byte[], int]) {
         var [reply, length] = result;
         if (length &gt; 0) {
@@ -320,7 +320,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var closeResult = socketClient-&gt;close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var closeResult = socketClient-&gt;close();
     if (closeResult is error) {
         io:println(closeResult);
     } else {
@@ -437,7 +437,7 @@ Client connection closed successfully.
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 import ballerina/socket;
 </code></pre></div>
@@ -458,7 +458,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service echoServer on new socket:Listener(61598) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service echoServer on new socket:Listener(61598) {
 </code></pre></div>
 
                                 </td>
@@ -478,7 +478,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onConnect(socket:Caller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onConnect(socket:Caller caller) {
         log:printInfo(&quot;Client connected: &quot; + caller.id.toString());
     }
 </code></pre></div>
@@ -499,7 +499,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onReadReady(socket:Caller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onReadReady(socket:Caller caller) {
         var result = caller-&gt;read();
         if (result is [byte[], int]) {
             var [content, length] = result;
@@ -522,7 +522,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                var byteChannel =
+                                    <div class="highlight"><pre><code class=language-ballerina>                var byteChannel =
                 io:createReadableChannel(content);
                 if (byteChannel is io:ReadableByteChannel) {
                     io:ReadableCharacterChannel characterChannel =
@@ -549,7 +549,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                        int i = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>                        int i = 0;
                         int arrayLength = payloadByte.length();
                         while (i &lt; arrayLength) {
                             var writeResult = caller-&gt;write(payloadByte);
@@ -593,7 +593,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(socket:Caller caller, error er) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(socket:Caller caller, error er) {
         log:printError(&quot;An error occurred&quot;, er);
     }
 }

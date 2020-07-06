@@ -212,7 +212,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
@@ -227,7 +227,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -246,7 +246,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/stream&quot;
 }
 service HTTPStreamingService on new http:Listener(9090) {
@@ -261,7 +261,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/fileupload&quot;
     }
@@ -279,7 +279,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        request.setFileAsPayload(&quot;./files/BallerinaLang.pdf&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        request.setFileAsPayload(&quot;./files/BallerinaLang.pdf&quot;,
             contentType = mime:APPLICATION_PDF);
 </code></pre></div>
 
@@ -299,7 +299,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
 </code></pre></div>
 
                                 </td>
@@ -318,7 +318,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         if (clientResponse is http:Response) {
             var payload = clientResponse.getTextPayload();
             if (payload is string) {
@@ -348,7 +348,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/receiver&quot;
     }
@@ -368,7 +368,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var destinationChannel =
+                                    <div class="highlight"><pre><code class=language-ballerina>            var destinationChannel =
                 io:openWritableFile(&quot;./files/ReceivedFile.pdf&quot;);
             if (destinationChannel is io:WritableByteChannel) {
                 var result = copy(payload, destinationChannel);
@@ -410,7 +410,7 @@ written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function setError(http:Response res, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function setError(http:Response res, error err) {
     res.statusCode = 500;
     res.setPayload(&lt;@untainted string&gt;err.detail()?.message);
 }
@@ -432,7 +432,7 @@ written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function copy(io:ReadableByteChannel src,
+                                    <div class="highlight"><pre><code class=language-ballerina>function copy(io:ReadableByteChannel src,
               io:WritableByteChannel dst) returns error? {
 </code></pre></div>
 
@@ -452,7 +452,7 @@ written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (true) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (true) {
 </code></pre></div>
 
                                 </td>
@@ -472,7 +472,7 @@ written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        byte[]|io:Error result = src.read(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>        byte[]|io:Error result = src.read(1000);
         if (result is io:EofError) {
             break;
         } else if (result is error) {
@@ -497,7 +497,7 @@ written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            int i = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>            int i = 0;
             while (i &lt; result.length()) {
                 var result2 = dst.write(result, i);
                 if (result2 is error) {
@@ -528,7 +528,7 @@ written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
     abstract object {
         public function close() returns error?;
     } channelResult = ch;

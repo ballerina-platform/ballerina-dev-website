@@ -160,7 +160,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/auth;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/auth;
 import ballerina/config;
 import ballerina/http;
 import ballerina/log;
@@ -175,7 +175,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>auth:InboundBasicAuthProvider basicAuthProvider = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>auth:InboundBasicAuthProvider basicAuthProvider = new;
 http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
 </code></pre></div>
 
@@ -195,7 +195,7 @@ http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new (9090, config = {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new (9090, config = {
     auth: {
         authHandlers: [basicAuthHandler]
     },
@@ -221,7 +221,7 @@ http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
                   &quot;/bre/security/ballerinaKeystore.p12&quot;,
@@ -247,7 +247,7 @@ http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;,
     auth: {
         scopes: [&quot;scope1&quot;]
@@ -264,7 +264,7 @@ http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service echo on ep {
+                                    <div class="highlight"><pre><code class=language-ballerina>service echo on ep {
 </code></pre></div>
 
                                 </td>
@@ -291,7 +291,7 @@ http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/sayHello&quot;,
         auth: {
@@ -309,7 +309,7 @@ http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function hello(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function hello(http:Caller caller, http:Request req) {
         error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
         if (result is error) {
             log:printError(&quot;Error in responding to caller&quot;, result);

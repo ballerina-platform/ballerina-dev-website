@@ -116,7 +116,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
 import ballerina/task;
 </code></pre></div>
 
@@ -129,7 +129,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>task:AppointmentConfiguration appointmentConfiguration = {
+                                    <div class="highlight"><pre><code class=language-ballerina>task:AppointmentConfiguration appointmentConfiguration = {
 </code></pre></div>
 
                                 </td>
@@ -151,7 +151,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    appointmentDetails: &quot;* * * * * ?&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    appointmentDetails: &quot;* * * * * ?&quot;,
 </code></pre></div>
 
                                 </td>
@@ -170,7 +170,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    noOfRecurrences: 10
+                                    <div class="highlight"><pre><code class=language-ballerina>    noOfRecurrences: 10
 };
 </code></pre></div>
 
@@ -190,7 +190,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener task:Listener appointment = new (appointmentConfiguration);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener task:Listener appointment = new (appointmentConfiguration);
 </code></pre></div>
 
                                 </td>
@@ -209,7 +209,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int count = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int count = 0;
 </code></pre></div>
 
                                 </td>
@@ -221,7 +221,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service appointmentService on appointment {
+                                    <div class="highlight"><pre><code class=language-ballerina>service appointmentService on appointment {
 </code></pre></div>
 
                                 </td>
@@ -240,7 +240,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onTrigger() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onTrigger() {
         log:printInfo(&quot;Cleaning up...&quot;);
         log:printInfo(count.toString());
         count = count + 1;

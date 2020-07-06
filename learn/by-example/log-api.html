@@ -123,7 +123,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -136,7 +136,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     error e = error(&quot;error occurred&quot;);
 </code></pre></div>
 
@@ -149,7 +149,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    log:printDebug(&quot;debug log&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(&quot;debug log&quot;);
     log:printError(&quot;error log&quot;);
     log:printError(&quot;error log with cause&quot;, e);
     log:printInfo(&quot;info log&quot;);
@@ -204,7 +204,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Fruit apple = new (&quot;Apple&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Fruit apple = new (&quot;Apple&quot;);
     Fruit orange = new (&quot;Orange&quot;);
 </code></pre></div>
 
@@ -228,7 +228,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    log:printDebug(&quot;Name of the fruit is Strawberry.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(&quot;Name of the fruit is Strawberry.&quot;);
     log:printDebug(io:sprintf(&quot;Names of the fruits are %s, %s.&quot;, apple.getName(), orange.getName()));
 </code></pre></div>
 
@@ -241,7 +241,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    log:printDebug(function() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(function() returns string {
         return io:sprintf(&quot;Name of the fruit is is %s&quot;, apple.getName());
     });
 }
@@ -264,7 +264,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public type Fruit object {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Fruit object {
     string name;
     public function __init(string name) {
         self.name = name;

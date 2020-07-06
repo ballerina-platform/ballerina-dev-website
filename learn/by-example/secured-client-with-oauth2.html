@@ -246,7 +246,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/config;
 import ballerina/log;
 import ballerina/oauth2;
@@ -261,7 +261,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new ({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     clientId: &quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;,
     clientSecret: &quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;,
@@ -297,7 +297,7 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP1 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP1 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler1
     },
@@ -320,7 +320,7 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new ({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     username: &quot;&lt;Username for password grant authentication&gt;&quot;,
     password: &quot;&lt;Password for password grant authentication&gt;&quot;,
@@ -372,7 +372,7 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP2 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP2 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler2
     },
@@ -395,7 +395,7 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new ({
     accessToken: &quot;&lt;Access token for the authorization endpoint&gt;&quot;,
     refreshConfig: {
         clientId: &quot;&lt;Client ID for authentication with the authorization endpoint&gt;&quot;,
@@ -436,7 +436,7 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP3 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP3 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler3
     },
@@ -459,7 +459,7 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -471,7 +471,7 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response1 = clientEP1-&gt;get(&quot;/&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var response1 = clientEP1-&gt;get(&quot;/&quot;);
     if (response1 is http:Response) {
         var result = response1.getJsonPayload();
         if (result is json) {
@@ -500,7 +500,7 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response2 = clientEP2-&gt;get(&quot;/&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var response2 = clientEP2-&gt;get(&quot;/&quot;);
     if (response2 is http:Response) {
         var result = response2.getJsonPayload();
         if (result is json) {
@@ -529,7 +529,7 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var response3 = clientEP3-&gt;get(&quot;/&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var response3 = clientEP3-&gt;get(&quot;/&quot;);
     if (response3 is http:Response) {
         var result = response3.getJsonPayload();
         if (result is json) {

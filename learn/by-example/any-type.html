@@ -129,7 +129,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -141,7 +141,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person object {
     string fname;
     string lname;
 </code></pre></div>
@@ -155,7 +155,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function __init(string fname, string lname) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function __init(string fname, string lname) {
         self.fname = fname;
         self.lname = lname;
     }
@@ -170,7 +170,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getFullName() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string {
         return self.fname + &quot; &quot; + self.lname;
     }
 };
@@ -185,7 +185,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getValue() returns any {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getValue() returns any {
     string name = &quot;cat&quot;;
     return name;
 }
@@ -207,7 +207,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -219,7 +219,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    any a = new Person(&quot;John&quot;, &quot;Doe&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    any a = new Person(&quot;John&quot;, &quot;Doe&quot;);
 </code></pre></div>
 
                                 </td>
@@ -239,7 +239,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person john = &lt;Person&gt;a;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person john = &lt;Person&gt;a;
     io:println(&quot;Full name: &quot;, john.getFullName());
 </code></pre></div>
 
@@ -260,7 +260,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (a is Person) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (a is Person) {
         io:println(&quot;First name: &quot;, john.fname);
     }
 </code></pre></div>
@@ -274,7 +274,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] ia = [1, 3, 5, 6];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] ia = [1, 3, 5, 6];
     any ar = ia;
     io:println(ar);
 </code></pre></div>
@@ -295,7 +295,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(getValue());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(getValue());
 }
 </code></pre></div>
 

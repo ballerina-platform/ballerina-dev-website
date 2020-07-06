@@ -164,7 +164,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -176,7 +176,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int counter = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int counter = 0;
 </code></pre></div>
 
                                 </td>
@@ -195,7 +195,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     process();
     io:println(&quot;final counter value - &quot;, counter);
     io:println(&quot;final count field value - &quot;, counterObj.count);
@@ -211,7 +211,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Counter object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Counter object {
     int count = 0;
 </code></pre></div>
 
@@ -224,7 +224,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public function update() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function update() {
         foreach var i in 1 ... 1000 {
             lock {
 </code></pre></div>
@@ -238,7 +238,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                self.count = self.count + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>                self.count = self.count + 1;
             }
         }
     }
@@ -262,7 +262,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>Counter counterObj = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>Counter counterObj = new;
 </code></pre></div>
 
                                 </td>
@@ -281,7 +281,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function process() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function process() {
     worker w1 {
         counterObj.update();
 </code></pre></div>
@@ -295,7 +295,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        foreach var i in 1 ... 1000 {
+                                    <div class="highlight"><pre><code class=language-ballerina>        foreach var i in 1 ... 1000 {
             lock {
 </code></pre></div>
 
@@ -315,7 +315,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                counter = counter + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>                counter = counter + 1;
             }
         }
     }
@@ -341,7 +341,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                counter = counter + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>                counter = counter + 1;
             }
         }
     }
@@ -367,7 +367,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                counter = counter + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>                counter = counter + 1;
             }
         }
     }
@@ -393,7 +393,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                counter = counter + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>                counter = counter + 1;
             }
         }
     }
@@ -415,7 +415,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = wait {w1, w2, w3, w4};
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = wait {w1, w2, w3, w4};
 }
 </code></pre></div>
 

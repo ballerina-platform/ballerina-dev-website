@@ -137,7 +137,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
 import ballerina/rabbitmq;
 </code></pre></div>
 
@@ -150,7 +150,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>rabbitmq:Connection connection = new ({host: &quot;localhost&quot;, port: 5672});
+                                    <div class="highlight"><pre><code class=language-ballerina>rabbitmq:Connection connection = new ({host: &quot;localhost&quot;, port: 5672});
 </code></pre></div>
 
                                 </td>
@@ -169,7 +169,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener rabbitmq:Listener channelListener = new (connection);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener rabbitmq:Listener channelListener = new (connection);
 </code></pre></div>
 
                                 </td>
@@ -181,7 +181,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@rabbitmq:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@rabbitmq:ServiceConfig {
     queueConfig: {
         queueName: &quot;MyQueue&quot;
     },
@@ -211,7 +211,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service QosConsumer on channelListener {
+                                    <div class="highlight"><pre><code class=language-ballerina>service QosConsumer on channelListener {
 </code></pre></div>
 
                                 </td>
@@ -230,7 +230,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(rabbitmq:Message message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(rabbitmq:Message message) {
         var messageContent = message.getTextContent();
         if (messageContent is string) {
             log:printInfo(&quot;The message received: &quot; + messageContent);
@@ -255,7 +255,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = message-&gt;basicAck();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = message-&gt;basicAck();
         if (result is error) {
             log:printError(&quot;Error occurred while acknowledging the message.&quot;);
         }

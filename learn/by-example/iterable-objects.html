@@ -124,7 +124,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -136,7 +136,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type ArrayIterator object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type ArrayIterator object {
     private int[] integers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
     private int cursor = -1;
 </code></pre></div>
@@ -157,7 +157,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public function next() returns record {|int value;|}? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function next() returns record {|int value;|}? {
         self.cursor += 1;
         if (self.cursor &lt; self.integers.length()) {
             record {|int value;|} nextVal = {value: self.integers[self.cursor]};
@@ -184,7 +184,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type IteratorGenerator object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type IteratorGenerator object {
 </code></pre></div>
 
                                 </td>
@@ -203,7 +203,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public function __iterator() returns abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function __iterator() returns abstract object {
             public function next() returns record {|int value;|}?;} {
         return new ArrayIterator();
     }
@@ -226,7 +226,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     IteratorGenerator itrGen = new;
     int i = 0;
     foreach var item in itrGen {

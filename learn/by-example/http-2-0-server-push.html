@@ -235,7 +235,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -248,7 +248,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener http2ServiceEP = new (7090,
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener http2ServiceEP = new (7090,
     config = {httpVersion: &quot;2.0&quot;});
 </code></pre></div>
 
@@ -269,7 +269,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/http2Service&quot;
 }
 service http2Service on http2ServiceEP {
@@ -284,7 +284,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         path: &quot;/&quot;
     }
     resource function http2Resource(http:Caller caller, http:Request req) {
@@ -299,7 +299,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:PushPromise promise1 = new (path = &quot;/resource1&quot;, method = &quot;GET&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:PushPromise promise1 = new (path = &quot;/resource1&quot;, method = &quot;GET&quot;);
         var promiseResponse1 = caller-&gt;promise(promise1);
         if (promiseResponse1 is error) {
             log:printError(&quot;Error occurred while sending the promise1&quot;,
@@ -323,7 +323,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:PushPromise promise2 = new (path = &quot;/resource2&quot;, method = &quot;GET&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:PushPromise promise2 = new (path = &quot;/resource2&quot;, method = &quot;GET&quot;);
         var promiseResponse2 = caller-&gt;promise(promise2);
         if (promiseResponse2 is error) {
             log:printError(&quot;Error occurred while sending the promise2&quot;,
@@ -347,7 +347,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:PushPromise promise3 = new (path = &quot;/resource3&quot;, method = &quot;GET&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:PushPromise promise3 = new (path = &quot;/resource3&quot;, method = &quot;GET&quot;);
         var promiseResponse3 = caller-&gt;promise(promise3);
         if (promiseResponse3 is error) {
             log:printError(&quot;Error occurred while sending the promise3&quot;,
@@ -371,7 +371,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         json msg = {&quot;response&quot;: {&quot;name&quot;: &quot;main resource&quot;}};
         res.setPayload(msg);
 </code></pre></div>
@@ -392,7 +392,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var response = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var response = caller-&gt;respond(res);
         if (response is error) {
             log:printError(&quot;Error occurred while sending the response&quot;,
                 err = response);
@@ -415,7 +415,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response push1 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response push1 = new;
         msg = {&quot;push&quot;: {&quot;name&quot;: &quot;resource1&quot;}};
         push1.setPayload(msg);
 </code></pre></div>
@@ -436,7 +436,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var pushResponse1 = caller-&gt;pushPromisedResponse(promise1, push1);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var pushResponse1 = caller-&gt;pushPromisedResponse(promise1, push1);
         if (pushResponse1 is error) {
             log:printError(&quot;Error occurred while sending the promised response1&quot;,
                 err = pushResponse1);
@@ -459,7 +459,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response push2 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response push2 = new;
         msg = {&quot;push&quot;: {&quot;name&quot;: &quot;resource2&quot;}};
         push2.setPayload(msg);
 </code></pre></div>
@@ -480,7 +480,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var pushResponse2 = caller-&gt;pushPromisedResponse(promise2, push2);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var pushResponse2 = caller-&gt;pushPromisedResponse(promise2, push2);
         if (pushResponse2 is error) {
             log:printError(&quot;Error occurred while sending the promised response2&quot;,
                 err = pushResponse2);
@@ -503,7 +503,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response push3 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response push3 = new;
         msg = {&quot;push&quot;: {&quot;name&quot;: &quot;resource3&quot;}};
         push3.setPayload(msg);
 </code></pre></div>
@@ -524,7 +524,7 @@ service http2Service on http2ServiceEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var pushResponse3 = caller-&gt;pushPromisedResponse(promise3, push3);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var pushResponse3 = caller-&gt;pushPromisedResponse(promise3, push3);
         if (pushResponse3 is error) {
             log:printError(&quot;Error occurred while sending the promised response3&quot;,
                 err = pushResponse3);
@@ -680,7 +680,7 @@ $ ballerina run http_2.0_service.bal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -693,7 +693,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP = new (&quot;http://localhost:7090&quot;, {httpVersion: &quot;2.0&quot;});
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP = new (&quot;http://localhost:7090&quot;, {httpVersion: &quot;2.0&quot;});
 </code></pre></div>
 
                                 </td>
@@ -713,7 +713,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -725,7 +725,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Request serviceReq = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Request serviceReq = new;
     http:HttpFuture httpFuture = new;
 </code></pre></div>
 
@@ -738,7 +738,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var submissionResult = clientEP-&gt;submit(&quot;GET&quot;, &quot;/http2Service&quot;, serviceReq);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var submissionResult = clientEP-&gt;submit(&quot;GET&quot;, &quot;/http2Service&quot;, serviceReq);
 </code></pre></div>
 
                                 </td>
@@ -757,7 +757,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (submissionResult is http:HttpFuture) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (submissionResult is http:HttpFuture) {
         httpFuture = submissionResult;
     } else {
         log:printError(&quot;Error occurred while submitting a request&quot;,
@@ -775,7 +775,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:PushPromise?[] promises = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:PushPromise?[] promises = [];
     int promiseCount = 0;
 </code></pre></div>
 
@@ -788,7 +788,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean hasPromise = clientEP-&gt;hasPromise(httpFuture);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean hasPromise = clientEP-&gt;hasPromise(httpFuture);
 </code></pre></div>
 
                                 </td>
@@ -807,7 +807,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (hasPromise) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (hasPromise) {
         http:PushPromise pushPromise = new;
 </code></pre></div>
 
@@ -820,7 +820,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var nextPromiseResult = clientEP-&gt;getNextPromise(httpFuture);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var nextPromiseResult = clientEP-&gt;getNextPromise(httpFuture);
 </code></pre></div>
 
                                 </td>
@@ -839,7 +839,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (nextPromiseResult is http:PushPromise) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (nextPromiseResult is http:PushPromise) {
             pushPromise = nextPromiseResult;
         } else {
             log:printError(&quot;Error occurred while fetching a push promise&quot;,
@@ -858,7 +858,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (pushPromise.path == &quot;/resource2&quot;) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (pushPromise.path == &quot;/resource2&quot;) {
 </code></pre></div>
 
                                 </td>
@@ -870,7 +870,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            clientEP-&gt;rejectPromise(pushPromise);
+                                    <div class="highlight"><pre><code class=language-ballerina>            clientEP-&gt;rejectPromise(pushPromise);
 </code></pre></div>
 
                                 </td>
@@ -890,7 +890,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            log:printInfo(&quot;Push promise for resource2 rejected&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(&quot;Push promise for resource2 rejected&quot;);
         } else {
 </code></pre></div>
 
@@ -903,7 +903,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            promises[promiseCount] = pushPromise;
+                                    <div class="highlight"><pre><code class=language-ballerina>            promises[promiseCount] = pushPromise;
 </code></pre></div>
 
                                 </td>
@@ -922,7 +922,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            promiseCount = promiseCount + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>            promiseCount = promiseCount + 1;
         }
         hasPromise = clientEP-&gt;hasPromise(httpFuture);
     }
@@ -937,7 +937,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response response = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Response response = new;
 </code></pre></div>
 
                                 </td>
@@ -949,7 +949,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = clientEP-&gt;getResponse(httpFuture);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = clientEP-&gt;getResponse(httpFuture);
 </code></pre></div>
 
                                 </td>
@@ -968,7 +968,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is http:Response) {
         response = result;
     } else {
         log:printError(&quot;Error occurred while fetching response&quot;,
@@ -986,7 +986,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var responsePayload = response.getJsonPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var responsePayload = response.getJsonPayload();
     if (responsePayload is json) {
         log:printInfo(&quot;Response : &quot; + responsePayload.toJsonString());
     } else {
@@ -1004,7 +1004,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var p in promises {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var p in promises {
         http:PushPromise promise = &lt;http:PushPromise&gt;p;
         http:Response promisedResponse = new;
         var promisedResponseResult = clientEP-&gt;getPromisedResponse(promise);

@@ -118,7 +118,7 @@ For more information, see <a href="https://ballerina.io/learn/how-to-deploy-ball
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/docker;
 </code></pre></div>
@@ -132,7 +132,7 @@ import ballerina/docker;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@docker:Expose {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@docker:Expose {}
 listener http:Listener helloWorldEP = new(9090);
 </code></pre></div>
 
@@ -152,7 +152,7 @@ listener http:Listener helloWorldEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@docker:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@docker:Config {
 </code></pre></div>
 
                                 </td>
@@ -172,7 +172,7 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    name: &quot;helloworld&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    name: &quot;helloworld&quot;,
 </code></pre></div>
 
                                 </td>
@@ -191,7 +191,7 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    tag: &quot;v1.0&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    tag: &quot;v1.0&quot;
 }
 @http:ServiceConfig {
     basePath: &quot;/helloWorld&quot;

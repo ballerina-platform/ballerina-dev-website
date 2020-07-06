@@ -178,7 +178,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/time;
 </code></pre></div>
 
@@ -191,7 +191,7 @@ import ballerina/time;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -203,7 +203,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    time:Time time = time:currentTime();
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time time = time:currentTime();
     int currentTimeMills = time.time;
     io:println(&quot;Current system time in milliseconds: &quot;, currentTimeMills);
 </code></pre></div>
@@ -226,7 +226,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    time:Time|error timeCreated = time:createTime(2017, 3, 28, 23, 42, 45,
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time|error timeCreated = time:createTime(2017, 3, 28, 23, 42, 45,
         554, &quot;America/Panama&quot;);
     if (timeCreated is time:Time) {
         io:println(&quot;Created Time: &quot;, time:toString(timeCreated));
@@ -250,7 +250,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    time:Time|error t1 = time:parse(&quot;2017-06-26T09:46:22.444-0500&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time|error t1 = time:parse(&quot;2017-06-26T09:46:22.444-0500&quot;,
         &quot;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&quot;);
     if (t1 is time:Time) {
         io:println(&quot;Parsed Time: &quot;, time:toString(t1));
@@ -274,7 +274,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string standardTimeString = time:toString(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string standardTimeString = time:toString(time);
     io:println(&quot;Current system time in ISO format: &quot;, standardTimeString);
 </code></pre></div>
 
@@ -296,7 +296,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error customTimeString = time:format(time, &quot;yyyy-MM-dd-E&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error customTimeString = time:format(time, &quot;yyyy-MM-dd-E&quot;);
     if (customTimeString is string) {
         io:println(&quot;Current system time in custom format: &quot;, customTimeString);
     }
@@ -318,7 +318,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int year = time:getYear(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int year = time:getYear(time);
     io:println(&quot;Year: &quot;, year);
 </code></pre></div>
 
@@ -339,7 +339,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int month = time:getMonth(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int month = time:getMonth(time);
     io:println(&quot;Month: &quot;, month);
 </code></pre></div>
 
@@ -359,7 +359,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int day = time:getDay(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int day = time:getDay(time);
     io:println(&quot;Day: &quot;, day);
 </code></pre></div>
 
@@ -379,7 +379,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int hour = time:getHour(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int hour = time:getHour(time);
     io:println(&quot;Hour: &quot;, hour);
 </code></pre></div>
 
@@ -399,7 +399,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int minute = time:getMinute(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int minute = time:getMinute(time);
     io:println(&quot;Minute: &quot;, minute);
 </code></pre></div>
 
@@ -419,7 +419,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int second = time:getSecond(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int second = time:getSecond(time);
     io:println(&quot;Second: &quot;, second);
 </code></pre></div>
 
@@ -439,7 +439,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int milliSecond = time:getMilliSecond(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int milliSecond = time:getMilliSecond(time);
     io:println(&quot;Millisecond: &quot;, milliSecond);
 </code></pre></div>
 
@@ -459,7 +459,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string weekday = time:getWeekday(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string weekday = time:getWeekday(time);
     io:println(&quot;Weekday: &quot;, weekday);
 </code></pre></div>
 
@@ -479,7 +479,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [year, month, day] = time:getDate(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    [year, month, day] = time:getDate(time);
     io:println(&quot;Date: &quot;, year, &quot;:&quot;, month, &quot;:&quot;, day);
 </code></pre></div>
 
@@ -499,7 +499,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [hour, minute, second, milliSecond] = time:getTime(time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    [hour, minute, second, milliSecond] = time:getTime(time);
     io:println(&quot;Time: &quot;, hour, &quot;:&quot;, minute, &quot;:&quot;, second, &quot;:&quot;, milliSecond);
 </code></pre></div>
 
@@ -519,7 +519,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    time:Time tmAdd = time:addDuration(time, 1, 1, 0, 0, 0, 1, 0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time tmAdd = time:addDuration(time, 1, 1, 0, 0, 0, 1, 0);
     io:println(&quot;After adding a duration: &quot;, time:toString(tmAdd));
 </code></pre></div>
 
@@ -540,7 +540,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    time:Time tmSub = time:subtractDuration(time, 1, 1, 0, 0, 0, 1, 0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time tmSub = time:subtractDuration(time, 1, 1, 0, 0, 0, 1, 0);
     io:println(&quot;After subtracting a duration: &quot;, time:toString(tmSub));
 </code></pre></div>
 
@@ -561,7 +561,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    time:Time|error t2 = time:createTime(2017, 3, 28, 23, 42, 45, 554,
+                                    <div class="highlight"><pre><code class=language-ballerina>    time:Time|error t2 = time:createTime(2017, 3, 28, 23, 42, 45, 554,
         &quot;America/Panama&quot;);
     if (t2 is time:Time) {
         io:println(&quot;Before converting the time zone: &quot;, time:toString(t2));

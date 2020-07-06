@@ -110,7 +110,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java;
 import ballerina/java.arrays as jarrays;
 </code></pre></div>
@@ -124,7 +124,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function splitString(handle receiver, handle regex) returns handle = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function splitString(handle receiver, handle regex) returns handle = @java:Method {
     name: &quot;split&quot;,
     class: &quot;java/lang/String&quot;
 } external;
@@ -139,7 +139,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -151,7 +151,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handle helloString = java:fromString(&quot;Hello world&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handle helloString = java:fromString(&quot;Hello world&quot;);
     handle regex = java:fromString(&quot; &quot;);
 </code></pre></div>
 
@@ -171,7 +171,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handle words = splitString(helloString, regex);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handle words = splitString(helloString, regex);
 </code></pre></div>
 
                                 </td>
@@ -190,7 +190,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int numWords = jarrays:getLength(words);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int numWords = jarrays:getLength(words);
     io:println(numWords);
 </code></pre></div>
 
@@ -203,7 +203,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    handle secondWord = jarrays:get(words, 1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handle secondWord = jarrays:get(words, 1);
     io:println(secondWord);
 }
 </code></pre></div>

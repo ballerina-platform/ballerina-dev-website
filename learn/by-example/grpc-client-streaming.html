@@ -165,7 +165,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>syntax = &quot;proto3&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>syntax = &quot;proto3&quot;;
 import &quot;google/protobuf/wrappers.proto&quot;;
 service HelloWorld {
 	rpc lotsOfGreetings (stream google.protobuf.StringValue)
@@ -291,7 +291,7 @@ $ ballerina grpc --input grpc_client_streaming.proto  --output stubs
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/log;
 </code></pre></div>
 
@@ -311,7 +311,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@grpc:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceConfig {
     name: &quot;HelloWorld&quot;,
     clientStreaming: true
 }
@@ -327,7 +327,7 @@ service HelloWorld on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(grpc:Caller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(grpc:Caller caller) {
         log:printInfo(&quot;Client connected sucessfully.&quot;);
     }
 </code></pre></div>
@@ -348,7 +348,7 @@ service HelloWorld on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(grpc:Caller caller, string name) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(grpc:Caller caller, string name) {
         log:printInfo(&quot;Server received greet: &quot; + name);
     }
 </code></pre></div>
@@ -369,7 +369,7 @@ service HelloWorld on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(grpc:Caller caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(grpc:Caller caller, error err) {
         log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
                                            + &lt;string&gt;err.detail()[&quot;message&quot;]);
     }
@@ -391,7 +391,7 @@ service HelloWorld on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onComplete(grpc:Caller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onComplete(grpc:Caller caller) {
         grpc:Error? err = caller-&gt;send(&quot;Ack&quot;);
         if (err is grpc:Error) {
             log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
@@ -567,7 +567,7 @@ $ ballerina run target/bin/service.jar
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/io;
 </code></pre></div>
 
@@ -587,7 +587,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int total = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int total = 0;
 public function main() {
 </code></pre></div>
 
@@ -600,7 +600,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    HelloWorldClient helloWorldEp = new (&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    HelloWorldClient helloWorldEp = new (&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -619,7 +619,7 @@ public function main() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    grpc:StreamingClient ep;
+                                    <div class="highlight"><pre><code class=language-ballerina>    grpc:StreamingClient ep;
 </code></pre></div>
 
                                 </td>
@@ -631,7 +631,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var res = helloWorldEp-&gt;lotsOfGreetings(HelloWorldMessageListener);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var res = helloWorldEp-&gt;lotsOfGreetings(HelloWorldMessageListener);
 </code></pre></div>
 
                                 </td>
@@ -650,7 +650,7 @@ public function main() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (res is grpc:Error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (res is grpc:Error) {
         io:println(&quot;Error from Connector: &quot; + res.reason() + &quot; - &quot;
                                            + &lt;string&gt;res.detail()[&quot;message&quot;]);
         return;
@@ -669,7 +669,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string[] greets = [&quot;Hi&quot;, &quot;Hey&quot;, &quot;GM&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    string[] greets = [&quot;Hi&quot;, &quot;Hey&quot;, &quot;GM&quot;];
     var name = &quot;John&quot;;
     foreach string greet in greets {
         grpc:Error? connErr = ep-&gt;send(greet + &quot; &quot; + name);
@@ -698,7 +698,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    grpc:Error? result = ep-&gt;complete();
+                                    <div class="highlight"><pre><code class=language-ballerina>    grpc:Error? result = ep-&gt;complete();
     if (result is grpc:Error) {
         io:println(&quot;Error in sending complete message&quot;, result);
     }
@@ -720,7 +720,7 @@ public function main() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (total == 0) {}
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (total == 0) {}
     io:println(&quot;completed successfully&quot;);
 }
 </code></pre></div>
@@ -734,7 +734,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service HelloWorldMessageListener = service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service HelloWorldMessageListener = service {
 </code></pre></div>
 
                                 </td>
@@ -753,7 +753,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(string message) {
         total = 1;
         io:println(&quot;Response received from server: &quot; + message);
     }
@@ -775,7 +775,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(error err) {
         io:println(&quot;Error reported from server: &quot; + err.reason() + &quot; - &quot;
                                            + &lt;string&gt;err.detail()[&quot;message&quot;]);
     }
@@ -797,7 +797,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onComplete() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onComplete() {
         total = 1;
         io:println(&quot;Server Complete Sending Responses.&quot;);
     }

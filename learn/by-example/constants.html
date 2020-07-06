@@ -138,7 +138,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -150,7 +150,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const string GET = &quot;GET&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>const string GET = &quot;GET&quot;;
 </code></pre></div>
 
                                 </td>
@@ -169,7 +169,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const POST = &quot;POST&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>const POST = &quot;POST&quot;;
 </code></pre></div>
 
                                 </td>
@@ -188,7 +188,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type ACTION GET|POST;
+                                    <div class="highlight"><pre><code class=language-ballerina>type ACTION GET|POST;
 </code></pre></div>
 
                                 </td>
@@ -208,7 +208,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const int I = 125;
+                                    <div class="highlight"><pre><code class=language-ballerina>const int I = 125;
 </code></pre></div>
 
                                 </td>
@@ -227,7 +227,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const map&lt;string&gt; data = {&quot;user&quot;: &quot;Ballerina&quot;, &quot;ID&quot;: &quot;1234&quot;};
+                                    <div class="highlight"><pre><code class=language-ballerina>const map&lt;string&gt; data = {&quot;user&quot;: &quot;Ballerina&quot;, &quot;ID&quot;: &quot;1234&quot;};
 </code></pre></div>
 
                                 </td>
@@ -248,7 +248,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const map&lt;map&lt;string&gt;&gt; complexData = {&quot;data&quot;: data, &quot;data2&quot;: {&quot;user&quot;: &quot;WSO2&quot;}};
+                                    <div class="highlight"><pre><code class=language-ballerina>const map&lt;map&lt;string&gt;&gt; complexData = {&quot;data&quot;: data, &quot;data2&quot;: {&quot;user&quot;: &quot;WSO2&quot;}};
 </code></pre></div>
 
                                 </td>
@@ -267,7 +267,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -279,7 +279,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ACTION get = GET;
+                                    <div class="highlight"><pre><code class=language-ballerina>    ACTION get = GET;
     testAction(get);
 </code></pre></div>
 
@@ -299,7 +299,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ACTION post = &quot;POST&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    ACTION post = &quot;POST&quot;;
     testAction(POST);
 </code></pre></div>
 
@@ -312,7 +312,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int value = I + 10;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int value = I + 10;
     io:println(value);
 </code></pre></div>
 
@@ -332,7 +332,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(data);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(data);
     io:println(complexData);
 </code></pre></div>
 
@@ -345,7 +345,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(complexData[&quot;data&quot;][&quot;user&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(complexData[&quot;data&quot;][&quot;user&quot;]);
 </code></pre></div>
 
                                 </td>
@@ -364,7 +364,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -385,7 +385,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function testAction(ACTION action) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function testAction(ACTION action) {
     if (action == GET) {
         io:println(&quot;GET action&quot;);
     } else if (action == POST) {

@@ -114,7 +114,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/test;
 </code></pre></div>
 
@@ -127,7 +127,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:BeforeEach
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:BeforeEach
 function beforeFunc() {
     io:println(&quot;I&#39;m the before function!&quot;);
 }
@@ -149,7 +149,7 @@ function beforeFunc() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testFunction1() {
     io:println(&quot;I&#39;m in test function 1!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -172,7 +172,7 @@ function testFunction1() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testFunction2() {
     io:println(&quot;I&#39;m in test function 2!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -195,7 +195,7 @@ function testFunction2() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testFunction3() {
     io:println(&quot;I&#39;m in test function 3!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);

@@ -179,7 +179,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java.jdbc;
 import ballerina/sql;
 </code></pre></div>
@@ -193,7 +193,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initializeTable(jdbc:Client jdbcClient)
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeTable(jdbc:Client jdbcClient)
 returns int|string|sql:Error? {
 </code></pre></div>
 
@@ -206,7 +206,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecuteResult? result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecuteResult? result =
         check jdbcClient-&gt;execute(&quot;DROP TABLE IF EXISTS Customers&quot;);
     if (result is sql:ExecuteResult) {
         io:println(&quot;Drop table executed. &quot;, result);
@@ -230,7 +230,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    result = check jdbcClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS Customers&quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS Customers&quot; +
         &quot;(customerId INTEGER NOT NULL IDENTITY, firstName VARCHAR(300), &quot; +
         &quot;lastName VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE, &quot; +
         &quot;country VARCHAR(300), PRIMARY KEY (customerId))&quot;);
@@ -253,7 +253,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    result = check jdbcClient-&gt;execute(&quot;INSERT INTO Customers (firstName, &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient-&gt;execute(&quot;INSERT INTO Customers (firstName, &quot; +
         &quot;lastName,registrationID,creditLimit,country)&quot; +
         &quot;VALUES (&#39;Peter&#39;, &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;);
 </code></pre></div>
@@ -276,7 +276,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is sql:ExecuteResult) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is sql:ExecuteResult) {
         io:println(&quot;Rows affected: &quot;, result.affectedRowCount);
         io:println(&quot;Generated Customer ID: &quot;, result.lastInsertId);
         return result.lastInsertId;
@@ -293,7 +293,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function updateRecord(jdbc:Client jdbcClient, int generatedId) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function updateRecord(jdbc:Client jdbcClient, int generatedId) {
 </code></pre></div>
 
                                 </td>
@@ -305,7 +305,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecuteResult|sql:Error? result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecuteResult|sql:Error? result =
         jdbcClient-&gt;execute(&quot;Update Customers set creditLimit = 15000.5 &quot; +
         &quot;where customerId = &quot; + generatedId.toString());
     if (result is sql:ExecuteResult) {
@@ -334,7 +334,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function deleteRecord(jdbc:Client jdbcClient, int generatedId) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function deleteRecord(jdbc:Client jdbcClient, int generatedId) {
 </code></pre></div>
 
                                 </td>
@@ -346,7 +346,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecuteResult|sql:Error? result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecuteResult|sql:Error? result =
         jdbcClient-&gt;execute(&quot;Delete from Customers where customerId = &quot; +
         generatedId.toString());
     if (result is sql:ExecuteResult) {
@@ -375,7 +375,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -387,7 +387,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client|sql:Error jdbcClient = new (&quot;jdbc:h2:file:./target/customers&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client|sql:Error jdbcClient = new (&quot;jdbc:h2:file:./target/customers&quot;,
         &quot;rootUser&quot;, &quot;rootPass&quot;);
     if (jdbcClient is jdbc:Client) {
 </code></pre></div>
@@ -408,7 +408,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        int|string|sql:Error? initResult = initializeTable(jdbcClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>        int|string|sql:Error? initResult = initializeTable(jdbcClient);
         if (initResult is int) {
 </code></pre></div>
 
@@ -428,7 +428,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            updateRecord(jdbcClient, initResult);
+                                    <div class="highlight"><pre><code class=language-ballerina>            updateRecord(jdbcClient, initResult);
 </code></pre></div>
 
                                 </td>
@@ -447,7 +447,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            deleteRecord(jdbcClient, initResult);
+                                    <div class="highlight"><pre><code class=language-ballerina>            deleteRecord(jdbcClient, initResult);
             io:println(&quot;Sample executed successfully!&quot;);
         } else if (initResult is sql:Error) {
             io:println(&quot;Customer table initialization failed: &quot;, initResult);
@@ -470,7 +470,7 @@ returns int|string|sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        sql:Error? e = jdbcClient.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>        sql:Error? e = jdbcClient.close();
     } else {
         io:println(&quot;Initialization failed!!&quot;);
         io:println(jdbcClient);

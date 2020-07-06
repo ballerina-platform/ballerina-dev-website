@@ -180,7 +180,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/runtime;
 </code></pre></div>
@@ -194,7 +194,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
 </code></pre></div>
 
                                 </td>
@@ -213,7 +213,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        retryConfig: {
+                                    <div class="highlight"><pre><code class=language-ballerina>        retryConfig: {
 </code></pre></div>
 
                                 </td>
@@ -232,7 +232,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            intervalInMillis: 3000,
+                                    <div class="highlight"><pre><code class=language-ballerina>            intervalInMillis: 3000,
 </code></pre></div>
 
                                 </td>
@@ -251,7 +251,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            count: 3,
+                                    <div class="highlight"><pre><code class=language-ballerina>            count: 3,
 </code></pre></div>
 
                                 </td>
@@ -270,7 +270,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            backOffFactor: 2.0,
+                                    <div class="highlight"><pre><code class=language-ballerina>            backOffFactor: 2.0,
 </code></pre></div>
 
                                 </td>
@@ -290,7 +290,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            maxWaitIntervalInMillis: 20000
+                                    <div class="highlight"><pre><code class=language-ballerina>            maxWaitIntervalInMillis: 20000
         },
         timeoutInMillis: 2000
     }
@@ -317,7 +317,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/retry&quot;
 }
 service retryDemoService on new http:Listener(9090) {
@@ -332,7 +332,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -354,7 +354,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
         var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
 </code></pre></div>
 
@@ -375,7 +375,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (backendResponse is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is http:Response) {
             var responseToCaller = caller-&gt;respond(backendResponse);
             if (responseToCaller is error) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
@@ -412,7 +412,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int counter = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int counter = 0;
 </code></pre></div>
 
                                 </td>
@@ -424,7 +424,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service mockHelloService on new http:Listener(8080) {
@@ -448,7 +448,7 @@ service mockHelloService on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;, &quot;POST&quot;],
         path: &quot;/&quot;
     }
@@ -468,7 +468,7 @@ service mockHelloService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            runtime:sleep(5000);
+                                    <div class="highlight"><pre><code class=language-ballerina>            runtime:sleep(5000);
             var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
             handleRespondResult(responseToCaller);
         } else {
@@ -498,7 +498,7 @@ service mockHelloService on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleRespondResult(error? result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleRespondResult(error? result) {
     if (result is http:ListenerError) {
         log:printError(&quot;Error sending response from mock service&quot;, result);
     }

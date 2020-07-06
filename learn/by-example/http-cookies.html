@@ -201,7 +201,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -214,7 +214,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener serverEP = new (9095);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener serverEP = new (9095);
 </code></pre></div>
 
                                 </td>
@@ -226,7 +226,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/cookie-demo&quot;
 }
 </code></pre></div>
@@ -240,7 +240,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service cookieServer on serverEP {
+                                    <div class="highlight"><pre><code class=language-ballerina>service cookieServer on serverEP {
     @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/login&quot;
@@ -257,7 +257,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        json|error details = req.getJsonPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>        json|error details = req.getJsonPayload();
 </code></pre></div>
 
                                 </td>
@@ -277,7 +277,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (details is json) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (details is json) {
 </code></pre></div>
 
                                 </td>
@@ -289,7 +289,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            json|error name = details.name;
+                                    <div class="highlight"><pre><code class=language-ballerina>            json|error name = details.name;
             json|error password = details.password;
 </code></pre></div>
 
@@ -309,7 +309,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (name is json &amp;&amp; password is json) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (name is json &amp;&amp; password is json) {
 </code></pre></div>
 
                                 </td>
@@ -321,7 +321,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                if (password == &quot;p@ssw0rd&quot;) {
+                                    <div class="highlight"><pre><code class=language-ballerina>                if (password == &quot;p@ssw0rd&quot;) {
 </code></pre></div>
 
                                 </td>
@@ -340,7 +340,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                    http:Cookie cookie = new(&quot;username&quot;, name.toString());
+                                    <div class="highlight"><pre><code class=language-ballerina>                    http:Cookie cookie = new(&quot;username&quot;, name.toString());
 </code></pre></div>
 
                                 </td>
@@ -360,7 +360,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                    cookie.path = &quot;/&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>                    cookie.path = &quot;/&quot;;
 </code></pre></div>
 
                                 </td>
@@ -380,7 +380,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                    http:Response response = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>                    http:Response response = new;
 </code></pre></div>
 
                                 </td>
@@ -392,7 +392,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                    response.addCookie(cookie);
+                                    <div class="highlight"><pre><code class=language-ballerina>                    response.addCookie(cookie);
 </code></pre></div>
 
                                 </td>
@@ -411,7 +411,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                    response.setTextPayload(&quot;Login succeeded&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>                    response.setTextPayload(&quot;Login succeeded&quot;);
                     var result = caller-&gt;respond(response);
                     if (result is error) {
                         log:printError(&quot;Failed to respond&quot;, result);
@@ -439,7 +439,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/welcome&quot;
     }
@@ -455,7 +455,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Cookie[] cookies = req.getCookies();
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Cookie[] cookies = req.getCookies();
 </code></pre></div>
 
                                 </td>
@@ -474,7 +474,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Cookie[] usernameCookie = cookies.filter(function
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Cookie[] usernameCookie = cookies.filter(function
                                 (http:Cookie cookie) returns boolean {
             return cookie.name == &quot;username&quot;;
         });
@@ -496,7 +496,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (usernameCookie.length() &gt; 0) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (usernameCookie.length() &gt; 0) {
             string? user = usernameCookie[0].value;
             if (user is string) {
 </code></pre></div>
@@ -510,7 +510,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(&quot;Welcome back &quot; + &lt;@untainted&gt; user);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(&quot;Welcome back &quot; + &lt;@untainted&gt; user);
 </code></pre></div>
 
                                 </td>
@@ -529,7 +529,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>            } else {
 </code></pre></div>
 
                                 </td>
@@ -541,7 +541,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                var result = caller-&gt;respond(&quot;Please login&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>                var result = caller-&gt;respond(&quot;Please login&quot;);
             }
         } else {
 </code></pre></div>
@@ -562,7 +562,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(&quot;Please login&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(&quot;Please login&quot;);
         }
     }
 }
@@ -683,7 +683,7 @@ $ ballerina run cookie_server.bal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -696,7 +696,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:ClientConfiguration clientEPConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
     }
@@ -719,7 +719,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -731,7 +731,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Client httpClient = new(&quot;http://localhost:9095/cookie-demo&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client httpClient = new(&quot;http://localhost:9095/cookie-demo&quot;,
                                   clientEPConfig);
 </code></pre></div>
 
@@ -751,7 +751,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Request request = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Request request = new;
 </code></pre></div>
 
                                 </td>
@@ -770,7 +770,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json jsonPart = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    json jsonPart = {
         name: &quot;John&quot;,
         password: &quot;p@ssw0rd&quot;
     };
@@ -793,7 +793,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var loginResp = httpClient-&gt;post(&quot;/login&quot;, request);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var loginResp = httpClient-&gt;post(&quot;/login&quot;, request);
 </code></pre></div>
 
                                 </td>
@@ -812,7 +812,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (loginResp is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (loginResp is http:Response) {
 </code></pre></div>
 
                                 </td>
@@ -824,7 +824,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string|error loginMessage = loginResp.getTextPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error loginMessage = loginResp.getTextPayload();
 </code></pre></div>
 
                                 </td>
@@ -844,7 +844,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (loginMessage is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (loginMessage is error) {
             log:printError(&quot;Login failed&quot;, loginMessage);
         } else {
 </code></pre></div>
@@ -858,7 +858,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var welcomeResp = httpClient-&gt;get(&quot;/welcome&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var welcomeResp = httpClient-&gt;get(&quot;/welcome&quot;);
 </code></pre></div>
 
                                 </td>
@@ -881,7 +881,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (welcomeResp is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (welcomeResp is http:Response) {
                 string|error textPayload = welcomeResp.getTextPayload();
                 if (textPayload is string) {
 </code></pre></div>
@@ -895,7 +895,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>                    log:printInfo(textPayload);
+                                    <div class="highlight"><pre><code class=language-ballerina>                    log:printInfo(textPayload);
                 }
             }
         }

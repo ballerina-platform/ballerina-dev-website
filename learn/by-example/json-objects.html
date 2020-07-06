@@ -126,7 +126,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -138,7 +138,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -150,7 +150,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j = {name: &quot;apple&quot;, color: &quot;red&quot;, price: 100};
+                                    <div class="highlight"><pre><code class=language-ballerina>    json j = {name: &quot;apple&quot;, color: &quot;red&quot;, price: 100};
     io:println(j.toJsonString());
 </code></pre></div>
 
@@ -172,7 +172,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;j is map&lt;json&gt;: &quot;, j is map&lt;json&gt;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;j is map&lt;json&gt;: &quot;, j is map&lt;json&gt;);
 </code></pre></div>
 
                                 </td>
@@ -191,7 +191,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json empty = {};
+                                    <div class="highlight"><pre><code class=language-ballerina>    json empty = {};
 </code></pre></div>
 
                                 </td>
@@ -210,7 +210,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int age = 30;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int age = 30;
 </code></pre></div>
 
                                 </td>
@@ -222,7 +222,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json p = {fname: &quot;John&quot;, lname: &quot;Stallone&quot;, &quot;age&quot;: age};
+                                    <div class="highlight"><pre><code class=language-ballerina>    json p = {fname: &quot;John&quot;, lname: &quot;Stallone&quot;, &quot;age&quot;: age};
     io:println(p.toJsonString());
 </code></pre></div>
 
@@ -243,7 +243,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;json&gt; mp = &lt;map&lt;json&gt;&gt;p;
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;json&gt; mp = &lt;map&lt;json&gt;&gt;p;
     mp[&quot;age&quot;] = 31;
     io:println(p.toJsonString());
 </code></pre></div>
@@ -267,7 +267,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;json&gt; p2 = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;json&gt; p2 = {
         fname: &quot;Peter&quot;,
         lname: &quot;Stallone&quot;,
         address: {
@@ -296,7 +296,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    json lastName = p2[&quot;lname&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    json lastName = p2[&quot;lname&quot;];
     io:println(lastName);
 }
 </code></pre></div>

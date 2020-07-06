@@ -145,7 +145,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -157,7 +157,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -169,7 +169,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int a = let int b = 1 in b * 2;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int a = let int b = 1 in b * 2;
     io:println(&quot;a: &quot;, a);
 </code></pre></div>
 
@@ -190,7 +190,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string greeting = let string hello = &quot;Hello &quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    string greeting = let string hello = &quot;Hello &quot;,
                           string ballerina = &quot;Ballerina!&quot;
                       in hello + ballerina;
     io:println(&quot;greeting: &quot;, greeting);
@@ -212,7 +212,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int three = let int one = getInt(), int two = one + one in one + two;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int three = let int one = getInt(), int two = one + one in one + two;
     io:println(&quot;three: &quot;, three);
 </code></pre></div>
 
@@ -233,7 +233,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int length = let var num = 10, var txt = &quot;four&quot; in num + txt.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int length = let var num = 10, var txt = &quot;four&quot; in num + txt.length();
     io:println(&quot;length: &quot;, length);
 </code></pre></div>
 
@@ -253,7 +253,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [int, int] v1 = [10, 20];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [int, int] v1 = [10, 20];
 </code></pre></div>
 
                                 </td>
@@ -265,7 +265,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int tupleBindingResult = let [int, int] [d1, d2] = v1,
+                                    <div class="highlight"><pre><code class=language-ballerina>    int tupleBindingResult = let [int, int] [d1, d2] = v1,
                                  int d3 = d1 + d2
                              in  d3 * 2;
     io:println(&quot;tuple binding result: &quot;, tupleBindingResult);
@@ -287,7 +287,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int age = let Person {
+                                    <div class="highlight"><pre><code class=language-ballerina>    int age = let Person {
                     name: firstName,
                     age: personAge,
                     ...otherDetails
@@ -305,7 +305,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var fatal = let var error(reason, ...params) = getSampleError()
+                                    <div class="highlight"><pre><code class=language-ballerina>    var fatal = let var error(reason, ...params) = getSampleError()
                     in params[&quot;fatal&quot;];
     io:println(&quot;fatal: &quot;, fatal);
 }
@@ -320,7 +320,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function getInt() returns int =&gt; 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>public function getInt() returns int =&gt; 1;
 </code></pre></div>
 
                                 </td>
@@ -332,7 +332,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age;
     string country;
@@ -348,7 +348,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getPerson() returns Person =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getPerson() returns Person =&gt; {
     name: &quot;John&quot;,
     age: 31,
     country: &quot;USA&quot;,
@@ -365,7 +365,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getSampleError() returns error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getSampleError() returns error {
     return error(&quot;SampleError&quot;, message = &quot;Detail message&quot;, fatal = true);
 }
 </code></pre></div>

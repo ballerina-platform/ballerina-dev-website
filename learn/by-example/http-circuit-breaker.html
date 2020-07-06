@@ -196,7 +196,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/runtime;
 </code></pre></div>
@@ -210,7 +210,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
 </code></pre></div>
 
                                 </td>
@@ -231,7 +231,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        circuitBreaker: {
+                                    <div class="highlight"><pre><code class=language-ballerina>        circuitBreaker: {
 </code></pre></div>
 
                                 </td>
@@ -251,7 +251,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            rollingWindow: {
+                                    <div class="highlight"><pre><code class=language-ballerina>            rollingWindow: {
 </code></pre></div>
 
                                 </td>
@@ -271,7 +271,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                timeWindowInMillis: 10000,
+                                    <div class="highlight"><pre><code class=language-ballerina>                timeWindowInMillis: 10000,
 </code></pre></div>
 
                                 </td>
@@ -291,7 +291,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                bucketSizeInMillis: 2000,
+                                    <div class="highlight"><pre><code class=language-ballerina>                bucketSizeInMillis: 2000,
 </code></pre></div>
 
                                 </td>
@@ -319,7 +319,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                requestVolumeThreshold: 0
+                                    <div class="highlight"><pre><code class=language-ballerina>                requestVolumeThreshold: 0
 </code></pre></div>
 
                                 </td>
@@ -339,7 +339,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            },
+                                    <div class="highlight"><pre><code class=language-ballerina>            },
 </code></pre></div>
 
                                 </td>
@@ -351,7 +351,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            failureThreshold: 0.2,
+                                    <div class="highlight"><pre><code class=language-ballerina>            failureThreshold: 0.2,
 </code></pre></div>
 
                                 </td>
@@ -373,7 +373,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            resetTimeInMillis: 10000,
+                                    <div class="highlight"><pre><code class=language-ballerina>            resetTimeInMillis: 10000,
 </code></pre></div>
 
                                 </td>
@@ -397,7 +397,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            statusCodes: [400, 404, 500]
+                                    <div class="highlight"><pre><code class=language-ballerina>            statusCodes: [400, 404, 500]
 </code></pre></div>
 
                                 </td>
@@ -416,7 +416,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        },
+                                    <div class="highlight"><pre><code class=language-ballerina>        },
         timeoutInMillis: 2000
     }
 );
@@ -431,7 +431,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/cb&quot;
 }
 service circuitbreaker on new http:Listener(9090) {
@@ -453,7 +453,7 @@ service circuitbreaker on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -475,7 +475,7 @@ service circuitbreaker on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
         var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
 </code></pre></div>
 
@@ -496,7 +496,7 @@ service circuitbreaker on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (backendResponse is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is http:Response) {
             var responseToCaller = caller-&gt;respond(backendResponse);
             if (responseToCaller is http:ListenerError) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
@@ -532,7 +532,7 @@ service circuitbreaker on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int counter = 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>int counter = 1;
 </code></pre></div>
 
                                 </td>
@@ -563,7 +563,7 @@ service circuitbreaker on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service helloWorld on new http:Listener(8080) {
@@ -584,7 +584,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            runtime:sleep(5000);
+                                    <div class="highlight"><pre><code class=language-ballerina>            runtime:sleep(5000);
 </code></pre></div>
 
                                 </td>
@@ -604,7 +604,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(&quot;Hello World!!!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(&quot;Hello World!!!&quot;);
             handleRespondResult(result);
         } else if (counter % 5 == 3) {
             http:Response res = new;
@@ -631,7 +631,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleRespondResult(error? result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleRespondResult(error? result) {
     if (result is http:ListenerError) {
         log:printError(&quot;Error sending response from mock service&quot;, result);
     }

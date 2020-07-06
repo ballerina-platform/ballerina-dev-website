@@ -130,7 +130,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -142,7 +142,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -154,7 +154,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j1 = [1, false, null, &quot;foo&quot;, {first: &quot;John&quot;, last: &quot;Pala&quot;}];
+                                    <div class="highlight"><pre><code class=language-ballerina>    json j1 = [1, false, null, &quot;foo&quot;, {first: &quot;John&quot;, last: &quot;Pala&quot;}];
     io:println(j1.toJsonString());
 </code></pre></div>
 
@@ -176,7 +176,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json[] j2 = &lt;json[]&gt;j1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json[] j2 = &lt;json[]&gt;j1;
     json j3 = j2[4];
     io:println(j3.toJsonString());
 </code></pre></div>
@@ -199,7 +199,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    j2[4] = 8.00;
+                                    <div class="highlight"><pre><code class=language-ballerina>    j2[4] = 8.00;
     io:println(j1.toJsonString());
 </code></pre></div>
 
@@ -220,7 +220,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;json&gt; p = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;json&gt; p = {
         fname: &quot;John&quot;,
         lname: &quot;Stallone&quot;,
         family: [
@@ -248,7 +248,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json[] family = &lt;json[]&gt;p[&quot;family&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    json[] family = &lt;json[]&gt;p[&quot;family&quot;];
     map&lt;json&gt; member2 = &lt;map&lt;json&gt;&gt;family[2];
     member2[&quot;fname&quot;] = &quot;Alisha&quot;;
     io:println(p.toJsonString());
@@ -263,7 +263,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int l = family.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int l = family.length();
     io:println(&quot;length of the array: &quot;, l);
 </code></pre></div>
 
@@ -283,7 +283,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    int i = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int i = 0;
     while (i &lt; l) {
         io:println(family[i].toJsonString());
         i = i + 1;

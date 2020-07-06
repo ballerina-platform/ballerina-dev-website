@@ -124,7 +124,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.&#39;xml as xmllib;
 </code></pre></div>
 
@@ -137,7 +137,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>xmlns &quot;http://ballerina.com/aa&quot; as ns0;
+                                    <div class="highlight"><pre><code class=language-ballerina>xmlns &quot;http://ballerina.com/aa&quot; as ns0;
 </code></pre></div>
 
                                 </td>
@@ -149,7 +149,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -161,7 +161,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xmllib:Element x1 = &lt;xmllib:Element&gt; xml `&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xmllib:Element x1 = &lt;xmllib:Element&gt; xml `&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`;
     io:println(x1);
 </code></pre></div>
 
@@ -181,7 +181,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(x1.ns0:status);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(x1.ns0:status);
 </code></pre></div>
 
                                 </td>
@@ -200,7 +200,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error count = x1.count;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error count = x1.count;
     io:println(count);
 </code></pre></div>
 
@@ -220,7 +220,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error count2 = x1.count2;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error count2 = x1.count2;
     io:println(count2 is error);
 </code></pre></div>
 
@@ -240,7 +240,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string&gt; attributeMap = x1.getAttributes();
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt; attributeMap = x1.getAttributes();
     io:println(attributeMap);
 </code></pre></div>
 
@@ -260,7 +260,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? s = attributeMap[&quot;{http://ballerina.com/aa}status&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? s = attributeMap[&quot;{http://ballerina.com/aa}status&quot;];
     io:println(s);
 </code></pre></div>
 
@@ -280,7 +280,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    attributeMap[ns0:status] = &quot;Not Available&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    attributeMap[ns0:status] = &quot;Not Available&quot;;
     io:println(x1.ns0:status);
 }
 </code></pre></div>

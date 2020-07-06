@@ -129,7 +129,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -141,7 +141,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Record record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Record record {
     int id;
     string name;
 };
@@ -156,7 +156,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function readRecord(Record? value) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function readRecord(Record? value) {
     if (value is Record) {
         io:println(&quot;Record ID: &quot;, value.id, &quot;, value: &quot;, value.name);
     } else {
@@ -171,7 +171,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        error err = error(&quot;Record is nil&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        error err = error(&quot;Record is nil&quot;);
         panic err;
     }
 }
@@ -193,7 +193,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     Record r1 = {
         id: 1,
         name: &quot;record1&quot;
@@ -210,7 +210,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Record? r2 = ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    Record? r2 = ();
 </code></pre></div>
 
                                 </td>
@@ -229,7 +229,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    readRecord(r2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    readRecord(r2);
 </code></pre></div>
 
                                 </td>
@@ -248,7 +248,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Record r3 = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Record r3 = {
         id: 3,
         name: &quot;record3&quot;
     };

@@ -174,7 +174,7 @@ each other&rsquo;s identity.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 </code></pre></div>
@@ -188,7 +188,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:ListenerConfiguration helloWorldEPConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
@@ -219,7 +219,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        protocol: {
+                                    <div class="highlight"><pre><code class=language-ballerina>        protocol: {
             name: &quot;TLS&quot;,
             versions: [&quot;TLSv1.2&quot;, &quot;TLSv1.1&quot;]
         },
@@ -241,7 +241,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        ciphers: [&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;],
+                                    <div class="highlight"><pre><code class=language-ballerina>        ciphers: [&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;],
 </code></pre></div>
 
                                 </td>
@@ -260,7 +260,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        sslVerifyClient: &quot;require&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>        sslVerifyClient: &quot;require&quot;
     }
 };
 </code></pre></div>
@@ -281,7 +281,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener helloWorldEP = new (9095, helloWorldEPConfig);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener helloWorldEP = new (9095, helloWorldEPConfig);
 </code></pre></div>
 
                                 </td>
@@ -300,7 +300,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 </code></pre></div>
@@ -314,7 +314,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service helloWorld on helloWorldEP {
+                                    <div class="highlight"><pre><code class=language-ballerina>service helloWorld on helloWorldEP {
 </code></pre></div>
 
                                 </td>
@@ -333,7 +333,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -349,7 +349,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(&quot;Successful&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&quot;Successful&quot;);
         if (result is error) {
             log:printError(&quot;Error in responding&quot;, result);
         }
@@ -456,7 +456,7 @@ $ ballerina run mutual_ssl_service.bal --b7a.home=&lt;ballerina_home_path&gt;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 </code></pre></div>
@@ -470,7 +470,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:ClientConfiguration clientEPConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:ClientConfiguration clientEPConfig = {
     secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
@@ -508,7 +508,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -520,7 +520,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Client clientEP = new(&quot;https://localhost:9095&quot;, clientEPConfig);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client clientEP = new(&quot;https://localhost:9095&quot;, clientEPConfig);
 </code></pre></div>
 
                                 </td>
@@ -539,7 +539,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var resp = clientEP-&gt;get(&quot;/hello&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var resp = clientEP-&gt;get(&quot;/hello&quot;);
     if (resp is http:Response) {
 </code></pre></div>
 
@@ -559,7 +559,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = resp.getTextPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = resp.getTextPayload();
         if (payload is string) {
 </code></pre></div>
 
@@ -580,7 +580,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            log:printInfo(payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(payload);
         } else {
 </code></pre></div>
 
@@ -600,7 +600,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            log:printError(&lt;string&gt;payload.detail()[&quot;message&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printError(&lt;string&gt;payload.detail()[&quot;message&quot;]);
         }
     } else {
 </code></pre></div>
@@ -622,7 +622,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        log:printError(&lt;string&gt;resp.detail()[&quot;message&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printError(&lt;string&gt;resp.detail()[&quot;message&quot;]);
     }
 }
 </code></pre></div>

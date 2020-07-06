@@ -115,7 +115,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/openapi;
 </code></pre></div>
@@ -129,7 +129,7 @@ import ballerina/openapi;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@openapi:ClientEndpoint
+                                    <div class="highlight"><pre><code class=language-ballerina>@openapi:ClientEndpoint
 listener http:Listener helloEp = new (9090);
 </code></pre></div>
 
@@ -149,7 +149,7 @@ listener http:Listener helloEp = new (9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@openapi:ClientConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@openapi:ClientConfig {
     generate: true
 }
 @http:ServiceConfig {
@@ -174,7 +174,7 @@ service Hello on helloEp {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/hello&quot;
     }

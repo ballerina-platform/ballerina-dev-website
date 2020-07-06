@@ -127,7 +127,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -139,7 +139,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {|
     string name;
     int age = 25;
 |};
@@ -154,7 +154,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {|
 </code></pre></div>
 
                                 </td>
@@ -166,7 +166,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    *Person;
+                                    <div class="highlight"><pre><code class=language-ballerina>    *Person;
     string company?;
     string designation;
 |};
@@ -188,7 +188,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Manager record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Manager record {
     Employee[] team?;
 </code></pre></div>
 
@@ -201,7 +201,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    *Employee;
+                                    <div class="highlight"><pre><code class=language-ballerina>    *Employee;
 };
 </code></pre></div>
 
@@ -223,7 +223,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -235,7 +235,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee john = {name: &quot;John Doe&quot;, designation: &quot;Software Engineer&quot;};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee john = {name: &quot;John Doe&quot;, designation: &quot;Software Engineer&quot;};
     Employee jane = {name: &quot;Jane Doe&quot;, designation: &quot;UX Engineer&quot;};
 </code></pre></div>
 
@@ -255,7 +255,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(john);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(john);
     io:println(jane);
 </code></pre></div>
 
@@ -278,7 +278,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Manager mgr = {name: &quot;Mark&quot;, age: 35, designation: &quot;Engineering Manager&quot;};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Manager mgr = {name: &quot;Mark&quot;, age: 35, designation: &quot;Engineering Manager&quot;};
     mgr.team = [john, jane];
     mgr.company = &quot;XYZ Inc.&quot;;
 </code></pre></div>
@@ -292,7 +292,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(mgr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(mgr);
 }
 </code></pre></div>
 

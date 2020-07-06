@@ -202,7 +202,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/math;
 import ballerina/transactions;
@@ -217,7 +217,7 @@ import ballerina/transactions;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/&quot;
 }
 service InitiatorService on new http:Listener(8080) {
@@ -239,7 +239,7 @@ service InitiatorService on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -257,7 +257,7 @@ service InitiatorService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        transaction {
+                                    <div class="highlight"><pre><code class=language-ballerina>        transaction {
 </code></pre></div>
 
                                 </td>
@@ -276,7 +276,7 @@ service InitiatorService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            log:printInfo(&quot;Started transaction: &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(&quot;Started transaction: &quot; +
                           transactions:getCurrentTransactionId());
 </code></pre></div>
 
@@ -296,7 +296,7 @@ service InitiatorService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            boolean successful = callBusinessService();
+                                    <div class="highlight"><pre><code class=language-ballerina>            boolean successful = callBusinessService();
             if (successful) {
                 res.statusCode = http:STATUS_OK;
             } else {
@@ -322,7 +322,7 @@ service InitiatorService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        } committed {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } committed {
             log:printInfo(&quot;Initiated transaction committed&quot;);
         } aborted {
             log:printInfo(&quot;Initiated transaction aborted&quot;);
@@ -348,7 +348,7 @@ service InitiatorService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = conn-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = conn-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Could not send response back to client&quot;,
                             err = result);
@@ -375,7 +375,7 @@ service InitiatorService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function callBusinessService() returns boolean {
+                                    <div class="highlight"><pre><code class=language-ballerina>function callBusinessService() returns boolean {
     http:Client participantEP = new (&quot;http://localhost:8889/stockquote/update&quot;);
 </code></pre></div>
 
@@ -395,7 +395,7 @@ service InitiatorService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float price = &lt;int&gt;math:randomInRange(200, 250) + math:random();
+                                    <div class="highlight"><pre><code class=language-ballerina>    float price = &lt;int&gt;math:randomInRange(200, 250) + math:random();
     json bizReq = {symbol: &quot;GOOG&quot;, price: price};
 </code></pre></div>
 
@@ -415,7 +415,7 @@ service InitiatorService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Request req = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Request req = new;
     req.setJsonPayload(bizReq);
     var result = participantEP-&gt;post(&quot;&quot;, req);
     log:printInfo(&quot;Got response from bizservice&quot;);
@@ -532,7 +532,7 @@ $ ballerina run --experimental initiator.bal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/transactions;
@@ -547,7 +547,7 @@ import ballerina/transactions;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/stockquote&quot;
 }
 service ParticipantService on new http:Listener(8889) {
@@ -571,7 +571,7 @@ service ParticipantService on new http:Listener(8889) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         path: &quot;/update&quot;
     }
     @transactions:Participant {
@@ -590,7 +590,7 @@ service ParticipantService on new http:Listener(8889) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        log:printInfo(&quot;Received update stockquote request&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(&quot;Received update stockquote request&quot;);
 </code></pre></div>
 
                                 </td>
@@ -610,7 +610,7 @@ service ParticipantService on new http:Listener(8889) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        log:printInfo(&quot;Joined transaction: &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(&quot;Joined transaction: &quot; +
         transactions:getCurrentTransactionId());
 </code></pre></div>
 
@@ -630,7 +630,7 @@ service ParticipantService on new http:Listener(8889) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var updateReq = &lt;@untainted&gt;req.getJsonPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var updateReq = &lt;@untainted&gt;req.getJsonPayload();
 </code></pre></div>
 
                                 </td>
@@ -649,7 +649,7 @@ service ParticipantService on new http:Listener(8889) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         if (updateReq is json) {
             string msg = io:sprintf(&quot;Update stock quote request received. &quot; +
                     &quot;symbol:%s, price:%s&quot;, updateReq.symbol, updateReq.price);
@@ -680,7 +680,7 @@ service ParticipantService on new http:Listener(8889) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = conn-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = conn-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Could not send response back to initiator&quot;,
                             err = result);
@@ -707,7 +707,7 @@ service ParticipantService on new http:Listener(8889) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printParticipantAbort(string transactionId) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printParticipantAbort(string transactionId) {
     log:printInfo(&quot;Participated transaction: &quot; + transactionId + &quot; aborted&quot;);
 }
 </code></pre></div>
@@ -729,7 +729,7 @@ service ParticipantService on new http:Listener(8889) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function printParticipantCommit(string transactionId) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printParticipantCommit(string transactionId) {
     log:printInfo(&quot;Participated transaction: &quot; + transactionId + &quot; committed&quot;);
 }
 </code></pre></div>

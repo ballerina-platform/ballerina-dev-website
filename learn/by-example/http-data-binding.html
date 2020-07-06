@@ -162,7 +162,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -175,7 +175,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string Name;
     int Grade;
     map&lt;any&gt; Marks;
@@ -191,7 +191,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {}
 service hello on new http:Listener(9090) {
 </code></pre></div>
 
@@ -204,7 +204,7 @@ service hello on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         body: &quot;orderDetails&quot;
     }
@@ -228,7 +228,7 @@ service hello on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var details = orderDetails.Details;
+                                    <div class="highlight"><pre><code class=language-ballerina>        var details = orderDetails.Details;
         http:Response res = new;
         if (details is json) {
             res.setPayload(&lt;@untainted&gt;details);
@@ -259,7 +259,7 @@ service hello on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         body: &quot;store&quot;,
         consumes: [&quot;application/xml&quot;]
@@ -283,7 +283,7 @@ service hello on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        xml city = store.selectDescendants(&quot;{http://www.test.com}city&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        xml city = store.selectDescendants(&quot;{http://www.test.com}city&quot;);
         http:Response res = new;
         res.setPayload(&lt;@untainted&gt;city);
 </code></pre></div>
@@ -304,7 +304,7 @@ service hello on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(result.reason(), result);
         }
@@ -320,7 +320,7 @@ service hello on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         body: &quot;student&quot;,
         consumes: [&quot;application/json&quot;]
@@ -346,7 +346,7 @@ match the record.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string name = &lt;@untainted&gt;student.Name;
+                                    <div class="highlight"><pre><code class=language-ballerina>        string name = &lt;@untainted&gt;student.Name;
         int grade = &lt;@untainted&gt;student.Grade;
         string english = &lt;@untained string&gt;student.Marks[&quot;English&quot;];
         http:Response res = new;
@@ -369,7 +369,7 @@ match the record.</p>
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(result.reason(), result);
         }

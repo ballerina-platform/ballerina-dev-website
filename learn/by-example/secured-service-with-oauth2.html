@@ -128,7 +128,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/config;
 import ballerina/log;
 import ballerina/oauth2;
@@ -143,7 +143,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:InboundOAuth2Provider oauth2Provider = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:InboundOAuth2Provider oauth2Provider = new ({
     url: &quot;https://localhost:9095/oauth2/token/introspect&quot;
 });
 </code></pre></div>
@@ -165,7 +165,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BearerAuthHandler oauth2Handler = new (oauth2Provider);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler oauth2Handler = new (oauth2Provider);
 </code></pre></div>
 
                                 </td>
@@ -184,7 +184,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new (9090, {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new (9090, {
     auth: {
         authHandlers: [oauth2Handler]
     },
@@ -209,7 +209,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
                   &quot;/bre/security/ballerinaTruststore.p12&quot;,
@@ -235,7 +235,7 @@ import ballerina/oauth2;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>service hello on ep {
+                                    <div class="highlight"><pre><code class=language-ballerina>service hello on ep {
     resource function sayHello(http:Caller caller, http:Request req) {
         error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
         if (result is error) {

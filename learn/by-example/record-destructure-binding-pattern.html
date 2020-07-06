@@ -147,7 +147,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -159,7 +159,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age;
     string country;
@@ -175,7 +175,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Country record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Country record {
     string name;
     Capital capital;
 };
@@ -190,7 +190,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Capital record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Capital record {|
     string name;
 |};
 </code></pre></div>
@@ -204,7 +204,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -216,7 +216,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string firstName;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string firstName;
     int personAge;
     map&lt;anydata|error&gt; otherDetails = {};
 </code></pre></div>
@@ -230,7 +230,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    {name: firstName, age: personAge, ...otherDetails} = getPerson();
+                                    <div class="highlight"><pre><code class=language-ballerina>    {name: firstName, age: personAge, ...otherDetails} = getPerson();
     io:println(&quot;Name: &quot;, firstName);
     io:println(&quot;Age: &quot;, personAge);
     io:println(&quot;Other Details: &quot;, otherDetails);
@@ -258,7 +258,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string name;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string name;
     int age;
 </code></pre></div>
 
@@ -271,7 +271,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    {name, age} = getPerson();
+                                    <div class="highlight"><pre><code class=language-ballerina>    {name, age} = getPerson();
     io:println(&quot;Name: &quot;, name);
     io:println(&quot;Age: &quot;, age);
 </code></pre></div>
@@ -295,7 +295,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string countryName;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string countryName;
     string capitalName;
 </code></pre></div>
 
@@ -308,7 +308,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    {name: countryName, capital: {name: capitalName}} = getCountry();
+                                    <div class="highlight"><pre><code class=language-ballerina>    {name: countryName, capital: {name: capitalName}} = getCountry();
     io:println(&quot;Country Name: &quot;, countryName);
     io:println(&quot;Capital Name: &quot;, capitalName);
 }
@@ -331,7 +331,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getPerson() returns Person {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getPerson() returns Person {
     Person person = {
         name: &quot;Peter&quot;,
         age: 28,
@@ -351,7 +351,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getCountry() returns Country {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getCountry() returns Country {
     Capital capital = {name: &quot;Colombo&quot;};
     Country country = {name: &quot;Sri Lanka&quot;, capital: capital};
     return country;

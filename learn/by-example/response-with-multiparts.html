@@ -295,7 +295,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
@@ -310,7 +310,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP = new (&quot;http://localhost:9092&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP = new (&quot;http://localhost:9092&quot;);
 </code></pre></div>
 
                                 </td>
@@ -329,7 +329,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener multipartEP = new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener multipartEP = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -348,7 +348,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/multiparts&quot;
 }
 service multipartResponseEncoder on new http:Listener(9092) {
@@ -369,7 +369,7 @@ service multipartResponseEncoder on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity parentPart = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity parentPart = new;
 </code></pre></div>
 
                                 </td>
@@ -388,7 +388,7 @@ service multipartResponseEncoder on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity childPart1 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity childPart1 = new;
         childPart1.setJson({&quot;name&quot;: &quot;wso2&quot;});
 </code></pre></div>
 
@@ -408,7 +408,7 @@ service multipartResponseEncoder on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity childPart2 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity childPart2 = new;
 </code></pre></div>
 
                                 </td>
@@ -427,7 +427,7 @@ service multipartResponseEncoder on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        childPart2.setFileAsEntityBody(&quot;./files/test.xml&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        childPart2.setFileAsEntityBody(&quot;./files/test.xml&quot;,
             contentType = mime:TEXT_XML);
 </code></pre></div>
 
@@ -449,7 +449,7 @@ absolute file path instead.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity[] childParts = [childPart1, childPart2];
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity[] childParts = [childPart1, childPart2];
 </code></pre></div>
 
                                 </td>
@@ -468,7 +468,7 @@ absolute file path instead.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        parentPart.setBodyParts(childParts,
+                                    <div class="highlight"><pre><code class=language-ballerina>        parentPart.setBodyParts(childParts,
             contentType = mime:MULTIPART_MIXED);
 </code></pre></div>
 
@@ -488,7 +488,7 @@ absolute file path instead.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity[] immediatePartsToResponse = [parentPart];
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity[] immediatePartsToResponse = [parentPart];
         http:Response outResponse = new;
         outResponse.setBodyParts(immediatePartsToResponse,
             contentType = mime:MULTIPART_FORM_DATA);
@@ -516,7 +516,7 @@ absolute file path instead.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/multiparts&quot;
 }
 service multipartResponseDecoder on multipartEP {
@@ -542,7 +542,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function multipartReceiver(http:Caller caller,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function multipartReceiver(http:Caller caller,
                                         http:Request request) {
         http:Response inResponse = new;
         var returnResult = clientEP-&gt;get(&quot;/multiparts/encode_out_response&quot;);
@@ -566,7 +566,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var parentParts = returnResult.getBodyParts();
+                                    <div class="highlight"><pre><code class=language-ballerina>            var parentParts = returnResult.getBodyParts();
             if (parentParts is mime:Entity[]) {
 </code></pre></div>
 
@@ -586,7 +586,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                foreach var parentPart in parentParts {
+                                    <div class="highlight"><pre><code class=language-ballerina>                foreach var parentPart in parentParts {
                     handleNestedParts(parentPart);
                 }
                 res.setPayload(&quot;Body Parts Received!&quot;);
@@ -619,7 +619,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleNestedParts(mime:Entity parentPart) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleNestedParts(mime:Entity parentPart) {
     string contentTypeOfParent = parentPart.getContentType();
     if (contentTypeOfParent.startsWith(&quot;multipart/&quot;)) {
         var childParts = parentPart.getBodyParts();
@@ -652,7 +652,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleContent(mime:Entity bodyPart) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleContent(mime:Entity bodyPart) {
     string baseType = getBaseType(bodyPart.getContentType());
     if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
 </code></pre></div>
@@ -674,7 +674,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getXml();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getXml();
         if (payload is xml) {
             string strValue = io:sprintf(&quot;%s&quot;, payload);
              log:printInfo(&quot;XML data: &quot; + strValue);
@@ -700,7 +700,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getJson();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getJson();
         if (payload is json) {
             log:printInfo(&quot;JSON data: &quot; + payload.toJsonString());
         } else {
@@ -725,7 +725,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getText();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getText();
         if (payload is string) {
             log:printInfo(&quot;Text data: &quot; + payload);
         } else {
@@ -750,7 +750,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getByteChannel();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getByteChannel();
         if (payload is io:ReadableByteChannel) {
             io:WritableByteChannel destinationChannel =
             &lt;@untainted io:WritableByteChannel&gt;io:openWritableFile(&quot;ReceivedFile.pdf&quot;);
@@ -783,7 +783,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getBaseType(string contentType) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getBaseType(string contentType) returns string {
     var result = mime:getMediaType(contentType);
     if (result is mime:MediaType) {
         return result.getBaseType();
@@ -809,7 +809,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function copy(io:ReadableByteChannel src, io:WritableByteChannel dst)
+                                    <div class="highlight"><pre><code class=language-ballerina>function copy(io:ReadableByteChannel src, io:WritableByteChannel dst)
                 returns error? {
     while (true) {
 </code></pre></div>
@@ -830,7 +830,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        byte[]|io:Error result = src.read(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>        byte[]|io:Error result = src.read(1000);
         if (result is io:EofError) {
             break;
         } else if (result is error) {
@@ -854,7 +854,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            int i = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>            int i = 0;
             while (i &lt; result.length()) {
                 var result2 = dst.write(result, i);
                 if (result2 is error) {
@@ -885,7 +885,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
     abstract object {
         public function close() returns error?;
     } channelResult = ch;

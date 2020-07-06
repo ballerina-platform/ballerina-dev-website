@@ -9,7 +9,7 @@ You can use the update tool to update to jBallerina 1.2.5 as follows.
 
 **For existing users:**
 
-If you are already using jBallerina version 1.2.0, or above, you can directly update your distribution to jBallerina 1.2.4 by executing the following command:
+If you are already using jBallerina version 1.2.0, or above, you can directly update your distribution to jBallerina 1.2.5 by executing the following command:
 
 > $ ballerina dist update
 

@@ -773,7 +773,7 @@ redirect_from:
             <h2 > close </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm)</p>
             <b> returns </b><span class="builtin-type">ErrorType?</span> 
         </span>
         
@@ -792,7 +792,7 @@ This releases any system resources being used by the stream.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -829,8 +829,8 @@ This releases any system resources being used by the stream.</p>
             <h2 > filter </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
-            <b> returns </b><span class="builtin-type">stream</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
+            <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> 
         </span>
         
     </div>
@@ -847,7 +847,7 @@ This releases any system resources being used by the stream.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -884,7 +884,7 @@ This releases any system resources being used by the stream.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span></span>)</li>
                 <li><p>new stream only containing members of <code>stm</code> for which <code>func</code> evaluates to true</p>
 </li>
             </ul>
@@ -901,7 +901,7 @@ This releases any system resources being used by the stream.</p>
             <h2 > forEach </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> func)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> func)</p>
             <b> returns </b><span class="builtin-type">ErrorType?</span> 
         </span>
         
@@ -920,7 +920,7 @@ The Combining function is applied to each member of stream in order.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -974,7 +974,7 @@ The Combining function is applied to each member of stream in order.</p>
             <h2 > iterator </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm)</p>
             <b> returns </b><a href="../lang.stream/objects/T6.html">T6</a> 
         </span>
         
@@ -992,7 +992,7 @@ The Combining function is applied to each member of stream in order.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -1029,8 +1029,8 @@ The Combining function is applied to each member of stream in order.</p>
             <h2 > map </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func)</p>
-            <b> returns </b><span class="builtin-type">stream</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func)</p>
+            <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">Type1</span> ,<span class="builtin-type">ErrorType</span>></span> 
         </span>
         
     </div>
@@ -1047,7 +1047,7 @@ The Combining function is applied to each member of stream in order.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -1084,7 +1084,7 @@ The Combining function is applied to each member of stream in order.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">Type1</span> ,<span class="builtin-type">ErrorType</span>></span></span>)</li>
                 <li><p>new stream containing result of applying <code>func</code> to each member of <code>stm</code> in order</p>
 </li>
             </ul>
@@ -1101,7 +1101,7 @@ The Combining function is applied to each member of stream in order.</p>
             <h2 > next </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> strm)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> strm)</p>
             <b> returns </b><a href="../lang.stream/records/T1.html">T1</a> | <span class="builtin-type">ErrorType</span> | <span class="builtin-type">()</span> 
         </span>
         
@@ -1119,7 +1119,7 @@ The Combining function is applied to each member of stream in order.</p>
                 <ul>
                     <li>
                         <span >strm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -1157,7 +1157,7 @@ otherwise returns ()</p>
             <h2 > reduce </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type1</span>, <span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func, <span class="builtin-type">Type1</span> initial)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type1</span>, <span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func, <span class="builtin-type">Type1</span> initial)</p>
             <b> returns </b><span class="builtin-type">Type1</span> | <span class="builtin-type">ErrorType</span> 
         </span>
         
@@ -1177,7 +1177,7 @@ and returns a new combined value.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>

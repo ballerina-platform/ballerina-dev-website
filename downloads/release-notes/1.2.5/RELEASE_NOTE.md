@@ -26,6 +26,7 @@ If you have not installed jBallerina, then download the [installers](https://bal
 ## Standard Library
 - The capability to validate the JWT signature with JWKs is extended now. With that, the JWT signature can be validated either from the TrustStore configuration or JWKs configuration.
 - Undo the deprecation of the `ballerinax/java.jdbc` module and continue to support it in 1.2.x releases.
+
 ## Deployment
 - Azure Functions support
 - Prometheus support for kubernetes annotations

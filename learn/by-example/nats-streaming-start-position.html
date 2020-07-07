@@ -176,9 +176,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="kafka_message_producer.html">
+                                    <a class="next" href="kafka-authentication-sasl-plain-consumer.html">
                                         <span>NEXT ></span>
-                                        <p>Producer</p>
+                                        <p>SASL Authentication - Consumer</p>
                                     </a>
                                 </div>
                                 
@@ -240,7 +240,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 import ballerina/nats;
 </code></pre></div>
@@ -254,7 +254,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const string ESCAPE = &quot;!q&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>const string ESCAPE = &quot;!q&quot;;
 </code></pre></div>
 
                                 </td>
@@ -273,7 +273,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string message = &quot;&quot;;
     string subject = io:readln(&quot;Subject : &quot;);
 </code></pre></div>
@@ -294,7 +294,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:Connection conn = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    nats:Connection conn = new;
 </code></pre></div>
 
                                 </td>
@@ -306,7 +306,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:StreamingProducer publisher = new (conn);
+                                    <div class="highlight"><pre><code class=language-ballerina>    nats:StreamingProducer publisher = new (conn);
 </code></pre></div>
 
                                 </td>
@@ -318,7 +318,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (message != ESCAPE) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (message != ESCAPE) {
         message = io:readln(&quot;Message : &quot;);
         if (message != ESCAPE) {
 </code></pre></div>
@@ -332,7 +332,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt;message);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt;message);
             if (result is nats:Error) {
                 error e = result;
                 log:printError(&quot;Error occurred while closing the connection&quot;, e);
@@ -360,7 +360,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = conn.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = conn.close();
     if (result is error) {
         error e = result;
         log:printError(&quot;Error occurred while closing the connection&quot;, e);
@@ -520,7 +520,7 @@ GUID UBMEgrERHdxZRqUBP05PyX received for the produced message.
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/lang.&#39;string as strings;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;string as strings;
 import ballerina/log;
 import ballerina/nats;
 </code></pre></div>
@@ -534,7 +534,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>nats:Connection conn = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>nats:Connection conn = new;
 </code></pre></div>
 
                                 </td>
@@ -553,7 +553,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener nats:StreamingListener lis = new (conn);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener nats:StreamingListener lis = new (conn);
 </code></pre></div>
 
                                 </td>
@@ -572,7 +572,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;
 }
 service receiveNewOnly on lis {
@@ -596,7 +596,7 @@ service receiveNewOnly on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string|error messageData = strings:fromBytes(message.getData());
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
             log:printInfo(&quot;Message Received to service receiveNewOnly: &quot;
                                                                   + messageData);
@@ -622,7 +622,7 @@ service receiveNewOnly on lis {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, e);
     }
@@ -638,7 +638,7 @@ service receiveNewOnly on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;,
     startPosition: nats:FIRST
 }
@@ -663,7 +663,7 @@ service receiveFromBegining on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string|error messageData = strings:fromBytes(message.getData());
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
             log:printInfo(&quot;Message Received to service receiveFromBegining: &quot;
                                                                   + messageData);
@@ -689,7 +689,7 @@ service receiveFromBegining on lis {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, e);
     }
@@ -705,7 +705,7 @@ service receiveFromBegining on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;,
     startPosition: nats:LAST_RECEIVED
 }
@@ -730,7 +730,7 @@ service receiveFromLastReceived on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string|error messageData = strings:fromBytes(message.getData());
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
             log:printInfo(&quot;Message Received to service receiveFromLastReceived: &quot;
                                                                   + messageData);
@@ -756,7 +756,7 @@ service receiveFromLastReceived on lis {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, e);
     }
@@ -772,7 +772,7 @@ service receiveFromLastReceived on lis {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>[nats:SEQUENCE_NUMBER, int] sequenceNo = [nats:SEQUENCE_NUMBER, 3];
+                                    <div class="highlight"><pre><code class=language-ballerina>[nats:SEQUENCE_NUMBER, int] sequenceNo = [nats:SEQUENCE_NUMBER, 3];
 </code></pre></div>
 
                                 </td>
@@ -784,7 +784,7 @@ service receiveFromLastReceived on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;,
     startPosition: sequenceNo
 }
@@ -809,7 +809,7 @@ service receiveFromGivenIndex on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string|error messageData = strings:fromBytes(message.getData());
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
             log:printInfo(&quot;Message Received to service receiveFromGivenIndex: &quot;
                                                                   + messageData);
@@ -835,7 +835,7 @@ service receiveFromGivenIndex on lis {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, e);
     }
@@ -851,7 +851,7 @@ service receiveFromGivenIndex on lis {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>[nats:TIME_DELTA_START, int] timeDelta = [nats:TIME_DELTA_START, 5];
+                                    <div class="highlight"><pre><code class=language-ballerina>[nats:TIME_DELTA_START, int] timeDelta = [nats:TIME_DELTA_START, 5];
 </code></pre></div>
 
                                 </td>
@@ -863,7 +863,7 @@ service receiveFromGivenIndex on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;,
     startPosition: timeDelta
 }
@@ -888,7 +888,7 @@ service receiveSinceTimeDelta on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string|error messageData = strings:fromBytes(message.getData());
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = strings:fromBytes(message.getData());
         if (messageData is string) {
             log:printInfo(&quot;Message Received to service receiveSinceTimeDelta: &quot;
                                                                   + messageData);
@@ -914,7 +914,7 @@ service receiveSinceTimeDelta on lis {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, e);
     }

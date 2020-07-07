@@ -352,7 +352,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
@@ -367,7 +367,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP = new (&quot;http://localhost:9091/backEndService&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP = new (&quot;http://localhost:9091/backEndService&quot;);
 </code></pre></div>
 
                                 </td>
@@ -386,7 +386,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service actionService on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service actionService on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -405,7 +405,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function messageUsage(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function messageUsage(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -417,7 +417,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var response = clientEP-&gt;get(&quot;/greeting&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var response = clientEP-&gt;get(&quot;/greeting&quot;);
         handleResponse(response);
 </code></pre></div>
 
@@ -437,7 +437,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Request request = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Request request = new;
         response = clientEP-&gt;get(&quot;/greeting&quot;, message = request);
         handleResponse(response);
 </code></pre></div>
@@ -458,7 +458,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, ());
+                                    <div class="highlight"><pre><code class=language-ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, ());
         handleResponse(response);
 </code></pre></div>
 
@@ -478,7 +478,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, &quot;Sample Text&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, &quot;Sample Text&quot;);
         handleResponse(response);
 </code></pre></div>
 
@@ -498,7 +498,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, xml `&lt;yy&gt;Sample Xml&lt;/yy&gt;`);
+                                    <div class="highlight"><pre><code class=language-ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, xml `&lt;yy&gt;Sample Xml&lt;/yy&gt;`);
         handleResponse(response);
 </code></pre></div>
 
@@ -518,7 +518,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, {name: &quot;apple&quot;, color: &quot;red&quot;});
+                                    <div class="highlight"><pre><code class=language-ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, {name: &quot;apple&quot;, color: &quot;red&quot;});
         handleResponse(response);
 </code></pre></div>
 
@@ -538,7 +538,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string textVal = &quot;Sample Text&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>        string textVal = &quot;Sample Text&quot;;
         byte[] binaryValue = textVal.toBytes();
         response = clientEP-&gt;post(&quot;/echo&quot;, binaryValue);
         handleResponse(response);
@@ -560,7 +560,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var bChannel = io:openReadableFile(&quot;./files/logo.png&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var bChannel = io:openReadableFile(&quot;./files/logo.png&quot;);
 </code></pre></div>
 
                                 </td>
@@ -579,7 +579,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (bChannel is io:ReadableByteChannel) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (bChannel is io:ReadableByteChannel) {
 </code></pre></div>
 
                                 </td>
@@ -591,7 +591,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            response = clientEP-&gt;post(&quot;/image&quot;, &lt;@untainted&gt;bChannel);
+                                    <div class="highlight"><pre><code class=language-ballerina>            response = clientEP-&gt;post(&quot;/image&quot;, &lt;@untainted&gt;bChannel);
             handleResponse(response);
 </code></pre></div>
 
@@ -612,7 +612,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            mime:Entity part1 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>            mime:Entity part1 = new;
             part1.setJson({&quot;name&quot;: &quot;Jane&quot;});
 </code></pre></div>
 
@@ -632,7 +632,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            mime:Entity part2 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>            mime:Entity part2 = new;
             part2.setText(&quot;Hello&quot;);
 </code></pre></div>
 
@@ -652,7 +652,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            mime:Entity[] bodyParts = [part1, part2];
+                                    <div class="highlight"><pre><code class=language-ballerina>            mime:Entity[] bodyParts = [part1, part2];
             response = clientEP-&gt;post(&quot;/echo&quot;, bodyParts);
             handleResponse(response);
 </code></pre></div>
@@ -673,7 +673,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(&quot;Client actions successfully executed!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(&quot;Client actions successfully executed!&quot;);
             handleError(result);
         } else {
             http:Response res = new;
@@ -695,7 +695,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service backEndService on new http:Listener(9091) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service backEndService on new http:Listener(9091) {
 </code></pre></div>
 
                                 </td>
@@ -714,7 +714,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/greeting&quot;
     }
@@ -735,7 +735,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/echo&quot;
     }
@@ -801,7 +801,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/image&quot;
     }
@@ -829,7 +829,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleResponse(http:Response|error response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|error response) {
     if (response is http:Response) {
 </code></pre></div>
 
@@ -849,7 +849,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (response.hasHeader(&quot;content-type&quot;)) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (response.hasHeader(&quot;content-type&quot;)) {
             string baseType = getBaseType(response.getContentType());
             if (mime:TEXT_PLAIN == baseType) {
                 var payload = response.getTextPayload();
@@ -916,7 +916,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function sendErrorMsg(http:Caller caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function sendErrorMsg(http:Caller caller, error err) {
     http:Response res = new;
     res.statusCode = 500;
     res.setPayload(&lt;@untainted string&gt;err.detail()?.message);
@@ -934,7 +934,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleError(error? result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleError(error? result) {
     if (result is error) {
         log:printError(result.reason(), result);
     }
@@ -950,7 +950,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getBaseType(string contentType) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getBaseType(string contentType) returns string {
     var result = mime:getMediaType(contentType);
     if (result is mime:MediaType) {
         return result.getBaseType();
@@ -976,7 +976,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleBodyParts(mime:Entity[] bodyParts) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleBodyParts(mime:Entity[] bodyParts) {
     foreach var bodyPart in bodyParts {
         string baseType = getBaseType(bodyPart.getContentType());
         if (mime:APPLICATION_JSON == baseType) {

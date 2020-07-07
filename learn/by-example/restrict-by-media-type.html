@@ -121,7 +121,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -134,7 +134,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service infoService on new http:Listener(9092) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service infoService on new http:Listener(9092) {
 </code></pre></div>
 
                                 </td>
@@ -146,7 +146,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/&quot;,
         consumes: [&quot;text/json&quot;, &quot;application/json&quot;],
@@ -175,7 +175,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         var msg = req.getJsonPayload();
         if (msg is json) {
 </code></pre></div>
@@ -196,7 +196,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            string nameString = &lt;string&gt;msg.name;
+                                    <div class="highlight"><pre><code class=language-ballerina>            string nameString = &lt;string&gt;msg.name;
 </code></pre></div>
 
                                 </td>
@@ -215,7 +215,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            xml name = xml `&lt;name&gt;${nameString}&lt;/name&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>            xml name = xml `&lt;name&gt;${nameString}&lt;/name&gt;`;
             res.setXmlPayload(&lt;@untained&gt;name);
         } else {
             res.statusCode = 500;
@@ -239,7 +239,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Error in responding&quot;, result);
         }

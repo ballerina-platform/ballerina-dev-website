@@ -165,7 +165,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
 
@@ -178,7 +178,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     worker w1 {
         int i = 100;
         float k = 2.34;
@@ -202,7 +202,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        [int, float] t1 = [i, k];
+                                    <div class="highlight"><pre><code class=language-ballerina>        [int, float] t1 = [i, k];
         t1 -&gt; w2;
         io:println(&quot;[w1 -&gt; w2] i: &quot;, i, &quot; k: &quot;, k);
 </code></pre></div>
@@ -224,7 +224,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        json j = {};
+                                    <div class="highlight"><pre><code class=language-ballerina>        json j = {};
         j = &lt;- w2;
         string jStr = j.toString();
         io:println(&quot;[w1 &lt;- w2] j: &quot;, jStr);
@@ -248,7 +248,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        () send = i -&gt;&gt; w2;
+                                    <div class="highlight"><pre><code class=language-ballerina>        () send = i -&gt;&gt; w2;
 </code></pre></div>
 
                                 </td>
@@ -268,7 +268,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;[w1 -&gt;&gt; w2] successful!!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;[w1 -&gt;&gt; w2] successful!!&quot;);
 </code></pre></div>
 
                                 </td>
@@ -288,7 +288,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;[w1 -&gt; w3] k: &quot;, k);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;[w1 -&gt; w3] k: &quot;, k);
         k -&gt; w3;
         k -&gt; w3;
         k -&gt; w3;
@@ -310,7 +310,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Waiting for worker w3 to fetch messages..&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Waiting for worker w3 to fetch messages..&quot;);
 </code></pre></div>
 
                                 </td>
@@ -322,7 +322,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        error? flushResult = flush w3;
+                                    <div class="highlight"><pre><code class=language-ballerina>        error? flushResult = flush w3;
         io:println(&quot;[w1 -&gt; w3] Flushed!!&quot;);
     }
 </code></pre></div>
@@ -345,7 +345,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    worker w2 {
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w2 {
 </code></pre></div>
 
                                 </td>
@@ -357,7 +357,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        int iw;
+                                    <div class="highlight"><pre><code class=language-ballerina>        int iw;
         float kw;
         [int, float] vW1 = [0, 1.0];
         vW1 = &lt;- w1;
@@ -381,7 +381,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        json jw = {&quot;name&quot;: &quot;Ballerina&quot;};
+                                    <div class="highlight"><pre><code class=language-ballerina>        json jw = {&quot;name&quot;: &quot;Ballerina&quot;};
         io:println(&quot;[w2 -&gt; w1] jw: &quot;, jw);
         jw -&gt; w1;
 </code></pre></div>
@@ -402,7 +402,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        int lw;
+                                    <div class="highlight"><pre><code class=language-ballerina>        int lw;
         runtime:sleep(5);
         lw = &lt;- w1;
         io:println(&quot;[w2 &lt;- w1] lw: &quot;, lw);
@@ -425,7 +425,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    worker w3 {
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w3 {
         float mw;
 </code></pre></div>
 
@@ -438,7 +438,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        runtime:sleep(50);
+                                    <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(50);
         mw = &lt;- w1;
         mw = &lt;- w1;
         mw = &lt;- w1;
@@ -462,7 +462,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    wait w1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    wait w1;
 }
 </code></pre></div>
 

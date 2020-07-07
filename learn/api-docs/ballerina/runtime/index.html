@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -324,7 +325,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -332,7 +334,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -599,7 +601,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -608,7 +611,7 @@ redirect_from:
                 </h1>
                     <h2>Module Overview</h2>
 <p>This module provides functions to interact with the runtime, the invocation context, and to manage errors.</p>
-<h2>Invocation Context</h2>
+<h3>Invocation Context</h3>
 <p>The Invocation Context is a data holder, which is created per request and preserved for a single request-response flow. It comprises of a unique ID, a <code>runtime:Principal</code> instance, which includes user details, a <code>runtime:AuthenticationContext</code>, which has the authentication-related details if available, and an attribute map to hold context information.</p>
 <p>The following code snippet shows how to access the <code>runtime:InvocationContext</code> and the set of data for the <code>runtime:Principal</code> and <code>runtime:AuthenticationContext</code>.</p>
 <pre><code class="language-ballerina">runtime:InvocationContext invocationContext = runtime:getInvocationContext();
@@ -643,7 +646,7 @@ if (authContext is runtime:AuthenticationContext) {
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -653,15 +656,18 @@ if (authContext is runtime:AuthenticationContext) {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="AuthenticationContext" title="AuthenticationContext">
                                 <a class="records " href="records/AuthenticationContext.html">AuthenticationContext</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the <code>runtime:AuthenticationContext</code> populated with the authenticated information.
+                                <p>Represents the <code>runtime:AuthenticationContext</code> populated with the authenticated information.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CallStackElement" title="CallStackElement">
@@ -669,9 +675,11 @@ if (authContext is runtime:AuthenticationContext) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a data holder of the current call stack element.
+                                <p>Represents a data holder of the current call stack element.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="InvocationContext" title="InvocationContext">
@@ -679,9 +687,11 @@ if (authContext is runtime:AuthenticationContext) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the <code>runtime:InvocationContext</code>.
+                                <p>Represents the <code>runtime:InvocationContext</code>.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Principal" title="Principal">
@@ -689,12 +699,14 @@ if (authContext is runtime:AuthenticationContext) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the <code>runtime:Principal</code> populated with the authenticated user information.
+                                <p>Represents the <code>runtime:Principal</code> populated with the authenticated user information.
                             </td>
                         </tr>
                     
+                    
                 </table>
             </section>
+            
             
 
             
@@ -730,7 +742,7 @@ if (authContext is runtime:AuthenticationContext) {
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieves the array of <code>runtime:CallStackElement</code> instances.
+                                <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.
                             </td>
                         </tr>
                     
@@ -740,7 +752,7 @@ if (authContext is runtime:AuthenticationContext) {
                             </td>
                             <td class="module-desc">
                                 
-                                Returns the <code>runtime:InvocationContext</code> instance.
+                                <p>Returns the <code>runtime:InvocationContext</code> instance.
                             </td>
                         </tr>
                     
@@ -750,7 +762,7 @@ if (authContext is runtime:AuthenticationContext) {
                             </td>
                             <td class="module-desc">
                                 
-                                Returns the system property value associated with the specified property name.
+                                <p>Returns the system property value associated with the specified property name.
                             </td>
                         </tr>
                     
@@ -760,7 +772,7 @@ if (authContext is runtime:AuthenticationContext) {
                             </td>
                             <td class="module-desc">
                                 
-                                Halts the current worker for a predefined amount of time.
+                                <p>Halts the current worker for a predefined amount of time.
                             </td>
                         </tr>
                     
@@ -770,7 +782,7 @@ if (authContext is runtime:AuthenticationContext) {
                             </td>
                             <td class="module-desc">
                                 
-                                Gives a timeout to the current worker for a predefined amount of time.
+                                <p>Gives a timeout to the current worker for a predefined amount of time.
                             </td>
                         </tr>
                     

@@ -129,7 +129,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -141,7 +141,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/transactions;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/transactions;
 </code></pre></div>
 
                                 </td>
@@ -161,7 +161,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -173,7 +173,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    transaction {
+                                    <div class="highlight"><pre><code class=language-ballerina>    transaction {
 </code></pre></div>
 
                                 </td>
@@ -192,7 +192,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var res = trap localTransactionParticipant();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var res = trap localTransactionParticipant();
         if (res is error) {
 </code></pre></div>
 
@@ -212,7 +212,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Local participant panicked.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Local participant panicked.&quot;);
         }
     } onretry {
         io:println(&quot;Retrying transaction&quot;);
@@ -240,7 +240,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@transactions:Participant {
+                                    <div class="highlight"><pre><code class=language-ballerina>@transactions:Participant {
     oncommit: participantOnCommit
 }
 function localTransactionParticipant() {
@@ -267,7 +267,7 @@ function localTransactionParticipant() {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function participantOnCommit(string transactionId) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function participantOnCommit(string transactionId) {
     io:println(&quot;Local participant committed function handler...&quot;);
 }
 </code></pre></div>

@@ -16,17 +16,16 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.WEBSITE_TOKEN }}
       
     - name: Set up Python 3.x
       uses: actions/setup-python@v1
       with:
         python-version: '3.x'
    
-    - name: Clone ballerina-release
-      run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
-
     - name: Generate the new release-notes-json file
-      run: python3 ballerina-release/publish_scripts/publish_json.py _data/release_notes_versions.json _data/stable-latest/metadata.json
+      run: python3 .github/scripts/publish_json.py _data/release_notes_versions.json _data/stable-latest/metadata.json
 
     - name: Copy newly generated release-notes-json file
       run: cp ballerina-release/publish_scripts/target/output/release_notes_versions.json _data/release_notes_versions.json
@@ -47,4 +46,4 @@ jobs:
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
         bin/hub push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

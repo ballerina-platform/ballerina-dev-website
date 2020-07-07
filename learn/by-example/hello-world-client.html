@@ -41,6 +41,13 @@ redirect_from:
                                     </a>
                                 </div>
                                  
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="modules.html">
+                                        <span>NEXT ></span>
+                                        <p>Modules</p>
+                                    </a>
+                                </div>
+                                
                             </div>
                         </td>
                     </tr>
@@ -95,7 +102,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 </code></pre></div>
 
@@ -108,7 +115,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
 </code></pre></div>
 
                                 </td>
@@ -120,7 +127,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Client clientEP = new (&quot;http://www.mocky.io&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client clientEP = new (&quot;http://www.mocky.io&quot;);
 </code></pre></div>
 
                                 </td>
@@ -139,7 +146,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response resp = check clientEP-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Response resp = check clientEP-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;);
 </code></pre></div>
 
                                 </td>
@@ -158,7 +165,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string payload = check resp.getTextPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string payload = check resp.getTextPayload();
 </code></pre></div>
 
                                 </td>
@@ -177,7 +184,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(payload);
 }
 </code></pre></div>
 

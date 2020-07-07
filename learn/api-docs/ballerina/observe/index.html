@@ -59,14 +59,15 @@ Ballerina supports Observability out of the box. This module provides user api's
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -329,7 +330,8 @@ Ballerina supports Observability out of the box. This module provides user api's
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -337,7 +339,7 @@ Ballerina supports Observability out of the box. This module provides user api's
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -608,7 +610,8 @@ Ballerina supports Observability out of the box. This module provides user api's
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -621,9 +624,9 @@ Ballerina supports Observability out of the box. This module provides user api's
 <p>To observe Ballerina code, the '--b7a.observability.enabled=true' property should be given when starting the service.
 i.e. `ballerina run hello_world.bal --b7a.observability.enabled=true'
 For more information on Ballerina Observability visit <a href="https://ballerina.io/v1-2/learn/how-to-observe-ballerina-code/">How to Observe Ballerina Services</a>.</p>
-<h1>Tracing</h1>
-<h2>Samples</h2>
-<h3>Start a root span &amp; attach a child span</h3>
+<h2>Tracing</h2>
+<h3>Samples</h3>
+<h4>Start a root span &amp; attach a child span</h4>
 <p>The following code snippet show an example of how start a root span with no parent and start another span as a child of the first span.
 Note: Make sure that all started spans are closed properly to ensure that all spans are reported properly.</p>
 <pre><code class="language-ballerina">int spanId = observe:startRootSpan(&quot;Parent Span&quot;);
@@ -640,7 +643,7 @@ var ret1 = observe:finishSpan(spanId2);
 
 var ret2 = observe:finishSpan(spanId);
 </code></pre>
-<h3>Start a span attached to a system trace</h3>
+<h4>Start a span attached to a system trace</h4>
 <p>When no parentSpanId is given or a parentSpanId of -1 is given, a span is started as a child span to the current active span in the ootb system trace.</p>
 <pre><code class="language-ballerina">int spanId = checkpanic observe:startSpan(&quot;Child Span&quot;);
 
@@ -648,22 +651,22 @@ var ret2 = observe:finishSpan(spanId);
 
 var ret = observe:finishSpan(spanId);
 </code></pre>
-<h3>Attach a tag to a span</h3>
+<h4>Attach a tag to a span</h4>
 <p>It is possible to add tags to span by using the <code>observe:addTagToSpan()</code> api by providing the span id and relevant tag key and tag value.</p>
 <pre><code class="language-ballerina">_ = observe:addTagToSpan(spanId = spanId, &quot;Tag Key&quot;, &quot;Tag Value&quot;);
 </code></pre>
-<h3>Attach a tag to a span in the system trace</h3>
+<h4>Attach a tag to a span in the system trace</h4>
 <p>When no spanId is provided or -1 is given, the defined tags are added to the current active span in the ootb system trace.</p>
 <pre><code class="language-ballerina">var ret = observe:addTagToSpan(&quot;Tag Key&quot;, &quot;Tag Value&quot;);
 </code></pre>
-<h1>Metrics</h1>
+<h2>Metrics</h2>
 <p>There are mainly two kind of metrics instances supported; Counter and Gauge. A counter is a cumulative metric that
 represents a single monotonically increasing counter whose value can only increase or be reset to zero on restart.
 For example, you can use a counter to represent the number of requests served, tasks completed, or errors.
 The Gauge metric instance represents a single numerical value that can arbitrarily go up and down, and also based on the
 statistics configurations provided to the Gauge, it can also report the statistics such as max, min, mean, percentiles, etc.</p>
-<h2>Counter Samples</h2>
-<h3>Create</h3>
+<h3>Counter Samples</h3>
+<h4>Create</h4>
 <p>The following code snippets provides the information on how Counter instances can be created. Instantiating the counter
 will simply create an instance based on the params passed.</p>
 <pre><code class="language-ballerina">// Create counter with simply by name.
@@ -676,7 +679,7 @@ observe:Counter counterWithDesc = new(&quot;CounterWithDesc&quot;, desc = &quot;
 map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
 </code></pre>
-<h3>Register</h3>
+<h4>Register</h4>
 <p>The counter can registered with the global metrics registry, therefore it can be looked up later without having the
 reference of the counter that was created. Also, only the registered counters will be reported to the Metrics reporter
 such as Prometheus. In case, if there is already another non counter metric registered,
@@ -689,7 +692,7 @@ if anyError is error {
     log:printError(&quot;Cannot register the counter&quot;, err = anyError);
 }
 </code></pre>
-<h3>Unregister</h3>
+<h4>Unregister</h4>
 <p>The counter can unregistered with the global metrics registry if it is already registered. If a metrics is unregistered,
 then further it'll not be included in metrics reporting.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
@@ -701,7 +704,7 @@ if anyError is error {
 counterWithTags.unregister();
     
 </code></pre>
-<h3>Increment</h3>
+<h4>Increment</h4>
 <p>The counter can be incremented without passing any params (defaulted to 1), or by a specific amount.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
@@ -710,20 +713,20 @@ counterWithTags.increment();
 // Increment by amount 10.
 counterWithTags.increment(amount = 10);
 </code></pre>
-<h3>Reset</h3>
+<h4>Reset</h4>
 <p>The counter can be resetted to default amount = 0.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
 counterWithTags.reset();
 </code></pre>
-<h3>Get Value</h3>
+<h4>Get Value</h4>
 <p>The current value can be retrieved by this operation.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
 int currentValue = counterWithTags.getValue();
 </code></pre>
-<h2>Gauge Samples</h2>
-<h3>Create</h3>
+<h3>Gauge Samples</h3>
+<h4>Create</h4>
 <p>The following code snippets provides the information on how Gauge instances can be created. Instantiating the gauge
 will simply create an instance based on the params passed.</p>
 <pre><code class="language-ballerina">// Create gauge with simply by name. 
@@ -751,7 +754,7 @@ statsConfigs[0]=config;
 observe:Gauge gaugeWithStats = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, 
                                    tags = gaugeTags, statisticConfig = statsConfigs);
 </code></pre>
-<h3>Register</h3>
+<h4>Register</h4>
 <p>The gauge can registered with the global metrics registry, therefore it can be looked up later without having the
 reference of the gauge that was created. Also, only the registered counters will be reported to the Metrics reporter
 such as Prometheus. In case, if there is already another non gauge metric registered,
@@ -764,7 +767,7 @@ if anyError is error {
     log:printError(&quot;Cannot register the gauge&quot;, err = anyError);
 }
 </code></pre>
-<h3>Unregister</h3>
+<h4>Unregister</h4>
 <p>The gauge can unregistered with the global metrics registry if it is already registered. If a metrics is unregistered,
 then further it'll not be included in metrics reporting.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
@@ -775,7 +778,7 @@ if anyError is error {
 }
 gaugeWithTags.unregister();
 </code></pre>
-<h3>Increment</h3>
+<h4>Increment</h4>
 <p>The gauge can be incremented without passing any params (defaulted to 1.0), or by a specific amount.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
@@ -784,7 +787,7 @@ gaugeWithTags.increment();
 // Increment by amount 10.
 gaugeWithTags.increment(amount = 10.0);  
 </code></pre>
-<h3>Decrement</h3>
+<h4>Decrement</h4>
 <p>The gauge can be decremented without passing any params (defaulted to 1.0), or by a specific amount.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
@@ -793,19 +796,19 @@ gaugeWithTags.decrement();
 // Increment by amount 10.
 gaugeWithTags.decrement(amount = 10.0);
 </code></pre>
-<h3>Set Value</h3>
+<h4>Set Value</h4>
 <p>This method sets the gauge's value with specific amount.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
 gaugeWithTags.setValue(100.0);
 </code></pre>
-<h3>Get Value.</h3>
+<h4>Get Value.</h4>
 <p>The current value can be retrieved by this operation.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
 float currentValue = gaugeWithTags.getValue(); 
 </code></pre>
-<h3>Get Snapshot.</h3>
+<h4>Get Snapshot.</h4>
 <p>This method retrieves current snapshot of the statistics calculation based on the configurations passed to the gauge.
 If the statistics are disabled, then it'll be returning nil ().</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
@@ -821,8 +824,8 @@ if summarySnapshot is observe:Snapshot[] {
     io:println(&quot;No statistics available!&quot;);
 }
 </code></pre>
-<h2>Global Metrics Samples</h2>
-<h3>Get All Metrics</h3>
+<h3>Global Metrics Samples</h3>
+<h4>Get All Metrics</h4>
 <p>This method returns all the metrics that are registered in the global metrics registry. This method is mainly useful for
 metric reporters, where they can fetch all metrics, format those, and report.</p>
 <pre><code class="language-ballerina">observe:Metric[] metrics = observe:getAllMetrics();
@@ -830,7 +833,7 @@ foreach var metric in metrics {
     // Do something.
 }
 </code></pre>
-<h3>Lookup Metric</h3>
+<h4>Lookup Metric</h4>
 <p>This method will lookup for the metric from the global metric registry and return it.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; tags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter|observe:Gauge|() metric = observe:lookupMetric(&quot;MetricName&quot;, tags = tags);
@@ -845,7 +848,7 @@ if metric is observe:Counter {
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -855,15 +858,18 @@ if metric is observe:Counter {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="Metric" title="Metric">
                                 <a class="records " href="records/Metric.html">Metric</a>
                             </td>
                             <td class="module-desc">
                                 
-                                This represents the generic metric record that can represent both counter and gauge.
+                                <p>This represents the generic metric record that can represent both counter and gauge.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="PercentileValue" title="PercentileValue">
@@ -871,9 +877,11 @@ if metric is observe:Counter {
                             </td>
                             <td class="module-desc">
                                 
-                                This represents the percentile value record.
+                                <p>This represents the percentile value record.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Snapshot" title="Snapshot">
@@ -881,9 +889,11 @@ if metric is observe:Counter {
                             </td>
                             <td class="module-desc">
                                 
-                                This represents the snapshot of the statistics calculation of the gauge.
+                                <p>This represents the snapshot of the statistics calculation of the gauge.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="StatisticConfig" title="StatisticConfig">
@@ -891,14 +901,17 @@ if metric is observe:Counter {
                             </td>
                             <td class="module-desc">
                                 
-                                This represents the statistic configuration that can be used to instatiate gauge metric.
+                                <p>This represents the statistic configuration that can be used to instatiate gauge metric.
                             </td>
                         </tr>
+                    
                     
                 </table>
             </section>
             
+            
 
+            
             
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
@@ -909,15 +922,18 @@ if metric is observe:Counter {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate objects" id="Counter" title="Counter">
                                 <a class="objects " href="objects/Counter.html">Counter</a>
                             </td>
                             <td class="module-desc">
                                 
-                                This represents the metric type - counter, that can be only increased by an integer number.
+                                <p>This represents the metric type - counter, that can be only increased by an integer number.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="Gauge" title="Gauge">
@@ -925,13 +941,15 @@ if metric is observe:Counter {
                             </td>
                             <td class="module-desc">
                                 
-                                This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
+                                <p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
 during the usage.
                             </td>
                         </tr>
                     
+                    
                 </table>
-             </section>  
+             </section>
+            
             
 
             
@@ -955,7 +973,7 @@ during the usage.
                             </td>
                             <td class="module-desc">
                                 
-                                Add a key value pair as a tag to the span.
+                                <p>Add a key value pair as a tag to the span.
                             </td>
                         </tr>
                     
@@ -965,7 +983,7 @@ during the usage.
                             </td>
                             <td class="module-desc">
                                 
-                                Finish the current span.
+                                <p>Finish the current span.
                             </td>
                         </tr>
                     
@@ -975,7 +993,7 @@ during the usage.
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.
+                                <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.
                             </td>
                         </tr>
                     
@@ -985,7 +1003,7 @@ during the usage.
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieves the specific metric that is described by the given name and tags.
+                                <p>Retrieves the specific metric that is described by the given name and tags.
                             </td>
                         </tr>
                     
@@ -995,7 +1013,7 @@ during the usage.
                             </td>
                             <td class="module-desc">
                                 
-                                Start a span with no parent span.
+                                <p>Start a span with no parent span.
                             </td>
                         </tr>
                     
@@ -1005,7 +1023,7 @@ during the usage.
                             </td>
                             <td class="module-desc">
                                 
-                                Start a span and create child relationship to current active span or user specified span.
+                                <p>Start a span and create child relationship to current active span or user specified span.
                             </td>
                         </tr>
                     

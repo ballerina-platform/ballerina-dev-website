@@ -192,7 +192,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/jsonutils;
 import ballerina/time;
 import ballerinax/java.jdbc;
@@ -207,7 +207,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jdbc:Client testDB = new ({
     url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
     username: &quot;test&quot;,
     password: &quot;test&quot;,
@@ -232,7 +232,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     int id;
     int age;
     string name;
@@ -256,7 +256,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -268,7 +268,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;The update operation - Creating a table&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;The update operation - Creating a table&quot;);
     var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot; +
         &quot;age INT, name VARCHAR(255), insertedTime TIMESTAMP DEFAULT &quot; +
         &quot;CURRENT_TIMESTAMP, PRIMARY KEY (id))&quot;);
@@ -293,7 +293,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe update operation - Inserting data to a table&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe update operation - Inserting data to a table&quot;);
     ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) values &quot; +
                           &quot;(23, &#39;john&#39;)&quot;);
     handleUpdate(ret, &quot;Insert to student table with no parameters&quot;);
@@ -318,7 +318,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int age = 24;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int age = 24;
     string name = &quot;Anne&quot;;
     ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) values (?, ?)&quot;,
         age, name);
@@ -344,7 +344,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Parameter p1 = {sqlType: jdbc:TYPE_INTEGER, value: 25};
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Parameter p1 = {sqlType: jdbc:TYPE_INTEGER, value: 25};
     jdbc:Parameter p2 = {sqlType: jdbc:TYPE_VARCHAR, value: &quot;James&quot;};
     jdbc:Parameter p3 = {
         sqlType: jdbc:TYPE_TIMESTAMP,
@@ -375,7 +375,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe Update operation - Update data in a table&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe Update operation - Update data in a table&quot;);
     ret = testDB-&gt;update(&quot;UPDATE student SET name = &#39;jane&#39; WHERE age = ?&quot;, 23);
     handleUpdate(ret, &quot;Update a row in student table&quot;);
 </code></pre></div>
@@ -396,7 +396,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe Update operation - Delete data from table&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe Update operation - Delete data from table&quot;);
     ret = testDB-&gt;update(&quot;DELETE FROM student WHERE age = ?&quot;, 24);
     handleUpdate(ret, &quot;Delete a row from student table&quot;);
 </code></pre></div>
@@ -417,7 +417,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe Update operation - Inserting data&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe Update operation - Inserting data&quot;);
     var retWithKey = testDB-&gt;update(&quot;INSERT INTO student &quot; +
                     &quot;(age, name) values (?, ?)&quot;, 31, &quot;Kate&quot;);
     if (retWithKey is jdbc:UpdateResult) {
@@ -451,7 +451,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe select operation - Select data from a table&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe select operation - Select data from a table&quot;);
     var selectRet = testDB-&gt;select(&quot;SELECT * FROM student where age &lt; ?&quot;,
                                     Student, 35);
     if (selectRet is table&lt;record{}&gt;) {
@@ -474,7 +474,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        json jsonConversionRet = jsonutils:fromTable(selectRet);
+                                    <div class="highlight"><pre><code class=language-ballerina>        json jsonConversionRet = jsonutils:fromTable(selectRet);
         io:println(&quot;JSON: &quot;, jsonConversionRet.toJsonString());
     } else {
         io:println(&quot;Select data from student table failed: &quot;,
@@ -502,7 +502,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe update operation - Drop the student table&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe update operation - Drop the student table&quot;);
     ret = testDB-&gt;update(&quot;DROP TABLE student&quot;);
     handleUpdate(ret, &quot;Drop table student&quot;);
 }
@@ -524,7 +524,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
     if (returned is jdbc:UpdateResult) {
         io:println(message, &quot; status: &quot;, returned.updatedRowCount);
     } else {

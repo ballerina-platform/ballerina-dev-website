@@ -173,7 +173,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -186,7 +186,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9092&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9092&quot;, {
         followRedirects: {enabled: true, maxCount: 5}
     }
 );
@@ -208,7 +208,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service hello on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service hello on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -220,7 +220,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -236,7 +236,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var returnResult = clientEndpoint-&gt;get(&quot;/redirect1&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var returnResult = clientEndpoint-&gt;get(&quot;/redirect1&quot;);
         if (returnResult is http:Response) {
 </code></pre></div>
 
@@ -256,7 +256,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var payload = returnResult.getTextPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>            var payload = returnResult.getTextPayload();
             if (payload is string) {
                 var result = caller-&gt;respond(&quot;Response received : &quot; 
                                                 + &lt;@untained&gt;payload);
@@ -297,7 +297,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/redirect1&quot;
 }
 service redirect1 on new http:Listener(9092) {
@@ -312,7 +312,7 @@ service redirect1 on new http:Listener(9092) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -329,7 +329,7 @@ service redirect1 on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        error? result = caller-&gt;redirect(res,
+                                    <div class="highlight"><pre><code class=language-ballerina>        error? result = caller-&gt;redirect(res,
             http:REDIRECT_TEMPORARY_REDIRECT_307,
             [&quot;http://localhost:9093/redirect2&quot;]);
         if (result is error) {
@@ -356,7 +356,7 @@ service redirect1 on new http:Listener(9092) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/redirect2&quot;
 }
 service redirect2 on new http:Listener(9093) {
@@ -371,7 +371,7 @@ service redirect2 on new http:Listener(9093) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -387,7 +387,7 @@ service redirect2 on new http:Listener(9093) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(&quot;Hello World!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&quot;Hello World!&quot;);
         if (result is error) {
             log:printError(&quot;Error in responding&quot;, result);
         }

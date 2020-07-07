@@ -175,7 +175,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/lang.&#39;int;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;int;
 import ballerinax/java.jdbc;
 </code></pre></div>
 
@@ -188,7 +188,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function userDefinedSecureOperation(@untainted string secureParameter) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function userDefinedSecureOperation(@untainted string secureParameter) {
 </code></pre></div>
 
                                 </td>
@@ -208,7 +208,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -220,7 +220,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string firstname;
 };
 </code></pre></div>
@@ -234,7 +234,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main(string... args) {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main(string... args) {
     jdbc:Client customerDBEP = new ({
         url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
         username: &quot;root&quot;,
@@ -253,7 +253,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = customerDBEP-&gt;
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = customerDBEP-&gt;
                                select(&quot;SELECT firstname FROM student WHERE&quot; +
                                       &quot; registration_id = &quot; + args[0], ());
 </code></pre></div>
@@ -280,7 +280,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is error) {
         panic result;
     }
 </code></pre></div>
@@ -294,7 +294,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Student&gt; dataTable = &lt;table&lt;Student&gt;&gt;result;
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;Student&gt; dataTable = &lt;table&lt;Student&gt;&gt;result;
 </code></pre></div>
 
                                 </td>
@@ -306,7 +306,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    userDefinedSecureOperation(args[0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    userDefinedSecureOperation(args[0]);
 </code></pre></div>
 
                                 </td>
@@ -325,7 +325,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (isInteger(args[0])) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (isInteger(args[0])) {
 </code></pre></div>
 
                                 </td>
@@ -337,7 +337,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(&lt;@untainted&gt;args[0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(&lt;@untainted&gt;args[0]);
     } else {
         error err = error(&quot;Validation error: ID should be an integer&quot;);
         panic err;
@@ -361,7 +361,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (dataTable.hasNext()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (dataTable.hasNext()) {
         Student jsonData = dataTable.getNext();
 </code></pre></div>
 
@@ -374,7 +374,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(jsonData.firstname);
 </code></pre></div>
 
                                 </td>
@@ -398,7 +398,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string sanitizedData1 = sanitizeAndReturnTainted(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string sanitizedData1 = sanitizeAndReturnTainted(jsonData.firstname);
 </code></pre></div>
 
                                 </td>
@@ -410,7 +410,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(sanitizedData1);
+                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(sanitizedData1);
 </code></pre></div>
 
                                 </td>
@@ -430,7 +430,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string sanitizedData2 = sanitizeAndReturnUntainted(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string sanitizedData2 = sanitizeAndReturnUntainted(jsonData.firstname);
 </code></pre></div>
 
                                 </td>
@@ -442,7 +442,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(sanitizedData2);
+                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(sanitizedData2);
     }
     checkpanic customerDBEP.stop();
     return;
@@ -467,7 +467,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function sanitizeAndReturnTainted(string input) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function sanitizeAndReturnTainted(string input) returns string {
 </code></pre></div>
 
                                 </td>
@@ -479,7 +479,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return input;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return input;
 }
 </code></pre></div>
 
@@ -499,7 +499,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function sanitizeAndReturnUntainted(string input) returns @untainted string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function sanitizeAndReturnUntainted(string input) returns @untainted string {
 </code></pre></div>
 
                                 </td>
@@ -519,7 +519,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return input;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return input;
 }
 </code></pre></div>
 
@@ -539,7 +539,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function isInteger(string input) returns boolean {
+                                    <div class="highlight"><pre><code class=language-ballerina>function isInteger(string input) returns boolean {
     var intVal = &#39;int:fromString(input);
     if (intVal is error) {
         return false;

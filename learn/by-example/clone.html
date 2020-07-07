@@ -137,7 +137,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -149,7 +149,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Person record {
     string name;
     int age;
     boolean married;
@@ -174,7 +174,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type Address record {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Address record {
     string country;
     string state;
     string city;
@@ -198,7 +198,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -210,7 +210,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Address address = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Address address = {
         country: &quot;USA&quot;,
         state: &quot;NC&quot;,
         city: &quot;Raleigh&quot;,
@@ -234,7 +234,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person person = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person person = {
         name: &quot;Alex&quot;,
         age: 24,
         married: false,
@@ -259,7 +259,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person result = person.clone();
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person result = person.clone();
 </code></pre></div>
 
                                 </td>
@@ -281,7 +281,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Source value: &quot;, person);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Source value: &quot;, person);
     io:println(&quot;Cloned value: &quot;, result);
 </code></pre></div>
 
@@ -294,7 +294,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Source and Clone are at two different memory locations: &quot;, result !== person);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Source and Clone are at two different memory locations: &quot;, result !== person);
 }
 </code></pre></div>
 

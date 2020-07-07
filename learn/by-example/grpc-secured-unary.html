@@ -145,7 +145,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>syntax = &quot;proto3&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>syntax = &quot;proto3&quot;;
 import &quot;google/protobuf/wrappers.proto&quot;;
 service HelloWorld {
 	rpc hello (google.protobuf.StringValue)
@@ -271,7 +271,7 @@ $ ballerina grpc --input grpc_secured_unary.proto  --output stubs
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
 import ballerina/grpc;
 import ballerina/log;
 </code></pre></div>
@@ -292,7 +292,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener grpc:Listener ep = new (9090, {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener grpc:Listener ep = new (9090, {
     host: &quot;localhost&quot;,
     secureSocket: {
         keyStore: {
@@ -320,7 +320,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service HelloWorld on ep {
+                                    <div class="highlight"><pre><code class=language-ballerina>service HelloWorld on ep {
     resource function hello(grpc:Caller caller, string name) {
         log:printInfo(&quot;Server received hello from &quot; + name);
         string message = &quot;Hello &quot; + name;
@@ -335,7 +335,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        grpc:Error? err = caller-&gt;send(message);
+                                    <div class="highlight"><pre><code class=language-ballerina>        grpc:Error? err = caller-&gt;send(message);
 </code></pre></div>
 
                                 </td>
@@ -354,7 +354,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (err is grpc:Error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (err is grpc:Error) {
             log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
                                            + &lt;string&gt;err.detail()[&quot;message&quot;]);
         } else {
@@ -371,7 +371,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        grpc:Error? result = caller-&gt;complete();
+                                    <div class="highlight"><pre><code class=language-ballerina>        grpc:Error? result = caller-&gt;complete();
         if (result is grpc:Error) {
             log:printError(&quot;Error in sending completed notification to caller&quot;,
                 err = result);
@@ -508,7 +508,7 @@ $ ballerina run target/bin/service.jar --b7a.home=&lt;ballerina_home_path&gt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
 import ballerina/grpc;
 import ballerina/io;
 </code></pre></div>
@@ -529,7 +529,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -541,7 +541,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    HelloWorldBlockingClient helloWorldBlockingEp = new (&quot;https://localhost:9090&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>    HelloWorldBlockingClient helloWorldBlockingEp = new (&quot;https://localhost:9090&quot;, {
             secureSocket: {
                 trustStore: {
                     path: config:getAsString(&quot;b7a.home&quot;) + &quot;/bre/security/ballerinaTruststore.p12&quot;,
@@ -567,7 +567,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var unionResp = helloWorldBlockingEp-&gt;hello(&quot;WSO2&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var unionResp = helloWorldBlockingEp-&gt;hello(&quot;WSO2&quot;);
     if (unionResp is grpc:Error) {
         io:println(&quot;Error from Connector: &quot; + unionResp.reason() + &quot; - &quot;
                                          + &lt;string&gt;unionResp.detail()[&quot;message&quot;]);

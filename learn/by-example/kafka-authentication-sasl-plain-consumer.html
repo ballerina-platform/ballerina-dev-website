@@ -1,0 +1,373 @@
+---
+layout: ballerina-example-page
+title: SASL Authentication - Consumer
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /learn/by-example/kafka-authentication-sasl-plain-consumer
+redirect_from:
+  - /v1-2/learn/by-example/kafka-authentication-sasl-plain-consumer
+  - /v1-2/learn/by-example/kafka-authentication-sasl-plain-consumer.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">AuthenticationConfiguration</span> <span class="nx">authConfig</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">mechanism</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">AUTH_SASL_PLAIN</span><span class="p">,</span>
+    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina-secret&quot;</span>
+<span class="p">};</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfig</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">bootstrapServers</span><span class="p">:</span><span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
+    <span class="nx">groupId</span><span class="p">:</span><span class="s">&quot;test-group&quot;</span><span class="p">,</span>
+    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;sasl-consumer&quot;</span><span class="p">,</span>
+    <span class="nx">offsetReset</span><span class="p">:</span><span class="s">&quot;earliest&quot;</span><span class="p">,</span>
+    <span class="nx">topics</span><span class="p">:[</span><span class="s">&quot;topic-sasl&quot;</span><span class="p">],</span>
+    <span class="nx">valueDeserializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">DES_STRING</span><span class="p">,</span>
+    <span class="nx">authenticationConfiguration</span><span class="p">:</span> <span class="nx">authConfig</span>
+<span class="p">};</span><span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">consumer</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">consumerConfig</span><span class="p">);</span><span class="kd">service</span> <span class="nx">KafkaService</span> <span class="nx">on</span> <span class="nx">consumer</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">consumer</span><span class="p">,</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">consumerRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
+            <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">consumerRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>SASL Authentication - Consumer</h2>
+                            <p><p>Here, is an example of a Kafka consumer using SASL/PLAIN authentication.
+ For this example to work properly, an active Kafka server must be present
+ and it should be configured to use the SASL/PLAIN authentication mechanism.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="nats-streaming-start-position.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Historical Message Replay</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="kafka-authentication-sasl-plain-producer.html">
+                                        <span>NEXT ></span>
+                                        <p>SASL Authentication - Producer</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="kafka-authentication-sasl-plain-consumer">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/kafka-authentication-sasl-plain-consumer/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/kafka;
+import ballerina/log;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:AuthenticationConfiguration authConfig = {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>kafka:AuthenticationConfiguration</code> is used to provide authentication-related details.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    mechanism: kafka:AUTH_SASL_PLAIN,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Provide the authentication mechanism used by the Kafka server.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    username: &quot;ballerina&quot;,
+    password: &quot;ballerina-secret&quot;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Username and password should be set here in order to authenticate the consumer.
+ Check Ballerina <code>config</code> APIs to see how to use encrypted values instead of plain text values here.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfiguration consumerConfig = {
+    bootstrapServers:&quot;localhost:9092&quot;,
+    groupId:&quot;test-group&quot;,
+    clientId: &quot;sasl-consumer&quot;,
+    offsetReset:&quot;earliest&quot;,
+    topics:[&quot;topic-sasl&quot;],
+    valueDeserializerType: kafka:DES_STRING,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    authenticationConfiguration: authConfig
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Provide the relevant authentication configuration record to authenticate the consumer.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Consumer consumer = new(consumerConfig);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>service KafkaService on consumer {
+    resource function onMessage(kafka:Consumer consumer, kafka:ConsumerRecord[] records) {
+        foreach var consumerRecord in records {
+            string value = &lt;string&gt; consumerRecord.value;
+            log:printInfo(value);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run kafka_authentication_sasl_plain_consumer.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># The following lines will be printed in the Console when consumer starts.
+# If the consumer connected successfully, it will start to receive messages
+# from the subscribed topic(s).
+[ballerina/kafka] kafka servers: localhost:9092
+[ballerina/kafka] subscribed topics: topic-sasl
+[ballerina/kafka] started kafka listener
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

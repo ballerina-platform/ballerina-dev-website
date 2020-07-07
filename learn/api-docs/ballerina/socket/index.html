@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -340,7 +341,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -348,7 +350,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -631,7 +633,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -640,7 +643,7 @@ redirect_from:
                 </h1>
                     <h2>Module Overview</h2>
 <p>This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for both connection-oriented and connectionless protocols.</p>
-<h3>TCP Client</h3>
+<h4>TCP Client</h4>
 <p>The <code>socket:Client</code> is used to connect to a socket server and interact with it. The client can only send the data to the server and the client's call-back service can retrieve the data from the server and do multiple requests/responses between the client and the server.</p>
 <p>A Client can be defined by providing the host, port, and callbackService as follows.</p>
 <pre><code class="language-ballerina">socket:Client socketClient = new ({host: &quot;localhost&quot;, port: 61598, callbackService: ClientService});
@@ -655,14 +658,14 @@ var writeResult = socketClient-&gt;write(message);
     }
 }
 </code></pre>
-<h3>UDP Client</h3>
+<h4>UDP Client</h4>
 <p>The <code>socket:UdpClient</code> is used to interact with the remote UDP host and it can be defined as follows:</p>
 <pre><code class="language-ballerina">socket:UdpClient socketClient = new;
 string msg = &quot;Hello from UDP client&quot;;
 byte[] message = msg.toBytes();
 int|socket:Error sendResult = socketClient-&gt;sendTo(message, { host: &quot;localhost&quot;, port: 48826 });
 </code></pre>
-<h3>Listener</h3>
+<h4>Listener</h4>
 <p>The <code>socket:Listener</code> is used to listen to the incoming socket request. The <code>onConnect(socket:Caller)</code> resource function gets invoked when a new client is connected. The new client is represented using the <code>socket:Caller</code>.
 The <code>onReadReady(socket:Caller)</code> resource gets invoked once the remote client sends some data.</p>
 <p>A <code>socket:Listener</code> can be defined as follows:</p>
@@ -686,7 +689,7 @@ service echoServer on server {
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -696,15 +699,18 @@ service echoServer on server {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="Address" title="Address">
                                 <a class="records " href="records/Address.html">Address</a>
                             </td>
                             <td class="module-desc">
                                 
-                                This represent the IP socket address.
+                                <p>This represent the IP socket address.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ClientConfig" title="ClientConfig">
@@ -712,9 +718,11 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for the socket client.
+                                <p>Configurations for the socket client.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
@@ -722,9 +730,11 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Record type to hold the details of an error.
+                                <p>Record type to hold the details of an error.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerConfig" title="ListenerConfig">
@@ -732,9 +742,11 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the socket server configuration.
+                                <p>Represents the socket server configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="UdpClientConfig" title="UdpClientConfig">
@@ -742,12 +754,14 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for the UDP client.
+                                <p>Configurations for the UDP client.
                             </td>
                         </tr>
                     
+                    
                 </table>
             </section>
+            
             
 
             
@@ -768,7 +782,7 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the socket client and related remote functions.
+                                <p>Represents the socket client and related remote functions.
                             </td>
                         </tr>
                     
@@ -778,7 +792,7 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Initializes the UDP client based on the provided configurations.
+                                <p>Initializes the UDP client based on the provided configurations.
                             </td>
                         </tr>
                     
@@ -802,7 +816,7 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the socket listener on which the socket listener service is registered and started.
+                                <p>Represents the socket listener on which the socket listener service is registered and started.
                             </td>
                         </tr>
                     
@@ -830,7 +844,7 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                This will used to construct a ReadTimedOutError.
+                                <p>This will used to construct a ReadTimedOutError.
                             </td>
                         </tr>
                     
@@ -840,7 +854,7 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                This will used to construct a GENERIC_ERROR.
+                                <p>This will used to construct a GENERIC_ERROR.
                             </td>
                         </tr>
                     
@@ -867,7 +881,7 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents caller object in socket service resources and client callback service resources.
+                                <p>Represents caller object in socket service resources and client callback service resources.
                             </td>
                         </tr>
                     
@@ -877,7 +891,7 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents socket module related errors.
+                                <p>Represents socket module related errors.
                             </td>
                         </tr>
                     
@@ -901,7 +915,7 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents generic socket error.
+                                <p>Represents generic socket error.
                             </td>
                         </tr>
                     
@@ -911,7 +925,7 @@ service echoServer on server {
                             </td>
                             <td class="module-desc">
                                 
-                                This will returns once the given read timed out time exceed for socket reads.
+                                <p>This will returns once the given read timed out time exceed for socket reads.
                             </td>
                         </tr>
                     

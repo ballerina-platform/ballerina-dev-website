@@ -19,6 +19,8 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.WEBSITE_TOKEN }}
 
     - name: Create new release note
       run: |
@@ -26,7 +28,7 @@ jobs:
         mkdir downloads/release-notes/$VERSION
         cp downloads/RELEASE_NOTE.md downloads/release-notes/$VERSION
 
-    - name: Push changes for the new release note
+    - name: Commit changes for the new release note
       run: |
         git pull origin master
         
@@ -43,4 +45,4 @@ jobs:
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
         bin/hub push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

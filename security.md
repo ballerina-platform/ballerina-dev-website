@@ -39,7 +39,7 @@ The below is an overview of the vulnerability handling process.
 
 1. The vulnerability will be reported privately to security@ballerina.io. (The initial response time will be less than 24 hours).
 2. The reported vulnerability gets fixed and the solution gets verified by the relevant teams at WSO2.
-3. The fix gets applied to the master branch and a new version of the distribution gets released if required.
+3. The fix gets applied to the main branch and a new version of the distribution gets released if required.
 4. The reported user is kept updated on the progress of the process. 
 
 

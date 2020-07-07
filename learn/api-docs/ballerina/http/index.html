@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -352,7 +353,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -360,7 +362,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -655,7 +657,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -664,7 +667,7 @@ redirect_from:
                 </h1>
                     <h2>Module Overview</h2>
 <p>This module provides an implementation for connecting and interacting with HTTP, HTTP2, and WebSocket endpoints. The module facilitates two types of network entry points as ‘Client’ and ‘Listener’.</p>
-<h2>Client</h2>
+<h3>Client</h3>
 <p>The <code>Client</code> is used to connect to and interact with HTTP endpoints. They support connection pooling and can be configured to have a maximum number of active connections that can be made with the remote endpoint. The <code>Client</code> activates connection eviction after a given idle period and also supports follow-redirects so that the users do not have to manually handle 3xx HTTP status codes.</p>
 <p>The <code>Client</code> handles resilience in multiple ways such as load balancing, circuit breaking, endpoint timeouts, and a retry mechanism.</p>
 <p>Load balancing is used in the round robin or failover manner.</p>
@@ -678,8 +681,14 @@ redirect_from:
 <pre><code class="language-ballerina">// Send a GET request to the specified endpoint.
 var response = clientEndpoint-&gt;get(&quot;/get?id=123&quot;);
 </code></pre>
-<p>For more information, see <a href="https://ballerina.io/learn/by-example/http-client-endpoint.html">Client Endpoint Example</a>, <a href="https://ballerina.io/learn/by-example/http-circuit-breaker.html">Circuit Breaker Example</a>, <a href="https://ballerina.io/learn/by-example/http-redirects.html">HTTP Redirects Example</a>.</p>
-<h2>Listener</h2>
+<p>For more information, see the following.</p>
+<ul>
+<li><a href="https://ballerina.io/learn/by-example/http-client-endpoint.html">Client Endpoint Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-circuit-breaker.html">Circuit Breaker Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-redirects.html">HTTP Redirects Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-cookies.html">HTTP Cookies</a></li>
+</ul>
+<h3>Listener</h3>
 <p>A <code>Service</code> represents a collection of network-accessible entry points and can be exposed via a <code>Listener</code> endpoint. A resource represents one such entry point and can have its own path, HTTP methods, body format, 'consumes' and 'produces' content types, CORS headers, etc. In resources, <code>http:caller</code> and <code>http:Request</code> are mandatory parameters while <code>path</code> and <code>body</code> are optional.</p>
 <p>When a <code>Service</code> receives a request, it is dispatched to the best-matched resource.</p>
 <p>A <code>Listener</code> endpoint can be defined as follows:</p>
@@ -710,11 +719,17 @@ service helloWorld on helloWorldEP {
    }
 }
 </code></pre>
-<p>See <a href="https://ballerina.io/learn/by-example/http-data-binding.html">Listener Endpoint Example</a>, <a href="https://ballerina.io/learn/by-example/http-cors.html">HTTP CORS Example</a>, <a href="https://ballerina.io/learn/by-example/http-failover.html">HTTP Failover Example</a>, <a href="https://ballerina.io/learn/by-example/http-load-balancer.html">HTTP Load Balancer Example</a></p>
+<p>See the following.</p>
+<ul>
+<li><a href="https://ballerina.io/learn/by-example/http-data-binding.html">Listener Endpoint Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-cors.html">HTTP CORS Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-failover.html">HTTP Failover Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-load-balancer.html">HTTP Load Balancer Example</a></li>
+</ul>
 <p><code>Listener</code> endpoints can be exposed via SSL. They support Mutual SSL, Hostname Verification, and Application Layer Protocol Negotiation (ALPN) for HTTP2. <code>Listener</code> endpoints also support Certificate Revocation List (CRL), Online Certificate Status Protocol (OCSP), OCSP Stapling, HTTP2, keep-alive, chunking, HTTP caching, data compression/decompression, and authentication/authorization.</p>
 <p>For more information, see <a href="https://ballerina.io/learn/by-example/mutual-ssl.html">Mutual SSL Example</a>.</p>
 <p>For more information, see <a href="https://ballerina.io/learn/by-example/cache.html">Caching Example</a>, <a href="https://ballerina.io/learn/by-example/http-disable-chunking.html">HTTP Disable Chunking Example</a>.</p>
-<h2>WebSocket</h2>
+<h3>WebSocket</h3>
 <p>This module also provides support for WebSockets. There are two types of WebSocket endpoints: <code>WebSocketClient</code> and <code>WebSocketListener</code>. Both endpoints support all WebSocket frames. The <code>WebSocketClient</code> has a callback service.</p>
 <p>There are two types of services for WebSockets. The service of the server has the <code>WebSockerCaller</code> as the resource parameter and the callback service of the client has <code>WebSocketClient</code> as the resource parameter. The WebSocket services have a fixed set of resources that do not have a resource config. The incoming messages are passed to these resources.</p>
 <p><strong>WebSocket upgrade</strong>: During a WebSocket upgrade, the initial message received is an HTTP request. To intercept this request and perform the upgrade explicitly with custom headers, the user must create an HTTP resource with WebSocket-specific configurations as follows:</p>
@@ -735,8 +750,17 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
 <p><strong>onIdleTimeout</strong>: This resource is dispatched when the idle timeout is reached. The <code>idleTimeout</code> has to be configured either in the WebSocket service or the client configuration.</p>
 <p><strong>onClose</strong>: This resource is dispatched when a close frame with a statusCode and a reason is received.</p>
 <p><strong>onError</strong>: This resource is dispatched when an error occurs in the WebSocket connection. This will always be preceded by a connection closure with an appropriate close frame.</p>
-<p>For more information, see <a href="https://ballerina.io/learn/by-example/websocket-basic-sample.html">WebSocket Basic Example</a>, <a href="https://ballerina.io/learn/by-example/http-to-websocket-upgrade.html">HTTP to WebSocket Upgrade Example</a>, <a href="https://ballerina.io/learn/by-example/websocket-chat-application.html">WebSocket Chat Application</a>, <a href="https://ballerina.io/learn/by-example/websocket-proxy-server.html">WebSocket Proxy Server</a>.</p>
-<h2>Logging</h2>
+<p>For more information, see the following.</p>
+<ul>
+<li><a href="https://ballerina.io/learn/by-example/websocket-basic-sample.html">WebSocket Basic Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/http-to-websocket-upgrade.html">HTTP to WebSocket Upgrade Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-chat-application.html">WebSocket Chat Application</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-proxy-server.html">WebSocket Proxy Server</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-client.html">Client Endpoint</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-retry.html">Retry</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websocket-failover.html">Failover</a></li>
+</ul>
+<h3>Logging</h3>
 <p>This module supports two types of logs:</p>
 <ul>
 <li>HTTP access logs: These are standard HTTP access logs that are formatted using the combined log format and logged at the <code>INFO</code> level. Logs can be published to the console or a file using the following configurations:
@@ -759,7 +783,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -769,15 +793,18 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="Bucket" title="Bucket">
                                 <a class="records " href="records/Bucket.html">Bucket</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a discrete sub-part of the time window (Bucket).
+                                <p>Represents a discrete sub-part of the time window (Bucket).
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CacheConfig" title="CacheConfig">
@@ -785,9 +812,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides a set of configurations for controlling the caching behaviour of the endpoint.
+                                <p>Provides a set of configurations for controlling the caching behaviour of the endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CircuitBreakerConfig" title="CircuitBreakerConfig">
@@ -795,9 +824,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides a set of configurations for controlling the behaviour of the Circuit Breaker.
+                                <p>Provides a set of configurations for controlling the behaviour of the Circuit Breaker.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CircuitBreakerInferredConfig" title="CircuitBreakerInferredConfig">
@@ -805,9 +836,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Derived set of configurations from the <code>CircuitBreakerConfig</code>.
+                                <p>Derived set of configurations from the <code>CircuitBreakerConfig</code>.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CircuitHealth" title="CircuitHealth">
@@ -815,9 +848,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Maintains the health of the Circuit Breaker.
+                                <p>Maintains the health of the Circuit Breaker.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ClientConfiguration" title="ClientConfiguration">
@@ -825,9 +860,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides a set of configurations for controlling the behaviours when communicating with a remote HTTP endpoint.
+                                <p>Provides a set of configurations for controlling the behaviours when communicating with a remote HTTP endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ClientHttp1Settings" title="ClientHttp1Settings">
@@ -835,9 +872,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides settings related to HTTP/1.
+                                <p>Provides settings related to HTTP/1.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ClientHttp2Settings" title="ClientHttp2Settings">
@@ -845,9 +884,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides settings related to HTTP/2 protocol.
+                                <p>Provides settings related to HTTP/2 protocol.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ClientSecureSocket" title="ClientSecureSocket">
@@ -855,9 +896,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides configurations for facilitating secure communication with a remote HTTP endpoint.
+                                <p>Provides configurations for facilitating secure communication with a remote HTTP endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CommonClientConfiguration" title="CommonClientConfiguration">
@@ -865,9 +908,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Common client configurations for the next level clients.
+                                <p>Common client configurations for the next level clients.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CompressionConfig" title="CompressionConfig">
@@ -875,9 +920,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                A record for providing configurations for content compression.
+                                <p>A record for providing configurations for content compression.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CookieConfig" title="CookieConfig">
@@ -885,9 +932,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Client configuration for cookies.
+                                <p>Client configuration for cookies.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CorsConfig" title="CorsConfig">
@@ -895,9 +944,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for CORS support.
+                                <p>Configurations for CORS support.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
@@ -905,10 +956,12 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Holds the details of an HTTP error
+                                <p>Holds the details of an HTTP error</p>
 
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="FailoverClientConfiguration" title="FailoverClientConfiguration">
@@ -916,9 +969,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides a set of HTTP related configurations and failover related configurations.
+                                <p>Provides a set of HTTP related configurations and failover related configurations.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="FailoverConfig" title="FailoverConfig">
@@ -926,9 +981,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides a set of configurations for controlling the failover behaviour of the endpoint.
+                                <p>Provides a set of configurations for controlling the failover behaviour of the endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="FailoverInferredConfig" title="FailoverInferredConfig">
@@ -936,9 +993,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the inferred failover configurations passed into the failover client.
+                                <p>Represents the inferred failover configurations passed into the failover client.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="FollowRedirects" title="FollowRedirects">
@@ -946,9 +1005,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides configurations for controlling the endpoint's behaviour in response to HTTP redirect related responses.
+                                <p>Provides configurations for controlling the endpoint's behaviour in response to HTTP redirect related responses.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="HttpResourceConfig" title="HttpResourceConfig">
@@ -956,9 +1017,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configuration for an HTTP resource.
+                                <p>Configuration for an HTTP resource.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="HttpServiceConfig" title="HttpServiceConfig">
@@ -966,9 +1029,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Contains the configurations for an HTTP service.
+                                <p>Contains the configurations for an HTTP service.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="HttpTimeoutError" title="HttpTimeoutError">
@@ -976,9 +1041,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Defines a timeout error occurred during service invocation.
+                                <p>Defines a timeout error occurred during service invocation.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerAuth" title="ListenerAuth">
@@ -986,9 +1053,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Authentication configurations for the listener.
+                                <p>Authentication configurations for the listener.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerConfiguration" title="ListenerConfiguration">
@@ -996,9 +1065,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides a set of configurations for HTTP service endpoints.
+                                <p>Provides a set of configurations for HTTP service endpoints.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerHttp1Settings" title="ListenerHttp1Settings">
@@ -1006,9 +1077,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides settings related to HTTP/1.
+                                <p>Provides settings related to HTTP/1.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerOcspStapling" title="ListenerOcspStapling">
@@ -1016,9 +1089,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                A record for providing configurations for certificate revocation status checks.
+                                <p>A record for providing configurations for certificate revocation status checks.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerSecureSocket" title="ListenerSecureSocket">
@@ -1026,9 +1101,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configures the SSL/TLS options to be used for HTTP service.
+                                <p>Configures the SSL/TLS options to be used for HTTP service.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="LoadBalanceActionErrorData" title="LoadBalanceActionErrorData">
@@ -1036,9 +1113,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an error occurred in an remote function of the Load Balance connector.
+                                <p>Represents an error occurred in an remote function of the Load Balance connector.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="LoadBalanceClientConfiguration" title="LoadBalanceClientConfiguration">
@@ -1046,9 +1125,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                The configurations related to the load balance client endpoint.
+                                <p>The configurations related to the load balance client endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Local" title="Local">
@@ -1056,9 +1137,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Presents a read-only view of the local address.
+                                <p>Presents a read-only view of the local address.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="MutualSslHandshake" title="MutualSslHandshake">
@@ -1066,9 +1149,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                A record for providing mutual SSL handshake results.
+                                <p>A record for providing mutual SSL handshake results.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="OutboundAuthConfig" title="OutboundAuthConfig">
@@ -1076,9 +1161,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                The <code>OutboundAuthConfig</code> record can be used to configure the authentication mechanism used by the HTTP endpoint.
+                                <p>The <code>OutboundAuthConfig</code> record can be used to configure the authentication mechanism used by the HTTP endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="PoolConfiguration" title="PoolConfiguration">
@@ -1086,9 +1173,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for managing HTTP client connection pool.
+                                <p>Configurations for managing HTTP client connection pool.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Protocols" title="Protocols">
@@ -1096,9 +1185,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                A record for configuring SSL/TLS protocol and version to be used.
+                                <p>A record for configuring SSL/TLS protocol and version to be used.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ProxyConfig" title="ProxyConfig">
@@ -1106,9 +1197,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Proxy server configurations to be used with the HTTP client endpoint.
+                                <p>Proxy server configurations to be used with the HTTP client endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Remote" title="Remote">
@@ -1116,9 +1209,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Presents a read-only view of the remote address.
+                                <p>Presents a read-only view of the remote address.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ResourceAuth" title="ResourceAuth">
@@ -1126,9 +1221,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configures the authentication scheme for a resource.
+                                <p>Configures the authentication scheme for a resource.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="RetryConfig" title="RetryConfig">
@@ -1136,9 +1233,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides configurations for controlling the retrying behavior in failure scenarios.
+                                <p>Provides configurations for controlling the retrying behavior in failure scenarios.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="RetryInferredConfig" title="RetryInferredConfig">
@@ -1146,9 +1245,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Derived set of configurations from the <code>RetryConfig</code>.
+                                <p>Derived set of configurations from the <code>RetryConfig</code>.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="RollingWindow" title="RollingWindow">
@@ -1156,9 +1257,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a rolling window in the Circuit Breaker.
+                                <p>Represents a rolling window in the Circuit Breaker.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ServiceAuth" title="ServiceAuth">
@@ -1166,9 +1269,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configures the authentication scheme for a service.
+                                <p>Configures the authentication scheme for a service.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="TargetService" title="TargetService">
@@ -1176,9 +1281,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a single service and its related configurations.
+                                <p>Represents a single service and its related configurations.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ValidateCert" title="ValidateCert">
@@ -1186,9 +1293,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                A record for providing configurations for certificate revocation status checks.
+                                <p>A record for providing configurations for certificate revocation status checks.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Versioning" title="Versioning">
@@ -1196,9 +1305,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for service versioning.
+                                <p>Configurations for service versioning.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="WSServiceConfig" title="WSServiceConfig">
@@ -1206,9 +1317,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for a WebSocket service.
+                                <p>Configurations for a WebSocket service.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="WebSocketClientConfiguration" title="WebSocketClientConfiguration">
@@ -1216,9 +1329,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for the WebSocket client endpoint.
+                                <p>Configurations for the WebSocket client endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="WebSocketFailoverClientConfiguration" title="WebSocketFailoverClientConfiguration">
@@ -1226,9 +1341,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for the WebSocket client endpoint.
+                                <p>Configurations for the WebSocket client endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="WebSocketRetryConfig" title="WebSocketRetryConfig">
@@ -1236,9 +1353,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Retry configurations for WebSocket.
+                                <p>Retry configurations for WebSocket.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="WebSocketUpgradeConfig" title="WebSocketUpgradeConfig">
@@ -1246,14 +1365,17 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Resource configuration to upgrade from HTTP to WebSocket.
+                                <p>Resource configuration to upgrade from HTTP to WebSocket.
                             </td>
                         </tr>
+                    
                     
                 </table>
             </section>
             
+            
 
+            
             
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
@@ -1264,15 +1386,18 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate objects" id="AuthnFilter" title="AuthnFilter">
                                 <a class="objects " href="objects/AuthnFilter.html">AuthnFilter</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Representation of the Authentication filter.
+                                <p>Representation of the Authentication filter.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="AuthzFilter" title="AuthzFilter">
@@ -1280,9 +1405,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Representation of the Authorization filter.
+                                <p>Representation of the Authorization filter.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="AuthzHandler" title="AuthzHandler">
@@ -1290,9 +1417,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Representation of Authorization Handler for HTTP.
+                                <p>Representation of Authorization Handler for HTTP.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="BasicAuthHandler" title="BasicAuthHandler">
@@ -1300,9 +1429,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the Basic Auth header handler for inbound and outbound HTTP traffic.
+                                <p>Defines the Basic Auth header handler for inbound and outbound HTTP traffic.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="BearerAuthHandler" title="BearerAuthHandler">
@@ -1310,9 +1441,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Representation of the Bearer Auth header handler for both inbound and outbound HTTP traffic.
+                                <p>Representation of the Bearer Auth header handler for both inbound and outbound HTTP traffic.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="Cookie" title="Cookie">
@@ -1320,9 +1453,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a Cookie.
+                                <p>Represents a Cookie.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="CookieClient" title="CookieClient">
@@ -1330,9 +1465,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the cookie functionality across HTTP client actions.
+                                <p>Provides the cookie functionality across HTTP client actions.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="CookieStore" title="CookieStore">
@@ -1340,9 +1477,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the cookie store.
+                                <p>Represents the cookie store.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="CsvPersistentCookieHandler" title="CsvPersistentCookieHandler">
@@ -1350,9 +1489,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a default persistent cookie handler, which stores persistent cookies in a CSV file.
+                                <p>Represents a default persistent cookie handler, which stores persistent cookies in a CSV file.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="FilterContext" title="FilterContext">
@@ -1360,9 +1501,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Representation of request filter Context.
+                                <p>Representation of request filter Context.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="HttpCache" title="HttpCache">
@@ -1370,9 +1513,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Implements a cache for storing HTTP responses.
+                                <p>Implements a cache for storing HTTP responses.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="HttpFuture" title="HttpFuture">
@@ -1380,9 +1525,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a 'future' that returns as a result of an asynchronous HTTP request submission.
+                                <p>Represents a 'future' that returns as a result of an asynchronous HTTP request submission.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="InboundAuthHandler" title="InboundAuthHandler">
@@ -1390,9 +1537,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                The representation of an inbound authentication handler for HTTP traffic.
+                                <p>The representation of an inbound authentication handler for HTTP traffic.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="LoadBalancerRoundRobinRule" title="LoadBalancerRoundRobinRule">
@@ -1400,9 +1549,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Implementation of round robin load balancing strategy.
+                                <p>Implementation of round robin load balancing strategy.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="LoadBalancerRule" title="LoadBalancerRule">
@@ -1410,9 +1561,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                LoadBalancerRule provides a required interfaces to implement different algorithms.
+                                <p>LoadBalancerRule provides a required interfaces to implement different algorithms.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="OutboundAuthHandler" title="OutboundAuthHandler">
@@ -1420,9 +1573,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                The representation of an outbound authentication handler for HTTP traffic.
+                                <p>The representation of an outbound authentication handler for HTTP traffic.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="PersistentCookieHandler" title="PersistentCookieHandler">
@@ -1430,9 +1585,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                The representation of a persistent cookie handler for managing persistent cookies.
+                                <p>The representation of a persistent cookie handler for managing persistent cookies.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="PushPromise" title="PushPromise">
@@ -1440,9 +1597,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an HTTP/2 <code>PUSH_PROMISE</code> frame.
+                                <p>Represents an HTTP/2 <code>PUSH_PROMISE</code> frame.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="Request" title="Request">
@@ -1450,9 +1609,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an HTTP request.
+                                <p>Represents an HTTP request.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="RequestCacheControl" title="RequestCacheControl">
@@ -1460,9 +1621,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configures the cache control directives for an <code>http:Request</code>.
+                                <p>Configures the cache control directives for an <code>http:Request</code>.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="RequestFilter" title="RequestFilter">
@@ -1470,9 +1633,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Abstract Representation of a HTTP Request Filter.
+                                <p>Abstract Representation of a HTTP Request Filter.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="Response" title="Response">
@@ -1480,9 +1645,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an HTTP response.
+                                <p>Represents an HTTP response.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="ResponseCacheControl" title="ResponseCacheControl">
@@ -1490,9 +1657,11 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configures cache control directives for an <code>http:Response</code>.
+                                <p>Configures cache control directives for an <code>http:Response</code>.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="ResponseFilter" title="ResponseFilter">
@@ -1500,12 +1669,14 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Abstract Representation of a HTTP Response Filter.
+                                <p>Abstract Representation of a HTTP Response Filter.
                             </td>
                         </tr>
                     
+                    
                 </table>
-             </section>  
+             </section>
+            
             
 
             
@@ -1524,7 +1695,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                The caller actions for responding to client requests.
+                                <p>The caller actions for responding to client requests.
                             </td>
                         </tr>
                     
@@ -1534,7 +1705,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                A Circuit Breaker implementation which can be used to gracefully handle network failures.
+                                <p>A Circuit Breaker implementation which can be used to gracefully handle network failures.
                             </td>
                         </tr>
                     
@@ -1544,7 +1715,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP client provides the capability for initiating contact with a remote HTTP service.
+                                <p>The HTTP client provides the capability for initiating contact with a remote HTTP service.
                             </td>
                         </tr>
                     
@@ -1554,7 +1725,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                An HTTP client endpoint which provides failover support over multiple HTTP clients.
+                                <p>An HTTP client endpoint which provides failover support over multiple HTTP clients.
                             </td>
                         </tr>
                     
@@ -1564,7 +1735,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                An HTTP caching client implementation which takes an <code>HttpActions</code> instance and wraps it with an HTTP caching layer.
+                                <p>An HTTP caching client implementation which takes an <code>HttpActions</code> instance and wraps it with an HTTP caching layer.
                             </td>
                         </tr>
                     
@@ -1574,7 +1745,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the HTTP actions for interacting with an HTTP server.
+                                <p>Provides the HTTP actions for interacting with an HTTP server.
                             </td>
                         </tr>
                     
@@ -1584,7 +1755,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides secure HTTP remote functions for interacting with HTTP endpoints.
+                                <p>Provides secure HTTP remote functions for interacting with HTTP endpoints.
                             </td>
                         </tr>
                     
@@ -1594,7 +1765,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                LoadBalanceClient endpoint provides load balancing functionality over multiple HTTP clients.
+                                <p>LoadBalanceClient endpoint provides load balancing functionality over multiple HTTP clients.
                             </td>
                         </tr>
                     
@@ -1604,7 +1775,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides redirect functionality for HTTP client remote functions.
+                                <p>Provides redirect functionality for HTTP client remote functions.
                             </td>
                         </tr>
                     
@@ -1614,7 +1785,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the HTTP remote functions for interacting with an HTTP endpoint.
+                                <p>Provides the HTTP remote functions for interacting with an HTTP endpoint.
                             </td>
                         </tr>
                     
@@ -1624,7 +1795,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a WebSocket caller.
+                                <p>Represents a WebSocket caller.
                             </td>
                         </tr>
                     
@@ -1634,7 +1805,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a WebSocket client endpoint.
+                                <p>Represents a WebSocket client endpoint.
                             </td>
                         </tr>
                     
@@ -1644,7 +1815,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                A WebSocket client endpoint, which provides failover support for multiple WebSocket targets.
+                                <p>A WebSocket client endpoint, which provides failover support for multiple WebSocket targets.
                             </td>
                         </tr>
                     
@@ -1668,7 +1839,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                This is used for creating HTTP server endpoints.
+                                <p>This is used for creating HTTP server endpoints.
                             </td>
                         </tr>
                     
@@ -1678,7 +1849,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Mock server endpoint which does not open a listening port.
+                                <p>Mock server endpoint which does not open a listening port.
                             </td>
                         </tr>
                     
@@ -1703,7 +1874,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Creates an HTTP client capable of caching HTTP responses.
+                                <p>Creates an HTTP client capable of caching HTTP responses.
                             </td>
                         </tr>
                     
@@ -1713,7 +1884,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Creates an HTTP client capable of securing HTTP requests with authentication.
+                                <p>Creates an HTTP client capable of securing HTTP requests with authentication.
                             </td>
                         </tr>
                     
@@ -1723,7 +1894,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Extracts the Authorization header value from the request.
+                                <p>Extracts the Authorization header value from the request.
                             </td>
                         </tr>
                     
@@ -1733,7 +1904,17 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                The HEAD remote function implementation of the Circuit Breaker.
+                                <p>The HEAD remote function implementation of the Circuit Breaker.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="isResourceSecured" title="isResourceSecured">
+                                <a class="functions " href="functions.html#isResourceSecured">isResourceSecured</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Checks whether the calling resource is secured by evaluating the authentication hierarchy.
                             </td>
                         </tr>
                     
@@ -1743,7 +1924,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Parses the given header value to extract its value and parameter map.
+                                <p>Parses the given header value to extract its value and parameter map.
                             </td>
                         </tr>
                     
@@ -1768,7 +1949,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the Authorization header name.
+                                <p>Represents the Authorization header name.
                             </td>
                         </tr>
                     
@@ -1778,7 +1959,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that the authentication credentials should be sent via the Authentication header.
+                                <p>Indicates that the authentication credentials should be sent via the Authentication header.
                             </td>
                         </tr>
                     
@@ -1788,7 +1969,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that the Authentication credentials should be sent via the body of the POST request.
+                                <p>Indicates that the Authentication credentials should be sent via the body of the POST request.
                             </td>
                         </tr>
                     
@@ -1798,7 +1979,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that the authentication credentials should not be sent.
+                                <p>Indicates that the authentication credentials should not be sent.
                             </td>
                         </tr>
                     
@@ -1808,7 +1989,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates the status code.
+                                <p>Indicates the status code.
                             </td>
                         </tr>
                     
@@ -1818,7 +1999,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Forces the cache to validate a cached response with the origin server before serving.
+                                <p>Forces the cache to validate a cached response with the origin server before serving.
                             </td>
                         </tr>
                     
@@ -1828,7 +2009,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Instructs the cache to not store a response in non-volatile storage.
+                                <p>Instructs the cache to not store a response in non-volatile storage.
                             </td>
                         </tr>
                     
@@ -1838,7 +2019,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                Instructs intermediaries not to transform the payload.
+                                <p>Instructs intermediaries not to transform the payload.
                             </td>
                         </tr>
                     
@@ -1848,7 +2029,7 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             </td>
                             <td class="module-desc">
                                 
-                                When used in requests, <code>max-age</code> implies that clients are not willing to accept responses whose age is greater
+                                <p>When used in requests, <code>max-age</code> implies that clients are not willing to accept responses whose age is greater
 than <code>max-age</code>.
                             </td>
                         </tr>
@@ -1859,7 +2040,7 @@ than <code>max-age</code>.
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that the client is willing to accept responses which have exceeded their freshness lifetime by no more
+                                <p>Indicates that the client is willing to accept responses which have exceeded their freshness lifetime by no more
 than the specified number of seconds.
                             </td>
                         </tr>
@@ -1870,7 +2051,7 @@ than the specified number of seconds.
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that the client is only accepting responses whose freshness lifetime &gt;= current age + min-fresh.
+                                <p>Indicates that the client is only accepting responses whose freshness lifetime &gt;= current age + min-fresh.
                             </td>
                         </tr>
                     
@@ -1880,7 +2061,7 @@ than the specified number of seconds.
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that the client is only willing to accept a cached response.
+                                <p>Indicates that the client is only willing to accept a cached response.
                             </td>
                         </tr>
                     
@@ -1890,7 +2071,7 @@ than the specified number of seconds.
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that once the response has become stale, it should not be reused for subsequent requests without
+                                <p>Indicates that once the response has become stale, it should not be reused for subsequent requests without
 validating with the origin server.
                             </td>
                         </tr>
@@ -1901,7 +2082,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that any cache may store the response.
+                                <p>Indicates that any cache may store the response.
                             </td>
                         </tr>
                     
@@ -1911,7 +2092,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that the response is intended for a single user and should not be stored by shared caches.
+                                <p>Indicates that the response is intended for a single user and should not be stored by shared caches.
                             </td>
                         </tr>
                     
@@ -1921,7 +2102,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Has the same semantics as <code>must-revalidate</code>, except that this does not apply to private caches.
+                                <p>Has the same semantics as <code>must-revalidate</code>, except that this does not apply to private caches.
                             </td>
                         </tr>
                     
@@ -1931,7 +2112,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                In shared caches, <code>s-maxage</code> overrides the <code>max-age</code> or <code>expires</code> header field.
+                                <p>In shared caches, <code>s-maxage</code> overrides the <code>max-age</code> or <code>expires</code> header field.
                             </td>
                         </tr>
                     
@@ -1941,7 +2122,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Setting this as the <code>max-stale</code> directives indicates that the <code>max-stale</code> directive does not specify a limit.
+                                <p>Setting this as the <code>max-stale</code> directives indicates that the <code>max-stale</code> directive does not specify a limit.
                             </td>
                         </tr>
                     
@@ -1951,7 +2132,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                This is a more restricted mode of RFC 7234.
+                                <p>This is a more restricted mode of RFC 7234.
                             </td>
                         </tr>
                     
@@ -1961,7 +2142,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Caching behaviour is as specified by the RFC 7234 specification.
+                                <p>Caching behaviour is as specified by the RFC 7234 specification.
                             </td>
                         </tr>
                     
@@ -1971,7 +2152,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the http error code
+                                <p>Constant for the http error code</p>
 
                             </td>
                         </tr>
@@ -1982,7 +2163,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents multipart primary type
+                                <p>Represents multipart primary type</p>
 
                             </td>
                         </tr>
@@ -1993,7 +2174,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the HTTP FORWARD method
+                                <p>Constant for the HTTP FORWARD method</p>
 
                             </td>
                         </tr>
@@ -2004,7 +2185,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the HTTP GET method
+                                <p>Constant for the HTTP GET method</p>
 
                             </td>
                         </tr>
@@ -2015,7 +2196,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the HTTP POST method
+                                <p>Constant for the HTTP POST method</p>
 
                             </td>
                         </tr>
@@ -2026,7 +2207,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the HTTP DELETE method
+                                <p>Constant for the HTTP DELETE method</p>
 
                             </td>
                         </tr>
@@ -2037,7 +2218,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the HTTP OPTIONS method
+                                <p>Constant for the HTTP OPTIONS method</p>
 
                             </td>
                         </tr>
@@ -2048,7 +2229,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the HTTP PUT method
+                                <p>Constant for the HTTP PUT method</p>
 
                             </td>
                         </tr>
@@ -2059,7 +2240,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the HTTP PATCH method
+                                <p>Constant for the HTTP PATCH method</p>
 
                             </td>
                         </tr>
@@ -2070,7 +2251,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the HTTP HEAD method
+                                <p>Constant for the HTTP HEAD method</p>
 
                             </td>
                         </tr>
@@ -2081,7 +2262,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                constant for the HTTP SUBMIT method
+                                <p>constant for the HTTP SUBMIT method</p>
 
                             </td>
                         </tr>
@@ -2092,7 +2273,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the identify not an HTTP Operation
+                                <p>Constant for the identify not an HTTP Operation</p>
 
                             </td>
                         </tr>
@@ -2103,7 +2284,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                If the payload is less than 8KB, content-length header is set in the outbound request/response,
+                                <p>If the payload is less than 8KB, content-length header is set in the outbound request/response,
 otherwise chunking header is set in the outbound request/response.
                             </td>
                         </tr>
@@ -2114,7 +2295,7 @@ otherwise chunking header is set in the outbound request/response.
                             </td>
                             <td class="module-desc">
                                 
-                                Always set chunking header in the response.
+                                <p>Always set chunking header in the response.
                             </td>
                         </tr>
                     
@@ -2124,7 +2305,7 @@ otherwise chunking header is set in the outbound request/response.
                             </td>
                             <td class="module-desc">
                                 
-                                Never set the chunking header even if the payload is larger than 8KB in the outbound request/response.
+                                <p>Never set the chunking header even if the payload is larger than 8KB in the outbound request/response.
                             </td>
                         </tr>
                     
@@ -2134,7 +2315,7 @@ otherwise chunking header is set in the outbound request/response.
                             </td>
                             <td class="module-desc">
                                 
-                                When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
+                                <p>When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
 outbound request/response accept-encoding/content-encoding option.
                             </td>
                         </tr>
@@ -2145,7 +2326,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Always set accept-encoding/content-encoding in outbound request/response.
+                                <p>Always set accept-encoding/content-encoding in outbound request/response.
                             </td>
                         </tr>
                     
@@ -2155,7 +2336,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Never set accept-encoding/content-encoding header in outbound request/response.
+                                <p>Never set accept-encoding/content-encoding header in outbound request/response.
                             </td>
                         </tr>
                     
@@ -2165,7 +2346,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the HTTP redirect status code <code>300 - Multiple Choices</code>.
+                                <p>Represents the HTTP redirect status code <code>300 - Multiple Choices</code>.
                             </td>
                         </tr>
                     
@@ -2175,7 +2356,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the HTTP redirect status code <code>301 - Moved Permanently</code>.
+                                <p>Represents the HTTP redirect status code <code>301 - Moved Permanently</code>.
                             </td>
                         </tr>
                     
@@ -2185,7 +2366,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the HTTP redirect status code <code>302 - Found</code>.
+                                <p>Represents the HTTP redirect status code <code>302 - Found</code>.
                             </td>
                         </tr>
                     
@@ -2195,7 +2376,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the HTTP redirect status code <code>303 - See Other</code>.
+                                <p>Represents the HTTP redirect status code <code>303 - See Other</code>.
                             </td>
                         </tr>
                     
@@ -2205,7 +2386,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the HTTP redirect status code <code>304 - Not Modified</code>.
+                                <p>Represents the HTTP redirect status code <code>304 - Not Modified</code>.
                             </td>
                         </tr>
                     
@@ -2215,7 +2396,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the HTTP redirect status code <code>305 - Use Proxy</code>.
+                                <p>Represents the HTTP redirect status code <code>305 - Use Proxy</code>.
                             </td>
                         </tr>
                     
@@ -2225,7 +2406,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the HTTP redirect status code <code>307 - Temporary Redirect</code>.
+                                <p>Represents the HTTP redirect status code <code>307 - Temporary Redirect</code>.
                             </td>
                         </tr>
                     
@@ -2235,7 +2416,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the HTTP redirect status code <code>308 - Permanent Redirect</code>.
+                                <p>Represents the HTTP redirect status code <code>308 - Permanent Redirect</code>.
                             </td>
                         </tr>
                     
@@ -2245,7 +2426,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:FailoverAllEndpointsFailedError</code>
+                                <p>Represents the reason string for the <code>http:FailoverAllEndpointsFailedError</code></p>
 
                             </td>
                         </tr>
@@ -2256,7 +2437,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:FailoverActionFailedError</code>
+                                <p>Represents the reason string for the <code>http:FailoverActionFailedError</code></p>
 
                             </td>
                         </tr>
@@ -2267,7 +2448,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:UpstreamServiceUnavailableError</code>
+                                <p>Represents the reason string for the <code>http:UpstreamServiceUnavailableError</code></p>
 
                             </td>
                         </tr>
@@ -2278,7 +2459,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:AllLoadBalanceEndpointsFailedError</code>
+                                <p>Represents the reason string for the <code>http:AllLoadBalanceEndpointsFailedError</code></p>
 
                             </td>
                         </tr>
@@ -2289,7 +2470,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:AllRetryAttemptsFailed</code>
+                                <p>Represents the reason string for the <code>http:AllRetryAttemptsFailed</code></p>
 
                             </td>
                         </tr>
@@ -2300,7 +2481,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:IdleTimeoutError</code>
+                                <p>Represents the reason string for the <code>http:IdleTimeoutError</code></p>
 
                             </td>
                         </tr>
@@ -2311,7 +2492,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:AuthenticationError</code>
+                                <p>Represents the reason string for the <code>http:AuthenticationError</code></p>
 
                             </td>
                         </tr>
@@ -2322,7 +2503,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:AuthorizationError</code>
+                                <p>Represents the reason string for the <code>http:AuthorizationError</code></p>
 
                             </td>
                         </tr>
@@ -2333,7 +2514,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:InitializingOutboundRequestError</code>
+                                <p>Represents the reason string for the <code>http:InitializingOutboundRequestError</code></p>
 
                             </td>
                         </tr>
@@ -2344,7 +2525,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:WritingOutboundRequestHeadersError</code>
+                                <p>Represents the reason string for the <code>http:WritingOutboundRequestHeadersError</code></p>
 
                             </td>
                         </tr>
@@ -2355,7 +2536,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:WritingOutboundRequestBodyError</code>
+                                <p>Represents the reason string for the <code>http:WritingOutboundRequestBodyError</code></p>
 
                             </td>
                         </tr>
@@ -2366,7 +2547,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:InitializingInboundResponseError</code>
+                                <p>Represents the reason string for the <code>http:InitializingInboundResponseError</code></p>
 
                             </td>
                         </tr>
@@ -2377,7 +2558,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:ReadingInboundResponseBodyError</code>
+                                <p>Represents the reason string for the <code>http:ReadingInboundResponseBodyError</code></p>
 
                             </td>
                         </tr>
@@ -2388,7 +2569,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:ReadingInboundResponseBodyError</code>
+                                <p>Represents the reason string for the <code>http:ReadingInboundResponseBodyError</code></p>
 
                             </td>
                         </tr>
@@ -2399,7 +2580,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:InitialingInboundRequestError</code>
+                                <p>Represents the reason string for the <code>http:InitialingInboundRequestError</code></p>
 
                             </td>
                         </tr>
@@ -2410,7 +2591,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:ReadingInboundRequestHeadersError</code>
+                                <p>Represents the reason string for the <code>http:ReadingInboundRequestHeadersError</code></p>
 
                             </td>
                         </tr>
@@ -2421,7 +2602,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:ReadingInboundRequestBodyError</code>
+                                <p>Represents the reason string for the <code>http:ReadingInboundRequestBodyError</code></p>
 
                             </td>
                         </tr>
@@ -2432,7 +2613,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:InitializingOutboundResponseError</code>
+                                <p>Represents the reason string for the <code>http:InitializingOutboundResponseError</code></p>
 
                             </td>
                         </tr>
@@ -2443,7 +2624,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:WritingOutboundResponseHeadersError</code>
+                                <p>Represents the reason string for the <code>http:WritingOutboundResponseHeadersError</code></p>
 
                             </td>
                         </tr>
@@ -2454,7 +2635,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:WritingOutboundResponseBodyError</code>
+                                <p>Represents the reason string for the <code>http:WritingOutboundResponseBodyError</code></p>
 
                             </td>
                         </tr>
@@ -2465,7 +2646,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:Initiating100ContinueResponseError</code>
+                                <p>Represents the reason string for the <code>http:Initiating100ContinueResponseError</code></p>
 
                             </td>
                         </tr>
@@ -2476,7 +2657,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:Writing100ContinueResponseError</code>
+                                <p>Represents the reason string for the <code>http:Writing100ContinueResponseError</code></p>
 
                             </td>
                         </tr>
@@ -2487,7 +2668,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:InvalidCookieError</code>
+                                <p>Represents the reason string for the <code>http:InvalidCookieError</code></p>
 
                             </td>
                         </tr>
@@ -2498,7 +2679,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Error reason for generic client error
+                                <p>Error reason for generic client error</p>
 
                             </td>
                         </tr>
@@ -2509,7 +2690,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:GenericListenerError</code>
+                                <p>Represents the reason string for the <code>http:GenericListenerError</code></p>
 
                             </td>
                         </tr>
@@ -2520,7 +2701,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:UnsupportedActionError</code>
+                                <p>Represents the reason string for the <code>http:UnsupportedActionError</code></p>
 
                             </td>
                         </tr>
@@ -2531,7 +2712,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:Http2ClientError</code>
+                                <p>Represents the reason string for the <code>http:Http2ClientError</code></p>
 
                             </td>
                         </tr>
@@ -2542,7 +2723,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:MaximumWaitTimeExceededError</code>
+                                <p>Represents the reason string for the <code>http:MaximumWaitTimeExceededError</code></p>
 
                             </td>
                         </tr>
@@ -2553,7 +2734,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:SslError</code>
+                                <p>Represents the reason string for the <code>http:SslError</code></p>
 
                             </td>
                         </tr>
@@ -2564,7 +2745,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>http:CookieHandlingError</code>
+                                <p>Represents the reason string for the <code>http:CookieHandlingError</code></p>
 
                             </td>
                         </tr>
@@ -2575,7 +2756,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>age</code>.
+                                <p>HTTP header key <code>age</code>.
                             </td>
                         </tr>
                     
@@ -2585,7 +2766,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>authorization</code>
+                                <p>HTTP header key <code>authorization</code></p>
 
                             </td>
                         </tr>
@@ -2596,7 +2777,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>cache-control</code>.
+                                <p>HTTP header key <code>cache-control</code>.
                             </td>
                         </tr>
                     
@@ -2606,7 +2787,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>content-length</code>.
+                                <p>HTTP header key <code>content-length</code>.
                             </td>
                         </tr>
                     
@@ -2616,7 +2797,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>content-type</code>.
+                                <p>HTTP header key <code>content-type</code>.
                             </td>
                         </tr>
                     
@@ -2626,7 +2807,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>date</code>.
+                                <p>HTTP header key <code>date</code>.
                             </td>
                         </tr>
                     
@@ -2636,7 +2817,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>etag</code>.
+                                <p>HTTP header key <code>etag</code>.
                             </td>
                         </tr>
                     
@@ -2646,7 +2827,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>expect</code>.
+                                <p>HTTP header key <code>expect</code>.
                             </td>
                         </tr>
                     
@@ -2656,7 +2837,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>expires</code>.
+                                <p>HTTP header key <code>expires</code>.
                             </td>
                         </tr>
                     
@@ -2666,7 +2847,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>if-match</code>
+                                <p>HTTP header key <code>if-match</code></p>
 
                             </td>
                         </tr>
@@ -2677,7 +2858,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>if-modified-since</code>.
+                                <p>HTTP header key <code>if-modified-since</code>.
                             </td>
                         </tr>
                     
@@ -2687,7 +2868,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>if-none-match</code>.
+                                <p>HTTP header key <code>if-none-match</code>.
                             </td>
                         </tr>
                     
@@ -2697,7 +2878,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>if-range</code>
+                                <p>HTTP header key <code>if-range</code></p>
 
                             </td>
                         </tr>
@@ -2708,7 +2889,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>if-unmodified-since</code>
+                                <p>HTTP header key <code>if-unmodified-since</code></p>
 
                             </td>
                         </tr>
@@ -2719,7 +2900,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>last-modified</code>.
+                                <p>HTTP header key <code>last-modified</code>.
                             </td>
                         </tr>
                     
@@ -2729,7 +2910,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>location</code>.
+                                <p>HTTP header key <code>location</code>.
                             </td>
                         </tr>
                     
@@ -2739,7 +2920,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>pragma</code>.
+                                <p>HTTP header key <code>pragma</code>.
                             </td>
                         </tr>
                     
@@ -2749,7 +2930,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>server</code>.
+                                <p>HTTP header key <code>server</code>.
                             </td>
                         </tr>
                     
@@ -2759,7 +2940,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>warning</code>.
+                                <p>HTTP header key <code>warning</code>.
                             </td>
                         </tr>
                     
@@ -2769,7 +2950,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>transfer-encoding</code>.
+                                <p>HTTP header key <code>transfer-encoding</code>.
                             </td>
                         </tr>
                     
@@ -2779,7 +2960,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>connection</code>.
+                                <p>HTTP header key <code>connection</code>.
                             </td>
                         </tr>
                     
@@ -2789,7 +2970,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>upgrade</code>.
+                                <p>HTTP header key <code>upgrade</code>.
                             </td>
                         </tr>
                     
@@ -2799,7 +2980,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Mutual SSL handshake is successful.
+                                <p>Mutual SSL handshake is successful.
                             </td>
                         </tr>
                     
@@ -2809,7 +2990,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Mutual SSL handshake has failed.
+                                <p>Mutual SSL handshake has failed.
                             </td>
                         </tr>
                     
@@ -2819,7 +3000,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Not a mutual ssl connection.
+                                <p>Not a mutual ssl connection.
                             </td>
                         </tr>
                     
@@ -2829,7 +3010,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the open state of the circuit.
+                                <p>Represents the open state of the circuit.
                             </td>
                         </tr>
                     
@@ -2839,7 +3020,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the half-open state of the circuit.
+                                <p>Represents the half-open state of the circuit.
                             </td>
                         </tr>
                     
@@ -2849,7 +3030,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the closed state of the circuit.
+                                <p>Represents the closed state of the circuit.
                             </td>
                         </tr>
                     
@@ -2859,7 +3040,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 100 Continue
+                                <p>The HTTP response status code: 100 Continue</p>
 
                             </td>
                         </tr>
@@ -2870,7 +3051,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 101 Switching Protocols
+                                <p>The HTTP response status code: 101 Switching Protocols</p>
 
                             </td>
                         </tr>
@@ -2881,7 +3062,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 200 OK
+                                <p>The HTTP response status code: 200 OK</p>
 
                             </td>
                         </tr>
@@ -2892,7 +3073,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 201 Created
+                                <p>The HTTP response status code: 201 Created</p>
 
                             </td>
                         </tr>
@@ -2903,7 +3084,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 202 Accepted
+                                <p>The HTTP response status code: 202 Accepted</p>
 
                             </td>
                         </tr>
@@ -2914,7 +3095,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 203 Non Authoritative Information
+                                <p>The HTTP response status code: 203 Non Authoritative Information</p>
 
                             </td>
                         </tr>
@@ -2925,7 +3106,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 204 No Content
+                                <p>The HTTP response status code: 204 No Content</p>
 
                             </td>
                         </tr>
@@ -2936,7 +3117,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 205 Reset Content
+                                <p>The HTTP response status code: 205 Reset Content</p>
 
                             </td>
                         </tr>
@@ -2947,7 +3128,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 206 Partial Content
+                                <p>The HTTP response status code: 206 Partial Content</p>
 
                             </td>
                         </tr>
@@ -2958,7 +3139,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 300 Multiple Choices
+                                <p>The HTTP response status code: 300 Multiple Choices</p>
 
                             </td>
                         </tr>
@@ -2969,7 +3150,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 301 Moved Permanently
+                                <p>The HTTP response status code: 301 Moved Permanently</p>
 
                             </td>
                         </tr>
@@ -2980,7 +3161,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 302 Found
+                                <p>The HTTP response status code: 302 Found</p>
 
                             </td>
                         </tr>
@@ -2991,7 +3172,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 303 See Other
+                                <p>The HTTP response status code: 303 See Other</p>
 
                             </td>
                         </tr>
@@ -3002,7 +3183,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 304 Not Modified
+                                <p>The HTTP response status code: 304 Not Modified</p>
 
                             </td>
                         </tr>
@@ -3013,7 +3194,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 305 Use Proxy
+                                <p>The HTTP response status code: 305 Use Proxy</p>
 
                             </td>
                         </tr>
@@ -3024,7 +3205,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 307 Temporary Redirect
+                                <p>The HTTP response status code: 307 Temporary Redirect</p>
 
                             </td>
                         </tr>
@@ -3035,7 +3216,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 308 Permanent Redirect
+                                <p>The HTTP response status code: 308 Permanent Redirect</p>
 
                             </td>
                         </tr>
@@ -3046,7 +3227,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 400 Bad Request
+                                <p>The HTTP response status code: 400 Bad Request</p>
 
                             </td>
                         </tr>
@@ -3057,7 +3238,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 401 Unauthorized
+                                <p>The HTTP response status code: 401 Unauthorized</p>
 
                             </td>
                         </tr>
@@ -3068,7 +3249,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 402 Payment Required
+                                <p>The HTTP response status code: 402 Payment Required</p>
 
                             </td>
                         </tr>
@@ -3079,7 +3260,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 403 Forbidden
+                                <p>The HTTP response status code: 403 Forbidden</p>
 
                             </td>
                         </tr>
@@ -3090,7 +3271,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 404 Not Found
+                                <p>The HTTP response status code: 404 Not Found</p>
 
                             </td>
                         </tr>
@@ -3101,7 +3282,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 405 Method Not Allowed
+                                <p>The HTTP response status code: 405 Method Not Allowed</p>
 
                             </td>
                         </tr>
@@ -3112,7 +3293,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 406 Not Acceptable
+                                <p>The HTTP response status code: 406 Not Acceptable</p>
 
                             </td>
                         </tr>
@@ -3123,7 +3304,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 407 Proxy Authentication Required
+                                <p>The HTTP response status code: 407 Proxy Authentication Required</p>
 
                             </td>
                         </tr>
@@ -3134,7 +3315,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 408 Request Timeout
+                                <p>The HTTP response status code: 408 Request Timeout</p>
 
                             </td>
                         </tr>
@@ -3145,7 +3326,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 409 Conflict
+                                <p>The HTTP response status code: 409 Conflict</p>
 
                             </td>
                         </tr>
@@ -3156,7 +3337,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 410 Gone
+                                <p>The HTTP response status code: 410 Gone</p>
 
                             </td>
                         </tr>
@@ -3167,7 +3348,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 411 Length Required
+                                <p>The HTTP response status code: 411 Length Required</p>
 
                             </td>
                         </tr>
@@ -3178,7 +3359,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 412 Precondition Failed
+                                <p>The HTTP response status code: 412 Precondition Failed</p>
 
                             </td>
                         </tr>
@@ -3189,7 +3370,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 413 Payload Too Large
+                                <p>The HTTP response status code: 413 Payload Too Large</p>
 
                             </td>
                         </tr>
@@ -3200,7 +3381,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 414 URI Too Long
+                                <p>The HTTP response status code: 414 URI Too Long</p>
 
                             </td>
                         </tr>
@@ -3211,7 +3392,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 415 Unsupported Media Type
+                                <p>The HTTP response status code: 415 Unsupported Media Type</p>
 
                             </td>
                         </tr>
@@ -3222,7 +3403,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 416 Range Not Satisfiable
+                                <p>The HTTP response status code: 416 Range Not Satisfiable</p>
 
                             </td>
                         </tr>
@@ -3233,7 +3414,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 417 Expectation Failed
+                                <p>The HTTP response status code: 417 Expectation Failed</p>
 
                             </td>
                         </tr>
@@ -3244,7 +3425,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 426 Upgrade Required
+                                <p>The HTTP response status code: 426 Upgrade Required</p>
 
                             </td>
                         </tr>
@@ -3255,7 +3436,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 500 Internal Server Error
+                                <p>The HTTP response status code: 500 Internal Server Error</p>
 
                             </td>
                         </tr>
@@ -3266,7 +3447,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 501 Not Implemented
+                                <p>The HTTP response status code: 501 Not Implemented</p>
 
                             </td>
                         </tr>
@@ -3277,7 +3458,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 502 Bad Gateway
+                                <p>The HTTP response status code: 502 Bad Gateway</p>
 
                             </td>
                         </tr>
@@ -3288,7 +3469,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 503 Service Unavailable
+                                <p>The HTTP response status code: 503 Service Unavailable</p>
 
                             </td>
                         </tr>
@@ -3299,7 +3480,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 504 Gateway Timeout
+                                <p>The HTTP response status code: 504 Gateway Timeout</p>
 
                             </td>
                         </tr>
@@ -3310,7 +3491,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP response status code: 505 HTTP Version Not Supported
+                                <p>The HTTP response status code: 505 HTTP Version Not Supported</p>
 
                             </td>
                         </tr>
@@ -3321,7 +3502,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Decides to keep the connection alive or not based on the <code>connection</code> header of the client request }
+                                <p>Decides to keep the connection alive or not based on the <code>connection</code> header of the client request }</p>
 
                             </td>
                         </tr>
@@ -3332,7 +3513,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Keeps the connection alive irrespective of the <code>connection</code> header value }
+                                <p>Keeps the connection alive irrespective of the <code>connection</code> header value }</p>
 
                             </td>
                         </tr>
@@ -3343,7 +3524,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Closes the connection irrespective of the <code>connection</code> header value }
+                                <p>Closes the connection irrespective of the <code>connection</code> header value }</p>
 
                             </td>
                         </tr>
@@ -3354,7 +3535,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the service name reference.
+                                <p>Constant for the service name reference.
                             </td>
                         </tr>
                     
@@ -3364,7 +3545,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the resource name reference.
+                                <p>Constant for the resource name reference.
                             </td>
                         </tr>
                     
@@ -3374,7 +3555,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the request method reference.
+                                <p>Constant for the request method reference.
                             </td>
                         </tr>
                     
@@ -3384,7 +3565,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Error reason for failures during connection closure
+                                <p>Error reason for failures during connection closure</p>
 
                             </td>
                         </tr>
@@ -3395,7 +3576,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Error reason for WebSocket handshake failures
+                                <p>Error reason for WebSocket handshake failures</p>
 
                             </td>
                         </tr>
@@ -3406,7 +3587,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Error reason for exceeding maximum frame size
+                                <p>Error reason for exceeding maximum frame size</p>
 
                             </td>
                         </tr>
@@ -3417,7 +3598,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Error reason for other side breaking the protocol
+                                <p>Error reason for other side breaking the protocol</p>
 
                             </td>
                         </tr>
@@ -3428,7 +3609,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Error reason for connection failures
+                                <p>Error reason for connection failures</p>
 
                             </td>
                         </tr>
@@ -3439,7 +3620,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Error reason for invalid continuation frame
+                                <p>Error reason for invalid continuation frame</p>
 
                             </td>
                         </tr>
@@ -3450,7 +3631,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Error reason for errors not captured by the specific errors
+                                <p>Error reason for errors not captured by the specific errors</p>
 
                             </td>
                         </tr>
@@ -3476,7 +3657,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The annotation which is used to configure an HTTP resource.
+                                <p>The annotation which is used to configure an HTTP resource.
                             </td>
                         </tr>
                     
@@ -3486,7 +3667,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The annotation which is used to configure an HTTP service.
+                                <p>The annotation which is used to configure an HTTP service.
                             </td>
                         </tr>
                     
@@ -3496,7 +3677,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The annotation which is used to configure a WebSocket service.
+                                <p>The annotation which is used to configure a WebSocket service.
                             </td>
                         </tr>
                     
@@ -3520,7 +3701,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Used for configuring the caching behaviour.
+                                <p>Used for configuring the caching behaviour.
                             </td>
                         </tr>
                     
@@ -3530,7 +3711,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the possible values for the chunking configuration in HTTP services and clients.
+                                <p>Defines the possible values for the chunking configuration in HTTP services and clients.
                             </td>
                         </tr>
                     
@@ -3540,7 +3721,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                A finite type for modeling the states of the Circuit Breaker.
+                                <p>A finite type for modeling the states of the Circuit Breaker.
                             </td>
                         </tr>
                     
@@ -3550,7 +3731,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the Auth error types that returned from client
+                                <p>Defines the Auth error types that returned from client</p>
 
                             </td>
                         </tr>
@@ -3561,7 +3742,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the possible client error types
+                                <p>Defines the possible client error types</p>
 
                             </td>
                         </tr>
@@ -3572,7 +3753,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Options to compress using gzip or deflate.
+                                <p>Options to compress using gzip or deflate.
                             </td>
                         </tr>
                     
@@ -3582,7 +3763,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Specifies how to send the authentication credentials when exchanging tokens.
+                                <p>Specifies how to send the authentication credentials when exchanging tokens.
                             </td>
                         </tr>
                     
@@ -3592,7 +3773,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the HTTP operations related to circuit breaker, failover and load balancer.
+                                <p>Defines the HTTP operations related to circuit breaker, failover and load balancer.
                             </td>
                         </tr>
                     
@@ -3602,7 +3783,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the supported HTTP protocols.
+                                <p>Defines the supported HTTP protocols.
                             </td>
                         </tr>
                     
@@ -3612,7 +3793,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents inbound auth handler patterns.
+                                <p>Represents inbound auth handler patterns.
                             </td>
                         </tr>
                     
@@ -3622,7 +3803,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the listener error types that returned while receiving inbound request
+                                <p>Defines the listener error types that returned while receiving inbound request</p>
 
                             </td>
                         </tr>
@@ -3633,7 +3814,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the client error types that returned while receiving inbound response
+                                <p>Defines the client error types that returned while receiving inbound response</p>
 
                             </td>
                         </tr>
@@ -3644,7 +3825,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the possible values for the keep-alive configuration in service and client endpoints.
+                                <p>Defines the possible values for the keep-alive configuration in service and client endpoints.
                             </td>
                         </tr>
                     
@@ -3654,7 +3835,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the possible listener error types
+                                <p>Defines the possible listener error types</p>
 
                             </td>
                         </tr>
@@ -3665,7 +3846,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the possible values for the mutual ssl status.
+                                <p>Defines the possible values for the mutual ssl status.
                             </td>
                         </tr>
                     
@@ -3675,7 +3856,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the client error types that returned while sending outbound request
+                                <p>Defines the client error types that returned while sending outbound request</p>
 
                             </td>
                         </tr>
@@ -3686,7 +3867,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the listener error types that returned while sending outbound response
+                                <p>Defines the listener error types that returned while sending outbound response</p>
 
                             </td>
                         </tr>
@@ -3697,7 +3878,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the HTTP redirect codes as a type.
+                                <p>Defines the HTTP redirect codes as a type.
                             </td>
                         </tr>
                     
@@ -3707,7 +3888,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The types of messages that are accepted by HTTP <code>client</code> when sending out the outbound request.
+                                <p>The types of messages that are accepted by HTTP <code>client</code> when sending out the outbound request.
                             </td>
                         </tr>
                     
@@ -3717,7 +3898,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Defines the resiliency error types that returned from client
+                                <p>Defines the resiliency error types that returned from client</p>
 
                             </td>
                         </tr>
@@ -3728,7 +3909,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The types of messages that are accepted by HTTP <code>listener</code> when sending out the outbound response.
+                                <p>The types of messages that are accepted by HTTP <code>listener</code> when sending out the outbound response.
                             </td>
                         </tr>
                     
@@ -3738,7 +3919,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents scopes patterns.
+                                <p>Represents scopes patterns.
                             </td>
                         </tr>
                     
@@ -3748,7 +3929,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                The union of all the WebSocket related errors
+                                <p>The union of all the WebSocket related errors</p>
 
                             </td>
                         </tr>
@@ -3773,7 +3954,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred due to all the load balance endpoint failure
+                                <p>Represents a client error that occurred due to all the load balance endpoint failure</p>
 
                             </td>
                         </tr>
@@ -3784,7 +3965,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred due to all the the retry attempts failure
+                                <p>Represents a client error that occurred due to all the the retry attempts failure</p>
 
                             </td>
                         </tr>
@@ -3795,7 +3976,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a listener error that occurred due to inbound request authentication failure
+                                <p>Represents a listener error that occurred due to inbound request authentication failure</p>
 
                             </td>
                         </tr>
@@ -3806,7 +3987,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a listener error that occurred due to inbound request authorization failure
+                                <p>Represents a listener error that occurred due to inbound request authorization failure</p>
 
                             </td>
                         </tr>
@@ -3817,7 +3998,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a cookie error that occurred when using the cookies
+                                <p>Represents a cookie error that occurred when using the cookies</p>
 
                             </td>
                         </tr>
@@ -3828,7 +4009,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred due to failover action failure
+                                <p>Represents a client error that occurred due to failover action failure</p>
 
                             </td>
                         </tr>
@@ -3839,7 +4020,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred due to all the failover endpoint failure
+                                <p>Represents a client error that occurred due to all the failover endpoint failure</p>
 
                             </td>
                         </tr>
@@ -3850,7 +4031,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a generic client error
+                                <p>Represents a generic client error</p>
 
                             </td>
                         </tr>
@@ -3861,7 +4042,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a generic listener error
+                                <p>Represents a generic listener error</p>
 
                             </td>
                         </tr>
@@ -3872,7 +4053,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an HTTP/2 client generic error
+                                <p>Represents an HTTP/2 client generic error</p>
 
                             </td>
                         </tr>
@@ -3883,7 +4064,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the error that triggered upon a request/response idle timeout
+                                <p>Represents the error that triggered upon a request/response idle timeout</p>
 
                             </td>
                         </tr>
@@ -3894,7 +4075,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a listener error that occurred due to inbound request initialization failure
+                                <p>Represents a listener error that occurred due to inbound request initialization failure</p>
 
                             </td>
                         </tr>
@@ -3905,7 +4086,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred due to inbound response initialization failure
+                                <p>Represents a client error that occurred due to inbound response initialization failure</p>
 
                             </td>
                         </tr>
@@ -3916,7 +4097,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred due to outbound request initialization failure
+                                <p>Represents a client error that occurred due to outbound request initialization failure</p>
 
                             </td>
                         </tr>
@@ -3927,7 +4108,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a listener error that occurred due to outbound response initialization failure
+                                <p>Represents a listener error that occurred due to outbound response initialization failure</p>
 
                             </td>
                         </tr>
@@ -3938,7 +4119,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an error that occurred due to 100 continue response initialization failure
+                                <p>Represents an error that occurred due to 100 continue response initialization failure</p>
 
                             </td>
                         </tr>
@@ -3949,7 +4130,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a cookie error that occurred when sending cookies in the response
+                                <p>Represents a cookie error that occurred when sending cookies in the response</p>
 
                             </td>
                         </tr>
@@ -3970,7 +4151,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred exceeding maximum wait time
+                                <p>Represents a client error that occurred exceeding maximum wait time</p>
 
                             </td>
                         </tr>
@@ -3981,7 +4162,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a listener error that occurred while writing the inbound request entity body
+                                <p>Represents a listener error that occurred while writing the inbound request entity body</p>
 
                             </td>
                         </tr>
@@ -3992,7 +4173,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a listener error that occurred while reading inbound request headers
+                                <p>Represents a listener error that occurred while reading inbound request headers</p>
 
                             </td>
                         </tr>
@@ -4003,7 +4184,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred while reading inbound response entity body
+                                <p>Represents a client error that occurred while reading inbound response entity body</p>
 
                             </td>
                         </tr>
@@ -4014,7 +4195,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred while reading inbound response headers
+                                <p>Represents a client error that occurred while reading inbound response headers</p>
 
                             </td>
                         </tr>
@@ -4025,7 +4206,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred due to SSL failure
+                                <p>Represents a client error that occurred due to SSL failure</p>
 
                             </td>
                         </tr>
@@ -4036,7 +4217,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred due to unsupported action invocation
+                                <p>Represents a client error that occurred due to unsupported action invocation</p>
 
                             </td>
                         </tr>
@@ -4047,7 +4228,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred due to upstream service unavailability
+                                <p>Represents a client error that occurred due to upstream service unavailability</p>
 
                             </td>
                         </tr>
@@ -4058,7 +4239,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an error that occurred while writing 100 continue response
+                                <p>Represents an error that occurred while writing 100 continue response</p>
 
                             </td>
                         </tr>
@@ -4069,7 +4250,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred while writing outbound request entity body
+                                <p>Represents a client error that occurred while writing outbound request entity body</p>
 
                             </td>
                         </tr>
@@ -4080,7 +4261,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a client error that occurred while writing outbound request headers
+                                <p>Represents a client error that occurred while writing outbound request headers</p>
 
                             </td>
                         </tr>
@@ -4091,7 +4272,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a listener error that occurred while writing outbound response entity body
+                                <p>Represents a listener error that occurred while writing outbound response entity body</p>
 
                             </td>
                         </tr>
@@ -4102,7 +4283,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a listener error that occurred while writing outbound response headers
+                                <p>Represents a listener error that occurred while writing outbound response headers</p>
 
                             </td>
                         </tr>
@@ -4113,7 +4294,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Raised during failures in connection closure
+                                <p>Raised during failures in connection closure</p>
 
                             </td>
                         </tr>
@@ -4124,7 +4305,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Raised during connection failures
+                                <p>Raised during connection failures</p>
 
                             </td>
                         </tr>
@@ -4135,7 +4316,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Raised for errors not captured by the specific errors
+                                <p>Raised for errors not captured by the specific errors</p>
 
                             </td>
                         </tr>
@@ -4146,7 +4327,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Raised when an out of order/invalid continuation frame is received
+                                <p>Raised when an out of order/invalid continuation frame is received</p>
 
                             </td>
                         </tr>
@@ -4157,7 +4338,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Raised during the handshake when the WebSocket upgrade fails
+                                <p>Raised during the handshake when the WebSocket upgrade fails</p>
 
                             </td>
                         </tr>
@@ -4168,7 +4349,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Raised when receiving a frame with a payload exceeding the maximum size
+                                <p>Raised when receiving a frame with a payload exceeding the maximum size</p>
 
                             </td>
                         </tr>
@@ -4179,7 +4360,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Raised when the other side breaks the protocol
+                                <p>Raised when the other side breaks the protocol</p>
 
                             </td>
                         </tr>

@@ -122,7 +122,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -134,7 +134,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string firstName;
     string lastName;
     float score;
@@ -150,7 +150,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type FullName record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type FullName record {|
     string firstName;
     string lastName;
 |};
@@ -165,7 +165,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, score: 1.5};
     Student s2 = {firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, score: 0.9};
     Student s3 = {firstName: &quot;John&quot;, lastName: &quot;David&quot;, score: 1.2};
@@ -180,7 +180,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student[] studentList = [s1, s2, s3];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student[] studentList = [s1, s2, s3];
 </code></pre></div>
 
                                 </td>
@@ -192,7 +192,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    FullName[] nameList = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    FullName[] nameList = [];
 </code></pre></div>
 
                                 </td>
@@ -204,7 +204,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var e = from var student in studentList
+                                    <div class="highlight"><pre><code class=language-ballerina>    var e = from var student in studentList
 </code></pre></div>
 
                                 </td>
@@ -226,7 +226,7 @@ It can be either an error or ().</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    do {
+                                    <div class="highlight"><pre><code class=language-ballerina>    do {
         FullName fullName = {firstName: student.firstName, lastName: student.lastName};
         nameList.push(fullName);
     };
@@ -248,7 +248,7 @@ It can be either an error or ().</p>
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var name in nameList {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var name in nameList {
         io:println(name);
     }
 }

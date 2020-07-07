@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../../index.html">
+            <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -80,7 +81,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -355,7 +356,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../../index.html">
+                <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -377,7 +379,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -658,7 +660,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../../index.html">
+                <a class="breadcrumb-home" href="
+    ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Clients - </span>
@@ -667,7 +670,7 @@ redirect_from:
                 
                 <span class="clients">UdpClient</span>
             </h1>
-            <p>Initializes the UDP client based on the provided configurations.
+            <p><p>Initializes the UDP client based on the provided configurations.</p>
 </p>
 
             <div class="constants">
@@ -709,7 +712,7 @@ redirect_from:
                                 <tr>
                                     <td class="module-title truncate functions" title="sendTo"><a
                                             class="functions" href="#sendTo">sendTo</a></td>
-                                    <td class="module-desc">Sends the given data to the specified remote client.
+                                    <td class="module-desc"><p>Sends the given data to the specified remote client.</p>
 <pre><code class="language-ballerina"> int|socket:Error result = socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
 </code></pre>
 </td>
@@ -718,9 +721,9 @@ redirect_from:
                                 <tr>
                                     <td class="module-title truncate functions" title="receiveFrom"><a
                                             class="functions" href="#receiveFrom">receiveFrom</a></td>
-                                    <td class="module-desc">Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
+                                    <td class="module-desc"><p>Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
 are received from the client. Else, it returns the data available in the OS buffer or waits until the data is received.
-If the request length is lesser than the data in the buffer, then the rest will be discarded.
+If the request length is lesser than the data in the buffer, then the rest will be discarded.</p>
 <pre><code class="language-ballerina"> [byte[], int, Address]|ReadTimedOutError result = socketClient-&gt;receiveFrom();
 </code></pre>
 </td>
@@ -729,7 +732,7 @@ If the request length is lesser than the data in the buffer, then the rest will 
                                 <tr>
                                     <td class="module-title truncate functions" title="close"><a
                                             class="functions" href="#close">close</a></td>
-                                    <td class="module-desc">Closes the client socket connection.
+                                    <td class="module-desc"><p>Closes the client socket connection.</p>
 <pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
 </code></pre>
 </td>
@@ -863,10 +866,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        <p>Sends the given data to the specified remote client.
+        <p>Sends the given data to the specified remote client.</p>
 <pre><code class="language-ballerina"> int|socket:Error result = socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -939,10 +942,10 @@ contentWrapper.addEventListener("scroll", event => {
         
         <p>Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
 are received from the client. Else, it returns the data available in the OS buffer or waits until the data is received.
-If the request length is lesser than the data in the buffer, then the rest will be discarded.
+If the request length is lesser than the data in the buffer, then the rest will be discarded.</p>
 <pre><code class="language-ballerina"> [byte[], int, Address]|ReadTimedOutError result = socketClient-&gt;receiveFrom();
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -997,10 +1000,10 @@ or else a <code>socket:Error</code> if the data can't be read from the client</p
     </div>
     <div class="function-desc">
         
-        <p>Closes the client socket connection.
+        <p>Closes the client socket connection.</p>
 <pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
 </code></pre>
-</p>
+
     </div>
     
 

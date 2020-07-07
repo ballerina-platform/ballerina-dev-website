@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../../index.html">
+            <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -84,7 +85,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -371,7 +372,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../../index.html">
+                <a href="
+    ../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -397,7 +399,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -690,7 +692,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../../index.html">
+                <a class="breadcrumb-home" href="
+    ../../index.html">
     <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Clients - </span>
@@ -699,7 +702,7 @@ redirect_from:
                 
                 <span class="clients">PublisherClient</span>
             </h1>
-            <p>The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.
+            <p><p>The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.</p>
 </p>
 
             <div class="constants">
@@ -741,8 +744,8 @@ redirect_from:
                                 <tr>
                                     <td class="module-title truncate functions" title="registerTopic"><a
                                             class="functions" href="#registerTopic">registerTopic</a></td>
-                                    <td class="module-desc">Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
-publish updates.
+                                    <td class="module-desc"><p>Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
+publish updates.</p>
 <pre><code class="language-ballerina"> error? registerTopic = websubHubClientEP-&gt;registerTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
 </td>
@@ -751,7 +754,7 @@ publish updates.
                                 <tr>
                                     <td class="module-title truncate functions" title="unregisterTopic"><a
                                             class="functions" href="#unregisterTopic">unregisterTopic</a></td>
-                                    <td class="module-desc">Unregisters a topic in a Ballerina WebSub Hub.
+                                    <td class="module-desc"><p>Unregisters a topic in a Ballerina WebSub Hub.</p>
 <pre><code class="language-ballerina"> error? unregisterTopic = websubHubClientEP-&gt;unregisterTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
 </td>
@@ -760,7 +763,7 @@ publish updates.
                                 <tr>
                                     <td class="module-title truncate functions" title="publishUpdate"><a
                                             class="functions" href="#publishUpdate">publishUpdate</a></td>
-                                    <td class="module-desc">Publishes an update to a remote Ballerina WebSub Hub.
+                                    <td class="module-desc"><p>Publishes an update to a remote Ballerina WebSub Hub.</p>
 <pre><code class="language-ballerina"> error? publishUpdate = websubHubClientEP-&gt;publishUpdate(&quot;http://websubpubtopic.com&quot;,{&quot;action&quot;: &quot;publish&quot;,
  &quot;mode&quot;: &quot;remote-hub&quot;});
 </code></pre>
@@ -770,8 +773,8 @@ publish updates.
                                 <tr>
                                     <td class="module-title truncate functions" title="notifyUpdate"><a
                                             class="functions" href="#notifyUpdate">notifyUpdate</a></td>
-                                    <td class="module-desc">Notifies a remote WebSub Hub from which an update is available to fetch for hubs that require publishing to
-happen as such.
+                                    <td class="module-desc"><p>Notifies a remote WebSub Hub from which an update is available to fetch for hubs that require publishing to
+happen as such.</p>
 <pre><code class="language-ballerina">  error? notifyUpdate = websubHubClientEP-&gt;notifyUpdate(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
 </td>
@@ -803,10 +806,10 @@ happen as such.
     <div class="function-desc">
         
         <p>Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
-publish updates.
+publish updates.</p>
 <pre><code class="language-ballerina"> error? registerTopic = websubHubClientEP-&gt;registerTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -860,10 +863,10 @@ publish updates.
     </div>
     <div class="function-desc">
         
-        <p>Unregisters a topic in a Ballerina WebSub Hub.
+        <p>Unregisters a topic in a Ballerina WebSub Hub.</p>
 <pre><code class="language-ballerina"> error? unregisterTopic = websubHubClientEP-&gt;unregisterTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -917,11 +920,11 @@ publish updates.
     </div>
     <div class="function-desc">
         
-        <p>Publishes an update to a remote Ballerina WebSub Hub.
+        <p>Publishes an update to a remote Ballerina WebSub Hub.</p>
 <pre><code class="language-ballerina"> error? publishUpdate = websubHubClientEP-&gt;publishUpdate(&quot;http://websubpubtopic.com&quot;,{&quot;action&quot;: &quot;publish&quot;,
  &quot;mode&quot;: &quot;remote-hub&quot;});
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1027,10 +1030,10 @@ publish updates.
     <div class="function-desc">
         
         <p>Notifies a remote WebSub Hub from which an update is available to fetch for hubs that require publishing to
-happen as such.
+happen as such.</p>
 <pre><code class="language-ballerina">  error? notifyUpdate = websubHubClientEP-&gt;notifyUpdate(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">

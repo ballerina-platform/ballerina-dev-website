@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -324,7 +325,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -332,7 +334,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -599,7 +601,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -616,30 +619,30 @@ redirect_from:
 <p>The <code>openapi</code> command in Ballerina is used for OpenAPI to Ballerina and Ballerina to OpenAPI code generation.
 Code generation from OpenAPI to Ballerina can produce <code>ballerina mock services</code> and <code>ballerina client stubs</code>.</p>
 <p>For build time client stub generation, annotation support is provided.</p>
-<h2>Mock service from OpenAPI</h2>
+<h3>Mock service from OpenAPI</h3>
 <p><code>ballerina openapi gen-service &lt;moduleName&gt;:&lt;serivceName&gt; &lt;openapi_contract&gt; [-c: copy-contract] [-o: outputFile]</code></p>
 <p>Generates a Ballerina service for the OpenAPI file.</p>
 <p>This generated service is a mock version of the actual Ballerina service. Generated sources contain the service definition in <code>src/&lt;module-name&gt;/</code> and the contract will be available in <code>src/&lt;module-name&gt;/resources</code>.</p>
-<h2>Client stub from OpenAPI</h2>
+<h3>Client stub from OpenAPI</h3>
 <p><code>ballerina openapi gen-client [moduleName]:clientName openapi-contract -o[output directory name]</code></p>
 <p>Generates a Ballerina client stub for the service defined in a OpenAPI file.</p>
 <p>This client can be used in client applications to call the service defined in the OpenAPI file.</p>
-<h2>Service to OpenAPI export</h2>
+<h3>Service to OpenAPI export</h3>
 <p><code>ballerina openapi gen-contract [moduleName]:serviceName [-i: ballerinaFile] [-o: contractFile] [-s: skip-bind]</code></p>
 <p>Export the Ballerina service to a definition of OpenApi Specification 3.0.
 For the export to work properly, the input Ballerina service should be defined using basic service and resource level HTTP annotations.</p>
-<h2>Client stub for service</h2>
+<h3>Client stub for service</h3>
 <p>Generates a Ballerina client stub to communicate with a Ballerina service.</p>
 <p>All endpoint(s) that are used for client stub generation should be marked with the <code>@openapi:ClientEndpoint</code> annotation. If not, there might be errors during client stub generation. Endpoints that are not marked with this annotation are not picked for client stub generation.
 The <code>@openapi:ClientConfig { generate: true }</code> annotation is used to enable or disable client stub generation per service.</p>
-<h1>Samples</h1>
-<h2>Mock service from OpenAPI</h2>
+<h2>Samples</h2>
+<h3>Mock service from OpenAPI</h3>
 <p><code>ballerinna openapi gen-service helloworld:helloService hello_service.yaml</code></p>
-<h2>Client stub from OpenAPI</h2>
+<h3>Client stub from OpenAPI</h3>
 <p><code>ballerina openapi gen-client hello_client hello_service.yaml</code></p>
-<h2>OpenAPI from service</h2>
+<h3>OpenAPI from service</h3>
 <p><code>ballerina openapi gen-contract hello_service.bal</code></p>
-<h2>Client stub from service</h2>
+<h3>Client stub from service</h3>
 <pre><code class="language-ballerina">import ballerina/http;
 import ballerina/log;
 import ballerina/openapi;
@@ -673,7 +676,7 @@ service Hello on helloEp {
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -683,15 +686,18 @@ service Hello on helloEp {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="ClientInformation" title="ClientInformation">
                                 <a class="records " href="records/ClientInformation.html">ClientInformation</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Configuration elements for client code generation.
+                                <p>Configuration elements for client code generation.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ServiceInformation" title="ServiceInformation">
@@ -699,13 +705,15 @@ service Hello on helloEp {
                             </td>
                             <td class="module-desc">
                                 
-                                Service validation codee
+                                <p>Service validation codee</p>
 
                             </td>
                         </tr>
                     
+                    
                 </table>
             </section>
+            
             
 
             
@@ -737,7 +745,7 @@ service Hello on helloEp {
                             </td>
                             <td class="module-desc">
                                 
-                                Annotation to configure client code generation.
+                                <p>Annotation to configure client code generation.
                             </td>
                         </tr>
                     
@@ -747,7 +755,7 @@ service Hello on helloEp {
                             </td>
                             <td class="module-desc">
                                 
-                                Presence of this annotation will mark this endpoint to be used as a service endpoint for client generation
+                                <p>Presence of this annotation will mark this endpoint to be used as a service endpoint for client generation</p>
 
                             </td>
                         </tr>
@@ -758,7 +766,7 @@ service Hello on helloEp {
                             </td>
                             <td class="module-desc">
                                 
-                                Annotation for additional OpenAPI information of a Ballerina service.
+                                <p>Annotation for additional OpenAPI information of a Ballerina service.
                             </td>
                         </tr>
                     

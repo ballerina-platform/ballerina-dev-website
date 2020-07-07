@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -352,7 +353,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -360,7 +362,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -655,7 +657,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -672,7 +675,7 @@ on occurrence of events.</li>
 <li>Hub - A party that accepts subscription requests from subscribers and delivers content to the subscribers when the topic
 is updated by the topic's publisher.</li>
 </ul>
-<h2>Basic flow with WebSub</h2>
+<h3>Basic flow with WebSub</h3>
 <ol>
 <li>
 <p>The subscriber discovers from the publisher, the topic it needs to subscribe to and the hub(s) that deliver notifications on updates of the topic.</p>
@@ -699,8 +702,8 @@ hub.</p>
 <p>The hub delivers the identified content to the subscribers of the topic.</p>
 </li>
 </ol>
-<h2>Features</h2>
-<h3>Subscriber</h3>
+<h3>Features</h3>
+<h4>Subscriber</h4>
 <p>This module allows introducing a WebSub Subscriber Service with <code>onIntentVerification</code>, which accepts HTTP GET requests for intent verification, and <code>onNotification</code>, which accepts HTTP POST requests for notifications. The WebSub Subscriber Service provides the following capabilities:</p>
 <ul>
 <li>When the service is started a subscription request is sent for a hub/topic combination, either specified as annotations or discovered based on the resource URL specified as an annotation.</li>
@@ -725,9 +728,9 @@ verification response, specifying the topic to verify intent against:</p>
 </code></pre>
 <pre><code class="language-ballerina">http:Response response = request.buildUnsubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
 </code></pre>
-<h3>Hub</h3>
+<h4>Hub</h4>
 <p>A WebSub compliant hub based on the Ballerina Message Broker is also available. This can be used as a remote hub or to be used by publishers who want to have their own internal hub. Ballerina's WebSub hub honors specified lease periods and supports authenticated content distribution.</p>
-<h4>Enabling Basic Auth support for the hub</h4>
+<h5>Enabling Basic Auth support for the hub</h5>
 <p>The Ballerina WebSub Hub can be secured by enforcing authentication (Basic Authentication) and (optionally) authorization.
 The <code>AuthProvider</code> and <code>authConfig</code> need to be specified for the hub listener and service respectively. If the
 <code>authStoreProvider</code> of the <code>AuthProvider</code> is set as &quot;http:CONFIG_AUTH_STORE&quot;, usernames and passwords for authentication and scopes for authorization would be read from a config TOML file.
@@ -775,7 +778,7 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
     }
 }
 </code></pre>
-<h4>Enabling data persistence for the hub</h4>
+<h5>Enabling data persistence for the hub</h5>
 <p>The Ballerina WebSub Hub supports persistence of topic and subscription data that needs to be restored when the hub is
 restarted.</p>
 <p>Users can introduce their own persistence implementation, by introducing an object type that is structurally
@@ -783,7 +786,7 @@ equivalent to the <code>websub:HubPersistenceStore</code> abstract object.</p>
 <p>Persistence can be enabled by setting a suitable <code>websub:HubPersistenceStore</code> value for the <code>hubPersistenceStore</code> field
 in the <code>HubConfiguration</code> record, which is passed to the <code>websub:startHub()</code> function.</p>
 <p>Any subscriptions added at the hub will be available even after the hub is restarted.</p>
-<h3>Publisher</h3>
+<h4>Publisher</h4>
 <p>Ballerina WebSub publishers can use utility functions to add WebSub link headers indicating the hub and topic
 URLs, which facilitates WebSub discovery.</p>
 <p>A hub client endpoint is also made available to publishers and subscribers to perform the following:</p>
@@ -832,7 +835,7 @@ websub:SubscriptionChangeResponse|error subscriptionChangeResponse = websubHubCl
 </ul>
 </li>
 </ul>
-<h2>Introducing Specific Subscriber Services (Webhook Callback Services)</h2>
+<h3>Introducing Specific Subscriber Services (Webhook Callback Services)</h3>
 <p>Ballerina's WebSub subscriber service listener can be extended to introduce specific Webhooks.</p>
 <p>Instead of the single <code>onNotification</code> resource, you can introduce multiple resources to accept content delivery requests using specific subscriber services. These resources will correspond to the content delivery requests that will
 be delivered with respect to a particular topic.</p>
@@ -909,7 +912,7 @@ dispatching should happen to a resource named <code>onIssueOpened</code>.</p>
 be a custom <code>IssueOpenedEvent</code> record, mapping the JSON payload received when an issue is created.</p>
 </li>
 </ul>
-<h3>The Specific Subscriber Service</h3>
+<h4>The Specific Subscriber Service</h4>
 <p>In order to introduce a specific subscriber service, a new Ballerina <code>listener</code> needs to be introduced. This <code>listener</code> should wrap the generic <code>ballerina/websub:Listener</code> and include the extension configuration described above.</p>
 <p>The following example is for a service provider that</p>
 <ul>
@@ -1011,7 +1014,7 @@ service specificSubscriber on new WebhookListener(8080) {
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -1021,15 +1024,18 @@ service specificSubscriber on new WebhookListener(8080) {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
                                 <a class="records " href="records/Detail.html">Detail</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Holds the details of a WebSub error.
+                                <p>Holds the details of a WebSub error.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ExtensionConfig" title="ExtensionConfig">
@@ -1037,9 +1043,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                The extension configuration to introduce custom subscriber services.
+                                <p>The extension configuration to introduce custom subscriber services.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="HubConfiguration" title="HubConfiguration">
@@ -1047,9 +1055,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Record representing hub specific configurations.
+                                <p>Record representing hub specific configurations.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="HubStartedUpError" title="HubStartedUpError">
@@ -1057,9 +1067,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Error to represent that a WebSubHub is already started up, encapsulating the started up Hub.
+                                <p>Error to represent that a WebSubHub is already started up, encapsulating the started up Hub.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="RemotePublishConfig" title="RemotePublishConfig">
@@ -1067,9 +1079,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Record representing remote publishing allowance.
+                                <p>Record representing remote publishing allowance.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriberDetails" title="SubscriberDetails">
@@ -1077,9 +1091,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Record to represent Subscriber Details.
+                                <p>Record to represent Subscriber Details.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriberListenerConfiguration" title="SubscriberListenerConfiguration">
@@ -1087,9 +1103,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the configuration for the WebSub Subscriber Service Listener.
+                                <p>Represents the configuration for the WebSub Subscriber Service Listener.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriberServiceConfiguration" title="SubscriberServiceConfiguration">
@@ -1097,9 +1115,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Configuration for a WebSubSubscriber service.
+                                <p>Configuration for a WebSubSubscriber service.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriptionChangeRequest" title="SubscriptionChangeRequest">
@@ -1107,9 +1127,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Record representing a WebSub subscription change request.
+                                <p>Record representing a WebSub subscription change request.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriptionChangeResponse" title="SubscriptionChangeResponse">
@@ -1117,9 +1139,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Record representing subscription/unsubscription details if a subscription/unsubscription request is successful.
+                                <p>Record representing subscription/unsubscription details if a subscription/unsubscription request is successful.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriptionDetails" title="SubscriptionDetails">
@@ -1127,44 +1151,17 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Record to represent persisted Subscription Details retrieved.
+                                <p>Record to represent persisted Subscription Details retrieved.
                             </td>
                         </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T41" title="T41">
-                                <a class="records " href="records/T41.html">T41</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T42" title="T42">
-                                <a class="records " href="records/T42.html">T42</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T43" title="T43">
-                                <a class="records " href="records/T43.html">T43</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
                 </table>
             </section>
             
+            
 
+            
             
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
@@ -1175,15 +1172,18 @@ service specificSubscriber on new WebhookListener(8080) {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate objects" id="Hub" title="Hub">
                                 <a class="objects " href="objects/Hub.html">Hub</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the Ballerina WebSub Hub.
+                                <p>Represents the Ballerina WebSub Hub.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="HubPersistenceStore" title="HubPersistenceStore">
@@ -1191,9 +1191,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the hub persistence configuration and functions.
+                                <p>Represents the hub persistence configuration and functions.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="IntentVerificationRequest" title="IntentVerificationRequest">
@@ -1201,9 +1203,11 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Object representing an intent verification request received.
+                                <p>Object representing an intent verification request received.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="Notification" title="Notification">
@@ -1211,12 +1215,14 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the WebSub Content Delivery Request received.
+                                <p>Represents the WebSub Content Delivery Request received.
                             </td>
                         </tr>
                     
+                    
                 </table>
-             </section>  
+             </section>
+            
             
 
             
@@ -1235,7 +1241,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                The caller remote functions to respond to client requests.
+                                <p>The caller remote functions to respond to client requests.
                             </td>
                         </tr>
                     
@@ -1245,7 +1251,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.
+                                <p>The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.
                             </td>
                         </tr>
                     
@@ -1255,7 +1261,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP based client for WebSub subscription and unsubscription.
+                                <p>The HTTP based client for WebSub subscription and unsubscription.
                             </td>
                         </tr>
                     
@@ -1279,7 +1285,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the WebSubSubscriber Service Listener.
+                                <p>Represents the WebSubSubscriber Service Listener.
                             </td>
                         </tr>
                     
@@ -1304,7 +1310,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Function to add link headers to a response to allow WebSub discovery.
+                                <p>Function to add link headers to a response to allow WebSub discovery.
                             </td>
                         </tr>
                     
@@ -1314,7 +1320,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.
+                                <p>Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.
                             </td>
                         </tr>
                     
@@ -1324,7 +1330,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                Starts up the Ballerina Hub.
+                                <p>Starts up the Ballerina Hub.
                             </td>
                         </tr>
                     
@@ -1349,7 +1355,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                The constant used to represent error code of WebSub module.
+                                <p>The constant used to represent error code of WebSub module.
                             </td>
                         </tr>
                     
@@ -1359,7 +1365,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                <code>RemotePublishMode</code> indicating direct update content notification (fat-ping).
+                                <p><code>RemotePublishMode</code> indicating direct update content notification (fat-ping).
                             </td>
                         </tr>
                     
@@ -1369,7 +1375,7 @@ service specificSubscriber on new WebhookListener(8080) {
                             </td>
                             <td class="module-desc">
                                 
-                                <code>RemotePublishMode</code> indicating that once the publisher notifies the hub that an update is available, the hub
+                                <p><code>RemotePublishMode</code> indicating that once the publisher notifies the hub that an update is available, the hub
 needs to fetch the topic URL to identify the update content.
                             </td>
                         </tr>
@@ -1380,7 +1386,7 @@ needs to fetch the topic URL to identify the update content.
                             </td>
                             <td class="module-desc">
                                 
-                                The constant used to represent SHA-1 cryptographic hash algorithm
+                                <p>The constant used to represent SHA-1 cryptographic hash algorithm</p>
 
                             </td>
                         </tr>
@@ -1391,7 +1397,7 @@ needs to fetch the topic URL to identify the update content.
                             </td>
                             <td class="module-desc">
                                 
-                                The constant used to represent SHA-256 cryptographic hash algorithm
+                                <p>The constant used to represent SHA-256 cryptographic hash algorithm</p>
 
                             </td>
                         </tr>
@@ -1402,7 +1408,7 @@ needs to fetch the topic URL to identify the update content.
                             </td>
                             <td class="module-desc">
                                 
-                                <code>TopicIdentifier</code> indicating dispatching based solely on a header of the request.
+                                <p><code>TopicIdentifier</code> indicating dispatching based solely on a header of the request.
                             </td>
                         </tr>
                     
@@ -1412,7 +1418,7 @@ needs to fetch the topic URL to identify the update content.
                             </td>
                             <td class="module-desc">
                                 
-                                <code>TopicIdentifier</code> indicating dispatching based solely on a value for a key in the JSON payload of the request.
+                                <p><code>TopicIdentifier</code> indicating dispatching based solely on a value for a key in the JSON payload of the request.
                             </td>
                         </tr>
                     
@@ -1422,7 +1428,7 @@ needs to fetch the topic URL to identify the update content.
                             </td>
                             <td class="module-desc">
                                 
-                                <code>TopicIdentifier</code> indicating dispatching based on a combination of header and values specified for a key/key(s) in
+                                <p><code>TopicIdentifier</code> indicating dispatching based on a combination of header and values specified for a key/key(s) in
 the JSON payload of the request.
                             </td>
                         </tr>
@@ -1433,7 +1439,7 @@ the JSON payload of the request.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>websub:ListenerStartupError</code>.
+                                <p>Represents the reason string for the <code>websub:ListenerStartupError</code>.
                             </td>
                         </tr>
                     
@@ -1443,7 +1449,7 @@ the JSON payload of the request.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason string for the <code>websub:HubStartupError</code>.
+                                <p>Represents the reason string for the <code>websub:HubStartupError</code>.
                             </td>
                         </tr>
                     
@@ -1468,7 +1474,7 @@ the JSON payload of the request.
                             </td>
                             <td class="module-desc">
                                 
-                                Annotation to declare that the service represents a specific webhook.
+                                <p>Annotation to declare that the service represents a specific webhook.
                             </td>
                         </tr>
                     
@@ -1478,7 +1484,7 @@ the JSON payload of the request.
                             </td>
                             <td class="module-desc">
                                 
-                                WebSub Subscriber Configuration for the service, indicating subscription related parameters.
+                                <p>WebSub Subscriber Configuration for the service, indicating subscription related parameters.
                             </td>
                         </tr>
                     
@@ -1502,7 +1508,7 @@ the JSON payload of the request.
                             </td>
                             <td class="module-desc">
                                 
-                                The identifier to be used to identify the mode in which update content should be identified.
+                                <p>The identifier to be used to identify the mode in which update content should be identified.
                             </td>
                         </tr>
                     
@@ -1512,7 +1518,7 @@ the JSON payload of the request.
                             </td>
                             <td class="module-desc">
                                 
-                                The identifier to be used to identify the cryptographic hash algorithm.
+                                <p>The identifier to be used to identify the cryptographic hash algorithm.
                             </td>
                         </tr>
                     
@@ -1522,7 +1528,7 @@ the JSON payload of the request.
                             </td>
                             <td class="module-desc">
                                 
-                                The identifier to be used to identify the topic for dispatching with custom subscriber services.
+                                <p>The identifier to be used to identify the topic for dispatching with custom subscriber services.
                             </td>
                         </tr>
                     
@@ -1546,7 +1552,7 @@ the JSON payload of the request.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a hub startup error.
+                                <p>Represents a hub startup error.
                             </td>
                         </tr>
                     
@@ -1556,7 +1562,7 @@ the JSON payload of the request.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a listener startup error.
+                                <p>Represents a listener startup error.
                             </td>
                         </tr>
                     

@@ -16,6 +16,8 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.WEBSITE_TOKEN }}
       
     - name: Set up Python 3.x
       uses: actions/setup-python@v1
@@ -28,7 +30,7 @@ jobs:
     - name: Copy newly generated release-notes-json file
       run: cp .github/scripts/target/swanlake_release_notes_versions.json _data/swanlake_release_notes_versions.json
 
-    - name: Update release-notes-versions json file
+    - name: Commit release-notes-versions json file
       run: |
         git pull origin master
         
@@ -43,4 +45,4 @@ jobs:
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
         bin/hub push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

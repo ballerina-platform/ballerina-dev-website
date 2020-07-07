@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -336,7 +337,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -344,7 +346,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -623,7 +625,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -632,17 +635,17 @@ redirect_from:
                 </h1>
                     <h2>Module Overview</h2>
 <p>This module contains functions to perform email operations such as sending and reading emails using the SMTP, POP3, and IMAP4 protocols.</p>
-<h2>Client</h2>
+<h3>Client</h3>
 <p>This module supports the following three client types.</p>
 <ul>
 <li><code>email:SmtpClient</code> - The client, which supports sending an email using the SMTP protocol.</li>
 <li><code>email:PopClient</code> - The client, which supports receiving an email using the POP3 protocol.</li>
 <li><code>email:ImapClient</code> - The client, which supports receiving an email using the IMAP4 protocol.</li>
 </ul>
-<h3>SMTP Client</h3>
+<h4>SMTP Client</h4>
 <p>To send an email using the SMTP protocol, you must first create an <code>email:SmtpClient</code> object. The code for creating an <code>email:SmtpClient</code> can be found
 below.</p>
-<h4>Creating a client</h4>
+<h5>Creating a client</h5>
 <p>The following code creates an SMTP client, which connects to the default port(465) and enables SSL.</p>
 <pre><code class="language-ballerina">email:SmtpClient smtpClient = new (&quot;smtp.email.com&quot;,
                                    &quot;sender@email.com&quot;,
@@ -659,7 +662,7 @@ email:SmtpClient smtpClient = new (&quot;smtp.email.com&quot;,
                                    &quot;pass123&quot;,
                                     smtpConfig);
 </code></pre>
-<h4>Sending an email</h4>
+<h5>Sending an email</h5>
 <p>Once the <code>email:SmtpClient</code> is created, an email can be sent using the SMTP protocol through that client.
 Samples for this operation can be found below.</p>
 <pre><code class="language-ballerina">email:Email email = {
@@ -675,10 +678,10 @@ Samples for this operation can be found below.</p>
 
 email:Error? response = smtpClient-&gt;send(email);
 </code></pre>
-<h3>POP3 Client</h3>
+<h4>POP3 Client</h4>
 <p>To receive an email using the POP3 protocol, you must first create an <code>email:PopClient</code> object. The code for creating an
 <code>email:PopClient</code> can be found below.</p>
-<h4>Creating a client</h4>
+<h5>Creating a client</h5>
 <p>The following code creates a POP3 client, which connects to the default port(995) and enables SSL.</p>
 <pre><code class="language-ballerina">email:PopClient|email:Error popClient = new (&quot;pop.email.com&quot;,
                                              &quot;reader@email.com&quot;,
@@ -695,15 +698,15 @@ email:PopClient|email:Error popClient = new (&quot;pop.email.com&quot;,
                                              &quot;pass456&quot;,
                                               popConfig);
 </code></pre>
-<h4>Receiving an email</h4>
+<h5>Receiving an email</h5>
 <p>Once the <code>email:PopClient</code> is created, emails can be received using the POP3 protocol through that client.
 Samples for this operation can be found below.</p>
 <pre><code class="language-ballerina">email:Email|email:Error? emailResponse = popClient-&gt;read();
 </code></pre>
-<h3>IMAP4 Client</h3>
+<h4>IMAP4 Client</h4>
 <p>To receive an email using the IMAP4 protocol, you must first create an <code>email:ImapClient</code> object. The code for creating an
 <code>email:ImapClient</code> can be found below.</p>
-<h4>Creating a client</h4>
+<h5>Creating a client</h5>
 <p>The following code creates an IMAP4 client, which connects to the default port(993) and enables SSL.</p>
 <pre><code class="language-ballerina">email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;,
                                                &quot;reader@email.com&quot;,
@@ -720,7 +723,7 @@ email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;,
                                                &quot;pass456&quot;,
                                                 imapConfig);
 </code></pre>
-<h4>Receiving an email</h4>
+<h5>Receiving an email</h5>
 <p>Once the <code>email:ImapClient</code> is created, emails can be received using the IMAP4 protocol through that client.
 Samples for this operation can be found below.</p>
 <pre><code class="language-ballerina">email:Email|email:Error emailResponse = imapClient-&gt;read();
@@ -729,7 +732,7 @@ Samples for this operation can be found below.</p>
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -739,15 +742,18 @@ Samples for this operation can be found below.</p>
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
                                 <a class="records " href="records/Detail.html">Detail</a>
                             </td>
                             <td class="module-desc">
                                 
-                                The details of an error.
+                                <p>The details of an error.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Email" title="Email">
@@ -755,9 +761,11 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Email message properties.
+                                <p>Email message properties.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ImapConfig" title="ImapConfig">
@@ -765,9 +773,11 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Configuration of the IMAP Endpoint.
+                                <p>Configuration of the IMAP Endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="PopConfig" title="PopConfig">
@@ -775,9 +785,11 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Configuration of the POP Endpoint.
+                                <p>Configuration of the POP Endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="SmtpConfig" title="SmtpConfig">
@@ -785,12 +797,14 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Configuration of the SMTP Endpoint.
+                                <p>Configuration of the SMTP Endpoint.
                             </td>
                         </tr>
                     
+                    
                 </table>
             </section>
+            
             
 
             
@@ -811,7 +825,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an IMAP Client, which interacts with an IMAP Server.
+                                <p>Represents an IMAP Client, which interacts with an IMAP Server.
                             </td>
                         </tr>
                     
@@ -821,7 +835,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a POP Client, which interacts with a POP Server.
+                                <p>Represents a POP Client, which interacts with a POP Server.
                             </td>
                         </tr>
                     
@@ -831,7 +845,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an SMTP Client, which interacts with an SMTP Server.
+                                <p>Represents an SMTP Client, which interacts with an SMTP Server.
                             </td>
                         </tr>
                     
@@ -861,7 +875,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Default folder to read emails.
+                                <p>Default folder to read emails.
                             </td>
                         </tr>
                     
@@ -871,7 +885,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason for the email sending related errors.
+                                <p>Represents the reason for the email sending related errors.
                             </td>
                         </tr>
                     
@@ -881,7 +895,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason for the server access failure errors.
+                                <p>Represents the reason for the server access failure errors.
                             </td>
                         </tr>
                     
@@ -891,7 +905,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason for the email receipt related errors.
+                                <p>Represents the reason for the email receipt related errors.
                             </td>
                         </tr>
                     
@@ -918,7 +932,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents email related errors.
+                                <p>Represents email related errors.
                             </td>
                         </tr>
                     
@@ -942,7 +956,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an error that occurs when the email store access fails.
+                                <p>Represents an error that occurs when the email store access fails.
                             </td>
                         </tr>
                     
@@ -952,7 +966,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an error that occurs an email read operation fails.
+                                <p>Represents an error that occurs an email read operation fails.
                             </td>
                         </tr>
                     
@@ -962,7 +976,7 @@ Samples for this operation can be found below.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents an error that occurs when sending an email fails.
+                                <p>Represents an error that occurs when sending an email fails.
                             </td>
                         </tr>
                     

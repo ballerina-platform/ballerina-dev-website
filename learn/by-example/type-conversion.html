@@ -186,7 +186,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.&#39;decimal;
 import ballerina/lang.&#39;float;
 import ballerina/lang.&#39;int;
@@ -201,7 +201,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age;
 };
@@ -216,7 +216,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {
     string name;
     int age;
     int empNo;
@@ -232,7 +232,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function convertEmployeeToPerson(Employee emp) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function convertEmployeeToPerson(Employee emp) {
 </code></pre></div>
 
                                 </td>
@@ -251,7 +251,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.constructFrom(emp);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person|error res = Person.constructFrom(emp);
     if (res is Person) {
 </code></pre></div>
 
@@ -272,7 +272,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Employee to Person, name: &quot;, res[&quot;name&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Employee to Person, name: &quot;, res[&quot;name&quot;]);
     } else {
         io:println(&quot;Error occurred on conversion&quot;);
     }
@@ -295,7 +295,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function convertAnydataMapToPerson(map&lt;anydata&gt; m) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function convertAnydataMapToPerson(map&lt;anydata&gt; m) {
 </code></pre></div>
 
                                 </td>
@@ -315,7 +315,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.constructFrom(m);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person|error res = Person.constructFrom(m);
     if (res is Person) {
 </code></pre></div>
 
@@ -336,7 +336,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;map&lt;anydata&gt; to Person, name: &quot;, res[&quot;name&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;map&lt;anydata&gt; to Person, name: &quot;, res[&quot;name&quot;]);
     } else {
         io:println(&quot;Error occurred on conversion: &quot;, res.detail());
     }
@@ -359,7 +359,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function createNumericValues() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function createNumericValues() {
     string s1 = &quot;45&quot;;
     string s2 = &quot;abc&quot;;
     string s3 = &quot;12.3&quot;;
@@ -382,7 +382,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error res1 = &#39;int:fromString(s1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error res1 = &#39;int:fromString(s1);
     if (res1 is int) {
         io:println(&quot;int value: &quot;, res1);
     } else {
@@ -407,7 +407,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    res1 = &#39;int:fromString(s2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    res1 = &#39;int:fromString(s2);
     if (res1 is int) {
         io:println(&quot;int value: &quot;, res1);
     } else {
@@ -424,7 +424,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float|error res2 = &#39;float:fromString(s3);
+                                    <div class="highlight"><pre><code class=language-ballerina>    float|error res2 = &#39;float:fromString(s3);
     if (res2 is float) {
         io:println(&quot;float value: &quot;, res2);
     } else {
@@ -449,7 +449,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    decimal|error res3 = &#39;decimal:fromString(s4);
+                                    <div class="highlight"><pre><code class=language-ballerina>    decimal|error res3 = &#39;decimal:fromString(s4);
     if (res3 is decimal) {
         io:println(&quot;decimal value: &quot;, res3);
     } else {
@@ -475,7 +475,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -487,7 +487,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee emp = {name: &quot;Jack Sparrow&quot;, age: 54, empNo: 100};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee emp = {name: &quot;Jack Sparrow&quot;, age: 54, empNo: 100};
     convertEmployeeToPerson(emp);
 </code></pre></div>
 
@@ -507,7 +507,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt; m = {name: &quot;Hector Barbossa&quot;, age: 54, empNo: 100};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;anydata&gt; m = {name: &quot;Hector Barbossa&quot;, age: 54, empNo: 100};
     convertAnydataMapToPerson(m);
 </code></pre></div>
 
@@ -528,7 +528,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt; n = {name: &quot;Elizabeth Swann&quot;};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;anydata&gt; n = {name: &quot;Elizabeth Swann&quot;};
     convertAnydataMapToPerson(n);
 </code></pre></div>
 
@@ -549,7 +549,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    createNumericValues();
+                                    <div class="highlight"><pre><code class=language-ballerina>    createNumericValues();
 }
 </code></pre></div>
 

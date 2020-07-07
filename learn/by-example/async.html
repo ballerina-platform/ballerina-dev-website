@@ -198,7 +198,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
@@ -212,7 +212,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int count = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int count = 0;
 </code></pre></div>
 
                                 </td>
@@ -224,7 +224,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://postman-echo.com&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://postman-echo.com&quot;);
 </code></pre></div>
 
                                 </td>
@@ -236,7 +236,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -248,7 +248,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;int&gt; f1 = start sum(40, 50);
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f1 = start sum(40, 50);
 </code></pre></div>
 
                                 </td>
@@ -267,7 +267,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int result = squarePlusCube(f1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int result = squarePlusCube(f1);
 </code></pre></div>
 
                                 </td>
@@ -287,7 +287,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = wait f1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = wait f1;
     io:println(&quot;SQ + CB = &quot;, result);
 </code></pre></div>
 
@@ -307,7 +307,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;()&gt; f2 = start countInfinity();
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;()&gt; f2 = start countInfinity();
 </code></pre></div>
 
                                 </td>
@@ -327,7 +327,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    f2.cancel();
+                                    <div class="highlight"><pre><code class=language-ballerina>    f2.cancel();
     io:println(&quot;Counting done in one second: &quot;, count);
 </code></pre></div>
 
@@ -347,7 +347,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;http:Response|error&gt; f3 = @strand {thread:&quot;any&quot;} start clientEndpoint-&gt; get(&quot;/get?test=123&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;http:Response|error&gt; f3 = @strand {thread:&quot;any&quot;} start clientEndpoint-&gt; get(&quot;/get?test=123&quot;);
 </code></pre></div>
 
                                 </td>
@@ -368,7 +368,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response|error response = wait f3;
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Response|error response = wait f3;
 </code></pre></div>
 
                                 </td>
@@ -387,7 +387,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (response is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (response is http:Response) {
         io:println(response.getJsonPayload());
     } else {
         io:println(response.detail()?.message);
@@ -411,7 +411,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;int&gt; f4 = start square(20);
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f4 = start square(20);
     future&lt;string&gt; f5 = start greet(&quot;Bert&quot;);
 </code></pre></div>
 
@@ -431,7 +431,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|string anyResult = wait f4|f5;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|string anyResult = wait f4|f5;
     io:println(anyResult);
 </code></pre></div>
 
@@ -454,7 +454,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;int&gt; f6 = start sum(40, 60);
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f6 = start sum(40, 60);
     future&lt;int&gt; f7 = start cube(3);
     future&lt;string&gt; f8 = start greet(&quot;Moose&quot;);
 </code></pre></div>
@@ -475,7 +475,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(2000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(2000);
 </code></pre></div>
 
                                 </td>
@@ -494,7 +494,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;int|string&gt; resultMap = wait {first_field: f6, second_field: f7,
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int|string&gt; resultMap = wait {first_field: f6, second_field: f7,
                                             third_field: f8};
     io:println(resultMap);
 </code></pre></div>
@@ -518,7 +518,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {int first_field; int second_field; string third_field;} rec =
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {int first_field; int second_field; string third_field;} rec =
                     wait {first_field: f6, second_field: f7, third_field: f8};
     io:println(&quot;first field of record --&gt; &quot;, rec.first_field);
     io:println(&quot;second field of record --&gt; &quot;, rec.second_field);
@@ -544,7 +544,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function sum(int a, int b) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function sum(int a, int b) returns int {
     return a + b;
 }
 </code></pre></div>
@@ -558,7 +558,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function square(int n) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function square(int n) returns int {
     return n * n;
 }
 </code></pre></div>
@@ -572,7 +572,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function cube(int n) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function cube(int n) returns int {
     return n * n * n;
 }
 </code></pre></div>
@@ -586,7 +586,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function greet(string name) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function greet(string name) returns string {
 </code></pre></div>
 
                                 </td>
@@ -598,7 +598,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(2000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(2000);
     return &quot;Hello &quot; + name + &quot;!!&quot;;
 }
 </code></pre></div>
@@ -619,7 +619,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function squarePlusCube(future&lt;int&gt; f) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function squarePlusCube(future&lt;int&gt; f) returns int {
     worker w1 {
         int n = wait f;
         int sq = square(n);
@@ -643,7 +643,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return wait w2;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return wait w2;
 }
 </code></pre></div>
 
@@ -663,7 +663,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function countInfinity() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function countInfinity() {
     while (true) {
         runtime:sleep(1);
         count += 1;

@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -81,6 +82,10 @@ redirect_from:
             <a data="records" href="../java/index.html#records">Records</a>
         </li>
         
+        
+            <li>
+                <a  data="objects" href="../java/index.html#objects">Objects</a>
+            </li>
         
         
         
@@ -328,7 +333,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -336,7 +342,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -352,6 +358,10 @@ redirect_from:
             <a data="records" href="../java/index.html#records">Records</a>
         </li>
         
+        
+            <li>
+                <a  data="objects" href="../java/index.html#objects">Objects</a>
+            </li>
         
         
         
@@ -607,7 +617,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -628,7 +639,7 @@ redirect_from:
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -638,15 +649,18 @@ redirect_from:
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="ArrayType" title="ArrayType">
                                 <a class="records " href="records/ArrayType.html">ArrayType</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a Java array type.
+                                <p>Represents a Java array type.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ConstructorData" title="ConstructorData">
@@ -654,9 +668,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Describes a Java constructor.
+                                <p>Describes a Java constructor.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="FieldData" title="FieldData">
@@ -664,9 +680,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Describes a Java field.
+                                <p>Describes a Java field.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="MethodData" title="MethodData">
@@ -674,14 +692,55 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Describes a Java method.
+                                <p>Describes a Java method.
                             </td>
                         </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ObjectData" title="ObjectData">
+                                <a class="records " href="records/ObjectData.html">ObjectData</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes a Java class that corresponds to a Ballerina object.
+                            </td>
+                        </tr>
+                    
                     
                 </table>
             </section>
             
+            
 
+            
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="JObject" title="JObject">
+                                <a class="objects " href="objects/JObject.html">JObject</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The Ballerina abstract object which is to be extended by Ballerina
+objects representing Ballerina bindings for Java classes.
+                            </td>
+                        </tr>
+                    
+                    
+                </table>
+             </section>
+            
             
 
             
@@ -700,12 +759,23 @@ redirect_from:
                 <table>
                     
                         <tr>
+                            <td class="module-title truncate functions" id="cast" title="cast">
+                                <a class="functions " href="functions.html#cast">cast</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns an <code>JObject|error</code>, which is obtained after casting the provided <code>JObject</code> instance
+to the given <code>JObject</code> type depending on assignability.
+                            </td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate functions" id="createNull" title="createNull">
                                 <a class="functions " href="functions.html#createNull">createNull</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Returns a <code>handle</code>, which refers to Java null.
+                                <p>Returns a <code>handle</code>, which refers to Java null.
                             </td>
                         </tr>
                     
@@ -715,7 +785,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Returns a <code>handle</code>, which refers to the Java string representation of the Ballerina <code>string</code>.
+                                <p>Returns a <code>handle</code>, which refers to the Java string representation of the Ballerina <code>string</code>.
                             </td>
                         </tr>
                     
@@ -725,7 +795,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Returns a <code>handle</code>, which refers to the Java Class object associated with the class or interface with the given
+                                <p>Returns a <code>handle</code>, which refers to the Java Class object associated with the class or interface with the given
 string name.
                             </td>
                         </tr>
@@ -736,7 +806,17 @@ string name.
                             </td>
                             <td class="module-desc">
                                 
-                                Returns <code>true</code> if this handle refers to Java null.
+                                <p>Returns <code>true</code> if this handle refers to Java null.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="jObjToString" title="jObjToString">
+                                <a class="functions " href="functions.html#jObjToString">jObjToString</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns the string representation of a Java object stored in a handle reference.
                             </td>
                         </tr>
                     
@@ -746,7 +826,7 @@ string name.
                             </td>
                             <td class="module-desc">
                                 
-                                Returns a Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code>.
+                                <p>Returns a Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code>.
                             </td>
                         </tr>
                     
@@ -769,12 +849,22 @@ string name.
                 <table>
                     
                         <tr>
+                            <td class="module-title truncate annotations" id="Binding" title="Binding">
+                                <a class="annotations " href="annotations.html#Binding">Binding</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes the Java class representing a Ballerina binding.
+                            </td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate annotations" id="Constructor" title="Constructor">
                                 <a class="annotations " href="annotations.html#Constructor">Constructor</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Describes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as
+                                <p>Describes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>.
                             </td>
                         </tr>
@@ -785,7 +875,7 @@ string name.
                             </td>
                             <td class="module-desc">
                                 
-                                Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as
+                                <p>Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>.
                             </td>
                         </tr>
@@ -796,7 +886,7 @@ string name.
                             </td>
                             <td class="module-desc">
                                 
-                                Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as
+                                <p>Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>.
                             </td>
                         </tr>
@@ -807,7 +897,7 @@ string name.
                             </td>
                             <td class="module-desc">
                                 
-                                Describes a Java method, which provides an implementation of a Ballerina function of which the body is marked as
+                                <p>Describes a Java method, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>.
                             </td>
                         </tr>

@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -104,7 +105,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -359,7 +360,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -405,7 +407,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -666,7 +668,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../index.html">
+                <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Functions - </span>
@@ -675,104 +678,90 @@ redirect_from:
                 
             </h1>
             <div class="constants">
-                <table class="ui table details-table">
-                    
-                        <tbody>
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#contains">contains</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Checks whether the given key is in the configuration registry.
+                                        <p>Checks whether the given key is in the configuration registry.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getAsArray">getAsArray</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Retrieves the specified configuration value as an array.
+                                        <p>Retrieves the specified configuration value as an array.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getAsBoolean">getAsBoolean</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Retrieves the specified configuration value as a boolean.
+                                        <p>Retrieves the specified configuration value as a boolean.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getAsFloat">getAsFloat</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Retrieves the specified configuration value as a float.
+                                        <p>Retrieves the specified configuration value as a float.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getAsInt">getAsInt</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Retrieves the specified configuration value as an int.
+                                        <p>Retrieves the specified configuration value as an int.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getAsMap">getAsMap</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Retrieves the specified configuration value as a map.
+                                        <p>Retrieves the specified configuration value as a map.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#getAsString">getAsString</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Retrieves the specified configuration value as a string.
+                                        <p>Retrieves the specified configuration value as a string.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#setConfig">setConfig</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Sets the specified key/value pair as a configuration.
+                                        <p>Sets the specified key/value pair as a configuration.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
+                        
+                    </tbody>
                 </table>
                 <div>
                     
@@ -793,10 +782,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Checks whether the given key is in the configuration registry.
+        <p>Checks whether the given key is in the configuration registry.</p>
 <pre><code class="language-ballerina"> boolean configAvailable = config:contains(&quot;host&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -850,10 +839,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Retrieves the specified configuration value as an array.
+        <p>Retrieves the specified configuration value as an array.</p>
 <pre><code class="language-ballerina"> int[]|error ports = int[].constructFrom(config:getAsArray(&quot;ports&quot;));
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -907,10 +896,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Retrieves the specified configuration value as a boolean.
+        <p>Retrieves the specified configuration value as a boolean.</p>
 <pre><code class="language-ballerina"> boolean cachingEnabled = config:getAsBoolean(&quot;http.caching_enabled&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -981,10 +970,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Retrieves the specified configuration value as a float.
+        <p>Retrieves the specified configuration value as a float.</p>
 <pre><code class="language-ballerina"> float evictionFactor = config:getAsFloat(&quot;http.eviction_factor&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1055,10 +1044,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Retrieves the specified configuration value as an int.
+        <p>Retrieves the specified configuration value as an int.</p>
 <pre><code class="language-ballerina"> int port = config:getAsInt(&quot;http.port&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1129,10 +1118,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Retrieves the specified configuration value as a map.
+        <p>Retrieves the specified configuration value as a map.</p>
 <pre><code class="language-ballerina"> map&lt;anydata&gt; configValue = config:getAsMap(&quot;http.listenerConfig&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1186,10 +1175,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Retrieves the specified configuration value as a string.
+        <p>Retrieves the specified configuration value as a string.</p>
 <pre><code class="language-ballerina"> string host = config:getAsString(&quot;http.host&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1255,10 +1244,10 @@ redirect_from:
     </div>
     <div class="function-desc">
         
-        <p>Sets the specified key/value pair as a configuration.
+        <p>Sets the specified key/value pair as a configuration.</p>
 <pre><code class="language-ballerina"> config:setConfig(&quot;john.country&quot;, &quot;USA&quot;);
 </code></pre>
-</p>
+
     </div>
     
         <div class="data-wrapper">

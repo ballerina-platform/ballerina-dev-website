@@ -115,7 +115,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/test;
 </code></pre></div>
 
@@ -128,7 +128,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Mock {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Mock {
 </code></pre></div>
 
                                 </td>
@@ -147,7 +147,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    moduleName: &quot;.&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    moduleName: &quot;.&quot;,
     functionName: &quot;intAdd&quot;
 }
 </code></pre></div>
@@ -169,7 +169,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function mockIntAdd(int a, int b) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function mockIntAdd(int a, int b) returns int {
     io:println(&quot;I&#39;m the mock function!&quot;);
     return (a - b);
 }
@@ -191,7 +191,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testAssertIntEquals() {
     int answer = 0;
     answer = intAdd(5, 3);
@@ -216,7 +216,7 @@ function testAssertIntEquals() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function intAdd(int a, int b) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function intAdd(int a, int b) returns int {
     return (a + b);
 }
 </code></pre></div>

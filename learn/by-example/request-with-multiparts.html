@@ -214,7 +214,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/mime;
 </code></pre></div>
@@ -228,7 +228,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP = new (&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP = new (&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -240,7 +240,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/multiparts&quot;
 }
 </code></pre></div>
@@ -254,7 +254,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service multipartDemoService on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service multipartDemoService on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -273,7 +273,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/decode&quot;
     }
@@ -291,7 +291,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var bodyParts = request.getBodyParts();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var bodyParts = request.getBodyParts();
         if (bodyParts is mime:Entity[]) {
             foreach var part in bodyParts {
                 handleContent(part);
@@ -325,7 +325,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/encode&quot;
     }
@@ -341,7 +341,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity jsonBodyPart = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity jsonBodyPart = new;
         jsonBodyPart.setContentDisposition(
                         getContentDispositionForFormData(&quot;json part&quot;));
         jsonBodyPart.setJson({&quot;name&quot;: &quot;wso2&quot;});
@@ -363,7 +363,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity xmlFilePart = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity xmlFilePart = new;
         xmlFilePart.setContentDisposition(
                        getContentDispositionForFormData(&quot;xml file part&quot;));
 </code></pre></div>
@@ -384,7 +384,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        xmlFilePart.setFileAsEntityBody(&quot;./files/test.xml&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        xmlFilePart.setFileAsEntityBody(&quot;./files/test.xml&quot;,
                                         contentType = mime:APPLICATION_XML);
 </code></pre></div>
 
@@ -406,7 +406,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity[] bodyParts = [jsonBodyPart, xmlFilePart];
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity[] bodyParts = [jsonBodyPart, xmlFilePart];
         http:Request request = new;
 </code></pre></div>
 
@@ -426,7 +426,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
+                                    <div class="highlight"><pre><code class=language-ballerina>        request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
         var returnResponse = clientEP-&gt;post(&quot;/multiparts/decode&quot;, request);
         if (returnResponse is http:Response) {
             var result = caller-&gt;respond(returnResponse);
@@ -467,7 +467,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleContent(mime:Entity bodyPart) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleContent(mime:Entity bodyPart) {
     var mediaType = mime:getMediaType(bodyPart.getContentType());
     if (mediaType is mime:MediaType) {
         string baseType = mediaType.getBaseType();
@@ -490,7 +490,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var payload = bodyPart.getXml();
+                                    <div class="highlight"><pre><code class=language-ballerina>            var payload = bodyPart.getXml();
             if (payload is xml) {
                 log:printInfo(payload.toString());
             } else {
@@ -515,7 +515,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var payload = bodyPart.getJson();
+                                    <div class="highlight"><pre><code class=language-ballerina>            var payload = bodyPart.getJson();
             if (payload is json) {
                 log:printInfo(payload.toJsonString());
             } else {
@@ -540,7 +540,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var payload = bodyPart.getText();
+                                    <div class="highlight"><pre><code class=language-ballerina>            var payload = bodyPart.getText();
             if (payload is string) {
                 log:printInfo(payload);
             } else {
@@ -567,7 +567,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getContentDispositionForFormData(string partName)
+                                    <div class="highlight"><pre><code class=language-ballerina>function getContentDispositionForFormData(string partName)
                                     returns (mime:ContentDisposition) {
     mime:ContentDisposition contentDisposition = new;
     contentDisposition.name = partName;

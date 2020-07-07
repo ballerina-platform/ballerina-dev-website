@@ -59,14 +59,15 @@ that is accessible via Java Database Connectivity (JDBC).
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -337,7 +338,8 @@ that is accessible via Java Database Connectivity (JDBC).
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -345,7 +347,7 @@ that is accessible via Java Database Connectivity (JDBC).
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -624,7 +626,8 @@ that is accessible via Java Database Connectivity (JDBC).
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -655,9 +658,9 @@ target = &quot;java8&quot;
 </code></pre>
 <p>Or, if you're trying to run a single bal file, you can copy the JDBC driver into <code>${BALLERINA_HOME}/bre/lib</code> and
 run the bal file with <code>ballerina run</code> command.</p>
-<h2>Client</h2>
+<h3>Client</h3>
 <p>To access a database, you must first create a <code>Client</code> object. The code for creating a JDBC client can be found below.</p>
-<h3>Creating a client</h3>
+<h4>Creating a client</h4>
 <pre><code class="language-ballerina">jdbc:Client testDB = new ({
     url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
     username: &quot;root&quot;,
@@ -666,7 +669,7 @@ run the bal file with <code>ballerina run</code> command.</p>
 });
 </code></pre>
 <p>The full list of client properties can be found listed under the <code>jdbc:PoolOptions</code> type.</p>
-<h2>Connection pool handling</h2>
+<h3>Connection pool handling</h3>
 <p>There are 3 possible scenarios for connection pool handling.</p>
 <ol>
 <li>
@@ -726,11 +729,11 @@ jdbc:Client testDB3 = new ({
 </code></pre>
 </li>
 </ol>
-<h2>Database operations</h2>
+<h3>Database operations</h3>
 <p>Once the client is created, database operations can be executed through that client. This module provides support for
 creating tables and executing stored procedures. It also supports selecting, inserting, deleting, updating, and batch
 updating data. Samples for these operations can be found below.</p>
-<h3>Creating tables</h3>
+<h4>Creating tables</h4>
 <p>This sample creates a table with two columns. One column is of type <code>int</code>, and the other is of type <code>varchar</code>.
 The CREATE statement is executed via the <code>update</code> remote function of the client.</p>
 <pre><code class="language-ballerina">// Create the ‘Students’ table with fields ‘id’, 'name' and ‘age’.
@@ -744,7 +747,7 @@ if (ret is jdbc:UpdateResult) {
                 &lt;string&gt;err.detail()[&quot;message&quot;]);
 }
 </code></pre>
-<h3>Inserting data</h3>
+<h4>Inserting data</h4>
 <p>This sample shows three examples of data insertion by executing an INSERT statement using the <code>update</code> remote function
 of the client.</p>
 <p>In the first example, query parameter values are passed directly into the query statement of the <code>update</code>  remote function:</p>
@@ -790,7 +793,7 @@ if (ret is jdbc:UpdateResult) {
                 &lt;string&gt;err.detail()[&quot;message&quot;]);
 }
 </code></pre>
-<h3>Inserting data with auto-generated keys</h3>
+<h4>Inserting data with auto-generated keys</h4>
 <p>This example demonstrates inserting data while returning the auto-generated keys. It achieves this by using the
 <code>update</code> remote function to execute the INSERT statement.</p>
 <pre><code class="language-ballerina">int age = 31;
@@ -807,7 +810,7 @@ if (ret is jdbc:UpdateResult) {
     io:println(&quot;Insert to table failed: &quot;, &lt;string&gt;err.detail()[&quot;message&quot;]);
 }
 </code></pre>
-<h3>Selecting data</h3>
+<h4>Selecting data</h4>
 <p>This example demonstrates selecting data. First, a type is created to represent the returned result set. Next, the
 SELECT query is executed via the <code>select</code> remote function of the client by passing that result set type. Once the
 query is executed, each data record can be retrieved by looping the result set. The <code>table</code> returned by the select
@@ -835,7 +838,7 @@ if (ret is table&lt;Student&gt;) {
                 &lt;string&gt;err.detail()[&quot;message&quot;]);
 }
 </code></pre>
-<h3>Updating data</h3>
+<h4>Updating data</h4>
 <p>This example demonstrates modifying data by executing an UPDATE statement via the <code>update</code> remote function of
 the client.</p>
 <pre><code class="language-ballerina">var ret = testDB-&gt;update(&quot;UPDATE student SET name = 'John' WHERE age = ?&quot;, 23);
@@ -847,7 +850,7 @@ if (ret is jdbc:UpdateResult) {
                 &lt;string&gt;err.detail()[&quot;message&quot;]);
 }
 </code></pre>
-<h3>Batch updating data</h3>
+<h4>Batch updating data</h4>
 <p>This example demonstrates how to insert multiple records with a single INSERT statement that is executed via the
 <code>batchUpdate</code> remote function of the client. This is done by first creating multiple parameter arrays, each
 representing a single record, and then passing those arrays to the <code>batchUpdate</code> operation. Similarly, multiple
@@ -874,7 +877,7 @@ if (e is error) {
     io:println(&quot;Batch item 2 update count: &quot;, ret.updatedRowCount[1]);
 }
 </code></pre>
-<h3>Calling stored procedures</h3>
+<h4>Calling stored procedures</h4>
 <p>The following examples demonstrate executing stored procedures via the <code>call</code> remote function of the client.</p>
 <p>The first example shows how to create and call a simple stored procedure that inserts data.</p>
 <pre><code class="language-ballerina">// Create the stored procedure.
@@ -945,7 +948,7 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -955,184 +958,95 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="ApplicationErrorData" title="ApplicationErrorData">
-                                <a class="records strike" href="records/ApplicationErrorData.html">ApplicationErrorData</a>
+                                <a class="records " href="records/ApplicationErrorData.html">ApplicationErrorData</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents the properties belonging to an <code>ApplicationError</code>
+                                <p>Represents the properties belonging to an <code>ApplicationError</code></p>
 
                             </td>
                         </tr>
                     
+                    
+                    
                         <tr>
                             <td class="module-title truncate records" id="BatchUpdateResult" title="BatchUpdateResult">
-                                <a class="records strike" href="records/BatchUpdateResult.html">BatchUpdateResult</a>
+                                <a class="records " href="records/BatchUpdateResult.html">BatchUpdateResult</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents the output of the <code>batchUpdate</code> remote function.
+                                <p>Represents the output of the <code>batchUpdate</code> remote function.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ClientConfiguration" title="ClientConfiguration">
-                                <a class="records strike" href="records/ClientConfiguration.html">ClientConfiguration</a>
+                                <a class="records " href="records/ClientConfiguration.html">ClientConfiguration</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Provides a set of configurations for the JDBC Client.
+                                <p>Provides a set of configurations for the JDBC Client.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="DatabaseErrorData" title="DatabaseErrorData">
-                                <a class="records strike" href="records/DatabaseErrorData.html">DatabaseErrorData</a>
+                                <a class="records " href="records/DatabaseErrorData.html">DatabaseErrorData</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents the properties belonging to a <code>DatabaseError</code>.
+                                <p>Represents the properties belonging to a <code>DatabaseError</code>.
                             </td>
                         </tr>
                     
+                    
+                    
                         <tr>
                             <td class="module-title truncate records" id="Parameter" title="Parameter">
-                                <a class="records strike" href="records/Parameter.html">Parameter</a>
+                                <a class="records " href="records/Parameter.html">Parameter</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents a parameter for the JDBC Client remote functions when a variable needs to be passed
+                                <p>Represents a parameter for the JDBC Client remote functions when a variable needs to be passed
 to the remote function.
                             </td>
                         </tr>
                     
+                    
+                    
                         <tr>
                             <td class="module-title truncate records" id="PoolOptions" title="PoolOptions">
-                                <a class="records strike" href="records/PoolOptions.html">PoolOptions</a>
+                                <a class="records " href="records/PoolOptions.html">PoolOptions</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents the properties which are used to configure DB connection pool.
+                                <p>Represents the properties which are used to configure DB connection pool.
                             </td>
                         </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T0" title="T0">
-                                <a class="records " href="records/T0.html">T0</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T1" title="T1">
-                                <a class="records " href="records/T1.html">T1</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T2" title="T2">
-                                <a class="records " href="records/T2.html">T2</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T3" title="T3">
-                                <a class="records " href="records/T3.html">T3</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T4" title="T4">
-                                <a class="records " href="records/T4.html">T4</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T43" title="T43">
-                                <a class="records " href="records/T43.html">T43</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T5" title="T5">
-                                <a class="records " href="records/T5.html">T5</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T6" title="T6">
-                                <a class="records " href="records/T6.html">T6</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T7" title="T7">
-                                <a class="records " href="records/T7.html">T7</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="UpdateResult" title="UpdateResult">
-                                <a class="records strike" href="records/UpdateResult.html">UpdateResult</a>
+                                <a class="records " href="records/UpdateResult.html">UpdateResult</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents the output of the <code>update</code> remote function.
+                                <p>Represents the output of the <code>update</code> remote function.
                             </td>
                         </tr>
                     
+                    
                 </table>
             </section>
+            
             
 
             
@@ -1149,13 +1063,11 @@ to the remote function.
                     
                         <tr>
                             <td class="module-title truncate clients" id="Client" title="Client">
-                                <a class="clients strike" href="clients/Client.html">Client</a>
+                                <a class="clients " href="clients/Client.html">Client</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents a JDBC client endpoint.
+                                <p>Represents a JDBC client endpoint.
                             </td>
                         </tr>
                     
@@ -1185,7 +1097,7 @@ to the remote function.
                             </td>
                             <td class="module-desc">
                                 
-                                Identifies the issues related to database accessibility, erroneous queries, constraint violations,
+                                <p>Identifies the issues related to database accessibility, erroneous queries, constraint violations,
 database resource clean-up, and other similar scenarios.
                             </td>
                         </tr>
@@ -1196,7 +1108,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Identifies the errors originating from application-level causes.
+                                <p>Identifies the errors originating from application-level causes.
                             </td>
                         </tr>
                     
@@ -1206,7 +1118,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Small variable-length character string
+                                <p>Small variable-length character string</p>
 
                             </td>
                         </tr>
@@ -1217,7 +1129,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Small fixed-length character string
+                                <p>Small fixed-length character string</p>
 
                             </td>
                         </tr>
@@ -1228,7 +1140,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Large variable-length character string
+                                <p>Large variable-length character string</p>
 
                             </td>
                         </tr>
@@ -1239,7 +1151,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Small fixed-length character string with Unicode support
+                                <p>Small fixed-length character string with Unicode support</p>
 
                             </td>
                         </tr>
@@ -1250,7 +1162,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Large variable-length character string with Unicode support
+                                <p>Large variable-length character string with Unicode support</p>
 
                             </td>
                         </tr>
@@ -1261,7 +1173,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Large variable-length character string with Unicode support
+                                <p>Large variable-length character string with Unicode support</p>
 
                             </td>
                         </tr>
@@ -1272,7 +1184,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Single bit value, which can be zero, one, or nil
+                                <p>Single bit value, which can be zero, one, or nil</p>
 
                             </td>
                         </tr>
@@ -1283,7 +1195,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Boolean value being either True or false
+                                <p>Boolean value being either True or false</p>
 
                             </td>
                         </tr>
@@ -1294,7 +1206,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                8-bit integer value, which may be unsigned or signed
+                                <p>8-bit integer value, which may be unsigned or signed</p>
 
                             </td>
                         </tr>
@@ -1305,7 +1217,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                16-bit signed integer value, which may be unsigned or signed
+                                <p>16-bit signed integer value, which may be unsigned or signed</p>
 
                             </td>
                         </tr>
@@ -1316,7 +1228,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                32-bit signed integer value, which may be unsigned or signed
+                                <p>32-bit signed integer value, which may be unsigned or signed</p>
 
                             </td>
                         </tr>
@@ -1327,7 +1239,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                64-bit signed integer value, which may be unsigned or signed
+                                <p>64-bit signed integer value, which may be unsigned or signed</p>
 
                             </td>
                         </tr>
@@ -1338,7 +1250,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Fixed-precision and scaled decimal values
+                                <p>Fixed-precision and scaled decimal values</p>
 
                             </td>
                         </tr>
@@ -1349,7 +1261,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Fixed-precision and scaled decimal values
+                                <p>Fixed-precision and scaled decimal values</p>
 
                             </td>
                         </tr>
@@ -1360,7 +1272,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Single precision floating point number
+                                <p>Single precision floating point number</p>
 
                             </td>
                         </tr>
@@ -1371,7 +1283,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Double precision floating point number
+                                <p>Double precision floating point number</p>
 
                             </td>
                         </tr>
@@ -1382,7 +1294,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Double precision floating point number
+                                <p>Double precision floating point number</p>
 
                             </td>
                         </tr>
@@ -1393,7 +1305,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Small fixed-length binary value
+                                <p>Small fixed-length binary value</p>
 
                             </td>
                         </tr>
@@ -1404,7 +1316,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Large Binary object
+                                <p>Large Binary object</p>
 
                             </td>
                         </tr>
@@ -1415,7 +1327,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Large variable-length binary value
+                                <p>Large variable-length binary value</p>
 
                             </td>
                         </tr>
@@ -1426,7 +1338,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Small variable-length binary value
+                                <p>Small variable-length binary value</p>
 
                             </td>
                         </tr>
@@ -1437,7 +1349,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Large Character object
+                                <p>Large Character object</p>
 
                             </td>
                         </tr>
@@ -1448,7 +1360,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Large Character objects in a multibyte national character set
+                                <p>Large Character objects in a multibyte national character set</p>
 
                             </td>
                         </tr>
@@ -1459,7 +1371,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Both DATE and TIME with an additional nanosecond field
+                                <p>Both DATE and TIME with an additional nanosecond field</p>
 
                             </td>
                         </tr>
@@ -1470,7 +1382,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Both DATE and TIME with an additional nanosecond field
+                                <p>Both DATE and TIME with an additional nanosecond field</p>
 
                             </td>
                         </tr>
@@ -1481,7 +1393,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Both DATE and TIME with an additional nanosecond field
+                                <p>Both DATE and TIME with an additional nanosecond field</p>
 
                             </td>
                         </tr>
@@ -1492,7 +1404,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Both DATE and TIME with an additional nanosecond field
+                                <p>Both DATE and TIME with an additional nanosecond field</p>
 
                             </td>
                         </tr>
@@ -1503,7 +1415,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Composite data value, which consists of zero or more elements of a specified data type
+                                <p>Composite data value, which consists of zero or more elements of a specified data type</p>
 
                             </td>
                         </tr>
@@ -1514,7 +1426,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                User-defined structured type, which consists of one or more attributes
+                                <p>User-defined structured type, which consists of one or more attributes</p>
 
                             </td>
                         </tr>
@@ -1525,7 +1437,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                Cursor value
+                                <p>Cursor value</p>
 
                             </td>
                         </tr>
@@ -1536,7 +1448,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                <code>IN</code> parameters are used to send values to stored procedures
+                                <p><code>IN</code> parameters are used to send values to stored procedures</p>
 
                             </td>
                         </tr>
@@ -1547,7 +1459,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                <code>OUT</code> parameters are used to get values from stored procedures
+                                <p><code>OUT</code> parameters are used to get values from stored procedures</p>
 
                             </td>
                         </tr>
@@ -1558,7 +1470,7 @@ database resource clean-up, and other similar scenarios.
                             </td>
                             <td class="module-desc">
                                 
-                                <code>INOUT</code> parameters are used to both send and get values to/from stored procedures
+                                <p><code>INOUT</code> parameters are used to both send and get values to/from stored procedures</p>
 
                             </td>
                         </tr>
@@ -1582,49 +1494,41 @@ database resource clean-up, and other similar scenarios.
                     
                         <tr>
                             <td class="module-title truncate types" id="Direction" title="Direction">
-                                <a class="types strike" href="types.html#Direction">Direction</a>
+                                <a class="types " href="types.html#Direction">Direction</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                The direction of the parameter.
+                                <p>The direction of the parameter.
                             </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types strike" href="types.html#Error">Error</a>
+                                <a class="types " href="types.html#Error">Error</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents a database or application level error returned from JDBC client remote functions.
+                                <p>Represents a database or application level error returned from JDBC client remote functions.
                             </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate types" id="Param" title="Param">
-                                <a class="types strike" href="types.html#Param">Param</a>
+                                <a class="types " href="types.html#Param">Param</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                The parameter passed into the operations.
+                                <p>The parameter passed into the operations.
                             </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate types" id="SQLType" title="SQLType">
-                                <a class="types strike" href="types.html#SQLType">SQLType</a>
+                                <a class="types " href="types.html#SQLType">SQLType</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                The SQL Datatype of the parameter.
+                                <p>The SQL Datatype of the parameter.
                             </td>
                         </tr>
                     
@@ -1644,25 +1548,21 @@ database resource clean-up, and other similar scenarios.
                     
                         <tr>
                             <td class="module-title truncate errors" id="ApplicationError" title="ApplicationError">
-                                <a class="errors strike" href="errors.html#ApplicationError">ApplicationError</a>
+                                <a class="errors " href="errors.html#ApplicationError">ApplicationError</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents an error originating from application-level causes.
+                                <p>Represents an error originating from application-level causes.
                             </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="DatabaseError" title="DatabaseError">
-                                <a class="errors strike" href="errors.html#DatabaseError">DatabaseError</a>
+                                <a class="errors " href="errors.html#DatabaseError">DatabaseError</a>
                             </td>
                             <td class="module-desc">
                                 
-                                    <span class="stab">Deprecated</span>
-                                
-                                Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,
+                                <p>Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,
 database resource clean-up, and other similar scenarios.
                             </td>
                         </tr>

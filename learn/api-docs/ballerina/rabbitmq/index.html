@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -348,7 +349,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -356,7 +358,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -647,7 +649,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -664,7 +667,7 @@ redirect_from:
 <li>Consuming Messages Using Consumer Services</li>
 <li>Client Acknowledgements</li>
 </ul>
-<h2>Connecting to RabbitMQ</h2>
+<h3>Connecting to RabbitMQ</h3>
 <p>The core APIs are the <code>rabbitmq:Connection</code>, <code>rabbitmq:Channel</code>, and <code>rabbitmq:Message</code> representing an AMQP 0-9-1 Connection, a Channel, and a Ballerina RabbitMQ Message respectively. The following code connects to a RabbitMQ node using the given parameters (host name, port number, etc.):</p>
 <pre><code class="language-ballerina">   rabbitmq:Connection newConnection = new({ host: &quot;localhost&quot;, 
                                             port: 5672, 
@@ -675,7 +678,7 @@ redirect_from:
 <pre><code class="language-ballerina">   rabbitmq:Channel newChannel = new(connection);
 </code></pre>
 <p>The <code>rabbitmq:Channel</code> can now be used to send and receive messages as described in the subsequent sections.</p>
-<h3>Enabling TLS</h3>
+<h4>Enabling TLS</h4>
 <p>It is possible to encrypt the communication between the Ballerina client and the broker by using TLS-enabled connections. Client and server authentication (peer verification) is also supported. To enable the TLS support in the RabbitMQ broker, the node has to be <a href="https://www.rabbitmq.com/ssl.html#enabling-tls">configured</a> to know the location of the Certificate Authority bundle, the server's certificate file, and the server's key. A TLS listener should also be configured to know which port to listen for TLS-enabled client connections.</p>
 <p>Connecting to a TLS-enabled RabbitMQ node using the Ballerina client can be done by passing a <code>rabbitmq:SecureSocket</code> record with the appropriate values to the <code>rabbitmq:ConnectionConfiguration</code> record when initializing the connection.</p>
 <pre><code class="language-ballerina">   rabbitmq:Connection connection = new({ host: &quot;localhost&quot;, 
@@ -686,7 +689,7 @@ redirect_from:
                                                                       password: &quot;MySecretPassword&quot; },
                                                           verifyHostname: true }});
 </code></pre>
-<h3>Disconnecting from RabbitMQ</h3>
+<h4>Disconnecting from RabbitMQ</h4>
 <p>To disconnect, simply close the open channels and the connections:</p>
 <pre><code class="language-ballerina">   rabbitmq:Error? closeResult = newChannel.close();
    rabbitmq:Error? closeResult = newConnection.close();
@@ -694,7 +697,7 @@ redirect_from:
 <blockquote>
 <p>Note: Closing the <code>Channel</code> may be a good practice. However, it isn’t strictly necessary in this case as it will be done automatically when the underlying <code>Connection</code> is closed.</p>
 </blockquote>
-<h2>Using exchanges and queues</h2>
+<h3>Using exchanges and queues</h3>
 <p>Client applications work with exchanges and queues, which are the high-level building blocks of the AMQP protocol. These must be declared before they can be used. The following code declares an exchange and a server-named queue and then binds them together.</p>
 <pre><code class="language-ballerina">   rabbitmq:Error? exchangeResult = newChannel-&gt;exchangeDeclare({ exchangeName: &quot;MyExchange&quot;,
                                                       exchangeType: rabbitmq:DIRECT_EXCHANGE,
@@ -729,7 +732,7 @@ redirect_from:
 <li>a durable auto-delete exchange of the type <code>rabbitmq:DIRECT_EXCHANGE</code></li>
 <li>a durable, non-exclusive non-auto-delete queue with a well-known name</li>
 </ul>
-<h3>Deleting entities and purging queues</h3>
+<h4>Deleting entities and purging queues</h4>
 <ul>
 <li>Delete a queue:</li>
 </ul>
@@ -755,12 +758,12 @@ redirect_from:
 </ul>
 <pre><code class="language-ballerina">   rabbitmq:Error? purgeResult = newChannel-&gt;queuePurge(&quot;MyQueue&quot;);
 </code></pre>
-<h2>Publishing messages</h2>
+<h3>Publishing messages</h3>
 <p>To publish a message to an exchange, use the <code>basicPublish()</code> function as follows:</p>
 <pre><code class="language-ballerina">   rabbitmq:Error? sendResult = newChannel-&gt;basicPublish(&quot;Hello from Ballerina&quot;, &quot;MyQueue&quot;);
 </code></pre>
 <p>Setting other properties of the message such as routing headers can be done by using the <code>BasicProperties</code> record with the appropriate values.</p>
-<h2>Consuming messages using consumer services</h2>
+<h3>Consuming messages using consumer services</h3>
 <p>The most efficient way to receive messages is to set up a subscription using a Ballerina RabbitMQ <code>rabbitmq:Listener</code> and any number of consumer services. The messages will then be delivered automatically as they arrive rather than having to be explicitly requested.</p>
 <p>Multiple consumer services can be bound to one Ballerina RabbitMQ <code>rabbitmq:Listener</code>. The queue to which the service is listening is configured in the <code>rabbitmq:ServiceConfig</code> annotation of the service.</p>
 <pre><code class="language-ballerina">listener rabbitmq:Listener channelListener= new(newConnection);
@@ -777,7 +780,7 @@ service rabbitmqConsumer on channelListener {
 }
 </code></pre>
 <p>The <code>rabbitmq:Message</code> object received can be used to retrieve its contents and for manual client acknowledgements.</p>
-<h2>Client acknowledgements</h2>
+<h3>Client acknowledgements</h3>
 <p>The message consuming is supported by mainly two types of acknowledgement modes, which are auto acknowledgements and client acknowledgements.
 Client acknowledgements can further be divided into to two different types as positive and negative acknowledgements.
 The default acknowledgement mode is auto-ack (messages are acknowledged immediately after consuming).</p>
@@ -799,7 +802,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -809,15 +812,18 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="BasicProperties" title="BasicProperties">
                                 <a class="records " href="records/BasicProperties.html">BasicProperties</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Basic properties of the message - routing headers etc.
+                                <p>Basic properties of the message - routing headers etc.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ConnectionConfiguration" title="ConnectionConfiguration">
@@ -825,9 +831,11 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations used to create a <code>rabbitmq:Connection</code>.
+                                <p>Configurations used to create a <code>rabbitmq:Connection</code>.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
@@ -835,9 +843,11 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                The details of an error.
+                                <p>The details of an error.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ExchangeConfiguration" title="ExchangeConfiguration">
@@ -845,9 +855,11 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations used to declare an exchange.
+                                <p>Configurations used to declare an exchange.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="QueueConfiguration" title="QueueConfiguration">
@@ -855,9 +867,11 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations used to declare a queue.
+                                <p>Configurations used to declare a queue.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="RabbitMQServiceConfig" title="RabbitMQServiceConfig">
@@ -865,9 +879,11 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations required to create a subscription.
+                                <p>Configurations required to create a subscription.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="SecureSocket" title="SecureSocket">
@@ -875,14 +891,17 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for facilitating secure connections.
+                                <p>Configurations for facilitating secure connections.
                             </td>
                         </tr>
+                    
                     
                 </table>
             </section>
             
+            
 
+            
             
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
@@ -893,18 +912,21 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate objects" id="Connection" title="Connection">
                                 <a class="objects " href="objects/Connection.html">Connection</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a single network connection to the RabbitMQ broker.
+                                <p>Represents a single network connection to the RabbitMQ broker.
                             </td>
                         </tr>
                     
+                    
                 </table>
-             </section>  
+             </section>
+            
             
 
             
@@ -923,7 +945,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                The Ballerina interface to provide AMQP Channel related functionality.
+                                <p>The Ballerina interface to provide AMQP Channel related functionality.
                             </td>
                         </tr>
                     
@@ -933,7 +955,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the functionality to manipulate the messages received by the consumer services.
+                                <p>Provides the functionality to manipulate the messages received by the consumer services.
                             </td>
                         </tr>
                     
@@ -957,7 +979,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Ballerina RabbitMQ Message Listener.
+                                <p>Ballerina RabbitMQ Message Listener.
                             </td>
                         </tr>
                     
@@ -985,7 +1007,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the RabbitMQ Direct Exchange type.
+                                <p>Constant for the RabbitMQ Direct Exchange type.
                             </td>
                         </tr>
                     
@@ -995,7 +1017,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the RabbitMQ Fan-out Exchange type.
+                                <p>Constant for the RabbitMQ Fan-out Exchange type.
                             </td>
                         </tr>
                     
@@ -1005,7 +1027,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the RabbitMQ Topic Exchange type.
+                                <p>Constant for the RabbitMQ Topic Exchange type.
                             </td>
                         </tr>
                     
@@ -1015,7 +1037,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the RabbitMQ auto acknowledgement mode.
+                                <p>Constant for the RabbitMQ auto acknowledgement mode.
                             </td>
                         </tr>
                     
@@ -1025,7 +1047,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Constant for the RabbitMQ client acknowledgement mode.
+                                <p>Constant for the RabbitMQ client acknowledgement mode.
                             </td>
                         </tr>
                     
@@ -1035,7 +1057,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason for the RabbitMQ module related errors.
+                                <p>Represents the reason for the RabbitMQ module related errors.
                             </td>
                         </tr>
                     
@@ -1060,7 +1082,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                The annotation, which is used to configure the subscription.
+                                <p>The annotation, which is used to configure the subscription.
                             </td>
                         </tr>
                     
@@ -1084,7 +1106,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Types of acknowledgement modes supported by the Ballerina RabbitMQ Connector.
+                                <p>Types of acknowledgement modes supported by the Ballerina RabbitMQ Connector.
                             </td>
                         </tr>
                     
@@ -1094,7 +1116,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Types of message content that can be published.
+                                <p>Types of message content that can be published.
                             </td>
                         </tr>
                     
@@ -1118,7 +1140,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the RabbitMQ module related errors.
+                                <p>Represents the RabbitMQ module related errors.
                             </td>
                         </tr>
                     

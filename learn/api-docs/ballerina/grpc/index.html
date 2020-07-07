@@ -58,14 +58,15 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -352,7 +353,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -360,7 +362,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -655,7 +657,8 @@ redirect_from:
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
@@ -665,7 +668,7 @@ redirect_from:
                     <h2>Module Overview</h2>
 <p>This module provides support for the gRPC messaging protocol. gRPC is an inter-process communication technology that allows you to connect, invoke and operate distributed heterogeneous applications as easily as making a local function call. The gRPC protocol is layered over HTTP/2 and It uses Protocol Buffers for marshaling/unmarshaling messages. This makes gRPC, highly efficient on wire and a simple service definition framework.</p>
 <p>When you develop a gRPC application the first thing you do is define a service definition using Protocol Buffers.</p>
-<h2>Protocol buffers</h2>
+<h3>Protocol buffers</h3>
 <p>This is a mechanism to serialize the structured data introduced by Google and used by the gRPC framework. Defining the service using Protocol Buffers includes defining remote methods in the service and defining message types that are sent across the network. A sample service definition is shown below.</p>
 <pre><code class="language-proto">syntax = &quot;proto3&quot;;
 
@@ -684,16 +687,16 @@ message HelloResponse {
 <p>gRPC allows client applications to directly call the server-side methods using the auto-generated stubs. Protocol Buffer compiler is used to generate the stubs for the specified language. In Ballerina, the stubs are generated using the built-in proto compiler.</p>
 <p>For the guide on how to generate Ballerina code for Protocol Buffers definition, see <a href="https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/">how to guide</a>.
 For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto to Ballerina Example</a>.</p>
-<h2>gRPC Communication Patterns</h2>
+<h3>gRPC Communication Patterns</h3>
 <p>The common communication pattern between client and server is simple request-response style communication. However, with gRPC, you can leverage different inter-process communication patterns other than the simple request-response pattern.
 This module supports four fundamental communication patterns used in gRPC-based applications: simple RPC(unary RPC), server-side streaming, client-side streaming, and bidirectional streaming.</p>
-<h3>Simple RPC (Unary RPC)</h3>
+<h4>Simple RPC (Unary RPC)</h4>
 <p>In this pattern, the client invokes a remote function of a server and sends a single request to the server. The server sends a single response in return to the client along with status details.
 Users can invoke in both blocking and non-blocking manner.</p>
 <pre><code class="language-proto">rpc hello (google.protobuf.StringValue)
       returns (google.protobuf.StringValue);
 </code></pre>
-<h4>Creating the server</h4>
+<h5>Creating the server</h5>
 <p>The code snippet given below contains a service that sends a response to each request.</p>
 <pre><code class="language-ballerina">// The gRPC service is attached to the listener.
 service HelloWorld on new grpc:Listener(9090)  {
@@ -707,7 +710,7 @@ service HelloWorld on new grpc:Listener(9090)  {
    }
 }
 </code></pre>
-<h4>Creating the client</h4>
+<h5>Creating the client</h5>
 <p>The code snippet given below calls the above service in a blocking manner using an auto-generated Ballerina stub.</p>
 <pre><code class="language-ballerina">// Use ‘BlockingClient’ to execute the call in the blocking mode.
 HelloWorldBlockingClient blockingClient = new(&quot;http://localhost:9090&quot;);
@@ -720,13 +723,13 @@ headers.setEntry(&quot;id&quot;, &quot;newrequest1&quot;);
 [string, grpc:Headers]|grpc:Error responseFromServer = blockingClient-&gt;hello(&quot;Ballerina&quot;, headers);
 </code></pre>
 <p>For examples on the usage of the operation, see <a href="https://ballerina.io/learn/by-example/grpc-unary-blocking.html">Unary Ballerina Example</a> and <a href="https://ballerina.io/learn/by-example/grpc-unary-non-blocking.html">Unary Non-Ballerina Example</a></p>
-<h3>Server streaming RPC</h3>
+<h4>Server streaming RPC</h4>
 <p>In server-side streaming RPC, the sends back a sequence of responses after getting the client's request message. After sending all the server responses, the server marks the end of the stream by sending the server status details.
 Users can invoke in a non-blocking manner.</p>
 <pre><code class="language-proto">rpc lotsOfReplies (google.protobuf.StringValue)
       returns (stream google.protobuf.StringValue);
 </code></pre>
-<h4>Creating the server</h4>
+<h5>Creating the server</h5>
 <p>The code snippet given below contains a service that sends a sequence of responses to each request.</p>
 <pre><code class="language-ballerina">// The gRPC service is attached to the listener.
 service HelloWorld on new grpc:Listener(9090) {
@@ -744,7 +747,7 @@ service HelloWorld on new grpc:Listener(9090) {
    }
 }
 </code></pre>
-<h4>Creating the client</h4>
+<h5>Creating the client</h5>
 <p>The code snippet given below calls the above service using the auto-generated Ballerina client stub and listens to the multiple responses from the server.</p>
 <pre><code class="language-ballerina">   // Client endpoint configurations.
     HelloWorldClient helloworldClient = new(&quot;http://localhost:9090&quot;);
@@ -770,12 +773,12 @@ service HelloWorldMessageListener = service {
 }
 </code></pre>
 <p>For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/grpc-server-streaming.html">Server Streaming Example</a>.</p>
-<h3>Client streaming RPC</h3>
+<h4>Client streaming RPC</h4>
 <p>In client streaming RPC, the client sends multiple messages to the server instead of a single request. The server sends back a single response to the client.</p>
 <pre><code class="language-proto">rpc lotsOfGreetings (stream google.protobuf.StringValue)
       returns (google.protobuf.StringValue);
 </code></pre>
-<h4>Creating the server</h4>
+<h5>Creating the server</h5>
 <p>The code snippet given below contains a service that receives a sequence of requests from the client and a single response in return.</p>
 <pre><code class="language-ballerina">// The gRPC service is attached to the listener.
 @grpc:ServiceConfig {
@@ -801,7 +804,7 @@ resource function onComplete(grpc:Caller caller) {
 }
 }
 </code></pre>
-<h4>Creating the client</h4>
+<h5>Creating the client</h5>
 <p>The code snippet given below calls the above service using the auto-generated Ballerina client stub and sends multiple request messages from the server.</p>
 <pre><code class="language-ballerina">   // Client endpoint configurations.
     HelloWorldClient helloworldClient = new(&quot;http://localhost:9090&quot;);
@@ -836,12 +839,12 @@ service HelloWorldMessageListener = service {
 }
 </code></pre>
 <p>For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/grpc-client-streaming.html">Client Streaming Example</a>.</p>
-<h3>Bidirectional Streaming RPC</h3>
+<h4>Bidirectional Streaming RPC</h4>
 <p>In bidirectional streaming RPC, the client is sending a request to the server as a stream of messages. The server also responds with a stream of messages.</p>
 <pre><code class="language-proto">rpc chat (stream ChatMessage)
       returns (stream google.protobuf.StringValue);
 </code></pre>
-<h4>Creating the server</h4>
+<h5>Creating the server</h5>
 <p>The code snippet given below includes a service that handles bidirectional streaming.</p>
 <pre><code class="language-ballerina">// Set the ‘clientStreaming’ and ‘serverStreaming’ to true. It specifies that the service supports bidirectional streaming.
 @grpc:ServiceConfig {
@@ -869,7 +872,7 @@ service Chat on new grpc:Listener(9090) {
     }
 }
 </code></pre>
-<h4>Creating the client</h4>
+<h5>Creating the client</h5>
 <p>The code snippet given below calls the above service using the auto-generated Ballerina client stub and sends multiple request messages to the server and receives multiple responses from the server.</p>
 <pre><code class="language-ballerina">   // Client endpoint configurations.
     ChatClient chatClient = new(&quot;http://localhost:9090&quot;);
@@ -905,11 +908,11 @@ service ChatMessageListener = service {
 }
 </code></pre>
 <p>For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/grpc-bidirectional-streaming.html">Bidirectional Streaming Example</a>.</p>
-<h2>Advanced Use cases</h2>
-<h3>Using the TLS protocol</h3>
+<h3>Advanced Use cases</h3>
+<h4>Using the TLS protocol</h4>
 <p>The Ballerina gRPC module allows the use TLS in communication. This setting expects a secure socket to be
 set in the connection configuration as shown below.</p>
-<h4>Configuring TLS in server side</h4>
+<h5>Configuring TLS in server side</h5>
 <pre><code class="language-ballerina">// Server endpoint configuration with the SSL configurations.
 listener grpc:Listener ep = new (9090, {
     host: &quot;localhost&quot;,
@@ -925,7 +928,7 @@ service HelloWorld on ep {
     
 }
 </code></pre>
-<h4>Configuring TLS in client side</h4>
+<h5>Configuring TLS in client side</h5>
 <pre><code class="language-ballerina">    // Client endpoint configuration with SSL configurations.
     HelloWorldBlockingClient helloWorldClient = new (&quot;https://localhost:9090&quot;, {
             secureSocket: {
@@ -940,7 +943,7 @@ service HelloWorld on ep {
 
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -950,15 +953,18 @@ service HelloWorld on ep {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="ClientConfiguration" title="ClientConfiguration">
                                 <a class="records " href="records/ClientConfiguration.html">ClientConfiguration</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents client endpoint configuration.
+                                <p>Represents client endpoint configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
@@ -966,9 +972,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The details of a gRPC error.
+                                <p>The details of a gRPC error.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="GrpcResourceConfig" title="GrpcResourceConfig">
@@ -976,9 +984,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Service resource configuration.
+                                <p>Service resource configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="GrpcServiceConfig" title="GrpcServiceConfig">
@@ -986,9 +996,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Service configuration.
+                                <p>Service configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerConfiguration" title="ListenerConfiguration">
@@ -996,9 +1008,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the gRPC server endpoint configuration.
+                                <p>Represents the gRPC server endpoint configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerOcspStapling" title="ListenerOcspStapling">
@@ -1006,9 +1020,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                OcspStapling record represents options related to check whether a certificate is revoked or not.
+                                <p>OcspStapling record represents options related to check whether a certificate is revoked or not.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerSecureSocket" title="ListenerSecureSocket">
@@ -1016,9 +1032,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Configures the SSL/TLS options to be used for HTTP service.
+                                <p>Configures the SSL/TLS options to be used for HTTP service.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Local" title="Local">
@@ -1026,9 +1044,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Presents a read-only view of the local address.
+                                <p>Presents a read-only view of the local address.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="PoolConfiguration" title="PoolConfiguration">
@@ -1036,9 +1056,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Configurations for managing the gRPC client connection pool.
+                                <p>Configurations for managing the gRPC client connection pool.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Protocols" title="Protocols">
@@ -1046,9 +1068,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Protocols record represents SSL/TLS protocol related options to be used for HTTP client/service invocation.
+                                <p>Protocols record represents SSL/TLS protocol related options to be used for HTTP client/service invocation.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="Remote" title="Remote">
@@ -1056,9 +1080,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Presents a read-only view of the remote address.
+                                <p>Presents a read-only view of the remote address.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="RetryConfiguration" title="RetryConfiguration">
@@ -1066,9 +1092,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents grpc client retry functionality configurations.
+                                <p>Represents grpc client retry functionality configurations.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="SecureSocket" title="SecureSocket">
@@ -1076,9 +1104,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the configurations for facilitating secure communication with a remote HTTP endpoint.
+                                <p>Provides the configurations for facilitating secure communication with a remote HTTP endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ServiceDescriptorData" title="ServiceDescriptorData">
@@ -1086,9 +1116,11 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Service descriptor data generated at the compile time.
+                                <p>Service descriptor data generated at the compile time.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="ValidateCert" title="ValidateCert">
@@ -1096,14 +1128,17 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                ValidateCert record represents options related to check whether a certificate is revoked or not.
+                                <p>ValidateCert record represents options related to check whether a certificate is revoked or not.
                             </td>
                         </tr>
+                    
                     
                 </table>
             </section>
             
+            
 
+            
             
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
@@ -1114,15 +1149,18 @@ service HelloWorld on ep {
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate objects" id="AbstractClientEndpoint" title="AbstractClientEndpoint">
                                 <a class="objects " href="objects/AbstractClientEndpoint.html">AbstractClientEndpoint</a>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the abstract gRPC client endpoint.
+                                <p>Represents the abstract gRPC client endpoint.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate objects" id="Headers" title="Headers">
@@ -1130,12 +1168,14 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the actions to read/write header values in a gRPC request/response message.
+                                <p>Provides the actions to read/write header values in a gRPC request/response message.
                             </td>
                         </tr>
                     
+                    
                 </table>
-             </section>  
+             </section>
+            
             
 
             
@@ -1154,7 +1194,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the gRPC remote functions for interacting with caller.
+                                <p>Provides the gRPC remote functions for interacting with caller.
                             </td>
                         </tr>
                     
@@ -1164,7 +1204,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC client endpoint provides the capability for initiating contact with a remote gRPC service.
+                                <p>The gRPC client endpoint provides the capability for initiating contact with a remote gRPC service.
                             </td>
                         </tr>
                     
@@ -1174,7 +1214,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the gRPC streaming client actions for interacting with the gRPC server.
+                                <p>Provides the gRPC streaming client actions for interacting with the gRPC server.
                             </td>
                         </tr>
                     
@@ -1198,7 +1238,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Represents server listener where one or more services can be registered.
+                                <p>Represents server listener where one or more services can be registered.
                             </td>
                         </tr>
                     
@@ -1223,7 +1263,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                Prepare the <code>error</code> as a gRPC-specific <code>Error</code>.
+                                <p>Prepare the <code>error</code> as a gRPC-specific <code>Error</code>.
                             </td>
                         </tr>
                     
@@ -1248,7 +1288,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 0 OK.
+                                <p>The gRPC error status code: 0 OK.
                             </td>
                         </tr>
                     
@@ -1258,7 +1298,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 1 Canceled.
+                                <p>The gRPC error status code: 1 Canceled.
                             </td>
                         </tr>
                     
@@ -1268,7 +1308,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 2 Unknown.
+                                <p>The gRPC error status code: 2 Unknown.
                             </td>
                         </tr>
                     
@@ -1278,7 +1318,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 3 Invalid Argument.
+                                <p>The gRPC error status code: 3 Invalid Argument.
                             </td>
                         </tr>
                     
@@ -1288,7 +1328,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 4 Deadline Exceeded.
+                                <p>The gRPC error status code: 4 Deadline Exceeded.
                             </td>
                         </tr>
                     
@@ -1298,7 +1338,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 5 Not Found.
+                                <p>The gRPC error status code: 5 Not Found.
                             </td>
                         </tr>
                     
@@ -1308,7 +1348,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 6 Already Exists.
+                                <p>The gRPC error status code: 6 Already Exists.
                             </td>
                         </tr>
                     
@@ -1318,7 +1358,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 7 Permission Denied.
+                                <p>The gRPC error status code: 7 Permission Denied.
                             </td>
                         </tr>
                     
@@ -1328,7 +1368,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 8 Resource Exhausted.
+                                <p>The gRPC error status code: 8 Resource Exhausted.
                             </td>
                         </tr>
                     
@@ -1338,7 +1378,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 9 Failed Precondition.
+                                <p>The gRPC error status code: 9 Failed Precondition.
                             </td>
                         </tr>
                     
@@ -1348,7 +1388,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 10 Aborted.
+                                <p>The gRPC error status code: 10 Aborted.
                             </td>
                         </tr>
                     
@@ -1358,7 +1398,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 11 Out of Range.
+                                <p>The gRPC error status code: 11 Out of Range.
                             </td>
                         </tr>
                     
@@ -1368,7 +1408,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 12 Unimplemented.
+                                <p>The gRPC error status code: 12 Unimplemented.
                             </td>
                         </tr>
                     
@@ -1378,7 +1418,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 13 Internal.
+                                <p>The gRPC error status code: 13 Internal.
                             </td>
                         </tr>
                     
@@ -1388,7 +1428,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 14 Unavailable.
+                                <p>The gRPC error status code: 14 Unavailable.
                             </td>
                         </tr>
                     
@@ -1398,7 +1438,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 15 Data Loss.
+                                <p>The gRPC error status code: 15 Data Loss.
                             </td>
                         </tr>
                     
@@ -1408,7 +1448,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                The gRPC error status code: 16 Unauthenticated.
+                                <p>The gRPC error status code: 16 Unauthenticated.
                             </td>
                         </tr>
                     
@@ -1418,7 +1458,7 @@ service HelloWorld on ep {
                             </td>
                             <td class="module-desc">
                                 
-                                When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
+                                <p>When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
 outbound request/response accept-encoding/content-encoding option.
                             </td>
                         </tr>
@@ -1429,7 +1469,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Always set accept-encoding/content-encoding in outbound request/response.
+                                <p>Always set accept-encoding/content-encoding in outbound request/response.
                             </td>
                         </tr>
                     
@@ -1439,7 +1479,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Never set accept-encoding/content-encoding header in outbound request/response.
+                                <p>Never set accept-encoding/content-encoding header in outbound request/response.
                             </td>
                         </tr>
                     
@@ -1449,7 +1489,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the cancelled error.
+                                <p>Represents the reason of the cancelled error.
                             </td>
                         </tr>
                     
@@ -1459,7 +1499,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the unknown error.
+                                <p>Represents the reason of the unknown error.
                             </td>
                         </tr>
                     
@@ -1469,7 +1509,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the invalid argument error.
+                                <p>Represents the reason of the invalid argument error.
                             </td>
                         </tr>
                     
@@ -1479,7 +1519,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the deadline exceeded error.
+                                <p>Represents the reason of the deadline exceeded error.
                             </td>
                         </tr>
                     
@@ -1489,7 +1529,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the not found error.
+                                <p>Represents the reason of the not found error.
                             </td>
                         </tr>
                     
@@ -1499,7 +1539,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the already exists error.
+                                <p>Represents the reason of the already exists error.
                             </td>
                         </tr>
                     
@@ -1509,7 +1549,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the permission denied error.
+                                <p>Represents the reason of the permission denied error.
                             </td>
                         </tr>
                     
@@ -1519,7 +1559,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the unauthenticated error.
+                                <p>Represents the reason of the unauthenticated error.
                             </td>
                         </tr>
                     
@@ -1529,7 +1569,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the resource exhausted error.
+                                <p>Represents the reason of the resource exhausted error.
                             </td>
                         </tr>
                     
@@ -1539,7 +1579,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the failed precondition error.
+                                <p>Represents the reason of the failed precondition error.
                             </td>
                         </tr>
                     
@@ -1549,7 +1589,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the aborted error.
+                                <p>Represents the reason of the aborted error.
                             </td>
                         </tr>
                     
@@ -1559,7 +1599,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the out of range error.
+                                <p>Represents the reason of the out of range error.
                             </td>
                         </tr>
                     
@@ -1569,7 +1609,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the unimplemented error.
+                                <p>Represents the reason of the unimplemented error.
                             </td>
                         </tr>
                     
@@ -1579,7 +1619,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the internal error.
+                                <p>Represents the reason of the internal error.
                             </td>
                         </tr>
                     
@@ -1589,7 +1629,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the unavailable error.
+                                <p>Represents the reason of the unavailable error.
                             </td>
                         </tr>
                     
@@ -1599,7 +1639,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of the data loss error.
+                                <p>Represents the reason of the data loss error.
                             </td>
                         </tr>
                     
@@ -1609,7 +1649,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of all the retry attempts failed scenario.
+                                <p>Represents the reason of all the retry attempts failed scenario.
                             </td>
                         </tr>
                     
@@ -1634,7 +1674,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Service resource configuration annotation.
+                                <p>Service resource configuration annotation.
                             </td>
                         </tr>
                     
@@ -1644,7 +1684,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Service configuration annotation.
+                                <p>Service configuration annotation.
                             </td>
                         </tr>
                     
@@ -1654,7 +1694,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Service descriptor annotation.
+                                <p>Service descriptor annotation.
                             </td>
                         </tr>
                     
@@ -1678,7 +1718,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Options to compress using gzip or deflate.
+                                <p>Options to compress using gzip or deflate.
                             </td>
                         </tr>
                     
@@ -1688,7 +1728,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents gRPC related errors.
+                                <p>Represents gRPC related errors.
                             </td>
                         </tr>
                     
@@ -1698,7 +1738,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents gRPC related error types.
+                                <p>Represents gRPC related error types.
                             </td>
                         </tr>
                     
@@ -1708,7 +1748,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents all the resiliency-related errors.
+                                <p>Represents all the resiliency-related errors.
                             </td>
                         </tr>
                     
@@ -1718,7 +1758,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the reason of all the resiliency-related error.
+                                <p>Represents the reason of all the resiliency-related error.
                             </td>
                         </tr>
                     
@@ -1742,7 +1782,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error occur when operation is aborted.
+                                <p>Represents error occur when operation is aborted.
                             </td>
                         </tr>
                     
@@ -1752,7 +1792,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error occur when attempt to create an entity which already exists.
+                                <p>Represents error occur when attempt to create an entity which already exists.
                             </td>
                         </tr>
                     
@@ -1762,7 +1802,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error scenario where the maximum retry attempts are done and still received an error.
+                                <p>Represents error scenario where the maximum retry attempts are done and still received an error.
                             </td>
                         </tr>
                     
@@ -1772,7 +1812,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the operation canceled(typically by the caller) error.
+                                <p>Represents the operation canceled(typically by the caller) error.
                             </td>
                         </tr>
                     
@@ -1782,7 +1822,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents unrecoverable data loss or corruption erros.
+                                <p>Represents unrecoverable data loss or corruption erros.
                             </td>
                         </tr>
                     
@@ -1792,7 +1832,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents operation expired before completion error.
+                                <p>Represents operation expired before completion error.
                             </td>
                         </tr>
                     
@@ -1802,7 +1842,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error occur when operation is rejected because the system is not in a state required for the operation's execution.
+                                <p>Represents error occur when operation is rejected because the system is not in a state required for the operation's execution.
                             </td>
                         </tr>
                     
@@ -1812,7 +1852,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents internal error.
+                                <p>Represents internal error.
                             </td>
                         </tr>
                     
@@ -1822,7 +1862,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents client specified an invalid argument error.
+                                <p>Represents client specified an invalid argument error.
                             </td>
                         </tr>
                     
@@ -1832,7 +1872,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents requested entity (e.
+                                <p>Represents requested entity (e.
                             </td>
                         </tr>
                     
@@ -1842,7 +1882,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error occur when specified value is out of range.
+                                <p>Represents error occur when specified value is out of range.
                             </td>
                         </tr>
                     
@@ -1852,7 +1892,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error occur when the caller does not have permission to execute the specified operation.
+                                <p>Represents error occur when the caller does not have permission to execute the specified operation.
                             </td>
                         </tr>
                     
@@ -1862,7 +1902,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error occur when the resource is exhausted.
+                                <p>Represents error occur when the resource is exhausted.
                             </td>
                         </tr>
                     
@@ -1872,7 +1912,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents unknown error.
+                                <p>Represents unknown error.
                             </td>
                         </tr>
                     
@@ -1882,7 +1922,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error occur when the request does not have valid authentication credentials for the operation.
+                                <p>Represents error occur when the request does not have valid authentication credentials for the operation.
                             </td>
                         </tr>
                     
@@ -1892,7 +1932,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error occur when the service is currently unavailable.
+                                <p>Represents error occur when the service is currently unavailable.
                             </td>
                         </tr>
                     
@@ -1902,7 +1942,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents error occur when operation is not implemented or not supported/enabled in this service.
+                                <p>Represents error occur when operation is not implemented or not supported/enabled in this service.
                             </td>
                         </tr>
                     

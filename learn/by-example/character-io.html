@@ -148,7 +148,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -161,7 +161,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function process(io:ReadableCharacterChannel sc,
+                                    <div class="highlight"><pre><code class=language-ballerina>function process(io:ReadableCharacterChannel sc,
                  io:WritableCharacterChannel dc) returns @tainted error? {
     string intermediateCharacterString = &quot; my name is &quot;;
 </code></pre></div>
@@ -183,7 +183,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string greetingText = check sc.read(5);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string greetingText = check sc.read(5);
     string name = check sc.read(15);
 </code></pre></div>
 
@@ -203,7 +203,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var writeCharResult = check dc.write(greetingText, 0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var writeCharResult = check dc.write(greetingText, 0);
     var writeCharResult1 = check dc.write(intermediateCharacterString, 0);
     var writeCharResult2 = check dc.write(name, 1);
     return;
@@ -226,7 +226,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function closeRc(io:ReadableCharacterChannel ch) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeRc(io:ReadableCharacterChannel ch) {
     var cr = ch.close();
     if (cr is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;, cr);
@@ -250,7 +250,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function closeWc(io:WritableCharacterChannel ch) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeWc(io:WritableCharacterChannel ch) {
     var cr = ch.close();
     if (cr is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;, cr);
@@ -274,7 +274,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
 </code></pre></div>
 
                                 </td>
@@ -286,7 +286,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableByteChannel readableFieldResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableByteChannel readableFieldResult =
                                 check io:openReadableFile(&quot;./files/sample.txt&quot;);
     io:ReadableCharacterChannel sourceChannel =
                                 new (readableFieldResult, &quot;UTF-8&quot;);
@@ -310,7 +310,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableByteChannel writableFileResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableByteChannel writableFileResult =
                 check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
     io:WritableCharacterChannel destinationChannel =
                                 new (writableFileResult, &quot;UTF-8&quot;);
@@ -335,7 +335,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = process(sourceChannel, destinationChannel);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = process(sourceChannel, destinationChannel);
     if (result is error) {
         log:printError(&quot;error occurred while processing chars &quot;, result);
     } else {
@@ -359,7 +359,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    closeRc(sourceChannel);
+                                    <div class="highlight"><pre><code class=language-ballerina>    closeRc(sourceChannel);
 </code></pre></div>
 
                                 </td>
@@ -378,7 +378,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    closeWc(destinationChannel);
+                                    <div class="highlight"><pre><code class=language-ballerina>    closeWc(destinationChannel);
 }
 </code></pre></div>
 

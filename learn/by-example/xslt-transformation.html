@@ -150,7 +150,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/xslt;
 </code></pre></div>
 
@@ -163,7 +163,7 @@ import ballerina/xslt;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -175,7 +175,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml sourceXml = getXml();
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml sourceXml = getXml();
 </code></pre></div>
 
                                 </td>
@@ -194,7 +194,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml xsl = getXsl();
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml xsl = getXsl();
 </code></pre></div>
 
                                 </td>
@@ -213,7 +213,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml|error target = xslt:transform(sourceXml, xsl);
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml|error target = xslt:transform(sourceXml, xsl);
     if (target is xml) {
         io:println(&quot;Transformed xml : &quot;, target);
     } else {
@@ -238,7 +238,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getXml() returns xml {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getXml() returns xml {
     return xml `&lt;samples&gt;
                     &lt;song&gt;
                         &lt;title&gt;Summer of 69&lt;/title&gt;
@@ -272,7 +272,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getXsl() returns xml {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getXsl() returns xml {
     return xml `&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
                     &lt;xsl:template match=&quot;/&quot;&gt;
                         &lt;html&gt;

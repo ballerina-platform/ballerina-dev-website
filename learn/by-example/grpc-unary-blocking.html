@@ -135,7 +135,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>syntax = &quot;proto3&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>syntax = &quot;proto3&quot;;
 import &quot;google/protobuf/wrappers.proto&quot;;
 service HelloWorld {
 	rpc hello (google.protobuf.StringValue)
@@ -265,7 +265,7 @@ $ ballerina grpc --input grpc_unary_blocking.proto  --output stubs
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/log;
 </code></pre></div>
 
@@ -285,7 +285,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service HelloWorld on new grpc:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service HelloWorld on new grpc:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -297,7 +297,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function hello(grpc:Caller caller, string name,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function hello(grpc:Caller caller, string name,
                              grpc:Headers headers) {
         log:printInfo(&quot;Server received hello from &quot; + name);
         string message = &quot;Hello &quot; + name;
@@ -312,7 +312,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string reqHeader = headers.get(&quot;client_header_key&quot;) ?: &quot;none&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>        string reqHeader = headers.get(&quot;client_header_key&quot;) ?: &quot;none&quot;;
         log:printInfo(&quot;Server received header value: &quot; + reqHeader);
 </code></pre></div>
 
@@ -332,7 +332,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        grpc:Headers resHeader = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        grpc:Headers resHeader = new;
         resHeader.setEntry(&quot;server_header_key&quot;, &quot;Response Header value&quot;);
 </code></pre></div>
 
@@ -352,7 +352,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        grpc:Error? err = caller-&gt;send(message, resHeader);
+                                    <div class="highlight"><pre><code class=language-ballerina>        grpc:Error? err = caller-&gt;send(message, resHeader);
         if (err is grpc:Error) {
             log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
                                              + &lt;string&gt;err.detail()[&quot;message&quot;]);
@@ -375,7 +375,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        grpc:Error? result = caller-&gt;complete();
+                                    <div class="highlight"><pre><code class=language-ballerina>        grpc:Error? result = caller-&gt;complete();
         if (result is grpc:Error) {
             log:printError(&quot;Error in sending completed notification to caller&quot;,
                 err = result);
@@ -520,7 +520,7 @@ $ ballerina run target/bin/service.jar
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/io;
 </code></pre></div>
 
@@ -540,7 +540,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -552,7 +552,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    HelloWorldBlockingClient helloWorldBlockingEp = new (&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    HelloWorldBlockingClient helloWorldBlockingEp = new (&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -571,7 +571,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    grpc:Headers headers = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    grpc:Headers headers = new;
     headers.setEntry(&quot;client_header_key&quot;, &quot;Request Header Value&quot;);
 </code></pre></div>
 
@@ -591,7 +591,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var unionResp = helloWorldBlockingEp-&gt;hello(&quot;WSO2&quot;, headers);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var unionResp = helloWorldBlockingEp-&gt;hello(&quot;WSO2&quot;, headers);
 </code></pre></div>
 
                                 </td>
@@ -610,7 +610,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    if (unionResp is grpc:Error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (unionResp is grpc:Error) {
         io:println(&quot;Error from Connector: &quot; + unionResp.reason() + &quot; - &quot;
                 + &lt;string&gt;unionResp.detail()[&quot;message&quot;]);
     } else {

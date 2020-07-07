@@ -154,7 +154,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -166,7 +166,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int globalA = 5;
+                                    <div class="highlight"><pre><code class=language-ballerina>int globalA = 5;
 </code></pre></div>
 
                                 </td>
@@ -178,7 +178,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function basicClosure() returns (function (int) returns int) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function basicClosure() returns (function (int) returns int) {
     int a = 3;
     var foo = function (int b) returns int {
         int c = 34;
@@ -208,7 +208,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function multilevelClosure() returns (function (int) returns int) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function multilevelClosure() returns (function (int) returns int) {
     int a = 2;
     var func1 = function (int x) returns int {
         int b = 23;
@@ -231,7 +231,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        a = a + 8;
+                                    <div class="highlight"><pre><code class=language-ballerina>        a = a + 8;
         var func2 = function (int y) returns int {
             int c = 7;
             var func3 = function (int z) returns int {
@@ -254,7 +254,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                b = b + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>                b = b + 1;
                 return x + y + z + a + b + c;
             };
             return func3(8) + y + x;
@@ -282,7 +282,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function functionPointers(int a) returns
+                                    <div class="highlight"><pre><code class=language-ballerina>function functionPointers(int a) returns
                     (function (int) returns (function (int) returns int)) {
     return function (int b) returns (function (int) returns int) {
         return function (int c) returns int {
@@ -309,7 +309,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -321,7 +321,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var foo = basicClosure();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var foo = basicClosure();
     int result1 = foo(3);
     io:println(&quot;Answer: &quot;, result1);
 </code></pre></div>
@@ -342,7 +342,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var bar = multilevelClosure();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var bar = multilevelClosure();
     int result2 = bar(5);
     io:println(&quot;Answer: &quot;, result2);
 </code></pre></div>
@@ -364,7 +364,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var baz1 = functionPointers(7);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var baz1 = functionPointers(7);
     var baz2 = baz1(5);
     int result3 = baz2(3);
     io:println(&quot;Answer: &quot;, result3);

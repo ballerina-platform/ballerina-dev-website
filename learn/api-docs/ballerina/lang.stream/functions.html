@@ -58,7 +58,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -100,7 +101,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -363,7 +364,8 @@ redirect_from:
     <div class="ui vertical sidebar menu">
         <div class="navi-wrapper-sidebar">
             <div class="navi-wrapper-content">
-                <a href="../index.html">
+                <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -405,7 +407,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.4</div>
+        <div class="version">v1.2.5</div>
     
 
 
@@ -674,7 +676,8 @@ redirect_from:
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../index.html">
+                <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Functions - </span>
@@ -683,92 +686,80 @@ redirect_from:
                 
             </h1>
             <div class="constants">
-                <table class="ui table details-table">
-                    
-                        <tbody>
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#close">close</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Closes a stream.
+                                        <p>Closes a stream.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#filter">filter</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Selects the members from a stream for which a function returns true.
+                                        <p>Selects the members from a stream for which a function returns true.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#forEach">forEach</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Applies a function to each member of a stream.
+                                        <p>Applies a function to each member of a stream.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#iterator">iterator</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Returns an iterator over a stream.
+                                        <p>Returns an iterator over a stream.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#map">map</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Applies a function to each member of a stream and returns a stream of the results.
+                                        <p>Applies a function to each member of a stream and returns a stream of the results.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#next">next</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Returns the next element in the stream wrapped in a record or () if the stream ends.
+                                        <p>Returns the next element in the stream wrapped in a record or () if the stream ends.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
-                        <tbody>
+                        
                             <tr>
                                 <td width="30%"><a class="functions " href="#reduce">reduce</a></td>
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Combines the members of a stream using a combining function.
+                                        <p>Combines the members of a stream using a combining function.
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    
+                        
+                    </tbody>
                 </table>
                 <div>
                     
@@ -782,7 +773,7 @@ redirect_from:
             <h2 > close </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm)</p>
             <b> returns </b><span class="builtin-type">ErrorType?</span> 
         </span>
         
@@ -790,8 +781,8 @@ redirect_from:
     <div class="function-desc">
         
         <p>Closes a stream.
-This releases any system resources being used by the stream.
-</p>
+This releases any system resources being used by the stream.</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -801,7 +792,7 @@ This releases any system resources being used by the stream.
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -838,15 +829,15 @@ This releases any system resources being used by the stream.
             <h2 > filter </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
-            <b> returns </b><span class="builtin-type">stream</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
+            <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> 
         </span>
         
     </div>
     <div class="function-desc">
         
-        <p>Selects the members from a stream for which a function returns true.
-</p>
+        <p>Selects the members from a stream for which a function returns true.</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -856,7 +847,7 @@ This releases any system resources being used by the stream.
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -893,7 +884,7 @@ This releases any system resources being used by the stream.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span></span>)</li>
                 <li><p>new stream only containing members of <code>stm</code> for which <code>func</code> evaluates to true</p>
 </li>
             </ul>
@@ -910,7 +901,7 @@ This releases any system resources being used by the stream.
             <h2 > forEach </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> func)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> func)</p>
             <b> returns </b><span class="builtin-type">ErrorType?</span> 
         </span>
         
@@ -918,8 +909,8 @@ This releases any system resources being used by the stream.
     <div class="function-desc">
         
         <p>Applies a function to each member of a stream.
-The Combining function is applied to each member of stream in order.
-</p>
+The Combining function is applied to each member of stream in order.</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -929,7 +920,7 @@ The Combining function is applied to each member of stream in order.
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -983,15 +974,15 @@ The Combining function is applied to each member of stream in order.
             <h2 > iterator </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm)</p>
             <b> returns </b><a href="../lang.stream/objects/T6.html">T6</a> 
         </span>
         
     </div>
     <div class="function-desc">
         
-        <p>Returns an iterator over a stream.
-</p>
+        <p>Returns an iterator over a stream.</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1001,7 +992,7 @@ The Combining function is applied to each member of stream in order.
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -1038,15 +1029,15 @@ The Combining function is applied to each member of stream in order.
             <h2 > map </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func)</p>
-            <b> returns </b><span class="builtin-type">stream</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func)</p>
+            <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">Type1</span> ,<span class="builtin-type">ErrorType</span>></span> 
         </span>
         
     </div>
     <div class="function-desc">
         
-        <p>Applies a function to each member of a stream and returns a stream of the results.
-</p>
+        <p>Applies a function to each member of a stream and returns a stream of the results.</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1056,7 +1047,7 @@ The Combining function is applied to each member of stream in order.
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -1093,7 +1084,7 @@ The Combining function is applied to each member of stream in order.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">Type1</span> ,<span class="builtin-type">ErrorType</span>></span></span>)</li>
                 <li><p>new stream containing result of applying <code>func</code> to each member of <code>stm</code> in order</p>
 </li>
             </ul>
@@ -1110,15 +1101,15 @@ The Combining function is applied to each member of stream in order.
             <h2 > next </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> strm)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> strm)</p>
             <b> returns </b><a href="../lang.stream/records/T1.html">T1</a> | <span class="builtin-type">ErrorType</span> | <span class="builtin-type">()</span> 
         </span>
         
     </div>
     <div class="function-desc">
         
-        <p>Returns the next element in the stream wrapped in a record or () if the stream ends.
-</p>
+        <p>Returns the next element in the stream wrapped in a record or () if the stream ends.</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1128,7 +1119,7 @@ The Combining function is applied to each member of stream in order.
                 <ul>
                     <li>
                         <span >strm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -1166,7 +1157,7 @@ otherwise returns ()</p>
             <h2 > reduce </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type1</span>, <span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func, <span class="builtin-type">Type1</span> initial)</p>
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type1</span>, <span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func, <span class="builtin-type">Type1</span> initial)</p>
             <b> returns </b><span class="builtin-type">Type1</span> | <span class="builtin-type">ErrorType</span> 
         </span>
         
@@ -1175,8 +1166,8 @@ otherwise returns ()</p>
         
         <p>Combines the members of a stream using a combining function.
 The combining function takes the combined value so far and a member of the stream,
-and returns a new combined value.
-</p>
+and returns a new combined value.</p>
+
     </div>
     
         <div class="data-wrapper">
@@ -1186,7 +1177,7 @@ and returns a new combined value.
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>

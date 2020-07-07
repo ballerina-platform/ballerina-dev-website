@@ -51,7 +51,7 @@ redirect_from:
     <li><a href="/swan-lake/learn/observing-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
     <li><a href="/swan-lake/learn/calling-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
     <li><a href="/swan-lake/learn/writing-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
-    <li><a href="/swan-lake/learn/testing-ballerina-code" class="cGreenLinkArrow">Testing</a></li>
+    <li><a href="/swan-lake/learn/testing-quick-start" class="cGreenLinkArrow">Testing Ballerina Code</a></li>
     <li><a href="/swan-lake/learn/extending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>
    </ul>
 

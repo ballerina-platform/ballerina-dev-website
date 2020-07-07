@@ -20,25 +20,15 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">
-                  <tr class="event-expiry" style="display:none" data-expiry="October 21, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">October 19 - 21, 2020</span>
-                      <p class="cEventLocation">Munich, Germany</p>
+                    <tr class="event-expiry" style="display:none" data-expiry="July 8, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">July 8, 2020</span>
+                      <p class="cEventLocation">Pittsburgh, Pennsylvania, USA</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://osad-munich.org/en/"><h4>Open Source Automation Days</h4></a>
+                      <td class="cEventDetail"><a target="_blank" href="https://devsecopsdayspittsburgh2020.sched.com/"><h4>DevSecOps Days Pittsburgh 2020</h4></a>
                         <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
                             <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More Info</a></td> 
-                  </tr>
-                  <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">December 14 - 16, 2020</span>
-                      <p class="cEventLocation">São Paulo, Brazil</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://qconsp.com/"><h4>QCon São Paulo</h4></a>
-                        <h5></h5>
-                            <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://devsecopsdayspittsburgh2020.sched.com/event/coX2/code-to-kubernetes-deployment-shouldnt-be-an-afterthought" target="_blank">More Info</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="September 29, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">September 28 - 29, 2020</span>
@@ -49,6 +39,16 @@ redirect_from:
                             <b>Sameera Jayasoma,</b> Senior Director, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
+                  </tr>
+                    <tr class="event-expiry" style="display:none" data-expiry="October 21, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">October 19 - 21, 2020</span>
+                      <p class="cEventLocation">Munich, Germany</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://osad-munich.org/en/"><h4>Open Source Automation Days</h4></a>
+                        <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
+                            <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More Info</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">December 14 - 16, 2020</span>

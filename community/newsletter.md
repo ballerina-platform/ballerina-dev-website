@@ -28,6 +28,8 @@ This is a periodic newsletter on Ballerina with hand-picked content and regular 
 
 <style>
     
-
+.cPastissueslink {
+    display:none;
+}
 
 </style>

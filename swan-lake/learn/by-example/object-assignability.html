@@ -45,14 +45,14 @@ redirect_from:
  be satisfied for objects to be structurally equivalent. The following are the general equivalency rules
  that are applicable for objects.</p>
 
-<p>Both objects should have the same access modifier (i.e., either both should be public or both should be private).
- If both objects are private, they should be in the same package.
- The right hand side (RHS) object type should at least have all the fields as well as the methods of the left hand side (LHS) type.
- If the objects are public object types, all the fields and methods must be public as well.
- The field types of the RHS object should be assignable to the field types of the LHS object.
- The method signatures of the RHS object type should match the method signatures of the LHS object type.
- The parameters and return types of the RHS object type should also be the same types or subtypes of
- the corresponding parameters and return types of the LHS object type.</p>
+<ul><li>Both objects should have the same access modifier (i.e., either both should be public or both should be private).</li>
+<li>If both objects are private, they should be in the same package.</li>
+<li>The right hand side (RHS) object type should at least have all the fields as well as the methods of the left hand side (LHS) type.</li>
+<li>If the objects are public object types, all the fields and methods must be public as well.</li>
+<li>The field types of the RHS object should be assignable to the field types of the LHS object.</li>
+<li>The method signatures of the RHS object type should match the method signatures of the LHS object type.</li>
+<li>The parameters and return types of the RHS object type should also be the same types or subtypes of
+ the corresponding parameters and return types of the LHS object type.</li></ul>
 </p>
 
                         </td>
@@ -381,3 +381,8 @@ John Doe
                 }, 1000);
             }
         </script>
+<style>
+    .cTopInfoContainer ul li {
+    list-style: disc !important;
+}
+</style>

@@ -55,6 +55,9 @@ update = repo.update_file(contents.path, commit_msg_title, ballerina_rb_file_con
 # Opening a PR in Homebrew/homebrew-core repo
 
 body = '''
+This PR is created by @ballerina-bot.
+In case any issue arises, please feel free to contact @sanjana or @shafreenAnfar. 
+Otherwise, drop us a message at ballerina-dev@googlegroups.com regarding any concerns. 
  - [x] Have you followed the [guidelines for contributing](https://github.com/Homebrew/homebrew-core/blob/master/CONTRIBUTING.md)?
  - [x] Have you checked that there aren't other open [pull requests](https://github.com/Homebrew/homebrew-core/pulls) for the same formula update/change?
  - [x] Have you built your formula locally with ```brew install --build-from-source <formula>```, where ```<formula>``` is the name of the formula you're submitting?

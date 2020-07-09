@@ -23,7 +23,8 @@ jobs:
         sudo apt-get install wget
         mkdir jdk8-dir
         cd jdk8-dir
-        wget http://enos.itcollege.ee/~jpoial/allalaadimised/jdk8/jdk-8u241-linux-x64.tar.gz
+
+        wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/jdk-8u251-linux-x64.tar.gz
         JDK_PATH=$PWD
         sudo tar -xvzf jdk-8u241-linux-x64.tar.gz
         echo 'export JAVA_HOME=$JDK_PATH/jdk1.8.0_241' >> ~/.bashrc

@@ -18,7 +18,7 @@ jobs:
     - name: Install jq for json manipulation
       run: sudo apt-get install jq
 
-  - name: Set up JDK 1.8
+    - name: Set up oracle JDK 1.8
       run: |
         sudo apt-get install wget
         mkdir jdk8-dir

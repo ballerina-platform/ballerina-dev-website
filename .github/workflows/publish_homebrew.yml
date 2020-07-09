@@ -9,7 +9,7 @@ on:
       - '_data/stable-latest/**'
 
 jobs:
-  publish:
+  publish-homebrew:
     runs-on: ubuntu-latest
     env:
         GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
@@ -58,5 +58,5 @@ jobs:
             exit 1
           fi
 
-          python3 ./.github/scripts/homebrew_publish.py ${{ secrets.WEBSITE_TOKEN }} "$VERSION" "$checksum" "$dist_url"
+          python3 ./.github/scripts/publish_homebrew.py ${{ secrets.WEBSITE_TOKEN }} "$VERSION" "$checksum" "$dist_url"
       

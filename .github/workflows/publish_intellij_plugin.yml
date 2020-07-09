@@ -26,8 +26,8 @@ jobs:
         wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/jdk-8u251-linux-x64.tar.gz
         JDK_PATH=$PWD
         sudo tar -xvzf jdk-8u251-linux-x64.tar.gz
-        echo 'export JAVA_HOME=$PWD/jdk1.8.0_251' >> ~/.bashrc
-        echo 'export PATH=$PATH:/jdk1.8.0_251/bin' >> ~/.bashrc
+        echo 'export JAVA_HOME=$JDK_PATH/jdk1.8.0_251' >> ~/.bashrc
+        echo 'export PATH=$PATH:$JDK_PATH/jdk1.8.0_251/bin' >> ~/.bashrc
         source ~/.bashrc
         sudo update-alternatives --install "/usr/bin/java" "java" "$JDK_PATH/jdk1.8.0_251/bin/java" 0
         sudo update-alternatives --install "/usr/bin/javac" "javac" "$JDK_PATH/jdk1.8.0_251/bin/javac" 0

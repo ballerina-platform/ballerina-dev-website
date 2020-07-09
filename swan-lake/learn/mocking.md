@@ -34,7 +34,8 @@ You can write a custom mock object and substitute it in place of the real object
 
 ***Example:***
 
-Let’s make changes to the example we tried out in the Getting Started section. In order to test the getRandomJoke function without actually calling the endpoint, we can use the test:mock function to mock the `get` remote function of the client object.
+Let's make changes to the example in the [Quick Start](/swan-lake/learn/testing-quick-start) page. In order to test the
+ `getRandomJoke` function without actually calling the endpoint, use the `test:mock` function to mock the `get` remote function of the client object.
 
 Change the content of the ***main_test.bal*** file as follows:
 
@@ -70,8 +71,8 @@ Instead of creating a test double, you may also choose to create a default mock 
 #### Stubbing to return a specific value
 
 ***Example:***
-The example in the "Getting Started" section shows how the `get` function of the client object can be stubbed to return a value. 
-Let’s make changes to the example in the Getting Started section.
+The example in the [Quick Start](/swan-lake/learn/testing-quick-start) page shows how the `get` function of the client object can be
+ stubbed to return a value. Let’s make changes to that example.
 
 **main.bal**
 ```ballerina
@@ -140,7 +141,7 @@ import ballerina/io;
 public function testReturn() {
     clientEndpoint = <http:Client>test:mock(http:Client);
 
-    // stubbing to return a value for any calls to get function
+    // stubbing to return a value for any calls to `get` function
 	test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
     // stubbing to return a value based on input
     test:prepare(clientEndpoint).when("get").withArguments("/categories").thenReturn(getCategoriesResponse());

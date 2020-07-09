@@ -33,8 +33,8 @@ project-name/
 
 ## Test source files
 
-Unit tests bound to a module need to be placed in a subfolder called _tests/_ within the module. In a standard
- Ballerina project, a module is mapped to a test suite. All tests within a module’s _tests/_ subfolder are
+Unit tests bound to a module need to be placed in a subfolder called `_tests/_` within the module. In a standard
+ Ballerina project, a module is mapped to a test suite. All tests within a module’s `_tests/_` subfolder are
   considered to be part of the same test suite.
 
 The test source files could have any name. The test functions are just Ballerina functions that use a special annotation to mark the function as a test. Test functions must be specified with the `@test:Config{}` annotation and there is no restriction on the test function name.
@@ -42,7 +42,7 @@ The test source files could have any name. The test functions are just Ballerina
 
 ## Test Resources
 
-The resources subdirectory found within the _tests/_ directory is meant to contain any files or resources that are
+The resources subdirectory found within the `_tests/_` directory is meant to contain any files or resources that are
  exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the project root.
 
 ## Defining a test
@@ -67,9 +67,9 @@ The function specified following the annotation is a test function. This annotat
 *   enable: {true | false}: Enable/disable the test. Default: true
 *   before: "&lt;function name>": Name of the function to be run just before the test is run. Default: none
 *   after: "&lt;function name>": Name of the function to be run just after the test is run.
-*   dependsOn: ["&lt;function names>", …]: List of function names on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on dependency using the dependsOn parameter in each one’s config in order to control the order of test execution.
+*   dependsOn: ["&lt;function names>", …]: List of function names on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on the dependencies using the `dependsOn` parameter in each one’s config in order to control the order of test execution.
 *   dataProvider: “&lt;function name>”: Specifies the name of the function that will be used to provide the value sets to execute the test against.
-*   groups: [“&lt;test group name”, …]: A comma separated list of test group names (one or more) that this test belongs to.
+*   groups: [“&lt;test group name”, …]: A comma-separated list of test group names (one or more) that this test belongs to.
 
 ****Example:****
 
@@ -95,7 +95,7 @@ function testFunction1() {
     test:assertTrue(true, msg = "Failed!");
 }
 
-// This test function depends on `testFunction1`.
+// This test function depends on `testFunction1`
 @test:Config{  
     before: "beforeFunc",
     after: "afterFunc",
@@ -112,8 +112,8 @@ function dataGen() returns (int[][]) {
     return [[1]];
 }
 
-// This is a random test function, this will randomly execute without depending on other functions.
-// But note that other functions do depend on this.
+// This is a random test function. This will randomly execute without depending on other functions.
+// However, note that other functions do depend on this.
 @test:Config {
     groups: ["g1", "g2"]
 }
@@ -125,13 +125,13 @@ function testFunction3() {
 
 ## Visibility of symbols
 
-The functions, services and the global variables defined in a module are accessible from within the test files. Hence, you cannot redefine a symbol in the test files if it is already declared in the module. 
+The functions, services, and the global variables defined in a module are accessible from within the test files. Hence, you cannot redefine a symbol in the test files if it is already declared in the module. 
 
 On the other hand, symbols defined in the test files will not be visible inside the module source files. When running tests, the symbols in the module source files will be initialized first followed by the ones in the test files.
 
 ## Using Assertions
 
-The Ballerina test framework supports the following assertions which help verify the expected behaviour of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
+The Ballerina test framework supports the following assertions, which help to verify the expected behaviour of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
 
 ### **assertTrue(boolean expression, string message)**
@@ -166,7 +166,7 @@ function testAssertFalse() {
 
 ### **assertEquals(Any actual, Any expected, string message)**
 
-Asserts that the actual is equal to the expected, with an optional message.
+Asserts that the actual is equal to the expected with an optional message.
 
 ***Example:***
 ```ballerina
@@ -189,7 +189,7 @@ function intAdd(int a, int b) returns (int) {
 
 ### **assertNotEquals(Any actual, Any expected, string message)**
 
-Asserts that the actual is not equal to the expected, with an optional message.
+Asserts that the actual is not equal to the expected with an optional message.
 
 ***Example:***
 
@@ -213,7 +213,7 @@ function intAdd(int a, int b) returns (int) {
 
 ### **assertFail(string message)**
 
-Fails the test. Useful when we want to fail a test while in execution based on a check for a condition.
+Fails the test. This is useful to fail a test based on a check for a condition while it is in execution.
 
 ***Example:***
 
@@ -233,11 +233,11 @@ function foo() {
 
 ## Setup and Teardown
 
-Following test annotations can be used for setup and teardown instructions. These annotations enable executing instructions in different levels.
+The following test annotations can be used for setup and teardown instructions. These annotations enable executing instructions in different levels.
 
 ### @test:BeforeSuite {}
 
-The function specified following the annotation will be run once before any of the tests in the test suite is run. This can be used for initializing test suite level aspects.
+The function specified following the annotation will be run once before any of the tests in the test suite is run. This can be used for initializing the test suite level aspects.
 
 ***Example:***
 
@@ -245,20 +245,20 @@ The function specified following the annotation will be run once before any of t
 import ballerina/io;
 import ballerina/test;
 
-// The `BeforeSuite` function is executed before all test functions in this module. 
+// The `BeforeSuite` function is executed before running all the test functions in this module. 
 @test:BeforeSuite
 function beforeFunc() {
     io:println("I'm the before suite function!");
 }
 
-// Test function.
+// Test function
 @test:Config {}
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// Test function.
+// Test function
 @test:Config {}
 function testFunction2() {
     io:println("I'm in test function 2!");
@@ -268,7 +268,7 @@ function testFunction2() {
 
 ### @test:BeforeEach {}
 
-The function specified following the annotation will be run before every test within the test suite is run. This can be used for repeatedly initializing test level aspects before every test function.
+The function specified following the annotation will be run before every test within the test suite is run. This can be used for repeatedly initializing test-level aspects before every test function.
 
 ***Example:***
 
@@ -306,7 +306,7 @@ function testFunction3() {
 
 ### @test:AfterSuite {}
 
-The function specified following the annotation will be run once after all of the tests in the test suite is run. This can be used for cleaning up test suite level aspects. The test suite covers tests related to a module.
+The function specified following the annotation will be run once after all of the tests in the test suite is run. This can be used for cleaning up the test suite level aspects. The test suite covers tests related to a module.
 
 ***Example:***
 
@@ -314,14 +314,14 @@ The function specified following the annotation will be run once after all of th
 import ballerina/io;
 import ballerina/test;
 
-// Test function.
+// Test function
 @test:Config {}
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// The `AfterSuite` function is executed after all the test functions in this module. 
+// The `AfterSuite` function is executed after all the test functions in this module
 @test:AfterSuite
 function afterFunc() {
     io:println("I'm the after suite function!");
@@ -336,10 +336,9 @@ Configurations for testing can be provided using the Config API. For information
 
 ## What's Next
 
- As an integration language you will be using lots of connectors when writing ballerina code. Setting up mock
- backends for these external endpoints will be a tedious task (e.g. email client, spaceforce client).
- The mocking support in ballerina will allow you to unit test your code without needing to set up mock backends by
- allowing you to control what client objects return without actually sending requests to backends.
+ As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock
+ backends for these external endpoints will be a tedious task (e.g., email client, spaceforce client).
+ The mocking support in Ballerina will allow you to unit test your code without needing to set up mock backends by
+ allowing you to control what the client objects return without actually sending requests to backends.
 
-To learn about the mocking API, check the section for [Mocking](/swan-lake/learn/mocking).
-
+To learn about the mocking API, see [Mocking](/swan-lake/learn/mocking).

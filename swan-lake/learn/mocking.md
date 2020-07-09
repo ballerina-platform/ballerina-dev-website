@@ -64,14 +64,14 @@ public function testTestDouble() {
 
 ### Stubbing member functions and variables of an object
 
-Instead of creating a test double you may also choose to create a default mock object and stub the functions to return a specific value or to do nothing.
+Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return a specific value or to do nothing.
 
 
 #### Stubbing to return a specific value
 
 ***Example:***
-The example in the Getting Started section shows how the get function of the client object can be stubbed to return a value. 
-Let’s make changes to the example we tried out in the Getting Started section.
+The example in the "Getting Started" section shows how the `get` function of the client object can be stubbed to return a value. 
+Let’s make changes to the example in the Getting Started section.
 
 **main.bal**
 ```ballerina
@@ -83,7 +83,7 @@ import ballerina/stringutils;
 
 http:Client clientEndpoint = new("https://api.chucknorris.io/jokes/");
 
-// This function performs a get request to Chuck Norris API and
+// This function performs a `get` request to the Chuck Norris API and
 // returns a random joke with the name replaced with the provided name
 function getRandomJoke(string name, string category = "food") returns string|error {
 	http:Response response = checkpanic clientEndpoint->get("/categories");
@@ -111,7 +111,7 @@ function getRandomJoke(string name, string category = "food") returns string|err
 	}
 }
 
-// This function checks if the provided category is a valid one.
+// This function checks if the provided category is a valid one
 function isCategoryAvailable(json[] categories, string category) returns boolean {
 	foreach var cat in categories {
         	if (cat.toJsonString() == category) {
@@ -236,18 +236,18 @@ function testSendNotification() {
 
 ## Mocking Functions
 
-Ballerina test framework provides the capability to mock a function. Using the mocking feature you can easily mock a function in a module that you are testing or a function of an imported module. This feature will help you to test your Ballerina code independently from other modules and functions.
+Ballerina test framework provides the capability to mock a function. Using the mocking feature, you can easily mock a function in a module that you are testing or a function of an imported module. This feature will help you to test your Ballerina code independently from other modules and functions.
 
 
 ### Mocking an imported function
 
-The function specified with the **_@test:Mock {} _**annotation will be considered as a mock function that gets triggered every time the original function is called. The original function that will be mocked should be defined using the following annotation value fields.
+The function specified with the **_@test:Mock {} _** annotation will be considered as a mock function that gets triggered every time the original function is called. The original function that will be mocked should be defined using the following annotation value fields.
 
-*   ***moduleName*** : "&lt;moduleName&gt;" - Name of the module where the function to be mocked resides in. If the
- function is within the same module, this can be left blank or “.” (No module) can be passed. If the function is in a different module, but within the same project, just passing the module name will suffice. For functions in completely seperate modules, the fully qualified module name must be passed, which includes the orgName and the version. ie. orgName/module:version. For native function, the ballerina module needs to be specified.
+*   ***moduleName*** : "&lt;moduleName&gt;" - Name of the module in which the function to be mocked resides in. If the
+ function is within the same module, this can be left blank or “.” (no module) can be passed. If the function is in a different module but within the same project, just passing the module name will suffice. For functions in completely separate modules, the fully-qualified module name must be passed, which includes the `orgName` and the `version` (i.e., `orgName/module:version`). For native functions, the Ballerina module needs to be specified.
 *   ***functionName*** : "&lt;functionName&gt;" - Name of the function to be mocked.
 
-Mocking an imported function will apply the mocked function to every instance of the original function call. It is not limited to the test file where it is being mocked. 
+Mocking an imported function will apply the mocked function to every instance of the original function call. It is not limited to the test the file, which is being mocked. 
 
 ***Example:***
 
@@ -334,5 +334,5 @@ public function mockIntAdd(int a, int b) returns int {
 
 ## What's Next
  
-Now that you are aware of the details on writing tests, learn the different options that can be used when [Executing
+Now, that you are aware of the details on writing tests, learn the different options that can be used when [Executing
  Tests](/swan-lake/learn/executing-tests).

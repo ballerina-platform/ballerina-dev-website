@@ -12,19 +12,19 @@ redirect_from:
   - /swan-lake/learn/testing-quick-start
 ---
 
-Ballerina Language has a built-in robust test framework that allows you to achieve multiple levels of the test pyramid including unit testing, integration testing and end to end testing.  It provides features such as assertions, data providers, mocking and code coverage which enables the programmers to write comprehensive tests.
+Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enables the programmers to write comprehensive tests.
 
 
 # Quick Start
 
-Let’s write a simple Ballerina function that we want to test.
+Let’s write a simple Ballerina function to test it.
 
 
 
-1. First, let’s create a Ballerina project and add a new module. Use the ballerina new command to create the project. 
+1. First, let’s create a Ballerina project and add a new module. Use the `ballerina new` command to create the project. 
 For more information on the command, see [Structuring Ballerina Code](swan-lake/learn/structuring-ballerina-code/).
 
-    The standard project will hold the below structure.
+    The standard project will hold the structure below.
 
     ```bash
     project-name/
@@ -39,7 +39,7 @@ For more information on the command, see [Structuring Ballerina Code](swan-lake/
                     [resources]	   
     ```
 
-2. Now, let’s write the function that handles sending a get request in the ***main.bal*** file of the module you just
+2. Now, let’s write the function, which handles sending a get request in the ***main.bal*** file of the module you just
  created.
  
     ```ballerina
@@ -51,7 +51,7 @@ For more information on the command, see [Structuring Ballerina Code](swan-lake/
     
     http:Client clientEndpoint = new("https://api.chucknorris.io/jokes/");
     
-    // This function performs a get request to Chuck Norris API and
+    // This function performs a `get` request to the Chuck Norris API and
     // returns a random joke with the name replaced with the provided name
     function getRandomJoke(string name) returns string|error {
         http:Response|error result = clientEndpoint->get("/random");
@@ -136,5 +136,5 @@ For more information on the command, see [Structuring Ballerina Code](swan-lake/
  
  ## What's Next
 
-Now that you have an understanding of how a test case can be written and executed let us deep dive into the available
+Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
  features in the [Writing Tests](/swan-lake/learn/writing-tests) section.

@@ -1,5 +1,6 @@
 import sys
 from github import Github
+from os import linesep
 
 # Getting the command line arguments as inputs
 token = sys.argv[1]
@@ -34,6 +35,7 @@ for line in ballerina_rb_file.decoded_content.decode("utf-8").split("\n"):
     ballerina_rb_file_contents += updated_line+"\n"
 
 ballerina_rb_file_contents = ballerina_rb_file_contents.rstrip()
+ballerina_rb_file_contents += linesep
 commit_msg_title = " ".join(["ballerina", version])
 
 current_user = github_instance.get_user()

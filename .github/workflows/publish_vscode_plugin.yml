@@ -19,12 +19,12 @@ jobs:
         with:
           python-version: '3.x'
         
-      - name: Run python script
-        id: version
+      - name: Get ballerina.vsix
         run: |
           npm install
-          jq .version _data/stable-latest/metadata.json
-          python3  .github/scripts/publish_vscode_plugin.py  
+
+          BALLERINA_VERSION="`jq -r '.version' ../_data/stable-latest/metadata.json`"
+          curl http://dist-dev.ballerina.io/downloads/$BALLERINA_VERSION/ballerina-$BALLERINA_VERSION.vsix --output ballerina.vsix
              
       - name: Execute the VSCE commands
         uses: lannonbr/vsce-action@master

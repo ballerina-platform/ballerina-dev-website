@@ -15,7 +15,7 @@ If you are already using jBallerina version 1.2.0, or above, you can directly up
 
 However, you need to use the following commands instead of the above if you have installed:
 
-- jBallerina 1.2.0 but switched to a previous version: `$ ballerina dist pull jballerina-1.2.6`
+- jBallerina 1.2.0 but switched to a previous version: `$ ballerina dist pull 1.2.6`
 - a jBallerina version below 1.1.0: install via the [installers](https://ballerina.io/downloads/)
 
 **For new users:**

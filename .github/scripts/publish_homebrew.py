@@ -1,5 +1,6 @@
 import sys
 from github import Github
+from os import linesep
 
 # Getting the command line arguments as inputs
 token = sys.argv[1]
@@ -34,6 +35,7 @@ for line in ballerina_rb_file.decoded_content.decode("utf-8").split("\n"):
     ballerina_rb_file_contents += updated_line+"\n"
 
 ballerina_rb_file_contents = ballerina_rb_file_contents.rstrip()
+ballerina_rb_file_contents += linesep
 commit_msg_title = " ".join(["ballerina", version])
 
 current_user = github_instance.get_user()
@@ -53,6 +55,9 @@ update = repo.update_file(contents.path, commit_msg_title, ballerina_rb_file_con
 # Opening a PR in Homebrew/homebrew-core repo
 
 body = '''
+This PR is created by @ballerina-bot.
+In case any issue arises, please feel free to contact @sanjana or @shafreenAnfar. 
+Otherwise, drop us a message at ballerina-dev@googlegroups.com regarding any concerns. 
  - [x] Have you followed the [guidelines for contributing](https://github.com/Homebrew/homebrew-core/blob/master/CONTRIBUTING.md)?
  - [x] Have you checked that there aren't other open [pull requests](https://github.com/Homebrew/homebrew-core/pulls) for the same formula update/change?
  - [x] Have you built your formula locally with ```brew install --build-from-source <formula>```, where ```<formula>``` is the name of the formula you're submitting?

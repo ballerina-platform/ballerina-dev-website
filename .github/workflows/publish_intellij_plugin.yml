@@ -18,10 +18,22 @@ jobs:
     - name: Install jq for json manipulation
       run: sudo apt-get install jq
 
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8 
+    - name: Set up oracle JDK 1.8
+      run: |
+        sudo apt-get install wget
+        mkdir jdk8-dir
+        cd jdk8-dir
+        wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/jdk-8u251-linux-x64.tar.gz
+        JDK_PATH=$PWD
+        sudo tar -xvzf jdk-8u251-linux-x64.tar.gz
+        echo 'export JAVA_HOME=$JDK_PATH/jdk1.8.0_251' >> ~/.bashrc
+        echo 'export PATH=$PATH:$JDK_PATH/jdk1.8.0_251/bin' >> ~/.bashrc
+        source ~/.bashrc
+        sudo update-alternatives --install "/usr/bin/java" "java" "$JDK_PATH/jdk1.8.0_251/bin/java" 0
+        sudo update-alternatives --install "/usr/bin/javac" "javac" "$JDK_PATH/jdk1.8.0_251/bin/javac" 0
+        sudo update-alternatives --set java $JDK_PATH/jdk1.8.0_251/bin/java
+        sudo update-alternatives --set javac $JDK_PATH/jdk1.8.0_251/bin/javac
+        java -version
 
     - name: Clone ballerina-lang repo
       run: git clone https://github.com/ballerina-platform/ballerina-lang.git

@@ -6,14 +6,13 @@ on:
       - prod-sync
     paths:
       - '_data/stable-latest/**'
-      - '_data/swanlake-latest/**'
 
 jobs:
   prod-artifact-sync:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout dev website
       uses: actions/checkout@v2
 
     - name: Install jq for json
@@ -25,11 +24,17 @@ jobs:
         s3_acc_id: ${{ secrets.S3_ID }}
         s3_acc_key: ${{ secrets.S3_KEY }}
       run: |
-        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-        unzip -q awscliv2.zip
-        sudo ./aws/install
+        # There is an issue in the LATEST aws/cli.
+        # curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        # unzip -q awscliv2.zip
+        # sudo ./aws/install
+
+        sudo apt-get install python3-setuptools
+        python3 -m pip install --user awscli
+
         aws configure set aws_access_key_id $s3_acc_id
         aws configure set aws_secret_access_key $s3_acc_key
+        aws --version
 
         version="`jq -r '.version' _data/stable-latest/metadata.json`"
         echo "extracted release version: $version"

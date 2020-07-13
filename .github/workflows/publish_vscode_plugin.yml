@@ -23,7 +23,7 @@ jobs:
         run: |
           npm install
 
-          BALLERINA_VERSION="`jq -r '.version' ../_data/stable-latest/metadata.json`"
+          BALLERINA_VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
           curl http://dist-dev.ballerina.io/downloads/$BALLERINA_VERSION/ballerina-$BALLERINA_VERSION.vsix --output ballerina.vsix
              
       - name: Execute the VSCE commands

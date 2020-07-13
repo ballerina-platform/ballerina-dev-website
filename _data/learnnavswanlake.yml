@@ -79,12 +79,21 @@
       url: /swan-lake/learn/writing-secure-ballerina-code
       active: writing-secure-ballerina-code
 
-- title: Testing
+- title: Testing Ballerina Code
   url: '#' 
   sublinks:
-    - title: Testing Ballerina Code
-      url: /swan-lake/learn/testing-ballerina-code
-      active: testing-ballerina-code
+    - title: Quick Start
+      url: /swan-lake/learn/testing-quick-start
+      active: testing-quick-start
+    - title: Writing Tests
+        url: /swan-lake/learn/writing-tests
+        active: writing-tests
+    - title: Mocking
+        url: /swan-lake/learn/mocking
+        active: mocking
+    - title: Executing Tests
+        url: /swan-lake/learn/writing-tests
+        active: writing-tests
 
 - title: Extending Ballerina
   url: '#' 

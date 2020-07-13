@@ -23,9 +23,10 @@ with open(path_latest, 'r') as content_file:
     temp = content_file.read() 
     latest_realease = json.loads(temp)
 
+# remove the already committed change
 for release in data:
     if release['version'] == latest_realease['version']:
-        sys.exit("This version already exist in release_notes_versions.json")
+        data.remove(release)
 
 # append both json
 data.append(latest_realease)
@@ -37,4 +38,4 @@ os.makedirs(os.path.dirname(outputFile_rel), exist_ok=True)
 with open(outputFile_rel, "w") as f:
     json.dump(data, f, indent=3)
 
-print ("Check .../target/output/")
+print ("Check ./target/release_notes_versions.json")

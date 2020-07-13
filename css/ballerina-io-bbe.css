@@ -446,3 +446,7 @@ body, ol, ul {
 ol, ul {
     padding: 0;
 }
+
+.cLeftTD li {
+    list-style: disc !important;
+}

@@ -69,3 +69,7 @@
     width: 200px;
     
 }
+
+.wy-breadcrumbs-aside .icon.icon-github {
+    display: none !important;
+}

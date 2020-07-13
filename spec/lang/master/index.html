@@ -3146,9 +3146,8 @@ when and how a filler value can be constructed for a type descriptor.
 <tr>
 <td>object</td>
 <td><code>new T()</code></td>
-<td>if this is valid and its static type does not include error, where
-<code>T</code> is the object type descriptor (an abstract object type will not
-have a filler value)</td>
+<td>if T is a class, where T is the type descriptor for the object, and the
+static type of T's init method allows no arguments and does not include error</td>
 </tr>
 <tr>
 <td>stream</td>
@@ -4221,15 +4220,15 @@ length of <var>v</var>.</li>
 The result of the raw-template-expr is the newly constructed object.
 </p>
 <p>
-For each raw-template-expr there is a separate non-abstract object type, which
+For each raw-template-expr there is a separate class, which
 is a subtype of the RawTemplate type. The objects constructed by a
-raw-template-expr belong to this non-abstract object type. The type of the
+raw-template-expr belong to this class. The type of the
 <code>insertions</code> field is determined from the contextually expected type
 or the static type of the expressions in the BacktickString in the same way as
 with a list-constructor-expr. The <code>strings</code> and
 <code>insertions</code> fields will be read-only if required by the contextually
 expected type. The value of the <code>strings</code> field is constructed once
-by the non-abstract object type. The value of the <code>insertions</code> is
+by the class. The value of the <code>insertions</code> is
 constructed once for each evaluation of the raw-template-expr.
 </p>
 
@@ -4486,18 +4485,27 @@ evaluated. This means that every object resulting from the evaluation of an
 The type-ids of the constructed object are determined from the included object
 types in the same was as the type-ids of an object-type-descriptor.
 </p>
+<p>
+An <code>object-constructor-expr</code> will construct an object with its
+read-only bit set if it occurs within a <code>const-expr</code> or if the the
+applicable contextually expected type is a subtype of readonly. In this case,
+the read-only bit of every field will also be set and the contextually expected
+type for a field-initializer will be the intersection of readonly and the type
+specified in the type-descriptor of the object-field. Conversely, if every field
+is specified to be <code>readonly</code>, then the read-only bit of the
+constructed object will be set.
+</p>
 
 <pre class="grammar"><span class="ntdfn" id="object-field">object-field</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<code>readonly</code>]
-   <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
+   <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> <code>=</code> <a href="#field-initializer"><span class="ntref">field-initializer</span></a> <code>;</code>
+<span class="ntdfn" id="field-initializer">field-initializer</span> := <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
 An <code>object-field</code> declares and initializes a field of the object.
 </p>
 <p>
 If <code>readonly</code> is present, the read-only bit of the field will be set.
-An object-constructor-expr occurring within a const-expr will construct a
-structural value that has the read-only bit of all its fields on.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn">method-defn</span> :=
@@ -8042,7 +8050,6 @@ constructed.
 <span class="ntdfn" id="class-field">class-field</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<code>readonly</code>]
    <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<code>=</code> <a href="#field-initializer"><span class="ntref">field-initializer</span></a> ] <code>;</code>
-<span class="ntdfn" id="field-initializer">field-initializer</span> := <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
 It is an error for a keyword to appear more than once in

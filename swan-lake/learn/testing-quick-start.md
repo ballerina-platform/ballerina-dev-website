@@ -8,7 +8,6 @@ active: testing-quick-start
 redirect_from:
   - /swan-lake/learn/how-to-test-ballerina-code/
   - /swan-lake/learn/how-to-test-ballerina-code
-  - /swan-lake/learn/testing-quick-start/
   - /swan-lake/learn/testing-quick-start
 ---
 

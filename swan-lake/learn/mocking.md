@@ -8,7 +8,6 @@ permalink: /swan-lake/learn/mocking/
 active: mocking
 redirect_from:
   - /swan-lake/learn/mocking
-  - /swan-lake/learn/mocking/
 ---
 
 # Mocking

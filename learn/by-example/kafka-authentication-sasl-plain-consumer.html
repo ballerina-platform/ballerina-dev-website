@@ -51,9 +51,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="nats-streaming-start-position.html">
+                                    <a class="prev" href="kafka-group-service.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Historical Message Replay</p>
+                                        <p>Consumer Groups</p>
                                     </a>
                                 </div>
                                  
@@ -122,7 +122,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/kafka;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/kafka;
 import ballerina/log;
 </code></pre></div>
 
@@ -135,7 +135,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:AuthenticationConfiguration authConfig = {
+                                    <div class="highlight"><pre><code class=ballerina>kafka:AuthenticationConfiguration authConfig = {
 </code></pre></div>
 
                                 </td>
@@ -154,7 +154,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    mechanism: kafka:AUTH_SASL_PLAIN,
+                                    <div class="highlight"><pre><code class=ballerina>    mechanism: kafka:AUTH_SASL_PLAIN,
 </code></pre></div>
 
                                 </td>
@@ -173,7 +173,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    username: &quot;ballerina&quot;,
+                                    <div class="highlight"><pre><code class=ballerina>    username: &quot;ballerina&quot;,
     password: &quot;ballerina-secret&quot;
 };
 </code></pre></div>
@@ -195,7 +195,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfiguration consumerConfig = {
+                                    <div class="highlight"><pre><code class=ballerina>kafka:ConsumerConfiguration consumerConfig = {
     bootstrapServers:&quot;localhost:9092&quot;,
     groupId:&quot;test-group&quot;,
     clientId: &quot;sasl-consumer&quot;,
@@ -213,7 +213,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    authenticationConfiguration: authConfig
+                                    <div class="highlight"><pre><code class=ballerina>    authenticationConfiguration: authConfig
 };
 </code></pre></div>
 
@@ -233,7 +233,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Consumer consumer = new(consumerConfig);
+                                    <div class="highlight"><pre><code class=ballerina>listener kafka:Consumer consumer = new(consumerConfig);
 </code></pre></div>
 
                                 </td>
@@ -245,7 +245,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>service KafkaService on consumer {
+                                    <div class="highlight"><pre><code class=ballerina>service KafkaService on consumer {
     resource function onMessage(kafka:Consumer consumer, kafka:ConsumerRecord[] records) {
         foreach var consumerRecord in records {
             string value = &lt;string&gt; consumerRecord.value;

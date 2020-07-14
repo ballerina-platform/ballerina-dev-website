@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-07-13</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-07-14</h1>
 <p>
 Primary contributors:
 </p>
@@ -450,8 +450,7 @@ mailing list.
 </li>
 <li>8.5 <a href="#section_8.5">Module type definition</a>
 </li>
-<li>8.6 <a href="#section_8.6">Module class definition</a><ul><li>8.6.1 <a href="#section_8.6.1">Initialization</a>
-</li></ul>
+<li>8.6 <a href="#section_8.6">Module class definition</a>
 </li>
 <li>8.7 <a href="#section_8.7">Module variable declaration</a>
 </li>
@@ -4472,13 +4471,10 @@ fields come from a separate, named class definition.
 <h4 id="section_6.8.1">6.8.1 Object constructor</h4>
 
 <pre class="grammar"><span class="ntdfn" id="object-constructor-expr">object-constructor-expr</span> :=
-   [<a href="#annots"><span class="ntref">annots</span></a>] [<code>client</code>] <code>object</code> <code>{</code>
+   [<a href="#annots"><span class="ntref">annots</span></a>] [<code>client</code>] <code>object</code> [<a href="#type-reference"><span class="ntref">type-reference</span></a>] <code>{</code>
       <a href="#object-member"><span class="ntref">object-member</span></a>*
    <code>}</code>
-<span class="ntdfn" id="object-member">object-member</span> :=
-   <a href="#object-field"><span class="ntref">object-field</span></a>
-   | <a href="#method-defn"><span class="ntref">method-defn</span></a>
-   | <a href="#object-type-inclusion"><span class="ntref">object-type-inclusion</span></a>
+<span class="ntdfn" id="object-member">object-member</span> := <a href="#object-field"><span class="ntref">object-field</span></a> | <a href="#method-defn"><span class="ntref">method-defn</span></a>
 </pre>
 <p>
 The resulting of evaluating an <code>object-constructor-expr</code> is an
@@ -4493,8 +4489,9 @@ evaluated. This means that every object resulting from the evaluation of an
 <code>object-constructor-expr</code> has its own type descriptor.
 </p>
 <p>
-The type-ids of the constructed object are determined from the included object
-types in the same was as the type-ids of an object-type-descriptor.
+If there is a <code>type-reference</code>, then the referenced type is included
+in the object's type in the same was as an <code>object-type-inclusion</code>.
+The type-ids of the constructed object are type ids of the referenced type.
 </p>
 <p>
 An <code>object-constructor-expr</code> will construct an object with its
@@ -4509,7 +4506,7 @@ constructed object will be set.
 
 <pre class="grammar"><span class="ntdfn" id="object-field">object-field</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<code>readonly</code>]
-   <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> <code>=</code> <a href="#field-initializer"><span class="ntref">field-initializer</span></a> <code>;</code>
+   <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<code>=</code> <a href="#field-initializer"><span class="ntref">field-initializer</span></a>] <code>;</code>
 <span class="ntdfn" id="field-initializer">field-initializer</span> := <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
@@ -4517,6 +4514,10 @@ An <code>object-field</code> declares and initializes a field of the object.
 </p>
 <p>
 If <code>readonly</code> is present, the read-only bit of the field will be set.
+</p>
+<p>
+If a field does not specify a field-initializer, then there must be an <code>init</code>
+method and the <code>init</code> method must initialize the field.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn">method-defn</span> :=
@@ -4528,13 +4529,45 @@ If <code>readonly</code> is present, the read-only bit of the field will be set.
 A <code>method-defn</code> defines a method of an object.
 </p>
 <p>
-The <code>method-name</code> in a <code>method-defn</code> in an
-<code>object-constructor-expr</code> must not be <code>init</code>.
-</p>
-<p>
 Within a <code>method-defn-body</code>, the fields and methods of the object are
 not implicitly in-scope; instead the keyword <code>self</code> is bound to the
 object and can be used to access fields and methods of the object.
+</p>
+<p>
+A <code>method-defn</code> with a <code>method-name</code> of <code>init</code>
+is used to initialize the object and is treated specially. The return type of
+the <code>init</code> method must be a subtype of the union of error and nil,
+and must contain nil; if <code>init</code> returns an error, it means that
+initialization of the object failed.
+</p>
+<p>
+The parameter list of an <code>init</code> method within an
+<code>object-constructor-expr</code> must be empty.
+</p>
+<p>
+At any point in the body of a <code>init</code> method, the compiler
+determines which fields are potentially uninitialized. A field is potentially
+uninitialized at some point if that field does not have an initializer and it
+is not definitely assigned at that point. It is a compile error if a
+<code>init</code> method:
+</p>
+<ul>
+<li>accesses a field at a point where it is potentially initialized, or</li>
+<li>at a point where there is any potentially uninitialized field
+<ul>
+<li>returns nil, or</li>
+<li>uses the <code>self</code> variable other than to access or modify the value of a field.</li>
+</ul>
+</li>
+</ul>
+<p>
+The visibility of the <code>init</code> method cannot be <code>private</code>.
+</p>
+<p>
+Any <code>init</code> method is not part of the shape of an object, and so does
+not affect when an object value belongs to a type. The <code>init</code> method
+can be called in a <code>method-call-expr</code> only when the expression
+preceding the <code>.</code> is <code>self</code>.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="object-visibility-qual">object-visibility-qual</span> := <code>public</code>|<code>private</code>
@@ -4565,7 +4598,9 @@ class. It is a compile error if the type-descriptor if the arg-list does not
 match the signature of the class's <code>init</code> method. If the result of
 calling the <code>init</code> method is an error value e, then the result of
 evaluating the explicit-new-expr is e; otherwise the result is the newly
-initialized object.
+initialized object. A class without an <code>init</code> method behaves as it
+had an <code>init</code> method with no parameters and an empty body (which will
+always return nil).
 </p>
 <p>
 When the class-reference refers to a stream type <code>stream&lt;T,E&gt;</code>,
@@ -8054,13 +8089,9 @@ constructed.
   <code>}</code>
 <span class="ntdfn" id="class-type-quals">class-type-quals</span> := (<code>distinct</code> | <code>client</code> | <code>readonly</code>)*
 <span class="ntdfn" id="class-member">class-member</span> :=
-   <a href="#class-field"><span class="ntref">class-field</span></a>
+   <a href="#object-field"><span class="ntref">object-field</span></a>
    | <a href="#method-defn"><span class="ntref">method-defn</span></a>
    | <a href="#object-type-inclusion"><span class="ntref">object-type-inclusion</span></a>
-
-<span class="ntdfn" id="class-field">class-field</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<code>readonly</code>]
-   <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<code>=</code> <a href="#field-initializer"><span class="ntref">field-initializer</span></a> ] <code>;</code>
 </pre>
 <p>
 It is an error for a keyword to appear more than once in
@@ -8088,62 +8119,21 @@ T must be defined in the class using a <code>method-defn</code> with the same
 visibility. If T has a method or field with module-level visibility, then C must
 be in the same module.
 </p>
-
-<section>
-<h4 id="section_8.6.1">8.6.1 Initialization</h4>
 <p>
-A class provides a way to initialize an object of the type.
-In a class definition, a method-defn with a method-name of <code>init</code>
-is used for initialization and treated specially.
-</p>
-
-<p>
-An object is initialized by:
+An object of a class is initialized by:
 </p>
 <ol>
 <li>allocating storage for the object</li>
 <li>initializing each field with its initializer, if it has one</li>
-<li>initializing the methods of the object using the type's method definitions</li>
+<li>initializing the methods of the object using the class's method definitions</li>
 <li>calling the class's <code>init</code> method, if there is one</li>
 </ol>
 <p>
-The return type of the <code>init</code> method must be a subtype of the union
-of error and nil, and must contain nil; if <code>init</code> returns an error,
-it means that initialization of the object failed. The <code>init</code>
-method can declare parameters in the same way as any other method.
+The parameter list of an <code>init</code> method within an
+<code>module-class-defn</code> is not required to be empty, unlike within an
+<code>object-constructor-expr</code>.
 </p>
-<p>
-At any point in the body of a <code>init</code> method, the compiler
-determines which fields are potentially uninitialized. A field is potentially
-uninitialized at some point if that field does not have an initializer and it
-is not definitely assigned at that point. It is a compile error if a
-<code>init</code> method:
-</p>
-<ul>
-<li>accesses a field at a point where it is potentially initialized, or</li>
-<li>at a point where there is any potentially uninitialized field
-<ul>
-<li>returns nil, or</li>
-<li>uses the <code>self</code> variable other than to access or modify the value of a field.</li>
-</ul>
-</li>
-</ul>
-<p>
-A class must have an <code>init</code> method unless all its fields have an
-initializer. A class without an <code>init</code> method behaves as it had an
-<code>init</code> method with no parameters and an empty body (which will always
-return nil).
-</p>
-<p>
-The visibility of the <code>init</code> method cannot be <code>private</code>.
-</p>
-<p>
-Any <code>init</code> method is not part of the shape of an object, and so does
-not affect when an object value belongs to a type. The <code>init</code> method
-can be called in a <code>method-call-expr</code> only when the expression
-preceding the <code>.</code> is <code>self</code>.
-</p>
-</section>
+
 </section>
 
 <section>
@@ -8464,7 +8454,7 @@ The available attachment points are described in the following table.
   </tr>
   <tr>
    <td>object field</td>
-   <td>object-field-descriptor, object-field, class-field</td>
+   <td>object-field-descriptor, object-field</td>
    <td>type of object</td>
   </tr>
   <tr>

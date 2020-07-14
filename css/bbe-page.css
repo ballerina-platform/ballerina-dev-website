@@ -73,3 +73,8 @@
 .wy-breadcrumbs-aside .icon.icon-github {
     display: none !important;
 }
+
+.cBallerina-io-Home-Middle-col {
+    padding-left: 0;
+    padding-right: 0;
+}

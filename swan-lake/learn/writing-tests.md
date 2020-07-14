@@ -8,7 +8,6 @@ permalink: /swan-lake/learn/writing-tests/
 active: writing-tests
 redirect_from:
   - /swan-lake/learn/writing-tests
-  - /swan-lake/learn/writing-tests/
 ---
 
 # Structuring test code

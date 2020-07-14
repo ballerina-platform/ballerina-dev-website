@@ -7,7 +7,6 @@ permalink: /swan-lake/learn/executing-tests/
 active: executing-tests
 redirect_from:
   - /swan-lake/learn/executing-tests
-  - /swan-lake/learn/executing-tests/
 ---
 
 # Executing Tests

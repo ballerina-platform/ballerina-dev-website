@@ -158,16 +158,22 @@ if (typeof hljs === 'object') {
 //matching version selected with the URL
 function versionSelectorValue(){
     let pathValue = window.location.pathname;
+    $("#versions").reset;
     let options = $("#versions").find("option");
+    let status=0;
     $.each(options, function (key, option) {
     
         let optionText = $(option).val();
-        
         //let ver = "v" + optionText.replace(".", "-");
+        
         if(pathValue.indexOf(optionText) > -1){
             $(option).attr("selected", "selected");
-        }
+            status = 1;
+        }        
     });
+    if(status == 0){
+        $("#versions").prop("selectedIndex", 0);
+    }
 }
 
 $(document).ready(function() {

@@ -6,7 +6,7 @@ keywords: ballerina, programming language, serverless, cloud, Azure, Functions
 permalink: /learn/deployment/azure/
 active: azure
 redirect_from:
-  - /learn/deployment/azurefunctions
+  - /learn/deployment/azure
 ---
 
 # Azure Functions

@@ -64,7 +64,7 @@ In order to deploy a Ballerina function in Azure Functions, the following prereq
 
 The created resource group and the function app name should be provided to the placeholders shown in the above generated usage instructions from the compiler. 
 
-A custom [host.json](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) file for the Azure Functions deployment can be optionally provided by placing a `host.json` file in the current working directory where the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
+A custom [`host.json`](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) file for the Azure Functions deployment can be optionally provided by placing a `host.json` file in the current working directory where the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
 
 A sample execution to deploy the functions to Azure Functions is shown below. 
 

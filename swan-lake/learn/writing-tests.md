@@ -32,16 +32,17 @@ project-name/
 
 ## Test source files
 
-Unit tests bound to a module need to be placed in a subfolder called `_tests/_` within the module. In a standard
- Ballerina project, a module is mapped to a test suite. All tests within a module’s `_tests/_` subfolder are
+Unit tests bound to a module need to be placed in a subfolder called ***tests/*** within the module. In a standard
+ Ballerina project, a module is mapped to a test suite. All tests within a module’s *tests/* subfolder are
   considered to be part of the same test suite.
 
-The test source files could have any name. The test functions are just Ballerina functions that use a special annotation to mark the function as a test. Test functions must be specified with the `@test:Config{}` annotation and there is no restriction on the test function name.
+The test source files could have any name. The test functions are just Ballerina functions that use a special
+ annotation to mark the function as a test. Test functions must be specified with the `@test:Config {}` annotation and there is no restriction on the test function name.
 
 
 ## Test Resources
 
-The resources subdirectory found within the `_tests/_` directory is meant to contain any files or resources that are
+The resources subdirectory found within the *tests/* directory is meant to contain any files or resources that are
  exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the project root.
 
 ## Defining a test
@@ -62,15 +63,18 @@ Once the test module is imported, the following annotation can be used to write 
 The function specified following the annotation is a test function. This annotation supports the following value fields.
 
 
+*   ***enable: {true&#124;false}*** - Enable/disable the test. Default: true
+*   ***before: "&lt;function name&gt;"*** - Name of the function to be run just before the test is run. Default: none
+*   ***after: "&lt;function name&gt;"*** - Name of the function to be run just after the test is run.
+*   ***dependsOn: ["&lt;function names>", …]*** - List of function names on which the test function depends. The
+ order in
+ which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on the dependencies using the `dependsOn` parameter in each one’s config in order to control the order of test execution.
+*   ***dataProvider: “&lt;function name>”*** - Specifies the name of the function that will be used to provide the value
+ sets to execute the test against.
+*   ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) that this test
+ belongs to.
 
-*   enable: {true | false}: Enable/disable the test. Default: true
-*   before: "&lt;function name>": Name of the function to be run just before the test is run. Default: none
-*   after: "&lt;function name>": Name of the function to be run just after the test is run.
-*   dependsOn: ["&lt;function names>", …]: List of function names on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on the dependencies using the `dependsOn` parameter in each one’s config in order to control the order of test execution.
-*   dataProvider: “&lt;function name>”: Specifies the name of the function that will be used to provide the value sets to execute the test against.
-*   groups: [“&lt;test group name”, …]: A comma-separated list of test group names (one or more) that this test belongs to.
-
-****Example:****
+***Example:***
 
 
 ```ballerina

@@ -1,31 +1,39 @@
 ---
 layout: ballerina-example-page
-title: SASL Authentication - Producer
+title: Transactional Producer
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/kafka-authentication-sasl-plain-producer
+permalink: /learn/by-example/kafka-producer-transactional
 redirect_from:
-  - /v1-2/learn/by-example/kafka-authentication-sasl-plain-producer
-  - /v1-2/learn/by-example/kafka-authentication-sasl-plain-producer.html
+  - /v1-2/learn/by-example/kafka-producer-transactional
+  - /v1-2/learn/by-example/kafka-producer-transactional.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">AuthenticationConfiguration</span> <span class="nx">authConfig</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">mechanism</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">AUTH_SASL_PLAIN</span><span class="p">,</span>
-    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina-secret&quot;</span>
-<span class="p">};</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
-    <span class="nx">valueSerializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">SER_STRING</span><span class="p">,</span>
-    <span class="nx">authenticationConfiguration</span><span class="p">:</span> <span class="nx">authConfig</span>
+    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;basic-producer&quot;</span><span class="p">,</span>
+    <span class="nx">acks</span><span class="p">:</span> <span class="s">&quot;all&quot;</span><span class="p">,</span>
+    <span class="nx">retryCount</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nx">enableIdempotence</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">transactionalId</span><span class="p">:</span> <span class="s">&quot;test-transactional-id&quot;</span>
 <span class="p">};</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfigs</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;topic-sasl&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;success&quot;</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello World Transaction Message&quot;</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">serializedMessage</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">serializedMessage</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">transaction</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
+            <span class="nx">partition</span> <span class="p">=</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Kafka producer failed to send first message&quot;</span><span class="p">,</span>
+                <span class="nx">sendResult</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="nx">committed</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nx">aborted</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction aborted&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -36,10 +44,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>SASL Authentication - Producer</h2>
-                            <p><p>Here, is an example of a Kafka producer using SASL/PLAIN authentication.
- For this example to work properly, an active Kafka server must be present
- and it should be configured to use the SASL/PLAIN authentication mechanism.</p>
+                            <h2>Transactional Producer</h2>
+                            <p><p>This example shows you how to do transactional message producing by sending
+ messages to kafka brokers atomically using the <code>kafka:Producer</code> object. For
+ this example to work properly, an active Kafka broker should be present.</p>
 </p>
 
                         </td>
@@ -47,18 +55,25 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="kafka-authentication-sasl-plain-consumer.html">
+                                    <a class="prev" href="kafka-consumer-client.html">
                                         <span>< PREVIOUS</span>
-                                        <p>SASL Authentication - Consumer</p>
+                                        <p>Consumer Client</p>
                                     </a>
                                 </div>
                                  
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="kafka-group-service.html">
+                                        <span>NEXT ></span>
+                                        <p>Consumer Groups</p>
+                                    </a>
+                                </div>
+                                
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div class="example" id="kafka-authentication-sasl-plain-producer">
+            <div class="example" id="kafka-producer-transactional">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -69,7 +84,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/kafka-authentication-sasl-plain-producer/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/kafka-producer-transactional/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -86,6 +101,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -121,72 +138,10 @@ import ballerina/kafka;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:AuthenticationConfiguration authConfig = {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>kafka:AuthenticationConfiguration</code> is used to provide authentication-related details.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mechanism: kafka:AUTH_SASL_PLAIN,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Provide the authentication mechanism used by the Kafka server.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    username: &quot;ballerina&quot;,
-    password: &quot;ballerina-secret&quot;
-};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Username and password should be set here in order to authenticate the producer.
- Check Ballerina <code>config</code> APIs to see how to use encrypted values instead of plain text values here.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>kafka:ProducerConfiguration producerConfigs = {
-    bootstrapServers: &quot;localhost:9092&quot;,
-    valueSerializerType: kafka:SER_STRING,
 </code></pre></div>
 
                                 </td>
@@ -198,7 +153,50 @@ import ballerina/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    authenticationConfiguration: authConfig
+                                    <div class="highlight"><pre><code class=ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
+    clientId: &quot;basic-producer&quot;,
+    acks: &quot;all&quot;,
+    retryCount: 3,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>bootstrapServers</code> is the list of remote server endpoints of the
+ Kafka brokers.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    enableIdempotence: true,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>enableIdempotence</code> should set to <code>true</code> to make a producer
+ transactional.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    transactionalId: &quot;test-transactional-id&quot;
 };
 </code></pre></div>
 
@@ -207,7 +205,7 @@ import ballerina/kafka;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Provide the relevant authentication configuration record to authenticate the producer.</p>
+                                            <p>A <code>transactionalId</code> must be provided to make a producer transactional.</p>
 
                                         </div>
                                     </div>
@@ -229,13 +227,54 @@ import ballerina/kafka;
                             
                             <tr class="cTR">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
-    var result = kafkaProducer-&gt;send(&quot;Hello from Ballerina&quot;, &quot;topic-sasl&quot;);
-    if (result is error) {
-        io:println(result);
-    } else {
-        io:println(&quot;success&quot;);
+    string message = &quot;Hello World Transaction Message&quot;;
+    byte[] serializedMessage = message.toBytes();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    kafkaAdvancedTransactionalProduce(serializedMessage);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Here, we create a producer config with optional parameters.
+ transactional.id - enable transactional message production.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function kafkaAdvancedTransactionalProduce(byte[] message) {
+    transaction {
+        var sendResult = kafkaProducer-&gt;send(message, &quot;test-kafka-topic&quot;,
+            partition = 0);
+        if (sendResult is error) {
+            io:println(&quot;Kafka producer failed to send first message&quot;,
+                sendResult.toString());
+        }
+    } committed {
+        io:println(&quot;Transaction committed&quot;);
+    } aborted {
+        io:println(&quot;Transaction aborted&quot;);
     }
 }
 </code></pre></div>
@@ -268,7 +307,7 @@ import ballerina/kafka;
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
-$ ballerina run kafka_authentication_sasl_plain_producer.bal
+$ ballerina run --experimental kafka_message_producer_transactional.bal
 </code></pre></div>
 
                                 </td>
@@ -280,9 +319,11 @@ $ ballerina run kafka_authentication_sasl_plain_producer.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the producer is authenticated and the message sent successfully,
-# following message will be printed in the console.
-Message successfully sent.
+                                    <div class="highlight"><pre><code class=shell-session># If the producer successfully sent the message, the following will be printed
+# in the Console.
+2020-03-26 13:57:29,129 INFO  [ballerina/transactions] - Created transaction: 6cfac3a7-a8a2-4220-944e-dfbd6d27910f
+2020-03-26 13:57:29,184 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 6cfac3a7-a8a2-4220-944e-dfbd6d27910f:$anon$.$0
+Transaction committed
 </code></pre></div>
 
                                 </td>

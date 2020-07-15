@@ -92,8 +92,8 @@
       url: /swan-lake/learn/mocking
       active: mocking
     - title: Executing Tests
-      url: /swan-lake/learn/writing-tests
-      active: writing-tests
+      url: /swan-lake/learn/executing-tests
+      active: executing-tests
 
 - title: Extending Ballerina
   url: '#' 

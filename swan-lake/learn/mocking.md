@@ -241,11 +241,11 @@ Ballerina test framework provides the capability to mock a function. Using the m
 
 ### Mocking an imported function
 
-The function specified with the **_@test:Mock {} _** annotation will be considered as a mock function that gets triggered every time the original function is called. The original function that will be mocked should be defined using the following annotation value fields.
+The function specified with the `@test:Mock {}` annotation will be considered as a mock function that gets triggered every time the original function is called. The original function that will be mocked should be defined using the following annotation value fields.
 
-*   ***moduleName*** : "&lt;moduleName&gt;" - Name of the module in which the function to be mocked resides in. If the
+*   ***moduleName : "&lt;moduleName&gt;"*** - Name of the module in which the function to be mocked resides in. If the
  function is within the same module, this can be left blank or “.” (no module) can be passed. If the function is in a different module but within the same project, just passing the module name will suffice. For functions in completely separate modules, the fully-qualified module name must be passed, which includes the `orgName` and the `version` (i.e., `orgName/module:version`). For native functions, the Ballerina module needs to be specified.
-*   ***functionName*** : "&lt;functionName&gt;" - Name of the function to be mocked.
+*   ***functionName : "&lt;functionName&gt;"*** - Name of the function to be mocked.
 
 Mocking an imported function will apply the mocked function to every instance of the original function call. It is not limited to the test the file, which is being mocked. 
 
@@ -285,7 +285,7 @@ function testMathConsts() {
 
 #### Mocking a function in the same module
 
-The object specified with the `@test:MockFn{}` annotation will be considered as a mock function that gets triggered
+The object specified with the `@test:MockFn {}` annotation will be considered as a mock function that gets triggered
  every time the original function is called. Subsequent to the declaration, the function call should be stubbed using the available function mocking features. Different behaviors can be defined for different test cases if required.
 
 ***Example:***

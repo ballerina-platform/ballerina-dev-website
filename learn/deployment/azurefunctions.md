@@ -15,6 +15,14 @@ The Azure Functions extension provides the functionality to expose a Ballerina f
 
 An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach where we can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function, where an output binding allows us to output data from the function out to an external resource. For more information, check [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
 
+The following Azure Functions triggers and bindings are currently supported in Ballerina:
+- HTTP trigger, input binding, and output binding
+- Queue trigger and output binding
+- Blob trigger, input binding, and output binding
+- Twilio SMS output binding
+- CosmosDB trigger, input binding, and output binding
+- Timer trigger
+
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
 
 ```ballerina
@@ -31,14 +39,6 @@ public function fromHttpToQueue(af:Context ctx,
 ```
 
 The first parameter with the [Context](https://ballerina.io/learn/api-docs/ballerinax/azure-functions.html#Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional, and can exist at any position in the parameter list of the function. The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger, and that its details should be stored in the given `HTTPRequest` value. Then we also declares that we will be having a queue output binding by the usage of the `QueueOutput` annotation, with a string result, by defining a `StringOutputBinding` parameter. Also, we declare an HTTP output binding by annotating the return type `HTTPBinding` with the `HTTPOutput` annotation. This HTTP output binding can also be given by defining as a parameter as well, with the same annotation. In this manner, we can mix and match any combination of triggers, input/output bindings, and with or without the execution context object in defining an Azure Function. 
-
-The following Azure Functions triggers and bindings are currently supported in Ballerina:
-- HTTP trigger, input binding, and output binding
-- Queue trigger and output binding
-- Blob trigger, input binding, and output binding
-- Twilio SMS output binding
-- CosmosDB trigger, input binding, and output binding
-- Timer trigger
 
 The Azure Functions functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 

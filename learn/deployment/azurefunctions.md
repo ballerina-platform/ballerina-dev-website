@@ -23,7 +23,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB [trigger](http://ballerina.io/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBTrigger), [input](http://ballerina.io/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBInput) binding, and [output](http://ballerina.io/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBOutput) binding
 - Timer [trigger](http://ballerina.io/learn/api-docs/ballerina/azure.functions/annotations.html#TimerTrigger)
 
-The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
 
 ```ballerina
 import ballerinax/azure.functions as af;

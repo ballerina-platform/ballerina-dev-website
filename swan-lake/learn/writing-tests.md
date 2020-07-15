@@ -63,7 +63,7 @@ Once the test module is imported, the following annotation can be used to write 
 The function specified following the annotation is a test function. This annotation supports the following value fields.
 
 
-*   ***enable: {true &vert; false}*** - Enable/disable the test. Default: true
+*   ***enable: {true&#124;false}*** - Enable/disable the test. Default: true
 *   ***before: "&lt;function name&gt;"*** - Name of the function to be run just before the test is run. Default: none
 *   ***after: "&lt;function name&gt;"*** - Name of the function to be run just after the test is run.
 *   ***dependsOn: ["&lt;function names>", …]*** - List of function names on which the test function depends. The

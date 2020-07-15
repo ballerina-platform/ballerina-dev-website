@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages
 title: Azure Functions
 description: See how the Ballerina deployment in Azure Functions works
 keywords: ballerina, programming language, serverless, cloud, Azure, Functions
-permalink: /learn/deployment/azurefunctions/
+permalink: /learn/deployment/azure/
 active: azurefunctions
 redirect_from:
   - /learn/deployment/azurefunctions
@@ -105,4 +105,3 @@ Request: url=https://functions1777.azurewebsites.net/api/fromHttpToQueue method=
 ```
 
 A full sample with all the supported Azure Functions triggers and bindings in Ballerina can be found [here](https://github.com/ballerina-platform/module-ballerinax-azure.functions/blob/master/azurefunctions-extension-examples/examples/azure-functions-deployment/azure_functions_deployment.bal).
-

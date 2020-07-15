@@ -64,6 +64,8 @@ Ballerina's Azure Functions functionality is implemented as a custom handler. In
 
 The created resource group and the function app name should be provided to the placeholders shown in the above generated usage instructions from the compiler. 
 
+A custom [host.json](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) file for the Azure Functions deployment can be optionally provided by placing a 'host.json' file in the current working directory where the Ballerina build is done. The required host.json properties are provided/overridden by the values derived from the source code by the compiler extension. 
+
 A sample execution to deploy the functions to Azure Functions is shown below. 
 
 ```bash
@@ -99,7 +101,7 @@ The deployed Azure Function can be tested by invoking it using an HTTP client, s
 
 ```bash
 $ curl -d "Hello!" https://functions1777.azurewebsites.net/api/fromHttpToQueue 
-Request: url=https://functions1777.azurewebsites.net/api/fromHttpToQueue method=POST query= headers=Accept=*/* Connection=Keep-Alive Content-Length=6 Content-Type=application/x-www-form-urlencoded Host=functions1777.azurewebsites.net Max-Forwards=9 User-Agent=curl/7.64.0 X-WAWS-Unencoded-URL=/api/fromHttpToQueue CLIENT-IP=10.0.128.31:47794 X-ARR-LOG-ID=c905b483-af19-4cf2-9ce0-0741e5998a98 X-SITE-DEPLOYMENT-ID=functions1777 WAS-DEFAULT-HOSTNAME=functions1777.azurewebsites.net X-Original-URL=/api/fromHttpToQueue X-Forwarded-For=45.30.94.9:47450 X-ARR-SSL=2048|256|C=US, S=Washington, L=Redmond, O=Microsoft Corporation, OU=Microsoft IT, CN=Microsoft IT TLS CA 5|CN=*.azurewebsites.net X-Forwarded-Proto=https X-AppService-Proto=https X-Forwarded-TlsVersion=1.2 DISGUISED-HOST=functions1777.azurewebsites.net params= identities=[{"AuthenticationType":null,"IsAuthenticated":false,"Actor":null,"BootstrapContext":null,"Claims":[],"Label":null,"Name":null,"NameClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","RoleClaimType":"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"}] body=Hello!la
+Request: url=https://functions1777.azurewebsites.net/api/fromHttpToQueue method=POST query= headers=Accept=*/* Connection=Keep-Alive Content-Length=6 Content-Type=application/x-www-form-urlencoded Host=functions1777.azurewebsites.net Max-Forwards=9 User-Agent=curl/7.64.0 X-WAWS-Unencoded-URL=/api/fromHttpToQueue CLIENT-IP=10.0.128.31:47794 X-ARR-LOG-ID=c905b483-af19-4cf2-9ce0-0741e5998a98 X-SITE-DEPLOYMENT-ID=functions1777 WAS-DEFAULT-HOSTNAME=functions1777.azurewebsites.net X-Original-URL=/api/fromHttpToQueue X-Forwarded-For=45.30.94.9:47450 X-ARR-SSL=2048|256|C=US, S=Washington, L=Redmond, O=Microsoft Corporation, OU=Microsoft IT, CN=Microsoft IT TLS CA 5|CN=*.azurewebsites.net X-Forwarded-Proto=https X-AppService-Proto=https X-Forwarded-TlsVersion=1.2 DISGUISED-HOST=functions1777.azurewebsites.net params= identities=[{"AuthenticationType":null,"IsAuthenticated":false,"Actor":null,"BootstrapContext":null,"Claims":[],"Label":null,"Name":null,"NameClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","RoleClaimType":"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"}] body=Hello!
 ```
 
 A full sample of all supported Azure Functions triggers and bindings in Ballerina can be found [here](https://github.com/ballerina-platform/module-ballerinax-azure.functions/blob/master/azurefunctions-extension-examples/examples/azure-functions-deployment/azure_functions_deployment.bal).

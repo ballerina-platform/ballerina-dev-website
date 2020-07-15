@@ -13,7 +13,7 @@ redirect_from:
 
 # Quick Start
 
-Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enables the programmers to write comprehensive tests.
+The Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enable the programmers to write comprehensive tests.
 
 Let’s write a simple Ballerina function to test it.
 
@@ -48,7 +48,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     http:Client clientEndpoint = new("https://api.chucknorris.io/jokes/");
     
     // This function performs a `get` request to the Chuck Norris API and returns a random joke 
-    // with the name replaced with the provided name or an error if API invocation fails.
+    // with the name replaced with the provided name or an error if the API invocation fails.
     function getRandomJoke(string name) returns string|error {
         http:Response|error result = clientEndpoint->get("/random");
         http:Response response = <http:Response>result;
@@ -80,18 +80,18 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     // the API returns a success response
     @test:Config {}
     function testGetRandomJoke() {
-        // create a default mock HTTP Client and assign it to the clientEndpoint
+        // create a default mock HTTP Client and assign it to the `clientEndpoint`
         clientEndpoint = <http:Client>test:mock(http:Client);
         // stub the behavior of the `get` function to return the specified mock response
         test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
         // invoke the function to test
-        string result = checkpanic getRandomJoke("Sanjiva");
+        string result = checkpanic getRandomJoke("Sheldon");
         io:println(result);
         // verify the return value   
-        test:assertEquals(result, "When Sanjiva wants an egg, he cracks open a chicken.");
+        test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
     }
     
-    // Return a mock HTTP response for random joke API invocation
+    // Returns a mock HTTP response to be used for the jokes API invocation
     function getMockResponse() returns http:Response {
         http:Response mockResponse = new;
         json mockPayload = {"value":"When Chuck Norris wants an egg, he cracks open a chicken."};
@@ -115,7 +115,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     
     Running Tests with Coverage
         foo/joke:0.1.0
-    When Sanjiva wants an egg, he cracks open a chicken.
+    When Sheldon wants an egg, he cracks open a chicken.
     
         [pass] testGetRandomJoke
     

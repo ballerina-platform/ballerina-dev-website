@@ -59,7 +59,7 @@ public function testTestDouble() {
     // create and assign a test double to the HTTP object `clientEndpoint` object
     clientEndpoint=<http:Client>test:mock(http:Client, new MockHttpClient());
     // invoke function to test
-    string|error result = getRandomJoke("Sanjiva");
+    string|error result = getRandomJoke("Sheldon");
     // verify that the function returns an error
     test:assertTrue(result is error);
 }
@@ -150,24 +150,24 @@ public function testReturn() {
     // stub to return the specified mock response when the specified argument is passed
     test:prepare(clientEndpoint).when("get").withArguments("/categories").thenReturn(getCategoriesResponse());
     // invoke the function to test
-    string result = checkpanic getRandomJoke("Sanjiva");
+    string result = checkpanic getRandomJoke("Sheldon");
     // verify the return value against the expected string
-    test:assertEquals(result, "When Sanjiva wants an egg, he cracks open a chicken.");
+    test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
 }
 
 // This test stubs the behavior of the `get` function to return a specified sequence of values
-// for each `get` function invocation  when testing the `getRandomJoke` function
+// for each `get` function invocation when testing the `getRandomJoke` function
 @test:Config {}
 public function testReturnSequence() {
     // create a default mock HTTP Client and assign it to the `clientEndpoint` object
     clientEndpoint = <http:Client>test:mock(http:Client);
-    // stub to return the corresponding value for each invocation. i.e. the first call to `get` will return the mock
+    // stub to return the corresponding value for each invocation i.e., the first call to `get` will return the mock
     // response containing categories and the second call will return the mock response containing the joke
     test:prepare(clientEndpoint).when("get").thenReturnSequence(getCategoriesResponse(), getMockResponse());
     // invoke the function to test
-    string result = checkpanic getRandomJoke("Sanjiva");
+    string result = checkpanic getRandomJoke("Sheldon");
     // verify the return value against the expected string
-    test:assertEquals(result, "When Sanjiva wants an egg, he cracks open a chicken.");
+    test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
 }
 
 // This function shows how to stub a member variable value of the HTTP Client object
@@ -175,9 +175,9 @@ public function testReturnSequence() {
 function testMemberVariable() {
     // create a default mock HTTP Client and assign it to the `clientEndpoint` object
     clientEndpoint = <http:Client>test:mock(http:Client);
-    // stub the value of `url` variable to return the specified string
+    // stub the value of the `url` variable to return the specified string
     test:prepare(clientEndpoint).getMember("url").thenReturn("https://foo.com/");
-    // verify the specified value is set
+    // verify if the specified value is set
     test:assertEquals(clientEndpoint.url, "https://foo.com/");
 }
 
@@ -189,7 +189,7 @@ function getMockResponse() returns http:Response {
     return mockResponse;
 }
 
-// Returns a mock response to be used for category API invocation
+// Returns a mock response to be used for the category API invocation
 function getCategoriesResponse() returns http:Response {
     http:Response categoriesRes = new;
     json[] payload = ["animal","food","history","money","movie"];
@@ -232,13 +232,13 @@ function sendNotification(string[] emailIds) returns error? {
 import ballerina/test;
 import ballerina/email;
 
-// This function stubs the `send` function of the SmtpClient client object to do nothing when invoked
+// This function stubs the `send` function of the `SmtpClient` client object to do nothing when invoked
 // for testing the `sendNotification` function
 @test:Config {}
 function testSendNotification() {
-    // create a default mock Smtp Client and assign it to the `smtpClient` object
+    // create a default mock SMTP client and assign it to the `smtpClient` object
     smtpClient = <email:SmtpClient>test:mock(email:SmtpClient);
-    // stub to do nothing when `send` function is invoked
+    // stub to do nothing when the`send` function is invoked
     test:prepare(smtpClient).when("send").doNothing();
     string[] emailIds = ["user1@test.com", "user2@test.com"];
     // invoke the function to test and verify that no error occurred
@@ -284,13 +284,13 @@ import ballerina/test;
 
 (any|error)[] outputs = [];
 
-// This is the mock function that replaces the `io:println` function
+// This is the mock function, which replaces the `io:println` function
 @test:Mock {
     moduleName: "ballerina/io",
     functionName: "println"
 }
 function mockIoPrintLn((any|error)... text) {
-    // Append print statement to a global array
+    // Append the print statement to a global array
     outputs.push(text);
 }
 
@@ -362,7 +362,7 @@ function testCall() {
     test:assertEquals(addValues(11, 6), 5, msg = "function mocking failed");
 }
 
-// Mock function to be used in place of `intAdd` function
+// Mock function to be used in place of the `intAdd` function
 public function mockIntAdd(int a, int b) returns int {
     return (a - b);
 }

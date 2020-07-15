@@ -13,7 +13,7 @@ redirect_from:
 
 The Azure Functions extension provides the functionality to expose a Ballerina function as an Azure Function. This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation. 
 
-An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach where we can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function, where an output binding allows us to output data from the function out to an external resource. For more information, check [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
+An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows to output data from the function out to an external resource. For more information, go to [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina:
 - HTTP [trigger](http://ballerina.io/learn/api-docs/ballerina/azure.functions/annotations.html#HTTPTrigger) and [output](http://ballerina.io/learn/api-docs/ballerina/azure.functions/annotations.html#HTTPOutput) binding

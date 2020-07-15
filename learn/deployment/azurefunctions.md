@@ -55,11 +55,11 @@ Generating executables
 	az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src azure-functions.zip
 ```
 
-Ballerina's Azure Functions functionality is implemented as a custom handler. In order to deploy the above function, the following prerequisites must be met.
+In order to deploy a Ballerina function in Azure Functions, the following prerequisites must be met.
 
-* An Azure "Function App" needs to be created in a given resource group with the following requirements
-   - Runtime stack - "Java"
-   - Hosting operating system - "Windows" (default; Linux is not supported in Azure for custom handlers at the moment)
+* Create an Azure [Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements:
+   - Runtime stack - `Java`
+   - Hosting operating system - `Windows` (default; Linux is not supported in Azure for custom handlers at the moment)
 * Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 The created resource group and the function app name should be provided to the placeholders shown in the above generated usage instructions from the compiler. 

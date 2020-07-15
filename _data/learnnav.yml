@@ -60,6 +60,9 @@
     - title: AWS Lambda
       url: /learn/deployment/awslambda/
       active: awslambda
+    - title: Azure Functions
+      url: /learn/deployment/azure/
+      active: azure
 
 - title: Observability
   url: '#' 

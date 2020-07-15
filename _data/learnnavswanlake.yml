@@ -57,6 +57,9 @@
     - title: Kubernetes
       url: /swan-lake/learn/deployment/kubernetes/
       active: kubernetes
+    - title: AWS Lambda
+      url: /swan-lake/learn/deployment/awslambda/
+      active: awslambda
 
 - title: Observability
   url: '#' 

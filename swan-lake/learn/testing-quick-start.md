@@ -21,7 +21,7 @@ Let’s write a simple Ballerina function to test it.
 
 
 1. First, let’s create a Ballerina project and add a new module. Use the `ballerina new` command to create the project. 
-For more information on the command, see [Structuring Ballerina Code](swan-lake/learn/structuring-ballerina-code/).
+For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
 
     The standard project will hold the structure below.
 
@@ -112,13 +112,13 @@ For more information on the command, see [Structuring Ballerina Code](swan-lake/
 
     ```
     Compiling source
-        asma/foo:0.1.0
+        foo/joke:0.1.0
     
     Creating balos
-        target/balo/foo-2020r2-any-0.1.0.balo
+        target/balo/joke-2020r2-any-0.1.0.balo
     
     Running Tests with Coverage
-        asma/foo:0.1.0
+        foo/joke:0.1.0
     When Sheldon wants an egg, he cracks open a chicken.
     
         [pass] testGetRandomJoke
@@ -130,10 +130,11 @@ For more information on the command, see [Structuring Ballerina Code](swan-lake/
     Generating Test Report
         target/test_results.json
     
-        View the test report at: file:///home/asma/test/foo/target/report/index.html
+        View the test report at: file:///home/foo/test/sample-project/target/report/index.html
     ```
  
- ## What's Next
+ 
+## What's Next
 
 Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
  features in the [Writing Tests](/swan-lake/learn/writing-tests) section.

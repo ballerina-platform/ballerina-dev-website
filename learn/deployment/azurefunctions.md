@@ -97,7 +97,7 @@ Deployment endpoint responded with status code 202
 }
 ```
 
-The deployed Azure Function can be tested by invoking it using an HTTP client, such as CURL:
+The deployed Azure Function can be tested by invoking it using an HTTP client such as CURL:
 
 ```bash
 $ curl -d "Hello!" https://functions1777.azurewebsites.net/api/fromHttpToQueue 

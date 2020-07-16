@@ -174,8 +174,10 @@ let redirections = {
     "/0.991/learn/coding-conventions/statements/":"/0.991/learn/style-guide/statements",
     "/1.1/learn/deploymens/aws-lambda/":"/1.1/page-not-available.html",
     "/1.0/learn/deploymens/aws-lambda/":"/1.0/page-not-available.html",
+    "/swan-lake/learn/deploymens/azure-functions/":"/swan-lake/page-not-available.html",
     "/1.1/learn/deploymens/azure-functions/":"/1.1/page-not-available.html",
     "/1.0/learn/deploymens/azure-functions/":"/1.0/page-not-available.html"
+    
 
 
 };

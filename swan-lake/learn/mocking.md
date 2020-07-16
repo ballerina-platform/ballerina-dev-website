@@ -34,32 +34,41 @@ You can write a custom mock object and substitute it in place of the real object
 Let's make changes to the example in the [Quick Start](/swan-lake/learn/testing-quick-start) page. In order to test the
  `getRandomJoke` function without actually calling the endpoint, use the `test:mock` function to mock the `get` remote function of the client object.
 
-Change the content of the ***main_test.bal*** file as follows:
+Change the content of the test file as follows:
+
+This is the definition of the mock object which can be used as the test double for the `clientEndpont` object. Only the `get` function is implemented since it is the only function used in the sample.
+Attempting to call any other function will result in a runtime exception.
 
 ```ballerina
-// main_test.bal
-import ballerina/test;
 import ballerina/http;
-
-// This is the object to be used as the test double for any `http:Client` object. 
-// Only the `get` function is implemented since it is the only function used in the sample.
+ 
 public type MockHttpClient client object {
     public remote function get(@untainted string path, public http:RequestMessage message = ()) 
     	returns http:Response|http:ClientError {
 
-        http:Response res = new;
-        res.statusCode = 500;
-        return res;
+        http:Response response = new;
+        response.statusCode = 500;
+        return response;
     }
 };
+```
 
-// This test function tests the behavior of the `getRandomJoke` function when the API returns an error response
+Now an instance of this object can be used for testing the `getRandomJoke` function.
+
+***main_test.bal***
+
+```ballerina
+import ballerina/test;
+import ballerina/http;
+
 @test:Config {}
 public function testTestDouble() {
     // create and assign a test double to the HTTP object `clientEndpoint` object
     clientEndpoint=<http:Client>test:mock(http:Client, new MockHttpClient());
+
     // invoke function to test
     string|error result = getRandomJoke("Sheldon");
+
     // verify that the function returns an error
     test:assertTrue(result is error);
 }
@@ -69,18 +78,12 @@ public function testTestDouble() {
 
 Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return a specific value or to do nothing.
 
-
-#### Stubbing to return a specific value
-
-***Example:***
 The example in the [Quick Start](/swan-lake/learn/testing-quick-start) page shows how the `get` function of the client object can be
- stubbed to return a value. Let’s make changes to that example.
+ stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g. food, movies).
 
 **main.bal**
 
 ```ballerina
-// main.bal
-
 import ballerina/io;
 import ballerina/http;
 import ballerina/stringutils;
@@ -88,20 +91,23 @@ import ballerina/stringutils;
 http:Client clientEndpoint = new("https://api.chucknorris.io/jokes/");
 
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
-// from the provided category with the name replaced with the provided input or an error 
-// if API invocations fail.
+// or an error if API invocations fail.
 function getRandomJoke(string name, string category = "food") returns string|error {
     http:Response response = checkpanic clientEndpoint->get("/categories");
+
+    // check if the provided category is available
     if (response.statusCode == http:STATUS_OK) {
         json[] categories = <json[]>response.getJsonPayload();
         if (!isCategoryAvailable(categories, category)) {
-            error err = error("'"+category+"' is not a valid category.");
+            error err = error("'" + category + "' is not a valid category.");
             io:println(err.message());
             return err;
         }
     } else {
-    	return createErrorResponse(response);
+    	return createError(response);
     }
+
+    // get random joke from the provided category
     response = checkpanic clientEndpoint->get("/random?category=" + category);
     if (response.statusCode == http:STATUS_OK) {
         json payload = <json>response.getJsonPayload();
@@ -109,9 +115,16 @@ function getRandomJoke(string name, string category = "food") returns string|err
         string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
         return replacedText;
     } else {
-    	return createErrorResponse(response);
+    	return createError(response);
     }
 }
+```
+
+The below util functions are used to validate the categories and construct errors based on the HTTP response.
+
+```ballerina
+import ballerina/io;
+import ballerina/http;
 
 // This function checks if the provided category is a valid one
 function isCategoryAvailable(json[] categories, string category) returns boolean {
@@ -124,62 +137,20 @@ function isCategoryAvailable(json[] categories, string category) returns boolean
 }
 
 // Returns an error based on the HTTP response
-function createErrorResponse(http:Response response) returns error {
+function createError(http:Response response) returns error {
     error err = error("error occurred while sending GET request");
     io:println(err.message(), ", status code: ", response.statusCode);
     return err;
 }
 ```
-**main_test.bal**
+#### Stubbing to return a specific value
 
-The test functions in this file shows different options to stub the behavior of the `get` function of the HTTP Client in
- order to test the `getRandomJoke` function.
-```ballerina
-// main_test.bal
-import ballerina/test;
+***Example:***
+
+The below util functions are used to construct mock responses required for testing.
+  
+  ```ballerina
 import ballerina/http;
-
-// This test stubs the behavior of the `get` function to return a specified value
-// for testing the `getRandomJoke` function
-@test:Config {}
-public function testReturn() {
-    // create a default mock HTTP Client and assign it to the `clientEndpoint` object
-    clientEndpoint = <http:Client>test:mock(http:Client);
-    // stub to return the specified mock response when `get` function is called
-    test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
-    // stub to return the specified mock response when the specified argument is passed
-    test:prepare(clientEndpoint).when("get").withArguments("/categories").thenReturn(getCategoriesResponse());
-    // invoke the function to test
-    string result = checkpanic getRandomJoke("Sheldon");
-    // verify the return value against the expected string
-    test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
-}
-
-// This test stubs the behavior of the `get` function to return a specified sequence of values
-// for each `get` function invocation when testing the `getRandomJoke` function
-@test:Config {}
-public function testReturnSequence() {
-    // create a default mock HTTP Client and assign it to the `clientEndpoint` object
-    clientEndpoint = <http:Client>test:mock(http:Client);
-    // stub to return the corresponding value for each invocation i.e., the first call to `get` will return the mock
-    // response containing categories and the second call will return the mock response containing the joke
-    test:prepare(clientEndpoint).when("get").thenReturnSequence(getCategoriesResponse(), getMockResponse());
-    // invoke the function to test
-    string result = checkpanic getRandomJoke("Sheldon");
-    // verify the return value against the expected string
-    test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
-}
-
-// This function shows how to stub a member variable value of the HTTP Client object
-@test:Config {}
-function testMemberVariable() {
-    // create a default mock HTTP Client and assign it to the `clientEndpoint` object
-    clientEndpoint = <http:Client>test:mock(http:Client);
-    // stub the value of the `url` variable to return the specified string
-    test:prepare(clientEndpoint).getMember("url").thenReturn("https://foo.com/");
-    // verify if the specified value is set
-    test:assertEquals(clientEndpoint.url, "https://foo.com/");
-}
 
 // Returns a mock HTTP response to be used for random joke API invocation
 function getMockResponse() returns http:Response {
@@ -198,18 +169,89 @@ function getCategoriesResponse() returns http:Response {
 }
 ```
 
+**main_test.bal**
+ 
+ 1. This test stubs the behavior of the `get` function to return a specific value function
+ 
+```ballerina
+import ballerina/test;
+import ballerina/http;
+
+@test:Config {}
+public function testGetRandomJoke() {
+    // create a default mock HTTP Client and assign it to the `clientEndpoint` object
+    clientEndpoint = <http:Client>test:mock(http:Client);
+
+    // stub to return the specified mock response when `get` function is called
+    test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
+
+    // stub to return the specified mock response when the specified argument is passed
+    test:prepare(clientEndpoint).when("get").withArguments("/categories").thenReturn(getCategoriesResponse());
+
+    // invoke the function to test
+    string result = checkpanic getRandomJoke("Sheldon");
+
+    // verify the return value against the expected string
+    test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
+}
+```
+
+2. This test stubs the behavior of the `get` function to return a specified sequence of values for each `get` function invocation. 
+i.e., the first call to `get` will return the fist argument and the second call will return the second argument.
+
+```ballerina
+import ballerina/test;
+import ballerina/http;
+
+@test:Config {}
+public function testGetRandomJoke() {
+    // create a default mock HTTP Client and assign it to the `clientEndpoint` object
+    clientEndpoint = <http:Client>test:mock(http:Client);
+
+    // stub to return the corresponding value for each invocation 
+    test:prepare(clientEndpoint).when("get").thenReturnSequence(getCategoriesResponse(), getMockResponse());
+
+    // invoke the function to test
+    string result = checkpanic getRandomJoke("Sheldon");
+
+    // verify the return value against the expected string
+    test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
+}
+```
+
+3. This test shows how to stub a member variable value of the `clientEndpoint` object
+```ballerina
+import ballerina/test;
+import ballerina/http;
+
+@test:Config {}
+function testMemberVariable() {
+    // create a default mock HTTP Client and assign it to the `clientEndpoint` object
+    clientEndpoint = <http:Client>test:mock(http:Client);
+
+    // stub the value of the `url` variable to return the specified string
+    test:prepare(clientEndpoint).getMember("url").thenReturn("https://foo.com/");
+
+    // verify if the specified value is set
+    test:assertEquals(clientEndpoint.url, "https://foo.com/");
+}
+```
+
 #### Stubbing to do nothing
+
+If a function has an optional or no return type specified, this function can be mocked to do nothing when writing
+ test cases.
 
 ***Example:***
 
 **main.bal**
 
 ```ballerina
-// main.bal
 import ballerina/email;
 import ballerina/io;
 
 email:SmtpClient smtpClient = new ("localhost", "admin","admin");
+
 // This function sends out emails to specified email addresses and returns an error if sending failed.
 function sendNotification(string[] emailIds) returns error? {
     email:Email msg = {
@@ -236,11 +278,14 @@ import ballerina/email;
 // for testing the `sendNotification` function
 @test:Config {}
 function testSendNotification() {
+    string[] emailIds = ["user1@test.com", "user2@test.com"];
+
     // create a default mock SMTP client and assign it to the `smtpClient` object
     smtpClient = <email:SmtpClient>test:mock(email:SmtpClient);
+
     // stub to do nothing when the`send` function is invoked
     test:prepare(smtpClient).when("send").doNothing();
-    string[] emailIds = ["user1@test.com", "user2@test.com"];
+
     // invoke the function to test and verify that no error occurred
     test:assertEquals(sendNotification(emailIds), ());
 }
@@ -279,7 +324,6 @@ public function printMathConsts() {
 **main_test.bal**
 
 ```ballerina
-// main.test.bal
 import ballerina/test;
 
 (any|error)[] outputs = [];
@@ -299,6 +343,7 @@ function mockIoPrintLn((any|error)... text) {
 function testMathConsts() {
     // Invoke the function to test
     printMathConsts();
+
     // Verify the value provided by the math module against the expected value
     test:assertEquals(outputs[0].toString(), "Value of PI :  3.141592653589793");
 }
@@ -328,45 +373,53 @@ public function intAdd(int a, int b) returns int {
 ```
 
 **main_test.bal**
-
-The test functions in this file shows different options to stub the behavior of a function written in the module that
- is under test.
+ 
+ This is the initialization of the mock function that should be called in place of the `intAdd` function
 
 ```ballerina
-// main_test.bal
 import ballerina/test;
 
-// This is the initialization of the mock function that should be called in place of the `intAdd` function
 @test:MockFn { functionName: "intAdd" }
 test:MockFunction intAddMockFn = new();
-
-// This test stubs the behavior of the `intAdd` function to return a specific value
-// for testing the `addValues` function
-@test:Config {}
-function testReturn() {
-    // stub to return the specified value when the `intAdd` is invoked
-    test:when(intAddMockFn).thenReturn(20);
-    // stub to return the specified value when the `intAdd` is invoked with the specified arguments
-    test:when(intAddMockFn).withArguments(0, 0).thenReturn(-1);
-    
-    test:assertEquals(addValues(10, 6), 20, msg = "function mocking failed");
-    test:assertEquals(addValues(0, 0), -1, msg = "function mocking with arguments failed");
-}
-
-// This test stubs the behavior of the `intAdd` function to call another function
-// for testing the `addValues` function
-@test:Config {}
-function testCall() {
-    // stub to call another function when `intAdd` is called
-    test:when(intAddMockFn).call("mockIntAdd");
-    test:assertEquals(addValues(11, 6), 5, msg = "function mocking failed");
-}
-
-// Mock function to be used in place of the `intAdd` function
-public function mockIntAdd(int a, int b) returns int {
-    return (a - b);
-}
 ```
+
+After the initialization, the following different options can be used to stub the behavior of a function written in the
+ module that is under test.
+
+1. This test stubs the behavior of the `intAdd` function to return a specific value for testing the `addValues` function
+    ```ballerina
+    import ballerina/test;
+   
+    @test:Config {}
+    function testReturn() {
+        // stub to return the specified value when the `intAdd` is invoked
+        test:when(intAddMockFn).thenReturn(20);
+   
+        // stub to return the specified value when the `intAdd` is invoked with the specified arguments
+        test:when(intAddMockFn).withArguments(0, 0).thenReturn(-1);
+        
+        test:assertEquals(addValues(10, 6), 20, msg = "function mocking failed");
+        test:assertEquals(addValues(0, 0), -1, msg = "function mocking with arguments failed");
+    }
+    ```
+
+2. This test stubs the behavior of the `intAdd` function to call another function for testing the `addValues` function
+    ```ballerina
+    import ballerina/test;
+       
+    @test:Config {}
+    function testCall() {
+        // stub to call another function when `intAdd` is called
+        test:when(intAddMockFn).call("mockIntAdd");
+   
+        test:assertEquals(addValues(11, 6), 5, msg = "function mocking failed");
+    }
+    
+    // Mock function to be used in place of the `intAdd` function
+    public function mockIntAdd(int a, int b) returns int {
+        return (a - b);
+    }
+    ```
 
 ## What's Next
  

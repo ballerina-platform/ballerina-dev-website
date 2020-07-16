@@ -3,10 +3,10 @@ layout: ballerina-left-nav-pages
 title: Azure Functions
 description: See how the Ballerina deployment in Azure Functions works
 keywords: ballerina, programming language, serverless, cloud, Azure, Functions
-permalink: /learn/deployment/azure-functions/
+permalink: /learn/deployment/azure/
 active: azure
 redirect_from:
-  - /learn/deployment/azure-functions
+  - /learn/deployment/azure
 ---
 
 # Azure Functions
@@ -38,7 +38,7 @@ public function fromHttpToQueue(af:Context ctx,
 }
 ```
 
-The first parameter with the [Context](https://ballerina.io/learn/api-docs/ballerinax/azure-functions.html#Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the parameter list of the function. The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you also declare that you will be having a queue output binding by the usage of the `QueueOutput` annotation with a string result  by defining a `StringOutputBinding` parameter. Also, you declare an HTTP output binding by annotating the return type `HTTPBinding` with the `HTTPOutput` annotation. This HTTP output binding can also be given by defining as a parameter as well with the same annotation. In this manner, you can mix and match any combination of triggers, input/output bindings with or without the execution context object when defining an Azure Function. 
+The first parameter with the [Context](https://ballerina.io/learn/api-docs/ballerina/azure.functions/objects/Context.html) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the parameter list of the function. The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you also declare that you will be having a queue output binding by the usage of the `QueueOutput` annotation with a string result  by defining a `StringOutputBinding` parameter. Also, you declare an HTTP output binding by annotating the return type `HTTPBinding` with the `HTTPOutput` annotation. This HTTP output binding can also be given by defining as a parameter as well with the same annotation. In this manner, you can mix and match any combination of triggers, input/output bindings with or without the execution context object when defining an Azure Function. 
 
 The Azure Functions functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 

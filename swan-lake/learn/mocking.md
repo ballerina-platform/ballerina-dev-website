@@ -36,7 +36,7 @@ Let's make changes to the example in the [Quick Start](/swan-lake/learn/testing-
 
 Change the content of the test file as follows:
 
-This is the definition of the mock object which can be used as the test double for the `clientEndpont` object. Only the `get` function is implemented since it is the only function used in the sample.
+This is the definition of the mock object, which can be used as the test double for the `clientEndpont` object. Only the `get` function is implemented since it is the only function used in the sample.
 Attempting to call any other function will result in a runtime exception.
 
 ```ballerina
@@ -53,7 +53,7 @@ public type MockHttpClient client object {
 };
 ```
 
-Now an instance of this object can be used for testing the `getRandomJoke` function.
+Now, an instance of this object can be used for testing the `getRandomJoke` function.
 
 ***main_test.bal***
 
@@ -79,7 +79,7 @@ public function testTestDouble() {
 Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return a specific value or to do nothing.
 
 The example in the [Quick Start](/swan-lake/learn/testing-quick-start) page shows how the `get` function of the client object can be
- stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g. food, movies).
+ stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g., food or movies).
 
 **main.bal**
 
@@ -107,7 +107,7 @@ function getRandomJoke(string name, string category = "food") returns string|err
     	return createError(response);
     }
 
-    // get random joke from the provided category
+    // get a random joke from the provided category
     response = checkpanic clientEndpoint->get("/random?category=" + category);
     if (response.statusCode == http:STATUS_OK) {
         json payload = <json>response.getJsonPayload();
@@ -152,7 +152,7 @@ The below util functions are used to construct mock responses required for testi
   ```ballerina
 import ballerina/http;
 
-// Returns a mock HTTP response to be used for random joke API invocation
+// Returns a mock HTTP response to be used for the random joke API invocation
 function getMockResponse() returns http:Response {
     http:Response mockResponse = new;
     json mockPayload = {"value":"When Chuck Norris wants an egg, he cracks open a chicken."};
@@ -171,7 +171,7 @@ function getCategoriesResponse() returns http:Response {
 
 **main_test.bal**
  
- 1. This test stubs the behavior of the `get` function to return a specific value function
+ 1. This test stubs the behavior of the `get` function to return a specific value function.
  
 ```ballerina
 import ballerina/test;
@@ -182,7 +182,7 @@ public function testGetRandomJoke() {
     // create a default mock HTTP Client and assign it to the `clientEndpoint` object
     clientEndpoint = <http:Client>test:mock(http:Client);
 
-    // stub to return the specified mock response when `get` function is called
+    // stub to return the specified mock response when the `get` function is called
     test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
 
     // stub to return the specified mock response when the specified argument is passed
@@ -196,7 +196,7 @@ public function testGetRandomJoke() {
 }
 ```
 
-2. This test stubs the behavior of the `get` function to return a specified sequence of values for each `get` function invocation. 
+2. This test stubs the behavior of the `get` function to return a specified sequence of values for each `get` function invocation
 i.e., the first call to `get` will return the fist argument and the second call will return the second argument.
 
 ```ballerina
@@ -219,7 +219,7 @@ public function testGetRandomJoke() {
 }
 ```
 
-3. This test shows how to stub a member variable value of the `clientEndpoint` object
+3. This test shows how to stub a member variable value of the `clientEndpoint` object.
 ```ballerina
 import ballerina/test;
 import ballerina/http;
@@ -383,8 +383,8 @@ import ballerina/test;
 test:MockFunction intAddMockFn = new();
 ```
 
-After the initialization, the following different options can be used to stub the behavior of a function written in the
- module that is under test.
+After the initialization, the following options can be used to stub the behaviour of a function written in the
+ module under test.
 
 1. This test stubs the behavior of the `intAdd` function to return a specific value for testing the `addValues` function
     ```ballerina

@@ -3,10 +3,10 @@ layout: ballerina-left-nav-pages
 title: Azure Functions
 description: See how the Ballerina deployment in Azure Functions works
 keywords: ballerina, programming language, serverless, cloud, Azure, Functions
-permalink: /learn/deployment/azure/
+permalink: /learn/deployment/azure-functions/
 active: azure
 redirect_from:
-  - /learn/deployment/azure
+  - /learn/deployment/azure-functions
 ---
 
 # Azure Functions

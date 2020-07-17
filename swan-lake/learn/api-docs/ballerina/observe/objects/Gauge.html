@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,111 +69,55 @@ Ballerina supports Observability out of the box. This module provides user api's
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Objects</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="Counter.html">Counter</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="Gauge.html">Gauge</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../observe/index.html">
-            <h3>observe</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../observe/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../observe/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../../observe/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="annotations" href="../../observe/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Objects</h3>
+                    <h3>
+    Objects
+</h3>
                     <ul>
                         
-                            <li ></li>>
-                                <a href="Counter.html">Counter</a>
-                            </li>
-                        
-                            <li class="active"></li>>
-                                <a href="Gauge.html">Gauge</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="Counter.html" onclick="menuLinkClick()">Counter</a>
+        </li>
+    
+        <li class="active">
+            <a href="Gauge.html" onclick="menuLinkClick()">Gauge</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../observe/index.html">
+        <a href="../../observe/index.html" onclick="menuLinkClick()">
             <h3>observe</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../observe/index.html#records">Records</a>
+            <a data="records" href="../../observe/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../observe/index.html#objects">Objects</a>
+                <a  data="objects" href="../../observe/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../../observe/index.html#functions">Functions</a>
+                <a data="functions" href="../../observe/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
             <li>
-                <a data="annotations" href="../../observe/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../../observe/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
@@ -173,44 +126,54 @@ Ballerina supports Observability out of the box. This module provides user api's
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Object - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Object
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../observe/index.html">observe</a>
+                    <a href="../../observe/index.html"><span class="modules">observe</span></a>
+                
                  :
-                <span class="objects ">Gauge</span>
-            </h1>
-            <p>
+                    
+    <span class="objects ">Gauge</span>
+
                 
-                <p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
+            </h1>
+            
+    <p>
+        
+        <p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
 during the usage.</p>
 
-            </p>
+    </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
-                        
-                        <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> name, <span class="builtin-type">string?</span> desc, <span class="builtin-type">map?</span> tags, <span class="array-type"><a href="../../observe/records/StatisticConfig.html">StatisticConfig</a>[]?</span> statisticConfig)</p>
+    <div class="constants">
+        <div class="method-sum">
+            
+                
+                <h2>Constructor</h2>
+<h3 >__init</h3><p>(<span class="builtin-type">string</span> name, <span class="builtin-type">string?</span> desc, <span class="builtin-type">map</span><<span class="builtin-type">string</span>> tags, <span class="array-type"><a href="../../observe/records/StatisticConfig.html">StatisticConfig</a>[]?</span> statisticConfig)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -236,7 +199,7 @@ will be used.</p>
     
         <div class="params-listing">
             <ul>
-                <li> <b>tags</b><span class="type">  <span class="builtin-type">map?</span></span> &lt;map&lt;string&gt;?&gt; ()</li>
+                <li> <b>tags</b><span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">string</span>></span> &lt;map&lt;string&gt;?&gt; ()</li>
                 <li>
                     <p>The key/value pair of Tags. If no tags are provided, the default nil value will be used.</p>
 
@@ -258,15 +221,15 @@ calculation.</p>
         </div>
     
 </div>
-                        
-                    
-
                 
+            
+
+        
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="register">
         <a href="#register">register </a>
@@ -277,8 +240,8 @@ calculation.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="unregister">
         <a href="#unregister">unregister </a>
@@ -289,8 +252,8 @@ calculation.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="increment">
         <a href="#increment">increment </a>
@@ -301,8 +264,8 @@ calculation.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="decrement">
         <a href="#decrement">decrement </a>
@@ -313,8 +276,8 @@ calculation.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="setValue">
         <a href="#setValue">setValue </a>
@@ -325,8 +288,8 @@ calculation.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getValue">
         <a href="#getValue">getValue </a>
@@ -337,8 +300,8 @@ calculation.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getSnapshot">
         <a href="#getSnapshot">getSnapshot </a>
@@ -349,14 +312,14 @@ calculation.</p>
     </div>
 </div>
 
-                            
-                        </div>
                     
+                </div>
+            
 
-                    
-                        
-                            <h2>Fields</h2>
-                                <div class="data-wrapper">
+            
+                
+                    <h2>Fields</h2>
+                        <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -393,7 +356,7 @@ calculation.</p>
     <div class="params-listing">
         <ul>
             <li> <span >metricTags</span>
-                <span class="type">  <span class="builtin-type">map</span></span>
+                <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">string</span>></span>
                 
             </li>
             <li>
@@ -426,17 +389,6 @@ of the gauge during its usage.</p>
 </div>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -463,6 +415,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -473,24 +443,24 @@ contentWrapper.addEventListener("scroll", event => {
     };
 </script>
 
-                        
-                    
-                </div>
-
                 
-                    
-                        <div class="method-content">
+            
+        </div>
+
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="register" title="register">
              <a class="url-link" href="#register">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > register </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -512,14 +482,17 @@ but different parameters or in a different kind.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="unregister" title="unregister">
              <a class="url-link" href="#unregister">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > unregister </h2>
-        
+        <span class="method-types">
+            <p>()</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -530,14 +503,17 @@ but different parameters or in a different kind.</p>
 
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="increment" title="increment">
              <a class="url-link" href="#increment">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > increment </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> amount)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -571,14 +547,17 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
 
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="decrement" title="decrement">
              <a class="url-link" href="#decrement">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > decrement </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> amount)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -612,14 +591,17 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
 
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="setValue" title="setValue">
              <a class="url-link" href="#setValue">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > setValue </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> amount)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -652,19 +634,19 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
 
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getValue" title="getValue">
              <a class="url-link" href="#getValue">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getValue </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">float</span> 
+            
+                <b> returns </b><span class="builtin-type">float</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -685,19 +667,19 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getSnapshot" title="getSnapshot">
              <a class="url-link" href="#getSnapshot">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getSnapshot </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="array-type"><a href="../../observe/records/Snapshot.html">Snapshot</a>[]?</span> 
+            
+                <b> returns </b><span class="array-type"><a href="../../observe/records/Snapshot.html">Snapshot</a>[]?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -719,27 +701,16 @@ If there is no statisticsConfigs provided, then it will be nil.</p>
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -766,6 +737,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -775,4 +764,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

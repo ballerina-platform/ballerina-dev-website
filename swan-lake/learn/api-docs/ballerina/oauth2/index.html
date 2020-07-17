@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,40 +61,41 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../oauth2/index.html">
+        <a href="../oauth2/index.html" onclick="menuLinkClick()">
             <h3>oauth2</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../oauth2/index.html#records">Records</a>
+            <a data="records" href="../oauth2/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../oauth2/index.html#objects">Objects</a>
+                <a  data="objects" href="../oauth2/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../oauth2/index.html#functions">Functions</a>
+                <a data="functions" href="../oauth2/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
         
             <li>
-                <a data="types" href="../oauth2/index.html#types">Types</a>
+                <a data="types" href="../oauth2/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../oauth2/index.html#errors">Errors</a>
+                <a data="errors" href="../oauth2/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -101,320 +104,285 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../oauth2/index.html">
-            <h3>oauth2</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../oauth2/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../oauth2/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../oauth2/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../oauth2/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../oauth2/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">oauth2</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.0.0</div>
+                    <a href="../oauth2/index.html"><span class="modules">oauth2</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides an inbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and an outbound OAuth2 authentication provider, which can be used to authenticate an external endpoint.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the <a href="https://ballerina.io/swan-lake/learn/by-example/secured-service-with-oauth2.html">Secured Service with OAuth2 Example</a> and <a href="https://ballerina.io/swan-lake/learn/by-example/secured-client-with-oauth2.html">Secured Client with OAuth2 Example</a>.</p>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="ClientCredentialsGrantConfig" title="ClientCredentialsGrantConfig">
-                                <a class="records " href="records/ClientCredentialsGrantConfig.html">ClientCredentialsGrantConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The data structure, which is used to configure the OAuth2 client credentials grant type.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="DirectTokenConfig" title="DirectTokenConfig">
-                                <a class="records " href="records/DirectTokenConfig.html">DirectTokenConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The data structure, which is used to configure the OAuth2 access token directly.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="ClientCredentialsGrantConfig" title="ClientCredentialsGrantConfig">
+                            <a class="records " href="records/ClientCredentialsGrantConfig.html">ClientCredentialsGrantConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>The data structure, which is used to configure the OAuth2 client credentials grant type.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="DirectTokenRefreshConfig" title="DirectTokenRefreshConfig">
-                                <a class="records " href="records/DirectTokenRefreshConfig.html">DirectTokenRefreshConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The data structure, which can be used to pass the configurations for refreshing the access token directly.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="IntrospectionResponse" title="IntrospectionResponse">
-                                <a class="records " href="records/IntrospectionResponse.html">IntrospectionResponse</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the introspection server response.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="IntrospectionServerConfig" title="IntrospectionServerConfig">
-                                <a class="records " href="records/IntrospectionServerConfig.html">IntrospectionServerConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the introspection server configurations.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="DirectTokenConfig" title="DirectTokenConfig">
+                            <a class="records " href="records/DirectTokenConfig.html">DirectTokenConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>The data structure, which is used to configure the OAuth2 access token directly.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="OutboundOAuth2CacheEntry" title="OutboundOAuth2CacheEntry">
-                                <a class="records " href="records/OutboundOAuth2CacheEntry.html">OutboundOAuth2CacheEntry</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The data structure, which stores the values received from the authorization/token server to use them
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="DirectTokenRefreshConfig" title="DirectTokenRefreshConfig">
+                            <a class="records " href="records/DirectTokenRefreshConfig.html">DirectTokenRefreshConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>The data structure, which can be used to pass the configurations for refreshing the access token directly.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="IntrospectionResponse" title="IntrospectionResponse">
+                            <a class="records " href="records/IntrospectionResponse.html">IntrospectionResponse</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the introspection server response.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="IntrospectionServerConfig" title="IntrospectionServerConfig">
+                            <a class="records " href="records/IntrospectionServerConfig.html">IntrospectionServerConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the introspection server configurations.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="OutboundOAuth2CacheEntry" title="OutboundOAuth2CacheEntry">
+                            <a class="records " href="records/OutboundOAuth2CacheEntry.html">OutboundOAuth2CacheEntry</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>The data structure, which stores the values received from the authorization/token server to use them
 for the latter requests without requesting tokens again.
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="PasswordGrantConfig" title="PasswordGrantConfig">
-                                <a class="records " href="records/PasswordGrantConfig.html">PasswordGrantConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The data structure, which is used to configure the OAuth2 password grant type.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="RefreshConfig" title="RefreshConfig">
-                                <a class="records " href="records/RefreshConfig.html">RefreshConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The data structure, which can be used to pass the configurations for refreshing the access token of
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="PasswordGrantConfig" title="PasswordGrantConfig">
+                            <a class="records " href="records/PasswordGrantConfig.html">PasswordGrantConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>The data structure, which is used to configure the OAuth2 password grant type.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="RefreshConfig" title="RefreshConfig">
+                            <a class="records " href="records/RefreshConfig.html">RefreshConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>The data structure, which can be used to pass the configurations for refreshing the access token of
 the password grant type.
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
+        
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
                     <a class="url-link" href="#objects">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Objects </h2>
+                    <h2> Objects </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="InboundOAuth2Provider" title="InboundOAuth2Provider">
-                                <a class="objects " href="objects/InboundOAuth2Provider.html">InboundOAuth2Provider</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the inbound OAuth2 provider, which calls the introspection server, validates the received credentials,
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="InboundOAuth2Provider" title="InboundOAuth2Provider">
+                            <a class="objects " href="objects/InboundOAuth2Provider.html">InboundOAuth2Provider</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the inbound OAuth2 provider, which calls the introspection server, validates the received credentials,
 and performs authentication and authorization.
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="OutboundOAuth2Provider" title="OutboundOAuth2Provider">
-                                <a class="objects " href="objects/OutboundOAuth2Provider.html">OutboundOAuth2Provider</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the outbound OAuth2 provider, which generates OAtuh2 tokens.
-                            </td>
-                        </tr>
                     
-                </table>
-             </section>  
-            
-
-            
-
-            
-           
-
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="validateOAuth2Token" title="validateOAuth2Token">
-                                <a class="functions " href="functions.html#validateOAuth2Token">validateOAuth2Token</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Validates the given OAuth2 token by calling the OAuth2 introspection endpoint.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="OutboundOAuth2Provider" title="OutboundOAuth2Provider">
+                            <a class="objects " href="objects/OutboundOAuth2Provider.html">OutboundOAuth2Provider</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the outbound OAuth2 provider, which generates OAtuh2 tokens.
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
+        
+    
+
+    
+
+    
+
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-
-
-            
-
-
-            
-
-            
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="validateOAuth2Token" title="validateOAuth2Token">
+                    <a class="functions " href="functions.html#validateOAuth2Token">validateOAuth2Token</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types " href="types.html#Error">Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the OAuth2 error.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Validates the given OAuth2 token by calling the OAuth2 introspection endpoint.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
 
+
+    
+
+
+    
+
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="OAuth2Error" title="OAuth2Error">
-                                <a class="errors " href="errors.html#OAuth2Error">OAuth2Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the OAuth2 distinct error.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Represents the OAuth2 error.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
+
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="OAuth2Error" title="OAuth2Error">
+                    <a class="errors " href="errors.html#OAuth2Error">OAuth2Error</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the OAuth2 distinct error.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -441,6 +409,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -450,4 +436,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

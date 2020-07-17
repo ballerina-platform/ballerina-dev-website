@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,164 +69,114 @@ file/directory, and retrieve metadata of the file.
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Objects</h3>
-                <ul>
-                    
-                        <li class="active">
-                            <a href="FileInfo.html">FileInfo</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../file/index.html">
-            <h3>file</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../file/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../file/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="listeners" href="../../file/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-            <li>
-                <a data="functions" href="../../file/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../../file/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../file/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Objects</h3>
+                    <h3>
+    Objects
+</h3>
                     <ul>
                         
-                            <li class="active"></li>>
-                                <a href="FileInfo.html">FileInfo</a>
-                            </li>
-                        
+    
+        <li class="active">
+            <a href="FileInfo.html" onclick="menuLinkClick()">FileInfo</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../file/index.html">
+        <a href="../../file/index.html" onclick="menuLinkClick()">
             <h3>file</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../file/index.html#records">Records</a>
+            <a data="records" href="../../file/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../file/index.html#objects">Objects</a>
+                <a  data="objects" href="../../file/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
             <li>
-                <a data="listeners" href="../../file/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../file/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
             <li>
-                <a data="functions" href="../../file/index.html#functions">Functions</a>
+                <a data="functions" href="../../file/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
         
             <li>
-                <a data="types" href="../../file/index.html#types">Types</a>
+                <a data="types" href="../../file/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../file/index.html#errors">Errors</a>
+                <a data="errors" href="../../file/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Object - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Object
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../file/index.html">file</a>
+                    <a href="../../file/index.html"><span class="modules">file</span></a>
+                
                  :
-                <span class="objects ">FileInfo</span>
-            </h1>
-            <p>
+                    
+    <span class="objects ">FileInfo</span>
+
                 
-                <p>FileInfo record contains metadata information of a file.
+            </h1>
+            
+    <p>
+        
+        <p>FileInfo record contains metadata information of a file.
 This record is returned by getFileInfo function is os module.</p>
 
-            </p>
+    </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
-                        
-                        <h2>Constructor</h2>
+    <div class="constants">
+        <div class="method-sum">
+            
+                
+                <h2>Constructor</h2>
 <h3 >__init</h3><p>(<span class="builtin-type">string</span> name, <span class="builtin-type">int</span> size, <a href="../../time/records/Time.html">Time</a> modifiedTime, <span class="builtin-type">boolean</span> dir, <span class="builtin-type">string</span> path)</p>
 <div class="data-wrapper">
     
@@ -272,15 +231,15 @@ This record is returned by getFileInfo function is os module.</p>
         </div>
     
 </div>
-                        
-                    
-
                 
+            
+
+        
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="getName">
         <a href="#getName">getName </a>
@@ -291,8 +250,8 @@ This record is returned by getFileInfo function is os module.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getSize">
         <a href="#getSize">getSize </a>
@@ -303,8 +262,8 @@ This record is returned by getFileInfo function is os module.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getLastModifiedTime">
         <a href="#getLastModifiedTime">getLastModifiedTime </a>
@@ -315,8 +274,8 @@ This record is returned by getFileInfo function is os module.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="isDir">
         <a href="#isDir">isDir </a>
@@ -327,8 +286,8 @@ This record is returned by getFileInfo function is os module.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getPath">
         <a href="#getPath">getPath </a>
@@ -339,27 +298,27 @@ This record is returned by getFileInfo function is os module.</p>
     </div>
 </div>
 
-                            
-                        </div>
-                    
-
                     
                 </div>
+            
 
-                
-                    
-                        <div class="method-content">
+            
+        </div>
+
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getName" title="getName">
              <a class="url-link" href="#getName">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getName </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -380,19 +339,19 @@ This record is returned by getFileInfo function is os module.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getSize" title="getSize">
              <a class="url-link" href="#getSize">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getSize </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">int</span> 
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -413,19 +372,19 @@ This record is returned by getFileInfo function is os module.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getLastModifiedTime" title="getLastModifiedTime">
              <a class="url-link" href="#getLastModifiedTime">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getLastModifiedTime </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../time/records/Time.html">Time</a> 
+            
+                <b> returns </b><a href="../../time/records/Time.html">Time</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -446,19 +405,19 @@ This record is returned by getFileInfo function is os module.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="isDir" title="isDir">
              <a class="url-link" href="#isDir">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > isDir </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -479,19 +438,19 @@ This record is returned by getFileInfo function is os module.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getPath" title="getPath">
              <a class="url-link" href="#getPath">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getPath </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -512,27 +471,16 @@ This record is returned by getFileInfo function is os module.</p>
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -559,6 +507,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -568,4 +534,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

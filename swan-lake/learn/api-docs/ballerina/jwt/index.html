@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,44 +61,45 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../jwt/index.html">
+        <a href="../jwt/index.html" onclick="menuLinkClick()">
             <h3>jwt</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../jwt/index.html#records">Records</a>
+            <a data="records" href="../jwt/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../jwt/index.html#objects">Objects</a>
+                <a  data="objects" href="../jwt/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../jwt/index.html#functions">Functions</a>
+                <a data="functions" href="../jwt/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../jwt/index.html#constants">Constants</a>
+                <a data="constants" href="../jwt/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../jwt/index.html#types">Types</a>
+                <a data="types" href="../jwt/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../jwt/index.html#errors">Errors</a>
+                <a data="errors" href="../jwt/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -105,423 +108,382 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../jwt/index.html">
-            <h3>jwt</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../jwt/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../jwt/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../jwt/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../jwt/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../jwt/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../jwt/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">jwt</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.0.0</div>
+                    <a href="../jwt/index.html"><span class="modules">jwt</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the following.</p>
 <ul>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/jwt-issue-validate.html">JWT Issue/Validate Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/secured-client-with-jwt-auth.html">Secured Client with JWT Auth Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/secured-service-with-jwt-auth.html">Secured Service with JWT Auth Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/jwt-issue-validate.html">JWT Issue/Validate Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/secured-client-with-jwt-auth.html">Secured Client with JWT Auth Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/secured-service-with-jwt-auth.html">Secured Service with JWT Auth Example</a></li>
 </ul>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="JwksConfig" title="JwksConfig">
-                                <a class="records " href="records/JwksConfig.html">JwksConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the JWKs endpoint configurations.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="JwtHeader" title="JwtHeader">
-                                <a class="records " href="records/JwtHeader.html">JwtHeader</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents JWT header.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="JwksConfig" title="JwksConfig">
+                            <a class="records " href="records/JwksConfig.html">JwksConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the JWKs endpoint configurations.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="JwtIssuerConfig" title="JwtIssuerConfig">
-                                <a class="records " href="records/JwtIssuerConfig.html">JwtIssuerConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents JWT validator configurations.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="JwtKeyStoreConfig" title="JwtKeyStoreConfig">
-                                <a class="records " href="records/JwtKeyStoreConfig.html">JwtKeyStoreConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents JWT key store configurations.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="JwtPayload" title="JwtPayload">
-                                <a class="records " href="records/JwtPayload.html">JwtPayload</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents JWT payload.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="JwtHeader" title="JwtHeader">
+                            <a class="records " href="records/JwtHeader.html">JwtHeader</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents JWT header.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="JwtTrustStoreConfig" title="JwtTrustStoreConfig">
-                                <a class="records " href="records/JwtTrustStoreConfig.html">JwtTrustStoreConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents JWT trust store configurations.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="JwtValidatorConfig" title="JwtValidatorConfig">
-                                <a class="records " href="records/JwtValidatorConfig.html">JwtValidatorConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents JWT validator configurations.
-                            </td>
-                        </tr>
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="JwtIssuerConfig" title="JwtIssuerConfig">
+                            <a class="records " href="records/JwtIssuerConfig.html">JwtIssuerConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents JWT validator configurations.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="JwtKeyStoreConfig" title="JwtKeyStoreConfig">
+                            <a class="records " href="records/JwtKeyStoreConfig.html">JwtKeyStoreConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents JWT key store configurations.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="JwtPayload" title="JwtPayload">
+                            <a class="records " href="records/JwtPayload.html">JwtPayload</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents JWT payload.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="JwtTrustStoreConfig" title="JwtTrustStoreConfig">
+                            <a class="records " href="records/JwtTrustStoreConfig.html">JwtTrustStoreConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents JWT trust store configurations.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="JwtValidatorConfig" title="JwtValidatorConfig">
+                            <a class="records " href="records/JwtValidatorConfig.html">JwtValidatorConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents JWT validator configurations.
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
+        
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
                     <a class="url-link" href="#objects">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Objects </h2>
+                    <h2> Objects </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="InboundJwtAuthProvider" title="InboundJwtAuthProvider">
-                                <a class="objects " href="objects/InboundJwtAuthProvider.html">InboundJwtAuthProvider</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the inbound JWT auth provider, which authenticates by validating a JWT.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="OutboundJwtAuthProvider" title="OutboundJwtAuthProvider">
-                                <a class="objects " href="objects/OutboundJwtAuthProvider.html">OutboundJwtAuthProvider</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the outbound JWT auth provider, which is used to authenticate with an external endpoint by generating a JWT.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="InboundJwtAuthProvider" title="InboundJwtAuthProvider">
+                            <a class="objects " href="objects/InboundJwtAuthProvider.html">InboundJwtAuthProvider</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the inbound JWT auth provider, which authenticates by validating a JWT.
+                        </td>
+                    </tr>
                     
-                </table>
-             </section>  
-            
-
-            
-
-            
-           
-
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="buildHeaderString" title="buildHeaderString">
-                                <a class="functions " href="functions.html#buildHeaderString">buildHeaderString</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Builds the header string from the <code>jwt:JwtHeader</code> record.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="buildPayloadString" title="buildPayloadString">
-                                <a class="functions " href="functions.html#buildPayloadString">buildPayloadString</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Builds the payload string from the <code>jwt:JwtPayload</code> record.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="OutboundJwtAuthProvider" title="OutboundJwtAuthProvider">
+                            <a class="objects " href="objects/OutboundJwtAuthProvider.html">OutboundJwtAuthProvider</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the outbound JWT auth provider, which is used to authenticate with an external endpoint by generating a JWT.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="decodeJwt" title="decodeJwt">
-                                <a class="functions " href="functions.html#decodeJwt">decodeJwt</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Decodes the given JWT string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="issueJwt" title="issueJwt">
-                                <a class="functions " href="functions.html#issueJwt">issueJwt</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Issues a JWT based on the provided header and payload.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="validateJwt" title="validateJwt">
-                                <a class="functions " href="functions.html#validateJwt">validateJwt</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Validates the given JWT string.
-                            </td>
-                        </tr>
                     
                 </table>
             </section>
+        
+    
+
+    
+
+    
+
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-
-
+            <tr>
+                <td class="module-title truncate functions" id="buildHeaderString" title="buildHeaderString">
+                    <a class="functions " href="functions.html#buildHeaderString">buildHeaderString</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Builds the header string from the <code>jwt:JwtHeader</code> record.
+                </td>
+            </tr>
             
-            <section class="method-content" id="constants">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#constants">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Constants </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="buildPayloadString" title="buildPayloadString">
+                    <a class="functions " href="functions.html#buildPayloadString">buildPayloadString</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="RS256" title="RS256">
-                                <a class="constant " href="constants.html#RS256">RS256</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The <code>RSA-SHA256</code> algorithm</p>
-
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="RS384" title="RS384">
-                                <a class="constant " href="constants.html#RS384">RS384</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The <code>RSA-SHA384</code> algorithm</p>
-
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="RS512" title="RS512">
-                                <a class="constant " href="constants.html#RS512">RS512</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The <code>RSA-SHA512</code> algorithm</p>
-
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="NONE" title="NONE">
-                                <a class="constant " href="constants.html#NONE">NONE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Unsecured JWTs (no signing)</p>
-
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Builds the payload string from the <code>jwt:JwtPayload</code> record.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate functions" id="decodeJwt" title="decodeJwt">
+                    <a class="functions " href="functions.html#decodeJwt">decodeJwt</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Decodes the given JWT string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="issueJwt" title="issueJwt">
+                    <a class="functions " href="functions.html#issueJwt">issueJwt</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Issues a JWT based on the provided header and payload.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="validateJwt" title="validateJwt">
+                    <a class="functions " href="functions.html#validateJwt">validateJwt</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Validates the given JWT string.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
+    
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate constant" id="RS256" title="RS256">
+                    <a class="constant " href="constants.html#RS256">RS256</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The <code>RSA-SHA256</code> algorithm</p>
 
+                </td>
+            </tr>
             
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate constant" id="RS384" title="RS384">
+                    <a class="constant " href="constants.html#RS384">RS384</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types " href="types.html#Error">Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the JWT error type with details.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="JwtSigningAlgorithm" title="JwtSigningAlgorithm">
-                                <a class="types " href="types.html#JwtSigningAlgorithm">JwtSigningAlgorithm</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The key algorithms supported by crypto module.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
+                    <p>The <code>RSA-SHA384</code> algorithm</p>
 
+                </td>
+            </tr>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate constant" id="RS512" title="RS512">
+                    <a class="constant " href="constants.html#RS512">RS512</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="JWTError" title="JWTError">
-                                <a class="errors " href="errors.html#JWTError">JWTError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the JWT distinct error</p>
+                    <p>The <code>RSA-SHA512</code> algorithm</p>
 
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate constant" id="NONE" title="NONE">
+                    <a class="constant " href="constants.html#NONE">NONE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Unsecured JWTs (no signing)</p>
+
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+
+    
+
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the JWT error type with details.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="JwtSigningAlgorithm" title="JwtSigningAlgorithm">
+                    <a class="types " href="types.html#JwtSigningAlgorithm">JwtSigningAlgorithm</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The key algorithms supported by crypto module.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="JWTError" title="JWTError">
+                    <a class="errors " href="errors.html#JWTError">JWTError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the JWT distinct error</p>
+
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -548,6 +510,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -557,4 +537,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

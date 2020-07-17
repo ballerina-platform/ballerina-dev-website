@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,74 +68,30 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Objects</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="Listener.html">Listener</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="RawTemplate.html">RawTemplate</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../lang.object/index.html">
-            <h3>lang.object</h3>
-        </a>
-    
-    <ul>
-        
-        
-            <li>
-                <a  data="objects" href="../../lang.object/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Objects</h3>
+                    <h3>
+    Objects
+</h3>
                     <ul>
                         
-                            <li ></li>>
-                                <a href="Listener.html">Listener</a>
-                            </li>
-                        
-                            <li class="active"></li>>
-                                <a href="RawTemplate.html">RawTemplate</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="Listener.html" onclick="menuLinkClick()">Listener</a>
+        </li>
+    
+        <li class="active">
+            <a href="RawTemplate.html" onclick="menuLinkClick()">RawTemplate</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../lang.object/index.html">
+        <a href="../../lang.object/index.html" onclick="menuLinkClick()">
             <h3>lang.object</h3>
         </a>
     
@@ -134,7 +99,7 @@
         
         
             <li>
-                <a  data="objects" href="../../lang.object/index.html#objects">Objects</a>
+                <a  data="objects" href="../../lang.object/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
@@ -148,59 +113,70 @@
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Object - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Object
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../lang.object/index.html">lang.object</a>
+                    <a href="../../lang.object/index.html"><span class="modules">lang.object</span></a>
+                
                  :
-                <span class="objects ">RawTemplate</span>
+                    
+    <span class="objects ">RawTemplate</span>
+
+                
             </h1>
-            <p>
+            
+    <p>
+        
+        <p>Represents the shape expected from all raw templates.</p>
+
+    </p>
+
+    <div class="constants">
+        <div class="method-sum">
+            
+
+        
+            
+
+            
                 
-                <p>Represents the shape expected from all raw templates.</p>
-
-            </p>
-
-            <div class="constants">
-                <div class="method-sum">
-                    
-
-                
-                    
-
-                    
-                        
-                            <h2>Fields</h2>
-                                <div class="data-wrapper">
+                    <h2>Fields</h2>
+                        <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
             <li> <span >strings</span>
-                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                <span class="type">  <span class="builtin-type">null</span></span>
                 
             </li>
             <li>
                 <p>
                     
-                    
+                    <p>The string literal parts of the raw template.</p>
+
                 </p>
             </li>
         </ul>
@@ -215,7 +191,8 @@
             <li>
                 <p>
                     
-                    
+                    <p>The expressions given within the interpolations of the raw template.</p>
+
                 </p>
             </li>
         </ul>
@@ -224,17 +201,6 @@
 </div>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -261,6 +227,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -271,30 +255,19 @@ contentWrapper.addEventListener("scroll", event => {
     };
 </script>
 
-                        
-                    
-                </div>
-
                 
-            </div>
+            
+        </div>
+
+        
+    </div>
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -321,6 +294,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -330,4 +321,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

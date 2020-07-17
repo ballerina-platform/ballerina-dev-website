@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="<a href="https://www.rabbitmq.com/">RabbitMQ</a> is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.
+    <meta name="description" content="RabbitMQ is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,rabbitmq">
 
@@ -59,212 +68,145 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Clients</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="Channel.html">Channel</a> 
-                        </li>
-                    
-                        <li class="active active-item">
-                            <a href="Message.html">Message</a> 
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../rabbitmq/index.html">
-            <h3>rabbitmq</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../rabbitmq/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../rabbitmq/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../../rabbitmq/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../../rabbitmq/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="constants" href="../../rabbitmq/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../../rabbitmq/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../../rabbitmq/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../rabbitmq/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Clients</h3>
+                    <h3>
+    Clients
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="Channel.html">Channel</a>
-                            </li>
-                        
-                            <li class="active active-item">
-                                <a href="Message.html">Message</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="Channel.html" onclick="menuLinkClick()">Channel</a>
+        </li>
+    
+        <li class="active active-item">
+            <a href="Message.html" onclick="menuLinkClick()">Message</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../rabbitmq/index.html">
+        <a href="../../rabbitmq/index.html" onclick="menuLinkClick()">
             <h3>rabbitmq</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../rabbitmq/index.html#records">Records</a>
+            <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../rabbitmq/index.html#objects">Objects</a>
+                <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../../rabbitmq/index.html#clients">Clients</a>
+                <a data="clients" href="../../rabbitmq/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../../rabbitmq/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../rabbitmq/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
         
             <li>
-                <a data="constants" href="../../rabbitmq/index.html#constants">Constants</a>
+                <a data="constants" href="../../rabbitmq/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../../rabbitmq/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../../rabbitmq/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../../rabbitmq/index.html#types">Types</a>
+                <a data="types" href="../../rabbitmq/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../rabbitmq/index.html#errors">Errors</a>
+                <a data="errors" href="../../rabbitmq/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Clients - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Clients
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../rabbitmq/index.html">rabbitmq</a> :
+                    <a href="../../rabbitmq/index.html"><span class="modules">rabbitmq</span></a>
                 
-                <span class="clients">Message</span>
+                 :
+                    
+    <span class="clients">Message</span>
+
+                
             </h1>
-            <p><p>Provides the functionality to manipulate the messages received by the consumer services.</p>
+            
+    <p><p>Provides the functionality to manipulate the messages received by the consumer services.</p>
 </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
+    <div class="constants">
+        <div class="method-sum">
+            
 
+            
+                <h2>Remote Methods</h2>
+                <table>
                     
-                        <h2>Remote Methods</h2>
-                        <table>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="basicAck"><a
-                                            class="functions" href="#basicAck">basicAck</a></td>
-                                    <td class="module-desc"><p>Acknowledges one or several received messages.</p>
-<pre><code class="language-ballerina"> rabbitmq:Error? ackResult = message-&gt;basicAck(true);
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="basicNack"><a
-                                            class="functions" href="#basicNack">basicNack</a></td>
-                                    <td class="module-desc"><p>Rejects one or several received messages.</p>
-<pre><code class="language-ballerina"> rabbitmq:Error? nackResult = message-&gt;basicNack(true, requeue = false);
-</code></pre>
-</td>
-                                </tr>
-                            
-                        </table>
+                        <tr>
+                            <td class="module-title truncate functions" title="basicAck"><a
+                                    class="functions" href="#basicAck">basicAck</a></td>
+                            <td class="module-desc"><p>Acknowledges one or several received messages.</td>
+                        </tr>
                     
+                        <tr>
+                            <td class="module-title truncate functions" title="basicNack"><a
+                                    class="functions" href="#basicNack">basicNack</a></td>
+                            <td class="module-desc"><p>Rejects one or several received messages.</td>
+                        </tr>
+                    
+                </table>
+            
 
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="getDeliveryTag">
         <a href="#getDeliveryTag">getDeliveryTag </a>
@@ -275,8 +217,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getProperties">
         <a href="#getProperties">getProperties </a>
@@ -287,8 +229,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getTextContent">
         <a href="#getTextContent">getTextContent </a>
@@ -299,8 +241,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getFloatContent">
         <a href="#getFloatContent">getFloatContent </a>
@@ -311,8 +253,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getIntContent">
         <a href="#getIntContent">getIntContent </a>
@@ -323,8 +265,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getByteArrayContent">
         <a href="#getByteArrayContent">getByteArrayContent </a>
@@ -335,8 +277,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getJSONContent">
         <a href="#getJSONContent">getJSONContent </a>
@@ -347,8 +289,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getXMLContent">
         <a href="#getXMLContent">getXMLContent </a>
@@ -359,27 +301,27 @@
     </div>
 </div>
 
-                            
-                        </div>
-                    
-                
                     
                 </div>
+            
+        
+            
+        </div>
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="basicAck" title="basicAck">
              <a class="url-link" href="#basicAck">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > basicAck </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">boolean</span> multiple)</p>
-            <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -425,19 +367,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="basicNack" title="basicNack">
              <a class="url-link" href="#basicNack">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > basicNack </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">boolean</span> multiple, <span class="builtin-type">boolean</span> requeue)</p>
-            <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -500,23 +442,23 @@
         
     
 </div>
-                    
-                
+            
+        
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getDeliveryTag" title="getDeliveryTag">
              <a class="url-link" href="#getDeliveryTag">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getDeliveryTag </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">int</span> 
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -539,19 +481,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getProperties" title="getProperties">
              <a class="url-link" href="#getProperties">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getProperties </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../rabbitmq/records/BasicProperties.html">BasicProperties</a> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
+                <b> returns </b><a href="../../rabbitmq/records/BasicProperties.html">BasicProperties</a> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -574,19 +516,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getTextContent" title="getTextContent">
              <a class="url-link" href="#getTextContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getTextContent </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -609,19 +551,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getFloatContent" title="getFloatContent">
              <a class="url-link" href="#getFloatContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getFloatContent </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">float</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
+                <b> returns </b><span class="builtin-type">float</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -644,19 +586,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getIntContent" title="getIntContent">
              <a class="url-link" href="#getIntContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getIntContent </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">int</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
+                <b> returns </b><span class="builtin-type">int</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -679,19 +621,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getByteArrayContent" title="getByteArrayContent">
              <a class="url-link" href="#getByteArrayContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getByteArrayContent </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> 
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -714,19 +656,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getJSONContent" title="getJSONContent">
              <a class="url-link" href="#getJSONContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getJSONContent </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">json</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
+                <b> returns </b><span class="builtin-type">json</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -749,19 +691,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getXMLContent" title="getXMLContent">
              <a class="url-link" href="#getXMLContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getXMLContent </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">xml</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
+                <b> returns </b><span class="builtin-type">xml</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -784,26 +726,16 @@
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -830,6 +762,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -839,4 +789,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

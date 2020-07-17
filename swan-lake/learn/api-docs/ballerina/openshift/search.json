@@ -1,0 +1,40 @@
+{
+  "modules": [
+    {
+      "id": "openshift",
+      "description": "\u003cp\u003eThis module offers an annotation based OpenShift extension implementation for ballerina.\u003c/p\u003e"
+    }
+  ],
+  "objects": [],
+  "functions": [],
+  "records": [
+    {
+      "id": "RouteConfiguration",
+      "description": "\u003cp\u003eRoute configuration for @kubernetes:OpenShiftRoute.\u003c/p\u003e",
+      "moduleId": "openshift"
+    },
+    {
+      "id": "RouteDomainConfig",
+      "description": "\u003cp\u003eDomain for OpenShift Route configuration.\u003c/p\u003e",
+      "moduleId": "openshift"
+    }
+  ],
+  "constants": [
+    {
+      "id": "BUILD_EXTENSION_OPENSHIFT",
+      "description": "\u003cp\u003eConfiguration to use the OpenShift Build Configs.\u003c/p\u003e",
+      "moduleId": "openshift"
+    }
+  ],
+  "errors": [],
+  "types": [],
+  "clients": [],
+  "listeners": [],
+  "annotations": [
+    {
+      "id": "Route",
+      "description": "\u003cp\u003e@kubernetes:OpenShiftRoute annotation to generate openshift routes.\u003c/p\u003e",
+      "moduleId": "openshift"
+    }
+  ]
+}

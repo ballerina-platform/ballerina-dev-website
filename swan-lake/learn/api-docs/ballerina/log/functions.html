@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,98 +68,46 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#printDebug">printDebug</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#printError">printError</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#printInfo">printInfo</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#printTrace">printTrace</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#printWarn">printWarn</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../log/index.html">
-            <h3>log</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../log/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#printDebug">printDebug</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#printError">printError</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#printInfo">printInfo</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#printTrace">printTrace</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#printWarn">printWarn</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#printDebug" onclick="menuLinkClick()">printDebug</a>
+        </li>
+    
+        <li >
+            <a href="#printError" onclick="menuLinkClick()">printError</a>
+        </li>
+    
+        <li >
+            <a href="#printInfo" onclick="menuLinkClick()">printInfo</a>
+        </li>
+    
+        <li >
+            <a href="#printTrace" onclick="menuLinkClick()">printTrace</a>
+        </li>
+    
+        <li >
+            <a href="#printWarn" onclick="menuLinkClick()">printWarn</a>
+        </li>
+    
+        <li >
+            <a href="#setModuleLogLevel" onclick="menuLinkClick()">setModuleLogLevel</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../log/index.html">
+        <a href="../log/index.html" onclick="menuLinkClick()">
             <h3>log</h3>
         </a>
     
@@ -161,107 +118,136 @@
         
         
             <li>
-                <a data="functions" href="../log/index.html#functions">Functions</a>
+                <a data="functions" href="../log/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../log/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
+            <li>
+                <a data="types" href="../log/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
         
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../log/index.html">log</a>
+                    <a href="../log/index.html"><span class="modules">log</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#printDebug">printDebug</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Logs the specified value at DEBUG level.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#printError">printError</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Logs the specified message at ERROR level.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#printInfo">printInfo</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Logs the specified message at INFO level.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#printTrace">printTrace</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Logs the specified message at TRACE level.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#printWarn">printWarn</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Logs the specified message at WARN level.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#printDebug">printDebug</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Logs the specified value at DEBUG level.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#printError">printError</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Logs the specified message at ERROR level.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#printInfo">printInfo</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Logs the specified message at INFO level.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#printTrace">printTrace</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Logs the specified message at TRACE level.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#printWarn">printWarn</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Logs the specified message at WARN level.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#setModuleLogLevel">setModuleLogLevel</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Sets the module log level.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="printDebug" title="printDebug">
              <a class="url-link" href="#printDebug">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > printDebug </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">anydata</span> | <code> <span>function(</span><span>) </span><span>returns (</span><span class="builtin-type">anydata</span><span>)</span> </code> msg)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -296,14 +282,17 @@
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="printError" title="printError">
              <a class="url-link" href="#printError">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > printError </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">anydata</span> | <code> <span>function(</span><span>) </span><span>returns (</span><span class="builtin-type">anydata</span><span>)</span> </code> msg, <span class="builtin-type">error?</span> err)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -356,14 +345,17 @@
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="printInfo" title="printInfo">
              <a class="url-link" href="#printInfo">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > printInfo </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">anydata</span> | <code> <span>function(</span><span>) </span><span>returns (</span><span class="builtin-type">anydata</span><span>)</span> </code> msg)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -398,14 +390,17 @@
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="printTrace" title="printTrace">
              <a class="url-link" href="#printTrace">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > printTrace </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">anydata</span> | <code> <span>function(</span><span>) </span><span>returns (</span><span class="builtin-type">anydata</span><span>)</span> </code> msg)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -440,14 +435,17 @@
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="printWarn" title="printWarn">
              <a class="url-link" href="#printWarn">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > printWarn </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">anydata</span> | <code> <span>function(</span><span>) </span><span>returns (</span><span class="builtin-type">anydata</span><span>)</span> </code> msg)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -482,28 +480,89 @@
 
     
 </div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setModuleLogLevel" title="setModuleLogLevel">
+             <a class="url-link" href="#setModuleLogLevel">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > setModuleLogLevel </h2>
+        <span class="method-types">
+            <p>(<a href="../log/types.html#LogLevel">LogLevel</a> logLevel, <span class="builtin-type">string?</span> moduleName)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Sets the module log level. If a module name is not specified, the log level will be set to the current module.
+Following log levels are allowed.</p>
+<p>ERROR - error log level</p>
+<p>WARN - warn log level</p>
+<p>INFO - info log level</p>
+<p>DEBUG - debug log level</p>
+<p>TRACE - trace log level</p>
+<p>OFF - turns off logging</p>
+<p>ALL - enables all the log levels</p>
+<pre><code class="language-ballerina"> log:setModuleLevelLog(log:DEBUG, moduleName=“alpha”);
+ log:setModuleLevelLog(log:WARN);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >logLevel</span>
+                        <span class="type">  <a href="../log/types.html#LogLevel">LogLevel</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
                             
-                        </div>
+                            <p>Log level to be set</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >moduleName</span>
+                        <span class="type">  <span class="builtin-type">string?</span> </span>
+                        <span class="default"> (default &lt;string?&gt; ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Name of the module</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -530,6 +589,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -539,4 +616,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

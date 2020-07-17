@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,167 +69,114 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Clients</h3>
-                <ul>
-                    
-                        <li class="active active-item">
-                            <a href="Consumer.html">Consumer</a> 
-                        </li>
-                    
-                        <li >
-                            <a href="Producer.html">Producer</a> 
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../kafka/index.html">
-            <h3>kafka</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../kafka/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../kafka/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../../kafka/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="constants" href="../../kafka/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../../kafka/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../kafka/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Clients</h3>
+                    <h3>
+    Clients
+</h3>
                     <ul>
                         
-                            <li class="active active-item">
-                                <a href="Consumer.html">Consumer</a>
-                            </li>
-                        
-                            <li >
-                                <a href="Producer.html">Producer</a>
-                            </li>
-                        
+    
+        <li class="active active-item">
+            <a href="Consumer.html" onclick="menuLinkClick()">Consumer</a>
+        </li>
+    
+        <li >
+            <a href="Producer.html" onclick="menuLinkClick()">Producer</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../kafka/index.html">
+        <a href="../../kafka/index.html" onclick="menuLinkClick()">
             <h3>kafka</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../kafka/index.html#records">Records</a>
+            <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../kafka/index.html#objects">Objects</a>
+                <a  data="objects" href="../../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../../kafka/index.html#clients">Clients</a>
+                <a data="clients" href="../../kafka/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
         
         
             <li>
-                <a data="constants" href="../../kafka/index.html#constants">Constants</a>
+                <a data="constants" href="../../kafka/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../../kafka/index.html#types">Types</a>
+                <a data="types" href="../../kafka/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../kafka/index.html#errors">Errors</a>
+                <a data="errors" href="../../kafka/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Clients - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Clients
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../kafka/index.html">kafka</a> :
+                    <a href="../../kafka/index.html"><span class="modules">kafka</span></a>
                 
-                <span class="clients">Consumer</span>
+                 :
+                    
+    <span class="clients">Consumer</span>
+
+                
             </h1>
-            <p><p>Represents a Kafka consumer endpoint.</p>
+            
+    <p><p>Represents a Kafka consumer endpoint.</p>
 </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
-                        
-                            <h2>Constructor</h2>
+    <div class="constants">
+        <div class="method-sum">
+            
+                
+                    <h2>Constructor</h2>
 <h3 >__init</h3><p>(<a href="../../kafka/records/ConsumerConfiguration.html">ConsumerConfiguration</a> config)</p>
 <div class="data-wrapper">
     
@@ -235,215 +191,165 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
         </div>
     
 </div>
+                
+            
+
+            
+                <h2>Remote Methods</h2>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="assign"><a
+                                    class="functions" href="#assign">assign</a></td>
+                            <td class="module-desc"><p>Assigns consumer to a set of topic partitions.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="close"><a
+                                    class="functions" href="#close">close</a></td>
+                            <td class="module-desc"><p>Closes the consumer connection of the external Kafka broker.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="commit"><a
+                                    class="functions" href="#commit">commit</a></td>
+                            <td class="module-desc"><p>Commits the current consumed offsets for the consumer.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="commitOffset"><a
+                                    class="functions" href="#commitOffset">commitOffset</a></td>
+                            <td class="module-desc"><p>Commits given offsets and partitions for the given topics, for consumer.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="connect"><a
+                                    class="functions" href="#connect">connect</a></td>
+                            <td class="module-desc"><p>Connects the consumer to the provided host in the consumer configs.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="getAssignment"><a
+                                    class="functions" href="#getAssignment">getAssignment</a></td>
+                            <td class="module-desc"><p>Retrieves the currently-assigned partitions for the consumer.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="getAvailableTopics"><a
+                                    class="functions" href="#getAvailableTopics">getAvailableTopics</a></td>
+                            <td class="module-desc"><p>Retrieves the available list of topics for a particular consumer.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="getBeginningOffsets"><a
+                                    class="functions" href="#getBeginningOffsets">getBeginningOffsets</a></td>
+                            <td class="module-desc"><p>Retrieves the start offsets for given set of partitions.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="getCommittedOffset"><a
+                                    class="functions" href="#getCommittedOffset">getCommittedOffset</a></td>
+                            <td class="module-desc"><p>Retrieves the last committed offsets for the given topic partitions.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="getEndOffsets"><a
+                                    class="functions" href="#getEndOffsets">getEndOffsets</a></td>
+                            <td class="module-desc"><p>Retrieves the last offsets for given set of partitions.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="getPausedPartitions"><a
+                                    class="functions" href="#getPausedPartitions">getPausedPartitions</a></td>
+                            <td class="module-desc"><p>Retrieves the partitions, which are currently paused.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="getPositionOffset"><a
+                                    class="functions" href="#getPositionOffset">getPositionOffset</a></td>
+                            <td class="module-desc"><p>Retrieves the offset of the next record that will be fetched, if a records exists in that position.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="getSubscription"><a
+                                    class="functions" href="#getSubscription">getSubscription</a></td>
+                            <td class="module-desc"><p>Retrieves the set of topics, which are currently subscribed by the consumer.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="getTopicPartitions"><a
+                                    class="functions" href="#getTopicPartitions">getTopicPartitions</a></td>
+                            <td class="module-desc"><p>Retrieves the set of partitions to which the topic belongs.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="pause"><a
+                                    class="functions" href="#pause">pause</a></td>
+                            <td class="module-desc"><p>Pauses retrieving messages from a set of partitions.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="poll"><a
+                                    class="functions" href="#poll">poll</a></td>
+                            <td class="module-desc"><p>Polls the consumer for the records of an external broker.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="resume"><a
+                                    class="functions" href="#resume">resume</a></td>
+                            <td class="module-desc"><p>Resumes consumer retrieving messages from set of partitions which were paused earlier.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="seek"><a
+                                    class="functions" href="#seek">seek</a></td>
+                            <td class="module-desc"><p>Seeks for a given offset in a topic partition.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="seekToBeginning"><a
+                                    class="functions" href="#seekToBeginning">seekToBeginning</a></td>
+                            <td class="module-desc"><p>Seeks the beginning of the offsets for the given set of topic partitions.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="seekToEnd"><a
+                                    class="functions" href="#seekToEnd">seekToEnd</a></td>
+                            <td class="module-desc"><p>Seeks end of the offsets for the given set of topic partitions.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="subscribe"><a
+                                    class="functions" href="#subscribe">subscribe</a></td>
+                            <td class="module-desc"><p>Subscribes the consumer to the provided set of topics.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="subscribeToPattern"><a
+                                    class="functions" href="#subscribeToPattern">subscribeToPattern</a></td>
+                            <td class="module-desc"><p>Subscribes the consumer to the topics, which match the provided pattern.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="subscribeWithPartitionRebalance"><a
+                                    class="functions" href="#subscribeWithPartitionRebalance">subscribeWithPartitionRebalance</a></td>
+                            <td class="module-desc"><p>Subscribes to the provided set of topics with rebalance listening enabled.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="unsubscribe"><a
+                                    class="functions" href="#unsubscribe">unsubscribe</a></td>
+                            <td class="module-desc"><p>Unsubscribes from all the topic subscriptions.</td>
+                        </tr>
+                    
+                </table>
+            
+
+            
+                <h2>Methods</h2>
+                <div class="method-list">
+                    
                         
-                    
-
-                    
-                        <h2>Remote Methods</h2>
-                        <table>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="assign"><a
-                                            class="functions" href="#assign">assign</a></td>
-                                    <td class="module-desc"><p>Assigns consumer to a set of topic partitions.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="close"><a
-                                            class="functions" href="#close">close</a></td>
-                                    <td class="module-desc"><p>Closes the consumer connection of the external Kafka broker.</p>
-<pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;close();
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="commit"><a
-                                            class="functions" href="#commit">commit</a></td>
-                                    <td class="module-desc"><p>Commits the current consumed offsets for the consumer.</p>
-<pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;commit();
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="commitOffset"><a
-                                            class="functions" href="#commitOffset">commitOffset</a></td>
-                                    <td class="module-desc"><p>Commits given offsets and partitions for the given topics, for consumer.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="connect"><a
-                                            class="functions" href="#connect">connect</a></td>
-                                    <td class="module-desc"><p>Connects the consumer to the provided host in the consumer configs.</p>
-<pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;connect();
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getAssignment"><a
-                                            class="functions" href="#getAssignment">getAssignment</a></td>
-                                    <td class="module-desc"><p>Retrieves the currently-assigned partitions for the consumer.</p>
-<pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ConsumerError result = consumer-&gt;getAssignment();
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getAvailableTopics"><a
-                                            class="functions" href="#getAvailableTopics">getAvailableTopics</a></td>
-                                    <td class="module-desc"><p>Retrieves the available list of topics for a particular consumer.</p>
-<pre><code class="language-ballerina"> string[]|kafka:ConsumerError result = consumer-&gt;getAvailableTopics();
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getBeginningOffsets"><a
-                                            class="functions" href="#getBeginningOffsets">getBeginningOffsets</a></td>
-                                    <td class="module-desc"><p>Retrieves the start offsets for given set of partitions.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getCommittedOffset"><a
-                                            class="functions" href="#getCommittedOffset">getCommittedOffset</a></td>
-                                    <td class="module-desc"><p>Retrieves the last committed offsets for the given topic partitions.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getEndOffsets"><a
-                                            class="functions" href="#getEndOffsets">getEndOffsets</a></td>
-                                    <td class="module-desc"><p>Retrieves the last offsets for given set of partitions.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getPausedPartitions"><a
-                                            class="functions" href="#getPausedPartitions">getPausedPartitions</a></td>
-                                    <td class="module-desc"><p>Retrieves the partitions, which are currently paused.</p>
-<pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ConsumerError result = consumer-&gt;getPausedPartitions();
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getPositionOffset"><a
-                                            class="functions" href="#getPositionOffset">getPositionOffset</a></td>
-                                    <td class="module-desc"><p>Retrieves the offset of the next record that will be fetched, if a records exists in that position.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getSubscription"><a
-                                            class="functions" href="#getSubscription">getSubscription</a></td>
-                                    <td class="module-desc"><p>Retrieves the set of topics, which are currently subscribed by the consumer.</p>
-<pre><code class="language-ballerina"> string[]|kafka:ConsumerError result = consumer-&gt;getSubscription();
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getTopicPartitions"><a
-                                            class="functions" href="#getTopicPartitions">getTopicPartitions</a></td>
-                                    <td class="module-desc"><p>Retrieves the set of partitions to which the topic belongs.</p>
-<pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ConsumerError result = consumer-&gt;getTopicPartitions(&quot;kafka-topic&quot;);
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="pause"><a
-                                            class="functions" href="#pause">pause</a></td>
-                                    <td class="module-desc"><p>Pauses retrieving messages from a set of partitions.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="poll"><a
-                                            class="functions" href="#poll">poll</a></td>
-                                    <td class="module-desc"><p>Polls the consumer for the records of an external broker.</p>
-<pre><code class="language-ballerina"> kafka:ConsumerRecord[]|kafka:ConsumerError result = consumer-&gt;poll(1000);
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="resume"><a
-                                            class="functions" href="#resume">resume</a></td>
-                                    <td class="module-desc"><p>Resumes consumer retrieving messages from set of partitions which were paused earlier.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="seek"><a
-                                            class="functions" href="#seek">seek</a></td>
-                                    <td class="module-desc"><p>Seeks for a given offset in a topic partition.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="seekToBeginning"><a
-                                            class="functions" href="#seekToBeginning">seekToBeginning</a></td>
-                                    <td class="module-desc"><p>Seeks the beginning of the offsets for the given set of topic partitions.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="seekToEnd"><a
-                                            class="functions" href="#seekToEnd">seekToEnd</a></td>
-                                    <td class="module-desc"><p>Seeks end of the offsets for the given set of topic partitions.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="subscribe"><a
-                                            class="functions" href="#subscribe">subscribe</a></td>
-                                    <td class="module-desc"><p>Subscribes the consumer to the provided set of topics.</p>
-<pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;subscribe([&quot;kafka-topic-1&quot;, &quot;kafka-topic-2&quot;]);
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="subscribeToPattern"><a
-                                            class="functions" href="#subscribeToPattern">subscribeToPattern</a></td>
-                                    <td class="module-desc"><p>Subscribes the consumer to the topics, which match the provided pattern.</p>
-<pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;subscribeToPattern(&quot;kafka.*&quot;);
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="subscribeWithPartitionRebalance"><a
-                                            class="functions" href="#subscribeWithPartitionRebalance">subscribeWithPartitionRebalance</a></td>
-                                    <td class="module-desc"><p>Subscribes to the provided set of topics with rebalance listening enabled.
-This function can be used inside a service, to subscribe to a set of topics, while rebalancing the patition
-assignment of the consumers.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="unsubscribe"><a
-                                            class="functions" href="#unsubscribe">unsubscribe</a></td>
-                                    <td class="module-desc"><p>Unsubscribes from all the topic subscriptions.</p>
-<pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;unsubscribe();
-</code></pre>
-</td>
-                                </tr>
-                            
-                        </table>
-                    
-
-                    
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
 <div class="param-sum">
     <div class="param-name " title="__start">
         <a href="#__start">__start </a>
@@ -454,8 +360,8 @@ assignment of the consumers.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="__gracefulStop">
         <a href="#__gracefulStop">__gracefulStop </a>
@@ -466,8 +372,8 @@ assignment of the consumers.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="__immediateStop">
         <a href="#__immediateStop">__immediateStop </a>
@@ -478,8 +384,8 @@ assignment of the consumers.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="__attach">
         <a href="#__attach">__attach </a>
@@ -490,8 +396,8 @@ assignment of the consumers.</p>
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="__detach">
         <a href="#__detach">__detach </a>
@@ -502,14 +408,14 @@ assignment of the consumers.</p>
     </div>
 </div>
 
-                            
-                        </div>
                     
-                
-                    
-                        <h2>Fields</h2>
-                                
-                                <div class="data-wrapper">
+                </div>
+            
+        
+            
+                <h2>Fields</h2>
+                        
+                        <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -530,17 +436,6 @@ assignment of the consumers.</p>
 </div>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -567,6 +462,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -577,24 +490,24 @@ contentWrapper.addEventListener("scroll", event => {
     };
 </script>
 
-                            
                     
-                </div>
+            
+        </div>
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="assign" title="assign">
              <a class="url-link" href="#assign">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > assign </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> partitions)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -637,19 +550,19 @@ contentWrapper.addEventListener("scroll", event => {
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="close" title="close">
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > close </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> duration)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -694,19 +607,19 @@ contentWrapper.addEventListener("scroll", event => {
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="commit" title="commit">
              <a class="url-link" href="#commit">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > commit </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -729,19 +642,19 @@ contentWrapper.addEventListener("scroll", event => {
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="commitOffset" title="commitOffset">
              <a class="url-link" href="#commitOffset">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > commitOffset </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a>[]</span> offsets, <span class="builtin-type">int</span> duration)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -801,19 +714,19 @@ contentWrapper.addEventListener("scroll", event => {
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="connect" title="connect">
              <a class="url-link" href="#connect">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > connect </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -836,19 +749,19 @@ contentWrapper.addEventListener("scroll", event => {
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getAssignment" title="getAssignment">
              <a class="url-link" href="#getAssignment">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getAssignment </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -871,19 +784,19 @@ contentWrapper.addEventListener("scroll", event => {
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getAvailableTopics" title="getAvailableTopics">
              <a class="url-link" href="#getAvailableTopics">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getAvailableTopics </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> duration)</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -929,19 +842,19 @@ a <code>kafka:ConsumerError</code></p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getBeginningOffsets" title="getBeginningOffsets">
              <a class="url-link" href="#getBeginningOffsets">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getBeginningOffsets </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> partitions, <span class="builtin-type">int</span> duration)</p>
-            <b> returns </b><span class="array-type"><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><span class="array-type"><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1001,19 +914,19 @@ a <code>kafka:ConsumerError</code></p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getCommittedOffset" title="getCommittedOffset">
              <a class="url-link" href="#getCommittedOffset">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getCommittedOffset </h2>
-        
         <span class="method-types">
             <p>(<a href="../../kafka/records/TopicPartition.html">TopicPartition</a> partition, <span class="builtin-type">int</span> duration)</p>
-            <b> returns </b><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1074,19 +987,19 @@ a <code>kafka:ConsumerError</code></p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getEndOffsets" title="getEndOffsets">
              <a class="url-link" href="#getEndOffsets">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getEndOffsets </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> partitions, <span class="builtin-type">int</span> duration)</p>
-            <b> returns </b><span class="array-type"><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><span class="array-type"><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1146,19 +1059,19 @@ a <code>kafka:ConsumerError</code></p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getPausedPartitions" title="getPausedPartitions">
              <a class="url-link" href="#getPausedPartitions">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getPausedPartitions </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1182,19 +1095,19 @@ a <code>kafka:ConsumerError</code></p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getPositionOffset" title="getPositionOffset">
              <a class="url-link" href="#getPositionOffset">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getPositionOffset </h2>
-        
         <span class="method-types">
             <p>(<a href="../../kafka/records/TopicPartition.html">TopicPartition</a> partition, <span class="builtin-type">int</span> duration)</p>
-            <b> returns </b><span class="builtin-type">int</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><span class="builtin-type">int</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1255,19 +1168,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getSubscription" title="getSubscription">
              <a class="url-link" href="#getSubscription">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getSubscription </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1290,19 +1203,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getTopicPartitions" title="getTopicPartitions">
              <a class="url-link" href="#getTopicPartitions">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getTopicPartitions </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> topic, <span class="builtin-type">int</span> duration)</p>
-            <b> returns </b><span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1364,19 +1277,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="pause" title="pause">
              <a class="url-link" href="#pause">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > pause </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> partitions)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1419,19 +1332,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="poll" title="poll">
              <a class="url-link" href="#poll">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > poll </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> timeoutValue)</p>
-            <b> returns </b><span class="array-type"><a href="../../kafka/records/ConsumerRecord.html">ConsumerRecord</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
+                <b> returns </b><span class="array-type"><a href="../../kafka/records/ConsumerRecord.html">ConsumerRecord</a>[]</span> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1476,19 +1389,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="resume" title="resume">
              <a class="url-link" href="#resume">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > resume </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> partitions)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1531,19 +1444,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="seek" title="seek">
              <a class="url-link" href="#seek">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > seek </h2>
-        
         <span class="method-types">
             <p>(<a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a> offset)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1586,19 +1499,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="seekToBeginning" title="seekToBeginning">
              <a class="url-link" href="#seekToBeginning">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > seekToBeginning </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> partitions)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1641,19 +1554,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="seekToEnd" title="seekToEnd">
              <a class="url-link" href="#seekToEnd">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > seekToEnd </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> partitions)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1696,19 +1609,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="subscribe" title="subscribe">
              <a class="url-link" href="#subscribe">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > subscribe </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> topics)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1753,19 +1666,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="subscribeToPattern" title="subscribeToPattern">
              <a class="url-link" href="#subscribeToPattern">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > subscribeToPattern </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> regex)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1810,19 +1723,19 @@ the operation fails</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="subscribeWithPartitionRebalance" title="subscribeWithPartitionRebalance">
              <a class="url-link" href="#subscribeWithPartitionRebalance">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > subscribeWithPartitionRebalance </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> topics, <code> <span>function(</span><a href="../../kafka/clients/Consumer.html">Consumer</a>, <span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> onPartitionsRevoked, <code> <span>function(</span><a href="../../kafka/clients/Consumer.html">Consumer</a>, <span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> onPartitionsAssigned)</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1901,19 +1814,19 @@ assignment of the consumers.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="unsubscribe" title="unsubscribe">
              <a class="url-link" href="#unsubscribe">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > unsubscribe </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
+                <b> returns </b><a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1936,23 +1849,23 @@ assignment of the consumers.</p>
         
     
 </div>
-                    
-                
+            
+        
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__start" title="__start">
              <a class="url-link" href="#__start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __start </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1973,19 +1886,19 @@ assignment of the consumers.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__gracefulStop" title="__gracefulStop">
              <a class="url-link" href="#__gracefulStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __gracefulStop </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -2006,19 +1919,19 @@ assignment of the consumers.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__immediateStop" title="__immediateStop">
              <a class="url-link" href="#__immediateStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __immediateStop </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -2039,19 +1952,19 @@ assignment of the consumers.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__attach" title="__attach">
              <a class="url-link" href="#__attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __attach </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s, <span class="builtin-type">string?</span> name)</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -2111,19 +2024,19 @@ assignment of the consumers.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__detach" title="__detach">
              <a class="url-link" href="#__detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __detach </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s)</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -2166,26 +2079,16 @@ assignment of the consumers.</p>
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -2212,6 +2115,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -2221,4 +2142,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

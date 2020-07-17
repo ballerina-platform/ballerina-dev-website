@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,187 +69,125 @@ below functionalities.
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Objects</h3>
-                <ul>
-                    
-                        <li class="active">
-                            <a href="Connection.html">Connection</a>
-                        </li>
-                    
-                        <li >
-                            <a href="Message.html">Message</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../nats/index.html">
-            <h3>nats</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../nats/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../nats/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../../nats/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../../nats/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="constants" href="../../nats/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../../nats/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../../nats/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../nats/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Objects</h3>
+                    <h3>
+    Objects
+</h3>
                     <ul>
                         
-                            <li class="active"></li>>
-                                <a href="Connection.html">Connection</a>
-                            </li>
-                        
-                            <li ></li>>
-                                <a href="Message.html">Message</a>
-                            </li>
-                        
+    
+        <li class="active">
+            <a href="Connection.html" onclick="menuLinkClick()">Connection</a>
+        </li>
+    
+        <li >
+            <a href="Message.html" onclick="menuLinkClick()">Message</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../nats/index.html">
+        <a href="../../nats/index.html" onclick="menuLinkClick()">
             <h3>nats</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../nats/index.html#records">Records</a>
+            <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../nats/index.html#objects">Objects</a>
+                <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../../nats/index.html#clients">Clients</a>
+                <a data="clients" href="../../nats/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../../nats/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../nats/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
         
             <li>
-                <a data="constants" href="../../nats/index.html#constants">Constants</a>
+                <a data="constants" href="../../nats/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../../nats/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../../nats/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../../nats/index.html#types">Types</a>
+                <a data="types" href="../../nats/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../nats/index.html#errors">Errors</a>
+                <a data="errors" href="../../nats/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Object - </span>
-                
-                    <a href="../../nats/index.html">nats</a>
-                 :
-                <span class="objects ">Connection</span>
-            </h1>
-            <p>
-                
-                <p>Represents a single network connection to the NATS server.</p>
-
-            </p>
-
-            <div class="constants">
-                <div class="method-sum">
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        
-                        <h2>Constructor</h2>
+                    
+    Object
+
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../../nats/index.html"><span class="modules">nats</span></a>
+                
+                 :
+                    
+    <span class="objects ">Connection</span>
+
+                
+            </h1>
+            
+    <p>
+        
+        <p>Represents a single network connection to the NATS server.</p>
+
+    </p>
+
+    <div class="constants">
+        <div class="method-sum">
+            
+                
+                <h2>Constructor</h2>
 <h3 >__init</h3><p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> url, <a href="../../nats/records/ConnectionConfig.html">ConnectionConfig</a>? config)</p>
 <div class="data-wrapper">
     
@@ -265,15 +212,15 @@ below functionalities.
         </div>
     
 </div>
-                        
-                    
-
                 
+            
+
+        
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="close">
         <a href="#close">close </a>
@@ -284,27 +231,27 @@ below functionalities.
     </div>
 </div>
 
-                            
-                        </div>
-                    
-
                     
                 </div>
+            
 
-                
-                    
-                        <div class="method-content">
+            
+        </div>
+
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="close" title="close">
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > close </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">boolean</span> forceful)</p>
-            <b> returns </b><a href="../../nats/errors.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../nats/errors.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -348,27 +295,16 @@ The default value is <code>false</code>.</p>
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -395,6 +331,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -404,4 +358,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

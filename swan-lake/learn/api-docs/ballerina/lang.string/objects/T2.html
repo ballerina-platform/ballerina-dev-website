@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,93 +68,45 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Objects</h3>
-                <ul>
-                    
-                        <li class="active">
-                            <a href="T2.html">T2</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../lang.string/index.html">
-            <h3>lang.string</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../lang.string/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../lang.string/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../../lang.string/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Objects</h3>
+                    <h3>
+    Objects
+</h3>
                     <ul>
                         
-                            <li class="active"></li>>
-                                <a href="T2.html">T2</a>
-                            </li>
-                        
+    
+        <li class="active">
+            <a href="T2.html" onclick="menuLinkClick()">T2</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../lang.string/index.html">
+        <a href="../../lang.string/index.html" onclick="menuLinkClick()">
             <h3>lang.string</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../lang.string/index.html#records">Records</a>
+            <a data="records" href="../../lang.string/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../lang.string/index.html#objects">Objects</a>
+                <a  data="objects" href="../../lang.string/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../../lang.string/index.html#functions">Functions</a>
+                <a data="functions" href="../../lang.string/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -156,46 +117,56 @@
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Object - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Object
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../lang.string/index.html">lang.string</a>
+                    <a href="../../lang.string/index.html"><span class="modules">lang.string</span></a>
+                
                  :
-                <span class="objects ">T2</span>
+                    
+    <span class="objects ">T2</span>
+
+                
             </h1>
-            <p>
-                
-                
-            </p>
+            
+    <p>
+        
+        
+    </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
+    <div class="constants">
+        <div class="method-sum">
+            
 
-                
+        
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="next">
         <a href="#next">next </a>
@@ -206,27 +177,27 @@
     </div>
 </div>
 
-                            
-                        </div>
-                    
-
                     
                 </div>
+            
 
-                
-                    
-                        <div class="method-content">
+            
+        </div>
+
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="next" title="next">
              <a class="url-link" href="#next">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > next </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../lang.string/records/T1.html">T1</a>? 
+            
+                <b> returns </b><a href="../../lang.string/records/T1.html">T1</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -245,27 +216,16 @@
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -292,6 +252,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -301,4 +279,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

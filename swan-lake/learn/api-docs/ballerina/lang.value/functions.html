@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,122 +68,66 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#clone">clone</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#cloneReadOnly">cloneReadOnly</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#cloneWithType">cloneWithType</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#fromJsonString">fromJsonString</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#isReadOnly">isReadOnly</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#mergeJson">mergeJson</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#toJsonString">toJsonString</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#toString">toString</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../lang.value/index.html">
-            <h3>lang.value</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../lang.value/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#clone">clone</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#cloneReadOnly">cloneReadOnly</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#cloneWithType">cloneWithType</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#fromJsonString">fromJsonString</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#isReadOnly">isReadOnly</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#mergeJson">mergeJson</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#toJsonString">toJsonString</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#toString">toString</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#clone" onclick="menuLinkClick()">clone</a>
+        </li>
+    
+        <li >
+            <a href="#cloneReadOnly" onclick="menuLinkClick()">cloneReadOnly</a>
+        </li>
+    
+        <li >
+            <a href="#cloneWithType" onclick="menuLinkClick()">cloneWithType</a>
+        </li>
+    
+        <li >
+            <a href="#fromJsonString" onclick="menuLinkClick()">fromJsonString</a>
+        </li>
+    
+        <li >
+            <a href="#fromJsonStringWithType" onclick="menuLinkClick()">fromJsonStringWithType</a>
+        </li>
+    
+        <li >
+            <a href="#fromJsonWithType" onclick="menuLinkClick()">fromJsonWithType</a>
+        </li>
+    
+        <li >
+            <a href="#isReadOnly" onclick="menuLinkClick()">isReadOnly</a>
+        </li>
+    
+        <li >
+            <a href="#mergeJson" onclick="menuLinkClick()">mergeJson</a>
+        </li>
+    
+        <li >
+            <a href="#toJson" onclick="menuLinkClick()">toJson</a>
+        </li>
+    
+        <li >
+            <a href="#toJsonString" onclick="menuLinkClick()">toJsonString</a>
+        </li>
+    
+        <li >
+            <a href="#toString" onclick="menuLinkClick()">toString</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../lang.value/index.html">
+        <a href="../lang.value/index.html" onclick="menuLinkClick()">
             <h3>lang.value</h3>
         </a>
     
@@ -185,7 +138,7 @@
         
         
             <li>
-                <a data="functions" href="../lang.value/index.html#functions">Functions</a>
+                <a data="functions" href="../lang.value/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -196,131 +149,169 @@
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../lang.value/index.html">lang.value</a>
+                    <a href="../lang.value/index.html"><span class="modules">lang.value</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#clone">clone</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns a clone of <code>v</code>.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#cloneReadOnly">cloneReadOnly</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns a clone of <code>v</code> that is read-only, i.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#cloneWithType">cloneWithType</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Constructs a value with a specified type by cloning another value.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#fromJsonString">fromJsonString</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Parses a string in JSON format and returns the the value that it represents.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#isReadOnly">isReadOnly</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Tests whether <code>v</code> is read-only, i.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#mergeJson">mergeJson</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Merges two json values.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#toJsonString">toJsonString</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns the string that represents <code>v</code> in JSON format.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#toString">toString</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Performs a minimal conversion of a value to a string.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#clone">clone</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns a clone of <code>v</code>.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#cloneReadOnly">cloneReadOnly</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns a clone of <code>v</code> that is read-only, i.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#cloneWithType">cloneWithType</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Constructs a value with a specified type by cloning another value.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#fromJsonString">fromJsonString</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Parses a string in JSON format and returns the the value that it represents.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#fromJsonStringWithType">fromJsonStringWithType</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Converts a string in JSON format to a user-specified type.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#fromJsonWithType">fromJsonWithType</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Converts a value of type json to a user-specified type.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#isReadOnly">isReadOnly</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Tests whether <code>v</code> is read-only, i.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#mergeJson">mergeJson</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Merges two json values.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#toJson">toJson</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Converts a value of type <code>anydata</code> to <code>json</code>.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#toJsonString">toJsonString</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns the string that represents <code>v</code> in JSON format.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#toString">toString</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Performs a minimal conversion of a value to a string.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="clone" title="clone">
              <a class="url-link" href="#clone">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > clone </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">null</span> v)</p>
-            <b> returns </b><span class="builtin-type">null</span> 
+            
+                <b> returns </b><span class="builtin-type">null</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -367,19 +358,19 @@ defined in the Ballerina Language Specification.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="cloneReadOnly" title="cloneReadOnly">
              <a class="url-link" href="#cloneReadOnly">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > cloneReadOnly </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">null</span> v)</p>
-            <b> returns </b><span class="builtin-type">null</span> 
+            
+                <b> returns </b><span class="builtin-type">null</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -424,19 +415,19 @@ defined in the Ballerina Language Specification.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="cloneWithType" title="cloneWithType">
              <a class="url-link" href="#cloneWithType">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > cloneWithType </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">anydata</span> v, <span class="builtin-type">typedesc</span> t)</p>
-            <b> returns </b><span class="builtin-type">null</span> | <span class="builtin-type">error</span> 
+            
+                <b> returns </b><span class="builtin-type">null</span> | <span class="builtin-type">error</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -518,19 +509,19 @@ to supply any missing members</li>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="fromJsonString" title="fromJsonString">
              <a class="url-link" href="#fromJsonString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > fromJsonString </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> str)</p>
-            <b> returns </b><span class="builtin-type">json</span> | <span class="builtin-type">error</span> 
+            
+                <b> returns </b><span class="builtin-type">json</span> | <span class="builtin-type">error</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -575,19 +566,167 @@ Returns an error if the string cannot be parsed.</p>
         
     
 </div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="fromJsonStringWithType" title="fromJsonStringWithType">
+             <a class="url-link" href="#fromJsonStringWithType">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromJsonStringWithType </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str, <span class="builtin-type">typedesc</span> t)</p>
+            
+                <b> returns </b><span class="builtin-type">t</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Converts a string in JSON format to a user-specified type.
+This is a combination of <code>fromJsonString</code> followed by
+<code>fromJsonWithType</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
                             
-                                <div class="method-content">
+                            <p>string in JSON format</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >t</span>
+                        <span class="type">  <span class="builtin-type">typedesc</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>type to convert to</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">t</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>value belonging to <code>t</code>, or error if this cannot be done</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="fromJsonWithType" title="fromJsonWithType">
+             <a class="url-link" href="#fromJsonWithType">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromJsonWithType </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">json</span> v, <span class="builtin-type">typedesc</span> t)</p>
+            
+                <b> returns </b><span class="builtin-type">t</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Converts a value of type json to a user-specified type.
+This works the same as <code>cloneWithType</code>,
+except that it also does the inverse of the conversions done by <code>toJson</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >v</span>
+                        <span class="type">  <span class="builtin-type">json</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>json value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >t</span>
+                        <span class="type">  <span class="builtin-type">typedesc</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>type to convert to</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">t</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>value belonging to <code>t</code>, or error if this cannot be done</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="isReadOnly" title="isReadOnly">
              <a class="url-link" href="#isReadOnly">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > isReadOnly </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">anydata</span> v)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -631,19 +770,19 @@ Returns true if read-only, false otherwise.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="mergeJson" title="mergeJson">
              <a class="url-link" href="#mergeJson">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > mergeJson </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">json</span> j1, <span class="builtin-type">json</span> j2)</p>
-            <b> returns </b><span class="builtin-type">json</span> | <span class="builtin-type">error</span> 
+            
+                <b> returns </b><span class="builtin-type">json</span> | <span class="builtin-type">error</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -718,23 +857,33 @@ If the merge fails, then <code>j1</code> is unchanged.</li>
         
     
 </div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="toJsonString" title="toJsonString">
-             <a class="url-link" href="#toJsonString">
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="toJson" title="toJson">
+             <a class="url-link" href="#toJson">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2 > toJsonString </h2>
-        
+            <h2 > toJson </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">json</span> v)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            <p>(<span class="builtin-type">anydata</span> v)</p>
+            
+                <b> returns </b><span class="builtin-type">json</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
-        <p>Returns the string that represents <code>v</code> in JSON format.</p>
+        <p>Converts a value of type <code>anydata</code> to <code>json</code>.
+This does a deep copy of <code>v</code> converting values that do
+not belong to json into values that do.
+A value of type <code>xml</code> is converted into a string as if
+by the <code>toString</code> function.
+A value of type <code>table</code> is converted into a list of
+mappings one for each row.
+The inherent type of arrays in the return value will be
+<code>json[]</code> and of mappings will be <code>map&lt;json&gt;</code>.
+A new copy is made of all structural values, including
+immutable values.</p>
 
     </div>
     
@@ -745,13 +894,70 @@ If the merge fails, then <code>j1</code> is unchanged.</li>
                 <ul>
                     <li>
                         <span >v</span>
-                        <span class="type">  <span class="builtin-type">json</span> </span>
+                        <span class="type">  <span class="builtin-type">anydata</span> </span>
                         
                     </li>
                     <li>
                         <p>
                             
-                            <p>json value</p>
+                            <p>anydata value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">json</span></span>)</li>
+                <li><p>representation of <code>v</code> as value of type json
+This panics if <code>v</code> has cycles.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="toJsonString" title="toJsonString">
+             <a class="url-link" href="#toJsonString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toJsonString </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">anydata</span> v)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the string that represents <code>v</code> in JSON format.
+<code>v</code> is first converted to <code>json</code> as if by the <code>toJson</code> function.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >v</span>
+                        <span class="type">  <span class="builtin-type">anydata</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>anydata value</p>
 
                         </p>
                     </li>
@@ -773,19 +979,19 @@ If the merge fails, then <code>j1</code> is unchanged.</li>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="toString" title="toString">
              <a class="url-link" href="#toString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > toString </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">any</span> | <span class="builtin-type">error</span> v)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -871,28 +1077,18 @@ that are not equal (in the sense of the <code>==</code> operator).</p>
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -919,6 +1115,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -928,4 +1142,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

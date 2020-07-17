@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,155 +68,105 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Objects</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="InboundOAuth2Provider.html">InboundOAuth2Provider</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="OutboundOAuth2Provider.html">OutboundOAuth2Provider</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../oauth2/index.html">
-            <h3>oauth2</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../oauth2/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../oauth2/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../../oauth2/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../../oauth2/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../oauth2/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Objects</h3>
+                    <h3>
+    Objects
+</h3>
                     <ul>
                         
-                            <li ></li>>
-                                <a href="InboundOAuth2Provider.html">InboundOAuth2Provider</a>
-                            </li>
-                        
-                            <li class="active"></li>>
-                                <a href="OutboundOAuth2Provider.html">OutboundOAuth2Provider</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="InboundOAuth2Provider.html" onclick="menuLinkClick()">InboundOAuth2Provider</a>
+        </li>
+    
+        <li class="active">
+            <a href="OutboundOAuth2Provider.html" onclick="menuLinkClick()">OutboundOAuth2Provider</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../oauth2/index.html">
+        <a href="../../oauth2/index.html" onclick="menuLinkClick()">
             <h3>oauth2</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../oauth2/index.html#records">Records</a>
+            <a data="records" href="../../oauth2/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../oauth2/index.html#objects">Objects</a>
+                <a  data="objects" href="../../oauth2/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../../oauth2/index.html#functions">Functions</a>
+                <a data="functions" href="../../oauth2/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
         
             <li>
-                <a data="types" href="../../oauth2/index.html#types">Types</a>
+                <a data="types" href="../../oauth2/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../oauth2/index.html#errors">Errors</a>
+                <a data="errors" href="../../oauth2/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Object - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Object
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../oauth2/index.html">oauth2</a>
+                    <a href="../../oauth2/index.html"><span class="modules">oauth2</span></a>
+                
                  :
-                <span class="objects ">OutboundOAuth2Provider</span>
-            </h1>
-            <p>
+                    
+    <span class="objects ">OutboundOAuth2Provider</span>
+
                 
-                <p>Represents the outbound OAuth2 provider, which generates OAtuh2 tokens. This supports the client credentials grant type,
+            </h1>
+            
+    <p>
+        
+        <p>Represents the outbound OAuth2 provider, which generates OAtuh2 tokens. This supports the client credentials grant type,
 password grant type, and the direct token mode, which sends the access token directly.
 The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code>auth:OutboundAuthProvider</code> interface.</p>
 <ol>
@@ -247,13 +206,13 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
  });
 </code></pre>
 
-            </p>
+    </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
-                        
-                        <h2>Constructor</h2>
+    <div class="constants">
+        <div class="method-sum">
+            
+                
+                <h2>Constructor</h2>
 <h3 >__init</h3><p>(<span class="builtin-type">GrantTypeConfig?</span> oauth2ProviderConfig)</p>
 <div class="data-wrapper">
     
@@ -268,15 +227,15 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
         </div>
     
 </div>
-                        
-                    
-
                 
+            
+
+        
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="generateToken">
         <a href="#generateToken">generateToken </a>
@@ -287,8 +246,8 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="inspect">
         <a href="#inspect">inspect </a>
@@ -299,27 +258,27 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
     </div>
 </div>
 
-                            
-                        </div>
-                    
-
                     
                 </div>
+            
 
-                
-                    
-                        <div class="method-content">
+            
+        </div>
+
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="generateToken" title="generateToken">
              <a class="url-link" href="#generateToken">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > generateToken </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a> 
+            
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -342,19 +301,19 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="inspect" title="inspect">
              <a class="url-link" href="#inspect">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > inspect </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">map</span> data)</p>
-            <b> returns </b><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a>? 
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">anydata</span>> data)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -371,7 +330,7 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
                 <ul>
                     <li>
                         <span >data</span>
-                        <span class="type">  <span class="builtin-type">map</span> </span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">anydata</span>> </span>
                         
                     </li>
                     <li>
@@ -400,27 +359,16 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -447,6 +395,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -456,4 +422,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

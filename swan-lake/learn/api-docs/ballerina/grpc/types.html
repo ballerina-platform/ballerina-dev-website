@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,521 +67,178 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Types</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#Compression">Compression</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#Error">Error</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ResiliencyError">ResiliencyError</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../grpc/index.html">
-            <h3>grpc</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../grpc/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../grpc/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../grpc/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../grpc/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-            <li>
-                <a data="functions" href="../grpc/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../grpc/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../grpc/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../grpc/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../grpc/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Types</h3>
+                    <h3>
+    Types
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#Compression">Compression</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#Error">Error</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ResiliencyError">ResiliencyError</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#Compression" onclick="menuLinkClick()">Compression</a>
+        </li>
+    
+        <li >
+            <a href="#Error" onclick="menuLinkClick()">Error</a>
+        </li>
+    
+        <li >
+            <a href="#ResiliencyError" onclick="menuLinkClick()">ResiliencyError</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../grpc/index.html">
+        <a href="../grpc/index.html" onclick="menuLinkClick()">
             <h3>grpc</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../grpc/index.html#records">Records</a>
+            <a data="records" href="../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../grpc/index.html#objects">Objects</a>
+                <a  data="objects" href="../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../grpc/index.html#clients">Clients</a>
+                <a data="clients" href="../grpc/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../grpc/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../grpc/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
             <li>
-                <a data="functions" href="../grpc/index.html#functions">Functions</a>
+                <a data="functions" href="../grpc/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../grpc/index.html#constants">Constants</a>
+                <a data="constants" href="../grpc/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../grpc/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../grpc/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../grpc/index.html#types">Types</a>
+                <a data="types" href="../grpc/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../grpc/index.html#errors">Errors</a>
+                <a data="errors" href="../grpc/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-             <h1>
-                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                 <span class="title-type">Types - </span>
-                 
-                     <a href="../grpc/index.html">grpc</a>
-                 
-            </h1>
-            <div class="types">
-                <div class="data-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        <div class="params-listing">
-                            <ul>
-                                <li id="Compression">
-                                    <b >Compression</b>
-                                    <span class="type">  <a href="../grpc/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a> | <a href="../grpc/constants.html#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a> | <a href="../grpc/constants.html#COMPRESSION_NEVER">COMPRESSION_NEVER</a></span></li>
-                                <li>
-                                    
-                                    <p>Options to compress using gzip or deflate.</p>
+                    Types
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../grpc/index.html"><span class="modules">grpc</span></a>
+                
+                
+            </h1>
+            
+    <div class="types">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="Compression">
+                            <b >Compression</b>
+                            
+                                <span class="type">  <a href="../grpc/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a> | <a href="../grpc/constants.html#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a> | <a href="../grpc/constants.html#COMPRESSION_NEVER">COMPRESSION_NEVER</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Options to compress using gzip or deflate.</p>
 <p><code>AUTO</code>: When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
 outbound request/response accept-encoding/content-encoding option
 <code>ALWAYS</code>: Always set accept-encoding/content-encoding in outbound request/response
 <code>NEVER</code>: Never set accept-encoding/content-encoding header in outbound request/response</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="Error">
-                                    <b >Error</b>
-                                    <span class="type">  <a href="../grpc/errors.html#CancelledError">CancelledError</a> | <a href="../grpc/errors.html#UnKnownError">UnKnownError</a> | <a href="../grpc/errors.html#InvalidArgumentError">InvalidArgumentError</a> | <a href="../grpc/errors.html#DeadlineExceededError">DeadlineExceededError</a> | <a href="../grpc/errors.html#NotFoundError">NotFoundError</a> | <a href="../grpc/errors.html#AlreadyExistsError">AlreadyExistsError</a> | <a href="../grpc/errors.html#PermissionDeniedError">PermissionDeniedError</a> | <a href="../grpc/errors.html#UnauthenticatedError">UnauthenticatedError</a> | <a href="../grpc/errors.html#ResourceExhaustedError">ResourceExhaustedError</a> | <a href="../grpc/errors.html#FailedPreconditionError">FailedPreconditionError</a> | <a href="../grpc/errors.html#AbortedError">AbortedError</a> | <a href="../grpc/errors.html#OutOfRangeError">OutOfRangeError</a> | <a href="../grpc/errors.html#UnimplementedError">UnimplementedError</a> | <a href="../grpc/errors.html#InternalError">InternalError</a> | <a href="../grpc/errors.html#UnavailableError">UnavailableError</a> | <a href="../grpc/errors.html#DataLossError">DataLossError</a> | <a href="../grpc/errors.html#ResiliencyError">ResiliencyError</a> | <a href="../grpc/errors.html#StreamClosedError">StreamClosedError</a> | <a href="../grpc/errors.html#EOS">EOS</a></span></li>
-                                <li>
-                                    
-                                    <p>Represents gRPC related errors.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="ResiliencyError">
-                                    <b >ResiliencyError</b>
-                                    <span class="type">  <a href="../grpc/errors.html#AllRetryAttemptsFailed">AllRetryAttemptsFailed</a></span></li>
-                                <li>
-                                    
-                                    <p>Represents all the resiliency-related errors.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$0">
-                                    <b >$anonType$0</b>
-                                    <span class="type">0</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$1">
-                                    <b >$anonType$1</b>
-                                    <span class="type">1</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$10">
-                                    <b >$anonType$10</b>
-                                    <span class="type">10</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$11">
-                                    <b >$anonType$11</b>
-                                    <span class="type">11</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$12">
-                                    <b >$anonType$12</b>
-                                    <span class="type">12</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$13">
-                                    <b >$anonType$13</b>
-                                    <span class="type">13</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$14">
-                                    <b >$anonType$14</b>
-                                    <span class="type">14</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$15">
-                                    <b >$anonType$15</b>
-                                    <span class="type">15</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$16">
-                                    <b >$anonType$16</b>
-                                    <span class="type">16</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$17">
-                                    <b >$anonType$17</b>
-                                    <span class="type">AUTO</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$18">
-                                    <b >$anonType$18</b>
-                                    <span class="type">ALWAYS</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$19">
-                                    <b >$anonType$19</b>
-                                    <span class="type">NEVER</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$2">
-                                    <b >$anonType$2</b>
-                                    <span class="type">2</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$21">
-                                    <b >$anonType$21</b>
-                                    <span class="type">10</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$22">
-                                    <b >$anonType$22</b>
-                                    <span class="type">120000</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$3">
-                                    <b >$anonType$3</b>
-                                    <span class="type">3</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$4">
-                                    <b >$anonType$4</b>
-                                    <span class="type">4</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$5">
-                                    <b >$anonType$5</b>
-                                    <span class="type">5</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$6">
-                                    <b >$anonType$6</b>
-                                    <span class="type">6</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$7">
-                                    <b >$anonType$7</b>
-                                    <span class="type">7</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$8">
-                                    <b >$anonType$8</b>
-                                    <span class="type">8</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$9">
-                                    <b >$anonType$9</b>
-                                    <span class="type">9</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="Error">
+                            <b >Error</b>
+                            
+                                <span class="type">  <a href="../grpc/errors.html#CancelledError">CancelledError</a> | <a href="../grpc/errors.html#UnKnownError">UnKnownError</a> | <a href="../grpc/errors.html#InvalidArgumentError">InvalidArgumentError</a> | <a href="../grpc/errors.html#DeadlineExceededError">DeadlineExceededError</a> | <a href="../grpc/errors.html#NotFoundError">NotFoundError</a> | <a href="../grpc/errors.html#AlreadyExistsError">AlreadyExistsError</a> | <a href="../grpc/errors.html#PermissionDeniedError">PermissionDeniedError</a> | <a href="../grpc/errors.html#UnauthenticatedError">UnauthenticatedError</a> | <a href="../grpc/errors.html#ResourceExhaustedError">ResourceExhaustedError</a> | <a href="../grpc/errors.html#FailedPreconditionError">FailedPreconditionError</a> | <a href="../grpc/errors.html#AbortedError">AbortedError</a> | <a href="../grpc/errors.html#OutOfRangeError">OutOfRangeError</a> | <a href="../grpc/errors.html#UnimplementedError">UnimplementedError</a> | <a href="../grpc/errors.html#InternalError">InternalError</a> | <a href="../grpc/errors.html#UnavailableError">UnavailableError</a> | <a href="../grpc/errors.html#DataLossError">DataLossError</a> | <a href="../grpc/errors.html#ResiliencyError">ResiliencyError</a> | <a href="../grpc/errors.html#StreamClosedError">StreamClosedError</a> | <a href="../grpc/errors.html#EOS">EOS</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Represents gRPC related errors.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="ResiliencyError">
+                            <b >ResiliencyError</b>
+                            
+                                <span class="type">  <a href="../grpc/errors.html#AllRetryAttemptsFailed">AllRetryAttemptsFailed</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Represents all the resiliency-related errors.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+            
         </div>
     </div>
 
+        </div>
+        </div>
+    </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -600,6 +265,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -609,4 +292,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

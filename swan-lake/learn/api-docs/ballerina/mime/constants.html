@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
 communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
-the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
+the RFC 2045 standard.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,mime">
 
@@ -64,7 +68,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
             
             <div class="primary-list module">
     
-        <a href="../mime/index.html">
+        <a href="../mime/index.html" onclick="menuLinkClick()">
             <h3>mime</h3>
         </a>
     
@@ -72,30 +76,30 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
         
         
             <li>
-                <a  data="objects" href="../mime/index.html#objects">Objects</a>
+                <a  data="objects" href="../mime/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../mime/index.html#functions">Functions</a>
+                <a data="functions" href="../mime/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../mime/index.html#constants">Constants</a>
+                <a data="constants" href="../mime/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../mime/index.html#types">Types</a>
+                <a data="types" href="../mime/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../mime/index.html#errors">Errors</a>
+                <a data="errors" href="../mime/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -104,520 +108,468 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../mime/index.html">
-            <h3>mime</h3>
-        </a>
-    
-    <ul>
-        
-        
-            <li>
-                <a  data="objects" href="../mime/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../mime/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../mime/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../mime/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../mime/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Constants - </span> 
-                <a href="../mime/index.html">mime</a> 
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Constants
+
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../mime/index.html"><span class="modules">mime</span></a>
+                
+                
             </h1>
-            <div class="constants">
-                <div class="data-wrapper">
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="LEADING">
-                                    <b >LEADING</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> leading
-                                </li>
-                                <li>
-                                    
-                                    <p>Header is placed before the payload of the request/response.</p>
+            
+    <div class="constants">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="LEADING">
+                            <b >LEADING</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> leading
+                        </li>
+                        <li>
+                            
+                            <p>Header is placed before the payload of the request/response.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="TRAILING">
-                                    <b >TRAILING</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> trailing
-                                </li>
-                                <li>
-                                    
-                                    <p>Header is placed after the payload of the request/response.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="TRAILING">
+                            <b >TRAILING</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> trailing
+                        </li>
+                        <li>
+                            
+                            <p>Header is placed after the payload of the request/response.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="APPLICATION_OCTET_STREAM">
-                                    <b >APPLICATION_OCTET_STREAM</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> application/octet-stream
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>application/octet-stream</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="APPLICATION_OCTET_STREAM">
+                            <b >APPLICATION_OCTET_STREAM</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> application/octet-stream
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>application/octet-stream</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="APPLICATION_JSON">
-                                    <b >APPLICATION_JSON</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> application/json
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>application/json</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="APPLICATION_JSON">
+                            <b >APPLICATION_JSON</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> application/json
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>application/json</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="APPLICATION_XML">
-                                    <b >APPLICATION_XML</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> application/xml
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>application/xml</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="APPLICATION_XML">
+                            <b >APPLICATION_XML</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> application/xml
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>application/xml</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="APPLICATION_SVG_XML">
-                                    <b >APPLICATION_SVG_XML</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> application/svg+xml
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>application/svg+xml</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="APPLICATION_SVG_XML">
+                            <b >APPLICATION_SVG_XML</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> application/svg+xml
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>application/svg+xml</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="APPLICATION_XHTML_XML">
-                                    <b >APPLICATION_XHTML_XML</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> application/xhtml+xml
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>application/xhtml+xml</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="APPLICATION_XHTML_XML">
+                            <b >APPLICATION_XHTML_XML</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> application/xhtml+xml
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>application/xhtml+xml</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="APPLICATION_SOAP_XML">
-                                    <b >APPLICATION_SOAP_XML</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> application/soap+xml
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>application/soap+xml</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="APPLICATION_SOAP_XML">
+                            <b >APPLICATION_SOAP_XML</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> application/soap+xml
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>application/soap+xml</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="APPLICATION_FORM_URLENCODED">
-                                    <b >APPLICATION_FORM_URLENCODED</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> application/x-www-form-urlencoded
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>application/x-www-form-urlencoded</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="APPLICATION_FORM_URLENCODED">
+                            <b >APPLICATION_FORM_URLENCODED</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> application/x-www-form-urlencoded
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>application/x-www-form-urlencoded</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="APPLICATION_PDF">
-                                    <b >APPLICATION_PDF</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> application/pdf
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>application/pdf</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="APPLICATION_PDF">
+                            <b >APPLICATION_PDF</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> application/pdf
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>application/pdf</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="IMAGE_JPEG">
-                                    <b >IMAGE_JPEG</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> image/jpeg
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>image/jpeg</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="IMAGE_JPEG">
+                            <b >IMAGE_JPEG</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> image/jpeg
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>image/jpeg</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="IMAGE_GIF">
-                                    <b >IMAGE_GIF</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> image/gif
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>image/gif</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="IMAGE_GIF">
+                            <b >IMAGE_GIF</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> image/gif
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>image/gif</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="IMAGE_PNG">
-                                    <b >IMAGE_PNG</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> image/png
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>image/png</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="IMAGE_PNG">
+                            <b >IMAGE_PNG</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> image/png
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>image/png</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="MULTIPART_FORM_DATA">
-                                    <b >MULTIPART_FORM_DATA</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> multipart/form-data
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>multipart/form-data</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="MULTIPART_FORM_DATA">
+                            <b >MULTIPART_FORM_DATA</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> multipart/form-data
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>multipart/form-data</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="MULTIPART_MIXED">
-                                    <b >MULTIPART_MIXED</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> multipart/mixed
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>multipart/mixed</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="MULTIPART_MIXED">
+                            <b >MULTIPART_MIXED</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> multipart/mixed
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>multipart/mixed</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="MULTIPART_ALTERNATIVE">
-                                    <b >MULTIPART_ALTERNATIVE</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> multipart/alternative
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>multipart/alternative</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="MULTIPART_ALTERNATIVE">
+                            <b >MULTIPART_ALTERNATIVE</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> multipart/alternative
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>multipart/alternative</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="MULTIPART_RELATED">
-                                    <b >MULTIPART_RELATED</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> multipart/related
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>multipart/related</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="MULTIPART_RELATED">
+                            <b >MULTIPART_RELATED</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> multipart/related
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>multipart/related</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="MULTIPART_PARALLEL">
-                                    <b >MULTIPART_PARALLEL</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> multipart/parallel
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>multipart/parallel</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="MULTIPART_PARALLEL">
+                            <b >MULTIPART_PARALLEL</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> multipart/parallel
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>multipart/parallel</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="TEXT_PLAIN">
-                                    <b >TEXT_PLAIN</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> text/plain
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>text/plain</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="TEXT_PLAIN">
+                            <b >TEXT_PLAIN</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> text/plain
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>text/plain</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="TEXT_HTML">
-                                    <b >TEXT_HTML</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> text/html
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>text/html</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="TEXT_HTML">
+                            <b >TEXT_HTML</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> text/html
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>text/html</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="TEXT_XML">
-                                    <b >TEXT_XML</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> text/xml
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the <code>text/xml</code> media type.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="TEXT_XML">
+                            <b >TEXT_XML</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> text/xml
+                        </li>
+                        <li>
+                            
+                            <p>Represents the <code>text/xml</code> media type.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="BOUNDARY">
-                                    <b >BOUNDARY</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> boundary
-                                </li>
-                                <li>
-                                    
-                                    <p>Key name for <code>boundary</code> parameter in MediaType. This is needed for composite type media types.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="BOUNDARY">
+                            <b >BOUNDARY</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> boundary
+                        </li>
+                        <li>
+                            
+                            <p>Key name for <code>boundary</code> parameter in MediaType. This is needed for composite type media types.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="START">
-                                    <b >START</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> start
-                                </li>
-                                <li>
-                                    
-                                    <p>Key name for <code>start</code> parameter in MediaType. This determines which part in the multipart message contains the
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="START">
+                            <b >START</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> start
+                        </li>
+                        <li>
+                            
+                            <p>Key name for <code>start</code> parameter in MediaType. This determines which part in the multipart message contains the
 payload.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="TYPE">
-                                    <b >TYPE</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> type
-                                </li>
-                                <li>
-                                    
-                                    <p>Key name for <code>type</code> parameter in MediaType. This indicates the MIME media type of the <code>root</code> body part.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="CHARSET">
-                                    <b >CHARSET</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> charset
-                                </li>
-                                <li>
-                                    
-                                    <p>Key name for <code>charset</code> parameter in MediaType. This indicates the character set of the body text.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="DEFAULT_CHARSET">
-                                    <b >DEFAULT_CHARSET</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> UTF-8
-                                </li>
-                                <li>
-                                    
-                                    <p>Default charset to be used with MIME encoding and decoding.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="CONTENT_ID">
-                                    <b >CONTENT_ID</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> content-id
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents <code>content-id</code> header name.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="CONTENT_LENGTH">
-                                    <b >CONTENT_LENGTH</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> content-length
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents <code>content-length</code> header name.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="CONTENT_TYPE">
-                                    <b >CONTENT_TYPE</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> content-type
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents <code>content-type</code> header name.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="CONTENT_DISPOSITION">
-                                    <b >CONTENT_DISPOSITION</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> content-disposition
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents <code>content-disposition</code> header name.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="TYPE">
+                            <b >TYPE</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> type
+                        </li>
+                        <li>
+                            
+                            <p>Key name for <code>type</code> parameter in MediaType. This indicates the MIME media type of the <code>root</code> body part.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="CHARSET">
+                            <b >CHARSET</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> charset
+                        </li>
+                        <li>
+                            
+                            <p>Key name for <code>charset</code> parameter in MediaType. This indicates the character set of the body text.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="DEFAULT_CHARSET">
+                            <b >DEFAULT_CHARSET</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> UTF-8
+                        </li>
+                        <li>
+                            
+                            <p>Default charset to be used with MIME encoding and decoding.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="CONTENT_ID">
+                            <b >CONTENT_ID</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> content-id
+                        </li>
+                        <li>
+                            
+                            <p>Represents <code>content-id</code> header name.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="CONTENT_LENGTH">
+                            <b >CONTENT_LENGTH</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> content-length
+                        </li>
+                        <li>
+                            
+                            <p>Represents <code>content-length</code> header name.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="CONTENT_TYPE">
+                            <b >CONTENT_TYPE</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> content-type
+                        </li>
+                        <li>
+                            
+                            <p>Represents <code>content-type</code> header name.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="CONTENT_DISPOSITION">
+                            <b >CONTENT_DISPOSITION</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> content-disposition
+                        </li>
+                        <li>
+                            
+                            <p>Represents <code>content-disposition</code> header name.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -644,6 +596,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -653,4 +623,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

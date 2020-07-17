@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,159 +69,110 @@ file/directory, and retrieve metadata of the file.
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Listeners</h3>
-                <ul>
-                    
-                        <li class="active">
-                            <a href="Listener.html">Listener</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../file/index.html">
-            <h3>file</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../file/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../file/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="listeners" href="../../file/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-            <li>
-                <a data="functions" href="../../file/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../../file/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../file/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Listeners</h3>
+                    <h3>
+    Listeners
+</h3>
                     <ul>
                         
-                            <li class="active">
-                                <a href="Listener.html">Listener</a>
-                            </li>
-                        
+    
+        <li class="active">
+            <a href="Listener.html" onclick="menuLinkClick()">Listener</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../file/index.html">
+        <a href="../../file/index.html" onclick="menuLinkClick()">
             <h3>file</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../file/index.html#records">Records</a>
+            <a data="records" href="../../file/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../file/index.html#objects">Objects</a>
+                <a  data="objects" href="../../file/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
             <li>
-                <a data="listeners" href="../../file/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../file/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
             <li>
-                <a data="functions" href="../../file/index.html#functions">Functions</a>
+                <a data="functions" href="../../file/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
         
             <li>
-                <a data="types" href="../../file/index.html#types">Types</a>
+                <a data="types" href="../../file/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../file/index.html#errors">Errors</a>
+                <a data="errors" href="../../file/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Listener - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Listener
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../file/index.html">file</a>
+                    <a href="../../file/index.html"><span class="modules">file</span></a>
                 
-                 : <span class="listeners">Listener</span> 
+                 :
+                    
+    <span class="listeners">Listener</span>
+
+                
             </h1>
-            <p><p>Represents the directory listener endpoint, which is used to listen to a directory in the local file system.</p>
+            
+    <p><p>Represents the directory listener endpoint, which is used to listen to a directory in the local file system.</p>
 </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                
-                    
-                        <h2>Constructor</h2>
+    <div class="constants">
+        <div class="method-sum">
+        
+            
+                <h2>Constructor</h2>
 <h3 >__init</h3><p>(<a href="../../file/records/ListenerConfig.html">ListenerConfig</a> listenerConfig)</p>
 <div class="data-wrapper">
     
@@ -227,14 +187,14 @@ file/directory, and retrieve metadata of the file.
         </div>
     
 </div>
-                    
-                
+            
+        
 
+        
+            <h2>Methods</h2>
+            <div class="method-list">
                 
-                    <h2>Methods</h2>
-                    <div class="method-list">
-                        
-                            
+                    
 <div class="param-sum">
     <div class="param-name " title="__gracefulStop">
         <a href="#__gracefulStop">__gracefulStop </a>
@@ -245,8 +205,8 @@ file/directory, and retrieve metadata of the file.
     </div>
 </div>
 
-                        
-                            
+                
+                    
 <div class="param-sum">
     <div class="param-name " title="__immediateStop">
         <a href="#__immediateStop">__immediateStop </a>
@@ -257,8 +217,8 @@ file/directory, and retrieve metadata of the file.
     </div>
 </div>
 
-                        
-                            
+                
+                    
 <div class="param-sum">
     <div class="param-name " title="__detach">
         <a href="#__detach">__detach </a>
@@ -269,15 +229,15 @@ file/directory, and retrieve metadata of the file.
     </div>
 </div>
 
-                        
-                    </div>
                 
+            </div>
+        
 
+        
+            <h2>LifeCycle Methods</h2>
+            <div class="method-list">
                 
-                    <h2>LifeCycle Methods</h2>
-                    <div class="method-list">
-                        
-                            
+                    
 <div class="param-sum">
     <div class="param-name " title="__start">
         <a href="#__start">__start </a>
@@ -288,8 +248,8 @@ file/directory, and retrieve metadata of the file.
     </div>
 </div>
 
-                        
-                            
+                
+                    
 <div class="param-sum">
     <div class="param-name " title="__attach">
         <a href="#__attach">__attach </a>
@@ -300,28 +260,28 @@ file/directory, and retrieve metadata of the file.
     </div>
 </div>
 
-                        
-                    </div>
                 
-                </div>
+            </div>
+        
+        </div>
 
-                
+        
 
-                
-                    <h2>Methods</h2>
-                    
-                        <div class="method-content">
+        
+            <h2>Methods</h2>
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__gracefulStop" title="__gracefulStop">
              <a class="url-link" href="#__gracefulStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __gracefulStop </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -342,19 +302,19 @@ file/directory, and retrieve metadata of the file.
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__immediateStop" title="__immediateStop">
              <a class="url-link" href="#__immediateStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __immediateStop </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -375,19 +335,19 @@ file/directory, and retrieve metadata of the file.
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__detach" title="__detach">
              <a class="url-link" href="#__detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __detach </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s)</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -430,24 +390,24 @@ file/directory, and retrieve metadata of the file.
         
     
 </div>
-                    
-                
+            
+        
 
-                
-                    <h2>LifeCycle Methods</h2>
-                    
-                        <div class="method-content">
+        
+            <h2>LifeCycle Methods</h2>
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__start" title="__start">
              <a class="url-link" href="#__start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __start </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -468,19 +428,19 @@ file/directory, and retrieve metadata of the file.
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__attach" title="__attach">
              <a class="url-link" href="#__attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __attach </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s, <span class="builtin-type">string?</span> name)</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -540,26 +500,16 @@ file/directory, and retrieve metadata of the file.
         
     
 </div>
-                    
-                
-            </div>
-            </div>
+            
+        
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -586,6 +536,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -595,4 +563,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
 communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
-the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
+the RFC 2045 standard.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,mime">
 
@@ -61,138 +70,54 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#base64Decode">base64Decode</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#base64DecodeBlob">base64DecodeBlob</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#base64Encode">base64Encode</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#base64EncodeBlob">base64EncodeBlob</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getContentDispositionObject">getContentDispositionObject</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getMediaType">getMediaType</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#prepareDecodingErrorWithDetail">prepareDecodingErrorWithDetail</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#prepareEncodingErrorWithDetail">prepareEncodingErrorWithDetail</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../mime/index.html">
-            <h3>mime</h3>
-        </a>
-    
-    <ul>
-        
-        
-            <li>
-                <a  data="objects" href="../mime/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../mime/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../mime/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../mime/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../mime/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#base64Decode">base64Decode</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#base64DecodeBlob">base64DecodeBlob</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#base64Encode">base64Encode</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#base64EncodeBlob">base64EncodeBlob</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getContentDispositionObject">getContentDispositionObject</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getMediaType">getMediaType</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#prepareDecodingErrorWithDetail">prepareDecodingErrorWithDetail</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#prepareEncodingErrorWithDetail">prepareEncodingErrorWithDetail</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#base64Decode" onclick="menuLinkClick()">base64Decode</a>
+        </li>
+    
+        <li >
+            <a href="#base64DecodeBlob" onclick="menuLinkClick()">base64DecodeBlob</a>
+        </li>
+    
+        <li >
+            <a href="#base64Encode" onclick="menuLinkClick()">base64Encode</a>
+        </li>
+    
+        <li >
+            <a href="#base64EncodeBlob" onclick="menuLinkClick()">base64EncodeBlob</a>
+        </li>
+    
+        <li >
+            <a href="#getContentDispositionObject" onclick="menuLinkClick()">getContentDispositionObject</a>
+        </li>
+    
+        <li >
+            <a href="#getMediaType" onclick="menuLinkClick()">getMediaType</a>
+        </li>
+    
+        <li >
+            <a href="#prepareDecodingErrorWithDetail" onclick="menuLinkClick()">prepareDecodingErrorWithDetail</a>
+        </li>
+    
+        <li >
+            <a href="#prepareEncodingErrorWithDetail" onclick="menuLinkClick()">prepareEncodingErrorWithDetail</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../mime/index.html">
+        <a href="../mime/index.html" onclick="menuLinkClick()">
             <h3>mime</h3>
         </a>
     
@@ -200,161 +125,169 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
         
         
             <li>
-                <a  data="objects" href="../mime/index.html#objects">Objects</a>
+                <a  data="objects" href="../mime/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../mime/index.html#functions">Functions</a>
+                <a data="functions" href="../mime/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../mime/index.html#constants">Constants</a>
+                <a data="constants" href="../mime/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../mime/index.html#types">Types</a>
+                <a data="types" href="../mime/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../mime/index.html#errors">Errors</a>
+                <a data="errors" href="../mime/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../mime/index.html">mime</a>
+                    <a href="../mime/index.html"><span class="modules">mime</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#base64Decode">base64Decode</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p><strong>Deprecated API</strong>.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#base64DecodeBlob">base64DecodeBlob</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p><strong>Deprecated API</strong>.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#base64Encode">base64Encode</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p><strong>Deprecated API</strong>.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#base64EncodeBlob">base64EncodeBlob</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p><strong>Deprecated API</strong>.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getContentDispositionObject">getContentDispositionObject</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getMediaType">getMediaType</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#prepareDecodingErrorWithDetail">prepareDecodingErrorWithDetail</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Constructs a <code>DecodeError</code> with the given details.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#prepareEncodingErrorWithDetail">prepareEncodingErrorWithDetail</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Constructs an <code>EncodeError</code> with the given details.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#base64Decode">base64Decode</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p><strong>Deprecated API</strong>.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#base64DecodeBlob">base64DecodeBlob</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p><strong>Deprecated API</strong>.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#base64Encode">base64Encode</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p><strong>Deprecated API</strong>.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#base64EncodeBlob">base64EncodeBlob</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p><strong>Deprecated API</strong>.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getContentDispositionObject">getContentDispositionObject</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getMediaType">getMediaType</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#prepareDecodingErrorWithDetail">prepareDecodingErrorWithDetail</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Constructs a <code>DecodeError</code> with the given details.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#prepareEncodingErrorWithDetail">prepareEncodingErrorWithDetail</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Constructs an <code>EncodeError</code> with the given details.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="base64Decode" title="base64Decode">
              <a class="url-link" href="#base64Decode">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > base64Decode </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeDecoded, <span class="builtin-type">string</span> charset)</p>
-            <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
+            
+                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -416,19 +349,19 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="base64DecodeBlob" title="base64DecodeBlob">
              <a class="url-link" href="#base64DecodeBlob">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > base64DecodeBlob </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> valueToBeDecoded)</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -471,19 +404,19 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="base64Encode" title="base64Encode">
              <a class="url-link" href="#base64Encode">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > base64Encode </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeEncoded, <span class="builtin-type">string</span> charset)</p>
-            <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
+            
+                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -545,19 +478,19 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="base64EncodeBlob" title="base64EncodeBlob">
              <a class="url-link" href="#base64EncodeBlob">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > base64EncodeBlob </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> valueToBeEncoded)</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -600,19 +533,19 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getContentDispositionObject" title="getContentDispositionObject">
              <a class="url-link" href="#getContentDispositionObject">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getContentDispositionObject </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> contentDisposition)</p>
-            <b> returns </b><a href="../mime/objects/ContentDisposition.html">ContentDisposition</a> 
+            
+                <b> returns </b><a href="../mime/objects/ContentDisposition.html">ContentDisposition</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -655,19 +588,19 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getMediaType" title="getMediaType">
              <a class="url-link" href="#getMediaType">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getMediaType </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> contentType)</p>
-            <b> returns </b><a href="../mime/objects/MediaType.html">MediaType</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a> 
+            
+                <b> returns </b><a href="../mime/objects/MediaType.html">MediaType</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -710,19 +643,19 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="prepareDecodingErrorWithDetail" title="prepareDecodingErrorWithDetail">
              <a class="url-link" href="#prepareDecodingErrorWithDetail">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > prepareDecodingErrorWithDetail </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> detail)</p>
-            <b> returns </b><a href="../mime/errors.html#DecodeError">DecodeError</a> 
+            
+                <b> returns </b><a href="../mime/errors.html#DecodeError">DecodeError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -765,19 +698,19 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="prepareEncodingErrorWithDetail" title="prepareEncodingErrorWithDetail">
              <a class="url-link" href="#prepareEncodingErrorWithDetail">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > prepareEncodingErrorWithDetail </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> detail)</p>
-            <b> returns </b><a href="../mime/errors.html#EncodeError">EncodeError</a> 
+            
+                <b> returns </b><a href="../mime/errors.html#EncodeError">EncodeError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -820,28 +753,18 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -868,6 +791,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -877,4 +818,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

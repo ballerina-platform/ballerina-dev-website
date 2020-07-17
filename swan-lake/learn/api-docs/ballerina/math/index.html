@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,9 +61,10 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../math/index.html">
+        <a href="../math/index.html" onclick="menuLinkClick()">
             <h3>math</h3>
         </a>
     
@@ -72,23 +75,23 @@
         
         
             <li>
-                <a data="functions" href="../math/index.html#functions">Functions</a>
+                <a data="functions" href="../math/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../math/index.html#constants">Constants</a>
+                <a data="constants" href="../math/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../math/index.html#types">Types</a>
+                <a data="types" href="../math/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../math/index.html#errors">Errors</a>
+                <a data="errors" href="../math/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -97,624 +100,570 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../math/index.html">
-            <h3>math</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../math/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../math/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../math/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../math/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">math</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.0.0</div>
+                    <a href="../math/index.html"><span class="modules">math</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic. It includes functions to get the absolute, cosine, sine, root, tangent, and more for a given value.</p>
 <p>For information on the operation, which you can perform with this module, see the below Function. For examples on the usage of the operation, see <a href="https://ballerina.io/swan-lake/learn/by-example/math-functions.html">Math Api</a>.</p>
 
 
-            
+    
 
-            
+    
 
-            
+    
 
-            
-           
+    
 
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="absFloat" title="absFloat">
+                    <a class="functions " href="functions.html#absFloat">absFloat</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="absFloat" title="absFloat">
-                                <a class="functions " href="functions.html#absFloat">absFloat</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the absolute value of a float value.
-                            </td>
-                        </tr>
+                    <p>Calculates the absolute value of a float value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="absInt" title="absInt">
+                    <a class="functions " href="functions.html#absInt">absInt</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="absInt" title="absInt">
-                                <a class="functions " href="functions.html#absInt">absInt</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the absolute value of an int value.
-                            </td>
-                        </tr>
+                    <p>Calculates the absolute value of an int value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="acos" title="acos">
+                    <a class="functions " href="functions.html#acos">acos</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="acos" title="acos">
-                                <a class="functions " href="functions.html#acos">acos</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the arc cosine of a value; the returned angle is in the range 0.
-                            </td>
-                        </tr>
+                    <p>Calculates the arc cosine of a value; the returned angle is in the range 0.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="asin" title="asin">
+                    <a class="functions " href="functions.html#asin">asin</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="asin" title="asin">
-                                <a class="functions " href="functions.html#asin">asin</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the arc sine of a value.
-                            </td>
-                        </tr>
+                    <p>Calculates the arc sine of a value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="atan" title="atan">
+                    <a class="functions " href="functions.html#atan">atan</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="atan" title="atan">
-                                <a class="functions " href="functions.html#atan">atan</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the arc tangent of a value.
-                            </td>
-                        </tr>
+                    <p>Calculates the arc tangent of a value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="atan2" title="atan2">
+                    <a class="functions " href="functions.html#atan2">atan2</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="atan2" title="atan2">
-                                <a class="functions " href="functions.html#atan2">atan2</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the angle theta from the conversion of rectangular coordinates (a, b) to polar coordinates (r, theta).
-                            </td>
-                        </tr>
+                    <p>Calculates the angle theta from the conversion of rectangular coordinates (a, b) to polar coordinates (r, theta).
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="cbrt" title="cbrt">
+                    <a class="functions " href="functions.html#cbrt">cbrt</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="cbrt" title="cbrt">
-                                <a class="functions " href="functions.html#cbrt">cbrt</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the cube root of a float value.
-                            </td>
-                        </tr>
+                    <p>Calculates the cube root of a float value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="ceil" title="ceil">
+                    <a class="functions " href="functions.html#ceil">ceil</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="ceil" title="ceil">
-                                <a class="functions " href="functions.html#ceil">ceil</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the smallest (closest to negative infinity) double value that is greater than or equal to the argument and
+                    <p>Calculates the smallest (closest to negative infinity) double value that is greater than or equal to the argument and
 is equal to a mathematical integer.
-                            </td>
-                        </tr>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="copySign" title="copySign">
+                    <a class="functions " href="functions.html#copySign">copySign</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="copySign" title="copySign">
-                                <a class="functions " href="functions.html#copySign">copySign</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the first floating-point argument with the sign of the second floating-point argument.
-                            </td>
-                        </tr>
+                    <p>Calculates the first floating-point argument with the sign of the second floating-point argument.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="cos" title="cos">
+                    <a class="functions " href="functions.html#cos">cos</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="cos" title="cos">
-                                <a class="functions " href="functions.html#cos">cos</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the trigonometric cosine of an angle.
-                            </td>
-                        </tr>
+                    <p>Calculates the trigonometric cosine of an angle.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="cosh" title="cosh">
+                    <a class="functions " href="functions.html#cosh">cosh</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="cosh" title="cosh">
-                                <a class="functions " href="functions.html#cosh">cosh</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the hyperbolic cosine of a float value.
-                            </td>
-                        </tr>
+                    <p>Calculates the hyperbolic cosine of a float value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="exp" title="exp">
+                    <a class="functions " href="functions.html#exp">exp</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="exp" title="exp">
-                                <a class="functions " href="functions.html#exp">exp</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates Euler's number, that is 'e' raised to the power of exponent.
-                            </td>
-                        </tr>
+                    <p>Calculates Euler's number, that is 'e' raised to the power of exponent.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="expm1" title="expm1">
+                    <a class="functions " href="functions.html#expm1">expm1</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="expm1" title="expm1">
-                                <a class="functions " href="functions.html#expm1">expm1</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates (e to the power of x) -1.
-                            </td>
-                        </tr>
+                    <p>Calculates (e to the power of x) -1.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="floor" title="floor">
+                    <a class="functions " href="functions.html#floor">floor</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="floor" title="floor">
-                                <a class="functions " href="functions.html#floor">floor</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the largest (closest to positive infinity) float value that is less than or equal to the argument and is
+                    <p>Calculates the largest (closest to positive infinity) float value that is less than or equal to the argument and is
 equal to a mathematical integer.
-                            </td>
-                        </tr>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="floorDiv" title="floorDiv">
+                    <a class="functions " href="functions.html#floorDiv">floorDiv</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="floorDiv" title="floorDiv">
-                                <a class="functions " href="functions.html#floorDiv">floorDiv</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the largest (closest to positive infinity) int value that is less than or equal to the algebraic quotient.
-                            </td>
-                        </tr>
+                    <p>Calculates the largest (closest to positive infinity) int value that is less than or equal to the algebraic quotient.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="floorMod" title="floorMod">
+                    <a class="functions " href="functions.html#floorMod">floorMod</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="floorMod" title="floorMod">
-                                <a class="functions " href="functions.html#floorMod">floorMod</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the floor modulus of the long arguments.
-                            </td>
-                        </tr>
+                    <p>Calculates the floor modulus of the long arguments.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getExponent" title="getExponent">
+                    <a class="functions " href="functions.html#getExponent">getExponent</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="getExponent" title="getExponent">
-                                <a class="functions " href="functions.html#getExponent">getExponent</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the unbiased exponent used in the representation of a float.
-                            </td>
-                        </tr>
+                    <p>Calculates the unbiased exponent used in the representation of a float.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="hypot" title="hypot">
+                    <a class="functions " href="functions.html#hypot">hypot</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="hypot" title="hypot">
-                                <a class="functions " href="functions.html#hypot">hypot</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates sqrt(a squared +b squared) without intermediate overflow or underflow.
-                            </td>
-                        </tr>
+                    <p>Calculates sqrt(a squared +b squared) without intermediate overflow or underflow.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="log" title="log">
+                    <a class="functions " href="functions.html#log">log</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="log" title="log">
-                                <a class="functions " href="functions.html#log">log</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the natural logarithm (base e) of a float value.
-                            </td>
-                        </tr>
+                    <p>Calculates the natural logarithm (base e) of a float value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="log10" title="log10">
+                    <a class="functions " href="functions.html#log10">log10</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="log10" title="log10">
-                                <a class="functions " href="functions.html#log10">log10</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the base 10 logarithm of a float value.
-                            </td>
-                        </tr>
+                    <p>Calculates the base 10 logarithm of a float value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="log1p" title="log1p">
+                    <a class="functions " href="functions.html#log1p">log1p</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="log1p" title="log1p">
-                                <a class="functions " href="functions.html#log1p">log1p</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the natural logarithm of the sum of the argument and 1.
-                            </td>
-                        </tr>
+                    <p>Calculates the natural logarithm of the sum of the argument and 1.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="negateExact" title="negateExact">
+                    <a class="functions " href="functions.html#negateExact">negateExact</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="negateExact" title="negateExact">
-                                <a class="functions " href="functions.html#negateExact">negateExact</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the negation of the argument.
-                            </td>
-                        </tr>
+                    <p>Calculates the negation of the argument.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="nextAfter" title="nextAfter">
+                    <a class="functions " href="functions.html#nextAfter">nextAfter</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="nextAfter" title="nextAfter">
-                                <a class="functions " href="functions.html#nextAfter">nextAfter</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the floating-point number adjacent to the first argument in the direction of the second argument.
-                            </td>
-                        </tr>
+                    <p>Calculates the floating-point number adjacent to the first argument in the direction of the second argument.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="nextDown" title="nextDown">
+                    <a class="functions " href="functions.html#nextDown">nextDown</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="nextDown" title="nextDown">
-                                <a class="functions " href="functions.html#nextDown">nextDown</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the adjacent floating-point value closer to negative infinity.
-                            </td>
-                        </tr>
+                    <p>Calculates the adjacent floating-point value closer to negative infinity.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="nextUp" title="nextUp">
+                    <a class="functions " href="functions.html#nextUp">nextUp</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="nextUp" title="nextUp">
-                                <a class="functions " href="functions.html#nextUp">nextUp</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the adjacent floating-point value closer to positive infinity.
-                            </td>
-                        </tr>
+                    <p>Calculates the adjacent floating-point value closer to positive infinity.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="pow" title="pow">
+                    <a class="functions " href="functions.html#pow">pow</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="pow" title="pow">
-                                <a class="functions " href="functions.html#pow">pow</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the value of the 'a' raised to the power of 'b'.
-                            </td>
-                        </tr>
+                    <p>Calculates the value of the 'a' raised to the power of 'b'.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="random" title="random">
+                    <a class="functions " href="functions.html#random">random</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="random" title="random">
-                                <a class="functions " href="functions.html#random">random</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Selects a random number between 0.
-                            </td>
-                        </tr>
+                    <p>Selects a random number between 0.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="randomInRange" title="randomInRange">
+                    <a class="functions " href="functions.html#randomInRange">randomInRange</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="randomInRange" title="randomInRange">
-                                <a class="functions " href="functions.html#randomInRange">randomInRange</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Selects a random number between the given start(inclusive) and end(exclusive) values.
-                            </td>
-                        </tr>
+                    <p>Selects a random number between the given start(inclusive) and end(exclusive) values.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="remainder" title="remainder">
+                    <a class="functions " href="functions.html#remainder">remainder</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="remainder" title="remainder">
-                                <a class="functions " href="functions.html#remainder">remainder</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.
-                            </td>
-                        </tr>
+                    <p>Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="rint" title="rint">
+                    <a class="functions " href="functions.html#rint">rint</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="rint" title="rint">
-                                <a class="functions " href="functions.html#rint">rint</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the double value that is closest in value to the argument and is equal to a mathematical integer.
-                            </td>
-                        </tr>
+                    <p>Calculates the double value that is closest in value to the argument and is equal to a mathematical integer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="round" title="round">
+                    <a class="functions " href="functions.html#round">round</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="round" title="round">
-                                <a class="functions " href="functions.html#round">round</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the closest int to the argument, with ties rounding to positive infinity.
-                            </td>
-                        </tr>
+                    <p>Calculates the closest int to the argument, with ties rounding to positive infinity.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="scalb" title="scalb">
+                    <a class="functions " href="functions.html#scalb">scalb</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="scalb" title="scalb">
-                                <a class="functions " href="functions.html#scalb">scalb</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates a × (2 to the power of b) rounded as if performed by a single correctly rounded floating-point
+                    <p>Calculates a × (2 to the power of b) rounded as if performed by a single correctly rounded floating-point
 multiply to a member of the float value set.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="signum" title="signum">
-                                <a class="functions " href="functions.html#signum">signum</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the signum function of the argument.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="sin" title="sin">
-                                <a class="functions " href="functions.html#sin">sin</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the trigonometric sine of an angle.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="sinh" title="sinh">
-                                <a class="functions " href="functions.html#sinh">sinh</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the hyperbolic sine of a float value.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="sqrt" title="sqrt">
-                                <a class="functions " href="functions.html#sqrt">sqrt</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates rounded positive square root of the given value.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="tan" title="tan">
-                                <a class="functions " href="functions.html#tan">tan</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the trigonometric tangent of an angle.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="tanh" title="tanh">
-                                <a class="functions " href="functions.html#tanh">tanh</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Calculates the hyperbolic tangent of a double value.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toDegrees" title="toDegrees">
-                                <a class="functions " href="functions.html#toDegrees">toDegrees</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Converts an angle measured in radians to an approximately equivalent angle measured in degrees.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toRadians" title="toRadians">
-                                <a class="functions " href="functions.html#toRadians">toRadians</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Converts an angle measured in degrees to an approximately equivalent angle measured in radians.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="ulp" title="ulp">
-                                <a class="functions " href="functions.html#ulp">ulp</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the size of an ulp of the argument.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate functions" id="signum" title="signum">
+                    <a class="functions " href="functions.html#signum">signum</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Calculates the signum function of the argument.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="sin" title="sin">
+                    <a class="functions " href="functions.html#sin">sin</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Calculates the trigonometric sine of an angle.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="sinh" title="sinh">
+                    <a class="functions " href="functions.html#sinh">sinh</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Calculates the hyperbolic sine of a float value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="sqrt" title="sqrt">
+                    <a class="functions " href="functions.html#sqrt">sqrt</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Calculates rounded positive square root of the given value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="tan" title="tan">
+                    <a class="functions " href="functions.html#tan">tan</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Calculates the trigonometric tangent of an angle.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="tanh" title="tanh">
+                    <a class="functions " href="functions.html#tanh">tanh</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Calculates the hyperbolic tangent of a double value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toDegrees" title="toDegrees">
+                    <a class="functions " href="functions.html#toDegrees">toDegrees</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Converts an angle measured in radians to an approximately equivalent angle measured in degrees.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toRadians" title="toRadians">
+                    <a class="functions " href="functions.html#toRadians">toRadians</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Converts an angle measured in degrees to an approximately equivalent angle measured in radians.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="ulp" title="ulp">
+                    <a class="functions " href="functions.html#ulp">ulp</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the size of an ulp of the argument.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
+    
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="constants">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#constants">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Constants </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate constant" id="PI" title="PI">
+                    <a class="constant " href="constants.html#PI">PI</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="PI" title="PI">
-                                <a class="constant " href="constants.html#PI">PI</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Ratio of the circumference of a circle to its diameter.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="E" title="E">
-                                <a class="constant " href="constants.html#E">E</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Base of the natural logarithms.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Ratio of the circumference of a circle to its diameter.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate constant" id="E" title="E">
+                    <a class="constant " href="constants.html#E">E</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Base of the natural logarithms.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
-            
+    
 
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types " href="types.html#Error">Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The union of all the Math related errors</p>
+                    <p>The union of all the Math related errors</p>
 
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
 
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate errors" id="ArithmeticError" title="ArithmeticError">
+                    <a class="errors " href="errors.html#ArithmeticError">ArithmeticError</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="ArithmeticError" title="ArithmeticError">
-                                <a class="errors " href="errors.html#ArithmeticError">ArithmeticError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents an error occurred in the <code>math</code> operation.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Represents an error occurred in the <code>math</code> operation.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -741,6 +690,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -750,4 +717,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,9 +61,10 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../log/index.html">
+        <a href="../log/index.html" onclick="menuLinkClick()">
             <h3>log</h3>
         </a>
     
@@ -72,92 +75,69 @@
         
         
             <li>
-                <a data="functions" href="../log/index.html#functions">Functions</a>
+                <a data="functions" href="../log/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../log/index.html">
-            <h3>log</h3>
-        </a>
-    
-    <ul>
-        
-        
+            <li>
+                <a data="constants" href="../log/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
         
         
         
             <li>
-                <a data="functions" href="../log/index.html#functions">Functions</a>
+                <a data="types" href="../log/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
-        
-        
-        
         
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">log</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.0.0</div>
+                    <a href="../log/index.html"><span class="modules">log</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides a basic API for logging.</p>
-<h2>Loggers</h2>
+<h3>Loggers</h3>
 <p>Each module in Ballerina has its own dedicated logger. A log record contains the timestamp, log level, module name, and the log message. The <code>printError()</code> function takes an optional <code>error</code> record apart from the log message. A sample log record logged from the <code>foo</code> module would look as follows:</p>
 <pre><code class="language-bash">2018-04-09 11:33:21,300 ERROR [foo] - This is an error log.
 </code></pre>
-<h2>Log Output</h2>
+<h3>Log Output</h3>
 <p>Logs are written to the <code>stderr</code> stream (i.e., the console) by default in order to make the logs more container friendly.</p>
 <p>To publish the logs to a file, redirect the <code>stderr</code> stream to a file.</p>
 <pre><code class="language-bash">$ ballerina run program.bal 2&gt; b7a-user.log
 </code></pre>
-<h2>Log Levels</h2>
+<h3>Log Levels</h3>
 <p>This module provides functions to log at the <code>WARN</code>, <code>ERROR</code>, <code>INFO</code>, <code>DEBUG</code>, and <code>TRACE</code> levels. By default, all log messages are logged to the console at the <code>INFO</code> level. In addition to these, there are two other levels named <code>OFF</code> and <code>ALL</code>. The <code>OFF</code> log level turns off logging, and the <code>ALL</code> log level allows all log levels. The log level can be configured through the Config API.</p>
 <p>The <code>b7a.log.level</code> configuration key can be used to configure the log level for the log API (i.e., for all the modules). The following can be provided in a configuration file.</p>
 <pre><code class="language-toml">b7a.log.level=&quot;&lt;LOG_LEVEL&gt;&quot;
@@ -179,106 +159,209 @@ loglevel=&quot;DEBUG&quot;
 <p>For information on the operation, which you can perform with this module, see the below Function. For examples on the usage of the operation, see <a href="https://ballerina.io/swan-lake/learn/by-example/log-api.html">Log Api</a>.</p>
 
 
-            
+    
 
-            
+    
 
-            
+    
 
-            
-           
+    
 
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="printDebug" title="printDebug">
+                    <a class="functions " href="functions.html#printDebug">printDebug</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="printDebug" title="printDebug">
-                                <a class="functions " href="functions.html#printDebug">printDebug</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Logs the specified value at DEBUG level.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="printError" title="printError">
-                                <a class="functions " href="functions.html#printError">printError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Logs the specified message at ERROR level.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="printInfo" title="printInfo">
-                                <a class="functions " href="functions.html#printInfo">printInfo</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Logs the specified message at INFO level.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="printTrace" title="printTrace">
-                                <a class="functions " href="functions.html#printTrace">printTrace</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Logs the specified message at TRACE level.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="printWarn" title="printWarn">
-                                <a class="functions " href="functions.html#printWarn">printWarn</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Logs the specified message at WARN level.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Logs the specified value at DEBUG level.
+                </td>
+            </tr>
             
-
-
+            <tr>
+                <td class="module-title truncate functions" id="printError" title="printError">
+                    <a class="functions " href="functions.html#printError">printError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Logs the specified message at ERROR level.
+                </td>
+            </tr>
             
-
-
+            <tr>
+                <td class="module-title truncate functions" id="printInfo" title="printInfo">
+                    <a class="functions " href="functions.html#printInfo">printInfo</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Logs the specified message at INFO level.
+                </td>
+            </tr>
             
-
+            <tr>
+                <td class="module-title truncate functions" id="printTrace" title="printTrace">
+                    <a class="functions " href="functions.html#printTrace">printTrace</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Logs the specified message at TRACE level.
+                </td>
+            </tr>
             
-
+            <tr>
+                <td class="module-title truncate functions" id="printWarn" title="printWarn">
+                    <a class="functions " href="functions.html#printWarn">printWarn</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Logs the specified message at WARN level.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate functions" id="setModuleLogLevel" title="setModuleLogLevel">
+                    <a class="functions " href="functions.html#setModuleLogLevel">setModuleLogLevel</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Sets the module log level.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+
+    
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate constant" id="DEBUG" title="DEBUG">
+                    <a class="constant " href="constants.html#DEBUG">DEBUG</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="ERROR" title="ERROR">
+                    <a class="constant " href="constants.html#ERROR">ERROR</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="INFO" title="INFO">
+                    <a class="constant " href="constants.html#INFO">INFO</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="TRACE" title="TRACE">
+                    <a class="constant " href="constants.html#TRACE">TRACE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="WARN" title="WARN">
+                    <a class="constant " href="constants.html#WARN">WARN</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="ALL" title="ALL">
+                    <a class="constant " href="constants.html#ALL">ALL</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="OFF" title="OFF">
+                    <a class="constant " href="constants.html#OFF">OFF</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+
+    
+
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate types" id="LogLevel" title="LogLevel">
+                    <a class="types " href="types.html#LogLevel">LogLevel</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -305,6 +388,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -314,4 +415,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

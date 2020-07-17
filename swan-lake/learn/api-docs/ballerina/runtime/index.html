@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +7,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides functions to interact with the runtime, the invocation context, and to manage errors.
+    <meta name="description" content="This module provides functions to interact with the Ballerina runtime and the runtime invocation context.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,runtime">
 
@@ -59,16 +61,17 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../runtime/index.html">
+        <a href="../runtime/index.html" onclick="menuLinkClick()">
             <h3>runtime</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../runtime/index.html#records">Records</a>
+            <a data="records" href="../runtime/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
@@ -76,7 +79,7 @@
         
         
             <li>
-                <a data="functions" href="../runtime/index.html#functions">Functions</a>
+                <a data="functions" href="../runtime/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -89,260 +92,162 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../runtime/index.html">
-            <h3>runtime</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../runtime/index.html#records">Records</a>
-        </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../runtime/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">runtime</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 0.5.0</div>
+                    <a href="../runtime/index.html"><span class="modules">runtime</span></a>
                 
-                    <h2>Module Overview</h2>
-<p>This module provides functions to interact with the runtime, the invocation context, and to manage errors.</p>
-<h2>Invocation Context</h2>
-<p>The Invocation Context is a data holder, which is created per request and preserved for a single request-response flow. It comprises of a unique ID, a <code>runtime:Principal</code> instance, which includes user details, a <code>runtime:AuthenticationContext</code>, which has the authentication-related details if available, and an attribute map to hold context information.</p>
-<p>The following code snippet shows how to access the <code>runtime:InvocationContext</code> and the set of data for the <code>runtime:Principal</code> and <code>runtime:AuthenticationContext</code>.</p>
+                
+            </h1>
+            
+    
+    <div>Version : 0.5.0</div>
+    
+    <h2>Module Overview</h2>
+<p>This module provides functions to interact with the Ballerina runtime and the runtime invocation context.</p>
+<h4>Invocation Context</h4>
+<p>The Invocation Context is a data holder, which is created per request and preserved for a single request-response flow. It comprises of a unique ID and an attribute map to hold the context information.</p>
+<p>The following code snippet shows how to access the <code>runtime:InvocationContext</code> and how to set the data to the <code>attributes</code> map.</p>
 <pre><code class="language-ballerina">runtime:InvocationContext invocationContext = runtime:getInvocationContext();
-
-runtime:Principal? principal = invocationContext[&quot;principal&quot;];
-if (principal is runtime:Principal) {
-    // Set the username as ‘tom’.
-    principal[&quot;username&quot;] = &quot;tom&quot;;
-}
-
-runtime:AuthenticationContext? authContext = invocationContext[&quot;authenticationContext&quot;];
-if (authContext is runtime:AuthenticationContext) {
-    // Set the auth scheme.
-    authContext.scheme = &quot;jwt&quot;;
-}
+invocationContext.attributes[&quot;SERVICE_NAME&quot;] = &quot;HelloService&quot;;
 </code></pre>
-<p>The following code snippet shows how to access the <code>runtime:InvocationContext</code> and get the data from the <code>runtime:Principal</code> and <code>runtime:AuthenticationContext</code>,</p>
+<p>The following code snippet shows how to access the <code>runtime:InvocationContext</code> and get the data from the <code>attributes</code> map.</p>
 <pre><code class="language-ballerina">runtime:InvocationContext invocationContext = runtime:getInvocationContext();
-runtime:Principal? principal = invocationContext[&quot;principal&quot;];
-if (principal is runtime:Principal) {
-    // Retrieve the user name.
-    string? userName = principal[&quot;username&quot;];
-}
-
-runtime:AuthenticationContext? authContext = invocationContext[&quot;authenticationContext&quot;];
-if (authContext is runtime:AuthenticationContext) {
-    // Retrieve the auth scheme.
-    string? authScheme = authContext[&quot;scheme&quot;];
-}
+string serviceName = runtime:getInvocationContext().attributes[&quot;SERVICE_NAME&quot;].toString();
+</code></pre>
+<h4>Sleep the current strand</h4>
+<p>The following is the code snippet for pausing the current strand for 1000 milliseconds.</p>
+<pre><code class="language-ballerina">runtime:sleep(1000);
 </code></pre>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.</p>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="AuthenticationContext" title="AuthenticationContext">
-                                <a class="records " href="records/AuthenticationContext.html">AuthenticationContext</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the <code>runtime:AuthenticationContext</code> populated with the authenticated information.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="CallStackElement" title="CallStackElement">
-                                <a class="records " href="records/CallStackElement.html">CallStackElement</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a data holder of the current call stack element.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="CallStackElement" title="CallStackElement">
+                            <a class="records " href="records/CallStackElement.html">CallStackElement</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a data holder of the current call stack element.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="InvocationContext" title="InvocationContext">
-                                <a class="records " href="records/InvocationContext.html">InvocationContext</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the <code>runtime:InvocationContext</code>.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="Principal" title="Principal">
-                                <a class="records " href="records/Principal.html">Principal</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the <code>runtime:Principal</code> populated with the authenticated user information.
-                            </td>
-                        </tr>
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="InvocationContext" title="InvocationContext">
+                            <a class="records " href="records/InvocationContext.html">InvocationContext</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the <code>runtime:InvocationContext</code>.
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
 
-            
+    
 
-            
-           
+    
 
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="getCallStack" title="getCallStack">
+                    <a class="functions " href="functions.html#getCallStack">getCallStack</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="getCallStack" title="getCallStack">
-                                <a class="functions " href="functions.html#getCallStack">getCallStack</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getInvocationContext" title="getInvocationContext">
-                                <a class="functions " href="functions.html#getInvocationContext">getInvocationContext</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the <code>runtime:InvocationContext</code> instance.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getProperty" title="getProperty">
-                                <a class="functions " href="functions.html#getProperty">getProperty</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the system property value associated with the specified property name.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="sleep" title="sleep">
-                                <a class="functions " href="functions.html#sleep">sleep</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Halts the current worker for a predefined amount of time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="timeout" title="timeout">
-                                <a class="functions " href="functions.html#timeout">timeout</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Gives a timeout to the current worker for a predefined amount of time.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.
+                </td>
+            </tr>
             
-
-
+            <tr>
+                <td class="module-title truncate functions" id="getInvocationContext" title="getInvocationContext">
+                    <a class="functions " href="functions.html#getInvocationContext">getInvocationContext</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the <code>runtime:InvocationContext</code> instance.
+                </td>
+            </tr>
             
-
-
+            <tr>
+                <td class="module-title truncate functions" id="sleep" title="sleep">
+                    <a class="functions " href="functions.html#sleep">sleep</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Halts the current strand for a predefined amount of time.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
 
-            
 
-            
+    
+
+
+    
+
+    
+
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -369,6 +274,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -378,4 +301,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,122 +68,54 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#contains">contains</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getAsArray">getAsArray</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getAsBoolean">getAsBoolean</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getAsFloat">getAsFloat</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getAsInt">getAsInt</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getAsMap">getAsMap</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getAsString">getAsString</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#setConfig">setConfig</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../config/index.html">
-            <h3>config</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../config/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#contains">contains</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getAsArray">getAsArray</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getAsBoolean">getAsBoolean</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getAsFloat">getAsFloat</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getAsInt">getAsInt</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getAsMap">getAsMap</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getAsString">getAsString</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#setConfig">setConfig</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#contains" onclick="menuLinkClick()">contains</a>
+        </li>
+    
+        <li >
+            <a href="#getAsArray" onclick="menuLinkClick()">getAsArray</a>
+        </li>
+    
+        <li >
+            <a href="#getAsBoolean" onclick="menuLinkClick()">getAsBoolean</a>
+        </li>
+    
+        <li >
+            <a href="#getAsFloat" onclick="menuLinkClick()">getAsFloat</a>
+        </li>
+    
+        <li >
+            <a href="#getAsInt" onclick="menuLinkClick()">getAsInt</a>
+        </li>
+    
+        <li >
+            <a href="#getAsMap" onclick="menuLinkClick()">getAsMap</a>
+        </li>
+    
+        <li >
+            <a href="#getAsString" onclick="menuLinkClick()">getAsString</a>
+        </li>
+    
+        <li >
+            <a href="#setConfig" onclick="menuLinkClick()">setConfig</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../config/index.html">
+        <a href="../config/index.html" onclick="menuLinkClick()">
             <h3>config</h3>
         </a>
     
@@ -185,7 +126,7 @@
         
         
             <li>
-                <a data="functions" href="../config/index.html#functions">Functions</a>
+                <a data="functions" href="../config/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -196,131 +137,139 @@
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../config/index.html">config</a>
+                    <a href="../config/index.html"><span class="modules">config</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#contains">contains</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Checks whether the given key is in the configuration registry.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getAsArray">getAsArray</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Retrieves the specified configuration value as an array.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getAsBoolean">getAsBoolean</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Retrieves the specified configuration value as a boolean.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getAsFloat">getAsFloat</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Retrieves the specified configuration value as a float.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getAsInt">getAsInt</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Retrieves the specified configuration value as an int.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getAsMap">getAsMap</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Retrieves the specified configuration value as a map.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getAsString">getAsString</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Retrieves the specified configuration value as a string.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#setConfig">setConfig</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Sets the specified key/value pair as a configuration.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#contains">contains</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Checks whether the given key is in the configuration registry.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getAsArray">getAsArray</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Retrieves the specified configuration value as an array.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getAsBoolean">getAsBoolean</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Retrieves the specified configuration value as a boolean.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getAsFloat">getAsFloat</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Retrieves the specified configuration value as a float.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getAsInt">getAsInt</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Retrieves the specified configuration value as an int.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getAsMap">getAsMap</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Retrieves the specified configuration value as a map.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getAsString">getAsString</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Retrieves the specified configuration value as a string.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#setConfig">setConfig</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Sets the specified key/value pair as a configuration.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="contains" title="contains">
              <a class="url-link" href="#contains">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > contains </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -365,19 +314,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getAsArray" title="getAsArray">
              <a class="url-link" href="#getAsArray">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getAsArray </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">anydata</span>[]</span> 
+            
+                <b> returns </b><span class="builtin-type">null</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -414,7 +363,7 @@
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">anydata</span>[]</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">null</span></span>)</li>
                 <li><p>Configuration value mapped with the given key. If there is no mapping, an empty array will be returned</p>
 </li>
             </ul>
@@ -422,19 +371,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getAsBoolean" title="getAsBoolean">
              <a class="url-link" href="#getAsBoolean">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getAsBoolean </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">boolean</span> defaultValue)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -496,19 +445,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getAsFloat" title="getAsFloat">
              <a class="url-link" href="#getAsFloat">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getAsFloat </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">float</span> defaultVal)</p>
-            <b> returns </b><span class="builtin-type">float</span> 
+            
+                <b> returns </b><span class="builtin-type">float</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -570,19 +519,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getAsInt" title="getAsInt">
              <a class="url-link" href="#getAsInt">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getAsInt </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">int</span> defaultValue)</p>
-            <b> returns </b><span class="builtin-type">int</span> 
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -644,19 +593,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getAsMap" title="getAsMap">
              <a class="url-link" href="#getAsMap">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getAsMap </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
-            <b> returns </b><span class="builtin-type">map</span> 
+            
+                <b> returns </b><span class="builtin-type">null</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -693,7 +642,7 @@
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">null</span></span>)</li>
                 <li><p>Configuration value mapped with the given key. If there is no mapping, an empty map will be returned</p>
 </li>
             </ul>
@@ -701,19 +650,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getAsString" title="getAsString">
              <a class="url-link" href="#getAsString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getAsString </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">string</span> defaultValue)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -775,14 +724,17 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="setConfig" title="setConfig">
              <a class="url-link" href="#setConfig">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > setConfig </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">string</span> | <span class="builtin-type">int</span> | <span class="builtin-type">float</span> | <span class="builtin-type">boolean</span> value)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -834,28 +786,18 @@
 
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -882,6 +824,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -891,4 +851,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

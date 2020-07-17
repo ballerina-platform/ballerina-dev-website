@@ -26,7 +26,7 @@ If you have not installed jBallerina, then download the [installers](https://bal
 # Highlights
 - Support for resilient parsing
 - Improved support for immutability
-- Improved support to convert compatible values to and from `json` 
+- Improved support to convert compatible values to and from JSON 
 - Improved log API to support changing module log levels at runtime
 - Improved mocking API in the test framework
 - Improved Docker images using thin JAR
@@ -34,7 +34,7 @@ If you have not installed jBallerina, then download the [installers](https://bal
 # What's new in Ballerina Swan Lake - Preview2
 
 ## Language
-The language implementation is based on [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/).   
+The language implementation is based on the [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/).   
  
 ### Resilient parsing support
 Resilient parsing support has been added to the compiler. It is now capable of performing semantic validation for source code even when there are syntax errors.
@@ -85,7 +85,7 @@ employee.details.isReadOnly()
 
 #### `readonly` as the contextually expected type for mapping and list constructor expressions
 
-The `readonly` type can now be used as the contextually expected type for mapping and list constructor expressions. This results in the creation of a record or an array value which is immutable.
+The `readonly` type can now be used as the contextually-expected type for mapping and list constructor expressions. This results in the creation of a record or an array value, which is immutable.
 
 ```ballerina
 import ballerina/io;
@@ -132,12 +132,12 @@ public function main() {
 }
 ```
 
-Since `details` is created as an immutable value, the following check evaluates to true.
+Since `details` is created as an immutable value, the following check evaluates to `true`.
 
 ```ballerina
 details.isReadOnly()
 ```
-### The rest argument can be used to pass arguments for required/defaultable parameters
+### The rest argument to pass arguments for required/defaultable parameters
 
 Previously, the rest argument in a function/method call expression could only provide arguments for the rest parameter. A rest argument can now be used to provide arguments for required and/or defaultable parameters too.
 
@@ -169,7 +169,7 @@ type Employee record {|
 
 Three new methods have been introduced to the `ballerina/lang.value` module to facilitate converting to and from JSON. Additionally, the `toJsonString` method can now be called on `anydata` values.
 
-#### `toJson`
+#### The `toJson` method
 `toJson` converts a value of type `anydata` to `json`. This does a deep copy of the value and converts values that do not belong to `json` into values that do. 
 
 ```ballerina
@@ -179,9 +179,9 @@ public function main() {
 }
 ```
 
-#### `toJsonString`
+#### The `toJsonString` method
 
-`toJsonString` converts a value of type `anydata` to a string that represents the value in JSON format. It first converts the value to JSON using `toJson` and then converts it to a `string`.
+`toJsonString` converts a value of type `anydata` to a string that represents the value in the JSON format. It first converts the value to a JSON using `toJson` and then converts it to a `string`.
 
 ```ballerina
 public function main() {
@@ -193,7 +193,7 @@ public function main() {
 }
 ```
 
-#### `fromJsonWithType`
+#### The `fromJsonWithType` method
 
 `fromJsonWithType` converts a value of type `json` to a user-specified type. The implementation is similar to `cloneWithType` except that it also does the inverse of the conversions done by `toJson`.
 
@@ -209,7 +209,7 @@ public function main() {
 }
 ```
 
-#### `fromJsonStringWithType`
+#### The `fromJsonStringWithType` method
 
 `fromJsonStringWithType` converts a string in JSON format to a user-specified type. This method can be described as a combination of `fromJsonString` followed by `fromJsonWithType`.
 
@@ -226,30 +226,30 @@ public function main() {
 
 ### HTTP
 
-The redirect client has been improved to support temporary and permanent redirects, with the original request’s HTTP method. A new `allowAuthHeaders` field was introduced in the redirect configuration to get user consent before repeating sensitive data on subsequent requests.
+The redirect client has been improved to support temporary and permanent redirects with the original request’s HTTP method. A new `allowAuthHeaders` field was introduced in the redirect configuration to get user consent before repeating sensitive data on subsequent requests.
 
 ### Log
 
-A function  log:setModuleLogLevel has been introduced  to allow users to set the module log level through the Log API.
+A `log:setModuleLogLevel` function has been introduced to allow users to set the module log level through the Log API.
 
 ### Config
 
-The `config:getAsArray` and `config:getAsMap` functions now return immutable values. This way the user can simply cast the returned value to the desired list type or mapping type without having to use `cloneWithType()`.
+The `config:getAsArray` and `config:getAsMap` functions now return immutable values. This way, the user can simply cast the returned value to the desired list type or mapping type without having to use `cloneWithType()`.
 
 ### Security
 
-- JWT signature validation with JWK has been improved by introducing a cache. This cache preloads the JWKs and thereby reduces the runtime latency added due to the HTTP call to the JWK endpoint, when validating the signature.
-- An auth:InvocationContext record which can be used as a data holder has been introduced. It can hold auth-related information such as authentication scheme, auth token, and authenticated user's ID, claims, and scopes preserved for a single request-response flow.
+- JWT signature validation with JWK has been improved by introducing a cache. This cache preloads the JWKs, and thereby, reduces the runtime latency added due to the HTTP call to the JWK endpoint when validating the signature.
+- An `auth:InvocationContext` record, which can be used as a data holder has been introduced. It can hold auth-related information such as authentication scheme, auth token, and authenticated user's ID, claims, and scopes preserved for a single request-response flow.
 
 ### WebSocket
 
-The WebSocket client now supports cookies. A new field `cookies` has been introduced in `http:WebSocketClientConfiguration` and `http:WebSocketFailoverClientConfiguration` to specify the cookies.
+The WebSocket client now supports cookies. A new field `cookies` has been introduced in the `http:WebSocketClientConfiguration` and `http:WebSocketFailoverClientConfiguration` to specify the cookies.
 
 ### Runtime API
 
 - The `runtime:timeout` function has been removed. The `runtime:sleep` function can be used as the alternative.
 
-For example, the following which previously used `runtime:timeout` 
+For example, when the following, which previously used the `runtime:timeout` is considered,
 
 ```ballerina
 future<()> f1 = runtime:timeout(50);
@@ -261,11 +261,11 @@ future<()> f1 = start runtime:sleep(50);
 
 - The `runtime:getProperty` function has been removed. Java interoperability can be used as the alternative to access Java system properties.
 
-- The auth related configurations have been moved out from the `runtime:InvocationContext` to the newly introduced `auth:InvocationContext`.
+- The auth-related configurations have been moved out from the `runtime:InvocationContext` to the newly-introduced `auth:InvocationContext`.
 
 ### Module organization
 
-The following standard libraries were moved to Ballerina Central. Previously these modules were packed in the Ballerina distribution. With this change, these libraries can now be released independently.
+The following standard libraries were moved to Ballerina Central. Previously, these modules were packed in the Ballerina distribution. With this change, these libraries can now be released independently.
 - ballerina/encoding
 - ballerina/jwt
 - ballerina/websub
@@ -296,7 +296,7 @@ http:Client mockHttpClient = test:mock(http:Client);
 **Function Mocking**
 
 The mocking API now supports scoping and stubbing of mock functions that are declared for functions in imported modules.
-With the above support, the `@MockFn {}` and `@Mock {}` annotations have been unified and all function mocks can be declared with the `@Mock {}` annotation now.
+With the above support, the `@MockFn {}` and `@Mock {}` annotations have been unified and now all function mocks can be declared with the `@Mock {}` annotation.
 
 With the improved mocking API, a function can be mocked as follows:
 
@@ -320,7 +320,8 @@ public function testFunction() {
 ### Deployment
 
 By default, Docker images are now created using the thin JAR. Using the thin JAR improves the push and pull times significantly. Since layers are reused, disk space required to store thin JAR based images is less. 
-This can be changed to use the uber JAR by setting the `uberJar` field in the Docker or Kubernetes annotation to true. 
+
+This can be changed to use the uber JAR by setting the `uberJar` field in the Docker or Kubernetes annotation to `true`. 
 
 Kubernetes annotations:
 ```ballerina

@@ -247,9 +247,9 @@ The WebSocket client now supports cookies. A new field `cookies` has been introd
 
 ### Runtime API
 
-The `runtime:timeout` function has been removed. The `runtime:sleep` function can be used as the alternative.
+- The `runtime:timeout` function has been removed. The `runtime:sleep` function can be used as the alternative.
 
-E.g., consider the following example, which uses the `runtime:timeout`.
+E.g., consider the following example, which uses the `runtime:timeout` function.
 
 ```ballerina
 future<()> f1 = runtime:timeout(50);

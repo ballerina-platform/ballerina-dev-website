@@ -58,8 +58,8 @@
       url: /swan-lake/learn/deployment/kubernetes/
       active: kubernetes
     - title: AWS Lambda
-      url: /swan-lake/learn/deployment/aws-lambda/
-      active: aws-lambda
+      url: /swan-lake/learn/deployment/awslambda/
+      active: awslambda
 
 - title: Observability
   url: '#' 
@@ -86,16 +86,16 @@
   url: '#' 
   sublinks:
     - title: Quick Start
-      url: /swan-lake/learn/testing-ballerina-code/testing-quick-start
+      url: /swan-lake/learn/testing-quick-start
       active: testing-quick-start
     - title: Writing Tests
-      url: /swan-lake/learn/testing-ballerina-code/writing-tests
+      url: /swan-lake/learn/writing-tests
       active: writing-tests
     - title: Mocking
-      url: /swan-lake/learn/testing-ballerina-code/mocking
+      url: /swan-lake/learn/mocking
       active: mocking
     - title: Executing Tests
-      url: /swan-lake/learn/testing-ballerina-code/executing-tests
+      url: /swan-lake/learn/executing-tests
       active: executing-tests
 
 - title: Extending Ballerina

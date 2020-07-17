@@ -58,11 +58,8 @@
       url: /learn/deployment/kubernetes/
       active: kubernetes
     - title: AWS Lambda
-      url: /learn/deployment/aws-lambda/
-      active: aws-lambda
-    - title: Azure Functions
-      url: /learn/deployment/azure-functions/
-      active: azure-functions
+      url: /learn/deployment/awslambda/
+      active: awslambda
 
 - title: Observability
   url: '#' 

@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +13,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides the default authentication provider configurations, which can be extended to create new authentication providers.
+    <meta name="description" content="This module provides the default authentication provider configurations, which can be extended to create new authentication providers and functions to interact with the auth:InvocationContext.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,auth">
 
@@ -41,6 +49,7 @@
 
 </head>
 
+
 <body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
@@ -58,188 +67,126 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Errors</h3>
-                <ul>
-                    
-                        <li ></li>
-                            <a href="#AuthError">AuthError</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../auth/index.html">
-            <h3>auth</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../auth/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../auth/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../auth/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../auth/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../auth/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../auth/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Errors</h3>
+                    <h3>
+    Errors
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#AuthError">AuthError</a>
-                            </li>
-                        
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#AuthError">AuthError</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../auth/index.html">
+        <a href="../auth/index.html" onclick="menuLinkClick()">
             <h3>auth</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../auth/index.html#records">Records</a>
+            <a data="records" href="../auth/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../auth/index.html#objects">Objects</a>
+                <a  data="objects" href="../auth/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../auth/index.html#functions">Functions</a>
+                <a data="functions" href="../auth/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../auth/index.html#constants">Constants</a>
+                <a data="constants" href="../auth/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../auth/index.html#types">Types</a>
+                <a data="types" href="../auth/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../auth/index.html#errors">Errors</a>
+                <a data="errors" href="../auth/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Errors - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Errors
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../auth/index.html">auth</a>
+                    <a href="../auth/index.html"><span class="modules">auth</span></a>
+                
                 
             </h1>
-            <div class="errors">
-                <div class="data-wrapper">
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li>
-                                    <b >AuthError </b>
-                                    <span class="type"></span>
-                                    
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the Auth error. This will be returned if an error occurred while inbound auth providers
+            
+    <div class="errors">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="AuthError">
+                            <b >AuthError </b>
+                            <span class="type"></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents the Auth error. This will be returned if an error occurred while inbound auth providers
 try to authenticate the received credentials and outbound auth providers try to generate the token.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -266,6 +213,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -275,4 +240,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

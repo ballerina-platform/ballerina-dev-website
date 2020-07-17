@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="<a href="https://www.rabbitmq.com/">RabbitMQ</a> is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.
+    <meta name="description" content="RabbitMQ is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,rabbitmq">
 
@@ -59,176 +68,119 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Listeners</h3>
-                <ul>
-                    
-                        <li class="active">
-                            <a href="Listener.html">Listener</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../rabbitmq/index.html">
-            <h3>rabbitmq</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../rabbitmq/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../rabbitmq/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../../rabbitmq/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../../rabbitmq/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="constants" href="../../rabbitmq/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../../rabbitmq/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../../rabbitmq/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../rabbitmq/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Listeners</h3>
+                    <h3>
+    Listeners
+</h3>
                     <ul>
                         
-                            <li class="active">
-                                <a href="Listener.html">Listener</a>
-                            </li>
-                        
+    
+        <li class="active">
+            <a href="Listener.html" onclick="menuLinkClick()">Listener</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../rabbitmq/index.html">
+        <a href="../../rabbitmq/index.html" onclick="menuLinkClick()">
             <h3>rabbitmq</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../rabbitmq/index.html#records">Records</a>
+            <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../rabbitmq/index.html#objects">Objects</a>
+                <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../../rabbitmq/index.html#clients">Clients</a>
+                <a data="clients" href="../../rabbitmq/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../../rabbitmq/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../rabbitmq/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
         
             <li>
-                <a data="constants" href="../../rabbitmq/index.html#constants">Constants</a>
+                <a data="constants" href="../../rabbitmq/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../../rabbitmq/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../../rabbitmq/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../../rabbitmq/index.html#types">Types</a>
+                <a data="types" href="../../rabbitmq/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../rabbitmq/index.html#errors">Errors</a>
+                <a data="errors" href="../../rabbitmq/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Listener - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Listener
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                    <a href="../../rabbitmq/index.html"><span class="modules">rabbitmq</span></a>
                 
-                 : <span class="listeners">Listener</span> 
+                 :
+                    
+    <span class="listeners">Listener</span>
+
+                
             </h1>
-            <p><p>Ballerina RabbitMQ Message Listener.
+            
+    <p><p>Ballerina RabbitMQ Message Listener.
 Provides a listener to consume messages from the RabbitMQ server.</p>
 </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                
-                    
-                        <h2>Constructor</h2>
+    <div class="constants">
+        <div class="method-sum">
+        
+            
+                <h2>Constructor</h2>
 <h3 >__init</h3><p>(<a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a> connectionOrConnectionConfig, <span class="builtin-type">int?</span> prefetchCount, <span class="builtin-type">int?</span> prefetchSize)</p>
 <div class="data-wrapper">
     
@@ -244,7 +196,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
     
         <div class="params-listing">
             <ul>
-                <li> <b>prefetchCount</b><span class="type">  <span class="builtin-type">int?</span></span> &lt;int?&gt; ()</li>
+                <li> <b>prefetchCount</b><span class="type">  <span class="builtin-type">int?</span></span> ()</li>
                 <li>
                     <p>Maximum number of messages that the server will deliver. Give the value as 0 if unlimited.
 Unless explicitly given, this value is 10 by default.</p>
@@ -255,7 +207,7 @@ Unless explicitly given, this value is 10 by default.</p>
     
         <div class="params-listing">
             <ul>
-                <li> <b>prefetchSize</b><span class="type">  <span class="builtin-type">int?</span></span> &lt;int?&gt; ()</li>
+                <li> <b>prefetchSize</b><span class="type">  <span class="builtin-type">int?</span></span> ()</li>
                 <li>
                     <p>Maximum amount of content (measured in octets) that the server will deliver and 0 if unlimited</p>
 
@@ -264,14 +216,14 @@ Unless explicitly given, this value is 10 by default.</p>
         </div>
     
 </div>
-                    
-                
+            
+        
 
+        
+            <h2>Methods</h2>
+            <div class="method-list">
                 
-                    <h2>Methods</h2>
-                    <div class="method-list">
-                        
-                            
+                    
 <div class="param-sum">
     <div class="param-name " title="__detach">
         <a href="#__detach">__detach </a>
@@ -282,8 +234,8 @@ Unless explicitly given, this value is 10 by default.</p>
     </div>
 </div>
 
-                        
-                            
+                
+                    
 <div class="param-sum">
     <div class="param-name " title="__gracefulStop">
         <a href="#__gracefulStop">__gracefulStop </a>
@@ -294,8 +246,8 @@ Unless explicitly given, this value is 10 by default.</p>
     </div>
 </div>
 
-                        
-                            
+                
+                    
 <div class="param-sum">
     <div class="param-name " title="__immediateStop">
         <a href="#__immediateStop">__immediateStop </a>
@@ -307,8 +259,8 @@ with the server.
     </div>
 </div>
 
-                        
-                            
+                
+                    
 <div class="param-sum">
     <div class="param-name " title="getChannel">
         <a href="#getChannel">getChannel </a>
@@ -319,15 +271,15 @@ with the server.
     </div>
 </div>
 
-                        
-                    </div>
                 
+            </div>
+        
 
+        
+            <h2>LifeCycle Methods</h2>
+            <div class="method-list">
                 
-                    <h2>LifeCycle Methods</h2>
-                    <div class="method-list">
-                        
-                            
+                    
 <div class="param-sum">
     <div class="param-name " title="__attach">
         <a href="#__attach">__attach </a>
@@ -338,8 +290,8 @@ with the server.
     </div>
 </div>
 
-                        
-                            
+                
+                    
 <div class="param-sum">
     <div class="param-name " title="__start">
         <a href="#__start">__start </a>
@@ -350,28 +302,28 @@ with the server.
     </div>
 </div>
 
-                        
-                    </div>
                 
-                </div>
+            </div>
+        
+        </div>
 
-                
+        
 
-                
-                    <h2>Methods</h2>
-                    
-                        <div class="method-content">
+        
+            <h2>Methods</h2>
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__detach" title="__detach">
              <a class="url-link" href="#__detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __detach </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s)</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -414,19 +366,19 @@ with the server.
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__gracefulStop" title="__gracefulStop">
              <a class="url-link" href="#__gracefulStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __gracefulStop </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -447,19 +399,19 @@ with the server.
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__immediateStop" title="__immediateStop">
              <a class="url-link" href="#__immediateStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __immediateStop </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -481,19 +433,19 @@ with the server.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getChannel" title="getChannel">
              <a class="url-link" href="#getChannel">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getChannel </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../rabbitmq/clients/Channel.html">Channel</a> 
+            
+                <b> returns </b><a href="../../rabbitmq/clients/Channel.html">Channel</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -514,24 +466,24 @@ with the server.</p>
         
     
 </div>
-                    
-                
+            
+        
 
-                
-                    <h2>LifeCycle Methods</h2>
-                    
-                        <div class="method-content">
+        
+            <h2>LifeCycle Methods</h2>
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__attach" title="__attach">
              <a class="url-link" href="#__attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __attach </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s, <span class="builtin-type">string?</span> name)</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -564,7 +516,7 @@ with the server.</p>
                     <li>
                         <span >name</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -591,19 +543,19 @@ with the server.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="__start" title="__start">
              <a class="url-link" href="#__start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > __start </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -624,26 +576,16 @@ with the server.</p>
         
     
 </div>
-                    
-                
-            </div>
-            </div>
+            
+        
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -670,6 +612,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -679,4 +639,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

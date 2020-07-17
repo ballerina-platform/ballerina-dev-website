@@ -2,124 +2,127 @@
   "modules": [
     {
       "id": "jwt",
-      "searchString": "\u003cp\u003eThis module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.\u003c/p\u003e"
     }
   ],
   "objects": [
     {
       "id": "InboundJwtAuthProvider",
-      "searchString": "\u003cp\u003eRepresents the inbound JWT auth provider, which authenticates by validating a JWT.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents the inbound JWT auth provider, which authenticates by validating a JWT.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "OutboundJwtAuthProvider",
-      "searchString": "\u003cp\u003eRepresents the outbound JWT auth provider, which is used to authenticate with an external endpoint by generating a JWT.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents the outbound JWT auth provider, which is used to authenticate with an external endpoint by generating a JWT.\u003c/p\u003e",
       "moduleId": "jwt"
     }
   ],
   "functions": [
     {
       "id": "buildHeaderString",
-      "searchString": "\u003cp\u003eBuilds the header string from the \u003ccode\u003ejwt:JwtHeader\u003c/code\u003e record.\u003c/p\u003e",
+      "description": "\u003cp\u003eBuilds the header string from the \u003ccode\u003ejwt:JwtHeader\u003c/code\u003e record.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "buildPayloadString",
-      "searchString": "\u003cp\u003eBuilds the payload string from the \u003ccode\u003ejwt:JwtPayload\u003c/code\u003e record.\u003c/p\u003e",
+      "description": "\u003cp\u003eBuilds the payload string from the \u003ccode\u003ejwt:JwtPayload\u003c/code\u003e record.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "decodeJwt",
-      "searchString": "\u003cp\u003eDecodes the given JWT string.\u003c/p\u003e",
+      "description": "\u003cp\u003eDecodes the given JWT string.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "issueJwt",
-      "searchString": "\u003cp\u003eIssues a JWT based on the provided header and payload.\u003c/p\u003e",
+      "description": "\u003cp\u003eIssues a JWT based on the provided header and payload.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "validateJwt",
-      "searchString": "\u003cp\u003eValidates the given JWT string.\u003c/p\u003e",
+      "description": "\u003cp\u003eValidates the given JWT string.\u003c/p\u003e",
       "moduleId": "jwt"
     }
   ],
   "records": [
     {
       "id": "JwksConfig",
-      "searchString": "\u003cp\u003eRepresents the JWKs endpoint configurations.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents the JWKs endpoint configurations.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "JwtHeader",
-      "searchString": "\u003cp\u003eRepresents JWT header.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents JWT header.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "JwtIssuerConfig",
-      "searchString": "\u003cp\u003eRepresents JWT validator configurations.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents JWT validator configurations.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "JwtKeyStoreConfig",
-      "searchString": "\u003cp\u003eRepresents JWT key store configurations.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents JWT key store configurations.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "JwtPayload",
-      "searchString": "\u003cp\u003eRepresents JWT payload.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents JWT payload.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "JwtTrustStoreConfig",
-      "searchString": "\u003cp\u003eRepresents JWT trust store configurations.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents JWT trust store configurations.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "JwtValidatorConfig",
-      "searchString": "\u003cp\u003eRepresents JWT validator configurations.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents JWT validator configurations.\u003c/p\u003e",
       "moduleId": "jwt"
     }
   ],
   "constants": [
     {
       "id": "RS256",
-      "searchString": "\u003cp\u003eThe \u003ccode\u003eRSA-SHA256\u003c/code\u003e algorithm\u003c/p\u003e\n",
+      "description": "\u003cp\u003eThe \u003ccode\u003eRSA-SHA256\u003c/code\u003e algorithm\u003c/p\u003e\n",
       "moduleId": "jwt"
     },
     {
       "id": "RS384",
-      "searchString": "\u003cp\u003eThe \u003ccode\u003eRSA-SHA384\u003c/code\u003e algorithm\u003c/p\u003e\n",
+      "description": "\u003cp\u003eThe \u003ccode\u003eRSA-SHA384\u003c/code\u003e algorithm\u003c/p\u003e\n",
       "moduleId": "jwt"
     },
     {
       "id": "RS512",
-      "searchString": "\u003cp\u003eThe \u003ccode\u003eRSA-SHA512\u003c/code\u003e algorithm\u003c/p\u003e\n",
+      "description": "\u003cp\u003eThe \u003ccode\u003eRSA-SHA512\u003c/code\u003e algorithm\u003c/p\u003e\n",
       "moduleId": "jwt"
     },
     {
       "id": "NONE",
-      "searchString": "\u003cp\u003eUnsecured JWTs (no signing)\u003c/p\u003e\n",
+      "description": "\u003cp\u003eUnsecured JWTs (no signing)\u003c/p\u003e\n",
       "moduleId": "jwt"
     }
   ],
   "errors": [
     {
       "id": "JWTError",
-      "searchString": "\u003cp\u003eRepresents the JWT distinct error\u003c/p\u003e\n",
+      "description": "\u003cp\u003eRepresents the JWT distinct error\u003c/p\u003e\n",
       "moduleId": "jwt"
     }
   ],
   "types": [
     {
       "id": "Error",
-      "searchString": "\u003cp\u003eRepresents the JWT error type with details.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents the JWT error type with details.\u003c/p\u003e",
       "moduleId": "jwt"
     },
     {
       "id": "JwtSigningAlgorithm",
-      "searchString": "\u003cp\u003eThe key algorithms supported by crypto module.\u003c/p\u003e",
+      "description": "\u003cp\u003eThe key algorithms supported by crypto module.\u003c/p\u003e",
       "moduleId": "jwt"
     }
-  ]
+  ],
+  "clients": [],
+  "listeners": [],
+  "annotations": []
 }

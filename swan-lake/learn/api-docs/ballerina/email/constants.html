@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -62,42 +66,42 @@
             
             <div class="primary-list module">
     
-        <a href="../email/index.html">
+        <a href="../email/index.html" onclick="menuLinkClick()">
             <h3>email</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../email/index.html#records">Records</a>
+            <a data="records" href="../email/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
         
             <li>
-                <a data="clients" href="../email/index.html#clients">Clients</a>
+                <a data="clients" href="../email/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../email/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="constants" href="../email/index.html#constants">Constants</a>
+                <a data="listeners" href="../email/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../email/index.html#types">Types</a>
+                <a data="constants" href="../email/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../email/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../email/index.html#errors">Errors</a>
+                <a data="errors" href="../email/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -106,117 +110,61 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../email/index.html">
-            <h3>email</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../email/index.html#records">Records</a>
-        </li>
-        
-        
-        
-            <li>
-                <a data="clients" href="../email/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../email/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="constants" href="../email/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../email/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../email/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Constants - </span> 
-                <a href="../email/index.html">email</a> 
-            </h1>
-            <div class="constants">
-                <div class="data-wrapper">
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        <div class="params-listing">
-                            <ul>
-                                <li id="DEFAULT_FOLDER">
-                                    <b >DEFAULT_FOLDER</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> INBOX
-                                </li>
-                                <li>
-                                    
-                                    <p>Default folder to read emails.</p>
+                    
+    Constants
 
-                                </li>
-                            </ul>
-                        </div>
                     
+                        -
+                    
+                </span>
+                
+                    <a href="../email/index.html"><span class="modules">email</span></a>
+                
+                
+            </h1>
+            
+    <div class="constants">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="DEFAULT_FOLDER">
+                            <b >DEFAULT_FOLDER</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> INBOX
+                        </li>
+                        <li>
+                            
+                            <p>Default folder to read emails.</p>
+
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -243,6 +191,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -252,4 +218,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

@@ -2,216 +2,189 @@
   "modules": [
     {
       "id": "lang.query",
-      "searchString": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003equery-action\u003c/code\u003es \u0026amp; \u003ccode\u003equery-expression\u003c/code\u003es.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003equery-action\u003c/code\u003es \u0026amp; \u003ccode\u003equery-expression\u003c/code\u003es.\u003c/p\u003e"
     }
   ],
   "objects": [
     {
       "id": "T4",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_DoFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_FilterFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_InitFunction",
-      "searchString": "",
+      "description": "",
+      "moduleId": "lang.query"
+    },
+    {
+      "id": "_InnerJoinFunction",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_InputFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_Iterable",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_Iterator",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_JoinFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_LetFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_LimitFunction",
-      "searchString": "",
+      "description": "",
+      "moduleId": "lang.query"
+    },
+    {
+      "id": "_OuterJoinFunction",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_SelectFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_StreamFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "_StreamPipeline",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     }
   ],
   "functions": [
     {
       "id": "addStreamFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "addToTable",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "consumeStream",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "createDoFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "createFilterFunction",
-      "searchString": "",
+      "description": "",
+      "moduleId": "lang.query"
+    },
+    {
+      "id": "createInnerJoinFunction",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "createInputFunction",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createJoinFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "createLetFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "createLimitFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "createNestedFromFunction",
-      "searchString": "",
+      "description": "",
+      "moduleId": "lang.query"
+    },
+    {
+      "id": "createOuterJoinFunction",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "createPipeline",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "createSelectFunction",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "getStreamFromPipeline",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "print",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "toArray",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "toString",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "toXML",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     }
   ],
   "records": [
     {
-      "id": "T0",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
       "id": "T1",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "T2",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     },
     {
       "id": "T3",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "T5",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "T6",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "T7",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "T8",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "T9",
-      "searchString": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_Frame",
-      "searchString": "",
+      "description": "",
       "moduleId": "lang.query"
     }
   ],
   "constants": [],
   "errors": [],
-  "types": []
+  "types": [],
+  "clients": [],
+  "listeners": [],
+  "annotations": []
 }

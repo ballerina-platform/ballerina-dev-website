@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -6,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="This module provides the common interface and functionality to interact with a database. The corresponding database
-clients can be created by using specific database modules such as <code>MySQL</code> or using the Java Database Connectivity
-module <code>JDBC</code>.
+clients can be created by using specific database modules such as MySQL or using the Java Database Connectivity
+module JDBC.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,sql">
 
@@ -61,48 +63,49 @@ module <code>JDBC</code>.
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../sql/index.html">
+        <a href="../sql/index.html" onclick="menuLinkClick()">
             <h3>sql</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../sql/index.html#records">Records</a>
+            <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../sql/index.html#objects">Objects</a>
+                <a  data="objects" href="../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../sql/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="functions" href="../sql/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../sql/index.html#constants">Constants</a>
+                <a data="clients" href="../sql/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../sql/index.html#types">Types</a>
+                <a data="functions" href="../sql/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../sql/index.html#errors">Errors</a>
+                <a data="constants" href="../sql/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../sql/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../sql/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -111,96 +114,41 @@ module <code>JDBC</code>.
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../sql/index.html">
-            <h3>sql</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../sql/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../sql/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../sql/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="functions" href="../sql/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../sql/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../sql/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../sql/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">sql</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 0.5.0</div>
+                    <a href="../sql/index.html"><span class="modules">sql</span></a>
                 
-                    <h2>Module overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 0.5.0</div>
+    
+    <h2>Module overview</h2>
 <p>This module provides the common interface and functionality to interact with a database. The corresponding database
 clients can be created by using specific database modules such as <code>MySQL</code> or using the Java Database Connectivity
 module <code>JDBC</code>.</p>
-<h2>List of Database Modules</h2>
+<h3>List of Database Modules</h3>
 <ol>
 <li>
 <p>JDBC (Java Database Connectivity) Module
@@ -213,10 +161,10 @@ This module is specially designed to work with a MySQL database and allows to ac
 provided by MySQL 8.0.x onwards. For more details, see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/mysql/index.html">MySQL module</a>.</p>
 </li>
 </ol>
-<h2>Client</h2>
+<h3>Client</h3>
 <p>The database client should be created using any of the above-listed database modules and once it is created, the
 operations and functionality explained below can be used.</p>
-<h3>Connection pool handling</h3>
+<h4>Connection pool handling</h4>
 <p>All database modules share the same connection pooling concept and there are 3 possible scenarios for
 connection pool handling.  For its properties and possible values, see the <code>sql:ConnectionPool</code>.</p>
 <ol>
@@ -259,7 +207,7 @@ jdbc:Client|sql:Error dbClient3 =
 </code></pre>
 </li>
 </ol>
-<h3>Closing the client</h3>
+<h4>Closing the client</h4>
 <p>Once all the database operations are performed, you can close the database client you have created by invoking the <code>close()</code>
 operation. This will close the corresponding connection pool if it is not shared by any other database clients.</p>
 <pre><code class="language-ballerina">error? e = dbClient.close();
@@ -268,11 +216,11 @@ if (e is error){
 }
 
 </code></pre>
-<h2>Database operations</h2>
+<h3>Database operations</h3>
 <p>Once the client is created, database operations can be executed through that client. This module defines the interface
 and common properties that are shared among multiple database clients.  It also supports querying, inserting, deleting,
 updating, and batch updating data.</p>
-<h3>Creating tables</h3>
+<h4>Creating tables</h4>
 <p>This sample creates a table with two columns. One column is of type <code>int</code>and the other is of type <code>varchar</code>.
 The CREATE statement is executed via the <code>execute</code> remote function of the client.</p>
 <pre><code class="language-ballerina">// Create the ‘Students’ table with the  ‘id’, 'name' and ‘age’ fields.
@@ -285,7 +233,7 @@ if (ret is sql:ExecutionResult) {
     io:println(&quot;Students table creation failed: &quot;, err.message());
 }
 </code></pre>
-<h3>Inserting data</h3>
+<h4>Inserting data</h4>
 <p>This sample shows three examples of data insertion by executing an INSERT statement using the <code>execute</code> remote function
 of the client.</p>
 <p>In the first example, the query parameter values are passed directly into the query statement of the <code>execute</code>
@@ -332,7 +280,7 @@ f (ret is sql:ExecutionResult) {
     io:println(&quot;Insert to Students table failed: &quot;, err.message());
 }
 </code></pre>
-<h3>Inserting data with auto-generated keys</h3>
+<h4>Inserting data with auto-generated keys</h4>
 <p>This example demonstrates inserting data while returning the auto-generated keys. It achieves this by using the
 <code>execute</code> remote function to execute the INSERT statement.</p>
 <pre><code class="language-ballerina">int age = 31;
@@ -351,7 +299,7 @@ if (ret is sql:ExecutionResult) {
     io:println(&quot;Insert to table failed: &quot;, err.message());
 }
 </code></pre>
-<h3>Querying data</h3>
+<h4>Querying data</h4>
 <p>This sample shows three examples to demonstrate the different usages of the <code>query</code> operation and query the
 database table and obtain the results.</p>
 <p>This example demonstrates querying data from a table in a database.
@@ -432,7 +380,7 @@ if(e is error){
     io:println(&quot;Error when closing the stream&quot;, e);
 }
 </code></pre>
-<h3>Updating data</h3>
+<h4>Updating data</h4>
 <p>This example demonstrates modifying data by executing an UPDATE statement via the <code>execute</code> remote function of
 the client.</p>
 <pre><code class="language-ballerina">int age = 23;
@@ -446,7 +394,7 @@ if (ret is sql:ExecutionResult) {
     io:println(&quot;Update to students table failed: &quot;, err.message());
 }
 </code></pre>
-<h3>Deleting data</h3>
+<h4>Deleting data</h4>
 <p>This example demonstrates deleting data by executing a DELETE statement via the <code>execute</code> remote function of
 the client.</p>
 <pre><code class="language-ballerina">string name = &quot;John&quot;;
@@ -459,7 +407,7 @@ if (ret is sql:ExecutionResult) {
     io:println(&quot;Delete from students table failed: &quot;, err.message());
 }
 </code></pre>
-<h3>Batch updating data</h3>
+<h4>Batch updating data</h4>
 <p>This example demonstrates how to insert multiple records with a single INSERT statement that is executed via the
 <code>batchExecute</code> remote function of the client. This is done by creating a <code>table</code> with multiple records and
 parameterized SQL query as same as the  above <code>execute</code> operations.</p>
@@ -489,712 +437,666 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
 </blockquote>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T0" title="T0">
-                                <a class="records " href="records/T0.html">T0</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T1" title="T1">
-                                <a class="records " href="records/T1.html">T1</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T10" title="T10">
-                                <a class="records " href="records/T10.html">T10</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T13" title="T13">
-                                <a class="records " href="records/T13.html">T13</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="BatchExecuteErrorDetail" title="BatchExecuteErrorDetail">
+                            <a class="records " href="records/BatchExecuteErrorDetail.html">BatchExecuteErrorDetail</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the properties belonging to a <code>BatchExecuteError</code>.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T14" title="T14">
-                                <a class="records " href="records/T14.html">T14</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T2" title="T2">
-                                <a class="records " href="records/T2.html">T2</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T3" title="T3">
-                                <a class="records " href="records/T3.html">T3</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="ConnectionPool" title="ConnectionPool">
+                            <a class="records " href="records/ConnectionPool.html">ConnectionPool</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the properties which are used to configure DB connection pool.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T7" title="T7">
-                                <a class="records " href="records/T7.html">T7</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T8" title="T8">
-                                <a class="records " href="records/T8.html">T8</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T9" title="T9">
-                                <a class="records " href="records/T9.html">T9</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="DatabaseErrorDetail" title="DatabaseErrorDetail">
+                            <a class="records " href="records/DatabaseErrorDetail.html">DatabaseErrorDetail</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the properties belonging to a <code>DatabaseError</code>.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="BatchExecuteErrorDetail" title="BatchExecuteErrorDetail">
-                                <a class="records " href="records/BatchExecuteErrorDetail.html">BatchExecuteErrorDetail</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the properties belonging to a <code>BatchExecuteError</code>.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="ConnectionPool" title="ConnectionPool">
-                                <a class="records " href="records/ConnectionPool.html">ConnectionPool</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the properties which are used to configure DB connection pool.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="DatabaseErrorDetail" title="DatabaseErrorDetail">
-                                <a class="records " href="records/DatabaseErrorDetail.html">DatabaseErrorDetail</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the properties belonging to a <code>DatabaseError</code>.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="ExecutionResult" title="ExecutionResult">
+                            <a class="records " href="records/ExecutionResult.html">ExecutionResult</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>The result of the query without returning the rows.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="ExecutionResult" title="ExecutionResult">
-                                <a class="records " href="records/ExecutionResult.html">ExecutionResult</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The result of the query without returning the rows.
-                            </td>
-                        </tr>
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
+        
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
                     <a class="url-link" href="#objects">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Objects </h2>
+                    <h2> Objects </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T6" title="T6">
-                                <a class="objects " href="objects/T6.html">T6</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="ArrayValue" title="ArrayValue">
-                                <a class="objects " href="objects/ArrayValue.html">ArrayValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents ArrayValue SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="BigIntValue" title="BigIntValue">
-                                <a class="objects " href="objects/BigIntValue.html">BigIntValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents BigInt SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="BinaryValue" title="BinaryValue">
-                                <a class="objects " href="objects/BinaryValue.html">BinaryValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Binary SQL field.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="ArrayValue" title="ArrayValue">
+                            <a class="objects " href="objects/ArrayValue.html">ArrayValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents ArrayValue SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="BitValue" title="BitValue">
-                                <a class="objects " href="objects/BitValue.html">BitValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Bit SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="BlobValue" title="BlobValue">
-                                <a class="objects " href="objects/BlobValue.html">BlobValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Blob SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="BooleanValue" title="BooleanValue">
-                                <a class="objects " href="objects/BooleanValue.html">BooleanValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Boolean SQL field.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="BigIntValue" title="BigIntValue">
+                            <a class="objects " href="objects/BigIntValue.html">BigIntValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents BigInt SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="CharValue" title="CharValue">
-                                <a class="objects " href="objects/CharValue.html">CharValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Char SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="ClobValue" title="ClobValue">
-                                <a class="objects " href="objects/ClobValue.html">ClobValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Clob SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="DateTimeValue" title="DateTimeValue">
-                                <a class="objects " href="objects/DateTimeValue.html">DateTimeValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents DateTime SQL field.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="BinaryValue" title="BinaryValue">
+                            <a class="objects " href="objects/BinaryValue.html">BinaryValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Binary SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="DateValue" title="DateValue">
-                                <a class="objects " href="objects/DateValue.html">DateValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Date SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="DecimalValue" title="DecimalValue">
-                                <a class="objects " href="objects/DecimalValue.html">DecimalValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Decimal SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="DoubleValue" title="DoubleValue">
-                                <a class="objects " href="objects/DoubleValue.html">DoubleValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Double SQL field.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="BitValue" title="BitValue">
+                            <a class="objects " href="objects/BitValue.html">BitValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Bit SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="FloatValue" title="FloatValue">
-                                <a class="objects " href="objects/FloatValue.html">FloatValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Float SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="IntegerValue" title="IntegerValue">
-                                <a class="objects " href="objects/IntegerValue.html">IntegerValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Integer SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="NCharValue" title="NCharValue">
-                                <a class="objects " href="objects/NCharValue.html">NCharValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents NChar SQL field.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="BlobValue" title="BlobValue">
+                            <a class="objects " href="objects/BlobValue.html">BlobValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Blob SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="NClobValue" title="NClobValue">
-                                <a class="objects " href="objects/NClobValue.html">NClobValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents NClob SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="NVarcharValue" title="NVarcharValue">
-                                <a class="objects " href="objects/NVarcharValue.html">NVarcharValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents NVarchar SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="NumericValue" title="NumericValue">
-                                <a class="objects " href="objects/NumericValue.html">NumericValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Numeric SQL field.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="BooleanValue" title="BooleanValue">
+                            <a class="objects " href="objects/BooleanValue.html">BooleanValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Boolean SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="ParameterizedQuery" title="ParameterizedQuery">
-                                <a class="objects " href="objects/ParameterizedQuery.html">ParameterizedQuery</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Parameterised SQL query.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="RealValue" title="RealValue">
-                                <a class="objects " href="objects/RealValue.html">RealValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Real SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="RefValue" title="RefValue">
-                                <a class="objects " href="objects/RefValue.html">RefValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Ref SQL field.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="CharValue" title="CharValue">
+                            <a class="objects " href="objects/CharValue.html">CharValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Char SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="RowValue" title="RowValue">
-                                <a class="objects " href="objects/RowValue.html">RowValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Row SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="SmallIntValue" title="SmallIntValue">
-                                <a class="objects " href="objects/SmallIntValue.html">SmallIntValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents SmallInt SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="StructValue" title="StructValue">
-                                <a class="objects " href="objects/StructValue.html">StructValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Struct SQL field.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="ClobValue" title="ClobValue">
+                            <a class="objects " href="objects/ClobValue.html">ClobValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Clob SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="TextValue" title="TextValue">
-                                <a class="objects " href="objects/TextValue.html">TextValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Text SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="TimeValue" title="TimeValue">
-                                <a class="objects " href="objects/TimeValue.html">TimeValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Time SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="TimestampValue" title="TimestampValue">
-                                <a class="objects " href="objects/TimestampValue.html">TimestampValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Timestamp SQL field.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="DateTimeValue" title="DateTimeValue">
+                            <a class="objects " href="objects/DateTimeValue.html">DateTimeValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents DateTime SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="TypedValue" title="TypedValue">
-                                <a class="objects " href="objects/TypedValue.html">TypedValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a parameter for the SQL Client remote functions when a variable needs to be passed
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="DateValue" title="DateValue">
+                            <a class="objects " href="objects/DateValue.html">DateValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Date SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="DecimalValue" title="DecimalValue">
+                            <a class="objects " href="objects/DecimalValue.html">DecimalValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Decimal SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="DoubleValue" title="DoubleValue">
+                            <a class="objects " href="objects/DoubleValue.html">DoubleValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Double SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="FloatValue" title="FloatValue">
+                            <a class="objects " href="objects/FloatValue.html">FloatValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Float SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="IntegerValue" title="IntegerValue">
+                            <a class="objects " href="objects/IntegerValue.html">IntegerValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Integer SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="NCharValue" title="NCharValue">
+                            <a class="objects " href="objects/NCharValue.html">NCharValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents NChar SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="NClobValue" title="NClobValue">
+                            <a class="objects " href="objects/NClobValue.html">NClobValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents NClob SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="NVarcharValue" title="NVarcharValue">
+                            <a class="objects " href="objects/NVarcharValue.html">NVarcharValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents NVarchar SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="NumericValue" title="NumericValue">
+                            <a class="objects " href="objects/NumericValue.html">NumericValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Numeric SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="ParameterizedQuery" title="ParameterizedQuery">
+                            <a class="objects " href="objects/ParameterizedQuery.html">ParameterizedQuery</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Parameterised SQL query.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="RealValue" title="RealValue">
+                            <a class="objects " href="objects/RealValue.html">RealValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Real SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="RefValue" title="RefValue">
+                            <a class="objects " href="objects/RefValue.html">RefValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Ref SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="RowValue" title="RowValue">
+                            <a class="objects " href="objects/RowValue.html">RowValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Row SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="SmallIntValue" title="SmallIntValue">
+                            <a class="objects " href="objects/SmallIntValue.html">SmallIntValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents SmallInt SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="StructValue" title="StructValue">
+                            <a class="objects " href="objects/StructValue.html">StructValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Struct SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="TextValue" title="TextValue">
+                            <a class="objects " href="objects/TextValue.html">TextValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Text SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="TimeValue" title="TimeValue">
+                            <a class="objects " href="objects/TimeValue.html">TimeValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Time SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="TimestampValue" title="TimestampValue">
+                            <a class="objects " href="objects/TimestampValue.html">TimestampValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Timestamp SQL field.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="TypedValue" title="TypedValue">
+                            <a class="objects " href="objects/TypedValue.html">TypedValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a parameter for the SQL Client remote functions when a variable needs to be passed
 to the remote function.
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="VarBinaryValue" title="VarBinaryValue">
-                                <a class="objects " href="objects/VarBinaryValue.html">VarBinaryValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents VarBinary SQL field.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="VarcharValue" title="VarcharValue">
-                                <a class="objects " href="objects/VarcharValue.html">VarcharValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents Varchar SQL field.
-                            </td>
-                        </tr>
                     
-                </table>
-             </section>  
-            
-
-            
-             <section class="method-content" id="clients">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#clients">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Clients </h2>
-                </div>
-                <table>
+                    <tr>
+                        <td class="module-title truncate objects" id="VarBinaryValue" title="VarBinaryValue">
+                            <a class="objects " href="objects/VarBinaryValue.html">VarBinaryValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents VarBinary SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate clients" id="Client" title="Client">
-                                <a class="clients " href="clients/Client.html">Client</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a SQL client.
-                            </td>
-                        </tr>
                     
-                </table>
-             </section>
-            
-
-            
-           
-
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="ballerina/sql:0.5.0.&lt;init&gt;0" title="ballerina/sql:0.5.0.&lt;init&gt;0">
-                                <a class="functions " href="functions.html#ballerina/sql:0.5.0.&lt;init&gt;0">ballerina/sql:0.5.0.&lt;init&gt;0</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="VarcharValue" title="VarcharValue">
+                            <a class="objects " href="objects/VarcharValue.html">VarcharValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Varchar SQL field.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="generateApplicationErrorStream" title="generateApplicationErrorStream">
-                                <a class="functions " href="functions.html#generateApplicationErrorStream">generateApplicationErrorStream</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getGlobalConnectionPool" title="getGlobalConnectionPool">
-                                <a class="functions " href="functions.html#getGlobalConnectionPool">getGlobalConnectionPool</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
                 </table>
             </section>
-            
+        
+    
 
-
+    
+    <section class="method-content" id="clients">
+        <div class="main-method-title here">
+            <a class="url-link" href="#clients">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Clients </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="constants">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#constants">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Constants </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate clients" id="Client" title="Client">
+                    <a class="clients " href="clients/Client.html">Client</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="SUCCESS_NO_INFO" title="SUCCESS_NO_INFO">
-                                <a class="constant " href="constants.html#SUCCESS_NO_INFO">SUCCESS_NO_INFO</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Constant indicating that the specific batch statement executed successfully
+                    <p>Represents a SQL client.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+    
+
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate functions" id="ballerina/sql:0.5.0.&lt;init&gt;0" title="ballerina/sql:0.5.0.&lt;init&gt;0">
+                    <a class="functions " href="functions.html#ballerina/sql:0.5.0.&lt;init&gt;0">ballerina/sql:0.5.0.&lt;init&gt;0</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="generateApplicationErrorStream" title="generateApplicationErrorStream">
+                    <a class="functions " href="functions.html#generateApplicationErrorStream">generateApplicationErrorStream</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getGlobalConnectionPool" title="getGlobalConnectionPool">
+                    <a class="functions " href="functions.html#getGlobalConnectionPool">getGlobalConnectionPool</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+
+    
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SUCCESS_NO_INFO" title="SUCCESS_NO_INFO">
+                    <a class="constant " href="constants.html#SUCCESS_NO_INFO">SUCCESS_NO_INFO</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Constant indicating that the specific batch statement executed successfully
 but that no count of the number of rows it affected is available.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="EXECUTION_FAILED" title="EXECUTION_FAILED">
-                                <a class="constant " href="constants.html#EXECUTION_FAILED">EXECUTION_FAILED</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Constant indicating that the specific batch statement failed.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate constant" id="EXECUTION_FAILED" title="EXECUTION_FAILED">
+                    <a class="constant " href="constants.html#EXECUTION_FAILED">EXECUTION_FAILED</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Constant indicating that the specific batch statement failed.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
-            
+    
 
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate types" id="BatchExecuteError" title="BatchExecuteError">
+                    <a class="types " href="types.html#BatchExecuteError">BatchExecuteError</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate types" id="BatchExecuteError" title="BatchExecuteError">
-                                <a class="types " href="types.html#BatchExecuteError">BatchExecuteError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents an error occurred when a batch execution is running.
-                            </td>
-                        </tr>
+                    <p>Represents an error occurred when a batch execution is running.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="DatabaseError" title="DatabaseError">
+                    <a class="types " href="types.html#DatabaseError">DatabaseError</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate types" id="DatabaseError" title="DatabaseError">
-                                <a class="types " href="types.html#DatabaseError">DatabaseError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,
+                    <p>Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,
 database resource clean-up, and other similar scenarios.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types " href="types.html#Error">Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a database or application level error returned from JDBC client remote functions.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="Value" title="Value">
-                                <a class="types " href="types.html#Value">Value</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Possible type of parameters that can be passed into the SQL query.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents a database or application level error returned from JDBC client remote functions.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="Value" title="Value">
+                    <a class="types " href="types.html#Value">Value</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Possible type of parameters that can be passed into the SQL query.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate errors" id="$anonType$4" title="$anonType$4">
+                    <a class="errors " href="errors.html#$anonType$4">$anonType$4</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="$anonType$4" title="$anonType$4">
-                                <a class="errors " href="errors.html#$anonType$4">$anonType$4</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="$anonType$5" title="$anonType$5">
-                                <a class="errors " href="errors.html#$anonType$5">$anonType$5</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="ApplicationError" title="ApplicationError">
-                                <a class="errors " href="errors.html#ApplicationError">ApplicationError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents an error originating from application-level causes.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate errors" id="$anonType$5" title="$anonType$5">
+                    <a class="errors " href="errors.html#$anonType$5">$anonType$5</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="ApplicationError" title="ApplicationError">
+                    <a class="errors " href="errors.html#ApplicationError">ApplicationError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents an error originating from application-level causes.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -1221,6 +1123,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -1230,4 +1150,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

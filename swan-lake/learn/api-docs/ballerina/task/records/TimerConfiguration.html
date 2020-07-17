@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,116 +69,52 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Records</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="AppointmentConfiguration.html">AppointmentConfiguration</a>
-                        </li>
-                    
-                        <li >
-                            <a href="AppointmentData.html">AppointmentData</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="TimerConfiguration.html">TimerConfiguration</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../task/index.html">
-            <h3>task</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../task/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../task/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="listeners" href="../../task/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../../task/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../task/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-    
-     <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Records</h3>
+                    <h3>
+    Records
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="AppointmentConfiguration.html">AppointmentConfiguration</a>
-                            </li>
-                        
-                            <li >
-                                <a href="AppointmentData.html">AppointmentData</a>
-                            </li>
-                        
-                            <li class="active">
-                                <a href="TimerConfiguration.html">TimerConfiguration</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="AppointmentConfiguration.html" onclick="menuLinkClick()">AppointmentConfiguration</a>
+        </li>
+    
+        <li >
+            <a href="AppointmentData.html" onclick="menuLinkClick()">AppointmentData</a>
+        </li>
+    
+        <li class="active">
+            <a href="TimerConfiguration.html" onclick="menuLinkClick()">TimerConfiguration</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../task/index.html">
+        <a href="../../task/index.html" onclick="menuLinkClick()">
             <h3>task</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../task/index.html#records">Records</a>
+            <a data="records" href="../../task/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../task/index.html#objects">Objects</a>
+                <a  data="objects" href="../../task/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
             <li>
-                <a data="listeners" href="../../task/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../task/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
@@ -177,53 +122,64 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
         
         
             <li>
-                <a data="types" href="../../task/index.html#types">Types</a>
+                <a data="types" href="../../task/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../task/index.html#errors">Errors</a>
+                <a data="errors" href="../../task/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-            <h1> 
+            <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Record - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Record
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../task/index.html">task</a>
+                    <a href="../../task/index.html"><span class="modules">task</span></a>
                 
-                 : <span class="records ">TimerConfiguration</span>
+                 :
+                    
+    <span class="records ">TimerConfiguration</span>
+
+                
             </h1>
-            <p>
-                
-                <p>Configurations related to a timer, which are used to define the behavior of a timer when initializing the
+            
+    <p>
+        
+        <p>Configurations related to a timer, which are used to define the behavior of a timer when initializing the
 <code>task:Listener</code>.</p>
 
-            </p>
-            <div class="constants">
-                
-                    
-                        <h2>Fields</h2>
-                            <div class="data-wrapper">
+    </p>
+    <div class="constants">
+        
+        
+        <h2>Fields</h2>
+        <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -276,17 +232,6 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
 </div>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -313,6 +258,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -323,26 +286,16 @@ contentWrapper.addEventListener("scroll", event => {
     };
 </script>
 
-                    
-                
-            </div>
+        
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -369,6 +322,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -378,4 +349,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

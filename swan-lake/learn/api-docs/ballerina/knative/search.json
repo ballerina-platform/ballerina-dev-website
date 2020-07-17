@@ -1,0 +1,186 @@
+{
+  "modules": [
+    {
+      "id": "knative",
+      "description": "\u003cp\u003eThis module offers an annotation based Knative extension implementation for ballerina.\u003c/p\u003e"
+    }
+  ],
+  "objects": [],
+  "functions": [],
+  "records": [
+    {
+      "id": "ConfigMap",
+      "description": "\u003cp\u003eKnative Config Map volume mount.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "ConfigMapKeyRef",
+      "description": "\u003cp\u003eValue from config map key.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "ConfigMapKeyValue",
+      "description": "\u003cp\u003eValue for config map key.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "ConfigMapMount",
+      "description": "\u003cp\u003eSecret volume mount configurations for knative.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "FieldRef",
+      "description": "\u003cp\u003eValue from field.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "FieldValue",
+      "description": "\u003cp\u003eValue for a field.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "FileConfig",
+      "description": "\u003cp\u003eExternal file type for docker.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "Metadata",
+      "description": "\u003cp\u003eKnative annotation configuration.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "PodAutoscalerConfig",
+      "description": "\u003cp\u003eKnative Horizontal Pod Autoscaler configuration.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "PodTolerationConfiguration",
+      "description": "\u003cp\u003ePod toleration configuration.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "ProbeConfiguration",
+      "description": "\u003cp\u003eProbing configuration.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "ResourceFieldRef",
+      "description": "\u003cp\u003eValue from resource field.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "ResourceFieldValue",
+      "description": "\u003cp\u003eValue for resource field.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "Secret",
+      "description": "\u003cp\u003eKnative secret volume mount.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "SecretKeyRef",
+      "description": "\u003cp\u003eValue from secret key.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "SecretKeyValue",
+      "description": "\u003cp\u003eValue for a secret key.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "SecretMount",
+      "description": "\u003cp\u003eSecret volume mount configurations for knative.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "ServiceConfiguration",
+      "description": "\u003cp\u003eKnative service configuration.\u003c/p\u003e",
+      "moduleId": "knative"
+    }
+  ],
+  "constants": [
+    {
+      "id": "IMAGE_PULL_POLICY_IF_NOT_PRESENT",
+      "description": "\u003cp\u003ePull image if it is not present for knative service.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "IMAGE_PULL_POLICY_ALWAYS",
+      "description": "\u003cp\u003eAlways pull the image for knative service.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "IMAGE_PULL_POLICY_NEVER",
+      "description": "\u003cp\u003eNever pull the image for knative service.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "EXISTS_OPERATION",
+      "description": "",
+      "moduleId": "knative"
+    },
+    {
+      "id": "EQUAL_OPERATION",
+      "description": "",
+      "moduleId": "knative"
+    },
+    {
+      "id": "TOLERATION_EFFECT_NO_SCHEDULE",
+      "description": "",
+      "moduleId": "knative"
+    },
+    {
+      "id": "TOLERATION_EFFECT_PREFER_NO_SCHEDULE",
+      "description": "",
+      "moduleId": "knative"
+    },
+    {
+      "id": "TOLERATION_EFFECT_NO_EXECUTE",
+      "description": "",
+      "moduleId": "knative"
+    }
+  ],
+  "errors": [],
+  "types": [
+    {
+      "id": "ImagePullPolicy",
+      "description": "\u003cp\u003eImage pull policy type field for kubernetes deployment and jobs.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "TolerationEffect",
+      "description": "\u003cp\u003eTypes of toleration effects for pods.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "TolerationOperator",
+      "description": "\u003cp\u003eType of operations between key and value of a toleration.\u003c/p\u003e",
+      "moduleId": "knative"
+    }
+  ],
+  "clients": [],
+  "listeners": [],
+  "annotations": [
+    {
+      "id": "ConfigMap",
+      "description": "\u003cp\u003e@knative:ConfigMap annotation to configure config maps.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "HPA",
+      "description": "\u003cp\u003e@knative:HPA annotation to configure horizontal pod autoscaler yaml.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "Secret",
+      "description": "\u003cp\u003e@knative:Secret annotation to configure secrets.\u003c/p\u003e",
+      "moduleId": "knative"
+    },
+    {
+      "id": "Service",
+      "description": "",
+      "moduleId": "knative"
+    }
+  ]
+}

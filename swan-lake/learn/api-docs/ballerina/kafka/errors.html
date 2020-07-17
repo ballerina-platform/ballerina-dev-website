@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -42,6 +50,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
 
 </head>
 
+
 <body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
@@ -59,233 +68,163 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Errors</h3>
-                <ul>
-                    
-                        <li ></li>
-                            <a href="#AvroError">AvroError</a>
-                        </li>
-                    
-                        <li ></li>
-                            <a href="#ConsumerError">ConsumerError</a>
-                        </li>
-                    
-                        <li ></li>
-                            <a href="#ProducerError">ProducerError</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../kafka/index.html">
-            <h3>kafka</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../kafka/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../kafka/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../kafka/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="constants" href="../kafka/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../kafka/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../kafka/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Errors</h3>
+                    <h3>
+    Errors
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#AvroError">AvroError</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ConsumerError">ConsumerError</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ProducerError">ProducerError</a>
-                            </li>
-                        
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#AvroError">AvroError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#ConsumerError">ConsumerError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#ProducerError">ProducerError</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../kafka/index.html">
+        <a href="../kafka/index.html" onclick="menuLinkClick()">
             <h3>kafka</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../kafka/index.html#records">Records</a>
+            <a data="records" href="../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../kafka/index.html#objects">Objects</a>
+                <a  data="objects" href="../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../kafka/index.html#clients">Clients</a>
+                <a data="clients" href="../kafka/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
         
         
             <li>
-                <a data="constants" href="../kafka/index.html#constants">Constants</a>
+                <a data="constants" href="../kafka/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../kafka/index.html#types">Types</a>
+                <a data="types" href="../kafka/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../kafka/index.html#errors">Errors</a>
+                <a data="errors" href="../kafka/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Errors - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Errors
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../kafka/index.html">kafka</a>
+                    <a href="../kafka/index.html"><span class="modules">kafka</span></a>
+                
                 
             </h1>
-            <div class="errors">
-                <div class="data-wrapper">
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li>
-                                    <b >AvroError </b>
-                                    <span class="type"></span>
-                                    
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents a Kafka Avro related error.</p>
+            
+    <div class="errors">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="AvroError">
+                            <b >AvroError </b>
+                            <span class="type"></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents a Kafka Avro related error.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li>
-                                    <b >ConsumerError </b>
-                                    <span class="type"></span>
-                                    
-                                </li>
-                                <li>
-                                    
-                                    <p>Error type specific to the <code>kafka:Consumer</code> object functions.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li>
-                                    <b >ProducerError </b>
-                                    <span class="type"></span>
-                                    
-                                </li>
-                                <li>
-                                    
-                                    <p>Error type specific to the <code>kafka:Producer</code> object functions.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="ConsumerError">
+                            <b >ConsumerError </b>
+                            <span class="type"></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Error type specific to the <code>kafka:Consumer</code> object functions.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="ProducerError">
+                            <b >ProducerError </b>
+                            <span class="type"></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Error type specific to the <code>kafka:Producer</code> object functions.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -312,6 +251,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -321,4 +278,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

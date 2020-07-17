@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides lang library operations on <code>stream</code> values defined by the language specification 2020R1.
+    <meta name="description" content="This module provides lang library operations on stream values defined by the language specification 2020R1.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.stream">
 
@@ -59,141 +68,69 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#close">close</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#filter">filter</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#forEach">forEach</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#iterator">iterator</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#map">map</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#next">next</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#reduce">reduce</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../lang.stream/index.html">
-            <h3>lang.stream</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../lang.stream/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../lang.stream/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../lang.stream/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#close">close</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#filter">filter</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#forEach">forEach</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#iterator">iterator</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#map">map</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#next">next</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#reduce">reduce</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#close" onclick="menuLinkClick()">close</a>
+        </li>
+    
+        <li >
+            <a href="#filter" onclick="menuLinkClick()">filter</a>
+        </li>
+    
+        <li >
+            <a href="#forEach" onclick="menuLinkClick()">forEach</a>
+        </li>
+    
+        <li >
+            <a href="#iterator" onclick="menuLinkClick()">iterator</a>
+        </li>
+    
+        <li >
+            <a href="#map" onclick="menuLinkClick()">map</a>
+        </li>
+    
+        <li >
+            <a href="#next" onclick="menuLinkClick()">next</a>
+        </li>
+    
+        <li >
+            <a href="#reduce" onclick="menuLinkClick()">reduce</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../lang.stream/index.html">
+        <a href="../lang.stream/index.html" onclick="menuLinkClick()">
             <h3>lang.stream</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../lang.stream/index.html#records">Records</a>
+            <a data="records" href="../lang.stream/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../lang.stream/index.html#objects">Objects</a>
+                <a  data="objects" href="../lang.stream/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../lang.stream/index.html#functions">Functions</a>
+                <a data="functions" href="../lang.stream/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -204,121 +141,129 @@
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../lang.stream/index.html">lang.stream</a>
+                    <a href="../lang.stream/index.html"><span class="modules">lang.stream</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#close">close</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Closes a stream.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#filter">filter</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Selects the members from a stream for which a function returns true.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#forEach">forEach</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Applies a function to each member of a stream.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#iterator">iterator</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns an iterator over a stream.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#map">map</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Applies a function to each member of a stream and returns a stream of the results.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#next">next</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns the next element in the stream wrapped in a record or () if the stream ends.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#reduce">reduce</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Combines the members of a stream using a combining function.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#close">close</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Closes a stream.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#filter">filter</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Selects the members from a stream for which a function returns true.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#forEach">forEach</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Applies a function to each member of a stream.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#iterator">iterator</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns an iterator over a stream.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#map">map</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Applies a function to each member of a stream and returns a stream of the results.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#next">next</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns the next element in the stream wrapped in a record or () if the stream ends.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#reduce">reduce</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Combines the members of a stream using a combining function.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="close" title="close">
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > close </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm)</p>
-            <b> returns </b><span class="builtin-type">ErrorType?</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm)</p>
+            
+                <b> returns </b><span class="builtin-type">ErrorType?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -334,7 +279,7 @@ This releases any system resources being used by the stream.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -362,19 +307,19 @@ This releases any system resources being used by the stream.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="filter" title="filter">
              <a class="url-link" href="#filter">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > filter </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
-            <b> returns </b><span class="builtin-type">stream</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
+            
+                <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -389,7 +334,7 @@ This releases any system resources being used by the stream.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -426,7 +371,7 @@ This releases any system resources being used by the stream.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span></span>)</li>
                 <li><p>new stream only containing members of <code>stm</code> for which <code>func</code> evaluates to true</p>
 </li>
             </ul>
@@ -434,19 +379,19 @@ This releases any system resources being used by the stream.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="forEach" title="forEach">
              <a class="url-link" href="#forEach">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > forEach </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> func)</p>
-            <b> returns </b><span class="builtin-type">ErrorType?</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> func)</p>
+            
+                <b> returns </b><span class="builtin-type">ErrorType?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -462,7 +407,7 @@ The Combining function is applied to each member of stream in order.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -507,19 +452,19 @@ The Combining function is applied to each member of stream in order.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="iterator" title="iterator">
              <a class="url-link" href="#iterator">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > iterator </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm)</p>
-            <b> returns </b><a href="../lang.stream/objects/T8.html">T8</a> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm)</p>
+            
+                <b> returns </b><a href="../lang.stream/objects/T8.html">T8</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -534,7 +479,7 @@ The Combining function is applied to each member of stream in order.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -562,19 +507,19 @@ The Combining function is applied to each member of stream in order.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="map" title="map">
              <a class="url-link" href="#map">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > map </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func)</p>
-            <b> returns </b><span class="builtin-type">stream</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func)</p>
+            
+                <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">Type1</span> ,<span class="builtin-type">ErrorType</span>></span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -589,7 +534,7 @@ The Combining function is applied to each member of stream in order.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -626,7 +571,7 @@ The Combining function is applied to each member of stream in order.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">Type1</span> ,<span class="builtin-type">ErrorType</span>></span></span>)</li>
                 <li><p>new stream containing result of applying <code>func</code> to each member of <code>stm</code> in order</p>
 </li>
             </ul>
@@ -634,19 +579,19 @@ The Combining function is applied to each member of stream in order.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="next" title="next">
              <a class="url-link" href="#next">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > next </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> strm)</p>
-            <b> returns </b><a href="../lang.stream/records/T2.html">T2</a> | <span class="builtin-type">ErrorType?</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> strm)</p>
+            
+                <b> returns </b><a href="../lang.stream/records/T2.html">T2</a> | <span class="builtin-type">ErrorType?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -661,7 +606,7 @@ The Combining function is applied to each member of stream in order.</p>
                 <ul>
                     <li>
                         <span >strm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -690,19 +635,19 @@ otherwise returns ()</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="reduce" title="reduce">
              <a class="url-link" href="#reduce">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > reduce </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">stream</span> stm, <code> <span>function(</span><span class="builtin-type">Type1</span>, <span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func, <span class="builtin-type">Type1</span> initial)</p>
-            <b> returns </b><span class="builtin-type">Type1</span> | <span class="builtin-type">ErrorType</span> 
+            <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm, <code> <span>function(</span><span class="builtin-type">Type1</span>, <span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func, <span class="builtin-type">Type1</span> initial)</p>
+            
+                <b> returns </b><span class="builtin-type">Type1</span> | <span class="builtin-type">ErrorType</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -719,7 +664,7 @@ and returns a new combined value.</p>
                 <ul>
                     <li>
                         <span >stm</span>
-                        <span class="type">  <span class="builtin-type">stream</span> </span>
+                        <span class="type">  <span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> </span>
                         
                     </li>
                     <li>
@@ -781,28 +726,18 @@ and returns a new combined value.</p>
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -829,6 +764,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -838,4 +791,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

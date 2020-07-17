@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,27 +62,28 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../task/index.html">
+        <a href="../task/index.html" onclick="menuLinkClick()">
             <h3>task</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../task/index.html#records">Records</a>
+            <a data="records" href="../task/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../task/index.html#objects">Objects</a>
+                <a  data="objects" href="../task/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
             <li>
-                <a data="listeners" href="../task/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../task/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
@@ -88,12 +91,12 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
         
         
             <li>
-                <a data="types" href="../task/index.html#types">Types</a>
+                <a data="types" href="../task/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../task/index.html#errors">Errors</a>
+                <a data="errors" href="../task/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -102,94 +105,47 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../task/index.html">
-            <h3>task</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../task/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../task/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="listeners" href="../task/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../task/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../task/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">task</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.1.0</div>
+                    <a href="../task/index.html"><span class="modules">task</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.1.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides the functionality to configure and manage Task Listeners and Task Schedulers.
 Task Listeners and Task Schedulers can be used to perform tasks periodically.</p>
-<h3>Task Listeners</h3>
+<h4>Task Listeners</h4>
 <p>A Task <code>Listener</code> can be used to create a service listener, which will be triggered at specified times.</p>
 <p>Below are the two types of configurations that can be used to configure a Task Listener, either as a timer or as an appointment.</p>
 <ul>
 <li><code>TimerConfiguration</code></li>
 <li><code>AppointmentConfiguration</code></li>
 </ul>
-<h4>Task Listener as a Timer</h4>
+<h5>Task Listener as a Timer</h5>
 <p>The <code>TimerConfiguration</code> can be used to configure a task that needs to be executed periodically.</p>
 <p>The following code snippet shows how to create a listener, which registers a task with an initial delay of 3000 milliseconds and is executed every 1000 milliseconds for 10 times.</p>
 <pre><code class="language-ballerina">task:TimerConfiguration timerConfiguration = {
@@ -209,7 +165,7 @@ service timerService on timer {
 }
 </code></pre>
 <p>For an example on the usage of the <code>task:Listener</code> as a timer, see the <a href="https://ballerina.io/swan-lake/learn/by-example/task-service-timer.html">Task Service Timer Example</a>.</p>
-<h4>Task Listener as an Appointment</h4>
+<h5>Task Listener as an Appointment</h5>
 <p>The <code>AppointmentConfiguration</code> can be used to schedule an appointment.</p>
 <p>The following code snippet shows how to create a task appointment, which registers a service using a CRON expression to execute the task every second for 10 times.</p>
 <pre><code class="language-ballerina">task:AppointmentConfiguration appointmentConfiguration = {
@@ -229,14 +185,14 @@ service appointmentService on appointment {
 }
 </code></pre>
 <p>For an example on the usage of the <code>task:Listener</code> as an appointment, see the <a href="https://ballerina.io/swan-lake/learn/by-example/task-service-appointment.html">Task Service Appointment Example</a>.</p>
-<h3>Task Schedulers</h3>
+<h4>Task Schedulers</h4>
 <p>A Task <code>Scheduler</code> can be used to create timers/appointments dynamically. Service(s) can be attached to the <code>Scheduler</code> so that they can be invoked when the Scheduler is triggered.</p>
 <p>Similar to Task Listeners, below are the two types of configurations that can be used to configure a Task Scheduler either as a timer or as an appointment.</p>
 <ul>
 <li><code>TimerConfiguration</code></li>
 <li><code>AppointmentConfiguration</code></li>
 </ul>
-<h4>Task Scheduler as a Timer</h4>
+<h5>Task Scheduler as a Timer</h5>
 <p>A <code>Scheduler</code> can be used to create timers via its <code>TimerConfiguration</code>.</p>
 <p>The following code snippet shows how to create a <code>task:Scheduler</code> as a timer.</p>
 <pre><code class="language-ballerina">task:TimerConfiguration timerConfiguration = {
@@ -247,7 +203,7 @@ service appointmentService on appointment {
 task:Scheduler timer = new(timerConfiguration);
 </code></pre>
 <p>For an example on the usage of the <code>task:Scheduler</code> as a timer, see the <a href="https://ballerina.io/swan-lake/learn/by-example/task-scheduler-timer.html">Task Scheduler Timer Example</a>.</p>
-<h3>Task Scheduler as an Appointment</h3>
+<h4>Task Scheduler as an Appointment</h4>
 <p>A <code>Scheduler</code> can also be used to create appointments via its <code>AppointmentConfiguration</code>.</p>
 <p>The following code snippet shows how to create a Task Scheduler as an appointment.</p>
 <pre><code class="language-ballerina">task:AppointmentConfiguration appointmentConfiguration = {
@@ -259,187 +215,187 @@ task:Scheduler appointment = new(appointmentConfiguration);
 <p>For an example on the usage of the <code>task:Scheduler</code> as an appointment, see the <a href="https://ballerina.io/swan-lake/learn/by-example/task-scheduler-appointment.html">Task Scheduler Appointment Example</a>.</p>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="AppointmentConfiguration" title="AppointmentConfiguration">
-                                <a class="records " href="records/AppointmentConfiguration.html">AppointmentConfiguration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configurations related to an appointment, which are used to define the behavior of an appointment when initializing
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="AppointmentConfiguration" title="AppointmentConfiguration">
+                            <a class="records " href="records/AppointmentConfiguration.html">AppointmentConfiguration</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configurations related to an appointment, which are used to define the behavior of an appointment when initializing
 the <code>task:Listener</code>.
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="AppointmentData" title="AppointmentData">
-                                <a class="records " href="records/AppointmentData.html">AppointmentData</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The CRON expression required for scheduling an appointment.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="TimerConfiguration" title="TimerConfiguration">
-                                <a class="records " href="records/TimerConfiguration.html">TimerConfiguration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configurations related to a timer, which are used to define the behavior of a timer when initializing the
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="AppointmentData" title="AppointmentData">
+                            <a class="records " href="records/AppointmentData.html">AppointmentData</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>The CRON expression required for scheduling an appointment.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="TimerConfiguration" title="TimerConfiguration">
+                            <a class="records " href="records/TimerConfiguration.html">TimerConfiguration</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configurations related to a timer, which are used to define the behavior of a timer when initializing the
 <code>task:Listener</code>.
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
+        
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
                     <a class="url-link" href="#objects">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Objects </h2>
+                    <h2> Objects </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="Scheduler" title="Scheduler">
-                                <a class="objects " href="objects/Scheduler.html">Scheduler</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a ballerina task Scheduler, which can be used to run jobs periodically, using the given configurations.
-                            </td>
-                        </tr>
                     
-                </table>
-             </section>  
-            
-
-            
-
-            
-             <section class="method-content" id="listeners">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#listeners">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Listeners </h2>
-                </div>
-                <table>
+                    <tr>
+                        <td class="module-title truncate objects" id="Scheduler" title="Scheduler">
+                            <a class="objects " href="objects/Scheduler.html">Scheduler</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a ballerina task Scheduler, which can be used to run jobs periodically, using the given configurations.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate listeners" id="Listener" title="Listener">
-                                <a class="listeners " href="listeners/Listener.html">Listener</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a ballerina task listener, which can be used to schedule and execute tasks periodically.
-                            </td>
-                        </tr>
                     
                 </table>
             </section>
+        
+    
+
+    
+
+    
+    <section class="method-content" id="listeners">
+        <div class="main-method-title here">
+            <a class="url-link" href="#listeners">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Listeners </h2>
+        </div>
+        <table>
             
-           
-
-            
-
-
-            
-
-
-            
-
-            
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate listeners" id="Listener" title="Listener">
+                    <a class="listeners " href="listeners/Listener.html">Listener</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types " href="types.html#Error">Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the Union error type of the ballerina/task module.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Represents a ballerina task listener, which can be used to schedule and execute tasks periodically.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
 
+
+    
+
+
+    
+
+
+    
+
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="ListenerError" title="ListenerError">
-                                <a class="errors " href="errors.html#ListenerError">ListenerError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Error type specific to the <code>task:Listener</code> object functions.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="SchedulerError" title="SchedulerError">
-                                <a class="errors " href="errors.html#SchedulerError">SchedulerError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Error type specific to the <code>task:Scheduler</code> object functions.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Represents the Union error type of the ballerina/task module.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
+
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="ListenerError" title="ListenerError">
+                    <a class="errors " href="errors.html#ListenerError">ListenerError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Error type specific to the <code>task:Listener</code> object functions.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="SchedulerError" title="SchedulerError">
+                    <a class="errors " href="errors.html#SchedulerError">SchedulerError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Error type specific to the <code>task:Scheduler</code> object functions.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -466,6 +422,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -475,4 +449,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,200 +68,134 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Objects</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="AbstractClientEndpoint.html">AbstractClientEndpoint</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="Headers.html">Headers</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../grpc/index.html">
-            <h3>grpc</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../grpc/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../grpc/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../../grpc/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../../grpc/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-            <li>
-                <a data="functions" href="../../grpc/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../../grpc/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../../grpc/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../../grpc/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../grpc/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Objects</h3>
+                    <h3>
+    Objects
+</h3>
                     <ul>
                         
-                            <li ></li>>
-                                <a href="AbstractClientEndpoint.html">AbstractClientEndpoint</a>
-                            </li>
-                        
-                            <li class="active"></li>>
-                                <a href="Headers.html">Headers</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="AbstractClientEndpoint.html" onclick="menuLinkClick()">AbstractClientEndpoint</a>
+        </li>
+    
+        <li class="active">
+            <a href="Headers.html" onclick="menuLinkClick()">Headers</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../grpc/index.html">
+        <a href="../../grpc/index.html" onclick="menuLinkClick()">
             <h3>grpc</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../grpc/index.html#records">Records</a>
+            <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../grpc/index.html#objects">Objects</a>
+                <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../../grpc/index.html#clients">Clients</a>
+                <a data="clients" href="../../grpc/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../../grpc/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../grpc/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
             <li>
-                <a data="functions" href="../../grpc/index.html#functions">Functions</a>
+                <a data="functions" href="../../grpc/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../../grpc/index.html#constants">Constants</a>
+                <a data="constants" href="../../grpc/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../../grpc/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../../grpc/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../../grpc/index.html#types">Types</a>
+                <a data="types" href="../../grpc/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../grpc/index.html#errors">Errors</a>
+                <a data="errors" href="../../grpc/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Object - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Object
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../grpc/index.html">grpc</a>
+                    <a href="../../grpc/index.html"><span class="modules">grpc</span></a>
+                
                  :
-                <span class="objects ">Headers</span>
+                    
+    <span class="objects ">Headers</span>
+
+                
             </h1>
-            <p>
-                
-                <p>Provides the actions to read/write header values in a gRPC request/response message.</p>
+            
+    <p>
+        
+        <p>Provides the actions to read/write header values in a gRPC request/response message.</p>
 
-            </p>
+    </p>
 
-            <div class="constants">
-                <div class="method-sum">
+    <div class="constants">
+        <div class="method-sum">
+            
+
+        
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-
-                
-                    
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="exists">
         <a href="#exists">exists </a>
@@ -263,8 +206,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="get">
         <a href="#get">get </a>
@@ -275,8 +218,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="getAll">
         <a href="#getAll">getAll </a>
@@ -287,8 +230,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="setEntry">
         <a href="#setEntry">setEntry </a>
@@ -299,8 +242,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="addEntry">
         <a href="#addEntry">addEntry </a>
@@ -311,8 +254,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="remove">
         <a href="#remove">remove </a>
@@ -323,8 +266,8 @@
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="removeAll">
         <a href="#removeAll">removeAll </a>
@@ -335,27 +278,27 @@
     </div>
 </div>
 
-                            
-                        </div>
-                    
-
                     
                 </div>
+            
 
-                
-                    
-                        <div class="method-content">
+            
+        </div>
+
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="exists" title="exists">
              <a class="url-link" href="#exists">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > exists </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -400,19 +343,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="get" title="get">
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > get </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
-            <b> returns </b><span class="builtin-type">string?</span> 
+            
+                <b> returns </b><span class="builtin-type">string?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -458,19 +401,19 @@ specified header name, the first value is returned.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getAll" title="getAll">
              <a class="url-link" href="#getAll">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getAll </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> 
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -515,14 +458,17 @@ specified header name, the first value is returned.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="setEntry" title="setEntry">
              <a class="url-link" href="#setEntry">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > setEntry </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> headerName, <span class="builtin-type">string</span> headerValue)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -574,14 +520,17 @@ specified header name, the first value is returned.</p>
 
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="addEntry" title="addEntry">
              <a class="url-link" href="#addEntry">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > addEntry </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> headerName, <span class="builtin-type">string</span> headerValue)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -633,14 +582,17 @@ specified header name, the first value is returned.</p>
 
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="remove" title="remove">
              <a class="url-link" href="#remove">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > remove </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> headerName)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -675,14 +627,17 @@ specified header name, the first value is returned.</p>
 
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="removeAll" title="removeAll">
              <a class="url-link" href="#removeAll">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > removeAll </h2>
-        
+        <span class="method-types">
+            <p>()</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -695,27 +650,16 @@ specified header name, the first value is returned.</p>
 
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -742,6 +686,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -751,4 +713,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

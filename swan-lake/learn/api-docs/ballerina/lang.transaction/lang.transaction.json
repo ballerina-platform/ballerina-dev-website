@@ -15,6 +15,7 @@
             "isArrayType": true,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -30,6 +31,7 @@
               "isArrayType": false,
               "isNullable": false,
               "isTuple": false,
+              "isRestParam": false,
               "isLambda": false,
               "isDeprecated": false,
               "generateUserDefinedTypeLink": true,
@@ -53,6 +55,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -75,6 +78,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -97,6 +101,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -127,6 +132,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -149,6 +155,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -171,6 +178,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -193,6 +201,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -215,6 +224,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -252,6 +262,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -284,6 +295,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -307,6 +319,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -339,6 +352,7 @@
               "isArrayType": false,
               "isNullable": false,
               "isTuple": false,
+              "isRestParam": false,
               "isLambda": false,
               "isDeprecated": false,
               "generateUserDefinedTypeLink": true,
@@ -372,6 +386,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -395,6 +410,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -412,6 +428,7 @@
           "isDeprecated": false
         }
       ],
+      "isAnonymous": false,
       "name": "DefaultRetryManager",
       "description": "",
       "isDeprecated": false
@@ -420,6 +437,7 @@
       "fields": [],
       "methods": [],
       "otherMethods": [],
+      "isAnonymous": false,
       "name": "LocalParticipant",
       "description": "",
       "isDeprecated": false
@@ -428,6 +446,7 @@
       "fields": [],
       "methods": [],
       "otherMethods": [],
+      "isAnonymous": false,
       "name": "Participant",
       "description": "",
       "isDeprecated": false
@@ -450,6 +469,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -473,6 +493,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -506,6 +527,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -529,6 +551,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -546,6 +569,7 @@
           "isDeprecated": false
         }
       ],
+      "isAnonymous": false,
       "name": "RetryManager",
       "description": "",
       "isDeprecated": false
@@ -569,6 +593,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -591,6 +616,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -614,6 +640,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -643,6 +670,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -672,6 +700,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -703,6 +732,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -735,6 +765,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -757,6 +788,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -780,6 +812,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -811,6 +844,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -833,6 +867,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -855,6 +890,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -868,6 +904,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -884,6 +921,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -919,6 +957,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -941,6 +980,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -963,6 +1003,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -976,6 +1017,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -992,6 +1034,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1027,6 +1070,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1052,12 +1096,115 @@
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
+            "name": "readonly",
+            "category": "UNKNOWN",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "",
+          "description": "",
+          "isDeprecated": false
+        }
+      ],
+      "name": "getData",
+      "description": "",
+      "isDeprecated": false
+    },
+    {
+      "isRemote": false,
+      "isExtern": true,
+      "parameters": [
+        {
+          "defaultValue": "",
+          "type": {
+            "category": "UNKNOWN",
+            "isAnonymousUnionType": false,
+            "isArrayType": true,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 1,
+            "elementType": {
+              "orgName": "ballerina",
+              "moduleName": "lang.annotations",
+              "name": "byte",
+              "category": "builtin",
+              "isAnonymousUnionType": false,
+              "isArrayType": false,
+              "isNullable": false,
+              "isTuple": false,
+              "isRestParam": false,
+              "isLambda": false,
+              "isDeprecated": false,
+              "generateUserDefinedTypeLink": true,
+              "memberTypes": [],
+              "paramTypes": [],
+              "arrayDimensions": 0
+            }
+          },
+          "name": "xid",
+          "description": "",
+          "isDeprecated": false
+        }
+      ],
+      "returnParameters": [
+        {
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.transaction",
+            "name": "Info",
+            "category": "records",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": true,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "",
+          "description": "",
+          "isDeprecated": false
+        }
+      ],
+      "name": "getInfo",
+      "description": "",
+      "isDeprecated": false
+    },
+    {
+      "isRemote": false,
+      "isExtern": true,
+      "parameters": [],
+      "returnParameters": [
+        {
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
             "name": "boolean",
             "category": "builtin",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1089,6 +1236,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1120,6 +1268,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1151,6 +1300,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1183,6 +1333,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1215,6 +1366,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1237,6 +1389,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1260,6 +1413,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1291,6 +1445,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1313,6 +1468,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1339,12 +1495,46 @@
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
+            "name": "readonly",
+            "category": "UNKNOWN",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "e",
+          "description": "",
+          "isDeprecated": false
+        }
+      ],
+      "returnParameters": [],
+      "name": "setData",
+      "description": "",
+      "isDeprecated": false
+    },
+    {
+      "isRemote": false,
+      "isExtern": true,
+      "parameters": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
             "name": "error",
             "category": "errors",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1377,6 +1567,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1399,6 +1590,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1431,6 +1623,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1453,6 +1646,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1476,6 +1670,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -1504,6 +1699,7 @@
         "isArrayType": false,
         "isNullable": false,
         "isTuple": false,
+        "isRestParam": false,
         "isLambda": false,
         "isDeprecated": false,
         "generateUserDefinedTypeLink": true,
@@ -1526,6 +1722,7 @@
         "isArrayType": false,
         "isNullable": false,
         "isTuple": false,
+        "isRestParam": false,
         "isLambda": false,
         "isDeprecated": false,
         "generateUserDefinedTypeLink": true,
@@ -1547,603 +1744,7 @@
       "isDeprecated": false
     }
   ],
-  "finiteTypes": [
-    {
-      "valueSpace": [
-        "/balcoordinator"
-      ],
-      "name": "$anonType$0",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "1.0"
-      ],
-      "name": "$anonType$1",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "not-prepared"
-      ],
-      "name": "$anonType$10",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "failed-eot"
-      ],
-      "name": "$anonType$11",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "committed"
-      ],
-      "name": "$anonType$12",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "aborted"
-      ],
-      "name": "$anonType$13",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "committed"
-      ],
-      "name": "$anonType$14",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "aborted"
-      ],
-      "name": "$anonType$15",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "mixed"
-      ],
-      "name": "$anonType$16",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "hazard"
-      ],
-      "name": "$anonType$17",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "Transaction-Unknown"
-      ],
-      "name": "$anonType$18",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "2pc"
-      ],
-      "name": "$anonType$19",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "prepare"
-      ],
-      "name": "$anonType$2",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "completion"
-      ],
-      "name": "$anonType$20",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "volatile"
-      ],
-      "name": "$anonType$21",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "durable"
-      ],
-      "name": "$anonType$22",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "active"
-      ],
-      "name": "$anonType$23",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "prepared"
-      ],
-      "name": "$anonType$24",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "committed"
-      ],
-      "name": "$anonType$25",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "aborted"
-      ],
-      "name": "$anonType$26",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "prepared"
-      ],
-      "name": "$anonType$27",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "aborted"
-      ],
-      "name": "$anonType$28",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "committed"
-      ],
-      "name": "$anonType$29",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "commit"
-      ],
-      "name": "$anonType$3",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "read-only"
-      ],
-      "name": "$anonType$30",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "committed"
-      ],
-      "name": "$anonType$31",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "aborted"
-      ],
-      "name": "$anonType$32",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "commit"
-      ],
-      "name": "$anonType$33",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "abort"
-      ],
-      "name": "$anonType$34",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "abort"
-      ],
-      "name": "$anonType$4",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "prepared"
-      ],
-      "name": "$anonType$5",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "aborted"
-      ],
-      "name": "$anonType$6",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "committed"
-      ],
-      "name": "$anonType$7",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "read-only"
-      ],
-      "name": "$anonType$8",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "failed"
-      ],
-      "name": "$anonType$9",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    }
-  ],
+  "finiteTypes": [],
   "unionTypes": [],
   "resources": []
 }

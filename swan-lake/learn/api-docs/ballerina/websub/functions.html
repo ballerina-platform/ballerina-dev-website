@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.
+    <meta name="description" content="This module contains an implementation of the W3C WebSub recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,websub">
 
@@ -59,363 +68,168 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#addWebSubLinkHeader">addWebSubLinkHeader</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ballerina/websub:1.0.0.&lt;init&gt;0">ballerina/websub:1.0.0.&lt;init&gt;0</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ballerina/websub:1.0.0.&lt;init&gt;1">ballerina/websub:1.0.0.&lt;init&gt;1</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ballerina/websub:1.0.0.&lt;init&gt;2">ballerina/websub:1.0.0.&lt;init&gt;2</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ballerina/websub:1.0.0.&lt;init&gt;3">ballerina/websub:1.0.0.&lt;init&gt;3</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ballerina/websub:1.0.0.&lt;init&gt;4">ballerina/websub:1.0.0.&lt;init&gt;4</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ballerina/websub:1.0.0.&lt;init&gt;5">ballerina/websub:1.0.0.&lt;init&gt;5</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ballerina/websub:1.0.0.&lt;init&gt;6">ballerina/websub:1.0.0.&lt;init&gt;6</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#extractTopicAndHubUrls">extractTopicAndHubUrls</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#startHub">startHub</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../websub/index.html">
-            <h3>websub</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../websub/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../websub/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../websub/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../websub/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-            <li>
-                <a data="functions" href="../websub/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../websub/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../websub/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../websub/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../websub/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#addWebSubLinkHeader">addWebSubLinkHeader</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ballerina/websub:1.0.0.&lt;init&gt;0">ballerina/websub:1.0.0.&lt;init&gt;0</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ballerina/websub:1.0.0.&lt;init&gt;1">ballerina/websub:1.0.0.&lt;init&gt;1</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ballerina/websub:1.0.0.&lt;init&gt;2">ballerina/websub:1.0.0.&lt;init&gt;2</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ballerina/websub:1.0.0.&lt;init&gt;3">ballerina/websub:1.0.0.&lt;init&gt;3</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ballerina/websub:1.0.0.&lt;init&gt;4">ballerina/websub:1.0.0.&lt;init&gt;4</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ballerina/websub:1.0.0.&lt;init&gt;5">ballerina/websub:1.0.0.&lt;init&gt;5</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ballerina/websub:1.0.0.&lt;init&gt;6">ballerina/websub:1.0.0.&lt;init&gt;6</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#extractTopicAndHubUrls">extractTopicAndHubUrls</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#startHub">startHub</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#addWebSubLinkHeader" onclick="menuLinkClick()">addWebSubLinkHeader</a>
+        </li>
+    
+        <li >
+            <a href="#extractTopicAndHubUrls" onclick="menuLinkClick()">extractTopicAndHubUrls</a>
+        </li>
+    
+        <li >
+            <a href="#startHub" onclick="menuLinkClick()">startHub</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../websub/index.html">
+        <a href="../websub/index.html" onclick="menuLinkClick()">
             <h3>websub</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../websub/index.html#records">Records</a>
+            <a data="records" href="../websub/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../websub/index.html#objects">Objects</a>
+                <a  data="objects" href="../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../websub/index.html#clients">Clients</a>
+                <a data="clients" href="../websub/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../websub/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../websub/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
             <li>
-                <a data="functions" href="../websub/index.html#functions">Functions</a>
+                <a data="functions" href="../websub/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../websub/index.html#constants">Constants</a>
+                <a data="constants" href="../websub/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../websub/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../websub/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../websub/index.html#types">Types</a>
+                <a data="types" href="../websub/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../websub/index.html#errors">Errors</a>
+                <a data="errors" href="../websub/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../websub/index.html">websub</a>
+                    <a href="../websub/index.html"><span class="modules">websub</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#addWebSubLinkHeader">addWebSubLinkHeader</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Function to add link headers to a response to allow WebSub discovery.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ballerina/websub:1.0.0.&lt;init&gt;0">ballerina/websub:1.0.0.&lt;init&gt;0</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ballerina/websub:1.0.0.&lt;init&gt;1">ballerina/websub:1.0.0.&lt;init&gt;1</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ballerina/websub:1.0.0.&lt;init&gt;2">ballerina/websub:1.0.0.&lt;init&gt;2</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ballerina/websub:1.0.0.&lt;init&gt;3">ballerina/websub:1.0.0.&lt;init&gt;3</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ballerina/websub:1.0.0.&lt;init&gt;4">ballerina/websub:1.0.0.&lt;init&gt;4</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ballerina/websub:1.0.0.&lt;init&gt;5">ballerina/websub:1.0.0.&lt;init&gt;5</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ballerina/websub:1.0.0.&lt;init&gt;6">ballerina/websub:1.0.0.&lt;init&gt;6</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#extractTopicAndHubUrls">extractTopicAndHubUrls</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#startHub">startHub</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Starts up the Ballerina Hub.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#addWebSubLinkHeader">addWebSubLinkHeader</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Function to add link headers to a response to allow WebSub discovery.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#extractTopicAndHubUrls">extractTopicAndHubUrls</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#startHub">startHub</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Starts up the Ballerina Hub.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="addWebSubLinkHeader" title="addWebSubLinkHeader">
              <a class="url-link" href="#addWebSubLinkHeader">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > addWebSubLinkHeader </h2>
-        
+        <span class="method-types">
+            <p>(<a href="../http/objects/Response.html">Response</a> response, <span class="array-type"><span class="builtin-type">string</span>[]</span> hubs, <span class="builtin-type">string</span> topic)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -482,236 +296,19 @@
 
     
 </div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="ballerina/websub:1.0.0.&lt;init&gt;0" title="ballerina/websub:1.0.0.&lt;init&gt;0">
-             <a class="url-link" href="#ballerina/websub:1.0.0.&lt;init&gt;0">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > ballerina/websub:1.0.0.&lt;init&gt;0 </h2>
-        
-        <span class="method-types">
-            <p>()</p>
-            <b> returns </b><a href="../null/types.html#error?">error?</a> 
-        </span>
-        
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../null/types.html#error?">error?</a></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="ballerina/websub:1.0.0.&lt;init&gt;1" title="ballerina/websub:1.0.0.&lt;init&gt;1">
-             <a class="url-link" href="#ballerina/websub:1.0.0.&lt;init&gt;1">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > ballerina/websub:1.0.0.&lt;init&gt;1 </h2>
-        
-        <span class="method-types">
-            <p>()</p>
-            <b> returns </b><a href="../null/types.html#error?">error?</a> 
-        </span>
-        
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../null/types.html#error?">error?</a></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="ballerina/websub:1.0.0.&lt;init&gt;2" title="ballerina/websub:1.0.0.&lt;init&gt;2">
-             <a class="url-link" href="#ballerina/websub:1.0.0.&lt;init&gt;2">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > ballerina/websub:1.0.0.&lt;init&gt;2 </h2>
-        
-        <span class="method-types">
-            <p>()</p>
-            <b> returns </b><a href="../null/types.html#error?">error?</a> 
-        </span>
-        
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../null/types.html#error?">error?</a></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="ballerina/websub:1.0.0.&lt;init&gt;3" title="ballerina/websub:1.0.0.&lt;init&gt;3">
-             <a class="url-link" href="#ballerina/websub:1.0.0.&lt;init&gt;3">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > ballerina/websub:1.0.0.&lt;init&gt;3 </h2>
-        
-        <span class="method-types">
-            <p>()</p>
-            <b> returns </b><a href="../null/types.html#error?">error?</a> 
-        </span>
-        
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../null/types.html#error?">error?</a></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="ballerina/websub:1.0.0.&lt;init&gt;4" title="ballerina/websub:1.0.0.&lt;init&gt;4">
-             <a class="url-link" href="#ballerina/websub:1.0.0.&lt;init&gt;4">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > ballerina/websub:1.0.0.&lt;init&gt;4 </h2>
-        
-        <span class="method-types">
-            <p>()</p>
-            <b> returns </b><a href="../null/types.html#error?">error?</a> 
-        </span>
-        
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../null/types.html#error?">error?</a></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="ballerina/websub:1.0.0.&lt;init&gt;5" title="ballerina/websub:1.0.0.&lt;init&gt;5">
-             <a class="url-link" href="#ballerina/websub:1.0.0.&lt;init&gt;5">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > ballerina/websub:1.0.0.&lt;init&gt;5 </h2>
-        
-        <span class="method-types">
-            <p>()</p>
-            <b> returns </b><a href="../null/types.html#error?">error?</a> 
-        </span>
-        
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../null/types.html#error?">error?</a></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="ballerina/websub:1.0.0.&lt;init&gt;6" title="ballerina/websub:1.0.0.&lt;init&gt;6">
-             <a class="url-link" href="#ballerina/websub:1.0.0.&lt;init&gt;6">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > ballerina/websub:1.0.0.&lt;init&gt;6 </h2>
-        
-        <span class="method-types">
-            <p>()</p>
-            <b> returns </b><a href="../null/types.html#error?">error?</a> 
-        </span>
-        
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../null/types.html#error?">error?</a></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="extractTopicAndHubUrls" title="extractTopicAndHubUrls">
              <a class="url-link" href="#extractTopicAndHubUrls">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > extractTopicAndHubUrls </h2>
-        
         <span class="method-types">
             <p>(<a href="../http/objects/Response.html">Response</a> response)</p>
-            <b> returns </b><span>[</span><span class="builtin-type">string</span>, <span class="array-type"><span class="builtin-type">string</span>[]</span><span>]</span> | <span class="builtin-type">error</span> 
+            
+                <b> returns </b><span>[</span><span class="builtin-type">string</span>, <span class="array-type"><span class="builtin-type">string</span>[]</span><span>]</span> | <span class="builtin-type">error</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -754,19 +351,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="startHub" title="startHub">
              <a class="url-link" href="#startHub">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > startHub </h2>
-        
         <span class="method-types">
             <p>(<a href="../http/listeners/Listener.html">Listener</a> hubServiceListener, <span class="builtin-type">string</span> basePath, <span class="builtin-type">string</span> subscriptionResourcePath, <span class="builtin-type">string</span> publishResourcePath, <a href="../http/records/ServiceAuth.html">ServiceAuth</a> serviceAuth, <a href="../http/records/ResourceAuth.html">ResourceAuth</a> subscriptionResourceAuth, <a href="../http/records/ResourceAuth.html">ResourceAuth</a> publisherResourceAuth, <span class="builtin-type">string?</span> publicUrl, <a href="../websub/records/HubConfiguration.html">HubConfiguration</a> hubConfiguration)</p>
-            <b> returns </b><a href="../websub/objects/Hub.html">Hub</a> | <a href="../websub/records/HubStartedUpError.html">HubStartedUpError</a> | <a href="../websub/errors.html#HubStartupError">HubStartupError</a> 
+            
+                <b> returns </b><a href="../websub/objects/Hub.html">Hub</a> | <a href="../websub/records/HubStartedUpError.html">HubStartedUpError</a> | <a href="../websub/errors.html#HubStartupError">HubStartupError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -904,7 +501,7 @@
                     <li>
                         <span >publicUrl</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -954,28 +551,18 @@ already started up hub</p>
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -1002,6 +589,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -1011,4 +616,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

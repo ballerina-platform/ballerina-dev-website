@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -6,8 +15,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="This module provides the common interface and functionality to interact with a database. The corresponding database
-clients can be created by using specific database modules such as <code>MySQL</code> or using the Java Database Connectivity
-module <code>JDBC</code>.
+clients can be created by using specific database modules such as MySQL or using the Java Database Connectivity
+module JDBC.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,sql">
 
@@ -61,173 +70,120 @@ module <code>JDBC</code>.
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Clients</h3>
-                <ul>
-                    
-                        <li class="active active-item">
-                            <a href="Client.html">Client</a> 
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../sql/index.html">
-            <h3>sql</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../sql/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../sql/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../../sql/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="functions" href="../../sql/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../../sql/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../../sql/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../sql/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Clients</h3>
+                    <h3>
+    Clients
+</h3>
                     <ul>
                         
-                            <li class="active active-item">
-                                <a href="Client.html">Client</a>
-                            </li>
-                        
+    
+        <li class="active active-item">
+            <a href="Client.html" onclick="menuLinkClick()">Client</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../sql/index.html">
+        <a href="../../sql/index.html" onclick="menuLinkClick()">
             <h3>sql</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../sql/index.html#records">Records</a>
+            <a data="records" href="../../sql/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../sql/index.html#objects">Objects</a>
+                <a  data="objects" href="../../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../../sql/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="functions" href="../../sql/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../../sql/index.html#constants">Constants</a>
+                <a data="clients" href="../../sql/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../../sql/index.html#types">Types</a>
+                <a data="functions" href="../../sql/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../sql/index.html#errors">Errors</a>
+                <a data="constants" href="../../sql/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../../sql/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../sql/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Clients - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Clients
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../sql/index.html">sql</a> :
+                    <a href="../../sql/index.html"><span class="modules">sql</span></a>
                 
-                <span class="clients">Client</span>
+                 :
+                    
+    <span class="clients">Client</span>
+
+                
             </h1>
-            <p><p>Represents a SQL client.</p>
+            
+    <p><p>Represents a SQL client.</p>
 </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
+    <div class="constants">
+        <div class="method-sum">
+            
 
-                    
+            
 
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="query">
         <a href="#query">query </a>
@@ -238,8 +194,8 @@ module <code>JDBC</code>.
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="execute">
         <a href="#execute">execute </a>
@@ -250,8 +206,8 @@ module <code>JDBC</code>.
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="batchExecute">
         <a href="#batchExecute">batchExecute </a>
@@ -262,8 +218,8 @@ module <code>JDBC</code>.
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="close">
         <a href="#close">close </a>
@@ -274,29 +230,29 @@ module <code>JDBC</code>.
     </div>
 </div>
 
-                            
-                        </div>
-                    
-                
                     
                 </div>
+            
+        
+            
+        </div>
 
-                
+        
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="query" title="query">
              <a class="url-link" href="#query">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > query </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> | <a href="../../sql/objects/ParameterizedQuery.html">ParameterizedQuery</a> sqlQuery, <span class="builtin-type">typedesc?</span> rowType)</p>
-            <b> returns </b><span class="builtin-type">stream</span> 
+            
+                <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">record {| anydata...; |}</span> ,<a href="../../sql/types.html#Error">Error</a>></span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -345,26 +301,26 @@ module <code>JDBC</code>.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">record {| anydata...; |}</span> ,<a href="../../sql/types.html#Error">Error</a>></span></span>)</li>
                 <li></li>
             </ul>
         </div>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="execute" title="execute">
              <a class="url-link" href="#execute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > execute </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> | <a href="../../sql/objects/ParameterizedQuery.html">ParameterizedQuery</a> sqlQuery)</p>
-            <b> returns </b><a href="../../sql/records/ExecutionResult.html">ExecutionResult</a> | <a href="../../sql/types.html#Error">Error</a> 
+            
+                <b> returns </b><a href="../../sql/records/ExecutionResult.html">ExecutionResult</a> | <a href="../../sql/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -404,19 +360,19 @@ module <code>JDBC</code>.
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="batchExecute" title="batchExecute">
              <a class="url-link" href="#batchExecute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > batchExecute </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../sql/objects/ParameterizedQuery.html">ParameterizedQuery</a>[]</span> sqlQueries)</p>
-            <b> returns </b><span class="array-type"><a href="../../sql/records/ExecutionResult.html">ExecutionResult</a>[]</span> | <a href="../../sql/types.html#Error">Error</a> 
+            
+                <b> returns </b><span class="array-type"><a href="../../sql/records/ExecutionResult.html">ExecutionResult</a>[]</span> | <a href="../../sql/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -456,19 +412,19 @@ module <code>JDBC</code>.
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="close" title="close">
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > close </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../sql/types.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../sql/types.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -487,26 +443,16 @@ module <code>JDBC</code>.
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -533,6 +479,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -542,4 +506,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

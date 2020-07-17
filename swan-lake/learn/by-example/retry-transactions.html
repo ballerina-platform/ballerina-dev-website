@@ -82,7 +82,19 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">retry_transactions</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Create</span> <span class="nx">DEPOSITS</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Create</span> <span class="nx">WITHDRAWALS</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="mi">101</span> <span class="mi">52</span> <span class="mi">97</span> <span class="mi">50</span> <span class="mi">49</span> <span class="mi">55</span> <span class="mi">102</span> <span class="mi">97</span> <span class="mi">45</span> <span class="mi">55</span> <span class="mi">57</span> <span class="mi">57</span> <span class="mi">102</span> <span class="mi">45</span> <span class="mi">52</span> <span class="mi">56</span> <span class="mi">52</span> <span class="mi">55</span> <span class="mi">45</span> <span class="mi">57</span> <span class="mi">53</span> <span class="mi">49</span> <span class="mi">52</span> <span class="mi">45</span> <span class="mi">55</span> <span class="mi">98</span> <span class="mi">98</span> <span class="mi">49</span> <span class="mi">49</span> <span class="mi">54</span> <span class="mi">101</span> <span class="mi">49</span> <span class="mi">55</span> <span class="mi">54</span> <span class="mi">49</span> <span class="mi">49</span>
+<span class="nx">Commit</span> <span class="nx">handler</span> <span class="nx">executed</span><span class="p">.</span>
+<span class="nx">Transaction</span> <span class="nx">committed</span><span class="p">.</span>
+<span class="nx">Insert</span> <span class="nx">data</span> <span class="nx">into</span> <span class="nx">WITHDRAWALS</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Insert</span> <span class="nx">data</span> <span class="nx">into</span> <span class="nx">DEPOSITS</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Retry</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">3</span>
+<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">WITHDRAWALS</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">DEPOSITS</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
 </pre></div>
 
             </div>
@@ -212,7 +224,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/lang.&#39;transaction as transactions;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;transaction as transactions;
 import ballerina/io;
 import ballerina/sql;
 import ballerina/java.jdbc;
@@ -227,7 +239,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type MyRetryManager object {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type MyRetryManager object {
    private int count;
    public function init(int count = 2) {
        io:println(&quot;Retry count: &quot;, count);
@@ -261,7 +273,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -273,7 +285,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client dbClient =
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client dbClient =
                 check new (url = &quot;jdbc:h2:file:./local-transactions/testdb&quot;,
                                         user = &quot;test&quot;, password = &quot;test&quot;);
 </code></pre></div>
@@ -294,7 +306,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS DEPOSITS &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    var ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS DEPOSITS &quot; +
                                 &quot;(ID INTEGER, AMOUNT FLOAT)&quot;);
     handleExecute(ret, &quot;Create DEPOSITS table&quot;);
 </code></pre></div>
@@ -315,7 +327,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS WITHDRAWALS &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS WITHDRAWALS &quot; +
                                 &quot;(ID INTEGER, AMOUNT FLOAT)&quot;);
     handleExecute(ret, &quot;Create WITHDRAWALS table&quot;);
 </code></pre></div>
@@ -329,7 +341,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    retry&lt;MyRetryManager&gt; (3) transaction {
+                                    <div class="highlight"><pre><code class=language-ballerina>    retry&lt;MyRetryManager&gt; (3) transaction {
 </code></pre></div>
 
                                 </td>
@@ -351,7 +363,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var onRollbackFunc = function(transactions:Info info,
+                                    <div class="highlight"><pre><code class=language-ballerina>        var onRollbackFunc = function(transactions:Info info,
                                 error? cause, boolean willRetry) {
             io:println(&quot;Rollback handler executed.&quot;);
         };
@@ -374,7 +386,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var onCommitFunc = function(transactions:Info info) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var onCommitFunc = function(transactions:Info info) {
             io:println(&quot;Commit handler executed.&quot;);
         };
 </code></pre></div>
@@ -396,7 +408,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        transactions:onRollback(onRollbackFunc);
+                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:onRollback(onRollbackFunc);
 </code></pre></div>
 
                                 </td>
@@ -417,7 +429,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        transactions:onCommit(onCommitFunc);
+                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:onCommit(onCommitFunc);
 </code></pre></div>
 
                                 </td>
@@ -438,7 +450,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var withdrawalResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>        var withdrawalResult =
                     dbClient-&gt;execute(&quot;INSERT INTO WITHDRAWALS(ID,AMOUNT) &quot; +
                                         &quot;VALUES (1234553, 10500)&quot;);
 </code></pre></div>
@@ -459,7 +471,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var depositResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>        var depositResult =
                     dbClient-&gt;execute(&quot;INSERT INTO DEPOSITS (ID, AMOUNT) &quot; +
                                         &quot;VALUES (1234554, 10500)&quot;);
 </code></pre></div>
@@ -480,7 +492,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        transactions:Info transInfo = transactions:info();
+                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:Info transInfo = transactions:info();
         io:println(transInfo.xid);
 </code></pre></div>
 
@@ -500,7 +512,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if(withdrawalResult is error || depositResult is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if(withdrawalResult is error || depositResult is error) {
             check getError(&quot;DB operation failed&quot;);
         }
 </code></pre></div>
@@ -514,7 +526,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var commitResult = commit;
+                                    <div class="highlight"><pre><code class=language-ballerina>        var commitResult = commit;
 </code></pre></div>
 
                                 </td>
@@ -534,7 +546,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if(commitResult is ()){
+                                    <div class="highlight"><pre><code class=language-ballerina>        if(commitResult is ()){
 </code></pre></div>
 
                                 </td>
@@ -553,7 +565,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Transaction committed.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Transaction committed.&quot;);
             handleExecute(withdrawalResult,
                                     &quot;Insert data into WITHDRAWALS table&quot;);
             handleExecute(depositResult,
@@ -578,7 +590,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Transaction failed&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Transaction failed&quot;);
         }
     }
 </code></pre></div>
@@ -600,7 +612,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE WITHDRAWALS&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE WITHDRAWALS&quot;);
     handleExecute(ret, &quot;Drop table WITHDRAWALS&quot;);
 </code></pre></div>
 
@@ -620,7 +632,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE DEPOSITS&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE DEPOSITS&quot;);
     handleExecute(ret, &quot;Drop table DEPOSITS&quot;);
 </code></pre></div>
 
@@ -633,7 +645,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    check dbClient.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    check dbClient.close();
 }
 </code></pre></div>
 
@@ -653,7 +665,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getError(string message) returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getError(string message) returns error? {
     return error(message);
 }
 </code></pre></div>
@@ -667,7 +679,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleExecute(sql:ExecutionResult|sql:Error returned, string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleExecute(sql:ExecutionResult|sql:Error returned, string message) {
     if (returned is sql:ExecutionResult) {
         io:println(message + &quot; status: &quot;, returned.affectedRowCount);
     } else {
@@ -706,8 +718,8 @@ import ballerina/java.jdbc;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run retry_transactions.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run retry_transactions.bal
 Create DEPOSITS table status: 0
 Create WITHDRAWALS table status: 0
 101 52 97 50 49 55 102 97 45 55 57 57 102 45 52 56 52 55 45 57 53 49 52 45 55 98 98 49 49 54 101 49 55 54 49 49

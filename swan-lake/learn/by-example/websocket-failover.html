@@ -90,7 +90,15 @@ redirect_from:
     <span class="nx">getAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">wsEndpoint</span><span class="p">;</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">services</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span><span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_service_9095</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9095</span><span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_service_9094</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9094</span><span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_failover</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">Now</span><span class="p">,</span> <span class="nx">this</span> <span class="kd">service</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">invoked</span> <span class="nx">by</span> <span class="kt">any</span> <span class="nx">WebSocket</span> <span class="nx">client</span> <span class="nx">using</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">URL</span><span class="p">:</span> <span class="s">&quot;ws://localhost:9090/failover/ws&quot;</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">use</span> <span class="nx">Chrome</span> <span class="nx">or</span> <span class="nx">the</span> <span class="nx">Firefox</span> <span class="nx">JavaScript</span> <span class="nx">console</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">commands</span> <span class="nx">below</span><span class="p">.</span> <span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="k">var</span> <span class="nx">ws</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s">&quot;ws://localhost:9090/failover/ws&quot;</span><span class="p">);</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">data</span><span class="p">)};</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">messages</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">stop</span> <span class="nx">the</span> <span class="nx">running</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">press</span> <span class="nx">Ctrl</span> <span class="o">+</span> <span class="nx">C</span><span class="p">.</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">messages</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span><span class="err">#</span> <span class="nx">Close</span> <span class="nx">the</span> <span class="nx">connection</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&quot;I want to go&quot;</span><span class="p">);</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nd">@http:WebSocketServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/failover/ws&quot;</span>
 <span class="p">}</span>
@@ -105,7 +113,10 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_service_9094</span><span class="p">.</span><span class="nx">bal</span><span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9094</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">20</span> <span class="mi">14</span><span class="p">:</span><span class="mo">05</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">596</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">WebSocket</span> <span class="nx">client</span> <span class="nx">connects</span> <span class="nx">wih</span> <span class="nx">the</span> <span class="nx">server</span> <span class="mf">9094.</span> <span class="nx">The</span> <span class="nx">Connection</span> <span class="nx">ID</span><span class="p">:</span> <span class="mi">08</span><span class="nx">d40cfffe258b13</span><span class="o">-</span><span class="mo">00003526</span><span class="o">-</span><span class="mo">00000001</span><span class="o">-</span><span class="nx">c69a4c7eb8c373f5</span><span class="o">-</span><span class="mi">76217</span><span class="nx">d0aimport</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nd">@http:WebSocketServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/failover/ws&quot;</span>
 <span class="p">}</span>
@@ -120,7 +131,12 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_service_9095</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9095</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">20</span> <span class="mi">14</span><span class="p">:</span><span class="mo">04</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="mi">515</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">WebSocket</span> <span class="nx">client</span> <span class="nx">connects</span> <span class="nx">wih</span> <span class="nx">the</span> <span class="nx">server</span> <span class="mf">9095.</span> <span class="nx">The</span> <span class="nx">Connection</span> <span class="nx">ID</span><span class="p">:</span> <span class="mi">08</span><span class="nx">d40cfffe258b13</span><span class="o">-</span><span class="mo">00003366</span><span class="o">-</span><span class="mo">00000001</span><span class="o">-</span><span class="mi">0</span><span class="nx">cf944d788c2b464</span><span class="o">-</span><span class="mi">774</span><span class="nx">dc3ff</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">stopped</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9095</span>
 </pre></div>
 
             </div>
@@ -248,7 +264,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -261,7 +277,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>final string ASSOCIATED_CONNECTION = &quot;ASSOCIATED_CONNECTION&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>final string ASSOCIATED_CONNECTION = &quot;ASSOCIATED_CONNECTION&quot;;
 </code></pre></div>
 
                                 </td>
@@ -273,7 +289,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:WebSocketServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:WebSocketServiceConfig {
     path: &quot;/failover/ws&quot;
 }
 service failoverProxyService on new http:Listener(9090) {
@@ -288,7 +304,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
 </code></pre></div>
 
                                 </td>
@@ -311,7 +327,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketFailoverClient wsClientEp = new (
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketFailoverClient wsClientEp = new (
         {
             callbackService: failoverClientService,
 </code></pre></div>
@@ -332,7 +348,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            targetUrls: [ &quot;ws://localhost:9095/failover/ws&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>            targetUrls: [ &quot;ws://localhost:9095/failover/ws&quot;,
             &quot;ws://localhost:9096/failover/ws&quot;, &quot;ws://localhost:9094/failover/ws&quot;],
 </code></pre></div>
 
@@ -352,7 +368,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            failoverIntervalInMillis: 2000,
+                                    <div class="highlight"><pre><code class=language-ballerina>            failoverIntervalInMillis: 2000,
 </code></pre></div>
 
                                 </td>
@@ -371,7 +387,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            readyOnConnect: false
+                                    <div class="highlight"><pre><code class=language-ballerina>            readyOnConnect: false
         });
 </code></pre></div>
 
@@ -392,7 +408,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
         caller.setAttribute(ASSOCIATED_CONNECTION, wsClientEp);
 </code></pre></div>
 
@@ -412,7 +428,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var err = wsClientEp-&gt;ready();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var err = wsClientEp-&gt;ready();
         if (err is http:WebSocketError) {
             log:printError(&quot;Error calling ready on client&quot;, err);
         }
@@ -436,7 +452,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text,
                              boolean finalFrame) {
 </code></pre></div>
 
@@ -456,7 +472,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
         var err = clientEp-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when sending text message&quot;, err);
@@ -473,7 +489,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(http:WebSocketCaller caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketCaller caller, error err) {
 </code></pre></div>
 
                                 </td>
@@ -492,7 +508,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
         var e = clientEp-&gt;close(statusCode = 1011, reason = &quot;Unexpected condition&quot;);
         if (e is http:WebSocketError) {
             log:printError(&quot;Error occurred when closing the connection&quot;, e);
@@ -510,7 +526,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
                                  string reason) {
 </code></pre></div>
 
@@ -530,7 +546,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketFailoverClient clientEp = getAssociatedClientEndpoint(caller);
         var err = clientEp-&gt;close(statusCode = statusCode, reason = reason);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when closing the connection&quot;, err);
@@ -548,7 +564,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service failoverClientService = @http:WebSocketServiceConfig {} service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service failoverClientService = @http:WebSocketServiceConfig {} service {
 </code></pre></div>
 
                                 </td>
@@ -567,7 +583,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketFailoverClient caller, string text,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketFailoverClient caller, string text,
                                 boolean finalFrame) {
 </code></pre></div>
 
@@ -587,7 +603,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
         var err = serverEp-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when sending text message&quot;, err);
@@ -604,7 +620,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(http:WebSocketFailoverClient caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketFailoverClient caller, error err) {
 </code></pre></div>
 
                                 </td>
@@ -623,7 +639,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
         var e = serverEp-&gt;close(statusCode = 1011,
         reason = &quot;Unexpected condition&quot;);
         if (e is http:WebSocketError) {
@@ -643,7 +659,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onClose(http:WebSocketFailoverClient caller, int statusCode,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onClose(http:WebSocketFailoverClient caller, int statusCode,
                                  string reason) {
 </code></pre></div>
 
@@ -664,7 +680,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp = getAssociatedServerEndpoint(caller);
         var err = serverEp-&gt;close(statusCode = statusCode, reason = reason);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when closing the connection&quot;, err);
@@ -682,7 +698,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getAssociatedClientEndpoint(http:WebSocketCaller ep)
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAssociatedClientEndpoint(http:WebSocketCaller ep)
                 returns (http:WebSocketFailoverClient) {
     http:WebSocketFailoverClient wsClient = &lt;http:WebSocketFailoverClient&gt;ep.
     getAttribute(ASSOCIATED_CONNECTION);
@@ -706,7 +722,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getAssociatedServerEndpoint(http:WebSocketFailoverClient ep)
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAssociatedServerEndpoint(http:WebSocketFailoverClient ep)
                 returns (http:WebSocketCaller) {
     http:WebSocketCaller wsEndpoint =&lt;http:WebSocketCaller&gt;ep.
     getAttribute(ASSOCIATED_CONNECTION);
@@ -780,7 +796,7 @@ service failoverProxyService on new http:Listener(9090) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
-# `.bal` file and run the `ballerina run` command.
+# `.bal` file and run the `ballerina run` command below.
 </code></pre></div>
 
                                 </td>
@@ -792,7 +808,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina run websocket_service_9095.bal
+                                    <div class="highlight"><pre><code class=shell-session>ballerina run websocket_service_9095.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
 </code></pre></div>
 
@@ -805,7 +821,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina run websocket_service_9094.bal
+                                    <div class="highlight"><pre><code class=shell-session>ballerina run websocket_service_9094.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9094
 </code></pre></div>
 
@@ -818,7 +834,7 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina run websocket_failover.bal
+                                    <div class="highlight"><pre><code class=shell-session>ballerina run websocket_failover.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -843,9 +859,9 @@ service failoverProxyService on new http:Listener(9090) {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To check the sample, you can use Chrome or the Firefox JavaScript console and run the following commands. &lt;br&gt;
-$ var ws = new WebSocket(&quot;ws://localhost:9090/failover/ws&quot;);
-$ ws.onmessage = function(frame) {console.log(frame.data)};
+                                    <div class="highlight"><pre><code class=shell-session># To check the sample, you can use Chrome or the Firefox JavaScript console and run the commands below. &lt;br&gt;
+var ws = new WebSocket(&quot;ws://localhost:9090/failover/ws&quot;);
+ws.onmessage = function(frame) {console.log(frame.data)};
 </code></pre></div>
 
                                 </td>
@@ -858,7 +874,7 @@ $ ws.onmessage = function(frame) {console.log(frame.data)};
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send messages.
-$ ws.send(&quot;hello world&quot;);
+ws.send(&quot;hello world&quot;);
 </code></pre></div>
 
                                 </td>
@@ -883,7 +899,7 @@ $ ws.send(&quot;hello world&quot;);
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send messages.
-$ ws.send(&quot;hello world&quot;);
+ws.send(&quot;hello world&quot;);
 </code></pre></div>
 
                                 </td>
@@ -896,7 +912,7 @@ $ ws.send(&quot;hello world&quot;);
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Close the connection.
-$ ws.close(1000, &quot;I want to go&quot;);
+ws.close(1000, &quot;I want to go&quot;);
 </code></pre></div>
 
                                 </td>
@@ -947,7 +963,7 @@ $ ws.close(1000, &quot;I want to go&quot;);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -960,7 +976,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:WebSocketServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:WebSocketServiceConfig {
     path: &quot;/failover/ws&quot;
 }
 </code></pre></div>
@@ -974,7 +990,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service server on new http:Listener(9094) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service server on new http:Listener(9094) {
 </code></pre></div>
 
                                 </td>
@@ -993,7 +1009,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
         log:printInfo(&quot;WebSocket client connects wih the server 9094. The Connection ID: &quot;
         + caller.getConnectionId());
     }
@@ -1018,7 +1034,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text, boolean finalFrame) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text, boolean finalFrame) {
         var err = caller-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when sending text message&quot;, err);
@@ -1061,8 +1077,8 @@ import ballerina/log;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and run the `ballerina run` command.
-$ ballerina run websocket_service_9094.bal
+# `.bal` file, and run the `ballerina run` command below.
+ballerina run websocket_service_9094.bal
 </code></pre></div>
 
                                 </td>
@@ -1126,7 +1142,7 @@ $ ballerina run websocket_service_9094.bal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -1139,7 +1155,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:WebSocketServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:WebSocketServiceConfig {
     path: &quot;/failover/ws&quot;
 }
 </code></pre></div>
@@ -1153,7 +1169,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service secondserver on new http:Listener(9095) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service secondserver on new http:Listener(9095) {
 </code></pre></div>
 
                                 </td>
@@ -1172,7 +1188,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
         log:printInfo(&quot;WebSocket client connects wih the server 9095. The Connection ID: &quot;
         + caller.getConnectionId());
     }
@@ -1197,7 +1213,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text, boolean finalFrame) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text, boolean finalFrame) {
         var err = caller-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when sending text message&quot;, err);
@@ -1236,8 +1252,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and run the `ballerina run` command.
-$ ballerina run websocket_service_9095.bal
+# `.bal` file, and run the `ballerina run` command below.
+ballerina run websocket_service_9095.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
 2019-11-20 14:04:20,515 INFO  [] - WebSocket client connects wih the server 9095. The Connection ID: 08d40cfffe258b13-00003366-00000001-0cf944d788c2b464-774dc3ff
 [ballerina/http] stopped HTTP/WS listener 0.0.0.0:9095

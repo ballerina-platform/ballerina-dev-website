@@ -23,7 +23,12 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
     <span class="nx">Person</span> <span class="nx">p3</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p3</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">objects</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
 </pre></div>
 
             </div>
@@ -116,7 +121,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -128,7 +133,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person object {
     public string name = &quot;&quot;;
     public int age = 0;
 </code></pre></div>
@@ -150,7 +155,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public Person? parent = ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    public Person? parent = ();
 </code></pre></div>
 
                                 </td>
@@ -171,7 +176,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    private string email = &quot;default@abc.com&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    private string email = &quot;default@abc.com&quot;;
 </code></pre></div>
 
                                 </td>
@@ -190,7 +195,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string address = &quot;No 20, Palm grove&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string address = &quot;No 20, Palm grove&quot;;
 };
 </code></pre></div>
 
@@ -210,7 +215,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -222,7 +227,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p1 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p1 = new;
     io:println(p1.age);
 </code></pre></div>
 
@@ -242,7 +247,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p2 = new ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p2 = new ();
     io:println(p2.age);
 </code></pre></div>
 
@@ -255,7 +260,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p3 = new Person();
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p3 = new Person();
     io:println(p3.age);
 }
 </code></pre></div>
@@ -291,8 +296,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run objects.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run objects.bal
 0
 0
 0

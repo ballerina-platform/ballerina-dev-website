@@ -46,7 +46,10 @@ redirect_from:
 <span class="err">#</span> <span class="o">+</span> <span class="k">return</span> <span class="o">-</span> <span class="nx">The</span> <span class="s">`fieldTwo`</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">record</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="k">as</span> <span class="nx">an</span> <span class="nx">argument</span><span class="p">.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">dummyFunction</span><span class="p">(</span><span class="nx">DummyRecord</span> <span class="nx">recordValue</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">recordValue</span><span class="p">.</span><span class="nx">fieldTwo</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">basic_documentation</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Documentation</span> <span class="nx">attachments</span> <span class="nx">are</span> <span class="nx">non</span> <span class="nx">executable</span> <span class="nx">constructs</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -57,7 +60,8 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Basic documentation</h2>
                             <p><p>Documentation attachments allow you to document different Ballerina constructs such as functions, records, objects, and listeners that are defined in modules.
- These attachments are used by Docerina (i.e., the Ballerina documentation generation tool) to generate API documentation for the modules.</p>
+ These attachments are used by the Ballerina documentation generation tool to generate API documentation for the modules. The documentation is written in
+ Ballerina Flavored Markdown, which is a dialect of GitHub&rsquo;s Markdown format.</p>
 </p>
 
                         </td>
@@ -134,7 +138,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -146,7 +150,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     io:println(&quot;Documentation attachments are non executable constructs.&quot;);
 }
 </code></pre></div>
@@ -160,7 +164,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina># The `DummyObject` is a user-defined object.
+                                    <div class="highlight"><pre><code class=language-ballerina># The `DummyObject` is a user-defined object.
 # This `DummyObject` has two `string` data fields and a
 # function definition (i.e., `doThatOnObject`), which performs a certain
 # functionality on the associated `DummyObject` instance.
@@ -186,7 +190,7 @@ public type DummyObject abstract object {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public string fieldOne;
+                                    <div class="highlight"><pre><code class=language-ballerina>    public string fieldOne;
     public string fieldTwo;
 </code></pre></div>
 
@@ -199,7 +203,7 @@ public type DummyObject abstract object {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    # The `doThatOnObject` function is attached to the `DummyObject` object.
+                                    <div class="highlight"><pre><code class=language-ballerina>    # The `doThatOnObject` function is attached to the `DummyObject` object.
     #
     # + paramOne - This is the description of the parameter of
     #              the `doThatOnObject` function.
@@ -225,7 +229,7 @@ public type DummyObject abstract object {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina># `DummyRecord` is a user-defined record.
+                                    <div class="highlight"><pre><code class=language-ballerina># `DummyRecord` is a user-defined record.
 # This `DummyRecord` has a `string` data field and an `int` data field.
 #
 # + fieldOne - This is the description of the `DummyRecord`&#39;s `fieldOne` field.
@@ -252,7 +256,7 @@ public type DummyRecord record {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina># This function returns the `fieldTwo` field of the `DummyRecord`-typed 
+                                    <div class="highlight"><pre><code class=language-ballerina># This function returns the `fieldTwo` field of the `DummyRecord`-typed 
 # record value passed as an argument.
 #
 # + recordValue - Parameter of type `DummyRecord`.
@@ -292,8 +296,8 @@ public function dummyFunction(DummyRecord recordValue) returns int {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run basic_documentation.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run basic_documentation.bal
 Documentation attachments are non executable constructs.
 </code></pre></div>
 

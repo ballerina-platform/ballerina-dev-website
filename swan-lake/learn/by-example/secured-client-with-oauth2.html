@@ -108,7 +108,9 @@ redirect_from:
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span>
+<span class="p">});</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">test</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">configure</span> <span class="nx">the</span> <span class="nx">clients</span> <span class="nx">with</span> <span class="nx">required</span> <span class="nx">parameters</span> <span class="nx">and</span>
+<span class="err">#</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_client_with_oauth2</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span><span class="err">#</span> <span class="nx">This</span> <span class="nx">should</span> <span class="nx">log</span> <span class="nx">the</span> <span class="nx">JSON</span> <span class="nx">output</span> <span class="nx">returned</span> <span class="nx">by</span> <span class="nx">the</span> <span class="nx">REST</span> <span class="nx">endpoints</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -205,7 +207,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/config;
 import ballerina/oauth2;
 </code></pre></div>
@@ -219,7 +221,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new ({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     clientId: &quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;,
     clientSecret: &quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;,
@@ -255,7 +257,7 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP1 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP1 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler1
     },
@@ -278,7 +280,7 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new ({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     username: &quot;&lt;Username for password grant authentication&gt;&quot;,
     password: &quot;&lt;Password for password grant authentication&gt;&quot;,
@@ -330,7 +332,7 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP2 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP2 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler2
     },
@@ -353,7 +355,7 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new ({
     accessToken: &quot;&lt;Access token for the authorization endpoint&gt;&quot;,
     refreshConfig: {
         clientId: &quot;&lt;Client ID for authentication with the authorization endpoint&gt;&quot;,
@@ -394,7 +396,7 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP3 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP3 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler3
     },
@@ -435,8 +437,8 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To test the client, configure the clients with required parameters and
-# execute the below command by passing Ballerina home path as a system property.
-$ ballerina run secured_client_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
+# execute the command below by passing Ballerina home path as a system property.
+ballerina run secured_client_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
 </code></pre></div>
 
                                 </td>

@@ -11,37 +11,37 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">any</span> <span class="nx">a</span> <span class="p">=</span> <span class="s">&quot;Hello, world!&quot;</span><span class="p">;</span>
-    <span class="kt">boolean</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">a</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is &#39;a&#39; a string? &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;a&#39; is an int with value: &quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;a&#39; is a string with value: &quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+    <span class="kt">any</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello, world!&quot;</span><span class="p">;</span>
+    <span class="kt">boolean</span> <span class="nx">isString</span> <span class="p">=</span> <span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is &#39;message&#39; a string? &quot;</span><span class="p">,</span> <span class="nx">isString</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;message&#39; is an int with value: &quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;message&#39; is a string with value: &quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;a&#39; is not an int or string, with value: &quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;message&#39; is not an int or string, and has the value: &quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nx">Student</span> <span class="nx">alex</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span> <span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">};</span>
-    <span class="nx">Student</span><span class="p">|</span><span class="nx">Person</span><span class="p">|</span><span class="nx">Vehicle</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">alex</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is a student&quot;</span><span class="p">);</span>
+    <span class="nx">Student</span> <span class="nx">alex</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span> <span class="p">};</span>
+    <span class="nx">Student</span><span class="p">|</span><span class="nx">Person</span><span class="p">|</span><span class="nx">Vehicle</span> <span class="nx">entity</span> <span class="p">=</span> <span class="nx">alex</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">entity</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is a student&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is not a student&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is not a student&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is a person&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">entity</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is a person&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is not a person&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is not a person&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">is</span> <span class="nx">Vehicle</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is a vehicle&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">entity</span> <span class="nx">is</span> <span class="nx">Vehicle</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is a vehicle&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is not a vehicle&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;entity is not a vehicle&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kt">boolean</span> <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">foo</span><span class="p">(</span><span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Does foo return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
-    <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">foo</span><span class="p">(</span><span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Does foo return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
+    <span class="kt">boolean</span> <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">createEntity</span><span class="p">(</span><span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Did createEntity(\&quot;student\&quot;) return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
+    <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">createEntity</span><span class="p">(</span><span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Did createEntity(\&quot;vehicle\&quot;) return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
@@ -49,14 +49,23 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Vehicle</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">brand</span><span class="p">;</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="kt">string</span> <span class="nx">t</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">t</span> <span class="o">==</span> <span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">};</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">t</span> <span class="o">==</span> <span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">&lt;</span><span class="nx">Vehicle</span><span class="p">&gt;{</span><span class="nx">brand</span><span class="p">:</span> <span class="s">&quot;Honda&quot;</span><span class="p">};</span>
+<span class="p">};</span><span class="kd">function</span> <span class="nx">createEntity</span><span class="p">(</span><span class="kt">string</span> <span class="nx">entityType</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">entityType</span> <span class="o">==</span> <span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span> <span class="p">};</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">entityType</span> <span class="o">==</span> <span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">&lt;</span><span class="nx">Vehicle</span><span class="p">&gt;</span> <span class="p">{</span> <span class="nx">brand</span><span class="p">:</span> <span class="s">&quot;Honda&quot;</span> <span class="p">};</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="s">&quot;invalid type&quot;</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">type_test_expression</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Is</span> <span class="err">&#39;</span><span class="kt">message</span><span class="err">&#39;</span> <span class="nx">a</span> <span class="kt">string</span><span class="err">?</span> <span class="kc">true</span>
+<span class="err">&#39;</span><span class="kt">message</span><span class="err">&#39;</span> <span class="nx">is</span> <span class="nx">a</span> <span class="kt">string</span> <span class="nx">with</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="p">!</span>
+<span class="nx">entity</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">student</span>
+<span class="nx">entity</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">person</span>
+<span class="nx">entity</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">a</span> <span class="nx">vehicle</span>
+<span class="nx">Did</span> <span class="nx">createEntity</span><span class="p">(</span><span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="k">return</span> <span class="nx">a</span> <span class="nx">student</span><span class="err">?</span> <span class="kc">true</span>
+<span class="nx">Did</span> <span class="nx">createEntity</span><span class="p">(</span><span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="k">return</span> <span class="nx">a</span> <span class="nx">student</span><span class="err">?</span> <span class="kc">false</span>
 </pre></div>
 
             </div>
@@ -156,7 +165,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -168,8 +177,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
-    any a = &quot;Hello, world!&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    any message = &quot;Hello, world!&quot;;
 </code></pre></div>
 
                                 </td>
@@ -181,8 +190,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean b = a is string;
-    io:println(&quot;Is &#39;a&#39; a string? &quot;, b);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean isString = message is string;
+    io:println(&quot;Is &#39;message&#39; a string? &quot;, isString);
 </code></pre></div>
 
                                 </td>
@@ -201,12 +210,12 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (a is int) {
-        io:println(&quot;&#39;a&#39; is an int with value: &quot;, a);
-    } else if (a is string) {
-        io:println(&quot;&#39;a&#39; is a string with value: &quot;, a);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (message is int) {
+        io:println(&quot;&#39;message&#39; is an int with value: &quot;, message);
+    } else if (message is string) {
+        io:println(&quot;&#39;message&#39; is a string with value: &quot;, message);
     } else {
-        io:println(&quot;&#39;a&#39; is not an int or string, with value: &quot;, a);
+        io:println(&quot;&#39;message&#39; is not an int or string, and has the value: &quot;, message);
     }
 </code></pre></div>
 
@@ -226,8 +235,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student alex = {name : &quot;Alex&quot;};
-    Student|Person|Vehicle x = alex;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student alex = { name: &quot;Alex&quot; };
+    Student|Person|Vehicle entity = alex;
 </code></pre></div>
 
                                 </td>
@@ -246,10 +255,10 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (x is Student) {
-        io:println(&quot;Alex is a student&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (entity is Student) {
+        io:println(&quot;entity is a student&quot;);
     } else {
-        io:println(&quot;Alex is not a student&quot;);
+        io:println(&quot;entity is not a student&quot;);
     }
 </code></pre></div>
 
@@ -258,7 +267,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Type of <code>x</code> is <code>Student</code>. Therefore, the <code>if</code> check will pass.</p>
+                                            <p>Type of <code>entity</code> is <code>Student</code>. Therefore, the <code>if</code> check will pass.</p>
 
                                         </div>
                                     </div>
@@ -269,10 +278,10 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (x is Person) {
-        io:println(&quot;Alex is a person&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (entity is Person) {
+        io:println(&quot;entity is a person&quot;);
     } else {
-        io:println(&quot;Alex is not a person&quot;);
+        io:println(&quot;entity is not a person&quot;);
     }
 </code></pre></div>
 
@@ -281,7 +290,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Type of <code>x</code> is <code>Student</code>. However, it is structurally equivalent to <code>Person</code>.
+                                            <p>Type of <code>entity</code> is <code>Student</code>. However, it is structurally equivalent to <code>Person</code>.
  Therefore, the <code>if</code> check will pass.</p>
 
                                         </div>
@@ -293,10 +302,10 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (x is Vehicle) {
-        io:println(&quot;Alex is a vehicle&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (entity is Vehicle) {
+        io:println(&quot;entity is a vehicle&quot;);
     } else {
-        io:println(&quot;Alex is not a vehicle&quot;);
+        io:println(&quot;entity is not a vehicle&quot;);
     }
 </code></pre></div>
 
@@ -305,7 +314,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Type of <code>x</code> is Student. However, it is not structurally equivalent to <code>Vehicle</code>.</p>
+                                            <p>Type of <code>entity</code> is Student. However, it is not structurally equivalent to <code>Vehicle</code>.</p>
 
                                         </div>
                                     </div>
@@ -316,10 +325,10 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean isStudent = foo(&quot;student&quot;) is Student;
-    io:println(&quot;Does foo return a student? &quot;, isStudent);
-    isStudent = foo(&quot;vehicle&quot;) is Student;
-    io:println(&quot;Does foo return a student? &quot;, isStudent);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean isStudent = createEntity(&quot;student&quot;) is Student;
+    io:println(&quot;Did createEntity(\&quot;student\&quot;) return a student? &quot;, isStudent);
+    isStudent = createEntity(&quot;vehicle&quot;) is Student;
+    io:println(&quot;Did createEntity(\&quot;vehicle\&quot;) return a student? &quot;, isStudent);
 }
 </code></pre></div>
 
@@ -339,7 +348,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
 };
 </code></pre></div>
@@ -353,7 +362,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string name;
     int age = 0;
 };
@@ -368,7 +377,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Vehicle record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Vehicle record {
     string brand;
 };
 </code></pre></div>
@@ -382,11 +391,11 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function foo(string t) returns any {
-    if (t == &quot;student&quot;) {
-        return &lt;Student&gt;{name: &quot;Alex&quot;};
-    } else if (t == &quot;vehicle&quot;) {
-        return &lt;Vehicle&gt;{brand: &quot;Honda&quot;};
+                                    <div class="highlight"><pre><code class=language-ballerina>function createEntity(string entityType) returns any {
+    if (entityType == &quot;student&quot;) {
+        return &lt;Student&gt; { name: &quot;Alex&quot; };
+    } else if (entityType == &quot;vehicle&quot;) {
+        return &lt;Vehicle&gt; { brand: &quot;Honda&quot; };
     }
     return &quot;invalid type&quot;;
 }
@@ -415,15 +424,15 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run type_test_expression.bal
-Is &#39;a&#39; a string? true
-&#39;a&#39; is a string with value: Hello, world!
-Alex is a student
-Alex is a person
-Alex is not a vehicle
-Does foo return a student? true
-Does foo return a student? false
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run type_test_expression.bal
+Is &#39;message&#39; a string? true
+&#39;message&#39; is a string with value: Hello, world!
+entity is a student
+entity is a person
+entity is not a vehicle
+Did createEntity(&quot;student&quot;) return a student? true
+Did createEntity(&quot;vehicle&quot;) return a student? false
 </code></pre></div>
 
                                 </td>

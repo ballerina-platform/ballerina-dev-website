@@ -50,7 +50,14 @@ redirect_from:
         <span class="nx">id</span><span class="p">:</span> <span class="mi">222288</span><span class="p">,</span>
         <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
     <span class="p">};</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_readonly_fields</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">empTwo</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">false</span>
+<span class="nx">details</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">identifier</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">error</span><span class="p">:</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="kt">map</span><span class="p">}</span><span class="nx">InherentTypeViolation</span> <span class="kt">message</span><span class="p">=</span><span class="nx">cannot</span> <span class="nx">update</span> <span class="err">&#39;</span><span class="nx">readonly</span><span class="err">&#39;</span> <span class="nx">field</span> <span class="err">&#39;</span><span class="nx">details</span><span class="err">&#39;</span> <span class="nx">in</span> <span class="nx">record</span> <span class="nx">of</span> <span class="nx">type</span> <span class="err">&#39;</span><span class="nx">Employee</span><span class="err">&#39;</span>
+        <span class="nx">at</span> <span class="nx">record_readonly_fields</span><span class="p">:</span><span class="nx">main</span><span class="p">(</span><span class="nx">record_readonly_fields</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span>
 </pre></div>
 
             </div>
@@ -164,7 +171,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -176,7 +183,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Details record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Details record {|
     int id;
     string country;
 |};
@@ -191,7 +198,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {|
     string department;
 </code></pre></div>
 
@@ -211,7 +218,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    readonly Details details;
+                                    <div class="highlight"><pre><code class=language-ballerina>    readonly Details details;
 |};
 </code></pre></div>
 
@@ -233,7 +240,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Identifier record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Identifier record {|
    readonly int id;
    readonly string[] codes;
 |};
@@ -255,7 +262,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -267,7 +274,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Details &amp; readonly immutableDetails = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Details &amp; readonly immutableDetails = {
         id: 112233,
         country: &quot;Sri Lanka&quot;
     };
@@ -289,7 +296,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee empOne = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee empOne = {
         department: &quot;IT&quot;,
 </code></pre></div>
 
@@ -302,7 +309,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        details: immutableDetails
+                                    <div class="highlight"><pre><code class=language-ballerina>        details: immutableDetails
     };
 </code></pre></div>
 
@@ -323,7 +330,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee empTwo = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee empTwo = {
         department: &quot;finance&quot;,
 </code></pre></div>
 
@@ -336,7 +343,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        details: {
+                                    <div class="highlight"><pre><code class=language-ballerina>        details: {
             id: 212141,
             country: &quot;USA&quot;
         }
@@ -360,7 +367,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;empTwo is immutable: &quot;, empTwo.isReadOnly());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;empTwo is immutable: &quot;, empTwo.isReadOnly());
 </code></pre></div>
 
                                 </td>
@@ -379,7 +386,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Details details = empTwo.details;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Details details = empTwo.details;
 </code></pre></div>
 
                                 </td>
@@ -391,7 +398,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;details is immutable: &quot;, details.isReadOnly());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;details is immutable: &quot;, details.isReadOnly());
 </code></pre></div>
 
                                 </td>
@@ -410,7 +417,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Identifier identifier = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Identifier identifier = {
         id: 1234,
         codes: [&quot;AS&quot;, &quot;KL&quot;]
     };
@@ -432,7 +439,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    readonly readonlyValue = identifier;
+                                    <div class="highlight"><pre><code class=language-ballerina>    readonly readonlyValue = identifier;
 </code></pre></div>
 
                                 </td>
@@ -452,7 +459,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;identifier is immutable: &quot;, identifier.isReadOnly());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;identifier is immutable: &quot;, identifier.isReadOnly());
 </code></pre></div>
 
                                 </td>
@@ -471,7 +478,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {
         string department;
         Details details;
     } anyEmployee = empOne;
@@ -486,7 +493,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    anyEmployee.details = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    anyEmployee.details = {
         id: 222288,
         country: &quot;Sri Lanka&quot;
     };
@@ -523,8 +530,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run record_readonly_fields.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run record_readonly_fields.bal
 empTwo is immutable: false
 details is immutable: true
 identifier is immutable: true

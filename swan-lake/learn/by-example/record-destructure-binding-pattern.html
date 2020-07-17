@@ -46,7 +46,16 @@ redirect_from:
     <span class="nx">Capital</span> <span class="nx">capital</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span><span class="p">};</span>
     <span class="nx">Country</span> <span class="nx">country</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="nx">capital</span><span class="p">};</span>
     <span class="k">return</span> <span class="nx">country</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_destructure_binding_pattern</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Name</span><span class="p">:</span> <span class="nx">Peter</span>
+<span class="nx">Age</span><span class="p">:</span> <span class="mi">28</span>
+<span class="nx">Other</span> <span class="nx">Details</span><span class="p">:</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span> <span class="nx">occupation</span><span class="p">=</span><span class="nx">Software</span> <span class="nx">Engineer</span>
+<span class="nx">Name</span><span class="p">:</span> <span class="nx">Peter</span>
+<span class="nx">Age</span><span class="p">:</span> <span class="mi">28</span>
+<span class="nx">Country</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">Sri</span> <span class="nx">Lanka</span>
+<span class="nx">Capital</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">Colombo</span>
 </pre></div>
 
             </div>
@@ -147,7 +156,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -159,7 +168,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age;
     string country;
@@ -175,7 +184,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Country record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Country record {
     string name;
     Capital capital;
 };
@@ -190,7 +199,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Capital record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Capital record {|
     string name;
 |};
 </code></pre></div>
@@ -204,7 +213,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -216,7 +225,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string firstName;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string firstName;
     int personAge;
     map&lt;anydata|error&gt; otherDetails = {};
 </code></pre></div>
@@ -230,7 +239,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    {name: firstName, age: personAge, ...otherDetails} = getPerson();
+                                    <div class="highlight"><pre><code class=language-ballerina>    {name: firstName, age: personAge, ...otherDetails} = getPerson();
     io:println(&quot;Name: &quot;, firstName);
     io:println(&quot;Age: &quot;, personAge);
     io:println(&quot;Other Details: &quot;, otherDetails);
@@ -258,7 +267,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string name;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string name;
     int age;
 </code></pre></div>
 
@@ -271,7 +280,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    {name, age} = getPerson();
+                                    <div class="highlight"><pre><code class=language-ballerina>    {name, age} = getPerson();
     io:println(&quot;Name: &quot;, name);
     io:println(&quot;Age: &quot;, age);
 </code></pre></div>
@@ -295,7 +304,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string countryName;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string countryName;
     string capitalName;
 </code></pre></div>
 
@@ -308,7 +317,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    {name: countryName, capital: {name: capitalName}} = getCountry();
+                                    <div class="highlight"><pre><code class=language-ballerina>    {name: countryName, capital: {name: capitalName}} = getCountry();
     io:println(&quot;Country Name: &quot;, countryName);
     io:println(&quot;Capital Name: &quot;, capitalName);
 }
@@ -331,7 +340,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getPerson() returns Person {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getPerson() returns Person {
     Person person = {
         name: &quot;Peter&quot;,
         age: 28,
@@ -351,7 +360,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getCountry() returns Country {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getCountry() returns Country {
     Capital capital = {name: &quot;Colombo&quot;};
     Country country = {name: &quot;Sri Lanka&quot;, capital: capital};
     return country;
@@ -381,8 +390,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run record_destructure_binding_pattern.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run record_destructure_binding_pattern.bal
 Name: Peter
 Age: 28
 Other Details: country=Sri Lanka occupation=Software Engineer

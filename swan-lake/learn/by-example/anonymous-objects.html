@@ -39,7 +39,11 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">country</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">anonymous_objects</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Colombo</span>
+<span class="nx">UK</span>
 </pre></div>
 
             </div>
@@ -136,7 +140,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -148,7 +152,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Person record {
     string name;
     int age;
 </code></pre></div>
@@ -162,7 +166,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    object {
+                                    <div class="highlight"><pre><code class=language-ballerina>    object {
         public string city;
         public string country;
 </code></pre></div>
@@ -187,7 +191,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        public function init(string city, string country) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        public function init(string city, string country) {
             self.city = city;
             self.country = country;
         }
@@ -202,7 +206,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        public function value() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>        public function value() returns string {
             return self.city + &quot;, &quot; + self.country;
         }
     } address;
@@ -218,7 +222,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -230,7 +234,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person john = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person john = {
         name: &quot;John Doe&quot;,
         age: 25,
         address: new (&quot;Colombo&quot;, &quot;Sri Lanka&quot;)
@@ -254,7 +258,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    object {
+                                    <div class="highlight"><pre><code class=language-ballerina>    object {
         public string city;
         public string country;
 </code></pre></div>
@@ -277,7 +281,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        public function init(string city, string country) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        public function init(string city, string country) {
             self.city = city;
             self.country = country;
         }
@@ -292,7 +296,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        public function value() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>        public function value() returns string {
             return self.city + &quot;, &quot; + self.country;
         }
     } adr = new (&quot;London&quot;, &quot;UK&quot;);
@@ -307,7 +311,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Person jane = {name: &quot;Jane Doe&quot;, age: 20, address: adr};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person jane = {name: &quot;Jane Doe&quot;, age: 20, address: adr};
     io:println(jane.address.country);
 }
 </code></pre></div>
@@ -335,8 +339,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run anonymous_objects.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run anonymous_objects.bal
 Colombo
 UK
 </code></pre></div>

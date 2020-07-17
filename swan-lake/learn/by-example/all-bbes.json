@@ -228,6 +228,10 @@
                 "url": "constants"
             },
             {
+                "name": "Enums",
+                "url": "enums"
+            },
+            {
                 "name": "Range Expressions",
                 "url": "range-expressions"
             },
@@ -898,6 +902,10 @@
             {
                 "name": "Retry",
                 "url": "websocket-retry"
+            },
+            {
+                "name": "Cookie",
+                "url": "websocket-cookie"
             }
         ]
     },

@@ -19,7 +19,11 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
     <span class="kt">int</span> <span class="err">&#39;</span><span class="mi">1</span><span class="nx">PlusI</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="err">&#39;</span><span class="mi">1</span><span class="nx">PlusI</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">quoted_identifiers</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
 </pre></div>
 
             </div>
@@ -106,7 +110,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -118,7 +122,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function &#39;function(int val) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function &#39;function(int val) returns int {
     return val + 1;
 }
 </code></pre></div>
@@ -139,7 +143,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -151,7 +155,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int &#39;int = 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int &#39;int = 1;
 </code></pre></div>
 
                                 </td>
@@ -170,7 +174,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int i = &#39;function(&#39;int);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int i = &#39;function(&#39;int);
     io:println(i);
 </code></pre></div>
 
@@ -192,7 +196,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    int &#39;1PlusI = 1 + i;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int &#39;1PlusI = 1 + i;
     io:println(&#39;1PlusI);
 }
 </code></pre></div>
@@ -227,8 +231,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run quoted_identifiers.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run quoted_identifiers.bal
 2
 3
 </code></pre></div>

@@ -39,7 +39,24 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
     <span class="kt">int</span><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="nx">g</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">arrays</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">8</span>
+<span class="nx">Reversed</span><span class="p">:</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span>
+<span class="nx">Before</span> <span class="nx">pop</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span>
+<span class="nx">Popped</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">8</span>
+<span class="nx">After</span> <span class="nx">pop</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span>
+<span class="nx">Doubled</span><span class="p">:</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">10</span> <span class="mi">12</span> <span class="mi">14</span>
+<span class="mi">23</span>
+<span class="mi">1000</span>
+<span class="mi">3</span>
+<span class="mi">3</span>
+<span class="mi">9</span>
+<span class="mi">5</span>
+<span class="mi">4</span>
 </pre></div>
 
             </div>
@@ -144,7 +161,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -156,7 +173,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -168,7 +185,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] a = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] a = [];
     io:println(a.length());
 </code></pre></div>
 
@@ -188,7 +205,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] b = [1, 2, 3, 4, 5, 6, 7, 8];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] b = [1, 2, 3, 4, 5, 6, 7, 8];
     io:println(b[0]);
     io:println(b.length());
 </code></pre></div>
@@ -209,7 +226,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] bReveresed = b.reverse();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] bReveresed = b.reverse();
     io:println(&quot;Reversed: &quot;, bReveresed);
 </code></pre></div>
 
@@ -229,7 +246,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before pop: &quot;, b);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before pop: &quot;, b);
     int poppedValue = b.pop();
     io:println(&quot;Popped value: &quot;, poppedValue);
     io:println(&quot;After pop: &quot;, b);
@@ -244,7 +261,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] doubled = b.map(function (int value) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] doubled = b.map(function (int value) returns int {
             return value * 2;
         });
     io:println(&quot;Doubled: &quot;, doubled);
@@ -267,7 +284,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    b[999] = 23;
+                                    <div class="highlight"><pre><code class=language-ballerina>    b[999] = 23;
     io:println(b[999]);
     io:println(b.length());
 </code></pre></div>
@@ -290,7 +307,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[][] iarray = [[1, 2, 3], [10, 20, 30], [5, 6, 7]];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[][] iarray = [[1, 2, 3], [10, 20, 30], [5, 6, 7]];
     io:println(iarray.length());
     io:println(iarray[0].length());
 </code></pre></div>
@@ -311,7 +328,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    iarray = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    iarray = [];
 </code></pre></div>
 
                                 </td>
@@ -330,7 +347,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] d = [9];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] d = [9];
     iarray[0] = d;
 </code></pre></div>
 
@@ -350,7 +367,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(iarray[0][0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(iarray[0][0]);
 </code></pre></div>
 
                                 </td>
@@ -369,7 +386,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[5] e = [1, 2, 3, 4, 5];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[5] e = [1, 2, 3, 4, 5];
     io:println(e.length());
 </code></pre></div>
 
@@ -389,7 +406,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    int[*] g = [1, 2, 3, 4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[*] g = [1, 2, 3, 4];
     io:println(g.length());
 }
 </code></pre></div>
@@ -400,7 +417,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>To infer the size of the array from the array literal, use the following syntax.
- The length of the array is set to four here.</p>
+ The fixed length of the array is set to four here.</p>
 
                                         </div>
                                     </div>
@@ -425,8 +442,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run arrays.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run arrays.bal
 0
 1
 8

@@ -34,7 +34,12 @@ redirect_from:
            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">base_path_and_path</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="nx">Run</span> <span class="nx">the</span> <span class="nx">cURL</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">to</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">.</span> 
+<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/foo/bar -d &quot;{\&quot;hello\&quot;: \&quot;world\&quot;}&quot; -H &quot;Content-Type: application/json&quot;</span>
+<span class="p">{</span><span class="s">&quot;hello&quot;</span><span class="p">:</span> <span class="s">&quot;world&quot;</span><span class="p">}</span>
 </pre></div>
 
             </div>
@@ -123,7 +128,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -136,7 +141,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/foo&quot;
 }
 service echo on new http:Listener(9090) {
@@ -160,7 +165,7 @@ service echo on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/bar&quot;
     }
@@ -186,7 +191,7 @@ service echo on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = req.getJsonPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = req.getJsonPayload();
         http:Response res = new;
         if (payload is json) {
 </code></pre></div>
@@ -207,7 +212,7 @@ service echo on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            res.setJsonPayload(&lt;@untainted&gt;payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>            res.setJsonPayload(&lt;@untainted&gt;payload);
         } else {
             res.statusCode = 500;
             res.setPayload(&lt;@untainted&gt;payload.message());
@@ -230,7 +235,7 @@ service echo on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
            log:printError(&quot;Error in responding&quot;, result);
         }
@@ -268,8 +273,8 @@ service echo on new http:Listener(9090) {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run base_path_and_path.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run base_path_and_path.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -295,8 +300,8 @@ $ ballerina run base_path_and_path.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Run this curl command to use the client. 
-$ curl http://localhost:9090/foo/bar -d &quot;{\&quot;hello\&quot;: \&quot;world\&quot;}&quot; -H &quot;Content-Type: application/json&quot;
+                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to use the client. 
+curl http://localhost:9090/foo/bar -d &quot;{\&quot;hello\&quot;: \&quot;world\&quot;}&quot; -H &quot;Content-Type: application/json&quot;
 {&quot;hello&quot;: &quot;world&quot;}
 </code></pre></div>
 

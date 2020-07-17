@@ -40,7 +40,7 @@ redirect_from:
  Ballerina functions can be deployed in AWS Lambda by annotating a
  a Ballerina function with &ldquo;@awslambda:Function&rdquo;, which should have
  the function signature <code>function (awslambda:Context, json) returns json|error</code>.<br/><br/>
- For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-deploy-ballerina-programs-in-cloud/">How to Deploy Ballerina Programs and Services in the Cloud</a>.</p>
+ For more information, see <a href="https://ballerina.io/learn/how-to-deploy-ballerina-programs-in-cloud/">How to Deploy Ballerina Programs and Services in the Cloud</a>.</p>
 </p>
 
                         </td>
@@ -113,7 +113,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerinax/awslambda;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerinax/awslambda;
 import ballerina/system;
 </code></pre></div>
 
@@ -126,7 +126,7 @@ import ballerina/system;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@awslambda:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
 public function echo(awslambda:Context ctx, json input) returns json|error {
    return input;
 }
@@ -149,7 +149,7 @@ public function echo(awslambda:Context ctx, json input) returns json|error {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@awslambda:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
 public function uuid(awslambda:Context ctx, json input) returns json|error {
    return system:uuid();
 }
@@ -164,7 +164,7 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@awslambda:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
 </code></pre></div>
 
                                 </td>
@@ -176,7 +176,7 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
    json result = { RequestID: ctx.getRequestId(),
                    DeadlineMS: ctx.getDeadlineMs(),
                    InvokedFunctionArn: ctx.getInvokedFunctionArn(),
@@ -290,9 +290,8 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	Run the following commands to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment-executable.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --timeout 10 --memory-size 1024
-	aws lambda update-function-configuration --function-name &lt;FUNCTION_NAME&gt; --layers &lt;BALLERINA_LAYER_ARN&gt;
+                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy each Ballerina AWS Lambda function:
+	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment-executable.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --layers &lt;BALLERINA_LAYER_ARN&gt;
 </code></pre></div>
 
                                 </td>
@@ -319,14 +318,11 @@ Generating executables
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the AWS CLI commands to create and publish the functions, and your AWS &lt;LAMBDA_ROLE_ARN&gt; and the &lt;BALLERINA_LAYER_ARN&gt; for a specific Ballerina release should be used, following values are just examples
 $ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role --role arn:aws:iam::908363916111:role/lambda-role
- --timeout 10 --memory-size 1024
+ --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
 $ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role --role arn:aws:iam::908363916111:role/lambda-role
- --timeout 10 --memory-size 1024
+ --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
 $ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role --role arn:aws:iam::908363916111:role/lambda-role
- --timeout 10 --memory-size 1024
-$ aws lambda update-function-configuration --function-name echo --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
-$ aws lambda update-function-configuration --function-name uuid --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
-$ aws lambda update-function-configuration --function-name ctxinfo --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
+ --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
 </code></pre></div>
 
                                 </td>

@@ -42,7 +42,13 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invoke local participant function.&quot;</span><span class="p">);</span>
     <span class="nx">error</span> <span class="nx">er</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Simulated Failure&quot;</span><span class="p">);</span>
     <span class="nx">panic</span> <span class="nx">er</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">local_transactions_with_handlers</span><span class="p">.</span><span class="nx">balxid</span><span class="p">=</span><span class="mi">3</span><span class="nx">ba5e301</span><span class="o">-</span><span class="mi">3</span><span class="nx">cfd</span><span class="o">-</span><span class="mi">40</span><span class="nx">f9</span><span class="o">-</span><span class="nx">bd6f</span><span class="o">-</span><span class="mi">1</span><span class="nx">faf8d61b0ac</span> <span class="nx">retryNumber</span><span class="p">=</span><span class="mi">0</span> <span class="nx">startTime</span><span class="p">=</span><span class="mi">1592404040052</span> <span class="nx">prevAttempt</span><span class="p">=</span>
+<span class="nx">Invoke</span> <span class="nx">local</span> <span class="nx">participant</span> <span class="kd">function</span><span class="p">.</span>
+<span class="nx">Local</span> <span class="nx">participant</span> <span class="nx">panicked</span><span class="p">.</span>
+<span class="nx">Rollback</span> <span class="nx">handler</span> <span class="err">#</span><span class="mi">2</span> <span class="nx">executed</span><span class="p">.</span>
+<span class="nx">Rollback</span> <span class="nx">handler</span> <span class="err">#</span><span class="mi">1</span> <span class="nx">executed</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -144,7 +150,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/lang.&#39;transaction as transactions;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;transaction as transactions;
 import ballerina/io;
 </code></pre></div>
 
@@ -157,7 +163,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -169,7 +175,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    transaction {
+                                    <div class="highlight"><pre><code class=language-ballerina>    transaction {
 </code></pre></div>
 
                                 </td>
@@ -188,7 +194,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var onRollbackFunc = function(transactions:Info info,
+                                    <div class="highlight"><pre><code class=language-ballerina>        var onRollbackFunc = function(transactions:Info info,
                                 error? cause, boolean willRetry) {
             io:println(&quot;Rollback handler #1 executed.&quot;);
         };
@@ -211,7 +217,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var onRollbackFunc2 = function(transactions:Info info,
+                                    <div class="highlight"><pre><code class=language-ballerina>        var onRollbackFunc2 = function(transactions:Info info,
                                         error? cause, boolean willRetry) {
             io:println(&quot;Rollback handler #2 executed.&quot;);
         };
@@ -226,7 +232,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var onCommitFunc = function(transactions:Info info) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var onCommitFunc = function(transactions:Info info) {
             io:println(&quot;Commit handler executed.&quot;);
         };
 </code></pre></div>
@@ -248,7 +254,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        transactions:onRollback(onRollbackFunc);
+                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:onRollback(onRollbackFunc);
         transactions:onRollback(onRollbackFunc2);
 </code></pre></div>
 
@@ -270,7 +276,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        transactions:onCommit(onCommitFunc);
+                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:onCommit(onCommitFunc);
 </code></pre></div>
 
                                 </td>
@@ -291,7 +297,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        transactions:Info transInfo = transactions:info();
+                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:Info transInfo = transactions:info();
         io:println(transInfo);
 </code></pre></div>
 
@@ -311,7 +317,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var res = trap throwError();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var res = trap throwError();
         if (res is error) {
 </code></pre></div>
 
@@ -331,7 +337,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Local participant panicked.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Local participant panicked.&quot;);
             rollback;
         } else {
             io:println(&quot;Local participant successfully executed.&quot;);
@@ -357,7 +363,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function throwError() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function throwError() {
     io:println(&quot;Invoke local participant function.&quot;);
     error er = error(&quot;Simulated Failure&quot;);
     panic er;
@@ -398,8 +404,8 @@ import ballerina/io;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run local_transactions_with_handlers.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run local_transactions_with_handlers.bal
 </code></pre></div>
 
                                 </td>

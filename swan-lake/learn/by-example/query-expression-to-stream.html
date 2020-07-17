@@ -14,30 +14,38 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="nx">score</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">gpa</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">degree</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">expectedGradYear</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">};</span>
-    <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">};</span>
-    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;David&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">};</span>
-    <span class="nx">Student</span> <span class="nx">s4</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Gorge&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fernando&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2021</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="nx">graduationYear</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Michelle&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Sadler&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">1990</span><span class="p">,</span> 
+                   <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.5</span> <span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2001</span><span class="p">,</span> 
+                   <span class="nx">gpa</span><span class="p">:</span> <span class="mf">1.9</span> <span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Martin&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Guthrie&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2002</span><span class="p">,</span> 
+                   <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.7</span> <span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fernando&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2005</span><span class="p">,</span> 
+                   <span class="nx">gpa</span><span class="p">:</span> <span class="mf">4.0</span> <span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Report</span><span class="p">&gt;</span> <span class="nx">reportStream</span> <span class="p">=</span> <span class="nx">stream</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
-       <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+       <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">gpa</span> <span class="o">&gt;=</span> <span class="mf">2.0</span>
        <span class="nx">let</span> <span class="kt">string</span> <span class="nx">degreeName</span> <span class="p">=</span> <span class="s">&quot;Bachelor of Medicine&quot;</span><span class="p">,</span>
        <span class="kt">int</span> <span class="nx">graduationYear</span> <span class="p">=</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">)</span>
        <span class="nx">select</span> <span class="p">{</span>
-              <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
+              <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
               <span class="nx">degree</span><span class="p">:</span> <span class="nx">degreeName</span><span class="p">,</span>
-              <span class="nx">expectedGradYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
+              <span class="nx">graduationYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
        <span class="p">}</span>
        <span class="nx">limit</span> <span class="mi">2</span><span class="p">;</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportStream</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">year</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_expression_to_stream</span><span class="p">.</span><span class="nx">balname</span><span class="p">=</span><span class="nx">Michelle</span> <span class="nx">Sadler</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">graduationYear</span><span class="p">=</span><span class="mi">1995</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Martin</span> <span class="nx">Guthrie</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">graduationYear</span><span class="p">=</span><span class="mi">2007</span>
 </pre></div>
 
             </div>
@@ -49,8 +57,8 @@ redirect_from:
                             <h2>Stream From Query Expression</h2>
                             <p><p>Adding the <code>stream</code> keyword as a prefix to a <code>query expression</code> allows users to create streams from query expressions.
  The first clause must be the <code>stream from</code> clause and must consist of a <code>select</code> clause as well.
- The resulted <code>stream</code> is a stream that generates the emitted values from the select clause.
- In this scenario, the result of the query expression is a stream with the constraint type of the select clause.</p>
+ The resulted <code>stream</code> is a stream that generates the emitted values from the <code>select</code> clause.
+ In this scenario, the result of the query expression is a stream with the constraint type of the <code>select</code> clause.</p>
 </p>
 
                         </td>
@@ -129,8 +137,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -139,7 +145,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -151,11 +157,11 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string firstName;
     string lastName;
     int intakeYear;
-    float score;
+    float gpa;
 };
 </code></pre></div>
 
@@ -168,10 +174,10 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Report record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Report record {
     string name;
     string degree;
-    int expectedGradYear;
+    int graduationYear;
 };
 </code></pre></div>
 
@@ -184,7 +190,15 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    Student s1 = { firstName: &quot;Michelle&quot;, lastName: &quot;Sadler&quot;, intakeYear: 1990, 
+                   gpa: 3.5 };
+    Student s2 = { firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, intakeYear: 2001, 
+                   gpa: 1.9 };
+    Student s3 = { firstName: &quot;Martin&quot;, lastName: &quot;Guthrie&quot;, intakeYear: 2002, 
+                   gpa: 3.7 };
+    Student s4 = { firstName: &quot;George&quot;, lastName: &quot;Fernando&quot;, intakeYear: 2005, 
+                   gpa: 4.0 };
 </code></pre></div>
 
                                 </td>
@@ -196,22 +210,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, intakeYear: 2020, score: 1.5};
-    Student s2 = {firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, intakeYear: 2020, score: 0.9};
-    Student s3 = {firstName: &quot;John&quot;, lastName: &quot;David&quot;, intakeYear: 2022, score: 1.2};
-    Student s4 = {firstName: &quot;Gorge&quot;, lastName: &quot;Fernando&quot;, intakeYear: 2021, score: 1.1};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student[] studentList = [s1, s2, s3, s4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student[] studentList = [s1, s2, s3, s4];
 </code></pre></div>
 
                                 </td>
@@ -223,7 +222,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;Report&gt; reportStream = stream from var student in studentList
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Report&gt; reportStream = stream from var student in studentList
 </code></pre></div>
 
                                 </td>
@@ -244,7 +243,7 @@ The <code>reportStream</code> is the result of the <code>query</code> expression
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>       where student.score &gt;= 1
+                                    <div class="highlight"><pre><code class=language-ballerina>       where student.gpa &gt;= 2.0
 </code></pre></div>
 
                                 </td>
@@ -254,7 +253,7 @@ The <code>reportStream</code> is the result of the <code>query</code> expression
                                         <div>
                                             <p>The <code>where</code> clause provides a way to perform conditional execution and works similarly to an <code>if</code> condition.
 It can refer to variables bound by the from clause.
-When the <code>where</code> condition evaluates to false, the iteration skips the following clauses.</p>
+When the <code>where</code> condition evaluates to false, the current iteration is skipped.</p>
 
                                         </div>
                                     </div>
@@ -265,7 +264,7 @@ When the <code>where</code> condition evaluates to false, the iteration skips th
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>       let string degreeName = &quot;Bachelor of Medicine&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>       let string degreeName = &quot;Bachelor of Medicine&quot;,
        int graduationYear = calGraduationYear(student.intakeYear)
 </code></pre></div>
 
@@ -285,10 +284,10 @@ When the <code>where</code> condition evaluates to false, the iteration skips th
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>       select {
-              name: student.firstName,
+                                    <div class="highlight"><pre><code class=language-ballerina>       select {
+              name: student.firstName + &quot; &quot; + student.lastName,
               degree: degreeName,
-              expectedGradYear: graduationYear
+              graduationYear: graduationYear
        }
 </code></pre></div>
 
@@ -298,7 +297,7 @@ When the <code>where</code> condition evaluates to false, the iteration skips th
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The <code>select</code> clause is evaluated for each iteration.
-The result of the query expression is a list(<code>reportList</code>) whose members are the result of the
+The result of the query expression is a stream (<code>reportStream</code>) whose members are the result of the
 <code>select</code> clause.</p>
 
                                         </div>
@@ -310,7 +309,7 @@ The result of the query expression is a list(<code>reportList</code>) whose memb
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>       limit 2;
+                                    <div class="highlight"><pre><code class=language-ballerina>       limit 2;
 </code></pre></div>
 
                                 </td>
@@ -329,7 +328,7 @@ The result of the query expression is a list(<code>reportList</code>) whose memb
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var report in reportStream {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var report in reportStream {
         io:println(report);
     }
 }
@@ -344,7 +343,7 @@ The result of the query expression is a list(<code>reportList</code>) whose memb
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function calGraduationYear(int year) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function calGraduationYear(int year) returns int {
     return year + 5;
 }
 </code></pre></div>
@@ -376,8 +375,8 @@ The result of the query expression is a list(<code>reportList</code>) whose memb
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run query_expression_to_stream.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run query_expression_to_stream.bal
 </code></pre></div>
 
                                 </td>
@@ -389,8 +388,8 @@ $ ballerina run query_expression_to_stream.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>name=Alex degree=Bachelor of Medicine expectedGradYear=2025
-name=John degree=Bachelor of Medicine expectedGradYear=2027
+                                    <div class="highlight"><pre><code class=shell-session>name=Michelle Sadler degree=Bachelor of Medicine graduationYear=1995
+name=Martin Guthrie degree=Bachelor of Medicine graduationYear=2007
 </code></pre></div>
 
                                 </td>

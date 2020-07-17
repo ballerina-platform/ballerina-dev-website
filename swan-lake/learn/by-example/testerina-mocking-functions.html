@@ -43,7 +43,18 @@ redirect_from:
 <span class="p">}</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">mockIntAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="nx">project</span> <span class="nx">and</span> <span class="nx">a</span> <span class="nx">module</span> <span class="nx">inside</span> <span class="nx">it</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Replace</span> <span class="nx">the</span> <span class="nx">content</span> <span class="nx">of</span> <span class="nx">the</span> <span class="s">`main.bal`</span> <span class="nx">and</span> <span class="s">``</span><span class="nx">main_test</span><span class="p">.</span><span class="nx">bal</span><span class="s">` files with the above code</span>
+<span class="s"># and execute the `</span><span class="nx">ballerina</span> <span class="nx">test</span><span class="err">`</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">project</span> <span class="nx">root</span> <span class="nx">directory</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Function</span> <span class="nx">mocking</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">supported</span> <span class="k">for</span> <span class="nx">testing</span> <span class="nx">single</span> <span class="nx">BAL</span> <span class="nx">files</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">test</span> <span class="nx">bbe_mocking</span>
+<span class="nx">Compiling</span> <span class="nx">source</span>
+        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">bbe_mocking</span><span class="p">:</span><span class="mf">0.1.0</span><span class="nx">Creating</span> <span class="nx">balos</span>
+        <span class="nx">target</span><span class="o">/</span><span class="nx">balo</span><span class="o">/</span><span class="nx">bbe_mocking</span><span class="o">-</span><span class="mi">2020</span><span class="nx">r1</span><span class="o">-</span><span class="kt">any</span><span class="o">-</span><span class="mf">0.1.0</span><span class="p">.</span><span class="nx">baloRunning</span> <span class="nx">Tests</span>
+        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">bbe_mocking</span><span class="p">:</span><span class="mf">0.1.0</span>        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertIntEquals</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testMathConsts</span>        <span class="mi">2</span> <span class="nx">passing</span>
+        <span class="mi">0</span> <span class="nx">failing</span>
+        <span class="mi">0</span> <span class="nx">skipped</span>
 </pre></div>
 
             </div>
@@ -131,7 +142,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/math;
 </code></pre></div>
 
@@ -151,7 +162,7 @@ import ballerina/math;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function addValues(int a, int b) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function addValues(int a, int b) returns int {
     return intAdd(a, b);
 }
 </code></pre></div>
@@ -172,7 +183,7 @@ import ballerina/math;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function intAdd(int a, int b) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function intAdd(int a, int b) returns int {
     return (a + b);
 }
 </code></pre></div>
@@ -193,7 +204,7 @@ import ballerina/math;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function printMathConsts() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function printMathConsts() {
    io:println(&quot;Value of PI : &quot;, math:PI);
 }
 </code></pre></div>
@@ -289,7 +300,7 @@ import ballerina/math;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/test;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/test;
 </code></pre></div>
 
                                 </td>
@@ -308,7 +319,7 @@ import ballerina/math;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>(any|error)[] outputs = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>(any|error)[] outputs = [];
 </code></pre></div>
 
                                 </td>
@@ -320,7 +331,7 @@ import ballerina/math;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Mock {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Mock {
 </code></pre></div>
 
                                 </td>
@@ -332,7 +343,7 @@ import ballerina/math;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    moduleName: &quot;ballerina/io&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    moduleName: &quot;ballerina/io&quot;,
     functionName: &quot;println&quot;
 }
 function mockIoPrintLn((any|error)... text) {
@@ -357,7 +368,7 @@ function mockIoPrintLn((any|error)... text) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testMathConsts() {
 </code></pre></div>
 
@@ -370,7 +381,7 @@ function testMathConsts() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>   printMathConsts();
+                                    <div class="highlight"><pre><code class=language-ballerina>   printMathConsts();
    test:assertEquals(outputs[0].toString(), &quot;Value of PI :  3.141592653589793&quot;);
 }
 </code></pre></div>
@@ -391,7 +402,7 @@ function testMathConsts() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:MockFn { functionName: &quot;intAdd&quot; }
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:MockFn { functionName: &quot;intAdd&quot; }
 test:MockFunction intAddMockFn = new();
 </code></pre></div>
 
@@ -411,7 +422,7 @@ test:MockFunction intAddMockFn = new();
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testAssertIntEquals() {
 </code></pre></div>
 
@@ -424,7 +435,7 @@ function testAssertIntEquals() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:when(intAddMockFn).thenReturn(20);
+                                    <div class="highlight"><pre><code class=language-ballerina>    test:when(intAddMockFn).thenReturn(20);
 </code></pre></div>
 
                                 </td>
@@ -443,7 +454,7 @@ function testAssertIntEquals() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:when(intAddMockFn).withArguments(0, 0).thenReturn(-1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    test:when(intAddMockFn).withArguments(0, 0).thenReturn(-1);
 </code></pre></div>
 
                                 </td>
@@ -463,7 +474,7 @@ function testAssertIntEquals() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(intAdd(10, 6), 20, msg = &quot;function mocking failed&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    test:assertEquals(intAdd(10, 6), 20, msg = &quot;function mocking failed&quot;);
     test:assertEquals(intAdd(0, 0), -1,
         msg = &quot;function mocking with arguments failed&quot;);
 </code></pre></div>
@@ -477,7 +488,7 @@ function testAssertIntEquals() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:when(intAddMockFn).call(&quot;mockIntAdd&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    test:when(intAddMockFn).call(&quot;mockIntAdd&quot;);
 </code></pre></div>
 
                                 </td>
@@ -496,7 +507,7 @@ function testAssertIntEquals() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(addValues(11, 6), 5, msg = &quot;function mocking failed&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    test:assertEquals(addValues(11, 6), 5, msg = &quot;function mocking failed&quot;);
 }
 </code></pre></div>
 
@@ -509,7 +520,7 @@ function testAssertIntEquals() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function mockIntAdd(int a, int b) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function mockIntAdd(int a, int b) returns int {
     return (a - b);
 }
 </code></pre></div>
@@ -562,9 +573,9 @@ function testAssertIntEquals() {
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, create a Ballerina project and a module inside it.
 # Replace the content of the `main.bal` and ``main_test.bal` files with the above code
-# and execute the `ballerina test` command from the project root directory.
+# and execute the `ballerina test` command below from the project root directory.
 # Function mocking is not supported for testing single BAL files.
-$ ballerina test bbe_mocking
+ballerina test bbe_mocking
 Compiling source
         ballerinatest/bbe_mocking:0.1.0
 </code></pre></div>

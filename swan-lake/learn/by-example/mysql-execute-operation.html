@@ -69,7 +69,15 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Database initialization failed!!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span>  <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_execute_operation</span><span class="p">.</span><span class="nx">balDatabase</span> <span class="nx">created</span><span class="p">.</span>
+<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">.</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span>
+<span class="nx">Rows</span> <span class="nx">affected</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Generated</span> <span class="nx">Customer</span> <span class="nx">ID</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Updated</span> <span class="nx">Row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Deleted</span> <span class="nx">Row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Sample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -210,7 +218,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/mysql;
 import ballerina/sql;
 </code></pre></div>
@@ -224,7 +232,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>string dbUser = &quot;root&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
 string dbPassword = &quot;Test@123&quot;;
 string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 </code></pre></div>
@@ -247,7 +255,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initializeDatabase() returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeDatabase() returns sql:Error? {
 </code></pre></div>
 
                                 </td>
@@ -259,7 +267,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
 </code></pre></div>
 
                                 </td>
@@ -278,7 +286,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecutionResult result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
         check mysqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS &quot; + dbName);
     io:println(&quot;Database created. &quot;);
 </code></pre></div>
@@ -300,7 +308,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    check mysqlClient.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();
 </code></pre></div>
 
                                 </td>
@@ -319,7 +327,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -331,7 +339,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initializeTable(mysql:Client mysqlClient)
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeTable(mysql:Client mysqlClient)
     returns int|string|sql:Error? {
 </code></pre></div>
 
@@ -344,7 +352,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecutionResult result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
         check mysqlClient-&gt;execute(&quot;DROP TABLE IF EXISTS Customers&quot;);
     io:println(&quot;Drop table executed. &quot;, result);
 </code></pre></div>
@@ -366,7 +374,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    result = check mysqlClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS Customers&quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS Customers&quot; +
         &quot;(customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300)&quot; +
         &quot;,lastName  VARCHAR(300), registrationID INTEGER,&quot; +
         &quot;creditLimit DOUBLE, country  VARCHAR(300), PRIMARY KEY (customerId))&quot;);
@@ -389,7 +397,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    result = check mysqlClient-&gt;execute(&quot;INSERT INTO Customers (firstName,&quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(&quot;INSERT INTO Customers (firstName,&quot; +
         &quot;lastName,registrationID,creditLimit, country) VALUES (&#39;Peter&#39;, &quot; +
         &quot;&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;);
 </code></pre></div>
@@ -412,7 +420,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Rows affected: &quot;, result.affectedRowCount);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Rows affected: &quot;, result.affectedRowCount);
     io:println(&quot;Generated Customer ID: &quot;, result.lastInsertId);
     return result.lastInsertId;
 }
@@ -427,7 +435,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function updateRecord(mysql:Client mysqlClient, int generatedId) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function updateRecord(mysql:Client mysqlClient, int generatedId) {
 </code></pre></div>
 
                                 </td>
@@ -439,7 +447,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ParameterizedQuery updateQuery =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery updateQuery =
         `Update Customers set creditLimit = 15000.5
         where customerId = ${generatedId}`;
 </code></pre></div>
@@ -460,7 +468,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecutionResult|sql:Error result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult|sql:Error result =
         mysqlClient-&gt;execute(updateQuery);
 </code></pre></div>
 
@@ -480,7 +488,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is sql:ExecutionResult) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is sql:ExecutionResult) {
         io:println(&quot;Updated Row count: &quot;, result?.affectedRowCount);
     } else {
         io:println(&quot;Error occurred: &quot;, result);
@@ -497,7 +505,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function deleteRecord(mysql:Client mysqlClient, int generatedId) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function deleteRecord(mysql:Client mysqlClient, int generatedId) {
 </code></pre></div>
 
                                 </td>
@@ -509,7 +517,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ParameterizedQuery deleteQuery =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery deleteQuery =
             `Delete from Customers where customerId = ${generatedId}`;
     sql:ExecutionResult|sql:Error result =
                 mysqlClient-&gt;execute(deleteQuery);
@@ -531,7 +539,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is sql:ExecutionResult) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is sql:ExecutionResult) {
         io:println(&quot;Deleted Row count: &quot;, result.affectedRowCount);
     } else {
         io:println(&quot;Error occurred: &quot;, result);
@@ -548,7 +556,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -560,7 +568,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:Error? err = initializeDatabase();
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:Error? err = initializeDatabase();
 </code></pre></div>
 
                                 </td>
@@ -579,7 +587,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (err is ()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (err is ()) {
 </code></pre></div>
 
                                 </td>
@@ -591,7 +599,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
+                                    <div class="highlight"><pre><code class=language-ballerina>        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
             password = dbPassword, database = dbName);
 </code></pre></div>
 
@@ -612,7 +620,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (mysqlClient is mysql:Client) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (mysqlClient is mysql:Client) {
 </code></pre></div>
 
                                 </td>
@@ -624,7 +632,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            int|string|sql:Error? initResult = initializeTable(mysqlClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>            int|string|sql:Error? initResult = initializeTable(mysqlClient);
 </code></pre></div>
 
                                 </td>
@@ -643,7 +651,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (initResult is int) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (initResult is int) {
 </code></pre></div>
 
                                 </td>
@@ -655,7 +663,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                updateRecord(mysqlClient, initResult);
+                                    <div class="highlight"><pre><code class=language-ballerina>                updateRecord(mysqlClient, initResult);
 </code></pre></div>
 
                                 </td>
@@ -674,7 +682,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                deleteRecord(mysqlClient, initResult);
+                                    <div class="highlight"><pre><code class=language-ballerina>                deleteRecord(mysqlClient, initResult);
 </code></pre></div>
 
                                 </td>
@@ -693,7 +701,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                io:println(&quot;Sample executed successfully!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>                io:println(&quot;Sample executed successfully!&quot;);
             } else if (initResult is sql:Error) {
                 io:println(&quot;Customer table initialization failed!&quot;, initResult);
             }
@@ -708,7 +716,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            sql:Error? e = mysqlClient.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>            sql:Error? e = mysqlClient.close();
 </code></pre></div>
 
                                 </td>
@@ -727,7 +735,7 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
             io:println(&quot;Table initialization failed!!&quot;, mysqlClient);
         }
     } else {
@@ -763,8 +771,8 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#  To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run mysql_execute_operation.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run mysql_execute_operation.bal
 </code></pre></div>
 
                                 </td>

@@ -86,7 +86,11 @@ redirect_from:
     <span class="p">}</span>
     <span class="nx">closeRc</span><span class="p">(</span><span class="nx">srcRecordChannel</span><span class="p">);</span>
     <span class="nx">closeWc</span><span class="p">(</span><span class="nx">dstRecordChannel</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_io</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Start</span> <span class="nx">processing</span> <span class="nx">the</span> <span class="nx">CSV</span> <span class="nx">file</span> <span class="nx">from</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sample</span><span class="p">.</span><span class="nx">csv</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">text</span> <span class="nx">file</span> <span class="nx">in</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sampleResponse</span><span class="p">.</span><span class="nx">txt</span>
+<span class="nx">Processing</span> <span class="nx">completed</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">processed</span> <span class="nx">file</span> <span class="nx">is</span> <span class="nx">located</span> <span class="nx">in</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sampleResponse</span><span class="p">.</span><span class="nx">txt</span>
 </pre></div>
 
             </div>
@@ -197,7 +201,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -210,7 +214,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getReadableRecordChannel(string filePath, string encoding,
+                                    <div class="highlight"><pre><code class=language-ballerina>function getReadableRecordChannel(string filePath, string encoding,
                         string rs, string fs)
                         returns @tainted io:ReadableTextRecordChannel|error {
     io:ReadableByteChannel byteChannel = check io:openReadableFile(filePath);
@@ -236,7 +240,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCharacterChannel characterChannel = new (byteChannel, encoding);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableCharacterChannel characterChannel = new (byteChannel, encoding);
 </code></pre></div>
 
                                 </td>
@@ -256,7 +260,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableTextRecordChannel delimitedRecordChannel = new (characterChannel,
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableTextRecordChannel delimitedRecordChannel = new (characterChannel,
                                                               rs = rs,
                                                               fs = fs);
     return delimitedRecordChannel;
@@ -280,7 +284,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getWritableRecordChannel(string filePath, string encoding, string rs,
+                                    <div class="highlight"><pre><code class=language-ballerina>function getWritableRecordChannel(string filePath, string encoding, string rs,
                     string fs)
                     returns @tainted io:WritableTextRecordChannel|error {
     io:WritableByteChannel byteChannel = check io:openWritableFile(filePath);
@@ -306,7 +310,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableCharacterChannel characterChannel = new (byteChannel, encoding);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableCharacterChannel characterChannel = new (byteChannel, encoding);
 </code></pre></div>
 
                                 </td>
@@ -326,7 +330,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableTextRecordChannel delimitedRecordChannel = new(characterChannel,
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableTextRecordChannel delimitedRecordChannel = new(characterChannel,
                                                               rs = rs,
                                                               fs = fs);
     return delimitedRecordChannel;
@@ -350,7 +354,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function process(io:ReadableTextRecordChannel srcRecordChannel,
+                                    <div class="highlight"><pre><code class=language-ballerina>function process(io:ReadableTextRecordChannel srcRecordChannel,
                  io:WritableTextRecordChannel dstRecordChannel)
                  returns @tainted error? {
 </code></pre></div>
@@ -372,7 +376,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (srcRecordChannel.hasNext()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (srcRecordChannel.hasNext()) {
 </code></pre></div>
 
                                 </td>
@@ -392,7 +396,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string[] records = check srcRecordChannel.getNext();
+                                    <div class="highlight"><pre><code class=language-ballerina>        string[] records = check srcRecordChannel.getNext();
 </code></pre></div>
 
                                 </td>
@@ -411,7 +415,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = check dstRecordChannel.write(records);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = check dstRecordChannel.write(records);
     }
     return;
 }
@@ -433,7 +437,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function closeRc(io:ReadableTextRecordChannel rc) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeRc(io:ReadableTextRecordChannel rc) {
     var closeResult = rc.close();
     if (closeResult is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;, closeResult);
@@ -457,7 +461,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function closeWc(io:WritableTextRecordChannel wc) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeWc(io:WritableTextRecordChannel wc) {
     var closeResult = wc.close();
     if (closeResult is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;, closeResult);
@@ -481,7 +485,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string srcFileName = &quot;./files/sample.csv&quot;;
     string dstFileName = &quot;./files/sampleResponse.txt&quot;;
 </code></pre></div>
@@ -502,7 +506,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableTextRecordChannel srcRecordChannel;
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableTextRecordChannel srcRecordChannel;
     var readableChannel = getReadableRecordChannel(srcFileName,
                                                         &quot;UTF-8&quot;, &quot;\\r?\\n&quot;, &quot;,&quot;);
     if (readableChannel is error) {
@@ -531,7 +535,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableTextRecordChannel dstRecordChannel;
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableTextRecordChannel dstRecordChannel;
     var writableChannel = getWritableRecordChannel(dstFileName,
                                                         &quot;UTF-8&quot;, &quot;\r\n&quot;, &quot;|&quot;);
     if (writableChannel is error) {
@@ -560,7 +564,7 @@ is a new line and the field separator is a pipe (|).</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Start processing the CSV file from &quot; + srcFileName +
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Start processing the CSV file from &quot; + srcFileName +
                &quot; to the text file in &quot; + dstFileName);
     var result = process(srcRecordChannel, dstRecordChannel);
     if (result is error) {
@@ -580,7 +584,7 @@ is a new line and the field separator is a pipe (|).</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    closeRc(srcRecordChannel);
+                                    <div class="highlight"><pre><code class=language-ballerina>    closeRc(srcRecordChannel);
     closeWc(dstRecordChannel);
 }
 </code></pre></div>
@@ -615,8 +619,8 @@ is a new line and the field separator is a pipe (|).</p>
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run record_io.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run record_io.bal
 Start processing the CSV file from ./files/sample.csv to the text file in ./files/sampleResponse.txt
 Processing completed. The processed file is located in ./files/sampleResponse.txt
 </code></pre></div>

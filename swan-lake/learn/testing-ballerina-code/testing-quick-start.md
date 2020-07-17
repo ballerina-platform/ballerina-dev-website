@@ -81,7 +81,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     @test:Config {}
     function testGetRandomJoke() {
         // create a default mock HTTP Client and assign it to the `clientEndpoint`
-        clientEndpoint = <http:Client>test:mock(http:Client);
+        clientEndpoint = test:mock(http:Client);
         // stub the behavior of the `get` function to return the specified mock response
         test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
         // invoke the function to test

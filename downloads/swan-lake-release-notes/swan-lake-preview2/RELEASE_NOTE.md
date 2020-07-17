@@ -247,24 +247,22 @@ The WebSocket client now supports cookies. A new field `cookies` has been introd
 
 ### Runtime API
 
-- The `runtime:timeout` function has been removed. The `runtime:sleep` function can be used as the alternative.
+The `runtime:timeout` function has been removed. The `runtime:sleep` function can be used as the alternative.
 
-**The previous method:**
+E.g., consider the following example, which uses the `runtime:timeout`.
 
-Used the `runtime:timeout` as shown below.
+```ballerina
+future<()> f1 = start runtime:sleep(50);
+```
+
+This can now be done as follows:
 
 ```ballerina
 future<()> f1 = runtime:timeout(50);
 ```
 
-**The new method:**
-
 - The `runtime:getProperty` function has been removed. Java interoperability can be used as the alternative to access Java system properties.
 - The auth-related configurations have been moved out from the `runtime:InvocationContext` to the newly-introduced `auth:InvocationContext`.
-
-```ballerina
-future<()> f1 = start runtime:sleep(50);
-```
 
 ### Module organization
 

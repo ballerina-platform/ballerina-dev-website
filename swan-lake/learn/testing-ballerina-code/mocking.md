@@ -72,14 +72,8 @@ public function testGetRandomJoke() {
 Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return a specific value or to do nothing.
 
 ***Example:***
-<<<<<<< HEAD:swan-lake/learn/testing-ballerina-code/mocking.md
-The example in the [Quick Start](/swan-lake/learn/testing-ballerina-code/testing-quick-start) page shows how the `get` function of the client object can be
- stubbed to return a value. Let’s make changes to that example.
-=======
->>>>>>> 3923eaf5981f5401bfe4bc7ac95f09dcadf3dbf8:swan-lake/learn/mocking.md
 
-The example in the [Quick Start](/swan-lake/learn/testing-quick-start) shows how the `get` function of the client object can be
- stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g., food or movies).
+The example in the [Quick Start](/swan-lake/learn/testing/ballerina-code/testing-quick-start) shows how the `get` function of the client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g., food or movies).
 
 ***main.bal***
 

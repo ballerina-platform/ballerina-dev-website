@@ -167,9 +167,9 @@ type Employee record {|
 
 ### Improvements related to JSON compatibility
 
-Three langlib functions were introduced and `toJsonString` is now allowed to have `anydata`.
+Three new methods have been introduced to the `ballerina/lang.value` module to facilitate converting to and from JSON. Additionally, the `toJsonString` method can now be called on `anydata` values.
 
-#### `toJson`
+#### The `toJson` method
 `toJson` converts a value of type `anydata` to `json`. This does a deep copy of the value and converts values that do not belong to `json` into values that do. 
 
 ```ballerina
@@ -179,9 +179,9 @@ public function main() {
 }
 ```
 
-#### `toJsonString`
+#### The `toJsonString` method
 
-`toJsonString` converts a value of type `anydata` to a string that represents the value in the JSON format. It first converts the value to a JSON using `toJson` and then converts it  to a `string`.
+`toJsonString` converts a value of type `anydata` to a string that represents the value in the JSON format. It first converts the value to a JSON using `toJson` and then converts it to a `string`.
 
 ```ballerina
 public function main() {
@@ -193,7 +193,7 @@ public function main() {
 }
 ```
 
-#### `fromJsonWithType`
+#### The `fromJsonWithType` method
 
 `fromJsonWithType` converts a value of type `json` to a user-specified type. The implementation is similar to `cloneWithType` except that it also does the inverse of the conversions done by `toJson`.
 
@@ -209,7 +209,7 @@ public function main() {
 }
 ```
 
-#### `fromJsonStringWithType`
+#### The `fromJsonStringWithType` method
 
 `fromJsonStringWithType` converts a string in JSON format to a user-specified type. This method can be described as a combination of `fromJsonString` followed by `fromJsonWithType`.
 

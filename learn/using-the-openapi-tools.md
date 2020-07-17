@@ -30,7 +30,7 @@ For build time client stub generation, annotation support is provided.
 
 ### Mock service from OpenAPI
 
-```ballerina
+```
 ballerina openapi gen-service <moduleName>:<serviceName> 
                                <openapi_contract>
                                [-c: copy-contract] 
@@ -43,7 +43,7 @@ This generated service is a mock version of the actual Ballerina service. Genera
 
 ### Client stub from OpenAPI
 
-```ballerina
+```
 ballerina openapi gen-client [<moduleName>]:<clientName> 
                    <openapi-contract> [-o <dir-path> | --output <dir-path>]
 ```
@@ -54,7 +54,7 @@ This client can be used in client applications to call the service defined in th
 
 ### Service to OpenAPI export
 
-```ballerina
+```
 ballerina openapi gen-contract [<moduleName>:]<serviceName> 
                                 [-i: <ballerinaFile> | --ballerina-file <ballerina-file>] 
                                 [-o: <openapi-contract> | --output <openapi-contract>] 
@@ -75,7 +75,7 @@ The `@openapi:ClientConfig { generate: true }` annotation is used to enable or d
 
 ### Mock service from OpenAPI
 
-```ballerina
+```
 ballerina openapi gen-service helloworld:helloService hello_service.yaml
 ```
 
@@ -84,7 +84,7 @@ This command should be executed inside a Ballerina project.
 
 ### Client stub from OpenAPI
 
-```ballerina
+```
 ballerina openapi gen-client hello_client hello_service.yaml
 ```
 
@@ -93,7 +93,7 @@ This command should be executed inside a Ballerina project.
 
 ### OpenAPI from service
 
-```ballerina
+```
 ballerina openapi gen-contract helloworld:helloService -i src/helloworld/helloService.bal
 ```
 

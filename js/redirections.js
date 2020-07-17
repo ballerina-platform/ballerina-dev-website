@@ -183,7 +183,13 @@ let redirections = {
     "/learn/testing-ballerina-code/testing-quick-start":"/learn/testing-ballerina-code",
     "/learn/testing-ballerina-code/writing-tests":"/learn/testing-ballerina-code",
     "/learn/testing-ballerina-code/mocking":"/learn/testing-ballerina-code",
-    "/learn/testing-ballerina-code/executing-tests":"/learn/testing-ballerina-code"
+    "/learn/testing-ballerina-code/executing-tests":"/learn/testing-ballerina-code",
+    "/1.1/learn/deployment/aws-lambda/":"/1.1/page-not-available.html",
+    "/1.0/learn/deployment/aws-lambda/":"/1.0/page-not-available.html",
+    "/swan-lake/learn/deployment/azure-functions/":"/swan-lake/page-not-available.html",
+    "/1.1/learn/deployment/azure-functions/":"/1.1/page-not-available.html",
+    "/1.0/learn/deployment/azure-functions/":"/1.0/page-not-available.html"
+    
 
 
 };

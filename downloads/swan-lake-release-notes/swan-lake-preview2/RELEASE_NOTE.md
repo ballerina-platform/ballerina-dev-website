@@ -137,7 +137,7 @@ Since `details` is created as an immutable value, the following check evaluates 
 ```ballerina
 details.isReadOnly()
 ```
-### The rest argument to pass arguments for required/defaultable parameters
+### Passing arguments for required/defaultable parameters via the rest argument
 
 Previously, the rest argument in a function/method call expression could only provide arguments for the rest parameter. A rest argument can now be used to provide arguments for required and/or defaultable parameters too.
 
@@ -230,7 +230,7 @@ The redirect client has been improved to support temporary and permanent redirec
 
 ### Log
 
-A `log:setModuleLogLevel` function has been introduced to allow users to set the module log level through the Log API.
+The new `log:setModuleLogLevel` function allows users to set the module log level through the Log API.
 
 ### Config
 
@@ -243,24 +243,25 @@ The `config:getAsArray` and `config:getAsMap` functions now return immutable val
 
 ### WebSocket
 
-The WebSocket client now supports cookies. A new field `cookies` has been introduced in the `http:WebSocketClientConfiguration` and `http:WebSocketFailoverClientConfiguration` to specify the cookies.
+The WebSocket client now supports cookies. A new field `cookies` has been introduced in the `http:WebSocketClientConfiguration` and `http:WebSocketFailoverClientConfiguration` records to specify the cookies.
 
 ### Runtime API
 
 - The `runtime:timeout` function has been removed. The `runtime:sleep` function can be used as the alternative.
 
-For example, when the following, which previously used the `runtime:timeout` is considered,
+E.g., consider the following example, which uses the `runtime:timeout` function.
 
 ```ballerina
 future<()> f1 = runtime:timeout(50);
 ```
-can be done as follows:
+
+This can now be done as follows:
+
 ```ballerina
 future<()> f1 = start runtime:sleep(50);
 ```
 
 - The `runtime:getProperty` function has been removed. Java interoperability can be used as the alternative to access Java system properties.
-
 - The auth-related configurations have been moved out from the `runtime:InvocationContext` to the newly-introduced `auth:InvocationContext`.
 
 ### Module organization

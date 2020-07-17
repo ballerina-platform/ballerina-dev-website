@@ -3,12 +3,12 @@ layout: ballerina-left-nav-pages-swanlake
 title: Quick Start
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /swan-lake/learn/testing-quick-start/
+permalink: /swan-lake/learn/testing-ballerina-code/testing-quick-start/
 active: testing-quick-start
 redirect_from:
   - /swan-lake/learn/how-to-test-ballerina-code/
   - /swan-lake/learn/how-to-test-ballerina-code
-  - /swan-lake/learn/testing-quick-start
+  - /swan-lake/learn/testing-ballerina-code/testing-quick-start
 ---
 
 # Quick Start
@@ -133,4 +133,4 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
 ## What's Next
 
 Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
- features in the [Writing Tests](/swan-lake/learn/writing-tests) section.
+ features in the [Writing Tests](/swan-lake/learn/testing-ballerina-code/writing-tests) section.

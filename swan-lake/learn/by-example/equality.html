@@ -46,7 +46,19 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;f1 !== f2 is &quot;</span><span class="p">,</span> <span class="nx">isNotRefEqual</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getGlobalEmployee</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Employee</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">globalEmployee</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">equality</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="o">==</span> <span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="o">!=</span> <span class="mi">11</span> <span class="mf">1.0</span> <span class="kc">true</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="o">!=</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="nx">is</span> <span class="kc">false</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="o">==</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Anne</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="nx">is</span> <span class="kc">false</span>
+<span class="nx">e4</span> <span class="o">==</span><span class="p">=</span> <span class="nx">e5</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="nx">e4</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">e5</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="nx">f1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">f2</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="nx">f1</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">f2</span> <span class="nx">is</span> <span class="kc">true</span>
 </pre></div>
 
             </div>
@@ -154,7 +166,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -166,7 +178,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {
     string name;
     int id;
 };
@@ -181,7 +193,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
 };
 </code></pre></div>
@@ -195,7 +207,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>final Employee globalEmployee = {name: &quot;John&quot;, id: 2102};
+                                    <div class="highlight"><pre><code class=language-ballerina>final Employee globalEmployee = {name: &quot;John&quot;, id: 2102};
 </code></pre></div>
 
                                 </td>
@@ -207,7 +219,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -219,7 +231,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int i1 = 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int i1 = 1;
     int i2 = 1;
     boolean isEqual = i1 == i2;
     io:println(i1, &quot; == &quot;, i2, &quot; is &quot;, isEqual);
@@ -242,7 +254,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int i3 = 2;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int i3 = 2;
     boolean isNotEqual = i1 != i3;
     io:println(i1, &quot; != &quot;, i3, &quot; is &quot;, isNotEqual);
 </code></pre></div>
@@ -256,7 +268,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [string|int, float, boolean] t1 = [1, 1.0, false];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [string|int, float, boolean] t1 = [1, 1.0, false];
     [int, float|string, boolean] t2 = [1, 1.0, false];
     isEqual = t1 == t2;
     io:println(t1, &quot; == &quot;, t2, &quot; is &quot;, isEqual);
@@ -271,7 +283,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [int, float|string, boolean] t3 = [11, 1.0, true];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [int, float|string, boolean] t3 = [11, 1.0, true];
     isNotEqual = t1 != t3;
     io:println(t1, &quot; != &quot;, t3, &quot; is &quot;, isNotEqual);
 </code></pre></div>
@@ -285,7 +297,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee e1 = {name: &quot;Jane&quot;, id: 1100};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee e1 = {name: &quot;Jane&quot;, id: 1100};
     Employee e2 = {name: &quot;Jane&quot;, id: 1100};
     isNotEqual = e1 != e2;
     io:println(e1, &quot; != &quot;, e2, &quot; is &quot;, isNotEqual);
@@ -300,7 +312,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee e3 = {name: &quot;Anne&quot;, id: 1100};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee e3 = {name: &quot;Anne&quot;, id: 1100};
     isEqual = e1 == e3;
     io:println(e1, &quot; == &quot;, e3, &quot; is &quot;, isEqual);
 </code></pre></div>
@@ -314,7 +326,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee e4 = getGlobalEmployee();
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee e4 = getGlobalEmployee();
     Person e5 = getGlobalEmployee();
     boolean isRefEqual = e4 === e5;
     io:println(&quot;e4 === e5 is &quot;, isRefEqual);
@@ -336,7 +348,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    e4 = {name: &quot;John&quot;, id: 2102};
+                                    <div class="highlight"><pre><code class=language-ballerina>    e4 = {name: &quot;John&quot;, id: 2102};
     boolean isNotRefEqual = e4 !== e5;
     io:println(&quot;e4 !== e5 is &quot;, isNotRefEqual);
 </code></pre></div>
@@ -350,7 +362,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float f1 = 1.1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float f1 = 1.1;
     float f2 = 1.1;
     isRefEqual = f1 === f2;
     io:println(&quot;f1 === f2 is &quot;, isRefEqual);
@@ -372,7 +384,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    f2 = 12.1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    f2 = 12.1;
     isNotRefEqual = f1 !== f2;
     io:println(&quot;f1 !== f2 is &quot;, isNotRefEqual);
 }
@@ -387,7 +399,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getGlobalEmployee() returns Employee {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getGlobalEmployee() returns Employee {
     return globalEmployee;
 }
 </code></pre></div>
@@ -415,8 +427,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run equality.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run equality.bal
 1 == 1 is true
 1 != 2 is true
 1 1.0 false == 1 1.0 false is true

@@ -31,7 +31,11 @@ redirect_from:
     <span class="k">if</span> <span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">java</span><span class="o">-</span><span class="nx">exceptions</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">error</span> <span class="nx">java</span><span class="p">.</span><span class="nx">lang</span><span class="p">.</span><span class="nx">ClassNotFoundException</span> <span class="kt">message</span><span class="p">=</span><span class="nx">a</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nx">c</span><span class="p">.</span><span class="nx">z</span><span class="p">.</span><span class="nx">SomeClass</span>
+<span class="nx">error</span> <span class="nx">java</span><span class="p">.</span><span class="nx">lang</span><span class="p">.</span><span class="nx">NullPointerException</span>
 </pre></div>
 
             </div>
@@ -127,7 +131,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java;
 </code></pre></div>
 
@@ -140,7 +144,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function loadClass(handle className) returns handle|error = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>function loadClass(handle className) returns handle|error = @java:Method {
     name: &quot;forName&quot;,
     class: &quot;java.lang.Class&quot;
 } external;
@@ -164,7 +168,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function newArrayDeque() returns handle = @java:Constructor {
+                                    <div class="highlight"><pre><code class=language-ballerina>function newArrayDeque() returns handle = @java:Constructor {
     class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
@@ -186,7 +190,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function offer(handle receiver, handle e) returns boolean = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>function offer(handle receiver, handle e) returns boolean = @java:Method {
     class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
@@ -207,7 +211,7 @@ import ballerina/java;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -219,7 +223,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var classOrError = loadClass(java:fromString(&quot;a.b.c.z.SomeClass&quot;));
+                                    <div class="highlight"><pre><code class=language-ballerina>    var classOrError = loadClass(java:fromString(&quot;a.b.c.z.SomeClass&quot;));
     if classOrError is error {
         io:println(classOrError);
     }
@@ -241,7 +245,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var arrayDeque = newArrayDeque();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var arrayDeque = newArrayDeque();
     boolean|error e = trap offer(arrayDeque, java:createNull());
     if e is error {
         io:println(e);
@@ -280,8 +284,8 @@ import ballerina/java;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run java-exceptions.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run java-exceptions.bal
 error java.lang.ClassNotFoundException message=a.b.c.z.SomeClass
 error java.lang.NullPointerException
 </code></pre></div>

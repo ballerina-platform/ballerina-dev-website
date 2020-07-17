@@ -11,24 +11,34 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">getValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">key</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;key &#39;&quot;</span> <span class="o">+</span> <span class="nx">key</span> <span class="o">+</span> <span class="s">&quot;&#39; not found&quot;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">err</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">lookupPerson</span><span class="p">(</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span> <span class="nx">id</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">id</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">!</span><span class="nx">personTab</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;id &#39;&quot;</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="s">&quot;&#39; not found&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">personTab</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&quot;this is a value&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">personTab</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()[</span><span class="nx">id</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nb">println</span><span class="p">(</span><span class="s">&quot;This is a string&quot;</span><span class="p">);</span>
-    <span class="nb">println</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span>
-    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">valueOrError1</span> <span class="p">=</span> <span class="nx">getValue</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">valueOrError1</span><span class="p">);</span>
-    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">valueOrError2</span> <span class="p">=</span> <span class="nx">getValue</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">valueOrError2</span><span class="p">);</span>
-<span class="p">}</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">personOrError1</span> <span class="p">=</span> <span class="nx">lookupPerson</span><span class="p">(</span><span class="s">&quot;Peter&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">personOrError1</span><span class="p">);</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">personOrError2</span> <span class="p">=</span> <span class="nx">lookupPerson</span><span class="p">(</span><span class="s">&quot;Jack&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">personOrError2</span><span class="p">);</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">personOrError3</span> <span class="p">=</span> <span class="nx">lookupPerson</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">personOrError3</span><span class="p">);</span>
+<span class="p">}</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="nx">readonly</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">address</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">PersonTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span><span class="nx">PersonTable</span> <span class="nx">personTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;77 Grove St. Deland, FL 32720&quot;</span><span class="p">},</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Bella&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;43 Kirkland Ave. North Attleboro, MA 02760&quot;</span><span class="p">},</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;50 Bridgeton Lane Tuckerton, NJ 08087&quot;</span><span class="p">}</span> <span class="p">];</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">union_type</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">address</span><span class="p">=</span><span class="mi">50</span> <span class="nx">Bridgeton</span> <span class="nx">Lane</span> <span class="nx">Tuckerton</span><span class="p">,</span> <span class="nx">NJ</span> <span class="mi">08087</span>
+<span class="nx">error</span> <span class="nx">id</span> <span class="err">&#39;</span><span class="nx">Jack</span><span class="err">&#39;</span> <span class="nx">not</span> <span class="nx">found</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Bella</span> <span class="nx">address</span><span class="p">=</span><span class="mi">43</span> <span class="nx">Kirkland</span> <span class="nx">Ave</span><span class="p">.</span> <span class="nx">North</span> <span class="nx">Attleboro</span><span class="p">,</span> <span class="nx">MA</span> <span class="mo">02760</span>
 </pre></div>
 
             </div>
@@ -112,6 +122,12 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -120,7 +136,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -132,9 +148,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function println(string|int value) {
-    io:println(value);
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>function lookupPerson(string|int id) returns Person|error {
 </code></pre></div>
 
                                 </td>
@@ -142,7 +156,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function expects the <code>value</code> parameter to be either a <code>string</code> or an <code>int</code>.</p>
+                                            <p>This function returns either a <code>Person</code> or an <code>error</code>.</p>
 
                                         </div>
                                     </div>
@@ -153,12 +167,31 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getValue(string key) returns string|error {
-    if (key == &quot;&quot;) {
-        error err = error(&quot;key &#39;&quot; + key + &quot;&#39; not found&quot;);
-        return err;
+                                    <div class="highlight"><pre><code class=language-ballerina>    if id is string {
+        if !personTab.hasKey(id) {
+            return error(&quot;id &#39;&quot; + id + &quot;&#39; not found&quot;);
+        }
+        return personTab[id];
     } else {
-        return &quot;this is a value&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the <code>id</code> is a string, lookup the <code>Person</code> by name</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return personTab.toArray()[id];
     }
 }
 </code></pre></div>
@@ -168,7 +201,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function returns either a <code>string</code> or an <code>error</code>.</p>
+                                            <p>If the <code>id</code> is an int, lookup the <code>Person</code> by index</p>
 
                                         </div>
                                     </div>
@@ -179,7 +212,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -191,7 +224,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    println(&quot;This is a string&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person|error personOrError1 = lookupPerson(&quot;Peter&quot;);
+    io:println(personOrError1);
 </code></pre></div>
 
                                 </td>
@@ -199,7 +233,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This passes a <code>string</code> value.</p>
+                                            <p>This function call takes in a <code>string</code> and returns a <code>Person</code> value.</p>
 
                                         </div>
                                     </div>
@@ -210,7 +244,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    println(101);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person|error personOrError2 = lookupPerson(&quot;Jack&quot;);
+    io:println(personOrError2);
 </code></pre></div>
 
                                 </td>
@@ -218,7 +253,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This passes an <code>int</code> value.</p>
+                                            <p>This function call takes in a <code>string</code> and returns an <code>error</code> value.</p>
 
                                         </div>
                                     </div>
@@ -229,28 +264,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error valueOrError1 = getValue(&quot;name&quot;);
-    io:println(valueOrError1);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This function call returns a <code>string</code> value.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error valueOrError2 = getValue(&quot;&quot;);
-    io:println(valueOrError2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person|error personOrError3 = lookupPerson(1);
+    io:println(personOrError3);
 }
 </code></pre></div>
 
@@ -259,10 +274,52 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This call returns an error.</p>
+                                            <p>This function call takes in an <code>int</code> and returns a <code>Person</code> value.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
+    readonly string name;
+    string address;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type PersonTable table&lt;Person&gt; key(name);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>PersonTable personTab = table [
+    { name: &quot;John&quot;, address: &quot;77 Grove St. Deland, FL 32720&quot;},
+    { name: &quot;Bella&quot;, address: &quot;43 Kirkland Ave. North Attleboro, MA 02760&quot;},
+    { name: &quot;Peter&quot;, address: &quot;50 Bridgeton Lane Tuckerton, NJ 08087&quot;} ];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -284,12 +341,11 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run union_type.bal
-This is a string
-101
-this is a value
-error key &#39;&#39; not found
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run union_type.bal
+name=Peter address=50 Bridgeton Lane Tuckerton, NJ 08087
+error id &#39;Jack&#39; not found
+name=Bella address=43 Kirkland Ave. North Attleboro, MA 02760
 </code></pre></div>
 
                                 </td>

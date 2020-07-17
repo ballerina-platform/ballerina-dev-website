@@ -115,7 +115,14 @@ redirect_from:
     <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">wsEndpoint</span> <span class="p">=</span>
             <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">&gt;</span><span class="nx">ep</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">wsEndpoint</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_proxy_server</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Now</span><span class="p">,</span> <span class="nx">this</span> <span class="kd">service</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">invoked</span> <span class="nx">by</span> <span class="kt">any</span> <span class="nx">WebSocket</span> <span class="nx">client</span> <span class="nx">using</span> <span class="nx">the</span> <span class="nx">url</span> <span class="s">&quot;ws://localhost:9090/proxy/ws&quot;</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">use</span> <span class="nx">Chrome</span> <span class="nx">or</span> <span class="nx">Firefox</span> <span class="nx">JavaScript</span> <span class="nx">console</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">commands</span><span class="p">.</span> <span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="k">var</span> <span class="nx">ws</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s">&quot;ws://localhost:9090/proxy/ws&quot;</span><span class="p">);</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">data</span><span class="p">)};</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">)};</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">messages</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span><span class="err">#</span><span class="nx">Close</span> <span class="nx">the</span> <span class="nx">connection</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&quot;I want to go&quot;</span><span class="p">);</span>
 </pre></div>
 
             </div>
@@ -247,7 +254,7 @@ requests sent by the clients that connect to it via a WebSocket to the respectiv
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -260,7 +267,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>final string ASSOCIATED_CONNECTION = &quot;ASSOCIATED_CONNECTION&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>final string ASSOCIATED_CONNECTION = &quot;ASSOCIATED_CONNECTION&quot;;
 </code></pre></div>
 
                                 </td>
@@ -272,7 +279,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>final string REMOTE_BACKEND = &quot;ws://echo.websocket.org&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>final string REMOTE_BACKEND = &quot;ws://echo.websocket.org&quot;;
 </code></pre></div>
 
                                 </td>
@@ -291,7 +298,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:WebSocketServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:WebSocketServiceConfig {
     path: &quot;/proxy/ws&quot;
 }
 service SimpleProxyService on new http:Listener(9090) {
@@ -306,7 +313,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
 </code></pre></div>
 
                                 </td>
@@ -327,7 +334,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketClient wsClientEp = new (
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketClient wsClientEp = new (
             REMOTE_BACKEND,
             {
                 callbackService: ClientService,
@@ -342,7 +349,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                readyOnConnect: false
+                                    <div class="highlight"><pre><code class=language-ballerina>                readyOnConnect: false
             }
         );
 </code></pre></div>
@@ -364,7 +371,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
+                                    <div class="highlight"><pre><code class=language-ballerina>        wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
         caller.setAttribute(ASSOCIATED_CONNECTION, wsClientEp);
 </code></pre></div>
 
@@ -384,7 +391,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var err = wsClientEp-&gt;ready();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var err = wsClientEp-&gt;ready();
         if (err is http:WebSocketError) {
             log:printError(&quot;Error calling ready on client&quot;, err);
         }
@@ -408,7 +415,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text,
                                 boolean finalFrame) {
 </code></pre></div>
 
@@ -428,7 +435,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketClient clientEp =
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketClient clientEp =
                     getAssociatedClientEndpoint(caller);
         var err = clientEp-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
@@ -446,7 +453,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onBinary(http:WebSocketCaller caller, byte[] data,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onBinary(http:WebSocketCaller caller, byte[] data,
                                 boolean finalFrame) {
 </code></pre></div>
 
@@ -466,7 +473,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketClient clientEp =
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketClient clientEp =
                         getAssociatedClientEndpoint(caller);
         var err = clientEp-&gt;pushBinary(data, finalFrame);
         if (err is http:WebSocketError) {
@@ -484,7 +491,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(http:WebSocketCaller caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketCaller caller, error err) {
 </code></pre></div>
 
                                 </td>
@@ -503,7 +510,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketClient clientEp =
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketClient clientEp =
                         getAssociatedClientEndpoint(caller);
         var e = clientEp-&gt;close(statusCode = 1011,
                         reason = &quot;Unexpected condition&quot;);
@@ -524,7 +531,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
                                 string reason) {
 </code></pre></div>
 
@@ -544,7 +551,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketClient clientEp =
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketClient clientEp =
                         getAssociatedClientEndpoint(caller);
         var err = clientEp-&gt;close(statusCode = statusCode, reason = reason);
         if (err is http:WebSocketError) {
@@ -564,7 +571,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service ClientService = @http:WebSocketServiceConfig {} service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service ClientService = @http:WebSocketServiceConfig {} service {
 </code></pre></div>
 
                                 </td>
@@ -583,7 +590,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketClient caller, string text,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketClient caller, string text,
                                 boolean finalFrame) {
 </code></pre></div>
 
@@ -603,7 +610,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp =
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp =
                         getAssociatedServerEndpoint(caller);
         var err = serverEp-&gt;pushText(text, finalFrame);
         if (err is http:WebSocketError) {
@@ -621,7 +628,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onBinary(http:WebSocketClient caller, byte[] data,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onBinary(http:WebSocketClient caller, byte[] data,
                                 boolean finalFrame) {
 </code></pre></div>
 
@@ -641,7 +648,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp =
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp =
                         getAssociatedServerEndpoint(caller);
         var err = serverEp-&gt;pushBinary(data, finalFrame);
         if (err is http:WebSocketError) {
@@ -659,7 +666,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(http:WebSocketClient caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketClient caller, error err) {
 </code></pre></div>
 
                                 </td>
@@ -678,7 +685,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp =
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp =
                         getAssociatedServerEndpoint(caller);
         var e = serverEp-&gt;close(statusCode = 1011,
                         reason = &quot;Unexpected condition&quot;);
@@ -700,7 +707,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onClose(http:WebSocketClient caller, int statusCode,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onClose(http:WebSocketClient caller, int statusCode,
                                 string reason) {
 </code></pre></div>
 
@@ -720,7 +727,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp =
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:WebSocketCaller serverEp =
                         getAssociatedServerEndpoint(caller);
         var err = serverEp-&gt;close(statusCode = statusCode, reason = reason);
         if (err is http:WebSocketError) {
@@ -740,7 +747,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getAssociatedClientEndpoint(http:WebSocketCaller ep)
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAssociatedClientEndpoint(http:WebSocketCaller ep)
                                         returns (http:WebSocketClient) {
     http:WebSocketClient wsClient =
             &lt;http:WebSocketClient&gt;ep.getAttribute(ASSOCIATED_CONNECTION);
@@ -764,7 +771,7 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getAssociatedServerEndpoint(http:WebSocketClient ep)
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAssociatedServerEndpoint(http:WebSocketClient ep)
                                         returns (http:WebSocketCaller) {
     http:WebSocketCaller wsEndpoint =
             &lt;http:WebSocketCaller&gt;ep.getAttribute(ASSOCIATED_CONNECTION);
@@ -818,8 +825,8 @@ service SimpleProxyService on new http:Listener(9090) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run websocket_proxy_server.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run websocket_proxy_server.bal
 </code></pre></div>
 
                                 </td>
@@ -844,9 +851,9 @@ $ ballerina run websocket_proxy_server.bal
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To check the sample, you can use Chrome or Firefox JavaScript console and run the following commands. &lt;br&gt;
-$ var ws = new WebSocket(&quot;ws://localhost:9090/proxy/ws&quot;);
-$ ws.onmessage = function(frame) {console.log(frame.data)};
-$ ws.onclose = function(frame) {console.log(frame)};
+var ws = new WebSocket(&quot;ws://localhost:9090/proxy/ws&quot;);
+ws.onmessage = function(frame) {console.log(frame.data)};
+ws.onclose = function(frame) {console.log(frame)};
 </code></pre></div>
 
                                 </td>
@@ -859,7 +866,7 @@ $ ws.onclose = function(frame) {console.log(frame)};
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send messages.
-$ ws.send(&quot;hello world&quot;);
+ws.send(&quot;hello world&quot;);
 </code></pre></div>
 
                                 </td>
@@ -872,7 +879,7 @@ $ ws.send(&quot;hello world&quot;);
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#Close the connection.
-$ ws.close(1000, &quot;I want to go&quot;);
+ws.close(1000, &quot;I want to go&quot;);
 </code></pre></div>
 
                                 </td>

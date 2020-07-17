@@ -1,40 +1,49 @@
 ---
 layout: ballerina-example-page
-title: Overloaded Methods/Constructors
+title: Enums
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/overloaded-methods-constructors
+permalink: /swan-lake/learn/by-example/enums
 redirect_from:
-  - /vswan-lake/learn/by-example/overloaded-methods-constructors
-  - /vswan-lake/learn/by-example/overloaded-methods-constructors.html
+  - /vswan-lake/learn/by-example/enums
+  - /vswan-lake/learn/by-example/enums.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">newStringBuffer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">str</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
-    <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;java.lang.String&quot;</span><span class="p">]</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">str</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
-    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;append&quot;</span><span class="p">,</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
-    <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;java.lang.String&quot;</span><span class="p">]</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">appendStringBuffer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">strBuffer</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
-    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;append&quot;</span><span class="p">,</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
-    <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">]</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">strBuffer</span> <span class="p">=</span> <span class="nx">newStringBuffer</span><span class="p">(</span><span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;Ballerina is &quot;</span><span class="p">));</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">strBuffer</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;awesome &quot;</span><span class="p">));</span>    <span class="k">var</span> <span class="nx">strBufferToAppend</span> <span class="p">=</span> <span class="nx">newStringBuffer</span><span class="p">(</span><span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;and &quot;</span><span class="p">));</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">strBufferToAppend</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;fun.&quot;</span><span class="p">));</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendStringBuffer</span><span class="p">(</span><span class="nx">strBuffer</span><span class="p">,</span> <span class="nx">strBufferToAppend</span><span class="p">);</span>    <span class="kt">string</span><span class="p">? text = java:toString(</span><span class="nx">strBuffer</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">overloaded</span><span class="o">-</span><span class="nx">methods</span><span class="o">-</span><span class="nx">constructors</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Ballerina</span> <span class="nx">is</span> <span class="nx">awesome</span> <span class="nx">and</span> <span class="nx">fun</span><span class="p">.</span>
+<span class="nx">enum</span> <span class="nx">Color</span> <span class="p">{</span>
+  <span class="nx">RED</span><span class="p">,</span>
+  <span class="nx">GREEN</span><span class="p">,</span>
+  <span class="nx">BLUE</span>
+<span class="p">}</span><span class="nx">enum</span> <span class="nx">Language</span> <span class="p">{</span>
+    <span class="nx">EN</span> <span class="p">=</span> <span class="s">&quot;English&quot;</span><span class="p">,</span>
+    <span class="nx">TA</span> <span class="p">=</span> <span class="s">&quot;Tamil&quot;</span><span class="p">,</span>
+    <span class="nx">SI</span> <span class="p">=</span> <span class="s">&quot;Sinhala&quot;</span>
+<span class="p">}</span>
+<span class="nx">enum</span> <span class="nx">Bands</span> <span class="p">{</span>
+    <span class="nx">QUEEN</span><span class="p">,</span>
+    <span class="nx">PF</span> <span class="p">=</span> <span class="s">&quot;Pink &quot;</span> <span class="o">+</span> <span class="s">&quot;Floyd&quot;</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">skyColor</span> <span class="p">=</span> <span class="nx">BLUE</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Color of the sky: &quot;</span><span class="p">,</span> <span class="nx">skyColor</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">concatenated</span> <span class="p">=</span> <span class="nx">concat</span><span class="p">(</span><span class="nx">QUEEN</span><span class="p">,</span> <span class="nx">PF</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;concatenated: &quot;</span><span class="p">,</span> <span class="nx">concatenated</span><span class="p">);</span>
+    <span class="nx">Language</span> <span class="nx">language</span> <span class="p">=</span> <span class="nx">getLanguage</span><span class="p">(</span><span class="s">&quot;e&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;language: &quot;</span><span class="p">,</span> <span class="nx">language</span><span class="p">);</span>    <span class="nx">Language</span> <span class="nx">sinhala</span> <span class="p">=</span> <span class="s">&quot;Sinhala&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sinhala: &quot;</span><span class="p">,</span> <span class="nx">sinhala</span><span class="p">);</span>    <span class="nx">EN</span> <span class="nx">english</span> <span class="p">=</span> <span class="s">&quot;English&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;english: &quot;</span><span class="p">,</span> <span class="nx">english</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">concat</span><span class="p">(</span><span class="kt">string</span> <span class="nx">str1</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">str2</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">str1</span> <span class="o">+</span> <span class="s">&quot; and &quot;</span> <span class="o">+</span> <span class="nx">str2</span><span class="p">;</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getLanguage</span><span class="p">(</span><span class="kt">string</span> <span class="nx">symbol</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Language</span> <span class="p">{</span>
+    <span class="nx">match</span> <span class="nx">symbol</span> <span class="p">{</span>
+        <span class="s">&quot;e&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">EN</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="s">&quot;t&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">TA</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">SI</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -43,13 +52,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Overloaded Methods/Constructors</h2>
-                            <p><p>Let&rsquo;s look at how to specify the exact Java constructor or Java method when they are overloaded.
- If and only if the Java constructor or the method of interest is overloaded with the same number of
- parameters, then you need to specify the parameter types of the exact constructor or the method using the
- <code>paramTypes</code> annotation field.<br/><br/>
- For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java/index.html">Java module</a>.</p>
+                            <h2>Enums</h2>
+                            <p><p>An enum member is defined as a constant. An enum member can explicitly specify a constant expression
+ as an associated value. If specified, the result of evaluating the relevant expression must be a string. If the
+ constant expression is omitted, it defaults to be the same as the identifier.</p>
 </p>
 
                         </td>
@@ -57,16 +63,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="java-varargs.html">
+                                    <a class="prev" href="constants.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Java Varargs</p>
+                                        <p>Constants</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="java-exceptions.html">
+                                    <a class="next" href="range-expressions.html">
                                         <span>NEXT ></span>
-                                        <p>Java Exceptions</p>
+                                        <p>Range Expressions</p>
                                     </a>
                                 </div>
                                 
@@ -75,7 +81,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="overloaded-methods-constructors">
+            <div class="example" id="enums">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -86,7 +92,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/overloaded-methods-constructors/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/enums/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -122,6 +128,14 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -131,7 +145,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/java;
 </code></pre></div>
 
                                 </td>
@@ -143,10 +156,11 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function newStringBuffer(handle str) returns handle = @java:Constructor {
-    class: &quot;java.lang.StringBuffer&quot;,
-    paramTypes: [&quot;java.lang.String&quot;]
-} external;
+                                    <div class="highlight"><pre><code class=language-ballerina>enum Color {
+  RED,
+  GREEN,
+  BLUE
+}
 </code></pre></div>
 
                                 </td>
@@ -154,9 +168,41 @@ import ballerina/java;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This Ballerina function invokes the <code>java.lang.StringBuffer</code> constructor that takes a
- <code>java.lang.String</code> as an argument. The <code>java.lang.StringBuffer</code> class has other overloaded
- constructors that take a single parameter. Therefore you need to specify the parameter types here.</p>
+                                            <p>An enum is defined using a module enum declaration.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>enum Language {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    EN = &quot;English&quot;,
+    TA = &quot;Tamil&quot;,
+    SI = &quot;Sinhala&quot;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An enum member can explicitly specify an associated expression.</p>
 
                                         </div>
                                     </div>
@@ -167,11 +213,10 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function appendString(handle receiver, handle str) returns handle = @java:Method {
-    name: &quot;append&quot;,
-    class: &quot;java.lang.StringBuffer&quot;,
-    paramTypes: [&quot;java.lang.String&quot;]
-} external;
+                                    <div class="highlight"><pre><code class=language-ballerina>enum Bands {
+    QUEEN,
+    PF = &quot;Pink &quot; + &quot;Floyd&quot;
+}
 </code></pre></div>
 
                                 </td>
@@ -179,33 +224,8 @@ import ballerina/java;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>append</code> method in <code>java.lang.StringBuffer</code> is overloaded many methods that take a single parameter.
- In this example, let&rsquo;s use two of those methods. The <code>appendString</code> function is linked with the Java <code>append</code>
- method that takes a <code>java.lang.String</code> as an argument.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function appendStringBuffer(handle receiver, handle strBuffer) returns handle = @java:Method {
-    name: &quot;append&quot;,
-    class: &quot;java.lang.StringBuffer&quot;,
-    paramTypes: [&quot;java.lang.StringBuffer&quot;]
-} external;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This <code>appendStringBuffer</code> function is linked with the Java <code>append</code> method that takes a
- <code>java.lang.StringBuffer</code> as an argument.</p>
+                                            <p>An enum declaration can consist of a combination of members with or without
+ explicit associated values.</p>
 
                                         </div>
                                     </div>
@@ -228,8 +248,8 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var strBuffer = newStringBuffer(java:fromString(&quot;Ballerina is &quot;));
-    _ = appendString(strBuffer, java:fromString(&quot;awesome &quot;));
+                                    <div class="highlight"><pre><code class=language-ballerina>    string skyColor = BLUE;
+    io:println(&quot;Color of the sky: &quot;, skyColor);
 </code></pre></div>
 
                                 </td>
@@ -237,7 +257,7 @@ import ballerina/java;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new <code>java.lang.StringBuffer</code> by passing a Java string as an argument.</p>
+                                            <p>An enum member can be used in the same way as a string constant.</p>
 
                                         </div>
                                     </div>
@@ -248,8 +268,8 @@ import ballerina/java;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var strBufferToAppend = newStringBuffer(java:fromString(&quot;and &quot;));
-    _ = appendString(strBufferToAppend, java:fromString(&quot;fun.&quot;));
+                                    <div class="highlight"><pre><code class=language-ballerina>    string concatenated = concat(QUEEN, PF);
+    io:println(&quot;concatenated: &quot;, concatenated);
 </code></pre></div>
 
                                 </td>
@@ -261,7 +281,8 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = appendStringBuffer(strBuffer, strBufferToAppend);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Language language = getLanguage(&quot;e&quot;);
+    io:println(&quot;language: &quot;, language);
 </code></pre></div>
 
                                 </td>
@@ -269,7 +290,7 @@ import ballerina/java;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Append an instance of a <code>java.lang.StringBuffer</code> to another <code>java.lang.StringBuffer</code> instance.</p>
+                                            <p>An enum can also be used as a type.</p>
 
                                         </div>
                                     </div>
@@ -279,9 +300,58 @@ import ballerina/java;
                             
                             <tr class="cTR">
 
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Language sinhala = &quot;Sinhala&quot;;
+    io:println(&quot;sinhala: &quot;, sinhala);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    EN english = &quot;English&quot;;
+    io:println(&quot;english: &quot;, english);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function concat(string str1, string str2) returns string {
+    return str1 + &quot; and &quot; + str2;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string? text = java:toString(strBuffer);
-    io:println(text);
+                                    <div class="highlight"><pre><code class=language-ballerina>function getLanguage(string symbol) returns Language {
+    match symbol {
+        &quot;e&quot; =&gt; {
+            return EN;
+        }
+        &quot;t&quot; =&gt; {
+            return TA;
+        }
+    }
+    return SI;
 }
 </code></pre></div>
 
@@ -308,9 +378,13 @@ import ballerina/java;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run overloaded-methods-constructors.bal
-Ballerina is awesome and fun.
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run enums.bal
+Color of the sky: BLUE
+concatenated: QUEEN and Pink Floyd
+language: English
+sinhala: Sinhala
+english: English
 </code></pre></div>
 
                                 </td>

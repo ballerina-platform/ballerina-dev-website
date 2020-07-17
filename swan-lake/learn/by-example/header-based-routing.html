@@ -59,7 +59,27 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span>  <span class="nx">below</span> <span class="nx">along</span> <span class="nx">with</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">config</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">header_based_routing</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">cURL</span> <span class="nx">commands</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hbr/route -H &quot;x-type:location&quot;</span>
+<span class="p">{</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Colombo,Sri Lanka&quot;</span><span class="p">,</span>
+    <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">556.49</span><span class="p">,</span>
+    <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">257.76</span><span class="p">,</span>
+    <span class="s">&quot;altitude&quot;</span><span class="p">:</span> <span class="mi">230</span>
+<span class="p">}</span><span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hbr/route -H &quot;x-type:weather&quot;</span>
+<span class="p">{</span><span class="s">&quot;coord&quot;</span><span class="p">:{</span><span class="s">&quot;lon&quot;</span><span class="p">:</span><span class="mf">139.01</span><span class="p">,</span><span class="s">&quot;lat&quot;</span><span class="p">:</span><span class="mf">35.02</span><span class="p">},</span><span class="s">&quot;weather&quot;</span><span class="p">:[{</span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">800</span><span class="p">,</span>
+<span class="s">&quot;main&quot;</span><span class="p">:</span><span class="s">&quot;Clear&quot;</span><span class="p">,</span><span class="s">&quot;description&quot;</span><span class="p">:</span><span class="s">&quot;clear sky&quot;</span><span class="p">,</span><span class="s">&quot;icon&quot;</span><span class="p">:</span><span class="s">&quot;01n&quot;</span><span class="p">}],</span>
+<span class="s">&quot;base&quot;</span><span class="p">:</span><span class="s">&quot;stations&quot;</span><span class="p">,</span><span class="s">&quot;main&quot;</span><span class="p">:{</span><span class="s">&quot;temp&quot;</span><span class="p">:</span><span class="mf">285.514</span><span class="p">,</span><span class="s">&quot;pressure&quot;</span><span class="p">:</span><span class="mf">1013.75</span><span class="p">,</span>
+<span class="s">&quot;humidity&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="s">&quot;temp_min&quot;</span><span class="p">:</span><span class="mf">285.514</span><span class="p">,</span><span class="s">&quot;temp_max&quot;</span><span class="p">:</span><span class="mf">285.514</span><span class="p">,</span>
+<span class="s">&quot;sea_level&quot;</span><span class="p">:</span><span class="mf">1023.22</span><span class="p">,</span><span class="s">&quot;grnd_level&quot;</span><span class="p">:</span><span class="mf">1013.75</span><span class="p">},</span>
+<span class="s">&quot;wind&quot;</span><span class="p">:{</span><span class="s">&quot;speed&quot;</span><span class="p">:</span><span class="mf">5.52</span><span class="p">,</span><span class="s">&quot;deg&quot;</span><span class="p">:</span><span class="mi">311</span><span class="p">},</span><span class="s">&quot;clouds&quot;</span><span class="p">:{</span><span class="s">&quot;all&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span>
+<span class="s">&quot;dt&quot;</span><span class="p">:</span><span class="mi">1485792967</span><span class="p">,</span><span class="s">&quot;sys&quot;</span><span class="p">:{</span><span class="s">&quot;message&quot;</span><span class="p">:</span><span class="mf">0.0025</span><span class="p">,</span><span class="s">&quot;country&quot;</span><span class="p">:</span><span class="s">&quot;JP&quot;</span><span class="p">,</span>
+<span class="s">&quot;sunrise&quot;</span><span class="p">:</span><span class="mi">1485726240</span><span class="p">,</span><span class="s">&quot;sunset&quot;</span><span class="p">:</span><span class="mi">1485763863</span><span class="p">},</span>
+<span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">1907296</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Tawarano&quot;</span><span class="p">,</span><span class="s">&quot;cod&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">}</span>
 </pre></div>
 
             </div>
@@ -79,9 +99,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="websocket-retry.html">
+                                    <a class="prev" href="websocket-cookie.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Retry</p>
+                                        <p>Cookie</p>
                                     </a>
                                 </div>
                                  
@@ -178,7 +198,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 </code></pre></div>
@@ -192,7 +212,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:ClientConfiguration weatherEPConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:ClientConfiguration weatherEPConfig = {
     followRedirects: {enabled: true, maxCount: 5},
     secureSocket: {
         trustStore: {
@@ -213,7 +233,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hbr&quot;
 }
 </code></pre></div>
@@ -234,7 +254,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service headerBasedRouting on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service headerBasedRouting on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -246,7 +266,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/route&quot;
     }
@@ -269,7 +289,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function hbrResource(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function hbrResource(http:Caller caller, http:Request req) {
         http:Client weatherEP = new (&quot;http://samples.openweathermap.org&quot;,
                                      weatherEPConfig);
         http:Client locationEP = new (&quot;http://www.mocky.io&quot;);
@@ -284,7 +304,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Request newRequest = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Request newRequest = new;
 </code></pre></div>
 
                                 </td>
@@ -303,7 +323,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (!req.hasHeader(&quot;x-type&quot;)) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (!req.hasHeader(&quot;x-type&quot;)) {
             http:Response errorResponse = new;
             errorResponse.statusCode = 500;
             json errMsg = {&quot;error&quot;: &quot;&#39;x-type&#39; header is not found&quot;};
@@ -326,7 +346,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(errorResponse);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(errorResponse);
 </code></pre></div>
 
                                 </td>
@@ -338,7 +358,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
                 log:printError(&quot;Error sending response&quot;, result);
             }
             return;
@@ -354,7 +374,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string nameString = req.getHeader(&quot;x-type&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string nameString = req.getHeader(&quot;x-type&quot;);
 </code></pre></div>
 
                                 </td>
@@ -373,7 +393,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response|error response;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error response;
         if (nameString == &quot;location&quot;) {
 </code></pre></div>
 
@@ -386,7 +406,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            response = locationEP-&gt;post(&quot;/v2/5adddd66300000bd2a4b2912&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>            response = locationEP-&gt;post(&quot;/v2/5adddd66300000bd2a4b2912&quot;,
                                         newRequest);
 </code></pre></div>
 
@@ -408,7 +428,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
 </code></pre></div>
 
                                 </td>
@@ -420,7 +440,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            response =
+                                    <div class="highlight"><pre><code class=language-ballerina>            response =
                 weatherEP-&gt;get(&quot;/data/2.5/weather?lat=35&amp;lon=139&amp;appid=b1b1&quot;,
                                  newRequest);
 </code></pre></div>
@@ -441,7 +461,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        }
 </code></pre></div>
 
                                 </td>
@@ -453,7 +473,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (response is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (response is http:Response) {
 </code></pre></div>
 
                                 </td>
@@ -483,7 +503,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(response);
 </code></pre></div>
 
                                 </td>
@@ -495,7 +515,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
                 log:printError(&quot;Error sending response&quot;, result);
             }
 </code></pre></div>
@@ -509,7 +529,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
             http:Response errorResponse = new;
             errorResponse.statusCode = 500;
             errorResponse.setPayload(response.message());
@@ -525,7 +545,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
                 log:printError(&quot;Error sending response&quot;, result);
             }
         }
@@ -556,9 +576,9 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command along with the
+# `.bal` file and execute the `ballerina run` command  below along with the
 # Ballerina home path as a config.
-$ ballerina run header_based_routing.bal --b7a.home=&lt;ballerina_home_path&gt;
+ballerina run header_based_routing.bal --b7a.home=&lt;ballerina_home_path&gt;
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -588,8 +608,8 @@ $ ballerina run header_based_routing.bal --b7a.home=&lt;ballerina_home_path&gt;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, use following curl commands.
-$ curl http://localhost:9090/hbr/route -H &quot;x-type:location&quot;
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, use the cURL commands below.
+curl http://localhost:9090/hbr/route -H &quot;x-type:location&quot;
 {
     &quot;name&quot;: &quot;Colombo,Sri Lanka&quot;,
     &quot;longitude&quot;: -556.49,
@@ -607,7 +627,7 @@ $ curl http://localhost:9090/hbr/route -H &quot;x-type:location&quot;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9090/hbr/route -H &quot;x-type:weather&quot;
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/hbr/route -H &quot;x-type:weather&quot;
 {&quot;coord&quot;:{&quot;lon&quot;:139.01,&quot;lat&quot;:35.02},&quot;weather&quot;:[{&quot;id&quot;:800,
 &quot;main&quot;:&quot;Clear&quot;,&quot;description&quot;:&quot;clear sky&quot;,&quot;icon&quot;:&quot;01n&quot;}],
 &quot;base&quot;:&quot;stations&quot;,&quot;main&quot;:{&quot;temp&quot;:285.514,&quot;pressure&quot;:1013.75,

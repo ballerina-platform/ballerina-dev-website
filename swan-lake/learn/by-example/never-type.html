@@ -26,7 +26,9 @@ redirect_from:
         <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">23</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Paul&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>
     <span class="p">];</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">issue</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">never_type</span><span class="p">.</span><span class="nx">bal</span>
 </pre></div>
 
             </div>
@@ -118,7 +120,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age;
 };
@@ -133,7 +135,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string name;
 </code></pre></div>
 
@@ -146,7 +148,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    never gender?;
+                                    <div class="highlight"><pre><code class=language-ballerina>    never gender?;
 };
 </code></pre></div>
 
@@ -166,7 +168,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function somefunction() returns never {
+                                    <div class="highlight"><pre><code class=language-ballerina>function somefunction() returns never {
     panic error(&quot;Invalid&quot;);
 }
 </code></pre></div>
@@ -187,7 +189,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -199,7 +201,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml&lt;never&gt; xmlValue = &lt;xml&lt;never&gt;&gt; &#39;xml:concat();
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml&lt;never&gt; xmlValue = &lt;xml&lt;never&gt;&gt; &#39;xml:concat();
 </code></pre></div>
 
                                 </td>
@@ -220,7 +222,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;never&gt; someMap = {};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;never&gt; someMap = {};
 </code></pre></div>
 
                                 </td>
@@ -240,7 +242,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; key&lt;never&gt; personTable = table [
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;Person&gt; key&lt;never&gt; personTable = table [
         {name: &quot;John&quot;, age: 23},
         {name: &quot;Paul&quot;, age: 25}
     ];
@@ -277,8 +279,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and issue the `ballerina run` command.
-$ ballerina run never_type.bal
+# `.bal` file and issue the `ballerina run` command below.
+ballerina run never_type.bal
 </code></pre></div>
 
                                 </td>

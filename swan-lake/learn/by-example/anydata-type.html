@@ -10,21 +10,23 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">getValue</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">anydata</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;cat&quot;</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">anydata</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">intVal</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">a</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">intVal</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">anydata</span> <span class="nx">data1</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">data1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">intVal</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">data1</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">intVal</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>    <span class="k">if</span> <span class="nx">data1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">data1</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">ia</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
-    <span class="nx">anydata</span> <span class="nx">ar</span> <span class="p">=</span> <span class="nx">ia</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ar</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">getValue</span><span class="p">());</span>
-<span class="p">}</span>
+    <span class="kt">int</span><span class="p">[]</span> <span class="nx">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+    <span class="nx">anydata</span> <span class="nx">dataArray</span> <span class="p">=</span> <span class="nx">intArray</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">dataArray</span><span class="p">);</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">anydata_type</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">5</span>
+<span class="mi">15</span>
+<span class="mi">25</span>
+<span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">6</span>
 </pre></div>
 
             </div>
@@ -34,11 +36,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Anydata Type</h2>
-                            <p><p>The <code>anydata</code> type consists of pure values whose basic type is not <code>error</code>. Thus, the <code>anydata</code> type is
- equivalent to <code>()|boolean|int|float|decimal|string|(anydata|error)[]|map&lt;anydata|error&gt;|xml|table</code>.
+                            <p><p>The <code>anydata</code> type consists of plain data (a simple value, sequence value, or structured value that does not contain behavioral members at any depth).
+ Thus, the <code>anydata</code> type is equivalent to <code>()|boolean|int|float|decimal|string|xml|anydata[]|map&lt;anydata&gt;|table&lt;map&lt;anydata&gt;&gt;</code>.
  Although <code>json</code> and <code>byte</code> are not explicitly mentioned, they are subsets of the aforementioned union.
- The same is true for a record of which the type of each individual field is a subtype of <code>anydata</code>(including the rest field in open records).
- <code>anydata</code> variables can be used in places where you expect pure values (sans <code>error</code>).</p>
+ The same is true for a record of which the type of each individual field is a subtype of <code>anydata</code>(including the rest field in open records).</p>
 </p>
 
                         </td>
@@ -105,10 +106,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -117,33 +114,11 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getValue() returns anydata {
-    string name = &quot;cat&quot;;
-    return name;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This function returns a value of the <code>anydata</code> type.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -151,7 +126,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -163,8 +138,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    anydata a = 5;
-    io:println(a);
+                                    <div class="highlight"><pre><code class=language-ballerina>    anydata data1 = 5;
+    io:println(data1);
 </code></pre></div>
 
                                 </td>
@@ -172,7 +147,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>In this example, the variable named <code>a</code> of the <code>anydata</code> type holds an <code>int</code> value.</p>
+                                            <p>In this example, the variable named <code>data1</code> of the <code>anydata</code> type holds an <code>int</code> value.</p>
 
                                         </div>
                                     </div>
@@ -183,7 +158,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int intVal = &lt;int&gt;a;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int intVal = &lt;int&gt; data1;
     io:println(intVal + 10);
 </code></pre></div>
 
@@ -192,9 +167,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Before using the value of <code>a</code> in arithmetic operations, we need to
- ascertain that it is indeed an <code>int</code>. A type cast or
- a type guard can be used for this.</p>
+                                            <p>Before using the value of <code>data1</code> in arithmetic operations, it is required to ascertain
+ that is actually an <code>int</code>. A type cast or a type guard can be used for this.</p>
 
                                         </div>
                                     </div>
@@ -205,8 +179,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (a is int) {
-        io:println(a + 20);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if data1 is int {
+        io:println(data1 + 20);
     }
 </code></pre></div>
 
@@ -218,10 +192,11 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] ia = [1, 3, 5, 6];
-    anydata ar = ia;
-    io:println(ar);
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] intArray = [1, 3, 5, 6];
+    anydata dataArray = intArray;
+    io:println(dataArray);
+}
 </code></pre></div>
 
                                 </td>
@@ -233,19 +208,6 @@ redirect_from:
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(getValue());
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -267,13 +229,12 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run anydata_type.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run anydata_type.bal
 5
 15
 25
 1 3 5 6
-cat
 </code></pre></div>
 
                                 </td>

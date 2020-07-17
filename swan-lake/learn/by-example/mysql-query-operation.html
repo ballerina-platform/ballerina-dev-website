@@ -97,7 +97,24 @@ redirect_from:
                 <span class="s">&quot;querying data failed!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span>  <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_query_operation</span><span class="p">.</span><span class="nx">bal</span><span class="o">------</span> <span class="nx">Start</span> <span class="nx">Simple</span> <span class="nx">Query</span> <span class="o">-------</span>
+<span class="nx">Customer</span> <span class="nx">full</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">customerId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">FirstName</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">LastName</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">RegistrationID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">CreditLimit</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">Country</span><span class="p">=</span><span class="nx">USA</span>
+<span class="nx">Customer</span> <span class="nx">first</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Peter</span>
+<span class="nx">Customer</span> <span class="nx">last</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Stuart</span>
+<span class="nx">Customer</span> <span class="nx">full</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">customerId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">FirstName</span><span class="p">=</span><span class="nx">Dan</span> <span class="nx">LastName</span><span class="p">=</span><span class="nx">Brown</span> <span class="nx">RegistrationID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">CreditLimit</span><span class="p">=</span><span class="mf">10000.0</span> <span class="nx">Country</span><span class="p">=</span><span class="nx">UK</span>
+<span class="nx">Customer</span> <span class="nx">first</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Dan</span>
+<span class="nx">Customer</span> <span class="nx">last</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Brown</span>
+<span class="o">------</span> <span class="nx">End</span> <span class="nx">Simple</span> <span class="nx">Query</span> <span class="o">-------</span>
+<span class="o">------</span> <span class="nx">Start</span> <span class="nx">Count</span> <span class="nx">Total</span> <span class="nx">Rows</span> <span class="o">-------</span>
+<span class="nx">Total</span> <span class="nx">rows</span> <span class="nx">in</span> <span class="nx">customer</span> <span class="nx">table</span> <span class="p">:</span> <span class="mi">2</span>
+<span class="o">------</span> <span class="nx">End</span> <span class="nx">Count</span> <span class="nx">Total</span> <span class="nx">Rows</span> <span class="o">-------</span>
+<span class="o">------</span> <span class="nx">Start</span> <span class="nx">Query</span> <span class="nx">With</span> <span class="nx">Type</span> <span class="nx">Description</span> <span class="o">-------</span>
+<span class="nx">customerId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">registrationId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">country</span><span class="p">=</span><span class="nx">USA</span>
+<span class="nx">customerId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Dan</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Brown</span> <span class="nx">registrationId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">10000.0</span> <span class="nx">country</span><span class="p">=</span><span class="nx">UK</span>
+<span class="o">------</span> <span class="nx">End</span> <span class="nx">Query</span> <span class="nx">With</span> <span class="nx">Type</span> <span class="nx">Description</span> <span class="o">-------</span>
+<span class="nx">Queried</span> <span class="nx">the</span> <span class="nx">database</span> <span class="nx">successfully</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -232,7 +249,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/mysql;
 import ballerina/sql;
 </code></pre></div>
@@ -246,7 +263,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>string dbUser = &quot;root&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
 string dbPassword = &quot;Test@123&quot;;
 </code></pre></div>
 
@@ -268,7 +285,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function simpleQuery(mysql:Client mysqlClient) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function simpleQuery(mysql:Client mysqlClient) {
     io:println(&quot;------ Start Simple Query -------&quot;);
 </code></pre></div>
 
@@ -281,7 +298,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;record{}, error&gt; resultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
         mysqlClient-&gt;query(&quot;Select * from Customers&quot;);
 </code></pre></div>
 
@@ -303,7 +320,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? e = resultStream.forEach(function(record {} result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = resultStream.forEach(function(record {} result) {
         io:println(&quot;Customer full details: &quot;, result);
         io:println(&quot;Customer first name: &quot;, result[&quot;FirstName&quot;]);
         io:println(&quot;Customer last name: &quot;, result[&quot;LastName&quot;]);
@@ -328,7 +345,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (e is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (e is error) {
         io:println(&quot;ForEach operation on the stream failed!&quot;, e);
     }
 </code></pre></div>
@@ -350,7 +367,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    e = resultStream.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    e = resultStream.close();
 </code></pre></div>
 
                                 </td>
@@ -372,7 +389,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;------ End Simple Query -------&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;------ End Simple Query -------&quot;);
 }
 </code></pre></div>
 
@@ -385,7 +402,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function countRows(mysql:Client mysqlClient) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function countRows(mysql:Client mysqlClient) {
     io:println(&quot;------ Start Count Total Rows -------&quot;);
 </code></pre></div>
 
@@ -398,7 +415,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;record{}, error&gt; resultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
         mysqlClient-&gt;query(&quot;Select count(*) as Total from Customers&quot;);
 </code></pre></div>
 
@@ -418,7 +435,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {|record {} value;|}|error? result = resultStream.next();
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {|record {} value;|}|error? result = resultStream.next();
 </code></pre></div>
 
                                 </td>
@@ -438,7 +455,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is record {|record {} value;|}) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is record {|record {} value;|}) {
         io:println(&quot;Total rows in customer table : &quot;, result.value[&quot;Total&quot;]);
     } else if (result is error) {
         io:println(&quot;Next operation on the stream failed!&quot;, result);
@@ -463,7 +480,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? e = resultStream.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = resultStream.close();
 </code></pre></div>
 
                                 </td>
@@ -482,7 +499,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;------ End Count Total Rows -------&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;------ End Count Total Rows -------&quot;);
 }
 </code></pre></div>
 
@@ -495,7 +512,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Customer record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Customer record {|
     int customerId;
     string lastName;
     string firstName;
@@ -524,7 +541,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function typedQuery(mysql:Client mysqlClient) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function typedQuery(mysql:Client mysqlClient) {
     io:println(&quot;------ Start Query With Type Description -------&quot;);
 </code></pre></div>
 
@@ -537,7 +554,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;record{}, error&gt; resultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
         mysqlClient-&gt;query(&quot;Select * from Customers&quot;, Customer);
 </code></pre></div>
 
@@ -558,7 +575,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;Customer, sql:Error&gt; customerStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Customer, sql:Error&gt; customerStream =
         &lt;stream&lt;Customer, sql:Error&gt;&gt;resultStream;
 </code></pre></div>
 
@@ -578,7 +595,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? e = customerStream.forEach(function(Customer customer) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = customerStream.forEach(function(Customer customer) {
         io:println(customer);
     });
     if (e is error) {
@@ -602,7 +619,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    e = resultStream.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    e = resultStream.close();
 </code></pre></div>
 
                                 </td>
@@ -621,7 +638,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;------ End Query With Type Description -------&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;------ End Query With Type Description -------&quot;);
 }
 </code></pre></div>
 
@@ -634,7 +651,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initializeTable() returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeTable() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
     sql:ExecutionResult result =
         check mysqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;);
@@ -671,7 +688,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -683,7 +700,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:Error? err = initializeTable();
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:Error? err = initializeTable();
 </code></pre></div>
 
                                 </td>
@@ -702,7 +719,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (err is sql:Error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (err is sql:Error) {
         io:println(&quot;Sample data initialization failed!&quot;);
         io:println(err);
     } else {
@@ -720,7 +737,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            simpleQuery(mysqlClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>            simpleQuery(mysqlClient);
             countRows(mysqlClient);
             typedQuery(mysqlClient);
             io:println(&quot;Queried the database successfully!&quot;);
@@ -742,7 +759,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            sql:Error? e = mysqlClient.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>            sql:Error? e = mysqlClient.close();
 </code></pre></div>
 
                                 </td>
@@ -761,7 +778,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
             io:println(&quot;MySQL Client initialization for &quot; +
                 &quot;querying data failed!&quot;, mysqlClient);
         }
@@ -796,8 +813,8 @@ and the defined field name of the record will be matched case insensitively.</p>
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#  To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run mysql_query_operation.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run mysql_query_operation.bal
 </code></pre></div>
 
                                 </td>

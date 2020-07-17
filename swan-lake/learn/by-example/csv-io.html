@@ -104,7 +104,24 @@ redirect_from:
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">csv_io</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Start</span> <span class="nx">processing</span> <span class="nx">the</span> <span class="nx">CSV</span> <span class="nx">file</span> <span class="nx">from</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sample</span><span class="p">.</span><span class="nx">csv</span>
+<span class="mi">1</span> <span class="nx">James</span> <span class="mi">10000</span>
+<span class="mi">2</span> <span class="nx">Nathan</span> <span class="mi">150000</span>
+<span class="mi">3</span> <span class="nx">Ronald</span> <span class="mi">120000</span>
+<span class="mi">4</span> <span class="nx">Roy</span> <span class="mi">6000</span>
+<span class="mi">5</span> <span class="nx">Oliver</span> <span class="mi">1100000</span>
+<span class="nx">Processing</span> <span class="nx">completed</span><span class="p">.</span>
+<span class="nx">Reading</span>  <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sample</span><span class="p">.</span><span class="nx">csv</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">table</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">James</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">10000.0</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">2</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Nathan</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">150000.0</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Ronald</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">120000.0</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">4</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Roy</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">6000.0</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">5</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Oliver</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">1100000.0</span>
+<span class="nx">Creating</span> <span class="nx">a</span> <span class="nx">table</span> <span class="nx">and</span> <span class="nx">adding</span> <span class="nx">data</span>
+<span class="nx">Writing</span> <span class="nx">the</span> <span class="nx">table</span> <span class="nx">to</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">output</span><span class="p">.</span><span class="nx">csv</span>
 </pre></div>
 
             </div>
@@ -213,7 +230,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -226,7 +243,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {
     string id;
     string name;
     float salary;
@@ -242,7 +259,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function process(io:ReadableCSVChannel csvChannel)
+                                    <div class="highlight"><pre><code class=language-ballerina>function process(io:ReadableCSVChannel csvChannel)
                                 returns @tainted error? {
 </code></pre></div>
 
@@ -262,7 +279,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (csvChannel.hasNext()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (csvChannel.hasNext()) {
 </code></pre></div>
 
                                 </td>
@@ -282,7 +299,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var records = check csvChannel.getNext();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var records = check csvChannel.getNext();
 </code></pre></div>
 
                                 </td>
@@ -301,7 +318,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (records is string[]) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (records is string[]) {
             io:println(records);
         }
     }
@@ -325,7 +342,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
     string srcFileName = &quot;./files/sample.csv&quot;;
 </code></pre></div>
 
@@ -345,7 +362,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableCSVChannel wCsvChannel =
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableCSVChannel wCsvChannel =
                         check io:openWritableCsvFile(srcFileName);
     string[][] data = [[&quot;1&quot;, &quot;James&quot;, &quot;10000&quot;], [&quot;2&quot;, &quot;Nathan&quot;, &quot;150000&quot;],
     [&quot;3&quot;, &quot;Ronald&quot;, &quot;120000&quot;], [&quot;4&quot;, &quot;Roy&quot;, &quot;6000&quot;],
@@ -373,7 +390,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel =
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableCSVChannel rCsvChannel =
                         check io:openReadableCsvFile(srcFileName);
     io:println(&quot;Start processing the CSV file from &quot;, srcFileName);
     var processedResult = process(rCsvChannel);
@@ -401,7 +418,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    closeReadableCSVChannel(rCsvChannel);
+                                    <div class="highlight"><pre><code class=language-ballerina>    closeReadableCSVChannel(rCsvChannel);
 </code></pre></div>
 
                                 </td>
@@ -420,7 +437,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel2 =
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableCSVChannel rCsvChannel2 =
                             check io:openReadableCsvFile(srcFileName);
 </code></pre></div>
 
@@ -440,7 +457,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Reading  &quot; + srcFileName + &quot; as a table&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Reading  &quot; + srcFileName + &quot; as a table&quot;);
     var tblResult = rCsvChannel2.getTable(Employee);
     if (tblResult is table&lt;record {}&gt;) {
         foreach var rec in tblResult {
@@ -469,7 +486,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string targetFileName = &quot;./files/output.csv&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string targetFileName = &quot;./files/output.csv&quot;;
     io:WritableCSVChannel wCsvChannel2 =
                         check io:openWritableCsvFile(targetFileName);
     io:println(&quot;Creating a table and adding data&quot;);
@@ -499,7 +516,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function createTableAndAddData() returns table&lt;Employee&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>function createTableAndAddData() returns table&lt;Employee&gt; {
     table&lt;Employee&gt; employeeTable = table [];
     Employee[] employees = [];
     employees[0] = {id: &quot;1&quot;, name: &quot;Allen&quot;, salary: 300000.0};
@@ -528,7 +545,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function writeDataToCSVChannel(io:WritableCSVChannel csvChannel,
+                                    <div class="highlight"><pre><code class=language-ballerina>function writeDataToCSVChannel(io:WritableCSVChannel csvChannel,
                                 string[]... data) {
     foreach var rec in data {
         var returnedVal = csvChannel.write(rec);
@@ -556,7 +573,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function closeReadableCSVChannel(io:ReadableCSVChannel csvChannel) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeReadableCSVChannel(io:ReadableCSVChannel csvChannel) {
     var result = csvChannel.close();
     if (result is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;,
@@ -581,7 +598,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function closeWritableCSVChannel(io:WritableCSVChannel csvChannel) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeWritableCSVChannel(io:WritableCSVChannel csvChannel) {
     var result = csvChannel.close();
     if (result is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;,
@@ -620,8 +637,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run csv_io.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run csv_io.bal
 Start processing the CSV file from ./files/sample.csv
 1 James 10000
 2 Nathan 150000

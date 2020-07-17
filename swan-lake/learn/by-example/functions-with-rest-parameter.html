@@ -18,14 +18,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">detailString</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>    <span class="kt">int</span> <span class="nx">index</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">moduleString</span> <span class="p">=</span> <span class="s">&quot;Module(s): &quot;</span><span class="p">;</span>    <span class="nx">foreach</span> <span class="kt">string</span> <span class="nx">module</span> <span class="nx">in</span> <span class="nx">modules</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">moduleString</span> <span class="o">+=</span> <span class="nx">module</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">moduleString</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">module</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nx">index</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">detailString</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="nx">moduleString</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">moduleString</span> <span class="p">=</span> <span class="s">&quot;Module(s): &quot;</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span><span class="p">.&#39;join(...modules);    io:println(</span><span class="nx">detailString</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="nx">moduleString</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">);</span>
     <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
@@ -33,7 +26,14 @@ redirect_from:
     <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Diana&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;Math&quot;</span><span class="p">,</span> <span class="s">&quot;Physics&quot;</span><span class="p">);</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">modules</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Math&quot;</span><span class="p">,</span> <span class="s">&quot;Physics&quot;</span><span class="p">];</span>
     <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Diana&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">...</span><span class="nx">modules</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">functions_with_rest_parameter</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Name</span><span class="p">:</span> <span class="nx">Alice</span><span class="p">,</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">18</span>
+<span class="nx">Name</span><span class="p">:</span> <span class="nx">Bob</span><span class="p">,</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">20</span>
+<span class="nx">Name</span><span class="p">:</span> <span class="nx">Corey</span><span class="p">,</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="nx">Module</span><span class="p">(</span><span class="nx">s</span><span class="p">):</span> <span class="nx">Math</span>
+<span class="nx">Name</span><span class="p">:</span> <span class="nx">Diana</span><span class="p">,</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">Module</span><span class="p">(</span><span class="nx">s</span><span class="p">):</span> <span class="nx">Math</span><span class="p">,</span> <span class="nx">Physics</span>
+<span class="nx">Name</span><span class="p">:</span> <span class="nx">Diana</span><span class="p">,</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">Module</span><span class="p">(</span><span class="nx">s</span><span class="p">):</span> <span class="nx">Math</span><span class="p">,</span> <span class="nx">Physics</span>
 </pre></div>
 
             </div>
@@ -124,8 +124,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -134,7 +132,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -146,7 +144,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printDetails(string name,
+                                    <div class="highlight"><pre><code class=language-ballerina>function printDetails(string name,
                       int age = 18,
                       string... modules) {
     string detailString = &quot;Name: &quot; + name + &quot;, Age: &quot; + age.toString();
@@ -171,7 +169,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (modules.length() == 0) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (modules.length() == 0) {
         io:println(detailString);
         return;
     }
@@ -186,8 +184,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int index = 0;
-    string moduleString = &quot;Module(s): &quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int index = 0;
+    string moduleString = &quot;Module(s): &quot; + &quot;, &quot;.&#39;join(...modules);
 </code></pre></div>
 
                                 </td>
@@ -199,26 +197,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach string module in modules {
-        if (index == 0) {
-            moduleString += module;
-        } else {
-            moduleString += &quot;, &quot; + module;
-        }
-        index += 1;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(detailString, &quot;, &quot;, moduleString);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(detailString, &quot;, &quot;, moduleString);
 }
 </code></pre></div>
 
@@ -231,7 +210,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -243,7 +222,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Alice&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printDetails(&quot;Alice&quot;);
 </code></pre></div>
 
                                 </td>
@@ -262,7 +241,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Bob&quot;, 20);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printDetails(&quot;Bob&quot;, 20);
 </code></pre></div>
 
                                 </td>
@@ -283,7 +262,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Corey&quot;, 19, &quot;Math&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printDetails(&quot;Corey&quot;, 19, &quot;Math&quot;);
 </code></pre></div>
 
                                 </td>
@@ -305,7 +284,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Diana&quot;, 20, &quot;Math&quot;, &quot;Physics&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printDetails(&quot;Diana&quot;, 20, &quot;Math&quot;, &quot;Physics&quot;);
 </code></pre></div>
 
                                 </td>
@@ -325,7 +304,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string[] modules = [&quot;Math&quot;, &quot;Physics&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    string[] modules = [&quot;Math&quot;, &quot;Physics&quot;];
     printDetails(&quot;Diana&quot;, 20, ...modules);
 }
 </code></pre></div>
@@ -361,8 +340,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run functions_with_rest_parameter.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run functions_with_rest_parameter.bal
 Name: Alice, Age: 18
 Name: Bob, Age: 20
 Name: Corey, Age: 19, Module(s): Math

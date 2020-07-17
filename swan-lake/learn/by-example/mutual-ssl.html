@@ -46,7 +46,10 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">along</span> <span class="nx">with</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">config</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mutual_ssl_service</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTPS</span><span class="o">/</span><span class="nx">WSS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="m">9095i</span><span class="nx">mport</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">clientEPConfig</span> <span class="p">=</span> <span class="p">{</span>
@@ -79,7 +82,10 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">along</span> <span class="nx">with</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">config</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">ssl_client</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+<span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Successful</span>
 </pre></div>
 
             </div>
@@ -176,7 +182,7 @@ each other&rsquo;s identity.<br/><br/>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 </code></pre></div>
@@ -190,7 +196,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:ListenerConfiguration helloWorldEPConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
@@ -222,7 +228,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        protocol: {
+                                    <div class="highlight"><pre><code class=language-ballerina>        protocol: {
             name: &quot;TLS&quot;,
             versions: [&quot;TLSv1.2&quot;, &quot;TLSv1.1&quot;]
         },
@@ -244,7 +250,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        ciphers: [&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;],
+                                    <div class="highlight"><pre><code class=language-ballerina>        ciphers: [&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;],
 </code></pre></div>
 
                                 </td>
@@ -263,7 +269,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        sslVerifyClient: &quot;require&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>        sslVerifyClient: &quot;require&quot;
     }
 };
 </code></pre></div>
@@ -284,7 +290,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener helloWorldEP = new (9095, helloWorldEPConfig);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener helloWorldEP = new (9095, helloWorldEPConfig);
 </code></pre></div>
 
                                 </td>
@@ -303,7 +309,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 </code></pre></div>
@@ -317,7 +323,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service helloWorld on helloWorldEP {
+                                    <div class="highlight"><pre><code class=language-ballerina>service helloWorld on helloWorldEP {
 </code></pre></div>
 
                                 </td>
@@ -336,7 +342,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -352,7 +358,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(&quot;Successful&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&quot;Successful&quot;);
         if (result is error) {
             log:printError(&quot;Error in responding&quot;, result);
         }
@@ -391,7 +397,7 @@ import ballerina/log;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command along with the Ballerina home path as a config.
-$ ballerina run mutual_ssl_service.bal --b7a.home=&lt;ballerina_home_path&gt;
+ballerina run mutual_ssl_service.bal --b7a.home=&lt;ballerina_home_path&gt;
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9095
 </code></pre></div>
 
@@ -459,7 +465,7 @@ $ ballerina run mutual_ssl_service.bal --b7a.home=&lt;ballerina_home_path&gt;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 </code></pre></div>
@@ -473,7 +479,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:ClientConfiguration clientEPConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:ClientConfiguration clientEPConfig = {
     secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
@@ -512,7 +518,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -524,7 +530,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Client clientEP = new(&quot;https://localhost:9095&quot;, clientEPConfig);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client clientEP = new(&quot;https://localhost:9095&quot;, clientEPConfig);
 </code></pre></div>
 
                                 </td>
@@ -543,7 +549,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var resp = clientEP-&gt;get(&quot;/hello&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var resp = clientEP-&gt;get(&quot;/hello&quot;);
     if (resp is http:Response) {
 </code></pre></div>
 
@@ -563,7 +569,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = resp.getTextPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = resp.getTextPayload();
         if (payload is string) {
 </code></pre></div>
 
@@ -584,7 +590,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            log:printInfo(payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(payload);
         } else {
 </code></pre></div>
 
@@ -604,7 +610,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            log:printError(payload.message());
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printError(payload.message());
         }
     } else {
 </code></pre></div>
@@ -626,7 +632,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        log:printError(resp.message());
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printError(resp.message());
     }
 }
 </code></pre></div>
@@ -662,7 +668,7 @@ import ballerina/log;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command along with the Ballerina home path as a config.
-$ ballerina run ssl_client.bal --b7a.home=&lt;ballerina_home_path&gt;
+ballerina run ssl_client.bal --b7a.home=&lt;ballerina_home_path&gt;
 INFO  [] - Successful
 </code></pre></div>
 

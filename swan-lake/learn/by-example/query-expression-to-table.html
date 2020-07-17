@@ -15,28 +15,48 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="nx">score</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">gpa</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="nx">readonly</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">degree</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">graduationYear</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="nx">type</span> <span class="nx">StudentTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">};</span>
-    <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2021</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">};</span>
-    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;David&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">};</span>
-    <span class="nx">Student</span> <span class="nx">s4</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Gorge&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fernando&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2023</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
-    <span class="nx">StudentTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">studentTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
-        <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span> <span class="p">&gt;</span> <span class="mi">2020</span>
-        <span class="nx">let</span> <span class="kt">float</span> <span class="nx">newScore</span> <span class="p">=</span> <span class="mf">1.5</span>
+<span class="nx">type</span> <span class="nx">ReportTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Report</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Michelle&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Sadler&quot;</span><span class="p">,</span> 
+                   <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">1990</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.5</span> <span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> 
+                   <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2001</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">1.9</span> <span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Martin&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Guthrie&quot;</span><span class="p">,</span> 
+                   <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2002</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.7</span> <span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fernando&quot;</span><span class="p">,</span> 
+                   <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2005</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">4.0</span> <span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
+    <span class="nx">ReportTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">reportTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+        <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">gpa</span> <span class="o">&gt;=</span> <span class="mf">2.0</span>
+        <span class="nx">let</span> <span class="kt">string</span> <span class="nx">degreeName</span> <span class="p">=</span> <span class="s">&quot;Bachelor of Medicine&quot;</span><span class="p">,</span>
+        <span class="kt">int</span> <span class="nx">graduationYear</span> <span class="p">=</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">)</span>
         <span class="nx">select</span> <span class="p">{</span>
             <span class="nx">id</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
-            <span class="nx">firstName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
-            <span class="nx">lastName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
-            <span class="nx">intakeYear</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">,</span>
-            <span class="nx">score</span><span class="p">:</span> <span class="nx">newScore</span>
+            <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
+            <span class="nx">degree</span><span class="p">:</span> <span class="nx">degreeName</span><span class="p">,</span>
+            <span class="nx">graduationYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
         <span class="p">}</span>
-        <span class="nx">limit</span> <span class="mi">2</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student Table Information: &quot;</span><span class="p">,</span> <span class="nx">studentTable</span><span class="p">);</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">duplicateStdList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s1</span><span class="p">];</span>
-    <span class="nx">error</span> <span class="nx">onConflictError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Key Conflict&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;cannot insert student&quot;</span><span class="p">);</span>    <span class="nx">StudentTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">duplicateStdTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">duplicateStdList</span>
-            <span class="nx">select</span> <span class="nx">student</span>
-            <span class="nx">on</span> <span class="nx">conflict</span> <span class="nx">onConflictError</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">duplicateStdTable</span><span class="p">);</span>
-<span class="p">}</span>
+        <span class="nx">limit</span> <span class="mi">2</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">reportTable</span><span class="p">);</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">duplicateStdList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s1</span><span class="p">];</span>
+    <span class="nx">error</span> <span class="nx">onConflictError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Key Conflict&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;cannot insert report&quot;</span><span class="p">);</span>    <span class="nx">ReportTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">duplicateStdList</span>
+        <span class="nx">select</span> <span class="p">{</span>
+            <span class="nx">id</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+            <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
+            <span class="nx">degree</span><span class="p">:</span> <span class="s">&quot;Bachelor of Medicine&quot;</span><span class="p">,</span>
+            <span class="nx">graduationYear</span><span class="p">:</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">)</span>
+        <span class="p">}</span> 
+        <span class="nx">on</span> <span class="nx">conflict</span> <span class="nx">onConflictError</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">year</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_expression_to_table</span><span class="p">.</span><span class="nx">balid</span><span class="p">=</span><span class="mi">1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Michelle</span> <span class="nx">Sadler</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">graduationYear</span><span class="p">=</span><span class="mi">1995</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Martin</span> <span class="nx">Guthrie</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">graduationYear</span><span class="p">=</span><span class="mi">2007</span>
+<span class="nx">error</span> <span class="nx">Key</span> <span class="nx">Conflict</span> <span class="kt">message</span><span class="p">=</span><span class="nx">cannot</span> <span class="nx">insert</span> <span class="nx">report</span>
 </pre></div>
 
             </div>
@@ -138,6 +158,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -146,7 +170,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -158,12 +182,29 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     readonly id;
     string firstName;
     string lastName;
     int intakeYear;
-    float score;
+    float gpa;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Report record {
+    readonly id;
+    string name;
+    string degree;
+    int graduationYear;
 };
 </code></pre></div>
 
@@ -176,7 +217,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type StudentTable table&lt;Student&gt; key(id);
+                                    <div class="highlight"><pre><code class=language-ballerina>type ReportTable table&lt;Report&gt; key(id);
 </code></pre></div>
 
                                 </td>
@@ -184,7 +225,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is a <code>table</code> type with <code>Student</code> members uniquely identified by their <code>id</code> field.</p>
+                                            <p>This is a <code>table</code> type with <code>Report</code> members uniquely identified by their <code>id</code> field.</p>
 
                                         </div>
                                     </div>
@@ -195,11 +236,15 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
-    Student s1 = {id: 1, firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, intakeYear: 2020, score: 1.5};
-    Student s2 = {id: 2, firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, intakeYear: 2021, score: 0.9};
-    Student s3 = {id: 3, firstName: &quot;John&quot;, lastName: &quot;David&quot;, intakeYear: 2022, score: 1.2};
-    Student s4 = {id: 4, firstName: &quot;Gorge&quot;, lastName: &quot;Fernando&quot;, intakeYear: 2023, score: 1.1};
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    Student s1 = { id: 1, firstName: &quot;Michelle&quot;, lastName: &quot;Sadler&quot;, 
+                   intakeYear: 1990, gpa: 3.5 };
+    Student s2 = { id: 2, firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, 
+                   intakeYear: 2001, gpa: 1.9 };
+    Student s3 = { id: 3, firstName: &quot;Martin&quot;, lastName: &quot;Guthrie&quot;, 
+                   intakeYear: 2002, gpa: 3.7 };
+    Student s4 = { id: 4, firstName: &quot;George&quot;, lastName: &quot;Fernando&quot;, 
+                   intakeYear: 2005, gpa: 4.0 };
 </code></pre></div>
 
                                 </td>
@@ -211,7 +256,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student[] studentList = [s1, s2, s3, s4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student[] studentList = [s1, s2, s3, s4];
 </code></pre></div>
 
                                 </td>
@@ -223,7 +268,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    StudentTable|error studentTable = table key(id) from var student in studentList
+                                    <div class="highlight"><pre><code class=language-ballerina>    ReportTable|error reportTable = table key(id) from var student in studentList
 </code></pre></div>
 
                                 </td>
@@ -231,7 +276,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>query expression</code> starts with a <code>table</code>.
+                                            <p>The <code>query expression</code> starts with <code>table</code>.
  The key specifier <code>key(id)</code> specifies the key sequence of the constructed <code>table</code>.
  The result of the <code>query expression</code> is a <code>table</code>.</p>
 
@@ -244,7 +289,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        where student.intakeYear &gt; 2020
+                                    <div class="highlight"><pre><code class=language-ballerina>        where student.gpa &gt;= 2.0
 </code></pre></div>
 
                                 </td>
@@ -254,7 +299,7 @@ redirect_from:
                                         <div>
                                             <p>The <code>where</code> clause provides a way to perform conditional execution and works similarly to an <code>if</code> condition.
  It can refer to variables bound by the from clause.
- When the <code>where</code> condition evaluates to false, the iteration skips the following clauses.</p>
+ When the <code>where</code> condition evaluates to false, the current iteration is skipped.</p>
 
                                         </div>
                                     </div>
@@ -265,7 +310,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        let float newScore = 1.5
+                                    <div class="highlight"><pre><code class=language-ballerina>        let string degreeName = &quot;Bachelor of Medicine&quot;,
+        int graduationYear = calGraduationYear(student.intakeYear)
 </code></pre></div>
 
                                 </td>
@@ -284,12 +330,11 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        select {
+                                    <div class="highlight"><pre><code class=language-ballerina>        select {
             id: student.id,
-            firstName: student.firstName,
-            lastName: student.lastName,
-            intakeYear: student.intakeYear,
-            score: newScore
+            name: student.firstName + &quot; &quot; + student.lastName,
+            degree: degreeName,
+            graduationYear: graduationYear
         }
 </code></pre></div>
 
@@ -310,7 +355,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        limit 2;
+                                    <div class="highlight"><pre><code class=language-ballerina>        limit 2;
 </code></pre></div>
 
                                 </td>
@@ -329,7 +374,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Student Table Information: &quot;, studentTable);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(reportTable);
 </code></pre></div>
 
                                 </td>
@@ -341,7 +386,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student[] duplicateStdList = [s1, s2, s1];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student[] duplicateStdList = [s1, s2, s1];
 </code></pre></div>
 
                                 </td>
@@ -353,7 +398,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error onConflictError = error(&quot;Key Conflict&quot;, message = &quot;cannot insert student&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    error onConflictError = error(&quot;Key Conflict&quot;, message = &quot;cannot insert report&quot;);
 </code></pre></div>
 
                                 </td>
@@ -372,8 +417,13 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    StudentTable|error duplicateStdTable = table key(id) from var student in duplicateStdList
-            select student
+                                    <div class="highlight"><pre><code class=language-ballerina>    ReportTable|error result = table key(id) from var student in duplicateStdList
+        select {
+            id: student.id,
+            name: student.firstName + &quot; &quot; + student.lastName,
+            degree: &quot;Bachelor of Medicine&quot;,
+            graduationYear: calGraduationYear(student.intakeYear)
+        } 
 </code></pre></div>
 
                                 </td>
@@ -385,7 +435,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            on conflict onConflictError;
+                                    <div class="highlight"><pre><code class=language-ballerina>        on conflict onConflictError;
 </code></pre></div>
 
                                 </td>
@@ -405,8 +455,22 @@ redirect_from:
                             
                             <tr class="cTR">
 
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(result);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(duplicateStdTable);
+                                    <div class="highlight"><pre><code class=language-ballerina>function calGraduationYear(int year) returns int {
+    return year + 5;
 }
 </code></pre></div>
 
@@ -437,8 +501,8 @@ redirect_from:
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run query_expression_to_table.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run query_expression_to_table.bal
 </code></pre></div>
 
                                 </td>
@@ -450,9 +514,9 @@ $ ballerina run query_expression_to_table.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Student Table Information: id=2 firstName=Ranjan lastName=Fonseka intakeYear=2021 score=1.5
-id=3 firstName=John lastName=David intakeYear=2022 score=1.5
-error Key Conflict message=cannot insert student
+                                    <div class="highlight"><pre><code class=shell-session>id=1 name=Michelle Sadler degree=Bachelor of Medicine graduationYear=1995
+id=3 name=Martin Guthrie degree=Bachelor of Medicine graduationYear=2007
+error Key Conflict message=cannot insert report
 </code></pre></div>
 
                                 </td>

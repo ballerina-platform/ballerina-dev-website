@@ -51,7 +51,11 @@ redirect_from:
     <span class="p">}</span>
     <span class="nx">closeRc</span><span class="p">(</span><span class="nx">sourceChannel</span><span class="p">);</span>
     <span class="nx">closeWc</span><span class="p">(</span><span class="nx">destinationChannel</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">character_io</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Started</span> <span class="nx">to</span> <span class="nx">process</span> <span class="nx">the</span> <span class="nx">file</span><span class="p">.</span>
+<span class="nx">File</span> <span class="nx">processing</span> <span class="nx">complete</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -150,7 +154,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -163,7 +167,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function process(io:ReadableCharacterChannel sc,
+                                    <div class="highlight"><pre><code class=language-ballerina>function process(io:ReadableCharacterChannel sc,
                  io:WritableCharacterChannel dc) returns @tainted error? {
     string intermediateCharacterString = &quot; my name is &quot;;
 </code></pre></div>
@@ -185,7 +189,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string greetingText = check sc.read(5);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string greetingText = check sc.read(5);
     string name = check sc.read(15);
 </code></pre></div>
 
@@ -205,7 +209,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var writeCharResult = check dc.write(greetingText, 0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var writeCharResult = check dc.write(greetingText, 0);
     var writeCharResult1 = check dc.write(intermediateCharacterString, 0);
     var writeCharResult2 = check dc.write(name, 1);
     return;
@@ -228,7 +232,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function closeRc(io:ReadableCharacterChannel ch) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeRc(io:ReadableCharacterChannel ch) {
     var cr = ch.close();
     if (cr is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;, cr);
@@ -252,7 +256,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function closeWc(io:WritableCharacterChannel ch) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeWc(io:WritableCharacterChannel ch) {
     var cr = ch.close();
     if (cr is error) {
         log:printError(&quot;Error occurred while closing the channel: &quot;, cr);
@@ -276,7 +280,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
 </code></pre></div>
 
                                 </td>
@@ -288,7 +292,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableByteChannel readableFieldResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableByteChannel readableFieldResult =
                                 check io:openReadableFile(&quot;./files/sample.txt&quot;);
     io:ReadableCharacterChannel sourceChannel =
                                 new (readableFieldResult, &quot;UTF-8&quot;);
@@ -312,7 +316,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableByteChannel writableFileResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableByteChannel writableFileResult =
                 check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
     io:WritableCharacterChannel destinationChannel =
                                 new (writableFileResult, &quot;UTF-8&quot;);
@@ -337,7 +341,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = process(sourceChannel, destinationChannel);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = process(sourceChannel, destinationChannel);
     if (result is error) {
         log:printError(&quot;error occurred while processing chars &quot;, result);
     } else {
@@ -361,7 +365,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    closeRc(sourceChannel);
+                                    <div class="highlight"><pre><code class=language-ballerina>    closeRc(sourceChannel);
 </code></pre></div>
 
                                 </td>
@@ -380,7 +384,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    closeWc(destinationChannel);
+                                    <div class="highlight"><pre><code class=language-ballerina>    closeWc(destinationChannel);
 }
 </code></pre></div>
 
@@ -414,8 +418,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run character_io.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run character_io.bal
 Started to process the file.
 File processing complete.
 </code></pre></div>

@@ -97,7 +97,22 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from Customers table failed!&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
      <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jdbc_batch_execute_operation</span><span class="p">.</span><span class="nx">balDrop</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span>
+<span class="nx">Create</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span><span class="nx">Insert</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">generated</span> <span class="nx">IDs</span> <span class="nx">are</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="nx">Error</span> <span class="k">while</span> <span class="nx">executing</span> <span class="nx">batch</span> <span class="nx">command</span> <span class="nx">starting</span> <span class="nx">with</span><span class="p">:</span> <span class="err">&#39;</span><span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="nx">Customers</span>
+                <span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">,</span> <span class="nx">creditLimit</span><span class="p">,</span> <span class="nx">country</span><span class="p">)</span>
+                <span class="nx">VALUES</span> <span class="p">(</span> <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">,</span>
+                 <span class="p">? ,  ? ,  ? )&#39;.Unique index or primary key violation: &quot;PUBLIC.CONSTRAINT_INDEX_6 ON PUBLIC.CUSTOMERS(</span><span class="nx">REGISTRATIONID</span><span class="p">)</span> <span class="nx">VALUES</span> <span class="mi">1</span><span class="err">&quot;</span><span class="p">;</span> <span class="nx">SQL</span> <span class="nx">statement</span><span class="p">:</span>
+<span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="nx">Customers</span>
+                <span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">,</span> <span class="nx">creditLimit</span><span class="p">,</span> <span class="nx">country</span><span class="p">)</span>
+                <span class="nx">VALUES</span> <span class="p">(</span> <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">,</span>
+                 <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">)</span> <span class="p">[</span><span class="mi">23505</span><span class="o">-</span><span class="mi">199</span><span class="p">].</span>
+<span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="o">-</span><span class="mi">3</span> <span class="nx">lastInsertId</span><span class="p">=</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span>
+<span class="nx">Rollback</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">Data</span> <span class="nx">in</span> <span class="nx">Customers</span> <span class="nx">table</span><span class="p">:</span>
+<span class="nx">CUSTOMERID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">FIRSTNAME</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">LASTNAME</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">REGISTRATIONID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">CREDITLIMIT</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">COUNTRY</span><span class="p">=</span><span class="nx">USA</span>
+<span class="nx">CUSTOMERID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">FIRSTNAME</span><span class="p">=</span><span class="nx">Stephanie</span> <span class="nx">LASTNAME</span><span class="p">=</span><span class="nx">Mike</span> <span class="nx">REGISTRATIONID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">CREDITLIMIT</span><span class="p">=</span><span class="mf">8000.0</span> <span class="nx">COUNTRY</span><span class="p">=</span><span class="nx">USA</span>
+<span class="nx">CUSTOMERID</span><span class="p">=</span><span class="mi">3</span> <span class="nx">FIRSTNAME</span><span class="p">=</span><span class="nx">Bill</span> <span class="nx">LASTNAME</span><span class="p">=</span><span class="nx">John</span> <span class="nx">REGISTRATIONID</span><span class="p">=</span><span class="mi">3</span> <span class="nx">CREDITLIMIT</span><span class="p">=</span><span class="mf">3000.25</span> <span class="nx">COUNTRY</span><span class="p">=</span><span class="nx">USASample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -233,7 +248,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java.jdbc;
 import ballerina/sql;
 </code></pre></div>
@@ -247,7 +262,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initializeTable(jdbc:Client jdbcClient)
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeTable(jdbc:Client jdbcClient)
 returns sql:Error? {
 </code></pre></div>
 
@@ -260,7 +275,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecutionResult result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
         check jdbcClient-&gt;execute(&quot;DROP TABLE IF EXISTS Customers&quot;);
     io:println(&quot;Drop table executed: &quot;, result);
 </code></pre></div>
@@ -282,7 +297,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    result = check jdbcClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS Customers&quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS Customers&quot; +
         &quot;(customerId INTEGER NOT NULL IDENTITY, firstName VARCHAR(300), &quot; +
         &quot;lastName VARCHAR(300), registrationID INTEGER UNIQUE, &quot; + 
         &quot;creditLimit DOUBLE, country VARCHAR(300), PRIMARY KEY (customerId))&quot;);
@@ -306,7 +321,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -318,7 +333,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function insertRecords(jdbc:Client jdbcClient) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function insertRecords(jdbc:Client jdbcClient) {
 </code></pre></div>
 
                                 </td>
@@ -330,7 +345,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var insertRecords = [
+                                    <div class="highlight"><pre><code class=language-ballerina>    var insertRecords = [
         {firstName: &quot;Peter&quot;, lastName: &quot;Stuart&quot;, registrationID: 1,
                                     creditLimit: 5000.75, country: &quot;USA&quot;},
         {firstName: &quot;Stephanie&quot;, lastName: &quot;Mike&quot;, registrationID: 2,
@@ -356,7 +371,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ParameterizedQuery[] insertQueries =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery[] insertQueries =
         from var data in insertRecords
             select  `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
@@ -381,7 +396,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecutionResult[]|sql:Error result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult[]|sql:Error result =
         jdbcClient-&gt;batchExecute(insertQueries);
 </code></pre></div>
 
@@ -401,7 +416,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is sql:ExecutionResult[]) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is sql:ExecutionResult[]) {
         int[] generatedIds = [];
         foreach var summary in result {
             generatedIds.push(&lt;int&gt; summary.lastInsertId);
@@ -422,7 +437,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function simulateBatchExecuteFailure(jdbc:Client jdbcClient) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function simulateBatchExecuteFailure(jdbc:Client jdbcClient) {
 </code></pre></div>
 
                                 </td>
@@ -434,7 +449,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var insertRecords = [
+                                    <div class="highlight"><pre><code class=language-ballerina>    var insertRecords = [
         {firstName: &quot;Linda&quot;, lastName: &quot;Jones&quot;, registrationID: 4,
                                     creditLimit: 10000.75, country: &quot;USA&quot;},
         {firstName: &quot;Peter&quot;, lastName: &quot;Stuart&quot;, registrationID: 1,
@@ -460,7 +475,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ParameterizedQuery[] insertQueries =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery[] insertQueries =
         from var data in insertRecords
             select  `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
@@ -484,7 +499,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    transaction {
+                                    <div class="highlight"><pre><code class=language-ballerina>    transaction {
         var result = jdbcClient-&gt;batchExecute(insertQueries);
         if (result is sql:BatchExecuteError) {
             io:println(result.message());
@@ -514,7 +529,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -526,7 +541,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -538,7 +553,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client|sql:Error jdbcClient = new (&quot;jdbc:h2:file:./target/customers&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client|sql:Error jdbcClient = new (&quot;jdbc:h2:file:./target/customers&quot;,
         &quot;rootUser&quot;, &quot;rootPass&quot;);
 </code></pre></div>
 
@@ -558,7 +573,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (jdbcClient is jdbc:Client) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (jdbcClient is jdbc:Client) {
 </code></pre></div>
 
                                 </td>
@@ -570,7 +585,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        sql:Error? initResult = initializeTable(jdbcClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>        sql:Error? initResult = initializeTable(jdbcClient);
 </code></pre></div>
 
                                 </td>
@@ -589,7 +604,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (initResult is ()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (initResult is ()) {
 </code></pre></div>
 
                                 </td>
@@ -601,7 +616,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            insertRecords(jdbcClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>            insertRecords(jdbcClient);
 </code></pre></div>
 
                                 </td>
@@ -620,7 +635,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            simulateBatchExecuteFailure(jdbcClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>            simulateBatchExecuteFailure(jdbcClient);
 </code></pre></div>
 
                                 </td>
@@ -639,7 +654,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            checkData(jdbcClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>            checkData(jdbcClient);
 </code></pre></div>
 
                                 </td>
@@ -658,7 +673,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;\nSample executed successfully!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;\nSample executed successfully!&quot;);
         } else {
             io:println(&quot;Customer table initialization failed: &quot;, initResult);
         }
@@ -673,7 +688,7 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        sql:Error? e = jdbcClient.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>        sql:Error? e = jdbcClient.close();
 </code></pre></div>
 
                                 </td>
@@ -692,7 +707,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
         io:println(&quot;Initialization failed!!&quot;);
         io:println(jdbcClient);
     }
@@ -708,7 +723,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function checkData(jdbc:Client jdbcClient) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function checkData(jdbc:Client jdbcClient) {
      stream&lt;record{}, error&gt; resultStream =
         jdbcClient-&gt;query(&quot;Select * from Customers&quot;);
 </code></pre></div>
@@ -722,7 +737,7 @@ returns sql:Error? {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>     io:println(&quot;\nData in Customers table:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>     io:println(&quot;\nData in Customers table:&quot;);
      error? e = resultStream.forEach(function(record {} result) {
                  io:println(result.toString());
      });
@@ -776,8 +791,8 @@ returns sql:Error? {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run jdbc_batch_execute_operation.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run jdbc_batch_execute_operation.bal
 </code></pre></div>
 
                                 </td>

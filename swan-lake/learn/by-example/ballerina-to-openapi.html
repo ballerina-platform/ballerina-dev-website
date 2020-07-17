@@ -19,7 +19,12 @@ redirect_from:
            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">export</span> <span class="nx">the</span> <span class="nx">OpenAPI</span> <span class="nx">definition</span> <span class="nx">of</span> <span class="nx">ballerina</span> <span class="kd">service</span> <span class="s">`hello`</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`ballerina_to_openapi.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="s">`ballerina openapi gen-contract`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">openapi</span> <span class="nx">gen</span><span class="o">-</span><span class="nx">contract</span> <span class="nx">hello</span> <span class="o">-</span><span class="nx">i</span> <span class="nx">ballerina_to_openapi</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Note</span><span class="p">:</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">an</span> <span class="nx">Experimental</span> <span class="nx">tool</span> <span class="nx">shipped</span> <span class="nx">under</span> <span class="nx">ballerina</span><span class="p">.</span> <span class="nx">Hence</span><span class="p">,</span> <span class="nx">this</span> <span class="nx">will</span> <span class="nx">only</span> <span class="nx">support</span> <span class="nx">a</span> <span class="nx">limited</span> <span class="nx">set</span> <span class="nx">of</span> <span class="nx">functionalities</span><span class="p">.</span>
+<span class="nx">Successfully</span> <span class="nx">generated</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">contract</span> <span class="nx">at</span> <span class="nx">location</span><span class="p">.</span>
+<span class="o">/</span><span class="nx">examples</span><span class="o">/</span><span class="nx">ballerina</span><span class="o">-</span><span class="nx">to</span><span class="o">-</span><span class="nx">openapi</span><span class="o">/</span><span class="nx">hello</span><span class="p">.</span><span class="nx">openapi</span><span class="p">.</span><span class="nx">yaml</span>
 </pre></div>
 
             </div>
@@ -103,7 +108,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -116,7 +121,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener helloEp = new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener helloEp = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -128,7 +133,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service hello on helloEp {
+                                    <div class="highlight"><pre><code class=language-ballerina>service hello on helloEp {
     resource function hi(http:Caller caller, http:Request request) {
         http:Response res = new;
         res.setPayload(&quot;Hello World!&quot;);
@@ -143,7 +148,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
            log:printError(&quot;Error when responding&quot;, result);
         }
@@ -174,10 +179,10 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To export the OpenAPI definition of ballerina service `hello`, navigate to the directory that contains the
-# `ballerina_to_openapi.bal` file, and execute `ballerina openapi gen-contract` command.
-$ ballerina openapi gen-contract hello -i ballerina_to_openapi.bal
-Note: This is an Experimental tool ship under ballerina hence this will only support limited set of functionality.
-Successfully generated the ballerina contract at location
+# `ballerina_to_openapi.bal` file, and execute `ballerina openapi gen-contract` command below.
+ballerina openapi gen-contract hello -i ballerina_to_openapi.bal
+Note: This is an Experimental tool shipped under ballerina. Hence, this will only support a limited set of functionalities.
+Successfully generated the Ballerina contract at location.
 /examples/ballerina-to-openapi/hello.openapi.yaml
 </code></pre></div>
 

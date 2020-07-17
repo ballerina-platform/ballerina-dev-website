@@ -28,7 +28,15 @@ redirect_from:
     <span class="p">[</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span><span class="p">,</span> <span class="p">[</span><span class="kt">string</span><span class="p">|</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="p">]]</span> <span class="p">[</span><span class="nx">g1</span><span class="p">,</span> <span class="p">[</span><span class="nx">g2</span><span class="p">,</span> <span class="nx">g3</span><span class="p">]]</span> <span class="p">=</span>
                                                     <span class="p">[</span><span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">3.4</span><span class="p">,</span> <span class="mi">456</span><span class="p">]];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple variable : &quot;</span><span class="p">,</span> <span class="nx">g1</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">g2</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nx">g3</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tuple_type_binding_pattern</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Simple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="kc">true</span> <span class="mf">0.4</span>
+<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="kc">true</span> <span class="mf">0.4</span>
+<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="nx">Ballerina</span> <span class="mi">4</span> <span class="mf">6.7</span>
+<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="nx">Ballerina</span> <span class="mi">34</span> <span class="kc">true</span> <span class="mf">6.7</span>
+<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="nx">Ballerina</span> <span class="mi">3</span> <span class="kc">true</span> <span class="mi">34</span> <span class="mf">5.6</span> <span class="mi">45</span>
+<span class="nx">Tuple</span> <span class="nx">variable</span> <span class="p">:</span> <span class="nx">Ballerina</span> <span class="mf">3.4</span> <span class="mi">456</span>
 </pre></div>
 
             </div>
@@ -119,7 +127,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -131,7 +139,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -143,7 +151,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [boolean, float] t = [true, 0.4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [boolean, float] t = [true, 0.4];
     io:println(&quot;Simple variable : &quot;, t);
 </code></pre></div>
 
@@ -163,7 +171,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [boolean, float] [a1, a2] = [true, 0.4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [boolean, float] [a1, a2] = [true, 0.4];
     io:println(&quot;Tuple variable : &quot;, a1, &quot; &quot;, a2);
 </code></pre></div>
 
@@ -184,7 +192,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [[string, int], float] [[b1, b2], b3] = [[&quot;Ballerina&quot;, 4], 6.7];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [[string, int], float] [[b1, b2], b3] = [[&quot;Ballerina&quot;, 4], 6.7];
     io:println(&quot;Tuple variable : &quot;, b1, &quot; &quot;, b2, &quot; &quot;, b3);
 </code></pre></div>
 
@@ -205,7 +213,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [[string, int], [boolean, float]] [[c1, c2], [c3, c4]] =
+                                    <div class="highlight"><pre><code class=language-ballerina>    [[string, int], [boolean, float]] [[c1, c2], [c3, c4]] =
                                               [[&quot;Ballerina&quot;, 34], [true, 6.7]];
     io:println(&quot;Tuple variable : &quot;, c1, &quot; &quot;, c2, &quot; &quot;, c3, &quot; &quot;, c4);
 </code></pre></div>
@@ -219,7 +227,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [[string, [int, [boolean, byte]]], [float, int]] v1 =
+                                    <div class="highlight"><pre><code class=language-ballerina>    [[string, [int, [boolean, byte]]], [float, int]] v1 =
                                    [[&quot;Ballerina&quot;, [3, [true, 34]]], [5.6, 45]];
     [[string, [int, [boolean, byte]]],
                            [float, int]] [[d1, [d2, [d3, d4]]], [d5, d6]] = v1;
@@ -243,7 +251,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    [string|int|float, [string|float, int]] [g1, [g2, g3]] =
+                                    <div class="highlight"><pre><code class=language-ballerina>    [string|int|float, [string|float, int]] [g1, [g2, g3]] =
                                                     [&quot;Ballerina&quot;, [3.4, 456]];
     io:println(&quot;Tuple variable : &quot;, g1, &quot; &quot;, g2, &quot; &quot;, g3);
 }
@@ -279,8 +287,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run tuple_type_binding_pattern.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run tuple_type_binding_pattern.bal
 Simple variable : true 0.4
 Tuple variable : true 0.4
 Tuple variable : Ballerina 4 6.7

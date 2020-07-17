@@ -31,7 +31,13 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina build`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">build</span> <span class="nx">client_generation</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Compiling</span> <span class="nx">source</span>
+        <span class="nx">client_generation</span><span class="p">.</span><span class="nx">bal</span> 
+<span class="nx">Generating</span> <span class="nx">executables</span>
+        <span class="nx">client_generation</span><span class="p">.</span><span class="nx">jar</span>
 </pre></div>
 
             </div>
@@ -116,7 +122,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/openapi;
 </code></pre></div>
@@ -130,7 +136,7 @@ import ballerina/openapi;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@openapi:ClientEndpoint
+                                    <div class="highlight"><pre><code class=language-ballerina>@openapi:ClientEndpoint
 listener http:Listener helloEp = new (9090);
 </code></pre></div>
 
@@ -150,7 +156,7 @@ listener http:Listener helloEp = new (9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@openapi:ClientConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@openapi:ClientConfig {
     generate: true
 }
 @http:ServiceConfig {
@@ -175,7 +181,7 @@ service Hello on helloEp {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/hello&quot;
     }
@@ -211,8 +217,8 @@ service Hello on helloEp {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina build` command.
-$ ballerina build client_generation.bal
+# `.bal` file, and execute the `ballerina build` command below.
+ballerina build client_generation.bal
 Compiling source
         client_generation.bal 
 Generating executables

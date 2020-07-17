@@ -24,7 +24,16 @@ redirect_from:
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">);</span>
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">);</span>
     <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">baseSalary</span> <span class="p">=</span> <span class="mi">2500</span><span class="p">,</span> <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">functions_with_defaultable_parameters</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Base</span> <span class="nx">Salary</span><span class="p">:</span> <span class="mi">2500</span> <span class="p">|</span> <span class="nx">Annual</span> <span class="nx">Increment</span><span class="p">:</span> <span class="mi">20</span> <span class="p">|</span> <span class="nx">Bonus</span> <span class="nx">Rate</span><span class="p">:</span> <span class="mf">0.02</span>
+<span class="nx">Base</span> <span class="nx">Salary</span><span class="p">:</span> <span class="mi">2500</span> <span class="p">|</span> <span class="nx">Annual</span> <span class="nx">Increment</span><span class="p">:</span> <span class="mi">100</span> <span class="p">|</span> <span class="nx">Bonus</span> <span class="nx">Rate</span><span class="p">:</span> <span class="mf">0.02</span>
+<span class="nx">Base</span> <span class="nx">Salary</span><span class="p">:</span> <span class="mi">2500</span> <span class="p">|</span> <span class="nx">Annual</span> <span class="nx">Increment</span><span class="p">:</span> <span class="mi">100</span> <span class="p">|</span> <span class="nx">Bonus</span> <span class="nx">Rate</span><span class="p">:</span> <span class="mf">0.02</span>
+<span class="nx">Base</span> <span class="nx">Salary</span><span class="p">:</span> <span class="mi">2500</span> <span class="p">|</span> <span class="nx">Annual</span> <span class="nx">Increment</span><span class="p">:</span> <span class="mi">20</span> <span class="p">|</span> <span class="nx">Bonus</span> <span class="nx">Rate</span><span class="p">:</span> <span class="mf">0.1</span>
+<span class="nx">Base</span> <span class="nx">Salary</span><span class="p">:</span> <span class="mi">2500</span> <span class="p">|</span> <span class="nx">Annual</span> <span class="nx">Increment</span><span class="p">:</span> <span class="mi">20</span> <span class="p">|</span> <span class="nx">Bonus</span> <span class="nx">Rate</span><span class="p">:</span> <span class="mf">0.1</span>
+<span class="nx">Base</span> <span class="nx">Salary</span><span class="p">:</span> <span class="mi">2500</span> <span class="p">|</span> <span class="nx">Annual</span> <span class="nx">Increment</span><span class="p">:</span> <span class="mi">100</span> <span class="p">|</span> <span class="nx">Bonus</span> <span class="nx">Rate</span><span class="p">:</span> <span class="mf">0.1</span>
+<span class="nx">Base</span> <span class="nx">Salary</span><span class="p">:</span> <span class="mi">2500</span> <span class="p">|</span> <span class="nx">Annual</span> <span class="nx">Increment</span><span class="p">:</span> <span class="mi">100</span> <span class="p">|</span> <span class="nx">Bonus</span> <span class="nx">Rate</span><span class="p">:</span> <span class="mf">0.1</span>
 </pre></div>
 
             </div>
@@ -125,7 +134,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -137,7 +146,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printSalaryDetails(int baseSalary,
+                                    <div class="highlight"><pre><code class=language-ballerina>function printSalaryDetails(int baseSalary,
                             int annualIncrement = 20,
                             float bonusRate = 0.02) {
 </code></pre></div>
@@ -163,7 +172,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Base Salary: &quot;, baseSalary, 
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Base Salary: &quot;, baseSalary, 
                 &quot; | Annual Increment: &quot;, annualIncrement,
                 &quot; | Bonus Rate: &quot;, bonusRate);
 }
@@ -178,7 +187,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -190,7 +199,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printSalaryDetails(2500);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500);
 </code></pre></div>
 
                                 </td>
@@ -211,7 +220,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printSalaryDetails(2500, annualIncrement = 100);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, annualIncrement = 100);
 </code></pre></div>
 
                                 </td>
@@ -232,7 +241,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printSalaryDetails(2500, 100);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, 100);
 </code></pre></div>
 
                                 </td>
@@ -253,7 +262,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printSalaryDetails(2500, bonusRate = 0.1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, bonusRate = 0.1);
 </code></pre></div>
 
                                 </td>
@@ -273,7 +282,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printSalaryDetails(2500, 20, 0.1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, 20, 0.1);
 </code></pre></div>
 
                                 </td>
@@ -294,7 +303,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printSalaryDetails(2500, annualIncrement = 100, bonusRate = 0.1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, annualIncrement = 100, bonusRate = 0.1);
 </code></pre></div>
 
                                 </td>
@@ -314,7 +323,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    printSalaryDetails(annualIncrement = 100, baseSalary = 2500, bonusRate = 0.1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(annualIncrement = 100, baseSalary = 2500, bonusRate = 0.1);
 }
 </code></pre></div>
 
@@ -350,8 +359,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run functions_with_defaultable_parameters.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run functions_with_defaultable_parameters.bal
 Base Salary: 2500 | Annual Increment: 20 | Bonus Rate: 0.02
 Base Salary: 2500 | Annual Increment: 100 | Bonus Rate: 0.02
 Base Salary: 2500 | Annual Increment: 100 | Bonus Rate: 0.02

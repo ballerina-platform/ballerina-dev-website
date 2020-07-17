@@ -88,7 +88,12 @@ redirect_from:
     <span class="nx">Person</span> <span class="nx">rPerson</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">readRecordFromFile</span><span class="p">(</span><span class="s">&quot;./files/person.bin&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reading person record from file&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">rPerson</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">data_io</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Person</span> <span class="nx">record</span> <span class="nx">successfully</span> <span class="nx">written</span> <span class="nx">to</span> <span class="nx">file</span>
+<span class="nx">Reading</span> <span class="nx">person</span> <span class="nx">record</span> <span class="nx">from</span> <span class="nx">file</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Ballerina</span> <span class="nx">age</span><span class="p">=</span><span class="mi">21</span> <span class="nx">income</span><span class="p">=</span><span class="mf">1543.12</span> <span class="nx">isMarried</span><span class="p">=</span><span class="kc">true</span>
 </pre></div>
 
             </div>
@@ -191,7 +196,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -204,7 +209,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type Person record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Person record {|
     string name = &quot;&quot;;
     int age = 0;
     float income = 0.0;
@@ -221,7 +226,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function serialize(Person p, io:WritableByteChannel byteChannel) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function serialize(Person p, io:WritableByteChannel byteChannel) {
     io:WritableDataChannel dc = new io:WritableDataChannel(byteChannel);
     var length = p.name.toBytes().length();
     var lengthResult = dc.writeInt32(length);
@@ -249,7 +254,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function deserialize(io:ReadableByteChannel byteChannel) returns Person {
+                                    <div class="highlight"><pre><code class=language-ballerina>function deserialize(io:ReadableByteChannel byteChannel) returns Person {
     Person person = {};
     int nameLength = 0;
     string nameValue;
@@ -272,7 +277,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var int32Result = dc.readInt32();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var int32Result = dc.readInt32();
     if (int32Result is int) {
         nameLength = int32Result;
     } else {
@@ -297,7 +302,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var strResult = dc.readString(nameLength, &quot;UTF-8&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var strResult = dc.readString(nameLength, &quot;UTF-8&quot;);
     if (strResult is string) {
         person.name = strResult;
     } else {
@@ -321,7 +326,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var int16Result = dc.readInt16();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var int16Result = dc.readInt16();
     if (int16Result is int) {
         person.age = int16Result;
     } else {
@@ -346,7 +351,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var float64Result = dc.readFloat64();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var float64Result = dc.readFloat64();
     if (float64Result is float) {
         person.income = float64Result;
     } else {
@@ -371,7 +376,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var boolResult = dc.readBool();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var boolResult = dc.readBool();
     if (boolResult is boolean) {
         person.isMarried = boolResult;
     } else {
@@ -396,7 +401,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var closeResult = dc.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var closeResult = dc.close();
     return person;
 }
 </code></pre></div>
@@ -417,7 +422,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function writeRecordToFile(Person p, string path) returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function writeRecordToFile(Person p, string path) returns @tainted error? {
     io:WritableByteChannel wc = check io:openWritableFile(path);
     serialize(p, wc);
 }
@@ -439,7 +444,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function readRecordFromFile(string path) returns @tainted Person|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function readRecordFromFile(string path) returns @tainted Person|error {
     io:ReadableByteChannel rc = check io:openReadableFile(path);
     return deserialize(rc);
 }
@@ -461,7 +466,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
     Person wPerson = {
         name: &quot;Ballerina&quot;,
         age: 21,
@@ -479,7 +484,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    check writeRecordToFile(wPerson, &quot;./files/person.bin&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check writeRecordToFile(wPerson, &quot;./files/person.bin&quot;);
     io:println(&quot;Person record successfully written to file&quot;);
 </code></pre></div>
 
@@ -499,7 +504,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Person rPerson = check readRecordFromFile(&quot;./files/person.bin&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person rPerson = check readRecordFromFile(&quot;./files/person.bin&quot;);
     io:println(&quot;Reading person record from file&quot;);
     io:println(rPerson);
 }
@@ -535,8 +540,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run data_io.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run data_io.bal
 Person record successfully written to file
 Reading person record from file
 name=Ballerina age=21 income=1543.12 isMarried=true

@@ -24,7 +24,13 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">scale</span><span class="p">(</span><span class="s">&quot;12&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">z</span> <span class="p">=</span> <span class="nx">scale</span><span class="p">(</span><span class="s">&quot;Invalid&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">z</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">check</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">12</span>
+<span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="kt">int</span><span class="p">}</span><span class="nx">NumberParsingError</span> <span class="kt">message</span><span class="p">=</span><span class="err">&#39;</span><span class="kt">string</span><span class="err">&#39;</span> <span class="nx">value</span> <span class="err">&#39;</span><span class="nx">invalid</span><span class="err">&#39;</span> <span class="nx">cannot</span> <span class="nx">be</span> <span class="nx">converted</span> <span class="nx">to</span> <span class="err">&#39;</span><span class="kt">int</span><span class="err">&#39;</span>
+<span class="mi">120</span>
+<span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="kt">int</span><span class="p">}</span><span class="nx">NumberParsingError</span> <span class="kt">message</span><span class="p">=</span><span class="err">&#39;</span><span class="kt">string</span><span class="err">&#39;</span> <span class="nx">value</span> <span class="err">&#39;</span><span class="nx">Invalid</span><span class="err">&#39;</span> <span class="nx">cannot</span> <span class="nx">be</span> <span class="nx">converted</span> <span class="nx">to</span> <span class="err">&#39;</span><span class="kt">int</span><span class="err">&#39;</span>
 </pre></div>
 
             </div>
@@ -117,7 +123,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.&#39;int;
 </code></pre></div>
 
@@ -130,7 +136,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function parse(string num) returns int|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function parse(string num) returns int|error {
     return &#39;int:fromString(num);
 }
 </code></pre></div>
@@ -151,7 +157,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function scale(string num) returns int|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function scale(string num) returns int|error {
 </code></pre></div>
 
                                 </td>
@@ -163,7 +169,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int x = check parse(num);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int x = check parse(num);
     return x * 10;
 }
 </code></pre></div>
@@ -190,7 +196,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -202,7 +208,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error w = parse(&quot;12&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error w = parse(&quot;12&quot;);
     io:println(w);
 </code></pre></div>
 
@@ -222,7 +228,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error x = parse(&quot;invalid&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error x = parse(&quot;invalid&quot;);
     io:println(x);
 </code></pre></div>
 
@@ -242,7 +248,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error y = scale(&quot;12&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error y = scale(&quot;12&quot;);
     io:println(y);
 </code></pre></div>
 
@@ -255,7 +261,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error z = scale(&quot;Invalid&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error z = scale(&quot;Invalid&quot;);
     io:println(z);
 }
 </code></pre></div>
@@ -283,8 +289,8 @@ import ballerina/lang.&#39;int;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run check.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run check.bal
 12
 error {ballerina/lang.int}NumberParsingError message=&#39;string&#39; value &#39;invalid&#39; cannot be converted to &#39;int&#39;
 120

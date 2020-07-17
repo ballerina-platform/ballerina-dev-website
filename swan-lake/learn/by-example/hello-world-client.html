@@ -16,7 +16,10 @@ redirect_from:
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v2/5ae082123200006b00510c3d/&quot;</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">hello_world_client</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Hello</span> <span class="nx">World</span>
 </pre></div>
 
             </div>
@@ -33,7 +36,21 @@ redirect_from:
                         </td>
                         <td class="cRightTD">
                             <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="hello-world-parallel.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Hello World Parallel</p>
+                                    </a>
+                                </div>
                                  
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="modules.html">
+                                        <span>NEXT ></span>
+                                        <p>Modules</p>
+                                    </a>
+                                </div>
+                                
                             </div>
                         </td>
                     </tr>
@@ -88,7 +105,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 </code></pre></div>
 
@@ -101,7 +118,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
 </code></pre></div>
 
                                 </td>
@@ -113,7 +130,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Client clientEP = new (&quot;http://www.mocky.io&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client clientEP = new (&quot;http://www.mocky.io&quot;);
 </code></pre></div>
 
                                 </td>
@@ -132,7 +149,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response resp = check clientEP-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Response resp = check clientEP-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;);
 </code></pre></div>
 
                                 </td>
@@ -151,7 +168,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string payload = check resp.getTextPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string payload = check resp.getTextPayload();
 </code></pre></div>
 
                                 </td>
@@ -170,7 +187,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(payload);
 }
 </code></pre></div>
 
@@ -204,8 +221,8 @@ import ballerina/io;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run hello_world_client.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run hello_world_client.bal
 Hello World
 </code></pre></div>
 

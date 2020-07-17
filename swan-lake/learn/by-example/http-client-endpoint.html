@@ -42,7 +42,14 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
                                     <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_client_endpoint</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">GET</span> <span class="nx">request</span><span class="p">:</span>
+<span class="p">{</span><span class="s">&quot;args&quot;</span><span class="p">:{</span><span class="s">&quot;test&quot;</span><span class="p">:</span><span class="s">&quot;123&quot;</span><span class="p">},</span> <span class="s">&quot;headers&quot;</span><span class="p">:{</span><span class="s">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="s">&quot;https&quot;</span><span class="p">,</span> <span class="s">&quot;host&quot;</span><span class="p">:</span><span class="s">&quot;postman-echo.com&quot;</span><span class="p">,</span> <span class="s">&quot;user-agent&quot;</span><span class="p">:</span><span class="s">&quot;ballerina/1.0.0-beta&quot;</span><span class="p">,</span> <span class="s">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="s">&quot;80&quot;</span><span class="p">},</span> <span class="s">&quot;url&quot;</span><span class="p">:</span><span class="s">&quot;https://postman-echo.com/get?test=123&quot;</span><span class="p">}</span><span class="nx">POST</span> <span class="nx">request</span><span class="p">:</span>
+<span class="p">{</span><span class="s">&quot;args&quot;</span><span class="p">:{},</span> <span class="s">&quot;data&quot;</span><span class="p">:</span><span class="s">&quot;POST: Hello World&quot;</span><span class="p">,</span> <span class="s">&quot;files&quot;</span><span class="p">:{},</span> <span class="s">&quot;form&quot;</span><span class="p">:{},</span> <span class="s">&quot;headers&quot;</span><span class="p">:{</span><span class="s">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="s">&quot;https&quot;</span><span class="p">,</span> <span class="s">&quot;host&quot;</span><span class="p">:</span><span class="s">&quot;postman-echo.com&quot;</span><span class="p">,</span> <span class="s">&quot;content-length&quot;</span><span class="p">:</span><span class="s">&quot;17&quot;</span><span class="p">,</span> <span class="s">&quot;content-type&quot;</span><span class="p">:</span><span class="s">&quot;text/plain&quot;</span><span class="p">,</span> <span class="s">&quot;user-agent&quot;</span><span class="p">:</span><span class="s">&quot;ballerina/1.0.0-beta&quot;</span><span class="p">,</span> <span class="s">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="s">&quot;80&quot;</span><span class="p">},</span> <span class="s">&quot;json&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span> <span class="s">&quot;url&quot;</span><span class="p">:</span><span class="s">&quot;https://postman-echo.com/post&quot;</span><span class="p">}</span><span class="nx">Use</span> <span class="nx">custom</span> <span class="nx">HTTP</span> <span class="nx">verbs</span><span class="p">:</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span><span class="p">;</span> <span class="nx">charset</span><span class="p">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Status</span> <span class="nx">code</span><span class="p">:</span> <span class="mi">200</span>
 </pre></div>
 
             </div>
@@ -153,7 +160,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 </code></pre></div>
 
@@ -166,7 +173,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://postman-echo.com&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://postman-echo.com&quot;);
 </code></pre></div>
 
                                 </td>
@@ -185,7 +192,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     io:println(&quot;GET request:&quot;);
 </code></pre></div>
 
@@ -198,7 +205,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response = clientEndpoint-&gt;get(&quot;/get?test=123&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var response = clientEndpoint-&gt;get(&quot;/get?test=123&quot;);
 </code></pre></div>
 
                                 </td>
@@ -217,7 +224,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handleResponse(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handleResponse(response);
 </code></pre></div>
 
                                 </td>
@@ -236,7 +243,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nPOST request:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nPOST request:&quot;);
 </code></pre></div>
 
                                 </td>
@@ -248,7 +255,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    response = clientEndpoint-&gt;post(&quot;/post&quot;, &quot;POST: Hello World&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;post(&quot;/post&quot;, &quot;POST: Hello World&quot;);
 </code></pre></div>
 
                                 </td>
@@ -267,7 +274,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handleResponse(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handleResponse(response);
 </code></pre></div>
 
                                 </td>
@@ -286,7 +293,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nUse custom HTTP verbs:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nUse custom HTTP verbs:&quot;);
 </code></pre></div>
 
                                 </td>
@@ -298,7 +305,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    response = clientEndpoint-&gt;execute(&quot;COPY&quot;, &quot;/get&quot;, &quot;CUSTOM: Hello World&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;execute(&quot;COPY&quot;, &quot;/get&quot;, &quot;CUSTOM: Hello World&quot;);
 </code></pre></div>
 
                                 </td>
@@ -317,7 +324,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Request req = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Request req = new;
     req.addHeader(&quot;Sample-Name&quot;, &quot;http-client-connector&quot;);
 </code></pre></div>
 
@@ -337,7 +344,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    response = clientEndpoint-&gt;get(&quot;/get&quot;, req);
+                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;get(&quot;/get&quot;, req);
     if (response is http:Response) {
 </code></pre></div>
 
@@ -358,7 +365,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string contentType = response.getContentType();
+                                    <div class="highlight"><pre><code class=language-ballerina>        string contentType = response.getContentType();
         io:println(&quot;Content-Type: &quot; + contentType);
 </code></pre></div>
 
@@ -378,7 +385,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        int statusCode = response.statusCode;
+                                    <div class="highlight"><pre><code class=language-ballerina>        int statusCode = response.statusCode;
         io:println(&quot;Status code: &quot; + statusCode.toString());
 </code></pre></div>
 
@@ -391,7 +398,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
         io:println(&quot;Error when calling the backend: &quot;,
                                     response.message());
     }
@@ -407,7 +414,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleResponse(http:Response|error response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|error response) {
     if (response is http:Response) {
 </code></pre></div>
 
@@ -427,7 +434,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var msg = response.getJsonPayload();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var msg = response.getJsonPayload();
         if (msg is json) {
 </code></pre></div>
 
@@ -447,7 +454,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(msg.toJsonString());
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(msg.toJsonString());
         } else {
             io:println(&quot;Invalid payload received:&quot;, msg.message());
         }
@@ -496,8 +503,8 @@ import ballerina/io;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run http_client_endpoint.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run http_client_endpoint.bal
 GET request:
 {&quot;args&quot;:{&quot;test&quot;:&quot;123&quot;}, &quot;headers&quot;:{&quot;x-forwarded-proto&quot;:&quot;https&quot;, &quot;host&quot;:&quot;postman-echo.com&quot;, &quot;user-agent&quot;:&quot;ballerina/1.0.0-beta&quot;, &quot;x-forwarded-port&quot;:&quot;80&quot;}, &quot;url&quot;:&quot;https://postman-echo.com/get?test=123&quot;}
 </code></pre></div>

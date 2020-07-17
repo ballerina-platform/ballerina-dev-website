@@ -252,13 +252,13 @@ The `runtime:timeout` function has been removed. The `runtime:sleep` function ca
 E.g., consider the following example, which uses the `runtime:timeout`.
 
 ```ballerina
-future<()> f1 = start runtime:sleep(50);
+future<()> f1 = runtime:timeout(50);
 ```
 
 This can now be done as follows:
 
 ```ballerina
-future<()> f1 = runtime:timeout(50);
+future<()> f1 = start runtime:sleep(50);
 ```
 
 - The `runtime:getProperty` function has been removed. Java interoperability can be used as the alternative to access Java system properties.

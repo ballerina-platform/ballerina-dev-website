@@ -3,10 +3,10 @@ layout: ballerina-left-nav-pages-swanlake
 title: Executing Tests
 description: Learn how to use different options for executing Ballerina tests.
 keywords: ballerina, programming language, testing
-permalink: /swan-lake/learn/executing-tests/
+permalink: /swan-lake/learn/testing-ballerina-code/executing-tests/
 active: executing-tests
 redirect_from:
-  - /swan-lake/learn/executing-tests
+  - /swan-lake/learn/testing-ballerina-code/executing-tests
 ---
 
 # Executing Tests

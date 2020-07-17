@@ -4,10 +4,10 @@ title: Mocking
 description: Learn how to use Ballerina's built-in mocking API provided by the test to test modules
  independent from other modules and external endpoints.
 keywords: ballerina, programming language, testing, mocking
-permalink: /swan-lake/learn/mocking/
+permalink: /swan-lake/learn/testing-ballerina-code/mocking/
 active: mocking
 redirect_from:
-  - /swan-lake/learn/mocking
+  - /swan-lake/learn/testing-ballerina-code/mocking
 ---
 
 # Mocking
@@ -31,7 +31,7 @@ You can write a custom mock object and substitute it in place of the real object
 
 ***Example:***
 
-Let's make changes to the example in the [Quick Start](/swan-lake/learn/testing-quick-start) page. In order to test the
+Let's make changes to the example in the [Quick Start](/swan-lake/learn/testing-ballerina-code/testing-quick-start) page. In order to test the
  `getRandomJoke` function without actually calling the endpoint, use the `test:mock` function to mock the `get` remote function of the client object.
 
 Change the content of the ***main_test.bal*** file as follows:
@@ -73,7 +73,7 @@ Instead of creating a test double, you may also choose to create a default mock 
 #### Stubbing to return a specific value
 
 ***Example:***
-The example in the [Quick Start](/swan-lake/learn/testing-quick-start) page shows how the `get` function of the client object can be
+The example in the [Quick Start](/swan-lake/learn/testing-ballerina-code/testing-quick-start) page shows how the `get` function of the client object can be
  stubbed to return a value. Let’s make changes to that example.
 
 **main.bal**
@@ -371,4 +371,4 @@ public function mockIntAdd(int a, int b) returns int {
 ## What's Next
  
 Now, that you are aware of the details on writing tests, learn the different options that can be used when [Executing
- Tests](/swan-lake/learn/executing-tests).
+ Tests](/swan-lake/learn/testing-ballerina-code/executing-tests).

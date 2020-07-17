@@ -1,6 +1,8 @@
 import json
+import sys
 
-with open('_data/stable-latest/metadata.json') as f:
+metadata_json_path = sys.argv[1]
+with open(metadata_json_path) as f:
     json_data =json.load(f)
 
 version = json_data['version'] 

@@ -167,7 +167,7 @@ type Employee record {|
 
 ### Improvements related to JSON compatibility
 
-Three langlib functions were introduced and `toJsonString` is now allowed to have `anydata`.
+Three new langlib methods have been introduced to improve converting to and from JSON. Additionally, the `toJsonString` method can now be called on `anydata` values.
 
 #### `toJson`
 `toJson` converts a value of type `anydata` to `json`. This does a deep copy of the value and converts values that do not belong to `json` into values that do. 
@@ -181,7 +181,7 @@ public function main() {
 
 #### `toJsonString`
 
-`toJsonString` converts a value of type `anydata` to a string that represents the value in JSON format. It first converts the value to a JSON using `toJson` and then converts it  to a `string`.
+`toJsonString` converts a value of type `anydata` to a string that represents the value in JSON format. It first converts the value to JSON using `toJson` and then converts it to a `string`.
 
 ```ballerina
 public function main() {

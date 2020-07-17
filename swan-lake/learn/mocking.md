@@ -31,11 +31,11 @@ You can write a custom mock object and substitute it in place of the real object
 
 ***Example:***
 
-Let's make changes to the example in the [Quick Start](/swan-lake/learn/testing-quick-start) page to define a test
+Let's make changes to the example in the [Quick Start](/swan-lake/learn/testing-quick-start) to define a test
  double for the  `clientEndpont` object.
 
 Note that only the `get` function is implemented since it is the only function used in the sample. Attempting to call
- any other member function of `clientEndpoint` will result in a runtime error.
+ any other member function of the `clientEndpoint` will result in a runtime error.
 
 ***main_test.bal***
 
@@ -43,7 +43,7 @@ Note that only the `get` function is implemented since it is the only function u
 import ballerina/test;
 import ballerina/http;
  
-// An instance of this object can be used as the test double for `clientEndpoint`.
+// An instance of this object can be used as the test double for the `clientEndpoint`.
 public type MockHttpClient client object {
     public remote function get(@untainted string path, public http:RequestMessage message = ()) 
     	returns http:Response|http:ClientError {
@@ -73,7 +73,7 @@ Instead of creating a test double, you may also choose to create a default mock 
 
 ***Example:***
 
-The example in the [Quick Start](/swan-lake/learn/testing-quick-start) page shows how the `get` function of the client object can be
+The example in the [Quick Start](/swan-lake/learn/testing-quick-start) shows how the `get` function of the client object can be
  stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g., food or movies).
 
 ***main.bal***
@@ -117,7 +117,7 @@ function getRandomJoke(string name, string category = "food") returns string|err
 
 ***utils.bal***
 
-The below util functions are used to validate the categories and construct errors based on the HTTP response.
+The util functions below are used to validate the categories and construct errors based on the HTTP response.
 
 ```ballerina
 import ballerina/io;
@@ -143,7 +143,7 @@ function createError(http:Response response) returns error {
 
 ***test_utils.bal***
 
-The below util functions are used to construct mock responses required for testing.
+The util functions below are used to construct mock responses required for testing.
   
   ```ballerina
 import ballerina/http;
@@ -202,7 +202,7 @@ public function testGetRandomJoke() {
 ***main_test.bal***
 
 This test stubs the behavior of the `get` function to return a specified sequence of values for each `get` function
- invocation. i.e., the first call to `get` will return the first argument and the second call will return the second
+ invocation i.e., the first call to the `get` function will return the first argument and the second call will return the second
   argument.
 
 ```ballerina
@@ -280,7 +280,7 @@ function sendNotification(string[] emailIds) returns error? {
 ```
 ***main_test.bal***
 
-This test stubs the behavior of the `send` function to do nothing for testing the `sendNotification` function
+This test stubs the behavior of the `send` function to do nothing for testing the `sendNotification` function.
 
 ```ballerina
 import ballerina/test;
@@ -303,7 +303,7 @@ function testSendNotification() {
 
 ## Mocking Functions
 
-Ballerina test framework provides the capability to mock a function. Using the mocking feature, you can easily mock a function in a module that you are testing or a function of an imported module. This feature will help you to test your Ballerina code independently from other modules and functions.
+The Ballerina test framework provides the capability to mock a function. Using the mocking feature, you can easily mock a function in a module that you are testing or a function of an imported module. This feature will help you to test your Ballerina code independently from other modules and functions.
 
 ### Mocking an imported function
 
@@ -380,7 +380,7 @@ public function intAdd(int a, int b) returns int {
 
 ***main_test.bal***
  
-This is the initialization of the mock function that should be called in place of the `intAdd` function
+This is the initialization of the mock function that should be called in place of the `intAdd` function.
 
 ```ballerina
 import ballerina/test;
@@ -417,7 +417,7 @@ function testReturn() {
 
 #### Stubbing to invoke another function in place of the real
 
-This test stubs the behavior of the `intAdd` function to substitute with a user-defined mock function.
+This test stubs the behavior of the `intAdd` function to substitute it with a user-defined mock function.
 
 ```ballerina
 import ballerina/test;
@@ -430,7 +430,7 @@ function testCall() {
     test:assertEquals(addValues(11, 6), 5, msg = "function mocking failed");
 }
     
-// Mock function to be used in place of the `intAdd` function
+// The mock function to be used in place of the `intAdd` function
 public function mockIntAdd(int a, int b) returns int {
     return (a - b);
 }

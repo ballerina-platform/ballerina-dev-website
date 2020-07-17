@@ -187,7 +187,8 @@ public function testGetRandomJoke() {
     test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
 
     // stub to return the specified mock response when the specified argument is passed
-    test:prepare(clientEndpoint).when("get").withArguments("/categories").thenReturn(getCategoriesResponse());
+    test:prepare(clientEndpoint).when("get").withArguments("/categories")
+        .thenReturn(getCategoriesResponse());
 
     // invoke the function to test
     string result = checkpanic getRandomJoke("Sheldon");
@@ -215,7 +216,8 @@ public function testGetRandomJoke() {
     clientEndpoint = <http:Client>test:mock(http:Client);
 
     // stub to return the corresponding value for each invocation 
-    test:prepare(clientEndpoint).when("get").thenReturnSequence(getCategoriesResponse(), getMockResponse());
+    test:prepare(clientEndpoint).when("get")
+        .thenReturnSequence(getCategoriesResponse(), getMockResponse());
 
     // invoke the function to test
     string result = checkpanic getRandomJoke("Sheldon");

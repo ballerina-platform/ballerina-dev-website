@@ -88,6 +88,8 @@ employee.details.isReadOnly()
 The `readonly` type can now be used as the contextually expected type for mapping and list constructor expressions. This results in the creation of a record or an array value which is immutable.
 
 ```ballerina
+import ballerina/io;
+
 type Details record {|
    string name;
    string author;

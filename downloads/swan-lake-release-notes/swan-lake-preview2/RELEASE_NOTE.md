@@ -167,7 +167,7 @@ type Employee record {|
 
 ### Improvements related to JSON compatibility
 
-Three new langlib methods have been introduced to improve converting to and from JSON. Additionally, the `toJsonString` method can now be called on `anydata` values.
+Three new methods have been introduced to the `ballerina/lang.value` module to facilitate converting to and from JSON. Additionally, the `toJsonString` method can now be called on `anydata` values.
 
 #### `toJson`
 `toJson` converts a value of type `anydata` to `json`. This does a deep copy of the value and converts values that do not belong to `json` into values that do. 

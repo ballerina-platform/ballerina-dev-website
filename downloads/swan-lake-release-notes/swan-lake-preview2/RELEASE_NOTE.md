@@ -2,14 +2,14 @@
 layout: release-note
 title: Release note
 ---
-# Overview of Ballerina Swan Lake - Preview2
+# Overview of Ballerina Swan Lake Preview 2
 This release is the second preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
 
 You can use the update tool to update to Ballerina Swan Lake Preview 2 as follows.
 
 **For existing users:**
 
-If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
+If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
                         
 > `ballerina update`
 
@@ -31,7 +31,7 @@ If you have not installed jBallerina, then download the [installers](https://bal
 - Improved mocking API in the test framework
 - Improved Docker images using thin JAR
 
-# What's new in Ballerina Swan Lake - Preview2
+# What's new in Ballerina Swan Lake Preview 2
 
 ## Language
 The language implementation is based on the [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/).   
@@ -137,7 +137,7 @@ Since `details` is created as an immutable value, the following check evaluates 
 ```ballerina
 details.isReadOnly()
 ```
-### The rest argument to pass arguments for required/defaultable parameters
+### Passing arguments for required/defaultable parameters via the rest argument
 
 Previously, the rest argument in a function/method call expression could only provide arguments for the rest parameter. A rest argument can now be used to provide arguments for required and/or defaultable parameters too.
 
@@ -167,9 +167,9 @@ type Employee record {|
 
 ### Improvements related to JSON compatibility
 
-Three langlib functions were introduced and `toJsonString` is now allowed to have `anydata`.
+Three new methods have been introduced to the `ballerina/lang.value` module to facilitate converting to and from JSON. Additionally, the `toJsonString` method can now be called on `anydata` values.
 
-#### `toJson`
+#### The `toJson` method
 `toJson` converts a value of type `anydata` to `json`. This does a deep copy of the value and converts values that do not belong to `json` into values that do. 
 
 ```ballerina
@@ -179,9 +179,9 @@ public function main() {
 }
 ```
 
-#### `toJsonString`
+#### The `toJsonString` method
 
-`toJsonString` converts a value of type `anydata` to a string that represents the value in the JSON format. It first converts the value to a JSON using `toJson` and then converts it  to a `string`.
+`toJsonString` converts a value of type `anydata` to a string that represents the value in the JSON format. It first converts the value to a JSON using `toJson` and then converts it to a `string`.
 
 ```ballerina
 public function main() {
@@ -193,7 +193,7 @@ public function main() {
 }
 ```
 
-#### `fromJsonWithType`
+#### The `fromJsonWithType` method
 
 `fromJsonWithType` converts a value of type `json` to a user-specified type. The implementation is similar to `cloneWithType` except that it also does the inverse of the conversions done by `toJson`.
 
@@ -209,7 +209,7 @@ public function main() {
 }
 ```
 
-#### `fromJsonStringWithType`
+#### The `fromJsonStringWithType` method
 
 `fromJsonStringWithType` converts a string in JSON format to a user-specified type. This method can be described as a combination of `fromJsonString` followed by `fromJsonWithType`.
 
@@ -230,7 +230,7 @@ The redirect client has been improved to support temporary and permanent redirec
 
 ### Log
 
-A `log:setModuleLogLevel` function has been introduced to allow users to set the module log level through the Log API.
+The new `log:setModuleLogLevel` function allows users to set the module log level through the Log API.
 
 ### Config
 
@@ -243,24 +243,25 @@ The `config:getAsArray` and `config:getAsMap` functions now return immutable val
 
 ### WebSocket
 
-The WebSocket client now supports cookies. A new field `cookies` has been introduced in the `http:WebSocketClientConfiguration` and `http:WebSocketFailoverClientConfiguration` to specify the cookies.
+The WebSocket client now supports cookies. A new field `cookies` has been introduced in the `http:WebSocketClientConfiguration` and `http:WebSocketFailoverClientConfiguration` records to specify the cookies.
 
 ### Runtime API
 
 - The `runtime:timeout` function has been removed. The `runtime:sleep` function can be used as the alternative.
 
-For example, when the following, which previously used the `runtime:timeout` is considered,
+E.g., consider the following example, which uses the `runtime:timeout` function.
 
 ```ballerina
 future<()> f1 = runtime:timeout(50);
 ```
-can be done as follows:
+
+This can now be done as follows:
+
 ```ballerina
 future<()> f1 = start runtime:sleep(50);
 ```
 
 - The `runtime:getProperty` function has been removed. Java interoperability can be used as the alternative to access Java system properties.
-
 - The auth-related configurations have been moved out from the `runtime:InvocationContext` to the newly-introduced `auth:InvocationContext`.
 
 ### Module organization

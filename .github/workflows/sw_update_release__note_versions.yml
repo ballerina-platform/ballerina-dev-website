@@ -28,7 +28,7 @@ jobs:
       run: python3 .github/scripts/publish_json.py _data/swanlake_release_notes_versions.json _data/swanlake-latest/metadata.json
 
     - name: Copy newly generated release-notes-json file
-      run: cp .github/scripts/target/release_notes_versions.json.json _data/swanlake_release_notes_versions.json
+      run: cp .github/scripts/target/release_notes_versions.json _data/swanlake_release_notes_versions.json
 
     - name: Commit release-notes-versions json file
       run: |

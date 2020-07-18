@@ -110,7 +110,7 @@ The below sections include information on using the IntelliJ Ballerina plugin to
 - [Creating a new Ballerina project](/swan-lake/learn/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-project)
 - [Setting up Ballerina SDK for an existing project](/swan-lake/learn/intellij-plugin/using-the-intellij-plugin#setting-up-ballerina-sdk-for-an-existing-project)
 - [Creating a new Ballerina file](/swan-lake/learn/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-file)
-- [Configuring the plugin settings](/learn/swan-lake/intellij-plugin/using-the-intellij-plugin#configuring-the-plugin-settings)
+- [Configuring the plugin settings](/swan-lake/learn/intellij-plugin/using-the-intellij-plugin#configuring-the-plugin-settings)
 
 ## Using the features of the plugin
 

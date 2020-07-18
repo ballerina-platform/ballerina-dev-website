@@ -9,6 +9,7 @@ redirect_from:
   - /learn/deployment/docker
   - /learn/deploying-ballerina-programs-in-the-cloud
   - /learn/deploying-ballerina-programs-in-the-cloud/
+  - /learn/deployment/
 ---
 
 # Docker

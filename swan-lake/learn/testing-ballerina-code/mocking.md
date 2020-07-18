@@ -35,7 +35,7 @@ Let's make changes to the example in the [Quick Start](/swan-lake/learn/testing-
  double for the  `clientEndpont` object.
 
 Note that only the `get` function is implemented since it is the only function used in the sample. Attempting to call
- any other member function of the `clientEndpoint` will result in a runtime error.
+ any other member function of the `clientEndpoint` will result in a runtime error. 
 
 ***main_test.bal***
 
@@ -73,7 +73,7 @@ Instead of creating a test double, you may also choose to create a default mock 
 
 ***Example:***
 
-The example in the [Quick Start](/swan-lake/learn/testing/ballerina-code/testing-quick-start) shows how the `get` function of the client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g., food or movies).
+The example in the [Quick Start](/swan-lake/learn/testing-ballerina-code/testing-quick-start) shows how the `get` function of the client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g., food or movies).
 
 ***main.bal***
 

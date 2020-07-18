@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,115 +69,39 @@ that is accessible via Java Database Connectivity (JDBC).
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Records</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="T0.html">T0</a>
-                        </li>
-                    
-                        <li >
-                            <a href="T1.html">T1</a>
-                        </li>
-                    
-                        <li >
-                            <a href="T2.html">T2</a>
-                        </li>
-                    
-                        <li >
-                            <a href="T3.html">T3</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="Options.html">Options</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../java.jdbc/index.html">
-            <h3>java.jdbc</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../java.jdbc/index.html#records">Records</a>
-        </li>
-        
-        
-        
-            <li>
-                <a data="clients" href="../../java.jdbc/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-    
-     <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Records</h3>
+                    <h3>
+    Records
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="T0.html">T0</a>
-                            </li>
-                        
-                            <li >
-                                <a href="T1.html">T1</a>
-                            </li>
-                        
-                            <li >
-                                <a href="T2.html">T2</a>
-                            </li>
-                        
-                            <li >
-                                <a href="T3.html">T3</a>
-                            </li>
-                        
-                            <li class="active">
-                                <a href="Options.html">Options</a>
-                            </li>
-                        
+    
+        <li class="active">
+            <a href="Options.html" onclick="menuLinkClick()">Options</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../java.jdbc/index.html">
+        <a href="../../java.jdbc/index.html" onclick="menuLinkClick()">
             <h3>java.jdbc</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../java.jdbc/index.html#records">Records</a>
+            <a data="records" href="../../java.jdbc/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
         
             <li>
-                <a data="clients" href="../../java.jdbc/index.html#clients">Clients</a>
+                <a data="clients" href="../../java.jdbc/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
@@ -181,40 +114,51 @@ that is accessible via Java Database Connectivity (JDBC).
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-            <h1> 
+            <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Record - </span>
-                
-                    <a href="../../java.jdbc/index.html">java.jdbc</a>
-                
-                 : <span class="records ">Options</span>
-            </h1>
-            <p>
-                
-                <p>Provides a set of configuration related to database.</p>
-
-            </p>
-            <div class="constants">
-                
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        <h2>Fields</h2>
-                            <div class="data-wrapper">
+                    
+    Record
+
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../../java.jdbc/index.html"><span class="modules">java.jdbc</span></a>
+                
+                 :
+                    
+    <span class="records ">Options</span>
+
+                
+            </h1>
+            
+    <p>
+        
+        <p>Provides a set of configuration related to database.</p>
+
+    </p>
+    <div class="constants">
+        
+        
+        <h2>Fields</h2>
+        <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -235,7 +179,7 @@ that is accessible via Java Database Connectivity (JDBC).
     <div class="params-listing">
         <ul>
             <li> <span >properties</span>
-                <span class="type">  <span class="builtin-type">map?</span></span>
+                <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">anydata</span>></span>
                  <span class="default">(default ())</span> 
             </li>
             <li>
@@ -251,17 +195,6 @@ that is accessible via Java Database Connectivity (JDBC).
 </div>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -288,6 +221,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -298,26 +249,16 @@ contentWrapper.addEventListener("scroll", event => {
     };
 </script>
 
-                    
-                
-            </div>
+        
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -344,6 +285,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -353,4 +312,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

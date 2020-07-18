@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,98 +68,38 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#decodeBase64Url">decodeBase64Url</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#decodeUriComponent">decodeUriComponent</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#encodeBase64Url">encodeBase64Url</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#encodeUriComponent">encodeUriComponent</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../encoding/index.html">
-            <h3>encoding</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../encoding/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../encoding/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../encoding/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#decodeBase64Url">decodeBase64Url</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#decodeUriComponent">decodeUriComponent</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#encodeBase64Url">encodeBase64Url</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#encodeUriComponent">encodeUriComponent</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#decodeBase64Url" onclick="menuLinkClick()">decodeBase64Url</a>
+        </li>
+    
+        <li >
+            <a href="#decodeUriComponent" onclick="menuLinkClick()">decodeUriComponent</a>
+        </li>
+    
+        <li >
+            <a href="#encodeBase64Url" onclick="menuLinkClick()">encodeBase64Url</a>
+        </li>
+    
+        <li >
+            <a href="#encodeUriComponent" onclick="menuLinkClick()">encodeUriComponent</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../encoding/index.html">
+        <a href="../encoding/index.html" onclick="menuLinkClick()">
             <h3>encoding</h3>
         </a>
     
@@ -161,110 +110,118 @@
         
         
             <li>
-                <a data="functions" href="../encoding/index.html#functions">Functions</a>
+                <a data="functions" href="../encoding/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
         
             <li>
-                <a data="types" href="../encoding/index.html#types">Types</a>
+                <a data="types" href="../encoding/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../encoding/index.html#errors">Errors</a>
+                <a data="errors" href="../encoding/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../encoding/index.html">encoding</a>
+                    <a href="../encoding/index.html"><span class="modules">encoding</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#decodeBase64Url">decodeBase64Url</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Decodes the Base64 URL encoded <code>string</code> into a byte array.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#decodeUriComponent">decodeUriComponent</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Decodes the given URI component into a <code>string</code> using the provided charset.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#encodeBase64Url">encodeBase64Url</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns the Base64 URL encoded <code>string</code> value of the given byte array.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#encodeUriComponent">encodeUriComponent</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Encodes the given URI component into a <code>string</code> using the provided charset.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#decodeBase64Url">decodeBase64Url</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Decodes the Base64 URL encoded <code>string</code> into a byte array.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#decodeUriComponent">decodeUriComponent</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Decodes the given URI component into a <code>string</code> using the provided charset.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#encodeBase64Url">encodeBase64Url</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns the Base64 URL encoded <code>string</code> value of the given byte array.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#encodeUriComponent">encodeUriComponent</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Encodes the given URI component into a <code>string</code> using the provided charset.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="decodeBase64Url" title="decodeBase64Url">
              <a class="url-link" href="#decodeBase64Url">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > decodeBase64Url </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> input)</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../encoding/types.html#Error">Error</a> 
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../encoding/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -309,19 +266,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="decodeUriComponent" title="decodeUriComponent">
              <a class="url-link" href="#decodeUriComponent">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > decodeUriComponent </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> uriComponent, <span class="builtin-type">string</span> charset)</p>
-            <b> returns </b><span class="builtin-type">string</span> | <a href="../encoding/types.html#Error">Error</a> 
+            
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../encoding/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -384,19 +341,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="encodeBase64Url" title="encodeBase64Url">
              <a class="url-link" href="#encodeBase64Url">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > encodeBase64Url </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -442,19 +399,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="encodeUriComponent" title="encodeUriComponent">
              <a class="url-link" href="#encodeUriComponent">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > encodeUriComponent </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> uriComponent, <span class="builtin-type">string</span> charset)</p>
-            <b> returns </b><span class="builtin-type">string</span> | <a href="../encoding/types.html#Error">Error</a> 
+            
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../encoding/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -517,28 +474,18 @@
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -565,6 +512,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -574,4 +539,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

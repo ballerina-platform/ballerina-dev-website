@@ -10,27 +10,42 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span> <span class="k">as</span> <span class="nx">ints</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
         <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kt">int</span> <span class="nx">j</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">j</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>
-        <span class="nx">j</span> <span class="p">=</span> <span class="nx">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">string</span> <span class="nx">input</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Enter age: (q to exit): &quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">input</span> <span class="o">==</span> <span class="s">&quot;q&quot;</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span>
-    <span class="p">}</span>    <span class="kt">int</span> <span class="nx">k</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">k</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">k</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">k</span> <span class="p">=</span> <span class="nx">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">var</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">age</span> <span class="p">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invalid value, try again.&quot;</span><span class="p">);</span>
             <span class="k">continue</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>
-        <span class="nx">k</span> <span class="p">=</span> <span class="nx">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="p">}</span>
+        <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Enter name: &quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="p">((</span><span class="nx">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot; can&quot;</span> <span class="p">:</span> <span class="s">&quot; cannot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; vote!&quot;</span><span class="p">);</span>
+    <span class="p">}}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="k">while</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="nx">Enter</span> <span class="nx">age</span><span class="p">:</span> <span class="p">(</span><span class="nx">q</span> <span class="nx">to</span> <span class="nx">exit</span><span class="p">):</span> <span class="mi">10</span><span class="nx">b</span> 
+<span class="nx">Invalid</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">try</span> <span class="nx">again</span><span class="p">.</span>
+<span class="nx">Enter</span> <span class="nx">age</span><span class="p">:</span> <span class="p">(</span><span class="nx">q</span> <span class="nx">to</span> <span class="nx">exit</span><span class="p">):</span> <span class="mi">15</span>
+<span class="nx">Enter</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Jack</span>
+<span class="nx">Jack</span> <span class="nx">cannot</span> <span class="nx">vote</span><span class="p">!</span>
+<span class="nx">Enter</span> <span class="nx">age</span><span class="p">:</span> <span class="p">(</span><span class="nx">q</span> <span class="nx">to</span> <span class="nx">exit</span><span class="p">):</span> <span class="mi">19</span>
+<span class="nx">Enter</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Jane</span>
+<span class="nx">Jane</span> <span class="nx">can</span> <span class="nx">vote</span><span class="p">!</span>
+<span class="nx">Enter</span> <span class="nx">age</span><span class="p">:</span> <span class="p">(</span><span class="nx">q</span> <span class="nx">to</span> <span class="nx">exit</span><span class="p">):</span> <span class="nx">q</span>
 </pre></div>
 
             </div>
@@ -110,8 +125,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -120,7 +133,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/lang.&#39;int as ints;
 </code></pre></div>
 
                                 </td>
@@ -132,7 +146,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     int i = 0;
 </code></pre></div>
 
@@ -145,7 +159,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (i &lt; 3) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (i &lt; 3) {
         io:println(i);
         i = i + 1;
     }
@@ -167,10 +181,9 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int j = 0;
-    while (j &lt; 5) {
-        io:println(j);
-        j = j + 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (true) {
+        string input = io:readln(&quot;Enter age: (q to exit): &quot;);
+        if (input == &quot;q&quot;) {
 </code></pre></div>
 
                                 </td>
@@ -182,10 +195,14 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (j == 3) {
-            break;
+                                    <div class="highlight"><pre><code class=language-ballerina>            break;
         }
-    }
+        var value = ints:fromString(input);
+        int age;
+        if (value is int) {
+            age = value;
+        } else {
+            io:println(&quot;Invalid value, try again.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -201,26 +218,14 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int k = 0;
-    while (k &lt; 5) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (k &lt; 3) {
-            k = k + 1;
-            continue;
+                                    <div class="highlight"><pre><code class=language-ballerina>            continue;
         }
+        string name = io:readln(&quot;Enter name: &quot;);
+        io:println(name + ((age &gt;= 18) ? &quot; can&quot; : &quot; cannot&quot;) + &quot; vote!&quot;);
+    }
 </code></pre></div>
 
                                 </td>
@@ -240,10 +245,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(k);
-        k = k + 1;
-    }
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -269,16 +271,20 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run while.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run while.bal
 0
 1
 2
-0
-1
-2
-3
-4
+Enter age: (q to exit): 10b 
+Invalid value, try again.
+Enter age: (q to exit): 15
+Enter name: Jack
+Jack cannot vote!
+Enter age: (q to exit): 19
+Enter name: Jane
+Jane can vote!
+Enter age: (q to exit): q
 </code></pre></div>
 
                                 </td>

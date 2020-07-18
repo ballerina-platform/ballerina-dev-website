@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,174 +68,126 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#validateOAuth2Token">validateOAuth2Token</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../oauth2/index.html">
-            <h3>oauth2</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../oauth2/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../oauth2/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../oauth2/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../oauth2/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../oauth2/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#validateOAuth2Token">validateOAuth2Token</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#validateOAuth2Token" onclick="menuLinkClick()">validateOAuth2Token</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../oauth2/index.html">
+        <a href="../oauth2/index.html" onclick="menuLinkClick()">
             <h3>oauth2</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../oauth2/index.html#records">Records</a>
+            <a data="records" href="../oauth2/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../oauth2/index.html#objects">Objects</a>
+                <a  data="objects" href="../oauth2/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../oauth2/index.html#functions">Functions</a>
+                <a data="functions" href="../oauth2/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
         
             <li>
-                <a data="types" href="../oauth2/index.html#types">Types</a>
+                <a data="types" href="../oauth2/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../oauth2/index.html#errors">Errors</a>
+                <a data="errors" href="../oauth2/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../oauth2/index.html">oauth2</a>
+                    <a href="../oauth2/index.html"><span class="modules">oauth2</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#validateOAuth2Token">validateOAuth2Token</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Validates the given OAuth2 token by calling the OAuth2 introspection endpoint.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#validateOAuth2Token">validateOAuth2Token</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Validates the given OAuth2 token by calling the OAuth2 introspection endpoint.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="validateOAuth2Token" title="validateOAuth2Token">
              <a class="url-link" href="#validateOAuth2Token">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > validateOAuth2Token </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> token, <a href="../oauth2/records/IntrospectionServerConfig.html">IntrospectionServerConfig</a> config)</p>
-            <b> returns </b><a href="../oauth2/records/IntrospectionResponse.html">IntrospectionResponse</a> | <a href="../oauth2/errors.html#Error">Error</a> 
+            
+                <b> returns </b><a href="../oauth2/records/IntrospectionResponse.html">IntrospectionResponse</a> | <a href="../oauth2/errors.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -288,28 +249,18 @@
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -336,6 +287,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -345,4 +314,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

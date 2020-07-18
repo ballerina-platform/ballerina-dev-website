@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +13,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides functions to retrieve information about the system and the current users of the system. The <code>system:exec</code> method creates the <code>system:Process</code> object, which can control and obtain information about a Ballerina process.
+    <meta name="description" content="This module provides functions to retrieve information about the system and the current users of the system. The system:exec method creates the system:Process object, which can control and obtain information about a Ballerina process.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,system">
 
@@ -41,6 +49,7 @@
 
 </head>
 
+
 <body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
@@ -58,110 +67,42 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Errors</h3>
-                <ul>
-                    
-                        <li ></li>
-                            <a href="#FileNotFoundError">FileNotFoundError</a>
-                        </li>
-                    
-                        <li ></li>
-                            <a href="#FileSystemError">FileSystemError</a>
-                        </li>
-                    
-                        <li ></li>
-                            <a href="#InvalidOperationError">InvalidOperationError</a>
-                        </li>
-                    
-                        <li ></li>
-                            <a href="#PermissionError">PermissionError</a>
-                        </li>
-                    
-                        <li ></li>
-                            <a href="#ProcessExecError">ProcessExecError</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../system/index.html">
-            <h3>system</h3>
-        </a>
-    
-    <ul>
-        
-        
-            <li>
-                <a  data="objects" href="../system/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../system/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../system/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../system/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Errors</h3>
+                    <h3>
+    Errors
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#FileNotFoundError">FileNotFoundError</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#FileSystemError">FileSystemError</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#InvalidOperationError">InvalidOperationError</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#PermissionError">PermissionError</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ProcessExecError">ProcessExecError</a>
-                            </li>
-                        
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#FileNotFoundError">FileNotFoundError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#FileSystemError">FileSystemError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#InvalidOperationError">InvalidOperationError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#PermissionError">PermissionError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#ProcessExecError">ProcessExecError</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../system/index.html">
+        <a href="../system/index.html" onclick="menuLinkClick()">
             <h3>system</h3>
         </a>
     
@@ -169,152 +110,150 @@
         
         
             <li>
-                <a  data="objects" href="../system/index.html#objects">Objects</a>
+                <a  data="objects" href="../system/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../system/index.html#functions">Functions</a>
+                <a data="functions" href="../system/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
         
             <li>
-                <a data="types" href="../system/index.html#types">Types</a>
+                <a data="types" href="../system/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../system/index.html#errors">Errors</a>
+                <a data="errors" href="../system/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Errors - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Errors
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../system/index.html">system</a>
+                    <a href="../system/index.html"><span class="modules">system</span></a>
+                
                 
             </h1>
-            <div class="errors">
-                <div class="data-wrapper">
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li>
-                                    <b >FileNotFoundError </b>
-                                    <span class="type"></span>
-                                    
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents a <code>FileNotFoundError</code> with the message and the cause.</p>
+            
+    <div class="errors">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="FileNotFoundError">
+                            <b >FileNotFoundError </b>
+                            <span class="type"></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents a <code>FileNotFoundError</code> with the message and the cause.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li>
-                                    <b >FileSystemError </b>
-                                    <span class="type"></span>
-                                    
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents a <code>FileSystemError</code> with the message and the cause.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li>
-                                    <b >InvalidOperationError </b>
-                                    <span class="type"></span>
-                                    
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents an <code>InvalidOperationError</code> with the message and the cause.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li>
-                                    <b >PermissionError </b>
-                                    <span class="type"></span>
-                                    
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents a <code>PermissionError</code> with the message and the cause.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li>
-                                    <b >ProcessExecError </b>
-                                    <span class="type"></span>
-                                    
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents an <code>ProcessExecError</code> with the message and the cause.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="FileSystemError">
+                            <b >FileSystemError </b>
+                            <span class="type"></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents a <code>FileSystemError</code> with the message and the cause.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="InvalidOperationError">
+                            <b >InvalidOperationError </b>
+                            <span class="type"></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents an <code>InvalidOperationError</code> with the message and the cause.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="PermissionError">
+                            <b >PermissionError </b>
+                            <span class="type"></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents a <code>PermissionError</code> with the message and the cause.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="ProcessExecError">
+                            <b >ProcessExecError </b>
+                            <span class="type"></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents an <code>ProcessExecError</code> with the message and the cause.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -341,6 +280,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -350,4 +307,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

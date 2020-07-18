@@ -35,7 +35,12 @@ redirect_from:
                 <span class="s">&quot;Unexpected type&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">kafka_consumer_client</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Then</span> <span class="nx">it</span> <span class="nx">will</span> <span class="nx">print</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">lines</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Console</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="nx">received</span> <span class="nx">messages</span> <span class="k">if</span> <span class="nx">there</span><span class="err">&#39;</span><span class="nx">s</span> <span class="kt">any</span><span class="p">.</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">]</span> <span class="nx">kafka</span> <span class="nx">servers</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9092</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">]</span> <span class="nx">subscribed</span> <span class="nx">topics</span><span class="p">:</span> <span class="nx">test</span><span class="o">-</span><span class="nx">kafka</span><span class="o">-</span><span class="nx">topic</span>
 </pre></div>
 
             </div>
@@ -144,7 +149,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/kafka;
 import ballerina/lang.&#39;string;
 import ballerina/log;
@@ -159,7 +164,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:ConsumerConfiguration consumerConfiguration = {
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfiguration consumerConfiguration = {
 </code></pre></div>
 
                                 </td>
@@ -171,7 +176,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
 </code></pre></div>
 
                                 </td>
@@ -191,7 +196,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    groupId: &quot;group-id&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    groupId: &quot;group-id&quot;,
     offsetReset: &quot;earliest&quot;,
 </code></pre></div>
 
@@ -204,7 +209,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    topics: [&quot;test-kafka-topic&quot;]
+                                    <div class="highlight"><pre><code class=language-ballerina>    topics: [&quot;test-kafka-topic&quot;]
 </code></pre></div>
 
                                 </td>
@@ -223,7 +228,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>};
+                                    <div class="highlight"><pre><code class=language-ballerina>};
 </code></pre></div>
 
                                 </td>
@@ -235,7 +240,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:Consumer consumer = new (consumerConfiguration);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Consumer consumer = new (consumerConfiguration);
 </code></pre></div>
 
                                 </td>
@@ -247,7 +252,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -259,7 +264,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var results = consumer-&gt;poll(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var results = consumer-&gt;poll(1000);
 </code></pre></div>
 
                                 </td>
@@ -278,7 +283,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (results is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (results is error) {
         log:printError(&quot;Error occurred while polling &quot;, results);
     }
     kafka:ConsumerRecord[] records = &lt;kafka:ConsumerRecord[]&gt;results;
@@ -296,7 +301,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            string|error message = &#39;string:fromBytes(serializedMessage);
+                                    <div class="highlight"><pre><code class=language-ballerina>            string|error message = &#39;string:fromBytes(serializedMessage);
 </code></pre></div>
 
                                 </td>
@@ -315,7 +320,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (message is string) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (message is string) {
 </code></pre></div>
 
                                 </td>
@@ -327,7 +332,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                io:println(&quot;Topic: &quot;, kafkaRecord.topic, &quot; Received Message: &quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>                io:println(&quot;Topic: &quot;, kafkaRecord.topic, &quot; Received Message: &quot;,
                     message);
 </code></pre></div>
 
@@ -347,7 +352,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>            } else {
                 log:printError(&quot;Error occurred while converting message data&quot;,
                     message);
             }
@@ -386,8 +391,8 @@ import ballerina/log;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run kafka_consumer_client.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run kafka_consumer_client.bal
 </code></pre></div>
 
                                 </td>

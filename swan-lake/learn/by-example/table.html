@@ -60,7 +60,26 @@ redirect_from:
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Meena&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Kaur&quot;</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Jay&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;Palm Grove, NY&quot;</span><span class="p">}</span>
     <span class="p">];</span>
-   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student Table Information: &quot;</span><span class="p">,</span> <span class="nx">studentTab</span><span class="p">);}</span>
+   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student Table Information: &quot;</span><span class="p">,</span> <span class="nx">studentTab</span><span class="p">);}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">table</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Employee</span> <span class="nx">Table</span> <span class="nx">Information</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">300.5</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">2</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Bella</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">500.5</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">750.0</span>
+<span class="nx">Total</span> <span class="nx">number</span> <span class="nx">of</span> <span class="nx">Employees</span><span class="p">:</span> <span class="mi">3</span>
+<span class="nx">New</span> <span class="nx">Employee</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">4</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Max</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">900.0</span>
+<span class="nx">Employee</span> <span class="mi">1</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">300.5</span>
+<span class="nx">Information</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">removed</span> <span class="nx">Employee</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">2</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Bella</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">500.5</span>
+<span class="nx">Employee</span> <span class="nx">table</span> <span class="nx">keys</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span>
+<span class="nx">Employee</span> <span class="nx">table</span> <span class="nx">to</span> <span class="nx">list</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">300.5</span> <span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">750.0</span> <span class="nx">id</span><span class="p">=</span><span class="mi">4</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Max</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">900.0</span>
+<span class="nx">Employees</span> <span class="nx">with</span> <span class="nx">salary</span> <span class="p">&lt;</span> <span class="mf">400.0</span><span class="p">:</span> <span class="nx">John</span> 
+<span class="nx">Person</span> <span class="nx">Table</span> <span class="nx">Information</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">age</span><span class="p">=</span><span class="mi">23</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">age</span><span class="p">=</span><span class="mi">23</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">4</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Max</span> <span class="nx">age</span><span class="p">=</span><span class="mi">23</span>
+<span class="nx">Customer</span> <span class="nx">Table</span> <span class="nx">Information</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">13</span> <span class="nx">fname</span><span class="p">=</span><span class="nx">Dan</span> <span class="nx">lname</span><span class="p">=</span><span class="nx">Bing</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">23</span> <span class="nx">fname</span><span class="p">=</span><span class="nx">Hay</span> <span class="nx">lname</span><span class="p">=</span><span class="nx">Kelsey</span>
+<span class="nx">Student</span> <span class="nx">Table</span> <span class="nx">Information</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">44</span> <span class="nx">fname</span><span class="p">=</span><span class="nx">Meena</span> <span class="nx">lname</span><span class="p">=</span><span class="nx">Kaur</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">55</span> <span class="nx">fname</span><span class="p">=</span><span class="nx">Jay</span> <span class="nx">address</span><span class="p">=</span><span class="nx">Palm</span> <span class="nx">Grove</span><span class="p">,</span> <span class="nx">NY</span>
 </pre></div>
 
             </div>
@@ -178,7 +197,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -190,7 +209,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {|
     readonly int id;
     string name;
     int age;
@@ -206,7 +225,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {
     readonly int id;
     string name;
     float salary;
@@ -231,7 +250,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type EmployeeTable table&lt;Employee&gt; key(id);
+                                    <div class="highlight"><pre><code class=language-ballerina>type EmployeeTable table&lt;Employee&gt; key(id);
 </code></pre></div>
 
                                 </td>
@@ -252,7 +271,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type CustomerTable table&lt;map&lt;any&gt;&gt;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type CustomerTable table&lt;map&lt;any&gt;&gt;;
 </code></pre></div>
 
                                 </td>
@@ -271,7 +290,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -283,7 +302,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    EmployeeTable employeeTab = table [
+                                    <div class="highlight"><pre><code class=language-ballerina>    EmployeeTable employeeTab = table [
       {id: 1, name: &quot;John&quot;, salary: 300.50},
       {id: 2, name: &quot;Bella&quot;, salary: 500.50},
       {id: 3, name: &quot;Peter&quot;, salary: 750.0}
@@ -308,7 +327,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Employee Table Information: &quot;, employeeTab);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Employee Table Information: &quot;, employeeTab);
 </code></pre></div>
 
                                 </td>
@@ -327,7 +346,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Total number of Employees: &quot;, employeeTab.length());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Total number of Employees: &quot;, employeeTab.length());
 </code></pre></div>
 
                                 </td>
@@ -346,7 +365,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee emp = {id: 4, name: &quot;Max&quot;, salary: 900.0};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee emp = {id: 4, name: &quot;Max&quot;, salary: 900.0};
     employeeTab.add(emp);
 </code></pre></div>
 
@@ -366,7 +385,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;New Employee: &quot;, employeeTab[4]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;New Employee: &quot;, employeeTab[4]);
 </code></pre></div>
 
                                 </td>
@@ -385,7 +404,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Employee 1: &quot;, employeeTab.get(1));
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Employee 1: &quot;, employeeTab.get(1));
 </code></pre></div>
 
                                 </td>
@@ -404,7 +423,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Information of the removed Employee: &quot;, employeeTab.remove(2));
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Information of the removed Employee: &quot;, employeeTab.remove(2));
 </code></pre></div>
 
                                 </td>
@@ -423,7 +442,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var personTblKeys = employeeTab.keys();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var personTblKeys = employeeTab.keys();
     io:println(&quot;Employee table keys: &quot;, personTblKeys);
 </code></pre></div>
 
@@ -443,7 +462,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee[] tableToList = employeeTab.toArray();
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee[] tableToList = employeeTab.toArray();
     io:println(&quot;Employee table to list: &quot;, tableToList);
 </code></pre></div>
 
@@ -463,7 +482,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string filtered = &quot;&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string filtered = &quot;&quot;;
     employeeTab.forEach(function (Employee employee) {
            if (employee.salary &lt; 400.0) {
               filtered += employee.name;
@@ -490,7 +509,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; personTab = employeeTab.&#39;map(function (Employee employee)
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;Person&gt; personTab = employeeTab.&#39;map(function (Employee employee)
                                                             returns Person {
         return {id: employee.id, name:employee.name, age:23};
     });
@@ -514,7 +533,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    CustomerTable customerTab = table [
+                                    <div class="highlight"><pre><code class=language-ballerina>    CustomerTable customerTab = table [
         {id: 13 , fname: &quot;Dan&quot;, lname: &quot;Bing&quot;},
         {id: 23 , fname: &quot;Hay&quot; , lname: &quot;Kelsey&quot;}
     ];
@@ -537,7 +556,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var studentTab = table [
+                                    <div class="highlight"><pre><code class=language-ballerina>    var studentTab = table [
         {id: 44, fname: &quot;Meena&quot;, lname: &quot;Kaur&quot;},
         {id: 55, fname: &quot;Jay&quot;, address: &quot;Palm Grove, NY&quot;}
     ];
@@ -561,7 +580,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -587,8 +606,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run table.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run table.bal
 Employee Table Information: id=1 name=John salary=300.5
 id=2 name=Bella salary=500.5
 id=3 name=Peter salary=750.0

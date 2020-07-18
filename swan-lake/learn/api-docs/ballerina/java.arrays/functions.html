@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,106 +68,46 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#fromHandle">fromHandle</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#get">get</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getLength">getLength</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#newInstance">newInstance</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#set">set</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#toHandle">toHandle</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../java.arrays/index.html">
-            <h3>java.arrays</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../java.arrays/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#fromHandle">fromHandle</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#get">get</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getLength">getLength</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#newInstance">newInstance</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#set">set</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#toHandle">toHandle</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#fromHandle" onclick="menuLinkClick()">fromHandle</a>
+        </li>
+    
+        <li >
+            <a href="#get" onclick="menuLinkClick()">get</a>
+        </li>
+    
+        <li >
+            <a href="#getLength" onclick="menuLinkClick()">getLength</a>
+        </li>
+    
+        <li >
+            <a href="#newInstance" onclick="menuLinkClick()">newInstance</a>
+        </li>
+    
+        <li >
+            <a href="#set" onclick="menuLinkClick()">set</a>
+        </li>
+    
+        <li >
+            <a href="#toHandle" onclick="menuLinkClick()">toHandle</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../java.arrays/index.html">
+        <a href="../java.arrays/index.html" onclick="menuLinkClick()">
             <h3>java.arrays</h3>
         </a>
     
@@ -169,7 +118,7 @@
         
         
             <li>
-                <a data="functions" href="../java.arrays/index.html#functions">Functions</a>
+                <a data="functions" href="../java.arrays/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -180,111 +129,119 @@
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../java.arrays/index.html">java.arrays</a>
+                    <a href="../java.arrays/index.html"><span class="modules">java.arrays</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#fromHandle">fromHandle</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns a Ballerina array for a handle that holds a Java array.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#get">get</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getLength">getLength</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns the length of the given Java array.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#newInstance">newInstance</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns a new Java array instance with the specified element type and dimensions.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#set">set</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Replaces the indexed element at the specified index in the given Java array with the specified element.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#toHandle">toHandle</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns a handle value representation for a Ballerina array.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#fromHandle">fromHandle</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns a Ballerina array for a handle that holds a Java array.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#get">get</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getLength">getLength</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns the length of the given Java array.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#newInstance">newInstance</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns a new Java array instance with the specified element type and dimensions.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#set">set</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Replaces the indexed element at the specified index in the given Java array with the specified element.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#toHandle">toHandle</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns a handle value representation for a Ballerina array.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="fromHandle" title="fromHandle">
              <a class="url-link" href="#fromHandle">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > fromHandle </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">handle</span> array, <span class="builtin-type">string</span> jType, <span class="builtin-type">string</span> bType)</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">any</span>[]</span> | <span class="builtin-type">error</span> 
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">any</span>[]</span> | <span class="builtin-type">error</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -363,19 +320,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="get" title="get">
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > get </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">handle</span> array, <span class="builtin-type">int</span> index)</p>
-            <b> returns </b><span class="builtin-type">handle</span> 
+            
+                <b> returns </b><span class="builtin-type">handle</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -440,19 +397,19 @@ to a Java array.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getLength" title="getLength">
              <a class="url-link" href="#getLength">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getLength </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">handle</span> array)</p>
-            <b> returns </b><span class="builtin-type">int</span> 
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -498,19 +455,19 @@ to a Java array.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="newInstance" title="newInstance">
              <a class="url-link" href="#newInstance">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > newInstance </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">handle</span> class, <span class="array-type"><span class="builtin-type">int</span>[]</span> dimensions)</p>
-            <b> returns </b><span class="builtin-type">handle</span> 
+            <p>(<span class="builtin-type">handle</span> class, <span class="array-type"><span class="builtin-type">int</span>...</span> dimensions)</p>
+            
+                <b> returns </b><span class="builtin-type">handle</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -546,7 +503,7 @@ with a <code>panic</code> if the specified handle refers to a Java null or if ze
                 <ul>
                     <li>
                         <span >dimensions</span>
-                        <span class="type">  <span class="array-type"><span class="builtin-type">int</span>[]</span> </span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">int</span>...</span> </span>
                         
                     </li>
                     <li>
@@ -574,14 +531,17 @@ with a <code>panic</code> if the specified handle refers to a Java null or if ze
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="set" title="set">
              <a class="url-link" href="#set">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > set </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">handle</span> array, <span class="builtin-type">int</span> index, <span class="builtin-type">handle</span> element)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -653,19 +613,19 @@ not refer to a Java array.</p>
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="toHandle" title="toHandle">
              <a class="url-link" href="#toHandle">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > toHandle </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">any</span>[]</span> array, <span class="builtin-type">string</span> jType)</p>
-            <b> returns </b><span class="builtin-type">handle</span> | <span class="builtin-type">error</span> 
+            
+                <b> returns </b><span class="builtin-type">handle</span> | <span class="builtin-type">error</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -727,28 +687,18 @@ not refer to a Java array.</p>
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -775,6 +725,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -784,4 +752,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

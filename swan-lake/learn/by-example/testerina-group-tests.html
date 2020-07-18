@@ -30,7 +30,38 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">testFunction3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the ungrouped test&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina test`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">You</span> <span class="nx">need</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">ballerina</span><span class="o">-</span><span class="nx">tools</span> <span class="nx">distribution</span>
+<span class="err">#</span> <span class="nx">installed</span> <span class="nx">to</span> <span class="nx">execute</span> <span class="nx">this</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">test</span> <span class="o">--</span><span class="nx">groups</span> <span class="nx">g1</span> <span class="o">--</span><span class="nx">groups</span> <span class="nx">g2</span> <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span> 
+<span class="nx">Compiling</span> <span class="nx">tests</span>
+    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">balRunning</span> <span class="nx">tests</span>
+    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">groups</span> <span class="nx">g1</span> <span class="nx">and</span> <span class="nx">g2</span><span class="p">!</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">group</span> <span class="nx">g1</span><span class="p">!</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction2</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction1</span>        <span class="mi">2</span> <span class="nx">passing</span>
+        <span class="mi">0</span> <span class="nx">failing</span>
+        <span class="mi">0</span> <span class="nx">skippedballerina</span> <span class="nx">test</span> <span class="o">--</span><span class="nx">groups</span> <span class="nx">g1</span> <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span> 
+<span class="nx">Compiling</span> <span class="nx">tests</span>
+    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">balRunning</span> <span class="nx">tests</span>
+    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">groups</span> <span class="nx">g1</span> <span class="nx">and</span> <span class="nx">g2</span><span class="p">!</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">group</span> <span class="nx">g1</span><span class="p">!</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction2</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction1</span>        <span class="mi">2</span> <span class="nx">passing</span>
+        <span class="mi">0</span> <span class="nx">failing</span>
+        <span class="mi">0</span> <span class="nx">skippedballerina</span> <span class="nx">test</span> <span class="o">--</span><span class="nx">disable</span><span class="o">-</span><span class="nx">groups</span> <span class="nx">g2</span> <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span> 
+<span class="nx">Compiling</span> <span class="nx">tests</span>
+    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">balRunning</span> <span class="nx">tests</span>
+    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">the</span> <span class="nx">ungrouped</span> <span class="nx">test</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">group</span> <span class="nx">g1</span><span class="p">!</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction3</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction1</span>        <span class="mi">2</span> <span class="nx">passing</span>
+        <span class="mi">0</span> <span class="nx">failing</span>
+        <span class="mi">0</span> <span class="nx">skipped</span>
 </pre></div>
 
             </div>
@@ -60,9 +91,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="testerina-mocking-functions.html">
+                                    <a class="next" href="testerina-mocking-objects.html">
                                         <span>NEXT ></span>
-                                        <p>Function Mocking</p>
+                                        <p>Object Mocking</p>
                                     </a>
                                 </div>
                                 
@@ -116,7 +147,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/test;
 </code></pre></div>
 
@@ -129,7 +160,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
     groups: [&quot;g1&quot;]
 }
 function testFunction1() {
@@ -154,7 +185,7 @@ function testFunction1() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
     groups: [&quot;g1&quot;, &quot;g2&quot;]
 }
 function testFunction2() {
@@ -179,7 +210,7 @@ function testFunction2() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testFunction3() {
     io:println(&quot;I&#39;m the ungrouped test&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -248,10 +279,10 @@ function testFunction3() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina test` command.
+# `.bal` file, and execute the `ballerina test` command below.
 # You need to have the ballerina-tools distribution
 # installed to execute this command.
-$ ballerina test --groups g1 --groups g2 testerina_group_tests.bal 
+ballerina test --groups g1 --groups g2 testerina_group_tests.bal 
 Compiling tests
     testerina_group_tests.bal
 </code></pre></div>
@@ -296,7 +327,7 @@ I&#39;m in test belonging to group g1!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina test --groups g1 testerina_group_tests.bal 
+                                    <div class="highlight"><pre><code class=shell-session>ballerina test --groups g1 testerina_group_tests.bal 
 Compiling tests
     testerina_group_tests.bal
 </code></pre></div>
@@ -341,7 +372,7 @@ I&#39;m in test belonging to group g1!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina test --disable-groups g2 testerina_group_tests.bal 
+                                    <div class="highlight"><pre><code class=shell-session>ballerina test --disable-groups g2 testerina_group_tests.bal 
 Compiling tests
     testerina_group_tests.bal
 </code></pre></div>

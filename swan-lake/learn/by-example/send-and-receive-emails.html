@@ -28,7 +28,9 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while sending the email: &quot;</span>
             <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
+    <span class="p">}}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">send_email</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Check</span> <span class="nx">the</span> <span class="nx">inbox</span> <span class="nx">to</span> <span class="nx">view</span> <span class="nx">the</span> <span class="nx">email</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">popClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span>
         <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
@@ -47,7 +49,9 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while creating client: &quot;</span>
             <span class="o">+</span> <span class="nx">popClient</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">receive_email</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Subject</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">content</span> <span class="nx">body</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">email</span> <span class="nx">would</span> <span class="nx">be</span> <span class="nx">printed</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span><span class="p">|</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">imapClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;imap.email.com&quot;</span><span class="p">,</span>
         <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
@@ -66,7 +70,9 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while creating client: &quot;</span>
             <span class="o">+</span> <span class="nx">imapClient</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">receive_email</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Subject</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">content</span> <span class="nx">body</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">email</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">printed</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="nx">email</span><span class="p">:</span><span class="nx">PopConfig</span> <span class="nx">popConfig</span> <span class="p">=</span> <span class="p">{</span>
      <span class="nx">port</span><span class="p">:</span> <span class="mi">995</span><span class="p">,</span>
@@ -88,7 +94,10 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">emailError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while polling for the emails: &quot;</span>
             <span class="o">+</span> <span class="nx">emailError</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}}</span>
+    <span class="p">}}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">listen_email</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Subject</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">content</span> <span class="nx">body</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">email</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">printed</span> <span class="k">for</span> <span class="nx">each</span> <span class="nx">of</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="nx">emails</span> <span class="nx">polled</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -183,7 +192,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/email;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/email;
 import ballerina/io;
 </code></pre></div>
 
@@ -196,7 +205,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -208,7 +217,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    email:SmtpClient smtpClient = new (&quot;smtp.email.com&quot;, &quot;sender@email.com&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:SmtpClient smtpClient = new (&quot;smtp.email.com&quot;, &quot;sender@email.com&quot;
         , &quot;pass123&quot;);
 </code></pre></div>
 
@@ -230,7 +239,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    email:Email email = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:Email email = {
 </code></pre></div>
 
                                 </td>
@@ -249,7 +258,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        to: [&quot;receiver1@email.com&quot;, &quot;receiver2@email.com&quot;],
+                                    <div class="highlight"><pre><code class=language-ballerina>        to: [&quot;receiver1@email.com&quot;, &quot;receiver2@email.com&quot;],
         cc: [&quot;receiver3@email.com&quot;, &quot;receiver4@email.com&quot;],
         bcc: [&quot;receiver5@email.com&quot;],
 </code></pre></div>
@@ -271,7 +280,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        subject: &quot;Sample Email&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        subject: &quot;Sample Email&quot;,
 </code></pre></div>
 
                                 </td>
@@ -290,7 +299,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        body: &quot;This is a sample email.&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        body: &quot;This is a sample email.&quot;,
 </code></pre></div>
 
                                 </td>
@@ -310,7 +319,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        &#39;from: &quot;author@email.com&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        &#39;from: &quot;author@email.com&quot;,
 </code></pre></div>
 
                                 </td>
@@ -329,7 +338,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        sender: &quot;sender@email.com&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        sender: &quot;sender@email.com&quot;,
 </code></pre></div>
 
                                 </td>
@@ -350,7 +359,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        replyTo: [&quot;replyTo1@email.com&quot;, &quot;replyTo2@email.com&quot;]
+                                    <div class="highlight"><pre><code class=language-ballerina>        replyTo: [&quot;replyTo1@email.com&quot;, &quot;replyTo2@email.com&quot;]
     };
 </code></pre></div>
 
@@ -373,7 +382,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    email:Error? response = smtpClient-&gt;send(email);
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:Error? response = smtpClient-&gt;send(email);
     if (response is email:Error) {
         io:println(&quot;Error while sending the email: &quot;
             + response.message());
@@ -396,7 +405,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -426,8 +435,8 @@ import ballerina/io;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run send_email.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run send_email.bal
 </code></pre></div>
 
                                 </td>
@@ -490,7 +499,7 @@ $ ballerina run send_email.bal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/email;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/email;
 import ballerina/io;
 </code></pre></div>
 
@@ -503,7 +512,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -515,7 +524,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    email:PopClient|email:Error popClient = new (&quot;pop.email.com&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:PopClient|email:Error popClient = new (&quot;pop.email.com&quot;,
         &quot;reader@email.com&quot;, &quot;pass456&quot;);
     if (popClient is email:PopClient) {
 </code></pre></div>
@@ -538,7 +547,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        email:Email|email:Error? emailResponse = popClient-&gt;read();
+                                    <div class="highlight"><pre><code class=language-ballerina>        email:Email|email:Error? emailResponse = popClient-&gt;read();
         if (emailResponse is email:Email) {
             io:println(&quot;Email Subject: &quot;, emailResponse.subject);
             io:println(&quot;Email Body: &quot;, emailResponse.body);
@@ -562,7 +571,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        } else if (emailResponse is ()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else if (emailResponse is ()) {
             io:println(&quot;There are no emails in the INBOX.&quot;);
         } else {
             io:println(&quot;Error while getting getting response: &quot;
@@ -609,8 +618,8 @@ import ballerina/io;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run receive_email.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run receive_email.bal
 </code></pre></div>
 
                                 </td>
@@ -673,7 +682,7 @@ $ ballerina run receive_email.bal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/email;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/email;
 import ballerina/io;
 </code></pre></div>
 
@@ -686,7 +695,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -698,7 +707,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;,
         &quot;reader@email.com&quot;, &quot;pass456&quot;);
     if (imapClient is email:ImapClient) {
 </code></pre></div>
@@ -721,7 +730,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        email:Email|email:Error? emailResponse = imapClient-&gt;read();
+                                    <div class="highlight"><pre><code class=language-ballerina>        email:Email|email:Error? emailResponse = imapClient-&gt;read();
         if (emailResponse is email:Email) {
             io:println(&quot;Email Subject: &quot;, emailResponse.subject);
             io:println(&quot;Email Body: &quot;, emailResponse.body);
@@ -745,7 +754,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        } else if (emailResponse is ()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else if (emailResponse is ()) {
             io:println(&quot;There are no emails in the INBOX.&quot;);
         } else {
             io:println(&quot;Error while getting getting response: &quot;
@@ -792,8 +801,8 @@ import ballerina/io;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run receive_email.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run receive_email.bal
 </code></pre></div>
 
                                 </td>
@@ -864,7 +873,7 @@ $ ballerina run receive_email.bal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/email;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/email;
 import ballerina/io;
 </code></pre></div>
 
@@ -877,7 +886,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>email:PopConfig popConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>email:PopConfig popConfig = {
      port: 995,
      enableSsl: true
 };
@@ -900,7 +909,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener email:Listener emailListener = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>listener email:Listener emailListener = new ({
     host: &quot;pop.email.com&quot;,
     username: &quot;reader@email.com&quot;,
     password: &quot;pass456&quot;,
@@ -928,7 +937,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service emailObserver on emailListener {
+                                    <div class="highlight"><pre><code class=language-ballerina>service emailObserver on emailListener {
 </code></pre></div>
 
                                 </td>
@@ -948,7 +957,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(email:Email emailMessage) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(email:Email emailMessage) {
         io:println(&quot;Email Subject: &quot;, emailMessage.subject);
         io:println(&quot;Email Body: &quot;, emailMessage.body);
     }
@@ -970,7 +979,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(email:Error emailError) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(email:Error emailError) {
         io:println(&quot;Error while polling for the emails: &quot;
             + emailError.message());
     }
@@ -992,7 +1001,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -1022,8 +1031,8 @@ import ballerina/io;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run listen_email.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run listen_email.bal
 </code></pre></div>
 
                                 </td>

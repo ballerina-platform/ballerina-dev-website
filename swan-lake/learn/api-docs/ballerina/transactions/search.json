@@ -2,117 +2,126 @@
   "modules": [
     {
       "id": "transactions",
-      "searchString": "\u003cp\u003eThis module provides Ballerina transaction manager implementation.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module provides Ballerina transaction manager implementation.\u003c/p\u003e"
     }
   ],
   "objects": [],
   "functions": [
     {
       "id": "ballerina/transactions:0.5.0.\u003cinit\u003e0",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "ballerina/transactions:0.5.0.\u003cinit\u003e1",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "ballerina/transactions:0.5.0.\u003cinit\u003e2",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "ballerina/transactions:0.5.0.\u003cinit\u003e3",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "ballerina/transactions:0.5.0.\u003cinit\u003e4",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "beginTransaction",
-      "searchString": "When a transaction block in Ballerina code begins, it will call this function to begin a transaction.",
+      "description": "When a transaction block in Ballerina code begins, it will call this function to begin a transaction.",
       "moduleId": "transactions"
     },
     {
       "id": "cleanupTransactionContext",
-      "searchString": "Cleanup the transaction context.",
+      "description": "Cleanup the transaction context.",
       "moduleId": "transactions"
     },
     {
       "id": "endTransaction",
-      "searchString": "When a transaction block in Ballerina code ends, it will call this function to end a transaction.",
+      "description": "When a transaction block in Ballerina code ends, it will call this function to end a transaction.",
       "moduleId": "transactions"
     },
     {
       "id": "getAndClearFailure",
-      "searchString": "Get and Cleanup the failure.",
+      "description": "Get and Cleanup the failure.",
       "moduleId": "transactions"
     },
     {
       "id": "getCurrentTransactionId",
-      "searchString": "Get the current transaction id.",
+      "description": "Get the current transaction id.",
       "moduleId": "transactions"
     },
     {
       "id": "rollbackTransaction",
-      "searchString": "Rollback the transaction.",
+      "description": "Rollback the transaction.",
       "moduleId": "transactions"
     },
     {
       "id": "setTransactionContext",
-      "searchString": "Set the transactionContext.",
+      "description": "Set the transactionContext.",
       "moduleId": "transactions"
     }
   ],
   "records": [
     {
       "id": "T0",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "T1",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "Info",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "TransactionContext",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "TransactionParticipantConfig",
-      "searchString": "\u003cp\u003eContains the configurations for local transaction participant function.\u003c/p\u003e",
+      "description": "\u003cp\u003eContains the configurations for local transaction participant function.\u003c/p\u003e",
       "moduleId": "transactions"
     }
   ],
   "constants": [
     {
       "id": "OUTCOME_COMMITTED",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     },
     {
       "id": "TWO_PHASE_COMMIT",
-      "searchString": "",
+      "description": "",
       "moduleId": "transactions"
     }
   ],
   "errors": [
     {
       "id": "TransactionError",
-      "searchString": "\u003cp\u003eRepresents a \u003ccode\u003eTransactionError\u003c/code\u003e with the message and the cause.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents a \u003ccode\u003eTransactionError\u003c/code\u003e with the message and the cause.\u003c/p\u003e",
       "moduleId": "transactions"
     }
   ],
-  "types": []
+  "types": [],
+  "clients": [],
+  "listeners": [],
+  "annotations": [
+    {
+      "id": "Participant",
+      "description": "\u003cp\u003eThe annotation which is used to configure local transaction participant function.\u003c/p\u003e",
+      "moduleId": "transactions"
+    }
+  ]
 }

@@ -34,7 +34,13 @@ redirect_from:
 <span class="p">|};</span><span class="kd">function</span> <span class="nx">buildQuery</span><span class="p">(</span><span class="nx">Query</span> <span class="nx">qu</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s%s%s%s%s&quot;</span><span class="p">,</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                         <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">raw_template</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Hello</span>  <span class="p">!!!</span>
+<span class="nx">Ballerina</span>
+<span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="nx">Details</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="nx">John</span> <span class="nx">Doe</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="nx">Details</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="nx">Jane</span> <span class="nx">Doe</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </pre></div>
 
             </div>
@@ -140,7 +146,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.&#39;object;
 </code></pre></div>
 
@@ -153,7 +159,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string name = &quot;Ballerina&quot;;
 </code></pre></div>
 
@@ -166,7 +172,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    &#39;object:RawTemplate template = `Hello ${name}!!!`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    &#39;object:RawTemplate template = `Hello ${name}!!!`;
 </code></pre></div>
 
                                 </td>
@@ -186,7 +192,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(template.strings);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(template.strings);
 </code></pre></div>
 
                                 </td>
@@ -209,7 +215,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(template.insertions[0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(template.insertions[0]);
 </code></pre></div>
 
                                 </td>
@@ -231,7 +237,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person[] people = [
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person[] people = [
         {name: &quot;John Doe&quot;, age: 25},
         {name: &quot;Jane Doe&quot;, age: 20}
     ];
@@ -246,7 +252,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Query[] queries = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Query[] queries = [];
     int i = 0;
 </code></pre></div>
 
@@ -259,7 +265,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var p in people {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var p in people {
         queries[i] = `INSERT INTO Details VALUES (${p.name}, ${p.age})`;
         i += 1;
     }
@@ -274,7 +280,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(buildQuery(queries[0]));
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(buildQuery(queries[0]));
     io:println(buildQuery(queries[1]));
 }
 </code></pre></div>
@@ -288,7 +294,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Query abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Query abstract object {
 </code></pre></div>
 
                                 </td>
@@ -311,7 +317,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public string[3] strings;
+                                    <div class="highlight"><pre><code class=language-ballerina>    public string[3] strings;
     public [string, int] insertions;
 };
 </code></pre></div>
@@ -339,7 +345,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {|
     string name;
     int age;
 |};
@@ -354,7 +360,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function buildQuery(Query qu) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function buildQuery(Query qu) returns string {
 </code></pre></div>
 
                                 </td>
@@ -366,7 +372,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    return io:sprintf(&quot;%s%s%s%s%s&quot;, qu.strings[0], qu.insertions[0],
+                                    <div class="highlight"><pre><code class=language-ballerina>    return io:sprintf(&quot;%s%s%s%s%s&quot;, qu.strings[0], qu.insertions[0],
                         qu.strings[1], qu.insertions[1], qu.strings[2]);
 }
 </code></pre></div>
@@ -403,8 +409,8 @@ import ballerina/lang.&#39;object;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run raw_template.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run raw_template.bal
 Hello  !!!
 Ballerina
 INSERT INTO Details VALUES (John Doe, 25)

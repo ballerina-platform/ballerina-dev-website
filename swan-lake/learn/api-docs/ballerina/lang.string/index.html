@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,28 +61,29 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../lang.string/index.html">
+        <a href="../lang.string/index.html" onclick="menuLinkClick()">
             <h3>lang.string</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../lang.string/index.html#records">Records</a>
+            <a data="records" href="../lang.string/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../lang.string/index.html#objects">Objects</a>
+                <a  data="objects" href="../lang.string/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../lang.string/index.html#functions">Functions</a>
+                <a data="functions" href="../lang.string/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -93,394 +96,293 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../lang.string/index.html">
-            <h3>lang.string</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../lang.string/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../lang.string/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../lang.string/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">lang.string</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.1.0</div>
+                    <a href="../lang.string/index.html"><span class="modules">lang.string</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.1.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides lang library string operations defined by the language specification 2020R1.</p>
 
 
-            
+    
+        
+    
 
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Records </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T0" title="T0">
-                                <a class="records " href="records/T0.html">T0</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T1" title="T1">
-                                <a class="records " href="records/T1.html">T1</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
+    
+        
+    
 
-            
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate objects" id="T2" title="T2">
-                                <a class="objects " href="objects/T2.html">T2</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                </table>
-             </section>  
-            
+    
 
-            
-
-            
-           
-
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="codePointCompare" title="codePointCompare">
-                                <a class="functions " href="functions.html#codePointCompare">codePointCompare</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Lexicographically compares strings using their Unicode code points.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="concat" title="concat">
-                                <a class="functions " href="functions.html#concat">concat</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Concatenates zero or more strings.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="endsWith" title="endsWith">
-                                <a class="functions " href="functions.html#endsWith">endsWith</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Tests whether a string ends with another string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="equalsIgnoreCaseAscii" title="equalsIgnoreCaseAscii">
-                                <a class="functions " href="functions.html#equalsIgnoreCaseAscii">equalsIgnoreCaseAscii</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Tests whether two strings are the same, ignoring the case of ASCII characters.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="fromBytes" title="fromBytes">
-                                <a class="functions " href="functions.html#fromBytes">fromBytes</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Constructs a string from its UTF-8 representation in <code>bytes</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="fromCodePointInt" title="fromCodePointInt">
-                                <a class="functions " href="functions.html#fromCodePointInt">fromCodePointInt</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Constructs a single character string from a code point.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="fromCodePointInts" title="fromCodePointInts">
-                                <a class="functions " href="functions.html#fromCodePointInts">fromCodePointInts</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Constructs a string from an array of code points.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getCodePoint" title="getCodePoint">
-                                <a class="functions " href="functions.html#getCodePoint">getCodePoint</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the code point of a character in a string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="indexOf" title="indexOf">
-                                <a class="functions " href="functions.html#indexOf">indexOf</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Finds the first occurrence of one string in another string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="iterator" title="iterator">
-                                <a class="functions " href="functions.html#iterator">iterator</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns an iterator over the string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="join" title="join">
-                                <a class="functions " href="functions.html#join">join</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Joins zero or more strings together with a separator.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="lastIndexOf" title="lastIndexOf">
-                                <a class="functions " href="functions.html#lastIndexOf">lastIndexOf</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Finds the last occurrence of one string in another string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="length" title="length">
-                                <a class="functions " href="functions.html#length">length</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the length of the string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="startsWith" title="startsWith">
-                                <a class="functions " href="functions.html#startsWith">startsWith</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Tests whether a string starts with another string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="substring" title="substring">
-                                <a class="functions " href="functions.html#substring">substring</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns a substring of a string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toBytes" title="toBytes">
-                                <a class="functions " href="functions.html#toBytes">toBytes</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents <code>str</code> as an array of bytes using UTF-8.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toCodePointInt" title="toCodePointInt">
-                                <a class="functions " href="functions.html#toCodePointInt">toCodePointInt</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Converts a single character string to a code point.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toCodePointInts" title="toCodePointInts">
-                                <a class="functions " href="functions.html#toCodePointInts">toCodePointInts</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Converts a string to an array of code points.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toLowerAscii" title="toLowerAscii">
-                                <a class="functions " href="functions.html#toLowerAscii">toLowerAscii</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Converts occurrences of A-Z to a-z.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toUpperAscii" title="toUpperAscii">
-                                <a class="functions " href="functions.html#toUpperAscii">toUpperAscii</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Converts occurrences of a-z to A-Z.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="trim" title="trim">
-                                <a class="functions " href="functions.html#trim">trim</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Removes ASCII white space characters from the start and end of a string.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
+    
 
 
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate functions" id="codePointCompare" title="codePointCompare">
+                    <a class="functions " href="functions.html#codePointCompare">codePointCompare</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Lexicographically compares strings using their Unicode code points.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="concat" title="concat">
+                    <a class="functions " href="functions.html#concat">concat</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Concatenates zero or more strings.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="endsWith" title="endsWith">
+                    <a class="functions " href="functions.html#endsWith">endsWith</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Tests whether a string ends with another string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="equalsIgnoreCaseAscii" title="equalsIgnoreCaseAscii">
+                    <a class="functions " href="functions.html#equalsIgnoreCaseAscii">equalsIgnoreCaseAscii</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Tests whether two strings are the same, ignoring the case of ASCII characters.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="fromBytes" title="fromBytes">
+                    <a class="functions " href="functions.html#fromBytes">fromBytes</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Constructs a string from its UTF-8 representation in <code>bytes</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="fromCodePointInt" title="fromCodePointInt">
+                    <a class="functions " href="functions.html#fromCodePointInt">fromCodePointInt</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Constructs a single character string from a code point.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="fromCodePointInts" title="fromCodePointInts">
+                    <a class="functions " href="functions.html#fromCodePointInts">fromCodePointInts</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Constructs a string from an array of code points.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getCodePoint" title="getCodePoint">
+                    <a class="functions " href="functions.html#getCodePoint">getCodePoint</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the code point of a character in a string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="indexOf" title="indexOf">
+                    <a class="functions " href="functions.html#indexOf">indexOf</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Finds the first occurrence of one string in another string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="iterator" title="iterator">
+                    <a class="functions " href="functions.html#iterator">iterator</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns an iterator over the string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="join" title="join">
+                    <a class="functions " href="functions.html#join">join</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Joins zero or more strings together with a separator.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="lastIndexOf" title="lastIndexOf">
+                    <a class="functions " href="functions.html#lastIndexOf">lastIndexOf</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Finds the last occurrence of one string in another string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="length" title="length">
+                    <a class="functions " href="functions.html#length">length</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the length of the string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="startsWith" title="startsWith">
+                    <a class="functions " href="functions.html#startsWith">startsWith</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Tests whether a string starts with another string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="substring" title="substring">
+                    <a class="functions " href="functions.html#substring">substring</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns a substring of a string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toBytes" title="toBytes">
+                    <a class="functions " href="functions.html#toBytes">toBytes</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents <code>str</code> as an array of bytes using UTF-8.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toCodePointInt" title="toCodePointInt">
+                    <a class="functions " href="functions.html#toCodePointInt">toCodePointInt</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Converts a single character string to a code point.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toCodePointInts" title="toCodePointInts">
+                    <a class="functions " href="functions.html#toCodePointInts">toCodePointInts</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Converts a string to an array of code points.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toLowerAscii" title="toLowerAscii">
+                    <a class="functions " href="functions.html#toLowerAscii">toLowerAscii</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Converts occurrences of A-Z to a-z.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toUpperAscii" title="toUpperAscii">
+                    <a class="functions " href="functions.html#toUpperAscii">toUpperAscii</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Converts occurrences of a-z to A-Z.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="trim" title="trim">
+                    <a class="functions " href="functions.html#trim">trim</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Removes ASCII white space characters from the start and end of a string.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
-            
+    
 
-            
 
-            
+    
+
+    
+
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -507,6 +409,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -516,4 +436,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

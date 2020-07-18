@@ -34,7 +34,13 @@ redirect_from:
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">publisher</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Subject</span> <span class="p">:</span> <span class="nx">demo</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">nats</span><span class="p">]</span> <span class="nx">Connection</span> <span class="nx">established</span> <span class="nx">with</span> <span class="nx">server</span> <span class="nx">nats</span><span class="p">:</span><span class="c1">//localhost:4222</span>
+<span class="nx">Message</span> <span class="p">:</span> <span class="s">&quot;{ Hello : World }&quot;</span>
+<span class="nx">GUID</span> <span class="nx">PXbFl6Mlx6cewaL8oXwnn1</span> <span class="nx">received</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">produced</span> <span class="kt">message</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
 <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 <span class="nx">listener</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingListener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">);</span>
@@ -54,7 +60,10 @@ redirect_from:
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">subscriber</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Message</span> <span class="nx">Received</span><span class="p">:</span> <span class="p">{</span> <span class="nx">Hello</span> <span class="p">:</span> <span class="nx">World</span> <span class="p">}</span>
 </pre></div>
 
             </div>
@@ -147,7 +156,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 import ballerina/nats;
 </code></pre></div>
@@ -161,7 +170,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const string ESCAPE = &quot;!q&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>const string ESCAPE = &quot;!q&quot;;
 </code></pre></div>
 
                                 </td>
@@ -180,7 +189,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string message = &quot;&quot;;
     string subject = io:readln(&quot;Subject : &quot;);
 </code></pre></div>
@@ -201,7 +210,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:Connection conn = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    nats:Connection conn = new;
 </code></pre></div>
 
                                 </td>
@@ -213,7 +222,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:StreamingProducer publisher = new (conn, &quot;p0&quot;, &quot;test-cluster&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    nats:StreamingProducer publisher = new (conn, &quot;p0&quot;, &quot;test-cluster&quot;);
 </code></pre></div>
 
                                 </td>
@@ -225,7 +234,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (message != ESCAPE) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (message != ESCAPE) {
         message = io:readln(&quot;Message : &quot;);
         if (message != ESCAPE) {
 </code></pre></div>
@@ -239,7 +248,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt;message);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt;message);
             if (result is nats:Error) {
                 error e = result;
                 log:printError(&quot;Error occurred while sending the message&quot;, e);
@@ -267,7 +276,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = conn.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = conn.close();
     if (result is error) {
         error e = result;
         log:printError(&quot;Error occurred while closing the connection&quot;, e);
@@ -305,8 +314,8 @@ import ballerina/nats;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run publisher.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run publisher.bal
 Subject : demo
 [ballerina/nats] Connection established with server nats://localhost:4222
 Message : &quot;{ Hello : World }&quot;
@@ -369,7 +378,7 @@ GUID PXbFl6Mlx6cewaL8oXwnn1 received for the produced message.
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
 import ballerina/nats;
 </code></pre></div>
 
@@ -382,7 +391,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>nats:Connection conn = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>nats:Connection conn = new;
 </code></pre></div>
 
                                 </td>
@@ -401,7 +410,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener nats:StreamingListener lis = new (conn);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener nats:StreamingListener lis = new (conn);
 </code></pre></div>
 
                                 </td>
@@ -420,7 +429,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;
 }
 service demoService on lis {
@@ -443,7 +452,7 @@ service demoService on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string|error val = data.toJsonString();
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error val = data.toJsonString();
         if (val is string) {
 </code></pre></div>
 
@@ -463,7 +472,7 @@ service demoService on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            log:printInfo(&quot;Message Received: &quot; + val);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(&quot;Message Received: &quot; + val);
         } else {
             log:printError(&quot;Error occurred during json to string conversion&quot;,
                                                                       err = val);
@@ -487,7 +496,7 @@ service demoService on lis {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, e);
     }
@@ -517,8 +526,8 @@ service demoService on lis {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run subscriber.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run subscriber.bal
 Message Received: { Hello : World }
 </code></pre></div>
 

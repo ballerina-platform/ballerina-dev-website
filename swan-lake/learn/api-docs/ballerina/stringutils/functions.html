@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides utility functions to manipulate the built-in <code>string</code> data type.
+    <meta name="description" content="This module provides utility functions to manipulate the built-in string data type.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,stringutils">
 
@@ -59,138 +68,62 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#contains">contains</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#equalsIgnoreCase">equalsIgnoreCase</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#hashCode">hashCode</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#lastIndexOf">lastIndexOf</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#matches">matches</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#replace">replace</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#replaceAll">replaceAll</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#replaceFirst">replaceFirst</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#split">split</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#toBoolean">toBoolean</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../stringutils/index.html">
-            <h3>stringutils</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../stringutils/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#contains">contains</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#equalsIgnoreCase">equalsIgnoreCase</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#hashCode">hashCode</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#lastIndexOf">lastIndexOf</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#matches">matches</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#replace">replace</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#replaceAll">replaceAll</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#replaceFirst">replaceFirst</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#split">split</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#toBoolean">toBoolean</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#contains" onclick="menuLinkClick()">contains</a>
+        </li>
+    
+        <li >
+            <a href="#equalsIgnoreCase" onclick="menuLinkClick()">equalsIgnoreCase</a>
+        </li>
+    
+        <li >
+            <a href="#hashCode" onclick="menuLinkClick()">hashCode</a>
+        </li>
+    
+        <li >
+            <a href="#lastIndexOf" onclick="menuLinkClick()">lastIndexOf</a>
+        </li>
+    
+        <li >
+            <a href="#matches" onclick="menuLinkClick()">matches</a>
+        </li>
+    
+        <li >
+            <a href="#replace" onclick="menuLinkClick()">replace</a>
+        </li>
+    
+        <li >
+            <a href="#replaceAll" onclick="menuLinkClick()">replaceAll</a>
+        </li>
+    
+        <li >
+            <a href="#replaceFirst" onclick="menuLinkClick()">replaceFirst</a>
+        </li>
+    
+        <li >
+            <a href="#split" onclick="menuLinkClick()">split</a>
+        </li>
+    
+        <li >
+            <a href="#toBoolean" onclick="menuLinkClick()">toBoolean</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../stringutils/index.html">
+        <a href="../stringutils/index.html" onclick="menuLinkClick()">
             <h3>stringutils</h3>
         </a>
     
@@ -201,7 +134,7 @@
         
         
             <li>
-                <a data="functions" href="../stringutils/index.html#functions">Functions</a>
+                <a data="functions" href="../stringutils/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -212,156 +145,164 @@
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../stringutils/index.html">stringutils</a>
+                    <a href="../stringutils/index.html"><span class="modules">stringutils</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#contains">contains</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Checks whether the given string contains a particular substring.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#equalsIgnoreCase">equalsIgnoreCase</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Checks if two strings are equal ignoring the case of the strings.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#hashCode">hashCode</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns a hash code for a given string.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#lastIndexOf">lastIndexOf</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns the last index of the provided substring within a string.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#matches">matches</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Checks whether the given string matches the provided regex.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#replace">replace</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Replaces each occurrence of the provided <code>substring</code> inside the provided
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#contains">contains</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Checks whether the given string contains a particular substring.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#equalsIgnoreCase">equalsIgnoreCase</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Checks if two strings are equal ignoring the case of the strings.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#hashCode">hashCode</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns a hash code for a given string.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#lastIndexOf">lastIndexOf</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns the last index of the provided substring within a string.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#matches">matches</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Checks whether the given string matches the provided regex.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#replace">replace</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Replaces each occurrence of the provided <code>substring</code> inside the provided
 <code>originalString</code> with the specified <code>replacement</code> string.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#replaceAll">replaceAll</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Replaces each occurrence of the substrings, which matches the provided
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#replaceAll">replaceAll</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Replaces each occurrence of the substrings, which matches the provided
 regular expression from the given original string value with the
 provided replacement string.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#replaceFirst">replaceFirst</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Replaces the first substring that matches the given regular expression with
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#replaceFirst">replaceFirst</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Replaces the first substring that matches the given regular expression with
 the provided <code>replacement</code> string.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#split">split</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns an array of strings by splitting a string using the provided
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#split">split</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns an array of strings by splitting a string using the provided
 delimiter.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#toBoolean">toBoolean</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Returns a boolean value of a given string.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#toBoolean">toBoolean</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Returns a boolean value of a given string.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="contains" title="contains">
              <a class="url-link" href="#contains">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > contains </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> substring)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -424,19 +365,19 @@ or else <code>false</code></p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="equalsIgnoreCase" title="equalsIgnoreCase">
              <a class="url-link" href="#equalsIgnoreCase">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > equalsIgnoreCase </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> firstString, <span class="builtin-type">string</span> secondString)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -498,19 +439,19 @@ or else <code>false</code></p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="hashCode" title="hashCode">
              <a class="url-link" href="#hashCode">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > hashCode </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> stringValue)</p>
-            <b> returns </b><span class="builtin-type">int</span> 
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -555,19 +496,19 @@ or else <code>false</code></p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="lastIndexOf" title="lastIndexOf">
              <a class="url-link" href="#lastIndexOf">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > lastIndexOf </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> substring)</p>
-            <b> returns </b><span class="builtin-type">int</span> 
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -630,19 +571,19 @@ if the <code>originalString</code> contains the <code>substring</code> or else <
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="matches" title="matches">
              <a class="url-link" href="#matches">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > matches </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> stringToMatch, <span class="builtin-type">string</span> regex)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -705,19 +646,19 @@ if the <code>originalString</code> contains the <code>substring</code> or else <
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="replace" title="replace">
              <a class="url-link" href="#replace">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > replace </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> stringToReplace, <span class="builtin-type">string</span> replacement)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -798,19 +739,19 @@ the <code>stringToReplace</code></p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="replaceAll" title="replaceAll">
              <a class="url-link" href="#replaceAll">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > replaceAll </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> regex, <span class="builtin-type">string</span> replacement)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -893,19 +834,19 @@ match the <code>regex</code></p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="replaceFirst" title="replaceFirst">
              <a class="url-link" href="#replaceFirst">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > replaceFirst </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> regex, <span class="builtin-type">string</span> replacement)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -988,19 +929,19 @@ matches the <code>regex</code></p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="split" title="split">
              <a class="url-link" href="#split">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > split </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> receiver, <span class="builtin-type">string</span> delimiter)</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> 
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1063,19 +1004,19 @@ delimiter.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="toBoolean" title="toBoolean">
              <a class="url-link" href="#toBoolean">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > toBoolean </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> stringValue)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1121,28 +1062,18 @@ or else <code>false</code></p>
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -1169,6 +1100,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -1178,4 +1127,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

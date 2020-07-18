@@ -1,9 +1,9 @@
 {
   "id": "rabbitmq",
   "summary": "\u003cp\u003e\u003ca href\u003d\"https://www.rabbitmq.com/\"\u003eRabbitMQ\u003c/a\u003e is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003e\u003ca href\u003d\"https://www.rabbitmq.com/\"\u003eRabbitMQ\u003c/a\u003e is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.\u003c/p\u003e\n\u003cp\u003eKey sections include:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eConnecting to RabbitMQ\u003c/li\u003e\n\u003cli\u003eUsing Exchanges and Queues\u003c/li\u003e\n\u003cli\u003ePublishing Messages\u003c/li\u003e\n\u003cli\u003eConsuming Messages Using Consumer Services\u003c/li\u003e\n\u003cli\u003eClient Acknowledgements\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eConnecting to RabbitMQ\u003c/h2\u003e\n\u003cp\u003eThe core APIs are the \u003ccode\u003erabbitmq:Connection\u003c/code\u003e, \u003ccode\u003erabbitmq:Channel\u003c/code\u003e, and \u003ccode\u003erabbitmq:Message\u003c/code\u003e representing an AMQP 0-9-1 Connection, a Channel, and a Ballerina RabbitMQ Message respectively. The following code connects to a RabbitMQ node using the given parameters (host name, port number, etc.):\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Connection newConnection \u003d new({ host: \u0026quot;localhost\u0026quot;, \n                                            port: 5672, \n                                            username: “guest”, \n                                            password: “guest” });\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003erabbitmq:Connection\u003c/code\u003e created above can then be used to open a \u003ccode\u003erabbitmq:Channel\u003c/code\u003e.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Channel newChannel \u003d new(connection);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003erabbitmq:Channel\u003c/code\u003e can now be used to send and receive messages as described in the subsequent sections.\u003c/p\u003e\n\u003ch3\u003eEnabling TLS\u003c/h3\u003e\n\u003cp\u003eIt is possible to encrypt the communication between the Ballerina client and the broker by using TLS-enabled connections. Client and server authentication (peer verification) is also supported. To enable the TLS support in the RabbitMQ broker, the node has to be \u003ca href\u003d\"https://www.rabbitmq.com/ssl.html#enabling-tls\"\u003econfigured\u003c/a\u003e to know the location of the Certificate Authority bundle, the server\u0027s certificate file, and the server\u0027s key. A TLS listener should also be configured to know which port to listen for TLS-enabled client connections.\u003c/p\u003e\n\u003cp\u003eConnecting to a TLS-enabled RabbitMQ node using the Ballerina client can be done by passing a \u003ccode\u003erabbitmq:SecureSocket\u003c/code\u003e record with the appropriate values to the \u003ccode\u003erabbitmq:ConnectionConfiguration\u003c/code\u003e record when initializing the connection.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Connection connection \u003d new({ host: \u0026quot;localhost\u0026quot;, \n                                    \t    port: 5671, \n                                            secureSocket: { trustStore: { path: \u0026quot;/path/to/trustStore\u0026quot;,\n                                                                        password: \u0026quot;rabbitstore\u0026quot; },\n                                                          keystore: { path: \u0026quot;/path/to/client_key.p12\u0026quot;,\n                                                                      password: \u0026quot;MySecretPassword\u0026quot; },\n                                                          verifyHostname: true }});\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003eDisconnecting from RabbitMQ\u003c/h3\u003e\n\u003cp\u003eTo disconnect, simply close the open channels and the connections:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? closeResult \u003d newChannel.close();\n   rabbitmq:Error? closeResult \u003d newConnection.close();\n\u003c/code\u003e\u003c/pre\u003e\n\u003cblockquote\u003e\n\u003cp\u003eNote: Closing the \u003ccode\u003eChannel\u003c/code\u003e may be a good practice. However, it isn’t strictly necessary in this case as it will be done automatically when the underlying \u003ccode\u003eConnection\u003c/code\u003e is closed.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2\u003eUsing exchanges and queues\u003c/h2\u003e\n\u003cp\u003eClient applications work with exchanges and queues, which are the high-level building blocks of the AMQP protocol. These must be declared before they can be used. The following code declares an exchange and a server-named queue and then binds them together.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? exchangeResult \u003d newChannel-\u0026gt;exchangeDeclare({ exchangeName: \u0026quot;MyExchange\u0026quot;,\n                                                      exchangeType: rabbitmq:DIRECT_EXCHANGE,\n                                                      durable: true,\n                                                      autoDelete: true });\n   \n   string|rabbitmq:Error? queueResult \u003d newChannel-\u0026gt;queueDeclare();\n   if (queueResult is string) {\n        rabbitmq:Error? bindResult \u003d newChannel.queueBind(queueResult, \u0026quot;MyExchange\u0026quot;, \u0026quot;routing-key\u0026quot;);\n   }\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis sample code will declare,\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ea durable auto-delete exchange of the type \u003ccode\u003erabbitmq:DIRECT_EXCHANGE\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003ea non-durable, exclusive auto-delete queue with an auto-generated name\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eNext, the above function is called to bind the queue to the exchange with the given routing key.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? exchangeResult \u003d newChannel-\u0026gt;exchangeDeclare({ exchangeName: \u0026quot;MyExchange\u0026quot;,\n                                                      exchangeType: rabbitmq:DIRECT_EXCHANGE,\n                                                      durable: true,\n                                                      autoDelete: true });\n   \n   string|rabbitmq:Error? queueResult \u003d newChannel-\u0026gt;queueDeclare({ queueName: \u0026quot;MyQueue\u0026quot;, \n                                                durable: true,\n                                                exclusive: false,\n                                                autoDelete: false });\n\n   rabbitmq:Error? bindResult \u003d newChannel.queueBind(\u0026quot;MyQueue\u0026quot;, \u0026quot;MyExchange\u0026quot;, \u0026quot;routing-key\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis sample code will declare,\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ea durable auto-delete exchange of the type \u003ccode\u003erabbitmq:DIRECT_EXCHANGE\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003ea durable, non-exclusive non-auto-delete queue with a well-known name\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eDeleting entities and purging queues\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eDelete a queue:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? deleteResult \u003d newChannel-\u0026gt;queueDelete(\u0026quot;MyQueue\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eDelete a queue only if it is empty:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? deleteResult \u003d newChannel-\u0026gt;queueDelete(\u0026quot;MyQueue\u0026quot;, false, true);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eDelete a queue only if it is unused (does not have any consumers):\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? deleteResult \u003d newChannel-\u0026gt;queueDelete(\u0026quot;MyQueue\u0026quot;, true, false);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eDelete an exchange:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? deleteResult \u003d newChannel-\u0026gt;exchangeDelete(\u0026quot;MyExchange\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003ePurge a queue (delete all of its messages):\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? purgeResult \u003d newChannel-\u0026gt;queuePurge(\u0026quot;MyQueue\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2\u003ePublishing messages\u003c/h2\u003e\n\u003cp\u003eTo publish a message to an exchange, use the \u003ccode\u003ebasicPublish()\u003c/code\u003e function as follows:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? sendResult \u003d newChannel-\u0026gt;basicPublish(\u0026quot;Hello from Ballerina\u0026quot;, \u0026quot;MyQueue\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eSetting other properties of the message such as routing headers can be done by using the \u003ccode\u003eBasicProperties\u003c/code\u003e record with the appropriate values.\u003c/p\u003e\n\u003ch2\u003eConsuming messages using consumer services\u003c/h2\u003e\n\u003cp\u003eThe most efficient way to receive messages is to set up a subscription using a Ballerina RabbitMQ \u003ccode\u003erabbitmq:Listener\u003c/code\u003e and any number of consumer services. The messages will then be delivered automatically as they arrive rather than having to be explicitly requested.\u003c/p\u003e\n\u003cp\u003eMultiple consumer services can be bound to one Ballerina RabbitMQ \u003ccode\u003erabbitmq:Listener\u003c/code\u003e. The queue to which the service is listening is configured in the \u003ccode\u003erabbitmq:ServiceConfig\u003c/code\u003e annotation of the service.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003elistener rabbitmq:Listener channelListener\u003d new(newConnection);\n\n@rabbitmq:ServiceConfig {\n    queueConfig: {\n        queueName: \u0026quot;MyQueue\u0026quot;\n    }\n}\nservice rabbitmqConsumer on channelListener {\n    resource function onMessage(rabbitmq:Message message) {\n        string|rabbitmq:Error? messageContent \u003d message.getTextContent();\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003erabbitmq:Message\u003c/code\u003e object received can be used to retrieve its contents and for manual client acknowledgements.\u003c/p\u003e\n\u003ch2\u003eClient acknowledgements\u003c/h2\u003e\n\u003cp\u003eThe message consuming is supported by mainly two types of acknowledgement modes, which are auto acknowledgements and client acknowledgements.\nClient acknowledgements can further be divided into to two different types as positive and negative acknowledgements.\nThe default acknowledgement mode is auto-ack (messages are acknowledged immediately after consuming).\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eWARNING: To ensure the reliability of receiving messages, use the client-ack mode.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003eThe negatively-acknowledged (rejected) messages can be re-queued.\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eNote:\u003c/strong\u003e The default thread pool size used in Ballerina is the number of processors available * 2. You can configure the thread pool size by using the \u003ccode\u003eBALLERINA_MAX_POOL_SIZE\u003c/code\u003e environment variable.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e.\u003c/p\u003e\n\u003cp\u003eFor examples on the usage of the connector, see the following.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/rabbitmq-producer.html\"\u003eProducer Example\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/rabbitmq-consumer.html\"\u003eConsumer Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/rabbitmq-consumer-with-client-acknowledgement.html\"\u003eClient Acknowledgements Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/rabbitmq-consumer-with-qos-settings.html\"\u003eQoS Settings Example\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n",
-  "orgName": "ballerina",
-  "version": "1.0.0",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003e\u003ca href\u003d\"https://www.rabbitmq.com/\"\u003eRabbitMQ\u003c/a\u003e is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.\u003c/p\u003e\n\u003cp\u003eKey sections include:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eConnecting to RabbitMQ\u003c/li\u003e\n\u003cli\u003eUsing Exchanges and Queues\u003c/li\u003e\n\u003cli\u003ePublishing Messages\u003c/li\u003e\n\u003cli\u003eConsuming Messages Using Consumer Services\u003c/li\u003e\n\u003cli\u003eClient Acknowledgements\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eConnecting to RabbitMQ\u003c/h3\u003e\n\u003cp\u003eThe core APIs are the \u003ccode\u003erabbitmq:Connection\u003c/code\u003e, \u003ccode\u003erabbitmq:Channel\u003c/code\u003e, and \u003ccode\u003erabbitmq:Message\u003c/code\u003e representing an AMQP 0-9-1 Connection, a Channel, and a Ballerina RabbitMQ Message respectively. The following code connects to a RabbitMQ node using the given parameters (host name, port number, etc.):\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Connection newConnection \u003d new({ host: \u0026quot;localhost\u0026quot;, \n                                            port: 5672, \n                                            username: “guest”, \n                                            password: “guest” });\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003erabbitmq:Connection\u003c/code\u003e created above can then be used to open a \u003ccode\u003erabbitmq:Channel\u003c/code\u003e.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Channel newChannel \u003d new(connection);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003erabbitmq:Channel\u003c/code\u003e can now be used to send and receive messages as described in the subsequent sections.\u003c/p\u003e\n\u003ch4\u003eEnabling TLS\u003c/h4\u003e\n\u003cp\u003eIt is possible to encrypt the communication between the Ballerina client and the broker by using TLS-enabled connections. Client and server authentication (peer verification) is also supported. To enable the TLS support in the RabbitMQ broker, the node has to be \u003ca href\u003d\"https://www.rabbitmq.com/ssl.html#enabling-tls\"\u003econfigured\u003c/a\u003e to know the location of the Certificate Authority bundle, the server\u0027s certificate file, and the server\u0027s key. A TLS listener should also be configured to know which port to listen for TLS-enabled client connections.\u003c/p\u003e\n\u003cp\u003eConnecting to a TLS-enabled RabbitMQ node using the Ballerina client can be done by passing a \u003ccode\u003erabbitmq:SecureSocket\u003c/code\u003e record with the appropriate values to the \u003ccode\u003erabbitmq:ConnectionConfiguration\u003c/code\u003e record when initializing the connection.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Connection connection \u003d new({ host: \u0026quot;localhost\u0026quot;, \n                                    \t    port: 5671, \n                                            secureSocket: { trustStore: { path: \u0026quot;/path/to/trustStore\u0026quot;,\n                                                                        password: \u0026quot;rabbitstore\u0026quot; },\n                                                          keystore: { path: \u0026quot;/path/to/client_key.p12\u0026quot;,\n                                                                      password: \u0026quot;MySecretPassword\u0026quot; },\n                                                          verifyHostname: true }});\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eDisconnecting from RabbitMQ\u003c/h4\u003e\n\u003cp\u003eTo disconnect, simply close the open channels and the connections:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? closeResult \u003d newChannel.close();\n   rabbitmq:Error? closeResult \u003d newConnection.close();\n\u003c/code\u003e\u003c/pre\u003e\n\u003cblockquote\u003e\n\u003cp\u003eNote: Closing the \u003ccode\u003eChannel\u003c/code\u003e may be a good practice. However, it isn’t strictly necessary in this case as it will be done automatically when the underlying \u003ccode\u003eConnection\u003c/code\u003e is closed.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch3\u003eUsing exchanges and queues\u003c/h3\u003e\n\u003cp\u003eClient applications work with exchanges and queues, which are the high-level building blocks of the AMQP protocol. These must be declared before they can be used. The following code declares an exchange and a server-named queue and then binds them together.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? exchangeResult \u003d newChannel-\u0026gt;exchangeDeclare({ exchangeName: \u0026quot;MyExchange\u0026quot;,\n                                                      exchangeType: rabbitmq:DIRECT_EXCHANGE,\n                                                      durable: true,\n                                                      autoDelete: true });\n   \n   string|rabbitmq:Error? queueResult \u003d newChannel-\u0026gt;queueDeclare();\n   if (queueResult is string) {\n        rabbitmq:Error? bindResult \u003d newChannel.queueBind(queueResult, \u0026quot;MyExchange\u0026quot;, \u0026quot;routing-key\u0026quot;);\n   }\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis sample code will declare,\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ea durable auto-delete exchange of the type \u003ccode\u003erabbitmq:DIRECT_EXCHANGE\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003ea non-durable, exclusive auto-delete queue with an auto-generated name\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eNext, the above function is called to bind the queue to the exchange with the given routing key.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? exchangeResult \u003d newChannel-\u0026gt;exchangeDeclare({ exchangeName: \u0026quot;MyExchange\u0026quot;,\n                                                      exchangeType: rabbitmq:DIRECT_EXCHANGE,\n                                                      durable: true,\n                                                      autoDelete: true });\n   \n   string|rabbitmq:Error? queueResult \u003d newChannel-\u0026gt;queueDeclare({ queueName: \u0026quot;MyQueue\u0026quot;, \n                                                durable: true,\n                                                exclusive: false,\n                                                autoDelete: false });\n\n   rabbitmq:Error? bindResult \u003d newChannel.queueBind(\u0026quot;MyQueue\u0026quot;, \u0026quot;MyExchange\u0026quot;, \u0026quot;routing-key\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis sample code will declare,\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ea durable auto-delete exchange of the type \u003ccode\u003erabbitmq:DIRECT_EXCHANGE\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003ea durable, non-exclusive non-auto-delete queue with a well-known name\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eDeleting entities and purging queues\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003eDelete a queue:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? deleteResult \u003d newChannel-\u0026gt;queueDelete(\u0026quot;MyQueue\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eDelete a queue only if it is empty:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? deleteResult \u003d newChannel-\u0026gt;queueDelete(\u0026quot;MyQueue\u0026quot;, false, true);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eDelete a queue only if it is unused (does not have any consumers):\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? deleteResult \u003d newChannel-\u0026gt;queueDelete(\u0026quot;MyQueue\u0026quot;, true, false);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eDelete an exchange:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? deleteResult \u003d newChannel-\u0026gt;exchangeDelete(\u0026quot;MyExchange\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003ePurge a queue (delete all of its messages):\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? purgeResult \u003d newChannel-\u0026gt;queuePurge(\u0026quot;MyQueue\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003ePublishing messages\u003c/h3\u003e\n\u003cp\u003eTo publish a message to an exchange, use the \u003ccode\u003ebasicPublish()\u003c/code\u003e function as follows:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e   rabbitmq:Error? sendResult \u003d newChannel-\u0026gt;basicPublish(\u0026quot;Hello from Ballerina\u0026quot;, \u0026quot;MyQueue\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eSetting other properties of the message such as routing headers can be done by using the \u003ccode\u003eBasicProperties\u003c/code\u003e record with the appropriate values.\u003c/p\u003e\n\u003ch3\u003eConsuming messages using consumer services\u003c/h3\u003e\n\u003cp\u003eThe most efficient way to receive messages is to set up a subscription using a Ballerina RabbitMQ \u003ccode\u003erabbitmq:Listener\u003c/code\u003e and any number of consumer services. The messages will then be delivered automatically as they arrive rather than having to be explicitly requested.\u003c/p\u003e\n\u003cp\u003eMultiple consumer services can be bound to one Ballerina RabbitMQ \u003ccode\u003erabbitmq:Listener\u003c/code\u003e. The queue to which the service is listening is configured in the \u003ccode\u003erabbitmq:ServiceConfig\u003c/code\u003e annotation of the service.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003elistener rabbitmq:Listener channelListener\u003d new(newConnection);\n\n@rabbitmq:ServiceConfig {\n    queueConfig: {\n        queueName: \u0026quot;MyQueue\u0026quot;\n    }\n}\nservice rabbitmqConsumer on channelListener {\n    resource function onMessage(rabbitmq:Message message) {\n        string|rabbitmq:Error? messageContent \u003d message.getTextContent();\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003erabbitmq:Message\u003c/code\u003e object received can be used to retrieve its contents and for manual client acknowledgements.\u003c/p\u003e\n\u003ch3\u003eClient acknowledgements\u003c/h3\u003e\n\u003cp\u003eThe message consuming is supported by mainly two types of acknowledgement modes, which are auto acknowledgements and client acknowledgements.\nClient acknowledgements can further be divided into to two different types as positive and negative acknowledgements.\nThe default acknowledgement mode is auto-ack (messages are acknowledged immediately after consuming).\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eWARNING: To ensure the reliability of receiving messages, use the client-ack mode.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003eThe negatively-acknowledged (rejected) messages can be re-queued.\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eNote:\u003c/strong\u003e The default thread pool size used in Ballerina is the number of processors available * 2. You can configure the thread pool size by using the \u003ccode\u003eBALLERINA_MAX_POOL_SIZE\u003c/code\u003e environment variable.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e.\u003c/p\u003e\n\u003cp\u003eFor examples on the usage of the connector, see the following.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/rabbitmq-producer.html\"\u003eProducer Example\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/rabbitmq-consumer.html\"\u003eConsumer Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/rabbitmq-consumer-with-client-acknowledgement.html\"\u003eClient Acknowledgements Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/rabbitmq-consumer-with-qos-settings.html\"\u003eQoS Settings Example\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n",
+  "orgName": "ballerinax",
+  "version": "1.0.1",
   "records": [
     {
       "fields": [
@@ -18,6 +18,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -40,6 +41,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -62,6 +64,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -84,6 +87,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -114,6 +118,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -136,6 +141,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -158,6 +164,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -180,6 +187,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -202,6 +210,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -224,6 +233,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -246,6 +256,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -268,6 +279,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -282,7 +294,7 @@
         {
           "defaultValue": "()",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "rabbitmq",
             "name": "SecureSocket",
             "category": "records",
@@ -290,6 +302,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -320,6 +333,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -334,7 +348,7 @@
         {
           "defaultValue": "DIRECT_EXCHANGE",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "rabbitmq",
             "name": "ExchangeType",
             "category": "types",
@@ -342,6 +356,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -364,6 +379,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -386,6 +402,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -403,17 +420,35 @@
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
             "name": "map",
-            "category": "builtin",
+            "category": "map",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
             "memberTypes": [],
             "paramTypes": [],
-            "arrayDimensions": 0
+            "arrayDimensions": 0,
+            "constraint": {
+              "orgName": "ballerina",
+              "moduleName": "lang.annotations",
+              "name": "anydata",
+              "category": "builtin",
+              "isAnonymousUnionType": false,
+              "isArrayType": false,
+              "isNullable": false,
+              "isTuple": false,
+              "isRestParam": false,
+              "isLambda": false,
+              "isDeprecated": false,
+              "generateUserDefinedTypeLink": true,
+              "memberTypes": [],
+              "paramTypes": [],
+              "arrayDimensions": 0
+            }
           },
           "name": "arguments",
           "description": "\u003cp\u003eOther properties (construction arguments) for the queue\u003c/p\u003e\n",
@@ -438,6 +473,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -460,6 +496,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -482,6 +519,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -504,6 +542,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -521,17 +560,35 @@
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
             "name": "map",
-            "category": "builtin",
+            "category": "map",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
             "memberTypes": [],
             "paramTypes": [],
-            "arrayDimensions": 0
+            "arrayDimensions": 0,
+            "constraint": {
+              "orgName": "ballerina",
+              "moduleName": "lang.annotations",
+              "name": "anydata",
+              "category": "builtin",
+              "isAnonymousUnionType": false,
+              "isArrayType": false,
+              "isNullable": false,
+              "isTuple": false,
+              "isRestParam": false,
+              "isLambda": false,
+              "isDeprecated": false,
+              "generateUserDefinedTypeLink": true,
+              "memberTypes": [],
+              "paramTypes": [],
+              "arrayDimensions": 0
+            }
           },
           "name": "arguments",
           "description": "\u003cp\u003eOther properties (construction arguments) for the queue\u003c/p\u003e\n",
@@ -548,7 +605,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "rabbitmq",
             "name": "QueueConfiguration",
             "category": "records",
@@ -556,6 +613,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -570,7 +628,7 @@
         {
           "defaultValue": "AUTO_ACK",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "rabbitmq",
             "name": "AcknowledgementMode",
             "category": "types",
@@ -578,6 +636,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -600,6 +659,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -622,6 +682,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -652,6 +713,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -674,6 +736,7 @@
             "isArrayType": false,
             "isNullable": true,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -696,6 +759,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -718,6 +782,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,
@@ -747,7 +812,7 @@
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "ConnectionConfiguration",
                 "category": "records",
@@ -755,6 +820,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -777,7 +843,7 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -787,6 +853,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -799,7 +866,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -809,6 +876,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -821,7 +889,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -831,6 +899,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -846,7 +915,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -854,6 +923,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -875,7 +945,7 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -885,6 +955,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -897,7 +968,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -907,6 +978,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -919,7 +991,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -929,6 +1001,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -961,6 +1034,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -985,7 +1059,7 @@
           {
             "defaultValue": "",
             "type": {
-              "orgName": "ballerina",
+              "orgName": "ballerinax",
               "moduleName": "rabbitmq",
               "name": "ConnectionConfiguration",
               "category": "records",
@@ -993,6 +1067,7 @@
               "isArrayType": false,
               "isNullable": false,
               "isTuple": false,
+              "isRestParam": false,
               "isLambda": false,
               "isDeprecated": false,
               "generateUserDefinedTypeLink": true,
@@ -1016,7 +1091,7 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1026,6 +1101,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1038,7 +1114,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1048,6 +1124,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1060,7 +1137,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1070,6 +1147,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1085,7 +1163,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -1093,6 +1171,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1114,7 +1193,7 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1124,6 +1203,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1136,7 +1216,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1146,6 +1226,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1158,7 +1239,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1168,6 +1249,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1200,6 +1282,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1217,6 +1300,7 @@
           "isDeprecated": false
         }
       ],
+      "isAnonymous": false,
       "name": "Connection",
       "description": "\u003cp\u003eRepresents a single network connection to the RabbitMQ broker.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1230,9 +1314,9 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cballerina/rabbitmq:1.0.0:QueueConfiguration?\u003e ()",
+              "defaultValue": "()",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "QueueConfiguration",
                 "category": "records",
@@ -1240,6 +1324,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1255,13 +1340,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
-                "isNullable": false,
+                "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1275,6 +1361,24 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  },
+                  {
+                    "orgName": "ballerinax",
+                    "moduleName": "rabbitmq",
+                    "name": "Error",
+                    "category": "errors",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -1284,13 +1388,14 @@
                   },
                   {
                     "orgName": "ballerina",
-                    "moduleName": "rabbitmq",
-                    "name": "Error",
-                    "category": "errors",
+                    "moduleName": "lang.annotations",
+                    "name": "()",
+                    "category": "builtin",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
-                    "isNullable": true,
+                    "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -1318,7 +1423,7 @@
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "ExchangeConfiguration",
                 "category": "records",
@@ -1326,6 +1431,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1341,7 +1447,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -1349,6 +1455,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1380,6 +1487,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1402,6 +1510,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1424,6 +1533,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1439,7 +1549,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -1447,6 +1557,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1470,7 +1581,7 @@
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "MessageContent",
                 "category": "types",
@@ -1478,6 +1589,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1500,6 +1612,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1522,6 +1635,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1534,9 +1648,9 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/rabbitmq:1.0.0:BasicProperties?\u003e ()",
+              "defaultValue": "()",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "BasicProperties",
                 "category": "records",
@@ -1544,6 +1658,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1559,7 +1674,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -1567,6 +1682,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1598,6 +1714,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1620,6 +1737,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1642,6 +1760,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1657,7 +1776,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -1665,6 +1784,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1696,6 +1816,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1711,7 +1832,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -1719,6 +1840,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1750,6 +1872,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1765,7 +1888,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -1773,6 +1896,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1804,6 +1928,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1818,7 +1943,7 @@
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "AcknowledgementMode",
                 "category": "types",
@@ -1826,6 +1951,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1841,19 +1967,20 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Message",
                     "category": "clients",
@@ -1861,6 +1988,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -1869,7 +1997,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -1877,6 +2005,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -1907,19 +2036,20 @@
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "ConnectionConfiguration",
                     "category": "records",
@@ -1927,6 +2057,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -1935,7 +2066,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Connection",
                     "category": "objects",
@@ -1943,6 +2074,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -1969,9 +2101,9 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cballerina/rabbitmq:1.0.0:QueueConfiguration?\u003e ()",
+              "defaultValue": "()",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "QueueConfiguration",
                 "category": "records",
@@ -1979,6 +2111,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -1994,13 +2127,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
-                "isNullable": false,
+                "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2014,6 +2148,24 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  },
+                  {
+                    "orgName": "ballerinax",
+                    "moduleName": "rabbitmq",
+                    "name": "Error",
+                    "category": "errors",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -2023,13 +2175,14 @@
                   },
                   {
                     "orgName": "ballerina",
-                    "moduleName": "rabbitmq",
-                    "name": "Error",
-                    "category": "errors",
+                    "moduleName": "lang.annotations",
+                    "name": "()",
+                    "category": "builtin",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
-                    "isNullable": true,
+                    "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -2057,7 +2210,7 @@
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "ExchangeConfiguration",
                 "category": "records",
@@ -2065,6 +2218,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2080,7 +2234,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -2088,6 +2242,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2119,6 +2274,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2141,6 +2297,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2163,6 +2320,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2178,7 +2336,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -2186,6 +2344,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2209,7 +2368,7 @@
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "MessageContent",
                 "category": "types",
@@ -2217,6 +2376,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2239,6 +2399,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2261,6 +2422,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2273,9 +2435,9 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/rabbitmq:1.0.0:BasicProperties?\u003e ()",
+              "defaultValue": "()",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "BasicProperties",
                 "category": "records",
@@ -2283,6 +2445,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2298,7 +2461,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -2306,6 +2469,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2337,6 +2501,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2359,6 +2524,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2381,6 +2547,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2396,7 +2563,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -2404,6 +2571,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2435,6 +2603,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2450,7 +2619,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -2458,6 +2627,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2489,6 +2659,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2504,7 +2675,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -2512,6 +2683,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2543,6 +2715,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2557,7 +2730,7 @@
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "AcknowledgementMode",
                 "category": "types",
@@ -2565,6 +2738,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2580,19 +2754,20 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Message",
                     "category": "clients",
@@ -2600,6 +2775,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -2608,7 +2784,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -2616,6 +2792,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -2643,19 +2820,20 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Connection",
                     "category": "objects",
@@ -2663,6 +2841,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -2671,7 +2850,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -2679,6 +2858,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -2704,7 +2884,7 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -2714,6 +2894,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2726,7 +2907,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -2736,6 +2917,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2751,7 +2933,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -2759,6 +2941,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2780,7 +2963,7 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -2790,6 +2973,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2802,7 +2986,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -2812,6 +2996,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2827,7 +3012,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -2835,6 +3020,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -2859,19 +3045,20 @@
           {
             "defaultValue": "",
             "type": {
-              "orgName": "ballerina",
+              "orgName": "ballerinax",
               "moduleName": "rabbitmq",
               "category": "types",
               "isAnonymousUnionType": true,
               "isArrayType": false,
               "isNullable": false,
               "isTuple": false,
+              "isRestParam": false,
               "isLambda": false,
               "isDeprecated": false,
               "generateUserDefinedTypeLink": true,
               "memberTypes": [
                 {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "rabbitmq",
                   "name": "ConnectionConfiguration",
                   "category": "records",
@@ -2879,6 +3066,7 @@
                   "isArrayType": false,
                   "isNullable": false,
                   "isTuple": false,
+                  "isRestParam": false,
                   "isLambda": false,
                   "isDeprecated": false,
                   "generateUserDefinedTypeLink": true,
@@ -2887,7 +3075,7 @@
                   "arrayDimensions": 0
                 },
                 {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "rabbitmq",
                   "name": "Connection",
                   "category": "objects",
@@ -2895,6 +3083,7 @@
                   "isArrayType": false,
                   "isNullable": false,
                   "isTuple": false,
+                  "isRestParam": false,
                   "isLambda": false,
                   "isDeprecated": false,
                   "generateUserDefinedTypeLink": true,
@@ -2924,19 +3113,20 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Connection",
                     "category": "objects",
@@ -2944,6 +3134,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -2952,7 +3143,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -2960,6 +3151,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -2985,7 +3177,7 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -2995,6 +3187,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3007,7 +3200,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -3017,6 +3210,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3032,7 +3226,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -3040,6 +3234,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3061,7 +3256,7 @@
           "isExtern": false,
           "parameters": [
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -3071,6 +3266,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3083,7 +3279,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -3093,6 +3289,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3108,7 +3305,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -3116,6 +3313,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3133,6 +3331,7 @@
           "isDeprecated": false
         }
       ],
+      "isAnonymous": false,
       "name": "Channel",
       "description": "\u003cp\u003eThe Ballerina interface to provide AMQP Channel related functionality.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -3154,6 +3353,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3169,7 +3369,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -3177,6 +3377,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3208,6 +3409,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3230,6 +3432,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3245,7 +3448,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -3253,6 +3456,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3287,6 +3491,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3302,7 +3507,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -3310,6 +3515,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3341,6 +3547,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3363,6 +3570,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3378,7 +3586,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Error",
                 "category": "errors",
@@ -3386,6 +3594,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3417,6 +3626,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3440,19 +3650,20 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "BasicProperties",
                     "category": "records",
@@ -3460,6 +3671,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3468,7 +3680,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -3476,6 +3688,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3503,13 +3716,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3523,6 +3737,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3531,7 +3746,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -3539,6 +3754,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3566,13 +3782,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3586,6 +3803,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3594,7 +3812,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -3602,6 +3820,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3629,13 +3848,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3649,6 +3869,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3657,7 +3878,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -3665,6 +3886,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3697,6 +3919,7 @@
                 "isArrayType": true,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3712,6 +3935,7 @@
                   "isArrayType": false,
                   "isNullable": false,
                   "isTuple": false,
+                  "isRestParam": false,
                   "isLambda": false,
                   "isDeprecated": false,
                   "generateUserDefinedTypeLink": true,
@@ -3736,13 +3960,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3756,6 +3981,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3764,7 +3990,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -3772,6 +3998,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3799,13 +4026,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3819,6 +4047,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3827,7 +4056,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -3835,6 +4064,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3872,6 +4102,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3895,19 +4126,20 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "BasicProperties",
                     "category": "records",
@@ -3915,6 +4147,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3923,7 +4156,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -3931,6 +4164,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3958,13 +4192,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -3978,6 +4213,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -3986,7 +4222,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -3994,6 +4230,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4021,13 +4258,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4041,6 +4279,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4049,7 +4288,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -4057,6 +4296,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4084,13 +4324,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4104,6 +4345,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4112,7 +4354,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -4120,6 +4362,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4152,6 +4395,7 @@
                 "isArrayType": true,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4167,6 +4411,7 @@
                   "isArrayType": false,
                   "isNullable": false,
                   "isTuple": false,
+                  "isRestParam": false,
                   "isLambda": false,
                   "isDeprecated": false,
                   "generateUserDefinedTypeLink": true,
@@ -4191,13 +4436,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4211,6 +4457,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4219,7 +4466,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -4227,6 +4474,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4254,13 +4502,14 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4274,6 +4523,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4282,7 +4532,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Error",
                     "category": "errors",
@@ -4290,6 +4540,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4311,6 +4562,7 @@
           "isDeprecated": false
         }
       ],
+      "isAnonymous": false,
       "name": "Message",
       "description": "\u003cp\u003eProvides the functionality to manipulate the messages received by the consumer services.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -4334,6 +4586,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4346,7 +4599,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -4356,6 +4609,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4379,6 +4633,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4410,6 +4665,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4436,19 +4692,20 @@
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "category": "types",
                 "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "ConnectionConfiguration",
                     "category": "records",
@@ -4456,6 +4713,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4464,7 +4722,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "rabbitmq",
                     "name": "Connection",
                     "category": "objects",
@@ -4472,6 +4730,7 @@
                     "isArrayType": false,
                     "isNullable": false,
                     "isTuple": false,
+                    "isRestParam": false,
                     "isLambda": false,
                     "isDeprecated": false,
                     "generateUserDefinedTypeLink": true,
@@ -4488,7 +4747,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -4498,6 +4757,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4510,7 +4770,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -4520,6 +4780,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4552,6 +4813,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4564,7 +4826,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -4574,6 +4836,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4597,6 +4860,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4628,6 +4892,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4659,6 +4924,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4682,6 +4948,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4713,6 +4980,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4744,6 +5012,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4767,7 +5036,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Channel",
                 "category": "clients",
@@ -4775,6 +5044,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4799,19 +5069,20 @@
           {
             "defaultValue": "",
             "type": {
-              "orgName": "ballerina",
+              "orgName": "ballerinax",
               "moduleName": "rabbitmq",
               "category": "types",
               "isAnonymousUnionType": true,
               "isArrayType": false,
               "isNullable": false,
               "isTuple": false,
+              "isRestParam": false,
               "isLambda": false,
               "isDeprecated": false,
               "generateUserDefinedTypeLink": true,
               "memberTypes": [
                 {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "rabbitmq",
                   "name": "ConnectionConfiguration",
                   "category": "records",
@@ -4819,6 +5090,7 @@
                   "isArrayType": false,
                   "isNullable": false,
                   "isTuple": false,
+                  "isRestParam": false,
                   "isLambda": false,
                   "isDeprecated": false,
                   "generateUserDefinedTypeLink": true,
@@ -4827,7 +5099,7 @@
                   "arrayDimensions": 0
                 },
                 {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "rabbitmq",
                   "name": "Connection",
                   "category": "objects",
@@ -4835,6 +5107,7 @@
                   "isArrayType": false,
                   "isNullable": false,
                   "isTuple": false,
+                  "isRestParam": false,
                   "isLambda": false,
                   "isDeprecated": false,
                   "generateUserDefinedTypeLink": true,
@@ -4851,7 +5124,7 @@
             "isDeprecated": false
           },
           {
-            "defaultValue": "\u003cint?\u003e ()",
+            "defaultValue": "()",
             "type": {
               "orgName": "ballerina",
               "moduleName": "lang.annotations",
@@ -4861,6 +5134,7 @@
               "isArrayType": false,
               "isNullable": true,
               "isTuple": false,
+              "isRestParam": false,
               "isLambda": false,
               "isDeprecated": false,
               "generateUserDefinedTypeLink": true,
@@ -4873,7 +5147,7 @@
             "isDeprecated": false
           },
           {
-            "defaultValue": "\u003cint?\u003e ()",
+            "defaultValue": "()",
             "type": {
               "orgName": "ballerina",
               "moduleName": "lang.annotations",
@@ -4883,6 +5157,7 @@
               "isArrayType": false,
               "isNullable": true,
               "isTuple": false,
+              "isRestParam": false,
               "isLambda": false,
               "isDeprecated": false,
               "generateUserDefinedTypeLink": true,
@@ -4916,6 +5191,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4939,6 +5215,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -4970,6 +5247,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -5001,6 +5279,7 @@
                 "isArrayType": false,
                 "isNullable": true,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -5024,7 +5303,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "rabbitmq",
                 "name": "Channel",
                 "category": "clients",
@@ -5032,6 +5311,7 @@
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
+                "isRestParam": false,
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
@@ -5049,6 +5329,7 @@
           "isDeprecated": false
         }
       ],
+      "isAnonymous": false,
       "name": "Listener",
       "description": "\u003cp\u003eBallerina RabbitMQ Message Listener.\nProvides a listener to consume messages from the RabbitMQ server.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -5066,6 +5347,7 @@
         "isArrayType": false,
         "isNullable": false,
         "isTuple": false,
+        "isRestParam": false,
         "isLambda": false,
         "isDeprecated": false,
         "generateUserDefinedTypeLink": true,
@@ -5088,6 +5370,7 @@
         "isArrayType": false,
         "isNullable": false,
         "isTuple": false,
+        "isRestParam": false,
         "isLambda": false,
         "isDeprecated": false,
         "generateUserDefinedTypeLink": true,
@@ -5110,6 +5393,7 @@
         "isArrayType": false,
         "isNullable": false,
         "isTuple": false,
+        "isRestParam": false,
         "isLambda": false,
         "isDeprecated": false,
         "generateUserDefinedTypeLink": true,
@@ -5132,6 +5416,7 @@
         "isArrayType": false,
         "isNullable": false,
         "isTuple": false,
+        "isRestParam": false,
         "isLambda": false,
         "isDeprecated": false,
         "generateUserDefinedTypeLink": true,
@@ -5154,6 +5439,7 @@
         "isArrayType": false,
         "isNullable": false,
         "isTuple": false,
+        "isRestParam": false,
         "isLambda": false,
         "isDeprecated": false,
         "generateUserDefinedTypeLink": true,
@@ -5170,7 +5456,7 @@
   "annotations": [
     {
       "type": {
-        "orgName": "ballerina",
+        "orgName": "ballerinax",
         "moduleName": "rabbitmq",
         "name": "RabbitMQServiceConfig",
         "category": "records",
@@ -5178,6 +5464,7 @@
         "isArrayType": false,
         "isNullable": false,
         "isTuple": false,
+        "isRestParam": false,
         "isLambda": false,
         "isDeprecated": false,
         "generateUserDefinedTypeLink": true,
@@ -5201,91 +5488,6 @@
   "finiteTypes": [
     {
       "valueSpace": [
-        "direct"
-      ],
-      "name": "$anonType$0",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "fanout"
-      ],
-      "name": "$anonType$1",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "topic"
-      ],
-      "name": "$anonType$2",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "auto"
-      ],
-      "name": "$anonType$3",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
-        "client"
-      ],
-      "name": "$anonType$4",
-      "description": "",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    },
-    {
-      "valueSpace": [
         "direct",
         "fanout",
         "topic",
@@ -5297,6 +5499,7 @@
       "isArrayType": false,
       "isNullable": false,
       "isTuple": false,
+      "isRestParam": false,
       "isLambda": false,
       "isDeprecated": false,
       "generateUserDefinedTypeLink": true,
@@ -5313,12 +5516,13 @@
       "isArrayType": false,
       "isNullable": false,
       "isTuple": false,
+      "isRestParam": false,
       "isLambda": false,
       "isDeprecated": false,
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "rabbitmq",
           "name": "AUTO_ACK",
           "category": "constants",
@@ -5326,6 +5530,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5334,7 +5539,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "rabbitmq",
           "name": "CLIENT_ACK",
           "category": "constants",
@@ -5342,6 +5547,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5360,12 +5566,13 @@
       "isArrayType": false,
       "isNullable": false,
       "isTuple": false,
+      "isRestParam": false,
       "isLambda": false,
       "isDeprecated": false,
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "rabbitmq",
           "name": "RabbitMqError",
           "category": "errors",
@@ -5373,6 +5580,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5391,6 +5599,7 @@
       "isArrayType": false,
       "isNullable": false,
       "isTuple": false,
+      "isRestParam": false,
       "isLambda": false,
       "isDeprecated": false,
       "generateUserDefinedTypeLink": true,
@@ -5404,6 +5613,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5420,6 +5630,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5436,6 +5647,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5452,6 +5664,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5468,6 +5681,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5479,17 +5693,35 @@
           "orgName": "ballerina",
           "moduleName": "lang.annotations",
           "name": "map",
-          "category": "builtin",
+          "category": "map",
           "isAnonymousUnionType": false,
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
           "memberTypes": [],
           "paramTypes": [],
-          "arrayDimensions": 0
+          "arrayDimensions": 0,
+          "constraint": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "any",
+            "category": "builtin",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          }
         },
         {
           "orgName": "ballerina",
@@ -5500,6 +5732,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5516,6 +5749,7 @@
           "isArrayType": false,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5529,6 +5763,7 @@
           "isArrayType": true,
           "isNullable": false,
           "isTuple": false,
+          "isRestParam": false,
           "isLambda": false,
           "isDeprecated": false,
           "generateUserDefinedTypeLink": true,
@@ -5544,6 +5779,7 @@
             "isArrayType": false,
             "isNullable": false,
             "isTuple": false,
+            "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
             "generateUserDefinedTypeLink": true,

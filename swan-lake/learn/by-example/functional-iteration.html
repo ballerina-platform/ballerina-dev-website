@@ -22,28 +22,49 @@ redirect_from:
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">animals</span> <span class="p">=</span> <span class="nx">words</span><span class="p">.</span><span class="kt">map</span><span class="p">(</span><span class="nx">toUpper</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">animals</span><span class="p">);</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">];</span>
+    <span class="nx">numbers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+    <span class="p">});</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">positive</span> <span class="p">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Positive numbers: &quot;</span><span class="p">,</span> <span class="nx">positive</span><span class="p">);</span>
-    <span class="nx">numbers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">int</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
-    <span class="p">});</span>
     <span class="kt">int</span> <span class="nx">total</span> <span class="p">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total: &quot;</span><span class="p">,</span> <span class="nx">total</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">totalWithInitialValue</span> <span class="p">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total with initial value: &quot;</span><span class="p">,</span> <span class="nx">totalWithInitialValue</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nExecution Order:-&quot;</span><span class="p">);</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">colors</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">],</span> <span class="nx">price</span><span class="p">:</span> <span class="mi">5</span><span class="p">};</span>
-    <span class="nx">j</span><span class="p">.</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">json</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;- map operation&#39;s value: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-    <span class="p">}).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;-- foreach operation&#39;s value: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
-    <span class="p">});}</span><span class="kd">function</span> <span class="nx">toUpper</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total: &quot;</span><span class="p">,</span> <span class="nx">total</span><span class="p">);</span>    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">examScores</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;Jack&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&quot;Tom&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s">&quot;Anne&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">:</span> <span class="mi">50</span> <span class="p">};</span>
+    <span class="nx">examScores</span><span class="p">.</span><span class="nx">entries</span><span class="p">().</span><span class="nx">filter</span><span class="p">((</span><span class="nx">entry</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">).</span><span class="kt">map</span><span class="p">(</span>
+        <span class="kd">function</span> <span class="p">([</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">entry</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="p">{</span>
+            <span class="kt">string</span> <span class="nx">grade</span><span class="p">;</span>
+            <span class="k">if</span> <span class="nx">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">90</span> <span class="p">{</span> 
+                <span class="nx">grade</span> <span class="p">=</span> <span class="s">&quot;A&quot;</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">80</span> <span class="p">{</span>
+                <span class="nx">grade</span> <span class="p">=</span> <span class="s">&quot;B&quot;</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">70</span> <span class="p">{</span>
+                <span class="nx">grade</span> <span class="p">=</span> <span class="s">&quot;C&quot;</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">grade</span> <span class="p">=</span> <span class="s">&quot;D&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="p">[</span><span class="nx">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">grade</span><span class="p">];</span>
+        <span class="p">}).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">([</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">entry</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student: &quot;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot; Grade: &quot;</span><span class="p">,</span> <span class="nx">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="p">});}</span><span class="kd">function</span> <span class="nx">toUpper</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toUpperAscii</span><span class="p">();</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accumulator</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">currentValue</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">+</span> <span class="nx">currentValue</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">functional_iteration</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Number</span> <span class="nx">of</span> <span class="nx">elements</span> <span class="nx">in</span> <span class="err">&#39;</span><span class="nx">words</span><span class="err">&#39;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="nx">a</span><span class="p">=</span><span class="nx">ANT</span> <span class="nx">b</span><span class="p">=</span><span class="nx">BEAR</span> <span class="nx">c</span><span class="p">=</span><span class="nx">CAT</span> <span class="nx">d</span><span class="p">=</span><span class="nx">DEAR</span> <span class="nx">e</span><span class="p">=</span><span class="nx">ELEPHANT</span>
+<span class="o">-</span><span class="mi">5</span>
+<span class="o">-</span><span class="mi">3</span>
+<span class="mi">2</span>
+<span class="mi">7</span>
+<span class="mi">12</span>
+<span class="nx">Positive</span> <span class="nx">numbers</span><span class="p">:</span> <span class="mi">2</span> <span class="mi">7</span> <span class="mi">12</span>
+<span class="nx">Total</span><span class="p">:</span> <span class="mi">13</span>
+<span class="nx">Student</span><span class="p">:</span> <span class="nx">Jack</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">B</span>
+<span class="nx">Student</span><span class="p">:</span> <span class="nx">Tom</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">D</span>
+<span class="nx">Student</span><span class="p">:</span> <span class="nx">Anne</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">A</span>
 </pre></div>
 
             </div>
@@ -137,8 +158,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -147,7 +166,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -159,7 +178,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -171,7 +190,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string&gt; words = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt; words = {
         a: &quot;ant&quot;,
         b: &quot;bear&quot;,
         c: &quot;cat&quot;,
@@ -196,7 +215,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Number of elements in &#39;words&#39;: &quot;, words.length());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Number of elements in &#39;words&#39;: &quot;, words.length());
 </code></pre></div>
 
                                 </td>
@@ -215,7 +234,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string&gt; animals = words.map(toUpper);
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt; animals = words.map(toUpper);
     io:println(animals);
 </code></pre></div>
 
@@ -236,7 +255,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] numbers = [-5, -3, 2, 7, 12];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] numbers = [-5, -3, 2, 7, 12];
 </code></pre></div>
 
                                 </td>
@@ -255,7 +274,29 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] positive = numbers.filter(function (int i) returns boolean {
+                                    <div class="highlight"><pre><code class=language-ballerina>    numbers.forEach(function(int i) {
+        io:println(i);
+    });
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>forEach()</code> function executes a specified function once for each of
+ the elements in the container.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] positive = numbers.filter(function (int i) returns boolean {
         return i &gt;= 0;
     });
     io:println(&quot;Positive numbers: &quot;, positive);
@@ -278,29 +319,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    numbers.forEach(function(int i) {
-        io:println(i);
-    });
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>forEach()</code> function executes a specified function once for each of
- the elements in the container.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int total = numbers.reduce(sum, 0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int total = numbers.reduce(sum, 0);
     io:println(&quot;Total: &quot;, total);
 </code></pre></div>
 
@@ -322,20 +341,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int totalWithInitialValue = numbers.reduce(sum, 5);
-    io:println(&quot;Total with initial value: &quot;, totalWithInitialValue);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nExecution Order:-&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; examScores = { &quot;Jack&quot;: 80, &quot;Tom&quot;: 65, &quot;Anne&quot;: 90, &quot;John&quot;: 50 };
 </code></pre></div>
 
                                 </td>
@@ -347,14 +353,22 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;json&gt; j = {name: &quot;apple&quot;, colors: [&quot;red&quot;, &quot;green&quot;], price: 5};
-    j.map(function (json value) returns string {
-        string result = value.toString();
-        io:println(&quot;- map operation&#39;s value: &quot;, result);
-        return result;
-    }).forEach(function (string s) {
-        io:println(&quot;-- foreach operation&#39;s value: &quot;, s);
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    examScores.entries().filter((entry) =&gt; entry[1] &gt;= 60).map(
+        function ([string, int] entry) returns [string, string] {
+            string grade;
+            if entry[1] &gt;= 90 { 
+                grade = &quot;A&quot;;
+            } else if entry[1] &gt;= 80 {
+                grade = &quot;B&quot;;
+            } else if entry[1] &gt;= 70 {
+                grade = &quot;C&quot;;
+            } else {
+                grade = &quot;D&quot;;
+            }
+            return [entry[0], grade];
+        }).forEach(function ([string, string] entry) {
+            io:println(&quot;Student: &quot;, entry[0], &quot; Grade: &quot;, entry[1]);
+        });
 </code></pre></div>
 
                                 </td>
@@ -362,7 +376,10 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>forEach()</code> function applies the given function to each item of the container.</p>
+                                            <p>The functional iteration operations can be chained together.
+ Here, we first filter the exam scores to only get the passed students,
+ and then we do a map operation to convert the scores to grades, and
+ we finally print out the grades of the students.</p>
 
                                         </div>
                                     </div>
@@ -373,7 +390,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -385,7 +402,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function toUpper(string value) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function toUpper(string value) returns string {
     return value.toUpperAscii();
 }
 </code></pre></div>
@@ -399,7 +416,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function sum(int accumulator, int currentValue) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function sum(int accumulator, int currentValue) returns int {
     return accumulator + currentValue;
 }
 </code></pre></div>
@@ -418,10 +435,6 @@ redirect_from:
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -429,38 +442,22 @@ redirect_from:
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run functional_iteration.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run functional_iteration.bal
 Number of elements in &#39;words&#39;: 5
 a=ANT b=BEAR c=CAT d=DEAR e=ELEPHANT
-Positive numbers: 2 7 12
 -5
 -3
 2
 7
 12
+Positive numbers: 2 7 12
 Total: 13
-Total with initial value: 18
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Execution Order:-
-- map operation&#39;s value: apple
-- map operation&#39;s value: red green
-- map operation&#39;s value: 5
--- foreach operation&#39;s value: apple
--- foreach operation&#39;s value: red green
--- foreach operation&#39;s value: 5
+Student: Jack Grade: B
+Student: Tom Grade: D
+Student: Anne Grade: A
 </code></pre></div>
 
                                 </td>

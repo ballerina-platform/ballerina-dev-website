@@ -51,7 +51,17 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Before</span> <span class="nx">running</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">change</span> <span class="nx">the</span> <span class="nx">H2</span> <span class="nx">DB</span> <span class="nx">connection</span> <span class="nx">properties</span> <span class="k">as</span> <span class="nx">required</span><span class="p">.</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">Before</span> <span class="nx">running</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">change</span> <span class="nx">the</span> <span class="nx">H2</span> <span class="nx">DB</span> <span class="nx">connection</span> <span class="nx">properties</span> <span class="k">as</span> <span class="nx">required</span><span class="p">.</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">local_transactions</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Create</span> <span class="nx">CUSTOMER</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Create</span> <span class="nx">SALARY</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">xid</span><span class="p">=</span><span class="nx">a87ced8b</span><span class="o">-</span><span class="nx">a2b6</span><span class="o">-</span><span class="mi">4</span><span class="nx">f2e</span><span class="o">-</span><span class="mi">9</span><span class="nx">afc</span><span class="o">-</span><span class="nx">befbbc6b78bd</span> <span class="nx">retryNumber</span><span class="p">=</span><span class="mi">0</span> <span class="nx">startTime</span><span class="p">=</span><span class="mi">1592403803161</span> <span class="nx">prevAttempt</span><span class="p">=</span>
+<span class="nx">Transaction</span> <span class="nx">committed</span>
+<span class="nx">Insert</span> <span class="nx">data</span> <span class="nx">into</span> <span class="nx">CUSTOMER</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Insert</span> <span class="nx">data</span> <span class="nx">into</span> <span class="nx">SALARY</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">CUSTOMER</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">SALARY</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
 </pre></div>
 
             </div>
@@ -164,7 +174,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/lang.&#39;transaction as transactions;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;transaction as transactions;
 import ballerina/io;
 import ballerina/sql;
 import ballerina/java.jdbc;
@@ -179,7 +189,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -191,7 +201,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client dbClient =
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client dbClient =
                 check new (url = &quot;jdbc:h2:file:./local-transactions/testdb&quot;,
                                         user = &quot;test&quot;, password = &quot;test&quot;);
 </code></pre></div>
@@ -212,7 +222,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS CUSTOMER &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    var ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS CUSTOMER &quot; +
                                 &quot;(ID INTEGER, NAME VARCHAR(30))&quot;);
     handleExecute(ret, &quot;Create CUSTOMER table&quot;);
 </code></pre></div>
@@ -233,7 +243,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS SALARY &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS SALARY &quot; +
                                 &quot;(ID INTEGER, MON_SALARY FLOAT)&quot;);
     handleExecute(ret, &quot;Create SALARY table&quot;);
 </code></pre></div>
@@ -247,7 +257,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    transaction {
+                                    <div class="highlight"><pre><code class=language-ballerina>    transaction {
 </code></pre></div>
 
                                 </td>
@@ -268,7 +278,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var customerResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>        var customerResult =
                         dbClient-&gt;execute(&quot;INSERT INTO CUSTOMER(ID,NAME) &quot; +
                                         &quot;VALUES (1, &#39;Anne&#39;)&quot;);
 </code></pre></div>
@@ -289,7 +299,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var salaryResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>        var salaryResult =
                         dbClient-&gt;execute(&quot;INSERT INTO SALARY(ID, MON_SALARY)&quot; +
                                         &quot; VALUES (1, 2500)&quot;);
 </code></pre></div>
@@ -310,7 +320,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        transactions:Info transInfo = transactions:info();
+                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:Info transInfo = transactions:info();
         io:println(transInfo);
 </code></pre></div>
 
@@ -330,7 +340,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var commitResult = commit;
+                                    <div class="highlight"><pre><code class=language-ballerina>        var commitResult = commit;
 </code></pre></div>
 
                                 </td>
@@ -350,7 +360,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if(commitResult is ()){
+                                    <div class="highlight"><pre><code class=language-ballerina>        if(commitResult is ()){
 </code></pre></div>
 
                                 </td>
@@ -369,7 +379,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Transaction committed&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Transaction committed&quot;);
             handleExecute(customerResult, &quot;Insert data into CUSTOMER table&quot;);
             handleExecute(salaryResult, &quot;Insert data into SALARY table&quot;);
         } else {
@@ -392,7 +402,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Transaction failed&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Transaction failed&quot;);
         }
     }
 </code></pre></div>
@@ -414,7 +424,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE CUSTOMER&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE CUSTOMER&quot;);
     handleExecute(ret, &quot;Drop table CUSTOMER&quot;);
 </code></pre></div>
 
@@ -434,7 +444,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE SALARY&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE SALARY&quot;);
     handleExecute(ret, &quot;Drop table SALARY&quot;);
 </code></pre></div>
 
@@ -447,7 +457,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    check dbClient.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    check dbClient.close();
 }
 </code></pre></div>
 
@@ -467,7 +477,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleExecute(sql:ExecutionResult|sql:Error returned, string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleExecute(sql:ExecutionResult|sql:Error returned, string message) {
     if (returned is sql:ExecutionResult) {
         io:println(message + &quot; status: &quot;, returned.affectedRowCount);
     } else {
@@ -522,8 +532,8 @@ import ballerina/java.jdbc;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run local_transactions.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run local_transactions.bal
 Create CUSTOMER table status: 0
 Create SALARY table status: 0
 xid=a87ced8b-a2b6-4f2e-9afc-befbbc6b78bd retryNumber=0 startTime=1592403803161 prevAttempt=

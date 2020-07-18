@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides lang library operations on <code>transaction</code>s.
+    <meta name="description" content="This module provides lang library operations on transactions.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.transaction">
 
@@ -59,178 +68,120 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Objects</h3>
-                <ul>
-                    
-                        <li class="active">
-                            <a href="DefaultRetryManager.html">DefaultRetryManager</a>
-                        </li>
-                    
-                        <li >
-                            <a href="LocalParticipant.html">LocalParticipant</a>
-                        </li>
-                    
-                        <li >
-                            <a href="Participant.html">Participant</a>
-                        </li>
-                    
-                        <li >
-                            <a href="RetryManager.html">RetryManager</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../lang.transaction/index.html">
-            <h3>lang.transaction</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../lang.transaction/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../lang.transaction/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../../lang.transaction/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../../lang.transaction/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="errors" href="../../lang.transaction/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Objects</h3>
+                    <h3>
+    Objects
+</h3>
                     <ul>
                         
-                            <li class="active"></li>>
-                                <a href="DefaultRetryManager.html">DefaultRetryManager</a>
-                            </li>
-                        
-                            <li ></li>>
-                                <a href="LocalParticipant.html">LocalParticipant</a>
-                            </li>
-                        
-                            <li ></li>>
-                                <a href="Participant.html">Participant</a>
-                            </li>
-                        
-                            <li ></li>>
-                                <a href="RetryManager.html">RetryManager</a>
-                            </li>
-                        
+    
+        <li class="active">
+            <a href="DefaultRetryManager.html" onclick="menuLinkClick()">DefaultRetryManager</a>
+        </li>
+    
+        <li >
+            <a href="LocalParticipant.html" onclick="menuLinkClick()">LocalParticipant</a>
+        </li>
+    
+        <li >
+            <a href="Participant.html" onclick="menuLinkClick()">Participant</a>
+        </li>
+    
+        <li >
+            <a href="RetryManager.html" onclick="menuLinkClick()">RetryManager</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../lang.transaction/index.html">
+        <a href="../../lang.transaction/index.html" onclick="menuLinkClick()">
             <h3>lang.transaction</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../lang.transaction/index.html#records">Records</a>
+            <a data="records" href="../../lang.transaction/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../lang.transaction/index.html#objects">Objects</a>
+                <a  data="objects" href="../../lang.transaction/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../../lang.transaction/index.html#functions">Functions</a>
+                <a data="functions" href="../../lang.transaction/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../../lang.transaction/index.html#constants">Constants</a>
+                <a data="constants" href="../../lang.transaction/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
         
             <li>
-                <a data="errors" href="../../lang.transaction/index.html#errors">Errors</a>
+                <a data="errors" href="../../lang.transaction/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Object - </span>
-                
-                    <a href="../../lang.transaction/index.html">lang.transaction</a>
-                 :
-                <span class="objects ">DefaultRetryManager</span>
-            </h1>
-            <p>
-                
-                
-            </p>
-
-            <div class="constants">
-                <div class="method-sum">
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        
-                        <h2>Constructor</h2>
+                    
+    Object
+
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../../lang.transaction/index.html"><span class="modules">lang.transaction</span></a>
+                
+                 :
+                    
+    <span class="objects ">DefaultRetryManager</span>
+
+                
+            </h1>
+            
+    <p>
+        
+        
+    </p>
+
+    <div class="constants">
+        <div class="method-sum">
+            
+                
+                <h2>Constructor</h2>
 <h3 >__init</h3><p>(<span class="builtin-type">int</span> count)</p>
 <div class="data-wrapper">
     
@@ -244,15 +195,15 @@
         </div>
     
 </div>
-                        
-                    
-
                 
+            
+
+        
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="shouldRetry">
         <a href="#shouldRetry">shouldRetry </a>
@@ -263,27 +214,27 @@
     </div>
 </div>
 
-                            
-                        </div>
-                    
-
                     
                 </div>
+            
 
-                
-                    
-                        <div class="method-content">
+            
+        </div>
+
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="shouldRetry" title="shouldRetry">
              <a class="url-link" href="#shouldRetry">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > shouldRetry </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">error?</span> e)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -323,27 +274,16 @@
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -370,6 +310,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -379,4 +337,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

@@ -33,7 +33,12 @@ redirect_from:
         <span class="nx">panic</span> <span class="nx">y</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">f</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">function_pointers</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Answer</span><span class="p">:</span> <span class="mf">280.0</span>
+<span class="nx">Answer</span><span class="p">:</span> <span class="mf">280.0</span>
+<span class="nx">Answer</span><span class="p">:</span> <span class="mf">280.0</span>
 </pre></div>
 
             </div>
@@ -130,7 +135,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.&#39;int;
 </code></pre></div>
 
@@ -143,7 +148,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -155,7 +160,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Answer: &quot;, foo(10, test));
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Answer: &quot;, foo(10, test));
     io:println(&quot;Answer: &quot;, foo(10, getFunctionPointer()));
 </code></pre></div>
 
@@ -178,7 +183,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function (string, int...) returns float f = getFunctionPointer();
+                                    <div class="highlight"><pre><code class=language-ballerina>    function (string, int...) returns float f = getFunctionPointer();
 </code></pre></div>
 
                                 </td>
@@ -197,7 +202,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Answer: &quot;, foo(10, f));
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Answer: &quot;, foo(10, f));
 }
 </code></pre></div>
 
@@ -210,7 +215,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function foo(int x, function (string, int...) returns float bar)
+                                    <div class="highlight"><pre><code class=language-ballerina>function foo(int x, function (string, int...) returns float bar)
              returns float {
     return x * bar(&quot;2&quot;, 2, 3, 4, 5);
 }
@@ -233,7 +238,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getFunctionPointer() returns
+                                    <div class="highlight"><pre><code class=language-ballerina>function getFunctionPointer() returns
                     (function (string, int...) returns float) {
 </code></pre></div>
 
@@ -253,7 +258,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return test;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return test;
 }
 </code></pre></div>
 
@@ -273,7 +278,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function test(string s, int... x) returns float {
+                                    <div class="highlight"><pre><code class=language-ballerina>function test(string s, int... x) returns float {
     int|error y = &#39;int:fromString(s);
     float f = 0.0;
 </code></pre></div>
@@ -287,7 +292,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    if (y is int) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (y is int) {
         foreach var item in x {
             f += item * 1.0 * y;
         }
@@ -321,8 +326,8 @@ import ballerina/lang.&#39;int;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run function_pointers.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run function_pointers.bal
 Answer: 280.0
 Answer: 280.0
 Answer: 280.0

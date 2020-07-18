@@ -55,7 +55,15 @@ redirect_from:
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onIdleTimeout</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Idle timeout: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">};</span>
+<span class="p">};</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_to_websocket_upgrade</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">Chrome</span> <span class="nx">or</span> <span class="nx">Firefox</span> <span class="nx">JavaScript</span> <span class="nx">console</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">commands</span> <span class="nx">given</span> <span class="nx">below</span><span class="p">.</span> <span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="err">#</span> <span class="nx">Change</span> <span class="s">&quot;xml&quot;</span> <span class="nx">to</span> <span class="nx">another</span> <span class="nx">sub</span> <span class="nx">protocol</span> <span class="nx">to</span> <span class="nx">observe</span> <span class="nx">the</span> <span class="nx">behavior</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">WebSocket</span> <span class="nx">server</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">This</span> <span class="nx">WebSocket</span> <span class="nx">sample</span> <span class="nx">is</span> <span class="nx">configured</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">two</span> <span class="nx">endpoints</span><span class="p">.</span>
+<span class="k">var</span> <span class="nx">ws</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s">&quot;ws://localhost:9090/hello/ws&quot;</span><span class="p">,</span> <span class="s">&quot;xml&quot;</span><span class="p">,</span> <span class="s">&quot;my-protocol&quot;</span><span class="p">);</span><span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">data</span><span class="p">)};</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">)};</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">messages</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span><span class="err">#</span><span class="nx">Use</span> <span class="nx">the</span> <span class="nx">cURL</span> <span class="nx">command</span> <span class="nx">to</span> <span class="nx">call</span> <span class="nx">the</span> <span class="nx">HTTP</span> <span class="kd">resource</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Content-Type: text/plain&quot;</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">POST</span> <span class="o">-</span><span class="nx">d</span> <span class="err">&#39;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="p">!!</span><span class="sc">&#39; &#39;</span><span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello/world&#39;</span>
 </pre></div>
 
             </div>
@@ -150,7 +158,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 </code></pre></div>
@@ -164,7 +172,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service httpService on new http:Listener(9090) {
@@ -179,7 +187,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         path: &quot;/world&quot;,
         methods: [&quot;POST&quot;]
     }
@@ -212,7 +220,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var err = caller-&gt;respond(resp);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var err = caller-&gt;respond(resp);
         if (err is error) {
             log:printError(&quot;Error in responding&quot;, err);
         }
@@ -228,7 +236,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         webSocketUpgrade: {
             upgradePath: &quot;/ws&quot;,
             upgradeService: wsService
@@ -254,7 +262,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
 }
 </code></pre></div>
 
@@ -267,7 +275,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service wsService = @http:WebSocketServiceConfig {subProtocols: [&quot;xml, json&quot;]
+                                    <div class="highlight"><pre><code class=language-ballerina>service wsService = @http:WebSocketServiceConfig {subProtocols: [&quot;xml, json&quot;]
                                          ,idleTimeoutInSeconds: 20} service {
 </code></pre></div>
 
@@ -291,7 +299,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
         io:println(&quot;New WebSocket connection: &quot; + caller.getConnectionId());
     }
 </code></pre></div>
@@ -305,7 +313,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text) {
         io:println(text);
         var err = caller-&gt;pushText(text);
         if (err is error) {
@@ -323,7 +331,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onIdleTimeout(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onIdleTimeout(http:WebSocketCaller caller) {
         io:println(&quot;Idle timeout: &quot; + caller.getConnectionId());
     }
 };
@@ -368,8 +376,8 @@ service httpService on new http:Listener(9090) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run http_to_websocket_upgrade.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run http_to_websocket_upgrade.bal
 </code></pre></div>
 
                                 </td>
@@ -384,7 +392,7 @@ $ ballerina run http_to_websocket_upgrade.bal
                                     <div class="highlight"><pre><code class=shell-session># To check the sample, use the Chrome or Firefox JavaScript console and run the commands given below. &lt;br&gt;
 # Change &quot;xml&quot; to another sub protocol to observe the behavior of the WebSocket server.
 # This WebSocket sample is configured to have two endpoints.
-$ var ws = new WebSocket(&quot;ws://localhost:9090/hello/ws&quot;, &quot;xml&quot;, &quot;my-protocol&quot;);
+var ws = new WebSocket(&quot;ws://localhost:9090/hello/ws&quot;, &quot;xml&quot;, &quot;my-protocol&quot;);
 </code></pre></div>
 
                                 </td>
@@ -396,8 +404,8 @@ $ var ws = new WebSocket(&quot;ws://localhost:9090/hello/ws&quot;, &quot;xml&quo
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ws.onmessage = function(frame) {console.log(frame.data)};
-$ ws.onclose = function(frame) {console.log(frame)};
+                                    <div class="highlight"><pre><code class=shell-session>ws.onmessage = function(frame) {console.log(frame.data)};
+ws.onclose = function(frame) {console.log(frame)};
 </code></pre></div>
 
                                 </td>
@@ -410,7 +418,7 @@ $ ws.onclose = function(frame) {console.log(frame)};
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send messages.
-$ ws.send(&quot;hello world&quot;);
+ws.send(&quot;hello world&quot;);
 </code></pre></div>
 
                                 </td>
@@ -423,7 +431,7 @@ $ ws.send(&quot;hello world&quot;);
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#Use the cURL command to call the HTTP resource.
-$ curl -H &quot;Content-Type: text/plain&quot; -X POST -d &#39;Hello World!!&#39; &#39;http://localhost:9090/hello/world&#39;
+curl -H &quot;Content-Type: text/plain&quot; -X POST -d &#39;Hello World!!&#39; &#39;http://localhost:9090/hello/world&#39;
 </code></pre></div>
 
                                 </td>

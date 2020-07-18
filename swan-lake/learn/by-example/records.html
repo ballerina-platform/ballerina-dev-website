@@ -70,7 +70,21 @@ redirect_from:
     <span class="k">var</span> <span class="nx">rec</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Amy&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="o">...</span><span class="nx">address</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">rec</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">rec</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">records</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">17</span> <span class="nx">grades</span><span class="p">=</span><span class="nx">maths</span><span class="p">=</span><span class="mi">80</span> <span class="nx">physics</span><span class="p">=</span><span class="mi">75</span> <span class="nx">chemistry</span><span class="p">=</span><span class="mi">65</span>
+<span class="nx">John</span> <span class="nx">Doe</span>
+<span class="nx">John</span> <span class="nx">Doe</span>
+<span class="mi">80</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">age</span><span class="p">=</span><span class="mi">16</span> <span class="nx">grades</span><span class="p">=</span><span class="nx">maths</span><span class="p">=</span><span class="mi">40</span> <span class="nx">physics</span><span class="p">=</span><span class="mi">35</span> <span class="nx">chemistry</span><span class="p">=</span><span class="mi">35</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">17</span> <span class="nx">grades</span><span class="p">=</span><span class="nx">maths</span><span class="p">=</span><span class="mi">80</span> <span class="nx">physics</span><span class="p">=</span><span class="mi">75</span> <span class="nx">chemistry</span><span class="p">=</span><span class="mi">65</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">age</span><span class="p">=</span><span class="mi">16</span> <span class="nx">grades</span><span class="p">=</span><span class="nx">maths</span><span class="p">=</span><span class="mi">40</span> <span class="nx">physics</span><span class="p">=</span><span class="mi">35</span> <span class="nx">chemistry</span><span class="p">=</span><span class="mi">35</span> <span class="nx">address</span><span class="p">=</span><span class="nx">city</span><span class="p">=</span><span class="nx">Colombo</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span>
+<span class="nx">maths</span><span class="p">=</span><span class="mi">80</span> <span class="nx">physics</span><span class="p">=</span><span class="mi">75</span> <span class="nx">chemistry</span><span class="p">=</span><span class="mi">65</span> <span class="nx">english</span><span class="p">=</span><span class="mi">90</span>
+<span class="mi">90</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Anne</span> <span class="nx">age</span><span class="p">=</span><span class="mi">18</span> <span class="nx">grades</span><span class="p">=</span><span class="nx">maths</span><span class="p">=</span><span class="mi">70</span> <span class="nx">physics</span><span class="p">=</span><span class="mi">80</span> <span class="nx">chemistry</span><span class="p">=</span><span class="mi">55</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Colombo</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Amy</span> <span class="nx">age</span><span class="p">=</span><span class="mi">18</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Colombo</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span>
+<span class="nx">Amy</span>
 </pre></div>
 
             </div>
@@ -189,7 +203,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -201,7 +215,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string name;
     int age;
     Grades grades;
@@ -226,7 +240,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Address record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Address record {|
     string city;
     string country;
 |};
@@ -249,7 +263,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Grades record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Grades record {|
     int maths;
     int physics;
     int chemistry;
@@ -272,7 +286,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int...;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int...;
 |};
 </code></pre></div>
 
@@ -292,7 +306,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -304,7 +318,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int age = 17;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int age = 17;
 </code></pre></div>
 
                                 </td>
@@ -316,7 +330,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student john = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student john = {
 </code></pre></div>
 
                                 </td>
@@ -337,7 +351,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        name: &quot;John Doe&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        name: &quot;John Doe&quot;,
 </code></pre></div>
 
                                 </td>
@@ -356,7 +370,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        age,
+                                    <div class="highlight"><pre><code class=language-ballerina>        age,
         grades: {
             maths: 80,
             physics: 75,
@@ -386,7 +400,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(john.name);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(john.name);
 </code></pre></div>
 
                                 </td>
@@ -406,7 +420,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(john[&quot;name&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(john[&quot;name&quot;]);
 </code></pre></div>
 
                                 </td>
@@ -428,7 +442,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(john.grades.maths);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(john.grades.maths);
 </code></pre></div>
 
                                 </td>
@@ -447,7 +461,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student peter = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student peter = {
         name: &quot;Peter&quot;,
         age: 19,
         grades: {
@@ -467,7 +481,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    peter.age = 16;
+                                    <div class="highlight"><pre><code class=language-ballerina>    peter.age = 16;
 </code></pre></div>
 
                                 </td>
@@ -487,7 +501,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(peter);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(peter);
     io:println(john);
 </code></pre></div>
 
@@ -500,7 +514,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Address address = {city: &quot;Colombo&quot;, country: &quot;Sri Lanka&quot;};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Address address = {city: &quot;Colombo&quot;, country: &quot;Sri Lanka&quot;};
     peter[&quot;address&quot;] = address;
     io:println(peter);
 </code></pre></div>
@@ -522,7 +536,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Grades grades = {maths: 80, physics: 75, chemistry: 65, &quot;english&quot;: 90};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Grades grades = {maths: 80, physics: 75, chemistry: 65, &quot;english&quot;: 90};
     io:println(grades);
 </code></pre></div>
 
@@ -546,7 +560,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int? english = grades[&quot;english&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int? english = grades[&quot;english&quot;];
     io:println(english);
 </code></pre></div>
 
@@ -568,7 +582,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student anne = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student anne = {
         name: &quot;Anne&quot;,
         age: 18,
         grades: {
@@ -602,7 +616,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var rec = {name: &quot;Amy&quot;, age: 18, ...address};
+                                    <div class="highlight"><pre><code class=language-ballerina>    var rec = {name: &quot;Amy&quot;, age: 18, ...address};
     io:println(rec);
 </code></pre></div>
 
@@ -624,7 +638,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(rec.name);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(rec.name);
 }
 </code></pre></div>
 
@@ -660,8 +674,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run records.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run records.bal
 name=John Doe age=17 grades=maths=80 physics=75 chemistry=65
 John Doe
 John Doe

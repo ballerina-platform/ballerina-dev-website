@@ -25,7 +25,18 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">At</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">line</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">do</span> <span class="nx">one</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">depending</span> <span class="nx">on</span> <span class="nx">whether</span> <span class="nx">you</span> <span class="nx">want</span> <span class="nx">the</span> <span class="nx">logs</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">logged</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">console</span><span class="p">,</span> <span class="nx">or</span> <span class="nx">in</span> <span class="nx">a</span> <span class="nx">file</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Run</span> <span class="nx">the</span> <span class="kd">service</span> <span class="nx">by</span> <span class="nx">setting</span> <span class="nx">the</span> <span class="s">`--b7a.http.accesslog.console=true`</span> <span class="nx">property</span> <span class="nx">to</span> <span class="nx">log</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">console</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_access_logs</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">accesslog</span><span class="p">.</span><span class="nx">console</span><span class="p">=</span><span class="kc">true</span> 
+<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">HTTP</span> <span class="nx">access</span> <span class="nx">log</span> <span class="nx">enabled</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9095</span>
+<span class="mf">127.0.0.1</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">30</span><span class="o">/</span><span class="nx">Oct</span><span class="o">/</span><span class="mi">2018</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">08</span> <span class="o">+</span><span class="mo">0530</span><span class="p">]</span> <span class="s">&quot;GET /hello HTTP/1.1&quot;</span> <span class="mi">200</span> <span class="mi">10</span> <span class="s">&quot;-&quot;</span> <span class="s">&quot;curl/7.58.0&quot;</span><span class="err">#</span> <span class="nx">Or</span><span class="p">,</span> <span class="nx">run</span> <span class="nx">the</span> <span class="kd">service</span> <span class="nx">by</span> <span class="nx">setting</span> <span class="s">`--b7a.http.accesslog.path=path/to/file.txt`</span> <span class="nx">to</span> <span class="nx">log</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">specified</span> <span class="nx">file</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_access_logs</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">accesslog</span><span class="p">.</span><span class="nx">path</span><span class="p">=</span><span class="nx">path</span><span class="o">/</span><span class="nx">to</span><span class="o">/</span><span class="nx">file</span><span class="p">.</span><span class="nx">txt</span> 
+<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">HTTP</span> <span class="nx">access</span> <span class="nx">log</span> <span class="nx">enabled</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9095</span><span class="err">#</span> <span class="nx">Invoke</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">k</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9095/hello</span>
+<span class="nx">Successful</span>
 </pre></div>
 
             </div>
@@ -108,7 +119,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -121,7 +132,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service helloService on new http:Listener(9095) {
@@ -141,7 +152,7 @@ service helloService on new http:Listener(9095) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(&quot;Successful&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&quot;Successful&quot;);
 </code></pre></div>
 
                                 </td>
@@ -160,7 +171,7 @@ service helloService on new http:Listener(9095) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
             log:printError(&quot;Error occurred while responding&quot;, result);
         }
     }
@@ -203,7 +214,7 @@ service helloService on new http:Listener(9095) {
                                     <div class="highlight"><pre><code class=shell-session># At the command line, navigate to the directory that contains the
 # `.bal` file and do one of the following depending on whether you want the logs to be logged on the console, or in a file.
 # Run the service by setting the `--b7a.http.accesslog.console=true` property to log to the console.
-$ ballerina run http_access_logs.bal --b7a.http.accesslog.console=true 
+ballerina run http_access_logs.bal --b7a.http.accesslog.console=true 
 ballerina: HTTP access log enabled
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
 127.0.0.1 - - [30/Oct/2018:11:23:08 +0530] &quot;GET /hello HTTP/1.1&quot; 200 10 &quot;-&quot; &quot;curl/7.58.0&quot;
@@ -219,7 +230,7 @@ ballerina: HTTP access log enabled
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Or, run the service by setting `--b7a.http.accesslog.path=path/to/file.txt` to log to the specified file.
-$ ballerina run http_access_logs.bal --b7a.http.accesslog.path=path/to/file.txt 
+ballerina run http_access_logs.bal --b7a.http.accesslog.path=path/to/file.txt 
 ballerina: HTTP access log enabled
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
 </code></pre></div>
@@ -247,7 +258,7 @@ ballerina: HTTP access log enabled
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Invoke the service.
-$ curl -k http://localhost:9095/hello
+curl -k http://localhost:9095/hello
 Successful
 </code></pre></div>
 

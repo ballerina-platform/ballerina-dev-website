@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,16 +61,17 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../time/index.html">
+        <a href="../time/index.html" onclick="menuLinkClick()">
             <h3>time</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../time/index.html#records">Records</a>
+            <a data="records" href="../time/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
@@ -76,23 +79,23 @@
         
         
             <li>
-                <a data="functions" href="../time/index.html#functions">Functions</a>
+                <a data="functions" href="../time/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../time/index.html#constants">Constants</a>
+                <a data="constants" href="../time/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../time/index.html#types">Types</a>
+                <a data="types" href="../time/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../time/index.html#errors">Errors</a>
+                <a data="errors" href="../time/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -101,84 +104,37 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../time/index.html">
-            <h3>time</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../time/index.html#records">Records</a>
-        </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../time/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../time/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../time/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../time/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">time</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.0.0</div>
+                    <a href="../time/index.html"><span class="modules">time</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides implementations related to time, date, time zones, and durations.</p>
 <p>The module has two main types as <a href="records/Time.html">Time</a> and <a href="records/TimeZone.html">TimeZone</a>. The <code>Time</code> type represents a time associated with a given time zone. It has <code>time</code> and <code>zone</code> as its attributes. The <code>TimeZone</code> type represents the time zone associated with a given time. It has <code>id</code> and <code>offset</code> as its attributes. An <code>id</code> can be one of the following:</p>
 <ul>
@@ -188,7 +144,7 @@
 <li>Also, <code>id</code> can be a region-based zone ID. The format is '{area}/{city}' e.g., &quot;America/Panama&quot;. The zones are based on IANA Time Zone Database (TZDB) supplied data.</li>
 </ul>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For an example on the usage of the operations, see the <a href="https://ballerina.io/swan-lake/learn/by-example/time.html">Time Example</a>.</p>
-<h2>Patterns for formatting and parsing</h2>
+<h3>Patterns for formatting and parsing</h3>
 <p>The below patterns can be used to generate the formatter string when using the <code>format()</code> and <code>parse()</code> functions.</p>
 <table>
 <thead>
@@ -234,355 +190,349 @@
 </table>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="Time" title="Time">
-                                <a class="records " href="records/Time.html">Time</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a particular time with its associated time-zone.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="TimeZone" title="TimeZone">
-                                <a class="records " href="records/TimeZone.html">TimeZone</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the time-zone information associated with a particular time.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="Time" title="Time">
+                            <a class="records " href="records/Time.html">Time</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a particular time with its associated time-zone.
+                        </td>
+                    </tr>
                     
-                </table>
-            </section>
-            
-
-            
-
-            
-
-            
-           
-
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="addDuration" title="addDuration">
-                                <a class="functions " href="functions.html#addDuration">addDuration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Add specified durations to the given time value.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="createTime" title="createTime">
-                                <a class="functions " href="functions.html#createTime">createTime</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the Time object correspoding to the given time components and time-zone.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="TimeZone" title="TimeZone">
+                            <a class="records " href="records/TimeZone.html">TimeZone</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the time-zone information associated with a particular time.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="currentTime" title="currentTime">
-                                <a class="functions " href="functions.html#currentTime">currentTime</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the current time value with the default system time-zone.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="format" title="format">
-                                <a class="functions " href="functions.html#format">format</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the formatted string representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getDate" title="getDate">
-                                <a class="functions " href="functions.html#getDate">getDate</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the date representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getDay" title="getDay">
-                                <a class="functions " href="functions.html#getDay">getDay</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the date representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getHour" title="getHour">
-                                <a class="functions " href="functions.html#getHour">getHour</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the hour representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getMilliSecond" title="getMilliSecond">
-                                <a class="functions " href="functions.html#getMilliSecond">getMilliSecond</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the millisecond representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getMinute" title="getMinute">
-                                <a class="functions " href="functions.html#getMinute">getMinute</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the minute representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getMonth" title="getMonth">
-                                <a class="functions " href="functions.html#getMonth">getMonth</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the month representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getSecond" title="getSecond">
-                                <a class="functions " href="functions.html#getSecond">getSecond</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the second representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getTime" title="getTime">
-                                <a class="functions " href="functions.html#getTime">getTime</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the time representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getWeekday" title="getWeekday">
-                                <a class="functions " href="functions.html#getWeekday">getWeekday</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the weekday representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getYear" title="getYear">
-                                <a class="functions " href="functions.html#getYear">getYear</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the year representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="nanoTime" title="nanoTime">
-                                <a class="functions " href="functions.html#nanoTime">nanoTime</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the current system time in nano seconds.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="parse" title="parse">
-                                <a class="functions " href="functions.html#parse">parse</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the time for the given string representation based on the given format string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="subtractDuration" title="subtractDuration">
-                                <a class="functions " href="functions.html#subtractDuration">subtractDuration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Subtract specified durations from the given time value.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toString" title="toString">
-                                <a class="functions " href="functions.html#toString">toString</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the ISO 8601 string representation of the given time.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toTimeZone" title="toTimeZone">
-                                <a class="functions " href="functions.html#toTimeZone">toTimeZone</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Change the time-zone of the given time.
-                            </td>
-                        </tr>
                     
                 </table>
             </section>
-            
+        
+    
+
+    
+
+    
+
+    
 
 
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="constants">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#constants">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Constants </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="addDuration" title="addDuration">
+                    <a class="functions " href="functions.html#addDuration">addDuration</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="TIME_FORMAT_RFC_1123" title="TIME_FORMAT_RFC_1123">
-                                <a class="constant " href="constants.html#TIME_FORMAT_RFC_1123">TIME_FORMAT_RFC_1123</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Specifies the time format defined by the RFC-1123.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Add specified durations to the given time value.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate functions" id="createTime" title="createTime">
+                    <a class="functions " href="functions.html#createTime">createTime</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the Time object correspoding to the given time components and time-zone.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="currentTime" title="currentTime">
+                    <a class="functions " href="functions.html#currentTime">currentTime</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the current time value with the default system time-zone.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="format" title="format">
+                    <a class="functions " href="functions.html#format">format</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the formatted string representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getDate" title="getDate">
+                    <a class="functions " href="functions.html#getDate">getDate</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the date representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getDay" title="getDay">
+                    <a class="functions " href="functions.html#getDay">getDay</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the date representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getHour" title="getHour">
+                    <a class="functions " href="functions.html#getHour">getHour</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the hour representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getMilliSecond" title="getMilliSecond">
+                    <a class="functions " href="functions.html#getMilliSecond">getMilliSecond</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the millisecond representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getMinute" title="getMinute">
+                    <a class="functions " href="functions.html#getMinute">getMinute</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the minute representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getMonth" title="getMonth">
+                    <a class="functions " href="functions.html#getMonth">getMonth</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the month representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getSecond" title="getSecond">
+                    <a class="functions " href="functions.html#getSecond">getSecond</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the second representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getTime" title="getTime">
+                    <a class="functions " href="functions.html#getTime">getTime</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the time representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getWeekday" title="getWeekday">
+                    <a class="functions " href="functions.html#getWeekday">getWeekday</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the weekday representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getYear" title="getYear">
+                    <a class="functions " href="functions.html#getYear">getYear</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the year representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="nanoTime" title="nanoTime">
+                    <a class="functions " href="functions.html#nanoTime">nanoTime</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the current system time in nano seconds.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="parse" title="parse">
+                    <a class="functions " href="functions.html#parse">parse</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the time for the given string representation based on the given format string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="subtractDuration" title="subtractDuration">
+                    <a class="functions " href="functions.html#subtractDuration">subtractDuration</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Subtract specified durations from the given time value.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toString" title="toString">
+                    <a class="functions " href="functions.html#toString">toString</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the ISO 8601 string representation of the given time.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toTimeZone" title="toTimeZone">
+                    <a class="functions " href="functions.html#toTimeZone">toTimeZone</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Change the time-zone of the given time.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
+    
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate constant" id="TIME_FORMAT_RFC_1123" title="TIME_FORMAT_RFC_1123">
+                    <a class="constant " href="constants.html#TIME_FORMAT_RFC_1123">TIME_FORMAT_RFC_1123</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Specifies the time format defined by the RFC-1123.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
-            
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types " href="types.html#Error">Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the Time module related error.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="TimeFormat" title="TimeFormat">
-                                <a class="types " href="types.html#TimeFormat">TimeFormat</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The time format defined by the RFC-1123.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
 
+    
+
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="TimeError" title="TimeError">
-                                <a class="errors " href="errors.html#TimeError">TimeError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Specifies the time error, which occurs in the module.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Represents the Time module related error.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate types" id="TimeFormat" title="TimeFormat">
+                    <a class="types " href="types.html#TimeFormat">TimeFormat</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The time format defined by the RFC-1123.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="TimeError" title="TimeError">
+                    <a class="errors " href="errors.html#TimeError">TimeError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Specifies the time error, which occurs in the module.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -609,6 +559,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -618,4 +586,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

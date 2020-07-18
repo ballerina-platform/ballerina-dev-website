@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,97 +67,37 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Types</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#Error">Error</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#TimeFormat">TimeFormat</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../time/index.html">
-            <h3>time</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../time/index.html#records">Records</a>
-        </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../time/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../time/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../time/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../time/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Types</h3>
+                    <h3>
+    Types
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#Error">Error</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#TimeFormat">TimeFormat</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#Error" onclick="menuLinkClick()">Error</a>
+        </li>
+    
+        <li >
+            <a href="#TimeFormat" onclick="menuLinkClick()">TimeFormat</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../time/index.html">
+        <a href="../time/index.html" onclick="menuLinkClick()">
             <h3>time</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../time/index.html#records">Records</a>
+            <a data="records" href="../time/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
@@ -157,114 +105,101 @@
         
         
             <li>
-                <a data="functions" href="../time/index.html#functions">Functions</a>
+                <a data="functions" href="../time/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../time/index.html#constants">Constants</a>
+                <a data="constants" href="../time/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../time/index.html#types">Types</a>
+                <a data="types" href="../time/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../time/index.html#errors">Errors</a>
+                <a data="errors" href="../time/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-             <h1>
-                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                 <span class="title-type">Types - </span>
-                 
-                     <a href="../time/index.html">time</a>
-                 
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    Types
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../time/index.html"><span class="modules">time</span></a>
+                
+                
             </h1>
-            <div class="types">
-                <div class="data-wrapper">
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="Error">
-                                    <b >Error</b>
-                                    <span class="type">  <a href="../time/errors.html#TimeError">TimeError</a></span></li>
-                                <li>
-                                    
-                                    <p>Represents the Time module related error.</p>
+            
+    <div class="types">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="Error">
+                            <b >Error</b>
+                            
+                                <span class="type">  <a href="../time/errors.html#TimeError">TimeError</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Represents the Time module related error.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="TimeFormat">
-                                    <b >TimeFormat</b>
-                                    <span class="type">  <a href="../time/constants.html#TIME_FORMAT_RFC_1123">TIME_FORMAT_RFC_1123</a></span></li>
-                                <li>
-                                    
-                                    <p>The time format defined by the RFC-1123.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$0">
-                                    <b >$anonType$0</b>
-                                    <span class="type">RFC_1123</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="TimeFormat">
+                            <b >TimeFormat</b>
+                            
+                                <span class="type">  <a href="../time/constants.html#TIME_FORMAT_RFC_1123">TIME_FORMAT_RFC_1123</a></span></li>
+                            
+                        <li>
+                            
+                            <p>The time format defined by the RFC-1123.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+            
         </div>
     </div>
 
+        </div>
+        </div>
+    </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -291,6 +226,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -300,4 +253,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

@@ -25,7 +25,7 @@ jobs:
         VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
         cat downloads/release-notes/$VERSION/RELEASE_NOTE.md | sed '/---/d' | sed '/layout: release-note/d' | sed '/title: Release note/d' > RN.md
         #python script takes RN.md as the input and produces out.json as the output
-        python3 .github/scripts/sanitize_rn.py
+        python3 .github/scripts/sanitize_rn.py _data/stable-latest/metadata.json
 
         if ! curl -v -H "Authorization: token $WEBSITE_TOKEN" -H "Content-Type: application/json" -d @out.json https://api.github.com/repos/ballerina-platform/ballerina-lang/releases --fail; then
           exit 1

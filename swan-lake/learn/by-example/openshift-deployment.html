@@ -56,7 +56,7 @@ redirect_from:
 Docker image of the Ballerina service is built using the BuildConfig, which then can be used by the generated Kubernetes Deployment.
 A generated OpenShift Route exposes the Kubernetes Service of the Ballerina Service.
 This example deploys an HTTP service, which responses &ldquo;Hello&rdquo; followed by a name.<br/><br/>
-For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-deploy-ballerina-programs-in-cloud/">How to Deploy Ballerina Programs and Services in the Cloud</a>.</p>
+For more information, see <a href="https://ballerina.io/learn/how-to-deploy-ballerina-programs-in-cloud/">How to Deploy Ballerina Programs and Services in the Cloud</a>.</p>
 </p>
 
                         </td>
@@ -137,7 +137,7 @@ For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-d
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/kubernetes;
 import ballerina/openshift;
@@ -152,7 +152,7 @@ import ballerina/openshift;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@kubernetes:Service {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@kubernetes:Service {}
 </code></pre></div>
 
                                 </td>
@@ -171,7 +171,7 @@ import ballerina/openshift;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@openshift:Route {
+                                    <div class="highlight"><pre><code class=language-ballerina>@openshift:Route {
     host: &quot;www.oc-example.com&quot;
 }
 listener http:Listener helloEP = new(9090);
@@ -193,7 +193,7 @@ listener http:Listener helloEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@kubernetes:Deployment {
+                                    <div class="highlight"><pre><code class=language-ballerina>@kubernetes:Deployment {
 </code></pre></div>
 
                                 </td>
@@ -212,7 +212,7 @@ listener http:Listener helloEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    namespace: &quot;hello-api&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    namespace: &quot;hello-api&quot;,
 </code></pre></div>
 
                                 </td>
@@ -231,7 +231,7 @@ listener http:Listener helloEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    registry: &quot;172.30.1.1:5000&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    registry: &quot;172.30.1.1:5000&quot;,
 </code></pre></div>
 
                                 </td>
@@ -250,7 +250,7 @@ listener http:Listener helloEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    image: &quot;hello-service:v1.0&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    image: &quot;hello-service:v1.0&quot;,
 </code></pre></div>
 
                                 </td>
@@ -269,7 +269,7 @@ listener http:Listener helloEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    buildImage: false,
+                                    <div class="highlight"><pre><code class=language-ballerina>    buildImage: false,
 </code></pre></div>
 
                                 </td>
@@ -288,7 +288,7 @@ listener http:Listener helloEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    buildExtension: openshift:BUILD_EXTENSION_OPENSHIFT
+                                    <div class="highlight"><pre><code class=language-ballerina>    buildExtension: openshift:BUILD_EXTENSION_OPENSHIFT
 }
 @http:ServiceConfig {
     basePath: &quot;/hello&quot;

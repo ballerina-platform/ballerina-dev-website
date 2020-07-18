@@ -31,7 +31,12 @@ redirect_from:
     <span class="kt">json</span> <span class="nx">j2</span> <span class="p">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">r5</span> <span class="p">=</span> <span class="nx">j2</span><span class="err">?</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r5</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">json_access</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Mary</span>
+<span class="nx">Colombo</span> <span class="mo">03</span>
+<span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="kt">map</span><span class="p">}</span><span class="nx">KeyNotFound</span> <span class="kt">message</span><span class="p">=</span><span class="nx">Key</span> <span class="err">&#39;</span><span class="nx">age</span><span class="err">&#39;</span> <span class="nx">not</span> <span class="nx">found</span> <span class="nx">in</span> <span class="nx">JSON</span> <span class="nx">mapping</span>
 </pre></div>
 
             </div>
@@ -134,7 +139,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -146,7 +151,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -158,7 +163,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j1 = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    json j1 = {
         fname: &quot;Mary&quot;,
         lname: &quot;Jane&quot;,
         address: {
@@ -185,7 +190,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json|error r1 = j1.fname;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json|error r1 = j1.fname;
 </code></pre></div>
 
                                 </td>
@@ -207,7 +212,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(r1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r1);
 </code></pre></div>
 
                                 </td>
@@ -226,7 +231,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json|error r2 = j1.address.city;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json|error r2 = j1.address.city;
 </code></pre></div>
 
                                 </td>
@@ -247,7 +252,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(r2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r2);
 </code></pre></div>
 
                                 </td>
@@ -267,7 +272,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json|error r3 = j1.age.year;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json|error r3 = j1.age.year;
 </code></pre></div>
 
                                 </td>
@@ -286,7 +291,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(r3);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r3);
 </code></pre></div>
 
                                 </td>
@@ -305,7 +310,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json|error r4 = j1?.age?.year;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json|error r4 = j1?.age?.year;
 </code></pre></div>
 
                                 </td>
@@ -329,7 +334,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(r4);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r4);
 </code></pre></div>
 
                                 </td>
@@ -348,7 +353,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j2 = null;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json j2 = null;
     json|error r5 = j2?.name;
 </code></pre></div>
 
@@ -369,7 +374,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(r5);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r5);
 }
 </code></pre></div>
 
@@ -403,8 +408,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run json_access.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run json_access.bal
 Mary
 Colombo 03
 error {ballerina/lang.map}KeyNotFound message=Key &#39;age&#39; not found in JSON mapping

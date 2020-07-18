@@ -108,7 +108,12 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_streaming</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span><span class="nx">Send</span> <span class="nx">a</span> <span class="nx">request</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">streaming</span> <span class="kd">service</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">GET</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/stream/fileupload</span>
+<span class="nx">File</span> <span class="nx">Received</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -215,7 +220,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
@@ -230,7 +235,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -249,7 +254,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/stream&quot;
 }
 service HTTPStreamingService on new http:Listener(9090) {
@@ -264,7 +269,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/fileupload&quot;
     }
@@ -282,7 +287,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        request.setFileAsPayload(&quot;./files/BallerinaLang.pdf&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        request.setFileAsPayload(&quot;./files/BallerinaLang.pdf&quot;,
             contentType = mime:APPLICATION_PDF);
 </code></pre></div>
 
@@ -302,7 +307,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
 </code></pre></div>
 
                                 </td>
@@ -321,7 +326,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         if (clientResponse is http:Response) {
             var payload = clientResponse.getTextPayload();
             if (payload is string) {
@@ -351,7 +356,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/receiver&quot;
     }
@@ -371,7 +376,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var destinationChannel =
+                                    <div class="highlight"><pre><code class=language-ballerina>            var destinationChannel =
                 io:openWritableFile(&quot;./files/ReceivedFile.pdf&quot;);
 </code></pre></div>
 
@@ -392,7 +397,7 @@ by providing the file name to which the content should be written to.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (destinationChannel is io:WritableByteChannel) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (destinationChannel is io:WritableByteChannel) {
                 var result = copy(payload, destinationChannel);
                 if (result is error) {
                     log:printError(&quot;error occurred while performing copy &quot;,
@@ -423,7 +428,7 @@ by providing the file name to which the content should be written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function setError(http:Response res, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function setError(http:Response res, error err) {
     res.statusCode = 500;
     res.setPayload(&lt;@untainted&gt;err.message());
 }
@@ -445,7 +450,7 @@ by providing the file name to which the content should be written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function copy(io:ReadableByteChannel src,
+                                    <div class="highlight"><pre><code class=language-ballerina>function copy(io:ReadableByteChannel src,
               io:WritableByteChannel dst) returns error? {
 </code></pre></div>
 
@@ -465,7 +470,7 @@ by providing the file name to which the content should be written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (true) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (true) {
 </code></pre></div>
 
                                 </td>
@@ -485,7 +490,7 @@ by providing the file name to which the content should be written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        byte[]|io:Error result = src.read(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>        byte[]|io:Error result = src.read(1000);
         if (result is io:EofError) {
             break;
         } else if (result is error) {
@@ -510,7 +515,7 @@ by providing the file name to which the content should be written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            int i = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>            int i = 0;
             while (i &lt; result.length()) {
                 var result2 = dst.write(result, i);
                 if (result2 is error) {
@@ -541,7 +546,7 @@ by providing the file name to which the content should be written to.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
     abstract object {
         public function close() returns error?;
     } channelResult = ch;
@@ -582,8 +587,8 @@ by providing the file name to which the content should be written to.</p>
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run http_streaming.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run http_streaming.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -610,7 +615,7 @@ $ ballerina run http_streaming.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#Send a request to the streaming service.
-$ curl -X GET http://localhost:9090/stream/fileupload
+curl -X GET http://localhost:9090/stream/fileupload
 File Received!
 </code></pre></div>
 

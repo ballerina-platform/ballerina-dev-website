@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides functions to interact with the runtime, the invocation context, and to manage errors.
+    <meta name="description" content="This module provides functions to interact with the Ballerina runtime and the runtime invocation context.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,runtime">
 
@@ -59,101 +68,37 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Records</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="AuthenticationContext.html">AuthenticationContext</a>
-                        </li>
-                    
-                        <li >
-                            <a href="CallStackElement.html">CallStackElement</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="InvocationContext.html">InvocationContext</a>
-                        </li>
-                    
-                        <li >
-                            <a href="Principal.html">Principal</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../runtime/index.html">
-            <h3>runtime</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../runtime/index.html#records">Records</a>
-        </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../../runtime/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-    
-     <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Records</h3>
+                    <h3>
+    Records
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="AuthenticationContext.html">AuthenticationContext</a>
-                            </li>
-                        
-                            <li >
-                                <a href="CallStackElement.html">CallStackElement</a>
-                            </li>
-                        
-                            <li class="active">
-                                <a href="InvocationContext.html">InvocationContext</a>
-                            </li>
-                        
-                            <li >
-                                <a href="Principal.html">Principal</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="CallStackElement.html" onclick="menuLinkClick()">CallStackElement</a>
+        </li>
+    
+        <li class="active">
+            <a href="InvocationContext.html" onclick="menuLinkClick()">InvocationContext</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../runtime/index.html">
+        <a href="../../runtime/index.html" onclick="menuLinkClick()">
             <h3>runtime</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../runtime/index.html#records">Records</a>
+            <a data="records" href="../../runtime/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
@@ -161,7 +106,7 @@
         
         
             <li>
-                <a data="functions" href="../../runtime/index.html#functions">Functions</a>
+                <a data="functions" href="../../runtime/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -172,40 +117,51 @@
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-            <h1> 
+            <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Record - </span>
-                
-                    <a href="../../runtime/index.html">runtime</a>
-                
-                 : <span class="records ">InvocationContext</span>
-            </h1>
-            <p>
-                
-                <p>Represents the <code>runtime:InvocationContext</code>.</p>
-
-            </p>
-            <div class="constants">
-                
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        <h2>Fields</h2>
-                            <div class="data-wrapper">
+                    
+    Record
+
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../../runtime/index.html"><span class="modules">runtime</span></a>
+                
+                 :
+                    
+    <span class="records ">InvocationContext</span>
+
+                
+            </h1>
+            
+    <p>
+        
+        <p>Represents the <code>runtime:InvocationContext</code>.</p>
+
+    </p>
+    <div class="constants">
+        
+        
+        <h2>Fields</h2>
+        <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -225,40 +181,8 @@
         
     <div class="params-listing">
         <ul>
-            <li> <span >principal</span>
-                <span class="type">  <a href="../../runtime/records/Principal.html">Principal</a></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    <p>User principal instance</p>
-
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >authenticationContext</span>
-                <span class="type">  <a href="../../runtime/records/AuthenticationContext.html">AuthenticationContext</a></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    <p>Authentication context instance</p>
-
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
             <li> <span >attributes</span>
-                <span class="type">  <span class="builtin-type">map</span></span>
+                <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">any</span>></span>
                 
             </li>
             <li>
@@ -274,17 +198,6 @@
 </div>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -311,6 +224,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -321,26 +252,16 @@ contentWrapper.addEventListener("scroll", event => {
     };
 </script>
 
-                    
-                
-            </div>
+        
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -367,6 +288,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -376,4 +315,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

@@ -232,7 +232,7 @@ http:Request request) {
                               <h2 id="async-network-protocol">From Code to AWS Lambda</h2>
                               <p><a href="https://aws.amazon.com/lambda/">AWS Lambda</a> is an event-driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with <code class="highlighter-rouge cBasicCode">@awslambda:Function</code>, which should have the function signature <code class="highlighter-rouge cBasicCode">function (awslambda:Context, json) returns json|error</code>.</p>
 <ul class="cInlinelinklist">
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/awslambda-deployment.html">AWS Lambda Deployment BBE </a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/aws-lambda-deployment.html">AWS Lambda Deployment BBE </a></li>
                               </ul>
                            </div>
                         </div>

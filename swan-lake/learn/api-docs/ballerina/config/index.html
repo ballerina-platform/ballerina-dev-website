@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,9 +61,10 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../config/index.html">
+        <a href="../config/index.html" onclick="menuLinkClick()">
             <h3>config</h3>
         </a>
     
@@ -72,7 +75,7 @@
         
         
             <li>
-                <a data="functions" href="../config/index.html#functions">Functions</a>
+                <a data="functions" href="../config/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -85,68 +88,37 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../config/index.html">
-            <h3>config</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../config/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">config</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.0.0</div>
+                    <a href="../config/index.html"><span class="modules">config</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides the Config API to read configurations from environment variables, TOML files, and command-line parameters and build a consolidated set of configurations.</p>
 <p>The precedence order for configuration lookup is as follows:</p>
 <ol>
@@ -156,7 +128,7 @@
 </ol>
 <p>This configuration resolution happens at the start of the program execution. Configurations can be set programmatically as well.</p>
 <p>The Config API provides the capability to feed sensitive data (e.g., passwords) to Ballerina programs securely by encrypting them.</p>
-<h2>Setting configurations</h2>
+<h3>Setting configurations</h3>
 <p>To specify a configuration file explicitly, the <code>--b7a.config.file=&lt;path to configuration file&gt;</code> property can be used. If
 this property is not set when
 running a project, Ballerina looks for a <code>ballerina.conf</code> file in the project root. When running a single file or a
@@ -192,7 +164,7 @@ $ set(x) b7a_http_accesslog_path=”./access.log”
 <p>If the configurations need to be shared during runtime, they can be set using the <code>setConfig()</code> function.</p>
 <pre><code class="language-ballerina">config:setConfig(&quot;john.country&quot;, &quot;USA&quot;);
 </code></pre>
-<h2>Reading configurations</h2>
+<h3>Reading configurations</h3>
 <p>The API provides functions to read configurations in their original type. Check function descriptors for example usages.</p>
 <p>A set of configurations belonging to a particular namespace can be retrieved as a <code>map</code> using the <code>getAsMap()</code> function. Here is an example:</p>
 <pre><code class="language-toml">[b7a.http.tracelog]
@@ -212,7 +184,7 @@ map&lt;anydata&gt; serverAlphaMap  = config:getAsMap(&quot;b7a.http.tracelog&quo
 </code></pre>
 <p>In the above configuration file, the <code>host</code> is specified as <code>@env:{TRACE_LOG_READER_HOST}</code>. When resolving the configurations, Ballerina looks for a variable named <code>TRACE_LOG_READER_HOST</code> in the environment variables and maps <code>b7a.http.tracelog.host</code> to its value.</p>
 <p>If the specified environment variable does not exist, it will will treat <code>@env:{TRACE_LOG_READER_HOST}</code> as a normal string value.</p>
-<h2>Securing configuration values</h2>
+<h3>Securing configuration values</h3>
 <p>Sensitive values can be encrypted using the <code>encrypt</code> command as follows:</p>
 <pre><code class="language-sh">$ ballerina encrypt
 Enter value: 
@@ -231,7 +203,7 @@ Or add the following to the runtime command-line:
 <pre><code class="language-bash">[admin]
 password=”@encrypted:{JqlfWNWKM6gYiaGnS0Hse1J9F/v48gUR0Kxfa5gwjcM=}”
 </code></pre>
-<h2>Reading config files with encrypted values</h2>
+<h3>Reading config files with encrypted values</h3>
 <p>When trying to run a Ballerina program with a configuration file or CLI parameters that contain encrypted values, Ballerina will first check to see if the <code>b7a.config.secret</code> configuration is set. This configuration is used to set the path to a file containing the secret required to decrypt the configurations. If it is set, the secret is read, and the secret file is deleted.</p>
 <p>If a secret file is not provided, the user is prompted to enter the secret. Values are decrypted only on demand when an encrypted value is looked up using the <code>getAsString()</code> function.</p>
 <pre><code class="language-bash">$ ballerina run program.bal 
@@ -240,136 +212,125 @@ ballerina: enter secret for config value decryption:
 <p><strong>Note</strong>: <em>The same config file cannot contain values that are encrypted using different secrets.</em></p>
 
 
-            
+    
 
-            
+    
 
-            
+    
 
-            
-           
+    
 
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="contains" title="contains">
+                    <a class="functions " href="functions.html#contains">contains</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="contains" title="contains">
-                                <a class="functions " href="functions.html#contains">contains</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Checks whether the given key is in the configuration registry.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getAsArray" title="getAsArray">
-                                <a class="functions " href="functions.html#getAsArray">getAsArray</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the specified configuration value as an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getAsBoolean" title="getAsBoolean">
-                                <a class="functions " href="functions.html#getAsBoolean">getAsBoolean</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the specified configuration value as a boolean.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getAsFloat" title="getAsFloat">
-                                <a class="functions " href="functions.html#getAsFloat">getAsFloat</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the specified configuration value as a float.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getAsInt" title="getAsInt">
-                                <a class="functions " href="functions.html#getAsInt">getAsInt</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the specified configuration value as an int.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getAsMap" title="getAsMap">
-                                <a class="functions " href="functions.html#getAsMap">getAsMap</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the specified configuration value as a map.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getAsString" title="getAsString">
-                                <a class="functions " href="functions.html#getAsString">getAsString</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the specified configuration value as a string.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="setConfig" title="setConfig">
-                                <a class="functions " href="functions.html#setConfig">setConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Sets the specified key/value pair as a configuration.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Checks whether the given key is in the configuration registry.
+                </td>
+            </tr>
             
-
-
+            <tr>
+                <td class="module-title truncate functions" id="getAsArray" title="getAsArray">
+                    <a class="functions " href="functions.html#getAsArray">getAsArray</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Retrieves the specified configuration value as an array.
+                </td>
+            </tr>
             
-
-
+            <tr>
+                <td class="module-title truncate functions" id="getAsBoolean" title="getAsBoolean">
+                    <a class="functions " href="functions.html#getAsBoolean">getAsBoolean</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Retrieves the specified configuration value as a boolean.
+                </td>
+            </tr>
             
-
+            <tr>
+                <td class="module-title truncate functions" id="getAsFloat" title="getAsFloat">
+                    <a class="functions " href="functions.html#getAsFloat">getAsFloat</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Retrieves the specified configuration value as a float.
+                </td>
+            </tr>
             
-
+            <tr>
+                <td class="module-title truncate functions" id="getAsInt" title="getAsInt">
+                    <a class="functions " href="functions.html#getAsInt">getAsInt</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Retrieves the specified configuration value as an int.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate functions" id="getAsMap" title="getAsMap">
+                    <a class="functions " href="functions.html#getAsMap">getAsMap</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Retrieves the specified configuration value as a map.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getAsString" title="getAsString">
+                    <a class="functions " href="functions.html#getAsString">getAsString</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Retrieves the specified configuration value as a string.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="setConfig" title="setConfig">
+                    <a class="functions " href="functions.html#setConfig">setConfig</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Sets the specified key/value pair as a configuration.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+
+    
+
+
+    
+
+    
+
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -396,6 +357,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -405,4 +384,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

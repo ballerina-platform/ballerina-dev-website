@@ -168,7 +168,29 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">response_with_multiparts</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9092</span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mi">08</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">53</span><span class="p">,</span><span class="mi">163</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Nested</span> <span class="nx">Parts</span> <span class="nx">Detected</span><span class="p">!</span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mi">08</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">53</span><span class="p">,</span><span class="mi">177</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">JSON</span> <span class="nx">data</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;wso2&quot;</span><span class="p">}</span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">30</span> <span class="mi">08</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">53</span><span class="p">,</span><span class="mi">240</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">XML</span> <span class="nx">data</span><span class="p">:</span> <span class="p">&lt;</span><span class="nx">ballerinalang</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nx">version</span><span class="p">&gt;</span><span class="mf">0.963</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">version</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nx">test</span><span class="p">&gt;</span><span class="nx">test</span> <span class="kt">xml</span> <span class="nx">file</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">used</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">file</span> <span class="nx">part</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">test</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">ballerinalang</span><span class="p">&gt;</span><span class="err">#</span><span class="nx">To</span> <span class="nx">encode</span> <span class="nx">the</span> <span class="nx">outbound</span> <span class="nx">response</span> <span class="nx">with</span> <span class="nx">multiparts</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">GET</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9092/multiparts/encode_out_response</span>
+<span class="o">--</span><span class="mi">5</span><span class="nx">afd3d91ee639af3</span>
+<span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">multipart</span><span class="o">/</span><span class="nx">mixed</span><span class="p">;</span><span class="nx">boundary</span><span class="p">=</span><span class="nx">de5520ef3bc703d7</span><span class="o">--</span><span class="nx">de5520ef3bc703d7</span>
+<span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span><span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;wso2&quot;</span><span class="p">}</span>
+<span class="o">--</span><span class="nx">de5520ef3bc703d7</span>
+<span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="kt">xml</span><span class="p">&lt;</span><span class="nx">ballerinalang</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nx">version</span><span class="p">&gt;</span><span class="mf">0.963</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">version</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nx">test</span><span class="p">&gt;</span><span class="nx">test</span> <span class="kt">xml</span> <span class="nx">file</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">used</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">file</span> <span class="nx">part</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">test</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">ballerinalang</span><span class="p">&gt;</span>
+<span class="o">--</span><span class="nx">de5520ef3bc703d7</span><span class="o">----</span><span class="mi">5</span><span class="nx">afd3d91ee639af3</span><span class="o">--</span><span class="err">#</span><span class="nx">To</span> <span class="nx">decode</span> <span class="nx">the</span> <span class="nx">inbound</span> <span class="nx">response</span> <span class="nx">with</span> <span class="nx">multiparts</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">GET</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/multiparts/decode_in_response</span>
+<span class="nx">Body</span> <span class="nx">Parts</span> <span class="nx">Received</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -297,7 +319,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
@@ -312,7 +334,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP = new (&quot;http://localhost:9092&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP = new (&quot;http://localhost:9092&quot;);
 </code></pre></div>
 
                                 </td>
@@ -331,7 +353,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener multipartEP = new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener multipartEP = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -350,7 +372,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/multiparts&quot;
 }
 service multipartResponseEncoder on new http:Listener(9092) {
@@ -371,7 +393,7 @@ service multipartResponseEncoder on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity parentPart = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity parentPart = new;
 </code></pre></div>
 
                                 </td>
@@ -390,7 +412,7 @@ service multipartResponseEncoder on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity childPart1 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity childPart1 = new;
         childPart1.setJson({&quot;name&quot;: &quot;wso2&quot;});
 </code></pre></div>
 
@@ -410,7 +432,7 @@ service multipartResponseEncoder on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity childPart2 = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity childPart2 = new;
 </code></pre></div>
 
                                 </td>
@@ -429,7 +451,7 @@ service multipartResponseEncoder on new http:Listener(9092) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        childPart2.setFileAsEntityBody(&quot;./files/test.xml&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        childPart2.setFileAsEntityBody(&quot;./files/test.xml&quot;,
             contentType = mime:TEXT_XML);
 </code></pre></div>
 
@@ -451,7 +473,7 @@ absolute file path instead.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity[] childParts = [childPart1, childPart2];
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity[] childParts = [childPart1, childPart2];
 </code></pre></div>
 
                                 </td>
@@ -470,7 +492,7 @@ absolute file path instead.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        parentPart.setBodyParts(childParts,
+                                    <div class="highlight"><pre><code class=language-ballerina>        parentPart.setBodyParts(childParts,
             contentType = mime:MULTIPART_MIXED);
 </code></pre></div>
 
@@ -490,7 +512,7 @@ absolute file path instead.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        mime:Entity[] immediatePartsToResponse = [parentPart];
+                                    <div class="highlight"><pre><code class=language-ballerina>        mime:Entity[] immediatePartsToResponse = [parentPart];
         http:Response outResponse = new;
         outResponse.setBodyParts(immediatePartsToResponse,
             contentType = mime:MULTIPART_FORM_DATA);
@@ -518,7 +540,7 @@ absolute file path instead.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/multiparts&quot;
 }
 service multipartResponseDecoder on multipartEP {
@@ -544,7 +566,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function multipartReceiver(http:Caller caller,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function multipartReceiver(http:Caller caller,
                                         http:Request request) {
         http:Response inResponse = new;
         var returnResult = clientEP-&gt;get(&quot;/multiparts/encode_out_response&quot;);
@@ -568,7 +590,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var parentParts = returnResult.getBodyParts();
+                                    <div class="highlight"><pre><code class=language-ballerina>            var parentParts = returnResult.getBodyParts();
             if (parentParts is mime:Entity[]) {
 </code></pre></div>
 
@@ -588,7 +610,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                foreach var parentPart in parentParts {
+                                    <div class="highlight"><pre><code class=language-ballerina>                foreach var parentPart in parentParts {
                     handleNestedParts(parentPart);
                 }
                 res.setPayload(&quot;Body Parts Received!&quot;);
@@ -621,7 +643,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleNestedParts(mime:Entity parentPart) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleNestedParts(mime:Entity parentPart) {
     string contentTypeOfParent = parentPart.getContentType();
     if (contentTypeOfParent.startsWith(&quot;multipart/&quot;)) {
         var childParts = parentPart.getBodyParts();
@@ -654,7 +676,7 @@ service multipartResponseDecoder on multipartEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleContent(mime:Entity bodyPart) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleContent(mime:Entity bodyPart) {
     string baseType = getBaseType(bodyPart.getContentType());
     if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
 </code></pre></div>
@@ -676,7 +698,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getXml();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getXml();
         if (payload is xml) {
             string strValue = io:sprintf(&quot;%s&quot;, payload);
              log:printInfo(&quot;XML data: &quot; + strValue);
@@ -691,7 +713,7 @@ vary based on your requirement.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>[Extracts <code>xml</code> data]((<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/objects/Entity.html#getXml">https://ballerina.io/learn/api-docs/ballerina/mime/objects/Entity.html#getXml</a>) from the body part.</p>
+                                            <p>[Extracts <code>xml</code> data]((<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/objects/Entity.html#getXml">https://ballerina.io/swan-lake/learn/api-docs/ballerina/mime/objects/Entity.html#getXml</a>) from the body part.</p>
 
                                         </div>
                                     </div>
@@ -702,7 +724,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getJson();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getJson();
         if (payload is json) {
             log:printInfo(&quot;JSON data: &quot; + payload.toJsonString());
         } else {
@@ -727,7 +749,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getText();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getText();
         if (payload is string) {
             log:printInfo(&quot;Text data: &quot; + payload);
         } else {
@@ -752,7 +774,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getByteChannel();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = bodyPart.getByteChannel();
         if (payload is io:ReadableByteChannel) {
             io:WritableByteChannel destinationChannel =
             &lt;@untainted io:WritableByteChannel&gt;io:openWritableFile(&quot;ReceivedFile.pdf&quot;);
@@ -785,7 +807,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getBaseType(string contentType) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getBaseType(string contentType) returns string {
     var result = mime:getMediaType(contentType);
     if (result is mime:MediaType) {
         return result.getBaseType();
@@ -811,7 +833,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function copy(io:ReadableByteChannel src, io:WritableByteChannel dst)
+                                    <div class="highlight"><pre><code class=language-ballerina>function copy(io:ReadableByteChannel src, io:WritableByteChannel dst)
                 returns error? {
     while (true) {
 </code></pre></div>
@@ -832,7 +854,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        byte[]|io:Error result = src.read(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>        byte[]|io:Error result = src.read(1000);
         if (result is io:EofError) {
             break;
         } else if (result is error) {
@@ -856,7 +878,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            int i = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>            int i = 0;
             while (i &lt; result.length()) {
                 var result2 = dst.write(result, i);
                 if (result2 is error) {
@@ -887,7 +909,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
     abstract object {
         public function close() returns error?;
     } channelResult = ch;
@@ -928,8 +950,8 @@ vary based on your requirement.</p>
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run response_with_multiparts.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run response_with_multiparts.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 2018-11-30 08:43:53,163 INFO  [ballerina/log] - Nested Parts Detected!
@@ -983,7 +1005,7 @@ $ ballerina run response_with_multiparts.bal
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#To encode the outbound response with multiparts.
-$ curl -X GET http://localhost:9092/multiparts/encode_out_response
+curl -X GET http://localhost:9092/multiparts/encode_out_response
 --5afd3d91ee639af3
 content-type: multipart/mixed;boundary=de5520ef3bc703d7
 </code></pre></div>
@@ -1053,7 +1075,7 @@ content-type: text/xml
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#To decode the inbound response with multiparts.
-$ curl -X GET http://localhost:9090/multiparts/decode_in_response
+curl -X GET http://localhost:9090/multiparts/decode_in_response
 Body Parts Received!
 </code></pre></div>
 

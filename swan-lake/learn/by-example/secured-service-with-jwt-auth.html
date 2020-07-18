@@ -73,7 +73,21 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span>
+<span class="err">#</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_service_with_jwt_auth</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTPS</span><span class="o">/</span><span class="nx">WSS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">k</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Authorization: Bearer eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.\</span>
+<span class="s">eyJzdWIiOiJhZG1pbiIsICJpc3MiOiJiYWxsZXJpbmEiLCAiZXhwIjoxOTA3ODQ0MTI5LCAiaWF\</span>
+<span class="s">0IjoxNTkyNDg0MTI5LCAianRpIjoiMjE2ZDM2MjktMjc3OC00OTllLTlmMjctM2IzZTkxOGU3Y2\</span>
+<span class="s">ExIiwgImF1ZCI6WyJ2RXd6YmNhc0pWUW0xalZZSFVIQ2poeFo0dFlhIl0sICJuYmYiOjE1OTI0O\</span>
+<span class="s">DQxMjksICJzY29wZSI6ImhlbGxvIn0.NI9BBv9pujy97h3E5g9XTzV2nAcQefnCsDeuZSyGPvy_\</span>
+<span class="s">VYY5JtnrR1XwkYTdeDbWvc0jpANKWrsHiQYyMs8FS2eSnfeKS4xtvESMQ9uIQQUmYqcmMFNXVW0\</span>
+<span class="s">j46r4Jw1WjdAZ-nsMj6sx-IIEWNIUUX1tEEcuyK7etb9W53MBH0uViN7IviyDxVKj09LMidxBJk\</span>
+<span class="s">Ojd77K53gCDGVre1aIGgXeZQsiwbaxXwDN-jRtEJ23AidA_cmhAL93mH_v7Om7K71APfoprgUYD\</span>
+<span class="s">quvadSKLKTkchMQT52lA3Lirotu141u0yIL55MkmpYw7r8jKg_V30CHvNL2zr6QkvMJjFKFJg&quot;</span> \
+<span class="nx">https</span><span class="p">:</span><span class="c1">//localhost:9090/hello/sayHello</span>
+<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!!!</span>
 </pre></div>
 
             </div>
@@ -178,7 +192,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/config;
 import ballerina/jwt;
 import ballerina/log;
@@ -193,7 +207,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jwt:InboundJwtAuthProvider jwtAuthProvider = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jwt:InboundJwtAuthProvider jwtAuthProvider = new ({
     issuer: &quot;ballerina&quot;,
     audience: &quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;,
     trustStoreConfig: {
@@ -224,7 +238,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BearerAuthHandler jwtAuthHandler = new (jwtAuthProvider);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler jwtAuthHandler = new (jwtAuthProvider);
 </code></pre></div>
 
                                 </td>
@@ -243,7 +257,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jwt:InboundJwtAuthProvider jwkAuthProvider = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jwt:InboundJwtAuthProvider jwkAuthProvider = new ({
     issuer: &quot;ballerina&quot;,
     audience: &quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;,
     jwksConfig: {
@@ -278,7 +292,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BearerAuthHandler jwkAuthHandler = new (jwkAuthProvider);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler jwkAuthHandler = new (jwkAuthProvider);
 </code></pre></div>
 
                                 </td>
@@ -298,7 +312,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new (9090, config = {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new (9090, config = {
     auth: {
         authHandlers: [jwtAuthHandler, jwkAuthHandler]
     },
@@ -323,7 +337,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
                   &quot;/bre/security/ballerinaKeystore.p12&quot;,
@@ -349,7 +363,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 </code></pre></div>
@@ -363,7 +377,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service echo on ep {
+                                    <div class="highlight"><pre><code class=language-ballerina>service echo on ep {
     @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/sayHello&quot;,
@@ -397,7 +411,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function hello(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function hello(http:Caller caller, http:Request req) {
         error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
         if (result is error) {
             log:printError(&quot;Error in responding to caller&quot;, result);
@@ -439,9 +453,9 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the below command by passing Ballerina home path
+                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the command below by passing Ballerina home path
 # as a system property.
-$ ballerina run secured_service_with_jwt_auth.bal --b7a.home=&lt;ballerina_home_path&gt;
+ballerina run secured_service_with_jwt_auth.bal --b7a.home=&lt;ballerina_home_path&gt;
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -467,7 +481,7 @@ $ ballerina run secured_service_with_jwt_auth.bal --b7a.home=&lt;ballerina_home_
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl -k -H &quot;Authorization: Bearer eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.\
+                                    <div class="highlight"><pre><code class=shell-session>curl -k -H &quot;Authorization: Bearer eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.\
 eyJzdWIiOiJhZG1pbiIsICJpc3MiOiJiYWxsZXJpbmEiLCAiZXhwIjoxOTA3ODQ0MTI5LCAiaWF\
 0IjoxNTkyNDg0MTI5LCAianRpIjoiMjE2ZDM2MjktMjc3OC00OTllLTlmMjctM2IzZTkxOGU3Y2\
 ExIiwgImF1ZCI6WyJ2RXd6YmNhc0pWUW0xalZZSFVIQ2poeFo0dFlhIl0sICJuYmYiOjE1OTI0O\
@@ -487,7 +501,7 @@ Hello, World!!!
                                         <div>
                                             <p>Invoke the service using &ldquo;cURL&rdquo;.
  Note that it is required to provide the correct bearer authentication header
- with the cURL command.</p>
+ with the cURL command below.</p>
 
                                         </div>
                                     </div>

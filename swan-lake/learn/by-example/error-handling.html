@@ -33,7 +33,12 @@ redirect_from:
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error cause not provided.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">error_handling</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Error</span><span class="p">:</span> <span class="nx">Simple</span> <span class="nx">error</span> <span class="nx">occurred</span>
+<span class="nx">Error</span><span class="p">:</span> <span class="nx">Invalid</span> <span class="nx">account</span> <span class="nx">ID</span><span class="p">,</span> <span class="nx">Account</span> <span class="nx">ID</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nx">Caused</span> <span class="nx">by</span><span class="p">:</span> <span class="nx">Invalid</span> <span class="nx">account</span> <span class="nx">ID</span>
 </pre></div>
 
             </div>
@@ -150,7 +155,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -162,7 +167,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getAccountBalance(int accountID) returns int|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAccountBalance(int accountID) returns int|error {
     if (accountID &lt; 0) {
 </code></pre></div>
 
@@ -175,7 +180,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        return error(&quot;Invalid account ID&quot;, accountID = accountID);
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error(&quot;Invalid account ID&quot;, accountID = accountID);
     } else if (accountID &gt; 100) {
 </code></pre></div>
 
@@ -195,7 +200,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        return error(&quot;Account not found&quot;, accountID = accountID);
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error(&quot;Account not found&quot;, accountID = accountID);
     }
 </code></pre></div>
 
@@ -215,7 +220,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return 600;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return 600;
 }
 </code></pre></div>
 
@@ -235,7 +240,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -247,7 +252,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error simpleError = error(&quot;Simple error occurred&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    error simpleError = error(&quot;Simple error occurred&quot;);
 </code></pre></div>
 
                                 </td>
@@ -272,7 +277,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Error: &quot;, simpleError.message());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Error: &quot;, simpleError.message());
 </code></pre></div>
 
                                 </td>
@@ -293,7 +298,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error result = getAccountBalance(-1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error result = getAccountBalance(-1);
 </code></pre></div>
 
                                 </td>
@@ -305,7 +310,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is int) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is int) {
         io:println(&quot;Account Balance: &quot;, result);
 </code></pre></div>
 
@@ -325,7 +330,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
         io:println(&quot;Error: &quot;, result.message(),
                     &quot;, Account ID: &quot;, result.detail()[&quot;accountID&quot;]);
 </code></pre></div>
@@ -347,7 +352,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        error displayError = error(&quot;Failed to get account balance&quot;, result);
+                                    <div class="highlight"><pre><code class=language-ballerina>        error displayError = error(&quot;Failed to get account balance&quot;, result);
 </code></pre></div>
 
                                 </td>
@@ -366,7 +371,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        error? cause = displayError.cause();
+                                    <div class="highlight"><pre><code class=language-ballerina>        error? cause = displayError.cause();
         if (cause is error) {
             io:println(&quot;Caused by: &quot;, cause.message());
         } else {
@@ -406,8 +411,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run error_handling.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run error_handling.bal
 Error: Simple error occurred
 Error: Invalid account ID, Account ID: -1
 Caused by: Invalid account ID

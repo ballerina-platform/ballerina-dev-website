@@ -23,7 +23,11 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">arrayDequeWithCapacity</span> <span class="p">=</span> <span class="nx">newArrayDequeWithInitialCapacity</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arrayDequeWithCapacity</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">create</span><span class="o">-</span><span class="nx">java</span><span class="o">-</span><span class="nx">objects</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[]</span>
+<span class="p">[]</span>
 </pre></div>
 
             </div>
@@ -117,7 +121,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java;
 </code></pre></div>
 
@@ -130,7 +134,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function newArrayDeque() returns handle = @java:Constructor {
+                                    <div class="highlight"><pre><code class=language-ballerina>function newArrayDeque() returns handle = @java:Constructor {
     class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
@@ -153,7 +157,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function newArrayDequeWithInitialCapacity(int numElements) returns handle = @java:Constructor {
+                                    <div class="highlight"><pre><code class=language-ballerina>function newArrayDequeWithInitialCapacity(int numElements) returns handle = @java:Constructor {
     class: &quot;java.util.ArrayDeque&quot;,
     paramTypes: [&quot;int&quot;]
 } external;
@@ -180,7 +184,7 @@ import ballerina/java;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -192,7 +196,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var arrayDeque = newArrayDeque();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var arrayDeque = newArrayDeque();
     io:println(arrayDeque);
 </code></pre></div>
 
@@ -212,7 +216,7 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var arrayDequeWithCapacity = newArrayDequeWithInitialCapacity(10);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var arrayDequeWithCapacity = newArrayDequeWithInitialCapacity(10);
     io:println(arrayDequeWithCapacity);
 }
 </code></pre></div>
@@ -248,8 +252,8 @@ import ballerina/java;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run create-java-objects.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run create-java-objects.bal
 []
 []
 </code></pre></div>

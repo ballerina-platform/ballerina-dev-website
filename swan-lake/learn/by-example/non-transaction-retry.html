@@ -23,7 +23,9 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">trxError</span><span class="p">()</span>  <span class="nx">returns</span> <span class="nx">error</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;RetryError&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">non_transaction_retry</span><span class="p">.</span><span class="nx">balstart</span> <span class="nx">attempt</span> <span class="mi">1</span><span class="p">:</span><span class="nx">error</span><span class="p">,</span> <span class="nx">attempt</span> <span class="mi">2</span><span class="p">:</span><span class="nx">error</span><span class="p">,</span> <span class="nx">attempt</span> <span class="mi">3</span><span class="p">:</span><span class="nx">result</span> <span class="nx">returned</span> <span class="nx">end</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -116,7 +118,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -128,7 +130,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error?{
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error?{
 </code></pre></div>
 
                                 </td>
@@ -140,7 +142,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string str = &quot;start&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string str = &quot;start&quot;;
     int count = 0;
 </code></pre></div>
 
@@ -153,7 +155,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    retry (3) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    retry (3) {
         count = count + 1;
         if (count &lt; 3) {
             str += (&quot; attempt &quot; + count.toString() + &quot;:error,&quot;);
@@ -180,7 +182,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            return trxError();
+                                    <div class="highlight"><pre><code class=language-ballerina>            return trxError();
         }
 </code></pre></div>
 
@@ -201,7 +203,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        str += (&quot; attempt &quot;+ count.toString() + &quot;:result returned end.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        str += (&quot; attempt &quot;+ count.toString() + &quot;:result returned end.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -213,7 +215,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(str);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(str);
     }
 }
 </code></pre></div>
@@ -234,7 +236,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function trxError()  returns error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function trxError()  returns error {
     return error(&quot;RetryError&quot;);
 }
 </code></pre></div>
@@ -273,8 +275,8 @@ redirect_from:
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run non_transaction_retry.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run non_transaction_retry.bal
 </code></pre></div>
 
                                 </td>

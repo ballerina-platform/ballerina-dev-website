@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +7,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides lang library operations on <code>int</code> values defined by the language specification 2020R1.
+    <meta name="description" content="This module provides lang library operations on int values defined by the language specification 2020R1.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.int">
 
@@ -59,9 +61,10 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../lang.int/index.html">
+        <a href="../lang.int/index.html" onclick="menuLinkClick()">
             <h3>lang.int</h3>
         </a>
     
@@ -72,12 +75,12 @@
         
         
             <li>
-                <a data="functions" href="../lang.int/index.html#functions">Functions</a>
+                <a data="functions" href="../lang.int/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../lang.int/index.html#constants">Constants</a>
+                <a data="constants" href="../lang.int/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
@@ -89,318 +92,272 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../lang.int/index.html">
-            <h3>lang.int</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../lang.int/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../lang.int/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">lang.int</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.1.0</div>
+                    <a href="../lang.int/index.html"><span class="modules">lang.int</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.1.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides lang library operations on <code>int</code> values defined by the language specification 2020R1.</p>
 
 
-            
+    
 
-            
+    
 
-            
+    
 
-            
-           
-
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="abs" title="abs">
-                                <a class="functions " href="functions.html#abs">abs</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns absolute value of an int.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="fromHexString" title="fromHexString">
-                                <a class="functions " href="functions.html#fromHexString">fromHexString</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the integer that <code>s</code> represents in hexadecimal.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="fromString" title="fromString">
-                                <a class="functions " href="functions.html#fromString">fromString</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the integer that <code>s</code> represents in decimal.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="max" title="max">
-                                <a class="functions " href="functions.html#max">max</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Maximum of one or more int values.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="min" title="min">
-                                <a class="functions " href="functions.html#min">min</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Minimum of one or more int values</p>
-
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="sum" title="sum">
-                                <a class="functions " href="functions.html#sum">sum</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns sum of zero or more int values.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toHexString" title="toHexString">
-                                <a class="functions " href="functions.html#toHexString">toHexString</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns representation of <code>n</code> as hexdecimal string.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
+    
 
 
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="constants">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#constants">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Constants </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="abs" title="abs">
+                    <a class="functions " href="functions.html#abs">abs</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="MAX_VALUE" title="MAX_VALUE">
-                                <a class="constant " href="constants.html#MAX_VALUE">MAX_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Maximum value of type <code>int</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="MIN_VALUE" title="MIN_VALUE">
-                                <a class="constant " href="constants.html#MIN_VALUE">MIN_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Minimum value of type <code>int</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SIGNED32_MAX_VALUE" title="SIGNED32_MAX_VALUE">
-                                <a class="constant " href="constants.html#SIGNED32_MAX_VALUE">SIGNED32_MAX_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Maximum value of type <code>Signed32</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SIGNED32_MIN_VALUE" title="SIGNED32_MIN_VALUE">
-                                <a class="constant " href="constants.html#SIGNED32_MIN_VALUE">SIGNED32_MIN_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Minimum value of type <code>Signed32</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SIGNED16_MAX_VALUE" title="SIGNED16_MAX_VALUE">
-                                <a class="constant " href="constants.html#SIGNED16_MAX_VALUE">SIGNED16_MAX_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Maximum value of type <code>Signed16</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SIGNED16_MIN_VALUE" title="SIGNED16_MIN_VALUE">
-                                <a class="constant " href="constants.html#SIGNED16_MIN_VALUE">SIGNED16_MIN_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Minimum value of type <code>Signed16</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SIGNED8_MAX_VALUE" title="SIGNED8_MAX_VALUE">
-                                <a class="constant " href="constants.html#SIGNED8_MAX_VALUE">SIGNED8_MAX_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Maximum value of type <code>Signed8</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SIGNED8_MIN_VALUE" title="SIGNED8_MIN_VALUE">
-                                <a class="constant " href="constants.html#SIGNED8_MIN_VALUE">SIGNED8_MIN_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Minimum value of type <code>Signed8</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="UNSIGNED32_MAX_VALUE" title="UNSIGNED32_MAX_VALUE">
-                                <a class="constant " href="constants.html#UNSIGNED32_MAX_VALUE">UNSIGNED32_MAX_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Maximum value of type <code>Unsigned32</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="UNSIGNED16_MAX_VALUE" title="UNSIGNED16_MAX_VALUE">
-                                <a class="constant " href="constants.html#UNSIGNED16_MAX_VALUE">UNSIGNED16_MAX_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Maximum value of type <code>Unsigned16</code>.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="UNSIGNED8_MAX_VALUE" title="UNSIGNED8_MAX_VALUE">
-                                <a class="constant " href="constants.html#UNSIGNED8_MAX_VALUE">UNSIGNED8_MAX_VALUE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Maximum value of type <code>Unsigned8</code>.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Returns absolute value of an int.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate functions" id="fromHexString" title="fromHexString">
+                    <a class="functions " href="functions.html#fromHexString">fromHexString</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the integer that <code>s</code> represents in hexadecimal.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="fromString" title="fromString">
+                    <a class="functions " href="functions.html#fromString">fromString</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the integer that <code>s</code> represents in decimal.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="max" title="max">
+                    <a class="functions " href="functions.html#max">max</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Maximum of one or more int values.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="min" title="min">
+                    <a class="functions " href="functions.html#min">min</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Minimum of one or more int values</p>
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="sum" title="sum">
+                    <a class="functions " href="functions.html#sum">sum</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns sum of zero or more int values.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toHexString" title="toHexString">
+                    <a class="functions " href="functions.html#toHexString">toHexString</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns representation of <code>n</code> as hexdecimal string.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
+    
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate constant" id="MAX_VALUE" title="MAX_VALUE">
+                    <a class="constant " href="constants.html#MAX_VALUE">MAX_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Maximum value of type <code>int</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="MIN_VALUE" title="MIN_VALUE">
+                    <a class="constant " href="constants.html#MIN_VALUE">MIN_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Minimum value of type <code>int</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SIGNED32_MAX_VALUE" title="SIGNED32_MAX_VALUE">
+                    <a class="constant " href="constants.html#SIGNED32_MAX_VALUE">SIGNED32_MAX_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Maximum value of type <code>Signed32</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SIGNED32_MIN_VALUE" title="SIGNED32_MIN_VALUE">
+                    <a class="constant " href="constants.html#SIGNED32_MIN_VALUE">SIGNED32_MIN_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Minimum value of type <code>Signed32</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SIGNED16_MAX_VALUE" title="SIGNED16_MAX_VALUE">
+                    <a class="constant " href="constants.html#SIGNED16_MAX_VALUE">SIGNED16_MAX_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Maximum value of type <code>Signed16</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SIGNED16_MIN_VALUE" title="SIGNED16_MIN_VALUE">
+                    <a class="constant " href="constants.html#SIGNED16_MIN_VALUE">SIGNED16_MIN_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Minimum value of type <code>Signed16</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SIGNED8_MAX_VALUE" title="SIGNED8_MAX_VALUE">
+                    <a class="constant " href="constants.html#SIGNED8_MAX_VALUE">SIGNED8_MAX_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Maximum value of type <code>Signed8</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SIGNED8_MIN_VALUE" title="SIGNED8_MIN_VALUE">
+                    <a class="constant " href="constants.html#SIGNED8_MIN_VALUE">SIGNED8_MIN_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Minimum value of type <code>Signed8</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="UNSIGNED32_MAX_VALUE" title="UNSIGNED32_MAX_VALUE">
+                    <a class="constant " href="constants.html#UNSIGNED32_MAX_VALUE">UNSIGNED32_MAX_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Maximum value of type <code>Unsigned32</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="UNSIGNED16_MAX_VALUE" title="UNSIGNED16_MAX_VALUE">
+                    <a class="constant " href="constants.html#UNSIGNED16_MAX_VALUE">UNSIGNED16_MAX_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Maximum value of type <code>Unsigned16</code>.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="UNSIGNED8_MAX_VALUE" title="UNSIGNED8_MAX_VALUE">
+                    <a class="constant " href="constants.html#UNSIGNED8_MAX_VALUE">UNSIGNED8_MAX_VALUE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Maximum value of type <code>Unsigned8</code>.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
-            
 
-            
+    
+
+    
+
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -427,6 +384,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -436,4 +411,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

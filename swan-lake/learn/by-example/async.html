@@ -16,10 +16,10 @@ redirect_from:
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">squarePlusCube</span><span class="p">(</span><span class="nx">f1</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f1</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;SQ + CB = &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;SQ + CB = &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="nx">future</span><span class="p">&lt;()&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">countInfinity</span><span class="p">();</span>
     <span class="nx">f2</span><span class="p">.</span><span class="nx">cancel</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Counting done in one second: &quot;</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Counting done in one second: &quot;</span> <span class="o">+</span> <span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">f3</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span><span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span> <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">);</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f3</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -40,9 +40,9 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">resultMap</span><span class="p">);</span>
     <span class="nx">record</span> <span class="p">{</span><span class="kt">int</span> <span class="nx">first_field</span><span class="p">;</span> <span class="kt">int</span> <span class="nx">second_field</span><span class="p">;</span> <span class="kt">string</span> <span class="nx">third_field</span><span class="p">;}</span> <span class="nx">rec</span> <span class="p">=</span>
                     <span class="nx">wait</span> <span class="p">{</span><span class="nx">first_field</span><span class="p">:</span> <span class="nx">f6</span><span class="p">,</span> <span class="nx">second_field</span><span class="p">:</span> <span class="nx">f7</span><span class="p">,</span> <span class="nx">third_field</span><span class="p">:</span> <span class="nx">f8</span><span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;first field of record --&gt; &quot;</span><span class="p">,</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">first_field</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;second field of record --&gt; &quot;</span><span class="p">,</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">second_field</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;third field of record --&gt; &quot;</span><span class="p">,</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">third_field</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;first field of record --&gt; &quot;</span> <span class="o">+</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">first_field</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;second field of record --&gt; &quot;</span> <span class="o">+</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">second_field</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;third field of record --&gt; &quot;</span> <span class="o">+</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">third_field</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">square</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
@@ -71,7 +71,17 @@ redirect_from:
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
         <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">async</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">SQ</span> <span class="o">+</span> <span class="nx">CB</span> <span class="p">=</span> <span class="mi">737100</span>
+<span class="nx">Counting</span> <span class="nx">done</span> <span class="nx">in</span> <span class="nx">one</span> <span class="nx">second</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">args</span><span class="p">=</span><span class="nx">test</span><span class="p">=</span><span class="mi">123</span> <span class="nx">headers</span><span class="p">=</span><span class="nx">x</span><span class="o">-</span><span class="nx">forwarded</span><span class="o">-</span><span class="nx">proto</span><span class="p">=</span><span class="nx">https</span> <span class="nx">host</span><span class="p">=</span><span class="nx">postman</span><span class="o">-</span><span class="nx">echo</span><span class="p">.</span><span class="nx">com</span> <span class="nx">user</span><span class="o">-</span><span class="nx">agent</span><span class="p">=</span><span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.2.0</span> <span class="nx">x</span><span class="o">-</span><span class="nx">forwarded</span><span class="o">-</span><span class="nx">port</span><span class="p">=</span><span class="mi">80</span> <span class="nx">url</span><span class="p">=</span><span class="nx">https</span><span class="p">:</span><span class="c1">//postman-echo.com/get?test=123</span>
+<span class="mi">400</span>
+<span class="nx">first_field</span><span class="p">=</span><span class="mi">100</span> <span class="nx">second_field</span><span class="p">=</span><span class="mi">27</span> <span class="nx">third_field</span><span class="p">=</span><span class="nx">Hello</span> <span class="nx">Moose</span><span class="p">!!</span>
+<span class="nx">first</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="mi">100</span>
+<span class="nx">second</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="mi">27</span>
+<span class="nx">third</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="nx">Hello</span> <span class="nx">Moose</span><span class="p">!!</span>
 </pre></div>
 
             </div>
@@ -198,7 +208,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
@@ -212,7 +222,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int count = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int count = 0;
 </code></pre></div>
 
                                 </td>
@@ -224,7 +234,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://postman-echo.com&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://postman-echo.com&quot;);
 </code></pre></div>
 
                                 </td>
@@ -236,7 +246,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -248,7 +258,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;int&gt; f1 = start sum(40, 50);
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f1 = start sum(40, 50);
 </code></pre></div>
 
                                 </td>
@@ -267,7 +277,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int result = squarePlusCube(f1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int result = squarePlusCube(f1);
 </code></pre></div>
 
                                 </td>
@@ -287,8 +297,8 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = wait f1;
-    io:println(&quot;SQ + CB = &quot;, result);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = wait f1;
+    io:println(&quot;SQ + CB = &quot; + result.toString());
 </code></pre></div>
 
                                 </td>
@@ -307,7 +317,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;()&gt; f2 = start countInfinity();
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;()&gt; f2 = start countInfinity();
 </code></pre></div>
 
                                 </td>
@@ -327,8 +337,8 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    f2.cancel();
-    io:println(&quot;Counting done in one second: &quot;, count);
+                                    <div class="highlight"><pre><code class=language-ballerina>    f2.cancel();
+    io:println(&quot;Counting done in one second: &quot; + count.toString());
 </code></pre></div>
 
                                 </td>
@@ -347,7 +357,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;http:Response|error&gt; f3 = @strand {thread:&quot;any&quot;} start clientEndpoint-&gt; get(&quot;/get?test=123&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;http:Response|error&gt; f3 = @strand {thread:&quot;any&quot;} start clientEndpoint-&gt; get(&quot;/get?test=123&quot;);
 </code></pre></div>
 
                                 </td>
@@ -368,7 +378,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response|error response = wait f3;
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Response|error response = wait f3;
 </code></pre></div>
 
                                 </td>
@@ -387,7 +397,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (response is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (response is http:Response) {
         io:println(response.getJsonPayload());
     } else {
         io:println(response.message());
@@ -411,7 +421,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;int&gt; f4 = start square(20);
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f4 = start square(20);
     future&lt;string&gt; f5 = start greet(&quot;Bert&quot;);
 </code></pre></div>
 
@@ -431,7 +441,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|string anyResult = wait f4|f5;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|string anyResult = wait f4|f5;
     io:println(anyResult);
 </code></pre></div>
 
@@ -454,7 +464,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    future&lt;int&gt; f6 = start sum(40, 60);
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f6 = start sum(40, 60);
     future&lt;int&gt; f7 = start cube(3);
     future&lt;string&gt; f8 = start greet(&quot;Moose&quot;);
 </code></pre></div>
@@ -475,7 +485,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(2000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(2000);
 </code></pre></div>
 
                                 </td>
@@ -494,7 +504,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;int|string&gt; resultMap = wait {first_field: f6, second_field: f7,
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int|string&gt; resultMap = wait {first_field: f6, second_field: f7,
                                             third_field: f8};
     io:println(resultMap);
 </code></pre></div>
@@ -518,11 +528,11 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {int first_field; int second_field; string third_field;} rec =
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {int first_field; int second_field; string third_field;} rec =
                     wait {first_field: f6, second_field: f7, third_field: f8};
-    io:println(&quot;first field of record --&gt; &quot;, rec.first_field);
-    io:println(&quot;second field of record --&gt; &quot;, rec.second_field);
-    io:println(&quot;third field of record --&gt; &quot;, rec.third_field);
+    io:println(&quot;first field of record --&gt; &quot; + rec.first_field.toString());
+    io:println(&quot;second field of record --&gt; &quot; + rec.second_field.toString());
+    io:println(&quot;third field of record --&gt; &quot; + rec.third_field.toString());
 }
 </code></pre></div>
 
@@ -544,7 +554,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function sum(int a, int b) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function sum(int a, int b) returns int {
     return a + b;
 }
 </code></pre></div>
@@ -558,7 +568,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function square(int n) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function square(int n) returns int {
     return n * n;
 }
 </code></pre></div>
@@ -572,7 +582,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function cube(int n) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function cube(int n) returns int {
     return n * n * n;
 }
 </code></pre></div>
@@ -586,7 +596,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function greet(string name) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function greet(string name) returns string {
 </code></pre></div>
 
                                 </td>
@@ -598,7 +608,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(2000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(2000);
     return &quot;Hello &quot; + name + &quot;!!&quot;;
 }
 </code></pre></div>
@@ -619,7 +629,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function squarePlusCube(future&lt;int&gt; f) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function squarePlusCube(future&lt;int&gt; f) returns int {
     worker w1 {
         int n = wait f;
         int sq = square(n);
@@ -643,7 +653,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return wait w2;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return wait w2;
 }
 </code></pre></div>
 
@@ -663,7 +673,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function countInfinity() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function countInfinity() {
     while (true) {
         runtime:sleep(1);
         count += 1;
@@ -694,8 +704,8 @@ import ballerina/runtime;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run async.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run async.bal
 SQ + CB = 737100
 Counting done in one second: 0
 args=test=123 headers=x-forwarded-proto=https host=postman-echo.com user-agent=ballerina/1.2.0 x-forwarded-port=80 url=https://postman-echo.com/get?test=123

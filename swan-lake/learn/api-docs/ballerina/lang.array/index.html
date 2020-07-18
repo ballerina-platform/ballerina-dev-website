@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,28 +61,29 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../lang.array/index.html">
+        <a href="../lang.array/index.html" onclick="menuLinkClick()">
             <h3>lang.array</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../lang.array/index.html#records">Records</a>
+            <a data="records" href="../lang.array/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../lang.array/index.html#objects">Objects</a>
+                <a  data="objects" href="../lang.array/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../lang.array/index.html#functions">Functions</a>
+                <a data="functions" href="../lang.array/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -93,424 +96,323 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../lang.array/index.html">
-            <h3>lang.array</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../lang.array/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../lang.array/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../lang.array/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">lang.array</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.1.0</div>
+                    <a href="../lang.array/index.html"><span class="modules">lang.array</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.1.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides lang library list operations defined by the language specification 2020R1.</p>
 
 
-            
+    
+        
+    
 
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Records </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T0" title="T0">
-                                <a class="records " href="records/T0.html">T0</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T2" title="T2">
-                                <a class="records " href="records/T2.html">T2</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
+    
+        
+    
 
-            
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate objects" id="T1" title="T1">
-                                <a class="objects " href="objects/T1.html">T1</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                </table>
-             </section>  
-            
+    
 
-            
-
-            
-           
-
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="enumerate" title="enumerate">
-                                <a class="functions " href="functions.html#enumerate">enumerate</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns a new array consisting of index and member pairs.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="filter" title="filter">
-                                <a class="functions " href="functions.html#filter">filter</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Selects the members from an array for which a function returns true.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="forEach" title="forEach">
-                                <a class="functions " href="functions.html#forEach">forEach</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Applies a function to each member of an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="fromBase16" title="fromBase16">
-                                <a class="functions " href="functions.html#fromBase16">fromBase16</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the byte array that a string represents in Base16.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="fromBase64" title="fromBase64">
-                                <a class="functions " href="functions.html#fromBase64">fromBase64</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the byte array that a string represents in Base64.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="indexOf" title="indexOf">
-                                <a class="functions " href="functions.html#indexOf">indexOf</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the index of first member of <code>arr</code> that is equal to <code>val</code> if there is one.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="iterator" title="iterator">
-                                <a class="functions " href="functions.html#iterator">iterator</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns an iterator over an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="lastIndexOf" title="lastIndexOf">
-                                <a class="functions " href="functions.html#lastIndexOf">lastIndexOf</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the index of last member of <code>arr</code> that is equal to <code>val</code> if there is one.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="length" title="length">
-                                <a class="functions " href="functions.html#length">length</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the number of members of an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="map" title="map">
-                                <a class="functions " href="functions.html#map">map</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Applies a function to each member of an array and returns an array of the results.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="pop" title="pop">
-                                <a class="functions " href="functions.html#pop">pop</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Removes and returns the last member of an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="push" title="push">
-                                <a class="functions " href="functions.html#push">push</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Adds values to the end of an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="reduce" title="reduce">
-                                <a class="functions " href="functions.html#reduce">reduce</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Combines the members of an array using a combining function.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="remove" title="remove">
-                                <a class="functions " href="functions.html#remove">remove</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Removes a member of an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="removeAll" title="removeAll">
-                                <a class="functions " href="functions.html#removeAll">removeAll</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Removes all members of an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="reverse" title="reverse">
-                                <a class="functions " href="functions.html#reverse">reverse</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Reverses the order of the members of an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="setLength" title="setLength">
-                                <a class="functions " href="functions.html#setLength">setLength</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Changes the length of an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="shift" title="shift">
-                                <a class="functions " href="functions.html#shift">shift</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Removes and returns first member of an array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="slice" title="slice">
-                                <a class="functions " href="functions.html#slice">slice</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns a subarray starting from <code>startIndex</code> (inclusive) to <code>endIndex</code> (exclusive).
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="sort" title="sort">
-                                <a class="functions " href="functions.html#sort">sort</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Sorts an array using a comparator function.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toBase16" title="toBase16">
-                                <a class="functions " href="functions.html#toBase16">toBase16</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the string that is the Base16 representation of an array of bytes.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toBase64" title="toBase64">
-                                <a class="functions " href="functions.html#toBase64">toBase64</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the string that is the Base64 representation of an array of bytes.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="toStream" title="toStream">
-                                <a class="functions " href="functions.html#toStream">toStream</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns a stream from the given array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="unshift" title="unshift">
-                                <a class="functions " href="functions.html#unshift">unshift</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Adds values to the start of an array.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
+    
 
 
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate functions" id="enumerate" title="enumerate">
+                    <a class="functions " href="functions.html#enumerate">enumerate</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns a new array consisting of index and member pairs.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="filter" title="filter">
+                    <a class="functions " href="functions.html#filter">filter</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Selects the members from an array for which a function returns true.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="forEach" title="forEach">
+                    <a class="functions " href="functions.html#forEach">forEach</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Applies a function to each member of an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="fromBase16" title="fromBase16">
+                    <a class="functions " href="functions.html#fromBase16">fromBase16</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the byte array that a string represents in Base16.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="fromBase64" title="fromBase64">
+                    <a class="functions " href="functions.html#fromBase64">fromBase64</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the byte array that a string represents in Base64.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="indexOf" title="indexOf">
+                    <a class="functions " href="functions.html#indexOf">indexOf</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the index of first member of <code>arr</code> that is equal to <code>val</code> if there is one.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="iterator" title="iterator">
+                    <a class="functions " href="functions.html#iterator">iterator</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns an iterator over an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="lastIndexOf" title="lastIndexOf">
+                    <a class="functions " href="functions.html#lastIndexOf">lastIndexOf</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the index of last member of <code>arr</code> that is equal to <code>val</code> if there is one.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="length" title="length">
+                    <a class="functions " href="functions.html#length">length</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the number of members of an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="map" title="map">
+                    <a class="functions " href="functions.html#map">map</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Applies a function to each member of an array and returns an array of the results.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="pop" title="pop">
+                    <a class="functions " href="functions.html#pop">pop</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Removes and returns the last member of an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="push" title="push">
+                    <a class="functions " href="functions.html#push">push</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Adds values to the end of an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="reduce" title="reduce">
+                    <a class="functions " href="functions.html#reduce">reduce</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Combines the members of an array using a combining function.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="remove" title="remove">
+                    <a class="functions " href="functions.html#remove">remove</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Removes a member of an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="removeAll" title="removeAll">
+                    <a class="functions " href="functions.html#removeAll">removeAll</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Removes all members of an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="reverse" title="reverse">
+                    <a class="functions " href="functions.html#reverse">reverse</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Reverses the order of the members of an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="setLength" title="setLength">
+                    <a class="functions " href="functions.html#setLength">setLength</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Changes the length of an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="shift" title="shift">
+                    <a class="functions " href="functions.html#shift">shift</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Removes and returns first member of an array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="slice" title="slice">
+                    <a class="functions " href="functions.html#slice">slice</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns a subarray starting from <code>startIndex</code> (inclusive) to <code>endIndex</code> (exclusive).
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="sort" title="sort">
+                    <a class="functions " href="functions.html#sort">sort</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Sorts an array using a comparator function.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toBase16" title="toBase16">
+                    <a class="functions " href="functions.html#toBase16">toBase16</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the string that is the Base16 representation of an array of bytes.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toBase64" title="toBase64">
+                    <a class="functions " href="functions.html#toBase64">toBase64</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the string that is the Base64 representation of an array of bytes.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="toStream" title="toStream">
+                    <a class="functions " href="functions.html#toStream">toStream</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns a stream from the given array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="unshift" title="unshift">
+                    <a class="functions " href="functions.html#unshift">unshift</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Adds values to the start of an array.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
-            
+    
 
-            
 
-            
+    
+
+    
+
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -537,6 +439,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -546,4 +466,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

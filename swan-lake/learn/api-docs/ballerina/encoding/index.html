@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,9 +61,10 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../encoding/index.html">
+        <a href="../encoding/index.html" onclick="menuLinkClick()">
             <h3>encoding</h3>
         </a>
     
@@ -72,19 +75,19 @@
         
         
             <li>
-                <a data="functions" href="../encoding/index.html#functions">Functions</a>
+                <a data="functions" href="../encoding/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
         
             <li>
-                <a data="types" href="../encoding/index.html#types">Types</a>
+                <a data="types" href="../encoding/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../encoding/index.html#errors">Errors</a>
+                <a data="errors" href="../encoding/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -93,224 +96,174 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../encoding/index.html">
-            <h3>encoding</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../encoding/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../encoding/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../encoding/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">encoding</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.0.0</div>
+                    <a href="../encoding/index.html"><span class="modules">encoding</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides the necessary utilities, which are required to encode and decode content using different URL encoding mechanisms and algorithms.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.</p>
 
 
-            
+    
 
-            
+    
 
-            
+    
 
-            
-           
-
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="decodeBase64Url" title="decodeBase64Url">
-                                <a class="functions " href="functions.html#decodeBase64Url">decodeBase64Url</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Decodes the Base64 URL encoded <code>string</code> into a byte array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="decodeUriComponent" title="decodeUriComponent">
-                                <a class="functions " href="functions.html#decodeUriComponent">decodeUriComponent</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Decodes the given URI component into a <code>string</code> using the provided charset.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="encodeBase64Url" title="encodeBase64Url">
-                                <a class="functions " href="functions.html#encodeBase64Url">encodeBase64Url</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the Base64 URL encoded <code>string</code> value of the given byte array.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="encodeUriComponent" title="encodeUriComponent">
-                                <a class="functions " href="functions.html#encodeUriComponent">encodeUriComponent</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Encodes the given URI component into a <code>string</code> using the provided charset.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
+    
 
 
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate functions" id="decodeBase64Url" title="decodeBase64Url">
+                    <a class="functions " href="functions.html#decodeBase64Url">decodeBase64Url</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Decodes the Base64 URL encoded <code>string</code> into a byte array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="decodeUriComponent" title="decodeUriComponent">
+                    <a class="functions " href="functions.html#decodeUriComponent">decodeUriComponent</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Decodes the given URI component into a <code>string</code> using the provided charset.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="encodeBase64Url" title="encodeBase64Url">
+                    <a class="functions " href="functions.html#encodeBase64Url">encodeBase64Url</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the Base64 URL encoded <code>string</code> value of the given byte array.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="encodeUriComponent" title="encodeUriComponent">
+                    <a class="functions " href="functions.html#encodeUriComponent">encodeUriComponent</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Encodes the given URI component into a <code>string</code> using the provided charset.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
-            
+    
 
-            
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types " href="types.html#Error">Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the Encoding module error.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
 
+    
+
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="DecodingError" title="DecodingError">
-                                <a class="errors " href="errors.html#DecodingError">DecodingError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the Decoding error.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="EncodingError" title="EncodingError">
-                                <a class="errors " href="errors.html#EncodingError">EncodingError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the Encoding error.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Represents the Encoding module error.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
+
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="DecodingError" title="DecodingError">
+                    <a class="errors " href="errors.html#DecodingError">DecodingError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the Decoding error.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="EncodingError" title="EncodingError">
+                    <a class="errors " href="errors.html#EncodingError">EncodingError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the Encoding error.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -337,6 +290,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -346,4 +317,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

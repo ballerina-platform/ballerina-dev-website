@@ -24,7 +24,10 @@ redirect_from:
 <span class="p">}</span>
 <span class="kt">message</span> <span class="nx">ByeResponse</span> <span class="p">{</span>
 	<span class="kt">string</span> <span class="nx">say</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">Execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">tools</span> <span class="nx">distribution</span> <span class="nx">to</span> <span class="nx">generate</span> <span class="nx">the</span> <span class="nx">mock</span> <span class="kd">service</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">grpc</span> <span class="o">--</span><span class="nx">input</span> <span class="nx">proto_to_ballerina</span><span class="p">.</span><span class="nx">proto</span> <span class="o">--</span><span class="nx">mode</span> <span class="kd">service</span> <span class="o">--</span><span class="nx">output</span> <span class="kd">service</span><span class="err">#</span> <span class="nx">Execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">tools</span> <span class="nx">distribution</span> <span class="nx">to</span> <span class="nx">generate</span> <span class="nx">the</span> <span class="nx">client</span> <span class="nx">endpoint</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">stub</span> <span class="nx">file</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">grpc</span> <span class="o">--</span><span class="nx">input</span> <span class="nx">proto_to_ballerina</span><span class="p">.</span><span class="nx">proto</span> <span class="o">--</span><span class="nx">mode</span> <span class="nx">client</span> <span class="o">--</span><span class="nx">output</span> <span class="nx">client</span><span class="err">#</span> <span class="nx">Execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">tools</span> <span class="nx">distribution</span> <span class="nx">to</span> <span class="nx">generate</span> <span class="nx">the</span> <span class="nx">stub</span> <span class="nx">file</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">grpc</span> <span class="o">--</span><span class="nx">input</span> <span class="nx">proto_to_ballerina</span><span class="p">.</span><span class="nx">proto</span>
 </pre></div>
 
             </div>
@@ -117,7 +120,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>syntax = &quot;proto3&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>syntax = &quot;proto3&quot;;
 </code></pre></div>
 
                                 </td>
@@ -129,7 +132,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service helloWorld {
+                                    <div class="highlight"><pre><code class=language-ballerina>service helloWorld {
     rpc hello(HelloRequest) returns (HelloResponse);
     rpc bye(ByeRequest) returns (ByeResponse);
 }
@@ -144,7 +147,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>message HelloRequest {
+                                    <div class="highlight"><pre><code class=language-ballerina>message HelloRequest {
 	string name = 1;
 }
 message HelloResponse {
@@ -188,8 +191,8 @@ message ByeResponse {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the below command in the Ballerina tools distribution to generate the mock service.
-$ ballerina grpc --input proto_to_ballerina.proto --mode service --output service
+                                    <div class="highlight"><pre><code class=shell-session># Execute the command below in the Ballerina tools distribution to generate the mock service.
+ballerina grpc --input proto_to_ballerina.proto --mode service --output service
 </code></pre></div>
 
                                 </td>
@@ -201,8 +204,8 @@ $ ballerina grpc --input proto_to_ballerina.proto --mode service --output servic
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the below command in the Ballerina tools distribution to generate the client endpoint and the stub file.
-$ ballerina grpc --input proto_to_ballerina.proto --mode client --output client
+                                    <div class="highlight"><pre><code class=shell-session># Execute the command below in the Ballerina tools distribution to generate the client endpoint and the stub file.
+ballerina grpc --input proto_to_ballerina.proto --mode client --output client
 </code></pre></div>
 
                                 </td>
@@ -214,8 +217,8 @@ $ ballerina grpc --input proto_to_ballerina.proto --mode client --output client
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the below command in the Ballerina tools distribution to generate the stub file.
-$ ballerina grpc --input proto_to_ballerina.proto
+                                    <div class="highlight"><pre><code class=shell-session># Execute the command below in the Ballerina tools distribution to generate the stub file.
+ballerina grpc --input proto_to_ballerina.proto
 </code></pre></div>
 
                                 </td>

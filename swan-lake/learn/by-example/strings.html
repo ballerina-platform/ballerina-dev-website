@@ -49,7 +49,22 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">c</span> <span class="p">=</span> <span class="nx">country</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Member Access: &quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">ToUpper</span><span class="p">:</span> <span class="nx">LION</span> <span class="nx">IN</span> <span class="nx">TOWN</span><span class="p">.</span> <span class="nx">CATCH</span> <span class="nx">THE</span> <span class="nx">LION</span>
+<span class="nx">ToLower</span><span class="p">:</span> <span class="nx">lion</span> <span class="nx">in</span> <span class="nx">town</span><span class="p">.</span> <span class="nx">catch</span> <span class="nx">the</span> <span class="nx">lion</span>
+<span class="nx">SubString</span><span class="p">:</span> <span class="nx">Lion</span>
+<span class="nx">IndexOf</span><span class="p">:</span> <span class="mi">2</span>
+<span class="nx">Length</span><span class="p">:</span> <span class="mi">28</span>
+<span class="nx">Concat</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">Join</span><span class="p">:</span> <span class="nx">Hello</span><span class="p">,</span><span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">From</span> <span class="nx">bytes</span><span class="p">:</span> <span class="nx">Hello</span>
+<span class="nx">Trim</span><span class="p">:</span> <span class="nx">Ballerina</span> <span class="nx">Programming</span> <span class="nx">Language</span>
+<span class="nx">HasSuffix</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">HasPrefix</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">Sprintf</span><span class="p">:</span> <span class="nx">Sam</span> <span class="nx">scored</span> <span class="mi">90</span> <span class="k">for</span> <span class="nx">English</span> <span class="nx">and</span> <span class="nx">has</span> <span class="nx">an</span> <span class="nx">average</span> <span class="nx">of</span> <span class="mf">71.50</span><span class="p">.</span>
+<span class="nx">Member</span> <span class="nx">Access</span><span class="p">:</span> <span class="nx">L</span>
 </pre></div>
 
             </div>
@@ -160,7 +175,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.&#39;string;
 </code></pre></div>
 
@@ -173,7 +188,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -185,7 +200,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string statement = &quot;Lion in Town. Catch the Lion&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string statement = &quot;Lion in Town. Catch the Lion&quot;;
 </code></pre></div>
 
                                 </td>
@@ -197,7 +212,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string s1 = statement.toUpperAscii();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string s1 = statement.toUpperAscii();
     io:println(&quot;ToUpper: &quot;, s1);
 </code></pre></div>
 
@@ -210,7 +225,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string s2 = statement.toLowerAscii();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string s2 = statement.toLowerAscii();
     io:println(&quot;ToLower: &quot;, s2);
 </code></pre></div>
 
@@ -223,7 +238,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string s3 = statement.substring(0, 4);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string s3 = statement.substring(0, 4);
     io:println(&quot;SubString: &quot;, s3);
 </code></pre></div>
 
@@ -245,7 +260,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int? index = statement.indexOf(&quot;on&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int? index = statement.indexOf(&quot;on&quot;);
     if (index is int) {
         io:println(&quot;IndexOf: &quot;, index);
     }
@@ -267,7 +282,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int length = statement.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int length = statement.length();
     io:println(&quot;Length: &quot;, length);
 </code></pre></div>
 
@@ -287,7 +302,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string hello = &quot;Hello&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string hello = &quot;Hello&quot;;
     string ballerina = &quot;Ballerina!&quot;;
 </code></pre></div>
 
@@ -300,7 +315,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string s4 = hello.concat(&quot; &quot;, ballerina);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string s4 = hello.concat(&quot; &quot;, ballerina);
     io:println(&quot;Concat: &quot;, s4);
 </code></pre></div>
 
@@ -320,7 +335,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string s5 = &quot;,&quot;.&#39;join(hello, ballerina);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string s5 = &quot;,&quot;.&#39;join(hello, ballerina);
     io:println(&quot;Join: &quot;, s5);
 </code></pre></div>
 
@@ -340,7 +355,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    byte[] bArray = hello.toBytes();
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] bArray = hello.toBytes();
 </code></pre></div>
 
                                 </td>
@@ -359,7 +374,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error s6 = &#39;string:fromBytes(bArray);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error s6 = &#39;string:fromBytes(bArray);
     if (s6 is string) {
         io:println(&quot;From bytes: &quot;, s6);
     }
@@ -381,7 +396,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string toTrim = &quot;  Ballerina Programming Language  &quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string toTrim = &quot;  Ballerina Programming Language  &quot;;
     string s7 = toTrim.trim();
     io:println(&quot;Trim: &quot;, s7);
 </code></pre></div>
@@ -402,7 +417,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean hasSuffix = statement.endsWith(&quot;Lion&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean hasSuffix = statement.endsWith(&quot;Lion&quot;);
     io:println(&quot;HasSuffix: &quot;, hasSuffix);
 </code></pre></div>
 
@@ -422,7 +437,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean hasPrefix = statement.startsWith(&quot;Lion&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean hasPrefix = statement.startsWith(&quot;Lion&quot;);
     io:println(&quot;HasPrefix: &quot;, hasPrefix);
 </code></pre></div>
 
@@ -442,7 +457,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string name = &quot;Sam&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string name = &quot;Sam&quot;;
     int marks = 90;
     string[] subjects = [&quot;English&quot;, &quot;Science&quot;];
     float average = 71.5;
@@ -467,7 +482,7 @@ import ballerina/lang.&#39;string;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string country = &quot;Sri Lanka&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string country = &quot;Sri Lanka&quot;;
     string c = country[4];
     io:println(&quot;Member Access: &quot;, c);
 }
@@ -504,8 +519,8 @@ import ballerina/lang.&#39;string;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run strings.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run strings.bal
 ToUpper: LION IN TOWN. CATCH THE LION
 ToLower: lion in town. catch the lion
 SubString: Lion

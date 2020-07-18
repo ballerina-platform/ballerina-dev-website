@@ -36,7 +36,13 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span>
+<span class="err">#</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_service_with_oauth2</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTPS</span><span class="o">/</span><span class="nx">WSS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">k</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Authorization: Bearer YWRtaW46MTIz&quot;</span> \
+<span class="nx">https</span><span class="p">:</span><span class="c1">//localhost:9090/hello/sayHello</span>
+<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!!!</span>
 </pre></div>
 
             </div>
@@ -130,7 +136,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/config;
 import ballerina/log;
 import ballerina/oauth2;
@@ -145,7 +151,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:InboundOAuth2Provider oauth2Provider = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:InboundOAuth2Provider oauth2Provider = new ({
     url: &quot;https://localhost:9095/oauth2/token/introspect&quot;
 });
 </code></pre></div>
@@ -167,7 +173,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BearerAuthHandler oauth2Handler = new (oauth2Provider);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler oauth2Handler = new (oauth2Provider);
 </code></pre></div>
 
                                 </td>
@@ -186,7 +192,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new (9090, {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new (9090, {
     auth: {
         authHandlers: [oauth2Handler]
     },
@@ -211,7 +217,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
                   &quot;/bre/security/ballerinaTruststore.p12&quot;,
@@ -237,7 +243,7 @@ import ballerina/oauth2;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>service hello on ep {
+                                    <div class="highlight"><pre><code class=language-ballerina>service hello on ep {
     resource function sayHello(http:Caller caller, http:Request req) {
         error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
         if (result is error) {
@@ -269,9 +275,9 @@ import ballerina/oauth2;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the below command by passing Ballerina home path
+                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the command below by passing Ballerina home path
 # as a system property.
-$ ballerina run secured_service_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
+ballerina run secured_service_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -297,7 +303,7 @@ $ ballerina run secured_service_with_oauth2.bal --b7a.home=&lt;ballerina_home_pa
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl -k -H &quot;Authorization: Bearer YWRtaW46MTIz&quot; \
+                                    <div class="highlight"><pre><code class=shell-session>curl -k -H &quot;Authorization: Bearer YWRtaW46MTIz&quot; \
 https://localhost:9090/hello/sayHello
 Hello, World!!!
 </code></pre></div>

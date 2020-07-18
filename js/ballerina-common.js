@@ -183,6 +183,7 @@ $(document).ready(function() {
     $("code").addClass('cBasicCode');
     $(".ballerina").removeClass('cBasicCode');
     $(".bash").removeClass('cBasicCode');
+    $(".language-ballerina").addClass('ballerina');
 
     $(".cRuntimeContent").addClass('cShow');
 

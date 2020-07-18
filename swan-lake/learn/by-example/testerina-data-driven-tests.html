@@ -39,7 +39,20 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">jsonDataProvider</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">json</span><span class="p">[][])</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[[{</span><span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;a&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s">&quot;c&quot;</span><span class="p">:</span> <span class="s">&quot;c&quot;</span><span class="p">}]];</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">For</span> <span class="nx">the</span> <span class="nx">moment</span> <span class="s">`ballerina test`</span> <span class="nx">works</span> <span class="nx">only</span> <span class="nx">in</span> <span class="nx">projects</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">test</span> <span class="nx">test_module</span>
+<span class="nx">Compiling</span> <span class="nx">source</span>
+        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span><span class="nx">Creating</span> <span class="nx">balos</span>
+        <span class="nx">target</span><span class="o">/</span><span class="nx">balo</span><span class="o">/</span><span class="nx">test_module</span><span class="o">-</span><span class="mi">2020</span><span class="nx">r1</span><span class="o">-</span><span class="kt">any</span><span class="o">-</span><span class="mf">0.1.0</span><span class="p">.</span><span class="nx">baloRunning</span> <span class="nx">tests</span>
+        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span>
+<span class="nx">Input</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="nx">Input</span> <span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">]</span>
+<span class="nx">Input</span> <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testJsonObjects</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAddingValues</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAddingValues</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAddingValues</span>        <span class="mi">4</span> <span class="nx">passing</span>
+        <span class="mi">0</span> <span class="nx">failing</span>
+        <span class="mi">0</span> <span class="nx">skipped</span>
 </pre></div>
 
             </div>
@@ -135,7 +148,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/test;
 import ballerina/lang.&#39;int;
 </code></pre></div>
@@ -149,7 +162,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
 </code></pre></div>
 
                                 </td>
@@ -168,7 +181,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    dataProvider: &quot;stringDataProvider&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    dataProvider: &quot;stringDataProvider&quot;
 }
 </code></pre></div>
 
@@ -188,7 +201,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function testAddingValues(string fValue, string sValue, string result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function testAddingValues(string fValue, string sValue, string result) {
 </code></pre></div>
 
                                 </td>
@@ -207,7 +220,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error val1 = &#39;int:fromString(fValue);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error val1 = &#39;int:fromString(fValue);
     int value1 = val1 is int ? val1 : 0;
     int|error val2 = &#39;int:fromString(sValue);
     int value2 = val2 is int ? val2 : 0;
@@ -224,7 +237,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Input : [&quot; + fValue + &quot;,&quot; + sValue + &quot;,&quot; + result + &quot;]&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Input : [&quot; + fValue + &quot;,&quot; + sValue + &quot;,&quot; + result + &quot;]&quot;);
     test:assertEquals(value1 + value2, result1, msg = &quot;Incorrect Sum&quot;);
 }
 </code></pre></div>
@@ -238,7 +251,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function stringDataProvider() returns (string[][]) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function stringDataProvider() returns (string[][]) {
     return [[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;], [&quot;10&quot;, &quot;20&quot;, &quot;30&quot;], [&quot;5&quot;, &quot;6&quot;, &quot;11&quot;]];
 }
 </code></pre></div>
@@ -259,7 +272,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
 </code></pre></div>
 
                                 </td>
@@ -271,7 +284,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    dataProvider: &quot;jsonDataProvider&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    dataProvider: &quot;jsonDataProvider&quot;
 }
 function testJsonObjects(json fValue, json sValue, json result) {
     json a = {&quot;a&quot;: &quot;a&quot;};
@@ -299,7 +312,7 @@ function testJsonObjects(json fValue, json sValue, json result) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function jsonDataProvider() returns (json[][]) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function jsonDataProvider() returns (json[][]) {
     return [[{&quot;a&quot;: &quot;a&quot;}, {&quot;b&quot;: &quot;b&quot;}, {&quot;c&quot;: &quot;c&quot;}]];
 }
 </code></pre></div>
@@ -350,7 +363,7 @@ function testJsonObjects(json fValue, json sValue, json result) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># For the moment `ballerina test` works only in projects.
-$ ballerina test test_module
+ballerina test test_module
 Compiling source
         ballerinatest/test_module:0.1.0
 </code></pre></div>

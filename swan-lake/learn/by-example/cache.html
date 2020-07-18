@@ -32,7 +32,11 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">capacity</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">capacity</span><span class="p">();</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidate</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidateAll</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">key1</span><span class="p">:</span> <span class="nx">value1</span>
+<span class="nx">keys</span><span class="p">:</span> <span class="p">[</span><span class="nx">key2</span><span class="p">]</span>
 </pre></div>
 
             </div>
@@ -137,7 +141,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/cache;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/cache;
 import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
@@ -151,7 +155,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -163,7 +167,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    cache:Cache cache = new({
+                                    <div class="highlight"><pre><code class=language-ballerina>    cache:Cache cache = new({
         capacity: 10,
         evictionFactor: 0.2,
         defaultMaxAgeInSeconds: 2,
@@ -191,7 +195,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = check cache.put(&quot;key1&quot;, &quot;value1&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.put(&quot;key1&quot;, &quot;value1&quot;);
 </code></pre></div>
 
                                 </td>
@@ -210,7 +214,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = check cache.put(&quot;key2&quot;, &quot;value2&quot;, 3600);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.put(&quot;key2&quot;, &quot;value2&quot;, 3600);
 </code></pre></div>
 
                                 </td>
@@ -229,7 +233,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (cache.hasKey(&quot;key1&quot;)) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (cache.hasKey(&quot;key1&quot;)) {
 </code></pre></div>
 
                                 </td>
@@ -248,7 +252,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string value = &lt;string&gt; check cache.get(&quot;key1&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string value = &lt;string&gt; check cache.get(&quot;key1&quot;);
         io:println(&quot;key1: &quot; + value);
     }
 </code></pre></div>
@@ -269,7 +273,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(4000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(4000);
 </code></pre></div>
 
                                 </td>
@@ -308,7 +312,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string[] keys = cache.keys();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string[] keys = cache.keys();
     io:println(&quot;keys: [&quot; + keys.toString() + &quot;]&quot;);
 </code></pre></div>
 
@@ -328,7 +332,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int size = cache.size();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int size = cache.size();
 </code></pre></div>
 
                                 </td>
@@ -347,7 +351,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int capacity = cache.capacity();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int capacity = cache.capacity();
 </code></pre></div>
 
                                 </td>
@@ -366,7 +370,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = check cache.invalidate(&quot;key2&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.invalidate(&quot;key2&quot;);
 </code></pre></div>
 
                                 </td>
@@ -385,7 +389,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = check cache.invalidateAll();
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.invalidateAll();
 }
 </code></pre></div>
 
@@ -419,8 +423,8 @@ import ballerina/runtime;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run cache.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run cache.bal
 key1: value1
 keys: [key2]
 </code></pre></div>

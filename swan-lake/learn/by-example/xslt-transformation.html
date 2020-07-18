@@ -63,7 +63,25 @@ redirect_from:
 <span class="s">                        &lt;/html&gt;</span>
 <span class="s">                    &lt;/xsl:template&gt;</span>
 <span class="s">                &lt;/xsl:stylesheet&gt;`</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">xslt_transformation</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Transformed</span> <span class="kt">xml</span> <span class="p">:</span> <span class="p">&lt;</span><span class="nx">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">h2</span><span class="p">&gt;</span><span class="nx">All</span> <span class="nx">time</span> <span class="nx">favourites</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">table</span> <span class="nx">border</span><span class="p">=</span><span class="s">&quot;1&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">tr</span> <span class="nx">bgcolor</span><span class="p">=</span><span class="s">&quot;#9acd33&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">th</span><span class="p">&gt;</span><span class="nx">Title</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">th</span><span class="p">&gt;&lt;</span><span class="nx">th</span><span class="p">&gt;</span><span class="nx">Artist</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">th</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">td</span><span class="p">&gt;</span><span class="nx">Summer</span> <span class="nx">of</span> <span class="mi">69</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">td</span><span class="p">&gt;&lt;</span><span class="nx">td</span><span class="p">&gt;</span><span class="nx">Bryan</span> <span class="nx">Adams</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">td</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">td</span><span class="p">&gt;</span><span class="nx">Zombie</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">td</span><span class="p">&gt;&lt;</span><span class="nx">td</span><span class="p">&gt;</span><span class="nx">Bad</span> <span class="nx">Wolves</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">td</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">table</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">html</span><span class="p">&gt;</span>
 </pre></div>
 
             </div>
@@ -152,7 +170,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/xslt;
 </code></pre></div>
 
@@ -165,7 +183,7 @@ import ballerina/xslt;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -177,7 +195,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml sourceXml = getXml();
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml sourceXml = getXml();
 </code></pre></div>
 
                                 </td>
@@ -196,7 +214,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml xsl = getXsl();
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml xsl = getXsl();
 </code></pre></div>
 
                                 </td>
@@ -215,7 +233,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml|error target = xslt:transform(sourceXml, xsl);
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml|error target = xslt:transform(sourceXml, xsl);
     if (target is xml) {
         io:println(&quot;Transformed xml : &quot;, target);
     } else {
@@ -240,7 +258,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getXml() returns xml {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getXml() returns xml {
     return xml `&lt;samples&gt;
                     &lt;song&gt;
                         &lt;title&gt;Summer of 69&lt;/title&gt;
@@ -274,7 +292,7 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getXsl() returns xml {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getXsl() returns xml {
     return xml `&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
                     &lt;xsl:template match=&quot;/&quot;&gt;
                         &lt;html&gt;
@@ -333,8 +351,8 @@ import ballerina/xslt;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and run the `ballerina run` command.
-$ ballerina run xslt_transformation.bal
+# `.bal` file and run the `ballerina run` command below.
+ballerina run xslt_transformation.bal
 Transformed xml : &lt;html&gt;
 &lt;body&gt;
 &lt;h2&gt;All time favourites&lt;/h2&gt;

@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
 communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
-the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
+the RFC 2045 standard.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,mime">
 
@@ -61,98 +70,34 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Objects</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="ContentDisposition.html">ContentDisposition</a>
-                        </li>
-                    
-                        <li >
-                            <a href="Entity.html">Entity</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="MediaType.html">MediaType</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../mime/index.html">
-            <h3>mime</h3>
-        </a>
-    
-    <ul>
-        
-        
-            <li>
-                <a  data="objects" href="../../mime/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../../mime/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../../mime/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../../mime/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../mime/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Objects</h3>
+                    <h3>
+    Objects
+</h3>
                     <ul>
                         
-                            <li ></li>>
-                                <a href="ContentDisposition.html">ContentDisposition</a>
-                            </li>
-                        
-                            <li ></li>>
-                                <a href="Entity.html">Entity</a>
-                            </li>
-                        
-                            <li class="active"></li>>
-                                <a href="MediaType.html">MediaType</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="ContentDisposition.html" onclick="menuLinkClick()">ContentDisposition</a>
+        </li>
+    
+        <li >
+            <a href="Entity.html" onclick="menuLinkClick()">Entity</a>
+        </li>
+    
+        <li class="active">
+            <a href="MediaType.html" onclick="menuLinkClick()">MediaType</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../mime/index.html">
+        <a href="../../mime/index.html" onclick="menuLinkClick()">
             <h3>mime</h3>
         </a>
     
@@ -160,77 +105,87 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
         
         
             <li>
-                <a  data="objects" href="../../mime/index.html#objects">Objects</a>
+                <a  data="objects" href="../../mime/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../../mime/index.html#functions">Functions</a>
+                <a data="functions" href="../../mime/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../../mime/index.html#constants">Constants</a>
+                <a data="constants" href="../../mime/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../../mime/index.html#types">Types</a>
+                <a data="types" href="../../mime/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../mime/index.html#errors">Errors</a>
+                <a data="errors" href="../../mime/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
-
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Object - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Object
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../mime/index.html">mime</a>
+                    <a href="../../mime/index.html"><span class="modules">mime</span></a>
+                
                  :
-                <span class="objects ">MediaType</span>
+                    
+    <span class="objects ">MediaType</span>
+
+                
             </h1>
-            <p>
-                
-                <p>Describes the nature of the data in the body of a MIME entity.</p>
+            
+    <p>
+        
+        <p>Describes the nature of the data in the body of a MIME entity.</p>
 
-            </p>
+    </p>
 
-            <div class="constants">
-                <div class="method-sum">
+    <div class="constants">
+        <div class="method-sum">
+            
+
+        
+            
+                <h2>Methods</h2>
+                <div class="method-list">
                     
-
-                
-                    
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
+                        
 <div class="param-sum">
     <div class="param-name " title="getBaseType">
         <a href="#getBaseType">getBaseType </a>
@@ -241,8 +196,8 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
     </div>
 </div>
 
-                            
-                                
+                    
+                        
 <div class="param-sum">
     <div class="param-name " title="toString">
         <a href="#toString">toString </a>
@@ -253,14 +208,14 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
     </div>
 </div>
 
-                            
-                        </div>
                     
+                </div>
+            
 
-                    
-                        
-                            <h2>Fields</h2>
-                                <div class="data-wrapper">
+            
+                
+                    <h2>Fields</h2>
+                        <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -313,7 +268,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
     <div class="params-listing">
         <ul>
             <li> <span >parameters</span>
-                <span class="type">  <span class="builtin-type">map</span></span>
+                <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">string</span>></span>
                  <span class="default">(default  {})</span> 
             </li>
             <li>
@@ -329,17 +284,6 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
 </div>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -366,6 +310,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -376,24 +338,24 @@ contentWrapper.addEventListener("scroll", event => {
     };
 </script>
 
-                        
-                    
-                </div>
-
                 
-                    
-                        <div class="method-content">
+            
+        </div>
+
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="getBaseType" title="getBaseType">
              <a class="url-link" href="#getBaseType">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > getBaseType </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -416,19 +378,19 @@ contentWrapper.addEventListener("scroll", event => {
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="toString" title="toString">
              <a class="url-link" href="#toString">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > toString </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -451,27 +413,16 @@ contentWrapper.addEventListener("scroll", event => {
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -498,6 +449,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -507,4 +476,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

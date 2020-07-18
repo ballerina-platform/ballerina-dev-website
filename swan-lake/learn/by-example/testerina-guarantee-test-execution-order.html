@@ -30,7 +30,18 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">testFunction3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 3!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">For</span> <span class="nx">the</span> <span class="nx">moment</span> <span class="s">`ballerina test`</span> <span class="nx">works</span> <span class="nx">only</span> <span class="nx">in</span> <span class="nx">projects</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">test</span> <span class="nx">test_module</span>
+<span class="nx">Compiling</span> <span class="nx">source</span>
+        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span><span class="nx">Creating</span> <span class="nx">balos</span>
+        <span class="nx">target</span><span class="o">/</span><span class="nx">balo</span><span class="o">/</span><span class="nx">test_module</span><span class="o">-</span><span class="mi">2020</span><span class="nx">r1</span><span class="o">-</span><span class="kt">any</span><span class="o">-</span><span class="mf">0.1.0</span><span class="p">.</span><span class="nx">baloRunning</span> <span class="nx">tests</span>
+    <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="kd">function</span> <span class="mi">3</span><span class="p">!</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="kd">function</span> <span class="mi">1</span><span class="p">!</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="kd">function</span> <span class="mi">2</span><span class="p">!</span>
+        <span class="mi">3</span> <span class="nx">passing</span>
+        <span class="mi">0</span> <span class="nx">failing</span>
+        <span class="mi">0</span> <span class="nx">skipped</span>
 </pre></div>
 
             </div>
@@ -116,7 +127,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/test;
 </code></pre></div>
 
@@ -129,7 +140,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
 </code></pre></div>
 
                                 </td>
@@ -148,7 +159,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    dependsOn: [&quot;testFunction3&quot;]
+                                    <div class="highlight"><pre><code class=language-ballerina>    dependsOn: [&quot;testFunction3&quot;]
 }
 function testFunction1() {
     io:println(&quot;I&#39;m in test function 1!&quot;);
@@ -172,7 +183,7 @@ function testFunction1() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
     dependsOn: [&quot;testFunction1&quot;]
 }
 function testFunction2() {
@@ -197,7 +208,7 @@ function testFunction2() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testFunction3() {
     io:println(&quot;I&#39;m in test function 3!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -243,7 +254,7 @@ function testFunction3() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># For the moment `ballerina test` works only in projects.
-$ ballerina test test_module
+ballerina test test_module
 Compiling source
         ballerinatest/test_module:0.1.0
 </code></pre></div>

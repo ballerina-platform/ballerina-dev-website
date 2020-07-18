@@ -3,22 +3,19 @@ layout: ballerina-left-nav-pages-swanlake
 title: Quick Start
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /swan-lake/learn/testing-quick-start/
+permalink: /swan-lake/learn/testing-ballerina-code/testing-quick-start/
 active: testing-quick-start
 redirect_from:
   - /swan-lake/learn/how-to-test-ballerina-code/
   - /swan-lake/learn/how-to-test-ballerina-code
-  - /swan-lake/learn/testing-quick-start
+  - /swan-lake/learn/testing-ballerina-code/testing-quick-start
 ---
-
-Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enables the programmers to write comprehensive tests.
-
 
 # Quick Start
 
-Let’s write a simple Ballerina function to test it.
+The Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enable the programmers to write comprehensive tests.
 
-
+To get started, let's write a simple Ballerina function and test it.
 
 1. First, let’s create a Ballerina project and add a new module. Use the `ballerina new` command to create the project. 
 For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
@@ -50,22 +47,22 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     
     http:Client clientEndpoint = new("https://api.chucknorris.io/jokes/");
     
-    // This function performs a `get` request to the Chuck Norris API and
-    // returns a random joke with the name replaced with the provided name
+    // This function performs a `get` request to the Chuck Norris API and returns a random joke 
+    // with the name replaced with the provided name or an error if the API invocation fails.
     function getRandomJoke(string name) returns string|error {
         http:Response|error result = clientEndpoint->get("/random");
         http:Response response = <http:Response>result;
         if (response.statusCode == http:STATUS_OK) {
-                json payload = <json>response.getJsonPayload();
-                json joke = <json>payload.value;
-                string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
-                return replacedText;
+            json payload = <json>response.getJsonPayload();
+            json joke = <json>payload.value;
+            string replacedText = stringutils:replace(joke.toJsonString(), "Chuck Norris", name);
+            return replacedText;
         } else {
-                error err = error("error occurred while sending GET request");
-                io:println(err.message(),
-                    ", status code: ", response.statusCode,
-                    ", reason: ", response.getJsonPayload());
-                return err;
+            error err = error("error occurred while sending GET request");
+            io:println(err.message(),
+                ", status code: ", response.statusCode,
+                ", reason: ", response.getJsonPayload());
+            return err;
         }
     }
     
@@ -79,29 +76,28 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     import ballerina/test;
     import ballerina/http;
     
+    // This test function tests the behavior of the `getRandomJoke` when
+    // the API returns a success response
     @test:Config {}
     function testGetRandomJoke() {
-        clientEndpoint = <http:Client>test:mock(http:Client);
+        // create a default mock HTTP Client and assign it to the `clientEndpoint`
+        clientEndpoint = test:mock(http:Client);
+        // stub the behavior of the `get` function to return the specified mock response
         test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
+        // invoke the function to test
         string result = checkpanic getRandomJoke("Sheldon");
         io:println(result);
+        // verify the return value   
         test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
     }
     
+    // Returns a mock HTTP response to be used for the jokes API invocation
     function getMockResponse() returns http:Response {
         http:Response mockResponse = new;
-        json mockPayload = {
-            "categories":[],
-            "created_at":"2020-01-05 13:42:24.40636",
-            "icon_url":"https://assets.chucknorris.host/img/avatar/chuck-norris.png",
-            "id":"7hM0_eLTSaiXmpHO_29iOg","updated_at":"2020-01-05 13:42:24.40636",
-            "url":"https://api.chucknorris.io/jokes/7hM0_eLTSaiXmpHO_29iOg",
-            "value":"When Chuck Norris wants an egg, he cracks open a chicken."
-        };
+        json mockPayload = {"value":"When Chuck Norris wants an egg, he cracks open a chicken."};
         mockResponse.setPayload(mockPayload);
         return mockResponse;
     }
-    
     ```
 
 4. Finally, let’s execute the tests using the following command.
@@ -137,4 +133,4 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
 ## What's Next
 
 Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
- features in the [Writing Tests](/swan-lake/learn/writing-tests) section.
+ features in the [Writing Tests](/swan-lake/learn/testing-ballerina-code/writing-tests) section.

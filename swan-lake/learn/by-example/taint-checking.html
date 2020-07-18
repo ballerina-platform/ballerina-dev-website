@@ -44,7 +44,13 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">secureParameter</span><span class="err">&#39;</span>
+<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">secureParameter</span><span class="err">&#39;</span>
+<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">sqlQuery</span><span class="err">&#39;</span>
+<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">secureParameter</span><span class="err">&#39;</span>
 </pre></div>
 
             </div>
@@ -166,7 +172,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/lang.&#39;int;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;int;
 import ballerina/mysql;
 import ballerina/sql;
 </code></pre></div>
@@ -180,7 +186,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function userDefinedSecureOperation(@untainted string secureParameter) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function userDefinedSecureOperation(@untainted string secureParameter) {
 </code></pre></div>
 
                                 </td>
@@ -200,7 +206,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -212,7 +218,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string firstname;
 };
 </code></pre></div>
@@ -226,7 +232,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main(string... args) returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main(string... args) returns error? {
     mysql:Client dbClient = check new (&quot;localhost&quot;, &quot;root&quot;, &quot;root&quot;, &quot;testdb&quot;, 3306);
 </code></pre></div>
 
@@ -239,7 +245,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    sql:ParameterizedQuery sqlQuery = `SELECT firstName from student WHERE registration_id = ${args[0]}`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery sqlQuery = `SELECT firstName from student WHERE registration_id = ${args[0]}`;
     var result = dbClient-&gt;query(sqlQuery, ());
 </code></pre></div>
 
@@ -268,7 +274,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    userDefinedSecureOperation(args[0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    userDefinedSecureOperation(args[0]);
 </code></pre></div>
 
                                 </td>
@@ -287,7 +293,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (isInteger(args[0])) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (isInteger(args[0])) {
 </code></pre></div>
 
                                 </td>
@@ -299,7 +305,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(&lt;@untainted&gt;args[0]);
+                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(&lt;@untainted&gt;args[0]);
     } else {
         error err = error(&quot;Validation error: ID should be an integer&quot;);
         panic err;
@@ -324,7 +330,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (true) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (true) {
         var data = check result.next();
 </code></pre></div>
 
@@ -337,7 +343,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        Student jsonData = &lt;Student&gt; data?.value;
+                                    <div class="highlight"><pre><code class=language-ballerina>        Student jsonData = &lt;Student&gt; data?.value;
 </code></pre></div>
 
                                 </td>
@@ -349,7 +355,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(jsonData.firstname);
 </code></pre></div>
 
                                 </td>
@@ -373,7 +379,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string sanitizedData1 = sanitizeAndReturnTainted(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string sanitizedData1 = sanitizeAndReturnTainted(jsonData.firstname);
 </code></pre></div>
 
                                 </td>
@@ -385,7 +391,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(sanitizedData1);
+                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(sanitizedData1);
 </code></pre></div>
 
                                 </td>
@@ -405,7 +411,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string sanitizedData2 = sanitizeAndReturnUntainted(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string sanitizedData2 = sanitizeAndReturnUntainted(jsonData.firstname);
 </code></pre></div>
 
                                 </td>
@@ -417,7 +423,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(sanitizedData2);
+                                    <div class="highlight"><pre><code class=language-ballerina>        userDefinedSecureOperation(sanitizedData2);
     }
     checkpanic dbClient.close();
     return;
@@ -442,7 +448,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function sanitizeAndReturnTainted(string input) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function sanitizeAndReturnTainted(string input) returns string {
 </code></pre></div>
 
                                 </td>
@@ -454,7 +460,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return input;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return input;
 }
 </code></pre></div>
 
@@ -474,7 +480,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function sanitizeAndReturnUntainted(string input) returns @untainted string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function sanitizeAndReturnUntainted(string input) returns @untainted string {
 </code></pre></div>
 
                                 </td>
@@ -494,7 +500,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return input;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return input;
 }
 </code></pre></div>
 
@@ -514,7 +520,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function isInteger(string input) returns boolean {
+                                    <div class="highlight"><pre><code class=language-ballerina>function isInteger(string input) returns boolean {
     var intVal = &#39;int:fromString(input);
     if (intVal is error) {
         return false;
@@ -547,8 +553,8 @@ import ballerina/sql;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run taint_checking.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run taint_checking.bal
 error: .::taint_checking.bal:54:36: tainted value passed to untainted parameter &#39;secureParameter&#39;
 error: .::taint_checking.bal:59:36: tainted value passed to untainted parameter &#39;secureParameter&#39;
 error: .::taint_checking.bal:29:34: tainted value passed to untainted parameter &#39;sqlQuery&#39;

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,48 +61,49 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../test/index.html">
+        <a href="../test/index.html" onclick="menuLinkClick()">
             <h3>test</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../test/index.html#records">Records</a>
+            <a data="records" href="../test/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../test/index.html#objects">Objects</a>
+                <a  data="objects" href="../test/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../test/index.html#functions">Functions</a>
+                <a data="functions" href="../test/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../test/index.html#constants">Constants</a>
+                <a data="constants" href="../test/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../test/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../test/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../test/index.html#types">Types</a>
+                <a data="types" href="../test/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../test/index.html#errors">Errors</a>
+                <a data="errors" href="../test/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -109,108 +112,56 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../test/index.html">
-            <h3>test</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../test/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../test/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../test/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../test/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../test/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../test/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../test/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">test</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 0.0.0</div>
+                    <a href="../test/index.html"><span class="modules">test</span></a>
                 
-                    <h2>Module overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 0.0.0</div>
+    
+    <h2>Module overview</h2>
 <p>This module facilitates developers to write automation tests for ballerina code in a simple manner. It provides a number of capabilities such as configuring setup and cleanup steps in different levels, ordering and grouping of tests, providing value-sets to tests and independence from external functions and endpoints via mocking capabilities.</p>
-<h1>Annotations</h1>
+<h2>Annotations</h2>
 <p>A ballerina testsuite can be implemented using a set of annotations. The available annotations enable executing instructions before and after the testsuite or a single test, organize a set of tests into a group, define data-driven tests, specify an order of execution, disable tests and mocking.</p>
 <p>The following example shows a simple testsuite.</p>
 <pre><code class="language-ballerina">import ballerina/io;
 import ballerina/test;
- Before Suite Function
+
+# Before Suite Function
 @test:BeforeSuite
 function beforeSuiteFunc() {
     io:println(&quot;I'm the before suite function!&quot;);
 }
- Before test function
+
+# Before test function
 function beforeFunc() {
     io:println(&quot;I'm the before function!&quot;);
 }
- Test function
+
+# Test function
 @test:Config {
     before: &quot;beforeFunc&quot;,
     after: &quot;afterFunc&quot;
@@ -219,11 +170,13 @@ function testFunction() {
     io:println(&quot;I'm in test function!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
 }
- After test function
+
+# After test function
 function afterFunc() {
     io:println(&quot;I'm the after function!&quot;);
 }
- After Suite Function
+
+# After Suite Function
 @test:AfterSuite
 function afterSuiteFunc() {
     io:println(&quot;I'm the after suite function!&quot;);
@@ -245,7 +198,7 @@ function dataGen() returns (int[][]) {
     return [[1]];
 }
 </code></pre>
-<h1>Assertions</h1>
+<h2>Assertions</h2>
 <p>This module provides a number of assertions in order to verify the expected behaviour of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.</p>
 <p>Following sample shows how to use assertions in Testerina.</p>
 <pre><code class="language-ballerina">
@@ -264,12 +217,12 @@ function intAdd(int a, int b) returns (int) {
     return (a + b);
 }
 </code></pre>
-<h1>Mocking</h1>
+<h2>Mocking</h2>
 <p>The test module provides capabilities to mock a function or an object for unit testing. The mocking features can be used to control the behavior of functions and objects by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.</p>
-<h2>Function Mocking</h2>
+<h3>Function Mocking</h3>
 <p>Function mocking allows to control the behavior of a function in the module under test or a function of an imported module.</p>
 <p>An annotation is used to declare a mock function within which the original function to be mocked should be defined using the annotation parameters. The function specified with this annotation allows to mock an imported function whereas the same annotation specified with the test:MockFunction object allows to mock a function in the module under test.</p>
-<h3>Mocking an imported function</h3>
+<h4>Mocking an imported function</h4>
 <p>Mocking an imported function will invoke the mock function every time that the original function is called. Mocking a function will apply the mocked function to every instance of the original function call. It is not limited to the test file where it is being mocked. A compile time error will be thrown in case of a signature mismatch between the mock function and the original.</p>
 <pre><code class="language-ballerina">The following example shows how an imported function can be mocked.
 
@@ -288,10 +241,10 @@ function testMockImportedFunction() {
     test:assertEquals(answer, 125.0);
 }
 </code></pre>
-<h3>Mocking a function in the same module</h3>
+<h4>Mocking a function in the same module</h4>
 <p>The same annotation used for mocking an imported function can be used for mocking a function in the same module (the module which is under test) but with the MockFunction object provided by the test module. Declaring the annotation with this object will create a default mock object in place of the original function.</p>
 <p>Subsequent to the declaration, the function call should be stubbed using the available function mocking features. Different behaviors can be defined for different test cases if required.</p>
-<h4>Samples</h4>
+<h5>Samples</h5>
 <p><em>main.bal</em></p>
 <pre><code class="language-ballerina">public function intAdd(int a, int b) returns (int) {
     return a + b;
@@ -321,7 +274,7 @@ public function testMockCall() {
     test:assertEquals(intAdd(20, 14), 100);
 }
 </code></pre>
-<h2>Object Mocking</h2>
+<h3>Object Mocking</h3>
 <p>Object mocking enables controlling the values of member variables and the behavior of the member functions of an object. This is vital when working with client objects as the remote functions can be stubbed to return a mock value without having to actually make calls to the remote endpoint.</p>
 <p>Mocking of objects can be done in two ways.The available features provide the functionality to substitute the real object with a user-defined mock object or to stub the behavior of required functions.</p>
 <ol>
@@ -329,7 +282,7 @@ public function testMockCall() {
 <li>Stubbing the member function or member variable (specifying the behavior of functions and values of variables)</li>
 </ol>
 <p>Creating a test double is suitable when a single mock function/object can be used throughout all tests whereas stubbing is ideal when defining different behaviors for different test cases is required.</p>
-<h3>Creating a test double</h3>
+<h4>Creating a test double</h4>
 <p>A custom mock object can be defined in place of the real object which should contain the member variables and functions that need to be replaced. The custom object should be made structurally equivalent to the real object via the mocking features in the test module. A runtime exception will be thrown if any of the defined functions or variables is not equivalent to the counterpart of the original object.</p>
 <p><em>main.bal</em></p>
 <pre><code class="language-ballerina">http:Client clientEndpoint = new(&quot;http://petstore.com&quot;);
@@ -363,9 +316,9 @@ function testGetPet() {
     test:assertEquals(res.statusCode, 500);
 }
 </code></pre>
-<h3>Stubbing member functions and variables of an object</h3>
+<h4>Stubbing member functions and variables of an object</h4>
 <p>The member functions and variables are stubbed to return a specific value or to do nothing when invoked. Using the test module, a default mock object of the specified type. The default action of any member function/variable is to panic upon invocation/retrieval.  Subsequent to mock object creation, the required functions and variables of the default mock object should be stubbed to return a value or to do nothing when called.</p>
-<h4>Samples</h4>
+<h5>Samples</h5>
 <p>Example</p>
 <p>Following example shows different ways of stubbing an object member functions.</p>
 <pre><code class="language-ballerina">
@@ -401,734 +354,556 @@ function testMemberVariable() {
 </code></pre>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="MockConf" title="MockConf">
-                                <a class="records " href="records/MockConf.html">MockConf</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configuration of the function to be mocked.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="MockConfig" title="MockConfig">
-                                <a class="records " href="records/MockConfig.html">MockConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configuration of the function to be mocked.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="MockConfig" title="MockConfig">
+                            <a class="records " href="records/MockConfig.html">MockConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configuration of the function to be mocked.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="TestConfig" title="TestConfig">
-                                <a class="records " href="records/TestConfig.html">TestConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configuration set for test functions.
-                            </td>
-                        </tr>
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="TestConfig" title="TestConfig">
+                            <a class="records " href="records/TestConfig.html">TestConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configuration set for test functions.
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
+        
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
                     <a class="url-link" href="#objects">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Objects </h2>
+                    <h2> Objects </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T10" title="T10">
-                                <a class="objects " href="objects/T10.html">T10</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T11" title="T11">
-                                <a class="objects " href="objects/T11.html">T11</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T12" title="T12">
-                                <a class="objects " href="objects/T12.html">T12</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T13" title="T13">
-                                <a class="objects " href="objects/T13.html">T13</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T14" title="T14">
-                                <a class="objects " href="objects/T14.html">T14</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T15" title="T15">
-                                <a class="objects " href="objects/T15.html">T15</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T16" title="T16">
-                                <a class="objects " href="objects/T16.html">T16</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T17" title="T17">
-                                <a class="objects " href="objects/T17.html">T17</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T18" title="T18">
-                                <a class="objects " href="objects/T18.html">T18</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T19" title="T19">
-                                <a class="objects " href="objects/T19.html">T19</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T20" title="T20">
-                                <a class="objects " href="objects/T20.html">T20</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T21" title="T21">
-                                <a class="objects " href="objects/T21.html">T21</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T22" title="T22">
-                                <a class="objects " href="objects/T22.html">T22</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T23" title="T23">
-                                <a class="objects " href="objects/T23.html">T23</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T24" title="T24">
-                                <a class="objects " href="objects/T24.html">T24</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T25" title="T25">
-                                <a class="objects " href="objects/T25.html">T25</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T26" title="T26">
-                                <a class="objects " href="objects/T26.html">T26</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="T9" title="T9">
-                                <a class="objects " href="objects/T9.html">T9</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="FunctionStub" title="FunctionStub">
-                                <a class="objects " href="objects/FunctionStub.html">FunctionStub</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents an object that allows stubbing function invocations</p>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="FunctionStub" title="FunctionStub">
+                            <a class="objects " href="objects/FunctionStub.html">FunctionStub</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents an object that allows stubbing function invocations</p>
 
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="MemberFunctionStub" title="MemberFunctionStub">
-                                <a class="objects " href="objects/MemberFunctionStub.html">MemberFunctionStub</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents an object that allows stubbing member function invocations.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="MemberVariableStub" title="MemberVariableStub">
-                                <a class="objects " href="objects/MemberVariableStub.html">MemberVariableStub</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents an object that allows stubbing member variables retrieved.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="MockFunction" title="MockFunction">
-                                <a class="objects " href="objects/MockFunction.html">MockFunction</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a MockFunction object</p>
+                    <tr>
+                        <td class="module-title truncate objects" id="MemberFunctionStub" title="MemberFunctionStub">
+                            <a class="objects " href="objects/MemberFunctionStub.html">MemberFunctionStub</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents an object that allows stubbing member function invocations.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="MemberVariableStub" title="MemberVariableStub">
+                            <a class="objects " href="objects/MemberVariableStub.html">MemberVariableStub</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents an object that allows stubbing member variables retrieved.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="MockFunction" title="MockFunction">
+                            <a class="objects " href="objects/MockFunction.html">MockFunction</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a MockFunction object</p>
 
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="MockObject" title="MockObject">
-                                <a class="objects " href="objects/MockObject.html">MockObject</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a Mock object in which to create stubs for member functions and variables</p>
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="MockObject" title="MockObject">
+                            <a class="objects " href="objects/MockObject.html">MockObject</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a Mock object in which to create stubs for member functions and variables</p>
 
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
+                    
                     
                 </table>
-             </section>  
-            
+            </section>
+        
+    
 
-            
+    
 
-            
-           
+    
 
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="assertEquals" title="assertEquals">
+                    <a class="functions " href="functions.html#assertEquals">assertEquals</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="assertEquals" title="assertEquals">
-                                <a class="functions " href="functions.html#assertEquals">assertEquals</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Asserts whether the given values are equal.
-                            </td>
-                        </tr>
+                    <p>Asserts whether the given values are equal.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="assertFail" title="assertFail">
+                    <a class="functions " href="functions.html#assertFail">assertFail</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="assertFail" title="assertFail">
-                                <a class="functions " href="functions.html#assertFail">assertFail</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Assert failure is triggered based on user discretion.
-                            </td>
-                        </tr>
+                    <p>Assert failure is triggered based on user discretion.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="assertFalse" title="assertFalse">
+                    <a class="functions " href="functions.html#assertFalse">assertFalse</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="assertFalse" title="assertFalse">
-                                <a class="functions " href="functions.html#assertFalse">assertFalse</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Asserts whether the given condition is false.
-                            </td>
-                        </tr>
+                    <p>Asserts whether the given condition is false.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="assertNotEquals" title="assertNotEquals">
+                    <a class="functions " href="functions.html#assertNotEquals">assertNotEquals</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="assertNotEquals" title="assertNotEquals">
-                                <a class="functions " href="functions.html#assertNotEquals">assertNotEquals</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Asserts whether the given values are not equal.
-                            </td>
-                        </tr>
+                    <p>Asserts whether the given values are not equal.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="assertTrue" title="assertTrue">
+                    <a class="functions " href="functions.html#assertTrue">assertTrue</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="assertTrue" title="assertTrue">
-                                <a class="functions " href="functions.html#assertTrue">assertTrue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Asserts whether the given condition is true.
-                            </td>
-                        </tr>
+                    <p>Asserts whether the given condition is true.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="createBallerinaError" title="createBallerinaError">
+                    <a class="functions " href="functions.html#createBallerinaError">createBallerinaError</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="createBallerinaError" title="createBallerinaError">
-                                <a class="functions " href="functions.html#createBallerinaError">createBallerinaError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Creates an AssertError with custom message and category.
-                            </td>
-                        </tr>
+                    <p>Creates an AssertError with custom message and category.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="mock" title="mock">
+                    <a class="functions " href="functions.html#mock">mock</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="mock" title="mock">
-                                <a class="functions " href="functions.html#mock">mock</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Creates and returns a mock object of provided type description.
-                            </td>
-                        </tr>
+                    <p>Creates and returns a mock object of provided type description.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="mockHandler" title="mockHandler">
+                    <a class="functions " href="functions.html#mockHandler">mockHandler</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="mockHandler" title="mockHandler">
-                                <a class="functions " href="functions.html#mockHandler">mockHandler</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Inter-op to handle function mocking.
-                            </td>
-                        </tr>
+                    <p>Inter-op to handle function mocking.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="prepare" title="prepare">
+                    <a class="functions " href="functions.html#prepare">prepare</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="prepare" title="prepare">
-                                <a class="functions " href="functions.html#prepare">prepare</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Prepares a provided default mock object for stubbing.
-                            </td>
-                        </tr>
+                    <p>Prepares a provided default mock object for stubbing.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="startServiceSkeleton" title="startServiceSkeleton">
+                    <a class="functions " href="functions.html#startServiceSkeleton">startServiceSkeleton</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="startServiceSkeleton" title="startServiceSkeleton">
-                                <a class="functions " href="functions.html#startServiceSkeleton">startServiceSkeleton</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Start a service skeleton from a given OpenApi definition in the given ballerina module.
-                            </td>
-                        </tr>
+                    <p>Start a service skeleton from a given OpenApi definition in the given ballerina module.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="startServices" title="startServices">
+                    <a class="functions " href="functions.html#startServices">startServices</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="startServices" title="startServices">
-                                <a class="functions " href="functions.html#startServices">startServices</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Starts all the services defined in the module specified in the 'moduleName' argument.
-                            </td>
-                        </tr>
+                    <p>Starts all the services defined in the module specified in the 'moduleName' argument.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="stopServiceSkeleton" title="stopServiceSkeleton">
+                    <a class="functions " href="functions.html#stopServiceSkeleton">stopServiceSkeleton</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="stopServiceSkeleton" title="stopServiceSkeleton">
-                                <a class="functions " href="functions.html#stopServiceSkeleton">stopServiceSkeleton</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Stop a service skeleton and cleanup created directories of a given ballerina module.
-                            </td>
-                        </tr>
+                    <p>Stop a service skeleton and cleanup created directories of a given ballerina module.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="stopServices" title="stopServices">
+                    <a class="functions " href="functions.html#stopServices">stopServices</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="stopServices" title="stopServices">
-                                <a class="functions " href="functions.html#stopServices">stopServices</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Stops all the services defined in the module specified in the 'moduleName' argument.
-                            </td>
-                        </tr>
+                    <p>Stops all the services defined in the module specified in the 'moduleName' argument.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="when" title="when">
+                    <a class="functions " href="functions.html#when">when</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="when" title="when">
-                                <a class="functions " href="functions.html#when">when</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Objects and functions related to function mocking
+                    <p>Objects and functions related to function mocking
 Allows a function to stub.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
 
 
+    
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="constants">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#constants">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Constants </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate constant" id="ANY" title="ANY">
+                    <a class="constant " href="constants.html#ANY">ANY</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="ANY" title="ANY">
-                                <a class="constant " href="constants.html#ANY">ANY</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the placeholder to be given for object or record type arguments</p>
+                    <p>Represents the placeholder to be given for object or record type arguments</p>
 
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="INVALID_OBJECT_ERROR" title="INVALID_OBJECT_ERROR">
-                                <a class="constant " href="constants.html#INVALID_OBJECT_ERROR">INVALID_OBJECT_ERROR</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the reason for the mock object related errors.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="FUNCTION_NOT_FOUND_ERROR" title="FUNCTION_NOT_FOUND_ERROR">
-                                <a class="constant " href="constants.html#FUNCTION_NOT_FOUND_ERROR">FUNCTION_NOT_FOUND_ERROR</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the reason for the non-existing member function related errors.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="FUNCTION_SIGNATURE_MISMATCH_ERROR" title="FUNCTION_SIGNATURE_MISMATCH_ERROR">
-                                <a class="constant " href="constants.html#FUNCTION_SIGNATURE_MISMATCH_ERROR">FUNCTION_SIGNATURE_MISMATCH_ERROR</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the reason for the function signature related errors.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="INVALID_MEMBER_FIELD_ERROR" title="INVALID_MEMBER_FIELD_ERROR">
-                                <a class="constant " href="constants.html#INVALID_MEMBER_FIELD_ERROR">INVALID_MEMBER_FIELD_ERROR</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the reason for the object member field related errors.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="FUNCTION_CALL_ERROR" title="FUNCTION_CALL_ERROR">
-                                <a class="constant " href="constants.html#FUNCTION_CALL_ERROR">FUNCTION_CALL_ERROR</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the reason for function mocking related errors.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
-
-
+            <tr>
+                <td class="module-title truncate constant" id="INVALID_OBJECT_ERROR" title="INVALID_OBJECT_ERROR">
+                    <a class="constant " href="constants.html#INVALID_OBJECT_ERROR">INVALID_OBJECT_ERROR</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the reason for the mock object related errors.
+                </td>
+            </tr>
             
-            <section class="method-content" id="annotations">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#annotations">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Annotations </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate constant" id="FUNCTION_NOT_FOUND_ERROR" title="FUNCTION_NOT_FOUND_ERROR">
+                    <a class="constant " href="constants.html#FUNCTION_NOT_FOUND_ERROR">FUNCTION_NOT_FOUND_ERROR</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate annotations" id="AfterEach" title="AfterEach">
-                                <a class="annotations "
-                                   href="annotations.html#AfterEach">AfterEach</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Identifies afterTest function.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate annotations" id="AfterSuite" title="AfterSuite">
-                                <a class="annotations "
-                                   href="annotations.html#AfterSuite">AfterSuite</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Identifies afterSuite function.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate annotations" id="BeforeEach" title="BeforeEach">
-                                <a class="annotations "
-                                   href="annotations.html#BeforeEach">BeforeEach</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Identifies beforeTest function.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate annotations" id="BeforeSuite" title="BeforeSuite">
-                                <a class="annotations "
-                                   href="annotations.html#BeforeSuite">BeforeSuite</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Identifies beforeSuite function.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate annotations" id="Config" title="Config">
-                                <a class="annotations "
-                                   href="annotations.html#Config">Config</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate annotations" id="Mock" title="Mock">
-                                <a class="annotations "
-                                   href="annotations.html#Mock">Mock</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Identifies the Mock Function</p>
-
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate annotations" id="MockFn" title="MockFn">
-                                <a class="annotations "
-                                   href="annotations.html#MockFn">MockFn</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Identifies the MockFunction object</p>
-
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Represents the reason for the non-existing member function related errors.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate constant" id="FUNCTION_SIGNATURE_MISMATCH_ERROR" title="FUNCTION_SIGNATURE_MISMATCH_ERROR">
+                    <a class="constant " href="constants.html#FUNCTION_SIGNATURE_MISMATCH_ERROR">FUNCTION_SIGNATURE_MISMATCH_ERROR</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the reason for the function signature related errors.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="INVALID_MEMBER_FIELD_ERROR" title="INVALID_MEMBER_FIELD_ERROR">
+                    <a class="constant " href="constants.html#INVALID_MEMBER_FIELD_ERROR">INVALID_MEMBER_FIELD_ERROR</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the reason for the object member field related errors.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="FUNCTION_CALL_ERROR" title="FUNCTION_CALL_ERROR">
+                    <a class="constant " href="constants.html#FUNCTION_CALL_ERROR">FUNCTION_CALL_ERROR</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the reason for function mocking related errors.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
-            
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types " href="types.html#Error">Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents mocking related errors</p>
 
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+    
+    <section class="method-content" id="annotations">
+        <div class="main-method-title here">
+            <a class="url-link" href="#annotations">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Annotations </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate annotations" id="AfterEach" title="AfterEach">
+                    <a class="annotations " href="annotations.html#AfterEach">AfterEach</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Identifies afterTest function.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate annotations" id="AfterSuite" title="AfterSuite">
+                    <a class="annotations " href="annotations.html#AfterSuite">AfterSuite</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Identifies afterSuite function.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate annotations" id="BeforeEach" title="BeforeEach">
+                    <a class="annotations " href="annotations.html#BeforeEach">BeforeEach</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Identifies beforeTest function.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate annotations" id="BeforeSuite" title="BeforeSuite">
+                    <a class="annotations " href="annotations.html#BeforeSuite">BeforeSuite</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Identifies beforeSuite function.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate annotations" id="Config" title="Config">
+                    <a class="annotations " href="annotations.html#Config">Config</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate annotations" id="Mock" title="Mock">
+                    <a class="annotations " href="annotations.html#Mock">Mock</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Identifies the MockFunction object</p>
 
+                </td>
+            </tr>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="FunctionCallError" title="FunctionCallError">
-                                <a class="errors " href="errors.html#FunctionCallError">FunctionCallError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="FunctionNotFoundError" title="FunctionNotFoundError">
-                                <a class="errors " href="errors.html#FunctionNotFoundError">FunctionNotFoundError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="FunctionSignatureMismatchError" title="FunctionSignatureMismatchError">
-                                <a class="errors " href="errors.html#FunctionSignatureMismatchError">FunctionSignatureMismatchError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="InvalidMemberFieldError" title="InvalidMemberFieldError">
-                                <a class="errors " href="errors.html#InvalidMemberFieldError">InvalidMemberFieldError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="InvalidObjectError" title="InvalidObjectError">
-                                <a class="errors " href="errors.html#InvalidObjectError">InvalidObjectError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+        </table>
+    </section>
+    
+
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents mocking related errors</p>
+
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="FunctionCallError" title="FunctionCallError">
+                    <a class="errors " href="errors.html#FunctionCallError">FunctionCallError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="FunctionNotFoundError" title="FunctionNotFoundError">
+                    <a class="errors " href="errors.html#FunctionNotFoundError">FunctionNotFoundError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="FunctionSignatureMismatchError" title="FunctionSignatureMismatchError">
+                    <a class="errors " href="errors.html#FunctionSignatureMismatchError">FunctionSignatureMismatchError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="InvalidMemberFieldError" title="InvalidMemberFieldError">
+                    <a class="errors " href="errors.html#InvalidMemberFieldError">InvalidMemberFieldError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="InvalidObjectError" title="InvalidObjectError">
+                    <a class="errors " href="errors.html#InvalidObjectError">InvalidObjectError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -1155,6 +930,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -1164,4 +957,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

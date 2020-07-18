@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides lang library operations on <code>transaction</code>s.
+    <meta name="description" content="This module provides lang library operations on transactions.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.transaction">
 
@@ -59,480 +68,406 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#abortResourceManagers">abortResourceManagers</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;0">ballerina/lang.transaction:0.0.1.&lt;init&gt;0</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;1">ballerina/lang.transaction:0.0.1.&lt;init&gt;1</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#cleanupTransactionContext">cleanupTransactionContext</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#commitResourceManagers">commitResourceManagers</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#createTransactionContext">createTransactionContext</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#endTransaction">endTransaction</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getAndClearFailure">getAndClearFailure</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getRollbackOnly">getRollbackOnly</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#info">info</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#isTransactional">isTransactional</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#onCommit">onCommit</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#onRollback">onRollback</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#prepareResourceManagers">prepareResourceManagers</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#rollbackTransaction">rollbackTransaction</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#setRollbackOnly">setRollbackOnly</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#setTransactionContext">setTransactionContext</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#startTransaction">startTransaction</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../lang.transaction/index.html">
-            <h3>lang.transaction</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../lang.transaction/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../lang.transaction/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../lang.transaction/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../lang.transaction/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="errors" href="../lang.transaction/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#abortResourceManagers">abortResourceManagers</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;0">ballerina/lang.transaction:0.0.1.&lt;init&gt;0</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;1">ballerina/lang.transaction:0.0.1.&lt;init&gt;1</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#cleanupTransactionContext">cleanupTransactionContext</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#commitResourceManagers">commitResourceManagers</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#createTransactionContext">createTransactionContext</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#endTransaction">endTransaction</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getAndClearFailure">getAndClearFailure</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getRollbackOnly">getRollbackOnly</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#info">info</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#isTransactional">isTransactional</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#onCommit">onCommit</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#onRollback">onRollback</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#prepareResourceManagers">prepareResourceManagers</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#rollbackTransaction">rollbackTransaction</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#setRollbackOnly">setRollbackOnly</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#setTransactionContext">setTransactionContext</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#startTransaction">startTransaction</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#abortResourceManagers" onclick="menuLinkClick()">abortResourceManagers</a>
+        </li>
+    
+        <li >
+            <a href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;0" onclick="menuLinkClick()">ballerina/lang.transaction:0.0.1.&lt;init&gt;0</a>
+        </li>
+    
+        <li >
+            <a href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;1" onclick="menuLinkClick()">ballerina/lang.transaction:0.0.1.&lt;init&gt;1</a>
+        </li>
+    
+        <li >
+            <a href="#cleanupTransactionContext" onclick="menuLinkClick()">cleanupTransactionContext</a>
+        </li>
+    
+        <li >
+            <a href="#commitResourceManagers" onclick="menuLinkClick()">commitResourceManagers</a>
+        </li>
+    
+        <li >
+            <a href="#createTransactionContext" onclick="menuLinkClick()">createTransactionContext</a>
+        </li>
+    
+        <li >
+            <a href="#endTransaction" onclick="menuLinkClick()">endTransaction</a>
+        </li>
+    
+        <li >
+            <a href="#getAndClearFailure" onclick="menuLinkClick()">getAndClearFailure</a>
+        </li>
+    
+        <li >
+            <a href="#getData" onclick="menuLinkClick()">getData</a>
+        </li>
+    
+        <li >
+            <a href="#getInfo" onclick="menuLinkClick()">getInfo</a>
+        </li>
+    
+        <li >
+            <a href="#getRollbackOnly" onclick="menuLinkClick()">getRollbackOnly</a>
+        </li>
+    
+        <li >
+            <a href="#info" onclick="menuLinkClick()">info</a>
+        </li>
+    
+        <li >
+            <a href="#isTransactional" onclick="menuLinkClick()">isTransactional</a>
+        </li>
+    
+        <li >
+            <a href="#onCommit" onclick="menuLinkClick()">onCommit</a>
+        </li>
+    
+        <li >
+            <a href="#onRollback" onclick="menuLinkClick()">onRollback</a>
+        </li>
+    
+        <li >
+            <a href="#prepareResourceManagers" onclick="menuLinkClick()">prepareResourceManagers</a>
+        </li>
+    
+        <li >
+            <a href="#rollbackTransaction" onclick="menuLinkClick()">rollbackTransaction</a>
+        </li>
+    
+        <li >
+            <a href="#setData" onclick="menuLinkClick()">setData</a>
+        </li>
+    
+        <li >
+            <a href="#setRollbackOnly" onclick="menuLinkClick()">setRollbackOnly</a>
+        </li>
+    
+        <li >
+            <a href="#setTransactionContext" onclick="menuLinkClick()">setTransactionContext</a>
+        </li>
+    
+        <li >
+            <a href="#startTransaction" onclick="menuLinkClick()">startTransaction</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../lang.transaction/index.html">
+        <a href="../lang.transaction/index.html" onclick="menuLinkClick()">
             <h3>lang.transaction</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../lang.transaction/index.html#records">Records</a>
+            <a data="records" href="../lang.transaction/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../lang.transaction/index.html#objects">Objects</a>
+                <a  data="objects" href="../lang.transaction/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../lang.transaction/index.html#functions">Functions</a>
+                <a data="functions" href="../lang.transaction/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../lang.transaction/index.html#constants">Constants</a>
+                <a data="constants" href="../lang.transaction/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
         
             <li>
-                <a data="errors" href="../lang.transaction/index.html#errors">Errors</a>
+                <a data="errors" href="../lang.transaction/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../lang.transaction/index.html">lang.transaction</a>
+                    <a href="../lang.transaction/index.html"><span class="modules">lang.transaction</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#abortResourceManagers">abortResourceManagers</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Abort local resource managers.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;0">ballerina/lang.transaction:0.0.1.&lt;init&gt;0</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;1">ballerina/lang.transaction:0.0.1.&lt;init&gt;1</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#cleanupTransactionContext">cleanupTransactionContext</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Cleanup the transaction context.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#commitResourceManagers">commitResourceManagers</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Commit local resource managers.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#createTransactionContext">createTransactionContext</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>A new transaction context is created by calling this function.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#endTransaction">endTransaction</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>When a transaction block in Ballerina code ends, it will call this function to end a transaction.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getAndClearFailure">getAndClearFailure</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Get and Cleanup the failure.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#getRollbackOnly">getRollbackOnly</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#info">info</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#isTransactional">isTransactional</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#onCommit">onCommit</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#onRollback">onRollback</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#prepareResourceManagers">prepareResourceManagers</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Prepare local resource managers.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#rollbackTransaction">rollbackTransaction</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Rollback the transaction.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#setRollbackOnly">setRollbackOnly</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#setTransactionContext">setTransactionContext</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Set the transactionContext.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#startTransaction">startTransaction</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#abortResourceManagers">abortResourceManagers</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Abort local resource managers.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;0">ballerina/lang.transaction:0.0.1.&lt;init&gt;0</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;1">ballerina/lang.transaction:0.0.1.&lt;init&gt;1</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#cleanupTransactionContext">cleanupTransactionContext</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Cleanup the transaction context.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#commitResourceManagers">commitResourceManagers</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Commit local resource managers.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#createTransactionContext">createTransactionContext</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>A new transaction context is created by calling this function.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#endTransaction">endTransaction</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>When a transaction block in Ballerina code ends, it will call this function to end a transaction.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getAndClearFailure">getAndClearFailure</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Get and Cleanup the failure.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getData">getData</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getInfo">getInfo</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#getRollbackOnly">getRollbackOnly</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#info">info</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#isTransactional">isTransactional</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#onCommit">onCommit</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#onRollback">onRollback</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#prepareResourceManagers">prepareResourceManagers</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Prepare local resource managers.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#rollbackTransaction">rollbackTransaction</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Rollback the transaction.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#setData">setData</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#setRollbackOnly">setRollbackOnly</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#setTransactionContext">setTransactionContext</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Set the transactionContext.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#startTransaction">startTransaction</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="abortResourceManagers" title="abortResourceManagers">
              <a class="url-link" href="#abortResourceManagers">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > abortResourceManagers </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -592,19 +527,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="ballerina/lang.transaction:0.0.1.&lt;init&gt;0" title="ballerina/lang.transaction:0.0.1.&lt;init&gt;0">
              <a class="url-link" href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;0">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > ballerina/lang.transaction:0.0.1.&lt;init&gt;0 </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../null/types.html#error?">error?</a> 
+            
+                <b> returns </b><a href="../null/types.html#error?">error?</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -623,19 +558,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="ballerina/lang.transaction:0.0.1.&lt;init&gt;1" title="ballerina/lang.transaction:0.0.1.&lt;init&gt;1">
              <a class="url-link" href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;1">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > ballerina/lang.transaction:0.0.1.&lt;init&gt;1 </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../null/types.html#error?">error?</a> 
+            
+                <b> returns </b><a href="../null/types.html#error?">error?</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -654,14 +589,17 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="cleanupTransactionContext" title="cleanupTransactionContext">
              <a class="url-link" href="#cleanupTransactionContext">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > cleanupTransactionContext </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> transactionBlockId)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -694,19 +632,19 @@
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="commitResourceManagers" title="commitResourceManagers">
              <a class="url-link" href="#commitResourceManagers">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > commitResourceManagers </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -766,19 +704,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="createTransactionContext" title="createTransactionContext">
              <a class="url-link" href="#createTransactionContext">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > createTransactionContext </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> coordinationType, <span class="builtin-type">string</span> transactionBlockId)</p>
-            <b> returns </b><a href="../lang.transaction/records/TransactionContext.html">TransactionContext</a> | <span class="builtin-type">error</span> 
+            
+                <b> returns </b><a href="../lang.transaction/records/TransactionContext.html">TransactionContext</a> | <span class="builtin-type">error</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -840,19 +778,19 @@ is being created for.</p>
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="endTransaction" title="endTransaction">
              <a class="url-link" href="#endTransaction">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > endTransaction </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId)</p>
-            <b> returns </b><span class="builtin-type">string</span> | <span class="builtin-type">error?</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> | <span class="builtin-type">error?</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -915,19 +853,19 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getAndClearFailure" title="getAndClearFailure">
              <a class="url-link" href="#getAndClearFailure">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getAndClearFailure </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -948,19 +886,102 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
     
 </div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getData" title="getData">
+             <a class="url-link" href="#getData">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getData </h2>
+        <span class="method-types">
+            <p>()</p>
+            
+                <b> returns </b><span class="builtin-type">readonly</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">readonly</span></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getInfo" title="getInfo">
+             <a class="url-link" href="#getInfo">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getInfo </h2>
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> xid)</p>
+            
+                <b> returns </b><a href="../lang.transaction/records/Info.html">Info</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >xid</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
                             
-                                <div class="method-content">
+                            
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.transaction/records/Info.html">Info</a>?</span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="getRollbackOnly" title="getRollbackOnly">
              <a class="url-link" href="#getRollbackOnly">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > getRollbackOnly </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -979,19 +1000,19 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="info" title="info">
              <a class="url-link" href="#info">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > info </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../lang.transaction/records/Info.html">Info</a> 
+            
+                <b> returns </b><a href="../lang.transaction/records/Info.html">Info</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1010,19 +1031,19 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="isTransactional" title="isTransactional">
              <a class="url-link" href="#isTransactional">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > isTransactional </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1041,14 +1062,17 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="onCommit" title="onCommit">
              <a class="url-link" href="#onCommit">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > onCommit </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">CommitHandler</span> handler)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -1079,14 +1103,17 @@ Depending on the state of the transaction, the initiator decides to commit or ab
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="onRollback" title="onRollback">
              <a class="url-link" href="#onRollback">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > onRollback </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">RollbackHandler</span> handler)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -1117,19 +1144,19 @@ Depending on the state of the transaction, the initiator decides to commit or ab
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="prepareResourceManagers" title="prepareResourceManagers">
              <a class="url-link" href="#prepareResourceManagers">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > prepareResourceManagers </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1189,14 +1216,17 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="rollbackTransaction" title="rollbackTransaction">
              <a class="url-link" href="#rollbackTransaction">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > rollbackTransaction </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> transactionBlockId, <span class="builtin-type">error?</span> err)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -1246,14 +1276,58 @@ Depending on the state of the transaction, the initiator decides to commit or ab
 
     
 </div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setData" title="setData">
+             <a class="url-link" href="#setData">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > setData </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">readonly</span> e)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >e</span>
+                        <span class="type">  <span class="builtin-type">readonly</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
                             
-                                <div class="method-content">
+                            
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="setRollbackOnly" title="setRollbackOnly">
              <a class="url-link" href="#setRollbackOnly">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > setRollbackOnly </h2>
-        
+        <span class="method-types">
+            <p>(<span class="builtin-type">error?</span> e)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -1284,14 +1358,17 @@ Depending on the state of the transaction, the initiator decides to commit or ab
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="setTransactionContext" title="setTransactionContext">
              <a class="url-link" href="#setTransactionContext">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > setTransactionContext </h2>
-        
+        <span class="method-types">
+            <p>(<a href="../lang.transaction/records/TransactionContext.html">TransactionContext</a> transactionContext, <a href="../lang.transaction/records/Info.html">Info</a>? prevAttempt)</p>
+            
+        </span>
     </div>
     <div class="function-desc">
         
@@ -1341,19 +1418,19 @@ Depending on the state of the transaction, the initiator decides to commit or ab
 
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="startTransaction" title="startTransaction">
              <a class="url-link" href="#startTransaction">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > startTransaction </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> transactionBlockId, <a href="../lang.transaction/records/Info.html">Info</a>? prevAttempt)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -1409,28 +1486,18 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -1457,6 +1524,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -1466,4 +1551,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

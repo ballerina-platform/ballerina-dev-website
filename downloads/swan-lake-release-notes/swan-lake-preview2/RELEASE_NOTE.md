@@ -2,7 +2,7 @@
 layout: release-note
 title: Release note
 ---
-# Overview of Ballerina Swan Lake - Preview2
+# Overview of Ballerina Swan Lake Preview 2
 This release is the second preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
 
 You can use the update tool to update to Ballerina Swan Lake Preview 2 as follows.
@@ -31,7 +31,7 @@ If you have not installed jBallerina, then download the [installers](https://bal
 - Improved mocking API in the test framework
 - Improved Docker images using thin JAR
 
-# What's new in Ballerina Swan Lake - Preview2
+# What's new in Ballerina Swan Lake Preview 2
 
 ## Language
 The language implementation is based on the [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/).   

@@ -2,62 +2,42 @@
   "modules": [
     {
       "id": "mysql",
-      "searchString": "\u003cp\u003eThis module provides the functionality required to access and manipulate data stored in a MySQL database.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module provides the functionality required to access and manipulate data stored in a MySQL database.\u003c/p\u003e"
     }
   ],
   "objects": [],
   "functions": [],
   "records": [
     {
-      "id": "T0",
-      "searchString": "",
-      "moduleId": "mysql"
-    },
-    {
-      "id": "T1",
-      "searchString": "",
-      "moduleId": "mysql"
-    },
-    {
-      "id": "T6",
-      "searchString": "",
-      "moduleId": "mysql"
-    },
-    {
-      "id": "T7",
-      "searchString": "",
-      "moduleId": "mysql"
-    },
-    {
       "id": "Options",
-      "searchString": "\u003cp\u003eMySQL database options.\u003c/p\u003e",
+      "description": "\u003cp\u003eMySQL database options.\u003c/p\u003e",
       "moduleId": "mysql"
     },
     {
       "id": "SSLConfig",
-      "searchString": "\u003cp\u003eSSL Configuration to be used when connecting to mysql server.\u003c/p\u003e",
+      "description": "\u003cp\u003eSSL Configuration to be used when connecting to mysql server.\u003c/p\u003e",
       "moduleId": "mysql"
     }
   ],
   "constants": [
     {
       "id": "SSL_PREFERRED",
-      "searchString": "\u003cp\u003ePossible options for SSL Mode.\u003c/p\u003e",
+      "description": "\u003cp\u003ePossible options for SSL Mode.\u003c/p\u003e",
       "moduleId": "mysql"
     },
     {
       "id": "SSL_REQUIRED",
-      "searchString": "",
+      "description": "",
       "moduleId": "mysql"
     },
     {
       "id": "SSL_VERIFY_CERT",
-      "searchString": "",
+      "description": "",
       "moduleId": "mysql"
     },
     {
       "id": "SSL_VERIFY_IDENTITY",
-      "searchString": "",
+      "description": "",
       "moduleId": "mysql"
     }
   ],
@@ -65,8 +45,17 @@
   "types": [
     {
       "id": "SSLMode",
-      "searchString": "\u003cp\u003eSSLMode as a union of available ssl modes.\u003c/p\u003e",
+      "description": "\u003cp\u003eSSLMode as a union of available ssl modes.\u003c/p\u003e",
       "moduleId": "mysql"
     }
-  ]
+  ],
+  "clients": [
+    {
+      "id": "Client",
+      "description": "\u003cp\u003eRepresents a MySQL database client.\u003c/p\u003e",
+      "moduleId": "mysql"
+    }
+  ],
+  "listeners": [],
+  "annotations": []
 }

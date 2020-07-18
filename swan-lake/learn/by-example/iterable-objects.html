@@ -35,7 +35,19 @@ redirect_from:
         <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Element &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">iterable_objects</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Element</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Element</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Element</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Element</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">2</span>
+<span class="nx">Element</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">3</span>
+<span class="nx">Element</span> <span class="mi">6</span><span class="p">:</span> <span class="mi">5</span>
+<span class="nx">Element</span> <span class="mi">7</span><span class="p">:</span> <span class="mi">8</span>
+<span class="nx">Element</span> <span class="mi">8</span><span class="p">:</span> <span class="mi">13</span>
+<span class="nx">Element</span> <span class="mi">9</span><span class="p">:</span> <span class="mi">21</span>
+<span class="nx">Element</span> <span class="mi">10</span><span class="p">:</span> <span class="mi">34</span>
 </pre></div>
 
             </div>
@@ -124,7 +136,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -136,7 +148,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type ArrayIterator object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type ArrayIterator object {
     private int[] integers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
     private int cursor = -1;
 </code></pre></div>
@@ -157,7 +169,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public function next() returns record {|int value;|}? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function next() returns record {|int value;|}? {
         self.cursor += 1;
         if (self.cursor &lt; self.integers.length()) {
             record {|int value;|} nextVal = {value: self.integers[self.cursor]};
@@ -184,7 +196,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type IteratorGenerator object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type IteratorGenerator object {
 </code></pre></div>
 
                                 </td>
@@ -203,7 +215,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public function __iterator() returns abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function __iterator() returns abstract object {
             public function next() returns record {|int value;|}?;} {
         return new ArrayIterator();
     }
@@ -226,7 +238,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     IteratorGenerator itrGen = new;
     int i = 0;
     foreach var item in itrGen {
@@ -259,8 +271,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run iterable_objects.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run iterable_objects.bal
 Element 1: 0
 Element 2: 1
 Element 3: 1

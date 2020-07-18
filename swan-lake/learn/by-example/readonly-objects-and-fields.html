@@ -55,7 +55,12 @@ redirect_from:
     <span class="nx">MainController</span> <span class="nx">mc</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">4246</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;AB&quot;</span><span class="p">]);</span>
     <span class="nx">Controller</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">controllerTwo</span> <span class="p">=</span> <span class="nx">mc</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">controllerTwo</span><span class="p">.</span><span class="nx">getId</span><span class="p">());</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">readonly_objects_and_fields</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">details</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">Default</span><span class="p">:</span> <span class="mi">1122</span>
+<span class="nx">Main</span><span class="p">:</span> <span class="mi">4246</span>
 </pre></div>
 
             </div>
@@ -181,7 +186,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -193,7 +198,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Details record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Details record {|
     int id;
     string country;
 |};
@@ -208,7 +213,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee object {
     string department;
 </code></pre></div>
 
@@ -228,7 +233,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    readonly Details details;
+                                    <div class="highlight"><pre><code class=language-ballerina>    readonly Details details;
 </code></pre></div>
 
                                 </td>
@@ -249,7 +254,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function init(string department, readonly &amp; Details details) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string department, readonly &amp; Details details) {
         self.department = department;
         self.details = details;
     }
@@ -265,7 +270,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Controller abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Controller abstract object {
    int id;
    string[] codes;
 </code></pre></div>
@@ -286,7 +291,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>   function getId() returns string;
+                                    <div class="highlight"><pre><code class=language-ballerina>   function getId() returns string;
 };
 </code></pre></div>
 
@@ -299,7 +304,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type DefaultController object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type DefaultController object {
     readonly int id;
     readonly string[] codes;
 </code></pre></div>
@@ -320,7 +325,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function init(int id, readonly &amp; string[] codes) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(int id, readonly &amp; string[] codes) {
         self.id = id;
 </code></pre></div>
 
@@ -333,7 +338,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        self.codes = codes;
+                                    <div class="highlight"><pre><code class=language-ballerina>        self.codes = codes;
     }
 </code></pre></div>
 
@@ -353,7 +358,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getId() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getId() returns string {
         return string `Default: ${self.id}`;
     }
 };
@@ -368,7 +373,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type MainController readonly object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type MainController readonly object {
     int id;
     string[] codes;
 </code></pre></div>
@@ -391,7 +396,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function init(int id, readonly &amp; string[] codes) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(int id, readonly &amp; string[] codes) {
         self.id = id;
 </code></pre></div>
 
@@ -404,7 +409,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        self.codes = codes;
+                                    <div class="highlight"><pre><code class=language-ballerina>        self.codes = codes;
     }
 </code></pre></div>
 
@@ -424,7 +429,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getId() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getId() returns string {
         return string `Main: ${self.id}`;
     }
 };
@@ -439,7 +444,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -451,7 +456,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Details &amp; readonly immutableDetails = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Details &amp; readonly immutableDetails = {
         id: 112233,
         country: &quot;Sri Lanka&quot;
     };
@@ -473,7 +478,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee emp = new (&quot;IT&quot;, immutableDetails);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee emp = new (&quot;IT&quot;, immutableDetails);
 </code></pre></div>
 
                                 </td>
@@ -492,7 +497,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Details details = emp.details;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Details details = emp.details;
 </code></pre></div>
 
                                 </td>
@@ -504,7 +509,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;details is immutable: &quot;, details.isReadOnly());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;details is immutable: &quot;, details.isReadOnly());
 </code></pre></div>
 
                                 </td>
@@ -523,7 +528,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    DefaultController dc = new (1122, [&quot;LC&quot;, &quot;AB&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    DefaultController dc = new (1122, [&quot;LC&quot;, &quot;AB&quot;]);
 </code></pre></div>
 
                                 </td>
@@ -546,7 +551,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Controller &amp; readonly controllerOne = dc;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Controller &amp; readonly controllerOne = dc;
     io:println(controllerOne.getId());
 </code></pre></div>
 
@@ -567,7 +572,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    MainController mc = new (4246, [&quot;AB&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    MainController mc = new (4246, [&quot;AB&quot;]);
 </code></pre></div>
 
                                 </td>
@@ -586,7 +591,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Controller &amp; readonly controllerTwo = mc;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Controller &amp; readonly controllerTwo = mc;
     io:println(controllerTwo.getId());
 }
 </code></pre></div>
@@ -622,8 +627,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run readonly_objects_and_fields.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run readonly_objects_and_fields.bal
 details is immutable: true
 Default: 1122
 Main: 4246

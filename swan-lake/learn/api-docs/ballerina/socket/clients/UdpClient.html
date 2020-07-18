@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,108 +68,48 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Clients</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="Client.html">Client</a> 
-                        </li>
-                    
-                        <li class="active active-item">
-                            <a href="UdpClient.html">UdpClient</a> 
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../socket/index.html">
-            <h3>socket</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../socket/index.html#records">Records</a>
-        </li>
-        
-        
-        
-            <li>
-                <a data="clients" href="../../socket/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../../socket/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../../socket/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../socket/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Clients</h3>
+                    <h3>
+    Clients
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="Client.html">Client</a>
-                            </li>
-                        
-                            <li class="active active-item">
-                                <a href="UdpClient.html">UdpClient</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="Client.html" onclick="menuLinkClick()">Client</a>
+        </li>
+    
+        <li class="active active-item">
+            <a href="UdpClient.html" onclick="menuLinkClick()">UdpClient</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../socket/index.html">
+        <a href="../../socket/index.html" onclick="menuLinkClick()">
             <h3>socket</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../socket/index.html#records">Records</a>
+            <a data="records" href="../../socket/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
         
             <li>
-                <a data="clients" href="../../socket/index.html#clients">Clients</a>
+                <a data="clients" href="../../socket/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../../socket/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../socket/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
@@ -168,50 +117,61 @@
         
         
             <li>
-                <a data="types" href="../../socket/index.html#types">Types</a>
+                <a data="types" href="../../socket/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../socket/index.html#errors">Errors</a>
+                <a data="errors" href="../../socket/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Clients - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Clients
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../socket/index.html">socket</a> :
+                    <a href="../../socket/index.html"><span class="modules">socket</span></a>
                 
-                <span class="clients">UdpClient</span>
+                 :
+                    
+    <span class="clients">UdpClient</span>
+
+                
             </h1>
-            <p><p>Initializes the UDP client based on the provided configurations.</p>
+            
+    <p><p>Initializes the UDP client based on the provided configurations.</p>
 </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
-                        
-                            <h2>Constructor</h2>
+    <div class="constants">
+        <div class="method-sum">
+            
+                
+                    <h2>Constructor</h2>
 <h3 >__init</h3><p>(<a href="../../socket/records/Address.html">Address</a>? localAddress, <a href="../../socket/records/UdpClientConfig.html">UdpClientConfig</a>? config)</p>
 <div class="data-wrapper">
     
@@ -236,51 +196,40 @@
         </div>
     
 </div>
-                        
-                    
-
-                    
-                        <h2>Remote Methods</h2>
-                        <table>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="sendTo"><a
-                                            class="functions" href="#sendTo">sendTo</a></td>
-                                    <td class="module-desc"><p>Sends the given data to the specified remote client.</p>
-<pre><code class="language-ballerina"> int|socket:Error result = socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="receiveFrom"><a
-                                            class="functions" href="#receiveFrom">receiveFrom</a></td>
-                                    <td class="module-desc"><p>Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
-are received from the client. Else, it returns the data available in the OS buffer or waits until the data is received.
-If the request length is lesser than the data in the buffer, then the rest will be discarded.</p>
-<pre><code class="language-ballerina"> [byte[], int, Address]|ReadTimedOutError result = socketClient-&gt;receiveFrom();
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="close"><a
-                                            class="functions" href="#close">close</a></td>
-                                    <td class="module-desc"><p>Closes the client socket connection.</p>
-<pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
-</code></pre>
-</td>
-                                </tr>
-                            
-                        </table>
-                    
-
-                    
                 
+            
+
+            
+                <h2>Remote Methods</h2>
+                <table>
                     
-                        <h2>Fields</h2>
-                                
-                                <div class="data-wrapper">
+                        <tr>
+                            <td class="module-title truncate functions" title="sendTo"><a
+                                    class="functions" href="#sendTo">sendTo</a></td>
+                            <td class="module-desc"><p>Sends the given data to the specified remote client.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="receiveFrom"><a
+                                    class="functions" href="#receiveFrom">receiveFrom</a></td>
+                            <td class="module-desc"><p>Reads data from the remote client.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="close"><a
+                                    class="functions" href="#close">close</a></td>
+                            <td class="module-desc"><p>Closes the client socket connection.</td>
+                        </tr>
+                    
+                </table>
+            
+
+            
+        
+            
+                <h2>Fields</h2>
+                        
+                        <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -333,17 +282,6 @@ If the request length is lesser than the data in the buffer, then the rest will 
 </div>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -370,6 +308,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -380,24 +336,24 @@ contentWrapper.addEventListener("scroll", event => {
     };
 </script>
 
-                            
                     
-                </div>
+            
+        </div>
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="sendTo" title="sendTo">
              <a class="url-link" href="#sendTo">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > sendTo </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> content, <a href="../../socket/records/Address.html">Address</a> address)</p>
-            <b> returns </b><span class="builtin-type">int</span> | <a href="../../socket/types.html#Error">Error</a> 
+            
+                <b> returns </b><span class="builtin-type">int</span> | <a href="../../socket/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -459,19 +415,19 @@ contentWrapper.addEventListener("scroll", event => {
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="receiveFrom" title="receiveFrom">
              <a class="url-link" href="#receiveFrom">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > receiveFrom </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> length)</p>
-            <b> returns </b><span>[</span><span class="array-type"><span class="builtin-type">byte</span>[]</span>, <span class="builtin-type">int</span>, <a href="../../socket/records/Address.html">Address</a><span>]</span> | <a href="../../socket/errors.html#ReadTimedOutError">ReadTimedOutError</a> 
+            
+                <b> returns </b><span>[</span><span class="array-type"><span class="builtin-type">byte</span>[]</span>, <span class="builtin-type">int</span>, <a href="../../socket/records/Address.html">Address</a><span>]</span> | <a href="../../socket/errors.html#ReadTimedOutError">ReadTimedOutError</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -519,19 +475,19 @@ or else a <code>socket:Error</code> if the data can't be read from the client</p
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="close" title="close">
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > close </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../socket/types.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../socket/types.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -554,28 +510,18 @@ or else a <code>socket:Error</code> if the data can't be read from the client</p
         
     
 </div>
-                    
-                
+            
+        
 
-                
-            </div>
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -602,6 +548,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -611,4 +575,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

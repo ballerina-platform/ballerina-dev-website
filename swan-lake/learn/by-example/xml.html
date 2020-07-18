@@ -22,7 +22,14 @@ redirect_from:
     <span class="kt">xml</span> <span class="nx">x5</span> <span class="p">=</span> <span class="nx">x1</span> <span class="o">+</span> <span class="nx">x2</span> <span class="o">+</span> <span class="nx">x3</span> <span class="o">+</span> <span class="nx">x4</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nResulting XML sequence:&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x5</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="kt">xml</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">The</span> <span class="nx">Lost</span> <span class="nx">World</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span>
+<span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="p">!</span>
+<span class="p">&lt;!</span><span class="o">--</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">a</span> <span class="nx">comment</span><span class="o">--</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="err">?</span><span class="nx">target</span> <span class="nx">data</span><span class="err">?</span><span class="p">&gt;</span><span class="nx">Resulting</span> <span class="nx">XML</span> <span class="nx">sequence</span><span class="p">:</span>
+<span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">The</span> <span class="nx">Lost</span> <span class="nx">World</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="p">!&lt;!</span><span class="o">--</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">a</span> <span class="nx">comment</span><span class="o">--</span><span class="p">&gt;&lt;</span><span class="err">?</span><span class="nx">target</span> <span class="nx">data</span><span class="err">?</span><span class="p">&gt;</span>
 </pre></div>
 
             </div>
@@ -110,7 +117,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -122,7 +129,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -134,7 +141,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x1 = xml `&lt;book&gt;The Lost World&lt;/book&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x1 = xml `&lt;book&gt;The Lost World&lt;/book&gt;`;
     io:println(x1);
 </code></pre></div>
 
@@ -154,7 +161,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x2 = xml `Hello, world!`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x2 = xml `Hello, world!`;
     io:println(x2);
 </code></pre></div>
 
@@ -174,7 +181,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x3 = xml `&lt;!--I am a comment--&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x3 = xml `&lt;!--I am a comment--&gt;`;
     io:println(x3);
 </code></pre></div>
 
@@ -194,7 +201,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x4 = xml `&lt;?target data?&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x4 = xml `&lt;?target data?&gt;`;
     io:println(x4);
 </code></pre></div>
 
@@ -214,7 +221,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x5 = x1 + x2 + x3 + x4;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x5 = x1 + x2 + x3 + x4;
     io:println(&quot;\nResulting XML sequence:&quot;);
     io:println(x5);
 }
@@ -254,8 +261,8 @@ redirect_from:
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run xml.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run xml.bal
 &lt;book&gt;The Lost World&lt;/book&gt;
 Hello, world!
 &lt;!--I am a comment--&gt;

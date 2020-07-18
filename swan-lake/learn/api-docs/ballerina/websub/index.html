@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +7,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.
+    <meta name="description" content="This module contains an implementation of the W3C WebSub recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,websub">
 
@@ -59,56 +61,57 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../websub/index.html">
+        <a href="../websub/index.html" onclick="menuLinkClick()">
             <h3>websub</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../websub/index.html#records">Records</a>
+            <a data="records" href="../websub/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../websub/index.html#objects">Objects</a>
+                <a  data="objects" href="../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../websub/index.html#clients">Clients</a>
+                <a data="clients" href="../websub/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../websub/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../websub/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
             <li>
-                <a data="functions" href="../websub/index.html#functions">Functions</a>
+                <a data="functions" href="../websub/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../websub/index.html#constants">Constants</a>
+                <a data="constants" href="../websub/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../websub/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../websub/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../websub/index.html#types">Types</a>
+                <a data="types" href="../websub/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../websub/index.html#errors">Errors</a>
+                <a data="errors" href="../websub/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -117,100 +120,37 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../websub/index.html">
-            <h3>websub</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../websub/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../websub/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../websub/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../websub/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-            <li>
-                <a data="functions" href="../websub/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../websub/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../websub/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../websub/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../websub/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">websub</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.0.0</div>
+                    <a href="../websub/index.html"><span class="modules">websub</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.</p>
 <p>This implementation supports introducing all WebSub components:</p>
 <ul>
@@ -220,7 +160,7 @@ on occurrence of events.</li>
 <li>Hub - A party that accepts subscription requests from subscribers and delivers content to the subscribers when the topic
 is updated by the topic's publisher.</li>
 </ul>
-<h2>Basic flow with WebSub</h2>
+<h3>Basic flow with WebSub</h3>
 <ol>
 <li>
 <p>The subscriber discovers from the publisher, the topic it needs to subscribe to and the hub(s) that deliver notifications on updates of the topic.</p>
@@ -247,8 +187,8 @@ hub.</p>
 <p>The hub delivers the identified content to the subscribers of the topic.</p>
 </li>
 </ol>
-<h2>Features</h2>
-<h3>Subscriber</h3>
+<h3>Features</h3>
+<h4>Subscriber</h4>
 <p>This module allows introducing a WebSub Subscriber Service with <code>onIntentVerification</code>, which accepts HTTP GET requests for intent verification, and <code>onNotification</code>, which accepts HTTP POST requests for notifications. The WebSub Subscriber Service provides the following capabilities:</p>
 <ul>
 <li>When the service is started a subscription request is sent for a hub/topic combination, either specified as annotations or discovered based on the resource URL specified as an annotation.</li>
@@ -273,9 +213,9 @@ verification response, specifying the topic to verify intent against:</p>
 </code></pre>
 <pre><code class="language-ballerina">http:Response response = request.buildUnsubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
 </code></pre>
-<h3>Hub</h3>
+<h4>Hub</h4>
 <p>A WebSub compliant hub based on the Ballerina Message Broker is also available. This can be used as a remote hub or to be used by publishers who want to have their own internal hub. Ballerina's WebSub hub honors specified lease periods and supports authenticated content distribution.</p>
-<h4>Enabling Basic Auth support for the hub</h4>
+<h5>Enabling Basic Auth support for the hub</h5>
 <p>The Ballerina WebSub Hub can be secured by enforcing authentication (Basic Authentication) and (optionally) authorization.
 The <code>AuthProvider</code> and <code>authConfig</code> need to be specified for the hub listener and service respectively. If the
 <code>authStoreProvider</code> of the <code>AuthProvider</code> is set as &quot;http:CONFIG_AUTH_STORE&quot;, usernames and passwords for authentication and scopes for authorization would be read from a config TOML file.
@@ -323,7 +263,7 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
     }
 }
 </code></pre>
-<h4>Enabling data persistence for the hub</h4>
+<h5>Enabling data persistence for the hub</h5>
 <p>The Ballerina WebSub Hub supports persistence of topic and subscription data that needs to be restored when the hub is
 restarted.</p>
 <p>Users can introduce their own persistence implementation, by introducing an object type that is structurally
@@ -331,7 +271,7 @@ equivalent to the <code>websub:HubPersistenceStore</code> abstract object.</p>
 <p>Persistence can be enabled by setting a suitable <code>websub:HubPersistenceStore</code> value for the <code>hubPersistenceStore</code> field
 in the <code>HubConfiguration</code> record, which is passed to the <code>websub:startHub()</code> function.</p>
 <p>Any subscriptions added at the hub will be available even after the hub is restarted.</p>
-<h3>Publisher</h3>
+<h4>Publisher</h4>
 <p>Ballerina WebSub publishers can use utility functions to add WebSub link headers indicating the hub and topic
 URLs, which facilitates WebSub discovery.</p>
 <p>A hub client endpoint is also made available to publishers and subscribers to perform the following:</p>
@@ -380,7 +320,7 @@ websub:SubscriptionChangeResponse|error subscriptionChangeResponse = websubHubCl
 </ul>
 </li>
 </ul>
-<h2>Introducing Specific Subscriber Services (Webhook Callback Services)</h2>
+<h3>Introducing Specific Subscriber Services (Webhook Callback Services)</h3>
 <p>Ballerina's WebSub subscriber service listener can be extended to introduce specific Webhooks.</p>
 <p>Instead of the single <code>onNotification</code> resource, you can introduce multiple resources to accept content delivery requests using specific subscriber services. These resources will correspond to the content delivery requests that will
 be delivered with respect to a particular topic.</p>
@@ -457,7 +397,7 @@ dispatching should happen to a resource named <code>onIssueOpened</code>.</p>
 be a custom <code>IssueOpenedEvent</code> record, mapping the JSON payload received when an issue is created.</p>
 </li>
 </ul>
-<h3>The Specific Subscriber Service</h3>
+<h4>The Specific Subscriber Service</h4>
 <p>In order to introduce a specific subscriber service, a new Ballerina <code>listener</code> needs to be introduced. This <code>listener</code> should wrap the generic <code>ballerina/websub:Listener</code> and include the extension configuration described above.</p>
 <p>The following example is for a service provider that</p>
 <ul>
@@ -548,629 +488,547 @@ service specificSubscriber on new WebhookListener(8080) {
     }
 }
 </code></pre>
-<p>For a step-by-step guide on introducing custom subscriber services, see the <a href="https://ballerina.io/swan-lake/learn/how-to-extend-ballerina/#create-webhook-callback-services">&quot;Create Webhook Callback Services&quot;</a> section of &quot;How to Extend Ballerina&quot;.</p>
+<p>For a step-by-step guide on introducing custom subscriber services, see the <a href="https://ballerina.io/learn/how-to-extend-ballerina/#create-webhook-callback-services">&quot;Create Webhook Callback Services&quot;</a> section of &quot;How to Extend Ballerina&quot;.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the following.</p>
 <ul>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websub-internal-hub-sample.html">Internal Hub Sample Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websub-remote-hub-sample.html">Remote Hub Sample Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websub-hub-client-sample.html">Hub Client Sample Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/websub-service-integration-sample.html">Service Integration Sample Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websub-internal-hub-sample.html">Internal Hub Sample Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websub-remote-hub-sample.html">Remote Hub Sample Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websub-hub-client-sample.html">Hub Client Sample Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websub-service-integration-sample.html">Service Integration Sample Example</a></li>
 </ul>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T37" title="T37">
-                                <a class="records " href="records/T37.html">T37</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T38" title="T38">
-                                <a class="records " href="records/T38.html">T38</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="ExtensionConfig" title="ExtensionConfig">
+                            <a class="records " href="records/ExtensionConfig.html">ExtensionConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>The extension configuration to introduce custom subscriber services.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T39" title="T39">
-                                <a class="records " href="records/T39.html">T39</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="ExtensionConfig" title="ExtensionConfig">
-                                <a class="records " href="records/ExtensionConfig.html">ExtensionConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The extension configuration to introduce custom subscriber services.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="HubConfiguration" title="HubConfiguration">
-                                <a class="records " href="records/HubConfiguration.html">HubConfiguration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Record representing hub specific configurations.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="HubConfiguration" title="HubConfiguration">
+                            <a class="records " href="records/HubConfiguration.html">HubConfiguration</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Record representing hub specific configurations.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="HubStartedUpError" title="HubStartedUpError">
-                                <a class="records " href="records/HubStartedUpError.html">HubStartedUpError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Error to represent that a WebSubHub is already started up, encapsulating the started up Hub.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="RemotePublishConfig" title="RemotePublishConfig">
-                                <a class="records " href="records/RemotePublishConfig.html">RemotePublishConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Record representing remote publishing allowance.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="SubscriberDetails" title="SubscriberDetails">
-                                <a class="records " href="records/SubscriberDetails.html">SubscriberDetails</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Record to represent Subscriber Details.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="HubStartedUpError" title="HubStartedUpError">
+                            <a class="records " href="records/HubStartedUpError.html">HubStartedUpError</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Error to represent that a WebSubHub is already started up, encapsulating the started up Hub.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="SubscriberListenerConfiguration" title="SubscriberListenerConfiguration">
-                                <a class="records " href="records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the configuration for the WebSub Subscriber Service Listener.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="SubscriberServiceConfiguration" title="SubscriberServiceConfiguration">
-                                <a class="records " href="records/SubscriberServiceConfiguration.html">SubscriberServiceConfiguration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configuration for a WebSubSubscriber service.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="SubscriptionChangeRequest" title="SubscriptionChangeRequest">
-                                <a class="records " href="records/SubscriptionChangeRequest.html">SubscriptionChangeRequest</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Record representing a WebSub subscription change request.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="RemotePublishConfig" title="RemotePublishConfig">
+                            <a class="records " href="records/RemotePublishConfig.html">RemotePublishConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Record representing remote publishing allowance.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="SubscriptionChangeResponse" title="SubscriptionChangeResponse">
-                                <a class="records " href="records/SubscriptionChangeResponse.html">SubscriptionChangeResponse</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Record representing subscription/unsubscription details if a subscription/unsubscription request is successful.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="SubscriptionDetails" title="SubscriptionDetails">
-                                <a class="records " href="records/SubscriptionDetails.html">SubscriptionDetails</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Record to represent persisted Subscription Details retrieved.
-                            </td>
-                        </tr>
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="SubscriberDetails" title="SubscriberDetails">
+                            <a class="records " href="records/SubscriberDetails.html">SubscriberDetails</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Record to represent Subscriber Details.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="SubscriberListenerConfiguration" title="SubscriberListenerConfiguration">
+                            <a class="records " href="records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the configuration for the WebSub Subscriber Service Listener.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="SubscriberServiceConfiguration" title="SubscriberServiceConfiguration">
+                            <a class="records " href="records/SubscriberServiceConfiguration.html">SubscriberServiceConfiguration</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configuration for a WebSubSubscriber service.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="SubscriptionChangeRequest" title="SubscriptionChangeRequest">
+                            <a class="records " href="records/SubscriptionChangeRequest.html">SubscriptionChangeRequest</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Record representing a WebSub subscription change request.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="SubscriptionChangeResponse" title="SubscriptionChangeResponse">
+                            <a class="records " href="records/SubscriptionChangeResponse.html">SubscriptionChangeResponse</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Record representing subscription/unsubscription details if a subscription/unsubscription request is successful.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="SubscriptionDetails" title="SubscriptionDetails">
+                            <a class="records " href="records/SubscriptionDetails.html">SubscriptionDetails</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Record to represent persisted Subscription Details retrieved.
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
+        
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
                     <a class="url-link" href="#objects">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Objects </h2>
+                    <h2> Objects </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="Hub" title="Hub">
-                                <a class="objects " href="objects/Hub.html">Hub</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the Ballerina WebSub Hub.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="HubPersistenceStore" title="HubPersistenceStore">
-                                <a class="objects " href="objects/HubPersistenceStore.html">HubPersistenceStore</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the hub persistence configuration and functions.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="Hub" title="Hub">
+                            <a class="objects " href="objects/Hub.html">Hub</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the Ballerina WebSub Hub.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="IntentVerificationRequest" title="IntentVerificationRequest">
-                                <a class="objects " href="objects/IntentVerificationRequest.html">IntentVerificationRequest</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Object representing an intent verification request received.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="Notification" title="Notification">
-                                <a class="objects " href="objects/Notification.html">Notification</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the WebSub Content Delivery Request received.
-                            </td>
-                        </tr>
                     
-                </table>
-             </section>  
-            
-
-            
-             <section class="method-content" id="clients">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#clients">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Clients </h2>
-                </div>
-                <table>
+                    <tr>
+                        <td class="module-title truncate objects" id="HubPersistenceStore" title="HubPersistenceStore">
+                            <a class="objects " href="objects/HubPersistenceStore.html">HubPersistenceStore</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the hub persistence configuration and functions.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate clients" id="Caller" title="Caller">
-                                <a class="clients " href="clients/Caller.html">Caller</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The caller remote functions to respond to client requests.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate clients" id="PublisherClient" title="PublisherClient">
-                                <a class="clients " href="clients/PublisherClient.html">PublisherClient</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate clients" id="SubscriptionClient" title="SubscriptionClient">
-                                <a class="clients " href="clients/SubscriptionClient.html">SubscriptionClient</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The HTTP based client for WebSub subscription and unsubscription.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="IntentVerificationRequest" title="IntentVerificationRequest">
+                            <a class="objects " href="objects/IntentVerificationRequest.html">IntentVerificationRequest</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Object representing an intent verification request received.
+                        </td>
+                    </tr>
                     
-                </table>
-             </section>
-            
-
-            
-             <section class="method-content" id="listeners">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#listeners">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Listeners </h2>
-                </div>
-                <table>
                     
-                        <tr>
-                            <td class="module-title truncate listeners" id="Listener" title="Listener">
-                                <a class="listeners " href="listeners/Listener.html">Listener</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the WebSubSubscriber Service Listener.
-                            </td>
-                        </tr>
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="Notification" title="Notification">
+                            <a class="objects " href="objects/Notification.html">Notification</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the WebSub Content Delivery Request received.
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
-            
-           
+        
+    
 
+    
+    <section class="method-content" id="clients">
+        <div class="main-method-title here">
+            <a class="url-link" href="#clients">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Clients </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate clients" id="Caller" title="Caller">
+                    <a class="clients " href="clients/Caller.html">Caller</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="addWebSubLinkHeader" title="addWebSubLinkHeader">
-                                <a class="functions " href="functions.html#addWebSubLinkHeader">addWebSubLinkHeader</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Function to add link headers to a response to allow WebSub discovery.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="ballerina/websub:1.0.0.&lt;init&gt;0" title="ballerina/websub:1.0.0.&lt;init&gt;0">
-                                <a class="functions " href="functions.html#ballerina/websub:1.0.0.&lt;init&gt;0">ballerina/websub:1.0.0.&lt;init&gt;0</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="ballerina/websub:1.0.0.&lt;init&gt;1" title="ballerina/websub:1.0.0.&lt;init&gt;1">
-                                <a class="functions " href="functions.html#ballerina/websub:1.0.0.&lt;init&gt;1">ballerina/websub:1.0.0.&lt;init&gt;1</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="ballerina/websub:1.0.0.&lt;init&gt;2" title="ballerina/websub:1.0.0.&lt;init&gt;2">
-                                <a class="functions " href="functions.html#ballerina/websub:1.0.0.&lt;init&gt;2">ballerina/websub:1.0.0.&lt;init&gt;2</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="ballerina/websub:1.0.0.&lt;init&gt;3" title="ballerina/websub:1.0.0.&lt;init&gt;3">
-                                <a class="functions " href="functions.html#ballerina/websub:1.0.0.&lt;init&gt;3">ballerina/websub:1.0.0.&lt;init&gt;3</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="ballerina/websub:1.0.0.&lt;init&gt;4" title="ballerina/websub:1.0.0.&lt;init&gt;4">
-                                <a class="functions " href="functions.html#ballerina/websub:1.0.0.&lt;init&gt;4">ballerina/websub:1.0.0.&lt;init&gt;4</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="ballerina/websub:1.0.0.&lt;init&gt;5" title="ballerina/websub:1.0.0.&lt;init&gt;5">
-                                <a class="functions " href="functions.html#ballerina/websub:1.0.0.&lt;init&gt;5">ballerina/websub:1.0.0.&lt;init&gt;5</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="ballerina/websub:1.0.0.&lt;init&gt;6" title="ballerina/websub:1.0.0.&lt;init&gt;6">
-                                <a class="functions " href="functions.html#ballerina/websub:1.0.0.&lt;init&gt;6">ballerina/websub:1.0.0.&lt;init&gt;6</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="extractTopicAndHubUrls" title="extractTopicAndHubUrls">
-                                <a class="functions " href="functions.html#extractTopicAndHubUrls">extractTopicAndHubUrls</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="startHub" title="startHub">
-                                <a class="functions " href="functions.html#startHub">startHub</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Starts up the Ballerina Hub.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>The caller remote functions to respond to client requests.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate clients" id="PublisherClient" title="PublisherClient">
+                    <a class="clients " href="clients/PublisherClient.html">PublisherClient</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate clients" id="SubscriptionClient" title="SubscriptionClient">
+                    <a class="clients " href="clients/SubscriptionClient.html">SubscriptionClient</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The HTTP based client for WebSub subscription and unsubscription.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+    
+    <section class="method-content" id="listeners">
+        <div class="main-method-title here">
+            <a class="url-link" href="#listeners">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Listeners </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate listeners" id="Listener" title="Listener">
+                    <a class="listeners " href="listeners/Listener.html">Listener</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the WebSubSubscriber Service Listener.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="constants">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#constants">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Constants </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="addWebSubLinkHeader" title="addWebSubLinkHeader">
+                    <a class="functions " href="functions.html#addWebSubLinkHeader">addWebSubLinkHeader</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="PUBLISH_MODE_DIRECT" title="PUBLISH_MODE_DIRECT">
-                                <a class="constant " href="constants.html#PUBLISH_MODE_DIRECT">PUBLISH_MODE_DIRECT</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p><code>RemotePublishMode</code> indicating direct update content notification (fat-ping).
-                            </td>
-                        </tr>
+                    <p>Function to add link headers to a response to allow WebSub discovery.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="extractTopicAndHubUrls" title="extractTopicAndHubUrls">
+                    <a class="functions " href="functions.html#extractTopicAndHubUrls">extractTopicAndHubUrls</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="PUBLISH_MODE_FETCH" title="PUBLISH_MODE_FETCH">
-                                <a class="constant " href="constants.html#PUBLISH_MODE_FETCH">PUBLISH_MODE_FETCH</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p><code>RemotePublishMode</code> indicating that once the publisher notifies the hub that an update is available, the hub
+                    <p>Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="startHub" title="startHub">
+                    <a class="functions " href="functions.html#startHub">startHub</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Starts up the Ballerina Hub.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+
+    
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate constant" id="PUBLISH_MODE_DIRECT" title="PUBLISH_MODE_DIRECT">
+                    <a class="constant " href="constants.html#PUBLISH_MODE_DIRECT">PUBLISH_MODE_DIRECT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p><code>RemotePublishMode</code> indicating direct update content notification (fat-ping).
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="PUBLISH_MODE_FETCH" title="PUBLISH_MODE_FETCH">
+                    <a class="constant " href="constants.html#PUBLISH_MODE_FETCH">PUBLISH_MODE_FETCH</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p><code>RemotePublishMode</code> indicating that once the publisher notifies the hub that an update is available, the hub
 needs to fetch the topic URL to identify the update content.
-                            </td>
-                        </tr>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SHA1" title="SHA1">
+                    <a class="constant " href="constants.html#SHA1">SHA1</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="SHA1" title="SHA1">
-                                <a class="constant " href="constants.html#SHA1">SHA1</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The constant used to represent SHA-1 cryptographic hash algorithm</p>
+                    <p>The constant used to represent SHA-1 cryptographic hash algorithm</p>
 
-                            </td>
-                        </tr>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SHA256" title="SHA256">
+                    <a class="constant " href="constants.html#SHA256">SHA256</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="SHA256" title="SHA256">
-                                <a class="constant " href="constants.html#SHA256">SHA256</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The constant used to represent SHA-256 cryptographic hash algorithm</p>
+                    <p>The constant used to represent SHA-256 cryptographic hash algorithm</p>
 
-                            </td>
-                        </tr>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="TOPIC_ID_HEADER" title="TOPIC_ID_HEADER">
+                    <a class="constant " href="constants.html#TOPIC_ID_HEADER">TOPIC_ID_HEADER</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="TOPIC_ID_HEADER" title="TOPIC_ID_HEADER">
-                                <a class="constant " href="constants.html#TOPIC_ID_HEADER">TOPIC_ID_HEADER</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p><code>TopicIdentifier</code> indicating dispatching based solely on a header of the request.
-                            </td>
-                        </tr>
+                    <p><code>TopicIdentifier</code> indicating dispatching based solely on a header of the request.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="TOPIC_ID_PAYLOAD_KEY" title="TOPIC_ID_PAYLOAD_KEY">
+                    <a class="constant " href="constants.html#TOPIC_ID_PAYLOAD_KEY">TOPIC_ID_PAYLOAD_KEY</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="TOPIC_ID_PAYLOAD_KEY" title="TOPIC_ID_PAYLOAD_KEY">
-                                <a class="constant " href="constants.html#TOPIC_ID_PAYLOAD_KEY">TOPIC_ID_PAYLOAD_KEY</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p><code>TopicIdentifier</code> indicating dispatching based solely on a value for a key in the JSON payload of the request.
-                            </td>
-                        </tr>
+                    <p><code>TopicIdentifier</code> indicating dispatching based solely on a value for a key in the JSON payload of the request.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="TOPIC_ID_HEADER_AND_PAYLOAD" title="TOPIC_ID_HEADER_AND_PAYLOAD">
+                    <a class="constant " href="constants.html#TOPIC_ID_HEADER_AND_PAYLOAD">TOPIC_ID_HEADER_AND_PAYLOAD</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate constant" id="TOPIC_ID_HEADER_AND_PAYLOAD" title="TOPIC_ID_HEADER_AND_PAYLOAD">
-                                <a class="constant " href="constants.html#TOPIC_ID_HEADER_AND_PAYLOAD">TOPIC_ID_HEADER_AND_PAYLOAD</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p><code>TopicIdentifier</code> indicating dispatching based on a combination of header and values specified for a key/key(s) in
+                    <p><code>TopicIdentifier</code> indicating dispatching based on a combination of header and values specified for a key/key(s) in
 the JSON payload of the request.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
 
 
+    
+    <section class="method-content" id="annotations">
+        <div class="main-method-title here">
+            <a class="url-link" href="#annotations">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Annotations </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="annotations">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#annotations">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Annotations </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate annotations" id="SpecificSubscriber" title="SpecificSubscriber">
+                    <a class="annotations " href="annotations.html#SpecificSubscriber">SpecificSubscriber</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate annotations" id="SpecificSubscriber" title="SpecificSubscriber">
-                                <a class="annotations "
-                                   href="annotations.html#SpecificSubscriber">SpecificSubscriber</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Annotation to declare that the service represents a specific webhook.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate annotations" id="SubscriberServiceConfig" title="SubscriberServiceConfig">
-                                <a class="annotations "
-                                   href="annotations.html#SubscriberServiceConfig">SubscriberServiceConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>WebSub Subscriber Configuration for the service, indicating subscription related parameters.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Annotation to declare that the service represents a specific webhook.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate annotations" id="SubscriberServiceConfig" title="SubscriberServiceConfig">
+                    <a class="annotations " href="annotations.html#SubscriberServiceConfig">SubscriberServiceConfig</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>WebSub Subscriber Configuration for the service, indicating subscription related parameters.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate types" id="RemotePublishMode" title="RemotePublishMode">
+                    <a class="types " href="types.html#RemotePublishMode">RemotePublishMode</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate types" id="RemotePublishMode" title="RemotePublishMode">
-                                <a class="types " href="types.html#RemotePublishMode">RemotePublishMode</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The identifier to be used to identify the mode in which update content should be identified.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="SignatureMethod" title="SignatureMethod">
-                                <a class="types " href="types.html#SignatureMethod">SignatureMethod</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The identifier to be used to identify the cryptographic hash algorithm.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="TopicIdentifier" title="TopicIdentifier">
-                                <a class="types " href="types.html#TopicIdentifier">TopicIdentifier</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>The identifier to be used to identify the topic for dispatching with custom subscriber services.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>The identifier to be used to identify the mode in which update content should be identified.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate types" id="SignatureMethod" title="SignatureMethod">
+                    <a class="types " href="types.html#SignatureMethod">SignatureMethod</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The identifier to be used to identify the cryptographic hash algorithm.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="TopicIdentifier" title="TopicIdentifier">
+                    <a class="types " href="types.html#TopicIdentifier">TopicIdentifier</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>The identifier to be used to identify the topic for dispatching with custom subscriber services.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate errors" id="HubStartupError" title="HubStartupError">
+                    <a class="errors " href="errors.html#HubStartupError">HubStartupError</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="HubStartupError" title="HubStartupError">
-                                <a class="errors " href="errors.html#HubStartupError">HubStartupError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a hub startup error.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="ListenerStartupError" title="ListenerStartupError">
-                                <a class="errors " href="errors.html#ListenerStartupError">ListenerStartupError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a listener startup error.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="WebSubError" title="WebSubError">
-                                <a class="errors " href="errors.html#WebSubError">WebSubError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a webSub distinct error.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Represents a hub startup error.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate errors" id="ListenerStartupError" title="ListenerStartupError">
+                    <a class="errors " href="errors.html#ListenerStartupError">ListenerStartupError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents a listener startup error.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="WebSubError" title="WebSubError">
+                    <a class="errors " href="errors.html#WebSubError">WebSubError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents a webSub distinct error.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -1197,6 +1055,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -1206,4 +1082,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

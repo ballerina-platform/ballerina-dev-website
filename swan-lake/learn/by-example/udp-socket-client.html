@@ -46,7 +46,12 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while closing the connection &quot;</span><span class="p">,</span>
             <span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">udp_socket_client</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">This</span> <span class="nx">will</span> <span class="nx">print</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">output</span> <span class="nx">upon</span> <span class="nx">a</span> <span class="nx">successful</span> <span class="nx">write</span><span class="p">.</span>
+<span class="nx">Number</span> <span class="nx">of</span> <span class="nx">bytes</span> <span class="nx">written</span><span class="p">:</span> <span class="mi">21</span>
+<span class="err">#</span> <span class="nx">Print</span> <span class="nx">the</span> <span class="nx">response</span> <span class="nx">that</span> <span class="nx">is</span> <span class="nx">returned</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">server</span> <span class="k">as</span> <span class="nx">an</span> <span class="nx">echo</span><span class="p">.</span>
+<span class="nx">Received</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">from</span> <span class="nx">UDP</span> <span class="nx">client</span>
 </pre></div>
 
             </div>
@@ -134,7 +139,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/socket;
 </code></pre></div>
 
@@ -154,7 +159,7 @@ import ballerina/socket;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -166,7 +171,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    socket:UdpClient socketClient = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    socket:UdpClient socketClient = new;
     string msg = &quot;Hello from UDP client&quot;;
     byte[] c1 = msg.toBytes();
 </code></pre></div>
@@ -191,7 +196,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var sendResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>    var sendResult =
         socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
     if (sendResult is int) {
         io:println(&quot;Number of bytes written: &quot;, sendResult);
@@ -218,7 +223,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = socketClient-&gt;receiveFrom();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = socketClient-&gt;receiveFrom();
     if (result is [byte[], int, socket:Address]) {
         var [content, length, address] = result;
         var byteChannel = io:createReadableChannel(content);
@@ -258,7 +263,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var closeResult = socketClient-&gt;close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var closeResult = socketClient-&gt;close();
     if (closeResult is error) {
         io:println(&quot;An error occurred while closing the connection &quot;,
             closeResult);
@@ -300,8 +305,8 @@ import ballerina/socket;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run the client, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run udp_socket_client.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run udp_socket_client.bal
 </code></pre></div>
 
                                 </td>

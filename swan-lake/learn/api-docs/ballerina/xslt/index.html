@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,9 +61,10 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../xslt/index.html">
+        <a href="../xslt/index.html" onclick="menuLinkClick()">
             <h3>xslt</h3>
         </a>
     
@@ -72,7 +75,7 @@
         
         
             <li>
-                <a data="functions" href="../xslt/index.html#functions">Functions</a>
+                <a data="functions" href="../xslt/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -80,7 +83,7 @@
         
         
             <li>
-                <a data="errors" href="../xslt/index.html#errors">Errors</a>
+                <a data="errors" href="../xslt/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -89,158 +92,112 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../xslt/index.html">
-            <h3>xslt</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../xslt/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="errors" href="../xslt/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">xslt</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 1.0.0</div>
+                    <a href="../xslt/index.html"><span class="modules">xslt</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 1.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the <a href="https://ballerina.io/swan-lake/learn/by-example/xslt-transformation.html">XSLT Transformation Example</a>.</p>
 
 
-            
+    
 
-            
+    
 
-            
+    
 
-            
-           
+    
 
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="transform" title="transform">
+                    <a class="functions " href="functions.html#transform">transform</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="transform" title="transform">
-                                <a class="functions " href="functions.html#transform">transform</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.
-                            </td>
-                        </tr>
+                    <p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+
+    
+
+
+    
+
+    
+
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="TransformError" title="TransformError">
+                    <a class="errors " href="errors.html#TransformError">TransformError</a>
+                </td>
+                <td class="module-desc">
                     
-                </table>
-            </section>
+                    <p>Represents a <code>TransformError</code> with the message and the cause.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
 
-
-            
-
-
-            
-
-            
-
-            
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="TransformError" title="TransformError">
-                                <a class="errors " href="errors.html#TransformError">TransformError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a <code>TransformError</code> with the message and the cause.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -267,6 +224,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -276,4 +251,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

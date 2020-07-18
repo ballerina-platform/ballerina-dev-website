@@ -1,0 +1,505 @@
+{
+  "id": "awslambda",
+  "summary": "\u003cp\u003eThis module offers the capabilities of creating AWS Lambda functions using ballerina.\u003c/p\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers the capabilities of creating AWS Lambda functions using ballerina.\u003c/p\u003e\n\u003ch3\u003eAnnotation Usage Sample:\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerinax/awslambda;\nimport ballerina/system;\n\n@awslambda:Function\npublic function echo(awslambda:Context ctx, json input) returns json|error {\n   return input;\n}\n\n@awslambda:Function\npublic function uuid(awslambda:Context ctx, json input) returns json|error {\n   return system:uuid();\n}\n\n@awslambda:Function\npublic function ctxinfo(awslambda:Context ctx, json input) returns json|error {\n   json result \u003d { RequestID: ctx.getRequestId(),\n                   DeadlineMS: ctx.getDeadlineMs(),\n                   InvokedFunctionArn: ctx.getInvokedFunctionArn(),\n                   TraceID: ctx.getTraceId(),\n                   RemainingExecTime: ctx.getRemainingExecutionTime() };\n   return result;\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe output of the Ballerina build is as follows:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-bash\"\u003e$ ballerina build functions.bal \nCompiling source\n    functions.bal\n\nGenerating executable\n    functions.jar\n\t@awslambda:Function: echo, uuid, ctxinfo\n\n\tRun the following command to deploy each Ballerina AWS Lambda function:\n\taws lambda create-function --function-name \u0026lt;FUNCTION_NAME\u0026gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.\u0026lt;FUNCTION_NAME\u0026gt; --runtime provided --role \u0026lt;LAMBDA_ROLE_ARN\u0026gt; --layers \u0026lt;BALLERINA_LAYER_ARN\u0026gt;\n\n\tRun the following command to re-deploy an updated Ballerina AWS Lambda function:\n\taws lambda update-function-code --function-name \u0026lt;FUNCTION_NAME\u0026gt; --zip-file fileb://aws-ballerina-lambda-functions.zip\n\u003c/code\u003e\u003c/pre\u003e\n",
+  "orgName": "ballerinax",
+  "version": "0.0.0",
+  "records": [],
+  "objects": [
+    {
+      "fields": [],
+      "methods": [
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe request id\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getRequestId",
+          "description": "\u003cp\u003eReturns the unique id for this request.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "int",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe request execution deadline\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getDeadlineMs",
+          "description": "\u003cp\u003eReturns the request execution deadline in milliseconds from the epoch.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe invoked function ARN\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getInvokedFunctionArn",
+          "description": "\u003cp\u003eReturns the ARN of the function being invoked.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe trace id\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getTraceId",
+          "description": "\u003cp\u003eReturns the trace id for this request\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "int",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe remaining execution time\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getRemainingExecutionTime",
+          "description": "\u003cp\u003eReturns the remaining execution time for this request in milliseconds\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "otherMethods": [
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe request id\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getRequestId",
+          "description": "\u003cp\u003eReturns the unique id for this request.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "int",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe request execution deadline\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getDeadlineMs",
+          "description": "\u003cp\u003eReturns the request execution deadline in milliseconds from the epoch.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe invoked function ARN\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getInvokedFunctionArn",
+          "description": "\u003cp\u003eReturns the ARN of the function being invoked.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe trace id\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getTraceId",
+          "description": "\u003cp\u003eReturns the trace id for this request\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "int",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003ethe remaining execution time\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getRemainingExecutionTime",
+          "description": "\u003cp\u003eReturns the remaining execution time for this request in milliseconds\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "isAnonymous": false,
+      "name": "Context",
+      "description": "\u003cp\u003eObject to represent an AWS Lambda function execution context.\u003c/p\u003e\n",
+      "isDeprecated": false
+    }
+  ],
+  "clients": [],
+  "listeners": [],
+  "functions": [
+    {
+      "isRemote": false,
+      "isExtern": false,
+      "parameters": [],
+      "returnParameters": [],
+      "name": "__process",
+      "description": "",
+      "isDeprecated": false
+    },
+    {
+      "isRemote": false,
+      "isExtern": false,
+      "parameters": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "string",
+            "category": "builtin",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "handler",
+          "description": "",
+          "isDeprecated": false
+        },
+        {
+          "defaultValue": "",
+          "type": {
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": true,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [
+              {
+                "orgName": "ballerinax",
+                "moduleName": "awslambda",
+                "name": "Context",
+                "category": "objects",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "json",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              }
+            ],
+            "arrayDimensions": 0,
+            "returnType": {
+              "orgName": "ballerinax",
+              "moduleName": "awslambda",
+              "category": "types",
+              "isAnonymousUnionType": true,
+              "isArrayType": false,
+              "isNullable": false,
+              "isTuple": false,
+              "isRestParam": false,
+              "isLambda": false,
+              "isDeprecated": false,
+              "generateUserDefinedTypeLink": true,
+              "memberTypes": [
+                {
+                  "orgName": "ballerina",
+                  "moduleName": "lang.annotations",
+                  "name": "json",
+                  "category": "builtin",
+                  "isAnonymousUnionType": false,
+                  "isArrayType": false,
+                  "isNullable": false,
+                  "isTuple": false,
+                  "isRestParam": false,
+                  "isLambda": false,
+                  "isDeprecated": false,
+                  "generateUserDefinedTypeLink": true,
+                  "memberTypes": [],
+                  "paramTypes": [],
+                  "arrayDimensions": 0
+                },
+                {
+                  "orgName": "ballerina",
+                  "moduleName": "lang.annotations",
+                  "name": "error",
+                  "category": "errors",
+                  "isAnonymousUnionType": false,
+                  "isArrayType": false,
+                  "isNullable": false,
+                  "isTuple": false,
+                  "isRestParam": false,
+                  "isLambda": false,
+                  "isDeprecated": false,
+                  "generateUserDefinedTypeLink": true,
+                  "memberTypes": [],
+                  "paramTypes": [],
+                  "arrayDimensions": 0
+                }
+              ],
+              "paramTypes": [],
+              "arrayDimensions": 0
+            }
+          },
+          "name": "func",
+          "description": "",
+          "isDeprecated": false
+        }
+      ],
+      "returnParameters": [],
+      "name": "__register",
+      "description": "",
+      "isDeprecated": false
+    }
+  ],
+  "constants": [],
+  "annotations": [
+    {
+      "attachmentPoints": "function",
+      "name": "Function",
+      "description": "\u003cp\u003e@awslambda:Function annotation\u003c/p\u003e\n",
+      "isDeprecated": false
+    }
+  ],
+  "errors": [],
+  "finiteTypes": [],
+  "unionTypes": [],
+  "resources": []
+}

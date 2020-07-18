@@ -33,7 +33,25 @@ redirect_from:
     <span class="kd">function</span> <span class="nx">getName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span>
+<span class="p">};</span><span class="err">#</span> <span class="nx">As</span> <span class="nx">shown</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">only</span> <span class="nx">the</span> <span class="s">`INFO`</span> <span class="nx">and</span> <span class="nx">higher</span> <span class="nx">level</span> <span class="nx">logs</span> <span class="nx">are</span> <span class="nx">logged</span> <span class="nx">by</span> <span class="k">default</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Note</span> <span class="nx">that</span> <span class="nx">in</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">org</span> <span class="nx">name</span> <span class="nx">is</span> <span class="s">`ballerina`</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">module</span> <span class="nx">name</span> <span class="nx">is</span> <span class="s">`log`</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">log_api</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">07</span><span class="p">,</span><span class="mi">334</span> <span class="nx">ERROR</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">error</span> <span class="nx">log</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">07</span><span class="p">,</span><span class="mi">340</span> <span class="nx">ERROR</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">error</span> <span class="nx">log</span> <span class="nx">with</span> <span class="nx">cause</span> <span class="p">:</span> <span class="nx">error</span> <span class="nx">error</span> <span class="nx">occurred</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">07</span><span class="p">,</span><span class="mi">341</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">info</span> <span class="nx">log</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">07</span><span class="p">,</span><span class="mi">342</span> <span class="nx">WARN</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">warn</span> <span class="nx">log</span><span class="err">#</span> <span class="nx">If</span> <span class="nx">the</span> <span class="nx">log</span> <span class="nx">level</span> <span class="nx">is</span> <span class="nx">set</span> <span class="nx">to</span> <span class="s">`TRACE`</span><span class="p">,</span> <span class="nx">logs</span> <span class="nx">of</span> <span class="nx">all</span> <span class="nx">log</span> <span class="nx">levels</span> <span class="nx">are</span> <span class="nx">logged</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">log_api</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">level</span><span class="p">=</span><span class="nx">TRACE</span> 
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">411</span> <span class="nx">DEBUG</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">debug</span> <span class="nx">log</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">415</span> <span class="nx">ERROR</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">error</span> <span class="nx">log</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">416</span> <span class="nx">ERROR</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">error</span> <span class="nx">log</span> <span class="nx">with</span> <span class="nx">cause</span> <span class="p">:</span> <span class="nx">error</span> <span class="nx">error</span> <span class="nx">occurred</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">416</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">info</span> <span class="nx">log</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">417</span> <span class="nx">TRACE</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">trace</span> <span class="nx">log</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">11</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mo">04</span><span class="p">,</span><span class="mi">421</span> <span class="nx">WARN</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">warn</span> <span class="nx">log</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">12</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">946</span> <span class="nx">DEBUG</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Name</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">fruit</span> <span class="nx">is</span> <span class="nx">Strawberry</span><span class="p">.</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">12</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">947</span> <span class="nx">DEBUG</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Names</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">fruits</span> <span class="nx">are</span> <span class="nx">Apple</span><span class="p">,</span> <span class="nx">Orange</span><span class="p">.</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">09</span> <span class="mi">12</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">947</span> <span class="nx">DEBUG</span> <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Name</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">fruit</span> <span class="nx">is</span> <span class="nx">is</span> <span class="nx">Apple</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -131,7 +149,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -144,7 +162,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     error e = error(&quot;error occurred&quot;);
 </code></pre></div>
 
@@ -157,7 +175,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    log:printDebug(&quot;debug log&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(&quot;debug log&quot;);
     log:printError(&quot;error log&quot;);
     log:printError(&quot;error log with cause&quot;, e);
     log:printInfo(&quot;info log&quot;);
@@ -216,7 +234,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Fruit apple = new (&quot;Apple&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Fruit apple = new (&quot;Apple&quot;);
     Fruit orange = new (&quot;Orange&quot;);
 </code></pre></div>
 
@@ -240,7 +258,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    log:printDebug(&quot;Name of the fruit is Strawberry.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(&quot;Name of the fruit is Strawberry.&quot;);
     log:printDebug(io:sprintf(&quot;Names of the fruits are %s, %s.&quot;, apple.getName(), orange.getName()));
 </code></pre></div>
 
@@ -253,7 +271,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    log:printDebug(function() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    log:printDebug(function() returns string {
         return io:sprintf(&quot;Name of the fruit is is %s&quot;, apple.getName());
     });
 }
@@ -276,7 +294,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public type Fruit object {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Fruit object {
     string name;
     public function init(string name) {
         self.name = name;
@@ -315,9 +333,9 @@ import ballerina/log;
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># As shown in the output, only the `INFO` and higher level logs are logged by default.
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command below.
 # Note that in this sample, the org name is `ballerina` and the module name is `log`.
-$ ballerina run log_api.bal
+ballerina run log_api.bal
 2019-08-09 11:47:07,334 ERROR [ballerina/log] - error log
 2019-08-09 11:47:07,340 ERROR [ballerina/log] - error log with cause : error error occurred
 2019-08-09 11:47:07,341 INFO  [ballerina/log] - info log
@@ -334,7 +352,7 @@ $ ballerina run log_api.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># If the log level is set to `TRACE`, logs of all log levels are logged.
-$ ballerina run log_api.bal --b7a.log.level=TRACE 
+ballerina run log_api.bal --b7a.log.level=TRACE 
 2019-08-09 11:48:04,411 DEBUG [ballerina/log] - debug log
 2019-08-09 11:48:04,415 ERROR [ballerina/log] - error log
 2019-08-09 11:48:04,416 ERROR [ballerina/log] - error log with cause : error error occurred

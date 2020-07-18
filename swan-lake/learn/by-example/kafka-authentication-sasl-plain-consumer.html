@@ -29,7 +29,14 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">kafka_authentication_sasl_plain_consumer</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">following</span> <span class="nx">lines</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">printed</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Console</span> <span class="nx">when</span> <span class="nx">consumer</span> <span class="nx">starts</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">If</span> <span class="nx">the</span> <span class="nx">consumer</span> <span class="nx">connected</span> <span class="nx">successfully</span><span class="p">,</span> <span class="nx">it</span> <span class="nx">will</span> <span class="nx">start</span> <span class="nx">to</span> <span class="nx">receive</span> <span class="nx">messages</span>
+<span class="err">#</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">subscribed</span> <span class="nx">topic</span><span class="p">(</span><span class="nx">s</span><span class="p">).</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">]</span> <span class="nx">kafka</span> <span class="nx">servers</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9092</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">]</span> <span class="nx">subscribed</span> <span class="nx">topics</span><span class="p">:</span> <span class="nx">topic</span><span class="o">-</span><span class="nx">sasl</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">kafka</span> <span class="nx">listener</span>
 </pre></div>
 
             </div>
@@ -127,7 +134,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/kafka;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/kafka;
 import ballerina/log;
 </code></pre></div>
 
@@ -140,7 +147,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:AuthenticationConfiguration authConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:AuthenticationConfiguration authConfig = {
 </code></pre></div>
 
                                 </td>
@@ -159,7 +166,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    mechanism: kafka:AUTH_SASL_PLAIN,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mechanism: kafka:AUTH_SASL_PLAIN,
 </code></pre></div>
 
                                 </td>
@@ -178,7 +185,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    username: &quot;ballerina&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    username: &quot;ballerina&quot;,
     password: &quot;ballerina-secret&quot;
 </code></pre></div>
 
@@ -199,7 +206,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>};
+                                    <div class="highlight"><pre><code class=language-ballerina>};
 </code></pre></div>
 
                                 </td>
@@ -211,7 +218,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:ConsumerConfiguration consumerConfig = {
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfiguration consumerConfig = {
     bootstrapServers:&quot;localhost:9092&quot;,
     groupId:&quot;test-group&quot;,
     clientId: &quot;sasl-consumer&quot;,
@@ -229,7 +236,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    authenticationConfiguration: authConfig
+                                    <div class="highlight"><pre><code class=language-ballerina>    authenticationConfiguration: authConfig
 </code></pre></div>
 
                                 </td>
@@ -248,7 +255,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>};
+                                    <div class="highlight"><pre><code class=language-ballerina>};
 </code></pre></div>
 
                                 </td>
@@ -260,7 +267,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener kafka:Consumer consumer = new(consumerConfig);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Consumer consumer = new(consumerConfig);
 </code></pre></div>
 
                                 </td>
@@ -272,7 +279,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>service KafkaService on consumer {
+                                    <div class="highlight"><pre><code class=language-ballerina>service KafkaService on consumer {
     resource function onMessage(kafka:Consumer consumer, kafka:ConsumerRecord[] records) {
         foreach var consumerRecord in records {
             string value = &lt;string&gt; consumerRecord.value;
@@ -309,8 +316,8 @@ import ballerina/log;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run kafka_authentication_sasl_plain_consumer.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run kafka_authentication_sasl_plain_consumer.bal
 </code></pre></div>
 
                                 </td>

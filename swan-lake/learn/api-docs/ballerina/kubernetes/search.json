@@ -1,0 +1,331 @@
+{
+  "modules": [
+    {
+      "id": "kubernetes",
+      "description": "\u003cp\u003eThis module offers an annotation based Kubernetes extension implementation for ballerina.\u003c/p\u003e"
+    }
+  ],
+  "objects": [],
+  "functions": [],
+  "records": [
+    {
+      "id": "BuildExtension",
+      "description": "\u003cp\u003eExtend building of the docker image.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ConfigMap",
+      "description": "\u003cp\u003eKubernetes Config Map volume mount.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ConfigMapKeyRef",
+      "description": "\u003cp\u003eValue from config map key.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ConfigMapKeyValue",
+      "description": "\u003cp\u003eValue for config map key.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ConfigMapMount",
+      "description": "\u003cp\u003eConfigMap volume mount configurations for kubernetes.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "DeploymentConfiguration",
+      "description": "\u003cp\u003eKubernetes deployment configuration.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "FieldRef",
+      "description": "\u003cp\u003eValue from field.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "FieldValue",
+      "description": "\u003cp\u003eValue for a field.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "FileConfig",
+      "description": "\u003cp\u003eExternal file type for docker.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "IngressConfiguration",
+      "description": "\u003cp\u003eKubernetes ingress configuration.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "JobConfig",
+      "description": "\u003cp\u003eKubernetes job configuration.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "Metadata",
+      "description": "\u003cp\u003eMetadata for artifacts\u003c/p\u003e\n",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "OpenShiftBuildConfigConfiguration",
+      "description": "\u003cp\u003eBuild Config configuration for OpenShift.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "PersistentVolumeClaimConfig",
+      "description": "\u003cp\u003eKubernetes Persistent Volume Claim.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "PersistentVolumeClaims",
+      "description": "\u003cp\u003ePersistent Volume Claims configurations for kubernetes.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "PodAutoscalerConfig",
+      "description": "\u003cp\u003eKubernetes Horizontal Pod Autoscaler configuration\u003c/p\u003e\n",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "PodTolerationConfiguration",
+      "description": "\u003cp\u003ePod toleration configuration.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ProbeConfiguration",
+      "description": "\u003cp\u003eProbing configuration.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ProjectedVolumeMount",
+      "description": "\u003cp\u003eProjected volume mount configurations for kubernetes.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "PrometheusConfig",
+      "description": "\u003cp\u003ePrometheus port configuration.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ResourceFieldRef",
+      "description": "\u003cp\u003eValue from resource field.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ResourceFieldValue",
+      "description": "\u003cp\u003eValue for resource field.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ResourceQuotaConfig",
+      "description": "\u003cp\u003eKubernetes Resource Quota\u003c/p\u003e\n",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ResourceQuotas",
+      "description": "\u003cp\u003eResource Quota configuration for kubernetes.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "RollingUpdateConfig",
+      "description": "\u003cp\u003eRolling Update config type field for deployment.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "Secret",
+      "description": "\u003cp\u003eKubernetes secret volume mount.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "SecretKeyRef",
+      "description": "\u003cp\u003eValue from secret key.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "SecretKeyValue",
+      "description": "\u003cp\u003eValue for a secret key.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "SecretMount",
+      "description": "\u003cp\u003eSecret volume mount configurations for kubernetes.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ServiceAccountToken",
+      "description": "\u003cp\u003eService account token configurations for kubernetes.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ServiceConfiguration",
+      "description": "\u003cp\u003eKubernetes service configuration.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    }
+  ],
+  "constants": [
+    {
+      "id": "IMAGE_PULL_POLICY_IF_NOT_PRESENT",
+      "description": "\u003cp\u003ePull image if it is not present for deployment or job.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "IMAGE_PULL_POLICY_ALWAYS",
+      "description": "\u003cp\u003eAlways pull the image for knative service for deployment or job.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "IMAGE_PULL_POLICY_NEVER",
+      "description": "\u003cp\u003eNever pull the image for deployment or job.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "STRATEGY_RECREATE",
+      "description": "",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "STRATEGY_ROLLING_UPDATE",
+      "description": "",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "SESSION_AFFINITY_NONE",
+      "description": "\u003cp\u003eDisable session affinity on pods.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "SESSION_AFFINITY_CLIENT_IP",
+      "description": "\u003cp\u003eEnable session affinity on pods.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "SERVICE_TYPE_NORD_PORT",
+      "description": "\u003cp\u003eNode port type service.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "SERVICE_TYPE_CLUSTER_IP",
+      "description": "\u003cp\u003eCluster IP type service.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "SERVICE_TYPE_LOAD_BALANCER",
+      "description": "\u003cp\u003eLoad balancer type service.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "RESTART_POLICY_ON_FAILURE",
+      "description": "\u003cp\u003eRestart on failure policy for jobs.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "RESTART_POLICY_ALWAYS",
+      "description": "\u003cp\u003eAlways restart policy when job is finished.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "RESTART_POLICY_NEVER",
+      "description": "\u003cp\u003eNever restart policy for jobs.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    }
+  ],
+  "errors": [],
+  "types": [
+    {
+      "id": "StrategyRollingType",
+      "description": "",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "StrategyType",
+      "description": "",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ImagePullPolicy",
+      "description": "\u003cp\u003eImage pull policy type field for kubernetes deployment and jobs.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ResourceQuotaScope",
+      "description": "\u003cp\u003eScopes for kubernetes resource quotas\u003c/p\u003e\n",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "RestartPolicy",
+      "description": "\u003cp\u003eRestart policy type field for kubernetes jobs.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ServiceType",
+      "description": "\u003cp\u003eService type field for kubernetes services.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "SessionAffinity",
+      "description": "\u003cp\u003eSession affinity field for kubernetes services.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "TolerationEffect",
+      "description": "\u003cp\u003eTypes of toleration effects for pods.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "TolerationOperator",
+      "description": "\u003cp\u003eType of operations between key and value of a toleration.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    }
+  ],
+  "clients": [],
+  "listeners": [],
+  "annotations": [
+    {
+      "id": "ConfigMap",
+      "description": "\u003cp\u003e@kubernetes:ConfigMap annotation to configure config maps.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "Deployment",
+      "description": "\u003cp\u003e@kubernetes:Deployment annotation to configure deplyoment yaml.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "HPA",
+      "description": "\u003cp\u003e@kubernetes:HPA annotation to configure horizontal pod autoscaler yaml.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "Ingress",
+      "description": "\u003cp\u003e@kubernetes:Ingress annotation to configure ingress yaml.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "Job",
+      "description": "\u003cp\u003e@kubernetes:Job annotation to configure kubernetes jobs.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "PersistentVolumeClaim",
+      "description": "\u003cp\u003e@kubernetes:PersistentVolumeClaim annotation to configure Persistent Volume Claims.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "ResourceQuota",
+      "description": "\u003cp\u003e@kubernetes:ResourcesQuotas annotation to configure Resource Quotas.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "Secret",
+      "description": "\u003cp\u003e@kubernetes:Secret annotation to configure secrets.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    },
+    {
+      "id": "Service",
+      "description": "\u003cp\u003e@kubernetes:Service annotation to configure service yaml.\u003c/p\u003e",
+      "moduleId": "kubernetes"
+    }
+  ]
+}

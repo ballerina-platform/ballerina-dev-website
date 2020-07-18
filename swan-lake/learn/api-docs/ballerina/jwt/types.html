@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,389 +67,144 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Types</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#Error">Error</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#JwtSigningAlgorithm">JwtSigningAlgorithm</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../jwt/index.html">
-            <h3>jwt</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../jwt/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../jwt/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../jwt/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../jwt/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../jwt/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../jwt/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Types</h3>
+                    <h3>
+    Types
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#Error">Error</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#JwtSigningAlgorithm">JwtSigningAlgorithm</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#Error" onclick="menuLinkClick()">Error</a>
+        </li>
+    
+        <li >
+            <a href="#JwtSigningAlgorithm" onclick="menuLinkClick()">JwtSigningAlgorithm</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../jwt/index.html">
+        <a href="../jwt/index.html" onclick="menuLinkClick()">
             <h3>jwt</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../jwt/index.html#records">Records</a>
+            <a data="records" href="../jwt/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../jwt/index.html#objects">Objects</a>
+                <a  data="objects" href="../jwt/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../jwt/index.html#functions">Functions</a>
+                <a data="functions" href="../jwt/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../jwt/index.html#constants">Constants</a>
+                <a data="constants" href="../jwt/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../jwt/index.html#types">Types</a>
+                <a data="types" href="../jwt/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../jwt/index.html#errors">Errors</a>
+                <a data="errors" href="../jwt/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-             <h1>
-                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                 <span class="title-type">Types - </span>
-                 
-                     <a href="../jwt/index.html">jwt</a>
-                 
-            </h1>
-            <div class="types">
-                <div class="data-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        <div class="params-listing">
-                            <ul>
-                                <li id="Error">
-                                    <b >Error</b>
-                                    <span class="type">  <a href="../jwt/errors.html#JWTError">JWTError</a></span></li>
-                                <li>
-                                    
-                                    <p>Represents the JWT error type with details. This will be returned if an error occurred while issuing/validating a
+                    Types
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../jwt/index.html"><span class="modules">jwt</span></a>
+                
+                
+            </h1>
+            
+    <div class="types">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="Error">
+                            <b >Error</b>
+                            
+                                <span class="type">  <a href="../jwt/errors.html#JWTError">JWTError</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Represents the JWT error type with details. This will be returned if an error occurred while issuing/validating a
 JWT or any operation related to JWT.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="JwtSigningAlgorithm">
-                                    <b >JwtSigningAlgorithm</b>
-                                    <span class="type">  <a href="../jwt/constants.html#RS256">RS256</a> | <a href="../jwt/constants.html#RS384">RS384</a> | <a href="../jwt/constants.html#RS512">RS512</a> | <a href="../jwt/constants.html#NONE">NONE</a></span></li>
-                                <li>
-                                    
-                                    <p>The key algorithms supported by crypto module.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$0">
-                                    <b >$anonType$0</b>
-                                    <span class="type">RS256</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$1">
-                                    <b >$anonType$1</b>
-                                    <span class="type">RS384</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$10">
-                                    <b >$anonType$10</b>
-                                    <span class="type">aud</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$11">
-                                    <b >$anonType$11</b>
-                                    <span class="type">jti</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$12">
-                                    <b >$anonType$12</b>
-                                    <span class="type">exp</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$13">
-                                    <b >$anonType$13</b>
-                                    <span class="type">nbf</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$14">
-                                    <b >$anonType$14</b>
-                                    <span class="type">iat</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$2">
-                                    <b >$anonType$2</b>
-                                    <span class="type">RS512</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$3">
-                                    <b >$anonType$3</b>
-                                    <span class="type">NONE</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$4">
-                                    <b >$anonType$4</b>
-                                    <span class="type">alg</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$5">
-                                    <b >$anonType$5</b>
-                                    <span class="type">typ</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$6">
-                                    <b >$anonType$6</b>
-                                    <span class="type">cty</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$7">
-                                    <b >$anonType$7</b>
-                                    <span class="type">kid</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$8">
-                                    <b >$anonType$8</b>
-                                    <span class="type">iss</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$9">
-                                    <b >$anonType$9</b>
-                                    <span class="type">sub</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="JwtSigningAlgorithm">
+                            <b >JwtSigningAlgorithm</b>
+                            
+                                <span class="type">  <a href="../jwt/constants.html#RS256">RS256</a> | <a href="../jwt/constants.html#RS384">RS384</a> | <a href="../jwt/constants.html#RS512">RS512</a> | <a href="../jwt/constants.html#NONE">NONE</a></span></li>
+                            
+                        <li>
+                            
+                            <p>The key algorithms supported by crypto module.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+            
         </div>
     </div>
 
+        </div>
+        </div>
+    </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -468,6 +231,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -477,4 +258,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

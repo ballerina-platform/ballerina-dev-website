@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -62,14 +66,14 @@
             
             <div class="primary-list module">
     
-        <a href="../crypto/index.html">
+        <a href="../crypto/index.html" onclick="menuLinkClick()">
             <h3>crypto</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../crypto/index.html#records">Records</a>
+            <a data="records" href="../crypto/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
@@ -77,23 +81,23 @@
         
         
             <li>
-                <a data="functions" href="../crypto/index.html#functions">Functions</a>
+                <a data="functions" href="../crypto/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../crypto/index.html#constants">Constants</a>
+                <a data="constants" href="../crypto/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../crypto/index.html#types">Types</a>
+                <a data="types" href="../crypto/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../crypto/index.html#errors">Errors</a>
+                <a data="errors" href="../crypto/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -102,225 +106,173 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../crypto/index.html">
-            <h3>crypto</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../crypto/index.html#records">Records</a>
-        </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../crypto/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../crypto/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../crypto/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../crypto/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Constants - </span> 
-                <a href="../crypto/index.html">crypto</a> 
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Constants
+
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../crypto/index.html"><span class="modules">crypto</span></a>
+                
+                
             </h1>
-            <div class="constants">
-                <div class="data-wrapper">
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="RSA">
-                                    <b >RSA</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> RSA
-                                </li>
-                                <li>
-                                    
-                                    <p>The <code>RSA</code> algorithm.</p>
+            
+    <div class="constants">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="RSA">
+                            <b >RSA</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> RSA
+                        </li>
+                        <li>
+                            
+                            <p>The <code>RSA</code> algorithm.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="NONE">
-                                    <b >NONE</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> NONE
-                                </li>
-                                <li>
-                                    
-                                    <p>No padding.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="PKCS1">
-                                    <b >PKCS1</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> PKCS1
-                                </li>
-                                <li>
-                                    
-                                    <p>The <code>PKCS1</code> padding mode.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="PKCS5">
-                                    <b >PKCS5</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> PKCS5
-                                </li>
-                                <li>
-                                    
-                                    <p>The <code>PKCS5</code> padding mode.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="OAEPwithMD5andMGF1">
-                                    <b >OAEPwithMD5andMGF1</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> OAEPwithMD5andMGF1
-                                </li>
-                                <li>
-                                    
-                                    <p>The <code>OAEPwithMD5andMGF1</code> padding mode.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="OAEPWithSHA1AndMGF1">
-                                    <b >OAEPWithSHA1AndMGF1</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> OAEPWithSHA1AndMGF1
-                                </li>
-                                <li>
-                                    
-                                    <p>The <code>OAEPWithSHA1AndMGF1</code> padding mode.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="OAEPWithSHA256AndMGF1">
-                                    <b >OAEPWithSHA256AndMGF1</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> OAEPWithSHA256AndMGF1
-                                </li>
-                                <li>
-                                    
-                                    <p>The <code>OAEPWithSHA256AndMGF1</code> padding mode.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="OAEPwithSHA384andMGF1">
-                                    <b >OAEPwithSHA384andMGF1</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> OAEPwithSHA384andMGF1
-                                </li>
-                                <li>
-                                    
-                                    <p>The <code>OAEPwithSHA384andMGF1</code> padding mode.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="OAEPwithSHA512andMGF1">
-                                    <b >OAEPwithSHA512andMGF1</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> OAEPwithSHA512andMGF1
-                                </li>
-                                <li>
-                                    
-                                    <p>The <code>OAEPwithSHA512andMGF1</code> padding mode.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="NONE">
+                            <b >NONE</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> NONE
+                        </li>
+                        <li>
+                            
+                            <p>No padding.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="PKCS1">
+                            <b >PKCS1</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> PKCS1
+                        </li>
+                        <li>
+                            
+                            <p>The <code>PKCS1</code> padding mode.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="PKCS5">
+                            <b >PKCS5</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> PKCS5
+                        </li>
+                        <li>
+                            
+                            <p>The <code>PKCS5</code> padding mode.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="OAEPwithMD5andMGF1">
+                            <b >OAEPwithMD5andMGF1</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> OAEPwithMD5andMGF1
+                        </li>
+                        <li>
+                            
+                            <p>The <code>OAEPwithMD5andMGF1</code> padding mode.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="OAEPWithSHA1AndMGF1">
+                            <b >OAEPWithSHA1AndMGF1</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> OAEPWithSHA1AndMGF1
+                        </li>
+                        <li>
+                            
+                            <p>The <code>OAEPWithSHA1AndMGF1</code> padding mode.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="OAEPWithSHA256AndMGF1">
+                            <b >OAEPWithSHA256AndMGF1</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> OAEPWithSHA256AndMGF1
+                        </li>
+                        <li>
+                            
+                            <p>The <code>OAEPWithSHA256AndMGF1</code> padding mode.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="OAEPwithSHA384andMGF1">
+                            <b >OAEPwithSHA384andMGF1</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> OAEPwithSHA384andMGF1
+                        </li>
+                        <li>
+                            
+                            <p>The <code>OAEPwithSHA384andMGF1</code> padding mode.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="OAEPwithSHA512andMGF1">
+                            <b >OAEPwithSHA512andMGF1</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> OAEPwithSHA512andMGF1
+                        </li>
+                        <li>
+                            
+                            <p>The <code>OAEPwithSHA512andMGF1</code> padding mode.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -347,6 +299,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -356,4 +326,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

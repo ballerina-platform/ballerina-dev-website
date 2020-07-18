@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,70 +68,26 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#transform">transform</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../xslt/index.html">
-            <h3>xslt</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../xslt/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="errors" href="../xslt/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#transform">transform</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#transform" onclick="menuLinkClick()">transform</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../xslt/index.html">
+        <a href="../xslt/index.html" onclick="menuLinkClick()">
             <h3>xslt</h3>
         </a>
     
@@ -133,7 +98,7 @@
         
         
             <li>
-                <a data="functions" href="../xslt/index.html#functions">Functions</a>
+                <a data="functions" href="../xslt/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -141,68 +106,76 @@
         
         
             <li>
-                <a data="errors" href="../xslt/index.html#errors">Errors</a>
+                <a data="errors" href="../xslt/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../xslt/index.html">xslt</a>
+                    <a href="../xslt/index.html"><span class="modules">xslt</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#transform">transform</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#transform">transform</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="transform" title="transform">
              <a class="url-link" href="#transform">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > transform </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">xml</span> input, <span class="builtin-type">xml</span> xsl)</p>
-            <b> returns </b><span class="builtin-type">xml</span> | <span class="builtin-type">error</span> 
+            
+                <b> returns </b><span class="builtin-type">xml</span> | <span class="builtin-type">error</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -265,28 +238,18 @@ can't be transformed</p>
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -313,6 +276,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -322,4 +303,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

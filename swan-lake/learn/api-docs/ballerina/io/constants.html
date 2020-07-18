@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -63,42 +67,38 @@ or non-blocking manner.
             
             <div class="primary-list module">
     
-        <a href="../io/index.html">
+        <a href="../io/index.html" onclick="menuLinkClick()">
             <h3>io</h3>
         </a>
     
     <ul>
         
-        <li>
-            <a data="records" href="../io/index.html#records">Records</a>
-        </li>
-        
         
             <li>
-                <a  data="objects" href="../io/index.html#objects">Objects</a>
+                <a  data="objects" href="../io/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../io/index.html#functions">Functions</a>
+                <a data="functions" href="../io/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../io/index.html#constants">Constants</a>
+                <a data="constants" href="../io/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../io/index.html#types">Types</a>
+                <a data="types" href="../io/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../io/index.html#errors">Errors</a>
+                <a data="errors" href="../io/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -107,258 +107,202 @@ or non-blocking manner.
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../io/index.html">
-            <h3>io</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../io/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../io/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../io/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../io/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../io/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../io/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Constants - </span> 
-                <a href="../io/index.html">io</a> 
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Constants
+
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../io/index.html"><span class="modules">io</span></a>
+                
+                
             </h1>
-            <div class="constants">
-                <div class="data-wrapper">
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="DEFAULT">
-                                    <b >DEFAULT</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> default
-                                </li>
-                                <li>
-                                    
-                                    <p>Default value is the format specified by the CSVChannel. Precedence will be given to the field separator and record separator.</p>
+            
+    <div class="constants">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="DEFAULT">
+                            <b >DEFAULT</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> default
+                        </li>
+                        <li>
+                            
+                            <p>Default value is the format specified by the CSVChannel. Precedence will be given to the field separator and record separator.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="CSV">
-                                    <b >CSV</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> csv
-                                </li>
-                                <li>
-                                    
-                                    <p>Field separator will be &quot;,&quot; and the record separator will be a new line.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="TDF">
-                                    <b >TDF</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> tdf
-                                </li>
-                                <li>
-                                    
-                                    <p>Field separator will be a tab and the record separator will be a new line.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="COMMA">
-                                    <b >COMMA</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> ,
-                                </li>
-                                <li>
-                                    
-                                    <p>Comma (,) will be used as the field separator.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="TAB">
-                                    <b >TAB</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> 	
-                                </li>
-                                <li>
-                                    
-                                    <p>Tab (/t) will be use as the field separator.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="COLON">
-                                    <b >COLON</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> :
-                                </li>
-                                <li>
-                                    
-                                    <p>Colon (:) will be use as the field separator.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="CSV_RECORD_SEPARATOR">
-                                    <b >CSV_RECORD_SEPARATOR</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> 
-
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the record separator of the CSV file.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="FS_COLON">
-                                    <b >FS_COLON</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> :
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the colon separator, which should be used to identify colon-separated files.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="MINIMUM_HEADER_COUNT">
-                                    <b >MINIMUM_HEADER_COUNT</b>
-                                    <span class="type">  <span class="builtin-type">int</span></span> 0
-                                </li>
-                                <li>
-                                    
-                                    <p>Represents the minimum number of headers, which will be included in the CSV.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="BIG_ENDIAN">
-                                    <b >BIG_ENDIAN</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> BE
-                                </li>
-                                <li>
-                                    
-                                    <p>Specifies the bytes to be in the order of most significant byte first.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="LITTLE_ENDIAN">
-                                    <b >LITTLE_ENDIAN</b>
-                                    <span class="type">  <span class="builtin-type">string</span></span> LE
-                                </li>
-                                <li>
-                                    
-                                    <p>Specifies the byte order to be the least significant byte first.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="CSV">
+                            <b >CSV</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> csv
+                        </li>
+                        <li>
+                            
+                            <p>Field separator will be &quot;,&quot; and the record separator will be a new line.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="TDF">
+                            <b >TDF</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> tdf
+                        </li>
+                        <li>
+                            
+                            <p>Field separator will be a tab and the record separator will be a new line.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="COMMA">
+                            <b >COMMA</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> ,
+                        </li>
+                        <li>
+                            
+                            <p>Comma (,) will be used as the field separator.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="TAB">
+                            <b >TAB</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> 	
+                        </li>
+                        <li>
+                            
+                            <p>Tab (/t) will be use as the field separator.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="COLON">
+                            <b >COLON</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> :
+                        </li>
+                        <li>
+                            
+                            <p>Colon (:) will be use as the field separator.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="CSV_RECORD_SEPARATOR">
+                            <b >CSV_RECORD_SEPARATOR</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> 
+
+                        </li>
+                        <li>
+                            
+                            <p>Represents the record separator of the CSV file.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="FS_COLON">
+                            <b >FS_COLON</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> :
+                        </li>
+                        <li>
+                            
+                            <p>Represents the colon separator, which should be used to identify colon-separated files.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="MINIMUM_HEADER_COUNT">
+                            <b >MINIMUM_HEADER_COUNT</b>
+                            <span class="type">  <span class="builtin-type">int</span></span> 0
+                        </li>
+                        <li>
+                            
+                            <p>Represents the minimum number of headers, which will be included in the CSV.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="BIG_ENDIAN">
+                            <b >BIG_ENDIAN</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> BE
+                        </li>
+                        <li>
+                            
+                            <p>Specifies the bytes to be in the order of most significant byte first.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="LITTLE_ENDIAN">
+                            <b >LITTLE_ENDIAN</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> LE
+                        </li>
+                        <li>
+                            
+                            <p>Specifies the byte order to be the least significant byte first.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -385,6 +329,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -394,4 +356,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

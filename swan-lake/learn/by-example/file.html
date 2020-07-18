@@ -58,7 +58,23 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">removeResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Remove foo directory with all child elements.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">file</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Current</span> <span class="nx">directory</span><span class="p">:</span> <span class="o">/</span><span class="nx">A</span><span class="o">/</span><span class="nx">B</span>
+<span class="nx">Created</span> <span class="nx">directory</span> <span class="nx">path</span><span class="p">:</span> <span class="o">/</span><span class="nx">A</span><span class="o">/</span><span class="nx">B</span><span class="o">/</span><span class="nx">foo</span>
+<span class="nx">Created</span> <span class="nx">nested</span> <span class="nx">directory</span> <span class="nx">path</span><span class="p">:</span> <span class="o">/</span><span class="nx">A</span><span class="o">/</span><span class="nx">B</span><span class="o">/</span><span class="nx">foo</span><span class="o">/</span><span class="nx">bar</span>
+<span class="nx">Created</span> <span class="nx">file</span> <span class="nx">path</span><span class="p">:</span> <span class="o">/</span><span class="nx">A</span><span class="o">/</span><span class="nx">B</span><span class="o">/</span><span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span>
+<span class="nx">File</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span>
+<span class="nx">File</span> <span class="nx">size</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Is</span> <span class="nx">directory</span><span class="p">:</span> <span class="kc">false</span>
+<span class="nx">Modified</span> <span class="nx">at</span> <span class="nx">time</span><span class="p">=</span><span class="mi">1567597039000</span> <span class="nx">zone</span><span class="p">=</span><span class="nx">id</span><span class="p">=</span><span class="nx">Z</span> <span class="nx">offset</span><span class="p">=</span><span class="mi">0</span>
+<span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span> <span class="nx">file</span> <span class="nx">exists</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span> <span class="nx">file</span> <span class="nx">is</span> <span class="nx">copied</span> <span class="nx">to</span> <span class="nx">new</span> <span class="nx">path</span> <span class="nx">foo</span><span class="o">/</span><span class="nx">bar</span><span class="o">/</span><span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span>
+<span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span> <span class="nx">file</span> <span class="nx">is</span> <span class="nx">moved</span> <span class="nx">to</span> <span class="nx">new</span> <span class="nx">path</span> <span class="nx">foo</span><span class="o">/</span><span class="nx">bar1</span><span class="p">.</span><span class="nx">txt</span>
+<span class="nx">Temporary</span> <span class="nx">directory</span><span class="p">:</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nx">folders</span><span class="o">/</span><span class="mi">4</span><span class="nx">z</span><span class="o">/</span><span class="nx">xvlnvsp54ks9793d6k5_6bw40000gn</span><span class="o">/</span><span class="nx">T</span><span class="o">/</span>
+<span class="nx">Remove</span> <span class="nx">file</span> <span class="nx">at</span> <span class="nx">foo</span><span class="o">/</span><span class="nx">bar1</span><span class="p">.</span><span class="nx">txt</span>
+<span class="nx">Remove</span> <span class="nx">foo</span> <span class="nx">directory</span> <span class="nx">with</span> <span class="nx">all</span> <span class="nx">child</span> <span class="nx">elements</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -161,7 +177,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/file;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/file;
 import ballerina/filepath;
 import ballerina/io;
 </code></pre></div>
@@ -175,7 +191,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -187,7 +203,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Current directory: &quot; + file:getCurrentDirectory());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Current directory: &quot; + file:getCurrentDirectory());
 </code></pre></div>
 
                                 </td>
@@ -206,7 +222,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error createDirResults = file:createDir(&quot;foo&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error createDirResults = file:createDir(&quot;foo&quot;);
     if (createDirResults is string) {
         io:println(&quot;Created directory path: &quot; + createDirResults);
     }
@@ -228,7 +244,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string dirPath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string dirPath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;);
     createDirResults = file:createDir(dirPath, true);
     if (createDirResults is string) {
         io:println(&quot;Created nested directory path: &quot; + createDirResults);
@@ -251,7 +267,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error createFileResults = file:createFile(&quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error createFileResults = file:createFile(&quot;bar.txt&quot;);
     if (createFileResults is string) {
         io:println(&quot;Created file path: &quot; + createFileResults);
     }
@@ -273,7 +289,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    file:FileInfo|error fileInfoResults = file:getFileInfo(&quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    file:FileInfo|error fileInfoResults = file:getFileInfo(&quot;bar.txt&quot;);
     if (fileInfoResults is file:FileInfo) {
         io:println(&quot;File name: &quot; + fileInfoResults.getName());
         io:println(&quot;File size: &quot; + fileInfoResults.getSize().toString());
@@ -299,7 +315,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean fileExists = file:exists(&quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean fileExists = file:exists(&quot;bar.txt&quot;);
     io:println(&quot;bar.txt file exists: &quot; + fileExists.toString());
 </code></pre></div>
 
@@ -319,7 +335,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string filePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;, &quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string filePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;, &quot;bar.txt&quot;);
     error? copyDirResults = file:copy(&quot;bar.txt&quot;, filePath, true);
     if (copyDirResults is ()) {
         io:println(&quot;bar.txt file is copied to new path &quot; + filePath);
@@ -342,7 +358,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string newFilePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar1.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string newFilePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar1.txt&quot;);
     error? renameResults = file:rename(&quot;bar.txt&quot;, newFilePath);
     if (renameResults is ()) {
         io:println(&quot;bar.txt file is moved to new path &quot; + newFilePath);
@@ -365,7 +381,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string tempDirPath = file:tempDir();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string tempDirPath = file:tempDir();
     io:println(&quot;Temporary directory: &quot; + tempDirPath);
 </code></pre></div>
 
@@ -385,7 +401,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    file:FileInfo[]|error readDirResults = file:readDir(&quot;foo&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    file:FileInfo[]|error readDirResults = file:readDir(&quot;foo&quot;);
 </code></pre></div>
 
                                 </td>
@@ -404,7 +420,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? removeResults = file:remove(newFilePath);
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? removeResults = file:remove(newFilePath);
     if (removeResults is ()) {
         io:println(&quot;Remove file at &quot; + newFilePath);
     }
@@ -426,7 +442,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    removeResults = file:remove(&quot;foo&quot;, true);
+                                    <div class="highlight"><pre><code class=language-ballerina>    removeResults = file:remove(&quot;foo&quot;, true);
     if (removeResults is ()) {
         io:println(&quot;Remove foo directory with all child elements.&quot;);
     }
@@ -463,8 +479,8 @@ import ballerina/io;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run file.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run file.bal
 Current directory: /A/B
 Created directory path: /A/B/foo
 Created nested directory path: /A/B/foo/bar

@@ -29,7 +29,22 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hub start error:&quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);}</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);}</span><span class="err">#</span> <span class="nx">This</span> <span class="nx">sample</span> <span class="nx">requires</span> <span class="nx">the</span> <span class="nx">Hub</span> <span class="nx">Service</span> <span class="nx">to</span> <span class="nx">start</span> <span class="nx">via</span> <span class="nx">the</span> <span class="nx">hub</span><span class="p">.</span><span class="nx">bal</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">prior</span> <span class="nx">to</span> <span class="nx">running</span> <span class="nx">the</span> <span class="nx">Publisher</span> <span class="nx">main</span> <span class="nx">program</span><span class="p">.</span> <span class="nx">The</span>
+<span class="err">#</span> <span class="nx">Subscriber</span> <span class="nx">Service</span> <span class="nx">needs</span> <span class="nx">to</span> <span class="nx">start</span> <span class="nx">after</span> <span class="nx">the</span> <span class="nx">publisher</span> <span class="nx">registers</span> <span class="nx">the</span> <span class="nx">topic</span> <span class="nx">at</span> <span class="nx">the</span> <span class="nx">hub</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">If</span> <span class="nx">the</span> <span class="nx">port</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">specified</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">hub</span> <span class="kd">service</span> <span class="nx">starts</span> <span class="nx">on</span> <span class="nx">the</span> <span class="k">default</span> <span class="nx">port</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">hub</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Starting</span> <span class="nx">up</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="nx">Hub</span> <span class="nx">Service</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="nx">Ballerina</span> <span class="nx">WebSub</span> <span class="nx">Hub</span> <span class="nx">started</span> <span class="nx">up</span><span class="p">.</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="nx">Publish</span> <span class="nx">URL</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9191/websub/publish</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="nx">Subscription</span> <span class="nx">URL</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9191/websub/hub</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9191</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">36</span><span class="p">,</span><span class="mi">782</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Topic</span> <span class="nx">registration</span> <span class="nx">successful</span> <span class="nx">at</span> <span class="nx">Hub</span><span class="p">,</span> <span class="k">for</span> <span class="nx">topic</span><span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//websubpubtopic.com]</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">764</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Subscription</span> <span class="nx">request</span> <span class="nx">received</span> <span class="k">for</span> <span class="nx">topic</span><span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//websubpubtopic.com] with callback[http://localhost:8181/websub]</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">807</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Sending</span> <span class="nx">intent</span> <span class="nx">verification</span> <span class="nx">request</span> <span class="nx">to</span> <span class="nx">callback</span><span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:8181/websub] for topic[http://websubpubtopic.com]</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">43</span><span class="p">,</span><span class="mi">116</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Intent</span> <span class="nx">verification</span> <span class="nx">successful</span> <span class="k">for</span> <span class="nx">mode</span><span class="p">:</span> <span class="p">[</span><span class="nx">subscribe</span><span class="p">],</span> <span class="k">for</span> <span class="nx">callback</span> <span class="nx">URL</span><span class="p">:</span> <span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:8181/websub]</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">46</span><span class="p">,</span><span class="mi">952</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Update</span> <span class="nx">notification</span> <span class="nx">done</span> <span class="k">for</span> <span class="nx">Topic</span> <span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//websubpubtopic.com]</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
@@ -53,7 +68,12 @@ redirect_from:
                                     <span class="nx">publishResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Update notification successful!&quot;</span><span class="p">);</span>
-    <span class="p">}}</span>
+    <span class="p">}}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">publisher</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Topic</span> <span class="nx">registration</span> <span class="nx">successful</span><span class="p">!</span>
+<span class="nx">Publishing</span> <span class="nx">update</span> <span class="nx">to</span> <span class="nx">remote</span> <span class="nx">Hub</span>
+<span class="nx">Update</span> <span class="nx">notification</span> <span class="nx">successful</span><span class="p">!</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
@@ -87,7 +107,13 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload as string&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">subscriber</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8181</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">797</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Subscription</span> <span class="nx">Request</span> <span class="nx">successfully</span> <span class="nx">sent</span> <span class="nx">to</span> <span class="nx">Hub</span><span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9191/websub/hub], for Topic[http://websubpubtopic.com], with Callback [http://localhost:8181/websub]</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">43</span><span class="p">,</span><span class="mo">050</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Intent</span> <span class="nx">verified</span> <span class="k">for</span> <span class="nx">subscription</span> <span class="nx">request</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">47</span><span class="p">,</span><span class="mi">098</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">WebSub</span> <span class="nx">Notification</span> <span class="nx">Received</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;action&quot;</span><span class="p">:</span><span class="s">&quot;publish&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">:</span><span class="s">&quot;remote-hub&quot;</span><span class="p">}</span>
 </pre></div>
 
             </div>
@@ -187,7 +213,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/runtime;
 import ballerina/websub;
@@ -209,7 +235,7 @@ import ballerina/websub;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -221,7 +247,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Starting up the Ballerina Hub Service&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Starting up the Ballerina Hub Service&quot;);
 </code></pre></div>
 
                                 </td>
@@ -241,7 +267,7 @@ import ballerina/websub;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    websub:Hub webSubHub;
+                                    <div class="highlight"><pre><code class=language-ballerina>    websub:Hub webSubHub;
     var result = websub:startHub(new http:Listener(9191), &quot;/websub&quot;, &quot;/hub&quot;,
         hubConfiguration = {
             remotePublish: {
@@ -260,7 +286,7 @@ import ballerina/websub;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is websub:Hub) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is websub:Hub) {
         webSubHub = result;
     } else if (result is websub:HubStartedUpError) {
         webSubHub = result.startedUpHub;
@@ -279,7 +305,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(10000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(10000);
 </code></pre></div>
 
                                 </td>
@@ -298,7 +324,7 @@ import ballerina/websub;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -327,8 +353,8 @@ import ballerina/websub;
 # Subscriber Service needs to start after the publisher registers the topic at the hub.
 # If the port is not specified, the hub service starts on the default port.
 # To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run hub.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run hub.bal
 Starting up the Ballerina Hub Service
 [ballerina/websub] Ballerina WebSub Hub started up.
 [ballerina/websub] Publish URL: http://localhost:9191/websub/publish
@@ -397,7 +423,7 @@ Starting up the Ballerina Hub Service
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/runtime;
 import ballerina/websub;
 </code></pre></div>
@@ -418,7 +444,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>websub:PublisherClient websubHubClientEP =
+                                    <div class="highlight"><pre><code class=language-ballerina>websub:PublisherClient websubHubClientEP =
                     new (&quot;http://localhost:9191/websub/publish&quot;);
 </code></pre></div>
 
@@ -427,7 +453,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the remote [WebSub Hub client]((<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html">https://ballerina.io/learn/api-docs/ballerina/websub/clients/PublisherClient.html</a>) to which registration and publish requests are sent.</p>
+                                            <p>This is the remote [WebSub Hub client]((<a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html">https://ballerina.io/swan-lake/learn/api-docs/ballerina/websub/clients/PublisherClient.html</a>) to which registration and publish requests are sent.</p>
 
                                         </div>
                                     </div>
@@ -438,7 +464,7 @@ import ballerina/websub;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -450,7 +476,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var registrationResponse =
+                                    <div class="highlight"><pre><code class=language-ballerina>    var registrationResponse =
                 websubHubClientEP-&gt;registerTopic(&quot;http://websubpubtopic.com&quot;);
     if (registrationResponse is error) {
         io:println(&quot;Error occurred registering topic: &quot; +
@@ -476,7 +502,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(5000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(5000);
 </code></pre></div>
 
                                 </td>
@@ -495,7 +521,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Publishing update to remote Hub&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Publishing update to remote Hub&quot;);
     var publishResponse =
         websubHubClientEP-&gt;publishUpdate(&quot;http://websubpubtopic.com&quot;,
                                 {&quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;remote-hub&quot;});
@@ -523,7 +549,7 @@ import ballerina/websub;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -549,8 +575,8 @@ import ballerina/websub;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run publisher.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run publisher.bal
 Topic registration successful!
 Publishing update to remote Hub
 Update notification successful!
@@ -616,7 +642,7 @@ Update notification successful!
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/websub;
 </code></pre></div>
@@ -637,7 +663,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener websub:Listener websubEP = new (8181);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener websub:Listener websubEP = new (8181);
 </code></pre></div>
 
                                 </td>
@@ -656,7 +682,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@websub:SubscriberServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@websub:SubscriberServiceConfig {
     path: &quot;/websub&quot;,
     subscribeOnStartUp: true,
     target: [&quot;http://localhost:9191/websub/hub&quot;, &quot;http://websubpubtopic.com&quot;],
@@ -682,7 +708,7 @@ service websubSubscriber on websubEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onIntentVerification(websub:Caller caller,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onIntentVerification(websub:Caller caller,
                                    websub:IntentVerificationRequest request) {
 </code></pre></div>
 
@@ -704,7 +730,7 @@ service websubSubscriber on websubEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response response = request.
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response response = request.
             buildSubscriptionVerificationResponse(&quot;http://websubpubtopic.com&quot;);
 </code></pre></div>
 
@@ -724,7 +750,7 @@ service websubSubscriber on websubEP {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (response.statusCode == 202) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (response.statusCode == 202) {
             log:printInfo(&quot;Intent verified for subscription request&quot;);
         } else {
             log:printWarn(&quot;Intent verification denied for subscription request&quot;);
@@ -741,7 +767,7 @@ service websubSubscriber on websubEP {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
             log:printError(&quot;Error responding to intent verification request&quot;,
                                                         result);
         }
@@ -757,7 +783,7 @@ service websubSubscriber on websubEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onNotification(websub:Notification notification) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onNotification(websub:Notification notification) {
         var payload = notification.getTextPayload();
         if (payload is string) {
             log:printInfo(&quot;WebSub Notification Received: &quot; + payload);
@@ -798,8 +824,8 @@ service websubSubscriber on websubEP {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and use the `ballerina run` command.
-$ ballerina run subscriber.bal
+# `.bal` file, and use the `ballerina run` command below.
+ballerina run subscriber.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8181
 2019-11-01 14:36:42,797 INFO  [ballerina/websub] - Subscription Request successfully sent to Hub[http://localhost:9191/websub/hub], for Topic[http://websubpubtopic.com], with Callback [http://localhost:8181/websub]
 2019-11-01 14:36:43,050 INFO  [] - Intent verified for subscription request

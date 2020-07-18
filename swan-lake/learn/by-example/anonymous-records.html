@@ -35,7 +35,12 @@ redirect_from:
     <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">recField</span> <span class="nx">in</span> <span class="nx">anydataRecord</span> <span class="p">{</span>
         <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">recField</span><span class="p">);</span>
     <span class="p">}</span>    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">anonymous_records</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">25</span> <span class="nx">address</span><span class="p">=</span><span class="nx">city</span><span class="p">=</span><span class="nx">Colombo</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">20</span> <span class="nx">address</span><span class="p">=</span><span class="nx">city</span><span class="p">=</span><span class="nx">London</span> <span class="nx">country</span><span class="p">=</span><span class="nx">UK</span>
+<span class="nx">John</span> <span class="nx">Doe</span> <span class="mi">25</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Colombo</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span>
 </pre></div>
 
             </div>
@@ -132,7 +137,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -144,7 +149,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Person record {
     string name;
     int age;
 </code></pre></div>
@@ -158,7 +163,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {|
         string city;
         string country;
     |} address;
@@ -181,7 +186,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -193,7 +198,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person john = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person john = {
         name: &quot;John Doe&quot;,
         age: 25,
         address: {city: &quot;Colombo&quot;, country: &quot;Sri Lanka&quot;}
@@ -218,7 +223,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {|
         string city;
         string country;
     |} adr = {city: &quot;London&quot;, country: &quot;UK&quot;};
@@ -242,7 +247,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person jane = {name: &quot;Jane Doe&quot;, age: 20, address: adr};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person jane = {name: &quot;Jane Doe&quot;, age: 20, address: adr};
     io:println(jane);
 </code></pre></div>
 
@@ -255,7 +260,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    anydata[] fields = toFieldsArray(john);
+                                    <div class="highlight"><pre><code class=language-ballerina>    anydata[] fields = toFieldsArray(john);
     io:println(fields);
 }
 </code></pre></div>
@@ -269,7 +274,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function toFieldsArray(record {} anydataRecord) returns anydata[] {
+                                    <div class="highlight"><pre><code class=language-ballerina>function toFieldsArray(record {} anydataRecord) returns anydata[] {
     anydata[] fields = [];
 </code></pre></div>
 
@@ -290,7 +295,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var recField in anydataRecord {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var recField in anydataRecord {
         fields.push(recField);
     }
 </code></pre></div>
@@ -304,7 +309,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    return fields;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return fields;
 }
 </code></pre></div>
 
@@ -331,8 +336,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run anonymous_records.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run anonymous_records.bal
 name=John Doe age=25 address=city=Colombo country=Sri Lanka
 name=Jane Doe age=20 address=city=London country=UK
 John Doe 25 city=Colombo country=Sri Lanka

@@ -71,7 +71,35 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">services</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_retry</span><span class="p">.</span><span class="nx">bal</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8080</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span><span class="mi">980</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Request</span> <span class="nx">received</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">client</span> <span class="nx">to</span> <span class="nx">delayed</span> <span class="kd">service</span><span class="p">.</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="mi">998</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Request</span> <span class="nx">received</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">client</span> <span class="nx">to</span> <span class="nx">delayed</span> <span class="kd">service</span><span class="p">.</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="mo">012</span> <span class="nx">ERROR</span> <span class="p">[]</span> <span class="o">-</span> <span class="nx">Error</span> <span class="nx">sending</span> <span class="nx">response</span> <span class="nx">from</span> <span class="nx">mock</span> <span class="kd">service</span> <span class="p">:</span> <span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">}</span><span class="nx">GenericListenerError</span> <span class="kt">message</span><span class="p">=</span><span class="nx">Connection</span> <span class="nx">between</span> <span class="nx">remote</span> <span class="nx">client</span> <span class="nx">and</span> <span class="nx">host</span> <span class="nx">is</span> <span class="nx">closed</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">36</span><span class="p">,</span><span class="mo">004</span> <span class="nx">ERROR</span> <span class="p">[]</span> <span class="o">-</span> <span class="nx">Error</span> <span class="nx">sending</span> <span class="nx">response</span> <span class="nx">from</span> <span class="nx">mock</span> <span class="kd">service</span> <span class="p">:</span> <span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">}</span><span class="nx">GenericListenerError</span> <span class="kt">message</span><span class="p">=</span><span class="nx">Connection</span> <span class="nx">between</span> <span class="nx">remote</span> <span class="nx">client</span> <span class="nx">and</span> <span class="nx">host</span> <span class="nx">is</span> <span class="nx">closed</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">39</span><span class="p">,</span><span class="mo">005</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Request</span> <span class="nx">received</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">client</span> <span class="nx">to</span> <span class="nx">delayed</span> <span class="kd">service</span><span class="p">.</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="mo">007</span> <span class="nx">ERROR</span> <span class="p">[]</span> <span class="o">-</span> <span class="nx">Error</span> <span class="nx">sending</span> <span class="nx">response</span> <span class="nx">from</span> <span class="nx">mock</span> <span class="kd">service</span> <span class="p">:</span> <span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">}</span><span class="nx">GenericListenerError</span> <span class="kt">message</span><span class="p">=</span><span class="nx">Connection</span> <span class="nx">between</span> <span class="nx">remote</span> <span class="nx">client</span> <span class="nx">and</span> <span class="nx">host</span> <span class="nx">is</span> <span class="nx">closed</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">53</span><span class="p">,</span><span class="mo">016</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Request</span> <span class="nx">received</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">client</span> <span class="nx">to</span> <span class="nx">healthy</span> <span class="kd">service</span><span class="p">.</span><span class="err">#</span> <span class="nx">If</span> <span class="nx">the</span> <span class="nx">request</span> <span class="nx">that</span> <span class="nx">was</span> <span class="nx">sent</span> <span class="nx">to</span> <span class="nx">the</span> <span class="s">`retryDemoService`</span> <span class="nx">fails</span> <span class="nx">due</span> <span class="nx">to</span> <span class="nx">an</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">client</span> <span class="nx">tries</span> <span class="nx">sending</span> <span class="nx">the</span> <span class="nx">request</span> <span class="nx">again</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/retry</span>
+<span class="o">*</span>   <span class="nx">Trying</span> <span class="p">::</span><span class="mf">1.</span><span class="p">..</span>
+<span class="o">*</span> <span class="nx">TCP_NODELAY</span> <span class="nx">set</span>
+<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(::</span><span class="mi">1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">retry</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
+<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.54.0</span>
+<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*/*</span>
+<span class="p">&gt;</span>
+<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
+<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Wed</span><span class="p">,</span> <span class="mi">4</span> <span class="nx">Sep</span> <span class="mi">2019</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">53</span> <span class="o">+</span><span class="mo">0530</span>
+<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.0.0</span><span class="o">-</span><span class="nx">beta</span>
+<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">14</span>
+<span class="p">&lt;</span>
+<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
+<span class="nx">Hello</span> <span class="nx">World</span><span class="p">!!!</span>
 </pre></div>
 
             </div>
@@ -184,7 +212,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/runtime;
 </code></pre></div>
@@ -198,7 +226,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
 </code></pre></div>
 
                                 </td>
@@ -217,7 +245,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            retryConfig: {
+                                    <div class="highlight"><pre><code class=language-ballerina>            retryConfig: {
 </code></pre></div>
 
                                 </td>
@@ -236,7 +264,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                intervalInMillis: 3000,
+                                    <div class="highlight"><pre><code class=language-ballerina>                intervalInMillis: 3000,
 </code></pre></div>
 
                                 </td>
@@ -255,7 +283,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                count: 3,
+                                    <div class="highlight"><pre><code class=language-ballerina>                count: 3,
 </code></pre></div>
 
                                 </td>
@@ -274,7 +302,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                backOffFactor: 2.0,
+                                    <div class="highlight"><pre><code class=language-ballerina>                backOffFactor: 2.0,
 </code></pre></div>
 
                                 </td>
@@ -294,7 +322,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                maxWaitIntervalInMillis: 20000
+                                    <div class="highlight"><pre><code class=language-ballerina>                maxWaitIntervalInMillis: 20000
 </code></pre></div>
 
                                 </td>
@@ -317,7 +345,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            },
+                                    <div class="highlight"><pre><code class=language-ballerina>            },
             timeoutInMillis: 2000
         }
     );
@@ -332,7 +360,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/retry&quot;
 }
 service retryDemoService on new http:Listener(9090) {
@@ -351,7 +379,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
 </code></pre></div>
 
                                 </td>
@@ -371,7 +399,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
 </code></pre></div>
 
                                 </td>
@@ -383,7 +411,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (backendResponse is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is http:Response) {
             var responseToCaller = caller-&gt;respond(backendResponse);
             if (responseToCaller is error) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
@@ -418,7 +446,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
 }
 </code></pre></div>
 
@@ -431,7 +459,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int counter = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int counter = 0;
 </code></pre></div>
 
                                 </td>
@@ -443,7 +471,7 @@ service retryDemoService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service mockHelloService on new http:Listener(8080) {
@@ -467,7 +495,7 @@ service mockHelloService on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;, &quot;POST&quot;],
         path: &quot;/&quot;
     }
@@ -487,7 +515,7 @@ service mockHelloService on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            runtime:sleep(5000);
+                                    <div class="highlight"><pre><code class=language-ballerina>            runtime:sleep(5000);
 </code></pre></div>
 
                                 </td>
@@ -506,7 +534,7 @@ service mockHelloService on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
             handleRespondResult(responseToCaller);
         } else {
             log:printInfo(
@@ -527,7 +555,7 @@ service mockHelloService on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleRespondResult(error? result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleRespondResult(error? result) {
     if (result is http:ListenerError) {
         log:printError(&quot;Error sending response from mock service&quot;, result);
     }
@@ -557,8 +585,8 @@ service mockHelloService on new http:Listener(8080) {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run http_retry.bal.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run http_retry.bal.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
 2019-09-04 15:47:25,980 INFO  [] - Request received from the client to delayed service.
@@ -593,7 +621,7 @@ $ ballerina run http_retry.bal.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># If the request that was sent to the `retryDemoService` fails due to an error, the client tries sending the request again.
-$ curl -v http://localhost:9090/retry
+curl -v http://localhost:9090/retry
 *   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 9090 (#0)

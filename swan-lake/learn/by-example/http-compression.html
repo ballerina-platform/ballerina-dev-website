@@ -84,7 +84,68 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">services</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_compression</span><span class="p">.</span><span class="nx">bal</span>
+<span class="err">#</span> <span class="nx">Service</span> <span class="nx">deployment</span>
+<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9092</span>
+<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="nx">autoCompress</span> <span class="nx">Service</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">cURL</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Here</span> <span class="nx">the</span> <span class="s">`Accept-Encoding`</span> <span class="nx">header</span> <span class="nx">is</span> <span class="nx">specified</span> <span class="k">as</span> <span class="s">`deflate`</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="o">--</span><span class="nx">output</span> <span class="o">-</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/autoCompress -H &quot;Accept-Encoding:deflate&quot;</span>
+<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">autoCompress</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
+<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.58.0</span>
+<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
+<span class="cm">&gt; Accept-Encoding:deflate</span>
+<span class="cm">&gt;</span>
+<span class="cm">&lt; HTTP/1.1 200 OK</span>
+<span class="cm">&lt; content-type: application/json</span>
+<span class="cm">&lt; content-encoding: deflate</span>
+<span class="cm">&lt; content-length: 41</span>
+<span class="cm">&lt;</span>
+<span class="cm">x��V</span>
+<span class="cm">* Connection #0 to host localhost left intact</span>
+<span class="cm">�,HU�Rr,-�WH��-(J-.���S�����	�# To invoke the alwaysCompress Service to get the JSON payload, use the following curl command.</span>
+<span class="cm"># Here the `Accept-Encoding` header is not specified.</span>
+<span class="cm">curl -v --output - http://localhost:9090/alwaysCompress/getJson</span>
+<span class="cm">&gt; GET /alwaysCompress/getJson HTTP/1.1</span>
+<span class="cm">&gt; Host: localhost:9090</span>
+<span class="cm">&gt; User-Agent: curl/7.58.0</span>
+<span class="cm">&gt; Accept: */</span><span class="o">*</span>
+<span class="p">&gt;</span>
+<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span>
+<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">49</span>
+<span class="p">&lt;</span>
+<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
+<span class="p">{</span><span class="s">&quot;Type&quot;</span><span class="p">:</span><span class="s">&quot;Always but constrained by content-type&quot;</span><span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="nx">alwaysCompress</span> <span class="nx">Service</span> <span class="nx">to</span> <span class="nx">get</span> <span class="nx">the</span> <span class="nx">String</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">curl</span> <span class="nx">command</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Here</span> <span class="nx">the</span> <span class="s">`Accept-Encoding`</span> <span class="nx">header</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">specified</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="o">--</span><span class="nx">output</span> <span class="o">-</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/alwaysCompress/getString</span>
+<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">alwaysCompress</span><span class="o">/</span><span class="nx">getString</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
+<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.58.0</span>
+<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
+<span class="cm">&gt;</span>
+<span class="cm">&lt; HTTP/1.1 200 OK</span>
+<span class="cm">&lt; content-type: text/plain</span>
+<span class="cm">&lt; content-encoding: gzip</span>
+<span class="cm">&lt; content-length: 48</span>
+<span class="cm">&lt;</span>
+<span class="cm">�</span>
+<span class="cm">* Connection #0 to host localhost left intact</span>
+<span class="cm">�,HU���,V�D�⒢̼t��ʴ��# To invoke the passthrough Service, use the following curl command.</span>
+<span class="cm">curl -v --output - http://localhost:9092/passthrough/</span>
+<span class="cm">&gt; GET /passthrough/ HTTP/1.1</span>
+<span class="cm">&gt; Host: localhost:9092</span>
+<span class="cm">&gt; User-Agent: curl/7.58.0</span>
+<span class="cm">&gt; Accept: */</span><span class="o">*</span>
+<span class="p">&gt;</span>
+<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
+<span class="p">&lt;</span> <span class="nx">transfer</span><span class="o">-</span><span class="nx">encoding</span><span class="p">:</span> <span class="nx">chunked</span>
+<span class="p">&lt;</span>
+<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
+<span class="nx">Backend</span> <span class="nx">response</span> <span class="nx">was</span> <span class="nx">encoded</span> <span class="p">:</span> <span class="nx">deflate</span><span class="p">,</span> <span class="nx">gzip</span>
 </pre></div>
 
             </div>
@@ -184,7 +245,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -197,7 +258,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener listenerEndpoint = new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener listenerEndpoint = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -209,7 +270,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     compression: {
         enable: http:COMPRESSION_AUTO
     }
@@ -227,7 +288,7 @@ service autoCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since compression behavior of the service is set as <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a>,
+                                            <p>Since compression behavior of the service is set as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a>,
  entity body compression is done according to the scheme indicated in the <code>Accept-Encoding</code> request header.
  Compression is not performed when the header is not present or when the header value is &ldquo;identity&rdquo;.
  <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/CompressionConfig.html">compression</a> annotation
@@ -242,7 +303,7 @@ service autoCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
             log:printError(&quot;Error sending response&quot;, result);
         }
     }
@@ -258,7 +319,7 @@ service autoCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     compression: {
         enable: http:COMPRESSION_ALWAYS,
         contentTypes: [&quot;text/plain&quot;]
@@ -289,7 +350,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function getJson(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getJson(http:Caller caller, http:Request req) {
         json msg = {&quot;Type&quot;: &quot;Always but constrained by content-type&quot;};
         var result = caller-&gt;respond(msg);
         if (result is error) {
@@ -315,7 +376,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function getString(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function getString(http:Caller caller, http:Request req) {
         var result = caller-&gt;respond(&quot;Type : This is a string&quot;);
         if (result is error) {
             log:printError(&quot;Error sending response&quot;, result);
@@ -340,7 +401,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;, {
         compression: http:COMPRESSION_ALWAYS
     }
 );
@@ -368,7 +429,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service passthrough on new http:Listener(9092) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service passthrough on new http:Listener(9092) {
     @http:ResourceConfig {
         path: &quot;/&quot;
     }
@@ -399,7 +460,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service backend on listenerEndpoint {
+                                    <div class="highlight"><pre><code class=language-ballerina>service backend on listenerEndpoint {
     resource function echo(http:Caller caller, http:Request req) {
         http:Response res = new;
         if (req.hasHeader(&quot;accept-encoding&quot;)) {
@@ -427,7 +488,7 @@ service alwaysCompress on listenerEndpoint {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Error sending response&quot;, result);
         }
@@ -458,8 +519,8 @@ service alwaysCompress on listenerEndpoint {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run http_compression.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run http_compression.bal
 # Service deployment
 ballerina: started HTTP/WS listener 0.0.0.0:9092
 ballerina: started HTTP/WS listener 0.0.0.0:9090
@@ -499,9 +560,9 @@ ballerina: started HTTP/WS listener 0.0.0.0:9090
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the autoCompress Service, use the following curl command.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the autoCompress Service, use the cURL command below.
 # Here the `Accept-Encoding` header is specified as `deflate`.
-$ curl -v --output - http://localhost:9090/autoCompress -H &quot;Accept-Encoding:deflate&quot;
+curl -v --output - http://localhost:9090/autoCompress -H &quot;Accept-Encoding:deflate&quot;
 &gt; GET /autoCompress HTTP/1.1
 &gt; Host: localhost:9090
 &gt; User-Agent: curl/7.58.0
@@ -529,7 +590,7 @@ x��V
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the alwaysCompress Service to get the JSON payload, use the following curl command.
 # Here the `Accept-Encoding` header is not specified.
-$ curl -v --output - http://localhost:9090/alwaysCompress/getJson
+curl -v --output - http://localhost:9090/alwaysCompress/getJson
 &gt; GET /alwaysCompress/getJson HTTP/1.1
 &gt; Host: localhost:9090
 &gt; User-Agent: curl/7.58.0
@@ -554,7 +615,7 @@ $ curl -v --output - http://localhost:9090/alwaysCompress/getJson
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the alwaysCompress Service to get the String payload, use the following curl command.
 # Here the `Accept-Encoding` header is not specified.
-$ curl -v --output - http://localhost:9090/alwaysCompress/getString
+curl -v --output - http://localhost:9090/alwaysCompress/getString
 &gt; GET /alwaysCompress/getString HTTP/1.1
 &gt; Host: localhost:9090
 &gt; User-Agent: curl/7.58.0
@@ -580,7 +641,7 @@ $ curl -v --output - http://localhost:9090/alwaysCompress/getString
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the passthrough Service, use the following curl command.
-$ curl -v --output - http://localhost:9092/passthrough/
+curl -v --output - http://localhost:9092/passthrough/
 &gt; GET /passthrough/ HTTP/1.1
 &gt; Host: localhost:9092
 &gt; User-Agent: curl/7.58.0

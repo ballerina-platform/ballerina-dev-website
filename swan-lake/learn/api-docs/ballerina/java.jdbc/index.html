@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,22 +62,23 @@ that is accessible via Java Database Connectivity (JDBC).
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../java.jdbc/index.html">
+        <a href="../java.jdbc/index.html" onclick="menuLinkClick()">
             <h3>java.jdbc</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../java.jdbc/index.html#records">Records</a>
+            <a data="records" href="../java.jdbc/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
         
             <li>
-                <a data="clients" href="../java.jdbc/index.html#clients">Clients</a>
+                <a data="clients" href="../java.jdbc/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
@@ -90,72 +93,37 @@ that is accessible via Java Database Connectivity (JDBC).
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../java.jdbc/index.html">
-            <h3>java.jdbc</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../java.jdbc/index.html#records">Records</a>
-        </li>
-        
-        
-        
-            <li>
-                <a data="clients" href="../java.jdbc/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">java.jdbc</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 0.5.0</div>
+                    <a href="../java.jdbc/index.html"><span class="modules">java.jdbc</span></a>
                 
-                    <h2>Module overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 0.5.0</div>
+    
+    <h2>Module overview</h2>
 <p>This module provides the functionality required to access and manipulate data stored in any type of relational database
 that is accessible via Java Database Connectivity (JDBC).</p>
 <p><strong>Prerequisite:</strong> Add the JDBC driver corresponding to the database you are trying to interact with
@@ -179,11 +147,11 @@ target = &quot;java8&quot;
 </code></pre>
 <p>Else, if you're trying to run a single BAL file, you can copy the JDBC driver into the <code>${BALLERINA_HOME}/bre/lib</code> directory and
 run the BAL file by executing the <code>ballerina run</code> command.</p>
-<h2>Client</h2>
+<h3>Client</h3>
 <p>To access a database, you must first create a
 <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/java.jdbc/clients/Client.html">jdbc:Client</a> object.
 The examples for creating a JDBC client can be found below.</p>
-<h3>Creating a client</h3>
+<h4>Creating a client</h4>
 <p>This example shows the different ways of creating the <code>jdbc:Client</code>. The client can be created by passing
 the JDBC URL, which is a mandatory property and all other fields are optional.</p>
 <p>The <code>dbClient1</code> receives only the database URL and the <code>dbClient2</code> receives the username and password in addition to the URL.
@@ -235,129 +203,81 @@ all the operations defined by the <code>sql:Client</code> will be supported by t
 </ol>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T0" title="T0">
-                                <a class="records " href="records/T0.html">T0</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T1" title="T1">
-                                <a class="records " href="records/T1.html">T1</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="Options" title="Options">
+                            <a class="records " href="records/Options.html">Options</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Provides a set of configuration related to database.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="T2" title="T2">
-                                <a class="records " href="records/T2.html">T2</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="T3" title="T3">
-                                <a class="records " href="records/T3.html">T3</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                Anonymous record
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate records" id="Options" title="Options">
-                                <a class="records " href="records/Options.html">Options</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Provides a set of configuration related to database.
-                            </td>
-                        </tr>
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
 
+    
+    <section class="method-content" id="clients">
+        <div class="main-method-title here">
+            <a class="url-link" href="#clients">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Clients </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="clients">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#clients">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Clients </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate clients" id="Client" title="Client">
+                    <a class="clients " href="clients/Client.html">Client</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate clients" id="Client" title="Client">
-                                <a class="clients " href="clients/Client.html">Client</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a JDBC client.
-                            </td>
-                        </tr>
-                    
-                </table>
-             </section>
+                    <p>Represents a JDBC client.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
 
-            
-           
-
-            
-
-
-            
+    
 
 
-            
+    
 
-            
 
-            
+    
+
+
+    
+
+    
+
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -384,6 +304,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -393,4 +331,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

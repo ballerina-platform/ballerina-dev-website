@@ -74,7 +74,18 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">nextStudent</span> <span class="nx">is</span> <span class="nx">StudentValue</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">nextStudent</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">streams</span><span class="p">.</span><span class="nx">balRetrieved</span> <span class="nx">odd</span> <span class="nx">number</span><span class="p">:</span> <span class="mi">3</span>
+<span class="nx">Filter</span> <span class="nx">records</span> <span class="nx">and</span> <span class="kt">map</span> <span class="nx">them</span> <span class="nx">to</span> <span class="nx">a</span> <span class="nx">different</span> <span class="nx">type</span> <span class="p">:</span>
+<span class="nx">Calculate</span> <span class="nx">the</span> <span class="nx">average</span> <span class="nx">score</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">subscribed</span> <span class="nx">students</span><span class="p">:</span> 
+<span class="nx">Average</span><span class="p">:</span> <span class="mf">0.8999999999999999</span>
+<span class="nx">Calls</span> <span class="nx">next</span> <span class="nx">method</span> <span class="nx">manually</span> <span class="nx">and</span> <span class="nx">get</span> <span class="nx">the</span> <span class="nx">next</span> <span class="nx">iteration</span> <span class="nx">value</span><span class="p">:</span> 
+<span class="nx">firstName</span><span class="p">=</span><span class="nx">Alex</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">George</span> <span class="nx">score</span><span class="p">=</span><span class="mf">1.5</span>
+<span class="nx">Use</span> <span class="nx">foreach</span> <span class="nx">method</span> <span class="nx">to</span> <span class="nx">loop</span> <span class="nx">through</span> <span class="nx">the</span> <span class="nx">rest</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">stream</span><span class="p">:</span> 
+<span class="nx">Student</span> <span class="nx">Ranjan</span> <span class="nx">has</span> <span class="nx">a</span> <span class="nx">score</span> <span class="nx">of</span> <span class="mf">0.9</span>
+<span class="nx">Student</span> <span class="nx">John</span> <span class="nx">has</span> <span class="nx">a</span> <span class="nx">score</span> <span class="nx">of</span> <span class="mf">1.2</span>
+<span class="nx">firstName</span><span class="p">=</span><span class="nx">Alex</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">George</span> <span class="nx">score</span><span class="p">=</span><span class="mf">1.5</span>
 </pre></div>
 
             </div>
@@ -209,7 +220,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -221,7 +232,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type OddNumberGenerator object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type OddNumberGenerator object {
     int i = 1;
     
     public function next() returns record {|int value;|}|error? {
@@ -248,7 +259,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type ResultValue record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type ResultValue record {|
     int value;
 |};
 </code></pre></div>
@@ -262,7 +273,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string firstName;
     string lastName;
     float score;
@@ -278,7 +289,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type StudentValue record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type StudentValue record {|
     Student value;
 |};
 </code></pre></div>
@@ -292,7 +303,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type FullName record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type FullName record {|
     string firstName;
     string lastName;
 |};
@@ -307,7 +318,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Subscription record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Subscription record {|
     string firstName;
     string lastName;
     float score;
@@ -324,7 +335,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     OddNumberGenerator oddGen = new;
 </code></pre></div>
 
@@ -337,7 +348,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var oddNumberStream = new stream&lt;int, error&gt;(oddGen);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var oddNumberStream = new stream&lt;int, error&gt;(oddGen);
 </code></pre></div>
 
                                 </td>
@@ -356,7 +367,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {|int value;|}|error? oddNumber = oddNumberStream.next();
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {|int value;|}|error? oddNumber = oddNumberStream.next();
 </code></pre></div>
 
                                 </td>
@@ -368,7 +379,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (oddNumber is ResultValue) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (oddNumber is ResultValue) {
         io:println(&quot;Retrieved odd number: &quot;, oddNumber.value);
     }
 </code></pre></div>
@@ -382,7 +393,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Filter records and map them to a different type :&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Filter records and map them to a different type :&quot;);
 </code></pre></div>
 
                                 </td>
@@ -394,7 +405,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, score: 1.5};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, score: 1.5};
     Student s2 = {firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, score: 0.9};
     Student s3 = {firstName: &quot;John&quot;, lastName: &quot;David&quot;, score: 1.2};
 </code></pre></div>
@@ -408,7 +419,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student[] studentList = [s1, s2, s3];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student[] studentList = [s1, s2, s3];
 </code></pre></div>
 
                                 </td>
@@ -420,7 +431,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;Student&gt; studentStream = studentList.toStream();
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Student&gt; studentStream = studentList.toStream();
 </code></pre></div>
 
                                 </td>
@@ -439,7 +450,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;Subscription&gt; subscriptionStream = studentStream.filter(function (Student student) returns boolean {
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Subscription&gt; subscriptionStream = studentStream.filter(function (Student student) returns boolean {
         return student.score &gt; 1;
     }).&#39;map(function (Student student) returns Subscription {
         Subscription subscription = {
@@ -468,7 +479,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Calculate the average score of the subscribed students: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Calculate the average score of the subscribed students: &quot;);
 </code></pre></div>
 
                                 </td>
@@ -480,7 +491,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float? avg = subscriptionStream.reduce(function (float accum, Student student) returns float {
+                                    <div class="highlight"><pre><code class=language-ballerina>    float? avg = subscriptionStream.reduce(function (float accum, Student student) returns float {
         return accum + &lt;float&gt;student.score / studentList.length();
     }, 0.0);
 </code></pre></div>
@@ -501,7 +512,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (avg is float) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (avg is float) {
         io:println(&quot;Average: &quot;, avg);
     }
 </code></pre></div>
@@ -515,7 +526,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>       stream&lt;Student&gt; studentStream2 = studentList.toStream();
+                                    <div class="highlight"><pre><code class=language-ballerina>       stream&lt;Student&gt; studentStream2 = studentList.toStream();
 </code></pre></div>
 
                                 </td>
@@ -534,7 +545,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Calls next method manually and get the next iteration value: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Calls next method manually and get the next iteration value: &quot;);
 </code></pre></div>
 
                                 </td>
@@ -546,7 +557,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {|Student value;|}|error? student = studentStream2.next();
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {|Student value;|}|error? student = studentStream2.next();
     if (student is StudentValue) {
         io:println(student.value);
     }
@@ -568,7 +579,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Use foreach method to loop through the rest of the stream: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Use foreach method to loop through the rest of the stream: &quot;);
 </code></pre></div>
 
                                 </td>
@@ -580,7 +591,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? e = studentStream2.forEach(function (Student student) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = studentStream2.forEach(function (Student student) {
         io:println(&quot;Student &quot;, student.firstName, &quot; has a score of &quot;, student.score);
     });
 </code></pre></div>
@@ -602,7 +613,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (e is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (e is error) {
         io:println(&quot;ForEach operation on the stream failed: &quot;, e);
     }
 </code></pre></div>
@@ -623,7 +634,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;Student&gt; studentStream3 = studentList.toStream();
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Student&gt; studentStream3 = studentList.toStream();
     var iterator = studentStream3.iterator();
 </code></pre></div>
 
@@ -636,7 +647,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    record {|Student value;|}|error? nextStudent = iterator.next();
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {|Student value;|}|error? nextStudent = iterator.next();
     if (nextStudent is StudentValue) {
         io:println(nextStudent.value);
     }
@@ -677,8 +688,8 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run streams.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run streams.bal
 </code></pre></div>
 
                                 </td>

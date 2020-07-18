@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,44 +62,45 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../kafka/index.html">
+        <a href="../kafka/index.html" onclick="menuLinkClick()">
             <h3>kafka</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../kafka/index.html#records">Records</a>
+            <a data="records" href="../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../kafka/index.html#objects">Objects</a>
+                <a  data="objects" href="../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../kafka/index.html#clients">Clients</a>
+                <a data="clients" href="../kafka/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
         
         
             <li>
-                <a data="constants" href="../kafka/index.html#constants">Constants</a>
+                <a data="constants" href="../kafka/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../kafka/index.html#types">Types</a>
+                <a data="types" href="../kafka/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../kafka/index.html#errors">Errors</a>
+                <a data="errors" href="../kafka/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -106,88 +109,37 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../kafka/index.html">
-            <h3>kafka</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../kafka/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../kafka/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../kafka/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="constants" href="../kafka/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../kafka/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../kafka/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">kafka</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 2.0.0</div>
+                    <a href="../kafka/index.html"><span class="modules">kafka</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 2.0.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.
 This module supports Kafka 1.x.x and 2.0.0 versions.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.
@@ -199,8 +151,8 @@ For examples on the usage of the operations, see the following.</p>
 <li><a href="https://ballerina.io/swan-lake/learn/by-example/kafka_message_consumer_group_service.html">Consumer Groups Example</a></li>
 <li><a href="https://ballerina.io/swan-lake/learn/by-example/kafka_message_producer_transactional.html">Transactional Producer Example</a></li>
 </ul>
-<h3>Basic Usages</h3>
-<h4>Publishing Messages</h4>
+<h4>Basic Usages</h4>
+<h5>Publishing Messages</h5>
 <ol>
 <li>Initialize the Kafka message producer.</li>
 </ol>
@@ -221,7 +173,7 @@ kafka:Producer kafkaProducer = new (producerConfiguration);
 <pre><code class="language-ballerina">string message = &quot;Hello World, Ballerina&quot;;
 kafka:ProducerError? result = kafkaProducer-&gt;send(message, &quot;kafka-topic&quot;, key = 1);
 </code></pre>
-<h4>Consuming Messages</h4>
+<h5>Consuming Messages</h5>
 <ol>
 <li>Initializing the Kafka message consumer.</li>
 </ol>
@@ -252,7 +204,7 @@ service kafkaService on consumer {
     }
 }
 </code></pre>
-<h3>Send Data Using Avro</h3>
+<h4>Send Data Using Avro</h4>
 <p>The Ballerina Kafka module supports Avro serialization and deserialization.</p>
 <p>To try this, create a new Ballerina project and two modules inside it.</p>
 <p>Execute the below commands to do this.</p>
@@ -261,7 +213,7 @@ cd kafka_avro_sample
 ballerina add producer
 ballerina add consumer
 </code></pre>
-<h4>Dependencies</h4>
+<h5>Dependencies</h5>
 <p>To use Avro, you need to add the necessary dependencies to the Ballerina project you created.
 To do so, download the necessary dependencies and add them inside the <code>resources</code> directory. Also, add those dependencies to the <code>Ballerina.toml</code> file of your project.
 The following is a sample <code>Ballerina.toml</code> file with the dependencies.</p>
@@ -338,7 +290,7 @@ The following is a sample <code>Ballerina.toml</code> file with the dependencies
     └── producer
         └── main.bal
 </code></pre>
-<h4>Avro Producer</h4>
+<h5>Avro Producer</h5>
 <p>The <code>kafka:Proucer</code> can be configured to send data using Avro by providing the following configurations.</p>
 <ul>
 <li><code>schemaString</code>: This is the schema string, which is used to define the Avro schema.</li>
@@ -387,7 +339,7 @@ public function main() {
     }
 }
 </code></pre>
-<h4>Avro Consumer</h4>
+<h5>Avro Consumer</h5>
 <p>The Kafka implementation of Ballerina currently supports Avro deserialization only for generic records.
 The Consumer will return a <code>kafka:AvroGenericRecord</code> with the data received from Avro.</p>
 <p>The following is a sample consumer.</p>
@@ -437,628 +389,636 @@ name=Lahiru Perera age=28
 </code></pre>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="AuthenticationConfiguration" title="AuthenticationConfiguration">
-                                <a class="records " href="records/AuthenticationConfiguration.html">AuthenticationConfiguration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configurations related to Kafka authentication mechanisms.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="AvroGenericRecord" title="AvroGenericRecord">
-                                <a class="records " href="records/AvroGenericRecord.html">AvroGenericRecord</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a generic Avro record.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="AuthenticationConfiguration" title="AuthenticationConfiguration">
+                            <a class="records " href="records/AuthenticationConfiguration.html">AuthenticationConfiguration</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configurations related to Kafka authentication mechanisms.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="AvroRecord" title="AvroRecord">
-                                <a class="records " href="records/AvroRecord.html">AvroRecord</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Defines a record to send data using Avro serialization.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="ConsumerConfiguration" title="ConsumerConfiguration">
-                                <a class="records " href="records/ConsumerConfiguration.html">ConsumerConfiguration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configurations related to consumer endpoint.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="ConsumerRecord" title="ConsumerRecord">
-                                <a class="records " href="records/ConsumerRecord.html">ConsumerRecord</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Type related to consumer record.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="AvroRecord" title="AvroRecord">
+                            <a class="records " href="records/AvroRecord.html">AvroRecord</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Defines a record to send data using Avro serialization.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="KeyStore" title="KeyStore">
-                                <a class="records " href="records/KeyStore.html">KeyStore</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configurations related to the KeyStore.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="PartitionOffset" title="PartitionOffset">
-                                <a class="records " href="records/PartitionOffset.html">PartitionOffset</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the topic partition position in which the consumed record is stored.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="ProducerConfiguration" title="ProducerConfiguration">
-                                <a class="records " href="records/ProducerConfiguration.html">ProducerConfiguration</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the Kafka Producer configuration.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="ConsumerConfiguration" title="ConsumerConfiguration">
+                            <a class="records " href="records/ConsumerConfiguration.html">ConsumerConfiguration</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configurations related to consumer endpoint.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="Protocols" title="Protocols">
-                                <a class="records " href="records/Protocols.html">Protocols</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configurations related to the SSL/TLS protocol and the versions to be used.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="SecureSocket" title="SecureSocket">
-                                <a class="records " href="records/SecureSocket.html">SecureSocket</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configurations for facilitating secure communication with the Kafka server.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="TopicPartition" title="TopicPartition">
-                                <a class="records " href="records/TopicPartition.html">TopicPartition</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a topic partition.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="ConsumerRecord" title="ConsumerRecord">
+                            <a class="records " href="records/ConsumerRecord.html">ConsumerRecord</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Type related to consumer record.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="TrustStore" title="TrustStore">
-                                <a class="records " href="records/TrustStore.html">TrustStore</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configurations related to the TrustStore.
-                            </td>
-                        </tr>
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="KeyStore" title="KeyStore">
+                            <a class="records " href="records/KeyStore.html">KeyStore</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configurations related to the KeyStore.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="PartitionOffset" title="PartitionOffset">
+                            <a class="records " href="records/PartitionOffset.html">PartitionOffset</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the topic partition position in which the consumed record is stored.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="ProducerConfiguration" title="ProducerConfiguration">
+                            <a class="records " href="records/ProducerConfiguration.html">ProducerConfiguration</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents the Kafka Producer configuration.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="Protocols" title="Protocols">
+                            <a class="records " href="records/Protocols.html">Protocols</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configurations related to the SSL/TLS protocol and the versions to be used.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="SecureSocket" title="SecureSocket">
+                            <a class="records " href="records/SecureSocket.html">SecureSocket</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configurations for facilitating secure communication with the Kafka server.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="TopicPartition" title="TopicPartition">
+                            <a class="records " href="records/TopicPartition.html">TopicPartition</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a topic partition.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="TrustStore" title="TrustStore">
+                            <a class="records " href="records/TrustStore.html">TrustStore</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Configurations related to the TrustStore.
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
+        
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
                     <a class="url-link" href="#objects">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Objects </h2>
+                    <h2> Objects </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="Deserializer" title="Deserializer">
-                                <a class="objects " href="objects/Deserializer.html">Deserializer</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a Kafka deserializer object.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="Serializer" title="Serializer">
-                                <a class="objects " href="objects/Serializer.html">Serializer</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a Kafka serializer object.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="Deserializer" title="Deserializer">
+                            <a class="objects " href="objects/Deserializer.html">Deserializer</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a Kafka deserializer object.
+                        </td>
+                    </tr>
                     
-                </table>
-             </section>  
-            
-
-            
-             <section class="method-content" id="clients">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#clients">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Clients </h2>
-                </div>
-                <table>
                     
-                        <tr>
-                            <td class="module-title truncate clients" id="Consumer" title="Consumer">
-                                <a class="clients " href="clients/Consumer.html">Consumer</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a Kafka consumer endpoint.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate clients" id="Producer" title="Producer">
-                                <a class="clients " href="clients/Producer.html">Producer</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a Kafka producer endpoint.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate objects" id="Serializer" title="Serializer">
+                            <a class="objects " href="objects/Serializer.html">Serializer</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a Kafka serializer object.
+                        </td>
+                    </tr>
                     
-                </table>
-             </section>
-            
-
-            
-           
-
-            
-
-
-            
-            <section class="method-content" id="constants">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#constants">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Constants </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="DES_BYTE_ARRAY" title="DES_BYTE_ARRAY">
-                                <a class="constant " href="constants.html#DES_BYTE_ARRAY">DES_BYTE_ARRAY</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>In-built Kafka byte array deserializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="DES_STRING" title="DES_STRING">
-                                <a class="constant " href="constants.html#DES_STRING">DES_STRING</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>In-built Kafka string deserializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="DES_INT" title="DES_INT">
-                                <a class="constant " href="constants.html#DES_INT">DES_INT</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>In-built Kafka int deserializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="DES_FLOAT" title="DES_FLOAT">
-                                <a class="constant " href="constants.html#DES_FLOAT">DES_FLOAT</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>In-built Kafka float deserializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="DES_CUSTOM" title="DES_CUSTOM">
-                                <a class="constant " href="constants.html#DES_CUSTOM">DES_CUSTOM</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>User-defined deserializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="DES_AVRO" title="DES_AVRO">
-                                <a class="constant " href="constants.html#DES_AVRO">DES_AVRO</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Apache Avro deserializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="ISOLATION_COMMITTED" title="ISOLATION_COMMITTED">
-                                <a class="constant " href="constants.html#ISOLATION_COMMITTED">ISOLATION_COMMITTED</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configures the consumer to read the committed messages only in the transactional mode when poll() is called.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="ISOLATION_UNCOMMITTED" title="ISOLATION_UNCOMMITTED">
-                                <a class="constant " href="constants.html#ISOLATION_UNCOMMITTED">ISOLATION_UNCOMMITTED</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Configures the consumer to read all the messages including the aborted ones.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="ACKS_ALL" title="ACKS_ALL">
-                                <a class="constant " href="constants.html#ACKS_ALL">ACKS_ALL</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Producer acknowledgement type is 'all'.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="ACKS_NONE" title="ACKS_NONE">
-                                <a class="constant " href="constants.html#ACKS_NONE">ACKS_NONE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Producer acknowledgement type '0'.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="ACKS_SINGLE" title="ACKS_SINGLE">
-                                <a class="constant " href="constants.html#ACKS_SINGLE">ACKS_SINGLE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Producer acknowledgement type '1'.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SER_BYTE_ARRAY" title="SER_BYTE_ARRAY">
-                                <a class="constant " href="constants.html#SER_BYTE_ARRAY">SER_BYTE_ARRAY</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>In-built Kafka Byte Array serializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SER_STRING" title="SER_STRING">
-                                <a class="constant " href="constants.html#SER_STRING">SER_STRING</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>In-built Kafka string serializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SER_INT" title="SER_INT">
-                                <a class="constant " href="constants.html#SER_INT">SER_INT</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>In-built Kafka int serializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SER_FLOAT" title="SER_FLOAT">
-                                <a class="constant " href="constants.html#SER_FLOAT">SER_FLOAT</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>In-built Kafka float serializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SER_CUSTOM" title="SER_CUSTOM">
-                                <a class="constant " href="constants.html#SER_CUSTOM">SER_CUSTOM</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>User-defined serializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="SER_AVRO" title="SER_AVRO">
-                                <a class="constant " href="constants.html#SER_AVRO">SER_AVRO</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Apache Avro serializer.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="COMPRESSION_NONE" title="COMPRESSION_NONE">
-                                <a class="constant " href="constants.html#COMPRESSION_NONE">COMPRESSION_NONE</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>No compression.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="COMPRESSION_GZIP" title="COMPRESSION_GZIP">
-                                <a class="constant " href="constants.html#COMPRESSION_GZIP">COMPRESSION_GZIP</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka GZIP compression type.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="COMPRESSION_SNAPPY" title="COMPRESSION_SNAPPY">
-                                <a class="constant " href="constants.html#COMPRESSION_SNAPPY">COMPRESSION_SNAPPY</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka Snappy compression type.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="COMPRESSION_LZ4" title="COMPRESSION_LZ4">
-                                <a class="constant " href="constants.html#COMPRESSION_LZ4">COMPRESSION_LZ4</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka LZ4 compression type.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="COMPRESSION_ZSTD" title="COMPRESSION_ZSTD">
-                                <a class="constant " href="constants.html#COMPRESSION_ZSTD">COMPRESSION_ZSTD</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka ZSTD compression type.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="AUTH_SASL_PLAIN" title="AUTH_SASL_PLAIN">
-                                <a class="constant " href="constants.html#AUTH_SASL_PLAIN">AUTH_SASL_PLAIN</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka SASL_PLAIN authentication mechanism</p>
-
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="PROTOCOL_SASL_PLAINTEXT" title="PROTOCOL_SASL_PLAINTEXT">
-                                <a class="constant " href="constants.html#PROTOCOL_SASL_PLAINTEXT">PROTOCOL_SASL_PLAINTEXT</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate constant" id="PROTOCOL_SASL_SSL" title="PROTOCOL_SASL_SSL">
-                                <a class="constant " href="constants.html#PROTOCOL_SASL_SSL">PROTOCOL_SASL_SSL</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
                     
                 </table>
             </section>
+        
+    
+
+    
+    <section class="method-content" id="clients">
+        <div class="main-method-title here">
+            <a class="url-link" href="#clients">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Clients </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate clients" id="Consumer" title="Consumer">
+                    <a class="clients " href="clients/Consumer.html">Consumer</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents a Kafka consumer endpoint.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate clients" id="Producer" title="Producer">
+                    <a class="clients " href="clients/Producer.html">Producer</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents a Kafka producer endpoint.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+    
 
 
-            
+    
 
-            
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="AuthenticationMechanism" title="AuthenticationMechanism">
-                                <a class="types " href="types.html#AuthenticationMechanism">AuthenticationMechanism</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the supported Kafka SASL authentication mechanisms.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="CompressionType" title="CompressionType">
-                                <a class="types " href="types.html#CompressionType">CompressionType</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka compression types to compress the messages.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="DeserializerType" title="DeserializerType">
-                                <a class="types " href="types.html#DeserializerType">DeserializerType</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka in-built deserializer type.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="IsolationLevel" title="IsolationLevel">
-                                <a class="types " href="types.html#IsolationLevel">IsolationLevel</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka consumer isolation level type.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="ProducerAcks" title="ProducerAcks">
-                                <a class="types " href="types.html#ProducerAcks">ProducerAcks</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka producer acknowledgement types.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="SecurityProtocol" title="SecurityProtocol">
-                                <a class="types " href="types.html#SecurityProtocol">SecurityProtocol</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents the supported security protocols for Kafka clients.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate types" id="SerializerType" title="SerializerType">
-                                <a class="types " href="types.html#SerializerType">SerializerType</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Kafka in-built serializer types.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
-            
 
+    
+    <section class="method-content" id="constants">
+        <div class="main-method-title here">
+            <a class="url-link" href="#constants">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Constants </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate constant" id="DES_BYTE_ARRAY" title="DES_BYTE_ARRAY">
+                    <a class="constant " href="constants.html#DES_BYTE_ARRAY">DES_BYTE_ARRAY</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="AvroError" title="AvroError">
-                                <a class="errors " href="errors.html#AvroError">AvroError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents a Kafka Avro related error.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="ConsumerError" title="ConsumerError">
-                                <a class="errors " href="errors.html#ConsumerError">ConsumerError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Error type specific to the <code>kafka:Consumer</code> object functions.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="ProducerError" title="ProducerError">
-                                <a class="errors " href="errors.html#ProducerError">ProducerError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Error type specific to the <code>kafka:Producer</code> object functions.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>In-built Kafka byte array deserializer.
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate constant" id="DES_STRING" title="DES_STRING">
+                    <a class="constant " href="constants.html#DES_STRING">DES_STRING</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>In-built Kafka string deserializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="DES_INT" title="DES_INT">
+                    <a class="constant " href="constants.html#DES_INT">DES_INT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>In-built Kafka int deserializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="DES_FLOAT" title="DES_FLOAT">
+                    <a class="constant " href="constants.html#DES_FLOAT">DES_FLOAT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>In-built Kafka float deserializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="DES_CUSTOM" title="DES_CUSTOM">
+                    <a class="constant " href="constants.html#DES_CUSTOM">DES_CUSTOM</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>User-defined deserializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="DES_AVRO" title="DES_AVRO">
+                    <a class="constant " href="constants.html#DES_AVRO">DES_AVRO</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Apache Avro deserializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="ISOLATION_COMMITTED" title="ISOLATION_COMMITTED">
+                    <a class="constant " href="constants.html#ISOLATION_COMMITTED">ISOLATION_COMMITTED</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Configures the consumer to read the committed messages only in the transactional mode when poll() is called.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="ISOLATION_UNCOMMITTED" title="ISOLATION_UNCOMMITTED">
+                    <a class="constant " href="constants.html#ISOLATION_UNCOMMITTED">ISOLATION_UNCOMMITTED</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Configures the consumer to read all the messages including the aborted ones.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="ACKS_ALL" title="ACKS_ALL">
+                    <a class="constant " href="constants.html#ACKS_ALL">ACKS_ALL</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Producer acknowledgement type is 'all'.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="ACKS_NONE" title="ACKS_NONE">
+                    <a class="constant " href="constants.html#ACKS_NONE">ACKS_NONE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Producer acknowledgement type '0'.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="ACKS_SINGLE" title="ACKS_SINGLE">
+                    <a class="constant " href="constants.html#ACKS_SINGLE">ACKS_SINGLE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Producer acknowledgement type '1'.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SER_BYTE_ARRAY" title="SER_BYTE_ARRAY">
+                    <a class="constant " href="constants.html#SER_BYTE_ARRAY">SER_BYTE_ARRAY</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>In-built Kafka Byte Array serializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SER_STRING" title="SER_STRING">
+                    <a class="constant " href="constants.html#SER_STRING">SER_STRING</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>In-built Kafka string serializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SER_INT" title="SER_INT">
+                    <a class="constant " href="constants.html#SER_INT">SER_INT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>In-built Kafka int serializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SER_FLOAT" title="SER_FLOAT">
+                    <a class="constant " href="constants.html#SER_FLOAT">SER_FLOAT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>In-built Kafka float serializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SER_CUSTOM" title="SER_CUSTOM">
+                    <a class="constant " href="constants.html#SER_CUSTOM">SER_CUSTOM</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>User-defined serializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="SER_AVRO" title="SER_AVRO">
+                    <a class="constant " href="constants.html#SER_AVRO">SER_AVRO</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Apache Avro serializer.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="COMPRESSION_NONE" title="COMPRESSION_NONE">
+                    <a class="constant " href="constants.html#COMPRESSION_NONE">COMPRESSION_NONE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>No compression.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="COMPRESSION_GZIP" title="COMPRESSION_GZIP">
+                    <a class="constant " href="constants.html#COMPRESSION_GZIP">COMPRESSION_GZIP</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka GZIP compression type.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="COMPRESSION_SNAPPY" title="COMPRESSION_SNAPPY">
+                    <a class="constant " href="constants.html#COMPRESSION_SNAPPY">COMPRESSION_SNAPPY</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka Snappy compression type.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="COMPRESSION_LZ4" title="COMPRESSION_LZ4">
+                    <a class="constant " href="constants.html#COMPRESSION_LZ4">COMPRESSION_LZ4</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka LZ4 compression type.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="COMPRESSION_ZSTD" title="COMPRESSION_ZSTD">
+                    <a class="constant " href="constants.html#COMPRESSION_ZSTD">COMPRESSION_ZSTD</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka ZSTD compression type.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="AUTH_SASL_PLAIN" title="AUTH_SASL_PLAIN">
+                    <a class="constant " href="constants.html#AUTH_SASL_PLAIN">AUTH_SASL_PLAIN</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka SASL_PLAIN authentication mechanism</p>
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="PROTOCOL_SASL_PLAINTEXT" title="PROTOCOL_SASL_PLAINTEXT">
+                    <a class="constant " href="constants.html#PROTOCOL_SASL_PLAINTEXT">PROTOCOL_SASL_PLAINTEXT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="PROTOCOL_SASL_SSL" title="PROTOCOL_SASL_SSL">
+                    <a class="constant " href="constants.html#PROTOCOL_SASL_SSL">PROTOCOL_SASL_SSL</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+
+    
+
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate types" id="AuthenticationMechanism" title="AuthenticationMechanism">
+                    <a class="types " href="types.html#AuthenticationMechanism">AuthenticationMechanism</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the supported Kafka SASL authentication mechanisms.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="CompressionType" title="CompressionType">
+                    <a class="types " href="types.html#CompressionType">CompressionType</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka compression types to compress the messages.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="DeserializerType" title="DeserializerType">
+                    <a class="types " href="types.html#DeserializerType">DeserializerType</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka in-built deserializer type.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="IsolationLevel" title="IsolationLevel">
+                    <a class="types " href="types.html#IsolationLevel">IsolationLevel</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka consumer isolation level type.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="ProducerAcks" title="ProducerAcks">
+                    <a class="types " href="types.html#ProducerAcks">ProducerAcks</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka producer acknowledgement types.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="SecurityProtocol" title="SecurityProtocol">
+                    <a class="types " href="types.html#SecurityProtocol">SecurityProtocol</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the supported security protocols for Kafka clients.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="SerializerType" title="SerializerType">
+                    <a class="types " href="types.html#SerializerType">SerializerType</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Kafka in-built serializer types.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="AvroError" title="AvroError">
+                    <a class="errors " href="errors.html#AvroError">AvroError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents a Kafka Avro related error.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="ConsumerError" title="ConsumerError">
+                    <a class="errors " href="errors.html#ConsumerError">ConsumerError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Error type specific to the <code>kafka:Consumer</code> object functions.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="ProducerError" title="ProducerError">
+                    <a class="errors " href="errors.html#ProducerError">ProducerError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Error type specific to the <code>kafka:Producer</code> object functions.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -1085,6 +1045,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -1094,4 +1072,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

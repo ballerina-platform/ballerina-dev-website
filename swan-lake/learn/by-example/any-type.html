@@ -10,7 +10,9 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">math</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fname</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lname</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">fname</span> <span class="p">=</span> <span class="nx">fname</span><span class="p">;</span>
@@ -19,19 +21,35 @@ redirect_from:
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">fname</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lname</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
-<span class="kd">function</span> <span class="nx">getValue</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;cat&quot;</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">any</span> <span class="nx">a</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
-    <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span><span class="nx">a</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full name: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;First name: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">fname</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">lookupInfo</span><span class="p">(</span><span class="kt">string</span> <span class="nx">id</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">id</span> <span class="o">==</span> <span class="s">&quot;pi&quot;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">math</span><span class="p">:</span><span class="nx">PI</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">id</span> <span class="o">==</span> <span class="s">&quot;date&quot;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">time</span><span class="p">:</span><span class="nx">currentTime</span><span class="p">().</span><span class="nx">toString</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">id</span> <span class="o">==</span> <span class="s">&quot;bio&quot;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">ia</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
-    <span class="kt">any</span> <span class="nx">ar</span> <span class="p">=</span> <span class="nx">ia</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ar</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">getValue</span><span class="p">());</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">any</span> <span class="nx">any1</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
+    <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">any1</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full name: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>    <span class="k">if</span> <span class="nx">any1</span> <span class="nx">is</span> <span class="nx">Person</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;First name: &quot;</span><span class="p">,</span> <span class="nx">any1</span><span class="p">.</span><span class="nx">fname</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">int</span><span class="p">[]</span> <span class="nx">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+    <span class="kt">any</span> <span class="nx">anyArray</span> <span class="p">=</span> <span class="nx">intArray</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">anyArray</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">lookupInfo</span><span class="p">(</span><span class="s">&quot;pi&quot;</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">lookupInfo</span><span class="p">(</span><span class="s">&quot;date&quot;</span><span class="p">));</span>
+    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">lookupInfo</span><span class="p">(</span><span class="s">&quot;bio&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">any_type</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Full</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">John</span> <span class="nx">Doe</span>
+<span class="nx">First</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">John</span>
+<span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">6</span>
+<span class="mf">3.141592653589793</span>
+<span class="nx">time</span><span class="p">=</span><span class="mi">1593728729611</span> <span class="nx">zone</span><span class="p">=</span><span class="nx">id</span><span class="p">=</span><span class="nx">America</span><span class="o">/</span><span class="nx">Los_Angeles</span> <span class="nx">offset</span><span class="p">=</span><span class="o">-</span><span class="mi">25200</span>
+<span class="nx">Jane</span> <span class="nx">Doe</span>
 </pre></div>
 
             </div>
@@ -129,7 +147,9 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/math;
+import ballerina/time;
 </code></pre></div>
 
                                 </td>
@@ -141,7 +161,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person object {
     string fname;
     string lname;
 </code></pre></div>
@@ -155,7 +175,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function init(string fname, string lname) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string fname, string lname) {
         self.fname = fname;
         self.lname = lname;
     }
@@ -170,7 +190,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getFullName() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string {
         return self.fname + &quot; &quot; + self.lname;
     }
 };
@@ -185,9 +205,14 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getValue() returns any {
-    string name = &quot;cat&quot;;
-    return name;
+                                    <div class="highlight"><pre><code class=language-ballerina>function lookupInfo(string id) returns any {
+    if id == &quot;pi&quot; {
+        return math:PI;
+    } else if id == &quot;date&quot; {
+        return time:currentTime().toString();
+    } else if id == &quot;bio&quot; {
+        return new Person(&quot;Jane&quot;, &quot;Doe&quot;);
+    }
 }
 </code></pre></div>
 
@@ -207,7 +232,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -219,7 +244,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    any a = new Person(&quot;John&quot;, &quot;Doe&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    any any1 = new Person(&quot;John&quot;, &quot;Doe&quot;);
 </code></pre></div>
 
                                 </td>
@@ -227,7 +252,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>In this example, the variable named <code>a</code> of the <code>any</code> type holds
+                                            <p>In this example, the variable named <code>any1</code> of the <code>any</code> type holds
  a <code>Person</code> object.</p>
 
                                         </div>
@@ -239,7 +264,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person john = &lt;Person&gt;a;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person john = &lt;Person&gt; any1;
     io:println(&quot;Full name: &quot;, john.getFullName());
 </code></pre></div>
 
@@ -248,7 +273,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Before anything useful can be done with <code>a</code>, it is required to ascertain
+                                            <p>Before anything useful can be done with <code>any1</code>, it is required to ascertain
  its type. A type cast or a type guard can be used for this.</p>
 
                                         </div>
@@ -260,8 +285,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (a is Person) {
-        io:println(&quot;First name: &quot;, john.fname);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if any1 is Person {
+        io:println(&quot;First name: &quot;, any1.fname);
     }
 </code></pre></div>
 
@@ -274,9 +299,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] ia = [1, 3, 5, 6];
-    any ar = ia;
-    io:println(ar);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] intArray = [1, 3, 5, 6];
+    any anyArray = intArray;
+    io:println(anyArray);
 </code></pre></div>
 
                                 </td>
@@ -295,7 +320,10 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(getValue());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(lookupInfo(&quot;pi&quot;));
+    io:println(lookupInfo(&quot;date&quot;));
+    Person person = &lt;Person&gt; lookupInfo(&quot;bio&quot;);
+    io:println(person.getFullName());
 }
 </code></pre></div>
 
@@ -322,12 +350,14 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run any_type.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run any_type.bal
 Full name: John Doe
 First name: John
 1 3 5 6
-cat
+3.141592653589793
+time=1593728729611 zone=id=America/Los_Angeles offset=-25200
+Jane Doe
 </code></pre></div>
 
                                 </td>

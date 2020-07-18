@@ -11,25 +11,31 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">getValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">key</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="err">?</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="s">&quot;string&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&quot;hello world&quot;</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">getLargestCountryInContinent</span><span class="p">(</span><span class="kt">string</span> <span class="nx">continent</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">match</span> <span class="nx">continent</span> <span class="p">{</span>
+        <span class="s">&quot;North America&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;USA&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="s">&quot;South America&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Brazil&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="s">&quot;Africa&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Algeria&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="s">&quot;Europe&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Russia&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="s">&quot;Asia&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Russia&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="s">&quot;Australia&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Australia&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="s">&quot;Antarctica&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="p">();</span> <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="p">();</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">string</span><span class="err">?</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">getValue</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Length of the string: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+    <span class="kt">string</span> <span class="nx">continent</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Enter continent: &quot;</span><span class="p">);</span>
+    <span class="kt">string</span><span class="err">?</span> <span class="nx">country</span> <span class="p">=</span> <span class="nx">getLargestCountryInContinent</span><span class="p">(</span><span class="nx">continent</span><span class="p">);</span>
+    <span class="k">if</span> <span class="nx">country</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The largest country in &quot;</span><span class="p">,</span> <span class="nx">continent</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;s is ()&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The continent &quot;</span><span class="p">,</span> <span class="nx">continent</span><span class="p">,</span> <span class="s">&quot; does not have any countries&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nx">s</span> <span class="p">=</span> <span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Length of the string: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;s is ()&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">optional_type</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Enter</span> <span class="nx">continent</span><span class="p">:</span> <span class="nx">Africa</span>
+<span class="nx">The</span> <span class="nx">largest</span> <span class="nx">country</span> <span class="nx">in</span> <span class="nx">Africa</span> <span class="nx">is</span> <span class="nx">Algeriaballerina</span> <span class="nx">run</span> <span class="nx">optional_type</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Enter</span> <span class="nx">continent</span><span class="p">:</span> <span class="nx">Antarctica</span>
+<span class="nx">The</span> <span class="nx">continent</span> <span class="nx">Antarctica</span> <span class="nx">does</span> <span class="nx">not</span> <span class="nx">have</span> <span class="kt">any</span> <span class="nx">countries</span>
 </pre></div>
 
             </div>
@@ -41,8 +47,8 @@ redirect_from:
                             <h2>Optional Type</h2>
                             <p><p>One of the design principles of the type system of Ballerina is to eliminate null reference errors.
  Over the years, null reference errors have caused numerous system crashes, security vulnerabilities etc.
- Optional types in Ballerina allow developers to identify where the value or the function
- is of type <code>T</code> optionally, for any T. You can syntactically represent this as <code>T?</code> or T|()`.</p>
+ The use of optional types <code>T?</code> is simply a shortcut for representing <code>T|()</code>, where it says that the
+ value of this type is either <code>T</code> or <code>()</code> (nil).</p>
 </p>
 
                         </td>
@@ -119,7 +125,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -131,10 +137,14 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getValue(string key) returns string? {
-    if (key == &quot;string&quot;) {
-        return &quot;hello world&quot;;
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>function getLargestCountryInContinent(string continent) returns string? {
+    match continent {
+        &quot;North America&quot; =&gt; { return &quot;USA&quot;; }
+        &quot;South America&quot; =&gt; { return &quot;Brazil&quot;; }
+        &quot;Africa&quot; =&gt; { return &quot;Algeria&quot;; }
+        &quot;Europe&quot; =&gt; { return &quot;Russia&quot;; }
+        &quot;Asia&quot; =&gt; { return &quot;Russia&quot;; }
+        &quot;Australia&quot; =&gt; { return &quot;Australia&quot;; }
 </code></pre></div>
 
                                 </td>
@@ -153,8 +163,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return ();
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>        &quot;Antarctica&quot; =&gt; { return (); }
+    }
 </code></pre></div>
 
                                 </td>
@@ -163,11 +173,26 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>In Ballerina, the <code>nil</code> type that is provided as <code>()</code> contains a single value named &ldquo;nil&rdquo;. This is used
- to represent the absence of any other value.
- The <code>nil</code> value is written as <code>()</code>.
- <code>null</code> is syntactic sugar for &ldquo;nil&rdquo; that is to be used with JSON values because JSON uses <code>null</code>.
- <code>return ();</code> here is the same as <code>return;</code>. Not having a return statement at the end is also the same as
- explicitly returning <code>()</code>.</p>
+ to represent the absence of any other value. The <code>nil</code> value is written as <code>()</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Not having a return statement at the end is also the same as explicitly returning <code>()</code>.</p>
 
                                         </div>
                                     </div>
@@ -178,7 +203,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -190,7 +215,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? s = getValue(&quot;string&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string continent = io:readln(&quot;Enter continent: &quot;);
+    string? country = getLargestCountryInContinent(continent);
 </code></pre></div>
 
                                 </td>
@@ -198,9 +224,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>It is optional for <code>getValue()</code> to return a value of type <code>string</code>. Thus, the value could be either
- of type <code>string</code> or of type <code>()</code> and needs to be handled explicitly.
- The statement <code>string s = getValue(&quot;string&quot;);</code> produces a compilation error.</p>
+                                            <p>It is optional for <code>getLargestCountryInContinent()</code> to return a value of type <code>string</code>.
+ Thus, the value could be either of type <code>string</code> or of type <code>()</code> and needs to be handled explicitly.</p>
 
                                         </div>
                                     </div>
@@ -210,12 +235,13 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (s is string) {
-        io:println(&quot;Length of the string: &quot;, s.length());
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if country is string {
+        io:println(&quot;The largest country in &quot;, continent, &quot; is &quot;, country);
     } else {
-        io:println(&quot;s is ()&quot;);
+        io:println(&quot;The continent &quot;, continent, &quot; does not have any countries&quot;);
     }
+}
 </code></pre></div>
 
                                 </td>
@@ -231,34 +257,13 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    s = ();
-    if (s is string) {
-        io:println(&quot;Length of the string: &quot;, s.length());
-    } else {
-        io:println(&quot;s is ()&quot;);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A value of type <code>string</code> or <code>()</code> can be assigned to <code>s</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
                         </table>
                     </div>
                     
+                        
+                            
+                                
+                            
                         
                             
                                 
@@ -271,12 +276,26 @@ redirect_from:
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run optional_type.bal
-Length of the string: 11
-s is ()
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run optional_type.bal
+Enter continent: Africa
+The largest country in Africa is Algeria
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>ballerina run optional_type.bal
+Enter continent: Antarctica
+The continent Antarctica does not have any countries
 </code></pre></div>
 
                                 </td>

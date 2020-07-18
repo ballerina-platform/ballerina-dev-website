@@ -9,6 +9,7 @@ redirect_from:
   - /swan-lake/learn/deployment/docker
   - /swan-lake/learn/deploying-ballerina-programs-in-the-cloud
   - /swan-lake/learn/deploying-ballerina-programs-in-the-cloud/
+  - /swan-lake/learn/deployment/
 ---
 
 # Docker

@@ -14,7 +14,10 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span> <span class="k">as</span> <span class="nx">console</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">float</span> <span class="nx">piValue</span> <span class="p">=</span> <span class="nx">math</span><span class="p">:</span><span class="nx">PI</span><span class="p">;</span>
     <span class="nx">console</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">piValue</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">modules</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mf">3.141592653589793</span>
 </pre></div>
 
             </div>
@@ -101,7 +104,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/math;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/math;
 </code></pre></div>
 
                                 </td>
@@ -121,7 +124,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io as console;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io as console;
 </code></pre></div>
 
                                 </td>
@@ -140,7 +143,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -152,7 +155,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float piValue = math:PI;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float piValue = math:PI;
 </code></pre></div>
 
                                 </td>
@@ -172,7 +175,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    console:println(piValue);
+                                    <div class="highlight"><pre><code class=language-ballerina>    console:println(piValue);
 }
 </code></pre></div>
 
@@ -206,8 +209,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run modules.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run modules.bal
 3.141592653589793
 </code></pre></div>
 

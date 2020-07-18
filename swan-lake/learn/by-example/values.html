@@ -44,7 +44,20 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
     <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">values</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">10</span>
+<span class="mi">100</span>
+<span class="mf">20.0</span>
+<span class="nx">Max</span> <span class="kt">float</span><span class="p">:</span> <span class="mf">22.0</span>
+<span class="kc">true</span>
+<span class="kc">true</span>
+<span class="kc">true</span>
+<span class="mf">27.5</span>
+<span class="mi">23</span>
+<span class="nx">Ballerina</span>
+<span class="kc">true</span>
 </pre></div>
 
             </div>
@@ -55,11 +68,11 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Values</h2>
                             <p><p>Ballerina programs operate on a universe of values and each value belongs to only one basic type
- such as <code>int</code>, <code>boolean</code>, <code>map</code>, <code>record</code>, <code>function</code> etc. There are three kinds of values
- corresponding to three kinds of basic types. They are simple values (e.g., <code>int</code>, <code>string</code>, <code>boolean</code>),
- structured values (e.g., <code>record</code>, <code>map</code>, <code>array</code>), and behavioral values (e.g., <code>function</code>, <code>object</code>).
- Simple values belong to one of the simple basic types, namely <code>nil</code>, <code>boolean</code>, <code>int</code>, <code>float</code>, <code>decimal</code>, and
- <code>string</code>.</p>
+ such as <code>int</code>, <code>boolean</code>, <code>map</code>, <code>record</code>, <code>function</code> etc. There are four kinds of values
+ corresponding to four kinds of basic types. They are simple values (e.g., <code>int</code>, <code>float</code>, <code>boolean</code>),
+ sequence values (e.g., <code>string</code>, <code>xml</code>), structured values (e.g., <code>record</code>, <code>map</code>, <code>array</code>), and
+ behavioral values (e.g., <code>function</code>, <code>object</code>). Simple values belong to one of the simple basic
+ types, namely <code>nil</code>, <code>boolean</code>, <code>int</code>, <code>float</code>, and <code>decimal</code>.</p>
 </p>
 
                         </td>
@@ -152,7 +165,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.&#39;float;
 import ballerina/lang.&#39;int;
 </code></pre></div>
@@ -166,7 +179,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -174,7 +187,7 @@ import ballerina/lang.&#39;int;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The types <code>int</code>, <code>float</code>, <code>decimal</code>, <code>string</code>, <code>boolean</code>, <code>byte</code>, and <code>nil</code> are called simple basic types
+                                            <p>The types <code>int</code>, <code>float</code>, <code>decimal</code>, <code>boolean</code>, <code>byte</code>, and <code>nil</code> are called simple basic types
  because they are basic types with only simple values. Simple values are always immutable.</p>
 
                                         </div>
@@ -186,7 +199,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int i = 10;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int i = 10;
     io:println(i);
 </code></pre></div>
 
@@ -206,7 +219,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error i2 = &#39;int:fromString(&quot;100&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error i2 = &#39;int:fromString(&quot;100&quot;);
     if (i2 is int) {
         io:println(i2);
     }
@@ -229,7 +242,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float f = 20.0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float f = 20.0;
     io:println(f);
 </code></pre></div>
 
@@ -249,7 +262,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float f1 = &#39;float:fromBitsInt(i);
+                                    <div class="highlight"><pre><code class=language-ballerina>    float f1 = &#39;float:fromBitsInt(i);
     float f2 = 22.0;
     float max = &#39;float:max(f1, f2);
     io:println(&quot;Max float: &quot;, max);
@@ -271,7 +284,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float nanVal = 0.0 / 0.0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float nanVal = 0.0 / 0.0;
     io:println(nanVal.isNaN());
 </code></pre></div>
 
@@ -292,7 +305,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float infiniteVal = 12.0 / 0.0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float infiniteVal = 12.0 / 0.0;
     io:println(infiniteVal.isInfinite());
 </code></pre></div>
 
@@ -312,7 +325,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float finiteVal = 6.0 / 3.0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float finiteVal = 6.0 / 3.0;
     io:println(finiteVal.isFinite());
 </code></pre></div>
 
@@ -332,7 +345,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    decimal d = 27.5;
+                                    <div class="highlight"><pre><code class=language-ballerina>    decimal d = 27.5;
     io:println(d);
 </code></pre></div>
 
@@ -352,7 +365,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    byte c = 23;
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte c = 23;
     io:println(c);
 </code></pre></div>
 
@@ -372,7 +385,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string s = &quot;Ballerina&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string s = &quot;Ballerina&quot;;
     io:println(s);
 </code></pre></div>
 
@@ -392,7 +405,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean b = true;
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean b = true;
     io:println(b);
 </code></pre></div>
 
@@ -412,7 +425,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    () n = ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    () n = ();
     io:println(n);
 </code></pre></div>
 
@@ -433,7 +446,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    json j = null;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json j = null;
     io:println(j);
 }
 </code></pre></div>
@@ -469,8 +482,8 @@ import ballerina/lang.&#39;int;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run values.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run values.bal
 10
 100
 20.0

@@ -27,7 +27,12 @@ redirect_from:
     <span class="k">var</span> <span class="p">[</span><span class="nx">iW1</span><span class="p">,</span> <span class="nx">sW1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">w1</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">fW2</span> <span class="p">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">w2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[main] iW1: &quot;</span><span class="p">,</span> <span class="nx">iW1</span><span class="p">,</span> <span class="s">&quot; sW1: &quot;</span><span class="p">,</span> <span class="nx">sW1</span><span class="p">,</span> <span class="s">&quot; fW2: &quot;</span><span class="p">,</span> <span class="nx">fW2</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="k">fork</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">w1</span><span class="p">]</span> <span class="nx">i</span><span class="p">:</span> <span class="mi">23</span> <span class="nx">s</span><span class="p">:</span> <span class="nx">Colombo</span>
+<span class="p">[</span><span class="nx">w2</span><span class="p">]</span> <span class="nx">f</span><span class="p">:</span> <span class="mf">10.344</span>
+<span class="p">[</span><span class="nx">main</span><span class="p">]</span> <span class="nx">iW1</span><span class="p">:</span> <span class="mi">23</span> <span class="nx">sW1</span><span class="p">:</span> <span class="nx">Colombo</span> <span class="nx">fW2</span><span class="p">:</span> <span class="mf">10.344</span>
 </pre></div>
 
             </div>
@@ -119,7 +124,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -131,7 +136,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -143,7 +148,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    fork {
+                                    <div class="highlight"><pre><code class=language-ballerina>    fork {
         worker w1 returns [int, string] {
             int i = 23;
             string s = &quot;Colombo&quot;;
@@ -167,7 +172,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            return [i, s];
+                                    <div class="highlight"><pre><code class=language-ballerina>            return [i, s];
         }
 </code></pre></div>
 
@@ -187,7 +192,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        worker w2 returns float {
+                                    <div class="highlight"><pre><code class=language-ballerina>        worker w2 returns float {
             float f = 10.344;
             io:println(&quot;[w2] f: &quot;, f);
 </code></pre></div>
@@ -201,7 +206,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            return f;
+                                    <div class="highlight"><pre><code class=language-ballerina>            return f;
         }
     }
 </code></pre></div>
@@ -222,7 +227,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record {[int, string] w1; float w2;} results = wait {w1, w2};
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {[int, string] w1; float w2;} results = wait {w1, w2};
 </code></pre></div>
 
                                 </td>
@@ -242,7 +247,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var [iW1, sW1] = results.w1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    var [iW1, sW1] = results.w1;
     var fW2 = results.w2;
     io:println(&quot;[main] iW1: &quot;, iW1, &quot; sW1: &quot;, sW1, &quot; fW2: &quot;, fW2);
 }
@@ -279,8 +284,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run fork.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run fork.bal
 [w1] i: 23 s: Colombo
 [w2] f: 10.344
 [main] iW1: 23 sW1: Colombo fW2: 10.344

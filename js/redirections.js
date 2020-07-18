@@ -172,5 +172,28 @@ let redirections = {
     "/1.1/learn/coding-conventions/statements":"/1.1/learn/style-guide/statements",
     "/1.0/learn/coding-conventions/statements/":"/1.0/learn/style-guide/statements",
     "/0.991/learn/coding-conventions/statements/":"/0.991/learn/style-guide/statements",
+    "/1.1/learn/testing-ballerina-code/testing-quick-start":"/1.1/page-not-available.html",
+    "/1.1/learn/testing-ballerina-code/writing-tests":"/1.1/page-not-available.html",
+    "/1.1/learn/testing-ballerina-code/mocking":"/1.1/page-not-available.html",
+    "/1.1/learn/testing-ballerina-code/executing-tests":"/1.1/page-not-available.html",
+    "/1.0/learn/testing-ballerina-code/testing-quick-start":"/1.0/page-not-available.html",
+    "/1.0/learn/testing-ballerina-code/writing-tests":"/1.0/page-not-available.html",
+    "/1.0/learn/testing-ballerina-code/mocking":"/1.0/page-not-available.html",
+    "/1.0/learn/testing-ballerina-code/executing-tests":"/1.0/page-not-available.html",
+    "/learn/testing-ballerina-code/testing-quick-start":"/learn/testing-ballerina-code",
+    "/learn/testing-ballerina-code/writing-tests":"/learn/testing-ballerina-code",
+    "/learn/testing-ballerina-code/mocking":"/learn/testing-ballerina-code",
+    "/learn/testing-ballerina-code/executing-tests":"/learn/testing-ballerina-code",
+    "/1.1/learn/deployment/aws-lambda/":"/1.1/page-not-available.html",
+    "/1.0/learn/deployment/aws-lambda/":"/1.0/page-not-available.html",
+    "/swan-lake/learn/deployment/azure-functions/":"/swan-lake/page-not-available.html",
+    "/1.1/learn/deployment/azure-functions/":"/1.1/page-not-available.html",
+    "/1.0/learn/deployment/azure-functions/":"/1.0/page-not-available.html",
+    "/learn/ballerina-streaming-reference/":"/learn/by-example/streams",
+    "/swan-lake/learn/ballerina-streaming-reference/":"/swan-lake/learn/by-example/streams",
+    "/1.1/learn/ballerina-streaming-reference/":"/1.1/learn/by-example/streams",
+    "/1.0/learn/ballerina-streaming-reference/":"/1.0/learn/by-example/streams"
+    
+
 
 };

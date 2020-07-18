@@ -1,0 +1,266 @@
+{
+  "id": "openshift",
+  "summary": "\u003cp\u003eThis module offers an annotation based OpenShift extension implementation for ballerina.\u003c/p\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation based OpenShift extension implementation for ballerina.\u003c/p\u003e\n\u003ch3\u003eAnnotation Usage Sample:\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/http;\nimport ballerina/log;\nimport ballerina/kubernetes;\nimport ballerina/openshift;\n\n@kubernetes:Service {}\n@openshift:Route {\n    host: \u0026quot;www.oc-example.com\u0026quot;\n}\nlistener http:Listener helloEP \u003d new(9090);\n\n@kubernetes:Deployment {\n    namespace: \u0026quot;hello-api\u0026quot;,\n    registry: \u0026quot;172.30.1.1:5000\u0026quot;,\n    image: \u0026quot;hello-service:v1.0\u0026quot;,\n    buildImage: false,\n    buildExtension: openshift:BUILD_EXTENSION_OPENSHIFT\n}\n@http:ServiceConfig {\n    basePath: \u0026quot;/hello\u0026quot;\n}\nservice hello on helloEP {\n    @http:ResourceConfig {\n        methods: [\u0026quot;GET\u0026quot;],\n        path: \u0026quot;/{user}\u0026quot;\n    }\n    resource function sayHello(http:Caller caller, http:Request request, string user) {\n        string payload \u003d string `Hello ${\u0026lt;@untainted string\u0026gt; user}!`;\n        var responseResult \u003d caller-\u0026gt;respond(payload);\n        if (responseResult is error) {\n            error err \u003d responseResult;\n            log:printError(\u0026quot;Error sending response\u0026quot;, err);\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n",
+  "orgName": "ballerina",
+  "version": "1.0.0",
+  "records": [
+    {
+      "fields": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "string",
+            "category": "builtin",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "name",
+          "description": "\u003cp\u003eName of the resource\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "map",
+            "category": "map",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0,
+            "constraint": {
+              "orgName": "ballerina",
+              "moduleName": "lang.annotations",
+              "name": "string",
+              "category": "builtin",
+              "isAnonymousUnionType": false,
+              "isArrayType": false,
+              "isNullable": false,
+              "isTuple": false,
+              "isRestParam": false,
+              "isLambda": false,
+              "isDeprecated": false,
+              "generateUserDefinedTypeLink": true,
+              "memberTypes": [],
+              "paramTypes": [],
+              "arrayDimensions": 0
+            }
+          },
+          "name": "labels",
+          "description": "\u003cp\u003eMap of labels for the resource\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "map",
+            "category": "map",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0,
+            "constraint": {
+              "orgName": "ballerina",
+              "moduleName": "lang.annotations",
+              "name": "string",
+              "category": "builtin",
+              "isAnonymousUnionType": false,
+              "isArrayType": false,
+              "isNullable": false,
+              "isTuple": false,
+              "isRestParam": false,
+              "isLambda": false,
+              "isDeprecated": false,
+              "generateUserDefinedTypeLink": true,
+              "memberTypes": [],
+              "paramTypes": [],
+              "arrayDimensions": 0
+            }
+          },
+          "name": "annotations",
+          "description": "\u003cp\u003eMap of annotations for resource\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "openshift",
+            "category": "types",
+            "isAnonymousUnionType": true,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              {
+                "orgName": "ballerina",
+                "moduleName": "openshift",
+                "name": "RouteDomainConfig",
+                "category": "records",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              }
+            ],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "host",
+          "description": "\u003cp\u003eThe host of the route.\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "isAnonymous": false,
+      "name": "RouteConfiguration",
+      "description": "\u003cp\u003eRoute configuration for @kubernetes:OpenShiftRoute.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "fields": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "string",
+            "category": "builtin",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "domain",
+          "description": "\u003cp\u003eThe domain of the hostname.\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "isAnonymous": false,
+      "name": "RouteDomainConfig",
+      "description": "\u003cp\u003eDomain for OpenShift Route configuration.\u003c/p\u003e\n",
+      "isDeprecated": false
+    }
+  ],
+  "objects": [],
+  "clients": [],
+  "listeners": [],
+  "functions": [],
+  "constants": [
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "lang.annotations",
+        "name": "string",
+        "category": "builtin",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "value": "openshift",
+      "name": "BUILD_EXTENSION_OPENSHIFT",
+      "description": "\u003cp\u003eConfiguration to use the OpenShift Build Configs.\u003c/p\u003e\n",
+      "isDeprecated": false
+    }
+  ],
+  "annotations": [
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "openshift",
+        "name": "RouteConfiguration",
+        "category": "records",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "attachmentPoints": "service, listener",
+      "name": "Route",
+      "description": "\u003cp\u003e@kubernetes:OpenShiftRoute annotation to generate openshift routes.\u003c/p\u003e\n",
+      "isDeprecated": false
+    }
+  ],
+  "errors": [],
+  "finiteTypes": [],
+  "unionTypes": [],
+  "resources": []
+}

@@ -54,7 +54,18 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">addEntryToMap</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">key</span><span class="p">,</span> <span class="kt">string</span><span class="p">|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">m</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">value</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">immutable_values</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">student</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">student</span><span class="p">.</span><span class="nx">details</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">student</span><span class="p">.</span><span class="nx">marks</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">m1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m2</span><span class="p">:</span> <span class="kc">false</span>
+<span class="nx">m1</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">false</span>
+<span class="nx">m2</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">Error</span> <span class="nx">occurred</span> <span class="nx">on</span> <span class="nx">update</span><span class="p">:</span> <span class="nx">Invalid</span> <span class="kt">map</span> <span class="nx">insertion</span><span class="p">:</span> <span class="nx">modification</span> <span class="nx">not</span> <span class="nx">allowed</span> <span class="nx">on</span> <span class="nx">readonly</span> <span class="nx">value</span>
+<span class="nx">m2</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m3</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">frozenVal</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
 </pre></div>
 
             </div>
@@ -185,7 +196,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -197,7 +208,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {|
     int class;
     Details details;
     map&lt;int&gt; marks;
@@ -213,7 +224,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Details record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Details record {|
     string name;
     int id;
 |};
@@ -228,7 +239,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -240,7 +251,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Details &amp; readonly immutableDetails = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Details &amp; readonly immutableDetails = {
         name: &quot;May&quot;,
         id: 112233
     };
@@ -262,7 +273,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student &amp; readonly student = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student &amp; readonly student = {
         class: 12,
 </code></pre></div>
 
@@ -282,7 +293,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        details: immutableDetails,
+                                    <div class="highlight"><pre><code class=language-ballerina>        details: immutableDetails,
 </code></pre></div>
 
                                 </td>
@@ -301,7 +312,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        marks: {
+                                    <div class="highlight"><pre><code class=language-ballerina>        marks: {
             math: 80,
             physics: 85,
             chemistry: 75
@@ -326,7 +337,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;student is immutable: &quot;, student.isReadOnly());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;student is immutable: &quot;, student.isReadOnly());
     io:println(&quot;student.details is immutable: &quot;, student.details.isReadOnly());
     io:println(&quot;student.marks is immutable: &quot;, student.marks.isReadOnly());
 </code></pre></div>
@@ -347,7 +358,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m1 = {stringVal: &quot;str&quot;, intVal: 1};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string|int&gt; m1 = {stringVal: &quot;str&quot;, intVal: 1};
 </code></pre></div>
 
                                 </td>
@@ -366,7 +377,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m2 = m1.cloneReadOnly();
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string|int&gt; m2 = m1.cloneReadOnly();
 </code></pre></div>
 
                                 </td>
@@ -385,7 +396,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;m1 === m2: &quot;, m1 === m2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;m1 === m2: &quot;, m1 === m2);
 </code></pre></div>
 
                                 </td>
@@ -405,7 +416,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;m1 is immutable: &quot;, m1.isReadOnly());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;m1 is immutable: &quot;, m1.isReadOnly());
 </code></pre></div>
 
                                 </td>
@@ -425,7 +436,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;m2 is immutable: &quot;, m2.isReadOnly());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;m2 is immutable: &quot;, m2.isReadOnly());
 </code></pre></div>
 
                                 </td>
@@ -445,7 +456,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? updateResult = trap addEntryToMap(m2, &quot;intValTwo&quot;, 10);
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? updateResult = trap addEntryToMap(m2, &quot;intValTwo&quot;, 10);
     if (updateResult is error) {
 </code></pre></div>
 
@@ -465,7 +476,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Error occurred on update: &quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Error occurred on update: &quot;,
                    &lt;string&gt;updateResult.detail()[&quot;message&quot;]);
     }
 </code></pre></div>
@@ -486,7 +497,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m3 = m2.cloneReadOnly();
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string|int&gt; m3 = m2.cloneReadOnly();
 </code></pre></div>
 
                                 </td>
@@ -505,7 +516,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;m2 === m3: &quot;, m2 === m3);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;m2 === m3: &quot;, m2 === m3);
 </code></pre></div>
 
                                 </td>
@@ -525,7 +536,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m5 = {valueType: &quot;map&quot;, constraint: &quot;string&quot;};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string|int&gt; m5 = {valueType: &quot;map&quot;, constraint: &quot;string&quot;};
 </code></pre></div>
 
                                 </td>
@@ -547,7 +558,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var frozenVal = m5.cloneReadOnly();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var frozenVal = m5.cloneReadOnly();
 </code></pre></div>
 
                                 </td>
@@ -568,7 +579,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (frozenVal is map&lt;string&gt;) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (frozenVal is map&lt;string&gt;) {
         io:println(&quot;frozenVal is map&lt;string&gt;&quot;);
     }
 }
@@ -591,7 +602,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function addEntryToMap(map&lt;string|int&gt; m, string key, string|int value) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function addEntryToMap(map&lt;string|int&gt; m, string key, string|int value) {
     m[key] = value;
 }
 </code></pre></div>
@@ -626,8 +637,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run immutable_values.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run immutable_values.bal
 student is immutable: true
 student.details is immutable: true
 student.marks is immutable: true

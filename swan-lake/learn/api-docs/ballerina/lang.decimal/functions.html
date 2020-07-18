@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module provides lang library operations on <code>decimal</code> values defined by the language specification 2020R1.
+    <meta name="description" content="This module provides lang library operations on decimal values defined by the language specification 2020R1.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.decimal">
 
@@ -59,122 +68,54 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Functions</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#abs">abs</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#ceiling">ceiling</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#floor">floor</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#fromString">fromString</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#max">max</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#min">min</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#round">round</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#sum">sum</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../lang.decimal/index.html">
-            <h3>lang.decimal</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../lang.decimal/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Functions</h3>
+                    <h3>
+    Functions
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#abs">abs</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#ceiling">ceiling</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#floor">floor</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#fromString">fromString</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#max">max</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#min">min</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#round">round</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#sum">sum</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#abs" onclick="menuLinkClick()">abs</a>
+        </li>
+    
+        <li >
+            <a href="#ceiling" onclick="menuLinkClick()">ceiling</a>
+        </li>
+    
+        <li >
+            <a href="#floor" onclick="menuLinkClick()">floor</a>
+        </li>
+    
+        <li >
+            <a href="#fromString" onclick="menuLinkClick()">fromString</a>
+        </li>
+    
+        <li >
+            <a href="#max" onclick="menuLinkClick()">max</a>
+        </li>
+    
+        <li >
+            <a href="#min" onclick="menuLinkClick()">min</a>
+        </li>
+    
+        <li >
+            <a href="#round" onclick="menuLinkClick()">round</a>
+        </li>
+    
+        <li >
+            <a href="#sum" onclick="menuLinkClick()">sum</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../lang.decimal/index.html">
+        <a href="../lang.decimal/index.html" onclick="menuLinkClick()">
             <h3>lang.decimal</h3>
         </a>
     
@@ -185,7 +126,7 @@
         
         
             <li>
-                <a data="functions" href="../lang.decimal/index.html#functions">Functions</a>
+                <a data="functions" href="../lang.decimal/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
@@ -196,132 +137,140 @@
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Functions - </span>
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Functions
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                    <a href="../lang.decimal/index.html"><span class="modules">lang.decimal</span></a>
+                
                 
             </h1>
-            <div class="constants">
-                <table class="ui table row-border details-table">
-                    <tbody>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#abs">abs</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>IEEE abs operation.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#ceiling">ceiling</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Rounds a decimal up to the closest integral value.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#floor">floor</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Rounds a decimal down to the closest integral value.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#fromString">fromString</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Return the decimal value represented by <code>s</code>.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#max">max</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Maximum of one or more decimal values.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#min">min</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Minimum of one or more decimal values</p>
+            
+    <div class="constants">
+        <table class="ui table row-border details-table">
+            <tbody>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#abs">abs</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>IEEE abs operation.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#ceiling">ceiling</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Rounds a decimal up to the closest integral value.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#floor">floor</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Rounds a decimal down to the closest integral value.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#fromString">fromString</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Return the decimal value represented by <code>s</code>.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#max">max</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Maximum of one or more decimal values.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#min">min</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Minimum of one or more decimal values</p>
 
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#round">round</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Round a decimal to the closest integral value.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td width="30%"><a class="functions " href="#sum">sum</a></td>
-                                <td width="70%">
-                                    <div class="function-desc">
-                                        
-                                        <p>Sum of zero or more decimal values.
-                                    </div>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#round">round</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Round a decimal to the closest integral value.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#sum">sum</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Sum of zero or more decimal values.
+                            </div>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+        <div>
+            
                 <div>
                     
-                        <div>
-                            
-                                <div class="method-content">
+                        <div class="method-content">
     <div class="main-method-title here" id="abs" title="abs">
              <a class="url-link" href="#abs">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > abs </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">decimal</span> x)</p>
-            <b> returns </b><span class="builtin-type">decimal</span> 
+            
+                <b> returns </b><span class="builtin-type">decimal</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -364,19 +313,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="ceiling" title="ceiling">
              <a class="url-link" href="#ceiling">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > ceiling </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">decimal</span> x)</p>
-            <b> returns </b><span class="builtin-type">decimal</span> 
+            
+                <b> returns </b><span class="builtin-type">decimal</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -419,19 +368,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="floor" title="floor">
              <a class="url-link" href="#floor">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > floor </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">decimal</span> x)</p>
-            <b> returns </b><span class="builtin-type">decimal</span> 
+            
+                <b> returns </b><span class="builtin-type">decimal</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -474,19 +423,19 @@
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="fromString" title="fromString">
              <a class="url-link" href="#fromString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > fromString </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> s)</p>
-            <b> returns </b><span class="builtin-type">decimal</span> | <span class="builtin-type">error</span> 
+            
+                <b> returns </b><span class="builtin-type">decimal</span> | <span class="builtin-type">error</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -536,19 +485,19 @@ This is the inverse of <code>value:toString</code> applied to an <code>decimal</
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="max" title="max">
              <a class="url-link" href="#max">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > max </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">decimal</span> x, <span class="array-type"><span class="builtin-type">decimal</span>[]</span> xs)</p>
-            <b> returns </b><span class="builtin-type">decimal</span> 
+            <p>(<span class="builtin-type">decimal</span> x, <span class="array-type"><span class="builtin-type">decimal</span>...</span> xs)</p>
+            
+                <b> returns </b><span class="builtin-type">decimal</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -580,7 +529,7 @@ This is the inverse of <code>value:toString</code> applied to an <code>decimal</
                 <ul>
                     <li>
                         <span >xs</span>
-                        <span class="type">  <span class="array-type"><span class="builtin-type">decimal</span>[]</span> </span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">decimal</span>...</span> </span>
                         
                     </li>
                     <li>
@@ -608,19 +557,19 @@ This is the inverse of <code>value:toString</code> applied to an <code>decimal</
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="min" title="min">
              <a class="url-link" href="#min">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > min </h2>
-        
         <span class="method-types">
-            <p>(<span class="builtin-type">decimal</span> x, <span class="array-type"><span class="builtin-type">decimal</span>[]</span> xs)</p>
-            <b> returns </b><span class="builtin-type">decimal</span> 
+            <p>(<span class="builtin-type">decimal</span> x, <span class="array-type"><span class="builtin-type">decimal</span>...</span> xs)</p>
+            
+                <b> returns </b><span class="builtin-type">decimal</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -652,7 +601,7 @@ This is the inverse of <code>value:toString</code> applied to an <code>decimal</
                 <ul>
                     <li>
                         <span >xs</span>
-                        <span class="type">  <span class="array-type"><span class="builtin-type">decimal</span>[]</span> </span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">decimal</span>...</span> </span>
                         
                     </li>
                     <li>
@@ -680,19 +629,19 @@ This is the inverse of <code>value:toString</code> applied to an <code>decimal</
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="round" title="round">
              <a class="url-link" href="#round">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > round </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">decimal</span> x)</p>
-            <b> returns </b><span class="builtin-type">decimal</span> 
+            
+                <b> returns </b><span class="builtin-type">decimal</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -743,19 +692,19 @@ Note that <code>&lt;int&gt;x</code> is the same as <code>&lt;int&gt;x.round()</c
         
     
 </div>
-                            
-                                <div class="method-content">
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="sum" title="sum">
              <a class="url-link" href="#sum">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
             <h2 > sum </h2>
-        
         <span class="method-types">
-            <p>(<span class="array-type"><span class="builtin-type">decimal</span>[]</span> xs)</p>
-            <b> returns </b><span class="builtin-type">decimal</span> 
+            <p>(<span class="array-type"><span class="builtin-type">decimal</span>...</span> xs)</p>
+            
+                <b> returns </b><span class="builtin-type">decimal</span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -770,7 +719,7 @@ Note that <code>&lt;int&gt;x</code> is the same as <code>&lt;int&gt;x.round()</c
                 <ul>
                     <li>
                         <span >xs</span>
-                        <span class="type">  <span class="array-type"><span class="builtin-type">decimal</span>[]</span> </span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">decimal</span>...</span> </span>
                         
                     </li>
                     <li>
@@ -798,28 +747,18 @@ Note that <code>&lt;int&gt;x</code> is the same as <code>&lt;int&gt;x.round()</c
         
     
 </div>
-                            
-                        </div>
                     
                 </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
+
+        </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -846,6 +785,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -855,4 +812,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

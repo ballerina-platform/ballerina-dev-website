@@ -71,7 +71,15 @@ redirect_from:
         <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">services</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_disable_chunking</span><span class="p">.</span><span class="nx">bal</span>
+<span class="err">#</span> <span class="nx">Service</span> <span class="nx">deployment</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9092</span><span class="nx">To</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">cURL</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span> 
+<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9092/chunkingSample</span>
+<span class="p">{</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span><span class="s">&quot;Length-20&quot;</span><span class="p">}</span><span class="nx">To</span> <span class="nx">enable</span> <span class="nx">chunking</span><span class="p">,</span> <span class="nx">change</span> <span class="nx">the</span> <span class="nx">chunking</span> <span class="nx">option</span> <span class="nx">of</span> <span class="nx">the</span> <span class="s">`clientEndpoint`</span> <span class="nx">in</span> <span class="nx">the</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">to</span> <span class="s">`http:CHUNKING_ALWAYS`</span><span class="p">.</span>
+<span class="p">{</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span><span class="s">&quot;chunked&quot;</span><span class="p">}</span>
 </pre></div>
 
             </div>
@@ -171,7 +179,7 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -184,7 +192,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;,
                                   {http1Settings: {chunking: http:CHUNKING_NEVER}});
 </code></pre></div>
 
@@ -210,7 +218,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service chunkingSample on new http:Listener(9092) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service chunkingSample on new http:Listener(9092) {
 </code></pre></div>
 
                                 </td>
@@ -222,7 +230,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         path: &quot;/&quot;
     }
     resource function invokeEndpoint(http:Caller caller, http:Request req) {
@@ -237,7 +245,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Request newReq = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Request newReq = new;
         newReq.setPayload({&quot;name&quot;: &quot;Ballerina&quot;});
         var clientResponse = clientEndpoint-&gt;post(&quot;/echo/&quot;, newReq);
         if (clientResponse is http:Response) {
@@ -274,7 +282,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service echo on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service echo on new http:Listener(9090) {
     @http:ResourceConfig {
         path: &quot;/&quot;
     }
@@ -298,7 +306,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         boolean validationErrorFound = false;
 </code></pre></div>
 
@@ -311,7 +319,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (req.hasHeader(&quot;content-length&quot;)) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (req.hasHeader(&quot;content-length&quot;)) {
             value = req.getHeader(&quot;content-length&quot;);
             value = &quot;Length-&quot; + value;
         } else if (req.hasHeader(&quot;Transfer-Encoding&quot;)) {
@@ -334,7 +342,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (value != &quot;chunked&quot; &amp;&amp; value != &quot;compress&quot; &amp;&amp; value != &quot;deflate&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (value != &quot;chunked&quot; &amp;&amp; value != &quot;compress&quot; &amp;&amp; value != &quot;deflate&quot;
                 &amp;&amp; value != &quot;gzip&quot; &amp;&amp; value != &quot;identity&quot;) {
                 res.statusCode = 400;
                 res.setPayload(&quot;Transfer-Encoding contains invalid data&quot;);
@@ -362,7 +370,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (!validationErrorFound) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (!validationErrorFound) {
 </code></pre></div>
 
                                 </td>
@@ -374,7 +382,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload({&quot;Outbound request content&quot;: &lt;@untainted&gt;value});
+                                    <div class="highlight"><pre><code class=language-ballerina>            res.setPayload({&quot;Outbound request content&quot;: &lt;@untainted&gt;value});
         }
         var result = caller-&gt;respond(res);
         if (result is error) {
@@ -401,7 +409,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function isValid(boolean|error value) returns boolean {
+                                    <div class="highlight"><pre><code class=language-ballerina>function isValid(boolean|error value) returns boolean {
     if (value is boolean) {
         return value;
     }
@@ -432,8 +440,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run http_disable_chunking.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run http_disable_chunking.bal
 # Service deployment
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
@@ -465,8 +473,8 @@ $ ballerina run http_disable_chunking.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>To use the client, execute the below cURL command. 
-$ curl http://localhost:9092/chunkingSample
+                                    <div class="highlight"><pre><code class=shell-session>To use the client, execute the cURL command below. 
+curl http://localhost:9092/chunkingSample
 {&quot;Outbound request content&quot;:&quot;Length-20&quot;}
 </code></pre></div>
 

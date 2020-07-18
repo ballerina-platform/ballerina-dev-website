@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,200 +68,131 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Clients</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="Caller.html">Caller</a> 
-                        </li>
-                    
-                        <li class="active active-item">
-                            <a href="Client.html">Client</a> 
-                        </li>
-                    
-                        <li >
-                            <a href="StreamingClient.html">StreamingClient</a> 
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../grpc/index.html">
-            <h3>grpc</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../grpc/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../grpc/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../../grpc/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../../grpc/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-            <li>
-                <a data="functions" href="../../grpc/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../../grpc/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../../grpc/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../../grpc/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../grpc/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Clients</h3>
+                    <h3>
+    Clients
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="Caller.html">Caller</a>
-                            </li>
-                        
-                            <li class="active active-item">
-                                <a href="Client.html">Client</a>
-                            </li>
-                        
-                            <li >
-                                <a href="StreamingClient.html">StreamingClient</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
+        </li>
+    
+        <li class="active active-item">
+            <a href="Client.html" onclick="menuLinkClick()">Client</a>
+        </li>
+    
+        <li >
+            <a href="StreamingClient.html" onclick="menuLinkClick()">StreamingClient</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../grpc/index.html">
+        <a href="../../grpc/index.html" onclick="menuLinkClick()">
             <h3>grpc</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../grpc/index.html#records">Records</a>
+            <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../grpc/index.html#objects">Objects</a>
+                <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../../grpc/index.html#clients">Clients</a>
+                <a data="clients" href="../../grpc/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../../grpc/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../grpc/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
             <li>
-                <a data="functions" href="../../grpc/index.html#functions">Functions</a>
+                <a data="functions" href="../../grpc/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../../grpc/index.html#constants">Constants</a>
+                <a data="constants" href="../../grpc/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../../grpc/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../../grpc/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../../grpc/index.html#types">Types</a>
+                <a data="types" href="../../grpc/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../grpc/index.html#errors">Errors</a>
+                <a data="errors" href="../../grpc/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Clients - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Clients
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../grpc/index.html">grpc</a> :
+                    <a href="../../grpc/index.html"><span class="modules">grpc</span></a>
                 
-                <span class="clients">Client</span>
+                 :
+                    
+    <span class="clients">Client</span>
+
+                
             </h1>
-            <p><p>The gRPC client endpoint provides the capability for initiating contact with a remote gRPC service. The API it
+            
+    <p><p>The gRPC client endpoint provides the capability for initiating contact with a remote gRPC service. The API it
 provides includes functions to send request/error messages.</p>
 </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
-                        
-                            <h2>Constructor</h2>
+    <div class="constants">
+        <div class="method-sum">
+            
+                
+                    <h2>Constructor</h2>
 <h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../grpc/records/ClientConfiguration.html">ClientConfiguration</a>? config)</p>
 <div class="data-wrapper">
     
@@ -279,49 +219,39 @@ provides includes functions to send request/error messages.</p>
         </div>
     
 </div>
+                
+            
+
+            
+                <h2>Remote Methods</h2>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="blockingExecute"><a
+                                    class="functions" href="#blockingExecute">blockingExecute</a></td>
+                            <td class="module-desc"><p>Calls when executing a blocking call with a gRPC service.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="nonBlockingExecute"><a
+                                    class="functions" href="#nonBlockingExecute">nonBlockingExecute</a></td>
+                            <td class="module-desc"><p>Calls when executing a non-blocking call with a gRPC service.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="streamingExecute"><a
+                                    class="functions" href="#streamingExecute">streamingExecute</a></td>
+                            <td class="module-desc"><p>Calls when executing  a streaming call with a gRPC service.</td>
+                        </tr>
+                    
+                </table>
+            
+
+            
+                <h2>Methods</h2>
+                <div class="method-list">
+                    
                         
-                    
-
-                    
-                        <h2>Remote Methods</h2>
-                        <table>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="blockingExecute"><a
-                                            class="functions" href="#blockingExecute">blockingExecute</a></td>
-                                    <td class="module-desc"><p>Calls when executing a blocking call with a gRPC service.</p>
-<pre><code class="language-ballerina"> [anydata, grpc:Headers]|grpc:Error result = grpcClient-&gt;blockingExecute(&quot;HelloWorld/hello&quot;, req, headers);
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="nonBlockingExecute"><a
-                                            class="functions" href="#nonBlockingExecute">nonBlockingExecute</a></td>
-                                    <td class="module-desc"><p>Calls when executing a non-blocking call with a gRPC service.</p>
-<pre><code class="language-ballerina"> grpc:Error? result = grpcClient-&gt;nonBlockingExecute(&quot;HelloWorld/hello&quot;, req, msgListener, headers);
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="streamingExecute"><a
-                                            class="functions" href="#streamingExecute">streamingExecute</a></td>
-                                    <td class="module-desc"><p>Calls when executing  a streaming call with a gRPC service.</p>
-<pre><code class="language-ballerina"> grpc:StreamingClient|grpc:Error result = grpcClient-&gt;streamingExecute(&quot;HelloWorld/lotsOfGreetings&quot;, msgListener,
-                                                                        headers);
-</code></pre>
-</td>
-                                </tr>
-                            
-                        </table>
-                    
-
-                    
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
 <div class="param-sum">
     <div class="param-name " title="initStub">
         <a href="#initStub">initStub </a>
@@ -332,27 +262,27 @@ provides includes functions to send request/error messages.</p>
     </div>
 </div>
 
-                            
-                        </div>
-                    
-                
                     
                 </div>
+            
+        
+            
+        </div>
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="blockingExecute" title="blockingExecute">
              <a class="url-link" href="#blockingExecute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > blockingExecute </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> methodID, <span class="builtin-type">anydata</span> payload, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
-            <b> returns </b><span>[</span><span class="builtin-type">anydata</span>, <a href="../../grpc/objects/Headers.html">Headers</a><span>]</span> | <a href="../../grpc/types.html#Error">Error</a> 
+            
+                <b> returns </b><span>[</span><span class="builtin-type">anydata</span>, <a href="../../grpc/objects/Headers.html">Headers</a><span>]</span> | <a href="../../grpc/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -431,19 +361,19 @@ provides includes functions to send request/error messages.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="nonBlockingExecute" title="nonBlockingExecute">
              <a class="url-link" href="#nonBlockingExecute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > nonBlockingExecute </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> methodID, <span class="builtin-type">anydata</span> payload, <span class="builtin-type">service</span> listenerService, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
-            <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -539,19 +469,19 @@ provides includes functions to send request/error messages.</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="streamingExecute" title="streamingExecute">
              <a class="url-link" href="#streamingExecute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > streamingExecute </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> methodID, <span class="builtin-type">service</span> listenerService, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
-            <b> returns </b><a href="../../grpc/clients/StreamingClient.html">StreamingClient</a> | <a href="../../grpc/types.html#Error">Error</a> 
+            
+                <b> returns </b><a href="../../grpc/clients/StreamingClient.html">StreamingClient</a> | <a href="../../grpc/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -631,23 +561,23 @@ provides includes functions to send request/error messages.</p>
         
     
 </div>
-                    
-                
+            
+        
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="initStub" title="initStub">
              <a class="url-link" href="#initStub">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > initStub </h2>
-        
         <span class="method-types">
-            <p>(<a href="../../grpc/objects/AbstractClientEndpoint.html">AbstractClientEndpoint</a> clientEndpoint, <span class="builtin-type">string</span> stubType, <span class="builtin-type">string</span> descriptorKey, <span class="builtin-type">map</span> descriptorMap)</p>
-            <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            <p>(<a href="../../grpc/objects/AbstractClientEndpoint.html">AbstractClientEndpoint</a> clientEndpoint, <span class="builtin-type">string</span> stubType, <span class="builtin-type">string</span> descriptorKey, <span class="builtin-type">map</span><<span class="builtin-type">any</span>> descriptorMap)</p>
+            
+                <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -715,7 +645,7 @@ provides includes functions to send request/error messages.</p>
                 <ul>
                     <li>
                         <span >descriptorMap</span>
-                        <span class="type">  <span class="builtin-type">map</span> </span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">any</span>> </span>
                         
                     </li>
                     <li>
@@ -743,26 +673,16 @@ provides includes functions to send request/error messages.</p>
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -789,6 +709,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -798,4 +736,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

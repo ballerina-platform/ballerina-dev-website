@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,108 +67,48 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Types</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#Caller">Caller</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#Error">Error</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../socket/index.html">
-            <h3>socket</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../socket/index.html#records">Records</a>
-        </li>
-        
-        
-        
-            <li>
-                <a data="clients" href="../socket/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../socket/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../socket/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../socket/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Types</h3>
+                    <h3>
+    Types
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#Caller">Caller</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#Error">Error</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#Caller" onclick="menuLinkClick()">Caller</a>
+        </li>
+    
+        <li >
+            <a href="#Error" onclick="menuLinkClick()">Error</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../socket/index.html">
+        <a href="../socket/index.html" onclick="menuLinkClick()">
             <h3>socket</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../socket/index.html#records">Records</a>
+            <a data="records" href="../socket/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
         
             <li>
-                <a data="clients" href="../socket/index.html#clients">Clients</a>
+                <a data="clients" href="../socket/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../socket/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../socket/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
@@ -168,92 +116,91 @@
         
         
             <li>
-                <a data="types" href="../socket/index.html#types">Types</a>
+                <a data="types" href="../socket/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../socket/index.html#errors">Errors</a>
+                <a data="errors" href="../socket/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-             <h1>
-                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                 <span class="title-type">Types - </span>
-                 
-                     <a href="../socket/index.html">socket</a>
-                 
-            </h1>
-            <div class="types">
-                <div class="data-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        <div class="params-listing">
-                            <ul>
-                                <li id="Caller">
-                                    <b >Caller</b>
-                                    <span class="type">  <a href="../socket/clients/Client.html">Client</a></span></li>
-                                <li>
-                                    
-                                    <p>Represents caller object in socket service resources and client callback service resources.
+                    Types
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../socket/index.html"><span class="modules">socket</span></a>
+                
+                
+            </h1>
+            
+    <div class="types">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="Caller">
+                            <b >Caller</b>
+                            
+                                <span class="type">  <a href="../socket/clients/Client.html">Client</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Represents caller object in socket service resources and client callback service resources.
 This has all the remote functions expose by socket:Client.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="Error">
-                                    <b >Error</b>
-                                    <span class="type">  <a href="../socket/errors.html#GenericError">GenericError</a> | <a href="../socket/errors.html#ReadTimedOutError">ReadTimedOutError</a></span></li>
-                                <li>
-                                    
-                                    <p>Represents socket module related errors.</p>
-
-                                </li>
-                            </ul>
-                        </div>
-                    
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="Error">
+                            <b >Error</b>
+                            
+                                <span class="type">  <a href="../socket/errors.html#GenericError">GenericError</a> | <a href="../socket/errors.html#ReadTimedOutError">ReadTimedOutError</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Represents socket module related errors.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+            
         </div>
     </div>
 
+        </div>
+        </div>
+    </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -280,6 +227,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -289,4 +254,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

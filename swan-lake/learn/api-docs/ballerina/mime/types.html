@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
 communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
-the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
+the RFC 2045 standard.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,mime">
 
@@ -61,90 +69,30 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Types</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="#Error">Error</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#HeaderPosition">HeaderPosition</a>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../mime/index.html">
-            <h3>mime</h3>
-        </a>
-    
-    <ul>
-        
-        
-            <li>
-                <a  data="objects" href="../mime/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../mime/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../mime/index.html#constants">Constants</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="types" href="../mime/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../mime/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Types</h3>
+                    <h3>
+    Types
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="#Error">Error</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#HeaderPosition">HeaderPosition</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="#Error" onclick="menuLinkClick()">Error</a>
+        </li>
+    
+        <li >
+            <a href="#HeaderPosition" onclick="menuLinkClick()">HeaderPosition</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../mime/index.html">
+        <a href="../mime/index.html" onclick="menuLinkClick()">
             <h3>mime</h3>
         </a>
     
@@ -152,483 +100,110 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
         
         
             <li>
-                <a  data="objects" href="../mime/index.html#objects">Objects</a>
+                <a  data="objects" href="../mime/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../mime/index.html#functions">Functions</a>
+                <a data="functions" href="../mime/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../mime/index.html#constants">Constants</a>
+                <a data="constants" href="../mime/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
         
             <li>
-                <a data="types" href="../mime/index.html#types">Types</a>
+                <a data="types" href="../mime/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../mime/index.html#errors">Errors</a>
+                <a data="errors" href="../mime/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-    
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-             <h1>
-                 <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
-                 <span class="title-type">Types - </span>
-                 
-                     <a href="../mime/index.html">mime</a>
-                 
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    Types
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../mime/index.html"><span class="modules">mime</span></a>
+                
+                
             </h1>
-            <div class="types">
-                <div class="data-wrapper">
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="Error">
-                                    <b >Error</b>
-                                    <span class="type">  <a href="../mime/errors.html#ParserError">ParserError</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a> | <a href="../mime/errors.html#GenericMimeError">GenericMimeError</a> | <a href="../mime/errors.html#SetHeaderError">SetHeaderError</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a> | <a href="../mime/errors.html#HeaderUnavailableError">HeaderUnavailableError</a> | <a href="../mime/errors.html#IdleTimeoutTriggeredError">IdleTimeoutTriggeredError</a> | <a href="../mime/errors.html#NoContentError">NoContentError</a> | <a href="../mime/errors.html#SerializationError">SerializationError</a> | <a href="../mime/errors.html#InvalidHeaderValueError">InvalidHeaderValueError</a> | <a href="../mime/errors.html#InvalidHeaderParamError">InvalidHeaderParamError</a> | <a href="../mime/errors.html#InvalidContentLengthError">InvalidContentLengthError</a> | <a href="../mime/errors.html#HeaderNotFoundError">HeaderNotFoundError</a> | <a href="../mime/errors.html#InvalidHeaderOperationError">InvalidHeaderOperationError</a></span></li>
-                                <li>
-                                    
-                                    <p>Represents MIME related errors.</p>
+            
+    <div class="types">
+        <div class="data-wrapper">
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="Error">
+                            <b >Error</b>
+                            
+                                <span class="type">  <a href="../mime/errors.html#ParserError">ParserError</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a> | <a href="../mime/errors.html#GenericMimeError">GenericMimeError</a> | <a href="../mime/errors.html#SetHeaderError">SetHeaderError</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a> | <a href="../mime/errors.html#HeaderUnavailableError">HeaderUnavailableError</a> | <a href="../mime/errors.html#IdleTimeoutTriggeredError">IdleTimeoutTriggeredError</a> | <a href="../mime/errors.html#NoContentError">NoContentError</a> | <a href="../mime/errors.html#SerializationError">SerializationError</a> | <a href="../mime/errors.html#InvalidHeaderValueError">InvalidHeaderValueError</a> | <a href="../mime/errors.html#InvalidHeaderParamError">InvalidHeaderParamError</a> | <a href="../mime/errors.html#InvalidContentLengthError">InvalidContentLengthError</a> | <a href="../mime/errors.html#HeaderNotFoundError">HeaderNotFoundError</a> | <a href="../mime/errors.html#InvalidHeaderOperationError">InvalidHeaderOperationError</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Represents MIME related errors.</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="HeaderPosition">
-                                    <b >HeaderPosition</b>
-                                    <span class="type">  <a href="../mime/constants.html#LEADING">LEADING</a> | <a href="../mime/constants.html#TRAILING">TRAILING</a></span></li>
-                                <li>
-                                    
-                                    <p>Defines the position of the headers in the request/response.</p>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="HeaderPosition">
+                            <b >HeaderPosition</b>
+                            
+                                <span class="type">  <a href="../mime/constants.html#LEADING">LEADING</a> | <a href="../mime/constants.html#TRAILING">TRAILING</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Defines the position of the headers in the request/response.</p>
 <p><code>LEADING</code>: Header is placed before the payload of the request/response
 <code>TRAILING</code>: Header is placed after the payload of the request/response</p>
 
-                                </li>
-                            </ul>
-                        </div>
-                    
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$0">
-                                    <b >$anonType$0</b>
-                                    <span class="type">leading</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$1">
-                                    <b >$anonType$1</b>
-                                    <span class="type">trailing</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$10">
-                                    <b >$anonType$10</b>
-                                    <span class="type">image/jpeg</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$11">
-                                    <b >$anonType$11</b>
-                                    <span class="type">image/gif</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$12">
-                                    <b >$anonType$12</b>
-                                    <span class="type">image/png</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$13">
-                                    <b >$anonType$13</b>
-                                    <span class="type">multipart/form-data</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$14">
-                                    <b >$anonType$14</b>
-                                    <span class="type">multipart/mixed</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$15">
-                                    <b >$anonType$15</b>
-                                    <span class="type">multipart/alternative</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$16">
-                                    <b >$anonType$16</b>
-                                    <span class="type">multipart/related</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$17">
-                                    <b >$anonType$17</b>
-                                    <span class="type">multipart/parallel</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$18">
-                                    <b >$anonType$18</b>
-                                    <span class="type">text/plain</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$19">
-                                    <b >$anonType$19</b>
-                                    <span class="type">text/html</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$2">
-                                    <b >$anonType$2</b>
-                                    <span class="type">application/octet-stream</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$20">
-                                    <b >$anonType$20</b>
-                                    <span class="type">text/xml</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$21">
-                                    <b >$anonType$21</b>
-                                    <span class="type">boundary</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$22">
-                                    <b >$anonType$22</b>
-                                    <span class="type">start</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$23">
-                                    <b >$anonType$23</b>
-                                    <span class="type">type</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$24">
-                                    <b >$anonType$24</b>
-                                    <span class="type">charset</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$25">
-                                    <b >$anonType$25</b>
-                                    <span class="type">UTF-8</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$26">
-                                    <b >$anonType$26</b>
-                                    <span class="type">r</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$27">
-                                    <b >$anonType$27</b>
-                                    <span class="type">content-id</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$28">
-                                    <b >$anonType$28</b>
-                                    <span class="type">content-length</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$29">
-                                    <b >$anonType$29</b>
-                                    <span class="type">content-type</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$3">
-                                    <b >$anonType$3</b>
-                                    <span class="type">application/json</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$30">
-                                    <b >$anonType$30</b>
-                                    <span class="type">content-disposition</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$4">
-                                    <b >$anonType$4</b>
-                                    <span class="type">application/xml</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$5">
-                                    <b >$anonType$5</b>
-                                    <span class="type">application/svg+xml</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$6">
-                                    <b >$anonType$6</b>
-                                    <span class="type">application/xhtml+xml</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$7">
-                                    <b >$anonType$7</b>
-                                    <span class="type">application/soap+xml</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$8">
-                                    <b >$anonType$8</b>
-                                    <span class="type">application/x-www-form-urlencoded</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
-                        <div class="params-listing">
-                            <ul>
-                                <li id="$anonType$9">
-                                    <b >$anonType$9</b>
-                                    <span class="type">application/pdf</span></li>
-                                <li>
-                                    
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            </div>
+            
+            
         </div>
     </div>
 
+        </div>
+        </div>
+    </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -655,6 +230,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -664,4 +257,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

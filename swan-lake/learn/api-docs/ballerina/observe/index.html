@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,34 +62,35 @@ Ballerina supports Observability out of the box. This module provides user api's
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../observe/index.html">
+        <a href="../observe/index.html" onclick="menuLinkClick()">
             <h3>observe</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../observe/index.html#records">Records</a>
+            <a data="records" href="../observe/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../observe/index.html#objects">Objects</a>
+                <a  data="objects" href="../observe/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../observe/index.html#functions">Functions</a>
+                <a data="functions" href="../observe/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
             <li>
-                <a data="annotations" href="../observe/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../observe/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
@@ -98,91 +101,48 @@ Ballerina supports Observability out of the box. This module provides user api's
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../observe/index.html">
-            <h3>observe</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../observe/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../observe/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../observe/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="annotations" href="../observe/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">observe</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 0.8.0</div>
+                    <a href="../observe/index.html"><span class="modules">observe</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 0.8.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides apis for observing Ballerina services.
 Ballerina supports Observability out of the box. This module provides user api's to make Ballerina Observability more flexible for the user.</p>
 <p>To observe Ballerina code, the '--b7a.observability.enabled=true' property should be given when starting the service.
 i.e. `ballerina run hello_world.bal --b7a.observability.enabled=true'
 For more information on Ballerina Observability visit <a href="https://ballerina.io/swan-lake/learn/how-to-observe-ballerina-code/">How to Observe Ballerina Services</a>.</p>
-<h1>Tracing</h1>
+<h2>Tracing</h2>
 <p>Tracing provides information regarding the roundtrip of a service invocation based on the concept of spans, which are
 structured in a hierarchy based on the cause and effect concept. The tracing API allows users to tap into that
 tracing information, introduce new spans, and add additional information to existing spans using user-defined tags.</p>
-<h2>Samples</h2>
-<h3>Start a root span &amp; attach a child span</h3>
+<h3>Samples</h3>
+<h4>Start a root span &amp; attach a child span</h4>
 <p>The following code snippet show an example of how start a root span with no parent and start another span as a child of the first span.
 Note: Make sure that all started spans are closed properly to ensure that all spans are reported properly.</p>
 <pre><code class="language-ballerina">int spanId = observe:startRootSpan(&quot;Parent Span&quot;);
@@ -199,7 +159,7 @@ var ret1 = observe:finishSpan(spanId2);
 
 var ret2 = observe:finishSpan(spanId);
 </code></pre>
-<h3>Start a span attached to a system trace</h3>
+<h4>Start a span attached to a system trace</h4>
 <p>When no parentSpanId is given or a parentSpanId of -1 is given, a span is started as a child span to the current active span in the ootb system trace.</p>
 <pre><code class="language-ballerina">int spanId = checkpanic observe:startSpan(&quot;Child Span&quot;);
 
@@ -207,22 +167,22 @@ var ret2 = observe:finishSpan(spanId);
 
 var ret = observe:finishSpan(spanId);
 </code></pre>
-<h3>Attach a tag to a span</h3>
+<h4>Attach a tag to a span</h4>
 <p>It is possible to add tags to span by using the <code>observe:addTagToSpan()</code> api by providing the span id and relevant tag key and tag value.</p>
 <pre><code class="language-ballerina">_ = observe:addTagToSpan(spanId = spanId, &quot;Tag Key&quot;, &quot;Tag Value&quot;);
 </code></pre>
-<h3>Attach a tag to a span in the system trace</h3>
+<h4>Attach a tag to a span in the system trace</h4>
 <p>When no spanId is provided or -1 is given, the defined tags are added to the current active span in the ootb system trace.</p>
 <pre><code class="language-ballerina">var ret = observe:addTagToSpan(&quot;Tag Key&quot;, &quot;Tag Value&quot;);
 </code></pre>
-<h1>Metrics</h1>
+<h2>Metrics</h2>
 <p>There are mainly two kind of metrics instances supported; Counter and Gauge. A counter is a cumulative metric that
 represents a single monotonically increasing counter whose value can only increase or be reset to zero on restart.
 For example, you can use a counter to represent the number of requests served, tasks completed, or errors.
 The Gauge metric instance represents a single numerical value that can arbitrarily go up and down, and also based on the
 statistics configurations provided to the Gauge, it can also report the statistics such as max, min, mean, percentiles, etc.</p>
-<h2>Counter Samples</h2>
-<h3>Create</h3>
+<h3>Counter Samples</h3>
+<h4>Create</h4>
 <p>The following code snippets provides the information on how Counter instances can be created. Instantiating the counter
 will simply create an instance based on the params passed.</p>
 <pre><code class="language-ballerina">// Create counter with simply by name.
@@ -235,7 +195,7 @@ observe:Counter counterWithDesc = new(&quot;CounterWithDesc&quot;, desc = &quot;
 map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
 </code></pre>
-<h3>Register</h3>
+<h4>Register</h4>
 <p>The counter can registered with the global metrics registry, therefore it can be looked up later without having the
 reference of the counter that was created. Also, only the registered counters will be reported to the Metrics reporter
 such as Prometheus. In case, if there is already another non counter metric registered,
@@ -248,7 +208,7 @@ if anyError is error {
     log:printError(&quot;Cannot register the counter&quot;, err = anyError);
 }
 </code></pre>
-<h3>Unregister</h3>
+<h4>Unregister</h4>
 <p>The counter can unregistered with the global metrics registry if it is already registered. If a metrics is unregistered,
 then further it'll not be included in metrics reporting.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
@@ -260,7 +220,7 @@ if anyError is error {
 counterWithTags.unregister();
     
 </code></pre>
-<h3>Increment</h3>
+<h4>Increment</h4>
 <p>The counter can be incremented without passing any params (defaulted to 1), or by a specific amount.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
@@ -269,20 +229,20 @@ counterWithTags.increment();
 // Increment by amount 10.
 counterWithTags.increment(amount = 10);
 </code></pre>
-<h3>Reset</h3>
+<h4>Reset</h4>
 <p>The counter can be resetted to default amount = 0.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
 counterWithTags.reset();
 </code></pre>
-<h3>Get Value</h3>
+<h4>Get Value</h4>
 <p>The current value can be retrieved by this operation.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
 int currentValue = counterWithTags.getValue();
 </code></pre>
-<h2>Gauge Samples</h2>
-<h3>Create</h3>
+<h3>Gauge Samples</h3>
+<h4>Create</h4>
 <p>The following code snippets provides the information on how Gauge instances can be created. Instantiating the gauge
 will simply create an instance based on the params passed.</p>
 <pre><code class="language-ballerina">// Create gauge with simply by name. 
@@ -310,7 +270,7 @@ statsConfigs[0]=config;
 observe:Gauge gaugeWithStats = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, 
                                    tags = gaugeTags, statisticConfig = statsConfigs);
 </code></pre>
-<h3>Register</h3>
+<h4>Register</h4>
 <p>The gauge can registered with the global metrics registry, therefore it can be looked up later without having the
 reference of the gauge that was created. Also, only the registered counters will be reported to the Metrics reporter
 such as Prometheus. In case, if there is already another non gauge metric registered,
@@ -323,7 +283,7 @@ if anyError is error {
     log:printError(&quot;Cannot register the gauge&quot;, err = anyError);
 }
 </code></pre>
-<h3>Unregister</h3>
+<h4>Unregister</h4>
 <p>The gauge can unregistered with the global metrics registry if it is already registered. If a metrics is unregistered,
 then further it'll not be included in metrics reporting.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
@@ -334,7 +294,7 @@ if anyError is error {
 }
 gaugeWithTags.unregister();
 </code></pre>
-<h3>Increment</h3>
+<h4>Increment</h4>
 <p>The gauge can be incremented without passing any params (defaulted to 1.0), or by a specific amount.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
@@ -343,7 +303,7 @@ gaugeWithTags.increment();
 // Increment by amount 10.
 gaugeWithTags.increment(amount = 10.0);  
 </code></pre>
-<h3>Decrement</h3>
+<h4>Decrement</h4>
 <p>The gauge can be decremented without passing any params (defaulted to 1.0), or by a specific amount.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
@@ -352,19 +312,19 @@ gaugeWithTags.decrement();
 // Increment by amount 10.
 gaugeWithTags.decrement(amount = 10.0);
 </code></pre>
-<h3>Set Value</h3>
+<h4>Set Value</h4>
 <p>This method sets the gauge's value with specific amount.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
 gaugeWithTags.setValue(100.0);
 </code></pre>
-<h3>Get Value.</h3>
+<h4>Get Value.</h4>
 <p>The current value can be retrieved by this operation.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
 float currentValue = gaugeWithTags.getValue(); 
 </code></pre>
-<h3>Get Snapshot.</h3>
+<h4>Get Snapshot.</h4>
 <p>This method retrieves current snapshot of the statistics calculation based on the configurations passed to the gauge.
 If the statistics are disabled, then it'll be returning nil ().</p>
 <pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
@@ -380,8 +340,8 @@ if summarySnapshot is observe:Snapshot[] {
     io:println(&quot;No statistics available!&quot;);
 }
 </code></pre>
-<h2>Global Metrics Samples</h2>
-<h3>Get All Metrics</h3>
+<h3>Global Metrics Samples</h3>
+<h4>Get All Metrics</h4>
 <p>This method returns all the metrics that are registered in the global metrics registry. This method is mainly useful for
 metric reporters, where they can fetch all metrics, format those, and report.</p>
 <pre><code class="language-ballerina">observe:Metric[] metrics = observe:getAllMetrics();
@@ -389,7 +349,7 @@ foreach var metric in metrics {
     // Do something.
 }
 </code></pre>
-<h3>Lookup Metric</h3>
+<h4>Lookup Metric</h4>
 <p>This method will lookup for the metric from the global metric registry and return it.</p>
 <pre><code class="language-ballerina">map&lt;string&gt; tags = { &quot;method&quot;: &quot;GET&quot; };
 observe:Counter|observe:Gauge|() metric = observe:lookupMetric(&quot;MetricName&quot;, tags = tags);
@@ -403,245 +363,248 @@ if metric is observe:Counter {
 </code></pre>
 
 
-            
-
+    
+        
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Records </h2>
+                    <h2> Records </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="Metric" title="Metric">
-                                <a class="records " href="records/Metric.html">Metric</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>This represents the generic metric record that can represent both counter and gauge.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="PercentileValue" title="PercentileValue">
-                                <a class="records " href="records/PercentileValue.html">PercentileValue</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>This represents the percentile value record.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="module-title truncate records" id="Metric" title="Metric">
+                            <a class="records " href="records/Metric.html">Metric</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>This represents the generic metric record that can represent both counter and gauge.
+                        </td>
+                    </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="Snapshot" title="Snapshot">
-                                <a class="records " href="records/Snapshot.html">Snapshot</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>This represents the snapshot of the statistics calculation of the gauge.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate records" id="StatisticConfig" title="StatisticConfig">
-                                <a class="records " href="records/StatisticConfig.html">StatisticConfig</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>This represents the statistic configuration that can be used to instatiate gauge metric.
-                            </td>
-                        </tr>
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="PercentileValue" title="PercentileValue">
+                            <a class="records " href="records/PercentileValue.html">PercentileValue</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>This represents the percentile value record.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="Snapshot" title="Snapshot">
+                            <a class="records " href="records/Snapshot.html">Snapshot</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>This represents the snapshot of the statistics calculation of the gauge.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="StatisticConfig" title="StatisticConfig">
+                            <a class="records " href="records/StatisticConfig.html">StatisticConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>This represents the statistic configuration that can be used to instatiate gauge metric.
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </section>
-            
+        
+    
 
-            
+    
+        
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
                     <a class="url-link" href="#objects">
                         <img class="url-link-img" src="../html-template-resources/images/link.svg">
                     </a>
-                <h2> Objects </h2>
+                    <h2> Objects </h2>
                 </div>
                 <table>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="Counter" title="Counter">
-                                <a class="objects " href="objects/Counter.html">Counter</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>This represents the metric type - counter, that can be only increased by an integer number.
-                            </td>
-                        </tr>
                     
-                        <tr>
-                            <td class="module-title truncate objects" id="Gauge" title="Gauge">
-                                <a class="objects " href="objects/Gauge.html">Gauge</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
+                    <tr>
+                        <td class="module-title truncate objects" id="Counter" title="Counter">
+                            <a class="objects " href="objects/Counter.html">Counter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>This represents the metric type - counter, that can be only increased by an integer number.
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="Gauge" title="Gauge">
+                            <a class="objects " href="objects/Gauge.html">Gauge</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
 during the usage.
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     
-                </table>
-             </section>  
-            
-
-            
-
-            
-           
-
-            
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="addTagToSpan" title="addTagToSpan">
-                                <a class="functions " href="functions.html#addTagToSpan">addTagToSpan</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Add a key value pair as a tag to the span.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="ballerina/observe:0.8.0.&lt;init&gt;0" title="ballerina/observe:0.8.0.&lt;init&gt;0">
-                                <a class="functions " href="functions.html#ballerina/observe:0.8.0.&lt;init&gt;0">ballerina/observe:0.8.0.&lt;init&gt;0</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="finishSpan" title="finishSpan">
-                                <a class="functions " href="functions.html#finishSpan">finishSpan</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Finish the current span.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getAllMetrics" title="getAllMetrics">
-                                <a class="functions " href="functions.html#getAllMetrics">getAllMetrics</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="isObservabilityEnabled" title="isObservabilityEnabled">
-                                <a class="functions " href="functions.html#isObservabilityEnabled">isObservabilityEnabled</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Checks of either metrics or tracing had been enabled.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="lookupMetric" title="lookupMetric">
-                                <a class="functions " href="functions.html#lookupMetric">lookupMetric</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the specific metric that is described by the given name and tags.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="startRootSpan" title="startRootSpan">
-                                <a class="functions " href="functions.html#startRootSpan">startRootSpan</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Start a span with no parent span.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="startSpan" title="startSpan">
-                                <a class="functions " href="functions.html#startSpan">startSpan</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Start a span and create child relationship to current active span or user specified span.
-                            </td>
-                        </tr>
                     
                 </table>
             </section>
+        
+    
+
+    
+
+    
+
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-
-
-            
-
-
-            
-            <section class="method-content" id="annotations">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#annotations">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Annotations </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="addTagToSpan" title="addTagToSpan">
+                    <a class="functions " href="functions.html#addTagToSpan">addTagToSpan</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate annotations" id="Observable" title="Observable">
-                                <a class="annotations "
-                                   href="annotations.html#Observable">Observable</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                
-                            </td>
-                        </tr>
+                    <p>Add a key value pair as a tag to the span.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="ballerina/observe:0.8.0.&lt;init&gt;0" title="ballerina/observe:0.8.0.&lt;init&gt;0">
+                    <a class="functions " href="functions.html#ballerina/observe:0.8.0.&lt;init&gt;0">ballerina/observe:0.8.0.&lt;init&gt;0</a>
+                </td>
+                <td class="module-desc">
                     
-                </table>
-            </section>
+                    
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate functions" id="finishSpan" title="finishSpan">
+                    <a class="functions " href="functions.html#finishSpan">finishSpan</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Finish the current span.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getAllMetrics" title="getAllMetrics">
+                    <a class="functions " href="functions.html#getAllMetrics">getAllMetrics</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="isObservabilityEnabled" title="isObservabilityEnabled">
+                    <a class="functions " href="functions.html#isObservabilityEnabled">isObservabilityEnabled</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Checks of either metrics or tracing had been enabled.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="lookupMetric" title="lookupMetric">
+                    <a class="functions " href="functions.html#lookupMetric">lookupMetric</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Retrieves the specific metric that is described by the given name and tags.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="startRootSpan" title="startRootSpan">
+                    <a class="functions " href="functions.html#startRootSpan">startRootSpan</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Start a span with no parent span.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="startSpan" title="startSpan">
+                    <a class="functions " href="functions.html#startSpan">startSpan</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Start a span and create child relationship to current active span or user specified span.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
-            
 
+    
+
+
+    
+    <section class="method-content" id="annotations">
+        <div class="main-method-title here">
+            <a class="url-link" href="#annotations">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Annotations </h2>
+        </div>
+        <table>
             
+            <tr>
+                <td class="module-title truncate annotations" id="Observable" title="Observable">
+                    <a class="annotations " href="annotations.html#Observable">Observable</a>
+                </td>
+                <td class="module-desc">
+                    
+                    
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
+    
+
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -668,6 +631,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -677,4 +658,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

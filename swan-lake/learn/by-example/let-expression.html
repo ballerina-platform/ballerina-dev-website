@@ -40,9 +40,15 @@ redirect_from:
     <span class="nx">age</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
     <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span><span class="p">,</span>
     <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Lawyer&quot;</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">getSampleError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;SampleError&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Detail message&quot;</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">};</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">let_expression</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">a</span><span class="p">:</span> <span class="mi">2</span>
+<span class="nx">greeting</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">three</span><span class="p">:</span> <span class="mi">3</span>
+<span class="nx">length</span><span class="p">:</span> <span class="mi">14</span>
+<span class="nx">tuple</span> <span class="nx">binding</span> <span class="nx">result</span><span class="p">:</span> <span class="mi">60</span>
+<span class="nx">age</span><span class="p">:</span> <span class="mi">31</span>
 </pre></div>
 
             </div>
@@ -131,8 +137,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -141,7 +145,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -153,7 +157,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -165,7 +169,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int a = let int b = 1 in b * 2;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int a = let int b = 1 in b * 2;
     io:println(&quot;a: &quot;, a);
 </code></pre></div>
 
@@ -186,7 +190,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string greeting = let string hello = &quot;Hello &quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    string greeting = let string hello = &quot;Hello &quot;,
                           string ballerina = &quot;Ballerina!&quot;
                       in hello + ballerina;
     io:println(&quot;greeting: &quot;, greeting);
@@ -208,7 +212,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int three = let int one = getInt(), int two = one + one in one + two;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int three = let int one = getInt(), int two = one + one in one + two;
     io:println(&quot;three: &quot;, three);
 </code></pre></div>
 
@@ -229,7 +233,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int length = let var num = 10, var txt = &quot;four&quot; in num + txt.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    int length = let var num = 10, var txt = &quot;four&quot; in num + txt.length();
     io:println(&quot;length: &quot;, length);
 </code></pre></div>
 
@@ -249,7 +253,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [int, int] v1 = [10, 20];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [int, int] v1 = [10, 20];
 </code></pre></div>
 
                                 </td>
@@ -261,7 +265,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int tupleBindingResult = let [int, int] [d1, d2] = v1,
+                                    <div class="highlight"><pre><code class=language-ballerina>    int tupleBindingResult = let [int, int] [d1, d2] = v1,
                                  int d3 = d1 + d2
                              in  d3 * 2;
     io:println(&quot;tuple binding result: &quot;, tupleBindingResult);
@@ -283,7 +287,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int age = let Person {
+                                    <div class="highlight"><pre><code class=language-ballerina>    int age = let Person {
                     name: firstName,
                     age: personAge,
                     ...otherDetails
@@ -302,7 +306,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function getInt() returns int =&gt; 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>public function getInt() returns int =&gt; 1;
 </code></pre></div>
 
                                 </td>
@@ -314,7 +318,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age;
     string country;
@@ -329,27 +333,13 @@ redirect_from:
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getPerson() returns Person =&gt; {
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>function getPerson() returns Person =&gt; {
     name: &quot;John&quot;,
     age: 31,
     country: &quot;USA&quot;,
     &quot;occupation&quot;: &quot;Lawyer&quot;
 };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function getSampleError() returns error {
-    return error(&quot;SampleError&quot;, message = &quot;Detail message&quot;, fatal = true);
-}
 </code></pre></div>
 
                                 </td>
@@ -375,8 +365,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run let_expression.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run let_expression.bal
 a: 2
 greeting: Hello Ballerina!
 three: 3

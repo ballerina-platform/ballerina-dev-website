@@ -53,7 +53,28 @@ redirect_from:
 <span class="p">}</span><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Multiplying ${x} * ${y}`</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">threads</span><span class="o">-</span><span class="nx">and</span><span class="o">-</span><span class="nx">strands</span><span class="p">.</span><span class="nx">bal</span>
+<span class="o">---</span> <span class="k">case</span> <span class="mi">1</span> <span class="o">---</span>
+<span class="nx">Before</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span>
+<span class="nx">Multiplying</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nx">After</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span><span class="o">---</span> <span class="k">case</span> <span class="mi">2</span> <span class="o">---</span>
+<span class="nx">Multiplying</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nx">Before</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span>
+<span class="nx">After</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span><span class="o">---</span> <span class="k">case</span> <span class="mi">3</span> <span class="o">---</span>
+<span class="nx">Multiplying</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nx">Multiplying</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="nx">Before</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span>
+<span class="nx">After</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span><span class="o">---</span> <span class="k">case</span> <span class="mi">4</span> <span class="o">---</span>
+<span class="nx">Multiplying</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nx">Before</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span>
+<span class="nx">Multiplying</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="nx">After</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span><span class="o">---</span> <span class="k">case</span> <span class="mi">5</span> <span class="o">---</span>
+<span class="nx">Before</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span>
+<span class="nx">Multiplying</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="nx">Multiplying</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nx">After</span> <span class="nx">the</span> <span class="nx">wait</span> <span class="kd">action</span>
 </pre></div>
 
             </div>
@@ -167,7 +188,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -179,7 +200,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case1() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case1() {
 </code></pre></div>
 
                                 </td>
@@ -199,7 +220,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;--- case 1 ---&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;--- case 1 ---&quot;);
     future&lt;int&gt; f1 = start multiply(1, 2);
 </code></pre></div>
 
@@ -221,7 +242,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     int result = wait f1;
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -244,7 +265,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case2() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case2() {
 </code></pre></div>
 
                                 </td>
@@ -264,7 +285,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;--- case 2 ---&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;--- case 2 ---&quot;);
     future&lt;int&gt; f1 = @strand {thread: &quot;any&quot;} start multiply(1, 2);
 </code></pre></div>
 
@@ -285,7 +306,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     int result = wait f1;
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -300,7 +321,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case3() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case3() {
     io:println(&quot;--- case 3 ---&quot;);
     future&lt;int&gt; f1 = @strand {thread: &quot;any&quot;} start multiply(1, 2);
     future&lt;int&gt; f2 = @strand {thread: &quot;any&quot;} start multiply(4, 5);
@@ -322,7 +343,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     map&lt;int&gt; results = wait {f1, f2};
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -337,7 +358,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case4() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case4() {
     io:println(&quot;--- case 4 ---&quot;);
     future&lt;int&gt; f1 = @strand {thread: &quot;any&quot;} start multiply(1, 2);
     future&lt;int&gt; f2 = start multiply(4, 5);
@@ -360,7 +381,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     map&lt;int&gt; results = wait {f1, f2};
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -375,7 +396,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function case5() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function case5() {
     io:println(&quot;--- case 5 ---&quot;);
     future&lt;int&gt; f1 = start multiply(1, 2);
     future&lt;int&gt; f2 = start multiply(4, 5);
@@ -397,7 +418,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before the wait action&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before the wait action&quot;);
     map&lt;int&gt; results = wait {f1, f2};
     io:println(&quot;After the wait action\n&quot;);
 }
@@ -412,7 +433,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     case1();
     case2();
     case3();
@@ -430,7 +451,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function multiply(int x, int y) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function multiply(int x, int y) returns int {
     io:println(string `Multiplying ${x} * ${y}`);
     return x * y;
 }
@@ -475,8 +496,8 @@ redirect_from:
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run threads-and-strands.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run threads-and-strands.bal
 --- case 1 ---
 Before the wait action
 Multiplying 1 * 2

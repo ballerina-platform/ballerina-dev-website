@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,9 +61,10 @@
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
+            
             <div class="primary-list module">
     
-        <a href="../filepath/index.html">
+        <a href="../filepath/index.html" onclick="menuLinkClick()">
             <h3>filepath</h3>
         </a>
     
@@ -72,19 +75,19 @@
         
         
             <li>
-                <a data="functions" href="../filepath/index.html#functions">Functions</a>
+                <a data="functions" href="../filepath/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
         
             <li>
-                <a data="types" href="../filepath/index.html#types">Types</a>
+                <a data="types" href="../filepath/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../filepath/index.html#errors">Errors</a>
+                <a data="errors" href="../filepath/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
@@ -93,76 +96,37 @@
 
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                <div class="primary-list module">
-    
-        <a href="../filepath/index.html">
-            <h3>filepath</h3>
-        </a>
-    
-    <ul>
-        
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../filepath/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="types" href="../filepath/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../filepath/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
-        <div class="main-wrapper module-wrapper">
-            <div id="search-impl"></div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
-                <h1>
-                    <a class="breadcrumb-home" href="
-    ../index.html">
-    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
-</a>
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../index.html">
+                    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
                     
-                        Module : <span class="modules">filepath</span>
+                        Module :
                     
-                </h1>
+                    
+                    
+                </span>
                 
-                    <div>Version : 0.7.0</div>
+                    <a href="../filepath/index.html"><span class="modules">filepath</span></a>
                 
-                    <h2>Module Overview</h2>
+                
+            </h1>
+            
+    
+    <div>Version : 0.7.0</div>
+    
+    <h2>Module Overview</h2>
 <p>This module provides a platform-independent API for working with file paths.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.</p>
 <ul>
@@ -170,323 +134,312 @@
 </ul>
 
 
-            
+    
 
-            
+    
 
-            
+    
 
-            
-           
+    
 
+
+    
+    <section class="method-content" id="functions">
+        <div class="main-method-title here">
+            <a class="url-link" href="#functions">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Functions </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="functions">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#functions">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Functions </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate functions" id="absolute" title="absolute">
+                    <a class="functions " href="functions.html#absolute">absolute</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="absolute" title="absolute">
-                                <a class="functions " href="functions.html#absolute">absolute</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the absolute path from the provided location.
-                            </td>
-                        </tr>
+                    <p>Retrieves the absolute path from the provided location.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="build" title="build">
+                    <a class="functions " href="functions.html#build">build</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="build" title="build">
-                                <a class="functions " href="functions.html#build">build</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Joins any number of path elements into a single path.
-                            </td>
-                        </tr>
+                    <p>Joins any number of path elements into a single path.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="extension" title="extension">
+                    <a class="functions " href="functions.html#extension">extension</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="extension" title="extension">
-                                <a class="functions " href="functions.html#extension">extension</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the extension of the file path.
-                            </td>
-                        </tr>
+                    <p>Retrieves the extension of the file path.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="filename" title="filename">
+                    <a class="functions " href="functions.html#filename">filename</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="filename" title="filename">
-                                <a class="functions " href="functions.html#filename">filename</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Retrieves the base name of the file from the provided location,
+                    <p>Retrieves the base name of the file from the provided location,
 which is the last element of the path.
-                            </td>
-                        </tr>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getPathListSeparator" title="getPathListSeparator">
+                    <a class="functions " href="functions.html#getPathListSeparator">getPathListSeparator</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="getPathListSeparator" title="getPathListSeparator">
-                                <a class="functions " href="functions.html#getPathListSeparator">getPathListSeparator</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the path variable's separating character for paths of the underlying operating system.
-                            </td>
-                        </tr>
+                    <p>Returns the path variable's separating character for paths of the underlying operating system.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="getPathSeparator" title="getPathSeparator">
+                    <a class="functions " href="functions.html#getPathSeparator">getPathSeparator</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="getPathSeparator" title="getPathSeparator">
-                                <a class="functions " href="functions.html#getPathSeparator">getPathSeparator</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the path separator of the underlying operating system.
-                            </td>
-                        </tr>
+                    <p>Returns the path separator of the underlying operating system.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="isAbsolute" title="isAbsolute">
+                    <a class="functions " href="functions.html#isAbsolute">isAbsolute</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="isAbsolute" title="isAbsolute">
-                                <a class="functions " href="functions.html#isAbsolute">isAbsolute</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Reports whether the path is absolute.
-                            </td>
-                        </tr>
+                    <p>Reports whether the path is absolute.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="isReservedName" title="isReservedName">
+                    <a class="functions " href="functions.html#isReservedName">isReservedName</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="isReservedName" title="isReservedName">
-                                <a class="functions " href="functions.html#isReservedName">isReservedName</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Reports whether the filename is reserved.
-                            </td>
-                        </tr>
+                    <p>Reports whether the filename is reserved.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="matches" title="matches">
+                    <a class="functions " href="functions.html#matches">matches</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="matches" title="matches">
-                                <a class="functions " href="functions.html#matches">matches</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
-                            </td>
-                        </tr>
+                    <p>Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="normalize" title="normalize">
+                    <a class="functions " href="functions.html#normalize">normalize</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="normalize" title="normalize">
-                                <a class="functions " href="functions.html#normalize">normalize</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the shortest path name equivalent to the given path.
-                            </td>
-                        </tr>
+                    <p>Returns the shortest path name equivalent to the given path.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="parent" title="parent">
+                    <a class="functions " href="functions.html#parent">parent</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="parent" title="parent">
-                                <a class="functions " href="functions.html#parent">parent</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the enclosing parent directory.
-                            </td>
-                        </tr>
+                    <p>Returns the enclosing parent directory.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="relative" title="relative">
+                    <a class="functions " href="functions.html#relative">relative</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate functions" id="relative" title="relative">
-                                <a class="functions " href="functions.html#relative">relative</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
+                    <p>Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
 intervening separator.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="resolve" title="resolve">
-                                <a class="functions " href="functions.html#resolve">resolve</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Returns the filepath after the evaluation of any symbolic links.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="split" title="split">
-                                <a class="functions " href="functions.html#split">split</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Splits a list of paths joined by the OS-specific path separator.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate functions" id="resolve" title="resolve">
+                    <a class="functions " href="functions.html#resolve">resolve</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Returns the filepath after the evaluation of any symbolic links.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate functions" id="split" title="split">
+                    <a class="functions " href="functions.html#split">split</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Splits a list of paths joined by the OS-specific path separator.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
 
-            
+    
 
 
-            
+    
 
+    
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
             
-            <section class="method-content" id="types">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#types">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Types </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types " href="types.html#Error">Error</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents filepath related errors.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                    <p>Represents filepath related errors.
+                </td>
+            </tr>
             
+        </table>
+    </section>
+    
 
+    
+    <section class="method-content" id="errors">
+        <div class="main-method-title here">
+            <a class="url-link" href="#errors">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Errors </h2>
+        </div>
+        <table>
             
-             <section class="method-content" id="errors">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#errors">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                <h2> Errors </h2>
-                </div>
-                <table>
+            <tr>
+                <td class="module-title truncate errors" id="FileNotFoundError" title="FileNotFoundError">
+                    <a class="errors " href="errors.html#FileNotFoundError">FileNotFoundError</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="FileNotFoundError" title="FileNotFoundError">
-                                <a class="errors " href="errors.html#FileNotFoundError">FileNotFoundError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents error occur when the file/directory does not exist at the given filepath.
-                            </td>
-                        </tr>
+                    <p>Represents error occur when the file/directory does not exist at the given filepath.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="GenericError" title="GenericError">
+                    <a class="errors " href="errors.html#GenericError">GenericError</a>
+                </td>
+                <td class="module-desc">
                     
-                        <tr>
-                            <td class="module-title truncate errors" id="GenericError" title="GenericError">
-                                <a class="errors " href="errors.html#GenericError">GenericError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents generic error for filepath</p>
+                    <p>Represents generic error for filepath</p>
 
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="IOError" title="IOError">
-                                <a class="errors " href="errors.html#IOError">IOError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents IO error occur when trying to access the file at the given filepath.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="InvalidPathError" title="InvalidPathError">
-                                <a class="errors " href="errors.html#InvalidPathError">InvalidPathError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents error occur when the given file path is invalid.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="InvalidPatternError" title="InvalidPatternError">
-                                <a class="errors " href="errors.html#InvalidPatternError">InvalidPatternError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represent error occur when the given pattern is not a valid filepath pattern.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="NotLinkError" title="NotLinkError">
-                                <a class="errors " href="errors.html#NotLinkError">NotLinkError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents error occur when the file at the given filepath is not a symbolic link.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="RelativePathError" title="RelativePathError">
-                                <a class="errors " href="errors.html#RelativePathError">RelativePathError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents an error that occurs when the given target filepath cannot be derived relative to the base filepath.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="SecurityError" title="SecurityError">
-                                <a class="errors " href="errors.html#SecurityError">SecurityError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents security error occur when trying to access the file at the given filepath.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate errors" id="UNCPathError" title="UNCPathError">
-                                <a class="errors " href="errors.html#UNCPathError">UNCPathError</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                <p>Represents error occur in the UNC path.
-                            </td>
-                        </tr>
-                    
-                </table>
-            </section>
+                </td>
+            </tr>
             
+            <tr>
+                <td class="module-title truncate errors" id="IOError" title="IOError">
+                    <a class="errors " href="errors.html#IOError">IOError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents IO error occur when trying to access the file at the given filepath.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="InvalidPathError" title="InvalidPathError">
+                    <a class="errors " href="errors.html#InvalidPathError">InvalidPathError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents error occur when the given file path is invalid.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="InvalidPatternError" title="InvalidPatternError">
+                    <a class="errors " href="errors.html#InvalidPatternError">InvalidPatternError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represent error occur when the given pattern is not a valid filepath pattern.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="NotLinkError" title="NotLinkError">
+                    <a class="errors " href="errors.html#NotLinkError">NotLinkError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents error occur when the file at the given filepath is not a symbolic link.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="RelativePathError" title="RelativePathError">
+                    <a class="errors " href="errors.html#RelativePathError">RelativePathError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents an error that occurs when the given target filepath cannot be derived relative to the base filepath.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="SecurityError" title="SecurityError">
+                    <a class="errors " href="errors.html#SecurityError">SecurityError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents security error occur when trying to access the file at the given filepath.
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="UNCPathError" title="UNCPathError">
+                    <a class="errors " href="errors.html#UNCPathError">UNCPathError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents error occur in the UNC path.
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
+
         </div>
         </div>
     </div>
-
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -513,6 +466,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../";
 </script>
 <script src="../doc-search/search-data.js"></script>
@@ -522,4 +493,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

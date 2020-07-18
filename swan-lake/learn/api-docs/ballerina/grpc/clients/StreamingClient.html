@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,251 +68,173 @@
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Clients</h3>
-                <ul>
-                    
-                        <li >
-                            <a href="Caller.html">Caller</a> 
-                        </li>
-                    
-                        <li >
-                            <a href="Client.html">Client</a> 
-                        </li>
-                    
-                        <li class="active active-item">
-                            <a href="StreamingClient.html">StreamingClient</a> 
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../grpc/index.html">
-            <h3>grpc</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../grpc/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../../grpc/index.html#objects">Objects</a>
-            </li>
-        
-        
-            <li>
-                <a data="clients" href="../../grpc/index.html#clients">Clients</a>
-            </li>
-        
-        
-            <li>
-                <a data="listeners" href="../../grpc/index.html#listeners">Listeners</a>
-            </li>
-        
-        
-            <li>
-                <a data="functions" href="../../grpc/index.html#functions">Functions</a>
-            </li>
-        
-        
-            <li>
-                <a data="constants" href="../../grpc/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../../grpc/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../../grpc/index.html#types">Types</a>
-            </li>
-        
-        
-            <li>
-                <a data="errors" href="../../grpc/index.html#errors">Errors</a>
-            </li>
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Clients</h3>
+                    <h3>
+    Clients
+</h3>
                     <ul>
                         
-                            <li >
-                                <a href="Caller.html">Caller</a>
-                            </li>
-                        
-                            <li >
-                                <a href="Client.html">Client</a>
-                            </li>
-                        
-                            <li class="active active-item">
-                                <a href="StreamingClient.html">StreamingClient</a>
-                            </li>
-                        
+    
+        <li >
+            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
+        </li>
+    
+        <li >
+            <a href="Client.html" onclick="menuLinkClick()">Client</a>
+        </li>
+    
+        <li class="active active-item">
+            <a href="StreamingClient.html" onclick="menuLinkClick()">StreamingClient</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../grpc/index.html">
+        <a href="../../grpc/index.html" onclick="menuLinkClick()">
             <h3>grpc</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../grpc/index.html#records">Records</a>
+            <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../../grpc/index.html#objects">Objects</a>
+                <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
             <li>
-                <a data="clients" href="../../grpc/index.html#clients">Clients</a>
+                <a data="clients" href="../../grpc/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
             <li>
-                <a data="listeners" href="../../grpc/index.html#listeners">Listeners</a>
+                <a data="listeners" href="../../grpc/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
         
             <li>
-                <a data="functions" href="../../grpc/index.html#functions">Functions</a>
+                <a data="functions" href="../../grpc/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
             <li>
-                <a data="constants" href="../../grpc/index.html#constants">Constants</a>
+                <a data="constants" href="../../grpc/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../../grpc/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../../grpc/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../../grpc/index.html#types">Types</a>
+                <a data="types" href="../../grpc/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
             <li>
-                <a data="errors" href="../../grpc/index.html#errors">Errors</a>
+                <a data="errors" href="../../grpc/index.html#errors" onclick="menuLinkClick()">Errors</a>
             </li>
         
     </ul>
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Clients - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Clients
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../grpc/index.html">grpc</a> :
+                    <a href="../../grpc/index.html"><span class="modules">grpc</span></a>
                 
-                <span class="clients">StreamingClient</span>
+                 :
+                    
+    <span class="clients">StreamingClient</span>
+
+                
             </h1>
-            <p><p>Provides the gRPC streaming client actions for interacting with the gRPC server.</p>
+            
+    <p><p>Provides the gRPC streaming client actions for interacting with the gRPC server.</p>
 </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
+    <div class="constants">
+        <div class="method-sum">
+            
 
+            
+                <h2>Remote Methods</h2>
+                <table>
                     
-                        <h2>Remote Methods</h2>
-                        <table>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="send"><a
-                                            class="functions" href="#send">send</a></td>
-                                    <td class="module-desc"><p>Sends the request message to the server.</p>
-<pre><code class="language-ballerina"> grpc:Error? err = caller-&gt;send(message);
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="complete"><a
-                                            class="functions" href="#complete">complete</a></td>
-                                    <td class="module-desc"><p>Informs the server when the caller has sent all the messages.</p>
-<pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;complete();
-</code></pre>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="sendError"><a
-                                            class="functions" href="#sendError">sendError</a></td>
-                                    <td class="module-desc"><p>Sends an error message to the server.</p>
-<pre><code class="language-ballerina"> grpc:Error? result = streamingClient-&gt;sendError(grpc:ABORTED, &quot;Operation aborted&quot;);
-</code></pre>
-</td>
-                                </tr>
-                            
-                        </table>
+                        <tr>
+                            <td class="module-title truncate functions" title="send"><a
+                                    class="functions" href="#send">send</a></td>
+                            <td class="module-desc"><p>Sends the request message to the server.</td>
+                        </tr>
                     
+                        <tr>
+                            <td class="module-title truncate functions" title="complete"><a
+                                    class="functions" href="#complete">complete</a></td>
+                            <td class="module-desc"><p>Informs the server when the caller has sent all the messages.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="sendError"><a
+                                    class="functions" href="#sendError">sendError</a></td>
+                            <td class="module-desc"><p>Sends an error message to the server.</td>
+                        </tr>
+                    
+                </table>
+            
 
-                    
-                
-                    
-                </div>
+            
+        
+            
+        </div>
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="send" title="send">
              <a class="url-link" href="#send">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > send </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">anydata</span> res)</p>
-            <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -348,19 +279,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="complete" title="complete">
              <a class="url-link" href="#complete">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > complete </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -383,19 +314,19 @@
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="sendError" title="sendError">
              <a class="url-link" href="#sendError">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > sendError </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> statusCode, <span class="builtin-type">string</span> message)</p>
-            <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -457,28 +388,18 @@
         
     
 </div>
-                    
-                
+            
+        
 
-                
-            </div>
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -505,6 +426,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -514,4 +453,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

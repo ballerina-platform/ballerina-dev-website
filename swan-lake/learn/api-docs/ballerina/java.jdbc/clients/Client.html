@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -60,83 +69,39 @@ that is accessible via Java Database Connectivity (JDBC).
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
 
-            <div class="primary-list">
-                <h3>Clients</h3>
-                <ul>
-                    
-                        <li class="active active-item">
-                            <a href="Client.html">Client</a> 
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="ui divider"></div>
-            <div class="primary-list module">
-    
-        <a href="../../java.jdbc/index.html">
-            <h3>java.jdbc</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../../java.jdbc/index.html#records">Records</a>
-        </li>
-        
-        
-        
-            <li>
-                <a data="clients" href="../../java.jdbc/index.html#clients">Clients</a>
-            </li>
-        
-        
-        
-        
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-        </div>
-    </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="
-    ../../index.html">
-    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
-</a>
-
+            
                 <div class="primary-list">
-                    <h3>Clients</h3>
+                    <h3>
+    Clients
+</h3>
                     <ul>
                         
-                            <li class="active active-item">
-                                <a href="Client.html">Client</a>
-                            </li>
-                        
+    
+        <li class="active active-item">
+            <a href="Client.html" onclick="menuLinkClick()">Client</a>
+        </li>
+    
+
                     </ul>
                 </div>
                 <div class="ui divider"></div>
-                <div class="primary-list module">
+            
+            <div class="primary-list module">
     
-        <a href="../../java.jdbc/index.html">
+        <a href="../../java.jdbc/index.html" onclick="menuLinkClick()">
             <h3>java.jdbc</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../../java.jdbc/index.html#records">Records</a>
+            <a data="records" href="../../java.jdbc/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
         
             <li>
-                <a data="clients" href="../../java.jdbc/index.html#clients">Clients</a>
+                <a data="clients" href="../../java.jdbc/index.html#clients" onclick="menuLinkClick()">Clients</a>
             </li>
         
         
@@ -149,38 +114,49 @@ that is accessible via Java Database Connectivity (JDBC).
     <div class="ui divider"></div>
 </div>
 
-            </div>
         </div>
     </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
-            <div id="search-impl"></div>
+            <div id="search-impl" class="search-bar"></div>
             <div id="main">
             <h1>
                 <a class="breadcrumb-home" href="
-    ../../index.html">
-    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
-</a>
-                <span class="title-type">Clients - </span>
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Clients
+
+                    
+                        -
+                    
+                </span>
                 
-                    <a href="../../java.jdbc/index.html">java.jdbc</a> :
+                    <a href="../../java.jdbc/index.html"><span class="modules">java.jdbc</span></a>
                 
-                <span class="clients">Client</span>
+                 :
+                    
+    <span class="clients">Client</span>
+
+                
             </h1>
-            <p><p>Represents a JDBC client.</p>
+            
+    <p><p>Represents a JDBC client.</p>
 </p>
 
-            <div class="constants">
-                <div class="method-sum">
-                    
-                        
-                            <h2>Constructor</h2>
+    <div class="constants">
+        <div class="method-sum">
+            
+                
+                    <h2>Constructor</h2>
 <h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <span class="builtin-type">string?</span> user, <span class="builtin-type">string?</span> password, <a href="../../java.jdbc/records/Options.html">Options</a>? options, <a href="../../sql/records/ConnectionPool.html">ConnectionPool</a>? connectionPool)</p>
 <div class="data-wrapper">
     
@@ -237,43 +213,40 @@ be shared by other clients which has same properties</p>
         </div>
     
 </div>
+                
+            
+
+            
+                <h2>Remote Methods</h2>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="query"><a
+                                    class="functions" href="#query">query</a></td>
+                            <td class="module-desc"><p>Queries the database with the query provided by the user, and returns the result as stream.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="execute"><a
+                                    class="functions" href="#execute">execute</a></td>
+                            <td class="module-desc"><p>Executes the DDL or DML sql queries provided by the user, and returns summary of the execution.</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="batchExecute"><a
+                                    class="functions" href="#batchExecute">batchExecute</a></td>
+                            <td class="module-desc"><p>Executes a batch of parameterised DDL or DML sql query provided by the user,
+and returns the summary of the execution.</td>
+                        </tr>
+                    
+                </table>
+            
+
+            
+                <h2>Methods</h2>
+                <div class="method-list">
+                    
                         
-                    
-
-                    
-                        <h2>Remote Methods</h2>
-                        <table>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="query"><a
-                                            class="functions" href="#query">query</a></td>
-                                    <td class="module-desc"><p>Queries the database with the query provided by the user, and returns the result as stream.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="execute"><a
-                                            class="functions" href="#execute">execute</a></td>
-                                    <td class="module-desc"><p>Executes the DDL or DML sql queries provided by the user, and returns summary of the execution.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="batchExecute"><a
-                                            class="functions" href="#batchExecute">batchExecute</a></td>
-                                    <td class="module-desc"><p>Executes a batch of parameterised DDL or DML sql query provided by the user,
-and returns the summary of the execution.</p>
-</td>
-                                </tr>
-                            
-                        </table>
-                    
-
-                    
-                        <h2>Methods</h2>
-                        <div class="method-list">
-                            
-                                
 <div class="param-sum">
     <div class="param-name " title="close">
         <a href="#close">close </a>
@@ -284,27 +257,27 @@ and returns the summary of the execution.</p>
     </div>
 </div>
 
-                            
-                        </div>
-                    
-                
                     
                 </div>
+            
+        
+            
+        </div>
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="query" title="query">
              <a class="url-link" href="#query">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > query </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> | <a href="../../sql/objects/ParameterizedQuery.html">ParameterizedQuery</a> sqlQuery, <span class="builtin-type">typedesc?</span> rowType)</p>
-            <b> returns </b><span class="builtin-type">stream</span> 
+            
+                <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">record {| anydata...; |}</span> ,<a href="../../sql/types.html#Error">Error</a>></span> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -358,7 +331,7 @@ column names of the query result set be used for the record attributes</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">record {| anydata...; |}</span> ,<a href="../../sql/types.html#Error">Error</a>></span></span>)</li>
                 <li><p>Stream of records in the type of <code>rowType</code></p>
 </li>
             </ul>
@@ -366,19 +339,19 @@ column names of the query result set be used for the record attributes</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="execute" title="execute">
              <a class="url-link" href="#execute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > execute </h2>
-        
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> | <a href="../../sql/objects/ParameterizedQuery.html">ParameterizedQuery</a> sqlQuery)</p>
-            <b> returns </b><a href="../../sql/records/ExecutionResult.html">ExecutionResult</a> | <a href="../../sql/types.html#Error">Error</a> 
+            
+                <b> returns </b><a href="../../sql/records/ExecutionResult.html">ExecutionResult</a> | <a href="../../sql/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -423,19 +396,19 @@ if any error occurred when executing the query</p>
         
     
 </div>
-                    
-                        <div class="method-content">
+            
+                <div class="method-content">
     <div class="main-method-title here" id="batchExecute" title="batchExecute">
              <a class="url-link" href="#batchExecute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > batchExecute </h2>
-        
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../sql/objects/ParameterizedQuery.html">ParameterizedQuery</a>[]</span> sqlQueries)</p>
-            <b> returns </b><span class="array-type"><a href="../../sql/records/ExecutionResult.html">ExecutionResult</a>[]</span> | <a href="../../sql/types.html#Error">Error</a> 
+            
+                <b> returns </b><span class="array-type"><a href="../../sql/records/ExecutionResult.html">ExecutionResult</a>[]</span> | <a href="../../sql/types.html#Error">Error</a> 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -484,23 +457,23 @@ can be accessed as <code>(&lt;sql:BatchExecuteError&gt; result).detail()?.execut
         
     
 </div>
-                    
-                
+            
+        
 
-                
-                    
-                        <div class="method-content">
+        
+            
+                <div class="method-content">
     <div class="main-method-title here" id="close" title="close">
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
             <h2 > close </h2>
-        
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><a href="../../sql/types.html#Error">Error</a>? 
+            
+                <b> returns </b><a href="../../sql/types.html#Error">Error</a>? 
+            
         </span>
-        
     </div>
     <div class="function-desc">
         
@@ -521,26 +494,16 @@ can be accessed as <code>(&lt;sql:BatchExecuteError&gt; result).detail()?.execut
         
     
 </div>
-                    
-                
-            </div>
+            
+        
+    </div>
+
         </div>
         </div>
     </div>
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -567,6 +530,24 @@ contentWrapper.addEventListener("scroll", event => {
 
 </script>
 <script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
     var rootPath = "../../";
 </script>
 <script src="../../doc-search/search-data.js"></script>
@@ -576,4 +557,5 @@ contentWrapper.addEventListener("scroll", event => {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
 

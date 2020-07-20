@@ -25,6 +25,30 @@ Execute tests in the entire project using the --all option.
 $ ballerina test --all
 ```
 
+List all test groups in a given module.
+
+```
+$ ballerina test --list-groups <module_name>
+```
+
+Run only the tests belonging to given group/s in current project.
+
+```
+$ ballerina test --groups <group_1>,<group_2>  --all
+```
+
+Run the tests in current project excluding the given group/s.
+
+```
+$ ballerina test --disable-groups <group_1>  --all
+```
+
+Run only given test function/s in current project.
+
+```
+$ ballerina test --tests <test_function> --all
+```
+
 Generate an HTML test report 
 
 ```

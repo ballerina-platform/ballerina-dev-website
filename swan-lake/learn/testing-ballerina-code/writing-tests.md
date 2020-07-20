@@ -10,7 +10,7 @@ redirect_from:
   - /swan-lake/learn/testing-ballerina-code/writing-tests
 ---
 
-# Structuring test code
+# Writing Tests
 
 ## Project Structure
 

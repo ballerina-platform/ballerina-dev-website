@@ -308,7 +308,7 @@ The Ballerina test framework provides the capability to mock a function. Using t
 
 The object specified with the `@test:Mock {}` annotation will be considered as a mock function that gets triggered in place of the real function.
 
-*   ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module where the function to be mocked resides in. If the function is within the same module, this can be left blank or "." (No module) can be passed. If the function is in a different module, but within the same project, just passing the module name will suffice. For functions in completely seperate modules, the fully qualified module name must be passed, which includes the `orgName` and the `version`. ie. `orgName/module:version`. For native function, the ballerina module needs to be specified.
+*   ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides in. If the function is within the same module, this can be left blank or "." (no module) can be passed. If the function is in a different module but within the same project, just passing the module name will suffice. For functions in completely separate modules, the fully-qualified module name must be passed, which includes the `orgName` and the `version` i.e., `orgName/module:version`. For native functions, the Ballerina module needs to be specified.
 
 *   ***functionName : "&lt;functionName&gt;"*** - Name of the function to be mocked.
 
@@ -397,7 +397,7 @@ This test stubs the behaviour of an imported function to substitute it with a us
 }
 test:MockFunction sqrtMockFn = new();
 
-// This is a mock function that can be called in place of `math:sqrt` function.
+// This is a mock function that can be called in place of the `math:sqrt` function.
 function mockSqrt(float val) returns float {
     return 125.0;
 }

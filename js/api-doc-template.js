@@ -75,3 +75,32 @@ $(document).ready(function () {
 
  
 });
+
+
+$(window).scroll(function () {
+    var bodyclass = document.body;
+
+    if ($(this).scrollTop() > 100) {
+        $('.cLeftNavContainer').addClass('cFixNav');
+        $('.cLeftNavWrapper').addClass('cFixNav');
+
+ 
+     
+    } else {
+        $('.cLeftNavContainer').removeClass('cFixNav');
+        $('.cLeftNavWrapper').removeClass('cFixNav');
+    
+    }
+
+ 
+
+});
+
+
+// $(window).scroll(function() {
+//     $(".cLeftNavContainer").removeClass("test");
+//     if($(window).scrollTop() + $(window).height() == $(document).height()) {
+//         //you are at bottom
+//         $(".cLeftNavContainer").addClass("test");
+//     }
+//  });

@@ -1041,7 +1041,7 @@ line-height: 20px;
     margin-top: 50px;
 }
 
-.wy-nav-content h3,
+/* .wy-nav-content h3,
 .release_notes h2,
 .wy-nav-content .releaseNoteDiv h2 {
     font-size: 22px;
@@ -1049,14 +1049,14 @@ line-height: 20px;
     letter-spacing: 0.5px;
     text-transform: none;
     /* font-family: "pragmatica", sans-serif; */
-    line-height: 28px;
+    /* line-height: 28px;
     font-weight: 600;
     padding: 0;
     margin: 20px 0 15px 0;
     border: none;
-}
+}  */
 
-.wy-nav-content h4,
+/* .wy-nav-content h4,
 .release_notes h3,
 .wy-nav-content .releaseNoteDiv h3 {
     font-size: 18px;
@@ -1066,9 +1066,9 @@ line-height: 20px;
     padding: 0;
     margin: 20px 0 15px 0;
     font-weight: 600;
-}
+} */
 
-.wy-nav-content h5,
+/* .wy-nav-content h5,
 .release_notes h4,
 .wy-nav-content .releaseNoteDiv h4 {
     font-size: 16px;
@@ -1077,7 +1077,7 @@ line-height: 20px;
     padding: 0;
     margin: 20px 0 15px 0;
     font-weight: 600;
-}
+} */
 
 .overlay-highlight,
 .output-overlay-highlight {

@@ -23,6 +23,9 @@ table.ui.table td  p {
     margin: 0;
 }
 
+td {
+    padding: 10px;
+}
 
 
 /* SEARCH */
@@ -74,12 +77,12 @@ margin-top: 0;
 .cTopiAtag {
     font-weight: 800;
     color: #464646 !important;
+    padding-left: 15px !important;
+}
+.cMainLeftNav ul.sub-ul  {
+    padding-left: 15px !important;
 }
 
-.cLeftNavContainer {
-    position: fixed;
-    width: 300px;
-}
 
 /* BREADCRUMBS  */
 
@@ -140,6 +143,14 @@ display: inline-block;
      list-style: none !important;
  }
 
+ .method-sum  {
+     display: inline-block;
+ }
+
+.data-wrapper p {
+    display: inline-block;
+}
+
 /* 
  a.records  {
 color: #2067b6 !important;
@@ -184,15 +195,41 @@ color: #2067b6 !important;
  /* LEFT NAV */
 
  nav.cLeftNavContainer {
-     /* background-color: red; */
-     max-height: 70vh;
+     background-color: #f7f7f7;
+     height: 78vh;
      overflow: hidden;
-   
+   width: 300px;
      padding-right: 0px !important;
      margin-right: 30px !important;
      border: 1px solid #fff;
      z-index: 999999;
+     padding-top: 0;
+     margin-top: 10px;
+    
  }
+
+ .cLeftNavWrapper {
+     height: 100vh !important;
+     background-color: #f7f7f7;
+     width: 300px;
+ }
+
+ .cLeftNavWrapper.cFixNav {
+    position: fixed;
+    top: 0;
+    height: 100vh !important;
+ }
+
+
+
+ nav.cLeftNavContainer.cFixNav {
+position: fixed;
+top: 0;
+}
+
+/* nav.cLeftNavContainer.cFixNav ul:last-child {
+    padding-bottom: 300px !important;
+} */
 
 nav.cLeftNavContainer:hover {
     overflow-y: scroll;
@@ -200,11 +237,12 @@ nav.cLeftNavContainer:hover {
 
  .cBallerina-io-Home-Middle-col {
     padding-left: 50px;
+    padding-bottom: 400px;
  }
- .row.cBallerina-io-Gray-row {
+ /* .row.cBallerina-io-Gray-row {
      min-height: 100vh !important;
      
- }
+ } */
 
 
  .params-listing {
@@ -214,3 +252,16 @@ nav.cLeftNavContainer:hover {
  .builtin-type {
     font-weight: 800;
  }
+
+ #iBallerinaFooter {
+     position: absolute;
+     width: 100%;
+   bottom: 0;
+   z-index: 99999999;
+     
+ }
+
+ body {
+     position: relative;
+
+ } 

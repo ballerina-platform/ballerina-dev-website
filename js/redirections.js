@@ -193,7 +193,7 @@ let redirections = {
     "/swan-lake/learn/ballerina-streaming-reference/":"/swan-lake/learn/by-example/streams",
     "/1.1/learn/ballerina-streaming-reference/":"/1.1/learn/by-example/streams",
     "/1.0/learn/ballerina-streaming-reference/":"/1.0/learn/by-example/streams"
-    
+
 
 
 };

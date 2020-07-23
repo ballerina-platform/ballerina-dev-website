@@ -58,7 +58,7 @@ Generating executables
 In order to deploy a Ballerina function in Azure Functions, the following prerequisites must be met.
 
 * Create an Azure [Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements:
-   - Runtime stack - `Java`
+   - Runtime stack - `Java 8`
    - Hosting operating system - `Windows` (default; Linux is not supported in Azure for custom handlers at the moment)
 * Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 

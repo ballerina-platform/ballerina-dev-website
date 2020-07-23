@@ -4,7 +4,7 @@ title: Azure Functions
 description: See how the Ballerina deployment in Azure Functions works
 keywords: ballerina, programming language, serverless, cloud, Azure, Functions
 permalink: /swan-lake/learn/deployment/azure-functions/
-active: azure
+active: azure-functions
 redirect_from:
   - /swan-lake/learn/deployment/azure-functions
 ---

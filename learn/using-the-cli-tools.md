@@ -135,11 +135,6 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/learn/calling-java-code-from-ballerina">Calling Java Code from Ballerina</a>.</td>
 </tr>
 <tr>
-<td class="cCommand">home</td>
-<td class="cDescription">Prints out the location of your current Ballerina distribution. This is useful if you need to help your IDE plugin to figure out where Ballerina is.
-</td>
-</tr>
-<tr>
 <td class="cCommand">help</td>
 <td class="cDescription">Prints the usage details of any Ballerina command (e.g., `ballerina help pull`).
 </td>

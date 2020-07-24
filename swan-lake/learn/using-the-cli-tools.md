@@ -13,9 +13,9 @@ redirect_from:
 
  Using the CLI Tools
 
-The “ballerina” command is your one-stop-shop for all the things you do in Ballerina. You can use it in the below format.
+The `ballerina` command is your one-stop-shop for all the things you do in Ballerina. You can use it in the below format.
 
-`ballerina <THE-COMMAND> <ITS-ARGUEMENTS>`
+> `ballerina <THE-COMMAND> <ITS-ARGUEMENTS>`
 
 In the CLI, execute the `ballerina help` command to view all the actions you can perform with it as shown below:
 

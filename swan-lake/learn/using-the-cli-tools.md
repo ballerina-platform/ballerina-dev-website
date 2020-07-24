@@ -43,17 +43,17 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a Ballerina program, a single BAL file, an entire project, or a previously-built program. For more information, see <a href="/swan-lake/learn/how-to-run-ballerina-programs">How to Run Ballerina Programs</a>.
+<td class="cDescription">Build and run a Ballerina program, a single BAL file, an entire project, or a previously-built program. For more information, see <a href="/swan-lake/learn/running-ballerina-code">How to Running Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project. For more information, see <a href="/swan-lake/learn/how-to-test-ballerina-code">How to Test Ballerina Code</a>.
+<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project. For more information, see <a href="/swan-lake/learn/testing-ballerina-code">Testing Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or project. For more information, see <a href="/swan-lake/learn/how-to-document-ballerina-code">How to Document Ballerina Code</a>.
+<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or project. For more information, see <a href="/swan-lake/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
 </td>
 </tr>
 <tr>
@@ -63,7 +63,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">format</td>
-<td class="cDescription">Format Ballerina source files as per the <a href="/swan-lake/learn/style-guide">Ballerina Style Guide</a>.</td>
+<td class="cDescription">Format Ballerina source files as per the <a href="/swan-lake/learn/coding-conventions">Coding Conventions</a>.</td>
 </tr>
 </table>
 
@@ -79,7 +79,7 @@ These commands allow you to work with the Ballerina Central to share Ballerina m
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/swan-lake/learn/how-to-publish-modules">How to Publish a Module</a>.
+<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/swan-lake/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a>.
 </td>
 </tr>
 <tr>
@@ -96,12 +96,12 @@ Ballerina projects are the way to organize real world Ballerina development task
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina project. For more information, see <a href="/swan-lake/learn/how-to-structure-ballerina-code">How to Structure Ballerina Code</a>.
+<td class="cDescription">Create a Ballerina project. For more information, see <a href="/swan-lake/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">add</td>
-<td class="cDescription">Create a new Ballerina module in a project. For more information, see <a href="/swan-lake/learn/how-to-structure-ballerina-code">How to Structure Ballerina Code</a>.
+<td class="cDescription">Create a new Ballerina module in a project. For more information, see <a href="/swan-lake/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
 </td>
 </tr>
 </table>
@@ -118,11 +118,11 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
-<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/swan-lake/learn/how-to-generate-code-for-protocol-buffers">How to generate Ballerina code for Protocol Buffer Definition</a>.</td>
+<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions">Generating Ballerina Code for Protocol Buffer Definitions</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">openapi</td>
-<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/swan-lake/learn/how-to-use-openapi-tools">Ballerina OpenAPI Tools</a>.</td>
+<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/swan-lake/learn/using-the-openapi-tools">Using the OpenAPI Tools</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">version</td>
@@ -130,7 +130,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>
-<td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/swan-lake/learn/how-to-use-java-interoperability">How to Call Java Code from Ballerina</a>.</td>
+<td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/swan-lake/learn/calling-java-code-from-ballerina">Calling Java Code from Ballerina</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">home</td>

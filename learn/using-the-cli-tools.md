@@ -27,7 +27,7 @@ In the CLI, execute the `ballerina help` command to view all the actions you can
 - [Module commands](#module-commands)
 - [Project commands](#project-commands)
 - [Other commands](#other-commands)
-- [Update commands](#module-commands)
+- [Update commands](#update-commands)
 
 > **Tip:** You can view details of any of the commands below by executing `ballerina help <COMMAND>`. For example, the below is the output of the `ballerina help pull` command.
 

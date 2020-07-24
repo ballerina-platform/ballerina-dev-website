@@ -128,7 +128,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">version</td>
-<td class="cDescription">Tells you the version of Ballerina you have installed.</td>
+<td class="cDescription">Tells you the version of the distribution you are currently using, the language specification version on which it is based, and the update tool version, which is currently in use.</td>
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>

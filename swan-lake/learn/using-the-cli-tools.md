@@ -27,6 +27,10 @@ In the CLI, execute the `ballerina help` command to view all the actions you can
 - [Other commands](#other-commands)
 - [Update commands](#module-commands)
 
+> **Tip:** You can view details of any of the commands below by executing `ballerina help <COMMAND>`. For example, the below is the output of the `ballerina help pull` command.
+
+![Ballerina help output](/swan-lake/learn/images/ballerina-help-output.png)
+
 ## Core commands
 
 These everyday commands are your best friends! They address the very basics of programming in Ballerina such as compiling, running, testing programs, and generating their documentation.

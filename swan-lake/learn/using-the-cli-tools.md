@@ -38,7 +38,7 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a Ballerina program, a single BAL file, an entire project, or a single root module into an executable JAR file.
+<td class="cDescription">Compile a Ballerina program, a single BAL file, a module, an entire project, or a single root module into an executable JAR file.
 </td>
 </tr>
 <tr>

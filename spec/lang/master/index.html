@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-07-25</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-07-26</h1>
 <p>
 Primary contributors:
 </p>
@@ -3370,7 +3370,7 @@ belong.
 </p>
 <p>
 If C is any of the three abstract operations, and there is an ordered type to
-which both x and belong, then:
+which both x and y belong, then:
 </p>
 <ul>
 <li>C(x, y) is LT if and only if C(y, x) is GT</li>
@@ -3435,7 +3435,7 @@ involving nil are defined as follows:
 <li>CompareA((), x) is LT if x is not ()</li>
 </ul>
 <p>
-The CompareA operation is used for sorting in ascending order; the CompareB
+The CompareA operation is used for sorting in ascending order; the CompareD
 operation is used in reverse for sorting in descending order. The net effect of
 the above rules is thus that both () and NaN will appear at the end of a sorted
 list, with NaN before (), in both ascending and descending order.

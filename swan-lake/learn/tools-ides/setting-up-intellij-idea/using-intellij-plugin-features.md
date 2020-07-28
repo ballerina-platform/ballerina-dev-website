@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Using the features of the IntelliJ plugin
-permalink: /swan-lake/setting-up-intellij-idea/using-intellij-plugin-features/
+permalink: /swan-lake/learn/setting-up-intellij-idea/using-intellij-plugin-features/
 active: using-intellij-plugin-features
 redirect_from:
   - /swan-lake/learn/tools-ides/intellij-plugin/using-intellij-plugin-features

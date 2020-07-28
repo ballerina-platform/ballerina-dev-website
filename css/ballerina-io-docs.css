@@ -180,34 +180,8 @@ li.current a.current {
     display: none;
 }
 
-pre {
-    border: none;
-    border-radius: 0;
-}
 
-.section pre {
-    padding: 0;
-    margin: 20px 0;
-}
 
-pre code {
-    border: none;
-    border-radius: 0;
-    font-size: 12px;
-}
-
-pre code.ballerina {
-    font-size: 14px;
-}
-
-pre code.cBasicCode.hljs:not(.language-ballerina),
-pre code.cBasicCode.hljs:not(.language-ballerina) span,
-code.cBasicCode:not(.language-ballerina) {
-    color: #57595d !important;
-    border: none;
-    border-radius: 0;
-    font-size: 14px;
-}
 
 .cSideBar-Button {
     display: none;

@@ -78,3 +78,28 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+
+
+td, th {
+	/* border: none !important; */
+	padding: 0;
+}
+
+.code.cOutput .code, .code.cOutput pre {
+	background-color: transparent !important;
+}
+
+.cBBE-body tr.cOutputTr > td.code code {
+	text-shadow: none;
+}
+.a.cMobileLogo {
+    margin-top: 0;
+}
+.cBallerina-io-breadcrumbs {
+    padding-left: 15px;
+}
+/* .navbar {
+    padding-left: 15px;
+    padding-right: 15px;
+} */

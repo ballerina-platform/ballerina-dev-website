@@ -55,3 +55,8 @@ body .content-wrapper .main-wrapper {
 
     
 }
+
+.table-striped td, .table-striped th {
+    border: none !important;
+    
+}

@@ -1216,7 +1216,7 @@ list-style: none !important;
 ul.wy-breadcrumbs {
     padding: 0;
 }
-p span::before , p span.line-numbers-rows , li span::before , li span.line-numbers-rows {
+p span::before , p span.line-numbers-rows , li span::before , li span.line-numbers-rows , h2 span::before , h2 span.line-numbers-rows , h3 span::before , h3 span.line-numbers-rows {
     display: none !important;
 }
 

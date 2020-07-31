@@ -1216,7 +1216,7 @@ list-style: none !important;
 ul.wy-breadcrumbs {
     padding: 0;
 }
-p span::before {
+p span::before , p span.line-numbers-rows {
     display: none !important;
 }
 

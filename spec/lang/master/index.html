@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-07-28</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-08-02</h1>
 <p>
 Primary contributors:
 </p>
@@ -2238,9 +2238,9 @@ an argument list as input and returns a value as output.
    | <a href="#defaultable-params"><span class="ntref">defaultable-params</span></a> [<code>,</code> <a href="#rest-param"><span class="ntref">rest-param</span></a>]
    | [<a href="#rest-param"><span class="ntref">rest-param</span></a>]
 <span class="ntdfn" id="required-params">required-params</span> := <a href="#required-param"><span class="ntref">required-param</span></a> (<code>,</code> <a href="#required-param"><span class="ntref">required-param</span></a>)*
-<span class="ntdfn" id="required-param">required-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] [<code>public</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>]
+<span class="ntdfn" id="required-param">required-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>]
 <span class="ntdfn" id="defaultable-params">defaultable-params</span> := <a href="#defaultable-param"><span class="ntref">defaultable-param</span></a> (<code>,</code> <a href="#defaultable-param"><span class="ntref">defaultable-param</span></a>)*
-<span class="ntdfn" id="defaultable-param">defaultable-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] [<code>public</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>] <a href="#default-value"><span class="ntref">default-value</span></a>
+<span class="ntdfn" id="defaultable-param">defaultable-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>] <a href="#default-value"><span class="ntref">default-value</span></a>
 <span class="ntdfn" id="rest-param">rest-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>...</code> [<a href="#param-name"><span class="ntref">param-name</span></a>]
 <span class="ntdfn" id="param-name">param-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
@@ -2303,13 +2303,7 @@ the closure that computes the default value is only used at runtime.
 The name of each parameter is included in the function's type descriptor. A
 caller of the function may specify the name of the parameter that an argument is
 supplying. In this case, the caller uses the parameter name at compile time in
-conjunction with the type descriptor to create the argument list. For each
-parameter name, the function's type descriptor also includes the region of code
-within which the name of the parameter is visible; as usual, if
-<code>public</code> is specified, the region is the entire program, otherwise it
-is the module in which the function type descriptor occurs. The name of a
-parameter can only be used to specify an argument in a function call that occurs
-within the region of code within which the parameter name is visible. The
+conjunction with the type descriptor to create the argument list. The
 parameter names do not affect the shape of the function and thus do not affect
 typing.
 </p>
@@ -5124,9 +5118,7 @@ array type. If there is rest-arg, then no parameter defaults are added.
 <p>
 If there is no rest-arg, then each non-rest parameter that was not supplied by
 positional argument is added in order from a named argument, if there is one,
-and otherwise using the parameter default. An arg-list can only use a named
-argument to specify a parameter if the name of the parameter is visible at the
-point where the arg-list occurs. The contextually expected type for
+and otherwise using the parameter default. The contextually expected type for
 the expression specifying a named argument is the type declared for the
 corresponding parameter. A default parameter is computed by calling the closure
 in the type descriptor, passing it the previous arguments in the argument list.
@@ -9028,6 +9020,9 @@ extended to apply to more than just numeric types.</li>
 <li>Raw template expressions have been added.</li>
 <li>A value of type <code>xml:Text</code> can be implicitly converted to a
 string.</li>
+<li>The ability to specify the visibility of parameter names has been removed: a
+parameter can always be specified by name as well as position; a parameter
+cannot be declared as <code>public</code>.</li>
 </ol>
 </section>
 <section>

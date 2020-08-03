@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-08-02</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-08-03</h1>
 <p>
 Primary contributors:
 </p>
@@ -213,14 +213,12 @@ mailing list.
 </li>
 </ul>
 </li>
-<li>5.9 <a href="#functionally_constructible_types">Functionally constructible types</a>
+<li>5.9 <a href="#section_5.9">Binding patterns and variables</a><ul>
+<li>5.9.1 <a href="#section_5.9.1">Binding patterns</a>
 </li>
-<li>5.10 <a href="#section_5.10">Binding patterns and variables</a><ul>
-<li>5.10.1 <a href="#section_5.10.1">Binding patterns</a>
+<li>5.9.2 <a href="#section_5.9.2">Typed binding patterns</a>
 </li>
-<li>5.10.2 <a href="#section_5.10.2">Typed binding patterns</a>
-</li>
-<li>5.10.3 <a href="#section_5.10.3">Variable and identifier scoping</a>
+<li>5.9.3 <a href="#section_5.9.3">Variable and identifier scoping</a>
 </li>
 </ul>
 </li>
@@ -287,7 +285,7 @@ mailing list.
 </li>
 <li>6.17 <a href="#section_6.17">Method call expression</a>
 </li>
-<li>6.18 <a href="#section_6.18">Functional constructor</a>
+<li>6.18 <a href="#section_6.18">Error constructor</a>
 </li>
 <li>6.19 <a href="#section_6.19">Anonymous function expression</a>
 </li>
@@ -3454,118 +3452,9 @@ follows:
 </section>
 </section>
 <section>
-<h3 id="functionally_constructible_types">5.9 Functionally constructible types</h3>
-<p>
-A type that is <em>functionally constructible</em> allows values of the type to
-be destructured and constructed using a functional syntax. A functionally
-constructible type has a list of construction parameters, where each parameter
-is identified either by a position or by a name, and defines a decomposition
-that maps a value of the type into an argument list, with one member for each
-construction parameter.
-</p>
-<pre class="grammar"><span class="ntdfn" id="functionally-constructible-type-reference">functionally-constructible-type-reference</span> := <code>error</code> | <a href="#type-reference"><span class="ntref">type-reference</span></a>
-</pre>
-<p>
-A functionally-constructible-type-reference must refer to a type that is functionally constructible.
-</p>
-<p>
-The following table describes the functionally constructible types and their
-construction parameters. The last column specifies what happens if there is no
-argument for a parameter when a value is constructed.
-</p>
-
-<table>
-<tr>
-<td>Constructed type</td>
-<td>Parameter id</td>
-<td>Parameter type</td>
-<td>Parameter description</td>
-<td>Parameter missing</td>
-</tr>
-<tr>
-<td rowspan="3"><code>xml:Element</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>name</td>
-<td>not allowed</td>
-</tr>
-<tr>
-<td>Position 2</td>
-<td><code>map&lt;string&gt;</code></td>
-<td>attribute map</td>
-<td>defaults to empty map</td>
-</tr>
-<tr>
-<td>Position 3</td>
-<td><code>xml</code></td>
-<td>children</td>
-<td>defaults to empty xml value</td>
-</tr>
-<tr>
-<td rowspan="2"><code>xml:ProcessingInstruction</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>target</td>
-<td>not allowed</td>
-</tr>
-<tr>
-<td>Position 2</td>
-<td><code>string</code></td>
-<td>content</td>
-<td>defaults to empty string</td>
-</tr>
-<tr>
-<td><code>xml:Comment</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>content</td>
-<td>defaults to empty string</td>
-</tr>
-<tr>
-<td><code>xml:Text</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>characters</td>
-<td>defaults to empty string</td>
-</tr>
-<tr>
-<td rowspan="3"><code>error&lt;<var>T</var>&gt;</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>message</td>
-<td>not allowed</td>
-</tr>
-<tr>
-<td>Position 2</td>
-<td><code>error?</code></td>
-<td>cause</td>
-<td>defaults to nil</td>
-</tr>
-<tr>
-<td>Name <var>k</var>
-</td>
-<td>type of field <var>k</var> of <code><var>T</var></code>, which will be a
-subtype of <code>value:Cloneable</code>
-</td>
-<td>field <var>k</var> of detail record</td>
-<td>detail record has no field <var>k</var>
-</td>
-</tr>
-</table>
-<p>
-In the above table, argument position 1 refers to the first positional argument.
-</p>
-<p>
-A type descriptor that is a subtype of <code>error</code> is functionally
-constructible only if it is definite. In particular, it may be an
-intersection-type-descriptor.
-</p>
-</section>
-
+<h3 id="section_5.9">5.9 Binding patterns and variables</h3>
 <section>
-<h3 id="section_5.10">5.10 Binding patterns and variables</h3>
-<section>
-<h4 id="section_5.10.1">5.10.1 Binding patterns</h4>
+<h4 id="section_5.9.1">5.9.1 Binding patterns</h4>
 <p>
 Binding patterns are used to support destructuring, which allows different parts
 of a single structured value each to be assigned to separate variables at the
@@ -3577,7 +3466,7 @@ same time.
    | <a href="#wildcard-binding-pattern"><span class="ntref">wildcard-binding-pattern</span></a>
    | <a href="#list-binding-pattern"><span class="ntref">list-binding-pattern</span></a>
    | <a href="#mapping-binding-pattern"><span class="ntref">mapping-binding-pattern</span></a>
-   | <a href="#functional-binding-pattern"><span class="ntref">functional-binding-pattern</span></a>
+   | <a href="#error-binding-pattern"><span class="ntref">error-binding-pattern</span></a>
 <span class="ntdfn" id="capture-binding-pattern">capture-binding-pattern</span> := <a href="#variable-name"><span class="ntref">variable-name</span></a>
 <span class="ntdfn" id="variable-name">variable-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="wildcard-binding-pattern">wildcard-binding-pattern</span> := <code>_</code>
@@ -3593,16 +3482,20 @@ same time.
    <a href="#field-name"><span class="ntref">field-name</span></a> <code>:</code> <a href="#binding-pattern"><span class="ntref">binding-pattern</span></a>
    | <a href="#variable-name"><span class="ntref">variable-name</span></a>
 <span class="ntdfn" id="rest-binding-pattern">rest-binding-pattern</span> := <code>...</code> <a href="#variable-name"><span class="ntref">variable-name</span></a>
-<span class="ntdfn" id="functional-binding-pattern">functional-binding-pattern</span> := <a href="#functionally-constructible-type-reference"><span class="ntref">functionally-constructible-type-reference</span></a> <code>(</code> <a href="#arg-list-binding-pattern"><span class="ntref">arg-list-binding-pattern</span></a> <code>)</code>
-<span class="ntdfn" id="arg-list-binding-pattern">arg-list-binding-pattern</span> :=
-   <a href="#positional-arg-binding-patterns"><span class="ntref">positional-arg-binding-patterns</span></a> [<code>,</code> <a href="#other-arg-binding-patterns"><span class="ntref">other-arg-binding-patterns</span></a>]
-   | <a href="#other-arg-binding-patterns"><span class="ntref">other-arg-binding-patterns</span></a>
-<span class="ntdfn" id="positional-arg-binding-patterns">positional-arg-binding-patterns</span> := <a href="#positional-arg-binding-pattern"><span class="ntref">positional-arg-binding-pattern</span></a> (<code>,</code> <a href="#positional-arg-binding-pattern"><span class="ntref">positional-arg-binding-pattern</span></a>)*
-<span class="ntdfn" id="positional-arg-binding-pattern">positional-arg-binding-pattern</span> := <a href="#binding-pattern"><span class="ntref">binding-pattern</span></a>
-<span class="ntdfn" id="other-arg-binding-patterns">other-arg-binding-patterns</span> :=
-   <a href="#named-arg-binding-patterns"><span class="ntref">named-arg-binding-patterns</span></a> [<code>,</code> <a href="#rest-binding-pattern"><span class="ntref">rest-binding-pattern</span></a>]
-   | [<a href="#rest-binding-pattern"><span class="ntref">rest-binding-pattern</span></a>]
-<span class="ntdfn" id="named-arg-binding-patterns">named-arg-binding-patterns</span> := <a href="#named-arg-binding-pattern"><span class="ntref">named-arg-binding-pattern</span></a> (<code>,</code> <a href="#named-arg-binding-pattern"><span class="ntref">named-arg-binding-pattern</span></a>)*
+<span class="ntdfn" id="error-binding-pattern">error-binding-pattern</span> := <a href="#direct-error-binding-pattern"><span class="ntref">direct-error-binding-pattern</span></a> | <a href="#indirect-error-binding-pattern"><span class="ntref">indirect-error-binding-pattern</span></a>
+<span class="ntdfn" id="direct-error-binding-pattern">direct-error-binding-pattern</span> := <code>error</code> <code>(</code> <a href="#direct-error-arg-list-binding-pattern"><span class="ntref">direct-error-arg-list-binding-pattern</span></a> <code>)</code>
+<span class="ntdfn" id="indirect-error-binding-pattern">indirect-error-binding-pattern</span> := <a href="#error-type-reference"><span class="ntref">error-type-reference</span></a> <code>(</code> <a href="#indirect-error-arg-list-binding-pattern"><span class="ntref">indirect-error-arg-list-binding-pattern</span></a> <code>)</code>
+<span class="ntdfn" id="error-type-reference">error-type-reference</span> := <a href="#type-reference"><span class="ntref">type-reference</span></a>
+<span class="ntdfn" id="direct-error-arg-list-binding-pattern">direct-error-arg-list-binding-pattern</span> :=
+   <a href="#simple-binding-pattern"><span class="ntref">simple-binding-pattern</span></a> [<code>,</code> <a href="#error-field-binding-patterns"><span class="ntref">error-field-binding-patterns</span></a>]
+   | [<a href="#error-field-binding-patterns"><span class="ntref">error-field-binding-patterns</span></a>]
+<span class="ntdfn" id="indirect-error-arg-list-binding-pattern">indirect-error-arg-list-binding-pattern</span> := [<a href="#error-field-binding-patterns"><span class="ntref">error-field-binding-patterns</span></a>]
+<span class="ntdfn" id="error-field-binding-patterns">error-field-binding-patterns</span> :=
+   <a href="#named-arg-binding-pattern"><span class="ntref">named-arg-binding-pattern</span></a> (<code>,</code> <a href="#named-arg-binding-pattern"><span class="ntref">named-arg-binding-pattern</span></a>)* [<code>,</code> <a href="#rest-binding-pattern"><span class="ntref">rest-binding-pattern</span></a>]
+   | <a href="#rest-binding-pattern"><span class="ntref">rest-binding-pattern</span></a>
+<span class="ntdfn" id="simple-binding-pattern">simple-binding-pattern</span> :=
+   <a href="#capture-binding-pattern"><span class="ntref">capture-binding-pattern</span></a>
+   | <a href="#wildcard-binding-pattern"><span class="ntref">wildcard-binding-pattern</span></a>
 <span class="ntdfn" id="named-arg-binding-pattern">named-arg-binding-pattern</span> := <a href="#arg-name"><span class="ntref">arg-name</span></a> <code>=</code> <a href="#binding-pattern"><span class="ntref">binding-pattern</span></a>
 </pre>
 <p>
@@ -3634,17 +3527,19 @@ consisting of all the other fields to be assigned to <code>v</code>; a
 field-binding-pattern consisting of just a variable-name <code>x</code> is
 equivalent to a field-binding-pattern <code>x: x</code>;
 </li>
-<li>a functional-binding-pattern T(p<sub>1</sub>,
-p<sub>1</sub>,...,p<sub>m</sub>, arg<sub>1</sub> = p<sub>m + 1</sub>,
-arg<sub>2</sub> = p<sub>m + 2</sub>, ..., arg<sub>m + n</sub> = p<sub>n</sub>,
-r) matches a value if the shape of the value belongs to T and the decomposition
-of the value has m or more positional arguments and for each i in 1 to m,
-p<sub>i</sub> matches the i-th positional argument, and for each j in 1 to n,
-the decomposition has a named argument arg<sub>j</sub> and p<sub>m + j</sub>
-matches the value of that named argument; if r is <code>...v</code> then a
-successful match causes a new mapping value consisting of all named arguments in
-the decomposition other than arg<sub>1</sub>, arg<sub>2</sub>, ... ,
-arg<sub>n</sub> to be assigned to <code>v</code>;</li>
+<li>a direct-error-binding-pattern error(p<sub>r</sub>, f<sub>1</sub> = p<sub>1</sub>,
+f<sub>2</sub> = p<sub>2</sub>, ..., f<sub>n</sub> = p<sub>n</sub>, r) matches an
+error value if it has an error reason string that matches p<sub>r</sub> and a
+detail record that has fields f<sub>1</sub>, f<sub>2</sub>, ... , f<sub>n</sub> such
+that p<sub>i</sub> matches the value of field f<sub>i</sub> for each i in 1 to
+n; if r is <code>...v</code> then a successful match causes a new mapping value
+consisting of all fields other than f<sub>1</sub>, f<sub>2</sub>, ... ,
+f<sub>n</sub> to be assigned to <code>v</code>;</li>
+<li>an indirect-error-binding-pattern ET(f<sub>1</sub> = p<sub>1</sub>,
+f<sub>2</sub> = p<sub>2</sub>, ..., f<sub>n</sub> = p<sub>n</sub>, r) matches an
+error value e if the direct-error-binding-pattern error(f<sub>1</sub> =
+p<sub>1</sub>, f<sub>2</sub> = p<sub>2</sub>, ..., f<sub>n</sub> =
+p<sub>n</sub>, r) matches e and the shape of e is in ET.</li>
 </ul>
 <p>
 All the variables in a binding-pattern must be distinct e.g. [x, x] is not
@@ -3669,7 +3564,7 @@ descriptor.</li>
 
 </section>
 <section>
-<h4 id="section_5.10.2">5.10.2 Typed binding patterns</h4>
+<h4 id="section_5.9.2">5.9.2 Typed binding patterns</h4>
 
 <pre class="grammar"><span class="ntdfn" id="typed-binding-pattern">typed-binding-pattern</span> := <a href="#inferable-type-descriptor"><span class="ntref">inferable-type-descriptor</span></a> <a href="#binding-pattern"><span class="ntref">binding-pattern</span></a>
 <span class="ntdfn" id="inferable-type-descriptor">inferable-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> | <code>var</code>
@@ -3699,7 +3594,7 @@ will never fail at runtime.
 </p>
 </section>
 <section>
-<h4 id="section_5.10.3">5.10.3 Variable and identifier scoping</h4>
+<h4 id="section_5.9.3">5.9.3 Variable and identifier scoping</h4>
 <p>
 For every variable, there is place in the program that declares it. Variables
 are lexically scoped: every variable declaration has a scope which determines
@@ -3772,7 +3667,7 @@ same identifier in the same symbol space also with block-scope.
    | <a href="#member-access-expr"><span class="ntref">member-access-expr</span></a>
    | <a href="#function-call-expr"><span class="ntref">function-call-expr</span></a>
    | <a href="#method-call-expr"><span class="ntref">method-call-expr</span></a>
-   | <a href="#functional-constructor-expr"><span class="ntref">functional-constructor-expr</span></a>
+   | <a href="#error-constructor-expr"><span class="ntref">error-constructor-expr</span></a>
    | <a href="#anonymous-function-expr"><span class="ntref">anonymous-function-expr</span></a>
    | <a href="#let-expr"><span class="ntref">let-expr</span></a>
    | <a href="#type-cast-expr"><span class="ntref">type-cast-expr</span></a>
@@ -4111,7 +4006,7 @@ string that has a constituent character for each singleton item in the
    | <a href="#raw-template-expr"><span class="ntref">raw-template-expr</span></a>
    | <a href="#structural-constructor-expr"><span class="ntref">structural-constructor-expr</span></a>
    | <a href="#object-constructor-expr"><span class="ntref">object-constructor-expr</span></a>
-   | <a href="#functional-constructor-expr"><span class="ntref">functional-constructor-expr</span></a>
+   | <a href="#error-constructor-expr"><span class="ntref">error-constructor-expr</span></a>
    | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
    | <a href="#type-cast-expr"><span class="ntref">type-cast-expr</span></a>
    | <a href="#unary-expr"><span class="ntref">unary-expr</span></a>
@@ -4133,8 +4028,7 @@ its read-only bit on.
 </p>
 <p>
 Within a <code>const-expr</code>, any nested expression must also be a
-const-expr. A <code>functional-constructor-expr</code> within a
-<code>const-expr</code> must not construct an error value.
+const-expr.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="constant-reference-expr">constant-reference-expr</span> := <a href="#variable-reference-expr"><span class="ntref">variable-reference-expr</span></a>
@@ -5090,10 +4984,6 @@ abruptly with a panic. The static type of the function-call-expr is the return
 type of the function type.
 </p>
 <p>
-A function-call-expr where the function-reference refers to a type is interpreted
-as a functional-constructor-expr.
-</p>
-<p>
 The variable-reference must refer to a variable with function type. The type
 descriptor of that function type is used to construct an argument list from the
 specified arg-list. Note that it is the type descriptor of the declared type of
@@ -5184,30 +5074,56 @@ the constraints that would apply if it has been written explicitly as a
 </p>
 </section>
 <section>
-<h3 id="section_6.18">6.18 Functional constructor</h3>
+<h3 id="section_6.18">6.18 Error constructor</h3>
 
-<pre class="grammar"><span class="ntdfn" id="functional-constructor-expr">functional-constructor-expr</span> := <a href="#functionally-constructible-type-reference"><span class="ntref">functionally-constructible-type-reference</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
+<pre class="grammar"><span class="ntdfn" id="error-constructor-expr">error-constructor-expr</span> := <a href="#direct-error-constructor-expr"><span class="ntref">direct-error-constructor-expr</span></a> | <a href="#indirect-error-constructor-expr"><span class="ntref">indirect-error-constructor-expr</span></a>
+<span class="ntdfn" id="direct-error-constructor-expr">direct-error-constructor-expr</span> := <code>error</code> <code>(</code> <a href="#direct-error-arg-list"><span class="ntref">direct-error-arg-list</span></a> <code>)</code>
+<span class="ntdfn" id="indirect-error-constructor-expr">indirect-error-constructor-expr</span> := <a href="#error-type-reference"><span class="ntref">error-type-reference</span></a> <code>(</code> <a href="#indirect-error-arg-list"><span class="ntref">indirect-error-arg-list</span></a> <code>)</code>
+<span class="ntdfn" id="direct-error-arg-list">direct-error-arg-list</span> := <a href="#positional-arg"><span class="ntref">positional-arg</span></a> (<code>,</code> <a href="#named-arg"><span class="ntref">named-arg</span></a>)*
+<span class="ntdfn" id="indirect-error-arg-list">indirect-error-arg-list</span> := [<a href="#named-arg"><span class="ntref">named-arg</span></a> (<code>,</code> <a href="#named-arg"><span class="ntref">named-arg</span></a>)*]
 </pre>
 <p>
-A functional constructor uses functional syntax to construct a new value of a <a href="#functionally_constructible_types">functionally constructible type</a>. The
-functionally-constructible-type-reference identifies the type of value to be
-constructed.
+An error constructor constructs a new error value. There are two kinds of error
+constructor: direct and indirect. A direct error constructor specifies the error
+reason string as the first argument to the constructor. An indirect error
+constructor references an error type that determines the reason string.
 </p>
 <p>
-An argument list consisting of positional and named argument values is
-constructed by evaluating the expressions in the <code>arg-list</code>. The
-construction parameter types determine the contextually expected type of each of
-the expressions. If there is no argument for a construction parameter that can
-be defaulted, then an argument for that parameter is added to the argument list
-with the default value.
+The contextually expected type for the positional-arg in a
+direct-error-constructor-expr is string.
 </p>
 <p>
-When constructing an error value, the ImmutableClone abstract operation is
-applied to each named argument. The detail record is constructed as immutable.
-The stack trace describes the execution stack at the point where the functional
-constructor was evaluated. Any fields of the detail record that were not
-specified by a named argument can be defaulted using the defaults specified in
-the detail record type.
+The error-type-reference in an indirect-error-constructor must refer to an
+identifier named by a type definition whose type descriptor is an error type
+descriptor, whose reason-type-descriptor is a singleton string. An
+indirect-error-constructor-expr
+<code><var>ET</var>(<var>named-args</var>)</code> where
+<code><var>ET</var></code> refers to a type
+<code>error&lt;<var>S</var>,<var>D</var>&gt;</code>, where
+<code><var>S</var></code> is a singleton string, is equivalent to a
+direct-error-constructor-expr <code>&lt;<var>ET</var>&gt;error(<var>S</var>,
+<var>named-args</var>)</code>.
+</p>
+<p>
+Evaluating the error-constructor-expr creates a new detail mapping. Each
+named-arg specifies a field of the error detail mapping; the static type of each
+named-arg must be a pure type. If there is a contextually-expected-type for a
+direct-error-constructor-expr and the applicable contextually expected type is
+an error type descriptor (rather than a union) with detail type <var>D</var>,
+then the error detail mapping will also have a field for any defaultable fields
+of <var>D</var> for which no named-arg was specified. The contextually expected
+type for each named-arg is determined by the applicable contextually type in the
+same way as for a mapping-constructor-expr. The detail mapping for an
+indirect-error-constructor-expr is constructed as if by the equivalent
+direct-error-constructor-expr, and so in this case there will always be an
+applicable contextually expected type that is an error type descriptor. The
+detail mapping is constructed as immutable, with its members being the result of
+appplying the ImmutableClone abstract operation to the result of evaluating each
+named-arg and every defaultable arg.
+</p>
+<p>
+The stack trace in the constructed error value describes the execution stack at
+the point where the error constructor was evaluated.
 </p>
 <p>
 A functional-constructor-expr occurring within a const-expr will construct a
@@ -7587,7 +7503,7 @@ and <var>v2</var>, resulting in a value <var>v3</var>
    <a href="#wildcard-binding-pattern"><span class="ntref">wildcard-binding-pattern</span></a>
    | <a href="#list-binding-pattern"><span class="ntref">list-binding-pattern</span></a>
    | <a href="#mapping-binding-pattern"><span class="ntref">mapping-binding-pattern</span></a>
-   | <a href="#functional-binding-pattern"><span class="ntref">functional-binding-pattern</span></a>
+   | <a href="#error-binding-pattern"><span class="ntref">error-binding-pattern</span></a>
 </pre>
 <p>
 A destructuring assignment is executed by evaluating the action-or-expr
@@ -7704,7 +7620,7 @@ variables.
    | <a href="#const-pattern"><span class="ntref">const-pattern</span></a>
    | <a href="#list-match-pattern"><span class="ntref">list-match-pattern</span></a>
    | <a href="#mapping-match-pattern"><span class="ntref">mapping-match-pattern</span></a>
-   | <a href="#functional-match-pattern"><span class="ntref">functional-match-pattern</span></a>
+   | <a href="#error-match-pattern"><span class="ntref">error-match-pattern</span></a>
 </pre>
 <p>
 A match-pattern combines the destructuring done by a binding-pattern with the
@@ -7750,16 +7666,20 @@ type any, in other words if the basic type of the value is not error.
    | [ <a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a> ] 
 <span class="ntdfn" id="field-match-pattern">field-match-pattern</span> := <a href="#field-name"><span class="ntref">field-name</span></a> <code>:</code> <a href="#match-pattern"><span class="ntref">match-pattern</span></a>
 <span class="ntdfn" id="rest-match-pattern">rest-match-pattern</span> := <code>...</code> <code>var</code> <a href="#variable-name"><span class="ntref">variable-name</span></a>
-<span class="ntdfn" id="functional-match-pattern">functional-match-pattern</span> := <a href="#functionally-constructible-type-reference"><span class="ntref">functionally-constructible-type-reference</span></a> <code>(</code> <a href="#arg-list-match-pattern"><span class="ntref">arg-list-match-pattern</span></a> <code>)</code>
-<span class="ntdfn" id="arg-list-match-pattern">arg-list-match-pattern</span> :=
-   <a href="#positional-arg-match-patterns"><span class="ntref">positional-arg-match-patterns</span></a> [<code>,</code> <a href="#other-arg-match-patterns"><span class="ntref">other-arg-match-patterns</span></a>]
-   | <a href="#other-arg-match-patterns"><span class="ntref">other-arg-match-patterns</span></a>
-<span class="ntdfn" id="positional-arg-match-patterns">positional-arg-match-patterns</span> := <a href="#positional-arg-match-pattern"><span class="ntref">positional-arg-match-pattern</span></a> (<code>,</code> <a href="#positional-arg-match-pattern"><span class="ntref">positional-arg-match-pattern</span></a>)*
-<span class="ntdfn" id="positional-arg-match-pattern">positional-arg-match-pattern</span> := <a href="#match-pattern"><span class="ntref">match-pattern</span></a>
-<span class="ntdfn" id="other-arg-match-patterns">other-arg-match-patterns</span> :=
-   <a href="#named-arg-match-patterns"><span class="ntref">named-arg-match-patterns</span></a> [<code>,</code> <a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a>]
-   | [<a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a>]
-<span class="ntdfn" id="named-arg-match-patterns">named-arg-match-patterns</span> := <a href="#named-arg-match-pattern"><span class="ntref">named-arg-match-pattern</span></a> (<code>,</code> <a href="#named-arg-match-pattern"><span class="ntref">named-arg-match-pattern</span></a>)*
+<span class="ntdfn" id="error-match-pattern">error-match-pattern</span> := <a href="#direct-error-match-pattern"><span class="ntref">direct-error-match-pattern</span></a> | <a href="#indirect-error-match-pattern"><span class="ntref">indirect-error-match-pattern</span></a>
+<span class="ntdfn" id="direct-error-match-pattern">direct-error-match-pattern</span> := <code>error</code> <code>(</code> <a href="#direct-error-arg-list-match-pattern"><span class="ntref">direct-error-arg-list-match-pattern</span></a> <code>)</code>
+<span class="ntdfn" id="indirect-error-match-pattern">indirect-error-match-pattern</span> := <a href="#error-type-reference"><span class="ntref">error-type-reference</span></a> <code>(</code> <a href="#indirect-error-arg-list-match-pattern"><span class="ntref">indirect-error-arg-list-match-pattern</span></a> <code>)</code>
+<span class="ntdfn" id="direct-error-arg-list-match-pattern">direct-error-arg-list-match-pattern</span> :=
+   <a href="#simple-match-pattern"><span class="ntref">simple-match-pattern</span></a> [<code>,</code> <a href="#error-field-match-patterns"><span class="ntref">error-field-match-patterns</span></a>]
+   | [<a href="#error-field-match-patterns"><span class="ntref">error-field-match-patterns</span></a>]
+<span class="ntdfn" id="indirect-error-arg-list-match-pattern">indirect-error-arg-list-match-pattern</span> := [<a href="#error-field-match-patterns"><span class="ntref">error-field-match-patterns</span></a>]
+<span class="ntdfn" id="error-field-match-patterns">error-field-match-patterns</span> :=
+   <a href="#named-arg-match-pattern"><span class="ntref">named-arg-match-pattern</span></a> (<code>,</code> <a href="#named-arg-match-pattern"><span class="ntref">named-arg-match-pattern</span></a>)* [<code>,</code> <a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a>]
+   | <a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a>
+<span class="ntdfn" id="simple-match-pattern">simple-match-pattern</span> :=
+   <a href="#wildcard-match-pattern"><span class="ntref">wildcard-match-pattern</span></a>
+   | <a href="#const-pattern"><span class="ntref">const-pattern</span></a>
+   | <code>var</code> <a href="#variable-name"><span class="ntref">variable-name</span></a>
 <span class="ntdfn" id="named-arg-match-pattern">named-arg-match-pattern</span> := <a href="#arg-name"><span class="ntref">arg-name</span></a> <code>=</code> <a href="#match-pattern"><span class="ntref">match-pattern</span></a>
 </pre>
 
@@ -7771,11 +7691,11 @@ bound to a new mapping that contains just the fields for which that did not
 match a <code>field-match-pattern</code>.
 </p>
 <p>
-For a match of a <code>functional-match-pattern</code> against a value to
-succeed, the type referenced by the functionally-constructible-type-reference
-must contain the shape of the value; because of the limited mutability of the
-xml and error basic types, this requirement is equivalent to requiring that the
-value belong to the referenced type.
+For a match of an <code>indirect-error-match-pattern</code> against an error
+value to succeed, the error type referenced by the error-type-reference must
+contain the shape of the error value; since errors are immutable, this
+requirement is equivalent to requiring that the error value belong to the
+referenced error type.
 </p>
 
 </section>

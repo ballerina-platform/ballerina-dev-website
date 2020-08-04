@@ -103,3 +103,22 @@ td, th {
     padding-left: 15px;
     padding-right: 15px;
 } */
+
+
+.cBBE-body tr:not(.cOutputTr) > td.code > .highlight {
+    padding-left: 0;
+}
+span.line-numbers-rows {
+    display: none !important;
+}
+.cBBE-body tr:not(.cOutputTr) > td.code {
+    background-image: none;
+}
+
+code {
+    white-space: pre-line !important;
+}
+
+.pre.line-numbers {
+    padding-left: 0 !important;
+}

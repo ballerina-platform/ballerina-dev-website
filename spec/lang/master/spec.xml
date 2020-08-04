@@ -5437,6 +5437,7 @@ comprehensions; future versions will provided richer functionality.
    | <abbr>where-clause</abbr>
    | <abbr>let-clause</abbr>
    | <abbr>join-clause</abbr>
+   | <abbr>order-by-clause</abbr>
    | <abbr>limit-clause</abbr>
 </pre>
 <p>

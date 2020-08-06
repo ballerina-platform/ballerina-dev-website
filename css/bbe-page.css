@@ -80,7 +80,6 @@
 }
 
 
-
 td, th {
 	/* border: none !important; */
 	padding: 0;
@@ -99,10 +98,7 @@ td, th {
 .cBallerina-io-breadcrumbs {
     padding-left: 15px;
 }
-/* .navbar {
-    padding-left: 15px;
-    padding-right: 15px;
-} */
+
 
 
 .cBBE-body tr:not(.cOutputTr) > td.code > .highlight {

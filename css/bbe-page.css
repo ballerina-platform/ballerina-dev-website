@@ -80,7 +80,6 @@
 }
 
 
-
 td, th {
 	/* border: none !important; */
 	padding: 0;
@@ -99,7 +98,23 @@ td, th {
 .cBallerina-io-breadcrumbs {
     padding-left: 15px;
 }
-/* .navbar {
-    padding-left: 15px;
-    padding-right: 15px;
-} */
+
+
+
+.cBBE-body tr:not(.cOutputTr) > td.code > .highlight {
+    padding-left: 0;
+}
+span.line-numbers-rows {
+    display: none !important;
+}
+.cBBE-body tr:not(.cOutputTr) > td.code {
+    background-image: none;
+}
+
+code {
+    white-space: pre-line !important;
+}
+
+.pre.line-numbers {
+    padding-left: 0 !important;
+}

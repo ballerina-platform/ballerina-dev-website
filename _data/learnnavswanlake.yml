@@ -60,6 +60,9 @@
     - title: AWS Lambda
       url: /swan-lake/learn/deployment/aws-lambda/
       active: aws-lambda
+    - title: Azure Functions
+      url: /swan-lake/learn/deployment/azure-functions/
+      active: azure-functions
 
 - title: Observability
   url: '#' 

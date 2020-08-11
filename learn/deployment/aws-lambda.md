@@ -4,7 +4,7 @@ title: AWS Lambda
 description: See how the Ballerina deployment in AWS Lambda works
 keywords: ballerina, programming language, serverless, cloud, AWS, Lambda
 permalink: /learn/deployment/aws-lambda/
-active: awslambda
+active: aws-lambda
 redirect_from:
   - /learn/deployment/aws-lambda
 ---

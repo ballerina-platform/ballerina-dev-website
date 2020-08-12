@@ -54,7 +54,7 @@ These allow you to perform the below tasks easily based on the diagnostics and t
 - Create an undefined function
 - Map record types automatically
 
-For example, you can add documentation for a function as shown below.
+For another example, you can add documentation for a function as shown below.
 
  ![Code actions](/swan-lake/learn/images/code-actions.gif)
 

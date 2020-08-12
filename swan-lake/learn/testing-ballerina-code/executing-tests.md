@@ -31,7 +31,7 @@ List all test groups in a given module.
 $ ballerina test --list-groups <module_name>
 ```
 
-Run only the tests belonging to given group/s in current project.
+Run only the tests belonging to the given group(s) in the current project.
 
 ```
 $ ballerina test --groups <group_1>,<group_2>  --all

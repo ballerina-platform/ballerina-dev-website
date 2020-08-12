@@ -1,14 +1,16 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-left-nav-pages
 title: Quick Start
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /swan-lake/learn/testing-ballerina-code/testing-quick-start/
+permalink: /learn/testing-ballerina-code/testing-quick-start/
 active: testing-quick-start
 redirect_from:
-  - /swan-lake/learn/how-to-test-ballerina-code/
-  - /swan-lake/learn/how-to-test-ballerina-code
-  - /swan-lake/learn/testing-ballerina-code/testing-quick-start
+  - /v1-2/learn/how-to-test-ballerina-code/
+  - /v1-2/learn/how-to-test-ballerina-code
+  - /learn/how-to-test-ballerina-code/
+  - /learn/how-to-test-ballerina-code
+  - /learn/testing-ballerina-code/testing-quick-start
 ---
 
 # Quick Start
@@ -18,7 +20,7 @@ The Ballerina Language has a built-in robust test framework, which allows you to
 To get started, let's write a simple Ballerina function and test it.
 
 1. First, let’s create a Ballerina project and add a new module. Use the `ballerina new` command to create the project. 
-For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
+For more information on the command, see [Structuring Ballerina Code](/learn/structuring-ballerina-code/).
 
     The standard project will hold the structure below.
 
@@ -133,4 +135,4 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
 ## What's Next
 
 Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
- features in the [Writing Tests](/swan-lake/learn/testing-ballerina-code/writing-tests) section.
+ features in the [Writing Tests](/learn/testing-ballerina-code/writing-tests) section.

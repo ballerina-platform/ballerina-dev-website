@@ -1,12 +1,13 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-left-nav-pages
 title: Executing Tests
 description: Learn how to use different options for executing Ballerina tests.
 keywords: ballerina, programming language, testing
-permalink: /swan-lake/learn/testing-ballerina-code/executing-tests/
+permalink: /learn/testing-ballerina-code/executing-tests/
 active: executing-tests
 redirect_from:
-  - /swan-lake/learn/testing-ballerina-code/executing-tests
+  - /v1-2/learn/testing-ballerina-code/executing-tests
+  - /learn/testing-ballerina-code/executing-tests
 ---
 
 # Executing Tests
@@ -56,7 +57,7 @@ $ ballerina test --test-report --all
 
 A sample view of the test report is shown below.
 
-![Sample Test Report](/swan-lake/learn/images/test-report.gif)
+![Sample Test Report](/learn/images/test-report.gif)
 
 ## Code Coverage Report
 
@@ -78,4 +79,4 @@ $ ballerina test --code-coverage --all
 
 A sample view of the code coverage report is shown below.
 
-![Sample Code Coverage](/swan-lake/learn/images/code-cov.gif)
+![Sample Code Coverage](/learn/images/code-cov.gif)

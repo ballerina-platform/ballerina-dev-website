@@ -1,13 +1,14 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-left-nav-pages
 title: Writing Tests
 description: Learn how to use Ballerina's built-in test framework to write tests. The test framework provides a set of
  annotations and assertions to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /swan-lake/learn/testing-ballerina-code/writing-tests/
+permalink: /learn/testing-ballerina-code/writing-tests/
 active: writing-tests
 redirect_from:
-  - /swan-lake/learn/testing-ballerina-code/writing-tests
+  - /v1-2/learn/testing-ballerina-code/writing-tests
+  - /learn/testing-ballerina-code/writing-tests
 ---
 
 # Writing Tests
@@ -334,7 +335,7 @@ function afterFunc() {
 ## Test Configurations
 
 Configurations for testing can be provided using the Config API. For information on using the config library, see
- [Config Module](/swan-lake/learn/api-docs/ballerina/config/index.html).
+ [Config Module](/learn/api-docs/ballerina/config/index.html).
 
 
 ## What's Next
@@ -344,4 +345,4 @@ Configurations for testing can be provided using the Config API. For information
  The mocking support in Ballerina will allow you to unit test your code without needing to set up mock backends by
  allowing you to control what the client objects return without actually sending requests to backends.
 
-To learn about the mocking API, see [Mocking](/swan-lake/learn/testing-ballerina-code/mocking).
+To learn about the mocking API, see [Mocking](/learn/testing-ballerina-code/mocking).

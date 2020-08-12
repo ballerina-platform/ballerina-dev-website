@@ -22,8 +22,6 @@ However, you need to use the following commands instead of the above if you have
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
-## Language
-
 ## Standard Library
 
 ### I/O
@@ -55,59 +53,3 @@ Function mocking is done by using the following functions.
 
 - The `test:when(mockObj)` function is used to initialize the mocking capability within a particular test case.
 - This allows you to use the associated mocking functions like `call()`, `thenReturn()`, and `withArguments()`.
-
-### Improvements related to code actions
-
-#### Introducing an AI-based `Data Mapping` Code Action
-
-Two record types can now be mapped automatically using the `Data Mapping` code action. Once a possible record mapping instance is identified, it suggests a mapping based on an AI algorithm. A mapping function will be generated automatically and added to the workspace to perform the record mapping.
-
-The following is an example code with an error in the last line where the code action will appear. 
-
-```ballerina
-type Grade record {|
-   int maths;
-   int physics;
-   int chemistry;
-|};
- 
-type Student record {|
-   string name;
-   int age;
-   Grade grades;
-   string city;
-|};
- 
-public function main() {
-   Student kamal = {
-	name: "Kamal",
-	age: 10,
-      grades: {
-           maths: 90,
-           physics: 99,
-	     chemistry: 95,
-      },
-	city: "Colombo"
-   };
-   Grade kamal_grades = kamal;
-}
-```
-
-By choosing the `Generate mapping function`code action, the function below will be added to the workspace.
-
-```ballerina
-function mapStudentToGrade(Student student)returns Grade {
-// Some record fields might be missing in the AI based mapping.
-   Grade grade = {
-maths: student.grades.maths, 
-physics: student.grades.physics, 
-chemistry: student.grades.chemistry};
-   return grade;
-}
-```
-
-Furthermore, the line with the error would be replaced with a function call as shown below.
-
-```ballerina
-Grade kamal_grades = mapStudentToGrade(kamal);
-```

@@ -34,7 +34,7 @@ When a CSV file has an empty record, the previous implementation throws a null p
 
 #### Object Mocking
 
-Object mocking enables controlling the values of member variables and the behavior of the member functions of an object. The following improvmenets are introduced with regard to this.
+Object mocking enables controlling the values of member variables and the behavior of the member functions of an object. The following improvements are introduced with regard to this.
 
 - Ability to create a test double, which provides an equivalent mock in place of the real object
 - Capability of stubbing the member function or member variable

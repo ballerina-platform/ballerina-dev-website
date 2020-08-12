@@ -216,7 +216,7 @@ function intAdd(int a, int b) returns (int) {
 
 ### **assertExactEquals(Any actual, Any expected, string message)**
 
-Asserts that the actual is exactly equal to the expected with an optional message.
+Asserts that the actual entity is exactly equal to the expected entity with an optional message.
 
 ***Example:***
 ```ballerina
@@ -240,7 +240,7 @@ function testAssertExactEqualsObject() {
 
 ### **assertExactNotEquals(Any actual, Any expected, string message)**
 
-Asserts that the actual is not exactly equal to the expected with an optional message.
+Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
 
 ***Example:***
 

@@ -167,9 +167,9 @@ function testAssertFalse() {
 }
 ```
 
-### **assertEquals(Any actual, Any expected, string message)**
+### **assertEquals(Anydata actual, Anydata expected, string message)**
 
-Asserts that the actual is equal to the expected with an optional message.
+Asserts that the actual value is equal to the expected value with an optional message.
 
 ***Example:***
 ```ballerina
@@ -190,9 +190,9 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### **assertNotEquals(Any actual, Any expected, string message)**
+### **assertNotEquals(Anydata actual, Anydata expected, string message)**
 
-Asserts that the actual is not equal to the expected with an optional message.
+Asserts that the actual value is not equal to the expected value with an optional message.
 
 ***Example:***
 
@@ -211,6 +211,55 @@ function testAssertIntEquals() {
 
 function intAdd(int a, int b) returns (int) {
     return (a + b);
+}
+```
+
+### **assertExactEquals(Any actual, Any expected, string message)**
+
+Asserts that the actual entity is exactly equal to the expected entity with an optional message.
+
+***Example:***
+```ballerina
+import ballerina/test;
+
+type Person object {
+    public string name = "";
+    public int age = 0;
+    public Person? parent = ();
+    private string email = "default@abc.com";
+    string address = "No 20, Palm grove";
+};
+
+@test:Config {}
+function testAssertExactEqualsObject() {
+    Person p1 = new;
+    Person p2 = p1;
+    test:assertExactEquals(p1, p2, msg = "Objects are not exactly equal");
+}
+```
+
+### **assertExactNotEquals(Any actual, Any expected, string message)**
+
+Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+type Person object {
+    public string name = "";
+    public int age = 0;
+    public Person? parent = ();
+    private string email = "default@abc.com";
+    string address = "No 20, Palm grove";
+};
+
+@test:Config {}
+function testAssertNotExactEqualsObject() {
+    Person p1 = new;
+    Person p2 = new ();
+    test:assertExactNotEquals(p1, p2, msg = "Objects are exactly equal");
 }
 ```
 

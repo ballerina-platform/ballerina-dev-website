@@ -37,7 +37,7 @@ Run only the tests belonging to the given group(s) in the current project.
 $ ballerina test --groups <group_1>,<group_2>  --all
 ```
 
-Run the tests in current project excluding the given group/s.
+Run the tests in the current project excluding the given group(s).
 
 ```
 $ ballerina test --disable-groups <group_1>  --all

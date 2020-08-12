@@ -52,7 +52,13 @@ redirect_from:
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">services</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_1</span><span class="mf">.1</span><span class="nx">_to_2</span><span class="mf">.0</span><span class="nx">_protocol_switch</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">7090</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
+<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/http11Service</span>
+<span class="p">{</span><span class="s">&quot;response&quot;</span><span class="p">:{</span><span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;response from http2 service&quot;</span><span class="p">}}</span>
 </pre></div>
 
             </div>
@@ -421,8 +427,8 @@ service http2service on http2serviceEP {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run http_1.1_to_2.0_protocol_switch.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run http_1.1_to_2.0_protocol_switch.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:7090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
@@ -449,7 +455,7 @@ $ ballerina run http_1.1_to_2.0_protocol_switch.bal
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9090/http11Service
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/http11Service
 {&quot;response&quot;:{&quot;message&quot;:&quot;response from http2 service&quot;}}
 </code></pre></div>
 

@@ -52,7 +52,13 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">secureParameter</span><span class="err">&#39;</span>
+<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">sqlQuery</span><span class="err">&#39;</span>
+<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">secureParameter</span><span class="err">&#39;</span>
+<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">65</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">secureParameter</span><span class="err">&#39;</span>
 </pre></div>
 
             </div>
@@ -572,8 +578,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run taint_checking.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run taint_checking.bal
 error: .::taint_checking.bal:60:36: tainted value passed to untainted parameter &#39;secureParameter&#39;
 error: .::taint_checking.bal:31:39: tainted value passed to untainted parameter &#39;sqlQuery&#39;
 error: .::taint_checking.bal:41:32: tainted value passed to untainted parameter &#39;secureParameter&#39;

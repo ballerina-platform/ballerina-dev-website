@@ -29,7 +29,20 @@ redirect_from:
 <span class="p">}</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">intAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina test`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Note</span> <span class="nx">that</span> <span class="nx">you</span> <span class="nx">need</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">ballerina</span><span class="o">-</span><span class="nx">tools</span> <span class="nx">distribution</span>
+<span class="err">#</span> <span class="nx">installed</span> <span class="nx">in</span> <span class="nx">order</span> <span class="nx">to</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">command</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Function</span> <span class="nx">mocking</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">supported</span> <span class="k">for</span> <span class="nx">testing</span> <span class="nx">single</span> <span class="nx">BAL</span> <span class="nx">files</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">test</span> <span class="nx">test_module</span>
+<span class="nx">Compiling</span> <span class="nx">source</span>
+    <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span><span class="nx">Creating</span> <span class="nx">balos</span>
+    <span class="nx">target</span><span class="o">/</span><span class="nx">balo</span><span class="o">/</span><span class="nx">test_module</span><span class="o">-</span><span class="mi">2020</span><span class="nx">r1</span><span class="o">-</span><span class="kt">any</span><span class="o">-</span><span class="mf">0.1.0</span><span class="p">.</span><span class="nx">baloRunning</span> <span class="nx">tests</span>
+    <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span>
+<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">the</span> <span class="nx">mock</span> <span class="kd">function</span><span class="p">!</span>
+<span class="nx">Function</span> <span class="nx">mocking</span> <span class="nx">test</span>        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertIntEquals</span>        <span class="mi">1</span> <span class="nx">passing</span>
+        <span class="mi">0</span> <span class="nx">failing</span>
+        <span class="mi">0</span> <span class="nx">skipped</span>
 </pre></div>
 
             </div>
@@ -267,11 +280,11 @@ function testAssertIntEquals() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina test` command.
+# `.bal` file, and execute the `ballerina test` command below.
 # Note that you need to have the ballerina-tools distribution
 # installed in order to run this command.
 # Function mocking is not supported for testing single BAL files.
-$ ballerina test test_module
+ballerina test test_module
 Compiling source
     ballerinatest/test_module:0.1.0
 </code></pre></div>

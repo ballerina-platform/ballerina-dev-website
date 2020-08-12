@@ -84,7 +84,18 @@ redirect_from:
                                 <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Client left with ${statusCode} because ${reason}`</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_basic_sample</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">a</span> <span class="nx">Chrome</span> <span class="nx">or</span> <span class="nx">Firefox</span> <span class="nx">JavaScript</span> <span class="nx">console</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">commands</span><span class="p">.</span> <span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="err">#</span> <span class="nx">Change</span> <span class="s">`xml`</span> <span class="nx">to</span> <span class="nx">another</span> <span class="nx">sub</span> <span class="nx">protocol</span> <span class="nx">to</span> <span class="nx">observe</span> <span class="nx">the</span> <span class="nx">behavior</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">WebSocket</span> <span class="nx">server</span><span class="p">.</span>
+<span class="k">var</span> <span class="nx">ws</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s">&quot;ws://localhost:9090/basic/ws&quot;</span><span class="p">,</span> <span class="s">&quot;xml&quot;</span><span class="p">,</span> <span class="s">&quot;my-protocol&quot;</span><span class="p">);</span><span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">data</span><span class="p">)};</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">)};</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">a</span> <span class="kt">message</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span><span class="err">#</span> <span class="nx">Use</span> <span class="nx">an</span> <span class="nx">advanced</span> <span class="nx">client</span> <span class="nx">to</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">ping</span> <span class="nx">and</span> <span class="nx">pong</span> <span class="nx">since</span> <span class="nx">the</span> <span class="nx">browser</span> <span class="nx">client</span> <span class="nx">does</span> <span class="nx">not</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">capability</span> <span class="nx">to</span> <span class="nx">send</span> <span class="nx">pings</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Use</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">command</span> <span class="nx">to</span> <span class="nx">observe</span> <span class="nx">the</span> <span class="nx">behavior</span> <span class="nx">when</span> <span class="nx">the</span> <span class="nx">server</span> <span class="nx">sends</span> <span class="nx">a</span> <span class="nx">ping</span> <span class="kt">message</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">browser</span> <span class="nx">client</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;ping&quot;</span><span class="p">);</span><span class="err">#</span> <span class="nx">Close</span> <span class="nx">the</span> <span class="nx">connection</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&quot;I want to go&quot;</span><span class="p">);</span><span class="err">#</span> <span class="nx">Close</span> <span class="nx">the</span> <span class="nx">connection</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">server</span> <span class="nx">side</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;closeMe&quot;</span><span class="p">);</span><span class="err">#</span> <span class="nx">Wait</span> <span class="k">for</span> <span class="mi">120</span> <span class="nx">seconds</span> <span class="nx">to</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">connection</span> <span class="nx">closure</span> <span class="nx">due</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">connection</span> <span class="k">timeout</span> 
+<span class="err">#</span> <span class="nx">or</span> <span class="nx">change</span> <span class="nx">the</span> <span class="k">timeout</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">configuration</span> <span class="kd">annotation</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -480,7 +491,7 @@ service basic on new http:Listener(9090) {
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
-$ ballerina run websocket_basic_sample.bal
+ballerina run websocket_basic_sample.bal
 </code></pre></div>
 
                                 </td>
@@ -494,7 +505,7 @@ $ ballerina run websocket_basic_sample.bal
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To check the sample, use a Chrome or Firefox JavaScript console and run the following commands. &lt;br&gt;
 # Change `xml` to another sub protocol to observe the behavior of the WebSocket server.
-$ var ws = new WebSocket(&quot;ws://localhost:9090/basic/ws&quot;, &quot;xml&quot;, &quot;my-protocol&quot;);
+var ws = new WebSocket(&quot;ws://localhost:9090/basic/ws&quot;, &quot;xml&quot;, &quot;my-protocol&quot;);
 </code></pre></div>
 
                                 </td>
@@ -506,8 +517,8 @@ $ var ws = new WebSocket(&quot;ws://localhost:9090/basic/ws&quot;, &quot;xml&quo
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ws.onmessage = function(frame) {console.log(frame.data)};
-$ ws.onclose = function(frame) {console.log(frame)};
+                                    <div class="highlight"><pre><code class=shell-session>ws.onmessage = function(frame) {console.log(frame.data)};
+ws.onclose = function(frame) {console.log(frame)};
 </code></pre></div>
 
                                 </td>
@@ -520,7 +531,7 @@ $ ws.onclose = function(frame) {console.log(frame)};
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send a message.
-$ ws.send(&quot;hello world&quot;);
+ws.send(&quot;hello world&quot;);
 </code></pre></div>
 
                                 </td>
@@ -534,7 +545,7 @@ $ ws.send(&quot;hello world&quot;);
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Use an advanced client to check the ping and pong since the browser client does not have the capability to send pings.
 # Use the following command to observe the behavior when the server sends a ping message to the browser client.
-$ ws.send(&quot;ping&quot;);
+ws.send(&quot;ping&quot;);
 </code></pre></div>
 
                                 </td>
@@ -547,7 +558,7 @@ $ ws.send(&quot;ping&quot;);
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Close the connection.
-$ ws.close(1000, &quot;I want to go&quot;);
+ws.close(1000, &quot;I want to go&quot;);
 </code></pre></div>
 
                                 </td>
@@ -560,7 +571,7 @@ $ ws.close(1000, &quot;I want to go&quot;);
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Close the connection from the server side.
-$ ws.send(&quot;closeMe&quot;);
+ws.send(&quot;closeMe&quot;);
 </code></pre></div>
 
                                 </td>

@@ -37,7 +37,13 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Sending response failed&quot;</span><span class="p">,</span> <span class="nx">respondRet</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">At</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">line</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">files</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">data_setup</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">big_data_service</span><span class="p">.</span><span class="nx">balcurl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/dataService/getData &gt; /tmp/response-data.txt</span>
+  <span class="o">%</span> <span class="nx">Total</span>    <span class="o">%</span> <span class="nx">Received</span> <span class="o">%</span> <span class="nx">Xferd</span>  <span class="nx">Average</span> <span class="nx">Speed</span>   <span class="nx">Time</span>    <span class="nx">Time</span>     <span class="nx">Time</span>  <span class="nx">Current</span>
+                                 <span class="nx">Dload</span>  <span class="nx">Upload</span>   <span class="nx">Total</span>   <span class="nx">Spent</span>    <span class="nx">Left</span>  <span class="nx">Speed</span>
+<span class="mi">100</span>  <span class="mi">199</span><span class="nx">M</span>    <span class="mi">0</span>  <span class="mi">199</span><span class="nx">M</span>    <span class="mi">0</span>     <span class="mi">0</span>  <span class="mf">90.0</span><span class="nx">M</span>      <span class="mi">0</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span>  <span class="mi">0</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">02</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="mf">90.0</span><span class="nx">Mimport</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/testdb&quot;</span><span class="p">,</span>
@@ -383,9 +389,9 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># At the command line, navigate to the directory that contains the
-# `.bal` files and run the `ballerina run` command.
-$ ballerina run data_setup.bal
-$ ballerina run big_data_service.bal
+# `.bal` files and run the `ballerina run` command below.
+ballerina run data_setup.bal
+ballerina run big_data_service.bal
 </code></pre></div>
 
                                 </td>
@@ -397,7 +403,7 @@ $ ballerina run big_data_service.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9090/dataService/getData &gt; /tmp/response-data.txt
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/dataService/getData &gt; /tmp/response-data.txt
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  199M    0  199M    0     0  90.0M      0 --:--:--  0:00:02 --:--:-- 90.0M

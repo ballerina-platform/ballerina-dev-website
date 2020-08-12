@@ -55,7 +55,12 @@ redirect_from:
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing character stream&quot;</span><span class="p">,</span>
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">xml_io</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Preparing</span> <span class="nx">to</span> <span class="nx">write</span> <span class="kt">xml</span> <span class="nx">file</span>
+<span class="nx">Preparing</span> <span class="nx">to</span> <span class="nx">read</span> <span class="nx">the</span> <span class="nx">content</span> <span class="nx">written</span>
+<span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">The</span> <span class="nx">Lost</span> <span class="nx">World</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span>
 </pre></div>
 
             </div>
@@ -496,8 +501,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run xml_io.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run xml_io.bal
 Preparing to write xml file
 Preparing to read the content written
 &lt;book&gt;The Lost World&lt;/book&gt;

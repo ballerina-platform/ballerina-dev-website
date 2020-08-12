@@ -43,7 +43,16 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>        <span class="k">return</span> <span class="p">();</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">Jaeger</span> <span class="nx">is</span> <span class="nx">the</span> <span class="k">default</span> <span class="nx">tracing</span> <span class="nx">tool</span> <span class="nx">used</span> <span class="nx">in</span> <span class="nx">Ballerina</span><span class="p">.</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">Jaeger</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">docker</span> <span class="nx">run</span> <span class="o">-</span><span class="nx">d</span> <span class="o">-</span><span class="nx">p5775</span><span class="p">:</span><span class="mi">5775</span><span class="o">/</span><span class="nx">udp</span> <span class="o">-</span><span class="nx">p6831</span><span class="p">:</span><span class="mi">6831</span><span class="o">/</span><span class="nx">udp</span> <span class="o">-</span><span class="nx">p6832</span><span class="p">:</span><span class="mi">6832</span><span class="o">/</span><span class="nx">udp</span> <span class="o">-</span><span class="nx">p5778</span><span class="p">:</span><span class="mi">5778</span> <span class="o">-</span><span class="nx">p16686</span><span class="p">:</span><span class="mi">16686</span> <span class="o">-</span><span class="nx">p14268</span><span class="p">:</span><span class="mi">14268</span> <span class="nx">jaegertracing</span><span class="o">/</span><span class="nx">all</span><span class="o">-</span><span class="nx">in</span><span class="o">-</span><span class="nx">one</span><span class="p">:</span><span class="nx">latest</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">with</span> <span class="err">&#39;</span><span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">observability</span><span class="p">.</span><span class="nx">enabled</span><span class="p">=</span><span class="kc">true</span><span class="err">&#39;</span> <span class="nx">property</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tracing</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">observability</span><span class="p">.</span><span class="nx">enabled</span><span class="p">=</span><span class="kc">true</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9797</span>
+<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">Prometheus</span> <span class="nx">HTTP</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9797</span>
+<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">publishing</span> <span class="nx">tracers</span> <span class="nx">to</span> <span class="nx">Jaeger</span> <span class="nx">on</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">5775</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9234</span>
+<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9234/hello/sayHello</span>
+<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -492,7 +501,7 @@ import ballerina/runtime;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Jaeger is the default tracing tool used in Ballerina. To start the Jaeger execute the below command.
-$ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16686:16686 -p14268:14268 jaegertracing/all-in-one:latest
+docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16686:16686 -p14268:14268 jaegertracing/all-in-one:latest
 </code></pre></div>
 
                                 </td>
@@ -506,7 +515,7 @@ $ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command with &#39;--b7a.observability.enabled=true&#39; property.
-$ ballerina run tracing.bal --b7a.observability.enabled=true
+ballerina run tracing.bal --b7a.observability.enabled=true
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 ballerina: started publishing tracers to Jaeger on localhost:5775
@@ -535,7 +544,7 @@ ballerina: started publishing tracers to Jaeger on localhost:5775
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9234/hello/sayHello
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9234/hello/sayHello
 Hello, World!
 </code></pre></div>
 

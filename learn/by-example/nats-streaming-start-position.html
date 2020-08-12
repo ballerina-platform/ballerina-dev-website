@@ -34,7 +34,19 @@ redirect_from:
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">publisher</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Subject</span> <span class="p">:</span> <span class="nx">demo</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">nats</span><span class="p">]</span> <span class="nx">Connection</span> <span class="nx">established</span> <span class="nx">with</span> <span class="nx">server</span> <span class="nx">nats</span><span class="p">:</span><span class="c1">//localhost:4222</span>
+<span class="nx">Message</span> <span class="p">:</span> <span class="nx">First</span> <span class="nx">Message</span>
+<span class="nx">GUID</span> <span class="nx">UBMEgrERHdxZRqUBP05PtD</span> <span class="nx">received</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">produced</span> <span class="kt">message</span><span class="p">.</span>
+<span class="nx">Message</span> <span class="p">:</span> <span class="nx">Second</span> <span class="nx">Message</span>
+<span class="nx">GUID</span> <span class="nx">UBMEgrERHdxZRqUBP05Puz</span> <span class="nx">received</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">produced</span> <span class="kt">message</span><span class="p">.</span>
+<span class="nx">Message</span> <span class="p">:</span> <span class="nx">Third</span> <span class="nx">Message</span>
+<span class="nx">GUID</span> <span class="nx">UBMEgrERHdxZRqUBP05Pwl</span> <span class="nx">received</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">produced</span> <span class="kt">message</span><span class="p">.</span>
+<span class="nx">Message</span> <span class="p">:</span> <span class="nx">Forth</span> <span class="nx">Message</span>
+<span class="nx">GUID</span> <span class="nx">UBMEgrERHdxZRqUBP05PyX</span> <span class="nx">received</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">produced</span> <span class="kt">message</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
 <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -128,7 +140,7 @@ redirect_from:
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
 <span class="err">#</span> <span class="nx">When</span> <span class="nx">you</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">subscriber</span> <span class="nx">after</span> <span class="nx">publishing</span> <span class="nx">several</span> <span class="nx">messages</span><span class="p">,</span>
 <span class="err">#</span> <span class="nx">You</span><span class="err">&#39;</span><span class="nx">ll</span> <span class="nx">notice</span> <span class="nx">that</span><span class="p">,</span>
 <span class="err">#</span> <span class="mf">1.</span> <span class="s">`receiveSinceTimeDelta`</span> <span class="kd">service</span> <span class="nx">receives</span> <span class="nx">the</span> <span class="nx">messages</span> <span class="k">if</span>
@@ -141,7 +153,18 @@ redirect_from:
 <span class="err">#</span> <span class="mf">4.</span> <span class="s">`receiveFromBeginning`</span> <span class="kd">service</span> <span class="nx">receives</span> <span class="nx">all</span> <span class="nx">messages</span> <span class="nx">ever</span>
 <span class="err">#</span>     <span class="nx">published</span>
 <span class="err">#</span> <span class="mf">5.</span> <span class="s">`receiveNewOnly`</span> <span class="kd">service</span> <span class="nx">receives</span> <span class="nx">only</span> <span class="nx">the</span> <span class="nx">messages</span><span class="p">,</span> <span class="nx">which</span> <span class="nx">are</span>
-<span class="err">#</span>    <span class="nx">published</span> <span class="nx">after</span> <span class="nx">the</span> <span class="nx">subscriber</span> <span class="nx">starts</span><span class="p">.</span>
+<span class="err">#</span>    <span class="nx">published</span> <span class="nx">after</span> <span class="nx">the</span> <span class="nx">subscriber</span> <span class="nx">starts</span><span class="p">.</span><span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">subscriber</span><span class="p">.</span><span class="nx">bal</span><span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">nats</span><span class="p">]</span> <span class="nx">Connection</span> <span class="nx">established</span> <span class="nx">with</span> <span class="nx">server</span> <span class="nx">nats</span><span class="p">:</span><span class="c1">//localhost:4222</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveSinceTimeDelta</span><span class="p">:</span> <span class="nx">Third</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveFromGivenIndex</span><span class="p">:</span> <span class="nx">Third</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveFromLastReceived</span><span class="p">:</span> <span class="nx">Third</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveFromBeginning</span><span class="p">:</span> <span class="nx">First</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveFromBeginning</span><span class="p">:</span> <span class="nx">Second</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveFromBeginning</span><span class="p">:</span> <span class="nx">Third</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveFromGivenIndex</span><span class="p">:</span> <span class="nx">Forth</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveFromLastReceived</span><span class="p">:</span> <span class="nx">Forth</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveNewOnly</span><span class="p">:</span> <span class="nx">Forth</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveSinceTimeDelta</span><span class="p">:</span> <span class="nx">Forth</span> <span class="nx">Message</span>
+<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="kd">service</span> <span class="nx">receiveFromBeginning</span><span class="p">:</span> <span class="nx">Forth</span> <span class="nx">Message</span>
 </pre></div>
 
             </div>
@@ -176,9 +199,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="kafka-authentication-sasl-plain-consumer.html">
+                                    <a class="next" href="kafka-producer.html">
                                         <span>NEXT ></span>
-                                        <p>SASL Authentication - Consumer</p>
+                                        <p>Producer</p>
                                     </a>
                                 </div>
                                 
@@ -398,8 +421,8 @@ import ballerina/nats;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run publisher.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run publisher.bal
 Subject : demo
 [ballerina/nats] Connection established with server nats://localhost:4222
 Message : First Message
@@ -952,7 +975,7 @@ service receiveSinceTimeDelta on lis {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command below.
 # When you start the subscriber after publishing several messages,
 # You&#39;ll notice that,
 # 1. `receiveSinceTimeDelta` service receives the messages if
@@ -977,7 +1000,7 @@ service receiveSinceTimeDelta on lis {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina run subscriber.bal
+                                    <div class="highlight"><pre><code class=shell-session>ballerina run subscriber.bal
 </code></pre></div>
 
                                 </td>

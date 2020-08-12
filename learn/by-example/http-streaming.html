@@ -109,7 +109,12 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_streaming</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span><span class="nx">Send</span> <span class="nx">a</span> <span class="nx">request</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">streaming</span> <span class="kd">service</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">GET</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/stream/fileupload</span>
+<span class="nx">File</span> <span class="nx">Received</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -570,7 +575,7 @@ written to.</p>
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
-$ ballerina run http_streaming.bal
+ballerina run http_streaming.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -597,7 +602,7 @@ $ ballerina run http_streaming.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#Send a request to the streaming service.
-$ curl -X GET http://localhost:9090/stream/fileupload
+curl -X GET http://localhost:9090/stream/fileupload
 File Received!
 </code></pre></div>
 

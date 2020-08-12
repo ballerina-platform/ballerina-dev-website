@@ -38,7 +38,22 @@ redirect_from:
     <span class="kt">json</span> <span class="nx">j13</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">s</span><span class="p">.</span><span class="nx">fromJsonString</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j13</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j6</span> <span class="o">==</span> <span class="nx">j13</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="kt">json</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Apple</span>
+<span class="mf">5.36</span>
+<span class="kc">true</span>
+<span class="kc">false</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">apple</span> <span class="nx">color</span><span class="p">=</span><span class="nx">red</span> <span class="nx">price</span><span class="p">=</span><span class="mf">5.36</span>
+<span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;color&quot;</span><span class="p">:</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="mf">5.36</span><span class="p">}</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;first&quot;</span><span class="p">:</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;last&quot;</span><span class="p">:</span><span class="s">&quot;Pala&quot;</span><span class="p">}]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;first&quot;</span><span class="p">:</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;last&quot;</span><span class="p">:</span><span class="s">&quot;Pala&quot;</span><span class="p">}]</span>
+<span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Anne&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="s">&quot;marks&quot;</span><span class="p">:{</span><span class="s">&quot;math&quot;</span><span class="p">:</span><span class="mi">90</span><span class="p">,</span> <span class="s">&quot;language&quot;</span><span class="p">:</span><span class="mi">95</span><span class="p">,</span> <span class="s">&quot;physics&quot;</span><span class="p">:</span><span class="mi">85</span><span class="p">}}</span>
+<span class="kc">true</span>
+<span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="nx">MergeJsonError</span> <span class="kt">message</span><span class="p">=</span><span class="nx">Cannot</span> <span class="nx">merge</span> <span class="nx">JSON</span> <span class="nx">values</span> <span class="nx">of</span> <span class="nx">types</span> <span class="err">&#39;</span><span class="kt">float</span><span class="err">&#39;</span> <span class="nx">and</span> <span class="err">&#39;</span><span class="kt">boolean</span><span class="err">&#39;</span>
+<span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;color&quot;</span><span class="p">:</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="mf">5.36</span><span class="p">}</span>
+<span class="kc">true</span>
 </pre></div>
 
             </div>
@@ -478,8 +493,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run json.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run json.bal
 Apple
 5.36
 true

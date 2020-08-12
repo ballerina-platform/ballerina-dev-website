@@ -59,7 +59,7 @@ For example, you can add documentation for a function as shown below.
  ![Code actions](/swan-lake/learn/images/code-actions.gif)
 
 You can use automatic data mapping code action as shown below.
- > **Note**: By default, the Automatic data mapping code action is disabled. In order to enable it, go to **Settings** and Select **Ballerina** from **Extensions**. There you can check the box in front of **Data Mapper: Enabled**. 
+ > **Note**: By default, the automatic data mapping code action is disabled. To enable it, click **Settings**, select **Ballerina** from **Extensions**, and select the **Data Mapper: Enabled** checkbox. (If you are using MacOS, you can go to **Settings** by pressing `Cmd` + `,`.)
 
  ![Code actions](/swan-lake/learn/images/data-mapper-code-action.gif)
 

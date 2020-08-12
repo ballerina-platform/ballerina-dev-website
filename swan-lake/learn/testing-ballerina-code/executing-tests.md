@@ -43,7 +43,7 @@ Run the tests in the current project excluding the given group(s).
 $ ballerina test --disable-groups <group_1>  --all
 ```
 
-Run only given test function/s in current project.
+Run only the given test function(s) in the current project.
 
 ```
 $ ballerina test --tests <test_function> --all

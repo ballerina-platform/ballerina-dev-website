@@ -52,8 +52,14 @@ These allow you to perform the below tasks easily based on the diagnostics and t
 - Add missing imports 
 - Create variable definitions
 - Create an undefined function
+- Map the record types automatically
 
-For example, you can add documentation for a function as shown below.
+For example, you can use the automatic data mapping code action as shown below.
+ > **Note**: By default, the automatic data mapping code action is disabled. To enable it, click **Settings**, select **Ballerina** from **Extensions**, and select the **Data Mapper: Enabled** checkbox. (If you are using macOS, you can go to **Settings** by pressing `Cmd` + `,`.)
+
+ ![Code actions](/swan-lake/learn/images/data-mapper-code-action.gif)
+
+For another example, you can add documentation for a function as shown below.
 
  ![Code actions](/swan-lake/learn/images/code-actions.gif)
 

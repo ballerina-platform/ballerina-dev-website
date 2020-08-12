@@ -26,7 +26,7 @@ If you have not installed jBallerina, then download the [installers](https://bal
 
 #### I/O
 
-When a CSV file has an empty record, the previous implementation panicked. This is fixed with this release.
+- When a CSV file has an empty record, the previous implementation panicked. This is fixed with this release.
 
 ### Developer Tools
 

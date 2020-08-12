@@ -56,7 +56,21 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span>
+<span class="err">#</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_service_with_jwt_auth</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTPS</span><span class="o">/</span><span class="nx">WSS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">k</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.\</span>
+<span class="s">eyJzdWIiOiJiYWxsZXJpbmEiLCJpc3MiOiJiYWxsZXJpbmEiLCJleHAiOjI4MTg0MTUwMTksIm\</span>
+<span class="s">lhdCI6MTUyNDU3NTAxOSwianRpIjoiZjVhZGVkNTA1ODVjNDZmMmI4Y2EyMzNkMGMyYTNjOWQi\</span>
+<span class="s">LCJhdWQiOlsiYmFsbGVyaW5hIiwiYmFsbGVyaW5hLm9yZyIsImJhbGxlcmluYS5pbyJdLCJzY2\</span>
+<span class="s">9wZSI6ImhlbGxvIn0.bNoqz9_DzgeKSK6ru3DnKL7NiNbY32ksXPYrh6Jp0_O3ST7WfXMs9WVk\</span>
+<span class="s">x6Q2TiYukMAGrnMUFrJnrJvZwC3glAmRBrl4BYCbQ0c5mCbgM9qhhCjC1tBA50rjtLAtRW-JTR\</span>
+<span class="s">pCKS0B9_EmlVKfvXPKDLIpM5hnfhOin1R3lJCPspJ2ey_Ho6fDhsKE3DZgssvgPgI9PBItnkip\</span>
+<span class="s">Q3CqqXWhV-RFBkVBEGPDYXTUVGbXhdNOBSwKw5ZoVJrCUiNG5XD0K4sgN9udVTi3EMKNMnVQaq\</span>
+<span class="s">399k6RYPAy3vIhByS6QZtRjOG8X93WJw-9GLiHvcabuid80lnrs2-mAEcstgiHVw&quot;</span> \
+<span class="nx">https</span><span class="p">:</span><span class="c1">//localhost:9090/hello/sayHello</span>
+<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!!!</span>
 </pre></div>
 
             </div>
@@ -360,9 +374,9 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the below command by passing Ballerina home path
+                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the command below by passing Ballerina home path
 # as a system property.
-$ ballerina run secured_service_with_jwt_auth.bal --b7a.home=&lt;ballerina_home_path&gt;
+ballerina run secured_service_with_jwt_auth.bal --b7a.home=&lt;ballerina_home_path&gt;
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -388,7 +402,7 @@ $ ballerina run secured_service_with_jwt_auth.bal --b7a.home=&lt;ballerina_home_
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl -k -H &quot;Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.\
+                                    <div class="highlight"><pre><code class=shell-session>curl -k -H &quot;Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.\
 eyJzdWIiOiJiYWxsZXJpbmEiLCJpc3MiOiJiYWxsZXJpbmEiLCJleHAiOjI4MTg0MTUwMTksIm\
 lhdCI6MTUyNDU3NTAxOSwianRpIjoiZjVhZGVkNTA1ODVjNDZmMmI4Y2EyMzNkMGMyYTNjOWQi\
 LCJhdWQiOlsiYmFsbGVyaW5hIiwiYmFsbGVyaW5hLm9yZyIsImJhbGxlcmluYS5pbyJdLCJzY2\

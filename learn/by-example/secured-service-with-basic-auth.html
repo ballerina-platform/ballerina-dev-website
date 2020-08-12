@@ -46,7 +46,26 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">At</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">line</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Ensure</span> <span class="nx">that</span> <span class="nx">the</span> <span class="s">`sample-users.toml`</span> <span class="nx">file</span> <span class="nx">is</span> <span class="nx">populated</span> <span class="nx">correctly</span> <span class="nx">with</span> <span class="nx">the</span> <span class="nx">user</span>
+<span class="err">#</span> <span class="nx">information</span><span class="p">.</span> <span class="nx">If</span> <span class="nx">required</span><span class="p">,</span> <span class="nx">user</span> <span class="nx">passwords</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">encrypted</span> <span class="nx">using</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`ballerina encrypt`</span> <span class="nx">configuration</span> <span class="nx">encryption</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">echo</span> <span class="err">&#39;</span><span class="p">[</span><span class="s">&quot;b7a.users&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="s">&quot;b7a.users.alice&quot;</span><span class="p">]</span>
+<span class="nx">password</span><span class="p">=</span><span class="s">&quot;password1&quot;</span>
+<span class="nx">scopes</span><span class="p">=</span><span class="s">&quot;scope1&quot;</span>
+<span class="p">[</span><span class="s">&quot;b7a.users.bob&quot;</span><span class="p">]</span>
+<span class="nx">password</span><span class="p">=</span><span class="s">&quot;password2&quot;</span>
+<span class="nx">scopes</span><span class="p">=</span><span class="s">&quot;scope2,scope3&quot;</span><span class="err">&#39;</span> <span class="p">&gt;</span> <span class="nx">sample</span><span class="o">-</span><span class="nx">users</span><span class="p">.</span><span class="nx">toml</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">command</span> <span class="nx">by</span> <span class="nx">specifying</span> <span class="nx">the</span> <span class="nx">configuration</span>
+<span class="err">#</span> <span class="nx">file</span> <span class="nx">name</span> <span class="nx">and</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_service_with_basic_auth</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">file</span><span class="p">=</span><span class="nx">sample</span><span class="o">-</span><span class="nx">users</span><span class="p">.</span><span class="nx">toml</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTPS</span><span class="o">/</span><span class="nx">WSS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">Since</span> <span class="nx">the</span> <span class="kd">resource</span> <span class="nx">configuration</span> <span class="nx">has</span> <span class="nx">overridden</span> <span class="nx">the</span> <span class="nx">required</span> <span class="nx">scopes</span> <span class="nx">to</span> <span class="nx">denote</span>
+<span class="err">#</span> <span class="nx">that</span> <span class="s">`scope2`</span> <span class="nx">is</span> <span class="nx">required</span> <span class="nx">to</span> <span class="nx">invoke</span> <span class="s">`sayHello`</span> <span class="kd">resource</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">invocation</span> <span class="nx">will</span>
+<span class="err">#</span> <span class="nx">fail</span> <span class="nx">during</span> <span class="nx">authorization</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">k</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">alice</span><span class="p">:</span><span class="nx">password1</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//localhost:9090/hello/sayHello</span>
+<span class="nx">Authorization</span> <span class="nx">failure</span><span class="err">#</span> <span class="nx">Since</span> <span class="s">`bob`</span> <span class="nx">has</span> <span class="s">`scope2`</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">invocation</span> <span class="nx">will</span> <span class="nx">succeed</span><span class="p">.</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">k</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">bob</span><span class="p">:</span><span class="nx">password2</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//localhost:9090/hello/sayHello</span>
+<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!!!</span>
 </pre></div>
 
             </div>
@@ -360,7 +379,7 @@ http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
 # Ensure that the `sample-users.toml` file is populated correctly with the user
 # information. If required, user passwords can be encrypted using the
 # `ballerina encrypt` configuration encryption command.
-$ echo &#39;[&quot;b7a.users&quot;]
+echo &#39;[&quot;b7a.users&quot;]
 [&quot;b7a.users.alice&quot;]
 password=&quot;password1&quot;
 scopes=&quot;scope1&quot;
@@ -380,7 +399,7 @@ scopes=&quot;scope2,scope3&quot;&#39; &gt; sample-users.toml
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run the service, execute the below command by specifying the configuration
 # file name and passing Ballerina home path as a system property.
-$ ballerina run secured_service_with_basic_auth.bal --b7a.config.file=sample-users.toml --b7a.home=&lt;ballerina_home_path&gt;
+ballerina run secured_service_with_basic_auth.bal --b7a.config.file=sample-users.toml --b7a.home=&lt;ballerina_home_path&gt;
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -413,7 +432,7 @@ $ ballerina run secured_service_with_basic_auth.bal --b7a.config.file=sample-use
                                     <div class="highlight"><pre><code class=shell-session># Since the resource configuration has overridden the required scopes to denote
 # that `scope2` is required to invoke `sayHello` resource, the invocation will
 # fail during authorization.
-$ curl -k -u alice:password1 https://localhost:9090/hello/sayHello
+curl -k -u alice:password1 https://localhost:9090/hello/sayHello
 Authorization failure
 </code></pre></div>
 
@@ -427,7 +446,7 @@ Authorization failure
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Since `bob` has `scope2`, the invocation will succeed.
-$ curl -k -u bob:password2 https://localhost:9090/hello/sayHello
+curl -k -u bob:password2 https://localhost:9090/hello/sayHello
 Hello, World!!!
 </code></pre></div>
 

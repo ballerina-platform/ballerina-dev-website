@@ -71,7 +71,10 @@ redirect_from:
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">pushResponse3</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_2</span><span class="mf">.0</span><span class="nx">_service</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="m">7090i</span><span class="nx">mport</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">serviceReq</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">HttpFuture</span> <span class="nx">httpFuture</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -131,7 +134,15 @@ redirect_from:
                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">promisedPayload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span><span class="nx">Run</span> <span class="nx">the</span> <span class="s">`http_client.bal`</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">ballerina</span> <span class="nx">client</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_client</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Received</span> <span class="nx">a</span> <span class="nx">promise</span> <span class="k">for</span> <span class="o">/</span><span class="nx">resource1</span>
+<span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Received</span> <span class="nx">a</span> <span class="nx">promise</span> <span class="k">for</span> <span class="o">/</span><span class="nx">resource2</span>
+<span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Push</span> <span class="nx">promise</span> <span class="k">for</span> <span class="nx">resource2</span> <span class="nx">rejected</span>
+<span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Received</span> <span class="nx">a</span> <span class="nx">promise</span> <span class="k">for</span> <span class="o">/</span><span class="nx">resource3</span>
+<span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Response</span> <span class="p">:</span> <span class="p">{</span><span class="s">&quot;response&quot;</span><span class="p">:{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;main resource&quot;</span><span class="p">}}</span>
+<span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Promised</span> <span class="kd">resource</span> <span class="p">:</span> <span class="p">{</span><span class="s">&quot;push&quot;</span><span class="p">:{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;resource1&quot;</span><span class="p">}}</span>
+<span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Promised</span> <span class="kd">resource</span> <span class="p">:</span> <span class="p">{</span><span class="s">&quot;push&quot;</span><span class="p">:{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;resource3&quot;</span><span class="p">}}</span>
 </pre></div>
 
             </div>
@@ -563,8 +574,8 @@ service http2Service on http2ServiceEP {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run http_2.0_service.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run http_2.0_service.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:7090
 </code></pre></div>
 
@@ -1056,7 +1067,7 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#Run the `http_client.bal` that contains ballerina client.
-$ ballerina run http_client.bal
+ballerina run http_client.bal
 INFO  [ballerina/log] - Received a promise for /resource1
 INFO  [ballerina/log] - Received a promise for /resource2
 INFO  [ballerina/log] - Push promise for resource2 rejected

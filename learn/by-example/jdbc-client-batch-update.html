@@ -85,7 +85,19 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from student table failed: &quot;</span><span class="p">,</span>
                     <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">dtReturned</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">At</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">line</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jdbc_client_batch_update</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">The</span> <span class="nx">update</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">Creating</span> <span class="nx">a</span> <span class="nx">table</span><span class="p">:</span>
+<span class="nx">Create</span> <span class="nx">student</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Batch</span> <span class="mi">1</span> <span class="nx">update</span> <span class="nx">counts</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Batch</span> <span class="mi">2</span> <span class="nx">update</span> <span class="nx">counts</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Generated</span> <span class="nx">keys</span> <span class="nx">are</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="nx">and</span> <span class="mi">3</span>
+<span class="nx">Data</span> <span class="nx">in</span> <span class="nx">students</span> <span class="nx">table</span><span class="p">:</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">age</span><span class="p">=</span><span class="mi">10</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">2</span> <span class="nx">age</span><span class="p">=</span><span class="mi">15</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">age</span><span class="p">=</span><span class="mi">12</span> <span class="nx">name</span><span class="p">=</span><span class="nx">JamesThe</span> <span class="nx">update</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">Drop</span> <span class="nx">the</span> <span class="nx">student</span> <span class="nx">table</span>
+<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">student</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
 </pre></div>
 
             </div>
@@ -538,8 +550,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># At the command line, navigate to the directory that contains the
-# `.bal` file and run the `ballerina run` command.
-$ ballerina run jdbc_client_batch_update.bal
+# `.bal` file and run the `ballerina run` command below.
+ballerina run jdbc_client_batch_update.bal
 The update operation - Creating a table:
 Create student table status: 0
 Batch 1 update counts: 1

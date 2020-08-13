@@ -73,7 +73,16 @@ redirect_from:
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">n</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Elizabeth Swann&quot;</span><span class="p">};</span>
     <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
     <span class="nx">createNumericValues</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">program</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">type_conversion</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Employee</span> <span class="nx">to</span> <span class="nx">Person</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Jack</span> <span class="nx">Sparrow</span>
+<span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">to</span> <span class="nx">Person</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Hector</span> <span class="nx">Barbossa</span>
+<span class="nx">Error</span> <span class="nx">occurred</span> <span class="nx">on</span> <span class="nx">conversion</span><span class="p">:</span> <span class="kt">message</span><span class="p">=</span><span class="err">&#39;</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span><span class="err">&#39;</span> <span class="nx">value</span> <span class="nx">cannot</span> <span class="nx">be</span> <span class="nx">converted</span> <span class="nx">to</span> <span class="err">&#39;</span><span class="nx">Person</span><span class="err">&#39;</span>
+<span class="kt">int</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">45</span>
+<span class="nx">error</span><span class="p">:</span> <span class="kt">message</span><span class="p">=</span><span class="err">&#39;</span><span class="kt">string</span><span class="err">&#39;</span> <span class="nx">value</span> <span class="err">&#39;</span><span class="nx">abc</span><span class="err">&#39;</span> <span class="nx">cannot</span> <span class="nx">be</span> <span class="nx">converted</span> <span class="nx">to</span> <span class="err">&#39;</span><span class="kt">int</span><span class="err">&#39;</span>
+<span class="kt">float</span> <span class="nx">value</span><span class="p">:</span> <span class="mf">12.3</span>
+<span class="nx">decimal</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">8</span>
 </pre></div>
 
             </div>
@@ -583,8 +592,8 @@ import ballerina/lang.&#39;int;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run the program, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run type_conversion.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run type_conversion.bal
 Employee to Person, name: Jack Sparrow
 map&lt;anydata&gt; to Person, name: Hector Barbossa
 Error occurred on conversion: message=&#39;map&lt;anydata&gt;&#39; value cannot be converted to &#39;Person&#39;

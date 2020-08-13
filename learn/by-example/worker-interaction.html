@@ -55,7 +55,20 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w3 &lt;- w1] mw: &quot;</span><span class="p">,</span> <span class="nx">mw</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">wait</span> <span class="nx">w1</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">worker_interaction</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span> <span class="nx">w2</span><span class="p">]</span> <span class="nx">i</span><span class="p">:</span> <span class="mi">100</span> <span class="nx">k</span><span class="p">:</span> <span class="mf">2.34</span>
+<span class="p">[</span><span class="nx">w2</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">]</span> <span class="nx">iw</span><span class="p">:</span> <span class="mi">100</span> <span class="nx">kw</span><span class="p">:</span> <span class="mf">2.34</span>
+<span class="p">[</span><span class="nx">w2</span> <span class="o">-&gt;</span> <span class="nx">w1</span><span class="p">]</span> <span class="nx">jw</span><span class="p">:</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Ballerina</span>
+<span class="p">[</span><span class="nx">w1</span> <span class="o">&lt;-</span> <span class="nx">w2</span><span class="p">]</span> <span class="nx">j</span><span class="p">:</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Ballerina</span>
+<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span><span class="p">&gt;</span> <span class="nx">w2</span><span class="p">]</span> <span class="nx">i</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">[</span><span class="nx">w2</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">]</span> <span class="nx">lw</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span><span class="p">&gt;</span> <span class="nx">w2</span><span class="p">]</span> <span class="nx">successful</span><span class="p">!!</span>
+<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span> <span class="nx">w3</span><span class="p">]</span> <span class="nx">k</span><span class="p">:</span> <span class="mf">2.34</span>
+<span class="nx">Waiting</span> <span class="k">for</span> <span class="kd">worker</span> <span class="nx">w3</span> <span class="nx">to</span> <span class="nx">fetch</span> <span class="nx">messages</span><span class="p">..</span>
+<span class="p">[</span><span class="nx">w1</span> <span class="o">-&gt;</span> <span class="nx">w3</span><span class="p">]</span> <span class="nx">Flushed</span><span class="p">!!</span>
+<span class="p">[</span><span class="nx">w3</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">]</span> <span class="nx">mw</span><span class="p">:</span> <span class="mf">2.34</span>
 </pre></div>
 
             </div>
@@ -497,7 +510,7 @@ import ballerina/runtime;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
-$ ballerina run worker_interaction.bal
+ballerina run worker_interaction.bal
 [w1 -&gt; w2] i: 100 k: 2.34
 [w2 &lt;- w1] iw: 100 kw: 2.34
 [w2 -&gt; w1] jw: name=Ballerina

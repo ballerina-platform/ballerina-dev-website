@@ -49,7 +49,22 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">c</span> <span class="p">=</span> <span class="nx">country</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Member Access: &quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">ToUpper</span><span class="p">:</span> <span class="nx">LION</span> <span class="nx">IN</span> <span class="nx">TOWN</span><span class="p">.</span> <span class="nx">CATCH</span> <span class="nx">THE</span> <span class="nx">LION</span>
+<span class="nx">ToLower</span><span class="p">:</span> <span class="nx">lion</span> <span class="nx">in</span> <span class="nx">town</span><span class="p">.</span> <span class="nx">catch</span> <span class="nx">the</span> <span class="nx">lion</span>
+<span class="nx">SubString</span><span class="p">:</span> <span class="nx">Lion</span>
+<span class="nx">IndexOf</span><span class="p">:</span> <span class="mi">2</span>
+<span class="nx">Length</span><span class="p">:</span> <span class="mi">28</span>
+<span class="nx">Concat</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">Join</span><span class="p">:</span> <span class="nx">Hello</span><span class="p">,</span><span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">From</span> <span class="nx">bytes</span><span class="p">:</span> <span class="nx">Hello</span>
+<span class="nx">Trim</span><span class="p">:</span> <span class="nx">Ballerina</span> <span class="nx">Programming</span> <span class="nx">Language</span>
+<span class="nx">HasSuffix</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">HasPrefix</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">Sprintf</span><span class="p">:</span> <span class="nx">Sam</span> <span class="nx">scored</span> <span class="mi">90</span> <span class="k">for</span> <span class="nx">English</span> <span class="nx">and</span> <span class="nx">has</span> <span class="nx">an</span> <span class="nx">average</span> <span class="nx">of</span> <span class="mf">71.50</span><span class="p">.</span>
+<span class="nx">Member</span> <span class="nx">Access</span><span class="p">:</span> <span class="nx">L</span>
 </pre></div>
 
             </div>
@@ -502,8 +517,8 @@ import ballerina/lang.&#39;string;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run strings.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run strings.bal
 ToUpper: LION IN TOWN. CATCH THE LION
 ToLower: lion in town. catch the lion
 SubString: Lion

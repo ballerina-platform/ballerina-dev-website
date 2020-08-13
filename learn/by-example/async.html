@@ -71,7 +71,17 @@ redirect_from:
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
         <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">async</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">SQ</span> <span class="o">+</span> <span class="nx">CB</span> <span class="p">=</span> <span class="mi">737100</span>
+<span class="nx">Counting</span> <span class="nx">done</span> <span class="nx">in</span> <span class="nx">one</span> <span class="nx">second</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">args</span><span class="p">=</span><span class="nx">test</span><span class="p">=</span><span class="mi">123</span> <span class="nx">headers</span><span class="p">=</span><span class="nx">x</span><span class="o">-</span><span class="nx">forwarded</span><span class="o">-</span><span class="nx">proto</span><span class="p">=</span><span class="nx">https</span> <span class="nx">host</span><span class="p">=</span><span class="nx">postman</span><span class="o">-</span><span class="nx">echo</span><span class="p">.</span><span class="nx">com</span> <span class="nx">user</span><span class="o">-</span><span class="nx">agent</span><span class="p">=</span><span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.2.0</span> <span class="nx">x</span><span class="o">-</span><span class="nx">forwarded</span><span class="o">-</span><span class="nx">port</span><span class="p">=</span><span class="mi">80</span> <span class="nx">url</span><span class="p">=</span><span class="nx">https</span><span class="p">:</span><span class="c1">//postman-echo.com/get?test=123</span>
+<span class="mi">400</span>
+<span class="nx">first_field</span><span class="p">=</span><span class="mi">100</span> <span class="nx">second_field</span><span class="p">=</span><span class="mi">27</span> <span class="nx">third_field</span><span class="p">=</span><span class="nx">Hello</span> <span class="nx">Moose</span><span class="p">!!</span>
+<span class="nx">first</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="mi">100</span>
+<span class="nx">second</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="mi">27</span>
+<span class="nx">third</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="nx">Hello</span> <span class="nx">Moose</span><span class="p">!!</span>
 </pre></div>
 
             </div>
@@ -694,8 +704,8 @@ import ballerina/runtime;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run async.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run async.bal
 SQ + CB = 737100
 Counting done in one second: 0
 args=test=123 headers=x-forwarded-proto=https host=postman-echo.com user-agent=ballerina/1.2.0 x-forwarded-port=80 url=https://postman-echo.com/get?test=123

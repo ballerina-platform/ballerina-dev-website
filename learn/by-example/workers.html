@@ -34,7 +34,13 @@ redirect_from:
             <span class="s">&quot; positive numbers = &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution finished&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">workers</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Worker</span> <span class="nx">execution</span> <span class="nx">started</span>
+<span class="nx">sum</span> <span class="nx">of</span> <span class="nx">first</span> <span class="mi">10000000</span> <span class="nx">positive</span> <span class="nx">numbers</span> <span class="p">=</span> <span class="mi">50000005000000</span>
+<span class="nx">sum</span> <span class="nx">of</span> <span class="nx">squares</span> <span class="nx">of</span> <span class="nx">first</span> <span class="mi">10000000</span> <span class="nx">positive</span> <span class="nx">numbers</span> <span class="p">=</span> <span class="mi">1291990006563070912</span>
+<span class="nx">Worker</span> <span class="nx">execution</span> <span class="nx">finished</span>
 </pre></div>
 
             </div>
@@ -324,7 +330,7 @@ redirect_from:
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
-$ ballerina run workers.bal
+ballerina run workers.bal
 Worker execution started
 sum of first 10000000 positive numbers = 50000005000000
 sum of squares of first 10000000 positive numbers = 1291990006563070912

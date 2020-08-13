@@ -62,7 +62,11 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
                     <span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jwt_issue_validate</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
+<span class="nx">Issued</span> <span class="nx">JWT</span><span class="p">:</span> <span class="nx">eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ</span><span class="p">.</span><span class="nx">eyJzdWIiOiJKb2huIiwgImlzcyI6IndzbzIiLCAiZXhwIjoxNTg2NDM3MzgwLCAianRpIjoiMTAwMDc4MjM0YmEyMyIsICJhdWQiOlsiYmFsbGVyaW5hIiwgImJhbGxlcmluYVNhbXBsZXMiXX0</span><span class="p">.</span><span class="nx">H67rsDKLmZJacI1NKMlYl6cCROS</span><span class="o">-</span><span class="nx">rsLfW3Z2INvvDyHrntNau0P8FFoIc98D_c7UPe_L1_uV3no0nWweoWvzqQB8wfvduB6wKNxb1KGprIUF0ilxveQN1Vzab2Mvd7SJCJ19tf6OcKort38C7ES0am5vsm0495OyaNVDAq3ixFP8WRacQW53b0ELc25QCYJJBLhjFBdXLpnx1boSjgS2vhTrg8bY8zlkoV3pJULfHmjS3JX0a_FBqqeB1yQqbIp1RxGrWzGg4nA6kPjGC1GwYvxjcCVQjY5PWWsd9GAeCnnvmFE_Xy6Xenq5lfL2RWWO4H3yF8x_8hcLS9XidERGWQ</span>
+<span class="nx">Validated</span> <span class="nx">JWT</span> <span class="nx">Payload</span><span class="p">:</span> <span class="nx">iss</span><span class="p">=</span><span class="nx">wso2</span> <span class="nx">sub</span><span class="p">=</span><span class="nx">John</span> <span class="nx">aud</span><span class="p">=</span><span class="nx">ballerina</span> <span class="nx">ballerinaSamples</span> <span class="nx">jti</span><span class="p">=</span><span class="mi">100078234</span><span class="nx">ba23</span> <span class="nx">exp</span><span class="p">=</span><span class="mi">1586437380</span> <span class="nx">customClaims</span><span class="p">=</span>
 </pre></div>
 
             </div>
@@ -389,8 +393,8 @@ import ballerina/time;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run jwt_issue_validate.bal --b7a.home=&lt;ballerina_home_path&gt;
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run jwt_issue_validate.bal --b7a.home=&lt;ballerina_home_path&gt;
 Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ.eyJzdWIiOiJKb2huIiwgImlzcyI6IndzbzIiLCAiZXhwIjoxNTg2NDM3MzgwLCAianRpIjoiMTAwMDc4MjM0YmEyMyIsICJhdWQiOlsiYmFsbGVyaW5hIiwgImJhbGxlcmluYVNhbXBsZXMiXX0.H67rsDKLmZJacI1NKMlYl6cCROS-rsLfW3Z2INvvDyHrntNau0P8FFoIc98D_c7UPe_L1_uV3no0nWweoWvzqQB8wfvduB6wKNxb1KGprIUF0ilxveQN1Vzab2Mvd7SJCJ19tf6OcKort38C7ES0am5vsm0495OyaNVDAq3ixFP8WRacQW53b0ELc25QCYJJBLhjFBdXLpnx1boSjgS2vhTrg8bY8zlkoV3pJULfHmjS3JX0a_FBqqeB1yQqbIp1RxGrWzGg4nA6kPjGC1GwYvxjcCVQjY5PWWsd9GAeCnnvmFE_Xy6Xenq5lfL2RWWO4H3yF8x_8hcLS9XidERGWQ
 Validated JWT Payload: iss=wso2 sub=John aud=ballerina ballerinaSamples jti=100078234ba23 exp=1586437380 customClaims=
 </code></pre></div>

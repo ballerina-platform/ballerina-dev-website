@@ -111,10 +111,19 @@ span.line-numbers-rows {
     background-image: none;
 }
 
-code {
+/* code {
     white-space: pre-line !important;
+} */
+
+pre.line-numbers {
+    padding-left: 0 !important;
 }
 
-.pre.line-numbers {
-    padding-left: 0 !important;
+code[class*="language-"], pre[class*="language-"] {
+	font-size: 12px !important;
+}
+
+.highlight {
+	min-width: 645px;
+	max-width: 645px;
 }

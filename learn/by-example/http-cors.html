@@ -53,7 +53,21 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_cors</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9092</span><span class="err">#</span> <span class="nx">Run</span> <span class="nx">this</span> <span class="nx">curl</span> <span class="nx">command</span> <span class="nx">to</span> <span class="nx">send</span> <span class="nx">a</span> <span class="nx">CORS</span> <span class="nx">simple</span> <span class="nx">request</span><span class="p">.</span> 
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="s">&quot;http://localhost:9092/crossOriginService/company&quot;</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Origin:http://www.bbc.com&quot;</span><span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">&lt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span>
+<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Allow</span><span class="o">-</span><span class="nx">Origin</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//www.bbc.com</span>
+<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Allow</span><span class="o">-</span><span class="nx">Credentials</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">&lt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="p">:</span> <span class="mi">21</span>
+<span class="p">{</span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;middleware&quot;</span><span class="p">}</span><span class="err">#</span> <span class="nx">Run</span> <span class="nx">this</span> <span class="nx">curl</span> <span class="nx">command</span> <span class="nx">to</span> <span class="nx">send</span> <span class="nx">a</span> <span class="nx">CORS</span> <span class="nx">preflight</span> <span class="nx">request</span><span class="p">.</span> 
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="s">&quot;http://localhost:9092/crossOriginService/lang&quot;</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">OPTIONS</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Origin:http://www.m3.com&quot;</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Access-Control-Request-Method:POST&quot;</span><span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Allow</span><span class="o">-</span><span class="nx">Origin</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//www.m3.com</span>
+<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Allow</span><span class="o">-</span><span class="nx">Methods</span><span class="p">:</span> <span class="nx">POST</span>
+<span class="p">&lt;</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Max</span><span class="o">-</span><span class="nx">Age</span><span class="p">:</span> <span class="mi">84900</span>
+<span class="p">&lt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="p">:</span> <span class="mi">0</span>
 </pre></div>
 
             </div>
@@ -260,8 +274,8 @@ service-level CORS headers are applied to this resource.</p>
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run http_cors.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run http_cors.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 </code></pre></div>
 
@@ -300,7 +314,7 @@ $ ballerina run http_cors.bal
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run this curl command to send a CORS simple request. 
-$ curl -v &quot;http://localhost:9092/crossOriginService/company&quot; -H &quot;Origin:http://www.bbc.com&quot;
+curl -v &quot;http://localhost:9092/crossOriginService/company&quot; -H &quot;Origin:http://www.bbc.com&quot;
 </code></pre></div>
 
                                 </td>
@@ -330,7 +344,7 @@ $ curl -v &quot;http://localhost:9092/crossOriginService/company&quot; -H &quot;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run this curl command to send a CORS preflight request. 
-$ curl -v &quot;http://localhost:9092/crossOriginService/lang&quot; -X OPTIONS -H &quot;Origin:http://www.m3.com&quot; -H &quot;Access-Control-Request-Method:POST&quot;
+curl -v &quot;http://localhost:9092/crossOriginService/lang&quot; -X OPTIONS -H &quot;Origin:http://www.m3.com&quot; -H &quot;Access-Control-Request-Method:POST&quot;
 </code></pre></div>
 
                                 </td>

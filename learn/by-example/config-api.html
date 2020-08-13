@@ -34,7 +34,31 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">Sensitive</span> <span class="nx">data</span> <span class="nx">such</span> <span class="k">as</span> <span class="nx">passwords</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">encrypted</span> <span class="nx">and</span> <span class="nx">accessed</span> <span class="nx">securely</span> <span class="nx">in</span> <span class="nx">code</span><span class="p">.</span> <span class="nx">To</span> <span class="nx">encrypt</span> <span class="nx">a</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`ballerina encrypt`</span> <span class="nx">command</span> <span class="nx">is</span> <span class="nx">used</span><span class="p">.</span> <span class="nx">It</span> <span class="nx">prompts</span> <span class="nx">the</span> <span class="nx">user</span> <span class="nx">to</span> <span class="nx">enter</span> <span class="nx">the</span> <span class="nx">value</span> <span class="nx">and</span> <span class="nx">a</span> <span class="nx">secret</span><span class="p">.</span> <span class="nx">In</span> <span class="nx">this</span> <span class="nx">example</span><span class="p">,</span>
+<span class="err">#</span> <span class="s">`ballerina`</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">value</span> <span class="nx">and</span> <span class="s">`12345`</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">secret</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">encrypt</span>
+<span class="nx">Enter</span> <span class="nx">value</span><span class="p">:</span><span class="nx">Enter</span> <span class="nx">secret</span><span class="p">:</span><span class="nx">Re</span><span class="o">-</span><span class="nx">enter</span> <span class="nx">secret</span> <span class="nx">to</span> <span class="nx">verify</span><span class="p">:</span><span class="nx">Add</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">configuration</span> <span class="nx">file</span><span class="p">:</span>
+<span class="p">&lt;</span><span class="nx">key</span><span class="o">&gt;=</span><span class="s">&quot;@encrypted:{69P5VGO+hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM=}&quot;</span><span class="nx">Or</span> <span class="nx">provide</span> <span class="nx">it</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">command</span> <span class="nx">line</span> <span class="nx">argument</span><span class="p">:</span>
+<span class="o">--</span><span class="p">&lt;</span><span class="nx">key</span><span class="o">&gt;=</span><span class="nd">@encrypted:{</span><span class="mi">69</span><span class="nx">P5VGO</span><span class="o">+</span><span class="nx">hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM</span><span class="p">=}</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">secret</span> <span class="nx">needs</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">provided</span> <span class="k">if</span> <span class="nx">a</span> <span class="nx">configuration</span> <span class="nx">contains</span> <span class="nx">an</span> <span class="nx">encrypted</span> <span class="nx">value</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">secret</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">provided</span>
+<span class="err">#</span> <span class="nx">via</span> <span class="nx">a</span> <span class="s">`secret.txt`</span> <span class="nx">file</span> <span class="nx">or</span> <span class="nx">via</span> <span class="nx">the</span> <span class="nx">CLI</span><span class="p">.</span> <span class="nx">In</span> <span class="nx">this</span> <span class="nx">example</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">CLI</span> <span class="nx">is</span> <span class="nx">used</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">config_api</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">enter</span> <span class="nx">secret</span> <span class="k">for</span> <span class="nx">config</span> <span class="nx">value</span> <span class="nx">decryption</span><span class="p">:</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">specify</span> <span class="nx">a</span> <span class="nx">configuration</span> <span class="nx">file</span> <span class="nx">explicitly</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`--b7a.config.file=&lt;path_to_configuration_file&gt;`</span> <span class="nx">property</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">If</span> <span class="nx">this</span> <span class="nx">property</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">set</span><span class="p">,</span> <span class="nx">Ballerina</span> <span class="nx">looks</span> <span class="k">for</span> <span class="nx">a</span> <span class="s">`ballerina.conf`</span> <span class="nx">file</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">directory</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">path</span>
+<span class="err">#</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">configuration</span> <span class="nx">file</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">either</span> <span class="nx">an</span> <span class="nx">absolute</span> <span class="nx">or</span> <span class="nx">a</span> <span class="nx">relative</span> <span class="nx">path</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">example</span><span class="p">,</span> <span class="nx">place</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">configurations</span> <span class="nx">in</span> <span class="nx">a</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">provide</span> <span class="nx">its</span> <span class="nx">path</span><span class="p">.</span>
+<span class="err">#</span> <span class="s">```</span>
+<span class="s"># [hello.http]</span>
+<span class="s">#  port=8085</span>
+<span class="s"># [hello.keystore]</span>
+<span class="s">#  password=&quot;@encrypted:{69P5VGO+hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM=}&quot;</span>
+<span class="s">#</span>
+<span class="s"># ```</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">config_api</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">file</span><span class="p">=</span><span class="nx">path</span><span class="o">/</span><span class="nx">to</span><span class="o">/</span><span class="nx">conf</span><span class="o">/</span><span class="nx">file</span><span class="o">/</span><span class="nx">custom</span><span class="o">-</span><span class="nx">config</span><span class="o">-</span><span class="nx">file</span><span class="o">-</span><span class="nx">name</span><span class="p">.</span><span class="nx">conf</span>
+<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">enter</span> <span class="nx">secret</span> <span class="k">for</span> <span class="nx">config</span> <span class="nx">value</span> <span class="nx">decryption</span><span class="p">:</span><span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">HTTPS</span><span class="o">/</span><span class="nx">WSS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8085</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">same</span> <span class="nx">configurations</span> <span class="nx">given</span> <span class="nx">via</span> <span class="nx">a</span> <span class="nx">configuration</span> <span class="nx">file</span> <span class="nx">can</span> <span class="nx">also</span> <span class="nx">be</span> <span class="nx">given</span> <span class="nx">via</span> <span class="nx">CLI</span> <span class="nx">parameters</span><span class="p">.</span> <span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="err">#</span> <span class="nx">e</span><span class="p">.</span><span class="nx">g</span><span class="p">.,</span> <span class="nx">hello</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">port</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">config_api</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">hello</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">port</span><span class="p">=</span><span class="mi">8085</span> <span class="o">--</span><span class="nx">hello</span><span class="p">.</span><span class="nx">keystore</span><span class="p">.</span><span class="nx">password</span><span class="p">=</span><span class="nd">@encrypted:{</span><span class="mi">69</span><span class="nx">P5VGO</span><span class="o">+</span><span class="nx">hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM</span><span class="p">=}</span>
+<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">enter</span> <span class="nx">secret</span> <span class="k">for</span> <span class="nx">config</span> <span class="nx">value</span> <span class="nx">decryption</span><span class="p">:</span><span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">HTTPS</span><span class="o">/</span><span class="nx">WSS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8085</span>
 </pre></div>
 
             </div>
@@ -271,7 +295,7 @@ service helloWorld on helloWorldEP {
                                     <div class="highlight"><pre><code class=shell-session># Sensitive data such as passwords can be encrypted and accessed securely in code. To encrypt a value, the
 # `ballerina encrypt` command is used. It prompts the user to enter the value and a secret. In this example,
 # `ballerina` is the value and `12345` is the secret.
-$ ballerina encrypt
+ballerina encrypt
 Enter value:
 </code></pre></div>
 
@@ -336,7 +360,7 @@ Enter value:
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The secret needs to be provided if a configuration contains an encrypted value. The secret can be provided
 # via a `secret.txt` file or via the CLI. In this example, the CLI is used.
-$ ballerina run config_api.bal
+ballerina run config_api.bal
 ballerina: enter secret for config value decryption:
 </code></pre></div>
 
@@ -360,7 +384,7 @@ ballerina: enter secret for config value decryption:
 #  password=&quot;@encrypted:{69P5VGO+hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM=}&quot;
 #
 # ```
-$ ballerina run config_api.bal --b7a.config.file=path/to/conf/file/custom-config-file-name.conf
+ballerina run config_api.bal --b7a.config.file=path/to/conf/file/custom-config-file-name.conf
 ballerina: enter secret for config value decryption:
 </code></pre></div>
 
@@ -387,7 +411,7 @@ ballerina: enter secret for config value decryption:
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The same configurations given via a configuration file can also be given via CLI parameters. &lt;br&gt;
 # e.g., hello.http.port
-$ ballerina run config_api.bal --hello.http.port=8085 --hello.keystore.password=@encrypted:{69P5VGO+hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM=}
+ballerina run config_api.bal --hello.http.port=8085 --hello.keystore.password=@encrypted:{69P5VGO+hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM=}
 ballerina: enter secret for config value decryption:
 </code></pre></div>
 

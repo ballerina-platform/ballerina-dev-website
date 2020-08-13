@@ -73,7 +73,12 @@ redirect_from:
                     <span class="s">&quot;, Message: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">,</span>
                     <span class="s">&quot;, Cause: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="nx">cause</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">user_defined_error</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Error</span><span class="p">:</span> <span class="nx">InvalidAccountType</span><span class="p">,</span> <span class="nx">Account</span> <span class="nx">type</span><span class="p">:</span> <span class="nx">Joined</span>
+<span class="nx">Error</span><span class="p">:</span> <span class="nx">InvalidAccountID</span><span class="p">,</span> <span class="nx">Account</span> <span class="nx">ID</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nx">Error</span><span class="p">:</span> <span class="nx">AccountInquiryFailed</span><span class="p">,</span> <span class="nx">Message</span><span class="p">:</span> <span class="nx">InvalidAccountID</span><span class="p">,</span> <span class="nx">Cause</span><span class="p">:</span> <span class="nx">error</span> <span class="nx">InvalidAccountID</span> <span class="nx">accountID</span><span class="p">=</span><span class="o">-</span><span class="mi">1</span>
 </pre></div>
 
             </div>
@@ -661,8 +666,8 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run user_defined_error.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run user_defined_error.bal
 Error: InvalidAccountType, Account type: Joined
 Error: InvalidAccountID, Account ID: -1
 Error: AccountInquiryFailed, Message: InvalidAccountID, Cause: error InvalidAccountID accountID=-1

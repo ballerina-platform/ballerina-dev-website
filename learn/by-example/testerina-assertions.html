@@ -97,7 +97,26 @@ redirect_from:
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">stringConcat</span><span class="p">(</span><span class="kt">string</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">For</span> <span class="nx">the</span> <span class="nx">moment</span> <span class="s">`ballerina test`</span> <span class="nx">works</span> <span class="nx">only</span> <span class="nx">in</span> <span class="nx">projects</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">test</span> <span class="nx">test_module</span>
+<span class="nx">Compiling</span> <span class="nx">source</span>
+        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span><span class="nx">Creating</span> <span class="nx">balos</span>
+        <span class="nx">target</span><span class="o">/</span><span class="nx">balo</span><span class="o">/</span><span class="nx">test_module</span><span class="o">-</span><span class="mi">2020</span><span class="nx">r1</span><span class="o">-</span><span class="kt">any</span><span class="o">-</span><span class="mf">0.1.0</span><span class="p">.</span><span class="nx">baloRunning</span> <span class="nx">tests</span>
+    <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span>        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFail</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFalse</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertTrue</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertNotEqualsJson</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertNotEqualsString</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFloatArrayEquals</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertIntArrayEquals</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertStringArrayEquals</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertBooleanEquals</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertJsonEquals</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertStringEquals</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFloatEquals</span>
+        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertIntEquals</span>        <span class="mi">13</span> <span class="nx">passing</span>
+        <span class="mi">0</span> <span class="nx">failing</span>
+        <span class="mi">0</span> <span class="nx">skipped</span>
 </pre></div>
 
             </div>
@@ -606,7 +625,7 @@ function testAssertFail() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># For the moment `ballerina test` works only in projects.
-$ ballerina test test_module
+ballerina test test_module
 Compiling source
         ballerinatest/test_module:0.1.0
 </code></pre></div>

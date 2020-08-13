@@ -57,7 +57,11 @@ redirect_from:
     <span class="p">}</span>
     <span class="nx">close</span><span class="p">(</span><span class="nx">srcCh</span><span class="p">);</span>
     <span class="nx">close</span><span class="p">(</span><span class="nx">dstCh</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">byte_io</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Start</span> <span class="nx">to</span> <span class="nx">copy</span> <span class="nx">files</span> <span class="nx">from</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">ballerina</span><span class="p">.</span><span class="nx">jpg</span> <span class="nx">to</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">ballerinaCopy</span><span class="p">.</span><span class="nx">jpg</span>
+<span class="nx">File</span> <span class="nx">copy</span> <span class="nx">completed</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">copied</span> <span class="nx">file</span> <span class="nx">could</span> <span class="nx">be</span> <span class="nx">located</span> <span class="nx">in</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">ballerinaCopy</span><span class="p">.</span><span class="nx">jpg</span>
 </pre></div>
 
             </div>
@@ -401,8 +405,8 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run byte_io.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run byte_io.bal
 Start to copy files from ./files/ballerina.jpg to ./files/ballerinaCopy.jpg
 File copy completed. The copied file could be located in ./files/ballerinaCopy.jpg
 </code></pre></div>

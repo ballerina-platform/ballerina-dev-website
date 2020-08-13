@@ -2,7 +2,7 @@
 layout: release-note
 title: Release note
 ---
-# Overview of Ballerina Swan Lake - Preview 1
+### Overview of Ballerina Swan Lake - Preview 1
 Ballerina Swan Lake will be a major new version of Ballerina that we plan to release in January 2021. We will be doing major releases every 6 months from then on. We also plan to use popular ballet names as the codename for each release - so the 2021-07 release will be the Nutcracker release. We will announce details on maintenance of released versions and will also have an LTS release model similar to Ubuntu or Java.
 
 This release is the first preview version of Ballerina Swan Lake. This release includes a new set of language features and significant improvements to the compiler, runtime, standard libraries, and developer tooling.
@@ -25,7 +25,7 @@ However, if you are using a jBallerina version below 1.1.0, install via the [ins
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
-# Highlights
+### Highlights
 
 - Immutability in the type system: Ballerina compiler guarantees that when you state a value as immutable,  it stays unchanged 
 - `distinct` types bring native support for nominal typing into the structural type system in Ballerina 
@@ -36,9 +36,9 @@ If you have not installed jBallerina, then download the [installers](https://bal
 - Improved Ballerina SQL module API that leverages the latest languages features such as `stream` type, query expressions, and raw templates
 - The new mocking API in Ballerina test framework helps you to mock an entire object or a function allowing you to test your code independent of external dependencies
 
-# What's new in Ballerina Swan Lake - Preview 1
+### What's new in Ballerina Swan Lake - Preview 1
 
-## Language
+#### Language
 
 The Language implementation is based on [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/). This Specification introduces a set of new features and improvements in the following main areas.   
 
@@ -51,8 +51,8 @@ Some of these new language features are revamped versions of the existing langua
 
 In addition to the new Language features, this release introduces a new parser implementation aiming to improve the performance and usability of the compiler. Now, the compiler has more control over syntax errors and it can provide better diagnostics for syntax errors. Additionally, the new parser has tightened up the language parser rules with respect to the Ballerina language specification. However, it still does not cover the full set of the language features. This will be fixed in the upcoming preview versions.  
 
-### Type system enhancements
-#### Enum
+##### Type system enhancements
+###### Enum
 
 An Enum provides a convenient syntax for declaring a union of string constants.
 
@@ -72,7 +72,7 @@ public const BLUE = "BLUE";
 public type Color RED|GREEN|BLUE;
 ```
 
-#### New `readonly` type
+###### New `readonly` type
 
 A value belongs to the `readonly` type if its read-only flag is set. A value belonging to one of the following inherently-immutable basic types will always have it’s read-only bit set and will always belong to the `readonly` type.
 
@@ -96,7 +96,7 @@ An immutable value is deeply immutable and thus an immutable structure is guaran
 ```ballerina
 readonly immutableValue = “hello world“;
 ```
-#### Intersection type 
+###### Intersection type 
 
 Intersection types have been introduced with this release. A value belongs to an intersection type `T1 & T2` if the value belongs to both `T1` and `T2`. The implementation currently supports intersection types only if one of the constituent types of the intersection is `readonly`.
 
@@ -114,12 +114,12 @@ readonly immutableValue = immutableMap;
 
 Here, `immutableMap` belongs to both `map<int>` and `readonly`.
 
-#### Introduction of `distinct` types
+###### Introduction of `distinct` types
 
 Distinct types provide functionalities similar to that provided by nominal types but they work within Ballerina's structural type system. Distinct types are similar to the branded types found in some other structurally typed languages, such as Modula-3. 
 
 With`distinct` types, it is possible to define unique types that are structurally similar. Distinct types can be used only with the object or error basic types. This release adds `distinct error` support and `distinct object` support will be added later. 
-#### Revamped `error` type
+###### Revamped `error` type
 
 The error type has been revised to take advantage of distinct types. The previous error value had a reason string for categorizing errors and a detail record for additional data about the error such as message and cause. 
 
@@ -143,7 +143,7 @@ type Error0 error;
 type Error1 error<map<string>>;
 type Error2 error<record {| int code; |}>;
 ```
-##### Revised error constructor
+**Revised error constructor**
 
 Error values of user-defined types are created using the error constructor of that type. The first mandatory positional augment of the error constructor is the error message and it must be a subtype of `string`. The second optional positional argument can be provided to pass an `error` cause. Error details are provided as named arguments in the error constructor.
 
@@ -152,7 +152,7 @@ type AppError error<record {| string buildNo; string userId; |};
 
 AppError appError = AppError("Failed to delete the order line", buildNo=getBuildNo(), userId=userId);
 ```
-##### Inferring the type of the error 
+**Inferring the type of the error** 
 
 A type of `error<*>` means that the type is a subtype of `error`, where the precise subtype is to be inferred from the context.
 
@@ -168,7 +168,7 @@ type TrxError error<TrxErrorData>;
 TrxError e = TrxError("IAmAnInferredErr");
 error<*> err = e;
 ```
-#### The `distinct error` type
+###### The `distinct error` type
 
 The `error` types can be defined as `distinct` types so that Ballerina programmers can have more fine-grained control over error handling. 
 
@@ -191,7 +191,7 @@ UserPermissionError userErr = fileErr;  // Compile Time Error.
 
 The type test expression can be used to identify values of each distinct error type at runtime.
 
-#### The `never` type
+###### The `never` type
 
 The `never` type describes the type that does not contain any shapes. No value ever belongs to `never`.
 
@@ -202,7 +202,7 @@ function aNeverReturningFunction() returns never {
     panic error("Invalid function call");
 }
 ```
-#### Revamped `table` type
+###### Revamped `table` type
 
 The table type has been redesigned to be more consistent with other structural types and no longer has preview status.
 
@@ -238,7 +238,7 @@ public function main() {
     Employee peekEmp = employeeTab.get(1);
 }
 ```
-#### Type inclusion
+###### Type inclusion
 
 The type (including type) that includes another object (included type) can override fields and functions of the included type. The types of the fields and functions in the including type should be subtypes of the types of the corresponding fields and functions in the included type. Object type inclusion can now include non-abstract objects. 
 
@@ -287,7 +287,7 @@ type EfficientGridPacket record {
     byte[] header?;
 };
 ```
-#### Raw templates
+###### Raw templates
 Similar to string template literals, a raw template literal allows interpolating expressions into a string literal. However, for a raw template, the resulting value is an object whose type is a subtype of `lang.object:RawTemplate`.
 
 ```ballerina
@@ -302,7 +302,7 @@ public function main() {
     io:println(greeting.insertions[0]);
 }
 ```
-#### Dependently-typed function signatures
+###### Dependently-typed function signatures
 A function's return type descriptor can now refer to a name of a parameter of the function if the type of the parameter is a subtype of `typedesc`. The actual return type of such a function then depends on the value the user specifies for the referenced `typedesc` parameter when calling the function.
 
 Note that currently this is only supported for external functions.
@@ -322,7 +322,7 @@ public function main() {
 }
 ```
 
-### Improved support for immutability
+##### Improved support for immutability
 
 This release introduces improved support for immutability. With the introduction of the `readonly` type, values that are known to be immutable can now be defined at compile-time. 
 
@@ -357,7 +357,7 @@ public function main() {
 
 Attempting to create an immutable value with incompatible mutable values as members will result in compilation errors.Read-only intersections for objects are only allowed with abstract objects. In order to represent a non-abstract object type as a read-only type, the object would have to be defined as a `readonly object`. For more information, see [Read-only objects](#read-only-objects).
 
-#### Read-only fields
+###### Read-only fields
 A record or an object can now have `readonly` fields. A `readonly` field cannot be updated once the record or the object value is created and the value provided for the particular field should be an immutable value. If the field is of type `T`, the contextually-expected type for a value provided for a field would be `T & readonly`.
 
 Thus, a `readonly` field guarantees that the field will not change and also that the value set for the field itself will not be updated.
@@ -423,7 +423,7 @@ public function main() {
 }
 ```
 
-#### Read-only objects
+###### Read-only objects
 An object type can also be defined as a `readonly object` type and any value belonging to this type will be immutable. Similar to `readonly` fields, each value provided for a field of a `readonly object` is expected to be immutable and the field itself cannot be updated once set.
 
 ```ballerina
@@ -451,7 +451,7 @@ public function main() {
    controller.allow = false; // error - cannot update 'readonly' value of type 'Controller'
 }
 ```
-### Transactions
+##### Transactions
 Transaction support has been revisited based on a [new  proposal](https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/transaction/transaction.md)
 
 A Ballerina transaction is a series of data manipulation statements that must either fully complete or fully fail, thereby, leaving the system in a consistent state. A transaction is performed using a transaction statement. The semantics of the transaction statement guarantees that every `Begin()` operation will be paired with a corresponding `Rollback()` or `Commit()` operation. It is also possible to perform retry operations over the transactions as well. Other than that, the transaction module provides some util functions to set commit/rollback handlers, retrieve transaction information, etc. This release only supports local transactions.
@@ -500,7 +500,7 @@ public function main() returns error? {
     check dbClient.close();
 }
 ```
-### Query improvements 
+##### Query improvements 
 
 Ballerina query action/expression provides a language-integrated query feature using SQL-like syntax. A Ballerina query is a comprehension, which can be used with a value that is iterable with any error type. A query consists of a sequence of clauses (i.e., `from`, `join`, `let`, `on`, `where`, `select`, `do`, and `limit`). The first clause must be a `from` clause and must consist of either a `select` or a `do` clause as well. When a query is evaluated, its clauses are executed in a pipeline by making the sequence of frames emitted by one clause being the input to the next clause. Each clause in the pipeline is executed lazily pulling input from its preceding clause. The result of such a query can either be a list, stream, table, string, XML, or termination value of the iterator which is ().
 
@@ -545,7 +545,7 @@ public function main() {
     }
 }
 ```
-### Other backward-incompatible/significant improvements
+##### Other backward-incompatible/significant improvements
 
 - Parameter defaults are not added if a rest argument is provided when calling a function.
 - The `__init` method of `object` and the `__init` function of modules have been renamed to `init`.
@@ -558,9 +558,9 @@ public function main() {
 - Error binding patterns and structured match patterns are not yet supported with the new parser.
 
 
-## Standard Library
+#### Standard Library
 
-### Introduced new SQL module
+##### Introduced new SQL module
 
 The newly-introduced `sql` module provides a common interface and functionality to interact with a database. The corresponding database clients can be created by using specific database modules such as MySQL or using the Java Database Connectivity module JDBC. 
 
@@ -585,7 +585,7 @@ public function main() returns sql:Error? {
 }
 ```
 
-### Enhanced log API module
+##### Enhanced log API module
 
 Revamped log API to support `anydata` and improved performance.
 
@@ -617,7 +617,7 @@ public type Fruit object {
 };
 ```
 
-### Enhanced gRPC module
+##### Enhanced gRPC module
 
 The client/bidirectional streaming service implementation is revamped to support multiple service resources.
 
@@ -646,7 +646,7 @@ service HelloWorld on new grpc:Listener(9090) {
 
 ```
 
-### Enhanced Auth module
+##### Enhanced Auth module
 
 The capability to validate the JWT signature with JWKs is extended now. With that, the JWT signature can be validated either from the TrustStore configuration or JWKs configuration.
 
@@ -666,7 +666,7 @@ jwt:JwtValidatorConfig validatorConfig = {
 };
 ```
 
-### Enhanced Email module
+##### Enhanced Email module
 
 The Email Connector clients are given the capability to add custom SMTP properties, custom POP properties, and custom IMAP properties via the configuration of each of the clients.
 
@@ -705,14 +705,14 @@ service emailObserver on emailListener {
 ```
 
 
-### Adding the Socket module to Ballerina Central
+##### Adding the Socket module to Ballerina Central
 
 Previously, the Socket module was available only in the Ballerina distribution. From this release onwards, it is available in both the
  released Ballerina distribution and Ballerina Central. This will allow us to release the module independently.
 
-## Developer tools
+#### Developer tools
 
-### Maven dependency management
+##### Maven dependency management
 
 Now, you can specify your native jar dependencies with maven artifact id in the Ballerina.toml. When you build the program build tool will fetch those dependencies from the Maven Central automatically. If you specify the maven artifact id and the jar path both the jar path will get precedence.
 
@@ -726,7 +726,7 @@ groupId = "json.org"
 version = "0.7.2"
 ```
 
-### Scoping support for native dependencies
+##### Scoping support for native dependencies
 
 Now you can specify the scope for platform libraries. Based on the scope, dependencies will be included to different phases. The values of this will be as follows
 
@@ -746,7 +746,7 @@ path = "path/to/sap_client_1.2.3.jar"
 scope = "provided" 
 ```
 
-### The Bindgen tool
+##### The Bindgen tool
 
 - Java Subtyping support is added to the generated bindings.
 - Maven dependency resolving is integrated into the tool and a new `-mvn|--maven` command option is introduced to facilitate this.
@@ -768,19 +768,19 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 ```
 
 
-### API documentation
+##### API documentation
 
 - The search capability is added into the API Documentation
 - You can now combine documentation from multiple projects using the doc tool
 
-### Debugger
+##### Debugger
 
 This provides variable evaluation support. This will allow you to evaluate a variable using the expression evaluation option to retrieve the value of the variable at a debug hit. 
 
 
-## Test framework
+#### Test framework
 
-#### Introduction of the Mocking API in the Test module
+###### Introduction of the Mocking API in the Test module
 
 The new mocking API simplifies function and object mocking in unit tests via the ***when-then*** convention. 
 
@@ -789,7 +789,7 @@ The mocking features can be used to control the behavior of functions and object
 from other modules and external endpoints. For the complete list of available mocking features, see 
 [API Documentation of the test module](https://ballerina.io/learn/api-docs/ballerina/test/index.html).
 
-#### Function mocking
+###### Function mocking
 
 The `MockFunction` object is added to handle function mocking. The `MockFunction` objects are defined by attaching the `@test:MockFn` annotation to the `MockFunction` to specify the function to mock.
 
@@ -804,7 +804,7 @@ Function mocking is done by using the following functions:
 - The `test:when(mockObj)` is used to initialize the mocking capability within a particular test case
 - This allows you to use the associated mocking functions like `call()`, `thenReturn()` and `withArguments()`
 
-#### Object mocking
+###### Object mocking
 
 Object mocking enables controlling the values of member variables and the behavior of the member functions of an object
 

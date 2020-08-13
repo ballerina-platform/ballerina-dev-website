@@ -101,7 +101,24 @@ redirect_from:
                 <span class="s">&quot;querying data failed!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span>  <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_query_operation</span><span class="p">.</span><span class="nx">bal</span><span class="o">------</span> <span class="nx">Start</span> <span class="nx">Simple</span> <span class="nx">Query</span> <span class="o">-------</span>
+<span class="nx">Customer</span> <span class="nx">full</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">customerId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">FirstName</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">LastName</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">RegistrationID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">CreditLimit</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">Country</span><span class="p">=</span><span class="nx">USA</span>
+<span class="nx">Customer</span> <span class="nx">first</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Peter</span>
+<span class="nx">Customer</span> <span class="nx">last</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Stuart</span>
+<span class="nx">Customer</span> <span class="nx">full</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">customerId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">FirstName</span><span class="p">=</span><span class="nx">Dan</span> <span class="nx">LastName</span><span class="p">=</span><span class="nx">Brown</span> <span class="nx">RegistrationID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">CreditLimit</span><span class="p">=</span><span class="mf">10000.0</span> <span class="nx">Country</span><span class="p">=</span><span class="nx">UK</span>
+<span class="nx">Customer</span> <span class="nx">first</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Dan</span>
+<span class="nx">Customer</span> <span class="nx">last</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Brown</span>
+<span class="o">------</span> <span class="nx">End</span> <span class="nx">Simple</span> <span class="nx">Query</span> <span class="o">-------</span>
+<span class="o">------</span> <span class="nx">Start</span> <span class="nx">Count</span> <span class="nx">Total</span> <span class="nx">Rows</span> <span class="o">-------</span>
+<span class="nx">Total</span> <span class="nx">rows</span> <span class="nx">in</span> <span class="nx">customer</span> <span class="nx">table</span> <span class="p">:</span> <span class="mi">2</span>
+<span class="o">------</span> <span class="nx">End</span> <span class="nx">Count</span> <span class="nx">Total</span> <span class="nx">Rows</span> <span class="o">-------</span>
+<span class="o">------</span> <span class="nx">Start</span> <span class="nx">Query</span> <span class="nx">With</span> <span class="nx">Type</span> <span class="nx">Description</span> <span class="o">-------</span>
+<span class="nx">customerId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">registrationId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">country</span><span class="p">=</span><span class="nx">USA</span>
+<span class="nx">customerId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Dan</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Brown</span> <span class="nx">registrationId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">10000.0</span> <span class="nx">country</span><span class="p">=</span><span class="nx">UK</span>
+<span class="o">------</span> <span class="nx">End</span> <span class="nx">Query</span> <span class="nx">With</span> <span class="nx">Type</span> <span class="nx">Description</span> <span class="o">-------</span>
+<span class="nx">Queried</span> <span class="nx">the</span> <span class="nx">database</span> <span class="nx">successfully</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -746,8 +763,8 @@ and the defined field name of the record will be matched case insensitively.</p>
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#  To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run mysql_query_operation.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run mysql_query_operation.bal
 </code></pre></div>
 
                                 </td>

@@ -20,48 +20,51 @@ redirect_from:
 <span class="p">}</span>
 <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">fromHttpToQueue</span><span class="p">(</span><span class="nx">af</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
-                            <span class="nd">@af:HTTPTrigger {</span><span class="p">}</span> <span class="nx">af</span><span class="p">:</span><span class="nx">HTTPRequest</span> <span class="nx">req</span><span class="p">,</span> 
-                            <span class="nd">@af:QueueOutput {</span> <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;queue1&quot;</span> <span class="p">}</span> <span class="nx">af</span><span class="p">:</span><span class="nx">StringOutputBinding</span> <span class="nx">msg</span><span class="p">)</span> 
-                            <span class="nx">returns</span> <span class="nd">@af:HTTPOutput af:HTTPBinding {</span>
+            <span class="nd">@af:HTTPTrigger {</span><span class="p">}</span> <span class="nx">af</span><span class="p">:</span><span class="nx">HTTPRequest</span> <span class="nx">req</span><span class="p">,</span> 
+            <span class="nd">@af:QueueOutput {</span> <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;queue1&quot;</span> <span class="p">}</span> <span class="nx">af</span><span class="p">:</span><span class="nx">StringOutputBinding</span> <span class="nx">msg</span><span class="p">)</span> 
+            <span class="nx">returns</span> <span class="nd">@af:HTTPOutput af:HTTPBinding {</span>
     <span class="nx">msg</span><span class="p">.</span><span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
     <span class="k">return</span> <span class="p">{</span> <span class="nx">statusCode</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nx">payload</span><span class="p">:</span> <span class="s">&quot;Request: &quot;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="p">};</span>
 <span class="p">}</span>
 <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">fromQueueToQueue</span><span class="p">(</span><span class="nx">af</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
-                                 <span class="nd">@af:QueueTrigger {</span> <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;queue2&quot;</span> <span class="p">}</span> <span class="kt">string</span> <span class="nx">inMsg</span><span class="p">,</span>
-                                 <span class="nd">@af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {</span>
+        <span class="nd">@af:QueueTrigger {</span> <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;queue2&quot;</span> <span class="p">}</span> <span class="kt">string</span> <span class="nx">inMsg</span><span class="p">,</span>
+        <span class="nd">@af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {</span>
     <span class="nx">ctx</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&quot;In Message: &quot;</span> <span class="o">+</span> <span class="nx">inMsg</span><span class="p">);</span>
     <span class="nx">ctx</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&quot;Metadata: &quot;</span> <span class="o">+</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="nx">outMsg</span><span class="p">.</span><span class="nx">value</span> <span class="p">=</span> <span class="nx">inMsg</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">fromBlobToQueue</span><span class="p">(</span><span class="nx">af</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
-                                <span class="nd">@af:BlobTrigger { path: &quot;bpath1/{</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } byte[] blobIn,</span>
-<span class="s">                                @af:BindingName { } string name,</span>
-<span class="s">                                @af:QueueOutput { queueName: &quot;</span><span class="nx">queue3</span><span class="s">&quot; } af:StringOutputBinding outMsg) </span>
-<span class="s">                                returns error? {</span>
+        <span class="nd">@af:BlobTrigger { path: &quot;bpath1/{</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } byte[] blobIn,</span>
+<span class="s">        @af:BindingName { } string name,</span>
+<span class="s">        @af:QueueOutput { queueName: &quot;</span><span class="nx">queue3</span><span class="s">&quot; } af:StringOutputBinding outMsg) </span>
+<span class="s">        returns error? {</span>
 <span class="s">    outMsg.value = &quot;</span><span class="nx">Name</span><span class="p">:</span> <span class="s">&quot; + name + &quot;</span> <span class="nx">Content</span><span class="p">:</span> <span class="s">&quot; + blobIn.toString();</span>
 <span class="s">}</span>
 <span class="s">@af:Function</span>
 <span class="s">public function httpTriggerBlobInput(@af:HTTPTrigger { } af:HTTPRequest req, </span>
-<span class="s">                                     @af:BlobInput { path: &quot;</span><span class="nx">bpath1</span><span class="o">/</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } byte[]? blobIn)</span>
-<span class="s">                                     returns @af:HTTPOutput string {</span>
+<span class="s">                    @af:BlobInput { path: &quot;</span><span class="nx">bpath1</span><span class="o">/</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } byte[]? blobIn)</span>
+<span class="s">                    returns @af:HTTPOutput string {</span>
 <span class="s">    int length = 0;</span>
 <span class="s">    if blobIn is byte[] {</span>
 <span class="s">        length = blobIn.length();</span>
 <span class="s">    }</span>
-<span class="s">    return &quot;</span><span class="nx">Blob</span><span class="p">:</span> <span class="s">&quot; + req.query[&quot;</span><span class="nx">name</span><span class="s">&quot;].toString() + &quot;</span> <span class="nx">Length</span><span class="p">:</span> <span class="s">&quot; + length.toString() + &quot;</span> <span class="nx">Content</span><span class="p">:</span> <span class="s">&quot; + blobIn.toString();</span>
+<span class="s">    return &quot;</span><span class="nx">Blob</span><span class="p">:</span> <span class="s">&quot; + req.query[&quot;</span><span class="nx">name</span><span class="s">&quot;].toString() + &quot;</span> <span class="nx">Length</span><span class="p">:</span> <span class="s">&quot; + </span>
+<span class="s">            length.toString() + &quot;</span> <span class="nx">Content</span><span class="p">:</span> <span class="s">&quot; + blobIn.toString();</span>
 <span class="s">}</span>
 <span class="s">@af:Function</span>
 <span class="s">public function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req, </span>
-<span class="s">                                      @af:BlobOutput { path: &quot;</span><span class="nx">bpath1</span><span class="o">/</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } af:StringOutputBinding bb)</span>
-<span class="s">                                      returns @af:HTTPOutput string|error {</span>
+<span class="s">        @af:BlobOutput { path: &quot;</span><span class="nx">bpath1</span><span class="o">/</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s">&quot; } af:StringOutputBinding bb)</span>
+<span class="s">        returns @af:HTTPOutput string|error {</span>
 <span class="s">    bb.value = req.body;</span>
-<span class="s">    return &quot;</span><span class="nx">Blob</span><span class="p">:</span> <span class="s">&quot; + req.query[&quot;</span><span class="nx">name</span><span class="s">&quot;].toString() + &quot;</span> <span class="nx">Content</span><span class="p">:</span> <span class="s">&quot; + bb?.value.toString();</span>
+<span class="s">    return &quot;</span><span class="nx">Blob</span><span class="p">:</span> <span class="s">&quot; + req.query[&quot;</span><span class="nx">name</span><span class="s">&quot;].toString() + &quot;</span> <span class="nx">Content</span><span class="p">:</span> <span class="s">&quot; + </span>
+<span class="s">            bb?.value.toString();</span>
 <span class="s">}</span>
 <span class="s">@af:Function</span>
 <span class="s">public function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req, </span>
-<span class="s">                        @af:TwilioSmsOutput { fromNumber: &quot;</span><span class="o">+</span><span class="mi">12069845840</span><span class="s">&quot; } af:TwilioSmsOutputBinding tb)</span>
+<span class="s">                        @af:TwilioSmsOutput { fromNumber: &quot;</span><span class="o">+</span><span class="mi">12069845840</span><span class="s">&quot; } </span>
+<span class="s">                                              af:TwilioSmsOutputBinding tb)</span>
 <span class="s">                        returns @af:HTTPOutput string {</span>
 <span class="s">    tb.to = req.query[&quot;</span><span class="nx">to</span><span class="s">&quot;].toString();</span>
 <span class="s">    tb.body = req.body.toString();</span>
@@ -69,68 +72,81 @@ redirect_from:
 <span class="s">}public type Person record {</span>
 <span class="s">    string id;</span>
 <span class="s">    string name;</span>
-<span class="s">    int birthYear;</span>
+<span class="s">    string country;</span>
 <span class="s">};</span>
 <span class="s">@af:Function</span>
-<span class="s">public function cosmosDBToQueue1(@af:CosmosDBTrigger { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                 databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } Person[] req, </span>
-<span class="s">                                 @af:QueueOutput { queueName: &quot;</span><span class="nx">queue3</span><span class="s">&quot; } af:StringOutputBinding outMsg) {</span>
+<span class="s">public function cosmosDBToQueue1(@af:CosmosDBTrigger { </span>
+<span class="s">        connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;,</span>
+<span class="s">        collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } Person[] req, </span>
+<span class="s">        @af:QueueOutput { queueName: &quot;</span><span class="nx">queue3</span><span class="s">&quot; } af:StringOutputBinding outMsg) {</span>
 <span class="s">    outMsg.value = req.toString();</span>
 <span class="s">}@af:Function</span>
-<span class="s">public function cosmosDBToQueue2(@af:CosmosDBTrigger { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                 databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c2</span><span class="s">&quot; } json req, </span>
-<span class="s">                                 @af:QueueOutput { queueName: &quot;</span><span class="nx">queue3</span><span class="s">&quot; } af:StringOutputBinding outMsg) {</span>
+<span class="s">public function cosmosDBToQueue2(@af:CosmosDBTrigger { </span>
+<span class="s">        connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, </span>
+<span class="s">        collectionName: &quot;</span><span class="nx">c2</span><span class="s">&quot; } json req,</span>
+<span class="s">        @af:QueueOutput { queueName: &quot;</span><span class="nx">queue3</span><span class="s">&quot; } af:StringOutputBinding outMsg) {</span>
 <span class="s">    outMsg.value = req.toString();</span>
 <span class="s">}</span>
 <span class="s">@af:Function</span>
-<span class="s">public function httpTriggerCosmosDBInput1(@af:HTTPTrigger { } af:HTTPRequest httpReq, </span>
-<span class="s">                                          @af:CosmosDBInput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                          databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot;, </span>
-<span class="s">                                          id: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s">&quot; } json dbReq)</span>
-<span class="s">                                          returns @af:HTTPOutput string|error {</span>
+<span class="s">public function httpTriggerCosmosDBInput1(</span>
+<span class="s">            @af:HTTPTrigger { } af:HTTPRequest httpReq, </span>
+<span class="s">            @af:CosmosDBInput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
+<span class="s">                databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot;, </span>
+<span class="s">                id: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s">&quot;, partitionKey: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">country</span><span class="p">}</span><span class="s">&quot; } json dbReq)</span>
+<span class="s">                returns @af:HTTPOutput string|error {</span>
 <span class="s">    return dbReq.toString();</span>
 <span class="s">}@af:Function</span>
-<span class="s">public function httpTriggerCosmosDBInput2(@af:HTTPTrigger { } af:HTTPRequest httpReq, </span>
-<span class="s">                                          @af:CosmosDBInput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                          databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot;, </span>
-<span class="s">                                          id: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s">&quot; } Person? dbReq)</span>
-<span class="s">                                          returns @af:HTTPOutput string|error {</span>
+<span class="s">public function httpTriggerCosmosDBInput2(</span>
+<span class="s">            @af:HTTPTrigger { } af:HTTPRequest httpReq, </span>
+<span class="s">            @af:CosmosDBInput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
+<span class="s">                databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot;, </span>
+<span class="s">                id: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s">&quot;, partitionKey: &quot;</span><span class="p">{</span><span class="nx">Query</span><span class="p">.</span><span class="nx">country</span><span class="p">}</span><span class="s">&quot; } Person? dbReq)</span>
+<span class="s">                returns @af:HTTPOutput string|error {</span>
 <span class="s">    return dbReq.toString();</span>
 <span class="s">}@af:Function</span>
-<span class="s">public function httpTriggerCosmosDBInput3(@af:HTTPTrigger { route: &quot;</span><span class="nx">c1</span><span class="o">/</span><span class="p">{</span><span class="nx">country</span><span class="p">}</span><span class="s">&quot; } af:HTTPRequest httpReq, </span>
-<span class="s">                                          @af:CosmosDBInput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                          databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot;, </span>
-<span class="s">                                          sqlQuery: &quot;</span><span class="nx">select</span> <span class="o">*</span> <span class="nx">from</span> <span class="nx">c1</span> <span class="nx">where</span> <span class="nx">c1</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="p">{</span><span class="nx">country</span><span class="p">}</span><span class="s">&quot; } Person[] dbReq)</span>
-<span class="s">                                          returns @af:HTTPOutput string|error {</span>
+<span class="s">public function httpTriggerCosmosDBInput3(</span>
+<span class="s">        @af:HTTPTrigger { route: &quot;</span><span class="nx">c1</span><span class="o">/</span><span class="p">{</span><span class="nx">country</span><span class="p">}</span><span class="s">&quot; } af:HTTPRequest httpReq, </span>
+<span class="s">        @af:CosmosDBInput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
+<span class="s">        databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot;, </span>
+<span class="s">        sqlQuery: &quot;</span><span class="nx">select</span> <span class="o">*</span> <span class="nx">from</span> <span class="nx">c1</span> <span class="nx">where</span> <span class="nx">c1</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="p">{</span><span class="nx">country</span><span class="p">}</span><span class="s">&quot; } </span>
+<span class="s">        Person[] dbReq)</span>
+<span class="s">        returns @af:HTTPOutput string|error {</span>
 <span class="s">    return dbReq.toString();</span>
 <span class="s">}</span>
 <span class="s">@af:Function</span>
-<span class="s">public function httpTriggerCosmosDBOutput1(@af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) </span>
-<span class="s">                                           returns @af:CosmosDBOutput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                           databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
-<span class="s">    json entry = { id: system:uuid(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span><span class="s">&quot;, birthYear: 1980 };</span>
+<span class="s">public function httpTriggerCosmosDBOutput1(</span>
+<span class="s">    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) </span>
+<span class="s">    returns @af:CosmosDBOutput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
+<span class="s">                                databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
+<span class="s">    json entry = { id: system:uuid(), name: &quot;</span><span class="nx">Saman</span><span class="s">&quot;, country: &quot;</span><span class="nx">Sri</span> <span class="nx">Lanka</span><span class="s">&quot; };</span>
 <span class="s">    hb.payload = &quot;</span><span class="nx">Adding</span> <span class="nx">entry</span><span class="p">:</span> <span class="s">&quot; + entry.toString();</span>
 <span class="s">    return entry;</span>
 <span class="s">}@af:Function</span>
-<span class="s">public function httpTriggerCosmosDBOutput2(@af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) </span>
-<span class="s">                                           returns @af:CosmosDBOutput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                           databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
-<span class="s">    json entry = [{ id: system:uuid(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">A</span><span class="s">&quot;, birthYear: 1985 }, </span>
-<span class="s">                  { id: system:uuid(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">B</span><span class="s">&quot;, birthYear: 1990 }];</span>
+<span class="s">public function httpTriggerCosmosDBOutput2(</span>
+<span class="s">        @af:HTTPTrigger { } af:HTTPRequest httpReq, </span>
+<span class="s">        @af:HTTPOutput af:HTTPBinding hb) </span>
+<span class="s">        returns @af:CosmosDBOutput { </span>
+<span class="s">            connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
+<span class="s">            databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
+<span class="s">    json entry = [{ id: system:uuid(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">A</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; }, </span>
+<span class="s">                  { id: system:uuid(), name: &quot;</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">B</span><span class="s">&quot;, country: &quot;</span><span class="nx">USA</span><span class="s">&quot; }];</span>
 <span class="s">    hb.payload = &quot;</span><span class="nx">Adding</span> <span class="nx">entries</span><span class="p">:</span> <span class="s">&quot; + entry.toString();</span>
 <span class="s">    return entry;</span>
 <span class="s">}@af:Function</span>
-<span class="s">public function httpTriggerCosmosDBOutput3(@af:HTTPTrigger { } af:HTTPRequest httpReq) </span>
-<span class="s">                                           returns @af:CosmosDBOutput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                           databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } Person[] {</span>
+<span class="s">public function httpTriggerCosmosDBOutput3(</span>
+<span class="s">                    @af:HTTPTrigger { } af:HTTPRequest httpReq) </span>
+<span class="s">                    returns @af:CosmosDBOutput { </span>
+<span class="s">                        connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
+<span class="s">                        databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } Person[] {</span>
 <span class="s">    Person[] persons = [];</span>
-<span class="s">    persons.push({id: system:uuid(), name: &quot;</span><span class="nx">Jack</span><span class="s">&quot;, birthYear: 2001});</span>
-<span class="s">    persons.push({id: system:uuid(), name: &quot;</span><span class="nx">Will</span><span class="s">&quot;, birthYear: 2005});</span>
+<span class="s">    persons.push({id: system:uuid(), name: &quot;</span><span class="nx">Jack</span><span class="s">&quot;, country: &quot;</span><span class="nx">UK</span><span class="s">&quot;});</span>
+<span class="s">    persons.push({id: system:uuid(), name: &quot;</span><span class="nx">Will</span><span class="s">&quot;, country: &quot;</span><span class="nx">UK</span><span class="s">&quot;});</span>
 <span class="s">    return persons;</span>
 <span class="s">}</span>
 <span class="s">@af:Function</span>
-<span class="s">public function queuePopulationTimer(@af:TimerTrigger { schedule: &quot;</span><span class="o">*/</span><span class="mi">10</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span><span class="s">&quot; } json triggerInfo, </span>
-<span class="s">                                     @af:QueueOutput { queueName: &quot;</span><span class="nx">queue4</span><span class="s">&quot; } af:StringOutputBinding msg) {</span>
+<span class="s">public function queuePopulationTimer(</span>
+<span class="s">            @af:TimerTrigger { schedule: &quot;</span><span class="o">*/</span><span class="mi">10</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span><span class="s">&quot; } json triggerInfo, </span>
+<span class="s">            @af:QueueOutput { queueName: &quot;</span><span class="nx">queue4</span><span class="s">&quot; } af:StringOutputBinding msg) {</span>
 <span class="s">    msg.value = triggerInfo.toString();</span>
 <span class="s">}# Prerequisites: Azure CLI tools installation and configuration# Build the Ballerina program to generate the Azure Functions</span>
 <span class="s">ballerina build azure_functions_deployment.bal</span>
@@ -188,13 +204,27 @@ redirect_from:
                             <h2>Azure Functions Deployment</h2>
                             <p><p>Azure Functions is an event driven, serverless computing platform.
  Ballerina functions can be deployed in Azure Functions by annotating a Ballerina function with &ldquo;@functions:Function&rdquo;.
- For more information, see <a href="https://github.com/ballerina-platform/module-ballerinax-azure.functions/">Ballerina Azure Functions GitHub Repository</a>.</p>
+ For more information, see the <a href="https://ballerina.io/learn/deployment/azure-functions/">Azure Deployment Guide</a>.</p>
 </p>
 
                         </td>
                         <td class="cRightTD">
                             <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="knative-deployment.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Knative Deployment</p>
+                                    </a>
+                                </div>
                                  
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="http-client-endpoint.html">
+                                        <span>NEXT ></span>
+                                        <p>Client Endpoint</p>
+                                    </a>
+                                </div>
+                                
                             </div>
                         </td>
                     </tr>
@@ -273,7 +303,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/system;
 import ballerinax/azure.functions as af;
 </code></pre></div>
@@ -287,7 +317,7 @@ import ballerinax/azure.functions as af;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } http:Request req) 
                       returns @af:HTTPOutput string|error {
     return &quot;Hello, &quot; + check &lt;@untainted&gt; req.getTextPayload() + &quot;!&quot;;
@@ -310,11 +340,11 @@ public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } http:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function fromHttpToQueue(af:Context ctx, 
-                            @af:HTTPTrigger {} af:HTTPRequest req, 
-                            @af:QueueOutput { queueName: &quot;queue1&quot; } af:StringOutputBinding msg) 
-                            returns @af:HTTPOutput af:HTTPBinding {
+            @af:HTTPTrigger {} af:HTTPRequest req, 
+            @af:QueueOutput { queueName: &quot;queue1&quot; } af:StringOutputBinding msg) 
+            returns @af:HTTPOutput af:HTTPBinding {
     msg.value = req.body;
     return { statusCode: 200, payload: &quot;Request: &quot; + req.toString() };
 }
@@ -336,10 +366,10 @@ public function fromHttpToQueue(af:Context ctx,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function fromQueueToQueue(af:Context ctx, 
-                                 @af:QueueTrigger { queueName: &quot;queue2&quot; } string inMsg,
-                                 @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {
+        @af:QueueTrigger { queueName: &quot;queue2&quot; } string inMsg,
+        @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {
     ctx.log(&quot;In Message: &quot; + inMsg);
     ctx.log(&quot;Metadata: &quot; + ctx.metadata.toString());
     outMsg.value = inMsg;
@@ -362,12 +392,12 @@ public function fromQueueToQueue(af:Context ctx,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function fromBlobToQueue(af:Context ctx, 
-                                @af:BlobTrigger { path: &quot;bpath1/{name}&quot; } byte[] blobIn,
-                                @af:BindingName { } string name,
-                                @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) 
-                                returns error? {
+        @af:BlobTrigger { path: &quot;bpath1/{name}&quot; } byte[] blobIn,
+        @af:BindingName { } string name,
+        @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) 
+        returns error? {
     outMsg.value = &quot;Name: &quot; + name + &quot; Content: &quot; + blobIn.toString();
 }
 </code></pre></div>
@@ -388,15 +418,16 @@ public function fromBlobToQueue(af:Context ctx,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerBlobInput(@af:HTTPTrigger { } af:HTTPRequest req, 
-                                     @af:BlobInput { path: &quot;bpath1/{Query.name}&quot; } byte[]? blobIn)
-                                     returns @af:HTTPOutput string {
+                    @af:BlobInput { path: &quot;bpath1/{Query.name}&quot; } byte[]? blobIn)
+                    returns @af:HTTPOutput string {
     int length = 0;
     if blobIn is byte[] {
         length = blobIn.length();
     }
-    return &quot;Blob: &quot; + req.query[&quot;name&quot;].toString() + &quot; Length: &quot; + length.toString() + &quot; Content: &quot; + blobIn.toString();
+    return &quot;Blob: &quot; + req.query[&quot;name&quot;].toString() + &quot; Length: &quot; + 
+            length.toString() + &quot; Content: &quot; + blobIn.toString();
 }
 </code></pre></div>
 
@@ -416,12 +447,13 @@ public function httpTriggerBlobInput(@af:HTTPTrigger { } af:HTTPRequest req,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req, 
-                                      @af:BlobOutput { path: &quot;bpath1/{Query.name}&quot; } af:StringOutputBinding bb)
-                                      returns @af:HTTPOutput string|error {
+        @af:BlobOutput { path: &quot;bpath1/{Query.name}&quot; } af:StringOutputBinding bb)
+        returns @af:HTTPOutput string|error {
     bb.value = req.body;
-    return &quot;Blob: &quot; + req.query[&quot;name&quot;].toString() + &quot; Content: &quot; + bb?.value.toString();
+    return &quot;Blob: &quot; + req.query[&quot;name&quot;].toString() + &quot; Content: &quot; + 
+            bb?.value.toString();
 }
 </code></pre></div>
 
@@ -441,9 +473,10 @@ public function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req, 
-                        @af:TwilioSmsOutput { fromNumber: &quot;+12069845840&quot; } af:TwilioSmsOutputBinding tb)
+                        @af:TwilioSmsOutput { fromNumber: &quot;+12069845840&quot; } 
+                                              af:TwilioSmsOutputBinding tb)
                         returns @af:HTTPOutput string {
     tb.to = req.query[&quot;to&quot;].toString();
     tb.body = req.body.toString();
@@ -467,10 +500,10 @@ public function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req,
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Person record {
     string id;
     string name;
-    int birthYear;
+    string country;
 };
 </code></pre></div>
 
@@ -483,10 +516,11 @@ public function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
-public function cosmosDBToQueue1(@af:CosmosDBTrigger { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                 databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } Person[] req, 
-                                 @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function cosmosDBToQueue1(@af:CosmosDBTrigger { 
+        connectionStringSetting: &quot;CosmosDBConnection&quot;, databaseName: &quot;db1&quot;,
+        collectionName: &quot;c1&quot; } Person[] req, 
+        @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {
     outMsg.value = req.toString();
 }
 </code></pre></div>
@@ -507,10 +541,11 @@ public function cosmosDBToQueue1(@af:CosmosDBTrigger { connectionStringSetting: 
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
-public function cosmosDBToQueue2(@af:CosmosDBTrigger { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                 databaseName: &quot;db1&quot;, collectionName: &quot;c2&quot; } json req, 
-                                 @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function cosmosDBToQueue2(@af:CosmosDBTrigger { 
+        connectionStringSetting: &quot;CosmosDBConnection&quot;, databaseName: &quot;db1&quot;, 
+        collectionName: &quot;c2&quot; } json req,
+        @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {
     outMsg.value = req.toString();
 }
 </code></pre></div>
@@ -524,12 +559,13 @@ public function cosmosDBToQueue2(@af:CosmosDBTrigger { connectionStringSetting: 
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
-public function httpTriggerCosmosDBInput1(@af:HTTPTrigger { } af:HTTPRequest httpReq, 
-                                          @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                          databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
-                                          id: &quot;{Query.id}&quot; } json dbReq)
-                                          returns @af:HTTPOutput string|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function httpTriggerCosmosDBInput1(
+            @af:HTTPTrigger { } af:HTTPRequest httpReq, 
+            @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+                databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
+                id: &quot;{Query.id}&quot;, partitionKey: &quot;{Query.country}&quot; } json dbReq)
+                returns @af:HTTPOutput string|error {
     return dbReq.toString();
 }
 </code></pre></div>
@@ -550,12 +586,13 @@ public function httpTriggerCosmosDBInput1(@af:HTTPTrigger { } af:HTTPRequest htt
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
-public function httpTriggerCosmosDBInput2(@af:HTTPTrigger { } af:HTTPRequest httpReq, 
-                                          @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                          databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
-                                          id: &quot;{Query.id}&quot; } Person? dbReq)
-                                          returns @af:HTTPOutput string|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function httpTriggerCosmosDBInput2(
+            @af:HTTPTrigger { } af:HTTPRequest httpReq, 
+            @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+                databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
+                id: &quot;{Query.id}&quot;, partitionKey: &quot;{Query.country}&quot; } Person? dbReq)
+                returns @af:HTTPOutput string|error {
     return dbReq.toString();
 }
 </code></pre></div>
@@ -569,12 +606,14 @@ public function httpTriggerCosmosDBInput2(@af:HTTPTrigger { } af:HTTPRequest htt
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
-public function httpTriggerCosmosDBInput3(@af:HTTPTrigger { route: &quot;c1/{country}&quot; } af:HTTPRequest httpReq, 
-                                          @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                          databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
-                                          sqlQuery: &quot;select * from c1 where c1.country = {country}&quot; } Person[] dbReq)
-                                          returns @af:HTTPOutput string|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function httpTriggerCosmosDBInput3(
+        @af:HTTPTrigger { route: &quot;c1/{country}&quot; } af:HTTPRequest httpReq, 
+        @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+        databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
+        sqlQuery: &quot;select * from c1 where c1.country = {country}&quot; } 
+        Person[] dbReq)
+        returns @af:HTTPOutput string|error {
     return dbReq.toString();
 }
 </code></pre></div>
@@ -588,11 +627,12 @@ public function httpTriggerCosmosDBInput3(@af:HTTPTrigger { route: &quot;c1/{cou
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
-public function httpTriggerCosmosDBOutput1(@af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
-                                           returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                           databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
-    json entry = { id: system:uuid(), name: &quot;John Doe&quot;, birthYear: 1980 };
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function httpTriggerCosmosDBOutput1(
+    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
+    returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+                                databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
+    json entry = { id: system:uuid(), name: &quot;Saman&quot;, country: &quot;Sri Lanka&quot; };
     hb.payload = &quot;Adding entry: &quot; + entry.toString();
     return entry;
 }
@@ -614,12 +654,15 @@ public function httpTriggerCosmosDBOutput1(@af:HTTPTrigger { } af:HTTPRequest ht
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
-public function httpTriggerCosmosDBOutput2(@af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
-                                           returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                           databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
-    json entry = [{ id: system:uuid(), name: &quot;John Doe A&quot;, birthYear: 1985 }, 
-                  { id: system:uuid(), name: &quot;John Doe B&quot;, birthYear: 1990 }];
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function httpTriggerCosmosDBOutput2(
+        @af:HTTPTrigger { } af:HTTPRequest httpReq, 
+        @af:HTTPOutput af:HTTPBinding hb) 
+        returns @af:CosmosDBOutput { 
+            connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+            databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
+    json entry = [{ id: system:uuid(), name: &quot;John Doe A&quot;, country: &quot;USA&quot; }, 
+                  { id: system:uuid(), name: &quot;John Doe B&quot;, country: &quot;USA&quot; }];
     hb.payload = &quot;Adding entries: &quot; + entry.toString();
     return entry;
 }
@@ -634,13 +677,15 @@ public function httpTriggerCosmosDBOutput2(@af:HTTPTrigger { } af:HTTPRequest ht
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
-public function httpTriggerCosmosDBOutput3(@af:HTTPTrigger { } af:HTTPRequest httpReq) 
-                                           returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                           databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } Person[] {
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function httpTriggerCosmosDBOutput3(
+                    @af:HTTPTrigger { } af:HTTPRequest httpReq) 
+                    returns @af:CosmosDBOutput { 
+                        connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+                        databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } Person[] {
     Person[] persons = [];
-    persons.push({id: system:uuid(), name: &quot;Jack&quot;, birthYear: 2001});
-    persons.push({id: system:uuid(), name: &quot;Will&quot;, birthYear: 2005});
+    persons.push({id: system:uuid(), name: &quot;Jack&quot;, country: &quot;UK&quot;});
+    persons.push({id: system:uuid(), name: &quot;Will&quot;, country: &quot;UK&quot;});
     return persons;
 }
 </code></pre></div>
@@ -654,9 +699,10 @@ public function httpTriggerCosmosDBOutput3(@af:HTTPTrigger { } af:HTTPRequest ht
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>@af:Function
-public function queuePopulationTimer(@af:TimerTrigger { schedule: &quot;*/10 * * * * *&quot; } json triggerInfo, 
-                                     @af:QueueOutput { queueName: &quot;queue4&quot; } af:StringOutputBinding msg) {
+                                    <div class="highlight"><pre><code class=language-ballerina>@af:Function
+public function queuePopulationTimer(
+            @af:TimerTrigger { schedule: &quot;*/10 * * * * *&quot; } json triggerInfo, 
+            @af:QueueOutput { queueName: &quot;queue4&quot; } af:StringOutputBinding msg) {
     msg.value = triggerInfo.toString();
 }
 </code></pre></div>

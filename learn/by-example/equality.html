@@ -46,7 +46,19 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;f1 !== f2 is &quot;</span><span class="p">,</span> <span class="nx">isNotRefEqual</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getGlobalEmployee</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Employee</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">globalEmployee</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">equality</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="o">==</span> <span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="o">!=</span> <span class="mi">11</span> <span class="mf">1.0</span> <span class="kc">true</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="o">!=</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="nx">is</span> <span class="kc">false</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="o">==</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Anne</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="nx">is</span> <span class="kc">false</span>
+<span class="nx">e4</span> <span class="o">==</span><span class="p">=</span> <span class="nx">e5</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="nx">e4</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">e5</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="nx">f1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">f2</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="nx">f1</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">f2</span> <span class="nx">is</span> <span class="kc">true</span>
 </pre></div>
 
             </div>
@@ -414,8 +426,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run equality.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run equality.bal
 1 == 1 is true
 1 != 2 is true
 1 1.0 false == 1 1.0 false is true

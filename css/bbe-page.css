@@ -78,3 +78,52 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+
+td, th {
+	/* border: none !important; */
+	padding: 0;
+}
+
+.code.cOutput .code, .code.cOutput pre {
+	background-color: transparent !important;
+}
+
+.cBBE-body tr.cOutputTr > td.code code {
+	text-shadow: none;
+}
+.a.cMobileLogo {
+    margin-top: 0;
+}
+.cBallerina-io-breadcrumbs {
+    padding-left: 15px;
+}
+
+
+
+.cBBE-body tr:not(.cOutputTr) > td.code > .highlight {
+    padding-left: 0;
+}
+span.line-numbers-rows {
+    display: none !important;
+}
+.cBBE-body tr:not(.cOutputTr) > td.code {
+    background-image: none;
+}
+
+/* code {
+    white-space: pre-line !important;
+} */
+
+pre.line-numbers {
+    padding-left: 0 !important;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+	font-size: 12px !important;
+}
+
+.highlight {
+	min-width: 645px;
+	max-width: 645px;
+}

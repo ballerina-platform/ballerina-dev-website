@@ -81,7 +81,15 @@ redirect_from:
 <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">ep</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_chat_application</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">Chrome</span> <span class="nx">or</span> <span class="nx">Firefox</span> <span class="nx">JavaScript</span> <span class="nx">console</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">commands</span><span class="p">.</span> <span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="err">#</span> <span class="nx">Run</span> <span class="nx">the</span> <span class="nx">first</span> <span class="mi">3</span> <span class="nx">lines</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">code</span> <span class="nx">in</span> <span class="nx">two</span> <span class="nx">or</span> <span class="nx">more</span> <span class="nx">different</span> <span class="nx">consoles</span> <span class="nx">and</span> <span class="nx">see</span> <span class="nx">how</span> <span class="nx">the</span> <span class="nx">messages</span> <span class="nx">are</span> <span class="nx">received</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Change</span> <span class="nx">the</span> <span class="nx">names</span> <span class="nx">and</span><span class="o">/</span><span class="nx">or</span> <span class="nx">age</span> <span class="nx">in</span> <span class="nx">the</span> <span class="s">`/chat/fistName?age`</span> <span class="nx">URI</span> <span class="nx">so</span> <span class="nx">that</span> <span class="nx">they</span> <span class="nx">are</span> <span class="nx">different</span> <span class="k">for</span> <span class="nx">each</span> <span class="nx">client</span><span class="p">.</span>
+<span class="k">var</span> <span class="nx">ws</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s">&quot;ws://localhost:9090/chat/bruce?age=30&quot;</span><span class="p">);</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">data</span><span class="p">)};</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">)};</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">messages</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span>
 </pre></div>
 
             </div>
@@ -500,7 +508,7 @@ returns (string) {
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
-$ ballerina run websocket_chat_application.bal
+ballerina run websocket_chat_application.bal
 </code></pre></div>
 
                                 </td>
@@ -515,9 +523,9 @@ $ ballerina run websocket_chat_application.bal
                                     <div class="highlight"><pre><code class=shell-session># To check the sample, use the Chrome or Firefox JavaScript console and run the following commands. &lt;br&gt;
 # Run the first 3 lines of the following code in two or more different consoles and see how the messages are received.
 # Change the names and/or age in the `/chat/fistName?age` URI so that they are different for each client.
-$ var ws = new WebSocket(&quot;ws://localhost:9090/chat/bruce?age=30&quot;);
-$ ws.onmessage = function(frame) {console.log(frame.data)};
-$ ws.onclose = function(frame) {console.log(frame)};
+var ws = new WebSocket(&quot;ws://localhost:9090/chat/bruce?age=30&quot;);
+ws.onmessage = function(frame) {console.log(frame.data)};
+ws.onclose = function(frame) {console.log(frame)};
 </code></pre></div>
 
                                 </td>
@@ -530,7 +538,7 @@ $ ws.onclose = function(frame) {console.log(frame)};
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send messages.
-$ ws.send(&quot;hello world&quot;);
+ws.send(&quot;hello world&quot;);
 </code></pre></div>
 
                                 </td>

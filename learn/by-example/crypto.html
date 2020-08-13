@@ -94,7 +94,69 @@ redirect_from:
                                          <span class="nx">crypto</span><span class="p">:</span><span class="nx">OAEPwithSHA512andMGF1</span><span class="p">);</span>
      <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA ECB OAEPwithSHA512andMGF1 decrypted value: &quot;</span> <span class="o">+</span>
                 <span class="nx">check</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">output</span><span class="p">));</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">make</span> <span class="nx">sure</span> <span class="s">`sampleKeystore.p12`</span> <span class="nx">file</span> <span class="nx">is</span> <span class="nx">present</span> <span class="nx">in</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="nx">same</span> <span class="nx">folder</span> <span class="nx">and</span> <span class="nx">issue</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Hex</span> <span class="nx">encoded</span> <span class="nx">hash</span> <span class="nx">with</span> <span class="nx">MD5</span><span class="p">:</span> <span class="mo">0605402</span><span class="nx">ee16d8e96511a58ff105bc24a</span>
+<span class="nx">Base64</span> <span class="nx">encoded</span> <span class="nx">hash</span> <span class="nx">with</span> <span class="nx">SHA1</span><span class="p">:</span> <span class="o">/</span><span class="mi">8</span><span class="nx">fwbGIevBvv2Nl3gEL9DtWas</span><span class="o">+</span><span class="nx">Q</span><span class="p">=</span>
+<span class="nx">Hex</span> <span class="nx">encoded</span> <span class="nx">hash</span> <span class="nx">with</span> <span class="nx">SHA256</span><span class="p">:</span> <span class="nx">a984a643c350b17f0738bac0fef17f2cd91d91e04596351d0</span>
+    <span class="nx">af670c79adc12d5</span>
+<span class="nx">Base64</span> <span class="nx">encoded</span> <span class="nx">hash</span> <span class="nx">with</span> <span class="nx">SHA384</span><span class="p">:</span> <span class="nx">lselzItgAZHQmqNbkf</span><span class="o">/</span><span class="nx">s2aRjBSd93O3ayc0PB0Dxk6AEo1</span>
+    <span class="nx">s44zyTz</span><span class="o">/</span><span class="nx">Qp0FJO1n6b</span>
+<span class="nx">Hex</span> <span class="nx">encoded</span> <span class="nx">hash</span> <span class="nx">with</span> <span class="nx">SHA512</span><span class="p">:</span> <span class="nx">a6f0770f1582f49396a97fbd5973ac22a3a578ac6a991786427</span>
+    <span class="nx">dfec17dbd984d8d6289771ac6f44176160a3dcd59f4a8c6b3ab97bef0caa5c67a3fac78c8e946</span>
+<span class="nx">Hex</span> <span class="nx">encoded</span> <span class="nx">HMAC</span> <span class="nx">with</span> <span class="nx">MD5</span><span class="p">:</span> <span class="nx">b69fa2cc698e0923a7eea9d8f2b156fe</span>
+<span class="nx">Base64</span> <span class="nx">encoded</span> <span class="nx">HMAC</span> <span class="nx">with</span> <span class="nx">SHA1</span><span class="p">:</span> <span class="nx">AkWFajkb</span><span class="o">/</span><span class="nx">gml703Zf4pPgxrjam4</span><span class="p">=</span>
+<span class="nx">Hex</span> <span class="nx">encoded</span> <span class="nx">HMAC</span> <span class="nx">with</span> <span class="nx">SHA256</span><span class="p">:</span> <span class="mi">13</span><span class="nx">a3369b8ba326fd311d4500b06a5214a02ed2a033917108f6b</span>
+    <span class="mi">9</span><span class="nx">af58b7ede381</span>
+<span class="nx">Base64</span> <span class="nx">encoded</span> <span class="nx">HMAC</span> <span class="nx">with</span> <span class="nx">SHA384</span><span class="p">:</span> <span class="mi">0</span><span class="nx">AjKoWLhNPgdobGTPJs0PdkA0W9wkJtzUvXigzC1ZmXDJJsx</span>
+    <span class="nx">p4icks4JrPiwHGm6</span>
+<span class="nx">Hex</span> <span class="nx">encoded</span> <span class="nx">HMAC</span> <span class="nx">with</span> <span class="nx">SHA512</span><span class="p">:</span> <span class="mi">27588</span><span class="nx">ad08e772a6bba5fca5f45cf467819c8de69a70a42be6fe</span>
+    <span class="mi">3</span><span class="nx">eb09ceb3bfeb8b2976bda8ea5c10dcfa2294b12cb0b50b22a06309bada98af21857904a03205</span>
+<span class="nx">CRC32B</span> <span class="k">for</span> <span class="nx">text</span><span class="p">:</span> <span class="nx">db9230c5</span>
+<span class="nx">CRC32</span> <span class="k">for</span> <span class="kt">xml</span> <span class="nx">content</span><span class="p">:</span> <span class="mi">7</span><span class="nx">d5c0879</span>
+<span class="nx">Hex</span> <span class="nx">encoded</span> <span class="nx">RSA</span><span class="o">-</span><span class="nx">MD5</span> <span class="nx">signature</span><span class="p">:</span> <span class="mi">2</span><span class="nx">cfd121e4ff2409d1b2482ebbf37d0c035884d6d858e307e44</span>
+    <span class="mi">60</span><span class="nx">b092d79cb20abb624a0dfae76b73b1fc85447be3060a36b318813f0115b1919e5efa7a7f9b1</span>
+    <span class="mi">173</span><span class="nx">ec869f56fd9448d99770e1565db1c69a04fd0075fa0e33423a7e829a8b9c25a4dd2c68f3ee</span>
+    <span class="nx">e021c0c4ff27979750b395384e280afd87af5274c8d2d99ad4438d9bfc9b2c5a2814212ba29ce</span>
+    <span class="mi">6</span><span class="nx">ff70cbe30a5c23f86b0330e143c4d8813ff10092cd313c6861706d37df5f4bb4e9fc72354975</span>
+    <span class="nx">ee1786cf24c79b9edfa909968f198c4da37464f3d214a68fb39956717e92d667bb5a9a7f5986b</span>
+    <span class="nx">a055d431813d4053a028873499f98c94fd6b5c6fd5aefad432669f957ab4ce9e91c5e77b36ec0</span>
+<span class="nx">Base64</span> <span class="nx">encoded</span> <span class="nx">RSA</span><span class="o">-</span><span class="nx">SHA1</span> <span class="nx">signature</span><span class="p">:</span> <span class="nx">bYMHKKVkjbOUp9ly3AdW9</span><span class="o">/</span><span class="nx">euxF94krkkF9SDk2FfbVEc0m</span>
+    <span class="nx">qpGIxVoZlPiFxszurZF1YPcqOSeOehDkaHXUMfQkTjBq7XlcePtkywy0fChqw8</span><span class="o">/</span><span class="nx">SWqZR8nbYv97tt</span>
+    <span class="mi">8</span><span class="o">+</span><span class="nx">MVTkymbm26syQLwYNLiGp</span><span class="o">/</span><span class="nx">EsN6X</span><span class="o">+</span><span class="nx">fJpkdakwHE</span><span class="o">+</span><span class="nx">TrdE</span><span class="o">+</span><span class="nx">rEFrNysGyAm1DWwc4c</span><span class="o">+</span><span class="nx">l7MEmSYMUnh</span><span class="o">/</span>
+    <span class="nx">GWPY5r2knOOdDA3mr</span><span class="o">+</span><span class="nx">XyrsxzFRWZgO7ebVvEQfq9XkRp8kdiGVgpLS5au0jKj3EpbCdS1prFgy3gr</span>
+    <span class="nx">kuSJTTUQCwgPo7WSjWbuehFGni7rbas8HIqNlyWF0qUyznJ3eqbUwZ95QqOoVWZoQ</span><span class="o">==</span>
+<span class="nx">Hex</span> <span class="nx">encoded</span> <span class="nx">RSA</span><span class="o">-</span><span class="nx">SHA256</span> <span class="nx">signature</span><span class="p">:</span> <span class="mi">215</span><span class="nx">c6ea96c9e82348430c6bb02e715560b4fbd3afcf24fb</span>
+    <span class="nx">eb41ff12d4d68a797d61c4d6f822807688e4dc604e212b3cc7ac563b3cbe4e5690e2aebaf4e3d</span>
+    <span class="nx">f35c19d4b0f7043f50501f390634303577053b029d495104c0e98bc887f0be744ef6f726f7192</span>
+    <span class="mo">01</span><span class="mi">907</span><span class="nx">ad4e86cef82eb030b60c384f7034a85159081e598e197bb8904a9123f39d190796dc7fd9</span>
+    <span class="mi">46157547</span><span class="nx">c10523999b8fa956d4119dbfe3c1435911c0585cf3c537964516706772e87f2470557</span>
+    <span class="mi">40</span><span class="nx">cc4867ac6b99d7bf699fce1b59956c7f55368c8c88c9d47e51ef120ed3f27c3e555691a6971</span>
+    <span class="mi">42</span><span class="nx">c78cbd72c23b81b43fa5ab67164a35f8e8c6bf1da187d3feb866add13f1fb9576a2f7887535</span>
+    <span class="mi">311</span>
+<span class="nx">Base64</span> <span class="nx">encoded</span> <span class="nx">RSA</span><span class="o">-</span><span class="nx">SHA384</span> <span class="nx">signature</span><span class="p">:</span> <span class="nx">BjQ40dffGiRQ4zo1s</span><span class="o">+</span><span class="nx">ld</span><span class="o">+</span><span class="nx">zKhJL21RbO5sW3L2</span><span class="o">+</span><span class="mi">4</span><span class="nx">xmonU</span>
+    <span class="nx">t126u9D4</span><span class="o">/</span><span class="nx">FZ2sM1QGGamj8btB9otiYmWr9sFm4fTs1EX6vrxcCGCAiDdkMxiRs7kShaz2x</span><span class="o">/</span><span class="nx">BjJQ7c</span>
+    <span class="nx">Od9OY</span><span class="o">+</span><span class="nx">amwo7DQ</span><span class="o">/</span><span class="nx">FAk9mNOt4lFUpjc9WyEW9F1PEJRXZQvMmVabDu8lp</span><span class="o">/</span><span class="nx">Fh02lmEquG15DT5qT0jRx</span>
+    <span class="nx">RJiS8CNa</span><span class="o">+</span><span class="mi">97</span><span class="nx">cMZdOmF2KeADfRbNJSz70mZ76MrsNxYIXYIiJzJBQod0efQr0Sr</span><span class="o">/</span><span class="nx">HDn4JDVph9rpDM</span>
+    <span class="mi">3</span><span class="nx">p8m94TyXvSOwxwxzZWRLEwB0ANdfDmbrW4bOpxfZZFmy1hltqNJQ9G0BcKOHsZDj6Q</span><span class="o">==</span>
+<span class="nx">Hex</span> <span class="nx">encoded</span> <span class="nx">RSA</span><span class="o">-</span><span class="nx">SHA512</span> <span class="nx">signature</span><span class="p">:</span> <span class="mi">15428</span><span class="nx">fdc7b26d18b1f3eae4569399ae6ebfd430c8f073bf</span>
+    <span class="mi">2</span><span class="nx">fa77ebfe1ad5645640374ea4a4aeadd252af3a198e55e69ad2a910e28470d9b54748887de06a</span>
+    <span class="mi">5</span><span class="nx">c3ed7ab12399a404359332553e051e8ae0f3ef741faa15a21ad17a9c235e5f91d567bcca0e5a</span>
+    <span class="mi">6117689</span><span class="nx">dccada4a33ee897514f7a8a32f12dac0087f5dcbb094c93c792f672e1685618ac5d93a</span>
+    <span class="nx">a9d30f6d8e306145ef2d1b9cfdc04d6c61b43376089a78471e8e03d97ee3b57e1b734a23f4436</span>
+    <span class="mi">6</span><span class="nx">a99234a0abeb1d36d01c474833b4c2beaf430dae06ab95a1c951645fb1e0a5e7b9eed44d40e3</span>
+    <span class="mi">5036</span><span class="nx">f2cd2764df6cc04fe1248e1bb772a53c8201a974109333a318ce57930494d4cb5e41d0dc8</span>
+    <span class="nx">f1c</span>
+<span class="nx">AES</span> <span class="nx">CBC</span> <span class="nx">PKCS5</span> <span class="nx">decrypted</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">AES</span> <span class="nx">CBC</span> <span class="nx">no</span> <span class="nx">padding</span> <span class="nx">decrypted</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">AES</span> <span class="nx">GCM</span> <span class="nx">PKCS5</span> <span class="nx">decrypted</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">AES</span> <span class="nx">GCM</span> <span class="nx">no</span> <span class="nx">padding</span> <span class="nx">decrypted</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">AES</span> <span class="nx">ECB</span> <span class="nx">PKCS5</span> <span class="nx">decrypted</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">AES</span> <span class="nx">ECB</span> <span class="nx">no</span> <span class="nx">padding</span> <span class="nx">decrypted</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">RSA</span> <span class="nx">ECB</span> <span class="nx">PKCS1</span> <span class="nx">decrypted</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
+<span class="nx">RSA</span> <span class="nx">ECB</span> <span class="nx">OAEPwithSHA512andMGF1</span> <span class="nx">decrypted</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">Ballerina</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -950,7 +1012,7 @@ import ballerina/math;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, make sure `sampleKeystore.p12` file is present in the
 # same folder and issue the `ballerina run` command.
-$ ballerina run crypto.bal
+ballerina run crypto.bal
 Hex encoded hash with MD5: 0605402ee16d8e96511a58ff105bc24a
 Base64 encoded hash with SHA1: /8fwbGIevBvv2Nl3gEL9DtWas+Q=
 Hex encoded hash with SHA256: a984a643c350b17f0738bac0fef17f2cd91d91e04596351d0

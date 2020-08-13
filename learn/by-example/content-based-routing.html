@@ -62,6 +62,23 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">content_based_routing</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/cbr/route -d &#39;{&quot;name&quot; : &quot;sanFrancisco&quot;}&#39; -H &quot;Content-Type:application/json&quot;</span>
+<span class="p">{</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;San Francisco Test Station,USA&quot;</span><span class="p">,</span>
+    <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">122.43</span><span class="p">,</span>
+    <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">37.76</span><span class="p">,</span>
+    <span class="s">&quot;altitude&quot;</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+    <span class="s">&quot;rank&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span><span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/cbr/route -d &#39;{&quot;name&quot; : &quot;london&quot;}&#39; -H &quot;Content-Type:application/json&quot;</span>
+<span class="p">{</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;London Test Station,England&quot;</span><span class="p">,</span>
+    <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">156.49</span><span class="p">,</span>
+    <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">57.76</span><span class="p">,</span>
+    <span class="s">&quot;altitude&quot;</span><span class="p">:</span> <span class="mi">430</span><span class="p">,</span>
+    <span class="s">&quot;rank&quot;</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -409,8 +426,8 @@ service contentBasedRouting on new http:Listener(9090) {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run content_based_routing.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run content_based_routing.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -440,7 +457,7 @@ $ ballerina run content_based_routing.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9090/cbr/route -d &#39;{&quot;name&quot; : &quot;sanFrancisco&quot;}&#39; -H &quot;Content-Type:application/json&quot;
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/cbr/route -d &#39;{&quot;name&quot; : &quot;sanFrancisco&quot;}&#39; -H &quot;Content-Type:application/json&quot;
 {
     &quot;name&quot;: &quot;San Francisco Test Station,USA&quot;,
     &quot;longitude&quot;: -122.43,
@@ -459,7 +476,7 @@ $ ballerina run content_based_routing.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9090/cbr/route -d &#39;{&quot;name&quot; : &quot;london&quot;}&#39; -H &quot;Content-Type:application/json&quot;
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/cbr/route -d &#39;{&quot;name&quot; : &quot;london&quot;}&#39; -H &quot;Content-Type:application/json&quot;
 {
     &quot;name&quot;: &quot;London Test Station,England&quot;,
     &quot;longitude&quot;: -156.49,

@@ -186,14 +186,11 @@ let redirections = {
     "/learn/testing-ballerina-code/executing-tests":"/learn/testing-ballerina-code",
     "/1.1/learn/deployment/aws-lambda/":"/1.1/page-not-available.html",
     "/1.0/learn/deployment/aws-lambda/":"/1.0/page-not-available.html",
-    "/swan-lake/learn/deployment/azure-functions/":"/swan-lake/page-not-available.html",
     "/1.1/learn/deployment/azure-functions/":"/1.1/page-not-available.html",
     "/1.0/learn/deployment/azure-functions/":"/1.0/page-not-available.html",
     "/learn/ballerina-streaming-reference/":"/learn/by-example/streams",
-    "/swan-lake/learn/ballerina-streaming-reference/":"/swan-lake/learn/by-example/streams",
-    "/1.1/learn/ballerina-streaming-reference/":"/1.1/learn/by-example/streams",
-    "/1.0/learn/ballerina-streaming-reference/":"/1.0/learn/by-example/streams"
-
+    "/swan-lake/learn/ballerina-streaming-reference/":"/swan-lake/learn/by-example/streams"
+    
 
 
 };

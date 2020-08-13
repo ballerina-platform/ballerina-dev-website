@@ -35,7 +35,13 @@ redirect_from:
     <span class="p">}</span> <span class="nx">aborted</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction aborted&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="o">--</span><span class="nx">experimental</span> <span class="nx">kafka_message_producer_transactional</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">If</span> <span class="nx">the</span> <span class="nx">producer</span> <span class="nx">successfully</span> <span class="nx">sent</span> <span class="nx">the</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">printed</span>
+<span class="err">#</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Console</span><span class="p">.</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">26</span> <span class="mi">13</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="mi">129</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Created</span> <span class="nx">transaction</span><span class="p">:</span> <span class="mi">6</span><span class="nx">cfac3a7</span><span class="o">-</span><span class="nx">a8a2</span><span class="o">-</span><span class="mi">4220</span><span class="o">-</span><span class="mi">944</span><span class="nx">e</span><span class="o">-</span><span class="nx">dfbd6d27910f</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">26</span> <span class="mi">13</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="mi">184</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Running</span> <span class="mi">2</span><span class="o">-</span><span class="nx">phase</span> <span class="nx">commit</span> <span class="k">for</span> <span class="nx">transaction</span><span class="p">:</span> <span class="mi">6</span><span class="nx">cfac3a7</span><span class="o">-</span><span class="nx">a8a2</span><span class="o">-</span><span class="mi">4220</span><span class="o">-</span><span class="mi">944</span><span class="nx">e</span><span class="o">-</span><span class="nx">dfbd6d27910f</span><span class="p">:</span><span class="err">$</span><span class="nx">anon</span><span class="err">$</span><span class="p">.</span><span class="err">$</span><span class="mi">0</span>
+<span class="nx">Transaction</span> <span class="nx">committed</span>
 </pre></div>
 
             </div>
@@ -128,7 +134,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/kafka;
 </code></pre></div>
 
@@ -141,7 +147,7 @@ import ballerina/kafka;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:ProducerConfiguration producerConfigs = {
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ProducerConfiguration producerConfigs = {
 </code></pre></div>
 
                                 </td>
@@ -153,7 +159,7 @@ import ballerina/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
     clientId: &quot;basic-producer&quot;,
     acks: &quot;all&quot;,
     retryCount: 3,
@@ -176,7 +182,7 @@ import ballerina/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    enableIdempotence: true,
+                                    <div class="highlight"><pre><code class=language-ballerina>    enableIdempotence: true,
 </code></pre></div>
 
                                 </td>
@@ -196,7 +202,7 @@ import ballerina/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    transactionalId: &quot;test-transactional-id&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    transactionalId: &quot;test-transactional-id&quot;
 };
 </code></pre></div>
 
@@ -216,7 +222,7 @@ import ballerina/kafka;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:Producer kafkaProducer = new (producerConfigs);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = new (producerConfigs);
 </code></pre></div>
 
                                 </td>
@@ -228,7 +234,7 @@ import ballerina/kafka;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string message = &quot;Hello World Transaction Message&quot;;
     byte[] serializedMessage = message.toBytes();
 </code></pre></div>
@@ -242,7 +248,7 @@ import ballerina/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    kafkaAdvancedTransactionalProduce(serializedMessage);
+                                    <div class="highlight"><pre><code class=language-ballerina>    kafkaAdvancedTransactionalProduce(serializedMessage);
 }
 </code></pre></div>
 
@@ -263,7 +269,7 @@ import ballerina/kafka;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function kafkaAdvancedTransactionalProduce(byte[] message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function kafkaAdvancedTransactionalProduce(byte[] message) {
     transaction {
         var sendResult = kafkaProducer-&gt;send(message, &quot;test-kafka-topic&quot;,
             partition = 0);
@@ -306,8 +312,8 @@ import ballerina/kafka;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run --experimental kafka_message_producer_transactional.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run --experimental kafka_message_producer_transactional.bal
 </code></pre></div>
 
                                 </td>

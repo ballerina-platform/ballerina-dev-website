@@ -2,7 +2,7 @@
 layout: release-note
 title: Release note
 ---
-# Overview of jBallerina 1.2.5
+### Overview of jBallerina 1.2.5
 The jBallerina 1.2.5 patch release improves upon the 1.2.0 release by
  introducing the features listed below and addressing a number of [bugs](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.5%22+label%3AType%2FBug+is%3Aclosed) and [improvements](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.5%22+is%3Aclosed+label%3AType%2FImprovement).
 
@@ -23,15 +23,15 @@ However, you need to use the following commands instead of the above if you have
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
-## Standard Library
+#### Standard Library
 - The capability to validate the JWT signature with JWKs is extended now. With that, the JWT signature can be validated either from the TrustStore configuration or JWKs configuration.
 - Undo the deprecation of the `ballerinax/java.jdbc` module and continue to support it in 1.2.x releases.
 
-## Deployment
+#### Deployment
 - Azure Functions support
 - Prometheus support for kubernetes annotations
 
-## Tooling 
+#### Tooling 
 - Added `--home-cache` flag to build and run commands to specify an alternative balo cache directory.
 - Maven resolver support and other improvements to the bindgen tool.
 - Update tool support for swan lake release channel

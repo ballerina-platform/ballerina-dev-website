@@ -2,7 +2,7 @@
 layout: release-note
 title: Release note
 ---
-# Overview of Ballerina Swan Lake Preview 2
+### Overview of Ballerina Swan Lake Preview 2
 This release is the second preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
 
 You can use the update tool to update to Ballerina Swan Lake Preview 2 as follows.
@@ -23,7 +23,7 @@ However, if you are using a jBallerina version below 1.1.0, install via the [ins
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
  
-# Highlights
+### Highlights
 - Support for resilient parsing
 - Improved support for immutability
 - Improved support to convert compatible values to and from JSON 
@@ -31,17 +31,17 @@ If you have not installed jBallerina, then download the [installers](https://bal
 - Improved mocking API in the test framework
 - Improved Docker images using thin JAR
 
-# What's new in Ballerina Swan Lake Preview 2
+### What's new in Ballerina Swan Lake Preview 2
 
-## Language
+#### Language
 The language implementation is based on the [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/).   
  
-### Resilient parsing support
+##### Resilient parsing support
 Resilient parsing support has been added to the compiler. It is now capable of performing semantic validation for source code even when there are syntax errors.
 
-### Improvements related to immutability
+##### Improvements related to immutability
 
-#### `readonly` fields in the mapping constructor expression
+###### `readonly` fields in the mapping constructor expression
 
 A specific field (key-value pair or variable name) in a mapping constructor expression can now be marked as `readonly`. Such a field expects an immutable value and the field cannot be updated once the mapping value is constructed.
 
@@ -83,7 +83,7 @@ If a constructor expression is used as a value with a `readonly` field, the cons
 employee.details.isReadOnly()
 ```
 
-#### `readonly` as the contextually expected type for mapping and list constructor expressions
+###### `readonly` as the contextually expected type for mapping and list constructor expressions
 
 The `readonly` type can now be used as the contextually-expected type for mapping and list constructor expressions. This results in the creation of a record or an array value, which is immutable.
 
@@ -114,7 +114,7 @@ public function main() {
 }
 ``` 
 
-#### `<readonly>` casts to construct immutable values
+###### `<readonly>` casts to construct immutable values
 
 A value can now be constructed with its read-only bit set (i.e., as an immutable value) by using a cast to `<readonly>` with the constructor expression. By definition, all the values used within the constructor expression should be immutable.
 
@@ -137,7 +137,7 @@ Since `details` is created as an immutable value, the following check evaluates 
 ```ballerina
 details.isReadOnly()
 ```
-### Passing arguments for required/defaultable parameters via the rest argument
+##### Passing arguments for required/defaultable parameters via the rest argument
 
 Previously, the rest argument in a function/method call expression could only provide arguments for the rest parameter. A rest argument can now be used to provide arguments for required and/or defaultable parameters too.
 
@@ -165,11 +165,11 @@ type Employee record {|
 |};
 ```
 
-### Improvements related to JSON compatibility
+##### Improvements related to JSON compatibility
 
 Three new methods have been introduced to the `ballerina/lang.value` module to facilitate converting to and from JSON. Additionally, the `toJsonString` method can now be called on `anydata` values.
 
-#### The `toJson` method
+###### The `toJson` method
 `toJson` converts a value of type `anydata` to `json`. This does a deep copy of the value and converts values that do not belong to `json` into values that do. 
 
 ```ballerina
@@ -179,7 +179,7 @@ public function main() {
 }
 ```
 
-#### The `toJsonString` method
+###### The `toJsonString` method
 
 `toJsonString` converts a value of type `anydata` to a string that represents the value in the JSON format. It first converts the value to a JSON using `toJson` and then converts it to a `string`.
 
@@ -193,7 +193,7 @@ public function main() {
 }
 ```
 
-#### The `fromJsonWithType` method
+###### The `fromJsonWithType` method
 
 `fromJsonWithType` converts a value of type `json` to a user-specified type. The implementation is similar to `cloneWithType` except that it also does the inverse of the conversions done by `toJson`.
 
@@ -209,7 +209,7 @@ public function main() {
 }
 ```
 
-#### The `fromJsonStringWithType` method
+###### The `fromJsonStringWithType` method
 
 `fromJsonStringWithType` converts a string in JSON format to a user-specified type. This method can be described as a combination of `fromJsonString` followed by `fromJsonWithType`.
 
@@ -222,30 +222,30 @@ public function main() {
 }
 ```
 
-## Standard Library
+#### Standard Library
 
-### HTTP
+##### HTTP
 
 The redirect client has been improved to support temporary and permanent redirects with the original request’s HTTP method. A new `allowAuthHeaders` field was introduced in the redirect configuration to get user consent before repeating sensitive data on subsequent requests.
 
-### Log
+##### Log
 
 The new `log:setModuleLogLevel` function allows users to set the module log level through the Log API.
 
-### Config
+##### Config
 
 The `config:getAsArray` and `config:getAsMap` functions now return immutable values. This way, the user can simply cast the returned value to the desired list type or mapping type without having to use `cloneWithType()`.
 
-### Security
+##### Security
 
 - JWT signature validation with JWK has been improved by introducing a cache. This cache preloads the JWKs, and thereby, reduces the runtime latency added due to the HTTP call to the JWK endpoint when validating the signature.
 - An `auth:InvocationContext` record, which can be used as a data holder has been introduced. It can hold auth-related information such as authentication scheme, auth token, and authenticated user's ID, claims, and scopes preserved for a single request-response flow.
 
-### WebSocket
+##### WebSocket
 
 The WebSocket client now supports cookies. A new field `cookies` has been introduced in the `http:WebSocketClientConfiguration` and `http:WebSocketFailoverClientConfiguration` records to specify the cookies.
 
-### Runtime API
+##### Runtime API
 
 - The `runtime:timeout` function has been removed. The `runtime:sleep` function can be used as the alternative.
 
@@ -264,7 +264,7 @@ future<()> f1 = start runtime:sleep(50);
 - The `runtime:getProperty` function has been removed. Java interoperability can be used as the alternative to access Java system properties.
 - The auth-related configurations have been moved out from the `runtime:InvocationContext` to the newly-introduced `auth:InvocationContext`.
 
-### Module organization
+##### Module organization
 
 The following standard libraries were moved to Ballerina Central. Previously, these modules were packed in the Ballerina distribution. With this change, these libraries can now be released independently.
 - ballerina/encoding
@@ -272,11 +272,11 @@ The following standard libraries were moved to Ballerina Central. Previously, th
 - ballerina/websub
 - ballerinax/rabbitmq
 
-## Developer Tools
+#### Developer Tools
 
-### Test Framework
+##### Test Framework
 
-#### Improved Mocking API
+###### Improved Mocking API
 
 **Object Mocking**
 
@@ -318,7 +318,7 @@ public function testFunction() {
 }
 ```
 
-### Deployment
+##### Deployment
 
 By default, Docker images are now created using the thin JAR. Using the thin JAR improves the push and pull times significantly. Since layers are reused, disk space required to store thin JAR based images is less. 
 

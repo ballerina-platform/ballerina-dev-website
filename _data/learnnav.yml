@@ -85,12 +85,21 @@
       url: /learn/writing-secure-ballerina-code
       active: writing-secure-ballerina-code
 
-- title: Testing
-  url: '#' 
+- title: Testing Ballerina Code
+  url: '#'
   sublinks:
-    - title: Testing Ballerina Code
-      url: /learn/testing-ballerina-code
-      active: testing-ballerina-code
+    - title: Quick Start
+      url: /learn/testing-ballerina-code/testing-quick-start
+      active: testing-quick-start
+    - title: Writing Tests
+      url: /learn/testing-ballerina-code/writing-tests
+      active: writing-tests
+    - title: Mocking
+      url: /learn/testing-ballerina-code/mocking
+      active: mocking
+    - title: Executing Tests
+      url: /learn/testing-ballerina-code/executing-tests
+      active: executing-tests
 
 - title: Extending Ballerina
   url: '#' 

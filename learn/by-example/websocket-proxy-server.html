@@ -115,7 +115,14 @@ redirect_from:
     <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">wsEndpoint</span> <span class="p">=</span>
             <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">&gt;</span><span class="nx">ep</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">wsEndpoint</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_proxy_server</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Now</span><span class="p">,</span> <span class="nx">this</span> <span class="kd">service</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">invoked</span> <span class="nx">by</span> <span class="kt">any</span> <span class="nx">WebSocket</span> <span class="nx">client</span> <span class="nx">using</span> <span class="nx">the</span> <span class="nx">url</span> <span class="s">&quot;ws://localhost:9090/proxy/ws&quot;</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">use</span> <span class="nx">Chrome</span> <span class="nx">or</span> <span class="nx">Firefox</span> <span class="nx">JavaScript</span> <span class="nx">console</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">commands</span><span class="p">.</span> <span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="k">var</span> <span class="nx">ws</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s">&quot;ws://localhost:9090/proxy/ws&quot;</span><span class="p">);</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">data</span><span class="p">)};</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">)};</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">messages</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span><span class="err">#</span><span class="nx">Close</span> <span class="nx">the</span> <span class="nx">connection</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&quot;I want to go&quot;</span><span class="p">);</span>
 </pre></div>
 
             </div>
@@ -816,8 +823,8 @@ service SimpleProxyService on new http:Listener(9090) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run websocket_proxy_server.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run websocket_proxy_server.bal
 </code></pre></div>
 
                                 </td>
@@ -842,9 +849,9 @@ $ ballerina run websocket_proxy_server.bal
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To check the sample, you can use Chrome or Firefox JavaScript console and run the following commands. &lt;br&gt;
-$ var ws = new WebSocket(&quot;ws://localhost:9090/proxy/ws&quot;);
-$ ws.onmessage = function(frame) {console.log(frame.data)};
-$ ws.onclose = function(frame) {console.log(frame)};
+var ws = new WebSocket(&quot;ws://localhost:9090/proxy/ws&quot;);
+ws.onmessage = function(frame) {console.log(frame.data)};
+ws.onclose = function(frame) {console.log(frame)};
 </code></pre></div>
 
                                 </td>
@@ -857,7 +864,7 @@ $ ws.onclose = function(frame) {console.log(frame)};
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send messages.
-$ ws.send(&quot;hello world&quot;);
+ws.send(&quot;hello world&quot;);
 </code></pre></div>
 
                                 </td>
@@ -870,7 +877,7 @@ $ ws.send(&quot;hello world&quot;);
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#Close the connection.
-$ ws.close(1000, &quot;I want to go&quot;);
+ws.close(1000, &quot;I want to go&quot;);
 </code></pre></div>
 
                                 </td>

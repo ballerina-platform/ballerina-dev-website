@@ -143,7 +143,9 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">response3</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">test</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">configure</span> <span class="nx">the</span> <span class="nx">clients</span> <span class="nx">with</span> <span class="nx">required</span> <span class="nx">parameters</span> <span class="nx">and</span>
+<span class="err">#</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">command</span> <span class="nx">by</span> <span class="nx">passing</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">system</span> <span class="nx">property</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">secured_client_with_oauth2</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span><span class="err">#</span> <span class="nx">This</span> <span class="nx">should</span> <span class="nx">log</span> <span class="nx">the</span> <span class="nx">JSON</span> <span class="nx">output</span> <span class="nx">returned</span> <span class="nx">by</span> <span class="nx">the</span> <span class="nx">REST</span> <span class="nx">endpoints</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -578,7 +580,7 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To test the client, configure the clients with required parameters and
 # execute the below command by passing Ballerina home path as a system property.
-$ ballerina run secured_client_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
+ballerina run secured_client_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
 </code></pre></div>
 
                                 </td>

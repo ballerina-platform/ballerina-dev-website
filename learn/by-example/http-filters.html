@@ -50,7 +50,32 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_filters</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">build</span> <span class="nx">a</span> <span class="nx">compiled</span> <span class="nx">program</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">can</span> <span class="nx">use</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">&quot;ballerina build&quot;</span> <span class="nx">command</span> <span class="nx">followed</span> <span class="nx">by</span>
+<span class="err">#</span> <span class="nx">the</span> <span class="kd">service</span> <span class="nx">module</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">build</span> <span class="nx">http_filters</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello/sayHello</span>
+<span class="o">*</span>   <span class="nx">Trying</span> <span class="mf">127.0.0.1</span><span class="o">...</span>
+<span class="o">*</span> <span class="nx">TCP_NODELAY</span> <span class="nx">set</span>
+<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(</span><span class="mf">127.0.0.1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">hello</span><span class="o">/</span><span class="nx">sayHello</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
+<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.61.0</span>
+<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*/*</span>
+<span class="p">&gt;</span>
+<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">&lt;</span> <span class="nx">X</span><span class="o">-</span><span class="nx">requestHeader</span><span class="p">:</span> <span class="nx">RequestFilter</span>
+<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
+<span class="p">&lt;</span> <span class="nx">X</span><span class="o">-</span><span class="nx">responseHeader</span><span class="p">:</span> <span class="nx">ResponseFilter</span>
+<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">13</span>
+<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.0.0</span><span class="o">-</span><span class="nx">beta</span>
+<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Wed</span><span class="p">,</span> <span class="mi">21</span> <span class="nx">Aug</span> <span class="mi">2019</span> <span class="mi">13</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">12</span> <span class="o">+</span><span class="mo">0530</span>
+<span class="p">&lt;</span> 
+<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
+<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -514,8 +539,8 @@ service echo on echoListener {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run http_filters.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run http_filters.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -531,7 +556,7 @@ $ ballerina run http_filters.bal
                                     <div class="highlight"><pre><code class=shell-session># To build a compiled program file, can use the
 # &quot;ballerina build&quot; command followed by
 # the service module.
-$ ballerina build http_filters.bal
+ballerina build http_filters.bal
 </code></pre></div>
 
                                 </td>
@@ -556,7 +581,7 @@ $ ballerina build http_filters.bal
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl -v http://localhost:9090/hello/sayHello
+                                    <div class="highlight"><pre><code class=shell-session>curl -v http://localhost:9090/hello/sayHello
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
 * Connected to localhost (127.0.0.1) port 9090 (#0)

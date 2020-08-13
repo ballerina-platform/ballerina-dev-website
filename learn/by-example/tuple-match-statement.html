@@ -58,7 +58,18 @@ redirect_from:
         <span class="k">var</span> <span class="nx">s</span> <span class="k">if</span> <span class="nx">s</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is float only : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
         <span class="p">}</span>    <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tuple_match_statement</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Matched</span> <span class="nx">with</span> <span class="nx">single</span> <span class="k">var</span> <span class="p">:</span> <span class="mf">66.6</span>
+<span class="nx">Matched</span> <span class="nx">with</span> <span class="nx">two</span> <span class="nx">vars</span> <span class="p">:</span> <span class="nx">Hello</span> <span class="mi">12</span>
+<span class="nx">Matched</span> <span class="nx">with</span> <span class="nx">two</span> <span class="nx">vars</span> <span class="p">:</span> <span class="mf">4.5</span> <span class="kc">true</span>
+<span class="nx">Matched</span> <span class="nx">with</span> <span class="nx">three</span> <span class="nx">vars</span> <span class="p">:</span> <span class="mf">6.7</span> <span class="nx">Test</span> <span class="kc">false</span>
+<span class="sc">&#39;s&#39;</span> <span class="nx">is</span> <span class="kt">string</span> <span class="nx">and</span> <span class="sc">&#39;i&#39;</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">:</span> <span class="nx">Hello</span> <span class="mi">45</span>
+<span class="nx">Only</span> <span class="sc">&#39;s&#39;</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">:</span> <span class="mf">4.5</span> <span class="kc">true</span>
+<span class="nx">Only</span> <span class="sc">&#39;i&#39;</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">:</span> <span class="kc">false</span> <span class="mi">4</span>
+<span class="nx">No</span> <span class="nx">type</span> <span class="nx">guard</span> <span class="p">:</span> <span class="mi">455</span> <span class="kc">true</span>
+<span class="sc">&#39;s&#39;</span> <span class="nx">is</span> <span class="kt">float</span> <span class="nx">only</span> <span class="p">:</span> <span class="mf">5.6</span>
 </pre></div>
 
             </div>
@@ -513,8 +524,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run tuple_match_statement.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run tuple_match_statement.bal
 Matched with single var : 66.6
 Matched with two vars : Hello 12
 Matched with two vars : 4.5 true

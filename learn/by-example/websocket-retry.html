@@ -94,7 +94,17 @@ redirect_from:
     <span class="nx">getAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">wsEndpoint</span><span class="p">;</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span><span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_service</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9095</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_retry</span><span class="p">.</span><span class="nx">bal</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">Now</span><span class="p">,</span> <span class="nx">this</span> <span class="kd">service</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">invoked</span> <span class="nx">by</span> <span class="kt">any</span> <span class="nx">WebSocket</span> <span class="nx">client</span> <span class="nx">using</span> <span class="nx">the</span> <span class="nx">URL</span><span class="p">:</span> <span class="s">&quot;ws://localhost:9090/retry/ws&quot;</span><span class="p">.</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">use</span> <span class="nx">Chrome</span> <span class="nx">or</span> <span class="nx">Firefox</span> <span class="nx">JavaScript</span> <span class="nx">console</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">commands</span><span class="p">.</span> <span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="k">var</span> <span class="nx">ws</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s">&quot;ws://localhost:9090/retry/ws&quot;</span><span class="p">);</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">data</span><span class="p">)};</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">)};</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">messages</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">stop</span> <span class="nx">the</span> <span class="nx">running</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">press</span> <span class="nx">Ctrl</span> <span class="o">+</span> <span class="nx">C</span><span class="p">.</span>
+<span class="err">#</span> <span class="nx">Restart</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">.</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">messages</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span><span class="err">#</span> <span class="nx">Close</span> <span class="nx">the</span> <span class="nx">connection</span><span class="p">.</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&quot;I want to go&quot;</span><span class="p">);</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="nd">@http:WebSocketServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/retry/ws&quot;</span>
@@ -111,7 +121,13 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">webSocket_service</span><span class="p">.</span><span class="nx">bal</span><span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9095</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">20</span> <span class="mi">13</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">38</span><span class="p">,</span><span class="mi">842</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">WebSocket</span> <span class="nx">client</span> <span class="nx">connected</span> <span class="nx">wih</span> <span class="nx">the</span> <span class="nx">server</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">Connection</span> <span class="nx">ID</span><span class="p">:</span> <span class="mi">08</span><span class="nx">d40cfffe258b13</span><span class="o">-</span><span class="mo">00000</span><span class="nx">bfd</span><span class="o">-</span><span class="mo">00000001</span><span class="o">-</span><span class="nx">a1eade696304c59e</span><span class="o">-</span><span class="mi">7</span><span class="nx">f64181e</span><span class="err">#</span> <span class="nx">Stop</span> <span class="nx">the</span> <span class="nx">running</span> <span class="kd">service</span><span class="p">.</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">stopped</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9095</span><span class="err">#</span> <span class="nx">Restart</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_service</span><span class="p">.</span><span class="nx">bal</span><span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9095</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">20</span> <span class="mi">13</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">55</span><span class="p">,</span><span class="mi">543</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">WebSocket</span> <span class="nx">client</span> <span class="nx">connected</span> <span class="nx">wih</span> <span class="nx">the</span> <span class="nx">server</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">Connection</span> <span class="nx">ID</span><span class="p">:</span> <span class="mi">08</span><span class="nx">d40cfffe258b13</span><span class="o">-</span><span class="mo">000011</span><span class="mi">8</span><span class="nx">b</span><span class="o">-</span><span class="mo">00000001</span><span class="o">-</span><span class="mi">9</span><span class="nx">bc9b9fb2d07c5b5</span><span class="o">-</span><span class="mi">8</span><span class="nx">fb73e4f</span>
 </pre></div>
 
             </div>
@@ -859,9 +875,9 @@ service retryProxyService on new http:Listener(9090) {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina run websocket_service.bal
+                                    <div class="highlight"><pre><code class=shell-session>ballerina run websocket_service.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
-$ ballerina run websocket_retry.bal
+ballerina run websocket_retry.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -887,9 +903,9 @@ $ ballerina run websocket_retry.bal
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To check the sample, you can use Chrome or Firefox JavaScript console and run the following commands. &lt;br&gt;
-$ var ws = new WebSocket(&quot;ws://localhost:9090/retry/ws&quot;);
-$ ws.onmessage = function(frame) {console.log(frame.data)};
-$ ws.onclose = function(frame) {console.log(frame)};
+var ws = new WebSocket(&quot;ws://localhost:9090/retry/ws&quot;);
+ws.onmessage = function(frame) {console.log(frame.data)};
+ws.onclose = function(frame) {console.log(frame)};
 </code></pre></div>
 
                                 </td>
@@ -902,7 +918,7 @@ $ ws.onclose = function(frame) {console.log(frame)};
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send messages.
-$ ws.send(&quot;hello world&quot;);
+ws.send(&quot;hello world&quot;);
 </code></pre></div>
 
                                 </td>
@@ -928,7 +944,7 @@ $ ws.send(&quot;hello world&quot;);
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Send messages.
-$ ws.send(&quot;hello world&quot;);
+ws.send(&quot;hello world&quot;);
 </code></pre></div>
 
                                 </td>
@@ -941,7 +957,7 @@ $ ws.send(&quot;hello world&quot;);
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Close the connection.
-$ ws.close(1000, &quot;I want to go&quot;);
+ws.close(1000, &quot;I want to go&quot;);
 </code></pre></div>
 
                                 </td>
@@ -1129,7 +1145,7 @@ import ballerina/log;
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file, and use the `ballerina run` command.
-$ ballerina run webSocket_service.bal
+ballerina run webSocket_service.bal
 </code></pre></div>
 
                                 </td>
@@ -1168,7 +1184,7 @@ $ ballerina run webSocket_service.bal
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Restart the service.
-$ ballerina run websocket_service.bal
+ballerina run websocket_service.bal
 </code></pre></div>
 
                                 </td>

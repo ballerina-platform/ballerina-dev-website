@@ -20,7 +20,7 @@ To get started, let's write a simple Ballerina function and test it.
 1. First, let’s create a Ballerina project and add a new module. Use the `ballerina new` command to create the project. 
 For more information on the command, see [Structuring Ballerina Code](/swan-lake/learn/structuring-ballerina-code/).
 
-    The standard project will hold the structure below.
+    The standard project will have the structure below.
 
     ```bash
     project-name/
@@ -48,7 +48,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     http:Client clientEndpoint = new("https://api.chucknorris.io/jokes/");
     
     // This function performs a `get` request to the Chuck Norris API and returns a random joke 
-    // with the name replaced with the provided name or an error if the API invocation fails.
+    // with the name replaced by the provided name or an error if the API invocation fails.
     function getRandomJoke(string name) returns string|error {
         http:Response|error result = clientEndpoint->get("/random");
         http:Response response = <http:Response>result;
@@ -68,7 +68,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     
     ```
 
-3. Now, let’s write a simple test case to verify the behavior of the `main` function in ***main_test.bal***
+3. Now, let’s write a simple test case to verify the behavior of the `main` function in the ***main_test.bal*** file.
 
     ```ballerina
     // main_test.bal
@@ -77,21 +77,21 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     import ballerina/http;
     
     // This test function tests the behavior of the `getRandomJoke` when
-    // the API returns a success response
+    // the API returns a success response.
     @test:Config {}
     function testGetRandomJoke() {
-        // create a default mock HTTP Client and assign it to the `clientEndpoint`
+        // Create a default mock HTTP Client and assign it to the `clientEndpoint`
         clientEndpoint = test:mock(http:Client);
-        // stub the behavior of the `get` function to return the specified mock response
+        // Stub the behavior of the `get` function to return the specified mock response.
         test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
-        // invoke the function to test
+        // Invoke the function to test.
         string result = checkpanic getRandomJoke("Sheldon");
         io:println(result);
-        // verify the return value   
+        // Verify the return value.   
         test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
     }
     
-    // Returns a mock HTTP response to be used for the jokes API invocation
+    // Returns a mock HTTP response to be used for the jokes API invocation.
     function getMockResponse() returns http:Response {
         http:Response mockResponse = new;
         json mockPayload = {"value":"When Chuck Norris wants an egg, he cracks open a chicken."};

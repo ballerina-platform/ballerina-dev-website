@@ -43,7 +43,25 @@ redirect_from:
     <span class="k">return</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toUpperAscii</span><span class="p">();</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accumulator</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">currentValue</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">+</span> <span class="nx">currentValue</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">functional_iteration</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Number</span> <span class="nx">of</span> <span class="nx">elements</span> <span class="nx">in</span> <span class="err">&#39;</span><span class="nx">words</span><span class="err">&#39;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="nx">a</span><span class="p">=</span><span class="nx">ANT</span> <span class="nx">b</span><span class="p">=</span><span class="nx">BEAR</span> <span class="nx">c</span><span class="p">=</span><span class="nx">CAT</span> <span class="nx">d</span><span class="p">=</span><span class="nx">DEAR</span> <span class="nx">e</span><span class="p">=</span><span class="nx">ELEPHANT</span>
+<span class="nx">Positive</span> <span class="nx">numbers</span><span class="p">:</span> <span class="mi">2</span> <span class="mi">7</span> <span class="mi">12</span>
+<span class="o">-</span><span class="mi">5</span>
+<span class="o">-</span><span class="mi">3</span>
+<span class="mi">2</span>
+<span class="mi">7</span>
+<span class="mi">12</span>
+<span class="nx">Total</span><span class="p">:</span> <span class="mi">13</span>
+<span class="nx">Total</span> <span class="nx">with</span> <span class="nx">initial</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">18</span><span class="nx">Execution</span> <span class="nx">Order</span><span class="p">:</span><span class="o">-</span>
+<span class="o">-</span> <span class="kt">map</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">apple</span>
+<span class="o">-</span> <span class="kt">map</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">red</span> <span class="nx">green</span>
+<span class="o">-</span> <span class="kt">map</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">5</span>
+<span class="o">--</span> <span class="nx">foreach</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">apple</span>
+<span class="o">--</span> <span class="nx">foreach</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">red</span> <span class="nx">green</span>
+<span class="o">--</span> <span class="nx">foreach</span> <span class="nx">operation</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">5</span>
 </pre></div>
 
             </div>
@@ -431,8 +449,8 @@ redirect_from:
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run functional_iteration.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run functional_iteration.bal
 Number of elements in &#39;words&#39;: 5
 a=ANT b=BEAR c=CAT d=DEAR e=ELEPHANT
 Positive numbers: 2 7 12

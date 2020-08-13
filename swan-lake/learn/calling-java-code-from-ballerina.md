@@ -95,7 +95,7 @@ This section assumes that you have already read [How to Structure Ballerina Code
 
 #### Create a Ballerina project
 ```sh
-→ ballerina new yaml-project
+> ballerina new yaml-project
 Created new Ballerina project at yaml-project
 
 Next:
@@ -104,7 +104,7 @@ Next:
 ```
 #### Add a Ballerina module to your project
 ```sh
-→ ballerina add yamlparser
+> ballerina add yamlparser
 Added new ballerina module at 'src/yamlparser’
 ```
 #### Add a sample YAML file 

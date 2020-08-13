@@ -78,6 +78,12 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Gauge - &quot;</span><span class="p">,</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="s">&quot; Current Value: &quot;</span>
         <span class="p">,</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
 <span class="p">}</span>
+<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
+<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
+<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
+<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
+<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
+<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -752,11 +758,11 @@ counter instance.</p>
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9090/online-store-service/make-order
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/online-store-service/make-order
 Order Processed!
-$ curl http://localhost:9090/online-store-service/make-order
+curl http://localhost:9090/online-store-service/make-order
 Order Processed!
-$ curl http://localhost:9090/online-store-service/make-order
+curl http://localhost:9090/online-store-service/make-order
 Order Processed!
 </code></pre></div>
 

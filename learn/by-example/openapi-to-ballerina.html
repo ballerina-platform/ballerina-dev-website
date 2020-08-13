@@ -118,7 +118,23 @@ redirect_from:
           <span class="nx">type</span><span class="p">:</span> <span class="nx">integer</span>
           <span class="nx">format</span><span class="p">:</span> <span class="nx">int32</span>
         <span class="kt">message</span><span class="p">:</span>
-          <span class="nx">type</span><span class="p">:</span> <span class="kt">string</span>
+          <span class="nx">type</span><span class="p">:</span> <span class="kt">string</span><span class="err">#</span> <span class="nx">Run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">command</span> <span class="nx">in</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="nx">project</span> <span class="nx">to</span> <span class="nx">generate</span> <span class="nx">the</span> <span class="kd">service</span> <span class="nx">from</span> <span class="nx">OpenAPI</span> <span class="nx">contract</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">openapi</span> <span class="nx">gen</span><span class="o">-</span><span class="kd">service</span> <span class="nx">petStore</span><span class="p">:</span><span class="nx">petService</span> <span class="nx">openapi_to_ballerina</span><span class="p">.</span><span class="nx">yaml</span>
+<span class="nx">Note</span><span class="p">:</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">an</span> <span class="nx">Experimental</span> <span class="nx">tool</span> <span class="nx">ship</span> <span class="nx">under</span> <span class="nx">ballerina</span> <span class="nx">hence</span> <span class="nx">this</span> <span class="nx">will</span> <span class="nx">only</span> <span class="nx">support</span> <span class="nx">limited</span> <span class="nx">set</span> <span class="nx">of</span> <span class="nx">functionality</span><span class="p">.</span>
+<span class="nx">Service</span> <span class="nx">generated</span> <span class="nx">successfully</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">OpenApi</span> <span class="nx">contract</span> <span class="nx">is</span> <span class="nx">copied</span> <span class="nx">to</span> <span class="nx">petStore</span><span class="o">/</span><span class="nx">resources</span><span class="p">.</span> <span class="nx">this</span> <span class="nx">location</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">referenced</span> <span class="nx">throughout</span> <span class="nx">the</span> <span class="nx">ballerina</span> <span class="nx">project</span><span class="p">.</span>
+<span class="nx">Following</span> <span class="nx">files</span> <span class="nx">were</span> <span class="nx">created</span><span class="p">.</span>
+<span class="nx">src</span><span class="o">/</span>
+<span class="o">-</span> <span class="nx">petStore</span>
+<span class="o">--</span> <span class="nx">petservice</span><span class="p">.</span><span class="nx">bal</span>
+<span class="o">--</span> <span class="nx">schema</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">command</span> <span class="nx">in</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="nx">project</span> <span class="nx">to</span> <span class="nx">generate</span> <span class="nx">the</span> <span class="kd">service</span> <span class="nx">client</span> <span class="nx">from</span> <span class="nx">OpenAPI</span> <span class="nx">contract</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">openapi</span> <span class="nx">gen</span><span class="o">-</span><span class="nx">client</span> <span class="nx">petservice_client</span> <span class="nx">openapi_to_ballerina</span><span class="p">.</span><span class="nx">yaml</span>
+<span class="nx">Note</span><span class="p">:</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">an</span> <span class="nx">Experimental</span> <span class="nx">tool</span> <span class="nx">ship</span> <span class="nx">under</span> <span class="nx">ballerina</span> <span class="nx">hence</span> <span class="nx">this</span> <span class="nx">will</span> <span class="nx">only</span> <span class="nx">support</span> <span class="nx">limited</span> <span class="nx">set</span> <span class="nx">of</span> <span class="nx">functionality</span><span class="p">.</span>
+<span class="nx">Client</span> <span class="nx">generated</span> <span class="nx">successfully</span><span class="p">.</span>
+<span class="nx">Following</span> <span class="nx">files</span> <span class="nx">were</span> <span class="nx">created</span><span class="p">.</span>
+<span class="nx">src</span><span class="o">/</span>
+<span class="o">-</span> <span class="nx">client</span>
+<span class="o">--</span> <span class="nx">openapi_petstore</span><span class="p">.</span><span class="nx">bal</span>
+<span class="o">--</span> <span class="nx">schema</span><span class="p">.</span><span class="nx">bal</span>
 </pre></div>
 
             </div>
@@ -337,7 +353,7 @@ components:
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run the following command in a Ballerina project to generate the service from OpenAPI contract.
-$ ballerina openapi gen-service petStore:petService openapi_to_ballerina.yaml
+ballerina openapi gen-service petStore:petService openapi_to_ballerina.yaml
 Note: This is an Experimental tool ship under ballerina hence this will only support limited set of functionality.
 Service generated successfully and the OpenApi contract is copied to petStore/resources. this location will be referenced throughout the ballerina project.
 Following files were created.
@@ -357,7 +373,7 @@ src/
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run the following command in a Ballerina project to generate the service client from OpenAPI contract.
-$ ballerina openapi gen-client petservice_client openapi_to_ballerina.yaml
+ballerina openapi gen-client petservice_client openapi_to_ballerina.yaml
 Note: This is an Experimental tool ship under ballerina hence this will only support limited set of functionality.
 Client generated successfully.
 Following files were created.

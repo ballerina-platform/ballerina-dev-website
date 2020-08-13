@@ -42,7 +42,14 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
                                     <span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_client_endpoint</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">GET</span> <span class="nx">request</span><span class="p">:</span>
+<span class="p">{</span><span class="s">&quot;args&quot;</span><span class="p">:{</span><span class="s">&quot;test&quot;</span><span class="p">:</span><span class="s">&quot;123&quot;</span><span class="p">},</span> <span class="s">&quot;headers&quot;</span><span class="p">:{</span><span class="s">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="s">&quot;https&quot;</span><span class="p">,</span> <span class="s">&quot;host&quot;</span><span class="p">:</span><span class="s">&quot;postman-echo.com&quot;</span><span class="p">,</span> <span class="s">&quot;user-agent&quot;</span><span class="p">:</span><span class="s">&quot;ballerina/1.0.0-beta&quot;</span><span class="p">,</span> <span class="s">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="s">&quot;80&quot;</span><span class="p">},</span> <span class="s">&quot;url&quot;</span><span class="p">:</span><span class="s">&quot;https://postman-echo.com/get?test=123&quot;</span><span class="p">}</span><span class="nx">POST</span> <span class="nx">request</span><span class="p">:</span>
+<span class="p">{</span><span class="s">&quot;args&quot;</span><span class="p">:{},</span> <span class="s">&quot;data&quot;</span><span class="p">:</span><span class="s">&quot;POST: Hello World&quot;</span><span class="p">,</span> <span class="s">&quot;files&quot;</span><span class="p">:{},</span> <span class="s">&quot;form&quot;</span><span class="p">:{},</span> <span class="s">&quot;headers&quot;</span><span class="p">:{</span><span class="s">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="s">&quot;https&quot;</span><span class="p">,</span> <span class="s">&quot;host&quot;</span><span class="p">:</span><span class="s">&quot;postman-echo.com&quot;</span><span class="p">,</span> <span class="s">&quot;content-length&quot;</span><span class="p">:</span><span class="s">&quot;17&quot;</span><span class="p">,</span> <span class="s">&quot;content-type&quot;</span><span class="p">:</span><span class="s">&quot;text/plain&quot;</span><span class="p">,</span> <span class="s">&quot;user-agent&quot;</span><span class="p">:</span><span class="s">&quot;ballerina/1.0.0-beta&quot;</span><span class="p">,</span> <span class="s">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="s">&quot;80&quot;</span><span class="p">},</span> <span class="s">&quot;json&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span> <span class="s">&quot;url&quot;</span><span class="p">:</span><span class="s">&quot;https://postman-echo.com/post&quot;</span><span class="p">}</span><span class="nx">Use</span> <span class="nx">custom</span> <span class="nx">HTTP</span> <span class="nx">verbs</span><span class="p">:</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span><span class="p">;</span> <span class="nx">charset</span><span class="p">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="nx">Status</span> <span class="nx">code</span><span class="p">:</span> <span class="mi">200</span>
 </pre></div>
 
             </div>
@@ -60,9 +67,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="knative-deployment.html">
+                                    <a class="prev" href="azure-functions-deployment.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Knative Deployment</p>
+                                        <p>Azure Functions Deployment</p>
                                     </a>
                                 </div>
                                  
@@ -454,8 +461,8 @@ import ballerina/io;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run http_client_endpoint.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run http_client_endpoint.bal
 GET request:
 {&quot;args&quot;:{&quot;test&quot;:&quot;123&quot;}, &quot;headers&quot;:{&quot;x-forwarded-proto&quot;:&quot;https&quot;, &quot;host&quot;:&quot;postman-echo.com&quot;, &quot;user-agent&quot;:&quot;ballerina/1.0.0-beta&quot;, &quot;x-forwarded-port&quot;:&quot;80&quot;}, &quot;url&quot;:&quot;https://postman-echo.com/get?test=123&quot;}
 </code></pre></div>

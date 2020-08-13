@@ -32,17 +32,17 @@ project-name/
 
 ## Test source files
 
-Unit tests bound to a module need to be placed in a subfolder called ***tests/*** within the module. In a standard
+Unit tests bound to a module need to be placed in a sub folder called ***tests/*** within the module. In a standard
  Ballerina project, a module is mapped to a test suite. All tests within a module’s *tests/* subfolder are
   considered to be part of the same test suite.
 
-The test source files could have any name. The test functions are just Ballerina functions that use a special
+The test source files could have any name. The test functions are just Ballerina functions, which use a special
  annotation to mark the function as a test. Test functions must be specified with the `@test:Config {}` annotation and there is no restriction on the test function name.
 
 
 ## Test Resources
 
-The resources subdirectory found within the *tests/* directory is meant to contain any files or resources that are
+The resources sub directory found within the *tests/* directory is meant to contain any files or resources that are
  exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the project root.
 
 ## Defining a test
@@ -60,19 +60,19 @@ Once the test module is imported, the following annotation can be used to write 
 
 ### @test:Config {}
 
-The function specified following the annotation is a test function. This annotation supports the following value fields.
+The function specified after the annotation is a test function. This annotation supports the following value fields.
 
 
-*   ***enable: {true&#124;false}*** - Enable/disable the test. Default: true
-*   ***before: "&lt;function name&gt;"*** - Name of the function to be run just before the test is run. Default: none
+*   ***enable: {true&#124;false}*** - Enable/disable the test. The default value is `true`.
+*   ***before: "&lt;function name&gt;"*** - Name of the function to be run just before the test is run. The default value is `none`.
 *   ***after: "&lt;function name&gt;"*** - Name of the function to be run just after the test is run.
 *   ***dependsOn: ["&lt;function names>", …]*** - List of function names on which the test function depends. The
  order in
- which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on the dependencies using the `dependsOn` parameter in each one’s config in order to control the order of test execution.
+ which the comma-separated list appears has no prominence. In case there needs to be an order, define a sequence of test functions with one pointing to another based on the dependencies using the `dependsOn` parameter in each one’s config to control the order of the test execution.
 *   ***dataProvider: “&lt;function name>”*** - Specifies the name of the function that will be used to provide the value
  sets to execute the test against.
-*   ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) that this test
- belongs to.
+*   ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
+ belongs.
 
 ***Example:***
 
@@ -82,14 +82,14 @@ import ballerina/io;
 import ballerina/test;
 
 function beforeFunc() {
-    // This is the before Test Function
+    // This is function, which will be executed before the Test functions.
 }
 
 function afterFunc() {
-    // This is the before Test Function
+    // This is function, which will be executed after the Test functions.
 }
 
-// This test function will not be executed
+// This test function will not be executed.
 @test:Config {
 enable: false,
 }
@@ -98,7 +98,7 @@ function testFunction1() {
     test:assertTrue(true, msg = "Failed!");
 }
 
-// This test function depends on `testFunction1`
+// This test function depends on `testFunction1`.
 @test:Config{  
     before: "beforeFunc",
     after: "afterFunc",
@@ -115,7 +115,7 @@ function dataGen() returns (int[][]) {
     return [[1]];
 }
 
-// This is a random test function. This will randomly execute without depending on other functions.
+// This is a random test function. This will randomly execute without depending on the other functions.
 // However, note that other functions do depend on this.
 @test:Config {
     groups: ["g1", "g2"]
@@ -167,9 +167,9 @@ function testAssertFalse() {
 }
 ```
 
-### **assertEquals(Any actual, Any expected, string message)**
+### **assertEquals(Anydata actual, Anydata expected, string message)**
 
-Asserts that the actual is equal to the expected with an optional message.
+Asserts that the actual value is equal to the expected value with an optional message.
 
 ***Example:***
 ```ballerina
@@ -190,9 +190,9 @@ function intAdd(int a, int b) returns (int) {
 }
 ```
 
-### **assertNotEquals(Any actual, Any expected, string message)**
+### **assertNotEquals(Anydata actual, Anydata expected, string message)**
 
-Asserts that the actual is not equal to the expected with an optional message.
+Asserts that the actual value is not equal to the expected value with an optional message.
 
 ***Example:***
 
@@ -211,6 +211,55 @@ function testAssertIntEquals() {
 
 function intAdd(int a, int b) returns (int) {
     return (a + b);
+}
+```
+
+### **assertExactEquals(Any actual, Any expected, string message)**
+
+Asserts that the actual entity is exactly equal to the expected entity with an optional message.
+
+***Example:***
+```ballerina
+import ballerina/test;
+
+type Person object {
+    public string name = "";
+    public int age = 0;
+    public Person? parent = ();
+    private string email = "default@abc.com";
+    string address = "No 20, Palm grove";
+};
+
+@test:Config {}
+function testAssertExactEqualsObject() {
+    Person p1 = new;
+    Person p2 = p1;
+    test:assertExactEquals(p1, p2, msg = "Objects are not exactly equal");
+}
+```
+
+### **assertNotExactEquals(Any actual, Any expected, string message)**
+
+Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+type Person object {
+    public string name = "";
+    public int age = 0;
+    public Person? parent = ();
+    private string email = "default@abc.com";
+    string address = "No 20, Palm grove";
+};
+
+@test:Config {}
+function testAssertNotExactEqualsObject() {
+    Person p1 = new;
+    Person p2 = new ();
+    test:assertNotExactEquals(p1, p2, msg = "Objects are exactly equal");
 }
 ```
 
@@ -240,7 +289,7 @@ The following test annotations can be used for setup and teardown instructions. 
 
 ### @test:BeforeSuite {}
 
-The function specified following the annotation will be run once before any of the tests in the test suite is run. This can be used for initializing the test suite level aspects.
+The function specified after the annotation will be run once before any of the tests in the test suite is run. This can be used for initializing the test suite level aspects.
 
 ***Example:***
 
@@ -254,14 +303,14 @@ function beforeFunc() {
     io:println("I'm the before suite function!");
 }
 
-// Test function
+// Test function.
 @test:Config {}
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// Test function
+// Test function.
 @test:Config {}
 function testFunction2() {
     io:println("I'm in test function 2!");
@@ -271,7 +320,7 @@ function testFunction2() {
 
 ### @test:BeforeEach {}
 
-The function specified following the annotation will be run before every test within the test suite is run. This can be used for repeatedly initializing test-level aspects before every test function.
+The function specified after the annotation will be run before every test within the test suite is run. This can be used for initializing test-level aspects repeatedly before every test function.
 
 ***Example:***
 
@@ -279,27 +328,27 @@ The function specified following the annotation will be run before every test wi
 import ballerina/io;
 import ballerina/test;
 
-// Before each function, which is executed before each test function
+// The `BeforeEach` function, which is executed before each test function
 @test:BeforeEach
 function beforeFunc() {
     io:println("I'm the before function!");
 }
 
-// Test function
+// Test function.
 @test:Config {}
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// Test function
+// Test function.
 @test:Config {}
 function testFunction2() {
     io:println("I'm in test function 2!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// Test function
+// Test function.
 @test:Config {}
 function testFunction3() {
     io:println("I'm in test function 3!");
@@ -309,7 +358,7 @@ function testFunction3() {
 
 ### @test:AfterSuite {}
 
-The function specified following the annotation will be run once after all of the tests in the test suite is run. This can be used for cleaning up the test suite level aspects. The test suite covers tests related to a module.
+The function specified after the annotation will be run once after all of the tests in the test suite is run. This can be used for cleaning up the test suite level aspects. The test suite covers tests related to a module.
 
 ***Example:***
 
@@ -317,14 +366,14 @@ The function specified following the annotation will be run once after all of th
 import ballerina/io;
 import ballerina/test;
 
-// Test function
+// Test function.
 @test:Config {}
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// The `AfterSuite` function is executed after all the test functions in this module
+// The `AfterSuite` function is executed after all the test functions in this module.
 @test:AfterSuite
 function afterFunc() {
     io:println("I'm the after suite function!");

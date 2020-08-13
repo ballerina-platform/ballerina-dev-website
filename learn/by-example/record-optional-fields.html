@@ -24,7 +24,13 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age after setting: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
     <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">gender</span><span class="p">:</span> <span class="s">&quot;female&quot;</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person with values assigned to required fields: &quot;</span><span class="p">,</span> <span class="nx">jane</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_optional_fields</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Person</span> <span class="nx">with</span> <span class="nx">the</span> <span class="nx">non</span><span class="o">-</span><span class="nx">defaultable</span> <span class="nx">required</span> <span class="nx">field</span> <span class="nx">set</span><span class="p">:</span> <span class="nx">fname</span><span class="p">=</span><span class="nx">John</span> <span class="nx">lname</span><span class="p">=</span> <span class="nx">gender</span><span class="p">=</span><span class="nx">male</span>
+<span class="nx">Age</span> <span class="nx">before</span> <span class="nx">setting</span><span class="p">:</span> 
+<span class="nx">Age</span> <span class="nx">after</span> <span class="nx">setting</span><span class="p">:</span> <span class="mi">25</span>
+<span class="nx">Person</span> <span class="nx">with</span> <span class="nx">values</span> <span class="nx">assigned</span> <span class="nx">to</span> <span class="nx">required</span> <span class="nx">fields</span><span class="p">:</span> <span class="nx">fname</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">lname</span><span class="p">=</span><span class="nx">Doe</span> <span class="nx">gender</span><span class="p">=</span><span class="nx">female</span>
 </pre></div>
 
             </div>
@@ -403,8 +409,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run record_optional_fields.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run record_optional_fields.bal
 Person with the non-defaultable required field set: fname=John lname= gender=male
 Age before setting: 
 Age after setting: 25

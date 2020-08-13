@@ -85,7 +85,15 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Database initialization failed!!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span>  <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_execute_operation</span><span class="p">.</span><span class="nx">balDatabase</span> <span class="nx">created</span><span class="p">.</span>
+<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">.</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span>
+<span class="nx">Rows</span> <span class="nx">affected</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Generated</span> <span class="nx">Customer</span> <span class="nx">ID</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Updated</span> <span class="nx">Row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Deleted</span> <span class="nx">Row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Sample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
 </pre></div>
 
             </div>
@@ -661,8 +669,8 @@ string dbName = &quot;MYSQL_BBE_EXEC&quot;;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#  To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run mysql_execute_operation.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run mysql_execute_operation.bal
 </code></pre></div>
 
                                 </td>

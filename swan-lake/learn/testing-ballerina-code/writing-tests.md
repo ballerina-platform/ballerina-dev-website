@@ -238,7 +238,7 @@ function testAssertExactEqualsObject() {
 }
 ```
 
-### **assertExactNotEquals(Any actual, Any expected, string message)**
+### **assertNotExactEquals(Any actual, Any expected, string message)**
 
 Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
 
@@ -259,7 +259,7 @@ type Person object {
 function testAssertNotExactEqualsObject() {
     Person p1 = new;
     Person p2 = new ();
-    test:assertExactNotEquals(p1, p2, msg = "Objects are exactly equal");
+    test:assertNotExactEquals(p1, p2, msg = "Objects are exactly equal");
 }
 ```
 

@@ -58,7 +58,7 @@ type Person object {
 
 The Java method to which the `getFullName()` method is bound:
 
-```
+```java
 public static BString getFullName(ObjectValue objectValue) {
         return objectValue.getStringValue(new BmpStringValue("fname")).concat(new BmpStringValue(" ")).concat(
                     objectValue.getStringValue(new BmpStringValue("lname")));

@@ -86,7 +86,7 @@ Student[] sortedList =  from var student in studentList
 
 ##### Inner/Nested query expressions
 
-This release introduces support to write inner/nested query expression/action.
+This release introduces the support to write inner/nested query expression/action.
 
 ```ballerina
 Person[] personList = [

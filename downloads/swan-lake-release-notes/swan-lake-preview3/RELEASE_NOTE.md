@@ -10,7 +10,7 @@ You can use the update tool to update to Ballerina Swan Lake Preview 3 as follow
 
 **For existing users:**
 
-If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
+If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
                         
 > `ballerina update`
 

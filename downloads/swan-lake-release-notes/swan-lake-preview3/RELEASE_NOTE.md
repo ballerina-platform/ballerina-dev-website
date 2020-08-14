@@ -26,7 +26,7 @@ If you have not installed jBallerina, then download the [installers](https://bal
 
 ### Highlights
 
-- Support for extern methods in objects
+- Support for defining external object method bodies
 - Support for executing stored procedures in the SQL connector
 - Azure Functions support
 
@@ -36,7 +36,7 @@ If you have not installed jBallerina, then download the [installers](https://bal
 
 The language implementation is based on [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/).
 
-##### Extern method support
+##### External object method bodies
 
 This release introduces support for defining object methods with external function bodies.
 

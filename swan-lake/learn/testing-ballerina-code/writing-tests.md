@@ -321,7 +321,7 @@ function testFunction2() {
 ### @test:BeforeGroups {}
 
 For each group specified in this annotation, the function that follows the annotation will be executed once before
- all the tests belonging to the group is executed.
+ all the tests belonging to the group are executed.
 
 ***Example:***
 
@@ -341,14 +341,14 @@ function beforeFunc() {
     io:println("I'm another before groups function!");
 }
 
-// A test function that belongs to the group `g1`
+// A test function that belongs to the group `g1`.
 @test:Config { groups:["g1"] }
 function testFunction1() {
     io:println("I belong to group g1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// A test function that belongs to the group `g2`
+// A test function that belongs to the group `g2`.
 @test:Config { groups:["g2"] }}
 function testFunction2() {
     io:println("I belong to group g2 ");
@@ -359,7 +359,7 @@ function testFunction2() {
 ### @test:BeforeEach
 
 The function specified after this annotation will be run before each test within the test suite is run. This can be
- used for repeatedly initializing test-level aspects before every test function.
+ used for initializing test-level aspects repeatedly before every test function.
 
 ***Example:***
 
@@ -373,21 +373,21 @@ function beforeFunc() {
     io:println("I'm the before function!");
 }
 
-// First test function.
+// The first test function.
 @test:Config {}
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// Second test function.
+// The second test function.
 @test:Config {}
 function testFunction2() {
     io:println("I'm in test function 2!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// Third test function.
+// The third test function.
 @test:Config {}
 function testFunction3() {
     io:println("I'm in test function 3!");
@@ -398,7 +398,7 @@ function testFunction3() {
 ### @test:AfterEach
 
 The function specified after this annotation will be run after each test within the test suite is run. This can be
- used for repeatedly cleaning up test-level aspects before every test function.
+ used for cleaning up the test-level aspects  repeatedly before every test function.
 
 ***Example:***
 
@@ -406,27 +406,27 @@ The function specified after this annotation will be run after each test within 
 import ballerina/io;
 import ballerina/test;
 
-// After each function, which is executed before each test function
+// This `AfterEach` function is executed before each test function.
 @test:AfterEach
 function beforeFunc() {
     io:println("I'm the before function!");
 }
 
-// First test function
+// The first test function.
 @test:Config {}
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// Second test function
+// The second test function.
 @test:Config {}
 function testFunction2() {
     io:println("I'm in test function 2!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// Third test function
+// The third test function.
 @test:Config {}
 function testFunction3() {
     io:println("I'm in test function 3!");
@@ -445,14 +445,14 @@ For each group specified in this annotation, the function that follows the annot
 import ballerina/io;
 import ballerina/test;
 
-// A test function that belongs to the group `g1`
+// A test function that belongs to the group `g1`.
 @test:Config { groups:["g1"] }
 function testFunction1() {
     io:println("I belong to group g1!");
     test:assertTrue(true, msg = "Failed");
 }
 
-// A test function that belongs to the group `g2`
+// A test function that belongs to the group `g2`.
 @test:Config { groups:["g2"] }}
 function testFunction2() {
     io:println("I belong to group g2 ");
@@ -474,7 +474,7 @@ function beforeFunc() {
 
 ### @test:AfterSuite {}
 
-The function specified after the annotation will be run once after all of the tests in the test suite is run. This can be used for cleaning up the test suite level aspects. The test suite covers tests related to a module.
+The function specified after the annotation will be run once after all of the tests in the test suite are run. This can be used for cleaning up the test suite level aspects. The test suite covers tests related to a module.
 
 ***Example:***
 

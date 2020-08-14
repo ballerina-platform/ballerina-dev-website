@@ -27,6 +27,8 @@ If you have not installed jBallerina, then download the [installers](https://bal
 ### Highlights
 
 - Support for defining external object method bodies
+- Order by clause for sorting
+- Inner/Nested query expressions 
 - Support for executing stored procedures in the SQL connector
 - Azure Functions support
 
@@ -63,6 +65,62 @@ public static BString getFullName(ObjectValue objectValue) {
         return objectValue.getStringValue(new BmpStringValue("fname")).concat(new BmpStringValue(" ")).concat(
                     objectValue.getStringValue(new BmpStringValue("lname")));
 }
+```
+
+##### Order by clause for sorting 
+
+This release introduces `order by` clause support for sorting in query expression/action. An order-by clause is executed by constructing a list of entries.
+
+```ballerina
+Student s1 = {id: 1, fname: "John", fee: 2000.56, age: 20};
+Student s2 = {id: 2, fname: "John", fee: 2000.56, age: 22};
+Student s3 = {id: 3, fname: "Roger", fee: 4000.56, age: 21};
+Student s4 = {id: 4, fname: "Kate", fee: 2000.56, age: 24};
+
+Student[] studentList = [s1, s2, s3, s4];
+
+Student[] sortedList =  from var student in studentList
+                        order by student.age ascending, student.fname
+                        select student;
+```
+
+##### Inner/Nested query expressions
+
+This release introduces support to write inner/nested query expression/action.
+
+```ballerina
+Person[] personList = [
+    {id: 1, fname: "Alex", lname: "George"},
+    {id: 2, fname: "Ranjan", lname: "Fonseka"},
+    {id: 3, fname: "Idris", lname: "Elba"},
+    {id: 4, fname: "Dermot", lname: "Crowley"}
+];
+
+Department[] deptList = [
+    {id: 1, name:"HR"},
+    {id: 2, name:"Operations"},
+    {id: 3, name:"Engineering"}
+];
+
+Employee[] empList = [
+    {personId: 1, deptId: 2},
+    {personId: 2, deptId: 1},
+    {personId: 3, deptId: 3},
+    {personId: 4, deptId: 3}
+];
+
+
+DeptPerson[] deptPersonList =
+        from var emp in (from var e in empList select e)
+        join Person psn in (from var p in personList select p)
+            on emp.personId equals psn.id
+        join Department dept in (from var d in deptList select d)
+            on emp.deptId equals dept.id
+        select {
+            fname : psn.fname,
+            lname : psn.lname,
+            dept : dept.name
+        };
 ```
 
 #### Standard Library

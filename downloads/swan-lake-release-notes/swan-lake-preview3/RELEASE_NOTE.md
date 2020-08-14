@@ -69,7 +69,7 @@ public static BString getFullName(ObjectValue objectValue) {
 
 ##### Order by clause for sorting 
 
-This release introduces `order by` clause support for sorting in query expression/action. An order-by clause is executed by constructing a list of entries.
+This release introduces the `order by` clause support for sorting in query expression/action. An order-by clause is executed by constructing a list of entries.
 
 ```ballerina
 Student s1 = {id: 1, fname: "John", fee: 2000.56, age: 20};

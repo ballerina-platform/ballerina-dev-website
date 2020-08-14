@@ -21,22 +21,24 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">};</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">r1</span> <span class="p">=</span> <span class="nx">j1</span><span class="p">.</span><span class="nx">fname</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r1</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;r1: &quot;</span><span class="p">,</span> <span class="nx">r1</span><span class="p">);</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">r2</span> <span class="p">=</span> <span class="nx">j1</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">city</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r2</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;r2: &quot;</span><span class="p">,</span> <span class="nx">r2</span><span class="p">);</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">r3</span> <span class="p">=</span> <span class="nx">j1</span><span class="p">.</span><span class="nx">age</span><span class="p">.</span><span class="nx">year</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r3</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;r3: &quot;</span><span class="p">,</span> <span class="nx">r3</span><span class="p">);</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">r4</span> <span class="p">=</span> <span class="nx">j1</span><span class="err">?</span><span class="p">.</span><span class="nx">age</span><span class="err">?</span><span class="p">.</span><span class="nx">year</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r4</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;r4: &quot;</span><span class="p">,</span> <span class="nx">r4</span><span class="p">);</span>
     <span class="kt">json</span> <span class="nx">j2</span> <span class="p">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">r5</span> <span class="p">=</span> <span class="nx">j2</span><span class="err">?</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r5</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;r5: &quot;</span><span class="p">,</span> <span class="nx">r5</span><span class="p">);</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
 <span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
 <span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">json_access</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Mary</span>
-<span class="nx">Colombo</span> <span class="mo">03</span>
-<span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="kt">map</span><span class="p">}</span><span class="nx">KeyNotFound</span> <span class="kt">message</span><span class="p">=</span><span class="nx">Key</span> <span class="err">&#39;</span><span class="nx">age</span><span class="err">&#39;</span> <span class="nx">not</span> <span class="nx">found</span> <span class="nx">in</span> <span class="nx">JSON</span> <span class="nx">mapping</span>
+<span class="nx">r1</span><span class="p">:</span> <span class="nx">Mary</span>
+<span class="nx">r2</span><span class="p">:</span> <span class="nx">Colombo</span> <span class="mo">03</span>
+<span class="nx">r3</span><span class="p">:</span> <span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="kt">map</span><span class="p">}</span><span class="nx">KeyNotFound</span> <span class="kt">message</span><span class="p">=</span><span class="nx">Key</span> <span class="err">&#39;</span><span class="nx">age</span><span class="err">&#39;</span> <span class="nx">not</span> <span class="nx">found</span> <span class="nx">in</span> <span class="nx">JSON</span> <span class="nx">mapping</span>
+<span class="nx">r4</span><span class="p">:</span> 
+<span class="nx">r5</span><span class="p">:</span> 
 </pre></div>
 
             </div>
@@ -201,7 +203,7 @@ redirect_from:
                                             <p>Field access is allowed on the <code>json</code>-typed variable. However, the return
  type would be a union of <code>json</code> and <code>error</code>. An error will be returned
  either if the value on which the access is done is not a mapping or if
- it is a mapping, but it does not contain the particular key.</p>
+ it is a mapping but it does not contain the particular key.</p>
 
                                         </div>
                                     </div>
@@ -212,7 +214,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;r1: &quot;, r1);
 </code></pre></div>
 
                                 </td>
@@ -240,7 +242,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Similarly, chained field access is also allowed for <code>json</code>. If an <code>error</code>
- is encountered at any point during the evaluation, evaluation stops at
+ is encountered at any point during the evaluation, it stops at
  that point and the result would be an error.</p>
 
                                         </div>
@@ -252,7 +254,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;r2: &quot;, r2);
 </code></pre></div>
 
                                 </td>
@@ -291,7 +293,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r3);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;r3: &quot;, r3);
 </code></pre></div>
 
                                 </td>
@@ -334,7 +336,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r4);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;r4: &quot;, r4);
 </code></pre></div>
 
                                 </td>
@@ -363,7 +365,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Moreover, when optional field access occurs on <code>null</code> (<code>()</code>), the result would
- also be <code>()</code>, whereas for field access it would have been an <code>error</code>.</p>
+ also be <code>()</code> whereas for field access, it would have been an <code>error</code>.</p>
 
                                         </div>
                                     </div>
@@ -374,7 +376,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(r5);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;r5: &quot;, r5);
 }
 </code></pre></div>
 
@@ -410,9 +412,11 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run json_access.bal
-Mary
-Colombo 03
-error {ballerina/lang.map}KeyNotFound message=Key &#39;age&#39; not found in JSON mapping
+r1: Mary
+r2: Colombo 03
+r3: error {ballerina/lang.map}KeyNotFound message=Key &#39;age&#39; not found in JSON mapping
+r4: 
+r5: 
 </code></pre></div>
 
                                 </td>

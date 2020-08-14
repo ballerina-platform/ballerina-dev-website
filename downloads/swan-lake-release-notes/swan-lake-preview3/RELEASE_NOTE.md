@@ -2,23 +2,23 @@
 layout: release-note
 title: Release note
 ---
-### Overview of jBallerina {{ site.data.stable-latest.metadata.version }}
-The jBallerina {{ site.data.stable-latest.metadata.version }} patch release improves upon the {{ site.data.stable-latest.metadata.version }} release by introducing the features listed below and addressing a number of [bugs](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+{{ site.data.stable-latest.metadata.version }}%22+label%3AType%2FBug+is%3Aclosed) and [improvements](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+{{ site.data.stable-latest.metadata.version }}%22+is%3Aclosed+label%3AType%2FImprovement).
+### Overview of Ballerina Swan Lake Preview 3
 
-You can use the update tool to update to jBallerina {{ site.data.stable-latest.metadata.version }} as follows.
+This release is the second preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
+
+You can use the update tool to update to Ballerina Swan Lake Preview 3 as follows.
 
 **For existing users:**
 
-If you are already using jBallerina version 1.2.0, or above, you can directly update your distribution to jBallerina {{ site.data.stable-latest.metadata.version }} by executing the following command:
+If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
+                        
+> `ballerina update`
 
-```ballerina
-ballerina dist update
-```
+ Next, execute the command below to update to Swan Lake Preview 3.
 
-However, you need to use the following commands instead of the above if you have installed:
+ > `ballerina dist pull slp3`                  
 
-- jBallerina 1.2.0 but switched to a previous version: `$ ballerina dist pull jballerina-{{ site.data.stable-latest.metadata.version }}`
-- a jBallerina version below 1.1.0: install via the [installers](https://ballerina.io/downloads/)
+However, if you are using a jBallerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
 
 **For new users:**
 

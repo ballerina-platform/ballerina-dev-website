@@ -134,7 +134,7 @@ By choosing the `Generate mapping function`code action, the following function w
 
 ```ballerina
 function mapNameAndGradeToGrade(NameAndGrade nameAndGrade) returns Grade {
-// Some record fields might be missing in the AI based mapping.
+// Some record fields might be missing in the AI-based mapping.
    Grade grade = {
 maths: nameAndGrade.maths, 
 physics: nameAndGrade.physics, 

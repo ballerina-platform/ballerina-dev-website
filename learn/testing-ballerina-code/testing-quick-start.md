@@ -11,6 +11,8 @@ redirect_from:
   - /learn/how-to-test-ballerina-code/
   - /learn/how-to-test-ballerina-code
   - /learn/testing-ballerina-code/testing-quick-start
+  - /learn/testing-ballerina-code/
+  - /learn/testing-ballerina-code
 ---
 
 # Quick Start

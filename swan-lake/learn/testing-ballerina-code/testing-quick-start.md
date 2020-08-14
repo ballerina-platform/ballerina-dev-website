@@ -9,6 +9,8 @@ redirect_from:
   - /swan-lake/learn/how-to-test-ballerina-code/
   - /swan-lake/learn/how-to-test-ballerina-code
   - /swan-lake/learn/testing-ballerina-code/testing-quick-start
+  - /swan-lake/learn/testing-ballerina-code/
+  - /swan-lake/learn/testing-ballerina-code
 ---
 
 # Quick Start

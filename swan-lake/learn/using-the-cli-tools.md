@@ -48,7 +48,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project. For more information, see <a href="/swan-lake/learn/testing-ballerina-code">Testing Ballerina Code</a>.
+<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project. For more information, see <a href="/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
 </td>
 </tr>
 <tr>

@@ -218,7 +218,7 @@ function testFunction() {
 }
 
 @test:AfterGroups { value : ["group1"] }
-function afterGroupsFunc1() {
+function afterGroupsFunc() {
 	io:println(“I’m a after groups function!”)
 
 }
@@ -240,13 +240,13 @@ function beforeSuiteFunc() {
 }
 
 @test:AfterSuite {}
-function afterSuiteFunc() {
-	io:println("I will be run only if before suite function executes successfully.” );
+function afterSuiteFunc1() {
+	io:println("I will be run only if before suite function executes successfully.");
 }
 
-@test:AfterSuite {alwaysRun:true}
-function afterSuiteFunc() {
-	io:println(“I will be run even if the before suite function fails.”);
+@test:AfterSuite { alwaysRun:true }
+function afterSuiteFunc2() {
+	io:println("I will be run even if the before suite function fails.");
 }
 ```
 

@@ -170,7 +170,7 @@ Deep value equality is supported only for `anydata`-typed values according to th
 The `assertExactEquals` function compares two values to assert whether they refer to the same entity (i.e., they are exactly equal). 
 
 
-Example:
+**Example:**
 
 ```ballerina
 import ballerina/test;
@@ -203,7 +203,7 @@ function testAssertObjectNotEquals() {
 
 These two new annotations can now be used when writing tests with the Ballerina test framework.
 
-Example:
+**Example:**
 
 ```ballerina
 import ballerina/io;
@@ -231,7 +231,7 @@ function afterGroupsFunc1() {
 
 You can now specify `alwaysRun : true|false` in the `@AfterSuite` annotation, which enables running the `@AfterSuite` even if the `@BeforeSuite` function fails during the test execution. The default value is `false`.
 
-Example:
+**Example:**
 
 ```ballerina
 Import ballerina/io;
@@ -261,7 +261,7 @@ function afterSuiteFunc() {
 
 Ballerina now supports writing serverless functions using the Azure Functions framework. 
 
-Example:
+**Example:**
 
 ```ballerina
 import ballerina/http;

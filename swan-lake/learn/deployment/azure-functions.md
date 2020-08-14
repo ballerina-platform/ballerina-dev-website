@@ -17,7 +17,7 @@ An Azure Function consists of a trigger and optional bindings. A trigger defines
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina:
 - HTTP [trigger](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#HTTPTrigger) and [output](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#HTTPOutput) binding
-- Queue [trigger](swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#QueueTrigger) and [output](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#QueueOutput) binding
+- Queue [trigger](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#QueueTrigger) and [output](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#QueueOutput) binding
 - Blob [trigger](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#BlobTrigger), [input](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#BlobInput) binding, and [output](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#BlobOutput) binding
 - Twilio SMS [output](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#TwilioSmsOutput) binding
 - CosmosDB [trigger](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBTrigger), [input](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBInput) binding, and [output](/swan-lake/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBOutput) binding

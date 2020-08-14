@@ -66,9 +66,9 @@ public static BString getFullName(ObjectValue objectValue) {
 
 #### Standard Library
 
-##### JDBC
+##### SQL Connectors
 
-Stored procedures can now be executed through SQL connectors. 
+Stored procedures can now be executed through SQL connectors (JDBC & MySQL). 
 
 ```ballerina
 int uid = 10;

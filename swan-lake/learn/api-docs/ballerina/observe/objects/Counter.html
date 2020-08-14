@@ -98,14 +98,18 @@ Ballerina supports Observability out of the box. This module provides user api's
     
     <ul>
         
-        <li>
-            <a data="records" href="../../observe/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../observe/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../observe/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../observe/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -172,7 +176,13 @@ Ballerina supports Observability out of the box. This module provides user api's
             
                 
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> name, <span class="builtin-type">string?</span> desc, <span class="builtin-type">map</span><<span class="builtin-type">string</span>> tags)</p>
+
+    <p>This instantiates the Counter object. Name field is mandatory, and description and tags fields
+are optional and have its own default values when no params are passed.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">string</span> name, <span class="builtin-type">string?</span> desc, <span class="builtin-type">map</span><<span class="builtin-type">string</span>> tags)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -222,7 +232,8 @@ will be used.</p>
     </div>
     <div class="param-details">
         
-        <p>Register the counter metric instance with the Metric Registry.
+        <p>Register the counter metric instance with the Metric Registry.</p>
+
     </div>
 </div>
 
@@ -234,7 +245,8 @@ will be used.</p>
     </div>
     <div class="param-details">
         
-        <p>Unregister the counter metric instance with the Metric Registry.
+        <p>Unregister the counter metric instance with the Metric Registry.</p>
+
     </div>
 </div>
 
@@ -246,7 +258,8 @@ will be used.</p>
     </div>
     <div class="param-details">
         
-        <p>Increment the counter's value by an amount.
+        <p>Increment the counter's value by an amount.</p>
+
     </div>
 </div>
 
@@ -258,7 +271,8 @@ will be used.</p>
     </div>
     <div class="param-details">
         
-        <p>Resets the counter's value to zero.
+        <p>Resets the counter's value to zero.</p>
+
     </div>
 </div>
 
@@ -270,7 +284,8 @@ will be used.</p>
     </div>
     <div class="param-details">
         
-        <p>Retrieves the counter's current value.
+        <p>Retrieves the counter's current value.</p>
+
     </div>
 </div>
 

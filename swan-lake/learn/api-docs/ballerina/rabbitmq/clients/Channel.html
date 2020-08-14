@@ -97,14 +97,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -184,7 +188,13 @@
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a> connectionOrConnectionConfig)</p>
+
+    <p>Initializes a <code>rabbitmq:Channel</code> object with the given <code>rabbitmq:Connection</code> object or connection configuration.
+Creates a <code>rabbitmq:Connection</code> object if only the connection configuration is given.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a> connectionOrConnectionConfig)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -208,19 +218,26 @@
                         <tr>
                             <td class="module-title truncate functions" title="queueDeclare"><a
                                     class="functions" href="#queueDeclare">queueDeclare</a></td>
-                            <td class="module-desc"><p>Declares a non-exclusive, auto-delete, or non-durable queue with the given configurations.</td>
+                            <td class="module-desc"><p>Declares a non-exclusive, auto-delete, or non-durable queue with the given configurations.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="exchangeDeclare"><a
                                     class="functions" href="#exchangeDeclare">exchangeDeclare</a></td>
-                            <td class="module-desc"><p>Declares a non-auto-delete, non-durable exchange with no extra arguments.</td>
+                            <td class="module-desc"><p>Declares a non-auto-delete, non-durable exchange with no extra arguments.
+If the arguments are specified, then the exchange is declared accordingly.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="queueBind"><a
                                     class="functions" href="#queueBind">queueBind</a></td>
-                            <td class="module-desc"><p>Binds a queue to an exchange with the given binding key.</td>
+                            <td class="module-desc"><p>Binds a queue to an exchange with the given binding key.</p>
+
+</td>
                         </tr>
                     
                         <tr>
@@ -232,25 +249,34 @@
                         <tr>
                             <td class="module-title truncate functions" title="queueDelete"><a
                                     class="functions" href="#queueDelete">queueDelete</a></td>
-                            <td class="module-desc"><p>Deletes the queue with the given name although it is in use or has messages in it.</td>
+                            <td class="module-desc"><p>Deletes the queue with the given name although it is in use or has messages in it.
+If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the queue is checked before deleting.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="exchangeDelete"><a
                                     class="functions" href="#exchangeDelete">exchangeDelete</a></td>
-                            <td class="module-desc"><p>Deletes the exchange with the given name.</td>
+                            <td class="module-desc"><p>Deletes the exchange with the given name.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="queuePurge"><a
                                     class="functions" href="#queuePurge">queuePurge</a></td>
-                            <td class="module-desc"><p>Purges the content of the given queue.</td>
+                            <td class="module-desc"><p>Purges the content of the given queue.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="basicGet"><a
                                     class="functions" href="#basicGet">basicGet</a></td>
-                            <td class="module-desc"><p>Retrieves a message synchronously from the given queue providing direct access to the messages in the queue.</td>
+                            <td class="module-desc"><p>Retrieves a message synchronously from the given queue providing direct access to the messages in the queue.</p>
+
+</td>
                         </tr>
                     
                 </table>
@@ -267,7 +293,9 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves the connection, which carries this channel.
+        <p>Retrieves the connection, which carries this channel.</p>
+
+
     </div>
 </div>
 
@@ -279,7 +307,9 @@
     </div>
     <div class="param-details">
         
-        <p>Closes the <code>rabbitmq:Channel</code>.
+        <p>Closes the <code>rabbitmq:Channel</code>.</p>
+
+
     </div>
 </div>
 
@@ -313,7 +343,7 @@
         <span class="method-types">
             <p>(<a href="../../rabbitmq/records/QueueConfiguration.html">QueueConfiguration</a>? queueConfig)</p>
             
-                <b> returns </b><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> | <span class="builtin-type">()</span> 
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a>? 
             
         </span>
     </div>
@@ -352,7 +382,7 @@
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
                 <li><p>The name of the queue if autogenerated, <code>()</code> if the queue was successfully
 generated with the given parameters, or else a <code>rabbitmq:Error</code> if an I/O error is encountered</p>
 </li>

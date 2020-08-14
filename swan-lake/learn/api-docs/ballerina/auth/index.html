@@ -70,14 +70,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../auth/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../auth/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../auth/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../auth/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -171,7 +175,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the inbound Basic Authentication configurations.
+                            <p>Represents the inbound Basic Authentication configurations.</p>
+
                         </td>
                     </tr>
                     
@@ -183,7 +188,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the Basic Authentication configurations, which are used by the HTTP endpoint.
+                            <p>Represents the Basic Authentication configurations, which are used by the HTTP endpoint.</p>
+
                         </td>
                     </tr>
                     
@@ -195,7 +201,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the <code>auth:InvocationContext</code>.
+                            <p>Represents the <code>auth:InvocationContext</code>.</p>
+
                         </td>
                     </tr>
                     
@@ -236,7 +243,9 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                         <td class="module-desc">
                             
                             <p>Represents the configuration file based inbound Basic Auth provider, which is an implementation of the
-<code>auth:InboundAuthProvider</code> interface.
+<code>auth:InboundAuthProvider</code> interface.</p>
+
+<p>A user is denoted by a section in the Ballerina configuration file.
                         </td>
                     </tr>
                     
@@ -261,6 +270,9 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                         <td class="module-desc">
                             
                             <p>Represents the outbound Basic Auth authenticator, which is an implementation of the <code>auth:OutboundAuthProvider</code> interface.
+This uses the usernames and passwords provided by the Ballerina configurations to authenticate external endpoints.</p>
+
+
                         </td>
                     </tr>
                     
@@ -291,7 +303,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Checks whether the scopes of the user match the scopes of the resource.
+                    <p>Checks whether the scopes of the user match the scopes of the resource.</p>
+
                 </td>
             </tr>
             
@@ -301,7 +314,9 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Extracts the username and the password from the base64-encoded <code>username:password</code> value.
+                    <p>Extracts the username and the password from the base64-encoded <code>username:password</code> value.</p>
+
+
                 </td>
             </tr>
             
@@ -311,7 +326,9 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the <code>auth:InvocationContext</code> instance.
+                    <p>Returns the <code>auth:InvocationContext</code> instance.</p>
+
+
                 </td>
             </tr>
             
@@ -321,7 +338,9 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Sets the authentication-related values to the invocation context.
+                    <p>Sets the authentication-related values to the invocation context.</p>
+
+
                 </td>
             </tr>
             
@@ -346,7 +365,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Default charset to be used with password hashing.
+                    <p>Default charset to be used with password hashing.</p>
+
                 </td>
             </tr>
             
@@ -356,7 +376,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote special configuration values.
+                    <p>Prefix used to denote special configuration values.</p>
+
                 </td>
             </tr>
             
@@ -366,7 +387,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote that the config value is a SHA-256 hash.
+                    <p>Prefix used to denote that the config value is a SHA-256 hash.</p>
+
                 </td>
             </tr>
             
@@ -376,7 +398,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote that the config value is a SHA-384 hash.
+                    <p>Prefix used to denote that the config value is a SHA-384 hash.</p>
+
                 </td>
             </tr>
             
@@ -386,7 +409,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote that the config value is a SHA-512 hash.
+                    <p>Prefix used to denote that the config value is a SHA-512 hash.</p>
+
                 </td>
             </tr>
             
@@ -396,7 +420,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote Basic Authentication scheme.
+                    <p>Prefix used to denote Basic Authentication scheme.</p>
+
                 </td>
             </tr>
             
@@ -406,7 +431,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>The prefix used to denote the Bearer Authentication scheme.
+                    <p>The prefix used to denote the Bearer Authentication scheme.</p>
+
                 </td>
             </tr>
             
@@ -433,7 +459,8 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the Auth module related error.
+                    <p>Represents the Auth module related error.</p>
+
                 </td>
             </tr>
             

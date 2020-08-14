@@ -77,10 +77,6 @@
                         
     
         <li >
-            <a href="T20.html" onclick="menuLinkClick()">T20</a>
-        </li>
-    
-        <li >
             <a href="ClientConfiguration.html" onclick="menuLinkClick()">ClientConfiguration</a>
         </li>
     
@@ -145,14 +141,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -275,7 +275,7 @@
         <ul>
             <li> <span >certFile</span>
                 <span class="type">  <span class="builtin-type">string</span></span>
-                
+                 <span class="default">(default "")</span> 
             </li>
             <li>
                 <p>
@@ -291,7 +291,7 @@
         <ul>
             <li> <span >keyFile</span>
                 <span class="type">  <span class="builtin-type">string</span></span>
-                
+                 <span class="default">(default "")</span> 
             </li>
             <li>
                 <p>
@@ -307,7 +307,7 @@
         <ul>
             <li> <span >keyPassword</span>
                 <span class="type">  <span class="builtin-type">string</span></span>
-                
+                 <span class="default">(default "")</span> 
             </li>
             <li>
                 <p>
@@ -323,7 +323,7 @@
         <ul>
             <li> <span >trustedCertFile</span>
                 <span class="type">  <span class="builtin-type">string</span></span>
-                
+                 <span class="default">(default "")</span> 
             </li>
             <li>
                 <p>
@@ -388,7 +388,7 @@ TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA)</p>
         <ul>
             <li> <span >sslVerifyClient</span>
                 <span class="type">  <span class="builtin-type">string</span></span>
-                
+                 <span class="default">(default "")</span> 
             </li>
             <li>
                 <p>
@@ -435,7 +435,7 @@ TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA)</p>
     <div class="params-listing">
         <ul>
             <li> <span >handshakeTimeoutInSeconds</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -451,7 +451,7 @@ TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA)</p>
     <div class="params-listing">
         <ul>
             <li> <span >sessionTimeoutInSeconds</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>

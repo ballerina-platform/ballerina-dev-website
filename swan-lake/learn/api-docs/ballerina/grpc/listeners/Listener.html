@@ -93,14 +93,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -185,7 +189,12 @@ service through this listener.</p>
         
             
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">int</span> port, <a href="../../grpc/records/ListenerConfiguration.html">ListenerConfiguration</a>? config)</p>
+
+    <p>Gets called when the endpoint is being initialized during the module init time.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">int</span> port, <a href="../../grpc/records/ListenerConfiguration.html">ListenerConfiguration</a>? config)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -235,7 +244,9 @@ service through this listener.</p>
     </div>
     <div class="param-details">
         
-        <p>Stops the registered service.
+        <p>Stops the registered service.</p>
+
+
     </div>
 </div>
 
@@ -266,7 +277,9 @@ service through this listener.</p>
     </div>
     <div class="param-details">
         
-        <p>Starts the registered service.
+        <p>Starts the registered service.</p>
+
+
     </div>
 </div>
 
@@ -278,7 +291,9 @@ service through this listener.</p>
     </div>
     <div class="param-details">
         
-        <p>Gets called every time a service attaches itself to this endpoint - also happens at module init time.
+        <p>Gets called every time a service attaches itself to this endpoint - also happens at module init time.</p>
+
+
     </div>
 </div>
 

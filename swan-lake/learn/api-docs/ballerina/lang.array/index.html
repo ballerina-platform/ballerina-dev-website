@@ -70,14 +70,10 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../lang.array/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../lang.array/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
         
         
         
@@ -159,7 +155,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a new array consisting of index and member pairs.
+                    <p>Returns a new array consisting of index and member pairs.</p>
+
                 </td>
             </tr>
             
@@ -169,7 +166,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Selects the members from an array for which a function returns true.
+                    <p>Selects the members from an array for which a function returns true.</p>
+
                 </td>
             </tr>
             
@@ -180,6 +178,8 @@
                 <td class="module-desc">
                     
                     <p>Applies a function to each member of an array.
+The parameter <code>func</code> is applied to each member of array <code>arr</code> in order.</p>
+
                 </td>
             </tr>
             
@@ -190,6 +190,9 @@
                 <td class="module-desc">
                     
                     <p>Returns the byte array that a string represents in Base16.
+<code>str</code> must consist of the characters <code>0..9</code>, <code>A..F</code>, <code>a..f</code>
+and whitespace as allowed by a Ballerina Base16Literal.</p>
+
                 </td>
             </tr>
             
@@ -200,6 +203,9 @@
                 <td class="module-desc">
                     
                     <p>Returns the byte array that a string represents in Base64.
+<code>str</code> must consist of the characters <code>A..Z</code>, <code>a..z</code>, <code>0..9</code>, <code>+</code>, <code>/</code>, <code>=</code>
+and whitespace as allowed by a Ballerina Base64Literal.</p>
+
                 </td>
             </tr>
             
@@ -210,6 +216,9 @@
                 <td class="module-desc">
                     
                     <p>Returns the index of first member of <code>arr</code> that is equal to <code>val</code> if there is one.
+Returns <code>()</code> if not found.
+Equality is tested using <code>==</code>.</p>
+
                 </td>
             </tr>
             
@@ -219,7 +228,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns an iterator over an array.
+                    <p>Returns an iterator over an array.</p>
+
                 </td>
             </tr>
             
@@ -230,6 +240,9 @@
                 <td class="module-desc">
                     
                     <p>Returns the index of last member of <code>arr</code> that is equal to <code>val</code> if there is one.
+Returns <code>()</code> if not found.
+Equality is tested using <code>==</code>.</p>
+
                 </td>
             </tr>
             
@@ -239,7 +252,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the number of members of an array.
+                    <p>Returns the number of members of an array.</p>
+
                 </td>
             </tr>
             
@@ -249,7 +263,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Applies a function to each member of an array and returns an array of the results.
+                    <p>Applies a function to each member of an array and returns an array of the results.</p>
+
                 </td>
             </tr>
             
@@ -260,6 +275,8 @@
                 <td class="module-desc">
                     
                     <p>Removes and returns the last member of an array.
+The array must not be empty.</p>
+
                 </td>
             </tr>
             
@@ -269,7 +286,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Adds values to the end of an array.
+                    <p>Adds values to the end of an array.</p>
+
                 </td>
             </tr>
             
@@ -280,6 +298,9 @@
                 <td class="module-desc">
                     
                     <p>Combines the members of an array using a combining function.
+The combining function takes the combined value so far and a member of the array,
+and returns a new combined value.</p>
+
                 </td>
             </tr>
             
@@ -289,7 +310,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Removes a member of an array.
+                    <p>Removes a member of an array.</p>
+
                 </td>
             </tr>
             
@@ -299,7 +321,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Removes all members of an array.
+                    <p>Removes all members of an array.</p>
+
                 </td>
             </tr>
             
@@ -309,7 +332,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Reverses the order of the members of an array.
+                    <p>Reverses the order of the members of an array.</p>
+
                 </td>
             </tr>
             
@@ -319,7 +343,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Changes the length of an array.
+                    <p>Changes the length of an array.</p>
+
                 </td>
             </tr>
             
@@ -330,6 +355,8 @@
                 <td class="module-desc">
                     
                     <p>Removes and returns first member of an array.
+The array must not be empty.</p>
+
                 </td>
             </tr>
             
@@ -339,7 +366,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a subarray starting from <code>startIndex</code> (inclusive) to <code>endIndex</code> (exclusive).
+                    <p>Returns a subarray starting from <code>startIndex</code> (inclusive) to <code>endIndex</code> (exclusive).</p>
+
                 </td>
             </tr>
             
@@ -350,6 +378,9 @@
                 <td class="module-desc">
                     
                     <p>Sorts an array using a comparator function.
+The comparator function must return a value less than, equal to or greater than zero
+according as its first argument is to be ordered before, equal to or after its second argument.</p>
+
                 </td>
             </tr>
             
@@ -360,6 +391,10 @@
                 <td class="module-desc">
                     
                     <p>Returns the string that is the Base16 representation of an array of bytes.
+The representation is the same as used by a Ballerina Base16Literal.
+The result will contain only characters  <code>0..9</code>, <code>a..f</code>.
+There will be no whitespace in the returned string.</p>
+
                 </td>
             </tr>
             
@@ -370,6 +405,10 @@
                 <td class="module-desc">
                     
                     <p>Returns the string that is the Base64 representation of an array of bytes.
+The representation is the same as used by a Ballerina Base64Literal.
+The result will contain only characters  <code>A..Z</code>, <code>a..z</code>, <code>0..9</code>, <code>+</code>, <code>/</code> and <code>=</code>.
+There will be no whitespace in the returned string.</p>
+
                 </td>
             </tr>
             
@@ -379,7 +418,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a stream from the given array.
+                    <p>Returns a stream from the given array.</p>
+
                 </td>
             </tr>
             
@@ -390,6 +430,9 @@
                 <td class="module-desc">
                     
                     <p>Adds values to the start of an array.
+The values newly added to the array will be in the same order
+as they are in <code>vals</code>.</p>
+
                 </td>
             </tr>
             

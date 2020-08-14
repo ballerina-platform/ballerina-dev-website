@@ -102,14 +102,18 @@ below functionalities.
     
     <ul>
         
-        <li>
-            <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -190,7 +194,12 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../nats/objects/Connection.html">Connection</a> connection, <span class="builtin-type">string?</span> clientId, <span class="builtin-type">string</span> clusterId, <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>? streamingConfig)</p>
+
+    <p>Creates a new <code>nats:StreamingProducer</code> instance.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../nats/objects/Connection.html">Connection</a> connection, <span class="builtin-type">string?</span> clientId, <span class="builtin-type">string</span> clusterId, <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>? streamingConfig)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -205,7 +214,7 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
     
         <div class="params-listing">
             <ul>
-                <li> <b>clientId</b><span class="type">  <span class="builtin-type">string?</span></span> &lt;string?&gt; ()</li>
+                <li> <b>clientId</b><span class="type">  <span class="builtin-type">string?</span></span> ()</li>
                 <li>
                     <p>A unique identifier of the client</p>
 
@@ -225,7 +234,7 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
     
         <div class="params-listing">
             <ul>
-                <li> <b>streamingConfig</b><span class="type">  <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>?</span> &lt;ballerina/nats:1.0.0:StreamingConfig?&gt; ()</li>
+                <li> <b>streamingConfig</b><span class="type">  <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>?</span> ()</li>
                 <li>
                     <p>The configuration related to the NATS streaming connectivity</p>
 
@@ -244,7 +253,9 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
                         <tr>
                             <td class="module-title truncate functions" title="publish"><a
                                     class="functions" href="#publish">publish</a></td>
-                            <td class="module-desc"><p>Publishes data to a given subject.</td>
+                            <td class="module-desc"><p>Publishes data to a given subject.
+<code>ballerina string|error result = producer-&gt;publish(subject, &lt;@untainted&gt;message);</code></p>
+</td>
                         </tr>
                     
                 </table>
@@ -261,7 +272,8 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
     </div>
     <div class="param-details">
         
-        <p>Close the producer.
+        <p>Close the producer.</p>
+
     </div>
 </div>
 

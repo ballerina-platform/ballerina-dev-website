@@ -70,14 +70,10 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../lang.xml/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../lang.xml/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
         
         
         
@@ -164,6 +160,8 @@
                 <td class="module-desc">
                     
                     <p>Returns the children of elements in an xml value.
+When <code>x</code> is of type Element, it is equivalent to <code>getChildren</code>.</p>
+
                 </td>
             </tr>
             
@@ -173,7 +171,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Concatenates xml and string values.
+                    <p>Concatenates xml and string values.</p>
+
                 </td>
             </tr>
             
@@ -183,7 +182,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constructs an xml sequence consisting of only a comment item.
+                    <p>Constructs an xml sequence consisting of only a comment item.</p>
+
                 </td>
             </tr>
             
@@ -193,7 +193,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constructs an xml sequence consisting of only a new element item.
+                    <p>Constructs an xml sequence consisting of only a new element item.</p>
+
                 </td>
             </tr>
             
@@ -203,7 +204,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constructs an xml sequence consisting of only a processing instruction item.
+                    <p>Constructs an xml sequence consisting of only a processing instruction item.</p>
+
                 </td>
             </tr>
             
@@ -225,6 +227,9 @@
                 <td class="module-desc">
                     
                     <p>Selects elements from an xml value.
+If <code>nm</code> is <code>()</code>, selects all elements;
+otherwise, selects only elements whose expanded name is <code>nm</code>.</p>
+
                 </td>
             </tr>
             
@@ -235,6 +240,8 @@
                 <td class="module-desc">
                     
                     <p>Selects the items from an xml sequence for which a function returns true.
+Each item is represented as a singleton value.</p>
+
                 </td>
             </tr>
             
@@ -245,6 +252,8 @@
                 <td class="module-desc">
                     
                     <p>Applies a function to each item in an xml sequence.
+Each item is represented as a singleton value.</p>
+
                 </td>
             </tr>
             
@@ -255,6 +264,9 @@
                 <td class="module-desc">
                     
                     <p>Constructs an xml value from a string.
+This parses the string using the <code>content</code> production of the
+XML 1.0 Recommendation.</p>
+
                 </td>
             </tr>
             
@@ -265,6 +277,9 @@
                 <td class="module-desc">
                     
                     <p>Returns the item of <code>x</code> with index <code>i</code>.
+This differs from <code>x[i]</code> in that it panics if
+<code>x</code> does not have an item with index <code>i</code>.</p>
+
                 </td>
             </tr>
             
@@ -275,6 +290,9 @@
                 <td class="module-desc">
                     
                     <p>Returns the map representing the attributes of <code>elem</code>.
+This includes namespace attributes.
+The keys in the map are the expanded names of the attributes.</p>
+
                 </td>
             </tr>
             
@@ -284,7 +302,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the children of <code>elem</code>.
+                    <p>Returns the children of <code>elem</code>.</p>
+
                 </td>
             </tr>
             
@@ -294,7 +313,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the content of a text or processing instruction or comment item.
+                    <p>Returns the content of a text or processing instruction or comment item.</p>
+
                 </td>
             </tr>
             
@@ -304,7 +324,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a string giving the expanded name of <code>elem</code>.
+                    <p>Returns a string giving the expanded name of <code>elem</code>.</p>
+
                 </td>
             </tr>
             
@@ -314,7 +335,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the target part of the processing instruction.
+                    <p>Returns the target part of the processing instruction.</p>
+
                 </td>
             </tr>
             
@@ -335,7 +357,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns number of xml items in <code>x</code>.
+                    <p>Returns number of xml items in <code>x</code>.</p>
+
                 </td>
             </tr>
             
@@ -346,6 +369,8 @@
                 <td class="module-desc">
                     
                     <p>Applies a function to each item in an xml sequence, and returns an xml sequence of the results.
+Each item is represented as a singleton value.</p>
+
                 </td>
             </tr>
             
@@ -356,6 +381,9 @@
                 <td class="module-desc">
                     
                     <p>Sets the children of <code>elem</code> to <code>children</code>.
+This panics if it would result in the element structure
+becoming cyclic.</p>
+
                 </td>
             </tr>
             
@@ -365,7 +393,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Change the name of element <code>elem</code> to <code>xName</code>.
+                    <p>Change the name of element <code>elem</code> to <code>xName</code>.</p>
+
                 </td>
             </tr>
             
@@ -375,7 +404,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a subsequence of an xml value.
+                    <p>Returns a subsequence of an xml value.</p>
+
                 </td>
             </tr>
             
@@ -386,6 +416,9 @@
                 <td class="module-desc">
                     
                     <p>Strips the insignificant parts of the an xml value.
+Comment items, processing instruction items are considered insignificant.
+After removal of comments and processing instructions, the text is grouped into
+the biggest possible chunks (i.e.
                 </td>
             </tr>
             
@@ -410,7 +443,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>The namespace URI bound to the <code>xml</code> prefix.
+                    <p>The namespace URI bound to the <code>xml</code> prefix.</p>
+
                 </td>
             </tr>
             
@@ -420,7 +454,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>The namespace URI bound to the <code>xmlns</code> prefix.
+                    <p>The namespace URI bound to the <code>xmlns</code> prefix.</p>
+
                 </td>
             </tr>
             
@@ -430,7 +465,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>The expanded name of the <code>xml:space</code> attribute.
+                    <p>The expanded name of the <code>xml:space</code> attribute.</p>
+
                 </td>
             </tr>
             
@@ -440,7 +476,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>The expanded name of the <code>xml:lang</code> attribute.
+                    <p>The expanded name of the <code>xml:lang</code> attribute.</p>
+
                 </td>
             </tr>
             
@@ -450,7 +487,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>The expanded name of the <code>xml:base</code> attribute.
+                    <p>The expanded name of the <code>xml:base</code> attribute.</p>
+
                 </td>
             </tr>
             

@@ -12,7 +12,7 @@ below functionalities.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,nats">
 
-    <title>API Docs - ballerina/nats</title>
+    <title>API Docs - ballerinax/nats</title>
     <script src="../html-template-resources/jquery.min.js"></script>
 
     <!-- BIO THEME START -->
@@ -71,14 +71,18 @@ below functionalities.
     
     <ul>
         
-        <li>
-            <a data="records" href="../nats/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../nats/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -308,7 +312,8 @@ nats:Connection connection = new(&quot;tls://localhost:4222&quot;, config = conf
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations related to creating a NATS streaming subscription.
+                            <p>Configurations related to creating a NATS streaming subscription.</p>
+
                         </td>
                     </tr>
                     
@@ -322,6 +327,8 @@ nats:Connection connection = new(&quot;tls://localhost:4222&quot;, config = conf
                             
                             <p>The configurations to set limits on the maximum number of messages or maximum size of messages this consumer will
 hold before it starts to drop new messages waiting for the resource functions to drain the queue.
+Setting a value less than or equal to 0 will disable this check.</p>
+
                         </td>
                     </tr>
                     
@@ -333,7 +340,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations related to facilitating a secure communication with a remote HTTP endpoint.
+                            <p>Configurations related to facilitating a secure communication with a remote HTTP endpoint.</p>
+
                         </td>
                     </tr>
                     
@@ -345,7 +353,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configuration related to establishing a streaming connection.
+                            <p>Configuration related to establishing a streaming connection.</p>
+
                         </td>
                     </tr>
                     
@@ -357,7 +366,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                         </td>
                         <td class="module-desc">
                             
-                            <p>The configurations for the NATS streaming subscription.
+                            <p>The configurations for the NATS streaming subscription.</p>
+
                         </td>
                     </tr>
                     
@@ -369,7 +379,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                         </td>
                         <td class="module-desc">
                             
-                            <p>The configurations for the NATS basic subscription.
+                            <p>The configurations for the NATS basic subscription.</p>
+
                         </td>
                     </tr>
                     
@@ -397,7 +408,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a single network connection to the NATS server.
+                            <p>Represents a single network connection to the NATS server.</p>
+
                         </td>
                     </tr>
                     
@@ -409,7 +421,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the message, which a NATS server sends to its subscribed services.
+                            <p>Represents the message, which a NATS server sends to its subscribed services.</p>
+
                         </td>
                     </tr>
                     
@@ -436,6 +449,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                 <td class="module-desc">
                     
                     <p>The producer provides the capability to publish messages to the NATS server.
+The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be initialized.</p>
+
                 </td>
             </tr>
             
@@ -445,7 +460,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the message a NATS Streaming Server sends to its subscribed services.
+                    <p>Represents the message a NATS Streaming Server sends to its subscribed services.</p>
+
                 </td>
             </tr>
             
@@ -456,6 +472,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                 <td class="module-desc">
                     
                     <p>The streaming producer provides the capability to publish messages to the NATS streaming server.
+The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> to be initialized.</p>
+
                 </td>
             </tr>
             
@@ -480,7 +498,8 @@ hold before it starts to drop new messages waiting for the resource functions to
                 <td class="module-desc">
                     
                     <p>Represents the NATS server connection to which a subscription service should be bound in order to
-receive messages of the corresponding subscription.
+receive messages of the corresponding subscription.</p>
+
                 </td>
             </tr>
             
@@ -491,7 +510,8 @@ receive messages of the corresponding subscription.
                 <td class="module-desc">
                     
                     <p>Represents the NATS streaming server connection to which a subscription service should be bound in order to
-receive messages of the corresponding subscription.
+receive messages of the corresponding subscription.</p>
+
                 </td>
             </tr>
             
@@ -519,7 +539,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Default URL for NATS connections.
+                    <p>Default URL for NATS connections.</p>
+
                 </td>
             </tr>
             
@@ -529,7 +550,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Specifies that message delivery should start with the messages, which are published after the subscription is created.
+                    <p>Specifies that message delivery should start with the messages, which are published after the subscription is created.</p>
+
                 </td>
             </tr>
             
@@ -539,7 +561,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Specifies that message delivery should start with the last (most recent) message stored for this subject.
+                    <p>Specifies that message delivery should start with the last (most recent) message stored for this subject.</p>
+
                 </td>
             </tr>
             
@@ -549,7 +572,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Specifies that message delivery should begin with the oldest available message for this subject.
+                    <p>Specifies that message delivery should begin with the oldest available message for this subject.</p>
+
                 </td>
             </tr>
             
@@ -559,7 +583,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>The key for the <code>TimeDeltaStart</code> type.
+                    <p>The key for the <code>TimeDeltaStart</code> type.</p>
+
                 </td>
             </tr>
             
@@ -569,7 +594,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>The key for the <code>SequenceNumber</code> type.
+                    <p>The key for the <code>SequenceNumber</code> type.</p>
+
                 </td>
             </tr>
             
@@ -594,7 +620,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>The annotation, which is used to configure the streaming subscription.
+                    <p>The annotation, which is used to configure the streaming subscription.</p>
+
                 </td>
             </tr>
             
@@ -604,7 +631,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>The annotation, which is used to configure the basic subscription.
+                    <p>The annotation, which is used to configure the basic subscription.</p>
+
                 </td>
             </tr>
             
@@ -628,7 +656,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Data types supported when publishing and consuming messages.
+                    <p>Data types supported when publishing and consuming messages.</p>
+
                 </td>
             </tr>
             
@@ -638,7 +667,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>The union of the NATS module related errors.
+                    <p>The union of the NATS module related errors.</p>
+
                 </td>
             </tr>
             
@@ -648,7 +678,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Specifies that message delivery should start at the given sequence number.
+                    <p>Specifies that message delivery should start at the given sequence number.</p>
+
                 </td>
             </tr>
             
@@ -658,7 +689,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Specifies the position to start receiving messages.
+                    <p>Specifies the position to start receiving messages.</p>
+
                 </td>
             </tr>
             
@@ -668,7 +700,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Specifies that message delivery should start with a given historical time delta (from now).
+                    <p>Specifies that message delivery should start with a given historical time delta (from now).</p>
+
                 </td>
             </tr>
             
@@ -692,7 +725,8 @@ receive messages of the corresponding subscription.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the NATS module related errors.
+                    <p>Represents the NATS module related errors.</p>
+
                 </td>
             </tr>
             

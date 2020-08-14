@@ -209,7 +209,9 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the absolute path from the provided location.
+                                <p>Retrieves the absolute path from the provided location.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -219,7 +221,9 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Joins any number of path elements into a single path.
+                                <p>Joins any number of path elements into a single path.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -230,6 +234,10 @@
                             <div class="function-desc">
                                 
                                 <p>Retrieves the extension of the file path.
+The extension is the suffix beginning at the final dot in the final element of the path.
+It is empty if there is no dot.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -241,6 +249,9 @@
                                 
                                 <p>Retrieves the base name of the file from the provided location,
 which is the last element of the path.
+Trailing path separators are removed before extracting the last element.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -250,7 +261,9 @@ which is the last element of the path.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the path variable's separating character for paths of the underlying operating system.
+                                <p>Returns the path variable's separating character for paths of the underlying operating system.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -260,7 +273,9 @@ which is the last element of the path.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the path separator of the underlying operating system.
+                                <p>Returns the path separator of the underlying operating system.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -271,6 +286,11 @@ which is the last element of the path.
                             <div class="function-desc">
                                 
                                 <p>Reports whether the path is absolute.
+A path is absolute if it is independent of the current directory.
+On Unix, a path is absolute if it starts with the root.
+On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -281,6 +301,9 @@ which is the last element of the path.
                             <div class="function-desc">
                                 
                                 <p>Reports whether the filename is reserved.
+Reserved words only exist in Windows.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -291,6 +314,9 @@ which is the last element of the path.
                             <div class="function-desc">
                                 
                                 <p>Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
+An error is returned if the pattern is malformed.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -301,6 +327,11 @@ which is the last element of the path.
                             <div class="function-desc">
                                 
                                 <p>Returns the shortest path name equivalent to the given path.
+Replace the multiple separator elements with a single one.
+Eliminate each &quot;.&quot; path name element (the current directory).
+Eliminate each inner &quot;..&quot; path name element (the parent directory).</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -311,6 +342,10 @@ which is the last element of the path.
                             <div class="function-desc">
                                 
                                 <p>Returns the enclosing parent directory.
+If the path is empty, parent returns &quot;.&quot;.
+The returned path does not end in a separator unless it is the root directory.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -322,6 +357,9 @@ which is the last element of the path.
                                 
                                 <p>Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
 intervening separator.
+An error is returned if the target path cannot be made relative to the base path.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -332,6 +370,11 @@ intervening separator.
                             <div class="function-desc">
                                 
                                 <p>Returns the filepath after the evaluation of any symbolic links.
+If the path is relative, the result will be relative to the current directory
+unless one of the components is an absolute symbolic link.
+Resolves normalising the calls on the result.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -341,7 +384,9 @@ intervening separator.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Splits a list of paths joined by the OS-specific path separator.
+                                <p>Splits a list of paths joined by the OS-specific path separator.</p>
+
+
                             </div>
                         </td>
                     </tr>

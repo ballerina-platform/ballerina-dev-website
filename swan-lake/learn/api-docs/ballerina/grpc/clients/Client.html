@@ -101,14 +101,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -193,7 +197,13 @@ provides includes functions to send request/error messages.</p>
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../grpc/records/ClientConfiguration.html">ClientConfiguration</a>? config)</p>
+
+    <p>Gets invoked to initialize the endpoint. During initialization, the configurations provided through the <code>config</code>
+record are used for the endpoint initialization.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../grpc/records/ClientConfiguration.html">ClientConfiguration</a>? config)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -229,19 +239,25 @@ provides includes functions to send request/error messages.</p>
                         <tr>
                             <td class="module-title truncate functions" title="blockingExecute"><a
                                     class="functions" href="#blockingExecute">blockingExecute</a></td>
-                            <td class="module-desc"><p>Calls when executing a blocking call with a gRPC service.</td>
+                            <td class="module-desc"><p>Calls when executing a blocking call with a gRPC service.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="nonBlockingExecute"><a
                                     class="functions" href="#nonBlockingExecute">nonBlockingExecute</a></td>
-                            <td class="module-desc"><p>Calls when executing a non-blocking call with a gRPC service.</td>
+                            <td class="module-desc"><p>Calls when executing a non-blocking call with a gRPC service.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="streamingExecute"><a
                                     class="functions" href="#streamingExecute">streamingExecute</a></td>
-                            <td class="module-desc"><p>Calls when executing  a streaming call with a gRPC service.</td>
+                            <td class="module-desc"><p>Calls when executing  a streaming call with a gRPC service.</p>
+
+</td>
                         </tr>
                     
                 </table>
@@ -258,7 +274,9 @@ provides includes functions to send request/error messages.</p>
     </div>
     <div class="param-details">
         
-        <p>Calls when initializing the client endpoint with the service descriptor data extracted from the proto file.
+        <p>Calls when initializing the client endpoint with the service descriptor data extracted from the proto file.</p>
+
+
     </div>
 </div>
 

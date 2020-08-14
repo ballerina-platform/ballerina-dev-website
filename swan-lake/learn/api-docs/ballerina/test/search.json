@@ -7,66 +7,6 @@
   ],
   "objects": [
     {
-      "id": "T10",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T11",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T12",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T13",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T14",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T15",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T16",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T17",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T18",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T19",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T20",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T9",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
       "id": "FunctionStub",
       "description": "\u003cp\u003eRepresents an object that allows stubbing function invocations\u003c/p\u003e\n",
       "moduleId": "test"
@@ -99,6 +39,11 @@
       "moduleId": "test"
     },
     {
+      "id": "assertExactEquals",
+      "description": "\u003cp\u003eAsserts whether the given values are exactly equal.\u003c/p\u003e",
+      "moduleId": "test"
+    },
+    {
       "id": "assertFail",
       "description": "\u003cp\u003eAssert failure is triggered based on user discretion.\u003c/p\u003e",
       "moduleId": "test"
@@ -111,6 +56,11 @@
     {
       "id": "assertNotEquals",
       "description": "\u003cp\u003eAsserts whether the given values are not equal.\u003c/p\u003e",
+      "moduleId": "test"
+    },
+    {
+      "id": "assertNotExactEquals",
+      "description": "\u003cp\u003eAsserts whether the given values are not exactly equal.\u003c/p\u003e",
       "moduleId": "test"
     },
     {
@@ -139,32 +89,27 @@
       "moduleId": "test"
     },
     {
-      "id": "startServiceSkeleton",
-      "description": "\u003cp\u003eStart a service skeleton from a given OpenApi definition in the given ballerina module.\u003c/p\u003e",
-      "moduleId": "test"
-    },
-    {
-      "id": "startServices",
-      "description": "\u003cp\u003eStarts all the services defined in the module specified in the \u0027moduleName\u0027 argument.\u003c/p\u003e",
-      "moduleId": "test"
-    },
-    {
-      "id": "stopServiceSkeleton",
-      "description": "\u003cp\u003eStop a service skeleton and cleanup created directories of a given ballerina module.\u003c/p\u003e",
-      "moduleId": "test"
-    },
-    {
-      "id": "stopServices",
-      "description": "\u003cp\u003eStops all the services defined in the module specified in the \u0027moduleName\u0027 argument.\u003c/p\u003e",
-      "moduleId": "test"
-    },
-    {
       "id": "when",
       "description": "\u003cp\u003eObjects and functions related to function mocking\nAllows a function to stub.\u003c/p\u003e",
       "moduleId": "test"
     }
   ],
   "records": [
+    {
+      "id": "AfterGroupsConfig",
+      "description": "",
+      "moduleId": "test"
+    },
+    {
+      "id": "AfterSuiteConfig",
+      "description": "",
+      "moduleId": "test"
+    },
+    {
+      "id": "BeforeGroupsConfig",
+      "description": "",
+      "moduleId": "test"
+    },
     {
       "id": "MockConfig",
       "description": "\u003cp\u003eConfiguration of the function to be mocked.\u003c/p\u003e",
@@ -251,6 +196,11 @@
       "moduleId": "test"
     },
     {
+      "id": "AfterGroups",
+      "description": "\u003cp\u003eIdentifies afterGroup function.\u003c/p\u003e",
+      "moduleId": "test"
+    },
+    {
       "id": "AfterSuite",
       "description": "\u003cp\u003eIdentifies afterSuite function.\u003c/p\u003e",
       "moduleId": "test"
@@ -258,6 +208,11 @@
     {
       "id": "BeforeEach",
       "description": "\u003cp\u003eIdentifies beforeTest function.\u003c/p\u003e",
+      "moduleId": "test"
+    },
+    {
+      "id": "BeforeGroups",
+      "description": "\u003cp\u003eIdentifies beforeGroup function.\u003c/p\u003e",
       "moduleId": "test"
     },
     {

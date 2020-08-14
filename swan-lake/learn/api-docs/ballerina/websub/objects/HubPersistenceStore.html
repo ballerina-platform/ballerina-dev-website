@@ -105,14 +105,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -210,7 +214,7 @@
     </div>
     <div class="param-details">
         
-        <p>Adds or updates subscription details.
+        
     </div>
 </div>
 
@@ -222,7 +226,7 @@
     </div>
     <div class="param-details">
         
-        <p>Removes subscription details.
+        
     </div>
 </div>
 
@@ -234,7 +238,7 @@
     </div>
     <div class="param-details">
         
-        <p>Function to add a topic.
+        
     </div>
 </div>
 
@@ -246,7 +250,7 @@
     </div>
     <div class="param-details">
         
-        <p>Function to remove a topic.
+        
     </div>
 </div>
 
@@ -258,7 +262,7 @@
     </div>
     <div class="param-details">
         
-        <p>Function to retrieve subscription details of all subscribers.
+        
     </div>
 </div>
 
@@ -270,7 +274,7 @@
     </div>
     <div class="param-details">
         
-        <p>Function to retrieve all registered topics.
+        
     </div>
 </div>
 
@@ -298,10 +302,7 @@
     </div>
     <div class="function-desc">
         
-        <p>Adds or updates subscription details.</p>
-<pre><code class="language-ballerina"> error? result = hubPersistenceStore.addSubscription(subscriptionDetails);
-</code></pre>
-
+        
     </div>
     
         <div class="data-wrapper">
@@ -317,8 +318,7 @@
                     <li>
                         <p>
                             
-                            <p>The details of the subscription to add or update</p>
-
+                            
                         </p>
                     </li>
                 </ul>
@@ -332,8 +332,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>An <code>error</code> if an error occurred while adding the subscription or else <code>()</code> otherwise</p>
-</li>
+                <li></li>
             </ul>
         </div>
         
@@ -355,10 +354,7 @@
     </div>
     <div class="function-desc">
         
-        <p>Removes subscription details.</p>
-<pre><code class="language-ballerina"> error? result = hubPersistenceStore.removeSubscription(subscriptionDetails);
-</code></pre>
-
+        
     </div>
     
         <div class="data-wrapper">
@@ -374,8 +370,7 @@
                     <li>
                         <p>
                             
-                            <p>The details of the subscription to remove</p>
-
+                            
                         </p>
                     </li>
                 </ul>
@@ -389,8 +384,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>An <code>error</code> if an error occurred while removing the subscription or else <code>()</code> otherwise</p>
-</li>
+                <li></li>
             </ul>
         </div>
         
@@ -412,10 +406,7 @@
     </div>
     <div class="function-desc">
         
-        <p>Function to add a topic.</p>
-<pre><code class="language-ballerina"> error? result = hubPersistenceStore.addTopic(&quot;topic&quot;);
-</code></pre>
-
+        
     </div>
     
         <div class="data-wrapper">
@@ -431,8 +422,7 @@
                     <li>
                         <p>
                             
-                            <p>The topic to add</p>
-
+                            
                         </p>
                     </li>
                 </ul>
@@ -446,8 +436,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>An <code>error</code> if an error occurred while adding the topic or else <code>()</code> otherwise</p>
-</li>
+                <li></li>
             </ul>
         </div>
         
@@ -469,10 +458,7 @@
     </div>
     <div class="function-desc">
         
-        <p>Function to remove a topic.</p>
-<pre><code class="language-ballerina"> error? result = hubPersistenceStore.removeTopic(&quot;topic&quot;);
-</code></pre>
-
+        
     </div>
     
         <div class="data-wrapper">
@@ -488,8 +474,7 @@
                     <li>
                         <p>
                             
-                            <p>The topic to remove</p>
-
+                            
                         </p>
                     </li>
                 </ul>
@@ -503,8 +488,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>An <code>error</code> if an error occurred while removing the topic or else <code>()</code> otherwise</p>
-</li>
+                <li></li>
             </ul>
         </div>
         
@@ -526,10 +510,7 @@
     </div>
     <div class="function-desc">
         
-        <p>Function to retrieve subscription details of all subscribers.</p>
-<pre><code class="language-ballerina"> SubscriptionDetails[]|error result = hubPersistenceStore.retrieveAllSubscribers();
-</code></pre>
-
+        
     </div>
     
 
@@ -538,9 +519,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../../websub/records/SubscriptionDetails.html">SubscriptionDetails</a>[]</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>An array of subscriber details or else an <code>error</code> if an error occurred while retrieving
-the subscriptions</p>
-</li>
+                <li></li>
             </ul>
         </div>
         
@@ -562,10 +541,7 @@ the subscriptions</p>
     </div>
     <div class="function-desc">
         
-        <p>Function to retrieve all registered topics.</p>
-<pre><code class="language-ballerina"> string[]|error result = hubPersistenceStore.retrieveTopics();
-</code></pre>
-
+        
     </div>
     
 
@@ -574,8 +550,7 @@ the subscriptions</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>An array of topics or else <code>error</code> if an error occurred while retrieving the topics</p>
-</li>
+                <li></li>
             </ul>
         </div>
         

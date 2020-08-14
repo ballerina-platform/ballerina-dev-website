@@ -2,7 +2,7 @@
   "modules": [
     {
       "id": "docker",
-      "description": "\u003cp\u003eThis module offers an annotation based docker extension implementation for ballerina.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module offers an annotation based docker extension implementation for Ballerina.\u003c/p\u003e"
     }
   ],
   "objects": [],

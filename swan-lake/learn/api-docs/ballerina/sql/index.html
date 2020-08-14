@@ -72,14 +72,18 @@ module JDBC.
     
     <ul>
         
-        <li>
-            <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -431,6 +435,27 @@ if (ret is error) {
     io:println(&quot;Batch item 2 update count: &quot;, ret[1].affectedRowCount);
 }
 </code></pre>
+<h4>Execute SQL stored procedures</h4>
+<p>This example demonstrates how to execute a stored procedure with a single INSERT statement that is executed via the
+<code>call</code> remote function of the client.</p>
+<pre><code class="language-ballerina">int uid = 10;
+sql:OutParameter insertId = new;
+
+var ret = dbClient-&gt;call(`call InsertPerson(${uid}, ${insertId})`);
+if (ret is error) {
+    io:println(&quot;Error occurred:&quot;, err.message());
+} else {
+    io:println(&quot;Outparameter insert id: &quot;, insertId.get(int));
+    stream&lt;record{}, sql:Error&gt;? resultStr = ret.queryResult;
+    if (!(resultStr is ())) {
+        sql:Error? e = resultStr.forEach(function(record{} result) {
+        io:println(&quot;Full Customer details: &quot;, result);
+      });
+    } else {
+        io:println(&quot;Stored  procedure does not return anything.&quot;);
+    }
+}
+</code></pre>
 <blockquote>
 <p><strong>Note:</strong> The default thread pool size used in Ballerina is the number of processors available * 2. You can configure
 the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environment variable.</p>
@@ -449,15 +474,14 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                 <table>
                     
                     
-                    
-                    
                     <tr>
                         <td class="module-title truncate records" id="BatchExecuteErrorDetail" title="BatchExecuteErrorDetail">
                             <a class="records " href="records/BatchExecuteErrorDetail.html">BatchExecuteErrorDetail</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the properties belonging to a <code>BatchExecuteError</code>.
+                            <p>Represents the properties belonging to a <code>BatchExecuteError</code>.</p>
+
                         </td>
                     </tr>
                     
@@ -470,6 +494,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         <td class="module-desc">
                             
                             <p>Represents the properties which are used to configure DB connection pool.
+Default values of the fields can be set through the configuration API.</p>
+
                         </td>
                     </tr>
                     
@@ -481,7 +507,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the properties belonging to a <code>DatabaseError</code>.
+                            <p>Represents the properties belonging to a <code>DatabaseError</code>.</p>
+
                         </td>
                     </tr>
                     
@@ -493,7 +520,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>The result of the query without returning the rows.
+                            <p>The result of the query without returning the rows.</p>
+
                         </td>
                     </tr>
                     
@@ -515,15 +543,14 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                 <table>
                     
                     
-                    
-                    
                     <tr>
                         <td class="module-title truncate objects" id="ArrayValue" title="ArrayValue">
                             <a class="objects " href="objects/ArrayValue.html">ArrayValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents ArrayValue SQL field.
+                            <p>Represents ArrayValue SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -535,7 +562,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents BigInt SQL field.
+                            <p>Represents BigInt SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -547,7 +575,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Binary SQL field.
+                            <p>Represents Binary SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -559,7 +588,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Bit SQL field.
+                            <p>Represents Bit SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -571,7 +601,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Blob SQL field.
+                            <p>Represents Blob SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -583,7 +614,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Boolean SQL field.
+                            <p>Represents Boolean SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -595,7 +627,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Char SQL field.
+                            <p>Represents Char SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -607,7 +640,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Clob SQL field.
+                            <p>Represents Clob SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -619,7 +653,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents DateTime SQL field.
+                            <p>Represents DateTime SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -631,7 +666,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Date SQL field.
+                            <p>Represents Date SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -643,7 +679,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Decimal SQL field.
+                            <p>Represents Decimal SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -655,7 +692,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Double SQL field.
+                            <p>Represents Double SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -667,7 +705,21 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Float SQL field.
+                            <p>Represents Float SQL field.</p>
+
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="InOutParameter" title="InOutParameter">
+                            <a class="objects " href="objects/InOutParameter.html">InOutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents SQL InOutParameter used in procedure calls.</p>
+
                         </td>
                     </tr>
                     
@@ -679,7 +731,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Integer SQL field.
+                            <p>Represents Integer SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -691,7 +744,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents NChar SQL field.
+                            <p>Represents NChar SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -703,7 +757,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents NClob SQL field.
+                            <p>Represents NClob SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -715,7 +770,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents NVarchar SQL field.
+                            <p>Represents NVarchar SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -727,7 +783,34 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Numeric SQL field.
+                            <p>Represents Numeric SQL field.</p>
+
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="OutParameter" title="OutParameter">
+                            <a class="objects " href="objects/OutParameter.html">OutParameter</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents SQL OutParameter used in procedure calls.</p>
+
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="ParameterizedCallQuery" title="ParameterizedCallQuery">
+                            <a class="objects " href="objects/ParameterizedCallQuery.html">ParameterizedCallQuery</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents Parameterized Call SQL Statement.</p>
+
                         </td>
                     </tr>
                     
@@ -739,7 +822,21 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Parameterised SQL query.
+                            <p>Represents Parameterized SQL query.</p>
+
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate objects" id="ProcedureCallResult" title="ProcedureCallResult">
+                            <a class="objects " href="objects/ProcedureCallResult.html">ProcedureCallResult</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Object that is used to return stored procedure call results.</p>
+
                         </td>
                     </tr>
                     
@@ -751,7 +848,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Real SQL field.
+                            <p>Represents Real SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -763,7 +861,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Ref SQL field.
+                            <p>Represents Ref SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -775,7 +874,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Row SQL field.
+                            <p>Represents Row SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -787,7 +887,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents SmallInt SQL field.
+                            <p>Represents SmallInt SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -799,7 +900,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Struct SQL field.
+                            <p>Represents Struct SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -811,7 +913,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Text SQL field.
+                            <p>Represents Text SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -823,7 +926,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Time SQL field.
+                            <p>Represents Time SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -835,7 +939,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Timestamp SQL field.
+                            <p>Represents Timestamp SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -848,7 +953,8 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         <td class="module-desc">
                             
                             <p>Represents a parameter for the SQL Client remote functions when a variable needs to be passed
-to the remote function.
+to the remote function.</p>
+
                         </td>
                     </tr>
                     
@@ -860,7 +966,8 @@ to the remote function.
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents VarBinary SQL field.
+                            <p>Represents VarBinary SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -872,7 +979,8 @@ to the remote function.
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Varchar SQL field.
+                            <p>Represents Varchar SQL field.</p>
+
                         </td>
                     </tr>
                     
@@ -898,7 +1006,8 @@ to the remote function.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a SQL client.
+                    <p>Represents a SQL client.</p>
+
                 </td>
             </tr>
             
@@ -971,7 +1080,8 @@ to the remote function.
                 <td class="module-desc">
                     
                     <p>Constant indicating that the specific batch statement executed successfully
-but that no count of the number of rows it affected is available.
+but that no count of the number of rows it affected is available.</p>
+
                 </td>
             </tr>
             
@@ -981,7 +1091,8 @@ but that no count of the number of rows it affected is available.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constant indicating that the specific batch statement failed.
+                    <p>Constant indicating that the specific batch statement failed.</p>
+
                 </td>
             </tr>
             
@@ -1008,7 +1119,8 @@ but that no count of the number of rows it affected is available.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error occurred when a batch execution is running.
+                    <p>Represents an error occurred when a batch execution is running.</p>
+
                 </td>
             </tr>
             
@@ -1019,7 +1131,8 @@ but that no count of the number of rows it affected is available.
                 <td class="module-desc">
                     
                     <p>Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,
-database resource clean-up, and other similar scenarios.
+database resource clean-up, and other similar scenarios.</p>
+
                 </td>
             </tr>
             
@@ -1029,7 +1142,19 @@ database resource clean-up, and other similar scenarios.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a database or application level error returned from JDBC client remote functions.
+                    <p>Represents a database or application level error returned from JDBC client remote functions.</p>
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="Parameter" title="Parameter">
+                    <a class="types " href="types.html#Parameter">Parameter</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents all the parameters used in SQL stored procedure call.</p>
+
                 </td>
             </tr>
             
@@ -1039,7 +1164,8 @@ database resource clean-up, and other similar scenarios.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Possible type of parameters that can be passed into the SQL query.
+                    <p>Possible type of parameters that can be passed into the SQL query.</p>
+
                 </td>
             </tr>
             
@@ -1058,32 +1184,13 @@ database resource clean-up, and other similar scenarios.
         <table>
             
             <tr>
-                <td class="module-title truncate errors" id="$anonType$4" title="$anonType$4">
-                    <a class="errors " href="errors.html#$anonType$4">$anonType$4</a>
-                </td>
-                <td class="module-desc">
-                    
-                    
-                </td>
-            </tr>
-            
-            <tr>
-                <td class="module-title truncate errors" id="$anonType$5" title="$anonType$5">
-                    <a class="errors " href="errors.html#$anonType$5">$anonType$5</a>
-                </td>
-                <td class="module-desc">
-                    
-                    
-                </td>
-            </tr>
-            
-            <tr>
                 <td class="module-title truncate errors" id="ApplicationError" title="ApplicationError">
                     <a class="errors " href="errors.html#ApplicationError">ApplicationError</a>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error originating from application-level causes.
+                    <p>Represents an error originating from application-level causes.</p>
+
                 </td>
             </tr>
             

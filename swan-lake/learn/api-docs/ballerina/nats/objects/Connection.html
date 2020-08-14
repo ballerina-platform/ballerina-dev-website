@@ -98,14 +98,18 @@ below functionalities.
     
     <ul>
         
-        <li>
-            <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -188,12 +192,17 @@ below functionalities.
             
                 
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> url, <a href="../../nats/records/ConnectionConfig.html">ConnectionConfig</a>? config)</p>
+
+    <p>Initializes a connection with the NATS server.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> url, <a href="../../nats/records/ConnectionConfig.html">ConnectionConfig</a>? config)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
             <ul>
-                <li> <b>url</b><span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span> [nats://localhost:4222]</li>
+                <li> <b>url</b><span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span> [DEFAULT_URL]</li>
                 <li>
                     <p>The NATS Broker URL. For a clustered use case, pass the URLs as a string array</p>
 
@@ -203,7 +212,7 @@ below functionalities.
     
         <div class="params-listing">
             <ul>
-                <li> <b>config</b><span class="type">  <a href="../../nats/records/ConnectionConfig.html">ConnectionConfig</a>?</span> &lt;ballerina/nats:1.0.0:ConnectionConfig?&gt; ()</li>
+                <li> <b>config</b><span class="type">  <a href="../../nats/records/ConnectionConfig.html">ConnectionConfig</a>?</span> ()</li>
                 <li>
                     <p>Configurations associated with the NATS client to establish a connection with the server</p>
 
@@ -227,7 +236,8 @@ below functionalities.
     </div>
     <div class="param-details">
         
-        <p>Closes a given connection.
+        <p>Closes a given connection.</p>
+
     </div>
 </div>
 

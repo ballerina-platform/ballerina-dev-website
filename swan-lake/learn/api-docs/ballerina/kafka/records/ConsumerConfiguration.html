@@ -134,14 +134,18 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     
     <ul>
         
-        <li>
-            <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -235,7 +239,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >groupId</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -251,7 +255,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >topics</span>
-                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]?</span></span>
                 
             </li>
             <li>
@@ -267,7 +271,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >offsetReset</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -283,7 +287,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >partitionAssignmentStrategy</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -299,7 +303,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >metricsRecordingLevel</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -315,7 +319,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >metricsReporterClasses</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -331,7 +335,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >clientId</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -347,7 +351,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >interceptorClasses</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -363,7 +367,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >isolationLevel</span>
-                <span class="type">  <a href="../../kafka/types.html#IsolationLevel">IsolationLevel</a></span>
+                <span class="type">  <a href="../../kafka/types.html#IsolationLevel">IsolationLevel</a>?</span>
                 
             </li>
             <li>
@@ -411,7 +415,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >keyDeserializer</span>
-                <span class="type">  <a href="../../kafka/objects/Deserializer.html">Deserializer</a></span>
+                <span class="type">  <a href="../../kafka/objects/Deserializer.html">Deserializer</a>?</span>
                 
             </li>
             <li>
@@ -428,7 +432,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >valueDeserializer</span>
-                <span class="type">  <a href="../../kafka/objects/Deserializer.html">Deserializer</a></span>
+                <span class="type">  <a href="../../kafka/objects/Deserializer.html">Deserializer</a>?</span>
                 
             </li>
             <li>
@@ -445,7 +449,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="params-listing">
         <ul>
             <li> <span >schemaRegistryUrl</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -480,7 +484,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >sessionTimeoutInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -496,7 +500,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >heartBeatIntervalInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -512,7 +516,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >metadataMaxAgeInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -528,7 +532,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >autoCommitIntervalInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -544,7 +548,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >maxPartitionFetchBytes</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -560,7 +564,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >sendBuffer</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -576,7 +580,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >receiveBuffer</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -592,7 +596,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >fetchMinBytes</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -608,7 +612,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >fetchMaxBytes</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -624,7 +628,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >fetchMaxWaitTimeInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -640,7 +644,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >reconnectBackoffTimeMaxInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -656,7 +660,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >retryBackoffInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -672,7 +676,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >metricsSampleWindowInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -688,7 +692,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >metricsNumSamples</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -704,7 +708,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >requestTimeoutInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -720,7 +724,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >connectionMaxIdleTimeInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -736,7 +740,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >maxPollRecords</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -752,7 +756,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >maxPollInterval</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -768,7 +772,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >reconnectBackoffTimeInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -784,7 +788,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >pollingTimeoutInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -800,7 +804,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >pollingIntervalInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -816,7 +820,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >concurrentConsumers</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -832,7 +836,7 @@ in an extreme situation</p>
     <div class="params-listing">
         <ul>
             <li> <span >defaultApiTimeoutInMillis</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
                 
             </li>
             <li>
@@ -914,7 +918,7 @@ performance is required</p>
     <div class="params-listing">
         <ul>
             <li> <span >secureSocket</span>
-                <span class="type">  <a href="../../kafka/records/SecureSocket.html">SecureSocket</a></span>
+                <span class="type">  <a href="../../kafka/records/SecureSocket.html">SecureSocket</a>?</span>
                 
             </li>
             <li>
@@ -930,7 +934,7 @@ performance is required</p>
     <div class="params-listing">
         <ul>
             <li> <span >authenticationConfiguration</span>
-                <span class="type">  <a href="../../kafka/records/AuthenticationConfiguration.html">AuthenticationConfiguration</a></span>
+                <span class="type">  <a href="../../kafka/records/AuthenticationConfiguration.html">AuthenticationConfiguration</a>?</span>
                 
             </li>
             <li>

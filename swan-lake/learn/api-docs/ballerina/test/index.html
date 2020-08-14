@@ -70,14 +70,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../test/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../test/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../test/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../test/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -150,18 +154,18 @@
 <pre><code class="language-ballerina">import ballerina/io;
 import ballerina/test;
 
-# Before Suite Function
+// Before Suite Function
 @test:BeforeSuite
 function beforeSuiteFunc() {
     io:println(&quot;I'm the before suite function!&quot;);
 }
 
-# Before test function
+// Before test function
 function beforeFunc() {
     io:println(&quot;I'm the before function!&quot;);
 }
 
-# Test function
+// Test function
 @test:Config {
     before: &quot;beforeFunc&quot;,
     after: &quot;afterFunc&quot;
@@ -171,13 +175,13 @@ function testFunction() {
     test:assertTrue(true, msg = &quot;Failed!&quot;);
 }
 
-# After test function
+// After test function
 function afterFunc() {
     io:println(&quot;I'm the after function!&quot;);
 }
 
-# After Suite Function
-@test:AfterSuite
+// After Suite Function
+@test:AfterSuite {}
 function afterSuiteFunc() {
     io:println(&quot;I'm the after suite function!&quot;);
 }
@@ -199,10 +203,19 @@ function dataGen() returns (int[][]) {
 }
 </code></pre>
 <h2>Assertions</h2>
-<p>This module provides a number of assertions in order to verify the expected behaviour of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.</p>
+<p>This module provides a number of assertions in order to verify the expected behaviour of a piece of code.
+These assertions can be used to decide if the test is passing or failing based on the condition.</p>
 <p>Following sample shows how to use assertions in Testerina.</p>
 <pre><code class="language-ballerina">
 import ballerina/test;
+
+type Person object {
+     public string name = &quot;&quot;;
+     public int age = 0;
+     public Person? parent = ();
+     private string email = &quot;default@abc.com&quot;;
+     string address = &quot;No 20, Palm grove&quot;;
+ };
 
 @test:Config{}
 function testAssertIntEquals() {
@@ -213,6 +226,47 @@ function testAssertIntEquals() {
     test:assertEquals(answer, 8, msg = &quot;int values not equal&quot;);
 }
 
+@test:Config {}
+function testAssertNotEqualsString() {
+    string s1 = &quot;abc&quot;;
+    string s2 = &quot;def&quot;;
+    test:assertNotEquals(s1, s2, msg = &quot;string values are equal&quot;);
+}
+
+@test:Config {}
+function testAssertExactEqualsObject() {
+    Person p1 = new;
+    Person p2 = p1;
+    test:assertExactEquals(p1, p2, msg = &quot;Objects are not exactly equal&quot;);
+}
+
+@test:Config {}
+function testAssertNotExactEqualsObject() {
+    Person p1 = new;
+    Person p2 = new ();
+    test:assertNotExactEquals(p1, p2, msg = &quot;Objects are exactly equal&quot;);
+}
+
+@test:Config {}
+function testAssertTrue() {
+    boolean value = true;
+    test:assertTrue(value, msg = &quot;AssertTrue failed&quot;);
+}
+
+@test:Config {}
+function testAssertFalse() {
+    boolean value = false;
+    test:assertFalse(value, msg = &quot;AssertFalse failed&quot;);
+}
+
+@test:Config {}
+function testAssertFail() {
+    if (true) {
+        return;
+    }
+    test:assertFail(msg = &quot;AssertFailed&quot;);
+}
+
 function intAdd(int a, int b) returns (int) {
     return (a + b);
 }
@@ -220,30 +274,24 @@ function intAdd(int a, int b) returns (int) {
 <h2>Mocking</h2>
 <p>The test module provides capabilities to mock a function or an object for unit testing. The mocking features can be used to control the behavior of functions and objects by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.</p>
 <h3>Function Mocking</h3>
-<p>Function mocking allows to control the behavior of a function in the module under test or a function of an imported module.</p>
-<p>An annotation is used to declare a mock function within which the original function to be mocked should be defined using the annotation parameters. The function specified with this annotation allows to mock an imported function whereas the same annotation specified with the test:MockFunction object allows to mock a function in the module under test.</p>
-<h4>Mocking an imported function</h4>
-<p>Mocking an imported function will invoke the mock function every time that the original function is called. Mocking a function will apply the mocked function to every instance of the original function call. It is not limited to the test file where it is being mocked. A compile time error will be thrown in case of a signature mismatch between the mock function and the original.</p>
-<pre><code class="language-ballerina">The following example shows how an imported function can be mocked.
+<p>Function mocking allows to control the behavior of a function in the module being tested or a function of an imported module.</p>
+<p>The annotation <code>@test:Mock {}</code> is used to declare a <code>MockFunction</code> object, with details of the name of the function to be mocked, as well as the module name if an import function is being mocked. The module name value of the annotation is optional if the function being mocked is not an import function.</p>
+<pre><code class="language-ballerina">import ballerina/math;
+import ballerina/test;
 
 @test:Mock {
     moduleName : &quot;ballerina/math&quot;,
-    functionName : &quot;sqrt&quot;
+    functionName : &quot;absInt&quot;
 }
-function mocksqrt(float a) returns (float) {
-    return a*a*a;
-}
+test:MockFunction mock_absInt = new();
 
 @test:Config {}
-function testMockImportedFunction() {
-    float answer = 0;
-    answer = math:sqrt(5);
-    test:assertEquals(answer, 125.0);
+public function testFunction() {
+    test:when(mock_absInt).thenReturn(100);
+    test:assertEquals(math:absInt(-5), 100);
 }
 </code></pre>
-<h4>Mocking a function in the same module</h4>
-<p>The same annotation used for mocking an imported function can be used for mocking a function in the same module (the module which is under test) but with the MockFunction object provided by the test module. Declaring the annotation with this object will create a default mock object in place of the original function.</p>
-<p>Subsequent to the declaration, the function call should be stubbed using the available function mocking features. Different behaviors can be defined for different test cases if required.</p>
+<p>Declaring the annotation with this object will create a default mock object in place of the original function. Subsequent to the declaration, the function call should be stubbed using the available mocking features. Different behaviors can be defined for different test cases if required.</p>
 <h5>Samples</h5>
 <p><em>main.bal</em></p>
 <pre><code class="language-ballerina">public function intAdd(int a, int b) returns (int) {
@@ -252,7 +300,7 @@ function testMockImportedFunction() {
 </code></pre>
 <p><em>test.bal</em></p>
 <p>The following example shows different ways of stubbing a function call.</p>
-<pre><code class="language-ballerina">@test:MockFn { functionName: &quot;intAdd&quot; }
+<pre><code class="language-ballerina">@test:Mock { functionName: &quot;intAdd&quot; }
 test:MockFunction intAddMockFn = new();
 
 public function mockIntAdd(int x, int y) returns int {
@@ -367,12 +415,49 @@ function testMemberVariable() {
                     
                     
                     <tr>
+                        <td class="module-title truncate records" id="AfterGroupsConfig" title="AfterGroupsConfig">
+                            <a class="records " href="records/AfterGroupsConfig.html">AfterGroupsConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="AfterSuiteConfig" title="AfterSuiteConfig">
+                            <a class="records " href="records/AfterSuiteConfig.html">AfterSuiteConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
+                        <td class="module-title truncate records" id="BeforeGroupsConfig" title="BeforeGroupsConfig">
+                            <a class="records " href="records/BeforeGroupsConfig.html">BeforeGroupsConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    <tr>
                         <td class="module-title truncate records" id="MockConfig" title="MockConfig">
                             <a class="records " href="records/MockConfig.html">MockConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configuration of the function to be mocked.
+                            <p>Configuration of the function to be mocked.</p>
+
                         </td>
                     </tr>
                     
@@ -384,7 +469,8 @@ function testMemberVariable() {
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configuration set for test functions.
+                            <p>Configuration set for test functions.</p>
+
                         </td>
                     </tr>
                     
@@ -406,30 +492,6 @@ function testMemberVariable() {
                 <table>
                     
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     <tr>
                         <td class="module-title truncate objects" id="FunctionStub" title="FunctionStub">
                             <a class="objects " href="objects/FunctionStub.html">FunctionStub</a>
@@ -449,7 +511,8 @@ function testMemberVariable() {
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents an object that allows stubbing member function invocations.
+                            <p>Represents an object that allows stubbing member function invocations.</p>
+
                         </td>
                     </tr>
                     
@@ -461,7 +524,8 @@ function testMemberVariable() {
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents an object that allows stubbing member variables retrieved.
+                            <p>Represents an object that allows stubbing member variables retrieved.</p>
+
                         </td>
                     </tr>
                     
@@ -523,6 +587,16 @@ function testMemberVariable() {
             </tr>
             
             <tr>
+                <td class="module-title truncate functions" id="assertExactEquals" title="assertExactEquals">
+                    <a class="functions " href="functions.html#assertExactEquals">assertExactEquals</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Asserts whether the given values are exactly equal.
+                </td>
+            </tr>
+            
+            <tr>
                 <td class="module-title truncate functions" id="assertFail" title="assertFail">
                     <a class="functions " href="functions.html#assertFail">assertFail</a>
                 </td>
@@ -553,6 +627,16 @@ function testMemberVariable() {
             </tr>
             
             <tr>
+                <td class="module-title truncate functions" id="assertNotExactEquals" title="assertNotExactEquals">
+                    <a class="functions " href="functions.html#assertNotExactEquals">assertNotExactEquals</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Asserts whether the given values are not exactly equal.
+                </td>
+            </tr>
+            
+            <tr>
                 <td class="module-title truncate functions" id="assertTrue" title="assertTrue">
                     <a class="functions " href="functions.html#assertTrue">assertTrue</a>
                 </td>
@@ -568,7 +652,8 @@ function testMemberVariable() {
                 </td>
                 <td class="module-desc">
                     
-                    <p>Creates an AssertError with custom message and category.
+                    <p>Creates an AssertError with custom message and category.</p>
+
                 </td>
             </tr>
             
@@ -578,7 +663,8 @@ function testMemberVariable() {
                 </td>
                 <td class="module-desc">
                     
-                    <p>Creates and returns a mock object of provided type description.
+                    <p>Creates and returns a mock object of provided type description.</p>
+
                 </td>
             </tr>
             
@@ -588,7 +674,8 @@ function testMemberVariable() {
                 </td>
                 <td class="module-desc">
                     
-                    <p>Inter-op to handle function mocking.
+                    <p>Inter-op to handle function mocking.</p>
+
                 </td>
             </tr>
             
@@ -598,47 +685,8 @@ function testMemberVariable() {
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prepares a provided default mock object for stubbing.
-                </td>
-            </tr>
-            
-            <tr>
-                <td class="module-title truncate functions" id="startServiceSkeleton" title="startServiceSkeleton">
-                    <a class="functions " href="functions.html#startServiceSkeleton">startServiceSkeleton</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Start a service skeleton from a given OpenApi definition in the given ballerina module.
-                </td>
-            </tr>
-            
-            <tr>
-                <td class="module-title truncate functions" id="startServices" title="startServices">
-                    <a class="functions " href="functions.html#startServices">startServices</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Starts all the services defined in the module specified in the 'moduleName' argument.
-                </td>
-            </tr>
-            
-            <tr>
-                <td class="module-title truncate functions" id="stopServiceSkeleton" title="stopServiceSkeleton">
-                    <a class="functions " href="functions.html#stopServiceSkeleton">stopServiceSkeleton</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Stop a service skeleton and cleanup created directories of a given ballerina module.
-                </td>
-            </tr>
-            
-            <tr>
-                <td class="module-title truncate functions" id="stopServices" title="stopServices">
-                    <a class="functions " href="functions.html#stopServices">stopServices</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Stops all the services defined in the module specified in the 'moduleName' argument.
+                    <p>Prepares a provided default mock object for stubbing.</p>
+
                 </td>
             </tr>
             
@@ -649,7 +697,8 @@ function testMemberVariable() {
                 <td class="module-desc">
                     
                     <p>Objects and functions related to function mocking
-Allows a function to stub.
+Allows a function to stub.</p>
+
                 </td>
             </tr>
             
@@ -685,7 +734,8 @@ Allows a function to stub.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the reason for the mock object related errors.
+                    <p>Represents the reason for the mock object related errors.</p>
+
                 </td>
             </tr>
             
@@ -695,7 +745,8 @@ Allows a function to stub.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the reason for the non-existing member function related errors.
+                    <p>Represents the reason for the non-existing member function related errors.</p>
+
                 </td>
             </tr>
             
@@ -705,7 +756,8 @@ Allows a function to stub.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the reason for the function signature related errors.
+                    <p>Represents the reason for the function signature related errors.</p>
+
                 </td>
             </tr>
             
@@ -715,7 +767,8 @@ Allows a function to stub.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the reason for the object member field related errors.
+                    <p>Represents the reason for the object member field related errors.</p>
+
                 </td>
             </tr>
             
@@ -725,7 +778,8 @@ Allows a function to stub.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the reason for function mocking related errors.
+                    <p>Represents the reason for function mocking related errors.</p>
+
                 </td>
             </tr>
             
@@ -750,7 +804,19 @@ Allows a function to stub.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Identifies afterTest function.
+                    <p>Identifies afterTest function.</p>
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate annotations" id="AfterGroups" title="AfterGroups">
+                    <a class="annotations " href="annotations.html#AfterGroups">AfterGroups</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Identifies afterGroup function.</p>
+
                 </td>
             </tr>
             
@@ -760,7 +826,8 @@ Allows a function to stub.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Identifies afterSuite function.
+                    <p>Identifies afterSuite function.</p>
+
                 </td>
             </tr>
             
@@ -770,7 +837,19 @@ Allows a function to stub.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Identifies beforeTest function.
+                    <p>Identifies beforeTest function.</p>
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate annotations" id="BeforeGroups" title="BeforeGroups">
+                    <a class="annotations " href="annotations.html#BeforeGroups">BeforeGroups</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Identifies beforeGroup function.</p>
+
                 </td>
             </tr>
             
@@ -780,7 +859,8 @@ Allows a function to stub.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Identifies beforeSuite function.
+                    <p>Identifies beforeSuite function.</p>
+
                 </td>
             </tr>
             

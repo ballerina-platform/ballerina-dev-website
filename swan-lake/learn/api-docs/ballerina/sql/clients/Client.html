@@ -95,14 +95,18 @@ module JDBC.
     
     <ul>
         
-        <li>
-            <a data="records" href="../../sql/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../sql/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -178,46 +182,39 @@ module JDBC.
             
 
             
+                <h2>Remote Methods</h2>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="query"><a
+                                    class="functions" href="#query">query</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="execute"><a
+                                    class="functions" href="#execute">execute</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="batchExecute"><a
+                                    class="functions" href="#batchExecute">batchExecute</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="call"><a
+                                    class="functions" href="#call">call</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            
 
             
                 <h2>Methods</h2>
                 <div class="method-list">
-                    
-                        
-<div class="param-sum">
-    <div class="param-name " title="query">
-        <a href="#query">query </a>
-    </div>
-    <div class="param-details">
-        
-        
-    </div>
-</div>
-
-                    
-                        
-<div class="param-sum">
-    <div class="param-name " title="execute">
-        <a href="#execute">execute </a>
-    </div>
-    <div class="param-details">
-        
-        
-    </div>
-</div>
-
-                    
-                        
-<div class="param-sum">
-    <div class="param-name " title="batchExecute">
-        <a href="#batchExecute">batchExecute </a>
-    </div>
-    <div class="param-details">
-        
-        
-    </div>
-</div>
-
                     
                         
 <div class="param-sum">
@@ -236,8 +233,6 @@ module JDBC.
         
             
         </div>
-
-        
 
         
             
@@ -412,6 +407,78 @@ module JDBC.
         
     
 </div>
+            
+                <div class="method-content">
+    <div class="main-method-title here" id="call" title="call">
+             <a class="url-link" href="#call">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > call </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> | <a href="../../sql/objects/ParameterizedCallQuery.html">ParameterizedCallQuery</a> sqlQuery, <span class="array-type"><span class="builtin-type">typedesc</span>[]</span> rowTypes)</p>
+            
+                <b> returns </b><a href="../../sql/objects/ProcedureCallResult.html">ProcedureCallResult</a> | <a href="../../sql/types.html#Error">Error</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >sqlQuery</span>
+                        <span class="type">  <span class="builtin-type">string</span> | <a href="../../sql/objects/ParameterizedCallQuery.html">ParameterizedCallQuery</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >rowTypes</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">typedesc</span>[]</span> </span>
+                        <span class="default"> (default [])</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../sql/objects/ProcedureCallResult.html">ProcedureCallResult</a> | <a href="../../sql/types.html#Error">Error</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+            
+        
+
+        
             
                 <div class="method-content">
     <div class="main-method-title here" id="close" title="close">

@@ -173,14 +173,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../lang.transaction/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../lang.transaction/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../lang.transaction/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../lang.transaction/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -195,6 +199,10 @@
             </li>
         
         
+        
+            <li>
+                <a data="types" href="../lang.transaction/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
         
         
             <li>
@@ -245,7 +253,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Abort local resource managers.
+                                <p>Abort local resource managers.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -275,7 +284,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Cleanup the transaction context.
+                                <p>Cleanup the transaction context.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -285,7 +295,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Commit local resource managers.
+                                <p>Commit local resource managers.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -306,6 +317,10 @@
                             <div class="function-desc">
                                 
                                 <p>When a transaction block in Ballerina code ends, it will call this function to end a transaction.
+Ending a transaction by a participant has no effect because it is the initiator who can decide whether to
+commit or abort a transaction.
+Depending on the state of the transaction, the initiator decides to commit or abort the transaction.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -315,7 +330,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Get and Cleanup the failure.
+                                <p>Get and Cleanup the failure.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -395,7 +411,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Prepare local resource managers.
+                                <p>Prepare local resource managers.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -405,7 +422,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Rollback the transaction.
+                                <p>Rollback the transaction.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -435,7 +453,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Set the transactionContext.
+                                <p>Set the transactionContext.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -788,7 +807,7 @@ is being created for.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId)</p>
             
-                <b> returns </b><span class="builtin-type">string</span> | <span class="builtin-type">error?</span> 
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../lang.transaction/errors.html#Error">Error</a>? 
             
         </span>
     </div>
@@ -845,7 +864,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="builtin-type">error?</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../lang.transaction/errors.html#Error">Error</a>?</span>)</li>
                 <li><p>A string or an error representing the transaction end succcess status or failure respectively.</p>
 </li>
             </ul>

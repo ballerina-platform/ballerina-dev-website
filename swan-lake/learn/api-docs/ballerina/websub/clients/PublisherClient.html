@@ -101,14 +101,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -192,7 +196,14 @@
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a>? config)</p>
+
+    <p>Initializes the <code>websub:PublisherClient</code>.</p>
+<pre><code class="language-ballerina"> websub:PublisherClient websubHubClientEP = new(&quot;http://localhost:9191/websub/publish&quot;);
+</code></pre>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a>? config)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -227,26 +238,34 @@
                             <td class="module-title truncate functions" title="registerTopic"><a
                                     class="functions" href="#registerTopic">registerTopic</a></td>
                             <td class="module-desc"><p>Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
-publish updates.</td>
+publish updates.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="unregisterTopic"><a
                                     class="functions" href="#unregisterTopic">unregisterTopic</a></td>
-                            <td class="module-desc"><p>Unregisters a topic in a Ballerina WebSub Hub.</td>
+                            <td class="module-desc"><p>Unregisters a topic in a Ballerina WebSub Hub.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="publishUpdate"><a
                                     class="functions" href="#publishUpdate">publishUpdate</a></td>
-                            <td class="module-desc"><p>Publishes an update to a remote Ballerina WebSub Hub.</td>
+                            <td class="module-desc"><p>Publishes an update to a remote Ballerina WebSub Hub.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="notifyUpdate"><a
                                     class="functions" href="#notifyUpdate">notifyUpdate</a></td>
                             <td class="module-desc"><p>Notifies a remote WebSub Hub from which an update is available to fetch for hubs that require publishing to
-happen as such.</td>
+happen as such.</p>
+
+</td>
                         </tr>
                     
                 </table>

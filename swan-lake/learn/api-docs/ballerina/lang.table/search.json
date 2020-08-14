@@ -96,11 +96,6 @@
   ],
   "records": [
     {
-      "id": "T0",
-      "description": "",
-      "moduleId": "lang.table"
-    },
-    {
       "id": "T1",
       "description": "",
       "moduleId": "lang.table"

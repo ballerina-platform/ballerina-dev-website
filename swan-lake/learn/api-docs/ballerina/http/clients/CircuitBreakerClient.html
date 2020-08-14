@@ -145,14 +145,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -236,7 +240,12 @@
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a> config, <a href="../../http/records/CircuitBreakerInferredConfig.html">CircuitBreakerInferredConfig</a> circuitBreakerInferredConfig, <a href="../../http/clients/HttpClient.html">HttpClient</a> httpClient, <a href="../../http/records/CircuitHealth.html">CircuitHealth</a> circuitHealth)</p>
+
+    <p>A Circuit Breaker implementation which can be used to gracefully handle network failures.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a> config, <a href="../../http/records/CircuitBreakerInferredConfig.html">CircuitBreakerInferredConfig</a> circuitBreakerInferredConfig, <a href="../../http/clients/HttpClient.html">HttpClient</a> httpClient, <a href="../../http/records/CircuitHealth.html">CircuitHealth</a> circuitHealth)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -318,7 +327,9 @@
                         <tr>
                             <td class="module-title truncate functions" title="execute"><a
                                     class="functions" href="#execute">execute</a></td>
-                            <td class="module-desc"><p>This wraps the <code>CircuitBreakerClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>CircuitBreakerClient.post()</code> function of the underlying HTTP remote functions provider.
+The <code>CircuitBreakerClient.execute()</code> function can be used to invoke an HTTP call with the given HTTP verb.</p>
+</td>
                         </tr>
                     
                         <tr>
@@ -348,19 +359,25 @@
                         <tr>
                             <td class="module-title truncate functions" title="forward"><a
                                     class="functions" href="#forward">forward</a></td>
-                            <td class="module-desc"><p>This wraps the <code>CircuitBreakerClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>CircuitBreakerClient.forward()</code> function of the underlying HTTP remote functions provider.
+The Forward remote function can be used to forward an incoming request to an upstream service as it is.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="submit"><a
                                     class="functions" href="#submit">submit</a></td>
-                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.</td>
+                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.
+The <code>CircuitBreakerClient.submit()</code> function does not give out a <code>Response</code> as the result.
+Rather it returns an <code>http:HttpFuture</code> which can be used to do further interactions with the endpoint.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getResponse"><a
                                     class="functions" href="#getResponse">getResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously-submitted request.</td>
+                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously-submitted request.</p>
+</td>
                         </tr>
                     
                         <tr>
@@ -372,13 +389,15 @@
                         <tr>
                             <td class="module-title truncate functions" title="getNextPromise"><a
                                     class="functions" href="#getNextPromise">getNextPromise</a></td>
-                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</td>
+                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPromisedResponse"><a
                                     class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the promised server push <code>Response</code> message.</td>
+                            <td class="module-desc"><p>Retrieves the promised server push <code>Response</code> message.</p>
+</td>
                         </tr>
                     
                         <tr>
@@ -402,7 +421,8 @@
     <div class="param-details">
         
         <p>Force the circuit into a closed state in which it will allow requests regardless of the error percentage
-until the failure threshold exceeds.
+until the failure threshold exceeds.</p>
+
     </div>
 </div>
 
@@ -415,7 +435,8 @@ until the failure threshold exceeds.
     <div class="param-details">
         
         <p>Force the circuit into a open state in which it will suspend all requests
-until <code>resetTimeInMillis</code> interval exceeds.
+until <code>resetTimeInMillis</code> interval exceeds.</p>
+
     </div>
 </div>
 
@@ -427,7 +448,8 @@ until <code>resetTimeInMillis</code> interval exceeds.
     </div>
     <div class="param-details">
         
-        <p>Provides the <code>http:CircuitState</code> of the circuit breaker.
+        <p>Provides the <code>http:CircuitState</code> of the circuit breaker.</p>
+
     </div>
 </div>
 

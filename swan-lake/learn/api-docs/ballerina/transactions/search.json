@@ -70,16 +70,6 @@
   ],
   "records": [
     {
-      "id": "T0",
-      "description": "",
-      "moduleId": "transactions"
-    },
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "transactions"
-    },
-    {
       "id": "Info",
       "description": "",
       "moduleId": "transactions"

@@ -42,13 +42,7 @@
     }
   ],
   "constants": [],
-  "errors": [
-    {
-      "id": "$anonType$0",
-      "description": "",
-      "moduleId": "lang.error"
-    }
-  ],
+  "errors": [],
   "types": [],
   "clients": [],
   "listeners": [],

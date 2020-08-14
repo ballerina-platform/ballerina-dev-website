@@ -177,7 +177,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns absolute value of an int.
+                                <p>Returns absolute value of an int.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -188,6 +189,11 @@
                             <div class="function-desc">
                                 
                                 <p>Returns the integer that <code>s</code> represents in hexadecimal.
+Both uppercase A-F and lowercase a-f are allowed.
+It may start with an optional <code>+</code> or <code>-</code> sign.
+No <code>0x</code> or <code>0X</code> prefix is allowed.
+Returns an error if the <code>s</code> is not in an allowed format.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -198,6 +204,10 @@
                             <div class="function-desc">
                                 
                                 <p>Returns the integer that <code>s</code> represents in decimal.
+Returns error if <code>s</code> is not the decimal representation of an integer.
+The first character may be <code>+</code> or <code>-</code>.
+This is the inverse of <code>value:toString</code> applied to an <code>int</code>.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -207,7 +217,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Maximum of one or more int values.
+                                <p>Maximum of one or more int values.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -228,7 +239,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns sum of zero or more int values.
+                                <p>Returns sum of zero or more int values.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -239,6 +251,7 @@
                             <div class="function-desc">
                                 
                                 <p>Returns representation of <code>n</code> as hexdecimal string.
+There is no <code>0x</code> prefix.
                             </div>
                         </td>
                     </tr>

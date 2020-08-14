@@ -70,14 +70,10 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../lang.stream/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../lang.stream/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
         
         
         
@@ -160,6 +156,8 @@
                 <td class="module-desc">
                     
                     <p>Closes a stream.
+This releases any system resources being used by the stream.</p>
+
                 </td>
             </tr>
             
@@ -169,7 +167,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Selects the members from a stream for which a function returns true.
+                    <p>Selects the members from a stream for which a function returns true.</p>
+
                 </td>
             </tr>
             
@@ -180,6 +179,8 @@
                 <td class="module-desc">
                     
                     <p>Applies a function to each member of a stream.
+The Combining function is applied to each member of stream in order.</p>
+
                 </td>
             </tr>
             
@@ -189,7 +190,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns an iterator over a stream.
+                    <p>Returns an iterator over a stream.</p>
+
                 </td>
             </tr>
             
@@ -199,7 +201,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Applies a function to each member of a stream and returns a stream of the results.
+                    <p>Applies a function to each member of a stream and returns a stream of the results.</p>
+
                 </td>
             </tr>
             
@@ -209,7 +212,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the next element in the stream wrapped in a record or () if the stream ends.
+                    <p>Returns the next element in the stream wrapped in a record or () if the stream ends.</p>
+
                 </td>
             </tr>
             
@@ -220,6 +224,9 @@
                 <td class="module-desc">
                     
                     <p>Combines the members of a stream using a combining function.
+The combining function takes the combined value so far and a member of the stream,
+and returns a new combined value.</p>
+
                 </td>
             </tr>
             

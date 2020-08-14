@@ -14,7 +14,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module offers an annotation based Kubernetes extension implementation for ballerina.
+    <meta name="description" content="This module offers an annotation based Kubernetes extension implementation for Ballerina.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,kubernetes">
 
@@ -213,9 +213,11 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../kubernetes/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../kubernetes/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
         
@@ -290,7 +292,7 @@
     <div class="params-listing">
         <ul>
             <li> <span >dockerHost</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -308,7 +310,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >dockerCertPath</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -324,7 +326,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >registry</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -340,7 +342,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >username</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -356,7 +358,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >password</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -372,7 +374,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >baseImage</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -388,7 +390,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >image</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -436,7 +438,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >cmd</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -468,7 +470,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >copyFiles</span>
-                <span class="type">  <span class="array-type"><a href="../../kubernetes/records/FileConfig.html">FileConfig</a>[]</span></span>
+                <span class="type">  <span class="array-type"><a href="../../kubernetes/records/FileConfig.html">FileConfig</a>[]?</span></span>
                 
             </li>
             <li>
@@ -500,7 +502,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >namespace</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -612,7 +614,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >podTolerations</span>
-                <span class="type">  <span class="array-type"><a href="../../kubernetes/records/PodTolerationConfiguration.html">PodTolerationConfiguration</a>[]</span></span>
+                <span class="type">  <span class="array-type"><a href="../../kubernetes/records/PodTolerationConfiguration.html">PodTolerationConfiguration</a>[]?</span></span>
                 
             </li>
             <li>
@@ -644,7 +646,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >dependsOn</span>
-                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]?</span></span>
                 
             </li>
             <li>
@@ -660,7 +662,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >imagePullSecrets</span>
-                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]?</span></span>
                 
             </li>
             <li>
@@ -692,7 +694,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >serviceAccountName</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
@@ -708,7 +710,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >projectedVolumeMount</span>
-                <span class="type">  <a href="../../kubernetes/records/ProjectedVolumeMount.html">ProjectedVolumeMount</a></span>
+                <span class="type">  <a href="../../kubernetes/records/ProjectedVolumeMount.html">ProjectedVolumeMount</a>?</span>
                 
             </li>
             <li>
@@ -756,7 +758,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
     <div class="params-listing">
         <ul>
             <li> <span >dockerConfigPath</span>
-                <span class="type">  <span class="builtin-type">string</span></span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>

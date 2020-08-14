@@ -94,14 +94,18 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
     
     <ul>
         
-        <li>
-            <a data="records" href="../../task/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../task/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../task/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../task/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -169,7 +173,13 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
         
             
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a> configuration)</p>
+
+    <p>Initializes the <code>task:Listener</code> object. This may panic if the initialization is failed due to a configuration
+error.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a> configuration)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -198,7 +208,8 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
     </div>
     <div class="param-details">
         
-        <p>Detaches the given <code>service</code> from the <code>task:Listener</code>.
+        <p>Detaches the given <code>service</code> from the <code>task:Listener</code>.</p>
+
     </div>
 </div>
 
@@ -234,7 +245,8 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
     </div>
     <div class="param-details">
         
-        <p>Pauses the <code>task:Listener</code> and the attached services.
+        <p>Pauses the <code>task:Listener</code> and the attached services.</p>
+
     </div>
 </div>
 

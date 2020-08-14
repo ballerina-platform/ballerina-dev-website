@@ -54,6 +54,7 @@ type Person object {
         class: "abc.Hello",
     } external;
 };
+```
 
 The Java method to which the `getFullName()` method is bound:
 

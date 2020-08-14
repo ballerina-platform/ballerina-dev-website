@@ -287,7 +287,7 @@ function afterGroupsFunc() {
 You can now specify `alwaysRun : true|false` in the `@AfterSuite` annotation, which enables running the `@AfterSuite` even if the `@BeforeSuite` function fails during the test execution. The default value is `false`.
 
 ```ballerina
-Import ballerina/io;
+import ballerina/io;
 import ballerina/test;
 
 

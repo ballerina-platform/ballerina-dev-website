@@ -433,20 +433,16 @@
         "column": 2,
         "category": "Language concepts",
         "samples": [ {
-                "name": "Tuple-Typed Binding Pattern",
-                "url": "tuple-typed-binding-pattern"
+                "name": "Tuple Binding Pattern",
+                "url": "tuple-binding-pattern"
             },
             {
-                "name": "Record-Typed Binding Pattern",
-                "url": "record-typed-binding-pattern"
+                "name": "Record Binding Pattern",
+                "url": "record-binding-pattern"
             },
             {
-                "name": "Tuple Destructure Binding Pattern",
-                "url": "tuple-destructure-binding-pattern"
-            },
-            {
-                "name": "Record Destructure Binding Pattern",
-                "url": "record-destructure-binding-pattern"
+                "name": "Array Binding Pattern",
+                "url": "array-binding-pattern"
             }
         ]
     },
@@ -738,6 +734,10 @@
             {
                 "name": "Knative Deployment",
                 "url": "knative-deployment"
+            },
+            {
+                "name": "Azure Functions",
+                "url": "azure-functions-deployment"
             }
         ]
     },
@@ -1039,6 +1039,10 @@
             {
                 "name": "Batch Execute Operations",
                 "url": "mysql-batch-execute-operation"
+            },
+            {
+                "name": "Call Stored Procedures",
+                "url": "mysql-call-stored-procedures"
             },
             {
                 "name": "Parameterized Query",

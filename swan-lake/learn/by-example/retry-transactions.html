@@ -12,89 +12,51 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
 <span class="nx">public</span> <span class="nx">type</span> <span class="nx">MyRetryManager</span> <span class="nx">object</span> <span class="p">{</span>
-   <span class="nx">private</span> <span class="kt">int</span> <span class="nx">count</span><span class="p">;</span>
-   <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retry count: &quot;</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
-       <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span><span class="p">;</span>
-   <span class="p">}</span>
-   <span class="nx">public</span> <span class="kd">function</span> <span class="nx">shouldRetry</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">e</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retry count: &quot;</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
-     <span class="k">if</span> <span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="p">&gt;</span>  <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-     <span class="p">}</span>
-   <span class="p">}</span>
+    <span class="nx">private</span> <span class="kt">int</span> <span class="nx">count</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">shouldRetry</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">e</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="p">&gt;</span>  <span class="mi">0</span> <span class="p">{</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retries remaining: &quot;</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span>
-                <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/testdb&quot;</span><span class="p">,</span>
-                                        <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS DEPOSITS &quot;</span> <span class="o">+</span>
-                                <span class="s">&quot;(ID INTEGER, AMOUNT FLOAT)&quot;</span><span class="p">);</span>
-    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create DEPOSITS table&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS WITHDRAWALS &quot;</span> <span class="o">+</span>
-                                <span class="s">&quot;(ID INTEGER, AMOUNT FLOAT)&quot;</span><span class="p">);</span>
-    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create WITHDRAWALS table&quot;</span><span class="p">);</span>
+    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/accountdb&quot;</span><span class="p">,</span> 
+                                      <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS ACCOUNT &quot;</span> <span class="o">+</span>
+                                <span class="s">&quot;(ID INTEGER, BALANCE DECIMAL, PRIMARY KEY(id))&quot;</span><span class="p">);</span> 
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO ACCOUNT VALUES (1, 2500.0)&quot;</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO ACCOUNT VALUES (2, 1000.0)&quot;</span><span class="p">);</span>
     <span class="nx">retry</span><span class="p">&lt;</span><span class="nx">MyRetryManager</span><span class="p">&gt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">onRollbackFunc</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
-                                <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler executed.&quot;</span><span class="p">);</span>
-        <span class="p">};</span>
-        <span class="k">var</span> <span class="nx">onCommitFunc</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
-        <span class="p">};</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">onRollback</span><span class="p">(</span><span class="nx">onRollbackFunc</span><span class="p">);</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">onCommit</span><span class="p">(</span><span class="nx">onCommitFunc</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">withdrawalResult</span> <span class="p">=</span>
-                    <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO WITHDRAWALS(ID,AMOUNT) &quot;</span> <span class="o">+</span>
-                                        <span class="s">&quot;VALUES (1234553, 10500)&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">depositResult</span> <span class="p">=</span>
-                    <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO DEPOSITS (ID, AMOUNT) &quot;</span> <span class="o">+</span>
-                                        <span class="s">&quot;VALUES (1234554, 10500)&quot;</span><span class="p">);</span>
-        <span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">transInfo</span> <span class="p">=</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">();</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">transInfo</span><span class="p">.</span><span class="nx">xid</span><span class="p">);</span>        <span class="k">if</span><span class="p">(</span><span class="nx">withdrawalResult</span> <span class="nx">is</span> <span class="nx">error</span> <span class="o">||</span> <span class="nx">depositResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">check</span> <span class="nx">getError</span><span class="p">(</span><span class="s">&quot;DB operation failed&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">()){</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed.&quot;</span><span class="p">);</span>
-            <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">withdrawalResult</span><span class="p">,</span>
-                                    <span class="s">&quot;Insert data into WITHDRAWALS table&quot;</span><span class="p">);</span>
-            <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">depositResult</span><span class="p">,</span>
-                                    <span class="s">&quot;Insert data into DEPOSITS table&quot;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction failed&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE WITHDRAWALS&quot;</span><span class="p">);</span>
-    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table WITHDRAWALS&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE DEPOSITS&quot;</span><span class="p">);</span>
-    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table DEPOSITS&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">creditResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;UPDATE ACCOUNT SET BALANCE=BALANCE+500.0 WHERE ID=1&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">debitResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;UPDATE ACCOUNT SET BALANCE=BALANCE-500.0 WHERE ID=2&quot;</span><span class="p">);</span>        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction Info: &quot;</span><span class="p">,</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">());</span>        <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed.&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Account Credit: &quot;</span><span class="p">,</span> <span class="nx">creditResult</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Account Debit: &quot;</span><span class="p">,</span> <span class="nx">debitResult</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE ACCOUNT&quot;</span><span class="p">);</span>
+    
     <span class="nx">check</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getError</span><span class="p">(</span><span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler executed.&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">onCommitFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
 <span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
 <span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">retry_transactions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Create</span> <span class="nx">DEPOSITS</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Create</span> <span class="nx">WITHDRAWALS</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="mi">101</span> <span class="mi">52</span> <span class="mi">97</span> <span class="mi">50</span> <span class="mi">49</span> <span class="mi">55</span> <span class="mi">102</span> <span class="mi">97</span> <span class="mi">45</span> <span class="mi">55</span> <span class="mi">57</span> <span class="mi">57</span> <span class="mi">102</span> <span class="mi">45</span> <span class="mi">52</span> <span class="mi">56</span> <span class="mi">52</span> <span class="mi">55</span> <span class="mi">45</span> <span class="mi">57</span> <span class="mi">53</span> <span class="mi">49</span> <span class="mi">52</span> <span class="mi">45</span> <span class="mi">55</span> <span class="mi">98</span> <span class="mi">98</span> <span class="mi">49</span> <span class="mi">49</span> <span class="mi">54</span> <span class="mi">101</span> <span class="mi">49</span> <span class="mi">55</span> <span class="mi">54</span> <span class="mi">49</span> <span class="mi">49</span>
+<span class="nx">Transaction</span> <span class="nx">Info</span><span class="p">:</span> <span class="nx">xid</span><span class="p">=</span><span class="mi">57</span> <span class="mi">55</span> <span class="mi">52</span> <span class="mi">102</span> <span class="mi">53</span> <span class="mi">52</span> <span class="mi">100</span> <span class="mi">53</span> <span class="mi">45</span> <span class="mi">48</span> <span class="mi">100</span> <span class="mi">99</span> <span class="mi">54</span> <span class="mi">45</span> <span class="mi">52</span> <span class="mi">100</span> <span class="mi">100</span> <span class="mi">99</span> <span class="mi">45</span> <span class="mi">98</span> <span class="mi">56</span> <span class="mi">55</span> <span class="mi">97</span> <span class="mi">45</span> <span class="mi">99</span> <span class="mi">54</span> <span class="mi">102</span> <span class="mi">55</span> <span class="mi">97</span> <span class="mi">55</span> <span class="mi">57</span> <span class="mi">102</span> <span class="mi">54</span> <span class="mi">57</span> <span class="mi">48</span> <span class="mi">100</span> <span class="nx">retryNumber</span><span class="p">=</span><span class="mi">0</span> <span class="nx">startTime</span><span class="p">=</span><span class="mi">1594734072607</span> <span class="nx">prevAttempt</span><span class="p">=</span>
 <span class="nx">Commit</span> <span class="nx">handler</span> <span class="nx">executed</span><span class="p">.</span>
 <span class="nx">Transaction</span> <span class="nx">committed</span><span class="p">.</span>
-<span class="nx">Insert</span> <span class="nx">data</span> <span class="nx">into</span> <span class="nx">WITHDRAWALS</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Insert</span> <span class="nx">data</span> <span class="nx">into</span> <span class="nx">DEPOSITS</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Retry</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">WITHDRAWALS</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">DEPOSITS</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Account</span> <span class="nx">Credit</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span>
+<span class="nx">Account</span> <span class="nx">Debit</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span>
 </pre></div>
 
             </div>
@@ -110,8 +72,7 @@ redirect_from:
  the retry statement and the transaction statement with the
  additional semantics that each transaction is part of a sequence of
  retries. This sample uses an H2 database, which is
- created when running the sample. Prior to running this sample,
- the DB connection properties need to be changed as required.<br/><br/>
+ created when running the sample. <br/><br/>
  For more information on the underlying module,
  see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/lang.transaction/index.html">Transactions module</a>.</p>
 </p>
@@ -194,28 +155,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -226,7 +165,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;transaction as transactions;
 import ballerina/io;
-import ballerina/sql;
 import ballerina/java.jdbc;
 </code></pre></div>
 
@@ -240,20 +178,19 @@ import ballerina/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public type MyRetryManager object {
-   private int count;
-   public function init(int count = 2) {
-       io:println(&quot;Retry count: &quot;, count);
-       self.count = count;
-   }
-   public function shouldRetry(error? e) returns boolean {
-     io:println(&quot;Retry count: &quot;, self.count);
-     if e is error &amp;&amp; self.count &gt;  0 {
-        self.count -= 1;
-        return true;
-     } else {
-        return false;
-     }
-   }
+    private int count;
+    public function init(int count = 2) {
+        self.count = count;
+    }
+    public function shouldRetry(error? e) returns boolean {
+        if e is error &amp;&amp; self.count &gt;  0 {
+            self.count -= 1;
+            io:println(&quot;Retries remaining: &quot;, self.count);
+            return true;
+        } else {
+            return false;
+        }
+    }
 };
 </code></pre></div>
 
@@ -285,9 +222,8 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client dbClient =
-                check new (url = &quot;jdbc:h2:file:./local-transactions/testdb&quot;,
-                                        user = &quot;test&quot;, password = &quot;test&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client dbClient = check new (url = &quot;jdbc:h2:file:./local-transactions/accountdb&quot;, 
+                                      user = &quot;test&quot;, password = &quot;test&quot;);
 </code></pre></div>
 
                                 </td>
@@ -295,7 +231,7 @@ import ballerina/java.jdbc;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The JDBC client for the H2 database.</p>
+                                            <p>The JDBC Client for the H2 database.</p>
 
                                         </div>
                                     </div>
@@ -306,9 +242,10 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS DEPOSITS &quot; +
-                                &quot;(ID INTEGER, AMOUNT FLOAT)&quot;);
-    handleExecute(ret, &quot;Create DEPOSITS table&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS ACCOUNT &quot; +
+                                &quot;(ID INTEGER, BALANCE DECIMAL, PRIMARY KEY(id))&quot;); 
+    _ = check dbClient-&gt;execute(&quot;INSERT INTO ACCOUNT VALUES (1, 2500.0)&quot;);
+    _ = check dbClient-&gt;execute(&quot;INSERT INTO ACCOUNT VALUES (2, 1000.0)&quot;);
 </code></pre></div>
 
                                 </td>
@@ -316,24 +253,10 @@ import ballerina/java.jdbc;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create the tables that are required for the transaction.</p>
+                                            <p>Create the database table and populate some records.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS WITHDRAWALS &quot; +
-                                &quot;(ID INTEGER, AMOUNT FLOAT)&quot;);
-    handleExecute(ret, &quot;Create WITHDRAWALS table&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -342,6 +265,8 @@ import ballerina/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    retry&lt;MyRetryManager&gt; (3) transaction {
+        transactions:onRollback(onRollbackFunc);
+        transactions:onCommit(onCommitFunc);
 </code></pre></div>
 
                                 </td>
@@ -349,10 +274,8 @@ import ballerina/java.jdbc;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is a <code>retry transaction</code> statement block. A retry
- transaction statement combines the retry statement and
- the transaction statement with the additional semantics.
- Each transaction is part of a sequence of retries.</p>
+                                            <p>In a retry scenario, if the the transaction block returns an error e.g., with a <code>check</code> expression,
+ the transaction is automatically rollbacked and the retry manager is checked to retry the transaction.</p>
 
                                         </div>
                                     </div>
@@ -363,10 +286,8 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var onRollbackFunc = function(transactions:Info info,
-                                error? cause, boolean willRetry) {
-            io:println(&quot;Rollback handler executed.&quot;);
-        };
+                                    <div class="highlight"><pre><code class=language-ballerina>        var creditResult = check dbClient-&gt;execute(&quot;UPDATE ACCOUNT SET BALANCE=BALANCE+500.0 WHERE ID=1&quot;);
+        var debitResult = check dbClient-&gt;execute(&quot;UPDATE ACCOUNT SET BALANCE=BALANCE-500.0 WHERE ID=2&quot;);
 </code></pre></div>
 
                                 </td>
@@ -374,134 +295,7 @@ import ballerina/java.jdbc;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the rollback handler, which gets triggered once
- the rollback statement is executed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var onCommitFunc = function(transactions:Info info) {
-            io:println(&quot;Commit handler executed.&quot;);
-        };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines the commit handler, which gets triggered once the commit
- action is executed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:onRollback(onRollbackFunc);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Register the rollback handler to the transaction context.
- Multiple rollback handlers can be registered and they
- are executed in reverse order.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:onCommit(onCommitFunc);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Register the commit handler to the transaction context.
- Multiple commit handlers can be registered and they
- are executed in reverse order.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var withdrawalResult =
-                    dbClient-&gt;execute(&quot;INSERT INTO WITHDRAWALS(ID,AMOUNT) &quot; +
-                                        &quot;VALUES (1234553, 10500)&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the first remote function participant of the transaction.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var depositResult =
-                    dbClient-&gt;execute(&quot;INSERT INTO DEPOSITS (ID, AMOUNT) &quot; +
-                                        &quot;VALUES (1234554, 10500)&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the second remote function participant of the transaction.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        transactions:Info transInfo = transactions:info();
-        io:println(transInfo.xid);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Returns information about the current transaction.</p>
+                                            <p>Execute database operations within the transaction.</p>
 
                                         </div>
                                     </div>
@@ -512,9 +306,7 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if(withdrawalResult is error || depositResult is error) {
-            check getError(&quot;DB operation failed&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Transaction Info: &quot;, transactions:info());
 </code></pre></div>
 
                                 </td>
@@ -523,117 +315,27 @@ import ballerina/java.jdbc;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var commitResult = commit;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>commit</code> action performs the commit operation of the current transaction.
- The result of the commit action is an error. Otherwise, the result is <code>()</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if(commitResult is ()){
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Based on the result of the <code>commit</code> action, the followup tasks could be performed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Transaction committed.&quot;);
-            handleExecute(withdrawalResult,
-                                    &quot;Insert data into WITHDRAWALS table&quot;);
-            handleExecute(depositResult,
-                                    &quot;Insert data into DEPOSITS table&quot;);
-        } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Any action that needs to be performed after the transaction, which is
- committed should be added here.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Transaction failed&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        check commit;
+        io:println(&quot;Transaction committed.&quot;);
+        io:println(&quot;Account Credit: &quot;, creditResult);
+        io:println(&quot;Account Debit: &quot;, debitResult);
     }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If the transaction is failed, any action that needs to perform
- after the commit failure should be added here.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE WITHDRAWALS&quot;);
-    handleExecute(ret, &quot;Drop table WITHDRAWALS&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Drop the tables.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE DEPOSITS&quot;);
-    handleExecute(ret, &quot;Drop table DEPOSITS&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check dbClient-&gt;execute(&quot;DROP TABLE ACCOUNT&quot;);
+    
 </code></pre></div>
 
                                 </td>
@@ -665,8 +367,8 @@ import ballerina/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function getError(string message) returns error? {
-    return error(message);
+                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc(transactions:Info info, error? cause, boolean willRetry) {
+    io:println(&quot;Rollback handler executed.&quot;);
 }
 </code></pre></div>
 
@@ -676,27 +378,16 @@ import ballerina/java.jdbc;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function handleExecute(sql:ExecutionResult|sql:Error returned, string message) {
-    if (returned is sql:ExecutionResult) {
-        io:println(message + &quot; status: &quot;, returned.affectedRowCount);
-    } else {
-        io:println(message + &quot; failed: &quot;, returned.message());
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>function onCommitFunc(transactions:Info info) {
+    io:println(&quot;Commit handler executed.&quot;);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Function to handle the return value of the <code>execute</code> remote function.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -720,16 +411,11 @@ import ballerina/java.jdbc;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run retry_transactions.bal
-Create DEPOSITS table status: 0
-Create WITHDRAWALS table status: 0
-101 52 97 50 49 55 102 97 45 55 57 57 102 45 52 56 52 55 45 57 53 49 52 45 55 98 98 49 49 54 101 49 55 54 49 49
+Transaction Info: xid=57 55 52 102 53 52 100 53 45 48 100 99 54 45 52 100 100 99 45 98 56 55 97 45 99 54 102 55 97 55 57 102 54 57 48 100 retryNumber=0 startTime=1594734072607 prevAttempt=
 Commit handler executed.
 Transaction committed.
-Insert data into WITHDRAWALS table status: 1
-Insert data into DEPOSITS table status: 1
-Retry count: 3
-Drop table WITHDRAWALS status: 0
-Drop table DEPOSITS status: 0
+Account Credit: affectedRowCount=1 lastInsertId=
+Account Debit: affectedRowCount=1 lastInsertId=
 </code></pre></div>
 
                                 </td>

@@ -1,0 +1,1257 @@
+---
+layout: ballerina-example-page
+title: Call Stored Procedures
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/mysql-call-stored-procedures
+redirect_from:
+  - /vswan-lake/learn/by-example/mysql-call-stored-procedures
+  - /vswan-lake/learn/by-example/mysql-call-stored-procedures.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
+<span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span>
+<span class="kt">string</span> <span class="nx">dbName</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE_EXEC&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">sqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS &quot;</span> <span class="o">+</span> <span class="nx">dbName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Database created. &quot;</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">sqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();}</span><span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">sqlClient</span><span class="p">)</span>
+<span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">? {    io:println(</span><span class="s">&quot;Creating necessary table and procedures...&quot;</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS Student&quot;</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span>
+                                <span class="s">&quot;DROP PROCEDURE IF EXISTS InsertStudent&quot;</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP PROCEDURE IF EXISTS GetCount&quot;</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP PROCEDURE IF EXISTS GetStudents&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Successfully dropped tables and procedures.&quot;</span><span class="p">);</span>
+    
+    <span class="nx">result</span> <span class="p">=</span>  <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE Student(&quot;</span> <span class="o">+</span>
+            <span class="s">&quot; id INT AUTO_INCREMENT, age INT, name VARCHAR(255), &quot;</span> <span class="o">+</span> 
+            <span class="s">&quot; PRIMARY KEY (id))&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Create Student table executed.&quot;</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE InsertStudent&quot;</span> <span class="o">+</span> 
+        <span class="s">&quot;(IN pName VARCHAR(255), IN pAge INT) &quot;</span> <span class="o">+</span>
+        <span class="s">&quot;BEGIN &quot;</span> <span class="o">+</span>
+        <span class="s">&quot;INSERT INTO Student(age, name) VALUES (pAge, pName); &quot;</span> <span class="o">+</span>
+        <span class="s">&quot;END&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stored procedure with IN param created.&quot;</span><span class="p">);</span>    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE GetCount&quot;</span> <span class="o">+</span> 
+        <span class="s">&quot;(INOUT pID INT, OUT totalCount INT) &quot;</span> <span class="o">+</span>
+        <span class="s">&quot;BEGIN &quot;</span> <span class="o">+</span>
+        <span class="s">&quot;SELECT age INTO pID FROM Student WHERE id = pID; &quot;</span> <span class="o">+</span>
+        <span class="s">&quot;SELECT COUNT(*) INTO totalCount FROM Student;&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;END&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stored procedure with INOUT/OUT param created.&quot;</span><span class="p">);</span>    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE GetStudents() &quot;</span> <span class="o">+</span>
+        <span class="s">&quot;BEGIN SELECT * FROM Student; END&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stored procedure with result set returned created.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">insertRecord</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">sqlClient</span><span class="p">)</span> <span class="p">{</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nInvoke `InsertStudent` procedure with IN params&quot;</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;George&quot;</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">24</span><span class="p">;</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedCallQuery</span> <span class="nx">sqlQuery</span> <span class="p">=</span> 
+                                <span class="s">`CALL InsertStudent(${name}, ${age})`</span><span class="p">;</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `InsertStudent` is successful : &quot;</span><span class="p">,</span> 
+                <span class="nx">retCall</span><span class="p">.</span><span class="nx">executionResult</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while invoking `InsertStudent`.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">getCount</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">sqlClient</span><span class="p">)</span> <span class="p">{</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nInvoke `GetCount` procedure with INOUT &amp; OUT params&quot;</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">InOutParameter</span> <span class="nx">id</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">OutParameter</span> <span class="nx">totalCount</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedCallQuery</span> <span class="nx">sqlQuery</span> <span class="p">=</span> 
+                        <span class="s">`{CALL GetCount(${id}, ${totalCount})}`</span><span class="p">;</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `GetCount` is successful.&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age of the student with id &#39;1&#39; : &quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total student count: &quot;</span><span class="p">,</span> <span class="nx">totalCount</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while invoking `GetCount`.&quot;</span><span class="p">);</span>
+    <span class="p">}}</span>
+<span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kd">function</span> <span class="nx">checkData</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">sqlClient</span><span class="p">)</span> <span class="p">{</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nInvoke `GetStudents` procedure with returned data&quot;</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">retCall</span> <span class="p">=</span> 
+                            <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;{CALL GetStudents()}&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nx">Student</span><span class="p">]);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `InsertStudent` is successful.&quot;</span><span class="p">);</span>
+        <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">retCall</span><span class="p">.</span><span class="nx">queryResult</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(!(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">()))</span> <span class="p">{</span>
+            <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">studentStream</span> <span class="p">=</span> 
+                                    <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span> <span class="nx">result</span><span class="p">;</span>
+            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">studentStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student details: &quot;</span><span class="p">,</span> <span class="nx">student</span><span class="p">);</span>
+                           <span class="p">});</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Empty result is returned from the `GetStudents`.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while invoking `GetStudents`.&quot;</span><span class="p">);</span>
+    <span class="p">}}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeDatabase</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+        <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">sqlClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span>
+            <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="nx">dbName</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">sqlClient</span> <span class="nx">is</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">initResult</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">sqlClient</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">initResult</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+                <span class="nx">insertRecord</span><span class="p">(</span><span class="nx">sqlClient</span><span class="p">);</span>
+                <span class="nx">getCount</span><span class="p">(</span><span class="nx">sqlClient</span><span class="p">);</span>
+                <span class="nx">checkData</span><span class="p">(</span><span class="nx">sqlClient</span><span class="p">);</span>                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nSample executed successfully!&quot;</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student table initialization failed: &quot;</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">sqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Table initialization failed!!&quot;</span><span class="p">,</span> <span class="nx">sqlClient</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Database initialization failed!!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_call_stored_procedures</span><span class="p">.</span><span class="nx">balDatabase</span> <span class="nx">created</span><span class="p">.</span> 
+<span class="nx">Creating</span> <span class="nx">necessary</span> <span class="nx">table</span> <span class="nx">and</span> <span class="nx">procedures</span><span class="o">...</span>
+<span class="nx">Successfully</span> <span class="nx">dropped</span> <span class="nx">tables</span> <span class="nx">and</span> <span class="nx">procedures</span><span class="p">.</span>
+<span class="nx">Create</span> <span class="nx">Student</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">.</span>
+<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">IN</span> <span class="nx">param</span> <span class="nx">created</span><span class="p">.</span>
+<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">INOUT</span><span class="o">/</span><span class="nx">OUT</span> <span class="nx">param</span> <span class="nx">created</span><span class="p">.</span>
+<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">result</span> <span class="nx">set</span> <span class="nx">returned</span> <span class="nx">created</span><span class="p">.</span><span class="nx">Invoke</span> <span class="s">`InsertStudent`</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">IN</span> <span class="nx">params</span>
+<span class="nx">Call</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="s">`InsertStudent`</span> <span class="nx">is</span> <span class="nx">successful</span> <span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span><span class="nx">Invoke</span> <span class="s">`GetCount`</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">INOUT</span> <span class="o">&amp;</span> <span class="nx">OUT</span> <span class="nx">params</span>
+<span class="nx">Call</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="s">`GetCount`</span> <span class="nx">is</span> <span class="nx">successful</span><span class="p">.</span>
+<span class="nx">Age</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">student</span> <span class="nx">with</span> <span class="nx">id</span> <span class="sc">&#39;1&#39;</span> <span class="p">:</span> <span class="mi">24</span>
+<span class="nx">Total</span> <span class="nx">student</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span><span class="nx">Invoke</span> <span class="s">`GetStudents`</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">returned</span> <span class="nx">data</span>
+<span class="nx">Call</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="s">`InsertStudent`</span> <span class="nx">is</span> <span class="nx">successful</span><span class="p">.</span>
+<span class="nx">Student</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">age</span><span class="p">=</span><span class="mi">24</span> <span class="nx">name</span><span class="p">=</span><span class="nx">GeorgeSample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Call Stored Procedures</h2>
+                            <p><p>This example demonstrates how to use the MySQL client to execute a stored
+ procedure. Note that the MySQL database driver JAR should be placed in
+ the<code>BALLERINA_HOME/bre/lib</code> directory. The MySQL connector uses database
+ properties from MySQL version 8.0.x onwards. Therefore, it is
+ recommended to use a MySQL driver version greater than 8.0.x.<br><br>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/mysql/index.html">MySQL module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="mysql-batch-execute-operation.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Batch Execute Operations</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="mysql-parameterized-query.html">
+                                        <span>NEXT ></span>
+                                        <p>Parameterized Query</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="mysql-call-stored-procedures">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-call-stored-procedures/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/mysql;
+import ballerina/sql;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
+string dbPassword = &quot;Test@123&quot;;
+string dbName = &quot;MYSQL_BBE_EXEC&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The username and password of the MySQL database. This is used in the below
+ examples when initializing the MySQL connector. You need to change these
+ based on your setup if you try locally.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeDatabase() returns sql:Error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client sqlClient = check new (user = dbUser, password = dbPassword);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize the client without any database to create the database.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+        check sqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS &quot; + dbName);
+    io:println(&quot;Database created. &quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create the database if it does not exist. If any error occurred,
+ the error will be returned.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check sqlClient.close();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Close the MySQL client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function initializeTable(mysql:Client sqlClient)
+returns sql:Error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Creating necessary table and procedures...&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+        check sqlClient-&gt;execute(&quot;DROP TABLE IF EXISTS Student&quot;);
+    result = check sqlClient-&gt;execute(
+                                &quot;DROP PROCEDURE IF EXISTS InsertStudent&quot;);
+    result = check sqlClient-&gt;execute(&quot;DROP PROCEDURE IF EXISTS GetCount&quot;);
+    result = check sqlClient-&gt;execute(&quot;DROP PROCEDURE IF EXISTS GetStudents&quot;);
+    io:println(&quot;Successfully dropped tables and procedures.&quot;);
+    
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Execute dropping the table. The <code>sql:ExecutionResult</code> is returned upon
+ successful execution. An error will be returned in case of a failure.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    result =  check sqlClient-&gt;execute(&quot;CREATE TABLE Student(&quot; +
+            &quot; id INT AUTO_INCREMENT, age INT, name VARCHAR(255), &quot; + 
+            &quot; PRIMARY KEY (id))&quot;);
+    io:println(&quot;Create Student table executed.&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Similarly, to drop a table, the <code>create</code> table query is executed.
+ Here, the <code>id</code> is an auto-generated column.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check sqlClient-&gt;execute(&quot;CREATE PROCEDURE InsertStudent&quot; + 
+        &quot;(IN pName VARCHAR(255), IN pAge INT) &quot; +
+        &quot;BEGIN &quot; +
+        &quot;INSERT INTO Student(age, name) VALUES (pAge, pName); &quot; +
+        &quot;END&quot;);
+    io:println(&quot;Stored procedure with IN param created.&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Necessary stored procedures are created using the execute command.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check sqlClient-&gt;execute(&quot;CREATE PROCEDURE GetCount&quot; + 
+        &quot;(INOUT pID INT, OUT totalCount INT) &quot; +
+        &quot;BEGIN &quot; +
+        &quot;SELECT age INTO pID FROM Student WHERE id = pID; &quot; +
+        &quot;SELECT COUNT(*) INTO totalCount FROM Student;&quot; +
+        &quot;END&quot;);
+    io:println(&quot;Stored procedure with INOUT/OUT param created.&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check sqlClient-&gt;execute(&quot;CREATE PROCEDURE GetStudents() &quot; +
+        &quot;BEGIN SELECT * FROM Student; END&quot;);
+    io:println(&quot;Stored procedure with result set returned created.&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function insertRecord(mysql:Client sqlClient) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The stored procedure <code>InsertStudent</code> with the IN parameters is invoked.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nInvoke `InsertStudent` procedure with IN params&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string name = &quot;George&quot;;
+    int age = 24;
+    sql:ParameterizedCallQuery sqlQuery = 
+                                `CALL InsertStudent(${name}, ${age})`;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a parameterized query to invoke the procedure.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult|sql:Error retCall = sqlClient-&gt;call(sqlQuery);
+    
+    if (retCall is sql:ProcedureCallResult) {
+        io:println(&quot;Call stored procedure `InsertStudent` is successful : &quot;, 
+                retCall.executionResult);
+    } else {
+        io:println(&quot;Error occurred while invoking `InsertStudent`.&quot;);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Execute the stored procedure.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function getCount(mysql:Client sqlClient) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Here, the stored procedure with the OUT and INOUT parameters is invoked.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nInvoke `GetCount` procedure with INOUT &amp; OUT params&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:InOutParameter id = new (1);
+    sql:OutParameter totalCount = new;
+    sql:ParameterizedCallQuery sqlQuery = 
+                        `{CALL GetCount(${id}, ${totalCount})}`;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize the INOUT &amp; OUT parameters.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult|sql:Error retCall = sqlClient-&gt;call(sqlQuery);
+    
+    if (retCall is sql:ProcedureCallResult) {
+        io:println(&quot;Call stored procedure `GetCount` is successful.&quot;);
+        io:println(&quot;Age of the student with id &#39;1&#39; : &quot;, id.get(int));
+        io:println(&quot;Total student count: &quot;, totalCount.get(int));
+    } else {
+        io:println(&quot;Error occurred while invoking `GetCount`.&quot;);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Execute the stored procedure.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
+    int id;
+    int age;
+    string name;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Student record to represent the database table.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function checkData(mysql:Client sqlClient) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Invoke the stored procedure, which returns data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nInvoke `GetStudents` procedure with returned data&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult|sql:Error retCall = 
+                            sqlClient-&gt;call(&quot;{CALL GetStudents()}&quot;, [Student]);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Execute the stored procedure.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (retCall is sql:ProcedureCallResult) {
+        io:println(&quot;Call stored procedure `InsertStudent` is successful.&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        stream&lt;record{}, sql:Error&gt;? result = retCall.queryResult;
+        if (!(result is ())) {
+            stream&lt;Student, sql:Error&gt; studentStream = 
+                                    &lt;stream&lt;Student, sql:Error&gt;&gt; result;
+            sql:Error? e = studentStream.forEach(function(Student student) {
+                                io:println(&quot;Student details: &quot;, student);
+                           });
+        } else {
+            io:println(&quot;Empty result is returned from the `GetStudents`.&quot;);
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Process the returned result stream.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
+        io:println(&quot;Error occurred while invoking `GetStudents`.&quot;);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:Error? err = initializeDatabase();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize the database.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (err is ()) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        mysql:Client|sql:Error sqlClient = new (user = dbUser,
+            password = dbPassword, database = dbName);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize the MySQL client to be used for the rest of the
+ procedure call executions.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (sqlClient is mysql:Client) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            sql:Error? initResult = initializeTable(sqlClient);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize a table and insert sample data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (initResult is ()) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                insertRecord(sqlClient);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Insert a record by calling a procedure.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                getCount(sqlClient);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Get the total count by calling a procedure.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                checkData(sqlClient);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Get all the results by invoking a procedure.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                io:println(&quot;\nSample executed successfully!&quot;);
+            } else {
+                io:println(&quot;Student table initialization failed: &quot;, initResult);
+            }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            sql:Error? e = sqlClient.close();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Close the MySQL client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
+            io:println(&quot;Table initialization failed!!&quot;, sqlClient);
+        }
+    } else {
+        io:println(&quot;Database initialization failed!!&quot;, err);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run mysql_call_stored_procedures.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Database created. 
+Creating necessary table and procedures...
+Successfully dropped tables and procedures.
+Create Student table executed.
+Stored procedure with IN param created.
+Stored procedure with INOUT/OUT param created.
+Stored procedure with result set returned created.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Invoke `InsertStudent` procedure with IN params
+Call stored procedure `InsertStudent` is successful : affectedRowCount=1 lastInsertId=
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Invoke `GetCount` procedure with INOUT &amp; OUT params
+Call stored procedure `GetCount` is successful.
+Age of the student with id &#39;1&#39; : 24
+Total student count: 1
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Invoke `GetStudents` procedure with returned data
+Call stored procedure `InsertStudent` is successful.
+Student details: id=1 age=24 name=George
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Sample executed successfully!
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

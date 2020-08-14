@@ -2,29 +2,272 @@
 layout: release-note
 title: Release note
 ---
-### Overview of jBallerina {{ site.data.stable-latest.metadata.version }}
-The jBallerina {{ site.data.stable-latest.metadata.version }} patch release improves upon the {{ site.data.stable-latest.metadata.version }} release by introducing the features listed below and addressing a number of [bugs](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+{{ site.data.stable-latest.metadata.version }}%22+label%3AType%2FBug+is%3Aclosed) and [improvements](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+{{ site.data.stable-latest.metadata.version }}%22+is%3Aclosed+label%3AType%2FImprovement).
+### Overview of Ballerina Swan Lake Preview 3
 
-You can use the update tool to update to jBallerina {{ site.data.stable-latest.metadata.version }} as follows.
+This release is the third preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
+
+You can use the update tool to update to Ballerina Swan Lake Preview 3 as follows.
 
 **For existing users:**
 
-If you are already using jBallerina version 1.2.0, or above, you can directly update your distribution to jBallerina {{ site.data.stable-latest.metadata.version }} by executing the following command:
+If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
+                        
+> `ballerina update`
 
-> $ ballerina dist update
+ Next, execute the command below to update to Swan Lake Preview 3.
 
-However, you need to use the following commands instead of the above if you have installed:
+ > `ballerina dist pull slp3`                  
 
-- jBallerina 1.2.0 but switched to a previous version: `$ ballerina dist pull jballerina-{{ site.data.stable-latest.metadata.version }}`
-- a jBallerina version below 1.1.0: install via the [installers](https://ballerina.io/downloads/)
+However, if you are using a jBallerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
 
 **For new users:**
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
+### Highlights
+
+- Support for defining external object method bodies
+- Support for executing stored procedures in the SQL connector
+- Azure Functions support
+
+### What's new in Ballerina Swan Lake Preview 3
+
+#### Language
+
+The language implementation is based on [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/).
+
+##### External object method bodies
+
+This release introduces support for defining object methods with external function bodies.
+
+```ballerina
+type Person object {
+    string fname;
+    string lname;
+
+    function init(string fname, string lname) {
+        self.lname = lname;
+        self.fname = fname;
+    }
+
+    function getFullName() returns string = @java:Method {
+        class: "abc.Hello",
+    } external;
+};
+```
+
+The Java method to which the `getFullName()` method is bound:
+
+```java
+public static BString getFullName(ObjectValue objectValue) {
+        return objectValue.getStringValue(new BmpStringValue("fname")).concat(new BmpStringValue(" ")).concat(
+                    objectValue.getStringValue(new BmpStringValue("lname")));
+}
+```
+
 #### Standard Library
-- 
 
-#### Dev Tools
-- 
+##### SQL Connectors
 
+Stored procedures can now be executed through SQL connectors (JDBC & MySQL). 
+
+```ballerina
+int uid = 10;
+sql:OutParameter insertId = new;
+
+var ret = dbClient->call(`call InsertPerson(${uid}, ${insertId})`);
+if (ret is error) {
+    io:println("Error occurred:", err.message());
+} else {
+    io:println("Out Parameter insert id: ", insertId.get(int));
+    stream<record{}, sql:Error>? resultStr = ret.queryResult;
+    if (!(resultStr is ())) {
+        sql:Error? e = resultStr.forEach(function(record{} result) {
+        io:println("Full Customer details: ", result);
+      });
+    } else {
+        io:println("Stored  procedure does not return anything.");
+    }
+}
+
+```
+##### Module Organization
+
+The `ballerina/nats` library was moved to Ballerina Central. Previously, this module was packed in the Ballerina distribution. With this change, this library can now be released independently.
+
+#### Developer Tools
+
+##### Language Server
+
+###### Introducing AI-based `Data Mapping` Code Action
+
+Two record types can now be mapped automatically using the `Data Mapping` code action. Once a possible record mapping instance is identified, it suggests a mapping based on an AI algorithm. A mapping function will be generated automatically and added to the workspace to perform the record mapping.
+
+The following is a sample in which the code action to generate a mapping function will appear when attempting to assign a mapping value to a variable of a type that is not directly assignable. 
+
+```ballerina
+type Grade record {|
+   int maths;
+   int physics;
+   int chemistry;
+|};
+ 
+type NameAndGrade record {|
+   string name;
+   string surname;
+   int maths;
+   int physics;
+   int chemistry;
+|};
+ 
+public function main() {
+   NameAndGrade student = {
+	name: "Kamal",
+	surname: “Perera”,
+	maths: 90,
+physics: 99,
+chemistry: 95
+   };
+   Grade grades = student;
+}
+```
+By choosing the `Generate mapping function`code action, the following function will be added to the workspace.
+
+```ballerina
+function mapNameAndGradeToGrade(NameAndGrade nameAndGrade) returns Grade {
+// Some record fields might be missing in the AI-based mapping.
+   Grade grade = {
+maths: nameAndGrade.maths, 
+physics: nameAndGrade.physics, 
+chemistry: nameAndGrade.chemistry};
+   return grade;
+}
+```
+
+Furthermore, the line with the error would be replaced with a function call as shown below.
+
+```ballerina
+Grade grades = mapNameAndGradeToGrade(student);
+```
+
+For more information, see [Code Actions](https://ballerina.io/swan-lake/learn/setting-up-visual-studio-code/language-intelligence/#code-actions).
+
+##### Test Framework
+
+###### Support single test execution
+
+A single test function or a set of functions can now be executed using the `--tests` flag as follows.
+
+```cmd
+$ ballerina test --tests <test_function> --all
+```
+
+###### API change in `assertEquals` and `assertNotEquals` functions
+
+Deep value equality is supported only for `anydata`-typed values according to the language specification. The `assertEquals` function has been changed to accept only  `anydata`-typed values to reflect this behavior.
+
+###### Introduction of the `assertExactEquals` and `assertNotExactEquals` functions
+
+The `assertExactEquals` function compares two values to assert whether they refer to the same entity (i.e., they are exactly equal). 
+
+```ballerina
+import ballerina/test;
+
+type Person object {
+    public string name = "";
+    public int age = 0;
+    public Person? parent = ();
+    private string email = "default@abc.com";
+    string address = "No 20, Palm grove";
+};
+
+@test:Config {}
+function testAssertObjectEquals() {
+   Person p1 = new;
+   Person p2 = p1;
+   test:assertExactEquals(p1, p2);
+}
+
+@test:Config {}
+function testAssertObjectNotEquals() {
+    Person p1 = new;
+    Person p2 = new ();
+    test:assertNotExactEquals(p1, p2);
+}
+
+```
+
+###### Introduction of the `@test:BeforeGroups` and `@test:AfterGroups` functions
+
+These two new annotations can now be used when writing tests with the Ballerina test framework.
+
+
+```ballerina
+import ballerina/io;
+import ballerina/test;
+
+@test:BeforeGroups { value : ["group1"] }
+function beforeGroupsFunc() {
+	io:println(“I’m a before groups function!”)
+}
+
+@test:Config {}
+function testFunction() {
+	io:println(“I’m a test function!”)
+
+}
+
+@test:AfterGroups { value : ["group1"] }
+function afterGroupsFunc1() {
+	io:println(“I’m a after groups function!”)
+
+}
+```
+
+###### Introduction of the `alwaysRun` field to the `@test:AfterSuite` annotation
+
+You can now specify `alwaysRun : true|false` in the `@AfterSuite` annotation, which enables running the `@AfterSuite` even if the `@BeforeSuite` function fails during the test execution. The default value is `false`.
+
+```ballerina
+Import ballerina/io;
+import ballerina/test;
+
+
+@test:BeforeSuite
+function beforeSuiteFunc() {
+	io:println("I’m the before suite function");
+	int a = 2/0;
+}
+
+@test:AfterSuite {}
+function afterSuiteFunc() {
+	io:println("I will be run only if before suite function executes successfully.” );
+}
+
+@test:AfterSuite {alwaysRun:true}
+function afterSuiteFunc() {
+	io:println(“I will be run even if the before suite function fails.”);
+}
+```
+
+#### Code to Cloud
+
+##### Azure Functions Support
+
+Ballerina now supports writing serverless functions using the Azure Functions framework. 
+
+```ballerina
+import ballerina/http;
+import ballerinax/azure.functions as af;
+
+@af:Function
+public function fromHttpToQueue(af:Context ctx,
+        	@af:HTTPTrigger {} af:HTTPRequest req,
+        	@af:QueueOutput { queueName: "queue1" } af:StringOutputBinding msg)
+        	returns @af:HTTPOutput af:HTTPBinding {
+	msg.value = req.body;
+	return { statusCode: 200, payload: "Request: " + req.toString() };
+}
+```
+
+For more information, see [Azure Functions](https://ballerina.io/swan-lake/learn/deployment/azure-functions/) and the [Azure Functions Deployment Example](http://dev.ballerina.io/swan-lake/learn/by-example/azure-functions-deployment.html).

@@ -53,7 +53,7 @@ type Person object {
     }
 
     function getFullName() returns string = @java:Method {
-        class: "abc.Hello",
+        class: "abc.Hello"
     } external;
 };
 ```

@@ -70,14 +70,10 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../lang.table/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../lang.table/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
         
         
         
@@ -160,6 +156,10 @@
                 <td class="module-desc">
                     
                     <p>Adds a member <code>val</code> to table <code>t</code>.
+It will be added as the last member.
+It panics if <code>val</code> has the same key as an existing member of <code>t</code>,
+or if <code>val</code> is inconsistent with the inherent type of <code>t</code>.</p>
+
                 </td>
             </tr>
             
@@ -169,7 +169,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Selects the members from a table for which a function returns true.
+                    <p>Selects the members from a table for which a function returns true.</p>
+
                 </td>
             </tr>
             
@@ -180,6 +181,8 @@
                 <td class="module-desc">
                     
                     <p>Applies a function to each member of a table.
+The <code>func</code> is applied to each member of <code>t</code>.</p>
+
                 </td>
             </tr>
             
@@ -190,6 +193,9 @@
                 <td class="module-desc">
                     
                     <p>Returns the member of table <code>t</code> with key <code>k</code>.
+This for use in a case where it is known that the table has a specific key,
+and accordingly panics if <code>t</code> does not have a member with key <code>k</code>.</p>
+
                 </td>
             </tr>
             
@@ -199,7 +205,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Tests whether <code>t</code> has a member with key <code>k</code>.
+                    <p>Tests whether <code>t</code> has a member with key <code>k</code>.</p>
+
                 </td>
             </tr>
             
@@ -210,6 +217,10 @@
                 <td class="module-desc">
                     
                     <p>Returns an iterator over a table.
+The iterator will iterate over the members of the table not the keys.
+The <code>entries</code> function can be used to iterate over the keys and members together.
+The <code>keys</code> function can be used to iterator over just the keys.</p>
+
                 </td>
             </tr>
             
@@ -219,7 +230,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a list of all the keys of table <code>t</code>.
+                    <p>Returns a list of all the keys of table <code>t</code>.</p>
+
                 </td>
             </tr>
             
@@ -229,7 +241,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns number of members of a table.
+                    <p>Returns number of members of a table.</p>
+
                 </td>
             </tr>
             
@@ -240,6 +253,8 @@
                 <td class="module-desc">
                     
                     <p>Applies a function each member of a table and returns a table of the result.
+The resulting table will have the same keys as the argument table.</p>
+
                 </td>
             </tr>
             
@@ -249,7 +264,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the next available integer key.
+                    <p>Returns the next available integer key.</p>
+
                 </td>
             </tr>
             
@@ -260,6 +276,11 @@
                 <td class="module-desc">
                     
                     <p>Adds a member <code>val</code> to table <code>t</code>, replacing any member with the same key value.
+If <code>val</code> replaces an existing member, it will have the same position
+in the order of the members as the existing member;
+otherwise, it will be added as the last member.
+It panics if <code>val</code> is inconsistent with the inherent type of <code>t</code>.</p>
+
                 </td>
             </tr>
             
@@ -270,6 +291,9 @@
                 <td class="module-desc">
                     
                     <p>Combines the members of a table using a combining function.
+The combining function takes the combined value so far and a member of the table,
+and returns a new combined value.</p>
+
                 </td>
             </tr>
             
@@ -279,7 +303,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Removes a member of a table.
+                    <p>Removes a member of a table.</p>
+
                 </td>
             </tr>
             
@@ -290,6 +315,8 @@
                 <td class="module-desc">
                     
                     <p>Removes all members of a table.
+This panics if any member cannot be removed.</p>
+
                 </td>
             </tr>
             
@@ -299,7 +326,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Removes a member of a table with a given key, if the table has member with the key.
+                    <p>Removes a member of a table with a given key, if the table has member with the key.</p>
+
                 </td>
             </tr>
             
@@ -309,7 +337,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a list of all the members of a table.
+                    <p>Returns a list of all the members of a table.</p>
+
                 </td>
             </tr>
             

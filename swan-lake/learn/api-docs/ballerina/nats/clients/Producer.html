@@ -102,14 +102,18 @@ below functionalities.
     
     <ul>
         
-        <li>
-            <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -190,7 +194,12 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../nats/objects/Connection.html">Connection</a> connection)</p>
+
+    <p>Creates a new <code>nats:Producer</code>.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../nats/objects/Connection.html">Connection</a> connection)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -214,13 +223,17 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
                         <tr>
                             <td class="module-title truncate functions" title="publish"><a
                                     class="functions" href="#publish">publish</a></td>
-                            <td class="module-desc"><p>Publishes data to a given subject.</td>
+                            <td class="module-desc"><p>Publishes data to a given subject.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="request"><a
                                     class="functions" href="#request">request</a></td>
-                            <td class="module-desc"><p>Publishes data to a given subject and waits for a response.</td>
+                            <td class="module-desc"><p>Publishes data to a given subject and waits for a response.</p>
+
+</td>
                         </tr>
                     
                 </table>
@@ -237,7 +250,8 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
     </div>
     <div class="param-details">
         
-        <p>Closes a given connection.
+        <p>Closes a given connection.</p>
+
     </div>
 </div>
 
@@ -313,7 +327,7 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
                     <li>
                         <span >replyTo</span>
                         <span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">service</span> </span>
-                        <span class="default"> (default &lt;(string|service)?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -404,7 +418,7 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
                     <li>
                         <span >duration</span>
                         <span class="type">  <span class="builtin-type">int?</span> </span>
-                        <span class="default"> (default &lt;int?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>

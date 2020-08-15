@@ -145,14 +145,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -237,7 +241,13 @@ schemes configured in the HTTP client endpoint to secure the HTTP requests.</p>
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a> config)</p>
+
+    <p>Gets invoked to initialize the secure <code>client</code>. Due to the secure client releated configurations provided
+through the <code>config</code> record, the <code>HttpSecureClient</code> is initialized.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a> config)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -271,91 +281,96 @@ schemes configured in the HTTP client endpoint to secure the HTTP requests.</p>
                         <tr>
                             <td class="module-title truncate functions" title="post"><a
                                     class="functions" href="#post">post</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.post()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="head"><a
                                     class="functions" href="#head">head</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.head()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="put"><a
                                     class="functions" href="#put">put</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.put()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="execute"><a
                                     class="functions" href="#execute">execute</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.execute()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="patch"><a
                                     class="functions" href="#patch">patch</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.patch()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="delete"><a
                                     class="functions" href="#delete">delete</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.delete()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="get"><a
                                     class="functions" href="#get">get</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.get()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="options"><a
                                     class="functions" href="#options">options</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.options()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="forward"><a
                                     class="functions" href="#forward">forward</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.forward()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="submit"><a
                                     class="functions" href="#submit">submit</a></td>
-                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.</td>
+                            <td class="module-desc"><p>This wraps the <code>HttpSecureClient.submit()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getResponse"><a
                                     class="functions" href="#getResponse">getResponse</a></td>
-                            <td class="module-desc"><p>This just passes the request to the actual network call.</td>
+                            <td class="module-desc"><p>This just passes the request to the actual network call.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="hasPromise"><a
                                     class="functions" href="#hasPromise">hasPromise</a></td>
-                            <td class="module-desc"><p>Passes the request to an actual network call.</td>
+                            <td class="module-desc"><p>Passes the request to an actual network call.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getNextPromise"><a
                                     class="functions" href="#getNextPromise">getNextPromise</a></td>
-                            <td class="module-desc"><p>Passes the request to an actual network call.</td>
+                            <td class="module-desc"><p>Passes the request to an actual network call.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPromisedResponse"><a
                                     class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                            <td class="module-desc"><p>Passes the request to an actual network call.</td>
+                            <td class="module-desc"><p>Passes the request to an actual network call.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="rejectPromise"><a
                                     class="functions" href="#rejectPromise">rejectPromise</a></td>
-                            <td class="module-desc"><p>Passes the request to an actual network call.</td>
+                            <td class="module-desc"><p>Passes the request to an actual network call.</p>
+</td>
                         </tr>
                     
                 </table>
@@ -372,7 +387,7 @@ schemes configured in the HTTP client endpoint to secure the HTTP requests.</p>
         <ul>
             <li> <span >url</span>
                 <span class="type">  <span class="builtin-type">string</span></span>
-                
+                 <span class="default">(default "")</span> 
             </li>
             <li>
                 <p>

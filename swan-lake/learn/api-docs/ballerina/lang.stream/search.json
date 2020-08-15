@@ -7,32 +7,7 @@
   ],
   "objects": [
     {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T3",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T4",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T6",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
       "id": "T8",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T9",
       "description": "",
       "moduleId": "lang.stream"
     }
@@ -76,17 +51,7 @@
   ],
   "records": [
     {
-      "id": "T0",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
       "id": "T2",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T5",
       "description": "",
       "moduleId": "lang.stream"
     },

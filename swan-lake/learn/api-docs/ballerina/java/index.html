@@ -70,14 +70,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../java/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../java/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../java/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../java/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -189,7 +193,8 @@
                         </td>
                         <td class="module-desc">
                             
-                            <p>Describes a Java field.
+                            <p>Describes a Java field.</p>
+
                         </td>
                     </tr>
                     
@@ -213,7 +218,8 @@
                         </td>
                         <td class="module-desc">
                             
-                            <p>Describes a Java class that corresponds to a Ballerina object.
+                            <p>Describes a Java class that corresponds to a Ballerina object.</p>
+
                         </td>
                     </tr>
                     
@@ -242,7 +248,8 @@
                         <td class="module-desc">
                             
                             <p>The Ballerina abstract object which is to be extended by Ballerina
-objects representing Ballerina bindings for Java classes.
+objects representing Ballerina bindings for Java classes.</p>
+
                         </td>
                     </tr>
                     
@@ -274,7 +281,9 @@ objects representing Ballerina bindings for Java classes.
                 <td class="module-desc">
                     
                     <p>Returns an <code>JObject|error</code>, which is obtained after casting the provided <code>JObject</code> instance
-to the given <code>JObject</code> type depending on assignability.
+to the given <code>JObject</code> type depending on assignability.</p>
+
+
                 </td>
             </tr>
             
@@ -284,7 +293,9 @@ to the given <code>JObject</code> type depending on assignability.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a <code>handle</code>, which refers to Java null.
+                    <p>Returns a <code>handle</code>, which refers to Java null.</p>
+
+
                 </td>
             </tr>
             
@@ -294,7 +305,9 @@ to the given <code>JObject</code> type depending on assignability.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a <code>handle</code>, which refers to the Java string representation of the Ballerina <code>string</code>.
+                    <p>Returns a <code>handle</code>, which refers to the Java string representation of the Ballerina <code>string</code>.</p>
+
+
                 </td>
             </tr>
             
@@ -305,7 +318,25 @@ to the given <code>JObject</code> type depending on assignability.
                 <td class="module-desc">
                     
                     <p>Returns a <code>handle</code>, which refers to the Java Class object associated with the class or interface with the given
-string name.
+string name.</p>
+
+<p>This function performs a Java <code>class.forName(name)</code> except for the following cases:</p>
+<table>
+<thead>
+<tr><th align="left">Name</th><th align="left">Output</th></tr>
+</thead>
+<tbody>
+<tr><td align="left">boolean</td><td align="left">Java Class instance representing the primitive type boolean</td></tr>
+<tr><td align="left">byte</td><td align="left">Java Class instance representing the primitive type byte</td></tr>
+<tr><td align="left">char</td><td align="left">Java Class instance representing the primitive type char</td></tr>
+<tr><td align="left">short</td><td align="left">Java Class instance representing the primitive type short</td></tr>
+<tr><td align="left">int</td><td align="left">Java Class instance representing the primitive type int</td></tr>
+<tr><td align="left">long</td><td align="left">Java Class instance representing the primitive type long</td></tr>
+<tr><td align="left">float</td><td align="left">Java Class instance representing the primitive type float</td></tr>
+<tr><td align="left">double</td><td align="left">Java Class instance representing the primitive type double</td></tr>
+</tbody>
+</table>
+
                 </td>
             </tr>
             
@@ -315,7 +346,9 @@ string name.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns <code>true</code> if this handle refers to Java null.
+                    <p>Returns <code>true</code> if this handle refers to Java null.</p>
+
+
                 </td>
             </tr>
             
@@ -325,7 +358,8 @@ string name.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the string representation of a Java object stored in a handle reference.
+                    <p>Returns the string representation of a Java object stored in a handle reference.</p>
+
                 </td>
             </tr>
             
@@ -336,6 +370,9 @@ string name.
                 <td class="module-desc">
                     
                     <p>Returns a Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code>.
+If the <code>handle</code> refers to Java null, then this function returns a <code>nil</code> value.</p>
+
+
                 </td>
             </tr>
             
@@ -363,7 +400,9 @@ string name.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Describes the Java class representing a Ballerina binding.
+                    <p>Describes the Java class representing a Ballerina binding.</p>
+
+
                 </td>
             </tr>
             
@@ -385,7 +424,9 @@ string name.
                 <td class="module-desc">
                     
                     <p>Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as
-<code>external</code>.
+<code>external</code>.</p>
+
+
                 </td>
             </tr>
             
@@ -396,7 +437,9 @@ string name.
                 <td class="module-desc">
                     
                     <p>Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as
-<code>external</code>.
+<code>external</code>.</p>
+
+
                 </td>
             </tr>
             
@@ -433,7 +476,8 @@ string name.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>JavaError</code> with the message and the cause.
+                    <p>Represents a <code>JavaError</code> with the message and the cause.</p>
+
                 </td>
             </tr>
             

@@ -9,6 +9,10 @@ var searchData = {
       "description": "\u003cp\u003eThis module offers the capabilities of creating AWS Lambda functions using ballerina.\u003c/p\u003e"
     },
     {
+      "id": "azure.functions",
+      "description": "\u003cp\u003eAnnotation based Azure Functions extension implementation for Ballerina.\u003c/p\u003e"
+    },
+    {
       "id": "cache",
       "description": "\u003cp\u003eThis module provides APIs for handle caching in Ballerina.\u003c/p\u003e"
     },
@@ -22,7 +26,7 @@ var searchData = {
     },
     {
       "id": "docker",
-      "description": "\u003cp\u003eThis module offers an annotation based docker extension implementation for ballerina.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module offers an annotation based docker extension implementation for Ballerina.\u003c/p\u003e"
     },
     {
       "id": "email",
@@ -54,7 +58,7 @@ var searchData = {
     },
     {
       "id": "istio",
-      "description": "\u003cp\u003eThis module offers an annotation based Istio extension implementation for ballerina.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module offers an annotation based Istio extension implementation for Ballerina.\u003c/p\u003e"
     },
     {
       "id": "java",
@@ -82,11 +86,11 @@ var searchData = {
     },
     {
       "id": "knative",
-      "description": "\u003cp\u003eThis module offers an annotation based Knative extension implementation for ballerina.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module offers an annotation based Knative extension implementation for Ballerina.\u003c/p\u003e"
     },
     {
       "id": "kubernetes",
-      "description": "\u003cp\u003eThis module offers an annotation based Kubernetes extension implementation for ballerina.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module offers an annotation based Kubernetes extension implementation for Ballerina.\u003c/p\u003e"
     },
     {
       "id": "lang.array",
@@ -125,10 +129,6 @@ var searchData = {
       "description": "\u003cp\u003eThis module defines the shape expected from all listeners as defined by the language specification 2020R1.\u003c/p\u003e"
     },
     {
-      "id": "lang.query",
-      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003equery-action\u003c/code\u003es \u0026amp; \u003ccode\u003equery-expression\u003c/code\u003es.\u003c/p\u003e"
-    },
-    {
       "id": "lang.stream",
       "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003estream\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e"
     },
@@ -143,10 +143,6 @@ var searchData = {
     {
       "id": "lang.transaction",
       "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003etransaction\u003c/code\u003es.\u003c/p\u003e"
-    },
-    {
-      "id": "lang.typedesc",
-      "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003etypedesc\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e"
     },
     {
       "id": "lang.value",
@@ -194,7 +190,7 @@ var searchData = {
     },
     {
       "id": "openshift",
-      "description": "\u003cp\u003eThis module offers an annotation based OpenShift extension implementation for ballerina.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module offers an annotation based OpenShift extension implementation for Ballerina.\u003c/p\u003e"
     },
     {
       "id": "rabbitmq",
@@ -278,6 +274,11 @@ var searchData = {
       "id": "Context",
       "description": "\u003cp\u003eObject to represent an AWS Lambda function execution context.\u003c/p\u003e",
       "moduleId": "awslambda"
+    },
+    {
+      "id": "Context",
+      "description": "\u003cp\u003eThe request context holder.\u003c/p\u003e",
+      "moduleId": "azure.functions"
     },
     {
       "id": "AbstractCache",
@@ -535,102 +536,7 @@ var searchData = {
       "moduleId": "lang.object"
     },
     {
-      "id": "T4",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_DoFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_FilterFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_InitFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_InnerJoinFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_InputFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_Iterable",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_Iterator",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_LetFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_LimitFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_OuterJoinFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_SelectFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_StreamFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "_StreamPipeline",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T3",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T4",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T6",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
       "id": "T8",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T9",
       "description": "",
       "moduleId": "lang.stream"
     },
@@ -725,11 +631,6 @@ var searchData = {
       "moduleId": "rabbitmq"
     },
     {
-      "id": "T6",
-      "description": "",
-      "moduleId": "sql"
-    },
-    {
       "id": "ArrayValue",
       "description": "\u003cp\u003eRepresents ArrayValue SQL field.\u003c/p\u003e",
       "moduleId": "sql"
@@ -795,6 +696,11 @@ var searchData = {
       "moduleId": "sql"
     },
     {
+      "id": "InOutParameter",
+      "description": "\u003cp\u003eRepresents SQL InOutParameter used in procedure calls.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
       "id": "IntegerValue",
       "description": "\u003cp\u003eRepresents Integer SQL field.\u003c/p\u003e",
       "moduleId": "sql"
@@ -820,8 +726,23 @@ var searchData = {
       "moduleId": "sql"
     },
     {
+      "id": "OutParameter",
+      "description": "\u003cp\u003eRepresents SQL OutParameter used in procedure calls.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ParameterizedCallQuery",
+      "description": "\u003cp\u003eRepresents Parameterized Call SQL Statement.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
       "id": "ParameterizedQuery",
-      "description": "\u003cp\u003eRepresents Parameterised SQL query.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents Parameterized SQL query.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ProcedureCallResult",
+      "description": "\u003cp\u003eObject that is used to return stored procedure call results.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
@@ -888,66 +809,6 @@ var searchData = {
       "id": "Scheduler",
       "description": "\u003cp\u003eRepresents a ballerina task Scheduler, which can be used to run jobs periodically, using the given configurations.\u003c/p\u003e",
       "moduleId": "task"
-    },
-    {
-      "id": "T10",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T11",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T12",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T13",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T14",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T15",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T16",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T17",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T18",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T19",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T20",
-      "description": "",
-      "moduleId": "test"
-    },
-    {
-      "id": "T9",
-      "description": "",
-      "moduleId": "test"
     },
     {
       "id": "FunctionStub",
@@ -1025,6 +886,181 @@ var searchData = {
       "id": "__register",
       "description": "",
       "moduleId": "awslambda"
+    },
+    {
+      "id": "__register",
+      "description": "\u003cp\u003eINTERNAL usage - registers a handler function.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "createContext",
+      "description": "\u003cp\u003eINTERNAL usage - creates function context.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getBallerinaValueFromInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Returns a converted Ballerina value from input data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getBallerinaValueFromInputDataDoubleEscape",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the converted Ballerina value from input data - double escape.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getBinaryFromHTTPReq",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the binary payload from the HTTP request.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getBodyFromHTTPInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the HTTP body value from input data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getBytesFromInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the binary value from input data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getHTTPRequestFromInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Populates the HTTP request structure from an input data entry.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getHTTPRequestFromParams",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the HTTP request data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getJsonFromHTTPReq",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the JSON payload from the HTTP request.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getJsonFromInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the JSON value from input data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getJsonFromInputDataDoubleEscaped",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the JSON value from input data - double escape.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getJsonFromMetadata",
+      "description": "\u003cp\u003eINTERNAL usage - Returns a json value from metadata.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getMetadata",
+      "description": "\u003cp\u003eINTERNAL usage - extracts the metadata.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getOptionalBallerinaValueFromInputDataDoubleEscape",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the optional converted Ballerina value from input data - double escape.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getOptionalBytesFromInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the optional binary value from input data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getOptionalStringConvertedBytesFromInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the optional string value converted from input binary data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getOptionalStringFromInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the optional string value from input data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getStringConvertedBytesFromInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the string value converted from input binary data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getStringFromHTTPReq",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the string payload from the HTTP request.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getStringFromInputData",
+      "description": "\u003cp\u003eINTERNAL usage - Returns the string value from input data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "getStringFromMetadata",
+      "description": "\u003cp\u003eINTERNAL usage - Returns a string value from metadata.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setBallerinaValueAsJsonReturn",
+      "description": "\u003cp\u003eINTERNAL usage - Converts a Ballerina value to a JSON and set the return value.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setBlobOutput",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the Blob output.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setCosmosDBBallerinaValueAsJsonReturn",
+      "description": "\u003cp\u003eINTERNAL usage - Converts a CosmosDS Ballerina value to a JSON and set the return value.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setCosmosDBJsonReturn",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the CosmosDS JSON return value.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setHTTPOutput",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the HTTP output.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setHTTPReturn",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the HTTP binding return value.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setJsonReturn",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the JSON return value.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setPureHTTPOutput",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the pure HTTP output.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setPureJsonOutput",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the pure JSON output.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setPureStringOutput",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the pure string output.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setStringOutput",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the string output.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setStringReturn",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the string return value.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "setTwilioSmsOutput",
+      "description": "\u003cp\u003eINTERNAL usage - Sets the Twilio output.\u003c/p\u003e",
+      "moduleId": "azure.functions"
     },
     {
       "id": "addFirst",
@@ -2042,96 +2078,6 @@ var searchData = {
       "moduleId": "lang.map"
     },
     {
-      "id": "addStreamFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "addToTable",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "consumeStream",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createDoFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createFilterFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createInnerJoinFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createInputFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createLetFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createLimitFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createNestedFromFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createOuterJoinFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createPipeline",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "createSelectFunction",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "getStreamFromPipeline",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "print",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "toArray",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "toString",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "toXML",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
       "id": "close",
       "description": "\u003cp\u003eCloses a stream.\u003c/p\u003e",
       "moduleId": "lang.stream"
@@ -3082,6 +3028,11 @@ var searchData = {
       "moduleId": "test"
     },
     {
+      "id": "assertExactEquals",
+      "description": "\u003cp\u003eAsserts whether the given values are exactly equal.\u003c/p\u003e",
+      "moduleId": "test"
+    },
+    {
       "id": "assertFail",
       "description": "\u003cp\u003eAssert failure is triggered based on user discretion.\u003c/p\u003e",
       "moduleId": "test"
@@ -3094,6 +3045,11 @@ var searchData = {
     {
       "id": "assertNotEquals",
       "description": "\u003cp\u003eAsserts whether the given values are not equal.\u003c/p\u003e",
+      "moduleId": "test"
+    },
+    {
+      "id": "assertNotExactEquals",
+      "description": "\u003cp\u003eAsserts whether the given values are not exactly equal.\u003c/p\u003e",
       "moduleId": "test"
     },
     {
@@ -3119,26 +3075,6 @@ var searchData = {
     {
       "id": "prepare",
       "description": "\u003cp\u003ePrepares a provided default mock object for stubbing.\u003c/p\u003e",
-      "moduleId": "test"
-    },
-    {
-      "id": "startServiceSkeleton",
-      "description": "\u003cp\u003eStart a service skeleton from a given OpenApi definition in the given ballerina module.\u003c/p\u003e",
-      "moduleId": "test"
-    },
-    {
-      "id": "startServices",
-      "description": "\u003cp\u003eStarts all the services defined in the module specified in the \u0027moduleName\u0027 argument.\u003c/p\u003e",
-      "moduleId": "test"
-    },
-    {
-      "id": "stopServiceSkeleton",
-      "description": "\u003cp\u003eStop a service skeleton and cleanup created directories of a given ballerina module.\u003c/p\u003e",
-      "moduleId": "test"
-    },
-    {
-      "id": "stopServices",
-      "description": "\u003cp\u003eStops all the services defined in the module specified in the \u0027moduleName\u0027 argument.\u003c/p\u003e",
       "moduleId": "test"
     },
     {
@@ -3349,6 +3285,81 @@ var searchData = {
       "moduleId": "auth"
     },
     {
+      "id": "BindingNameConfiguration",
+      "description": "\u003cp\u003eBindingName annotation configuration.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "BlobConfiguration",
+      "description": "\u003cp\u003eBlob annotation configuration.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "BytesOutputBinding",
+      "description": "\u003cp\u003eByte array output binding data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "CosmosDBInputConfiguration",
+      "description": "\u003cp\u003eCosmosDB input annotation configuration.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "CosmosDBOutputConfiguration",
+      "description": "\u003cp\u003eCosmosDB output annotation configuration.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "CosmosDBTriggerConfiguration",
+      "description": "\u003cp\u003eCosmosDB trigger annotation configuration.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "HTTPBinding",
+      "description": "\u003cp\u003eHTTP binding data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "HTTPRequest",
+      "description": "\u003cp\u003eHTTP request binding data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "HTTPTriggerConfiguration",
+      "description": "\u003cp\u003eHTTPTrigger annotation configuration.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "HandlerParams",
+      "description": "\u003cp\u003eINTERNAL stucture - the request handler parameter data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "QueueConfiguration",
+      "description": "\u003cp\u003eQueue annotation configuration.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "StringOutputBinding",
+      "description": "\u003cp\u003eString output binding data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "TimerTriggerConfiguration",
+      "description": "\u003cp\u003eTimerTrigger annotation configuration.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "TwilioSmsConfiguration",
+      "description": "\u003cp\u003eTwilio annotation configuration.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "TwilioSmsOutputBinding",
+      "description": "\u003cp\u003eTwilion SMS output binding data.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
       "id": "CacheConfig",
       "description": "\u003cp\u003eRepresents configurations for the \u003ccode\u003ecache:Cache\u003c/code\u003e object.\u003c/p\u003e",
       "moduleId": "cache"
@@ -3437,11 +3448,6 @@ var searchData = {
       "id": "ListenerConfig",
       "description": "\u003cp\u003eRepresents configurations that required for directory listener.\u003c/p\u003e",
       "moduleId": "file"
-    },
-    {
-      "id": "T20",
-      "description": "",
-      "moduleId": "grpc"
     },
     {
       "id": "ClientConfiguration",
@@ -4164,47 +4170,17 @@ var searchData = {
       "moduleId": "lang.array"
     },
     {
-      "id": "T2",
-      "description": "",
-      "moduleId": "lang.array"
-    },
-    {
       "id": "CallStackElement",
       "description": "\u003cp\u003eRepresentation of \u003ccode\u003eCallStackElement\u003c/code\u003e\u003c/p\u003e\n",
       "moduleId": "lang.error"
     },
     {
-      "id": "T0",
-      "description": "",
-      "moduleId": "lang.map"
-    },
-    {
       "id": "T1",
       "description": "",
       "moduleId": "lang.map"
-    },
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "T3",
-      "description": "",
-      "moduleId": "lang.query"
-    },
-    {
-      "id": "T0",
-      "description": "",
-      "moduleId": "lang.stream"
     },
     {
       "id": "T2",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T5",
       "description": "",
       "moduleId": "lang.stream"
     },
@@ -4214,19 +4190,9 @@ var searchData = {
       "moduleId": "lang.stream"
     },
     {
-      "id": "T0",
-      "description": "",
-      "moduleId": "lang.string"
-    },
-    {
       "id": "T1",
       "description": "",
       "moduleId": "lang.string"
-    },
-    {
-      "id": "T0",
-      "description": "",
-      "moduleId": "lang.table"
     },
     {
       "id": "T1",
@@ -4244,14 +4210,14 @@ var searchData = {
       "moduleId": "lang.transaction"
     },
     {
-      "id": "T0",
+      "id": "T6",
       "description": "",
       "moduleId": "lang.xml"
     },
     {
-      "id": "T6",
-      "description": "",
-      "moduleId": "lang.xml"
+      "id": "LdapConnection",
+      "description": "\u003cp\u003eRepresets the LDAP connection.\u003c/p\u003e",
+      "moduleId": "ldap"
     },
     {
       "id": "LdapConnectionConfig",
@@ -4444,11 +4410,6 @@ var searchData = {
       "moduleId": "socket"
     },
     {
-      "id": "T14",
-      "description": "",
-      "moduleId": "sql"
-    },
-    {
       "id": "BatchExecuteErrorDetail",
       "description": "\u003cp\u003eRepresents the properties belonging to a \u003ccode\u003eBatchExecuteError\u003c/code\u003e.\u003c/p\u003e",
       "moduleId": "sql"
@@ -4484,6 +4445,21 @@ var searchData = {
       "moduleId": "task"
     },
     {
+      "id": "AfterGroupsConfig",
+      "description": "",
+      "moduleId": "test"
+    },
+    {
+      "id": "AfterSuiteConfig",
+      "description": "",
+      "moduleId": "test"
+    },
+    {
+      "id": "BeforeGroupsConfig",
+      "description": "",
+      "moduleId": "test"
+    },
+    {
       "id": "MockConfig",
       "description": "\u003cp\u003eConfiguration of the function to be mocked.\u003c/p\u003e",
       "moduleId": "test"
@@ -4502,16 +4478,6 @@ var searchData = {
       "id": "TimeZone",
       "description": "\u003cp\u003eRepresents the time-zone information associated with a particular time.\u003c/p\u003e",
       "moduleId": "time"
-    },
-    {
-      "id": "T0",
-      "description": "",
-      "moduleId": "transactions"
-    },
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "transactions"
     },
     {
       "id": "Info",
@@ -6363,11 +6329,6 @@ var searchData = {
       "moduleId": "grpc"
     },
     {
-      "id": "$anonType$115",
-      "description": "",
-      "moduleId": "http"
-    },
-    {
       "id": "AllLoadBalanceEndpointsFailedError",
       "description": "\u003cp\u003eRepresents a client error that occurred due to all the load balance endpoint failure\u003c/p\u003e\n",
       "moduleId": "http"
@@ -6608,13 +6569,13 @@ var searchData = {
       "moduleId": "kafka"
     },
     {
-      "id": "$anonType$0",
-      "description": "",
-      "moduleId": "lang.error"
-    },
-    {
       "id": "error",
       "description": "\u003cp\u003eThis file contains default retry manager to be used with retry statement.\u003c/p\u003e",
+      "moduleId": "lang.transaction"
+    },
+    {
+      "id": "TransactionError",
+      "description": "\u003cp\u003eRepresents the Transaction error.\u003c/p\u003e",
       "moduleId": "lang.transaction"
     },
     {
@@ -6728,16 +6689,6 @@ var searchData = {
       "moduleId": "socket"
     },
     {
-      "id": "$anonType$4",
-      "description": "",
-      "moduleId": "sql"
-    },
-    {
-      "id": "$anonType$5",
-      "description": "",
-      "moduleId": "sql"
-    },
-    {
       "id": "ApplicationError",
       "description": "\u003cp\u003eRepresents an error originating from application-level causes.\u003c/p\u003e",
       "moduleId": "sql"
@@ -6838,6 +6789,11 @@ var searchData = {
       "id": "Error",
       "description": "\u003cp\u003eRepresents the Auth module related error.\u003c/p\u003e",
       "moduleId": "auth"
+    },
+    {
+      "id": "AUTH_LEVEL",
+      "description": "",
+      "moduleId": "azure.functions"
     },
     {
       "id": "Error",
@@ -7156,6 +7112,11 @@ var searchData = {
     },
     {
       "id": "Error",
+      "description": "\u003cp\u003eRepresents the Transaction module related error.\u003c/p\u003e",
+      "moduleId": "lang.transaction"
+    },
+    {
+      "id": "Error",
       "description": "\u003cp\u003eRepresents LDAP module related errors.\u003c/p\u003e",
       "moduleId": "ldap"
     },
@@ -7257,6 +7218,11 @@ var searchData = {
     {
       "id": "Error",
       "description": "\u003cp\u003eRepresents a database or application level error returned from JDBC client remote functions.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "Parameter",
+      "description": "\u003cp\u003eRepresents all the parameters used in SQL stored procedure call.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
@@ -7546,6 +7512,76 @@ var searchData = {
       "moduleId": "awslambda"
     },
     {
+      "id": "BindingName",
+      "description": "\u003cp\u003e@azurefunctions:BindingName annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "BlobInput",
+      "description": "\u003cp\u003e@azurefunctions:BlobInput annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "BlobOutput",
+      "description": "\u003cp\u003e@azurefunctions:BlobOutput annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "BlobTrigger",
+      "description": "\u003cp\u003e@azurefunctions:BlobTrigger annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "CosmosDBInput",
+      "description": "\u003cp\u003e@azurefunctions:CosmosDBInput annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "CosmosDBOutput",
+      "description": "\u003cp\u003e@azurefunctions:CosmosDBOutput annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "CosmosDBTrigger",
+      "description": "\u003cp\u003e@azurefunctions:CosmosDBTrigger annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "Function",
+      "description": "\u003cp\u003e@azurefunctions:Function annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "HTTPOutput",
+      "description": "\u003cp\u003e@azurefunctions:HTTPOutput annotation\u003c/p\u003e\n",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "HTTPTrigger",
+      "description": "\u003cp\u003e@azurefunctions:HTTPTrigger annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "QueueOutput",
+      "description": "\u003cp\u003e@azurefunctions:QueueOutput annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "QueueTrigger",
+      "description": "\u003cp\u003e@azurefunctions:QueueOutput annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "TimerTrigger",
+      "description": "\u003cp\u003e@azurefunctions:TimerTrigger annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
+      "id": "TwilioSmsOutput",
+      "description": "\u003cp\u003e@azurefunctions:TwilioSmsOutput annotation.\u003c/p\u003e",
+      "moduleId": "azure.functions"
+    },
+    {
       "id": "Config",
       "description": "\u003cp\u003e@docker:Config annotation to configure docker artifact generation.\u003c/p\u003e",
       "moduleId": "docker"
@@ -7731,6 +7767,11 @@ var searchData = {
       "moduleId": "test"
     },
     {
+      "id": "AfterGroups",
+      "description": "\u003cp\u003eIdentifies afterGroup function.\u003c/p\u003e",
+      "moduleId": "test"
+    },
+    {
       "id": "AfterSuite",
       "description": "\u003cp\u003eIdentifies afterSuite function.\u003c/p\u003e",
       "moduleId": "test"
@@ -7738,6 +7779,11 @@ var searchData = {
     {
       "id": "BeforeEach",
       "description": "\u003cp\u003eIdentifies beforeTest function.\u003c/p\u003e",
+      "moduleId": "test"
+    },
+    {
+      "id": "BeforeGroups",
+      "description": "\u003cp\u003eIdentifies beforeGroup function.\u003c/p\u003e",
       "moduleId": "test"
     },
     {

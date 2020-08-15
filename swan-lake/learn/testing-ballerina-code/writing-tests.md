@@ -318,9 +318,48 @@ function testFunction2() {
 }
 ```
 
-### @test:BeforeEach {}
+### @test:BeforeGroups {}
 
-The function specified after the annotation will be run before every test within the test suite is run. This can be used for initializing test-level aspects repeatedly before every test function.
+For each group specified in this annotation, the function that follows the annotation will be executed once before
+ all the tests belonging to the group are executed.
+
+***Example:***
+
+```ballerina
+import ballerina/io;
+import ballerina/test;
+
+// The `BeforeGroups` function is executed before running all the test functions in this module. 
+@test:BeforeGroups { value:["g1"] }
+function beforeFunc() {
+    io:println("I'm the before groups function!");
+}
+
+// Another `BeforeGroups` function is executed before running all the test functions in this module. 
+@test:BeforeGroups { value:["g1", "g2"] }
+function beforeFunc() {
+    io:println("I'm another before groups function!");
+}
+
+// A test function that belongs to the group `g1`.
+@test:Config { groups:["g1"] }
+function testFunction1() {
+    io:println("I belong to group g1!");
+    test:assertTrue(true, msg = "Failed");
+}
+
+// A test function that belongs to the group `g2`.
+@test:Config { groups:["g2"] }}
+function testFunction2() {
+    io:println("I belong to group g2 ");
+    test:assertTrue(true, msg = "Failed");
+}
+```
+
+### @test:BeforeEach
+
+The function specified after this annotation will be run before each test within the test suite is run. This can be
+ used for initializing test-level aspects repeatedly before every test function.
 
 ***Example:***
 
@@ -334,21 +373,21 @@ function beforeFunc() {
     io:println("I'm the before function!");
 }
 
-// Test function.
+// The first test function.
 @test:Config {}
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// Test function.
+// The second test function.
 @test:Config {}
 function testFunction2() {
     io:println("I'm in test function 2!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// Test function.
+// The third test function.
 @test:Config {}
 function testFunction3() {
     io:println("I'm in test function 3!");
@@ -356,9 +395,86 @@ function testFunction3() {
 }
 ```
 
+### @test:AfterEach
+
+The function specified after this annotation will be run after each test within the test suite is run. This can be
+ used for cleaning up the test-level aspects  repeatedly before every test function.
+
+***Example:***
+
+```ballerina
+import ballerina/io;
+import ballerina/test;
+
+// This `AfterEach` function is executed before each test function.
+@test:AfterEach
+function beforeFunc() {
+    io:println("I'm the before function!");
+}
+
+// The first test function.
+@test:Config {}
+function testFunction1() {
+    io:println("I'm in test function 1!");
+    test:assertTrue(true, msg = "Failed!");
+}
+
+// The second test function.
+@test:Config {}
+function testFunction2() {
+    io:println("I'm in test function 2!");
+    test:assertTrue(true, msg = "Failed!");
+}
+
+// The third test function.
+@test:Config {}
+function testFunction3() {
+    io:println("I'm in test function 3!");
+    test:assertTrue(true, msg = "Failed!");
+}
+```
+
+## @test:AfterGroups {}
+
+***Example:***
+
+For each group specified in this annotation, the function that follows the annotation will be executed once after
+ all the tests belonging to the group is executed.
+
+```ballerina
+import ballerina/io;
+import ballerina/test;
+
+// A test function that belongs to the group `g1`.
+@test:Config { groups:["g1"] }
+function testFunction1() {
+    io:println("I belong to group g1!");
+    test:assertTrue(true, msg = "Failed");
+}
+
+// A test function that belongs to the group `g2`.
+@test:Config { groups:["g2"] }}
+function testFunction2() {
+    io:println("I belong to group g2 ");
+    test:assertTrue(true, msg = "Failed");
+}
+
+// The `AfterGroups` function is executed before running all the test functions in this module. 
+@test:BeforeGroups { value:["g1"] }
+function beforeFunc() {
+    io:println("I'm the before groups function!");
+}
+
+// Another `AfterGroups` function is executed before running all the test functions in this module. 
+@test:BeforeGroups { value:["g1", "g2"] }
+function beforeFunc() {
+    io:println("I'm another before groups function!");
+}
+```
+
 ### @test:AfterSuite {}
 
-The function specified after the annotation will be run once after all of the tests in the test suite is run. This can be used for cleaning up the test suite level aspects. The test suite covers tests related to a module.
+The function specified after the annotation will be run once after all of the tests in the test suite are run. This can be used for cleaning up the test suite level aspects. The test suite covers tests related to a module.
 
 ***Example:***
 

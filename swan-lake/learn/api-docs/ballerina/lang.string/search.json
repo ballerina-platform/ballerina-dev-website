@@ -121,11 +121,6 @@
   ],
   "records": [
     {
-      "id": "T0",
-      "description": "",
-      "moduleId": "lang.string"
-    },
-    {
       "id": "T1",
       "description": "",
       "moduleId": "lang.string"

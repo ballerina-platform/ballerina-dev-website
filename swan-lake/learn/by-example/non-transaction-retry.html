@@ -10,22 +10,25 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span><span class="p">{</span>    <span class="kt">string</span> <span class="nx">str</span> <span class="p">=</span> <span class="s">&quot;start&quot;</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">retry</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">str</span> <span class="o">+=</span> <span class="p">(</span><span class="s">&quot; attempt &quot;</span> <span class="o">+</span> <span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;:error,&quot;</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">trxError</span><span class="p">();</span>
-        <span class="p">}</span>        <span class="nx">str</span> <span class="o">+=</span> <span class="p">(</span><span class="s">&quot; attempt &quot;</span><span class="o">+</span> <span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;:result returned end.&quot;</span><span class="p">);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Attempting execution...&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">doWork</span><span class="p">();</span>
     <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">trxError</span><span class="p">()</span>  <span class="nx">returns</span> <span class="nx">error</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;RetryError&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">doWork</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">count</span> <span class="p">&lt;</span> <span class="mi">1</span> <span class="p">{</span>
+        <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Execution Error&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Work done.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
 <span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">non_transaction_retry</span><span class="p">.</span><span class="nx">balstart</span> <span class="nx">attempt</span> <span class="mi">1</span><span class="p">:</span><span class="nx">error</span><span class="p">,</span> <span class="nx">attempt</span> <span class="mi">2</span><span class="p">:</span><span class="nx">error</span><span class="p">,</span> <span class="nx">attempt</span> <span class="mi">3</span><span class="p">:</span><span class="nx">result</span> <span class="nx">returned</span> <span class="nx">end</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">non_transaction_retry</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Attempting</span> <span class="nx">execution</span><span class="o">...</span>
+<span class="nx">Attempting</span> <span class="nx">execution</span><span class="o">...</span>
+<span class="nx">Work</span> <span class="nx">done</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -37,9 +40,7 @@ redirect_from:
                             <h2>Non Transaction Retry</h2>
                             <p><p>The retry statement provides a general-purpose retry facility,
  which is independent of the transactions. This example demonstrates how to
- use the retry capabilities of Ballerina.<br/><br/>
- For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/lang.transaction/index.html">Transactions module</a>.</p>
+ use the retry capabilities of Ballerina.</p>
 </p>
 
                         </td>
@@ -106,10 +107,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -130,20 +127,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error?{
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string str = &quot;start&quot;;
-    int count = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -156,9 +140,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    retry (3) {
-        count = count + 1;
-        if (count &lt; 3) {
-            str += (&quot; attempt &quot; + count.toString() + &quot;:error,&quot;);
+        io:println(&quot;Attempting execution...&quot;);
 </code></pre></div>
 
                                 </td>
@@ -171,7 +153,7 @@ redirect_from:
  Here, retrying happens according to the default retry manager
  since there is no custom retry manager being passed to
  the retry operation.
- As defined, retrying happens for 3 times.</p>
+ As defined, retrying happens for maximum 3 times.</p>
 
                                         </div>
                                     </div>
@@ -182,8 +164,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            return trxError();
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        return doWork();
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -191,8 +174,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Calls a method, which throws an error to simulate the
- retry operation.</p>
+                                            <p>Calls a function, which simulates an error scenario to
+ trigger the retry operation.</p>
 
                                         </div>
                                     </div>
@@ -203,7 +186,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        str += (&quot; attempt &quot;+ count.toString() + &quot;:result returned end.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>int count = 0;
 </code></pre></div>
 
                                 </td>
@@ -214,8 +197,13 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(str);
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>function doWork() returns error? {
+    if count &lt; 1 {
+        count += 1;
+        return error(&quot;Execution Error&quot;);
+    } else {
+        io:println(&quot;Work done.&quot;);
     }
 }
 </code></pre></div>
@@ -225,28 +213,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Prints the execution flow as a string for clarification.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function trxError()  returns error {
-    return error(&quot;RetryError&quot;);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The method, which throws the error.</p>
+                                            <p>The function, which may return an error.</p>
 
                                         </div>
                                     </div>
@@ -262,10 +229,6 @@ redirect_from:
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -273,22 +236,13 @@ redirect_from:
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run non_transaction_retry.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>start attempt 1:error, attempt 2:error, attempt 3:result returned end.
+Attempting execution...
+Attempting execution...
+Work done.
 </code></pre></div>
 
                                 </td>

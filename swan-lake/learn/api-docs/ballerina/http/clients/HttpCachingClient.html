@@ -145,14 +145,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -236,7 +240,14 @@
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a> config, <a href="../../http/records/CacheConfig.html">CacheConfig</a> cacheConfig)</p>
+
+    <p>Takes a service URL, a <code>CliendEndpointConfig</code> and a <code>CacheConfig</code> and builds an HTTP client capable of
+caching responses. The <code>CacheConfig</code> instance is used for initializing a new HTTP cache for the client and
+the <code>ClientConfiguration</code> is used for creating the underlying HTTP client.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a> config, <a href="../../http/records/CacheConfig.html">CacheConfig</a> cacheConfig)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -334,31 +345,36 @@
                         <tr>
                             <td class="module-title truncate functions" title="submit"><a
                                     class="functions" href="#submit">submit</a></td>
-                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.</td>
+                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getResponse"><a
                                     class="functions" href="#getResponse">getResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously-submitted request.</td>
+                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously-submitted request.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="hasPromise"><a
                                     class="functions" href="#hasPromise">hasPromise</a></td>
-                            <td class="module-desc"><p>Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.</td>
+                            <td class="module-desc"><p>Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getNextPromise"><a
                                     class="functions" href="#getNextPromise">getNextPromise</a></td>
-                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</td>
+                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPromisedResponse"><a
                                     class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the promised server push <code>http:Response</code> message.</td>
+                            <td class="module-desc"><p>Retrieves the promised server push <code>http:Response</code> message.</p>
+</td>
                         </tr>
                     
                         <tr>
@@ -381,7 +397,7 @@
         <ul>
             <li> <span >url</span>
                 <span class="type">  <span class="builtin-type">string</span></span>
-                
+                 <span class="default">(default "")</span> 
             </li>
             <li>
                 <p>

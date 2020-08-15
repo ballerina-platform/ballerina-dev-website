@@ -56,7 +56,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Cloning Values</h2>
                             <p><p>The <code>.clone()</code> method can be used to make a copy of an <code>anydata</code> value.
- <code>anydata</code> is equivalent to <code>()|boolean|int|float|decimal|string|(anydata|error)[]|map&lt;anydata|error&gt;|xml|table</code>.
+ <code>anydata</code> is equivalent to <code>()|boolean|int|float|decimal|string|anydata[]|map&lt;anydata&gt;|xml|table&lt;map&lt;anydata&gt;&gt;</code>.
  Clone is defined for all structured types that belong to <code>anydata</code>.
  The resultant copy is a deep copy.
  A deep copy copies all fields and makes copies of the dynamically-allocated memory that is pointed to by the fields.

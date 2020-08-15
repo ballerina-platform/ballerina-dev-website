@@ -80,11 +80,19 @@
     </li>
     
     <li >
+        <a href="#AfterGroups" onclick="menuLinkClick()">AfterGroups</a>
+    </li>
+    
+    <li >
         <a href="#AfterSuite" onclick="menuLinkClick()">AfterSuite</a>
     </li>
     
     <li >
         <a href="#BeforeEach" onclick="menuLinkClick()">BeforeEach</a>
+    </li>
+    
+    <li >
+        <a href="#BeforeGroups" onclick="menuLinkClick()">BeforeGroups</a>
     </li>
     
     <li >
@@ -112,14 +120,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../test/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../test/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../test/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../test/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -204,8 +216,23 @@
             <div class="params-listing">
                 <ul>
                     <li>
+                        <b >AfterGroups</b>
+                        <span class="type"> <span ><a href="../test/records/AfterGroupsConfig.html">AfterGroupsConfig</a></span></span>
+                        <img class="attach-icon" src="../html-template-resources/images/attach.svg">
+                        function</li>
+                    <li>
+                        
+                        <p>Identifies afterGroup function.</p>
+
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="params-listing">
+                <ul>
+                    <li>
                         <b >AfterSuite</b>
-                        <span class="type"></span>
+                        <span class="type"> <span ><a href="../test/records/AfterSuiteConfig.html">AfterSuiteConfig</a></span></span>
                         <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                         function</li>
                     <li>
@@ -226,6 +253,21 @@
                     <li>
                         
                         <p>Identifies beforeTest function.</p>
+
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <b >BeforeGroups</b>
+                        <span class="type"> <span ><a href="../test/records/BeforeGroupsConfig.html">BeforeGroupsConfig</a></span></span>
+                        <img class="attach-icon" src="../html-template-resources/images/attach.svg">
+                        function</li>
+                    <li>
+                        
+                        <p>Identifies beforeGroup function.</p>
 
                     </li>
                 </ul>

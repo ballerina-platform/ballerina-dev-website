@@ -135,9 +135,11 @@ or non-blocking manner.
     <ul>
         
         
-            <li>
-                <a  data="objects" href="../../io/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../io/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -212,7 +214,12 @@ or non-blocking manner.
             
                 
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../io/objects/WritableByteChannel.html">WritableByteChannel</a> bChannel, <span class="builtin-type">string</span> charset)</p>
+
+    <p>Constructs a <code>WritableByteChannel</code> from a given <code>WritableByteChannel</code> and <code>Charset</code>.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../io/objects/WritableByteChannel.html">WritableByteChannel</a> bChannel, <span class="builtin-type">string</span> charset)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -251,7 +258,9 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Writes a given sequence of characters (string).
+        <p>Writes a given sequence of characters (string).</p>
+
+
     </div>
 </div>
 
@@ -263,7 +272,9 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Writes a given JSON to the given channel.
+        <p>Writes a given JSON to the given channel.</p>
+
+
     </div>
 </div>
 
@@ -275,7 +286,23 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Writes a given XML to the channel.
+        <p>Writes a given XML to the channel.</p>
+
+
+    </div>
+</div>
+
+                    
+                        
+<div class="param-sum">
+    <div class="param-name " title="writeProperties">
+        <a href="#writeProperties">writeProperties </a>
+    </div>
+    <div class="param-details">
+        
+        <p>Writes a given key-valued pair <code>map&lt;string&gt;</code> to a property file.</p>
+
+
     </div>
 </div>
 
@@ -287,7 +314,9 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Closes a given <code>WritableCharacterChannel</code> channel.
+        <p>Closes a given <code>WritableCharacterChannel</code> channel.</p>
+
+
     </div>
 </div>
 
@@ -466,6 +495,80 @@ or non-blocking manner.
                         <p>
                             
                             <p>The XML, which should be written</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
+                <li><p><code>()</code> or else <code>io:Error</code> if any error occurred</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+            
+                <div class="method-content">
+    <div class="main-method-title here" id="writeProperties" title="writeProperties">
+             <a class="url-link" href="#writeProperties">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > writeProperties </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">string</span>> properties, <span class="builtin-type">string</span> comment)</p>
+            
+                <b> returns </b><a href="../../io/types.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Writes a given key-valued pair <code>map&lt;string&gt;</code> to a property file.</p>
+<pre><code class="language-ballerina"> io:Error? err = writableCharChannel.writeProperties(properties);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >properties</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">string</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The map<string> that contains keys and values.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >comment</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Comment describing the property list</p>
 
                         </p>
                     </li>

@@ -16,7 +16,7 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">age</span><span class="err">?</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span><span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">gender</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person with the non-defaultable required field set: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person with the required fields: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">);</span>
     <span class="kt">int</span><span class="err">?</span> <span class="nx">age</span> <span class="p">=</span> <span class="nx">john</span><span class="err">?</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age before setting: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
     <span class="nx">john</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">25</span><span class="p">;</span>
@@ -27,7 +27,7 @@ redirect_from:
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
 <span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
 <span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_optional_fields</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Person</span> <span class="nx">with</span> <span class="nx">the</span> <span class="nx">non</span><span class="o">-</span><span class="nx">defaultable</span> <span class="nx">required</span> <span class="nx">field</span> <span class="nx">set</span><span class="p">:</span> <span class="nx">fname</span><span class="p">=</span><span class="nx">John</span> <span class="nx">lname</span><span class="p">=</span> <span class="nx">gender</span><span class="p">=</span><span class="nx">male</span>
+<span class="nx">Person</span> <span class="nx">with</span> <span class="nx">the</span> <span class="nx">required</span> <span class="nx">fields</span><span class="p">:</span> <span class="nx">fname</span><span class="p">=</span><span class="nx">John</span> <span class="nx">lname</span><span class="p">=</span> <span class="nx">gender</span><span class="p">=</span><span class="nx">male</span>
 <span class="nx">Age</span> <span class="nx">before</span> <span class="nx">setting</span><span class="p">:</span> 
 <span class="nx">Age</span> <span class="nx">after</span> <span class="nx">setting</span><span class="p">:</span> <span class="mi">25</span>
 <span class="nx">Person</span> <span class="nx">with</span> <span class="nx">values</span> <span class="nx">assigned</span> <span class="nx">to</span> <span class="nx">required</span> <span class="nx">fields</span><span class="p">:</span> <span class="nx">fname</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">lname</span><span class="p">=</span><span class="nx">Doe</span> <span class="nx">gender</span><span class="p">=</span><span class="nx">female</span>
@@ -263,7 +263,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The required fields <code>fname</code> and <code>gender</code> are not given default values in the record type descriptor.
+                                            <p>Default values are not given for the required fields <code>fname</code> and <code>gender</code> in the record type descriptor.
  Therefore, values must be specified for <code>fname</code> and <code>gender</code> when creating the record.</p>
 
                                         </div>
@@ -275,7 +275,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Person with the non-defaultable required field set: &quot;, john);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Person with the required fields: &quot;, john);
 </code></pre></div>
 
                                 </td>
@@ -384,7 +384,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Field values provided when creating a record takes highest precedence.</p>
+                                            <p>Field values provided when creating a record takes the highest precedence.</p>
 
                                         </div>
                                     </div>
@@ -411,7 +411,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run record_optional_fields.bal
-Person with the non-defaultable required field set: fname=John lname= gender=male
+Person with the required fields: fname=John lname= gender=male
 Age before setting: 
 Age after setting: 25
 Person with values assigned to required fields: fname=Jane lname=Doe gender=female

@@ -744,7 +744,7 @@
             }
           ],
           "name": "getNext",
-          "description": "\u003cp\u003eGets the next record from the CSV file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e string[]|io:Error record \u003d readableCSVChannel.getNext();\n\u003c/code\u003e\u003c/pre\u003e\n",
+          "description": "\u003cp\u003eGets the next record from the CSV file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e string[]|io:Error? record \u003d readableCSVChannel.getNext();\n\u003c/code\u003e\u003c/pre\u003e\n",
           "isDeprecated": false
         },
         {
@@ -1113,7 +1113,7 @@
             }
           ],
           "name": "getNext",
-          "description": "\u003cp\u003eGets the next record from the CSV file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e string[]|io:Error record \u003d readableCSVChannel.getNext();\n\u003c/code\u003e\u003c/pre\u003e\n",
+          "description": "\u003cp\u003eGets the next record from the CSV file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e string[]|io:Error? record \u003d readableCSVChannel.getNext();\n\u003c/code\u003e\u003c/pre\u003e\n",
           "isDeprecated": false
         },
         {
@@ -1582,6 +1582,202 @@
         {
           "isRemote": false,
           "isExtern": false,
+          "parameters": [
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "key",
+              "description": "\u003cp\u003eThe property key needs to read.\u003c/p\u003e\n",
+              "isDeprecated": false
+            },
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "defaultValue",
+              "description": "\u003cp\u003eDefault value to be return.\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "io",
+                "category": "types",
+                "isAnonymousUnionType": true,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "lang.annotations",
+                    "name": "string",
+                    "category": "builtin",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  },
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "io",
+                    "name": "Error",
+                    "category": "types",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  }
+                ],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eThe read property value or else an \u003ccode\u003eio:Error\u003c/code\u003e\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "readProperty",
+          "description": "\u003cp\u003eReads a property from a .properties file with a default value.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e string|io:Error result \u003d readableCharChannel.readProperty(key, defaultValue);\n\u003c/code\u003e\u003c/pre\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "io",
+                "category": "types",
+                "isAnonymousUnionType": true,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "lang.annotations",
+                    "name": "map",
+                    "category": "map",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0,
+                    "constraint": {
+                      "orgName": "ballerina",
+                      "moduleName": "lang.annotations",
+                      "name": "string",
+                      "category": "builtin",
+                      "isAnonymousUnionType": false,
+                      "isArrayType": false,
+                      "isNullable": false,
+                      "isTuple": false,
+                      "isRestParam": false,
+                      "isLambda": false,
+                      "isDeprecated": false,
+                      "generateUserDefinedTypeLink": true,
+                      "memberTypes": [],
+                      "paramTypes": [],
+                      "arrayDimensions": 0
+                    }
+                  },
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "io",
+                    "name": "Error",
+                    "category": "types",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  }
+                ],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eA map that contains all properties\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "readAllProperties",
+          "description": "\u003cp\u003eReads all properties from a .properties file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e map\u0026lt;string\u0026gt;|io:Error result \u003d readableCharChannel.readAllProperties();\n\u003c/code\u003e\u003c/pre\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -1889,6 +2085,202 @@
           ],
           "name": "readXml",
           "description": "\u003cp\u003eReads an XML from the given channel.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e json|io:Error result \u003d readableCharChannel.readXml();\n\u003c/code\u003e\u003c/pre\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "key",
+              "description": "\u003cp\u003eThe property key needs to read.\u003c/p\u003e\n",
+              "isDeprecated": false
+            },
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "defaultValue",
+              "description": "\u003cp\u003eDefault value to be return.\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "io",
+                "category": "types",
+                "isAnonymousUnionType": true,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "lang.annotations",
+                    "name": "string",
+                    "category": "builtin",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  },
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "io",
+                    "name": "Error",
+                    "category": "types",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  }
+                ],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eThe read property value or else an \u003ccode\u003eio:Error\u003c/code\u003e\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "readProperty",
+          "description": "\u003cp\u003eReads a property from a .properties file with a default value.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e string|io:Error result \u003d readableCharChannel.readProperty(key, defaultValue);\n\u003c/code\u003e\u003c/pre\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "io",
+                "category": "types",
+                "isAnonymousUnionType": true,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "lang.annotations",
+                    "name": "map",
+                    "category": "map",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0,
+                    "constraint": {
+                      "orgName": "ballerina",
+                      "moduleName": "lang.annotations",
+                      "name": "string",
+                      "category": "builtin",
+                      "isAnonymousUnionType": false,
+                      "isArrayType": false,
+                      "isNullable": false,
+                      "isTuple": false,
+                      "isRestParam": false,
+                      "isLambda": false,
+                      "isDeprecated": false,
+                      "generateUserDefinedTypeLink": true,
+                      "memberTypes": [],
+                      "paramTypes": [],
+                      "arrayDimensions": 0
+                    }
+                  },
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "io",
+                    "name": "Error",
+                    "category": "types",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  }
+                ],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eA map that contains all properties\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "readAllProperties",
+          "description": "\u003cp\u003eReads all properties from a .properties file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e map\u0026lt;string\u0026gt;|io:Error result \u003d readableCharChannel.readAllProperties();\n\u003c/code\u003e\u003c/pre\u003e\n",
           "isDeprecated": false
         },
         {
@@ -5343,6 +5735,102 @@
         {
           "isRemote": false,
           "isExtern": false,
+          "parameters": [
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "map",
+                "category": "map",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0,
+                "constraint": {
+                  "orgName": "ballerina",
+                  "moduleName": "lang.annotations",
+                  "name": "string",
+                  "category": "builtin",
+                  "isAnonymousUnionType": false,
+                  "isArrayType": false,
+                  "isNullable": false,
+                  "isTuple": false,
+                  "isRestParam": false,
+                  "isLambda": false,
+                  "isDeprecated": false,
+                  "generateUserDefinedTypeLink": true,
+                  "memberTypes": [],
+                  "paramTypes": [],
+                  "arrayDimensions": 0
+                }
+              },
+              "name": "properties",
+              "description": "\u003cp\u003eThe map\u003cstring\u003e that contains keys and values.\u003c/p\u003e\n",
+              "isDeprecated": false
+            },
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "comment",
+              "description": "\u003cp\u003eComment describing the property list\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "io",
+                "name": "Error",
+                "category": "types",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": true,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003e\u003ccode\u003e()\u003c/code\u003e or else \u003ccode\u003eio:Error\u003c/code\u003e if any error occurred\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "writeProperties",
+          "description": "\u003cp\u003eWrites a given key-valued pair \u003ccode\u003emap\u0026lt;string\u0026gt;\u003c/code\u003e to a property file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e io:Error? err \u003d writableCharChannel.writeProperties(properties);\n\u003c/code\u003e\u003c/pre\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
@@ -5653,6 +6141,102 @@
           ],
           "name": "writeXml",
           "description": "\u003cp\u003eWrites a given XML to the channel.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e io:Error? err \u003d writableCharChannel.writeXml(inputXml, 0);\n\u003c/code\u003e\u003c/pre\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "map",
+                "category": "map",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0,
+                "constraint": {
+                  "orgName": "ballerina",
+                  "moduleName": "lang.annotations",
+                  "name": "string",
+                  "category": "builtin",
+                  "isAnonymousUnionType": false,
+                  "isArrayType": false,
+                  "isNullable": false,
+                  "isTuple": false,
+                  "isRestParam": false,
+                  "isLambda": false,
+                  "isDeprecated": false,
+                  "generateUserDefinedTypeLink": true,
+                  "memberTypes": [],
+                  "paramTypes": [],
+                  "arrayDimensions": 0
+                }
+              },
+              "name": "properties",
+              "description": "\u003cp\u003eThe map\u003cstring\u003e that contains keys and values.\u003c/p\u003e\n",
+              "isDeprecated": false
+            },
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "comment",
+              "description": "\u003cp\u003eComment describing the property list\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "io",
+                "name": "Error",
+                "category": "types",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": true,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003e\u003ccode\u003e()\u003c/code\u003e or else \u003ccode\u003eio:Error\u003c/code\u003e if any error occurred\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "writeProperties",
+          "description": "\u003cp\u003eWrites a given key-valued pair \u003ccode\u003emap\u0026lt;string\u0026gt;\u003c/code\u003e to a property file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e io:Error? err \u003d writableCharChannel.writeProperties(properties);\n\u003c/code\u003e\u003c/pre\u003e\n",
           "isDeprecated": false
         },
         {

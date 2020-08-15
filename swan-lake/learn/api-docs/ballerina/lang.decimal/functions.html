@@ -177,7 +177,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>IEEE abs operation.
+                                <p>IEEE abs operation.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -187,7 +188,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Rounds a decimal up to the closest integral value.
+                                <p>Rounds a decimal up to the closest integral value.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -197,7 +199,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Rounds a decimal down to the closest integral value.
+                                <p>Rounds a decimal down to the closest integral value.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -208,6 +211,14 @@
                             <div class="function-desc">
                                 
                                 <p>Return the decimal value represented by <code>s</code>.
+<code>s</code> must follow the syntax of DecimalFloatingPointNumber as defined by the Ballerina specification
+with the following modifications</p>
+<ul>
+<li>the DecimalFloatingPointLiteral may have a leading <code>+</code> or <code>-</code> sign</li>
+<li>a FloatingPointTypeSuffix is not allowed
+This is the inverse of <code>value:toString</code> applied to an <code>decimal</code>.</li>
+</ul>
+
                             </div>
                         </td>
                     </tr>
@@ -217,7 +228,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Maximum of one or more decimal values.
+                                <p>Maximum of one or more decimal values.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -239,6 +251,15 @@
                             <div class="function-desc">
                                 
                                 <p>Round a decimal to the closest integral value.
+Returns the decimal value that is a mathematical integer and closest to <code>x</code>.
+If there are two such values, choose the one that is even
+(this is the round-to-nearest rounding mode, which is the default for IEEE
+and for Ballerina).
+Same as Java Math.rint method
+Same as .NET Math.Round method
+IEEE 754 roundToIntegralTiesToEven operation
+Note that <code>&lt;int&gt;x</code> is the same as <code>&lt;int&gt;x.round()</code></p>
+
                             </div>
                         </td>
                     </tr>
@@ -248,7 +269,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Sum of zero or more decimal values.
+                                <p>Sum of zero or more decimal values.</p>
+
                             </div>
                         </td>
                     </tr>

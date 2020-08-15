@@ -9,7 +9,7 @@
     {
       "fields": [
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -32,7 +32,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -55,7 +55,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -4121,7 +4121,7 @@
     {
       "fields": [
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -4144,7 +4144,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -4167,7 +4167,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",

@@ -81,6 +81,10 @@
         </li>
     
         <li >
+            <a href="#assertExactEquals" onclick="menuLinkClick()">assertExactEquals</a>
+        </li>
+    
+        <li >
             <a href="#assertFail" onclick="menuLinkClick()">assertFail</a>
         </li>
     
@@ -90,6 +94,10 @@
     
         <li >
             <a href="#assertNotEquals" onclick="menuLinkClick()">assertNotEquals</a>
+        </li>
+    
+        <li >
+            <a href="#assertNotExactEquals" onclick="menuLinkClick()">assertNotExactEquals</a>
         </li>
     
         <li >
@@ -113,22 +121,6 @@
         </li>
     
         <li >
-            <a href="#startServiceSkeleton" onclick="menuLinkClick()">startServiceSkeleton</a>
-        </li>
-    
-        <li >
-            <a href="#startServices" onclick="menuLinkClick()">startServices</a>
-        </li>
-    
-        <li >
-            <a href="#stopServiceSkeleton" onclick="menuLinkClick()">stopServiceSkeleton</a>
-        </li>
-    
-        <li >
-            <a href="#stopServices" onclick="menuLinkClick()">stopServices</a>
-        </li>
-    
-        <li >
             <a href="#when" onclick="menuLinkClick()">when</a>
         </li>
     
@@ -145,14 +137,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../test/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../test/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../test/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../test/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -231,6 +227,16 @@
                     </tr>
                 
                     <tr>
+                        <td width="30%"><a class="functions " href="#assertExactEquals">assertExactEquals</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Asserts whether the given values are exactly equal.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
                         <td width="30%"><a class="functions " href="#assertFail">assertFail</a></td>
                         <td width="70%">
                             <div class="function-desc">
@@ -261,6 +267,16 @@
                     </tr>
                 
                     <tr>
+                        <td width="30%"><a class="functions " href="#assertNotExactEquals">assertNotExactEquals</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <p>Asserts whether the given values are not exactly equal.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
                         <td width="30%"><a class="functions " href="#assertTrue">assertTrue</a></td>
                         <td width="70%">
                             <div class="function-desc">
@@ -275,7 +291,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Creates an AssertError with custom message and category.
+                                <p>Creates an AssertError with custom message and category.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -285,7 +302,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Creates and returns a mock object of provided type description.
+                                <p>Creates and returns a mock object of provided type description.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -295,7 +313,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Inter-op to handle function mocking.
+                                <p>Inter-op to handle function mocking.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -305,47 +324,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Prepares a provided default mock object for stubbing.
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#startServiceSkeleton">startServiceSkeleton</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>Start a service skeleton from a given OpenApi definition in the given ballerina module.
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#startServices">startServices</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>Starts all the services defined in the module specified in the 'moduleName' argument.
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#stopServiceSkeleton">stopServiceSkeleton</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>Stop a service skeleton and cleanup created directories of a given ballerina module.
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#stopServices">stopServices</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>Stops all the services defined in the module specified in the 'moduleName' argument.
+                                <p>Prepares a provided default mock object for stubbing.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -356,7 +336,8 @@
                             <div class="function-desc">
                                 
                                 <p>Objects and functions related to function mocking
-Allows a function to stub.
+Allows a function to stub.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -374,13 +355,90 @@ Allows a function to stub.
             </a>
             <h2 > assertEquals </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">any</span> | <span class="builtin-type">error</span> actual, <span class="builtin-type">any</span> | <span class="builtin-type">error</span> expected, <span class="builtin-type">string</span> msg)</p>
+            <p>(<span class="builtin-type">anydata</span> | <span class="builtin-type">error</span> actual, <span class="builtin-type">anydata</span> | <span class="builtin-type">error</span> expected, <span class="builtin-type">string</span> msg)</p>
             
         </span>
     </div>
     <div class="function-desc">
         
         <p>Asserts whether the given values are equal. If it is not, an AssertError is thrown with the given errorMessage.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >actual</span>
+                        <span class="type">  <span class="builtin-type">anydata</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Actual value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >expected</span>
+                        <span class="type">  <span class="builtin-type">anydata</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Expected value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >msg</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default Assertion Failed!)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Assertion error message</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="assertExactEquals" title="assertExactEquals">
+             <a class="url-link" href="#assertExactEquals">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > assertExactEquals </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">any</span> | <span class="builtin-type">error</span> actual, <span class="builtin-type">any</span> | <span class="builtin-type">error</span> expected, <span class="builtin-type">string</span> msg)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Asserts whether the given values are exactly equal. If it is not, an AssertError is thrown with the given errorMessage.</p>
 
     </div>
     
@@ -554,13 +612,90 @@ Allows a function to stub.
             </a>
             <h2 > assertNotEquals </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">any</span> | <span class="builtin-type">error</span> actual, <span class="builtin-type">any</span> | <span class="builtin-type">error</span> expected, <span class="builtin-type">string</span> msg)</p>
+            <p>(<span class="builtin-type">anydata</span> | <span class="builtin-type">error</span> actual, <span class="builtin-type">anydata</span> | <span class="builtin-type">error</span> expected, <span class="builtin-type">string</span> msg)</p>
             
         </span>
     </div>
     <div class="function-desc">
         
         <p>Asserts whether the given values are not equal. If it is equal, an AssertError is thrown with the given errorMessage.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >actual</span>
+                        <span class="type">  <span class="builtin-type">anydata</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Actual value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >expected</span>
+                        <span class="type">  <span class="builtin-type">anydata</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Expected value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >msg</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default Assertion Failed!)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Assertion error message</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="assertNotExactEquals" title="assertNotExactEquals">
+             <a class="url-link" href="#assertNotExactEquals">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > assertNotExactEquals </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">any</span> | <span class="builtin-type">error</span> actual, <span class="builtin-type">any</span> | <span class="builtin-type">error</span> expected, <span class="builtin-type">string</span> msg)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Asserts whether the given values are not exactly equal. If it is equal, an AssertError is thrown with the given errorMessage.</p>
 
     </div>
     
@@ -835,7 +970,7 @@ Allows a function to stub.
             </a>
             <h2 > mockHandler </h2>
         <span class="method-types">
-            <p>(<a href="../test/objects/MockFunction.html">MockFunction</a> mockFunction, <span class="builtin-type">anydata</span> | <span class="array-type"><span class="builtin-type">error</span>[]</span> args)</p>
+            <p>(<a href="../test/objects/MockFunction.html">MockFunction</a> mockFunction, <span class="array-type"><span class="builtin-type">any</span> | <span class="builtin-type">error</span>...</span> args)</p>
             
                 <b> returns </b><span class="builtin-type">any</span> | <a href="../test/types.html#Error">Error</a> 
             
@@ -871,7 +1006,7 @@ Allows a function to stub.
                 <ul>
                     <li>
                         <span >args</span>
-                        <span class="type">  <span class="builtin-type">anydata</span> | <span class="array-type"><span class="builtin-type">error</span>[]</span> </span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">any</span> | <span class="builtin-type">error</span>...</span> </span>
                         
                     </li>
                     <li>
@@ -952,219 +1087,6 @@ Allows a function to stub.
             </ul>
         </div>
         
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="startServiceSkeleton" title="startServiceSkeleton">
-             <a class="url-link" href="#startServiceSkeleton">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > startServiceSkeleton </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> moduleName, <span class="builtin-type">string</span> openApiFilePath)</p>
-            
-                <b> returns </b><span class="builtin-type">boolean</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Start a service skeleton from a given OpenApi definition in the given ballerina module.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >moduleName</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Name of the module</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >openApiFilePath</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Path to the OpenApi definition</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p><code>true</code> if the service skeleton was started successfully, <code>false</code> otherwise</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="startServices" title="startServices">
-             <a class="url-link" href="#startServices">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > startServices </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> moduleName)</p>
-            
-                <b> returns </b><span class="builtin-type">boolean</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Starts all the services defined in the module specified in the 'moduleName' argument.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >moduleName</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Name of the module</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p><code>true</code> if the services were started successfully, <code>false</code> otherwise</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="stopServiceSkeleton" title="stopServiceSkeleton">
-             <a class="url-link" href="#stopServiceSkeleton">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > stopServiceSkeleton </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> moduleName)</p>
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Stop a service skeleton and cleanup created directories of a given ballerina module.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >moduleName</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Name of the module</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="stopServices" title="stopServices">
-             <a class="url-link" href="#stopServices">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > stopServices </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> moduleName)</p>
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Stops all the services defined in the module specified in the 'moduleName' argument.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >moduleName</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Name of the module</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
     
 </div>
                     

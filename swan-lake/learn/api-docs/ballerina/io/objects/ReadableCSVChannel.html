@@ -135,9 +135,11 @@ or non-blocking manner.
     <ul>
         
         
-            <li>
-                <a  data="objects" href="../../io/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../io/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -212,7 +214,12 @@ or non-blocking manner.
             
                 
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../io/objects/ReadableCharacterChannel.html">ReadableCharacterChannel</a> byteChannel, <a href="../../io/types.html#Separator">Separator</a> fs, <span class="builtin-type">int</span> nHeaders)</p>
+
+    <p>Constructs a CSV channel from a CharacterChannel to read/write CSV records.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../io/objects/ReadableCharacterChannel.html">ReadableCharacterChannel</a> byteChannel, <a href="../../io/types.html#Separator">Separator</a> fs, <span class="builtin-type">int</span> nHeaders)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -261,7 +268,9 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Indicates whether there's another record, which could be read.
+        <p>Indicates whether there's another record, which could be read.</p>
+
+
     </div>
 </div>
 
@@ -273,7 +282,9 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Gets the next record from the CSV file.
+        <p>Gets the next record from the CSV file.</p>
+
+
     </div>
 </div>
 
@@ -285,7 +296,9 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Closes a given <code>CSVChannel</code>.
+        <p>Closes a given <code>CSVChannel</code>.</p>
+
+
     </div>
 </div>
 
@@ -297,7 +310,9 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Returns a table, which corresponds to the CSV records.
+        <p>Returns a table, which corresponds to the CSV records.</p>
+
+
     </div>
 </div>
 
@@ -361,7 +376,7 @@ or non-blocking manner.
     <div class="function-desc">
         
         <p>Gets the next record from the CSV file.</p>
-<pre><code class="language-ballerina"> string[]|io:Error record = readableCSVChannel.getNext();
+<pre><code class="language-ballerina"> string[]|io:Error? record = readableCSVChannel.getNext();
 </code></pre>
 
     </div>

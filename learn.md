@@ -14,6 +14,14 @@ redirect_from:
   - /learn/faqs/
   - /v1-2/learn/faqs
   - /v1-2/learn/faqs/
+  - /learn/faq
+  - /learn/faq/
+  - /v1-2/learn/faq
+  - /v1-2/learn/faq/
+  - /learn/by-guide
+  - /learn/by-guide/
+  - /v1-2/learn/by-guide
+  - /v1-2/learn/by-guide/
 ---
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">

@@ -5,15 +5,14 @@ description: Learn and master the Ballerina programming language through setting
 keywords: ballerina, learn, documentation, docs, programming language
 permalink: /swan-lake/learn/
 redirect_from:
-  - /v1-2/learn/tools-ides
-  - /v1-2/learn/tools-ides/
-  - /learn
-  - /v1-2/learn
-  - /v1-2/learn/
-  - /learn/faqs
-  - /learn/faqs/
-  - /v1-2/learn/faqs
-  - /v1-2/learn/faqs/
+  - /swan-lake/learn/tools-ides
+  - /swan-lake/learn/tools-ides/
+  - /swan-lake/learn/faqs
+  - /swan-lake/learn/faqs/
+  - /swan-lake/learn/faq
+  - /swan-lake/learn/faq/
+  - /swan-lake/learn/by-guide
+  - /swan-lake/learn/by-guide/
   - /swan-lake/learn
 ---
 

@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-08-14</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-08-18</h1>
 <p>
 Primary contributors:
 </p>
@@ -397,26 +397,26 @@ mailing list.
 </li>
 <li>7.12 <a href="#section_7.12">Implicit variable type narrowing</a>
 </li>
-<li>7.13 <a href="#section_7.13">Local type definition statement</a>
+<li>7.13 <a href="#XML_namespace_declaration_statement">XML namespace declaration statement</a>
 </li>
-<li>7.14 <a href="#XML_namespace_declaration_statement">XML namespace declaration statement</a>
+<li>7.14 <a href="#section_7.14">Assignment</a><ul>
+<li>7.14.1 <a href="#section_7.14.1">Lvalues</a>
 </li>
-<li>7.15 <a href="#section_7.15">Assignment</a><ul>
-<li>7.15.1 <a href="#section_7.15.1">Lvalues</a>
+<li>7.14.2 <a href="#section_7.14.2">Assignment statement</a>
 </li>
-<li>7.15.2 <a href="#section_7.15.2">Assignment statement</a>
+<li>7.14.3 <a href="#section_7.14.3">Compound assignment statement</a>
 </li>
-<li>7.15.3 <a href="#section_7.15.3">Compound assignment statement</a>
-</li>
-<li>7.15.4 <a href="#section_7.15.4">Destructuring assignment statement</a>
+<li>7.14.4 <a href="#section_7.14.4">Destructuring assignment statement</a>
 </li>
 </ul>
 </li>
-<li>7.16 <a href="#section_7.16">Action statement</a>
+<li>7.15 <a href="#section_7.15">Action statement</a>
 </li>
-<li>7.17 <a href="#section_7.17">Call statement</a>
+<li>7.16 <a href="#section_7.16">Call statement</a>
 </li>
-<li>7.18 <a href="#section_7.18">Conditional statement</a>
+<li>7.17 <a href="#section_7.17">Conditional statement</a>
+</li>
+<li>7.18 <a href="#section_7.18">Do statement</a>
 </li>
 <li>7.19 <a href="#section_7.19">Match statement</a>
 </li>
@@ -428,11 +428,15 @@ mailing list.
 </li>
 <li>7.23 <a href="#section_7.23">Break statement</a>
 </li>
-<li>7.24 <a href="#section_7.24">Panic statement</a>
+<li>7.24 <a href="#section_7.24">Lock statement</a>
 </li>
-<li>7.25 <a href="#section_7.25">Return statement</a>
+<li>7.25 <a href="#section_7.25">On fail clause</a>
 </li>
-<li>7.26 <a href="#section_7.26">Lock statement</a>
+<li>7.26 <a href="#section_7.26">Fail statement</a>
+</li>
+<li>7.27 <a href="#section_7.27">Panic statement</a>
+</li>
+<li>7.28 <a href="#section_7.28">Return statement</a>
 </li>
 </ul>
 </li>
@@ -4676,7 +4680,7 @@ where the namespace-uri comes from xml-namespace-uri specified in the
 xmlns-decl, and the local-name comes from the identifier following the colon.
 </p>
 <p>
-If the variable-reference references a type defined with a type definition, then
+If the variable-reference references a type defined with a module type definition, then
 the result of evaluating the variable-reference-expr is a typedesc value for
 that type.
 </p>
@@ -6355,10 +6359,10 @@ strand must be part of the same thread as the current strand.
 
 <pre class="grammar"><span class="ntdfn" id="block-function-body">block-function-body</span> :=
    <code>{</code> [<a href="#default-worker-init"><span class="ntref">default-worker-init</span></a> <a href="#named-worker-decl"><span class="ntref">named-worker-decl</span></a>+] <a href="#default-worker"><span class="ntref">default-worker</span></a> <code>}</code>
-<span class="ntdfn" id="default-worker-init">default-worker-init</span> := <a href="#sequence-stmt"><span class="ntref">sequence-stmt</span></a>
-<span class="ntdfn" id="default-worker">default-worker</span> := <a href="#sequence-stmt"><span class="ntref">sequence-stmt</span></a>
+<span class="ntdfn" id="default-worker-init">default-worker-init</span> := <a href="#statement"><span class="ntref">statement</span></a>*
+<span class="ntdfn" id="default-worker">default-worker</span> := <a href="#statement"><span class="ntref">statement</span></a>*
 <span class="ntdfn" id="named-worker-decl">named-worker-decl</span> :=
-   [<a href="#annots"><span class="ntref">annots</span></a>] <code>worker</code> <a href="#worker-name"><span class="ntref">worker-name</span></a> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a> <code>{</code> <a href="#sequence-stmt"><span class="ntref">sequence-stmt</span></a> <code>}</code>
+   [<a href="#annots"><span class="ntref">annots</span></a>] <code>worker</code> <a href="#worker-name"><span class="ntref">worker-name</span></a> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 <span class="ntdfn" id="worker-name">worker-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
 <p>
@@ -6412,7 +6416,7 @@ as follows:
 <ol>
 <li>The statements in default-worker-init are executed.</li>
 <li>All the named workers are started. Each named worker executes its
-sequence-stmt on its strand.</li>
+statement-block on its strand.</li>
 <li>The statements in default-worker are executed. This happens without waiting
 for the termination of the named workers started in stage 2.</li>
 </ol>
@@ -6421,10 +6425,10 @@ Variables declared in default-worker-init are in scope within named workers,
 whereas variables declared in default-worker are not.
 </p>
 <p>
-The execution of a worker's sequence-stmt may result in the execution of a
+The execution of a worker's statements may result in the execution of a
 statement that causes the worker to terminate. For example, a return statement
 causes the worker to terminate. If this does not happen, then the worker
-terminates as soon as it has finished executing its sequence-stmt. In this case,
+terminates as soon as it has finished executing its statements. In this case,
 the worker terminates normally, and the termination value is nil. In other
 words, falling off the end of a worker is equivalent to <code>return;</code>,
 which is in turn equivalent to <code>return ();</code>.
@@ -6461,24 +6465,28 @@ In the above, function includes method, and function call includes method call.
 
 <pre class="grammar"><span class="ntdfn" id="statement">statement</span> := 
    <a href="#action-stmt"><span class="ntref">action-stmt</span></a>
-   | <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
    | <a href="#local-var-decl-stmt"><span class="ntref">local-var-decl-stmt</span></a>
-   | <a href="#local-type-defn-stmt"><span class="ntref">local-type-defn-stmt</span></a>
    | <a href="#xmlns-decl-stmt"><span class="ntref">xmlns-decl-stmt</span></a>
    | <a href="#assignment-stmt"><span class="ntref">assignment-stmt</span></a>
    | <a href="#compound-assignment-stmt"><span class="ntref">compound-assignment-stmt</span></a>
    | <a href="#destructuring-assignment-stmt"><span class="ntref">destructuring-assignment-stmt</span></a>
    | <a href="#call-stmt"><span class="ntref">call-stmt</span></a>
    | <a href="#if-else-stmt"><span class="ntref">if-else-stmt</span></a>
-   | <a href="#match-stmt"><span class="ntref">match-stmt</span></a>
-   | <a href="#foreach-stmt"><span class="ntref">foreach-stmt</span></a>
-   | <a href="#while-stmt"><span class="ntref">while-stmt</span></a>
-   | <a href="#break-stmt"><span class="ntref">break-stmt</span></a>
+   | <a href="#regular-compound-stmt"><span class="ntref">regular-compound-stmt</span></a>
    | <a href="#continue-stmt"><span class="ntref">continue-stmt</span></a>
-   | <a href="#fork-stmt"><span class="ntref">fork-stmt</span></a>
+   | <a href="#break-stmt"><span class="ntref">break-stmt</span></a>
+   | <a href="#stmt-with-on-fail"><span class="ntref">stmt-with-on-fail</span></a>
+   | <a href="#fail-stmt"><span class="ntref">fail-stmt</span></a>
    | <a href="#panic-stmt"><span class="ntref">panic-stmt</span></a>
    | <a href="#return-stmt"><span class="ntref">return-stmt</span></a>
-   | <a href="#lock-stmt"><span class="ntref">lock-stmt</span></a>
+   | <a href="#fork-stmt"><span class="ntref">fork-stmt</span></a>
+
+<span class="ntdfn" id="regular-compound-stmt">regular-compound-stmt</span> :=
+  <a href="#do-stmt"><span class="ntref">do-stmt</span></a>
+  | <a href="#match-stmt"><span class="ntref">match-stmt</span></a>
+  | <a href="#foreach-stmt"><span class="ntref">foreach-stmt</span></a>
+  | <a href="#while-stmt"><span class="ntref">while-stmt</span></a>
+  | <a href="#lock-stmt"><span class="ntref">lock-stmt</span></a>
 </pre>
 <p>
 The execution of any statement may involve the evaluation of actions and
@@ -6496,14 +6504,17 @@ execution of a substatement causes termination of the current worker, then the
 execution of the statement terminates at that point.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="sequence-stmt">sequence-stmt</span> := <a href="#statement"><span class="ntref">statement</span></a>*
-<span class="ntdfn" id="block-stmt">block-stmt</span> := <code>{</code> <a href="#sequence-stmt"><span class="ntref">sequence-stmt</span></a> <code>}</code>
+<pre class="grammar">
+<span class="ntdfn" id="statement-block">statement-block</span> := <code>{</code> <a href="#statement"><span class="ntref">statement</span></a>* <code>}</code>
 </pre>
 <p>
-A <code>sequence-stmt</code> executes its statements sequentially. A
-<code>block-stmt</code> is executed by executing its <code>sequence-stmt</code>.
+A <code>statement-block</code> is a syntactic grouping of statements, which are
+executed sequentially.
 </p>
+
 </section>
+
+
 <section>
 <h3 id="section_7.5">7.5 Fork statement</h3>
 
@@ -6986,7 +6997,7 @@ that it is used only for a method with the <code>remote</code> modifier.
 <section>
 <h3 id="section_7.10">7.10 Query action</h3>
 <pre class="grammar"><span class="ntdfn" id="query-action">query-action</span> := <a href="#query-pipeline"><span class="ntref">query-pipeline</span></a> <a href="#do-clause"><span class="ntref">do-clause</span></a>
-<span class="ntdfn" id="do-clause">do-clause</span> := <code>do</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+<span class="ntdfn" id="do-clause">do-clause</span> := <code>do</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 <p>
 The clauses in the query-pipeline of query-action are executed in the same way
@@ -6994,7 +7005,7 @@ as the clauses in the query-pipeline of a query-expr.
 </p>
 <p>
 The query-action is executed as follows. For each input frame <var>f</var>
-emitted by the query-pipeline, execute the block-stmt with <var>f</var> in
+emitted by the query-pipeline, execute the statement-block with <var>f</var> in
 scope. If a clause in the query-pipeline completes early with error
 <var>e</var>, the result of the query-action is <var>e</var>. Otherwise, the
 result of the query-action is nil.
@@ -7017,7 +7028,7 @@ that is local to the block in which they occur.
 </p>
 <p>
 The scope of variables declared in a <code>local-var-decl-stmt</code> starts
-immediately after the statement and continues to the end of the block statement
+immediately after the statement and continues to the end of the statement block
 in which it occurs.
 </p>
 <p>
@@ -7158,19 +7169,7 @@ possibility of x being assigned to</li>
 </ul>
 </section>
 <section>
-<h3 id="section_7.13">7.13 Local type definition statement</h3>
-
-<pre class="grammar"><span class="ntdfn" id="local-type-defn-stmt">local-type-defn-stmt</span> :=
-   [<a href="#annots"><span class="ntref">annots</span></a>] <code>type</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>;</code>
-</pre>
-<p>
-A local-type-defn-stmt binds the identifier to a type descriptor within the
-scope of the current block. The type-descriptor is resolved when the statement
-is executed.
-</p>
-</section>
-<section>
-<h3 id="XML_namespace_declaration_statement">7.14 XML namespace declaration statement</h3>
+<h3 id="XML_namespace_declaration_statement">7.13 XML namespace declaration statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="xmlns-decl-stmt">xmlns-decl-stmt</span> := <a href="#xmlns-decl"><span class="ntref">xmlns-decl</span></a>
 <span class="ntdfn" id="xmlns-decl">xmlns-decl</span> := <code>xmlns</code> <a href="#xml-namespace-uri"><span class="ntref">xml-namespace-uri</span></a> [ <code>as</code> <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> ] <code>;</code>
@@ -7203,7 +7202,7 @@ string.
 </p>
 </section>
 <section>
-<h3 id="section_7.15">7.15 Assignment</h3>
+<h3 id="section_7.14">7.14 Assignment</h3>
 
 <p>
 There are three kinds of assignment statement:
@@ -7220,7 +7219,7 @@ last one builds on the concept of a binding pattern.
 </p>
 
 <section>
-<h4 id="section_7.15.1">7.15.1 Lvalues</h4>
+<h4 id="section_7.14.1">7.14.1 Lvalues</h4>
 
 <p>
 An lvalue is what the left hand side of an assignment evaluates to. An lvalue
@@ -7421,7 +7420,7 @@ key type for T.
 
 </section>
 <section>
-<h4 id="section_7.15.2">7.15.2 Assignment statement</h4>
+<h4 id="section_7.14.2">7.14.2 Assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="assignment-stmt">assignment-stmt</span> := <a href="#lvexpr"><span class="ntref">lvexpr</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
 </pre>
@@ -7442,7 +7441,7 @@ It is executed at as follows:
 
 </section>
 <section>
-<h4 id="section_7.15.3">7.15.3 Compound assignment statement</h4>
+<h4 id="section_7.14.3">7.14.3 Compound assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="compound-assignment-stmt">compound-assignment-stmt</span> := <a href="#lvexpr"><span class="ntref">lvexpr</span></a> <a href="#CompoundAssignmentOperator"><span class="ntref">CompoundAssignmentOperator</span></a> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
 <span class="ntdfn" id="CompoundAssignmentOperator">CompoundAssignmentOperator</span> := <a href="#BinaryOperator"><span class="ntref">BinaryOperator</span></a> <code>=</code>
@@ -7478,7 +7477,7 @@ and <var>v2</var>, resulting in a value <var>v3</var>
 
 </section>
 <section>
-<h4 id="section_7.15.4">7.15.4 Destructuring assignment statement</h4>
+<h4 id="section_7.14.4">7.14.4 Destructuring assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="destructuring-assignment-stmt">destructuring-assignment-stmt</span> :=
    <a href="#binding-pattern-not-variable-reference"><span class="ntref">binding-pattern-not-variable-reference</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
@@ -7501,7 +7500,7 @@ of this type.
 </section>
 </section>
 <section>
-<h3 id="section_7.16">7.16 Action statement</h3>
+<h3 id="section_7.15">7.15 Action statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="action-stmt">action-stmt</span> := <a href="#action"><span class="ntref">action</span></a> <code>;</code>
 </pre>
@@ -7512,7 +7511,7 @@ the static type of an action in an action-stmt is not nil.
 </p>
 </section>
 <section>
-<h3 id="section_7.17">7.17 Call statement</h3>
+<h3 id="section_7.16">7.16 Call statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="call-stmt">call-stmt</span> := <a href="#call-expr"><span class="ntref">call-expr</span></a> <code>;</code>
 <span class="ntdfn" id="call-expr">call-expr</span> :=
@@ -7528,33 +7527,38 @@ type of the call-expr in an call-stmt is not a subtype of nil. Note that
 </p>
 </section>
 <section>
-<h3 id="section_7.18">7.18 Conditional statement</h3>
+<h3 id="section_7.17">7.17 Conditional statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="if-else-stmt">if-else-stmt</span> :=
-   <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a> 
-   [ <code>else</code> <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a> ]* 
-   [ <code>else</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a> ]
+   <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a> 
+   [ <code>else</code> <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a> ]* 
+   [ <code>else</code> <a href="#statement-block"><span class="ntref">statement-block</span></a> ]
 </pre>
 <p>
 The if-else statement is used for conditional execution.
 </p>
 <p>
 The static type of the expression following <code>if</code> must be boolean.
-When an expression is true then the corresponding block statement is executed
+When an expression is true then the corresponding statement block is executed
 and the if statement completes. If no expression is true then, if the else block
-is present, the corresponding block statement is executed.
+is present, the corresponding statement block is executed.
 </p>
+</section>
+<section>
+<h3 id="section_7.18">7.18 Do statement</h3>
+<pre class="grammar"><span class="ntdfn" id="do-stmt">do-stmt</span> := <code>do</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+</pre>
 </section>
 <section>
 <h3 id="section_7.19">7.19 Match statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="match-stmt">match-stmt</span> := <code>match</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>{</code> <a href="#match-clause"><span class="ntref">match-clause</span></a>+ <code>}</code>
 <span class="ntdfn" id="match-clause">match-clause</span> :=
-  <a href="#match-pattern-list"><span class="ntref">match-pattern-list</span></a> [<a href="#match-guard"><span class="ntref">match-guard</span></a>] <code>=&gt;</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+  <a href="#match-pattern-list"><span class="ntref">match-pattern-list</span></a> [<a href="#match-guard"><span class="ntref">match-guard</span></a>] <code>=&gt;</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 <span class="ntdfn" id="match-guard">match-guard</span> := <code>if</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
-A match statement selects a block statement to execute based on which patterns a
+A match statement selects a statement block to execute based on which patterns a
 value matches.
 </p>
 <p>
@@ -7573,14 +7577,14 @@ created</li>
 resulting in a value b</li>
 <li>if b is false, then the execution of the match-stmt continues to the next
 match-clause</li>
-<li>otherwise, the block-stmt in the match-clause is executed</li>
+<li>otherwise, the statement-block in the match-clause is executed</li>
 <li>execution of the match-stmt completes</li>
 </ol>
 </li>
 </ol>
 <p>
 The scope of any variables created in a match-pattern-list of a match-clause is
-both the match-guard, if any, and the block-stmt in that match-clause. The
+both the match-guard, if any, and the statement-block in that match-clause. The
 static type of the expression in match-guard must be a subtype of boolean.
 </p>
 
@@ -7685,16 +7689,16 @@ belong to the referenced error type.
 <h3 id="section_7.20">7.20 Foreach statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="foreach-stmt">foreach-stmt</span> :=
-   <code>foreach</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+   <code>foreach</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 <p>
-A foreach statement iterates over an iterable value, executing a block statement
+A foreach statement iterates over an iterable value, executing a statement block
 once for each value in the iterable value's iteration sequence. The static type
 of action-or-expr must be an iterable type with an iteration completion type of
 nil.
 </p>
 <p>
-The scope of any variables created in typed-binding-pattern is block-stmt. These
+The scope of any variables created in typed-binding-pattern is statement-block. These
 variables are implicitly final.
 </p>
 <p>
@@ -7714,7 +7718,7 @@ result of calling c.iterator()</li>
 <li>if n is nil, then terminate execution of the foreach statement</li>
 <li>match typed-binding-pattern to n.value causing assignments to any variables
 that were created in typed-binding-pattern</li>
-<li>execute block-stmt with the variable bindings from step 5 in scope; in the
+<li>execute statement-block with the variable bindings from step 5 in scope; in the
 course of so doing
 <ol>
 <li>the execution of a break-stmt terminates execution of the foreach statement</li>
@@ -7738,10 +7742,10 @@ typed-binding-pattern uses var, then the type will be inferred from the type of
 <section>
 <h3 id="section_7.21">7.21 While statement</h3>
 
-<pre class="grammar"><span class="ntdfn" id="while-stmt">while-stmt</span> := <code>while</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+<pre class="grammar"><span class="ntdfn" id="while-stmt">while-stmt</span> := <code>while</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 <p>
-A while statement repeatedly executes a block statement so long as a
+A while statement repeatedly executes a statement block so long as a
 boolean-valued expression evaluates to true.
 </p>
 <p>
@@ -7751,7 +7755,7 @@ In more detail, a while statement executes as follows:
 <li>evaluate expression;</li>
 <li>if expression evaluates to false, terminate execution of the while
 statement;</li>
-<li>execute block-stmt; in the course of so doing
+<li>execute statement-block; in the course of so doing
 <ol>
 <li>the execution of a break-stmt results in termination of execution of the
 while statement</li>
@@ -7774,7 +7778,7 @@ The static type of <code>expression</code> must be a subtype of boolean.
 A continue statement is only allowed if it is lexically enclosed within a
 while-stmt or a foreach-stmt. Executing a continue statement causes execution of
 the nearest enclosing while-stmt or foreach-stmt to jump to the end of the
-outermost block-stmt in the while-stmt or foreach-stmt.
+outermost statement-block in the while-stmt or foreach-stmt.
 </p>
 </section>
 <section>
@@ -7788,40 +7792,16 @@ while-stmt or a foreach-stmt. Executing a break statement causes the nearest
 enclosing while-stmt or foreach-stmt to terminate.
 </p>
 </section>
-<section>
-<h3 id="section_7.24">7.24 Panic statement</h3>
-
-<pre class="grammar"><span class="ntdfn" id="panic-stmt">panic-stmt</span> := <code>panic</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
-</pre>
-<p>
-A panic statement terminates the current worker abnormally. The result of
-evaluating <code>expression</code> provides the termination value of the worker.
-</p>
-<p>
-The static type of <code>expression</code> must be a subtype of error.
-</p>
-</section>
-<section>
-<h3 id="section_7.25">7.25 Return statement</h3>
-
-<pre class="grammar"><span class="ntdfn" id="return-stmt">return-stmt</span> := <code>return</code> [ <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> ] <code>;</code>
-</pre>
-<p>
-A return statement terminates the current worker normally.The result of
-evaluating the action-or-expr provides the termination value of the worker. If
-action-or-expr is omitted, then the termination value is nil.
-</p>
-</section>
 
 <section>
-<h3 id="section_7.26">7.26 Lock statement</h3>
-<pre class="grammar"><span class="ntdfn" id="lock-stmt">lock-stmt</span> := <code>lock</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+<h3 id="section_7.24">7.24 Lock statement</h3>
+<pre class="grammar"><span class="ntdfn" id="lock-stmt">lock-stmt</span> := <code>lock</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 
 <p>
-A lock-stmt executing in the context of some strand must execute its block-stmt
+A lock-stmt executing in the context of some strand must execute its statement-block
 in such a way that the effect on the state of the program is consistent with the
-execution of the block-stmt not being interleaved with the execution of a
+execution of the statement-block not being interleaved with the execution of a
 lock-stmt on any other strand.
 </p>
 <p>
@@ -7842,6 +7822,45 @@ there is a function call lexically within the lock-stmt that might result
 directly or indirectly in a call to that defined function.
 </p>
 
+</section>
+
+<section>
+<h3 id="section_7.25">7.25 On fail clause</h3>
+<pre class="grammar"><span class="ntdfn" id="stmt-with-on-fail">stmt-with-on-fail</span> := <a href="#regular-compound-stmt"><span class="ntref">regular-compound-stmt</span></a> <a href="#on-fail-clause"><span class="ntref">on-fail-clause</span></a>
+<span class="ntdfn" id="on-fail-clause">on-fail-clause</span> := <code>on</code> <code>fail</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+</pre>
+</section>
+
+<section>
+<h3 id="section_7.26">7.26 Fail statement</h3>
+<pre class="grammar"><span class="ntdfn" id="fail-stmt">fail-stmt</span> := <code>fail</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
+</pre>
+</section>
+
+<section>
+<h3 id="section_7.27">7.27 Panic statement</h3>
+
+<pre class="grammar"><span class="ntdfn" id="panic-stmt">panic-stmt</span> := <code>panic</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
+</pre>
+<p>
+A panic statement terminates the current worker abnormally. The result of
+evaluating <code>expression</code> provides the termination value of the worker.
+</p>
+<p>
+The static type of <code>expression</code> must be a subtype of error.
+</p>
+</section>
+
+<section>
+<h3 id="section_7.28">7.28 Return statement</h3>
+
+<pre class="grammar"><span class="ntdfn" id="return-stmt">return-stmt</span> := <code>return</code> [ <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> ] <code>;</code>
+</pre>
+<p>
+A return statement terminates the current worker normally.The result of
+evaluating the action-or-expr provides the termination value of the worker. If
+action-or-expr is omitted, then the termination value is nil.
+</p>
 </section>
 
 </section>
@@ -8152,6 +8171,13 @@ it must have no parameters.
    <a href="#metadata"><span class="ntref">metadata</span></a>
    [<code>public</code>] <code>type</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>;</code>
 </pre>
+
+<p>
+A module-type-defn binds the identifier to the specified type descriptor. The
+binding is in the main symbol space. The type-descriptor is resolved as part of
+module initialization.
+</p>
+
 </section>
 
 
@@ -8491,7 +8517,7 @@ The available attachment points are described in the following table.
   </tr>
   <tr>
    <td>type</td>
-   <td>module-type-defn, local-type-defn-stmt, module-enum-decl, type-cast-expr</td>
+   <td>module-type-defn, module-enum-decl, type-cast-expr</td>
    <td>defined type</td>
   </tr>
   <tr>
@@ -8925,6 +8951,7 @@ string.</li>
 <li>The ability to specify the visibility of parameter names has been removed: a
 parameter can always be specified by name as well as position; a parameter
 cannot be declared as <code>public</code>.</li>
+<li>Local type definitions have been removed.</li>
 </ol>
 </section>
 <section>

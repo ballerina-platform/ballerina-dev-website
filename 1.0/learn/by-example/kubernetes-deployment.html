@@ -95,7 +95,14 @@
 
     var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
     var dev_download_url = 'https://product-dist.ballerina.io/dev';
-    var base_download_url = 'https://dist.ballerina.io/downloads';
+     var base_download_url = 'https://dist.ballerina.io/downloads';
+	
+	
+	    $(document).ready(function() {
+	    $("table").removeClass('table-striped');
+	    $(".ballerina").addClass('language-ballerina');
+	    $("pre").addClass('language-ballerina');
+	});
 </script>
 
 </head>
@@ -290,8 +297,7 @@ Kubernetes should be enabled to run the example.
 This example deploys an HTTPS service, which retrieves values from a config file to Kubernetes.
 Before running the sample, create a directory named <code>security</code> inside current working directory
 from where the ballerina build command will be issued.
-Then copy the ballerinaKeystore.p12 and ballerinaTruststore.p12 files
-located in <a href="https://github.com/ballerina-platform/ballerina-lang/tree/master/examples/resources/">https://github.com/ballerina-platform/ballerina-lang/tree/master/examples/resources/</a>
+Then copy the <a href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.0.x/examples/resources">ballerinaKeystore.p12 and ballerinaTruststore.p12 files</a>
 to the security folder.</p>
 </p>
 

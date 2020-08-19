@@ -192,7 +192,8 @@ let redirections = {
     "/1.0/learn/faq":"/1.0/learn/",
     "/1.0/learn/faq/":"/1.0/learn/",
     "/1.0/learn/by-guide":"/1.0/learn/",
-    "/1.0/learn/by-guide/":"/1.0/learn/"
+    "/1.0/learn/by-guide/":"/1.0/learn/",
+    "/swan-lake/learn/by-example/jdbc-streaming-big-dataset.html":"/swan-lake/page-not-available.html"
 
 
     

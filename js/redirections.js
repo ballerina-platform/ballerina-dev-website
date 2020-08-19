@@ -194,8 +194,10 @@ let redirections = {
     "/1.0/learn/by-guide":"/1.0/learn/",
     "/1.0/learn/by-guide/":"/1.0/learn/",
     "/swan-lake/learn/by-example/jdbc-streaming-big-dataset.html":"/swan-lake/page-not-available.html",
-    "/1.1/learn/by-example/knative-deployment.html":"/1.1/page-not-available.html",
-    "/1.0/learn/by-example/knative-deployment.html":"/1.0/page-not-available.html"
+    "/1.1/learn/by-example/jdbc-streaming-big-dataset.html":"/1.1/page-not-available.html",
+    "/1.0/learn/by-example/jdbc-streaming-big-dataset.html":"/1.0/page-not-available.html",
+    "/1.1/learn/by-example/knative-deployment.html": "/1.1/page-not-available.html",
+    "/1.0/learn/by-example/knative-deployment.html": "/1.0/page-not-available.html"
 
 
     

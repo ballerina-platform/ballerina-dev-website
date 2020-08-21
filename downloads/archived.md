@@ -1,6 +1,6 @@
 ---
 layout: ballerina-landing-page
-title: Release Notes
+title: Stable Archived Versions
 permalink: /downloads/archived/
 ---
 <script src="{{ "/js/download/swan_lake_archived_download.js" | prepend: site.baseurl }}"></script>

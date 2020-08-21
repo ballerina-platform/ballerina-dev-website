@@ -1,7 +1,7 @@
 ---
 layout: ballerina-landing-page
-title: Release Notes
-permalink: /downloads/archived/
+title: Swan Lake Archived Versions
+permalink: /downloads/swan-lake-archived/
 ---
 <script src="{{ "/js/download/archived_download.js" | prepend: site.baseurl }}"></script>
 <link rel="stylesheet" href="/css/download-page.css" />

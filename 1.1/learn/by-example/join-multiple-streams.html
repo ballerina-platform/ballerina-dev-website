@@ -156,11 +156,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/join-multiple-streams/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/join-multiple-streams/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -226,7 +226,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 </code></pre></div>
 
@@ -239,7 +239,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type ProductMaterial record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type ProductMaterial record {
     string name;
     float amount;
 };
@@ -254,7 +254,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type MaterialUsage record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type MaterialUsage record {
     string name;
     float totalRawMaterial;
     float totalConsumption;
@@ -270,7 +270,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>stream&lt;ProductMaterial&gt; rawMaterialStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>stream&lt;ProductMaterial&gt; rawMaterialStream = new;
 stream&lt;ProductMaterial&gt; productionInputStream = new;
 </code></pre></div>
 
@@ -290,7 +290,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>stream&lt;MaterialUsage&gt; materialUsageStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>stream&lt;MaterialUsage&gt; materialUsageStream = new;
 </code></pre></div>
 
                                 </td>
@@ -309,7 +309,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initRealtimeProductionAlert() returns () {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initRealtimeProductionAlert() returns () {
 </code></pre></div>
 
                                 </td>
@@ -321,7 +321,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    materialUsageStream.subscribe(printMaterialUsageAlert);
+                                    <div class="highlight"><pre><code class=language-ballerina>    materialUsageStream.subscribe(printMaterialUsageAlert);
 </code></pre></div>
 
                                 </td>
@@ -362,7 +362,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    forever {
+                                    <div class="highlight"><pre><code class=language-ballerina>    forever {
         from productionInputStream window time(10000) as p
         join rawMaterialStream window time(10000) as r
         on r.name == p.name
@@ -383,7 +383,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            foreach var usage in materialUsages {
+                                    <div class="highlight"><pre><code class=language-ballerina>            foreach var usage in materialUsages {
                 materialUsageStream.publish(usage);
             }
         }
@@ -408,7 +408,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printMaterialUsageAlert(MaterialUsage materialUsage) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printMaterialUsageAlert(MaterialUsage materialUsage) {
     float materialUsageDifference = (materialUsage.totalRawMaterial -
             materialUsage.totalConsumption) * 100.0 /
                 (materialUsage.totalRawMaterial);
@@ -423,7 +423,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;ALERT!! : Material usage is higher than the expected&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;ALERT!! : Material usage is higher than the expected&quot;,
             &quot; limit for material : &quot;, materialUsage.name,
             &quot;, usage difference (%) : &quot;, materialUsageDifference);
 }
@@ -438,7 +438,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener productMaterialListener = new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener productMaterialListener = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -450,7 +450,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/&quot;
 }
 service productMaterialService on productMaterialListener {
@@ -472,7 +472,7 @@ service productMaterialService on productMaterialListener {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function __init() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function __init() {
         initRealtimeProductionAlert();
     }
 </code></pre></div>
@@ -486,7 +486,7 @@ service productMaterialService on productMaterialListener {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/rawmaterial&quot;
     }
@@ -511,7 +511,7 @@ service productMaterialService on productMaterialListener {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>            http:Response res = new;
             res.setJsonPayload({&quot;message&quot;: &quot;Raw material request&quot;
                                         + &quot; successfully received&quot;});
             error? result = caller-&gt;respond(res);
@@ -539,7 +539,7 @@ service productMaterialService on productMaterialListener {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/productionmaterial&quot;
     }
@@ -565,7 +565,7 @@ service productMaterialService on productMaterialListener {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>            http:Response res = new;
             res.setJsonPayload({&quot;message&quot;: &quot;Production input &quot; +
                                     &quot;request successfully received&quot;});
             error? result = caller-&gt;respond(res);
@@ -583,7 +583,7 @@ service productMaterialService on productMaterialListener {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
             http:Response res = new;
             res.statusCode = 500;
             res.setPayload(&lt;@untainted&gt; jsonMsg.reason());

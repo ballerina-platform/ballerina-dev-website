@@ -94,11 +94,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/counter-metrics/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/counter-metrics/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -152,7 +152,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/observe;
@@ -167,7 +167,7 @@ import ballerina/observe;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>observe:Counter globalCounter = new(&quot;total_orders&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>observe:Counter globalCounter = new(&quot;total_orders&quot;,
                                     desc = &quot;Total quantity required&quot;);
 </code></pre></div>
 
@@ -187,7 +187,7 @@ import ballerina/observe;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/online-store-service&quot;
 }
 service onlineStoreService on new http:Listener(9090) {
@@ -209,7 +209,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         path: &quot;/make-order&quot;
     }
     resource function makeOrder(http:Caller caller, http:Request req) {
@@ -224,7 +224,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        globalCounter.increment();
+                                    <div class="highlight"><pre><code class=language-ballerina>        globalCounter.increment();
 </code></pre></div>
 
                                 </td>
@@ -243,7 +243,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:Counter localCounter = new(&quot;local_operations&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        observe:Counter localCounter = new(&quot;local_operations&quot;);
         localCounter.increment();
 </code></pre></div>
 
@@ -263,7 +263,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        localCounter.increment(20);
+                                    <div class="highlight"><pre><code class=language-ballerina>        localCounter.increment(20);
 </code></pre></div>
 
                                 </td>
@@ -282,7 +282,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:Counter registeredCounter = new(&quot;total_product_order_quantity&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        observe:Counter registeredCounter = new(&quot;total_product_order_quantity&quot;,
             desc = &quot;Total quantity required&quot;,
             tags = {prodName:&quot;HeadPhone&quot;, prodType:&quot;Electronics&quot;});
 </code></pre></div>
@@ -303,7 +303,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        error? result = registeredCounter.register();
+                                    <div class="highlight"><pre><code class=language-ballerina>        error? result = registeredCounter.register();
         if (result is error) {
             log:printError(&quot;Error in registering counter&quot;, err = result);
         }
@@ -330,7 +330,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        registeredCounter.increment(10);
+                                    <div class="highlight"><pre><code class=language-ballerina>        registeredCounter.increment(10);
 </code></pre></div>
 
                                 </td>
@@ -349,7 +349,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;------------------------------------------&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;------------------------------------------&quot;);
         io:println(&quot;Global Counter = &quot;, globalCounter.getValue());
         io:println(&quot;Local Counter = &quot;, localCounter.getValue());
         io:println(&quot;Registered Counter = &quot;, registeredCounter.getValue());
@@ -372,7 +372,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
 </code></pre></div>
 
                                 </td>
@@ -391,7 +391,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        res.setPayload(&quot;Order Processed!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        res.setPayload(&quot;Order Processed!&quot;);
 </code></pre></div>
 
                                 </td>
@@ -410,7 +410,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Error sending response&quot;, err = result);
         }

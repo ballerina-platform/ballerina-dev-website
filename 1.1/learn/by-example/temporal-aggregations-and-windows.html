@@ -102,11 +102,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/temporal-aggregations-and-windows/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/temporal-aggregations-and-windows/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -162,7 +162,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 </code></pre></div>
 
@@ -175,7 +175,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type ClientRequest record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type ClientRequest record {
     string host;
 };
 </code></pre></div>
@@ -189,7 +189,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type RequestCount record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type RequestCount record {
     string host;
     int count;
 };
@@ -204,7 +204,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>stream&lt;ClientRequest&gt; requestStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>stream&lt;ClientRequest&gt; requestStream = new;
 stream&lt;RequestCount&gt; requestCountStream = new;
 </code></pre></div>
 
@@ -217,7 +217,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initRealtimeRequestCounter() returns () {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initRealtimeRequestCounter() returns () {
 </code></pre></div>
 
                                 </td>
@@ -229,7 +229,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    requestCountStream.subscribe(printRequestCount);
+                                    <div class="highlight"><pre><code class=language-ballerina>    requestCountStream.subscribe(printRequestCount);
 </code></pre></div>
 
                                 </td>
@@ -249,7 +249,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    forever {
+                                    <div class="highlight"><pre><code class=language-ballerina>    forever {
         from requestStream window timeBatch(10000)
         select requestStream.host, count() as count
             group by requestStream.host
@@ -276,7 +276,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            foreach var c in counts {
+                                    <div class="highlight"><pre><code class=language-ballerina>            foreach var c in counts {
                 requestCountStream.publish(c);
             }
         }
@@ -301,7 +301,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printRequestCount(RequestCount reqCount) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printRequestCount(RequestCount reqCount) {
     io:println(&quot;ALERT!! : Received more than 6 requests from the &quot; +
                         &quot;host within 10 seconds : &quot; + reqCount.host);
 }
@@ -323,7 +323,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -335,7 +335,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/&quot;
 }
 </code></pre></div>
@@ -349,7 +349,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service requestService on ep {
+                                    <div class="highlight"><pre><code class=language-ballerina>service requestService on ep {
 </code></pre></div>
 
                                 </td>
@@ -369,7 +369,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function __init() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function __init() {
         initRealtimeRequestCounter();
     }
 </code></pre></div>
@@ -383,7 +383,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/requests&quot;
     }
@@ -402,7 +402,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         res.setJsonPayload(&quot;{&#39;message&#39; : &#39;request successfully &quot; +
                                 &quot;received&#39;}&quot;);
         error? result = conn-&gt;respond(res);

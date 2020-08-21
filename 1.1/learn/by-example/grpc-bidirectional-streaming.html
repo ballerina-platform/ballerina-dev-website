@@ -151,11 +151,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/grpc-bidirectional-streaming/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/grpc-bidirectional-streaming/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -183,7 +183,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>syntax = &quot;proto3&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>syntax = &quot;proto3&quot;;
 import &quot;google/protobuf/wrappers.proto&quot;;
 service Chat {
 	rpc chat (stream ChatMessage)
@@ -317,7 +317,7 @@ $ ballerina grpc --input grpc_bidirectional_streaming.proto  --output stubs
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/log;
 </code></pre></div>
 
@@ -337,7 +337,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>map&lt;grpc:Caller&gt; consMap = {};
+                                    <div class="highlight"><pre><code class=language-ballerina>map&lt;grpc:Caller&gt; consMap = {};
 </code></pre></div>
 
                                 </td>
@@ -349,7 +349,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@grpc:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceConfig {
     name: &quot;chat&quot;,
     clientStreaming: true,
     serverStreaming: true
@@ -366,7 +366,7 @@ service Chat on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(grpc:Caller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(grpc:Caller caller) {
         log:printInfo(string `${caller.getId()} connected to chat`);
         consMap[caller.getId().toString()] = &lt;@untainted&gt; caller;
     }
@@ -388,7 +388,7 @@ service Chat on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(grpc:Caller caller, ChatMessage chatMsg) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(grpc:Caller caller, ChatMessage chatMsg) {
         grpc:Caller ep;
         string msg = string `${chatMsg.name}: ${chatMsg.message}`;
         log:printInfo(&quot;Server received message: &quot; + msg);
@@ -422,7 +422,7 @@ service Chat on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(grpc:Caller caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(grpc:Caller caller, error err) {
         log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
                 + &lt;string&gt; err.detail()[&quot;message&quot;]);
     }
@@ -444,7 +444,7 @@ service Chat on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onComplete(grpc:Caller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onComplete(grpc:Caller caller) {
         grpc:Caller ep;
         string msg = string `${caller.getId()} left the chat`;
         log:printInfo(msg);
@@ -628,7 +628,7 @@ $ ballerina run target/bin/service.jar
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
@@ -649,7 +649,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int total = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int total = 0;
 public function main() {
 </code></pre></div>
 
@@ -662,7 +662,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ChatClient chatEp = new(&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ChatClient chatEp = new(&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -681,7 +681,7 @@ public function main() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    grpc:StreamingClient ep;
+                                    <div class="highlight"><pre><code class=language-ballerina>    grpc:StreamingClient ep;
 </code></pre></div>
 
                                 </td>
@@ -693,7 +693,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var res = chatEp-&gt;chat(ChatMessageListener);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var res = chatEp-&gt;chat(ChatMessageListener);
 </code></pre></div>
 
                                 </td>
@@ -712,7 +712,7 @@ public function main() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (res is grpc:Error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (res is grpc:Error) {
         io:println(&quot;Error from Connector: &quot; + res.reason() + &quot; - &quot;
                                   + &lt;string&gt; res.detail()[&quot;message&quot;]);
         return;
@@ -731,7 +731,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ChatMessage mes = { name: &quot;Sam&quot;, message: &quot;Hi &quot; };
+                                    <div class="highlight"><pre><code class=language-ballerina>    ChatMessage mes = { name: &quot;Sam&quot;, message: &quot;Hi &quot; };
     grpc:Error? connErr = ep-&gt;send(mes);
 </code></pre></div>
 
@@ -751,7 +751,7 @@ public function main() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (connErr is grpc:Error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (connErr is grpc:Error) {
         io:println(&quot;Error from Connector: &quot; + connErr.reason() + &quot; - &quot;
                                + &lt;string&gt; connErr.detail()[&quot;message&quot;]);
     }
@@ -767,7 +767,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    grpc:Error? result = ep-&gt;complete();
+                                    <div class="highlight"><pre><code class=language-ballerina>    grpc:Error? result = ep-&gt;complete();
     if (result is grpc:Error) {
         io:println(&quot;Error in sending complete message&quot;, result);
     }
@@ -790,7 +790,7 @@ public function main() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service ChatMessageListener = service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service ChatMessageListener = service {
 </code></pre></div>
 
                                 </td>
@@ -802,7 +802,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(string message) {
         io:println(&quot;Response received from server: &quot; + message);
     }
 </code></pre></div>
@@ -823,7 +823,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(error err) {
         io:println(&quot;Error reported from server: &quot; + err.reason() + &quot; - &quot;
                                   + &lt;string&gt; err.detail()[&quot;message&quot;]);
     }
@@ -845,7 +845,7 @@ public function main() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onComplete() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onComplete() {
         io:println(&quot;Server Complete Sending Responses.&quot;);
     }
 };

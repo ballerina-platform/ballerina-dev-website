@@ -101,11 +101,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/file/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/file/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -159,7 +159,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/file;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/file;
 import ballerina/filepath;
 import ballerina/io;
 </code></pre></div>
@@ -173,7 +173,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -185,7 +185,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Current directory: &quot; + file:getCurrentDirectory());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Current directory: &quot; + file:getCurrentDirectory());
 </code></pre></div>
 
                                 </td>
@@ -204,7 +204,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error createDirResults = file:createDir(&quot;foo&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error createDirResults = file:createDir(&quot;foo&quot;);
     if (createDirResults is string) {
         io:println(&quot;Created directory path: &quot; + createDirResults);
     }
@@ -226,7 +226,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string dirPath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string dirPath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;);
     createDirResults = file:createDir(dirPath, true);
     if (createDirResults is string) {
         io:println(&quot;Created nested directory path: &quot; + createDirResults);
@@ -249,7 +249,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error createFileResults = file:createFile(&quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error createFileResults = file:createFile(&quot;bar.txt&quot;);
     if (createFileResults is string) {
         io:println(&quot;Created file path: &quot; + createFileResults);
     }
@@ -271,7 +271,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    file:FileInfo|error fileInfoResults = file:getFileInfo(&quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    file:FileInfo|error fileInfoResults = file:getFileInfo(&quot;bar.txt&quot;);
     if (fileInfoResults is file:FileInfo) {
         io:println(&quot;File name: &quot; + fileInfoResults.getName());
         io:println(&quot;File size: &quot; + fileInfoResults.getSize().toString());
@@ -297,7 +297,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean fileExists = file:exists(&quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean fileExists = file:exists(&quot;bar.txt&quot;);
     io:println(&quot;bar.txt file exists: &quot; + fileExists.toString());
 </code></pre></div>
 
@@ -317,7 +317,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string filePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;, &quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string filePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;, &quot;bar.txt&quot;);
     error? copyDirResults = file:copy(&quot;bar.txt&quot;, filePath, true);
     if (copyDirResults is ()) {
         io:println(&quot;bar.txt file is copied to new path &quot; + filePath);
@@ -340,7 +340,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string newFilePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar1.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string newFilePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar1.txt&quot;);
     error? renameResults = file:rename(&quot;bar.txt&quot;, newFilePath);
     if (renameResults is ()) {
         io:println(&quot;bar.txt file is moved to new path &quot; + newFilePath);
@@ -363,7 +363,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string tempDirPath = file:tempDir();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string tempDirPath = file:tempDir();
     io:println(&quot;Temporary directory: &quot; + tempDirPath);
 </code></pre></div>
 
@@ -383,7 +383,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    file:FileInfo[]|error readDirResults = file:readDir(&quot;foo&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    file:FileInfo[]|error readDirResults = file:readDir(&quot;foo&quot;);
 </code></pre></div>
 
                                 </td>
@@ -402,7 +402,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? removeResults = file:remove(newFilePath);
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? removeResults = file:remove(newFilePath);
     if (removeResults is ()) {
         io:println(&quot;Remove file at &quot; + newFilePath);
     }
@@ -424,7 +424,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    removeResults = file:remove(&quot;foo&quot;, true);
+                                    <div class="highlight"><pre><code class=language-ballerina>    removeResults = file:remove(&quot;foo&quot;, true);
     if (removeResults is ()) {
         io:println(&quot;Remove foo directory with all child elements.&quot;);
     }

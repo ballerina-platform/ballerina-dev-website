@@ -72,11 +72,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/directory-listener/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/directory-listener/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -114,7 +114,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/file;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/file;
 import ballerina/log;
 </code></pre></div>
 
@@ -127,7 +127,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener file:Listener inFolder = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>listener file:Listener inFolder = new ({
     path: &quot;/home/ballerina/fs-server-connector/observed-dir&quot;,
     recursive: false
 });
@@ -154,7 +154,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service localObserver on inFolder {
+                                    <div class="highlight"><pre><code class=language-ballerina>service localObserver on inFolder {
 </code></pre></div>
 
                                 </td>
@@ -173,7 +173,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onCreate(file:FileEvent m) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onCreate(file:FileEvent m) {
         string msg = &quot;Create: &quot; + m.name;
         log:printInfo(msg);
     }
@@ -195,7 +195,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onDelete(file:FileEvent m) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onDelete(file:FileEvent m) {
         string msg = &quot;Delete: &quot; + m.name;
         log:printInfo(msg);
     }
@@ -217,7 +217,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onModify(file:FileEvent m) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onModify(file:FileEvent m) {
         string msg = &quot;Modify: &quot; + m.name;
         log:printInfo(msg);
     }

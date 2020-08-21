@@ -145,11 +145,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websub-service-integration-sample/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/websub-service-integration-sample/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -205,7 +205,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/websub;
 </code></pre></div>
@@ -227,7 +227,7 @@ import ballerina/websub;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener httpListener = new(9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener httpListener = new(9090);
 </code></pre></div>
 
                                 </td>
@@ -239,7 +239,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>final string ORDER_TOPIC = &quot;http://localhost:9090/ordermgt/ordertopic&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>final string ORDER_TOPIC = &quot;http://localhost:9090/ordermgt/ordertopic&quot;;
 </code></pre></div>
 
                                 </td>
@@ -259,7 +259,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>map&lt;json&gt; orderMap = {};
+                                    <div class="highlight"><pre><code class=language-ballerina>map&lt;json&gt; orderMap = {};
 </code></pre></div>
 
                                 </td>
@@ -278,7 +278,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>websub:Hub webSubHub = startHubAndRegisterTopic();
+                                    <div class="highlight"><pre><code class=language-ballerina>websub:Hub webSubHub = startHubAndRegisterTopic();
 </code></pre></div>
 
                                 </td>
@@ -299,7 +299,7 @@ import ballerina/websub;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/ordermgt&quot;
 }
 service orderMgt on httpListener {
@@ -314,7 +314,7 @@ service orderMgt on httpListener {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;, &quot;HEAD&quot;],
         path: &quot;/order&quot;
     }
@@ -340,7 +340,7 @@ service orderMgt on httpListener {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        websub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl], ORDER_TOPIC);
+                                    <div class="highlight"><pre><code class=language-ballerina>        websub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl], ORDER_TOPIC);
         response.statusCode = 202;
         var result = caller-&gt;respond(response);
         if (result is error) {
@@ -365,7 +365,7 @@ service orderMgt on httpListener {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/order&quot;
     }
@@ -392,7 +392,7 @@ service orderMgt on httpListener {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            http:Response response = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>            http:Response response = new;
             response.statusCode = 202;
             var result = caller-&gt;respond(response);
             if (result is error) {
@@ -416,7 +416,7 @@ service orderMgt on httpListener {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            string orderCreatedNotification = &quot;New Order Added: &quot; + orderId;
+                                    <div class="highlight"><pre><code class=language-ballerina>            string orderCreatedNotification = &quot;New Order Added: &quot; + orderId;
             log:printInfo(orderCreatedNotification);
             var updateResult = webSubHub.publishUpdate(ORDER_TOPIC,
                                                     orderCreatedNotification);
@@ -447,7 +447,7 @@ service orderMgt on httpListener {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -459,7 +459,7 @@ service orderMgt on httpListener {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function startHubAndRegisterTopic() returns websub:Hub {
+                                    <div class="highlight"><pre><code class=language-ballerina>function startHubAndRegisterTopic() returns websub:Hub {
     var hubStartUpResult = websub:startHub(new http:Listener(9191), &quot;/websub&quot;, &quot;/hub&quot;);
 </code></pre></div>
 
@@ -480,7 +480,7 @@ service orderMgt on httpListener {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    websub:Hub? hubVar = ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    websub:Hub? hubVar = ();
     if hubStartUpResult is websub:HubStartupError {
         panic hubStartUpResult;
     } else {
@@ -498,7 +498,7 @@ service orderMgt on httpListener {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    websub:Hub internalHub = &lt;websub:Hub&gt; hubVar;
+                                    <div class="highlight"><pre><code class=language-ballerina>    websub:Hub internalHub = &lt;websub:Hub&gt; hubVar;
     var result = internalHub.registerTopic(ORDER_TOPIC);
     if (result is error) {
         log:printError(&quot;Error registering topic&quot;, result);
@@ -620,7 +620,7 @@ $ ballerina run order_mgmt_service.bal
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
 import ballerina/websub;
 </code></pre></div>
 
@@ -640,7 +640,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener websub:Listener websubEP = new(8181);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener websub:Listener websubEP = new(8181);
 </code></pre></div>
 
                                 </td>
@@ -659,7 +659,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@websub:SubscriberServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@websub:SubscriberServiceConfig {
     path: &quot;/ordereventsubscriber&quot;,
     subscribeOnStartUp: true,
     target: &quot;http://localhost:9090/ordermgt/order&quot;,
@@ -687,7 +687,7 @@ service websubSubscriber on websubEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onNotification(websub:Notification notification) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onNotification(websub:Notification notification) {
         var payload = notification.getTextPayload();
         if (payload is string) {
             log:printInfo(&quot;WebSub Notification Received: &quot; + payload);

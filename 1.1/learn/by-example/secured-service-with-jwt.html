@@ -105,11 +105,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-service-with-jwt/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/secured-service-with-jwt/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -151,7 +151,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/jwt;
 import ballerina/log;
 </code></pre></div>
@@ -165,7 +165,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jwt:InboundJwtAuthProvider jwtAuthProvider = new({
+                                    <div class="highlight"><pre><code class=language-ballerina>jwt:InboundJwtAuthProvider jwtAuthProvider = new({
     issuer: &quot;ballerina&quot;,
     audience: &quot;ballerina.io&quot;,
     trustStoreConfig: {
@@ -195,7 +195,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BearerAuthHandler jwtAuthHandler = new(jwtAuthProvider);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler jwtAuthHandler = new(jwtAuthProvider);
 </code></pre></div>
 
                                 </td>
@@ -214,7 +214,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new(9090, config = {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new(9090, config = {
     auth: {
         authHandlers: [jwtAuthHandler]
     },
@@ -239,7 +239,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
         keyStore: {
             path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
@@ -264,7 +264,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 </code></pre></div>
@@ -278,7 +278,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service echo on ep {
+                                    <div class="highlight"><pre><code class=language-ballerina>service echo on ep {
     @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/sayHello&quot;,
@@ -312,7 +312,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function hello(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function hello(http:Caller caller, http:Request req) {
         error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
         if (result is error) {
             log:printError(&quot;Error in responding to caller&quot;, result);

@@ -74,11 +74,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-trace-logs/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/http-trace-logs/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -116,7 +116,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -129,7 +129,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service helloWorld on new http:Listener(9090) {
@@ -149,7 +149,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Client clientEP = new(&quot;http://httpstat.us&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Client clientEP = new(&quot;http://httpstat.us&quot;);
 </code></pre></div>
 
                                 </td>
@@ -168,7 +168,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var resp = clientEP-&gt;forward(&quot;/200&quot;, req);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var resp = clientEP-&gt;forward(&quot;/200&quot;, req);
         if (resp is http:Response) {
 </code></pre></div>
 
@@ -188,7 +188,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(resp);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(resp);
 </code></pre></div>
 
                                 </td>
@@ -207,7 +207,7 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
                 log:printError(&quot;Failed to respond to caller&quot;, err = result);
             }
         } else {

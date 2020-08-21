@@ -92,11 +92,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/values/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/values/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -152,7 +152,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/lang.&#39;float as floats;
 import ballerina/lang.&#39;int as ints;
 </code></pre></div>
@@ -166,7 +166,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -186,7 +186,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int i = 10;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int i = 10;
     io:println(i);
 </code></pre></div>
 
@@ -206,7 +206,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error i2 = ints:fromString(&quot;100&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error i2 = ints:fromString(&quot;100&quot;);
     if (i2 is int) {
         io:println(i2);
     }
@@ -229,7 +229,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float f = 20.0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float f = 20.0;
     io:println(f);
 </code></pre></div>
 
@@ -249,7 +249,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float f1 = floats:fromBitsInt(i);
+                                    <div class="highlight"><pre><code class=language-ballerina>    float f1 = floats:fromBitsInt(i);
     float f2 = 22.0;
     float max = floats:max(f1, f2);
     io:println(&quot;Max float: &quot;, max);
@@ -271,7 +271,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float nanVal = 0.0/0.0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float nanVal = 0.0/0.0;
     io:println(nanVal.isNaN());
 </code></pre></div>
 
@@ -292,7 +292,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float infiniteVal = 12.0/0.0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float infiniteVal = 12.0/0.0;
     io:println(infiniteVal.isInfinite());
 </code></pre></div>
 
@@ -312,7 +312,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float finiteVal = 6.0/3.0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float finiteVal = 6.0/3.0;
     io:println(finiteVal.isFinite());
 </code></pre></div>
 
@@ -332,7 +332,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    decimal d = 27.5;
+                                    <div class="highlight"><pre><code class=language-ballerina>    decimal d = 27.5;
     io:println(d);
 </code></pre></div>
 
@@ -352,7 +352,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    byte c = 23;
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte c = 23;
     io:println(c);
 </code></pre></div>
 
@@ -372,7 +372,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string s = &quot;Ballerina&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string s = &quot;Ballerina&quot;;
     io:println(s);
 </code></pre></div>
 
@@ -392,7 +392,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean b = true;
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean b = true;
     io:println(b);
 </code></pre></div>
 
@@ -412,7 +412,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    () n = ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    () n = ();
     io:println(n);
 </code></pre></div>
 
@@ -433,7 +433,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    json j = null;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json j = null;
     io:println(j);
 }
 </code></pre></div>

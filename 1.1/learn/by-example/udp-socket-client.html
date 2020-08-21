@@ -91,11 +91,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/udp-socket-client/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/udp-socket-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -133,7 +133,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/socket;
 </code></pre></div>
 
@@ -153,7 +153,7 @@ import ballerina/socket;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -165,7 +165,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    socket:UdpClient socketClient = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    socket:UdpClient socketClient = new;
     string msg = &quot;Hello from UDP client&quot;;
     byte[] c1 = msg.toBytes();
 </code></pre></div>
@@ -190,7 +190,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var sendResult =
+                                    <div class="highlight"><pre><code class=language-ballerina>    var sendResult =
         socketClient-&gt;sendTo(c1, { host: &quot;localhost&quot;, port: 48826 });
     if (sendResult is int) {
         io:println(&quot;Number of bytes written: &quot;, sendResult);
@@ -217,7 +217,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = socketClient-&gt;receiveFrom();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = socketClient-&gt;receiveFrom();
     if (result is [byte[], int, socket:Address]) {
         var [content, length, address] = result;
         var byteChannel =
@@ -258,7 +258,7 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var closeResult = socketClient-&gt;close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var closeResult = socketClient-&gt;close();
     if (closeResult is error) {
         io:println(&quot;An error occurred while closing the connection &quot;,
             closeResult);

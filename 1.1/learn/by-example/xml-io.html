@@ -99,11 +99,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml-io/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/xml-io/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -161,7 +161,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -174,7 +174,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string filePath = &quot;./files/sample.xml&quot;;
 </code></pre></div>
 
@@ -187,7 +187,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x1 = xml `&lt;book&gt;The Lost World&lt;/book&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x1 = xml `&lt;book&gt;The Lost World&lt;/book&gt;`;
     io:println(&quot;Preparing to write xml file&quot;);
 </code></pre></div>
 
@@ -207,7 +207,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var wResult = write(x1, filePath);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var wResult = write(x1, filePath);
     if (wResult is error) {
         log:printError(&quot;Error occurred while writing xml: &quot;, err = wResult);
     } else {
@@ -230,7 +230,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var rResult = read(filePath);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var rResult = read(filePath);
         if (rResult is xml) {
             io:println(rResult);
         } else {
@@ -256,7 +256,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function write(xml content, string path) returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function write(xml content, string path) returns @tainted error? {
 </code></pre></div>
 
                                 </td>
@@ -275,7 +275,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableByteChannel wbc = check io:openWritableFile(path);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableByteChannel wbc = check io:openWritableFile(path);
 </code></pre></div>
 
                                 </td>
@@ -294,7 +294,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableCharacterChannel wch = new(wbc, &quot;UTF8&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:WritableCharacterChannel wch = new(wbc, &quot;UTF8&quot;);
     var result = wch.writeXml(content);
 </code></pre></div>
 
@@ -314,7 +314,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    closeWc(wch);
+                                    <div class="highlight"><pre><code class=language-ballerina>    closeWc(wch);
     return result;
 }
 </code></pre></div>
@@ -335,7 +335,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function read(string path) returns @tainted xml|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function read(string path) returns @tainted xml|error {
 </code></pre></div>
 
                                 </td>
@@ -354,7 +354,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableByteChannel rbc = check io:openReadableFile(path);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableByteChannel rbc = check io:openReadableFile(path);
 </code></pre></div>
 
                                 </td>
@@ -373,7 +373,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCharacterChannel rch = new(rbc, &quot;UTF8&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:ReadableCharacterChannel rch = new(rbc, &quot;UTF8&quot;);
 </code></pre></div>
 
                                 </td>
@@ -392,7 +392,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = rch.readXml();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = rch.readXml();
 </code></pre></div>
 
                                 </td>
@@ -411,7 +411,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    closeRc(rch);
+                                    <div class="highlight"><pre><code class=language-ballerina>    closeRc(rch);
     return result;
 }
 </code></pre></div>
@@ -432,7 +432,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function closeRc(io:ReadableCharacterChannel rc) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeRc(io:ReadableCharacterChannel rc) {
     var result = rc.close();
     if (result is error) {
         log:printError(&quot;Error occurred while closing character stream&quot;,
@@ -457,7 +457,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function closeWc(io:WritableCharacterChannel wc) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function closeWc(io:WritableCharacterChannel wc) {
     var result = wc.close();
     if (result is error) {
         log:printError(&quot;Error occurred while closing character stream&quot;,

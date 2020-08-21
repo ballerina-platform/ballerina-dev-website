@@ -100,11 +100,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/nats-streaming-consumer-with-data-binding/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/nats-streaming-consumer-with-data-binding/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -146,7 +146,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 import ballerina/nats;
 </code></pre></div>
@@ -160,7 +160,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const string ESCAPE = &quot;!q&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>const string ESCAPE = &quot;!q&quot;;
 </code></pre></div>
 
                                 </td>
@@ -179,7 +179,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string message = &quot;&quot;;
     string subject = io:readln(&quot;Subject : &quot;);
 </code></pre></div>
@@ -200,7 +200,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:Connection conn = new(&quot;localhost:4222&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    nats:Connection conn = new(&quot;localhost:4222&quot;);
 </code></pre></div>
 
                                 </td>
@@ -212,7 +212,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:StreamingProducer publisher = new(conn, &quot;p0&quot;, &quot;test-cluster&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    nats:StreamingProducer publisher = new(conn, &quot;p0&quot;, &quot;test-cluster&quot;);
 </code></pre></div>
 
                                 </td>
@@ -224,7 +224,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (message != ESCAPE) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (message != ESCAPE) {
         message = io:readln(&quot;Message : &quot;);
         if (message != ESCAPE) {
 </code></pre></div>
@@ -238,7 +238,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt; message);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt; message);
             if (result is nats:Error) {
                 error e = result;
                 log:printError(&quot;Error occurred while closing the connection&quot;,
@@ -267,7 +267,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = conn.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = conn.close();
     if (result is error) {
         error e = result;
         log:printError(&quot;Error occurred while closing the connection&quot;, err = e);
@@ -369,7 +369,7 @@ GUID PXbFl6Mlx6cewaL8oXwnn1 received for the produced message.
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
 import ballerina/nats;
 </code></pre></div>
 
@@ -382,7 +382,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>nats:Connection conn = new(&quot;localhost:4222&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>nats:Connection conn = new(&quot;localhost:4222&quot;);
 </code></pre></div>
 
                                 </td>
@@ -401,7 +401,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener nats:StreamingListener lis = new(conn);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener nats:StreamingListener lis = new(conn);
 </code></pre></div>
 
                                 </td>
@@ -420,7 +420,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;
 }
 service demoService on lis {
@@ -443,7 +443,7 @@ service demoService on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string | error val = data.toJsonString();
+                                    <div class="highlight"><pre><code class=language-ballerina>        string | error val = data.toJsonString();
         if (val is string) {
 </code></pre></div>
 
@@ -463,7 +463,7 @@ service demoService on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            log:printInfo(&quot;Message Received: &quot; + val);
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(&quot;Message Received: &quot; + val);
         } else {
             log:printError(&quot;Error occurred during json to string conversion&quot;,
                                                                       err = val);
@@ -487,7 +487,7 @@ service demoService on lis {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, err = e);
     }

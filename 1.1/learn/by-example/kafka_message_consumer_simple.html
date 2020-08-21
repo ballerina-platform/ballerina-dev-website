@@ -77,11 +77,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/kafka_message_consumer_simple/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/kafka_message_consumer_simple/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -121,7 +121,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/kafka;
 import ballerina/lang. &#39;string as strings;
 import ballerina/log;
@@ -136,7 +136,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:ConsumerConfig consumerConfigs = {
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfig consumerConfigs = {
     bootstrapServers: &quot;localhost:9092&quot;,
     groupId: &quot;group-id&quot;,
     offsetReset: &quot;earliest&quot;,
@@ -160,7 +160,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:Consumer consumer = new (consumerConfigs);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Consumer consumer = new (consumerConfigs);
 </code></pre></div>
 
                                 </td>
@@ -172,7 +172,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -184,7 +184,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var results = consumer-&gt;poll(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var results = consumer-&gt;poll(1000);
     if (results is error) {
         log:printError(&quot;Error occurred while polling &quot;, results);
     } else {
@@ -207,7 +207,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            byte[] serializedMsg = kafkaRecord.value;
+                                    <div class="highlight"><pre><code class=language-ballerina>            byte[] serializedMsg = kafkaRecord.value;
             string | error msg = strings:fromBytes(serializedMsg);
             if (msg is string) {
 </code></pre></div>
@@ -228,7 +228,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>                io:println(&quot;Topic: &quot;, kafkaRecord.topic, &quot; Received Message: &quot;, msg);
+                                    <div class="highlight"><pre><code class=language-ballerina>                io:println(&quot;Topic: &quot;, kafkaRecord.topic, &quot; Received Message: &quot;, msg);
             } else {
                 log:printError(&quot;Error occurred while converting message data&quot;, msg);
             }

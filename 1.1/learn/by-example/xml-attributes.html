@@ -75,11 +75,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml-attributes/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/xml-attributes/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -129,7 +129,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -141,7 +141,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>xmlns &quot;http://ballerina.com/aa&quot; as ns0;
+                                    <div class="highlight"><pre><code class=language-ballerina>xmlns &quot;http://ballerina.com/aa&quot; as ns0;
 </code></pre></div>
 
                                 </td>
@@ -153,7 +153,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -165,7 +165,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x1 = xml `&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x1 = xml `&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`;
     io:println(x1);
 </code></pre></div>
 
@@ -185,7 +185,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(x1@[ns0:status]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(x1@[ns0:status]);
 </code></pre></div>
 
                                 </td>
@@ -204,7 +204,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? s = x1@[&quot;{http://ballerina.com/aa}status&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? s = x1@[&quot;{http://ballerina.com/aa}status&quot;];
     io:println(s);
 </code></pre></div>
 
@@ -224,7 +224,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(x1@[&quot;count&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(x1@[&quot;count&quot;]);
 </code></pre></div>
 
                                 </td>
@@ -243,7 +243,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string attributeName = &quot;count&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string attributeName = &quot;count&quot;;
     io:println(x1@[attributeName]);
 </code></pre></div>
 
@@ -263,7 +263,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x1@[ns0:status] = &quot;Not Available&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    x1@[ns0:status] = &quot;Not Available&quot;;
     io:println(x1@[ns0:status]);
 </code></pre></div>
 
@@ -283,7 +283,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(x1@);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(x1@);
 </code></pre></div>
 
                                 </td>
@@ -302,7 +302,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string&gt;? attributeMap = x1@;
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt;? attributeMap = x1@;
     io:println(attributeMap);
     io:println(attributeMap[&quot;count&quot;]);
 </code></pre></div>
@@ -323,7 +323,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x2 = xml `&lt;Person name=&quot;James&quot; /&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x2 = xml `&lt;Person name=&quot;James&quot; /&gt;`;
     xml x3 = x1 + x2;
     map&lt;string&gt;? attributeMapOfSeq = x3@;
     io:println(attributeMapOfSeq);

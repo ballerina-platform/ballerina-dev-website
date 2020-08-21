@@ -18,7 +18,7 @@ permalink: /downloads/swan-lake-archived/
         </div> -->
         <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers" id="archived-versions">
-                <h2>Archived Versions</h2>
+                <h2>Swan Lake Archived Versions</h2>
             </div>            
         </div>
     </div>

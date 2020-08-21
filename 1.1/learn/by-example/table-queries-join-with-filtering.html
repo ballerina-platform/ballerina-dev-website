@@ -123,11 +123,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/table-queries-join-with-filtering/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/table-queries-join-with-filtering/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -179,7 +179,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -191,7 +191,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     int id;
     int age = -1;
     float salary;
@@ -216,7 +216,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Order record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Order record {
     int personId;
     int orderId;
     string items;
@@ -240,7 +240,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type OrderDetails record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type OrderDetails record {
     int orderId;
     string personName;
     string items;
@@ -265,7 +265,7 @@ and the order details).</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string queryStmt = &quot;&quot;;
 </code></pre></div>
 
@@ -278,7 +278,7 @@ and the order details).</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p1 =
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p1 =
     {id: 1, age: 25, salary: 1000.50, name: &quot;jane&quot;, married: true};
     Person p2 =
     {id: 2, age: 26, salary: 1050.50, name: &quot;kane&quot;, married: false};
@@ -304,7 +304,7 @@ and the order details).</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; personTable = table {
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;Person&gt; personTable = table {
         {id, age, salary, name, married},
         [p1, p2, p3, p4]
     };
@@ -326,7 +326,7 @@ and the order details).</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printTable(queryStmt, &quot;The personTable:  &quot;, personTable);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printTable(queryStmt, &quot;The personTable:  &quot;, personTable);
 </code></pre></div>
 
                                 </td>
@@ -345,7 +345,7 @@ and the order details).</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Order o1 =
+                                    <div class="highlight"><pre><code class=language-ballerina>    Order o1 =
     {personId: 1, orderId: 1234, items: &quot;pen, book, eraser&quot;, amount: 34.75};
     Order o2 =
     {personId: 1, orderId: 2314, items: &quot;dhal, rice, carrot&quot;, amount: 14.75};
@@ -372,7 +372,7 @@ and the order details).</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Order&gt; orderTable = table {
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;Order&gt; orderTable = table {
         {personId, orderId, items, amount},
         [o1, o2, o3, o4]
     };
@@ -394,7 +394,7 @@ and the order details).</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printTable(queryStmt, &quot;The orderTable: &quot;, orderTable);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printTable(queryStmt, &quot;The orderTable: &quot;, orderTable);
 </code></pre></div>
 
                                 </td>
@@ -413,7 +413,7 @@ and the order details).</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;OrderDetails&gt; orderDetailsWithFilter =
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;OrderDetails&gt; orderDetailsWithFilter =
                     from personTable
                     where name != &quot;jane&quot; as tempPersonTable
                     join orderTable where personId != 3 as tempOrderTable
@@ -452,7 +452,7 @@ and the order details).</p>
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function printTable(string stmt, string tableName, table&lt;anydata&gt; returnedTable) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printTable(string stmt, string tableName, table&lt;anydata&gt; returnedTable) {
     io:println(stmt);
     io:println(tableName);
     foreach var row in returnedTable {

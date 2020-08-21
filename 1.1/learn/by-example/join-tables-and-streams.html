@@ -113,11 +113,11 @@ that have streaming constructs.</p>
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/join-tables-and-streams/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/join-tables-and-streams/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -173,7 +173,7 @@ that have streaming constructs.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
 
@@ -186,7 +186,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Item record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Item record {|
     string name;
     float price;
     int stockAmount;
@@ -209,7 +209,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Order record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Order record {|
     string itemName;
     int orderingAmount;
 |};
@@ -231,7 +231,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type OutOfStockAlert record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type OutOfStockAlert record {|
     string itemName;
     int stockAmount;
 |};
@@ -253,7 +253,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>stream&lt;Order&gt; orderStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>stream&lt;Order&gt; orderStream = new;
 </code></pre></div>
 
                                 </td>
@@ -272,7 +272,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>table&lt;Item&gt; itemStockTable = table {
+                                    <div class="highlight"><pre><code class=language-ballerina>table&lt;Item&gt; itemStockTable = table {
     { name, price, stockAmount },
     [
         {&quot;Book&quot;, 100.0, 10},
@@ -297,7 +297,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>stream&lt;OutOfStockAlert&gt; oredrAlertStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>stream&lt;OutOfStockAlert&gt; oredrAlertStream = new;
 </code></pre></div>
 
                                 </td>
@@ -316,7 +316,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initOutOfStockAlert() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initOutOfStockAlert() {
 </code></pre></div>
 
                                 </td>
@@ -328,7 +328,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    forever {
+                                    <div class="highlight"><pre><code class=language-ballerina>    forever {
         from orderStream window length(1) as itemOrder
         join queryItemTable(itemOrder.itemName, itemOrder.orderingAmount) as item
         select item.name as itemName, item.stockAmount
@@ -358,7 +358,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function queryItemTable(string itemName, int orderingAmount)
+                                    <div class="highlight"><pre><code class=language-ballerina>public function queryItemTable(string itemName, int orderingAmount)
         returns table&lt;Item&gt; {
     table&lt;Item&gt; result = table {
         { name, price, stockAmount }, []
@@ -388,7 +388,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     initOutOfStockAlert();
 </code></pre></div>
 
@@ -401,7 +401,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Order order1 = { itemName: &quot;Pen&quot;, orderingAmount: 5};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Order order1 = { itemName: &quot;Pen&quot;, orderingAmount: 5};
     Order order2 = { itemName: &quot;Book&quot;, orderingAmount: 2};
 </code></pre></div>
 
@@ -414,7 +414,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    oredrAlertStream.subscribe(printOutOfStocksAlert);
+                                    <div class="highlight"><pre><code class=language-ballerina>    oredrAlertStream.subscribe(printOutOfStocksAlert);
 </code></pre></div>
 
                                 </td>
@@ -434,7 +434,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    orderStream.publish(order1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    orderStream.publish(order1);
     runtime:sleep(500);
     orderStream.publish(order2);
     runtime:sleep(500);
@@ -450,7 +450,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function printOutOfStocksAlert(OutOfStockAlert a) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printOutOfStocksAlert(OutOfStockAlert a) {
     io:println(&quot;Alert! : &quot;, a.itemName,
             &quot; stock is not enough to satisfy the order.&quot;);
 }

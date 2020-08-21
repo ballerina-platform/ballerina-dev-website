@@ -84,11 +84,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-service-with-oauth2/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/secured-service-with-oauth2/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -126,7 +126,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/oauth2;
 </code></pre></div>
@@ -140,7 +140,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:InboundOAuth2Provider oauth2Provider = new({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:InboundOAuth2Provider oauth2Provider = new({
     url: &quot;https://localhost:9095/oauth2/token/introspect&quot;
 });
 </code></pre></div>
@@ -162,7 +162,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BearerAuthHandler oauth2Handler = new(oauth2Provider);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:BearerAuthHandler oauth2Handler = new(oauth2Provider);
 </code></pre></div>
 
                                 </td>
@@ -181,7 +181,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new(9090, {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new(9090, {
     auth: {
         authHandlers: [oauth2Handler]
     },
@@ -206,7 +206,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    secureSocket: {
+                                    <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
         keyStore: {
             path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
@@ -231,7 +231,7 @@ import ballerina/oauth2;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>service hello on ep {
+                                    <div class="highlight"><pre><code class=language-ballerina>service hello on ep {
     resource function sayHello(http:Caller caller, http:Request req) {
         error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
         if (result is error) {

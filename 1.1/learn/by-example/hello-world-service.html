@@ -57,11 +57,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world-service/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/hello-world-service/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -97,7 +97,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -110,7 +110,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service hello on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service hello on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -129,7 +129,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function sayHello(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function sayHello(http:Caller caller, http:Request req) {
 </code></pre></div>
 
                                 </td>
@@ -149,7 +149,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(&quot;Hello, World!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(&quot;Hello, World!&quot;);
 </code></pre></div>
 
                                 </td>
@@ -168,7 +168,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
             log:printError(&quot;Error sending response&quot;, result);
         }
     }

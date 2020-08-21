@@ -69,11 +69,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-methods/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/object-methods/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -115,7 +115,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -127,7 +127,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person object {
     public int age;
     public string firstName;
     public string lastName;
@@ -149,7 +149,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function __init(int age, string firstName, string lastName) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function __init(int age, string firstName, string lastName) {
         self.age = age;
         self.firstName = firstName;
         self.lastName = lastName;
@@ -172,7 +172,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getFullName() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string {
         return self.firstName + &quot; &quot; + self.lastName;
     }
 </code></pre></div>
@@ -193,7 +193,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>};
+                                    <div class="highlight"><pre><code class=language-ballerina>};
 </code></pre></div>
 
                                 </td>
@@ -205,7 +205,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -217,7 +217,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p1 = new(5, &quot;John&quot;, &quot;Doe&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p1 = new(5, &quot;John&quot;, &quot;Doe&quot;);
 </code></pre></div>
 
                                 </td>
@@ -236,7 +236,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(p1.getFullName());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(p1.getFullName());
 }
 </code></pre></div>
 

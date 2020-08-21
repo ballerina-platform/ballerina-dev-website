@@ -77,11 +77,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/config-api/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/config-api/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -115,7 +115,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 </code></pre></div>
@@ -129,7 +129,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener helloWorldEP
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener helloWorldEP
     = new(config:getAsInt(&quot;hello.http.port&quot;, 9095), config = {
         secureSocket: {
             keyStore: {
@@ -182,7 +182,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service helloWorld on helloWorldEP {
@@ -197,7 +197,7 @@ service helloWorld on helloWorldEP {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }

@@ -64,11 +64,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world-parallel/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/hello-world-parallel/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -102,7 +102,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -114,7 +114,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     worker w1 {
         io:println(&quot;Hello, World! #m&quot;);
     }
@@ -137,7 +137,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    worker w2 {
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w2 {
         io:println(&quot;Hello, World! #n&quot;);
     }
 </code></pre></div>
@@ -151,7 +151,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    worker w3 {
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w3 {
         io:println(&quot;Hello, World! #k&quot;);
     }
 }

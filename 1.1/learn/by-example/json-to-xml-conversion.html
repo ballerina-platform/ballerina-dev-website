@@ -86,11 +86,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/json-to-xml-conversion/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/json-to-xml-conversion/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -128,7 +128,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/xmlutils;
 </code></pre></div>
 
@@ -141,7 +141,7 @@ import ballerina/xmlutils;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -153,7 +153,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j1 = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    json j1 = {
         &quot;Store&quot;: {
             &quot;@id&quot;: &quot;AST&quot;,
             &quot;name&quot;: &quot;Anne&quot;,
@@ -182,7 +182,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var x1 = xmlutils:fromJSON(j1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var x1 = xmlutils:fromJSON(j1);
     io:println(x1);
 </code></pre></div>
 
@@ -203,7 +203,7 @@ import ballerina/xmlutils;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j2 = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    json j2 = {
         &quot;Store&quot;: {
             &quot;#id&quot;: &quot;AST&quot;,
             &quot;name&quot;: &quot;Anne&quot;,
@@ -225,7 +225,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var x2 = xmlutils:fromJSON(j2, { attributePrefix: &quot;#&quot;, arrayEntryTag: &quot;wrapper&quot; });
+                                    <div class="highlight"><pre><code class=language-ballerina>    var x2 = xmlutils:fromJSON(j2, { attributePrefix: &quot;#&quot;, arrayEntryTag: &quot;wrapper&quot; });
     io:println(x2);
 }
 </code></pre></div>

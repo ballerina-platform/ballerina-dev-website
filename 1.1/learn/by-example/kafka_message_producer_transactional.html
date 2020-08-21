@@ -78,11 +78,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/kafka_message_producer_transactional/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/kafka_message_producer_transactional/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -122,7 +122,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/kafka;
 import ballerina/log;
 </code></pre></div>
@@ -136,7 +136,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:ProducerConfig producerConfigs = {
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ProducerConfig producerConfigs = {
 </code></pre></div>
 
                                 </td>
@@ -148,7 +148,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
     clientId: &quot;basic-producer&quot;,
     acks: &quot;all&quot;,
     retryCount: 3,
@@ -177,7 +177,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:Producer kafkaProducer = new (producerConfigs);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = new (producerConfigs);
 </code></pre></div>
 
                                 </td>
@@ -189,7 +189,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string msg1 = &quot;Hello World Transaction Message&quot;;
     byte[] serializedMsg = msg1.toBytes();
 </code></pre></div>
@@ -203,7 +203,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    kafkaAdvancedTransactionalProduce(serializedMsg);
+                                    <div class="highlight"><pre><code class=language-ballerina>    kafkaAdvancedTransactionalProduce(serializedMsg);
 }
 </code></pre></div>
 
@@ -224,7 +224,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function kafkaAdvancedTransactionalProduce(byte[] msg) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function kafkaAdvancedTransactionalProduce(byte[] msg) {
     transaction {
         var sendResult = kafkaProducer-&gt;send(msg, &quot;test-kafka-topic&quot;, partition = 0);
         if (sendResult is error) {

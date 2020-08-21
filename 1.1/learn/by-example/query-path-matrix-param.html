@@ -78,11 +78,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/query-path-matrix-param/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/query-path-matrix-param/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -128,7 +128,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -141,7 +141,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service sample on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service sample on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -153,7 +153,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/path/{foo}&quot;
     }
@@ -168,7 +168,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function params(http:Caller caller, http:Request req,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function params(http:Caller caller, http:Request req,
                                 string foo) {
 </code></pre></div>
 
@@ -188,7 +188,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var bar = req.getQueryParamValue(&quot;bar&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var bar = req.getQueryParamValue(&quot;bar&quot;);
 </code></pre></div>
 
                                 </td>
@@ -207,7 +207,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        map&lt;any&gt; pathMParams = req.getMatrixParams(&quot;/sample/path&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        map&lt;any&gt; pathMParams = req.getMatrixParams(&quot;/sample/path&quot;);
         var a = &lt;string&gt;pathMParams[&quot;a&quot;];
         var b = &lt;string&gt;pathMParams[&quot;b&quot;];
         string pathMatrixStr = string `a=${a}, b=${b}`;
@@ -234,7 +234,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        json responseJson = { &quot;pathParam&quot;: foo, &quot;queryParam&quot;: bar,
+                                    <div class="highlight"><pre><code class=language-ballerina>        json responseJson = { &quot;pathParam&quot;: foo, &quot;queryParam&quot;: bar,
                                 &quot;matrix&quot;: matrixJson };
         http:Response res = new;
 </code></pre></div>
@@ -255,7 +255,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        res.setJsonPayload(&lt;@untainted&gt; responseJson);
+                                    <div class="highlight"><pre><code class=language-ballerina>        res.setJsonPayload(&lt;@untainted&gt; responseJson);
 </code></pre></div>
 
                                 </td>
@@ -274,7 +274,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
 </code></pre></div>
 
                                 </td>
@@ -293,7 +293,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        if (result is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
             log:printError(&quot;Error when responding&quot;, err = result);
         }
     }

@@ -73,11 +73,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-service-timer/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/task-service-timer/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -117,7 +117,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
 import ballerina/task;
 </code></pre></div>
 
@@ -130,7 +130,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>task:TimerConfiguration timerConfiguration = {
+                                    <div class="highlight"><pre><code class=language-ballerina>task:TimerConfiguration timerConfiguration = {
     intervalInMillis: 1000,
     initialDelayInMillis: 3000,
 </code></pre></div>
@@ -151,7 +151,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    noOfRecurrences: 10
+                                    <div class="highlight"><pre><code class=language-ballerina>    noOfRecurrences: 10
 };
 </code></pre></div>
 
@@ -171,7 +171,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener task:Listener timer = new(timerConfiguration);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener task:Listener timer = new(timerConfiguration);
 </code></pre></div>
 
                                 </td>
@@ -190,7 +190,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int count = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int count = 0;
 </code></pre></div>
 
                                 </td>
@@ -202,7 +202,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service timerService on timer {
+                                    <div class="highlight"><pre><code class=language-ballerina>service timerService on timer {
 </code></pre></div>
 
                                 </td>
@@ -221,7 +221,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onTrigger() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onTrigger() {
         log:printInfo(&quot;Cleaning up...&quot;);
         log:printInfo(count.toString());
         count = count + 1;

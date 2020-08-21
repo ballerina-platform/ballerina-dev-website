@@ -77,11 +77,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml-functions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/xml-functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -137,7 +137,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -149,7 +149,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     xml bookName = xml `&lt;name&gt;Book1&lt;/name&gt;`;
     xml bookComment = xml `&lt;!--some comment--&gt;`;
     xml someText = xml `Hello, World!`;
@@ -165,7 +165,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml book = xml `&lt;book/&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml book = xml `&lt;book/&gt;`;
 </code></pre></div>
 
                                 </td>
@@ -177,7 +177,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookComment.getItemType());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(bookComment.getItemType());
 </code></pre></div>
 
                                 </td>
@@ -196,7 +196,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookName.getElementName());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(bookName.getElementName());
 </code></pre></div>
 
                                 </td>
@@ -215,7 +215,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookName.getTextValue());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(bookName.getTextValue());
 </code></pre></div>
 
                                 </td>
@@ -234,7 +234,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(content.isEmpty());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(content.isEmpty());
 </code></pre></div>
 
                                 </td>
@@ -253,7 +253,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(content.isSingleton());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(content.isSingleton());
 </code></pre></div>
 
                                 </td>
@@ -272,7 +272,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x = content.slice(2, 3);
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x = content.slice(2, 3);
     io:println(x);
 </code></pre></div>
 
@@ -292,7 +292,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x = content.elements();
+                                    <div class="highlight"><pre><code class=language-ballerina>    x = content.elements();
     io:println(x);
 </code></pre></div>
 
@@ -312,7 +312,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x = content.select(&quot;name&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    x = content.select(&quot;name&quot;);
     io:println(x);
 </code></pre></div>
 
@@ -332,7 +332,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    book.setChildren(content);
+                                    <div class="highlight"><pre><code class=language-ballerina>    book.setChildren(content);
     io:println(book);
 </code></pre></div>
 
@@ -352,7 +352,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x = book.selectDescendants(&quot;name&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    x = book.selectDescendants(&quot;name&quot;);
     io:println(x);
 </code></pre></div>
 
@@ -372,7 +372,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x = content.strip();
+                                    <div class="highlight"><pre><code class=language-ballerina>    x = content.strip();
     io:println(x);
 </code></pre></div>
 
@@ -392,7 +392,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    x = bookName.copy();
+                                    <div class="highlight"><pre><code class=language-ballerina>    x = bookName.copy();
     io:println(x);
 }
 </code></pre></div>

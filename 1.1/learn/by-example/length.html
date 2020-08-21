@@ -94,11 +94,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/length/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/length/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -158,7 +158,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -170,7 +170,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -182,7 +182,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] intArray = [1, 2, 3];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] intArray = [1, 2, 3];
     int length;
 </code></pre></div>
 
@@ -202,7 +202,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = intArray.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    length = intArray.length();
     io:println(&quot;Integer array size: &quot;, length);
 </code></pre></div>
 
@@ -223,7 +223,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json[] jsonArray = [
+                                    <div class="highlight"><pre><code class=language-ballerina>    json[] jsonArray = [
         { &quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 31 },
         { &quot;name&quot;: &quot;Neal&quot;, &quot;age&quot;: 22 }
     ];
@@ -245,7 +245,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = jsonArray.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    length = jsonArray.length();
     io:println(&quot;JSON array size: &quot;, length);
 </code></pre></div>
 
@@ -265,7 +265,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;int&gt; strMap = {};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; strMap = {};
     strMap[&quot;A&quot;] = 1;
     strMap[&quot;B&quot;] = 2;
     strMap[&quot;C&quot;] = 3;
@@ -287,7 +287,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = strMap.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    length = strMap.length();
     io:println(&quot;Map size: &quot;, length);
 </code></pre></div>
 
@@ -307,7 +307,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string myStr = &quot;My name is Peter Parker&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string myStr = &quot;My name is Peter Parker&quot;;
     
 </code></pre></div>
 
@@ -327,7 +327,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = myStr.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    length = myStr.length();
     io:println(&quot;String size: &quot;, length);
 </code></pre></div>
 
@@ -347,7 +347,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x1 = xml `&lt;book&gt;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml x1 = xml `&lt;book&gt;
                     &lt;name&gt;Sherlock Holmes&lt;/name&gt;
                     &lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;
                     &lt;!--Price: $10--&gt;
@@ -370,7 +370,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = x1.getChildren().elements().length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    length = x1.getChildren().elements().length();
     io:println(&quot;XML child elements size: &quot;, length);
 </code></pre></div>
 
@@ -390,7 +390,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [int, string] tupleVar = [10, &quot;John&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [int, string] tupleVar = [10, &quot;John&quot;];
 </code></pre></div>
 
                                 </td>
@@ -409,7 +409,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = tupleVar.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    length = tupleVar.length();
     io:println(&quot;Tuple size: &quot;, length);
 </code></pre></div>
 
@@ -429,7 +429,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student stu = { id: 1, fname: &quot;John&quot;, lname: &quot;Doe&quot;, age: 17};
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student stu = { id: 1, fname: &quot;John&quot;, lname: &quot;Doe&quot;, age: 17};
 </code></pre></div>
 
                                 </td>
@@ -448,7 +448,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = stu.length();
+                                    <div class="highlight"><pre><code class=language-ballerina>    length = stu.length();
     io:println(&quot;Field size in `Student` record: &quot;, length);
 }
 </code></pre></div>
@@ -469,7 +469,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {|
     int id;
     string fname;
     string lname;

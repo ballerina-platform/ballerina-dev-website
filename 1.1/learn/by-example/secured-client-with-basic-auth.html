@@ -110,11 +110,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-client-with-basic-auth/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/secured-client-with-basic-auth/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -152,7 +152,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/auth;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/auth;
 import ballerina/http;
 import ballerina/log;
 </code></pre></div>
@@ -166,7 +166,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>auth:OutboundBasicAuthProvider outboundBasicAuthProvider = new({
+                                    <div class="highlight"><pre><code class=language-ballerina>auth:OutboundBasicAuthProvider outboundBasicAuthProvider = new({
     username: &quot;tom&quot;,
     password: &quot;1234&quot;
 });
@@ -191,7 +191,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BasicAuthHandler outboundBasicAuthHandler =
+                                    <div class="highlight"><pre><code class=language-ballerina>http:BasicAuthHandler outboundBasicAuthHandler =
                                             new(outboundBasicAuthProvider);
 </code></pre></div>
 
@@ -211,7 +211,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client httpEndpoint = new(&quot;https://localhost:9090&quot;, {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client httpEndpoint = new(&quot;https://localhost:9090&quot;, {
     auth: {
         authHandler: outboundBasicAuthHandler
     },
@@ -233,7 +233,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -245,7 +245,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var response = httpEndpoint-&gt;get(&quot;/hello/sayHello&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var response = httpEndpoint-&gt;get(&quot;/hello/sayHello&quot;);
     if (response is http:Response) {
         var result = response.getTextPayload();
         log:printInfo((result is error) ? &quot;Failed to retrieve payload.&quot;
@@ -336,7 +336,7 @@ INFO  [ballerina/log] - Hello, World!!!
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/auth;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/auth;
 import ballerina/http;
 import ballerina/log;
 </code></pre></div>
@@ -350,7 +350,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>auth:InboundBasicAuthProvider inboundBasicAuthProvider = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>auth:InboundBasicAuthProvider inboundBasicAuthProvider = new;
 http:BasicAuthHandler inboundBasicAuthHandler = new(inboundBasicAuthProvider);
 </code></pre></div>
 
@@ -371,7 +371,7 @@ http:BasicAuthHandler inboundBasicAuthHandler = new(inboundBasicAuthProvider);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep  = new(9090, config = {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep  = new(9090, config = {
     auth: {
         authHandlers: [inboundBasicAuthHandler],
         scopes: [&quot;hello&quot;]
@@ -394,7 +394,7 @@ http:BasicAuthHandler inboundBasicAuthHandler = new(inboundBasicAuthProvider);
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>service hello on ep {
+                                    <div class="highlight"><pre><code class=language-ballerina>service hello on ep {
     resource function sayHello(http:Caller caller, http:Request req) {
         error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
         if (result is error) {

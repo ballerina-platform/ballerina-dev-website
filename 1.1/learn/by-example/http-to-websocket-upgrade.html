@@ -98,11 +98,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-to-websocket-upgrade/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/http-to-websocket-upgrade/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -148,7 +148,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 </code></pre></div>
@@ -162,7 +162,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service httpService on new http:Listener(9090) {
@@ -177,7 +177,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         path: &quot;/world&quot;,
         methods: [&quot;POST&quot;]
     }
@@ -210,7 +210,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var err = caller-&gt;respond(resp);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var err = caller-&gt;respond(resp);
         if (err is error) {
             log:printError(&quot;Error in responding&quot;, err = err);
         }
@@ -226,7 +226,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         webSocketUpgrade: {
                 upgradePath: &quot;/ws&quot;,
                 upgradeService: wsService
@@ -252,7 +252,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
 }
 </code></pre></div>
 
@@ -265,7 +265,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service wsService = @http:WebSocketServiceConfig {subProtocols: [&quot;xml, json&quot;]
+                                    <div class="highlight"><pre><code class=language-ballerina>service wsService = @http:WebSocketServiceConfig {subProtocols: [&quot;xml, json&quot;]
                                          ,idleTimeoutInSeconds: 20} service {
 </code></pre></div>
 
@@ -289,7 +289,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
         io:println(&quot;New WebSocket connection: &quot; + caller.getConnectionId());
     }
 </code></pre></div>
@@ -303,7 +303,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text) {
         io:println(text);
         var err = caller-&gt;pushText(text);
         if (err is error) {
@@ -321,7 +321,7 @@ service httpService on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onIdleTimeout(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onIdleTimeout(http:WebSocketCaller caller) {
         io:println(&quot;Idle timeout: &quot; + caller.getConnectionId());
     }
 };

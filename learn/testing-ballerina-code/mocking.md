@@ -58,7 +58,7 @@ public type MockHttpClient client object {
 @test:Config {}
 public function testGetRandomJoke() {
     // create and assign a test double to the `clientEndpoint` object
-    clientEndpoint=test:mock(http:Client, new MockHttpClient());
+    clientEndpoint=<http:Client>test:mock(http:Client, new MockHttpClient());
 
     // invoke the function to test
     string|error result = getRandomJoke("Sheldon");
@@ -181,7 +181,7 @@ import ballerina/http;
 @test:Config {}
 public function testGetRandomJoke() {
     // Create a default mock HTTP Client and assign it to the `clientEndpoint` object
-    clientEndpoint = test:mock(http:Client);
+    clientEndpoint = <http:Client>test:mock(http:Client);
 
     // Stub to return the specified mock response when the `get` function is called.
     test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
@@ -213,7 +213,7 @@ import ballerina/http;
 @test:Config {}
 public function testGetRandomJoke() {
     // Create a default mock HTTP Client and assign it to the `clientEndpoint` object.
-    clientEndpoint = test:mock(http:Client);
+    clientEndpoint = <http:Client>test:mock(http:Client);
 
     // Stub to return the corresponding value for each invocation 
     test:prepare(clientEndpoint).when("get")
@@ -240,7 +240,7 @@ import ballerina/http;
 @test:Config {}
 function testMemberVariable() {
     // Create a default mock HTTP Client and assign it to the `clientEndpoint` object.
-    clientEndpoint = test:mock(http:Client);
+    clientEndpoint = <http:Client>test:mock(http:Client);
 
     // Stub the value of the `url` variable to return the specified string.
     test:prepare(clientEndpoint).getMember("url").thenReturn("https://foo.com/");
@@ -293,7 +293,7 @@ function testSendNotification() {
     string[] emailIds = ["user1@test.com", "user2@test.com"];
 
     // Create a default mock SMTP client and assign it to the `smtpClient` object.
-    smtpClient = test:mock(email:SmtpClient);
+    smtpClient = <email:SmtpClient>test:mock(email:SmtpClient);
 
     // Stub to do nothing when the`send` function is invoked.
     test:prepare(smtpClient).when("send").doNothing();

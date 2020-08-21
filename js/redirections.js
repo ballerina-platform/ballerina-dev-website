@@ -198,10 +198,10 @@ let redirections = {
     "/1.0/learn/by-example/jdbc-streaming-big-dataset.html":"/1.0/page-not-available.html",
     "/1.1/learn/by-example/knative-deployment.html": "/1.1/page-not-available.html",
     "/1.0/learn/by-example/knative-deployment.html": "/1.0/page-not-available.html",
-    "/1.1/learn/by-example/aws-lambda-deployment.html": "/1.1/page-not-available.html",
-    "/1.0/learn/by-example/aws-lambda-deployment.html": "/1.0/page-not-available.html",
     "/1.1/learn/by-example/azure-functions-deployment.html": "/1.1/page-not-available.html",
-    "/1.0/learn/by-example/azure-functions-deployment": "/1.0/page-not-available.html"
+    "/1.0/learn/by-example/azure-functions-deployment": "/1.0/page-not-available.html",
+    "/1.1/learn/by-example/aws-lambda-deployment.html": "/1.1/learn/by-example/awslambda-deployment.html",
+    "/1.0/learn/by-example/aws-lambda-deployment.html": "/1.0/learn/by-example/awslambda-deployment.html",
 
 
     

@@ -80,11 +80,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/type-guard/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/type-guard/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -134,7 +134,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -146,7 +146,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -158,7 +158,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|int|boolean value = 10;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|int|boolean value = 10;
 </code></pre></div>
 
                                 </td>
@@ -177,7 +177,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (value is string) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (value is string) {
 </code></pre></div>
 
                                 </td>
@@ -197,7 +197,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string str = value;
+                                    <div class="highlight"><pre><code class=language-ballerina>        string str = value;
         io:println(&quot;value is a string: &quot;, str);
     } else if (value is int) {
 </code></pre></div>
@@ -219,7 +219,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;value is an int: &quot;, value);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;value is an int: &quot;, value);
         io:println(&quot;value + 1: &quot;, addOneToInt(value));
 </code></pre></div>
 
@@ -240,7 +240,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        value = &quot;Hello World&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>        value = &quot;Hello World&quot;;
 </code></pre></div>
 
                                 </td>
@@ -259,7 +259,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (value is int) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (value is int) {
 </code></pre></div>
 
                                 </td>
@@ -278,7 +278,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            int i = value;
+                                    <div class="highlight"><pre><code class=language-ballerina>            int i = value;
             io:println(&quot;- value is an int: &quot;, i);
         } else {
 </code></pre></div>
@@ -299,7 +299,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            string|boolean sb = value;
+                                    <div class="highlight"><pre><code class=language-ballerina>            string|boolean sb = value;
             io:println(&quot;- value is string|boolean: &quot;, sb);
         }
     } else {
@@ -321,7 +321,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (value) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (value) {
             io:println(&quot;s is &#39;true&#39;&quot;);
         }
     }
@@ -345,7 +345,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function addOneToInt(int i) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function addOneToInt(int i) returns int {
     return i + 1;
 }
 </code></pre></div>

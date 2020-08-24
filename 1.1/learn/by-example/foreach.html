@@ -107,11 +107,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/foreach/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/foreach/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -171,7 +171,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -183,7 +183,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     io:println(&quot;Iterating a string array :&quot;);
     string[] fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;];
 </code></pre></div>
@@ -197,7 +197,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var v in fruits {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var v in fruits {
         io:println(&quot;fruit: &quot;, v);
     }
 </code></pre></div>
@@ -219,7 +219,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nIterating a map :&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a map :&quot;);
     map&lt;string&gt; words = { a: &quot;apple&quot;, b: &quot;banana&quot;, c: &quot;cherry&quot; };
 </code></pre></div>
 
@@ -232,7 +232,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var fruit in words {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var fruit in words {
         io:println(fruit);
     }
 </code></pre></div>
@@ -253,7 +253,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var [k, v] in words.entries() {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var [k, v] in words.entries() {
         io:println(&quot;letter: &quot;, k, &quot;, word: &quot;, v);
     }
 </code></pre></div>
@@ -275,7 +275,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nIterating a JSON object :&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a JSON object :&quot;);
     json apple = { name: &quot;apple&quot;, colors: [&quot;red&quot;, &quot;green&quot;], price: 5 };
 </code></pre></div>
 
@@ -288,7 +288,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;json&gt; mapValue = &lt;map&lt;json&gt;&gt; apple;
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;json&gt; mapValue = &lt;map&lt;json&gt;&gt; apple;
     foreach var value in mapValue {
         if (value is string) {
             io:println(&quot;string value: &quot;, value);
@@ -316,7 +316,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;non-string value: &quot;, value);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;non-string value: &quot;, value);
         }
     }
 </code></pre></div>
@@ -338,7 +338,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nIterating a JSON array :&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a JSON array :&quot;);
 </code></pre></div>
 
                                 </td>
@@ -350,7 +350,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json[] colors = &lt;json[]&gt;apple.colors;
+                                    <div class="highlight"><pre><code class=language-ballerina>    json[] colors = &lt;json[]&gt;apple.colors;
     int counter = 0;
     foreach var j in colors {
         io:println(&quot;color &quot;, counter, &quot;: &quot;, j);
@@ -374,7 +374,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nIterating XML :&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating XML :&quot;);
     xml book = xml `&lt;book&gt;
                         &lt;name&gt;Sherlock Holmes&lt;/name&gt;
                         &lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;
@@ -390,7 +390,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    counter = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    counter = 0;
     foreach var x in book.getChildren().elements(){
         io:println(&quot;xml at &quot;, counter, &quot;: &quot;, x);
         counter += 1;
@@ -413,7 +413,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nIterating a closed integer range :&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a closed integer range :&quot;);
     int endValue = 10;
     int sum = 0;
 </code></pre></div>
@@ -427,7 +427,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var i in 1...endValue {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var i in 1...endValue {
         sum = sum + i;
     }
     io:println(&quot;summation from 1 to &quot;, endValue, &quot; is &quot;, sum);
@@ -450,7 +450,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nIterating a half open integer range :&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a half open integer range :&quot;);
     sum = 0;
 </code></pre></div>
 
@@ -463,7 +463,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var i in 1..&lt;endValue {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var i in 1..&lt;endValue {
         sum = sum + i;
     }
     io:println(&quot;summation from 1 to &quot;, endValue,

@@ -105,11 +105,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/optional-field-access/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/optional-field-access/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -171,7 +171,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -183,7 +183,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Address record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Address record {
     string line01;
     string line02;
     string city;
@@ -201,7 +201,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age?;
     Address? addr;
@@ -225,7 +225,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getPerson(string name, int age) returns Person? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getPerson(string name, int age) returns Person? {
     if (name == &quot;&quot; || age == 0) {
         return;
     } else {
@@ -247,7 +247,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        Person p = {
+                                    <div class="highlight"><pre><code class=language-ballerina>        Person p = {
             name: name,
             age: age,
             addr: {
@@ -279,7 +279,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -291,7 +291,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p1 = { name: &quot;Anne&quot;, addr: () };
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p1 = { name: &quot;Anne&quot;, addr: () };
 </code></pre></div>
 
                                 </td>
@@ -310,7 +310,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int? age = p1?.age;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int? age = p1?.age;
     io:println(&quot;Age: &quot;, age);
 </code></pre></div>
 
@@ -334,7 +334,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    p1 = { name: &quot;Anne&quot;, age: 24, addr: () };
+                                    <div class="highlight"><pre><code class=language-ballerina>    p1 = { name: &quot;Anne&quot;, age: 24, addr: () };
 </code></pre></div>
 
                                 </td>
@@ -353,7 +353,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    age = p1?.age;
+                                    <div class="highlight"><pre><code class=language-ballerina>    age = p1?.age;
     io:println(&quot;Age: &quot;, age);
 </code></pre></div>
 
@@ -373,7 +373,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person? p2 = getPerson(&quot;John&quot;, 30);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person? p2 = getPerson(&quot;John&quot;, 30);
     io:println(p2);
 </code></pre></div>
 
@@ -386,7 +386,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? city1 = p2?.addr?.city;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? city1 = p2?.addr?.city;
 </code></pre></div>
 
                                 </td>
@@ -409,7 +409,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(city1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(city1);
 </code></pre></div>
 
                                 </td>
@@ -428,7 +428,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person? p3 = getPerson(&quot;&quot;, 0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person? p3 = getPerson(&quot;&quot;, 0);
 </code></pre></div>
 
                                 </td>
@@ -447,7 +447,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? city2 = p3?.addr?.city;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? city2 = p3?.addr?.city;
     io:println(city2);
 </code></pre></div>
 
@@ -467,7 +467,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    p3 = { name: &quot;George&quot;, age: 20, addr: () };
+                                    <div class="highlight"><pre><code class=language-ballerina>    p3 = { name: &quot;George&quot;, age: 20, addr: () };
 </code></pre></div>
 
                                 </td>
@@ -486,7 +486,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    city2 = p3?.addr?.city;
+                                    <div class="highlight"><pre><code class=language-ballerina>    city2 = p3?.addr?.city;
     io:println(city2);
 </code></pre></div>
 
@@ -506,7 +506,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string defaultCity = &quot;San Jose&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string defaultCity = &quot;San Jose&quot;;
     string city = city2 ?: defaultCity;
     io:println(city);
 }

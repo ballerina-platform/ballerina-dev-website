@@ -74,11 +74,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/while/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/while/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -120,7 +120,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -132,7 +132,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     int i = 0;
 </code></pre></div>
 
@@ -145,7 +145,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    while (i &lt; 3) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    while (i &lt; 3) {
         io:println(i);
         i = i + 1;
     }
@@ -167,7 +167,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int j = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int j = 0;
     while (j &lt; 5) {
         io:println(j);
         j = j + 1;
@@ -182,7 +182,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (j == 3) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (j == 3) {
             break;
         }
     }
@@ -204,7 +204,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int k = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int k = 0;
     while (k &lt; 5) {
 </code></pre></div>
 
@@ -217,7 +217,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (k &lt; 3) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (k &lt; 3) {
             k = k + 1;
             continue;
         }
@@ -240,7 +240,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(k);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(k);
         k = k + 1;
     }
 }

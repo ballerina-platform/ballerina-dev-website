@@ -89,11 +89,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-type-reference/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/object-type-reference/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -155,7 +155,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -167,7 +167,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person abstract object {
     public int age;
     public string firstName;
     public string lastName;
@@ -190,7 +190,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getFullName() returns string;
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string;
 </code></pre></div>
 
                                 </td>
@@ -210,7 +210,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>};
+                                    <div class="highlight"><pre><code class=language-ballerina>};
 </code></pre></div>
 
                                 </td>
@@ -222,7 +222,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee abstract object {
 </code></pre></div>
 
                                 </td>
@@ -241,7 +241,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    *Person;    
+                                    <div class="highlight"><pre><code class=language-ballerina>    *Person;    
     public float salary;
 </code></pre></div>
 
@@ -262,7 +262,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getSalary() returns float;
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getSalary() returns float;
 };
 </code></pre></div>
 
@@ -275,7 +275,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Owner abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Owner abstract object {
     public string status;
 };
 </code></pre></div>
@@ -289,7 +289,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Manager object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Manager object {
 </code></pre></div>
 
                                 </td>
@@ -301,7 +301,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    *Employee;
+                                    <div class="highlight"><pre><code class=language-ballerina>    *Employee;
 </code></pre></div>
 
                                 </td>
@@ -322,7 +322,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    *Owner;
+                                    <div class="highlight"><pre><code class=language-ballerina>    *Owner;
 </code></pre></div>
 
                                 </td>
@@ -341,7 +341,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public string dpt;
+                                    <div class="highlight"><pre><code class=language-ballerina>    public string dpt;
 </code></pre></div>
 
                                 </td>
@@ -353,7 +353,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function __init(int age, string firstName, string lastName, string status) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function __init(int age, string firstName, string lastName, string status) {
         self.age = age;
         self.firstName = firstName;
         self.lastName = lastName;
@@ -379,7 +379,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getFullName() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string {
         return self.firstName + &quot; &quot; + self.lastName;
     }
 </code></pre></div>
@@ -400,7 +400,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getSalary() returns float{
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getSalary() returns float{
         return self.salary;
     }
 };
@@ -415,7 +415,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     Manager p = new Manager(5, &quot;John&quot;, &quot;Doe&quot;, &quot;Senior&quot;);
 </code></pre></div>
 
@@ -428,7 +428,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(p.age);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(p.age);
     io:println(p.dpt);
 </code></pre></div>
 
@@ -448,7 +448,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(p.getFullName());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(p.getFullName());
     io:println(p.getSalary());
 }
 </code></pre></div>

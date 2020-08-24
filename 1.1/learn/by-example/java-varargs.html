@@ -64,11 +64,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/java-varargs/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/java-varargs/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -102,7 +102,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerinax/java;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerinax/java;
 import ballerina/io;
 </code></pre></div>
 
@@ -115,7 +115,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function asList(int... values) returns handle = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function asList(int... values) returns handle = @java:Method {
     name:&quot;asList&quot;,
     class: &quot;java.util.Arrays&quot;
 } external;
@@ -139,7 +139,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     var answer = 42;
 </code></pre></div>
 
@@ -152,7 +152,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var javaList = asList(1, 2, answer);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var javaList = asList(1, 2, answer);
     io:println(javaList);
 }
 </code></pre></div>

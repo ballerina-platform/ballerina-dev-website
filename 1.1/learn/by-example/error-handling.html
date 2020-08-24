@@ -89,11 +89,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/error-handling/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/error-handling/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -143,7 +143,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -155,7 +155,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
 const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
 </code></pre></div>
 
@@ -168,7 +168,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getAccountBalance(int accountID) returns int|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAccountBalance(int accountID) returns int|error {
     if (accountID &lt; 0) {
 </code></pre></div>
 
@@ -181,7 +181,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        return error(INVALID_ACCOUNT_ID, accountID = accountID);
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error(INVALID_ACCOUNT_ID, accountID = accountID);
     } else if (accountID &gt; 100) {
 </code></pre></div>
 
@@ -201,7 +201,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        return error(ACCOUNT_NOT_FOUND, accountID = accountID);
+                                    <div class="highlight"><pre><code class=language-ballerina>        return error(ACCOUNT_NOT_FOUND, accountID = accountID);
     }
 </code></pre></div>
 
@@ -221,7 +221,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return 600;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return 600;
 }
 </code></pre></div>
 
@@ -241,7 +241,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -253,7 +253,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error simpleError = error(&quot;SimpleErrorType&quot;, message = &quot;Simple error occurred&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    error simpleError = error(&quot;SimpleErrorType&quot;, message = &quot;Simple error occurred&quot;);
 </code></pre></div>
 
                                 </td>
@@ -275,7 +275,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Error: &quot;, simpleError.reason(),
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Error: &quot;, simpleError.reason(),
                 &quot;, Message: &quot;, simpleError.detail()?.message);
 </code></pre></div>
 
@@ -298,7 +298,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error result = getAccountBalance(-1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error result = getAccountBalance(-1);
 </code></pre></div>
 
                                 </td>
@@ -310,7 +310,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (result is int) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is int) {
         io:println(&quot;Account Balance: &quot;, result);
 </code></pre></div>
 
@@ -330,7 +330,7 @@ const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
         io:println(&quot;Error: &quot;, result.reason(),
                     &quot;, Account ID: &quot;, result.detail()[&quot;accountID&quot;]);
     }

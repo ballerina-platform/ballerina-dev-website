@@ -117,11 +117,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/projection/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/projection/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -183,7 +183,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
 
@@ -196,7 +196,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age;
     string status;
@@ -221,7 +221,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Message record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Message record {
     string name;
     string address;
     string message;
@@ -244,7 +244,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int index = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int index = 0;
 </code></pre></div>
 
                                 </td>
@@ -256,7 +256,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>stream&lt;Person&gt; personStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>stream&lt;Person&gt; personStream = new;
 stream&lt;Message&gt; childrenMessageStream = new;
 </code></pre></div>
 
@@ -276,7 +276,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>Message[] globalChildrenMessageArray = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>Message[] globalChildrenMessageArray = [];
 </code></pre></div>
 
                                 </td>
@@ -288,7 +288,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initProjectionQuery() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initProjectionQuery() {
 </code></pre></div>
 
                                 </td>
@@ -300,7 +300,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    forever {
+                                    <div class="highlight"><pre><code class=language-ballerina>    forever {
         from personStream where personStream.age &lt;= 16
         select personStream.name, personStream.address,
                 generateChildrenDayWishMessage(personStream.name) as message
@@ -331,7 +331,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function generateChildrenDayWishMessage(string name) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function generateChildrenDayWishMessage(string name) returns string {
     string template = string `Hi ${name}!!!`;
     return template + &quot; , wish you a happy children&#39;s day&quot;;
 }
@@ -346,7 +346,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -358,7 +358,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person[] personArray = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person[] personArray = [];
     Person t1 = { name: &quot;Raja&quot;, age: 12, status: &quot;single&quot;,
                     address: &quot;Mountain View&quot;, phoneNo: &quot;+19877386134&quot; };
     Person t2 = { name: &quot;Mohan&quot;, age: 30, status: &quot;single&quot;,
@@ -383,7 +383,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    personArray[0] = t1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    personArray[0] = t1;
     personArray[1] = t2;
     personArray[2] = t3;
 </code></pre></div>
@@ -397,7 +397,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    initProjectionQuery();
+                                    <div class="highlight"><pre><code class=language-ballerina>    initProjectionQuery();
 </code></pre></div>
 
                                 </td>
@@ -416,7 +416,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    childrenMessageStream.subscribe(printChildrenMessage);
+                                    <div class="highlight"><pre><code class=language-ballerina>    childrenMessageStream.subscribe(printChildrenMessage);
 </code></pre></div>
 
                                 </td>
@@ -436,7 +436,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var t in personArray {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var t in personArray {
         personStream.publish(t);
     }
 </code></pre></div>
@@ -457,7 +457,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int count = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int count = 0;
     while(true) {
         runtime:sleep(500);
         count += 1;
@@ -477,7 +477,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printChildrenMessage(Message msg) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printChildrenMessage(Message msg) {
     io:println(&quot;Child name : &quot;, msg.name, &quot; and message : &quot;, msg.message);
     addToGlobalChildrenMessageArray(msg);
 }
@@ -492,7 +492,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function addToGlobalChildrenMessageArray(Message e) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function addToGlobalChildrenMessageArray(Message e) {
     globalChildrenMessageArray[index] = e;
     index = index + 1;
 }

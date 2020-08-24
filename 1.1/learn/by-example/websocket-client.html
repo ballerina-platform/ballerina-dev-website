@@ -69,11 +69,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-client/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/websocket-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -115,7 +115,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 </code></pre></div>
 
@@ -128,7 +128,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -140,7 +140,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:WebSocketClient wsClientEp = new (&quot;ws://echo.websocket.org&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:WebSocketClient wsClientEp = new (&quot;ws://echo.websocket.org&quot;,
                             config = {callbackService: ClientService});
 </code></pre></div>
 
@@ -160,7 +160,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var err = wsClientEp-&gt;pushText(&quot;Hello World!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var err = wsClientEp-&gt;pushText(&quot;Hello World!&quot;);
     if (err is error) {
 </code></pre></div>
 
@@ -180,7 +180,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(err);
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(err);
     }
 }
 </code></pre></div>
@@ -201,7 +201,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service ClientService = @http:WebSocketServiceConfig {} service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service ClientService = @http:WebSocketServiceConfig {} service {
 </code></pre></div>
 
                                 </td>
@@ -220,7 +220,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketClient conn, string text, boolean finalFrame) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketClient conn, string text, boolean finalFrame) {
         io:println(text);
     }
 </code></pre></div>
@@ -241,7 +241,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(http:WebSocketClient conn, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketClient conn, error err) {
         io:println(err);
     }
 };

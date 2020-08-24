@@ -135,11 +135,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-load-balancer/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/http-load-balancer/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -187,7 +187,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -200,7 +200,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener backendEP = new(8080);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener backendEP = new(8080);
 </code></pre></div>
 
                                 </td>
@@ -219,7 +219,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:LoadBalanceClient lbBackendEP = new({
+                                    <div class="highlight"><pre><code class=language-ballerina>http:LoadBalanceClient lbBackendEP = new({
 </code></pre></div>
 
                                 </td>
@@ -238,7 +238,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        targets: [
+                                    <div class="highlight"><pre><code class=language-ballerina>        targets: [
             { url: &quot;http://localhost:8080/mock1&quot; },
             { url: &quot;http://localhost:8080/mock2&quot; },
             { url: &quot;http://localhost:8080/mock3&quot; }
@@ -263,7 +263,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/lb&quot;
 }
 service loadBalancerDemoService on new http:Listener (9090) {
@@ -285,7 +285,7 @@ service loadBalancerDemoService on new http:Listener (9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         path: &quot;/&quot;
     }
     resource function roundRobin(http:Caller caller, http:Request req) {
@@ -309,7 +309,7 @@ service loadBalancerDemoService on new http:Listener (9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (response is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (response is http:Response) {
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is http:ListenerError) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
@@ -345,7 +345,7 @@ service loadBalancerDemoService on new http:Listener (9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/mock1&quot;
 }
 service mock1 on backendEP {
@@ -377,7 +377,7 @@ service mock1 on backendEP {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/mock2&quot;
 }
 service mock2 on backendEP {
@@ -402,7 +402,7 @@ service mock2 on backendEP {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/mock3&quot;
 }
 service mock3 on backendEP {
@@ -427,7 +427,7 @@ service mock3 on backendEP {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleRespondResult(http:ListenerError? result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleRespondResult(http:ListenerError? result) {
     if (result is http:ListenerError) {
         log:printError(&quot;Error sending response from mock service&quot;, result);
     }

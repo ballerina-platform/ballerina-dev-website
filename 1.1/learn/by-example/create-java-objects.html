@@ -73,11 +73,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/create-java-objects/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/create-java-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -115,7 +115,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerinax/java;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerinax/java;
 import ballerina/io;
 </code></pre></div>
 
@@ -128,7 +128,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function newArrayDeque() returns handle = @java:Constructor {
+                                    <div class="highlight"><pre><code class=language-ballerina>function newArrayDeque() returns handle = @java:Constructor {
     class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
@@ -150,7 +150,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function newArrayDequeWithInitialCapacity(int numElements) returns handle = @java:Constructor {
+                                    <div class="highlight"><pre><code class=language-ballerina>function newArrayDequeWithInitialCapacity(int numElements) returns handle = @java:Constructor {
     class: &quot;java.util.ArrayDeque&quot;,
     paramTypes: [&quot;int&quot;]
 } external;
@@ -176,7 +176,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -188,7 +188,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var arrayDeque = newArrayDeque();
+                                    <div class="highlight"><pre><code class=language-ballerina>    var arrayDeque = newArrayDeque();
     io:println(arrayDeque);
 </code></pre></div>
 
@@ -208,7 +208,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var arrayDequeWithCapacity = newArrayDequeWithInitialCapacity(10);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var arrayDequeWithCapacity = newArrayDequeWithInitialCapacity(10);
     io:println(arrayDequeWithCapacity);
 }
 </code></pre></div>

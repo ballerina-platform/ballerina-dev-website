@@ -93,11 +93,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/streams/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/streams/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -161,7 +161,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
 
@@ -174,7 +174,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {
     int id;
     string name;
 };
@@ -189,7 +189,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -201,7 +201,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;Employee&gt; employeeStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Employee&gt; employeeStream = new;
 </code></pre></div>
 
                                 </td>
@@ -220,7 +220,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    employeeStream.subscribe(printEmployeeName);
+                                    <div class="highlight"><pre><code class=language-ballerina>    employeeStream.subscribe(printEmployeeName);
 </code></pre></div>
 
                                 </td>
@@ -239,7 +239,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee e1 = { id: 1, name: &quot;Jane&quot; };
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee e1 = { id: 1, name: &quot;Jane&quot; };
     Employee e2 = { id: 2, name: &quot;Anne&quot; };
     Employee e3 = { id: 3, name: &quot;John&quot; };
 </code></pre></div>
@@ -260,7 +260,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    employeeStream.publish(e1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    employeeStream.publish(e1);
     employeeStream.publish(e2);
     employeeStream.publish(e3);
 </code></pre></div>
@@ -274,7 +274,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(1000);
 </code></pre></div>
 
                                 </td>
@@ -293,7 +293,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;float&gt; temperatureStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;float&gt; temperatureStream = new;
 </code></pre></div>
 
                                 </td>
@@ -312,7 +312,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    temperatureStream.subscribe(printTemperature);
+                                    <div class="highlight"><pre><code class=language-ballerina>    temperatureStream.subscribe(printTemperature);
 </code></pre></div>
 
                                 </td>
@@ -331,7 +331,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    temperatureStream.publish(28.0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    temperatureStream.publish(28.0);
     temperatureStream.publish(30.1);
     temperatureStream.publish(29.5);
 </code></pre></div>
@@ -352,7 +352,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(1000);
 </code></pre></div>
 
                                 </td>
@@ -372,7 +372,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    stream&lt;anydata&gt; updateStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;anydata&gt; updateStream = new;
 </code></pre></div>
 
                                 </td>
@@ -391,7 +391,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    updateStream.subscribe(printEvent);
+                                    <div class="highlight"><pre><code class=language-ballerina>    updateStream.subscribe(printEvent);
 </code></pre></div>
 
                                 </td>
@@ -410,7 +410,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    updateStream.publish(&quot;Hello Ballerina!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    updateStream.publish(&quot;Hello Ballerina!&quot;);
     updateStream.publish(1.0);
     updateStream.publish(e1);
 </code></pre></div>
@@ -431,7 +431,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(1000);
+                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(1000);
 }
 </code></pre></div>
 
@@ -452,7 +452,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printEmployeeName(Employee employee) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printEmployeeName(Employee employee) {
     io:println(&quot;Employee event received for Employee Name: &quot;,
         employee.name);
 }
@@ -474,7 +474,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printTemperature(float temperature) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printTemperature(float temperature) {
     io:println(&quot;Temperature event received: &quot;,
         temperature.toString());
 }
@@ -496,7 +496,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function printEvent(anydata event) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printEvent(anydata event) {
     io:println(&quot;Event received: &quot;, event);
 }
 </code></pre></div>

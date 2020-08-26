@@ -1,8 +1,3 @@
----
-redirect_from:
-- /v1-2/learn/api-docs/ballerina/azure.functions/index
-- /v1-2/learn/api-docs/ballerina/azure.functions/index.html
----
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +5,8 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Annotation based Azure Functions extension implementation for Ballerina.
+">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,azure.functions">
 
     <title>API Docs - ballerinax/azure.functions</title>
@@ -57,7 +53,8 @@ redirect_from:
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -70,32 +67,32 @@ redirect_from:
 
 <div class="primary-list module">
     
-        <a href="../azure.functions/index.html">
+        <a href="../azure.functions/index.html" onclick="menuLinkClick()">
             <h3>azure.functions</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../azure.functions/index.html#records">Records</a>
+            <a data="records" href="../azure.functions/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
             <li>
-                <a  data="objects" href="../azure.functions/index.html#objects">Objects</a>
+                <a  data="objects" href="../azure.functions/index.html#objects" onclick="menuLinkClick()">Objects</a>
             </li>
         
         
         
         
             <li>
-                <a data="functions" href="../azure.functions/index.html#functions">Functions</a>
+                <a data="functions" href="../azure.functions/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
         
         
         
             <li>
-                <a data="annotations" href="../azure.functions/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../azure.functions/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
@@ -119,96 +116,230 @@ redirect_from:
 </div>
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                
-
-    
-        <div class="version">v0.0.0</div>
-    
-
-
-<div class="primary-list module">
-    
-        <a href="../azure.functions/index.html">
-            <h3>azure.functions</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../azure.functions/index.html#records">Records</a>
-        </li>
-        
-        
-            <li>
-                <a  data="objects" href="../azure.functions/index.html#objects">Objects</a>
-            </li>
-        
-        
-        
-        
-            <li>
-                <a data="functions" href="../azure.functions/index.html#functions">Functions</a>
-            </li>
-        
-        
-        
-            <li>
-                <a data="annotations" href="../azure.functions/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-                <div class="primary-list module-list">
-    
-        <h3>All Modules</h3>
-        <ul>
-            
-                <li>
-                    <a href="../azure.functions/index.html">azure.functions</a>
-                </li>
-            
-        </ul>
-        <div class="ui divider"></div>
-    
-</div>
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper module-wrapper">
                 <h1>
-                    <a class="breadcrumb-home" href="../index.html">
+                    <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                     
                         Module : <span class="modules">azure.functions</span>
                     
                 </h1>
-                    
+                    <h1>Module Overview</h1>
+<p>Annotation based Azure Functions extension implementation for Ballerina.</p>
+<ul>
+<li>For information on the operations, which you can perform with this module, see <a href="/learn/api-docs/ballerina/azure.functions/index.html#objects">Objects</a>.</li>
+<li>For more information on the deployment, see the <a href="/learn/deployment/azure-functions/">Azure Functions Deployment Guide</a>.</li>
+<li>For examples on the usage of the operations, see the <a href="/learn/by-example/azure-functions-deployment.html">Azure Functions Deployment Example</a>.</li>
+</ul>
+<h2>Azure Setup</h2>
+<ul>
+<li>An Azure &quot;Function App&quot; needs to be created in a given resource group with the following requirements
+<ul>
+<li>Runtime stack - &quot;Java 8&quot;</li>
+<li>Hosting operating system - &quot;Windows&quot; (default; Linux is not supported in Azure for custom handlers at the moment)</li>
+</ul>
+</li>
+</ul>
+<h2>Supported Annotations:</h2>
+<h3>@azure.functions:Function</h3>
+<h4>Custom 'host.json'</h4>
+<p>A custom <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json">host.json</a> file for the functions deployment can be optionally provided by placing a 'host.json' file in the current working directory where the Ballerina build is done. The required host.json properties are provided/overridden by the values derived from the source code by the compiler extension.</p>
+<h4>Usage Sample:</h4>
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerina/system;
+import ballerinax/azure.functions as af;
+
+// HTTP request/response with no authentication
+@af:Function
+public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } http:Request req) 
+                      returns @af:HTTPOutput string|error {
+    return &quot;Hello, &quot; + check &lt;@untainted&gt; req.getTextPayload() + &quot;!&quot;;
+}
+
+// HTTP request to add data to a queue
+@af:Function
+public function fromHttpToQueue(af:Context ctx, 
+            @af:HTTPTrigger {} af:HTTPRequest req, 
+            @af:QueueOutput { queueName: &quot;queue1&quot; } af:StringOutputBinding msg) 
+            returns @af:HTTPOutput af:HTTPBinding {
+    msg.value = req.body;
+    return { statusCode: 200, payload: &quot;Request: &quot; + req.toString() };
+}
+
+// A message put to a queue is copied to another queue
+@af:Function
+public function fromQueueToQueue(af:Context ctx, 
+        @af:QueueTrigger { queueName: &quot;queue2&quot; } string inMsg,
+        @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {
+    ctx.log(&quot;In Message: &quot; + inMsg);
+    ctx.log(&quot;Metadata: &quot; + ctx.metadata.toString());
+    outMsg.value = inMsg;
+}
+
+// A blob added to a container is copied to a queue
+@af:Function
+public function fromBlobToQueue(af:Context ctx, 
+        @af:BlobTrigger { path: &quot;bpath1/{name}&quot; } byte[] blobIn,
+        @af:BindingName { } string name,
+        @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) 
+        returns error? {
+    outMsg.value = &quot;Name: &quot; + name + &quot; Content: &quot; + blobIn.toString();
+}
+
+// HTTP request to read a blob value
+@af:Function
+public function httpTriggerBlobInput(@af:HTTPTrigger { } af:HTTPRequest req, 
+                    @af:BlobInput { path: &quot;bpath1/{Query.name}&quot; } byte[]? blobIn)
+                    returns @af:HTTPOutput string {
+    int length = 0;
+    if blobIn is byte[] {
+        length = blobIn.length();
+    }
+    return &quot;Blob: &quot; + req.query[&quot;name&quot;].toString() + &quot; Length: &quot; + 
+            length.toString() + &quot; Content: &quot; + blobIn.toString();
+}
+
+// HTTP request to add a new blob
+@af:Function
+public function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req, 
+        @af:BlobOutput { path: &quot;bpath1/{Query.name}&quot; } af:StringOutputBinding bb)
+        returns @af:HTTPOutput string|error {
+    bb.value = req.body;
+    return &quot;Blob: &quot; + req.query[&quot;name&quot;].toString() + &quot; Content: &quot; + 
+            bb?.value.toString();
+}
+
+// Sending an SMS
+@af:Function
+public function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req, 
+                        @af:TwilioSmsOutput { fromNumber: &quot;+12069845840&quot; } 
+                                              af:TwilioSmsOutputBinding tb)
+                        returns @af:HTTPOutput string {
+    tb.to = req.query[&quot;to&quot;].toString();
+    tb.body = req.body.toString();
+    return &quot;Message - to: &quot; + tb?.to.toString() + &quot; body: &quot; + tb?.body.toString();
+}
+
+public type Person record {
+    string id;
+    string name;
+    string country;
+};
+
+// CosmosDB record trigger
+@af:Function
+public function cosmosDBToQueue1(@af:CosmosDBTrigger { 
+        connectionStringSetting: &quot;CosmosDBConnection&quot;, databaseName: &quot;db1&quot;,
+        collectionName: &quot;c1&quot; } Person[] req, 
+        @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {
+    outMsg.value = req.toString();
+}
+
+@af:Function
+public function cosmosDBToQueue2(@af:CosmosDBTrigger { 
+        connectionStringSetting: &quot;CosmosDBConnection&quot;, databaseName: &quot;db1&quot;, 
+        collectionName: &quot;c2&quot; } json req,
+        @af:QueueOutput { queueName: &quot;queue3&quot; } af:StringOutputBinding outMsg) {
+    outMsg.value = req.toString();
+}
+
+// HTTP request to read CosmosDB records
+@af:Function
+public function httpTriggerCosmosDBInput1(
+            @af:HTTPTrigger { } af:HTTPRequest httpReq, 
+            @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+                databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
+                id: &quot;{Query.id}&quot;, partitionKey: &quot;{Query.country}&quot; } json dbReq)
+                returns @af:HTTPOutput string|error {
+    return dbReq.toString();
+}
+
+@af:Function
+public function httpTriggerCosmosDBInput2(
+            @af:HTTPTrigger { } af:HTTPRequest httpReq, 
+            @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+                databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
+                id: &quot;{Query.id}&quot;, partitionKey: &quot;{Query.country}&quot; } Person? dbReq)
+                returns @af:HTTPOutput string|error {
+    return dbReq.toString();
+}
+
+@af:Function
+public function httpTriggerCosmosDBInput3(
+        @af:HTTPTrigger { route: &quot;c1/{country}&quot; } af:HTTPRequest httpReq, 
+        @af:CosmosDBInput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+        databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot;, 
+        sqlQuery: &quot;select * from c1 where c1.country = {country}&quot; } 
+        Person[] dbReq)
+        returns @af:HTTPOutput string|error {
+    return dbReq.toString();
+}
+
+// HTTP request to write records to CosmosDB
+@af:Function
+public function httpTriggerCosmosDBOutput1(
+    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
+    returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+                                databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
+    json entry = { id: system:uuid(), name: &quot;Saman&quot;, country: &quot;Sri Lanka&quot; };
+    hb.payload = &quot;Adding entry: &quot; + entry.toString();
+    return entry;
+}
+
+@af:Function
+public function httpTriggerCosmosDBOutput2(
+        @af:HTTPTrigger { } af:HTTPRequest httpReq, 
+        @af:HTTPOutput af:HTTPBinding hb) 
+        returns @af:CosmosDBOutput { 
+            connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+            databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
+    json entry = [{ id: system:uuid(), name: &quot;John Doe A&quot;, country: &quot;USA&quot; }, 
+                  { id: system:uuid(), name: &quot;John Doe B&quot;, country: &quot;USA&quot; }];
+    hb.payload = &quot;Adding entries: &quot; + entry.toString();
+    return entry;
+}
+
+@af:Function
+public function httpTriggerCosmosDBOutput3(
+                    @af:HTTPTrigger { } af:HTTPRequest httpReq) 
+                    returns @af:CosmosDBOutput { 
+                        connectionStringSetting: &quot;CosmosDBConnection&quot;, 
+                        databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } Person[] {
+    Person[] persons = [];
+    persons.push({id: system:uuid(), name: &quot;Jack&quot;, country: &quot;UK&quot;});
+    persons.push({id: system:uuid(), name: &quot;Will&quot;, country: &quot;UK&quot;});
+    return persons;
+}
+
+// A timer function which is executed every 10 seconds.
+@af:Function
+public function queuePopulationTimer(
+            @af:TimerTrigger { schedule: &quot;*/10 * * * * *&quot; } json triggerInfo, 
+            @af:QueueOutput { queueName: &quot;queue4&quot; } af:StringOutputBinding msg) {
+    msg.value = triggerInfo.toString();
+}
+</code></pre>
+<p>The output of the Ballerina build is as follows:</p>
+<pre><code class="language-bash">$ ballerina build azure_functions_deployment.bal 
+Compiling source
+        azure_functions_deployment.bal
+
+Generating executables
+        azure_functions_deployment.jar
+        @azure.functions:Function: hello, fromHttpToQueue, fromQueueToQueue, fromBlobToQueue, httpTriggerBlobInput, httpTriggerBlobOutput, sendSMS, cosmosDBToQueue1, cosmosDBToQueue2, httpTriggerCosmosDBInput1, httpTriggerCosmosDBInput2, httpTriggerCosmosDBInput3, httpTriggerCosmosDBOutput1, httpTriggerCosmosDBOutput2, httpTriggerCosmosDBOutput3, queuePopulationTimer
+</code></pre>
+
 
             
-
+            
             <section class="method-content" id="records">
                 <div class="main-method-title here">
                     <a class="url-link" href="#records">
@@ -218,15 +349,18 @@ redirect_from:
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate records" id="BindingNameConfiguration" title="BindingNameConfiguration">
                                 <a class="records " href="records/BindingNameConfiguration.html">BindingNameConfiguration</a>
                             </td>
                             <td class="module-desc">
                                 
-                                BindingName annotation configuration.
+                                <p>BindingName annotation configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="BlobConfiguration" title="BlobConfiguration">
@@ -234,9 +368,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Blob annotation configuration.
+                                <p>Blob annotation configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="BytesOutputBinding" title="BytesOutputBinding">
@@ -244,9 +380,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Byte array output binding data.
+                                <p>Byte array output binding data.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CosmosDBInputConfiguration" title="CosmosDBInputConfiguration">
@@ -254,9 +392,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                CosmosDB input annotation configuration.
+                                <p>CosmosDB input annotation configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CosmosDBOutputConfiguration" title="CosmosDBOutputConfiguration">
@@ -264,9 +404,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                CosmosDB input annotation configuration.
+                                <p>CosmosDB output annotation configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="CosmosDBTriggerConfiguration" title="CosmosDBTriggerConfiguration">
@@ -274,9 +416,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                CosmosDB trigger annotation configuration.
+                                <p>CosmosDB trigger annotation configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="HTTPBinding" title="HTTPBinding">
@@ -284,9 +428,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP binding data.
+                                <p>HTTP binding data.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="HTTPRequest" title="HTTPRequest">
@@ -294,9 +440,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP request binding data.
+                                <p>HTTP request binding data.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="HTTPTriggerConfiguration" title="HTTPTriggerConfiguration">
@@ -304,9 +452,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                HTTPTrigger annotation configuration.
+                                <p>HTTPTrigger annotation configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="HandlerParams" title="HandlerParams">
@@ -314,9 +464,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL stucture - the request handler parameter data.
+                                <p>INTERNAL stucture - the request handler parameter data.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="QueueConfiguration" title="QueueConfiguration">
@@ -324,9 +476,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Queue annotation configuration.
+                                <p>Queue annotation configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="StringOutputBinding" title="StringOutputBinding">
@@ -334,9 +488,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                String output binding data.
+                                <p>String output binding data.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="TimerTriggerConfiguration" title="TimerTriggerConfiguration">
@@ -344,9 +500,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                TimerTrigger annotation configuration.
+                                <p>TimerTrigger annotation configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="TwilioSmsConfiguration" title="TwilioSmsConfiguration">
@@ -354,9 +512,11 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Twilio annotation configuration.
+                                <p>Twilio annotation configuration.
                             </td>
                         </tr>
+                    
+                    
                     
                         <tr>
                             <td class="module-title truncate records" id="TwilioSmsOutputBinding" title="TwilioSmsOutputBinding">
@@ -364,14 +524,17 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                Twilion SMS output binding data.
+                                <p>Twilion SMS output binding data.
                             </td>
                         </tr>
+                    
                     
                 </table>
             </section>
             
+            
 
+            
             
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
@@ -382,18 +545,21 @@ redirect_from:
                 </div>
                 <table>
                     
+                    
                         <tr>
                             <td class="module-title truncate objects" id="Context" title="Context">
                                 <a class="objects " href="objects/Context.html">Context</a>
                             </td>
                             <td class="module-desc">
                                 
-                                The request context holder.
+                                <p>The request context holder.
                             </td>
                         </tr>
                     
+                    
                 </table>
-             </section>  
+             </section>
+            
             
 
             
@@ -417,7 +583,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - registers a handler function.
+                                <p>INTERNAL usage - registers a handler function.
                             </td>
                         </tr>
                     
@@ -427,7 +593,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - creates function context.
+                                <p>INTERNAL usage - creates function context.
                             </td>
                         </tr>
                     
@@ -437,7 +603,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns a converted Ballerina value from input data.
+                                <p>INTERNAL usage - Returns a converted Ballerina value from input data.
                             </td>
                         </tr>
                     
@@ -447,7 +613,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the converted Ballerina value from input data - double escape.
+                                <p>INTERNAL usage - Returns the converted Ballerina value from input data - double escape.
                             </td>
                         </tr>
                     
@@ -457,7 +623,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the binary payload from the HTTP request.
+                                <p>INTERNAL usage - Returns the binary payload from the HTTP request.
                             </td>
                         </tr>
                     
@@ -467,7 +633,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the HTTP body value from input data.
+                                <p>INTERNAL usage - Returns the HTTP body value from input data.
                             </td>
                         </tr>
                     
@@ -477,7 +643,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the binary value from input data.
+                                <p>INTERNAL usage - Returns the binary value from input data.
                             </td>
                         </tr>
                     
@@ -487,7 +653,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Populates the HTTP request structure from an input data entry.
+                                <p>INTERNAL usage - Populates the HTTP request structure from an input data entry.
                             </td>
                         </tr>
                     
@@ -497,7 +663,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the HTTP request data.
+                                <p>INTERNAL usage - Returns the HTTP request data.
                             </td>
                         </tr>
                     
@@ -507,7 +673,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the JSON payload from the HTTP request.
+                                <p>INTERNAL usage - Returns the JSON payload from the HTTP request.
                             </td>
                         </tr>
                     
@@ -517,17 +683,27 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the JSON value from input data.
+                                <p>INTERNAL usage - Returns the JSON value from input data.
                             </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getJsonFromInputDataDoubleEscape" title="getJsonFromInputDataDoubleEscape">
-                                <a class="functions " href="functions.html#getJsonFromInputDataDoubleEscape">getJsonFromInputDataDoubleEscape</a>
+                            <td class="module-title truncate functions" id="getJsonFromInputDataDoubleEscaped" title="getJsonFromInputDataDoubleEscaped">
+                                <a class="functions " href="functions.html#getJsonFromInputDataDoubleEscaped">getJsonFromInputDataDoubleEscaped</a>
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the JSON value from input data - double escape.
+                                <p>INTERNAL usage - Returns the JSON value from input data - double escape.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getJsonFromMetadata" title="getJsonFromMetadata">
+                                <a class="functions " href="functions.html#getJsonFromMetadata">getJsonFromMetadata</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>INTERNAL usage - Returns a json value from metadata.
                             </td>
                         </tr>
                     
@@ -537,7 +713,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - extracts the metadata.
+                                <p>INTERNAL usage - extracts the metadata.
                             </td>
                         </tr>
                     
@@ -547,7 +723,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the optional converted Ballerina value from input data - double escape.
+                                <p>INTERNAL usage - Returns the optional converted Ballerina value from input data - double escape.
                             </td>
                         </tr>
                     
@@ -557,27 +733,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the optional binary value from input data.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getOptionalJsonFromInput" title="getOptionalJsonFromInput">
-                                <a class="functions " href="functions.html#getOptionalJsonFromInput">getOptionalJsonFromInput</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                INTERNAL usage - Returns the optional JSON value from input data.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="getOptionalJsonFromInputDataDoubleEscape" title="getOptionalJsonFromInputDataDoubleEscape">
-                                <a class="functions " href="functions.html#getOptionalJsonFromInputDataDoubleEscape">getOptionalJsonFromInputDataDoubleEscape</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                INTERNAL usage - Returns the optional JSON value from input data - double escape.
+                                <p>INTERNAL usage - Returns the optional binary value from input data.
                             </td>
                         </tr>
                     
@@ -587,7 +743,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the optional string value converted from input binary data.
+                                <p>INTERNAL usage - Returns the optional string value converted from input binary data.
                             </td>
                         </tr>
                     
@@ -597,7 +753,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the optional string value from input data.
+                                <p>INTERNAL usage - Returns the optional string value from input data.
                             </td>
                         </tr>
                     
@@ -607,7 +763,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the string value converted from input binary data.
+                                <p>INTERNAL usage - Returns the string value converted from input binary data.
                             </td>
                         </tr>
                     
@@ -617,7 +773,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the string payload from the HTTP request.
+                                <p>INTERNAL usage - Returns the string payload from the HTTP request.
                             </td>
                         </tr>
                     
@@ -627,7 +783,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns the string value from input data.
+                                <p>INTERNAL usage - Returns the string value from input data.
                             </td>
                         </tr>
                     
@@ -637,7 +793,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Returns a string value from metadata.
+                                <p>INTERNAL usage - Returns a string value from metadata.
                             </td>
                         </tr>
                     
@@ -647,7 +803,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Converts a Ballerina value to a JSON and set the return value.
+                                <p>INTERNAL usage - Converts a Ballerina value to a JSON and set the return value.
                             </td>
                         </tr>
                     
@@ -657,7 +813,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Sets the Blob output.
+                                <p>INTERNAL usage - Sets the Blob output.
                             </td>
                         </tr>
                     
@@ -667,7 +823,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Sets the HTTP output.
+                                <p>INTERNAL usage - Sets the HTTP output.
                             </td>
                         </tr>
                     
@@ -677,7 +833,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Sets the HTTP binding return value.
+                                <p>INTERNAL usage - Sets the HTTP binding return value.
                             </td>
                         </tr>
                     
@@ -687,7 +843,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Sets the JSON return value.
+                                <p>INTERNAL usage - Sets the JSON return value.
                             </td>
                         </tr>
                     
@@ -697,7 +853,17 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Sets the pure HTTP output.
+                                <p>INTERNAL usage - Sets the pure HTTP output.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="setPureJsonOutput" title="setPureJsonOutput">
+                                <a class="functions " href="functions.html#setPureJsonOutput">setPureJsonOutput</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>INTERNAL usage - Sets the pure JSON output.
                             </td>
                         </tr>
                     
@@ -707,7 +873,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Sets the pure string output.
+                                <p>INTERNAL usage - Sets the pure string output.
                             </td>
                         </tr>
                     
@@ -717,7 +883,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Sets the string output.
+                                <p>INTERNAL usage - Sets the string output.
                             </td>
                         </tr>
                     
@@ -727,7 +893,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Sets the string return value.
+                                <p>INTERNAL usage - Sets the string return value.
                             </td>
                         </tr>
                     
@@ -737,17 +903,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                INTERNAL usage - Sets the Twilio output.
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="module-title truncate functions" id="unescapeJson" title="unescapeJson">
-                                <a class="functions " href="functions.html#unescapeJson">unescapeJson</a>
-                            </td>
-                            <td class="module-desc">
-                                
-                                INTERNAL usage - unescape a JSON encoded in a string.
+                                <p>INTERNAL usage - Sets the Twilio output.
                             </td>
                         </tr>
                     
@@ -775,7 +931,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:BindingName annotation.
+                                <p>@azurefunctions:BindingName annotation.
                             </td>
                         </tr>
                     
@@ -785,7 +941,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:BlobInput annotation.
+                                <p>@azurefunctions:BlobInput annotation.
                             </td>
                         </tr>
                     
@@ -795,7 +951,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:BlobOutput annotation.
+                                <p>@azurefunctions:BlobOutput annotation.
                             </td>
                         </tr>
                     
@@ -805,7 +961,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:BlobTrigger annotation.
+                                <p>@azurefunctions:BlobTrigger annotation.
                             </td>
                         </tr>
                     
@@ -815,7 +971,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:CosmosDBInput annotation.
+                                <p>@azurefunctions:CosmosDBInput annotation.
                             </td>
                         </tr>
                     
@@ -825,7 +981,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:CosmosDBOutput annotation.
+                                <p>@azurefunctions:CosmosDBOutput annotation.
                             </td>
                         </tr>
                     
@@ -835,7 +991,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:CosmosDBTrigger annotation.
+                                <p>@azurefunctions:CosmosDBTrigger annotation.
                             </td>
                         </tr>
                     
@@ -845,7 +1001,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:Function annotation.
+                                <p>@azurefunctions:Function annotation.
                             </td>
                         </tr>
                     
@@ -855,7 +1011,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:HTTPOutput annotation
+                                <p>@azurefunctions:HTTPOutput annotation</p>
 
                             </td>
                         </tr>
@@ -866,7 +1022,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:HTTPTrigger annotation.
+                                <p>@azurefunctions:HTTPTrigger annotation.
                             </td>
                         </tr>
                     
@@ -876,7 +1032,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:QueueOutput annotation.
+                                <p>@azurefunctions:QueueOutput annotation.
                             </td>
                         </tr>
                     
@@ -886,7 +1042,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:QueueOutput annotation.
+                                <p>@azurefunctions:QueueOutput annotation.
                             </td>
                         </tr>
                     
@@ -896,7 +1052,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:TimerTrigger annotation.
+                                <p>@azurefunctions:TimerTrigger annotation.
                             </td>
                         </tr>
                     
@@ -906,7 +1062,7 @@ redirect_from:
                             </td>
                             <td class="module-desc">
                                 
-                                @azurefunctions:TwilioSmsOutput annotation.
+                                <p>@azurefunctions:TwilioSmsOutput annotation.
                             </td>
                         </tr>
                     
@@ -923,17 +1079,6 @@ redirect_from:
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -958,6 +1103,42 @@ contentWrapper.addEventListener("scroll", event => {
   });
 });
 
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
 </script>
 
 <script>

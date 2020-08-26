@@ -70,11 +70,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/testerina-before-and-after-test/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/testerina-before-and-after-test/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -108,7 +108,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/test;
 </code></pre></div>
 
@@ -121,7 +121,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function beforeFunc() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function beforeFunc() {
     io:println(&quot;I&#39;m the before function!&quot;);
 }
 </code></pre></div>
@@ -142,7 +142,7 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {
     before: &quot;beforeFunc&quot;,
     after: &quot;afterFunc&quot;
 }
@@ -170,7 +170,7 @@ function testFunction() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function afterFunc() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function afterFunc() {
     io:println(&quot;I&#39;m the after function!&quot;);
 }
 </code></pre></div>

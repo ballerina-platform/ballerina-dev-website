@@ -70,14 +70,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../lang.transaction/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../lang.transaction/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../lang.transaction/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../lang.transaction/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -92,6 +96,10 @@
             </li>
         
         
+        
+            <li>
+                <a data="types" href="../lang.transaction/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
         
         
             <li>
@@ -263,7 +271,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Abort local resource managers.
+                    <p>Abort local resource managers.</p>
+
                 </td>
             </tr>
             
@@ -293,7 +302,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Cleanup the transaction context.
+                    <p>Cleanup the transaction context.</p>
+
                 </td>
             </tr>
             
@@ -303,7 +313,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Commit local resource managers.
+                    <p>Commit local resource managers.</p>
+
                 </td>
             </tr>
             
@@ -324,6 +335,10 @@
                 <td class="module-desc">
                     
                     <p>When a transaction block in Ballerina code ends, it will call this function to end a transaction.
+Ending a transaction by a participant has no effect because it is the initiator who can decide whether to
+commit or abort a transaction.
+Depending on the state of the transaction, the initiator decides to commit or abort the transaction.</p>
+
                 </td>
             </tr>
             
@@ -333,7 +348,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Get and Cleanup the failure.
+                    <p>Get and Cleanup the failure.</p>
+
                 </td>
             </tr>
             
@@ -413,7 +429,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prepare local resource managers.
+                    <p>Prepare local resource managers.</p>
+
                 </td>
             </tr>
             
@@ -423,7 +440,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Rollback the transaction.
+                    <p>Rollback the transaction.</p>
+
                 </td>
             </tr>
             
@@ -453,7 +471,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Set the transactionContext.
+                    <p>Set the transactionContext.</p>
+
                 </td>
             </tr>
             
@@ -510,6 +529,29 @@
     
 
     
+    <section class="method-content" id="types">
+        <div class="main-method-title here">
+            <a class="url-link" href="#types">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> Types </h2>
+        </div>
+        <table>
+            
+            <tr>
+                <td class="module-title truncate types" id="Error" title="Error">
+                    <a class="types " href="types.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the Transaction module related error.</p>
+
+                </td>
+            </tr>
+            
+        </table>
+    </section>
+    
 
     
     <section class="method-content" id="errors">
@@ -527,7 +569,19 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>This file contains default retry manager to be used with retry statement.
+                    <p>This file contains default retry manager to be used with retry statement.</p>
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="TransactionError" title="TransactionError">
+                    <a class="errors " href="errors.html#TransactionError">TransactionError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the Transaction error.</p>
+
                 </td>
             </tr>
             

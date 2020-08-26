@@ -84,11 +84,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/anonymous-objects/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/anonymous-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -136,7 +136,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -148,7 +148,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Person record {
     string name;
     int age;
 </code></pre></div>
@@ -162,7 +162,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    object {
+                                    <div class="highlight"><pre><code class=language-ballerina>    object {
         public string city;
         public string country;
 </code></pre></div>
@@ -187,7 +187,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        public function __init(string city, string country) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        public function __init(string city, string country) {
             self.city = city;
             self.country = country;
         }
@@ -202,7 +202,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        public function value() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>        public function value() returns string {
             return self.city + &quot;, &quot; + self.country;
         }
     } address;
@@ -218,7 +218,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -230,7 +230,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person john = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person john = {
         name: &quot;John Doe&quot;,
         age: 25,
         address: new(&quot;Colombo&quot;, &quot;Sri Lanka&quot;)
@@ -254,7 +254,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    object {
+                                    <div class="highlight"><pre><code class=language-ballerina>    object {
         public string city;
         public string country;
 </code></pre></div>
@@ -277,7 +277,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        public function __init(string city, string country) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        public function __init(string city, string country) {
             self.city = city;
             self.country = country;
         }
@@ -292,7 +292,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        public function value() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>        public function value() returns string {
             return self.city + &quot;, &quot; + self.country;
         }
     } adr = new(&quot;London&quot;, &quot;UK&quot;);
@@ -307,7 +307,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Person jane = { name: &quot;Jane Doe&quot;, age: 20, address: adr };
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person jane = { name: &quot;Jane Doe&quot;, age: 20, address: adr };
     io:println(jane.address.country);
 }
 </code></pre></div>

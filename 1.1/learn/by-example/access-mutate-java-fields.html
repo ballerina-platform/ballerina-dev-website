@@ -65,11 +65,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/access-mutate-java-fields/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/access-mutate-java-fields/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -103,7 +103,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerinax/java;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerinax/java;
 import ballerina/io;
 </code></pre></div>
 
@@ -116,7 +116,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function pi() returns float = @java:FieldGet {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function pi() returns float = @java:FieldGet {
     name:&quot;PI&quot;,
     class:&quot;java/lang/Math&quot;
 } external;
@@ -138,7 +138,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     float r = 4;
 </code></pre></div>
 
@@ -151,7 +151,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    float l = 2 * pi() * r;
+                                    <div class="highlight"><pre><code class=language-ballerina>    float l = 2 * pi() * r;
     io:println(l);
 }
 </code></pre></div>

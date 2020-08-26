@@ -70,11 +70,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/the-main-function/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/the-main-function/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -110,7 +110,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -122,7 +122,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main(string name,
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main(string name,
                      int age = 18,
                      string year = &quot;Freshman&quot;,
                      string... modules)
@@ -149,7 +149,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (name.length() &lt; 5) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (name.length() &lt; 5) {
         error e = error(&quot;InvalidName&quot;, message = &quot;invalid length&quot;);
         return e;
     }
@@ -171,7 +171,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string info = string `Name: ${name}, Age: ${age}, Year: ${year}`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string info = string `Name: ${name}, Age: ${age}, Year: ${year}`;
 </code></pre></div>
 
                                 </td>
@@ -183,7 +183,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    if (modules.length() &gt; 0) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (modules.length() &gt; 0) {
         info += &quot;, Module(s): &quot; + modules.toString();
     }
     io:println(info);

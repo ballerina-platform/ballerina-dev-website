@@ -145,7 +145,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -168,7 +168,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -191,7 +191,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -214,7 +214,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -1027,8 +1027,8 @@
               },
               {
                 "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "error",
+                "moduleName": "lang.transaction",
+                "name": "Error",
                 "category": "errors",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
@@ -1521,7 +1521,7 @@
     },
     {
       "isRemote": false,
-      "isExtern": true,
+      "isExtern": false,
       "parameters": [
         {
           "defaultValue": "",
@@ -1742,9 +1742,48 @@
       "name": "error",
       "description": "\u003cp\u003eThis file contains default retry manager to be used with retry statement.\u003c/p\u003e\n",
       "isDeprecated": false
+    },
+    {
+      "name": "TransactionError",
+      "description": "\u003cp\u003eRepresents the Transaction error.\u003c/p\u003e\n",
+      "isDeprecated": false
     }
   ],
   "finiteTypes": [],
-  "unionTypes": [],
+  "unionTypes": [
+    {
+      "name": "Error",
+      "description": "\u003cp\u003eRepresents the Transaction module related error.\u003c/p\u003e\n",
+      "isAnonymousUnionType": false,
+      "isArrayType": false,
+      "isNullable": false,
+      "isTuple": false,
+      "isRestParam": false,
+      "isLambda": false,
+      "isDeprecated": false,
+      "generateUserDefinedTypeLink": true,
+      "memberTypes": [
+        {
+          "orgName": "ballerina",
+          "moduleName": "lang.transaction",
+          "name": "TransactionError",
+          "category": "errors",
+          "isAnonymousUnionType": false,
+          "isArrayType": false,
+          "isNullable": false,
+          "isTuple": false,
+          "isRestParam": false,
+          "isLambda": false,
+          "isDeprecated": false,
+          "generateUserDefinedTypeLink": true,
+          "memberTypes": [],
+          "paramTypes": [],
+          "arrayDimensions": 0
+        }
+      ],
+      "paramTypes": [],
+      "arrayDimensions": 0
+    }
+  ],
   "resources": []
 }

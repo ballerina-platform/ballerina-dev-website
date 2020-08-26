@@ -2,7 +2,7 @@
 layout: release-note
 title: Release note
 ---
-# Overview of jBallerina {{ site.data.stable-latest.metadata.version }}
+### Overview of jBallerina {{ site.data.stable-latest.metadata.version }}
 The jBallerina {{ site.data.stable-latest.metadata.version }} patch release improves upon the {{ site.data.stable-latest.metadata.version }} release by introducing the features listed below and addressing a number of [bugs](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+{{ site.data.stable-latest.metadata.version }}%22+label%3AType%2FBug+is%3Aclosed) and [improvements](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+{{ site.data.stable-latest.metadata.version }}%22+is%3Aclosed+label%3AType%2FImprovement).
 
 You can use the update tool to update to jBallerina {{ site.data.stable-latest.metadata.version }} as follows.
@@ -22,9 +22,9 @@ However, you need to use the following commands instead of the above if you have
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
-## Standard Library
+#### Standard Library
 - 
 
-## Dev Tools
+#### Dev Tools
 - 
 

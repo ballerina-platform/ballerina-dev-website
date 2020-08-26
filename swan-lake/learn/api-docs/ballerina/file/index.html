@@ -71,14 +71,18 @@ file/directory, and retrieve metadata of the file.
     
     <ul>
         
-        <li>
-            <a data="records" href="../file/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../file/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../file/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../file/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -166,7 +170,8 @@ file/directory, and retrieve metadata of the file.</p>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents an event which will trigger when there is a changes to listining direcotry.
+                            <p>Represents an event which will trigger when there is a changes to listining direcotry.</p>
+
                         </td>
                     </tr>
                     
@@ -178,7 +183,8 @@ file/directory, and retrieve metadata of the file.</p>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents configurations that required for directory listener.
+                            <p>Represents configurations that required for directory listener.</p>
+
                         </td>
                     </tr>
                     
@@ -207,6 +213,8 @@ file/directory, and retrieve metadata of the file.</p>
                         <td class="module-desc">
                             
                             <p>FileInfo record contains metadata information of a file.
+This record is returned by getFileInfo function is os module.</p>
+
                         </td>
                     </tr>
                     
@@ -234,7 +242,8 @@ file/directory, and retrieve metadata of the file.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the directory listener endpoint, which is used to listen to a directory in the local file system.
+                    <p>Represents the directory listener endpoint, which is used to listen to a directory in the local file system.</p>
+
                 </td>
             </tr>
             
@@ -260,6 +269,9 @@ file/directory, and retrieve metadata of the file.</p>
                 <td class="module-desc">
                     
                     <p>Copy the file/directory in the old path to the new path.
+If a file already exists in the new path, this replaces that file.</p>
+
+
                 </td>
             </tr>
             
@@ -270,6 +282,9 @@ file/directory, and retrieve metadata of the file.</p>
                 <td class="module-desc">
                     
                     <p>Creates a new directory with the specified file name.
+If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.</p>
+
+
                 </td>
             </tr>
             
@@ -280,6 +295,9 @@ file/directory, and retrieve metadata of the file.</p>
                 <td class="module-desc">
                     
                     <p>Creates a file in the specified file path.
+Truncates if the file already exists in the given path.</p>
+
+
                 </td>
             </tr>
             
@@ -289,7 +307,9 @@ file/directory, and retrieve metadata of the file.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Reports whether the file or directory exists in the given the path.
+                    <p>Reports whether the file or directory exists in the given the path.</p>
+
+
                 </td>
             </tr>
             
@@ -299,7 +319,9 @@ file/directory, and retrieve metadata of the file.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the current working directory.
+                    <p>Returns the current working directory.</p>
+
+
                 </td>
             </tr>
             
@@ -309,7 +331,9 @@ file/directory, and retrieve metadata of the file.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the metadata information of the file specified in the file path.
+                    <p>Returns the metadata information of the file specified in the file path.</p>
+
+
                 </td>
             </tr>
             
@@ -320,7 +344,9 @@ file/directory, and retrieve metadata of the file.</p>
                 <td class="module-desc">
                     
                     <p>Reads the directory and returns a list of files and directories
-inside the specified directory.
+inside the specified directory.</p>
+
+
                 </td>
             </tr>
             
@@ -331,6 +357,9 @@ inside the specified directory.
                 <td class="module-desc">
                     
                     <p>Removes the specified file or directory.
+If the recursive flag is true, it removes the path and any children it contains.</p>
+
+
                 </td>
             </tr>
             
@@ -341,6 +370,9 @@ inside the specified directory.
                 <td class="module-desc">
                     
                     <p>Renames(Moves) the old path with the new path.
+If the new path already exists and it is not a directory, this replaces the file.</p>
+
+
                 </td>
             </tr>
             
@@ -350,7 +382,9 @@ inside the specified directory.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the default directory to use for temporary files.
+                    <p>Returns the default directory to use for temporary files.</p>
+
+
                 </td>
             </tr>
             
@@ -380,7 +414,8 @@ inside the specified directory.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents file system related errors.
+                    <p>Represents file system related errors.</p>
+
                 </td>
             </tr>
             
@@ -404,7 +439,8 @@ inside the specified directory.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error that occurs when the file/directory does not exist at the given filepath.
+                    <p>Represents an error that occurs when the file/directory does not exist at the given filepath.</p>
+
                 </td>
             </tr>
             
@@ -414,7 +450,8 @@ inside the specified directory.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error that occurs when a file system operation fails.
+                    <p>Represents an error that occurs when a file system operation fails.</p>
+
                 </td>
             </tr>
             
@@ -424,7 +461,8 @@ inside the specified directory.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error that occurs when a file system operation is denied due to invalidity.
+                    <p>Represents an error that occurs when a file system operation is denied due to invalidity.</p>
+
                 </td>
             </tr>
             
@@ -434,7 +472,8 @@ inside the specified directory.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error that occurs when a file system operation is denied, due to the absence of file permission.
+                    <p>Represents an error that occurs when a file system operation is denied, due to the absence of file permission.</p>
+
                 </td>
             </tr>
             

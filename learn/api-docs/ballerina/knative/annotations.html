@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module offers an annotation based Knative extension implementation for ballerina.
+    <meta name="description" content="This module offers an annotation based Knative extension implementation for Ballerina.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,knative">
 
@@ -53,7 +53,8 @@
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -62,19 +63,19 @@
                 <ul>
                     
                         <li >
-                            <a href="#ConfigMap">ConfigMap</a>
+                            <a href="#ConfigMap" onclick="menuLinkClick()">ConfigMap</a>
                         </li>
                     
                         <li >
-                            <a href="#HPA">HPA</a>
+                            <a href="#HPA" onclick="menuLinkClick()">HPA</a>
                         </li>
                     
                         <li >
-                            <a href="#Secret">Secret</a>
+                            <a href="#Secret" onclick="menuLinkClick()">Secret</a>
                         </li>
                     
                         <li >
-                            <a href="#Service">Service</a>
+                            <a href="#Service" onclick="menuLinkClick()">Service</a>
                         </li>
                     
                 </ul>
@@ -87,14 +88,14 @@
 
 <div class="primary-list module">
     
-        <a href="../knative/index.html">
+        <a href="../knative/index.html" onclick="menuLinkClick()">
             <h3>knative</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../knative/index.html#records">Records</a>
+            <a data="records" href="../knative/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
@@ -103,17 +104,17 @@
         
         
             <li>
-                <a data="constants" href="../knative/index.html#constants">Constants</a>
+                <a data="constants" href="../knative/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../knative/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../knative/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../knative/index.html#types">Types</a>
+                <a data="types" href="../knative/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
@@ -148,116 +149,16 @@
 </div>
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                <div class="primary-list">
-                    <h3>Annotations</h3>
-                    <ul>
-                        
-                            <li >
-                                <a href="#ConfigMap">ConfigMap</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#HPA">HPA</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#Secret">Secret</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#Service">Service</a>
-                            </li>
-                        
-                    </ul>
-                </div>
-                <div class="ui divider"></div>
-                
-
-    
-
-
-<div class="primary-list module">
-    
-        <a href="../knative/index.html">
-            <h3>knative</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../knative/index.html#records">Records</a>
-        </li>
-        
-        
-        
-        
-        
-        
-            <li>
-                <a data="constants" href="../knative/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../knative/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../knative/index.html#types">Types</a>
-            </li>
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-                <div class="primary-list module-list">
-    
-        <h3>All Modules</h3>
-        <ul>
-            
-                <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
-                    <a href="../knative/index.html">knative</a>
-                </li>
-            
-                <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
-                </li>
-            
-                <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-        </ul>
-        <div class="ui divider"></div>
-    
-</div>
-            </div>
-        </div>
-    </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
              <h1>
-                 <a class="breadcrumb-home" href="../index.html">
+                 <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                  <span class="title-type">Annotations - </span>
@@ -274,10 +175,10 @@
                                     <b >ConfigMap</b>
                                     <span class="type"> <span ><a href="../knative/records/ConfigMapMount.html">ConfigMapMount</a></span></span>
                                     <img class="attach-icon" src="../html-template-resources/images/attach.svg">
-                                        function, service</li>
+                                        service, function</li>
                                 <li>
                                     
-                                    @knative:ConfigMap annotation to configure config maps.
+                                    <p>@knative:ConfigMap annotation to configure config maps.</p>
 
                                 </li>
                             </ul>
@@ -289,10 +190,10 @@
                                     <b >HPA</b>
                                     <span class="type"> <span ><a href="../knative/records/PodAutoscalerConfig.html">PodAutoscalerConfig</a></span></span>
                                     <img class="attach-icon" src="../html-template-resources/images/attach.svg">
-                                        function, service</li>
+                                        service, function</li>
                                 <li>
                                     
-                                    @knative:HPA annotation to configure horizontal pod autoscaler yaml.
+                                    <p>@knative:HPA annotation to configure horizontal pod autoscaler yaml.</p>
 
                                 </li>
                             </ul>
@@ -304,10 +205,10 @@
                                     <b >Secret</b>
                                     <span class="type"> <span ><a href="../knative/records/SecretMount.html">SecretMount</a></span></span>
                                     <img class="attach-icon" src="../html-template-resources/images/attach.svg">
-                                        service, function</li>
+                                        function, service</li>
                                 <li>
                                     
-                                    @knative:Secret annotation to configure secrets.
+                                    <p>@knative:Secret annotation to configure secrets.</p>
 
                                 </li>
                             </ul>
@@ -319,7 +220,7 @@
                                     <b >Service</b>
                                     <span class="type"> <span ><a href="../knative/records/ServiceConfiguration.html">ServiceConfiguration</a></span></span>
                                     <img class="attach-icon" src="../html-template-resources/images/attach.svg">
-                                        service, listener, function</li>
+                                        function, listener, service</li>
                                 <li>
                                     
                                     
@@ -334,17 +235,6 @@
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -369,6 +259,42 @@ contentWrapper.addEventListener("scroll", event => {
   });
 });
 
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
 </script>
 
 <script>

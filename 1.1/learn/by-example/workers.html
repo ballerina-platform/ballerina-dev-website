@@ -78,11 +78,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/workers/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/workers/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -124,7 +124,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -136,7 +136,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     io:println(&quot;Worker execution started&quot;);
 </code></pre></div>
 
@@ -160,7 +160,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    worker w1 {
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w1 {
 </code></pre></div>
 
                                 </td>
@@ -179,7 +179,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        int n = 10000000;
+                                    <div class="highlight"><pre><code class=language-ballerina>        int n = 10000000;
         int sum = 0;
         foreach var i in 1...n {
             sum += i;
@@ -204,7 +204,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    worker w2 {
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker w2 {
 </code></pre></div>
 
                                 </td>
@@ -223,7 +223,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        int n = 10000000;
+                                    <div class="highlight"><pre><code class=language-ballerina>        int n = 10000000;
         int sum = 0;
         foreach var i in 1...n {
             sum += i * i;
@@ -249,7 +249,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = wait {w1, w2};
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = wait {w1, w2};
 </code></pre></div>
 
                                 </td>
@@ -268,7 +268,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Worker execution finished&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Worker execution finished&quot;);
 }
 </code></pre></div>
 

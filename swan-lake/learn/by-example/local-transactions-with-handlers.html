@@ -11,42 +11,39 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #1 executed.&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">onRollbackFunc2</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #2 executed.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">onCommitFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">onRollbackFunc</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
-                                <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #1 executed.&quot;</span><span class="p">);</span>
-        <span class="p">};</span>        <span class="k">var</span> <span class="nx">onRollbackFunc2</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
-                                        <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #2 executed.&quot;</span><span class="p">);</span>
-        <span class="p">};</span>
-        <span class="k">var</span> <span class="nx">onCommitFunc</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
-        <span class="p">};</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">onRollback</span><span class="p">(</span><span class="nx">onRollbackFunc</span><span class="p">);</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">onRollback</span><span class="p">(</span><span class="nx">onRollbackFunc2</span><span class="p">);</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">onCommit</span><span class="p">(</span><span class="nx">onCommitFunc</span><span class="p">);</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">transInfo</span> <span class="p">=</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">();</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">transInfo</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">throwError</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant panicked.&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction Info: &quot;</span><span class="p">,</span> <span class="nx">transInfo</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">erroneousOperation</span><span class="p">();</span>
+        <span class="k">if</span> <span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant error.&quot;</span><span class="p">);</span>
             <span class="nx">rollback</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant successfully executed.&quot;</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">commitRes</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">throwError</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">erroneousOperation</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invoke local participant function.&quot;</span><span class="p">);</span>
-    <span class="nx">error</span> <span class="nx">er</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Simulated Failure&quot;</span><span class="p">);</span>
-    <span class="nx">panic</span> <span class="nx">er</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Simulated Failure&quot;</span><span class="p">);</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
 <span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">local_transactions_with_handlers</span><span class="p">.</span><span class="nx">balxid</span><span class="p">=</span><span class="mi">3</span><span class="nx">ba5e301</span><span class="o">-</span><span class="mi">3</span><span class="nx">cfd</span><span class="o">-</span><span class="mi">40</span><span class="nx">f9</span><span class="o">-</span><span class="nx">bd6f</span><span class="o">-</span><span class="mi">1</span><span class="nx">faf8d61b0ac</span> <span class="nx">retryNumber</span><span class="p">=</span><span class="mi">0</span> <span class="nx">startTime</span><span class="p">=</span><span class="mi">1592404040052</span> <span class="nx">prevAttempt</span><span class="p">=</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">local_transactions_with_handlers</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Transaction</span> <span class="nx">Info</span><span class="p">:</span> <span class="nx">xid</span><span class="p">=</span><span class="mi">49</span> <span class="mi">56</span> <span class="mi">50</span> <span class="mi">98</span> <span class="mi">100</span> <span class="mi">51</span> <span class="mi">48</span> <span class="mi">97</span> <span class="mi">45</span> <span class="mi">98</span> <span class="mi">56</span> <span class="mi">49</span> <span class="mi">102</span> <span class="mi">45</span> <span class="mi">52</span> <span class="mi">48</span> <span class="mi">54</span> <span class="mi">52</span> <span class="mi">45</span> <span class="mi">97</span> <span class="mi">56</span> <span class="mi">54</span> <span class="mi">98</span> <span class="mi">45</span> <span class="mi">56</span> <span class="mi">102</span> <span class="mi">56</span> <span class="mi">54</span> <span class="mi">51</span> <span class="mi">49</span> <span class="mi">55</span> <span class="mi">97</span> <span class="mi">53</span> <span class="mi">97</span> <span class="mi">57</span> <span class="mi">51</span> <span class="nx">retryNumber</span><span class="p">=</span><span class="mi">0</span> <span class="nx">startTime</span><span class="p">=</span><span class="mi">1594723961027</span> <span class="nx">prevAttempt</span><span class="p">=</span>
 <span class="nx">Invoke</span> <span class="nx">local</span> <span class="nx">participant</span> <span class="kd">function</span><span class="p">.</span>
-<span class="nx">Local</span> <span class="nx">participant</span> <span class="nx">panicked</span><span class="p">.</span>
+<span class="nx">Local</span> <span class="nx">participant</span> <span class="nx">error</span><span class="p">.</span>
 <span class="nx">Rollback</span> <span class="nx">handler</span> <span class="err">#</span><span class="mi">2</span> <span class="nx">executed</span><span class="p">.</span>
 <span class="nx">Rollback</span> <span class="nx">handler</span> <span class="err">#</span><span class="mi">1</span> <span class="nx">executed</span><span class="p">.</span>
 </pre></div>
@@ -160,6 +157,64 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc(transactions:Info info, error? cause, boolean willRetry) {
+    io:println(&quot;Rollback handler #1 executed.&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the rollback handlers, which are triggered once the
+ rollback statement is executed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc2(transactions:Info info, error? cause, boolean willRetry) {
+    io:println(&quot;Rollback handler #2 executed.&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function onCommitFunc(transactions:Info info) {
+    io:println(&quot;Commit handler executed.&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the commit handler, which gets triggered once the
+ commit action is executed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code leading">
@@ -184,66 +239,6 @@ import ballerina/io;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The <code>transaction</code> block initiates the transaction.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var onRollbackFunc = function(transactions:Info info,
-                                error? cause, boolean willRetry) {
-            io:println(&quot;Rollback handler #1 executed.&quot;);
-        };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines the rollback handler, which is triggered once the
- rollback statement is executed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var onRollbackFunc2 = function(transactions:Info info,
-                                        error? cause, boolean willRetry) {
-            io:println(&quot;Rollback handler #2 executed.&quot;);
-        };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var onCommitFunc = function(transactions:Info info) {
-            io:println(&quot;Commit handler executed.&quot;);
-        };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines the commit handler, which gets triggered once the commit
- action is executed.</p>
 
                                         </div>
                                     </div>
@@ -298,7 +293,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        transactions:Info transInfo = transactions:info();
-        io:println(transInfo);
+        io:println(&quot;Transaction Info: &quot;, transInfo);
 </code></pre></div>
 
                                 </td>
@@ -317,8 +312,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var res = trap throwError();
-        if (res is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var res = erroneousOperation();
+        if res is error {
 </code></pre></div>
 
                                 </td>
@@ -337,7 +332,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Local participant panicked.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Local participant error.&quot;);
             rollback;
         } else {
             io:println(&quot;Local participant successfully executed.&quot;);
@@ -352,7 +347,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The local participant gets panicked.</p>
+                                            <p>The local participant execution fails.</p>
 
                                         </div>
                                     </div>
@@ -360,25 +355,17 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function throwError() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function erroneousOperation() returns error? {
     io:println(&quot;Invoke local participant function.&quot;);
-    error er = error(&quot;Simulated Failure&quot;);
-    panic er;
+    return error(&quot;Simulated Failure&quot;);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The method, which throws the error.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -391,10 +378,6 @@ import ballerina/io;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -402,24 +385,13 @@ import ballerina/io;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run local_transactions_with_handlers.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>xid=3ba5e301-3cfd-40f9-bd6f-1faf8d61b0ac retryNumber=0 startTime=1592404040052 prevAttempt=
+Transaction Info: xid=49 56 50 98 100 51 48 97 45 98 56 49 102 45 52 48 54 52 45 97 56 54 98 45 56 102 56 54 51 49 55 97 53 97 57 51 retryNumber=0 startTime=1594723961027 prevAttempt=
 Invoke local participant function.
-Local participant panicked.
+Local participant error.
 Rollback handler #2 executed.
 Rollback handler #1 executed.
 </code></pre></div>

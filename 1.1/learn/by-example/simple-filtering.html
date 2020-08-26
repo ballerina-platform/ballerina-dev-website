@@ -113,11 +113,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/simple-filtering/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/simple-filtering/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -177,7 +177,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/runtime;
 </code></pre></div>
 
@@ -190,7 +190,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
     string name;
     int age;
     string status;
@@ -215,7 +215,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Child record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Child record {
     string name;
     int age;
     string city;
@@ -238,7 +238,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>int index = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>int index = 0;
 </code></pre></div>
 
                                 </td>
@@ -250,7 +250,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>stream&lt;Person&gt; personStream = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>stream&lt;Person&gt; personStream = new;
 stream&lt;Child&gt; childrenStream = new;
 </code></pre></div>
 
@@ -270,7 +270,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>Child[] globalChildrenArray = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>Child[] globalChildrenArray = [];
 </code></pre></div>
 
                                 </td>
@@ -282,7 +282,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function initFilterQuery() {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initFilterQuery() {
 </code></pre></div>
 
                                 </td>
@@ -294,7 +294,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    forever {
+                                    <div class="highlight"><pre><code class=language-ballerina>    forever {
         from personStream where personStream.age &lt;= 16
         select personStream.name, personStream.age,
                 personStream.address as city
@@ -324,7 +324,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -336,7 +336,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person[] personArray = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person[] personArray = [];
     Person t1 = { name: &quot;Raja&quot;, age: 12, status: &quot;single&quot;,
                     address: &quot;Mountain View&quot;, phoneNo: &quot;+19877386134&quot; };
     Person t2 = { name: &quot;Mohan&quot;, age: 30, status: &quot;single&quot;,
@@ -361,7 +361,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    personArray[0] = t1;
+                                    <div class="highlight"><pre><code class=language-ballerina>    personArray[0] = t1;
     personArray[1] = t2;
     personArray[2] = t3;
 </code></pre></div>
@@ -375,7 +375,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    initFilterQuery();
+                                    <div class="highlight"><pre><code class=language-ballerina>    initFilterQuery();
 </code></pre></div>
 
                                 </td>
@@ -394,7 +394,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    childrenStream.subscribe(printChildren);
+                                    <div class="highlight"><pre><code class=language-ballerina>    childrenStream.subscribe(printChildren);
 </code></pre></div>
 
                                 </td>
@@ -414,7 +414,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var t in personArray {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var t in personArray {
         personStream.publish(t);
     }
 </code></pre></div>
@@ -435,7 +435,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int count = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int count = 0;
     while(true) {
         runtime:sleep(500);
         count += 1;
@@ -455,7 +455,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printChildren(Child child) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printChildren(Child child) {
     io:println(&quot;Child detected. Child name : &quot;,
             child.name,  &quot;, age : &quot;, child.age, &quot; and from : &quot;, child.city);
     addToGlobalChildrenArray(child);
@@ -471,7 +471,7 @@ stream&lt;Child&gt; childrenStream = new;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function addToGlobalChildrenArray(Child e) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function addToGlobalChildrenArray(Child e) {
     globalChildrenArray[index] = e;
     index = index + 1;
 }

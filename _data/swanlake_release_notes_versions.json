@@ -38,5 +38,26 @@
       ],
       "api-docs": "ballerina-api-docs-swan-lake-preview2.zip",
       "release-notes": "ballerina-release-notes-swan-lake-preview2.md"
+   },
+   {
+      "version": "swan-lake-preview3",
+      "release-date": "2020-08-14",
+      "windows-installer": "ballerina-windows-installer-x64-swan-lake-preview3.msi",
+      "windows-installer-size": "174mb",
+      "zip-installer": "ballerina-swan-lake-preview3.zip",
+      "zip-installer-size": "196mb",
+      "linux-installer": "ballerina-linux-installer-x64-swan-lake-preview3.deb",
+      "linux-installer-size": "170mb",
+      "macos-installer": "ballerina-macos-installer-x64-swan-lake-preview3.pkg",
+      "macos-installer-size": "187mb",
+      "rpm-installer": "ballerina-linux-installer-x64-swan-lake-preview3.rpm",
+      "rpm-installer-size": "177mb",
+      "other-artefacts": [
+         "ballerina-swan-lake-preview3.zip",
+         "ballerina-swan-lake-preview3.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "api-docs": "ballerina-api-docs-swan-lake-preview3.zip",
+      "release-notes": "ballerina-release-notes-swan-lake-preview3.md"
    }
 ]

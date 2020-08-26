@@ -127,11 +127,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-basic-sample/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/websocket-basic-sample/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -179,7 +179,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 import ballerina/http;
 </code></pre></div>
@@ -193,7 +193,7 @@ import ballerina/http;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>string ping = &quot;ping&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>string ping = &quot;ping&quot;;
 byte[] pingData = ping.toBytes();
 </code></pre></div>
 
@@ -206,7 +206,7 @@ byte[] pingData = ping.toBytes();
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:WebSocketServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:WebSocketServiceConfig {
     path: &quot;/basic/ws&quot;,
     subProtocols: [&quot;xml&quot;, &quot;json&quot;],
     idleTimeoutInSeconds: 120
@@ -223,7 +223,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onOpen(http:WebSocketCaller caller) {
         io:println(&quot;\nNew client connected&quot;);
         io:println(&quot;Connection ID: &quot; + caller.getConnectionId());
         io:println(&quot;Negotiated Sub protocol: &quot; + caller.getNegotiatedSubProtocol().toString());
@@ -248,7 +248,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onText(http:WebSocketCaller caller, string text,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketCaller caller, string text,
                                 boolean finalFrame) {
         io:println(&quot;\ntext message: &quot; + text + &quot; &amp; final fragment: &quot;
                                                         + finalFrame.toString());
@@ -290,7 +290,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onBinary(http:WebSocketCaller caller, byte[] b) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onBinary(http:WebSocketCaller caller, byte[] b) {
         io:println(&quot;\nNew binary message received&quot;);
         io:print(&quot;UTF-8 decoded binary message: &quot;);
         io:println(b);
@@ -317,7 +317,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onPing(http:WebSocketCaller caller, byte[] data) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onPing(http:WebSocketCaller caller, byte[] data) {
         var err = caller-&gt;pong(data);
         if (err is http:WebSocketError) {
             log:printError(&quot;Error occurred when closing the connection&quot;, err);
@@ -342,7 +342,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onPong(http:WebSocketCaller caller, byte[] data) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onPong(http:WebSocketCaller caller, byte[] data) {
         io:println(&quot;Pong received&quot;);
     }
 </code></pre></div>
@@ -363,7 +363,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onIdleTimeout(http:WebSocketCaller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onIdleTimeout(http:WebSocketCaller caller) {
         io:println(&quot;\nReached idle timeout&quot;);
         io:println(&quot;Closing connection &quot; + caller.getConnectionId());
         var err = caller-&gt;close(statusCode = 1001, reason =
@@ -391,7 +391,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(http:WebSocketCaller caller, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(http:WebSocketCaller caller, error err) {
         log:printError(&quot;Error occurred &quot;, err);
     }
 </code></pre></div>
@@ -414,7 +414,7 @@ service basic on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
                                 string reason) {
         io:println(string `Client left with ${statusCode} because ${reason}`);
     }

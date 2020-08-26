@@ -98,14 +98,18 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     
     <ul>
         
-        <li>
-            <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -177,7 +181,12 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../kafka/records/ProducerConfiguration.html">ProducerConfiguration</a> config)</p>
+
+    <p>Creates a new Kafka <code>Producer</code>.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../kafka/records/ProducerConfiguration.html">ProducerConfiguration</a> config)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -201,37 +210,47 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
                         <tr>
                             <td class="module-title truncate functions" title="close"><a
                                     class="functions" href="#close">close</a></td>
-                            <td class="module-desc"><p>Closes the producer connection to the external Kafka broker.</td>
+                            <td class="module-desc"><p>Closes the producer connection to the external Kafka broker.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="commitConsumer"><a
                                     class="functions" href="#commitConsumer">commitConsumer</a></td>
-                            <td class="module-desc"><p>Commits the offsets consumed by the provided consumer.</td>
+                            <td class="module-desc"><p>Commits the offsets consumed by the provided consumer.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="commitConsumerOffsets"><a
                                     class="functions" href="#commitConsumerOffsets">commitConsumerOffsets</a></td>
-                            <td class="module-desc"><p>Commits the consumer offsets in a given transaction.</td>
+                            <td class="module-desc"><p>Commits the consumer offsets in a given transaction.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="flushRecords"><a
                                     class="functions" href="#flushRecords">flushRecords</a></td>
-                            <td class="module-desc"><p>Flushes the batch of records already sent to the broker by the producer.</td>
+                            <td class="module-desc"><p>Flushes the batch of records already sent to the broker by the producer.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getTopicPartitions"><a
                                     class="functions" href="#getTopicPartitions">getTopicPartitions</a></td>
-                            <td class="module-desc"><p>Retrieves the topic partition information for the provided topic.</td>
+                            <td class="module-desc"><p>Retrieves the topic partition information for the provided topic.</p>
+
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="send"><a
                                     class="functions" href="#send">send</a></td>
-                            <td class="module-desc"><p>Produces records to the Kafka server.</td>
+                            <td class="module-desc"><p>Produces records to the Kafka server.</p>
+
+</td>
                         </tr>
                     
                 </table>

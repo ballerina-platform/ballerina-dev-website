@@ -94,9 +94,11 @@ that is accessible via Java Database Connectivity (JDBC).
     
     <ul>
         
-        <li>
-            <a data="records" href="../../java.jdbc/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../java.jdbc/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
         
@@ -157,7 +159,12 @@ that is accessible via Java Database Connectivity (JDBC).
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <span class="builtin-type">string?</span> user, <span class="builtin-type">string?</span> password, <a href="../../java.jdbc/records/Options.html">Options</a>? options, <a href="../../sql/records/ConnectionPool.html">ConnectionPool</a>? connectionPool)</p>
+
+    <p>Initialize JDBC client.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <span class="builtin-type">string?</span> user, <span class="builtin-type">string?</span> password, <a href="../../java.jdbc/records/Options.html">Options</a>? options, <a href="../../sql/records/ConnectionPool.html">ConnectionPool</a>? connectionPool)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -206,7 +213,7 @@ that is accessible via Java Database Connectivity (JDBC).
                 <li>
                     <p>The <code>sql:ConnectionPool</code> object to be used within the jdbc client.
 If there is no connectionPool is provided, the global connection pool will be used and it will
-be shared by other clients which has same properties</p>
+be shared by other clients which has same properties.</p>
 
                 </li>
             </ul>
@@ -223,20 +230,30 @@ be shared by other clients which has same properties</p>
                         <tr>
                             <td class="module-title truncate functions" title="query"><a
                                     class="functions" href="#query">query</a></td>
-                            <td class="module-desc"><p>Queries the database with the query provided by the user, and returns the result as stream.</td>
+                            <td class="module-desc"><p>Queries the database with the query provided by the user, and returns the result as stream.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="execute"><a
                                     class="functions" href="#execute">execute</a></td>
-                            <td class="module-desc"><p>Executes the DDL or DML sql queries provided by the user, and returns summary of the execution.</td>
+                            <td class="module-desc"><p>Executes the DDL or DML sql queries provided by the user, and returns summary of the execution.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="batchExecute"><a
                                     class="functions" href="#batchExecute">batchExecute</a></td>
-                            <td class="module-desc"><p>Executes a batch of parameterised DDL or DML sql query provided by the user,
-and returns the summary of the execution.</td>
+                            <td class="module-desc"><p>Executes a batch of parameterized DDL or DML sql query provided by the user,
+and returns the summary of the execution.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" title="call"><a
+                                    class="functions" href="#call">call</a></td>
+                            <td class="module-desc"><p>Executes a SQL stored procedure and returns the result as stream and execution summary.</p>
+</td>
                         </tr>
                     
                 </table>
@@ -253,7 +270,8 @@ and returns the summary of the execution.</td>
     </div>
     <div class="param-details">
         
-        <p>Close the JDBC client.
+        <p>Close the JDBC client.</p>
+
     </div>
 </div>
 
@@ -317,7 +335,7 @@ params to be passed in</p>
                         <p>
                             
                             <p>The <code>typedesc</code> of the record that should be returned as a result. If this is not provided the default
-column names of the query result set be used for the record attributes</p>
+column names of the query result set be used for the record attributes.</p>
 
                         </p>
                     </li>
@@ -412,7 +430,7 @@ if any error occurred when executing the query</p>
     </div>
     <div class="function-desc">
         
-        <p>Executes a batch of parameterised DDL or DML sql query provided by the user,
+        <p>Executes a batch of parameterized DDL or DML sql query provided by the user,
 and returns the summary of the execution.</p>
 
     </div>
@@ -431,7 +449,7 @@ and returns the summary of the execution.</p>
                         <p>
                             
                             <p>The DDL or DML query such as INSERT, DELETE, UPDATE, etc as <code>ParameterizedQuery</code> with an array
-of values passed in.</p>
+of values passed in</p>
 
                         </p>
                     </li>
@@ -451,6 +469,79 @@ of values passed in.</p>
 will return <code>BatchExecuteError</code>, however the JDBC driver may or may not continue to process the
 remaining commands in the batch after a failure. The summary of the executed queries in case of error
 can be accessed as <code>(&lt;sql:BatchExecuteError&gt; result).detail()?.executionResults</code>.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+            
+                <div class="method-content">
+    <div class="main-method-title here" id="call" title="call">
+             <a class="url-link" href="#call">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > call </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> | <a href="../../sql/objects/ParameterizedCallQuery.html">ParameterizedCallQuery</a> sqlQuery, <span class="array-type"><span class="builtin-type">typedesc</span>[]</span> rowTypes)</p>
+            
+                <b> returns </b><a href="../../sql/objects/ProcedureCallResult.html">ProcedureCallResult</a> | <a href="../../sql/types.html#Error">Error</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Executes a SQL stored procedure and returns the result as stream and execution summary.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >sqlQuery</span>
+                        <span class="type">  <span class="builtin-type">string</span> | <a href="../../sql/objects/ParameterizedCallQuery.html">ParameterizedCallQuery</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The query to execute the SQL stored procedure</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >rowTypes</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">typedesc</span>[]</span> </span>
+                        <span class="default"> (default [])</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The array of <code>typedesc</code> of the records that should be returned as a result. If this is not provided
+the default column names of the query result set be used for the record attributes.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../sql/objects/ProcedureCallResult.html">ProcedureCallResult</a> | <a href="../../sql/types.html#Error">Error</a></span>)</li>
+                <li><p>Summary of the execution is returned in <code>ProcedureCallResult</code> or <code>sql:Error</code></p>
 </li>
             </ul>
         </div>

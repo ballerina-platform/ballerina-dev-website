@@ -31,6 +31,11 @@
   ],
   "records": [
     {
+      "id": "LdapConnection",
+      "description": "\u003cp\u003eRepresets the LDAP connection.\u003c/p\u003e",
+      "moduleId": "ldap"
+    },
+    {
       "id": "LdapConnectionConfig",
       "description": "\u003cp\u003eRepresents the configurations that are required for an LDAP auth store.\u003c/p\u003e",
       "moduleId": "ldap"

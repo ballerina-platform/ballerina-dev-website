@@ -8,114 +8,6 @@
     {
       "fields": [
         {
-          "defaultValue": "0",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "int",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "count",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "0",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "int",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "intervalInMillis",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": true,
-      "name": "T0",
-      "description": "",
-      "isDeprecated": false
-    },
-    {
-      "fields": [
-        {
-          "defaultValue": "0",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "int",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "count",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "0",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "int",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "intervalInMillis",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": true,
-      "name": "T1",
-      "description": "",
-      "isDeprecated": false
-    },
-    {
-      "fields": [
-        {
           "defaultValue": "",
           "type": {
             "category": "UNKNOWN",
@@ -253,7 +145,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -276,7 +168,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -299,7 +191,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -322,7 +214,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\"\"",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -357,7 +249,7 @@
           "type": {
             "isAnonymousUnionType": false,
             "isArrayType": false,
-            "isNullable": false,
+            "isNullable": true,
             "isTuple": false,
             "isRestParam": false,
             "isLambda": true,
@@ -411,7 +303,7 @@
           "type": {
             "isAnonymousUnionType": false,
             "isArrayType": false,
-            "isNullable": false,
+            "isNullable": true,
             "isTuple": false,
             "isRestParam": false,
             "isLambda": true,

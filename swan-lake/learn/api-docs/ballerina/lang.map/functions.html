@@ -145,14 +145,10 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../lang.map/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../lang.map/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
         
         
         
@@ -209,7 +205,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a map containing [key, member] pair as the value for each key.
+                                <p>Returns a map containing [key, member] pair as the value for each key.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -219,7 +216,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Selects the members from a map for which a function returns true.
+                                <p>Selects the members from a map for which a function returns true.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -230,6 +228,8 @@
                             <div class="function-desc">
                                 
                                 <p>Applies a function to each member of a map.
+The parameter <code>func</code> is applied to each member of <code>m</code>.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -240,6 +240,9 @@
                             <div class="function-desc">
                                 
                                 <p>Returns the member of map <code>m</code> with key <code>k</code>.
+This for use in a case where it is known that the map has a specific key,
+and accordingly panics if <code>m</code> does not have a member with key <code>k</code>.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -249,7 +252,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Tests whether m has a member with key <code>k</code>.
+                                <p>Tests whether m has a member with key <code>k</code>.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -260,6 +264,10 @@
                             <div class="function-desc">
                                 
                                 <p>Returns an iterator over a map.
+The iterator will iterate over the members of the map not the keys.
+The <code>entries</code> function can be used to iterate over the keys and members together.
+The <code>keys</code> function can be used to iterator over just the keys.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -269,7 +277,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a list of all the keys of map <code>m</code>.
+                                <p>Returns a list of all the keys of map <code>m</code>.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -279,7 +288,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns number of members of a map.
+                                <p>Returns number of members of a map.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -290,6 +300,8 @@
                             <div class="function-desc">
                                 
                                 <p>Applies a function each member of a map and returns a map of the result.
+The resulting map will have the same keys as the argument map.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -300,6 +312,9 @@
                             <div class="function-desc">
                                 
                                 <p>Combines the members of a map using a combining function.
+The combining function takes the combined value so far and a member of the map,
+and returns a new combined value.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -309,7 +324,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Removes a member of a map.
+                                <p>Removes a member of a map.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -320,6 +336,8 @@
                             <div class="function-desc">
                                 
                                 <p>Removes all members of a map.
+This panics if any member cannot be removed.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -329,7 +347,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Removes a member of a map with a given key, if the map has member with the key.
+                                <p>Removes a member of a map with a given key, if the map has member with the key.</p>
+
                             </div>
                         </td>
                     </tr>
@@ -339,7 +358,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a list of all the members of a map.
+                                <p>Returns a list of all the members of a map.</p>
+
                             </div>
                         </td>
                     </tr>

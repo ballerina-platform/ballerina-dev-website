@@ -14,6 +14,14 @@ redirect_from:
   - /learn/faqs/
   - /v1-2/learn/faqs
   - /v1-2/learn/faqs/
+  - /learn/faq
+  - /learn/faq/
+  - /v1-2/learn/faq
+  - /v1-2/learn/faq/
+  - /learn/by-guide
+  - /learn/by-guide/
+  - /v1-2/learn/by-guide
+  - /v1-2/learn/by-guide/
 ---
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
@@ -50,7 +58,7 @@ redirect_from:
     <li><a href="/learn/observing-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
     <li><a href="/learn/calling-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
     <li><a href="/learn/writing-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
-    <li><a href="/learn/testing-ballerina-code" class="cGreenLinkArrow">Testing</a></li>
+    <li><a href="/learn/testing-ballerina-code/testing-quick-start" class="cGreenLinkArrow">Testing Ballerina Code</a></li>
     <li><a href="/learn/extending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>
    </ul>
 

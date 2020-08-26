@@ -93,14 +93,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -183,7 +187,12 @@
             
                 
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> connectionConfiguration)</p>
+
+    <p>Initializes a Ballerina RabbitMQ Connection object.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> connectionConfiguration)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -213,6 +222,10 @@
     <div class="param-details">
         
         <p>Closes the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+It waits with a provided timeout for all the close operations to complete.
+When the timeout is reached, the socket is forced to close.</p>
+
+
     </div>
 </div>
 
@@ -225,6 +238,7 @@
     <div class="param-details">
         
         <p>Aborts the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+Forces the <code>rabbitmq:Connection</code> to close and waits for all the close operations to complete.
     </div>
 </div>
 
@@ -236,7 +250,9 @@
     </div>
     <div class="param-details">
         
-        <p>Checks whether <code>close</code> was already called.
+        <p>Checks whether <code>close</code> was already called.</p>
+
+
     </div>
 </div>
 

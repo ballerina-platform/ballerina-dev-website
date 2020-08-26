@@ -58,7 +58,7 @@ public function cloneReadOnly(CloneableType v) returns CloneableType & readonly 
 # member of the union to use for the inherent type by following the same rules
 # that are used by list constructor expressions and mapping constructor expressions
 # with the contextually expected type. If not, then an error is returned.
-# The `constructFrom` operation is recursively applied to each member of `v` using
+# The `cloneWithType` operation is recursively applied to each member of `v` using
 # the type descriptor that the inherent type requires for that member.
 # 
 # Like the Clone abstract operation, this does a deep copy, but differs in
@@ -168,8 +168,8 @@ public function toJson(anydata v) returns json = external;
 # Returns the string that represents `v` in JSON format.
 # `v` is first converted to `json` as if by the `toJson` function.
 #
-# + v - json value
-# + return - string representation of `v`
+# + v - anydata value
+# + return - string representation of `v` converted to `json`
 public function toJsonString(anydata v) returns string = external;
 
 # Parses a string in JSON format and returns the the value that it represents.

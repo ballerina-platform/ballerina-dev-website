@@ -130,14 +130,18 @@ file/directory, and retrieve metadata of the file.
     
     <ul>
         
-        <li>
-            <a data="records" href="../file/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../file/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../file/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../file/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -207,6 +211,9 @@ file/directory, and retrieve metadata of the file.
                             <div class="function-desc">
                                 
                                 <p>Copy the file/directory in the old path to the new path.
+If a file already exists in the new path, this replaces that file.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -217,6 +224,9 @@ file/directory, and retrieve metadata of the file.
                             <div class="function-desc">
                                 
                                 <p>Creates a new directory with the specified file name.
+If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -227,6 +237,9 @@ file/directory, and retrieve metadata of the file.
                             <div class="function-desc">
                                 
                                 <p>Creates a file in the specified file path.
+Truncates if the file already exists in the given path.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -236,7 +249,9 @@ file/directory, and retrieve metadata of the file.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Reports whether the file or directory exists in the given the path.
+                                <p>Reports whether the file or directory exists in the given the path.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -246,7 +261,9 @@ file/directory, and retrieve metadata of the file.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the current working directory.
+                                <p>Returns the current working directory.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -256,7 +273,9 @@ file/directory, and retrieve metadata of the file.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the metadata information of the file specified in the file path.
+                                <p>Returns the metadata information of the file specified in the file path.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -267,7 +286,9 @@ file/directory, and retrieve metadata of the file.
                             <div class="function-desc">
                                 
                                 <p>Reads the directory and returns a list of files and directories
-inside the specified directory.
+inside the specified directory.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -278,6 +299,9 @@ inside the specified directory.
                             <div class="function-desc">
                                 
                                 <p>Removes the specified file or directory.
+If the recursive flag is true, it removes the path and any children it contains.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -288,6 +312,9 @@ inside the specified directory.
                             <div class="function-desc">
                                 
                                 <p>Renames(Moves) the old path with the new path.
+If the new path already exists and it is not a directory, this replaces the file.</p>
+
+
                             </div>
                         </td>
                     </tr>
@@ -297,7 +324,9 @@ inside the specified directory.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the default directory to use for temporary files.
+                                <p>Returns the default directory to use for temporary files.</p>
+
+
                             </div>
                         </td>
                     </tr>

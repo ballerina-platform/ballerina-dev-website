@@ -87,11 +87,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/functional-iteration/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/functional-iteration/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -147,7 +147,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -159,7 +159,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -171,7 +171,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string&gt; words = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt; words = {
         a: &quot;ant&quot;,
         b: &quot;bear&quot;,
         c: &quot;cat&quot;,
@@ -196,7 +196,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Number of elements in &#39;words&#39;: &quot;, words.length());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Number of elements in &#39;words&#39;: &quot;, words.length());
 </code></pre></div>
 
                                 </td>
@@ -215,7 +215,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string&gt; animals = words.map(toUpper);
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt; animals = words.map(toUpper);
     io:println(animals);
 </code></pre></div>
 
@@ -236,7 +236,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] numbers = [-5, -3, 2, 7, 12];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] numbers = [-5, -3, 2, 7, 12];
 </code></pre></div>
 
                                 </td>
@@ -255,7 +255,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] positive = numbers.filter(function (int i) returns boolean {
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] positive = numbers.filter(function (int i) returns boolean {
         return i &gt;= 0;
     });
     io:println(&quot;Positive numbers: &quot;, positive);
@@ -278,7 +278,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    numbers.forEach(function(int i) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    numbers.forEach(function(int i) {
         io:println(i);
     });
 </code></pre></div>
@@ -300,7 +300,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int total = numbers.reduce(sum, 0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int total = numbers.reduce(sum, 0);
     io:println(&quot;Total: &quot;, total);
 </code></pre></div>
 
@@ -322,7 +322,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int totalWithInitialValue = numbers.reduce(sum, 5);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int totalWithInitialValue = numbers.reduce(sum, 5);
     io:println(&quot;Total with initial value: &quot;, totalWithInitialValue);
 </code></pre></div>
 
@@ -335,7 +335,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nExecution Order:-&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nExecution Order:-&quot;);
 </code></pre></div>
 
                                 </td>
@@ -347,7 +347,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;json&gt; j = {name: &quot;apple&quot;, colors: [&quot;red&quot;, &quot;green&quot;], price: 5};
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;json&gt; j = {name: &quot;apple&quot;, colors: [&quot;red&quot;, &quot;green&quot;], price: 5};
     j.map(function (json value) returns string {
         string result = value.toString();
         io:println(&quot;- map operation&#39;s value: &quot;, result);
@@ -373,7 +373,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -385,7 +385,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function toUpper(string value) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function toUpper(string value) returns string {
     return value.toUpperAscii();
 }
 </code></pre></div>
@@ -399,7 +399,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function sum(int accumulator, int currentValue) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function sum(int accumulator, int currentValue) returns int {
     return accumulator + currentValue;
 }
 </code></pre></div>

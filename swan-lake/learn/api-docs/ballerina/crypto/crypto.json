@@ -330,7 +330,7 @@
             "category": "records",
             "isAnonymousUnionType": false,
             "isArrayType": false,
-            "isNullable": false,
+            "isNullable": true,
             "isTuple": false,
             "isRestParam": false,
             "isLambda": false,

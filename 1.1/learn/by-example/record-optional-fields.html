@@ -69,11 +69,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/record-optional-fields/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/record-optional-fields/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -129,7 +129,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -141,7 +141,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Gender &quot;male&quot;|&quot;female&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>type Gender &quot;male&quot;|&quot;female&quot;;
 </code></pre></div>
 
                                 </td>
@@ -153,7 +153,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {
 </code></pre></div>
 
                                 </td>
@@ -165,7 +165,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string fname;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string fname;
 </code></pre></div>
 
                                 </td>
@@ -186,7 +186,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string lname = &quot;&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string lname = &quot;&quot;;
 </code></pre></div>
 
                                 </td>
@@ -205,7 +205,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Gender gender;
+                                    <div class="highlight"><pre><code class=language-ballerina>    Gender gender;
 </code></pre></div>
 
                                 </td>
@@ -217,7 +217,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int age?;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int age?;
 };
 </code></pre></div>
 
@@ -237,7 +237,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -249,7 +249,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person john = { fname: &quot;John&quot;, gender: &quot;male&quot; };
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person john = { fname: &quot;John&quot;, gender: &quot;male&quot; };
 </code></pre></div>
 
                                 </td>
@@ -269,7 +269,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Person with the non-defaultable required field set: &quot;, john);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Person with the non-defaultable required field set: &quot;, john);
 </code></pre></div>
 
                                 </td>
@@ -288,7 +288,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int? age = john?.age;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int? age = john?.age;
     io:println(&quot;Age before setting: &quot;, age);
 </code></pre></div>
 
@@ -310,7 +310,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    john.age = 25;
+                                    <div class="highlight"><pre><code class=language-ballerina>    john.age = 25;
 </code></pre></div>
 
                                 </td>
@@ -330,7 +330,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    age = john?.age;
+                                    <div class="highlight"><pre><code class=language-ballerina>    age = john?.age;
     io:println(&quot;Age after setting: &quot;, age);
 </code></pre></div>
 
@@ -350,7 +350,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person jane = { fname: &quot;Jane&quot;, lname: &quot;Doe&quot;, gender: &quot;female&quot; };
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person jane = { fname: &quot;Jane&quot;, lname: &quot;Doe&quot;, gender: &quot;female&quot; };
 </code></pre></div>
 
                                 </td>
@@ -369,7 +369,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Person with values assigned to required fields: &quot;, jane);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Person with values assigned to required fields: &quot;, jane);
 }
 </code></pre></div>
 

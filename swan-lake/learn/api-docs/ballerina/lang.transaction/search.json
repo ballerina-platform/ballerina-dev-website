@@ -163,9 +163,20 @@
       "id": "error",
       "description": "\u003cp\u003eThis file contains default retry manager to be used with retry statement.\u003c/p\u003e",
       "moduleId": "lang.transaction"
+    },
+    {
+      "id": "TransactionError",
+      "description": "\u003cp\u003eRepresents the Transaction error.\u003c/p\u003e",
+      "moduleId": "lang.transaction"
     }
   ],
-  "types": [],
+  "types": [
+    {
+      "id": "Error",
+      "description": "\u003cp\u003eRepresents the Transaction module related error.\u003c/p\u003e",
+      "moduleId": "lang.transaction"
+    }
+  ],
   "clients": [],
   "listeners": [],
   "annotations": []

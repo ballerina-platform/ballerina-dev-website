@@ -73,11 +73,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/tuple-typed-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/tuple-typed-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -119,7 +119,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -131,7 +131,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -143,7 +143,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [boolean, float] t = [true, 0.4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [boolean, float] t = [true, 0.4];
     io:println(&quot;Simple variable : &quot;, t);
 </code></pre></div>
 
@@ -163,7 +163,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [boolean, float] [a1, a2] = [true, 0.4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [boolean, float] [a1, a2] = [true, 0.4];
     io:println(&quot;Tuple variable : &quot;, a1, &quot; &quot;, a2);
 </code></pre></div>
 
@@ -184,7 +184,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [[string, int], float] [[b1, b2], b3] = [[&quot;Ballerina&quot;, 4], 6.7];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [[string, int], float] [[b1, b2], b3] = [[&quot;Ballerina&quot;, 4], 6.7];
     io:println(&quot;Tuple variable : &quot;, b1, &quot; &quot;, b2, &quot; &quot;, b3);
 </code></pre></div>
 
@@ -205,7 +205,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [[string, int], [boolean, float]] [[c1, c2],[c3, c4]] =
+                                    <div class="highlight"><pre><code class=language-ballerina>    [[string, int], [boolean, float]] [[c1, c2],[c3, c4]] =
                                               [[&quot;Ballerina&quot;, 34], [true, 6.7]];
     io:println(&quot;Tuple variable : &quot;, c1, &quot; &quot;, c2, &quot; &quot;, c3, &quot; &quot;, c4);
 </code></pre></div>
@@ -219,7 +219,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [[string, [int, [boolean, byte]]], [float, int]] v1 =
+                                    <div class="highlight"><pre><code class=language-ballerina>    [[string, [int, [boolean, byte]]], [float, int]] v1 =
                                    [[&quot;Ballerina&quot;, [3, [true, 34]]], [5.6, 45]];
     [[string, [int, [boolean, byte]]],
                            [float, int]] [[d1, [d2, [d3, d4]]], [d5, d6]] = v1;
@@ -243,7 +243,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    [string|int|float, [string|float, int]] [g1, [g2, g3]] =
+                                    <div class="highlight"><pre><code class=language-ballerina>    [string|int|float, [string|float, int]] [g1, [g2, g3]] =
                                                     [&quot;Ballerina&quot;, [3.4, 456]];
     io:println(&quot;Tuple variable : &quot;, g1, &quot; &quot;, g2, &quot; &quot;, g3);
 }

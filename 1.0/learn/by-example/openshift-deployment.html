@@ -95,7 +95,14 @@
 
     var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
     var dev_download_url = 'https://product-dist.ballerina.io/dev';
-    var base_download_url = 'https://dist.ballerina.io/downloads';
+     var base_download_url = 'https://dist.ballerina.io/downloads';
+	
+	
+	    $(document).ready(function() {
+	    $("table").removeClass('table-striped');
+	    $(".ballerina").addClass('language-ballerina');
+	    $("pre").addClass('language-ballerina');
+	});
 </script>
 
 </head>
@@ -296,7 +303,7 @@ This example deploys an HTTP service, which responses &ldquo;Hello&rdquo; follow
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/openshift-deployment/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/ballerina-1.0.x/kubernetes-extension-examples/examples/openshift-deployment"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>

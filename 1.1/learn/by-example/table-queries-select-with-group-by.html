@@ -92,11 +92,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/table-queries-select-with-group-by/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/table-queries-select-with-group-by/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -140,7 +140,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -152,7 +152,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Order record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Order record {
     int personId;
     int orderId;
     string items;
@@ -176,7 +176,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type SummedOrder record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type SummedOrder record {
     int personId;
     float amount;
 };
@@ -198,7 +198,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string queryStmt = &quot;&quot;;
 </code></pre></div>
 
@@ -211,7 +211,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Order o1 =
+                                    <div class="highlight"><pre><code class=language-ballerina>    Order o1 =
     {personId: 1, orderId: 1234, items: &quot;pen, book, eraser&quot;, amount: 34.75};
     Order o2 =
     {personId: 1, orderId: 2314, items: &quot;dhal, rice, carrot&quot;, amount: 14.75};
@@ -237,7 +237,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Order&gt; orderTable = table {
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;Order&gt; orderTable = table {
         {personId, orderId, items, amount},
         [o1, o2, o3, o4]
     };
@@ -259,7 +259,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printTable(queryStmt, &quot;The orderTable: &quot;, orderTable);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printTable(queryStmt, &quot;The orderTable: &quot;, orderTable);
 </code></pre></div>
 
                                 </td>
@@ -278,7 +278,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;SummedOrder&gt; summedOrderTable = from orderTable
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;SummedOrder&gt; summedOrderTable = from orderTable
                   select personId, sum(amount) group by personId;
     queryStmt = &quot;\ntable&lt;SummedOrder&gt; summedOrderTable = &quot; +
             &quot;from orderTable select personId, sum(amount) group by personId;&quot;;
@@ -303,7 +303,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function printTable(string stmt, string tableName, table&lt;anydata&gt; returnedTable) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printTable(string stmt, string tableName, table&lt;anydata&gt; returnedTable) {
     io:println(stmt);
     io:println(tableName);
     foreach var row in returnedTable {

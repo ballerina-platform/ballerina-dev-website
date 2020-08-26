@@ -80,11 +80,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/functions-with-rest-parameter/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/functions-with-rest-parameter/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -134,7 +134,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -146,7 +146,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printDetails(string name,
+                                    <div class="highlight"><pre><code class=language-ballerina>function printDetails(string name,
                       int age = 18,
                       string... modules) {
     string detailString = &quot;Name: &quot; + name + &quot;, Age: &quot; + age.toString();
@@ -171,7 +171,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (modules.length() == 0) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (modules.length() == 0) {
         io:println(detailString);
         return;
     }
@@ -186,7 +186,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int index = 0;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int index = 0;
     string moduleString = &quot;Module(s): &quot;;
 </code></pre></div>
 
@@ -199,7 +199,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach string module in modules {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach string module in modules {
         if (index == 0) {
             moduleString += module;
         } else {
@@ -218,7 +218,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(detailString, &quot;, &quot;, moduleString);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(detailString, &quot;, &quot;, moduleString);
 }
 </code></pre></div>
 
@@ -231,7 +231,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -243,7 +243,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Alice&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printDetails(&quot;Alice&quot;);
 </code></pre></div>
 
                                 </td>
@@ -262,7 +262,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Bob&quot;, 20);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printDetails(&quot;Bob&quot;, 20);
 </code></pre></div>
 
                                 </td>
@@ -283,7 +283,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Corey&quot;, 19, &quot;Math&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printDetails(&quot;Corey&quot;, 19, &quot;Math&quot;);
 </code></pre></div>
 
                                 </td>
@@ -305,7 +305,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Diana&quot;, 20, &quot;Math&quot;, &quot;Physics&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printDetails(&quot;Diana&quot;, 20, &quot;Math&quot;, &quot;Physics&quot;);
 </code></pre></div>
 
                                 </td>
@@ -325,7 +325,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string[] modules = [&quot;Math&quot;, &quot;Physics&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    string[] modules = [&quot;Math&quot;, &quot;Physics&quot;];
     printDetails(&quot;Diana&quot;, 20, ...modules);
 }
 </code></pre></div>

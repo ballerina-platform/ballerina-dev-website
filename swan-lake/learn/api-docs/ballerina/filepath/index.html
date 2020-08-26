@@ -159,7 +159,9 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Retrieves the absolute path from the provided location.
+                    <p>Retrieves the absolute path from the provided location.</p>
+
+
                 </td>
             </tr>
             
@@ -169,7 +171,9 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Joins any number of path elements into a single path.
+                    <p>Joins any number of path elements into a single path.</p>
+
+
                 </td>
             </tr>
             
@@ -180,6 +184,10 @@
                 <td class="module-desc">
                     
                     <p>Retrieves the extension of the file path.
+The extension is the suffix beginning at the final dot in the final element of the path.
+It is empty if there is no dot.</p>
+
+
                 </td>
             </tr>
             
@@ -191,6 +199,9 @@
                     
                     <p>Retrieves the base name of the file from the provided location,
 which is the last element of the path.
+Trailing path separators are removed before extracting the last element.</p>
+
+
                 </td>
             </tr>
             
@@ -200,7 +211,9 @@ which is the last element of the path.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the path variable's separating character for paths of the underlying operating system.
+                    <p>Returns the path variable's separating character for paths of the underlying operating system.</p>
+
+
                 </td>
             </tr>
             
@@ -210,7 +223,9 @@ which is the last element of the path.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the path separator of the underlying operating system.
+                    <p>Returns the path separator of the underlying operating system.</p>
+
+
                 </td>
             </tr>
             
@@ -221,6 +236,11 @@ which is the last element of the path.
                 <td class="module-desc">
                     
                     <p>Reports whether the path is absolute.
+A path is absolute if it is independent of the current directory.
+On Unix, a path is absolute if it starts with the root.
+On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows.</p>
+
+
                 </td>
             </tr>
             
@@ -231,6 +251,9 @@ which is the last element of the path.
                 <td class="module-desc">
                     
                     <p>Reports whether the filename is reserved.
+Reserved words only exist in Windows.</p>
+
+
                 </td>
             </tr>
             
@@ -241,6 +264,9 @@ which is the last element of the path.
                 <td class="module-desc">
                     
                     <p>Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
+An error is returned if the pattern is malformed.</p>
+
+
                 </td>
             </tr>
             
@@ -251,6 +277,11 @@ which is the last element of the path.
                 <td class="module-desc">
                     
                     <p>Returns the shortest path name equivalent to the given path.
+Replace the multiple separator elements with a single one.
+Eliminate each &quot;.&quot; path name element (the current directory).
+Eliminate each inner &quot;..&quot; path name element (the parent directory).</p>
+
+
                 </td>
             </tr>
             
@@ -261,6 +292,10 @@ which is the last element of the path.
                 <td class="module-desc">
                     
                     <p>Returns the enclosing parent directory.
+If the path is empty, parent returns &quot;.&quot;.
+The returned path does not end in a separator unless it is the root directory.</p>
+
+
                 </td>
             </tr>
             
@@ -272,6 +307,9 @@ which is the last element of the path.
                     
                     <p>Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
 intervening separator.
+An error is returned if the target path cannot be made relative to the base path.</p>
+
+
                 </td>
             </tr>
             
@@ -282,6 +320,11 @@ intervening separator.
                 <td class="module-desc">
                     
                     <p>Returns the filepath after the evaluation of any symbolic links.
+If the path is relative, the result will be relative to the current directory
+unless one of the components is an absolute symbolic link.
+Resolves normalising the calls on the result.</p>
+
+
                 </td>
             </tr>
             
@@ -291,7 +334,9 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Splits a list of paths joined by the OS-specific path separator.
+                    <p>Splits a list of paths joined by the OS-specific path separator.</p>
+
+
                 </td>
             </tr>
             
@@ -321,7 +366,8 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents filepath related errors.
+                    <p>Represents filepath related errors.</p>
+
                 </td>
             </tr>
             
@@ -345,7 +391,8 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents error occur when the file/directory does not exist at the given filepath.
+                    <p>Represents error occur when the file/directory does not exist at the given filepath.</p>
+
                 </td>
             </tr>
             
@@ -366,7 +413,8 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents IO error occur when trying to access the file at the given filepath.
+                    <p>Represents IO error occur when trying to access the file at the given filepath.</p>
+
                 </td>
             </tr>
             
@@ -376,7 +424,8 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents error occur when the given file path is invalid.
+                    <p>Represents error occur when the given file path is invalid.</p>
+
                 </td>
             </tr>
             
@@ -386,7 +435,8 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represent error occur when the given pattern is not a valid filepath pattern.
+                    <p>Represent error occur when the given pattern is not a valid filepath pattern.</p>
+
                 </td>
             </tr>
             
@@ -396,7 +446,8 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents error occur when the file at the given filepath is not a symbolic link.
+                    <p>Represents error occur when the file at the given filepath is not a symbolic link.</p>
+
                 </td>
             </tr>
             
@@ -406,7 +457,8 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error that occurs when the given target filepath cannot be derived relative to the base filepath.
+                    <p>Represents an error that occurs when the given target filepath cannot be derived relative to the base filepath.</p>
+
                 </td>
             </tr>
             
@@ -416,7 +468,8 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents security error occur when trying to access the file at the given filepath.
+                    <p>Represents security error occur when trying to access the file at the given filepath.</p>
+
                 </td>
             </tr>
             
@@ -426,7 +479,8 @@ intervening separator.
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents error occur in the UNC path.
+                    <p>Represents error occur in the UNC path.</p>
+
                 </td>
             </tr>
             

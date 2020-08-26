@@ -96,11 +96,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-caching-client/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/http-caching-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -162,7 +162,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -201,7 +201,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client cachingEP = new(&quot;http://localhost:8080&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client cachingEP = new(&quot;http://localhost:8080&quot;,
                             { cache: { isShared: true } });
 </code></pre></div>
 
@@ -214,7 +214,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/cache&quot;
 }
 service cachingProxy on new http:Listener(9090) {
@@ -229,7 +229,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -246,7 +246,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        if (response is http:Response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (response is http:Response) {
 </code></pre></div>
 
                                 </td>
@@ -258,7 +258,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(response);
             if (result is error) {
                 log:printError(&quot;Failed to respond to the caller&quot;, err = result);
             }
@@ -283,7 +283,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            http:Response res = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>            http:Response res = new;
             res.statusCode = 500;
             res.setPayload(response.reason());
             var result = caller-&gt;respond(res);
@@ -312,7 +312,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>json payload = { &quot;message&quot;: &quot;Hello, World!&quot; };
+                                    <div class="highlight"><pre><code class=language-ballerina>json payload = { &quot;message&quot;: &quot;Hello, World!&quot; };
 </code></pre></div>
 
                                 </td>
@@ -324,7 +324,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service helloWorld on new http:Listener(8080) {
@@ -346,7 +346,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig { path: &quot;/&quot; }
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig { path: &quot;/&quot; }
     resource function sayHello(http:Caller caller, http:Request req) {
         http:Response res = new;
 </code></pre></div>
@@ -360,7 +360,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:ResponseCacheControl resCC = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:ResponseCacheControl resCC = new;
         resCC.maxAge = 15;
         resCC.mustRevalidate = true;
         resCC.isPrivate = false;
@@ -390,7 +390,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        res.cacheControl = resCC;
+                                    <div class="highlight"><pre><code class=language-ballerina>        res.cacheControl = resCC;
 </code></pre></div>
 
                                 </td>
@@ -402,7 +402,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        res.setETag(payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>        res.setETag(payload);
 </code></pre></div>
 
                                 </td>
@@ -423,7 +423,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        res.setLastModified();
+                                    <div class="highlight"><pre><code class=language-ballerina>        res.setLastModified();
 </code></pre></div>
 
                                 </td>
@@ -443,7 +443,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        res.setPayload(payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>        res.setPayload(payload);
 </code></pre></div>
 
                                 </td>
@@ -475,7 +475,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Failed to respond to the caller&quot;, err = result);
         }

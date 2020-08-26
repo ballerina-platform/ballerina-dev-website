@@ -97,14 +97,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../jwt/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../jwt/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../jwt/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../jwt/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -193,7 +197,12 @@ The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <c
             
                 
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../jwt/records/JwtIssuerConfig.html">JwtIssuerConfig</a>? jwtIssuerConfig)</p>
+
+    <p>Provides authentication based on the provided JWT configuration.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../jwt/records/JwtIssuerConfig.html">JwtIssuerConfig</a>? jwtIssuerConfig)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -222,7 +231,9 @@ The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <c
     </div>
     <div class="param-details">
         
-        <p>Generates the token for JWT authentication.
+        <p>Generates the token for JWT authentication.</p>
+
+
     </div>
 </div>
 
@@ -234,7 +245,8 @@ The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <c
     </div>
     <div class="param-details">
         
-        <p>Inspects the incoming data and generates the token for JWT authentication.
+        <p>Inspects the incoming data and generates the token for JWT authentication.</p>
+
     </div>
 </div>
 
@@ -291,7 +303,7 @@ The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <c
         <span class="method-types">
             <p>(<span class="builtin-type">map</span><<span class="builtin-type">anydata</span>> data)</p>
             
-                <b> returns </b><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a> | <span class="builtin-type">()</span> 
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a>? 
             
         </span>
     </div>
@@ -328,7 +340,7 @@ The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <c
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a>?</span>)</li>
                 <li><p>JWT as <code>string</code>, <code>()</code> if nothing to be returned or else an <code>auth:Error</code> if token can't be generated</p>
 </li>
             </ul>

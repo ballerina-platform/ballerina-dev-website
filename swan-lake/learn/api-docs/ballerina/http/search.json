@@ -1030,11 +1030,6 @@
   ],
   "errors": [
     {
-      "id": "$anonType$115",
-      "description": "",
-      "moduleId": "http"
-    },
-    {
       "id": "AllLoadBalanceEndpointsFailedError",
       "description": "\u003cp\u003eRepresents a client error that occurred due to all the load balance endpoint failure\u003c/p\u003e\n",
       "moduleId": "http"

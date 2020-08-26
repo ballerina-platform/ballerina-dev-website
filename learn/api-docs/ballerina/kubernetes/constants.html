@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="This module offers an annotation based Kubernetes extension implementation for ballerina.
+    <meta name="description" content="This module offers an annotation based Kubernetes extension implementation for Ballerina.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,kubernetes">
 
@@ -53,7 +53,8 @@
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
-            <a href="../index.html">
+            <a href="
+    ../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
 
@@ -65,14 +66,14 @@
 
 <div class="primary-list module">
     
-        <a href="../kubernetes/index.html">
+        <a href="../kubernetes/index.html" onclick="menuLinkClick()">
             <h3>kubernetes</h3>
         </a>
     
     <ul>
         
         <li>
-            <a data="records" href="../kubernetes/index.html#records">Records</a>
+            <a data="records" href="../kubernetes/index.html#records" onclick="menuLinkClick()">Records</a>
         </li>
         
         
@@ -81,17 +82,17 @@
         
         
             <li>
-                <a data="constants" href="../kubernetes/index.html#constants">Constants</a>
+                <a data="constants" href="../kubernetes/index.html#constants" onclick="menuLinkClick()">Constants</a>
             </li>
         
         
             <li>
-                <a data="annotations" href="../kubernetes/index.html#annotations">Annotations</a>
+                <a data="annotations" href="../kubernetes/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
             </li>
         
         
             <li>
-                <a data="types" href="../kubernetes/index.html#types">Types</a>
+                <a data="types" href="../kubernetes/index.html#types" onclick="menuLinkClick()">Types</a>
             </li>
         
         
@@ -126,94 +127,16 @@
 </div>
         </div>
     </div>
-
-    <div class="ui vertical sidebar menu">
-        <div class="navi-wrapper-sidebar">
-            <div class="navi-wrapper-content">
-                <a href="../index.html">
-    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
-</a>
-
-                
-                
-
-    
-
-
-<div class="primary-list module">
-    
-        <a href="../kubernetes/index.html">
-            <h3>kubernetes</h3>
-        </a>
-    
-    <ul>
-        
-        <li>
-            <a data="records" href="../kubernetes/index.html#records">Records</a>
-        </li>
-        
-        
-        
-        
-        
-        
-            <li>
-                <a data="constants" href="../kubernetes/index.html#constants">Constants</a>
-            </li>
-        
-        
-            <li>
-                <a data="annotations" href="../kubernetes/index.html#annotations">Annotations</a>
-            </li>
-        
-        
-            <li>
-                <a data="types" href="../kubernetes/index.html#types">Types</a>
-            </li>
-        
-        
-    </ul>
-    <div class="ui divider"></div>
-</div>
-
-                <div class="primary-list module-list">
-    
-        <h3>All Modules</h3>
-        <ul>
-            
-                <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
-                    <a href="../knative/index.html">knative</a>
-                </li>
-            
-                <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
-                </li>
-            
-                <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-        </ul>
-        <div class="ui divider"></div>
-    
-</div>
-            </div>
-        </div>
-    </div>
-
     <div class="content-wrapper pusher">
         <div>
-    <a class="toc item"> 
+    <a id="toc" class="toc item" onclick="displayMenu()">
         <img src="../html-template-resources/images/menu.svg">
     </a>
 </div>
         <div class="main-wrapper">
             <h1>
-                <a class="breadcrumb-home" href="../index.html">
+                <a class="breadcrumb-home" href="
+    ../index.html">
     <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
 </a>
                 <span class="title-type">Constants - </span> 
@@ -230,7 +153,7 @@
                                 </li>
                                 <li>
                                     
-                                    Pull image if it is not present for deployment or job.
+                                    <p>Pull image if it is not present for deployment or job.</p>
 
                                 </li>
                             </ul>
@@ -244,7 +167,7 @@
                                 </li>
                                 <li>
                                     
-                                    Always pull the image for knative service for deployment or job.
+                                    <p>Always pull the image for knative service for deployment or job.</p>
 
                                 </li>
                             </ul>
@@ -258,7 +181,7 @@
                                 </li>
                                 <li>
                                     
-                                    Never pull the image for deployment or job.
+                                    <p>Never pull the image for deployment or job.</p>
 
                                 </li>
                             </ul>
@@ -298,7 +221,7 @@
                                 </li>
                                 <li>
                                     
-                                    Disable session affinity on pods.
+                                    <p>Disable session affinity on pods.</p>
 
                                 </li>
                             </ul>
@@ -312,7 +235,7 @@
                                 </li>
                                 <li>
                                     
-                                    Enable session affinity on pods.
+                                    <p>Enable session affinity on pods.</p>
 
                                 </li>
                             </ul>
@@ -326,7 +249,7 @@
                                 </li>
                                 <li>
                                     
-                                    Node port type service.
+                                    <p>Node port type service.</p>
 
                                 </li>
                             </ul>
@@ -340,7 +263,7 @@
                                 </li>
                                 <li>
                                     
-                                    Cluster IP type service.
+                                    <p>Cluster IP type service.</p>
 
                                 </li>
                             </ul>
@@ -354,7 +277,7 @@
                                 </li>
                                 <li>
                                     
-                                    Load balancer type service.
+                                    <p>Load balancer type service.</p>
 
                                 </li>
                             </ul>
@@ -368,7 +291,7 @@
                                 </li>
                                 <li>
                                     
-                                    Restart on failure policy for jobs.
+                                    <p>Restart on failure policy for jobs.</p>
 
                                 </li>
                             </ul>
@@ -382,7 +305,7 @@
                                 </li>
                                 <li>
                                     
-                                    Always restart policy when job is finished.
+                                    <p>Always restart policy when job is finished.</p>
 
                                 </li>
                             </ul>
@@ -396,7 +319,7 @@
                                 </li>
                                 <li>
                                     
-                                    Never restart policy for jobs.
+                                    <p>Never restart policy for jobs.</p>
 
                                 </li>
                             </ul>
@@ -409,17 +332,6 @@
 </body>
 
 <script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
 let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
 let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
 
@@ -444,6 +356,42 @@ contentWrapper.addEventListener("scroll", event => {
   });
 });
 
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
 </script>
 
 <script>

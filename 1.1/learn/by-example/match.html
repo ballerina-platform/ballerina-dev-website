@@ -91,11 +91,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/match/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/match/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -139,7 +139,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -151,7 +151,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -163,7 +163,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[5] intArray = [0, 1, 2, 3, 4];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[5] intArray = [0, 1, 2, 3, 4];
 </code></pre></div>
 
                                 </td>
@@ -175,7 +175,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var counter in intArray {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var counter in intArray {
 </code></pre></div>
 
                                 </td>
@@ -187,7 +187,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        match counter {
+                                    <div class="highlight"><pre><code class=language-ballerina>        match counter {
             0 =&gt; {
                 io:println(&quot;value is: 0&quot;);
             }
@@ -226,7 +226,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string[] animals = [&quot;Cat&quot;, &quot;Canine&quot;, &quot;Mouse&quot;, &quot;Horse&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    string[] animals = [&quot;Cat&quot;, &quot;Canine&quot;, &quot;Mouse&quot;, &quot;Horse&quot;];
 </code></pre></div>
 
                                 </td>
@@ -238,7 +238,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach string animal in animals {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach string animal in animals {
 </code></pre></div>
 
                                 </td>
@@ -250,7 +250,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        match animal {
+                                    <div class="highlight"><pre><code class=language-ballerina>        match animal {
             &quot;Mouse&quot; =&gt; {
                 io:println(&quot;Mouse&quot;);
             }
@@ -278,7 +278,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            _ =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>            _ =&gt; {
                 io:println(&quot;Match All&quot;);
             }
         }

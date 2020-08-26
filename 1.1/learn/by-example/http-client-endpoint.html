@@ -58,9 +58,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="awslambda-deployment.html">
+                                    <a class="prev" href="testerina-guarantee-test-execution-order.html">
                                         <span>< PREVIOUS</span>
-                                        <p>AWS Lambda Deployment</p>
+                                        <p>Guarantee Test Execution Order</p>
                                     </a>
                                 </div>
                                  
@@ -83,11 +83,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-client-endpoint/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/http-client-endpoint/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -145,7 +145,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 </code></pre></div>
 
@@ -158,7 +158,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new(&quot;http://postman-echo.com&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new(&quot;http://postman-echo.com&quot;);
 </code></pre></div>
 
                                 </td>
@@ -177,7 +177,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     io:println(&quot;GET request:&quot;);
 </code></pre></div>
 
@@ -190,7 +190,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response = clientEndpoint-&gt;get(&quot;/get?test=123&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var response = clientEndpoint-&gt;get(&quot;/get?test=123&quot;);
 </code></pre></div>
 
                                 </td>
@@ -209,7 +209,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handleResponse(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handleResponse(response);
 </code></pre></div>
 
                                 </td>
@@ -228,7 +228,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nPOST request:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nPOST request:&quot;);
 </code></pre></div>
 
                                 </td>
@@ -240,7 +240,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    response = clientEndpoint-&gt;post(&quot;/post&quot;, &quot;POST: Hello World&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;post(&quot;/post&quot;, &quot;POST: Hello World&quot;);
 </code></pre></div>
 
                                 </td>
@@ -259,7 +259,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handleResponse(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handleResponse(response);
 </code></pre></div>
 
                                 </td>
@@ -278,7 +278,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nUse custom HTTP verbs:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nUse custom HTTP verbs:&quot;);
 </code></pre></div>
 
                                 </td>
@@ -290,7 +290,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    response = clientEndpoint-&gt;execute(&quot;COPY&quot;, &quot;/get&quot;, &quot;CUSTOM: Hello World&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;execute(&quot;COPY&quot;, &quot;/get&quot;, &quot;CUSTOM: Hello World&quot;);
 </code></pre></div>
 
                                 </td>
@@ -309,7 +309,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Request req = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Request req = new;
     req.addHeader(&quot;Sample-Name&quot;, &quot;http-client-connector&quot;);
 </code></pre></div>
 
@@ -329,7 +329,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    response = clientEndpoint-&gt;get(&quot;/get&quot;, req);
+                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;get(&quot;/get&quot;, req);
     if (response is http:Response) {
         string contentType = response.getHeader(&quot;Content-Type&quot;);
         io:println(&quot;Content-Type: &quot; + contentType);
@@ -352,7 +352,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        int statusCode = response.statusCode;
+                                    <div class="highlight"><pre><code class=language-ballerina>        int statusCode = response.statusCode;
         io:println(&quot;Status code: &quot; + statusCode.toString());
 </code></pre></div>
 
@@ -365,7 +365,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    } else {
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
         io:println(&quot;Error when calling the backend: &quot; , response.reason());
     }
 }
@@ -380,7 +380,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleResponse(http:Response|error response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|error response) {
     if (response is http:Response) {
         var msg = response.getJsonPayload();
         if (msg is json) {
@@ -402,7 +402,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(msg.toJsonString());
+                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(msg.toJsonString());
         } else {
             io:println(&quot;Invalid payload received:&quot; , msg.reason());
         }

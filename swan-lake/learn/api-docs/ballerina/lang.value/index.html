@@ -148,6 +148,11 @@
                 <td class="module-desc">
                     
                     <p>Returns a clone of <code>v</code>.
+A clone is a deep copy that does not copy immutable subtrees.
+A clone can therefore safely be used concurrently with the original.
+It corresponds to the Clone(v) abstract operation,
+defined in the Ballerina Language Specification.</p>
+
                 </td>
             </tr>
             
@@ -157,7 +162,7 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a clone of <code>v</code> that is read-only, i.
+                    <p>Returns a clone of <code>v</code> that is read-only, i.e.
                 </td>
             </tr>
             
@@ -167,7 +172,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constructs a value with a specified type by cloning another value.
+                    <p>Constructs a value with a specified type by cloning another value.</p>
+
                 </td>
             </tr>
             
@@ -178,6 +184,9 @@
                 <td class="module-desc">
                     
                     <p>Parses a string in JSON format and returns the the value that it represents.
+All numbers in the JSON will be represented as float values.
+Returns an error if the string cannot be parsed.</p>
+
                 </td>
             </tr>
             
@@ -188,6 +197,9 @@
                 <td class="module-desc">
                     
                     <p>Converts a string in JSON format to a user-specified type.
+This is a combination of <code>fromJsonString</code> followed by
+<code>fromJsonWithType</code>.</p>
+
                 </td>
             </tr>
             
@@ -198,6 +210,9 @@
                 <td class="module-desc">
                     
                     <p>Converts a value of type json to a user-specified type.
+This works the same as <code>cloneWithType</code>,
+except that it also does the inverse of the conversions done by <code>toJson</code>.</p>
+
                 </td>
             </tr>
             
@@ -207,7 +222,7 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Tests whether <code>v</code> is read-only, i.
+                    <p>Tests whether <code>v</code> is read-only, i.e.
                 </td>
             </tr>
             
@@ -217,7 +232,8 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Merges two json values.
+                    <p>Merges two json values.</p>
+
                 </td>
             </tr>
             
@@ -228,6 +244,17 @@
                 <td class="module-desc">
                     
                     <p>Converts a value of type <code>anydata</code> to <code>json</code>.
+This does a deep copy of <code>v</code> converting values that do
+not belong to json into values that do.
+A value of type <code>xml</code> is converted into a string as if
+by the <code>toString</code> function.
+A value of type <code>table</code> is converted into a list of
+mappings one for each row.
+The inherent type of arrays in the return value will be
+<code>json[]</code> and of mappings will be <code>map&lt;json&gt;</code>.
+A new copy is made of all structural values, including
+immutable values.</p>
+
                 </td>
             </tr>
             
@@ -238,6 +265,8 @@
                 <td class="module-desc">
                     
                     <p>Returns the string that represents <code>v</code> in JSON format.
+<code>v</code> is first converted to <code>json</code> as if by the <code>toJson</code> function.</p>
+
                 </td>
             </tr>
             
@@ -248,6 +277,10 @@
                 <td class="module-desc">
                     
                     <p>Performs a minimal conversion of a value to a string.
+The conversion is minimal in particular in the sense
+that the conversion applied to a value that is already
+a string does nothing.</p>
+
                 </td>
             </tr>
             

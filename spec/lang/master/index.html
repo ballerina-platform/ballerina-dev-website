@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-07-26</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-08-26</h1>
 <p>
 Primary contributors:
 </p>
@@ -57,7 +57,7 @@ the current design to be updated to the final design.
 Comments on this document are welcome and should be made by creating an issue in
 <code><a href="https://github.com/ballerina-platform/ballerina-spec">https://github.com/ballerina-platform/ballerina-spec</a></code>, which is the
 GitHub repository where this specification is maintained. The design of the
-language may also be discussed in the <a href="mailto:ballerina-dec@googlegroups.com">ballerina-dev@googlegroups.com</a>
+language may also be discussed in the <a href="mailto:ballerina-dev@googlegroups.com">ballerina-dev@googlegroups.com</a>
 mailing list.
 </p>
 <section class="toc"><h2>Table of contents</h2>
@@ -213,14 +213,12 @@ mailing list.
 </li>
 </ul>
 </li>
-<li>5.9 <a href="#functionally_constructible_types">Functionally constructible types</a>
+<li>5.9 <a href="#section_5.9">Binding patterns and variables</a><ul>
+<li>5.9.1 <a href="#section_5.9.1">Binding patterns</a>
 </li>
-<li>5.10 <a href="#section_5.10">Binding patterns and variables</a><ul>
-<li>5.10.1 <a href="#section_5.10.1">Binding patterns</a>
+<li>5.9.2 <a href="#section_5.9.2">Typed binding patterns</a>
 </li>
-<li>5.10.2 <a href="#section_5.10.2">Typed binding patterns</a>
-</li>
-<li>5.10.3 <a href="#section_5.10.3">Variable and identifier scoping</a>
+<li>5.9.3 <a href="#section_5.9.3">Variable and identifier scoping</a>
 </li>
 </ul>
 </li>
@@ -287,7 +285,7 @@ mailing list.
 </li>
 <li>6.17 <a href="#section_6.17">Method call expression</a>
 </li>
-<li>6.18 <a href="#section_6.18">Functional constructor</a>
+<li>6.18 <a href="#section_6.18">Error constructor</a>
 </li>
 <li>6.19 <a href="#section_6.19">Anonymous function expression</a>
 </li>
@@ -399,26 +397,26 @@ mailing list.
 </li>
 <li>7.12 <a href="#section_7.12">Implicit variable type narrowing</a>
 </li>
-<li>7.13 <a href="#section_7.13">Local type definition statement</a>
+<li>7.13 <a href="#XML_namespace_declaration_statement">XML namespace declaration statement</a>
 </li>
-<li>7.14 <a href="#XML_namespace_declaration_statement">XML namespace declaration statement</a>
+<li>7.14 <a href="#section_7.14">Assignment</a><ul>
+<li>7.14.1 <a href="#section_7.14.1">Lvalues</a>
 </li>
-<li>7.15 <a href="#section_7.15">Assignment</a><ul>
-<li>7.15.1 <a href="#section_7.15.1">Lvalues</a>
+<li>7.14.2 <a href="#section_7.14.2">Assignment statement</a>
 </li>
-<li>7.15.2 <a href="#section_7.15.2">Assignment statement</a>
+<li>7.14.3 <a href="#section_7.14.3">Compound assignment statement</a>
 </li>
-<li>7.15.3 <a href="#section_7.15.3">Compound assignment statement</a>
-</li>
-<li>7.15.4 <a href="#section_7.15.4">Destructuring assignment statement</a>
+<li>7.14.4 <a href="#section_7.14.4">Destructuring assignment statement</a>
 </li>
 </ul>
 </li>
-<li>7.16 <a href="#section_7.16">Action statement</a>
+<li>7.15 <a href="#section_7.15">Action statement</a>
 </li>
-<li>7.17 <a href="#section_7.17">Call statement</a>
+<li>7.16 <a href="#section_7.16">Call statement</a>
 </li>
-<li>7.18 <a href="#section_7.18">Conditional statement</a>
+<li>7.17 <a href="#section_7.17">Conditional statement</a>
+</li>
+<li>7.18 <a href="#section_7.18">Do statement</a>
 </li>
 <li>7.19 <a href="#section_7.19">Match statement</a>
 </li>
@@ -430,11 +428,15 @@ mailing list.
 </li>
 <li>7.23 <a href="#section_7.23">Break statement</a>
 </li>
-<li>7.24 <a href="#section_7.24">Panic statement</a>
+<li>7.24 <a href="#section_7.24">Lock statement</a>
 </li>
-<li>7.25 <a href="#section_7.25">Return statement</a>
+<li>7.25 <a href="#section_7.25">On fail clause</a>
 </li>
-<li>7.26 <a href="#section_7.26">Lock statement</a>
+<li>7.26 <a href="#section_7.26">Fail statement</a>
+</li>
+<li>7.27 <a href="#section_7.27">Panic statement</a>
+</li>
+<li>7.28 <a href="#section_7.28">Return statement</a>
 </li>
 </ul>
 </li>
@@ -515,7 +517,7 @@ unusual aspects that make it particularly suitable for its intended purpose.
 First, it provides language constructs specifically for consuming and providing
 network services. Future versions of Ballerina will add language constructs for
 other middleware functionality such as event stream processing, distributed
-transactions and reliable messaging; this is described in more detail in <a href="planned_future_functionality">Appendix C</a>.
+transactions and reliable messaging; this is described in more detail in <a href="#planned_future_functionality">Appendix C</a>.
 </p>
 <p>
 Second, its abstractions and syntax for concurrency and network interaction have
@@ -1418,7 +1420,7 @@ supported by the IEEE 754-2008 decimal128 format (which is -6176 to 6111
 inclusive).
 </p>
 <p>
-The decimal type corresponds to the ANSI X3.X274 subset of IEEE 754-2008, which
+The decimal type corresponds to the ANSI X3.274 subset of IEEE 754-2008, which
 has the following simplifications:
 </p>
 <ul>
@@ -2204,7 +2206,7 @@ The detail mapping must be a subtype of <code>map&lt;Cloneable&gt;</code>.
 The shapes of the message, cause and detail record are part of the shape of the
 error; the stack trace is not part of the shape. A type descriptor
 <code>error&lt;<var>T</var>&gt;</code> contains an error shape if
-<code><var>T</var></code> contains the shape of the detail. The type
+<code><var>T</var></code> contains the shape of its detail. The type
 <code>error</code> contains a shape if its basic type is error.
 </p>
 <p>
@@ -2215,7 +2217,7 @@ inferable.
 </p>
 <p>
 An error-type-descriptor is always definite and induces an empty set of
-type-ids. An intersecion type can be used to describe an error type that induces
+type-ids. An intersection type can be used to describe an error type that induces
 a non-empty set of type-ids.
 </p>
 </section>
@@ -2238,9 +2240,9 @@ an argument list as input and returns a value as output.
    | <a href="#defaultable-params"><span class="ntref">defaultable-params</span></a> [<code>,</code> <a href="#rest-param"><span class="ntref">rest-param</span></a>]
    | [<a href="#rest-param"><span class="ntref">rest-param</span></a>]
 <span class="ntdfn" id="required-params">required-params</span> := <a href="#required-param"><span class="ntref">required-param</span></a> (<code>,</code> <a href="#required-param"><span class="ntref">required-param</span></a>)*
-<span class="ntdfn" id="required-param">required-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] [<code>public</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>]
+<span class="ntdfn" id="required-param">required-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>]
 <span class="ntdfn" id="defaultable-params">defaultable-params</span> := <a href="#defaultable-param"><span class="ntref">defaultable-param</span></a> (<code>,</code> <a href="#defaultable-param"><span class="ntref">defaultable-param</span></a>)*
-<span class="ntdfn" id="defaultable-param">defaultable-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] [<code>public</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>] <a href="#default-value"><span class="ntref">default-value</span></a>
+<span class="ntdfn" id="defaultable-param">defaultable-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>] <a href="#default-value"><span class="ntref">default-value</span></a>
 <span class="ntdfn" id="rest-param">rest-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>...</code> [<a href="#param-name"><span class="ntref">param-name</span></a>]
 <span class="ntdfn" id="param-name">param-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
@@ -2303,13 +2305,7 @@ the closure that computes the default value is only used at runtime.
 The name of each parameter is included in the function's type descriptor. A
 caller of the function may specify the name of the parameter that an argument is
 supplying. In this case, the caller uses the parameter name at compile time in
-conjunction with the type descriptor to create the argument list. For each
-parameter name, the function's type descriptor also includes the region of code
-within which the name of the parameter is visible; as usual, if
-<code>public</code> is specified, the region is the entire program, otherwise it
-is the module in which the function type descriptor occurs. The name of a
-parameter can only be used to specify an argument in a function call that occurs
-within the region of code within which the parameter name is visible. The
+conjunction with the type descriptor to create the argument list. The
 parameter names do not affect the shape of the function and thus do not affect
 typing.
 </p>
@@ -2377,10 +2373,14 @@ provides the method definitions that are associated with the object when it is
 constructed. A class is defined using a module-level class definition.
 </p>
 <p>
-The object basic type is selectively immutable. Each field has a read-only bit.
-If the read-only bit of a field is on, it means the field cannot be assigned to
-after the object has been constructed. The read-only bit of an object value is
-on if and only if the read-only bit of all its fields is on.
+The object basic type is selectively immutable. An object value has a read-only
+bit, which is fixed when the object is constructed. An
+<code>object-type-descriptor</code> does not describe whether the object's
+read-only bit is set: whether a value belongs to the type described by an
+<code>object-type-descriptor</code> is not affected by the object's read-only
+bit. Whether an object is read-only can be described separately using a
+<code>readonly</code> type descriptor, which can be combined with an
+<code>object-type-descriptor</code> using the type intersection operator.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="object-type-descriptor">object-type-descriptor</span> :=
@@ -2402,14 +2402,17 @@ methods; other objects types must not.
 <h5 id="section_5.5.3.1">5.5.3.1 Fields</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-field-descriptor">object-field-descriptor</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] [<code>readonly</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> <code>;</code>
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> <code>;</code>
 </pre>
 <p>
 An <code>object-field-descriptor</code> describes a field of the object. It is
 an error for an object-type-descriptor to have two fields with the same
-field-name. When an <code>object-field-descriptor</code> includes
-<code>readonly</code>, the type of the field is the intersection of
-<code>readonly</code> and the type specified by the type-descriptor.
+field-name.
+</p>
+<p>
+If an object's read-only bit is set, then the read-only bit of the value of
+every field must also be set and the value of a field cannot be changed after
+the object has been constructed.
 </p>
 </section>
 <section>
@@ -2480,10 +2483,6 @@ f' in T' is the same as the visibility region of f in T. This implies that if an
 object type descriptor T has fields or methods with module-level visibility,
 then it is possible to define another object type descriptor that is a subtype
 of T only within the same module as T.
-</p>
-<p>
-The read-only bit of a field is part of the read-only aspect of the object's
-shape.
 </p>
  
 </section>
@@ -3460,118 +3459,9 @@ follows:
 </section>
 </section>
 <section>
-<h3 id="functionally_constructible_types">5.9 Functionally constructible types</h3>
-<p>
-A type that is <em>functionally constructible</em> allows values of the type to
-be destructured and constructed using a functional syntax. A functionally
-constructible type has a list of construction parameters, where each parameter
-is identified either by a position or by a name, and defines a decomposition
-that maps a value of the type into an argument list, with one member for each
-construction parameter.
-</p>
-<pre class="grammar"><span class="ntdfn" id="functionally-constructible-type-reference">functionally-constructible-type-reference</span> := <code>error</code> | <a href="#type-reference"><span class="ntref">type-reference</span></a>
-</pre>
-<p>
-A functionally-constructible-type-reference must refer to a type that is functionally constructible.
-</p>
-<p>
-The following table describes the functionally constructible types and their
-construction parameters. The last column specifies what happens if there is no
-argument for a parameter when a value is constructed.
-</p>
-
-<table>
-<tr>
-<td>Constructed type</td>
-<td>Parameter id</td>
-<td>Parameter type</td>
-<td>Parameter description</td>
-<td>Parameter missing</td>
-</tr>
-<tr>
-<td rowspan="3"><code>xml:Element</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>name</td>
-<td>not allowed</td>
-</tr>
-<tr>
-<td>Position 2</td>
-<td><code>map&lt;string&gt;</code></td>
-<td>attribute map</td>
-<td>defaults to empty map</td>
-</tr>
-<tr>
-<td>Position 3</td>
-<td><code>xml</code></td>
-<td>children</td>
-<td>defaults to empty xml value</td>
-</tr>
-<tr>
-<td rowspan="2"><code>xml:ProcessingInstruction</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>target</td>
-<td>not allowed</td>
-</tr>
-<tr>
-<td>Position 2</td>
-<td><code>string</code></td>
-<td>content</td>
-<td>defaults to empty string</td>
-</tr>
-<tr>
-<td><code>xml:Comment</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>content</td>
-<td>defaults to empty string</td>
-</tr>
-<tr>
-<td><code>xml:Text</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>characters</td>
-<td>defaults to empty string</td>
-</tr>
-<tr>
-<td rowspan="3"><code>error&lt;<var>T</var>&gt;</code></td>
-<td>Position 1</td>
-<td><code>string</code></td>
-<td>message</td>
-<td>not allowed</td>
-</tr>
-<tr>
-<td>Position 2</td>
-<td><code>error?</code></td>
-<td>cause</td>
-<td>defaults to nil</td>
-</tr>
-<tr>
-<td>Name <var>k</var>
-</td>
-<td>type of field <var>k</var> of <code><var>T</var></code>, which will be a
-subtype of <code>value:Cloneable</code>
-</td>
-<td>field <var>k</var> of detail record</td>
-<td>detail record has no field <var>k</var>
-</td>
-</tr>
-</table>
-<p>
-In the above table, argument position 1 refers to the first positional argument.
-</p>
-<p>
-A type descriptor that is a subtype of <code>error</code> is functionally
-constructible only if it is definite. In particular, it may be an
-intersection-type-descriptor.
-</p>
-</section>
-
+<h3 id="section_5.9">5.9 Binding patterns and variables</h3>
 <section>
-<h3 id="section_5.10">5.10 Binding patterns and variables</h3>
-<section>
-<h4 id="section_5.10.1">5.10.1 Binding patterns</h4>
+<h4 id="section_5.9.1">5.9.1 Binding patterns</h4>
 <p>
 Binding patterns are used to support destructuring, which allows different parts
 of a single structured value each to be assigned to separate variables at the
@@ -3583,7 +3473,7 @@ same time.
    | <a href="#wildcard-binding-pattern"><span class="ntref">wildcard-binding-pattern</span></a>
    | <a href="#list-binding-pattern"><span class="ntref">list-binding-pattern</span></a>
    | <a href="#mapping-binding-pattern"><span class="ntref">mapping-binding-pattern</span></a>
-   | <a href="#functional-binding-pattern"><span class="ntref">functional-binding-pattern</span></a>
+   | <a href="#error-binding-pattern"><span class="ntref">error-binding-pattern</span></a>
 <span class="ntdfn" id="capture-binding-pattern">capture-binding-pattern</span> := <a href="#variable-name"><span class="ntref">variable-name</span></a>
 <span class="ntdfn" id="variable-name">variable-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="wildcard-binding-pattern">wildcard-binding-pattern</span> := <code>_</code>
@@ -3599,16 +3489,17 @@ same time.
    <a href="#field-name"><span class="ntref">field-name</span></a> <code>:</code> <a href="#binding-pattern"><span class="ntref">binding-pattern</span></a>
    | <a href="#variable-name"><span class="ntref">variable-name</span></a>
 <span class="ntdfn" id="rest-binding-pattern">rest-binding-pattern</span> := <code>...</code> <a href="#variable-name"><span class="ntref">variable-name</span></a>
-<span class="ntdfn" id="functional-binding-pattern">functional-binding-pattern</span> := <a href="#functionally-constructible-type-reference"><span class="ntref">functionally-constructible-type-reference</span></a> <code>(</code> <a href="#arg-list-binding-pattern"><span class="ntref">arg-list-binding-pattern</span></a> <code>)</code>
-<span class="ntdfn" id="arg-list-binding-pattern">arg-list-binding-pattern</span> :=
-   <a href="#positional-arg-binding-patterns"><span class="ntref">positional-arg-binding-patterns</span></a> [<code>,</code> <a href="#other-arg-binding-patterns"><span class="ntref">other-arg-binding-patterns</span></a>]
-   | <a href="#other-arg-binding-patterns"><span class="ntref">other-arg-binding-patterns</span></a>
-<span class="ntdfn" id="positional-arg-binding-patterns">positional-arg-binding-patterns</span> := <a href="#positional-arg-binding-pattern"><span class="ntref">positional-arg-binding-pattern</span></a> (<code>,</code> <a href="#positional-arg-binding-pattern"><span class="ntref">positional-arg-binding-pattern</span></a>)*
-<span class="ntdfn" id="positional-arg-binding-pattern">positional-arg-binding-pattern</span> := <a href="#binding-pattern"><span class="ntref">binding-pattern</span></a>
-<span class="ntdfn" id="other-arg-binding-patterns">other-arg-binding-patterns</span> :=
-   <a href="#named-arg-binding-patterns"><span class="ntref">named-arg-binding-patterns</span></a> [<code>,</code> <a href="#rest-binding-pattern"><span class="ntref">rest-binding-pattern</span></a>]
-   | [<a href="#rest-binding-pattern"><span class="ntref">rest-binding-pattern</span></a>]
-<span class="ntdfn" id="named-arg-binding-patterns">named-arg-binding-patterns</span> := <a href="#named-arg-binding-pattern"><span class="ntref">named-arg-binding-pattern</span></a> (<code>,</code> <a href="#named-arg-binding-pattern"><span class="ntref">named-arg-binding-pattern</span></a>)*
+<span class="ntdfn" id="error-binding-pattern">error-binding-pattern</span> := <code>error</code> [<a href="#error-type-reference"><span class="ntref">error-type-reference</span></a>] <code>(</code> <a href="#error-arg-list-binding-pattern"><span class="ntref">error-arg-list-binding-pattern</span></a> <code>)</code>
+<span class="ntdfn" id="error-type-reference">error-type-reference</span> := <a href="#type-reference"><span class="ntref">type-reference</span></a>
+<span class="ntdfn" id="error-arg-list-binding-pattern">error-arg-list-binding-pattern</span> :=
+   <a href="#error-message-binding-pattern"><span class="ntref">error-message-binding-pattern</span></a> [<code>,</code> <a href="#error-cause-binding-pattern"><span class="ntref">error-cause-binding-pattern</span></a>] [<code>,</code> <a href="#error-field-binding-patterns"><span class="ntref">error-field-binding-patterns</span></a>]
+   | [<a href="#error-field-binding-patterns"><span class="ntref">error-field-binding-patterns</span></a>]
+<span class="ntdfn" id="error-message-binding-pattern">error-message-binding-pattern</span> := <a href="#simple-binding-pattern"><span class="ntref">simple-binding-pattern</span></a> 
+<span class="ntdfn" id="error-cause-binding-pattern">error-cause-binding-pattern</span> := <a href="#simple-binding-pattern"><span class="ntref">simple-binding-pattern</span></a> | <a href="#error-binding-pattern"><span class="ntref">error-binding-pattern</span></a>
+<span class="ntdfn" id="simple-binding-pattern">simple-binding-pattern</span> := <a href="#capture-binding-pattern"><span class="ntref">capture-binding-pattern</span></a> | <a href="#wildcard-binding-pattern"><span class="ntref">wildcard-binding-pattern</span></a>
+<span class="ntdfn" id="error-field-binding-patterns">error-field-binding-patterns</span> :=
+   <a href="#named-arg-binding-pattern"><span class="ntref">named-arg-binding-pattern</span></a> (<code>,</code> <a href="#named-arg-binding-pattern"><span class="ntref">named-arg-binding-pattern</span></a>)* [<code>,</code> <a href="#rest-binding-pattern"><span class="ntref">rest-binding-pattern</span></a>]
+   | <a href="#rest-binding-pattern"><span class="ntref">rest-binding-pattern</span></a>
 <span class="ntdfn" id="named-arg-binding-pattern">named-arg-binding-pattern</span> := <a href="#arg-name"><span class="ntref">arg-name</span></a> <code>=</code> <a href="#binding-pattern"><span class="ntref">binding-pattern</span></a>
 </pre>
 <p>
@@ -3640,17 +3531,21 @@ consisting of all the other fields to be assigned to <code>v</code>; a
 field-binding-pattern consisting of just a variable-name <code>x</code> is
 equivalent to a field-binding-pattern <code>x: x</code>;
 </li>
-<li>a functional-binding-pattern T(p<sub>1</sub>,
-p<sub>1</sub>,...,p<sub>m</sub>, arg<sub>1</sub> = p<sub>m + 1</sub>,
-arg<sub>2</sub> = p<sub>m + 2</sub>, ..., arg<sub>m + n</sub> = p<sub>n</sub>,
-r) matches a value if the shape of the value belongs to T and the decomposition
-of the value has m or more positional arguments and for each i in 1 to m,
-p<sub>i</sub> matches the i-th positional argument, and for each j in 1 to n,
-the decomposition has a named argument arg<sub>j</sub> and p<sub>m + j</sub>
-matches the value of that named argument; if r is <code>...v</code> then a
-successful match causes a new mapping value consisting of all named arguments in
-the decomposition other than arg<sub>1</sub>, arg<sub>2</sub>, ... ,
-arg<sub>n</sub> to be assigned to <code>v</code>;</li>
+<li>an error-binding-pattern error ET(p<sub>m</sub>, p<sub>c</sub>,
+f<sub>1</sub> = p<sub>1</sub>, f<sub>2</sub> = p<sub>2</sub>, ..., f<sub>n</sub>
+= p<sub>n</sub>, r) matches an error value e if
+<ul>
+<li>e has a message that matches p<sub>m</sub>,</li>
+<li>if p<sub>c</sub> is present, e has a cause that matches p<sub>c</sub>,</li>
+<li>e has a detail record that has fields f<sub>1</sub>, f<sub>2</sub>, ... ,
+f<sub>n</sub> such that p<sub>i</sub> matches the value of field f<sub>i</sub>
+for each i in 1 to n,</li>
+<li>if ET is present, the shape of e is in ET,</li>
+<li>if r is <code>...v</code>, then a successful match causes a new mapping
+value consisting of all fields of the detail record other than f<sub>1</sub>,
+f<sub>2</sub>, ... , f<sub>n</sub> to be assigned to <code>v</code>;</li>
+</ul>
+</li>
 </ul>
 <p>
 All the variables in a binding-pattern must be distinct e.g. [x, x] is not
@@ -3675,7 +3570,7 @@ descriptor.</li>
 
 </section>
 <section>
-<h4 id="section_5.10.2">5.10.2 Typed binding patterns</h4>
+<h4 id="section_5.9.2">5.9.2 Typed binding patterns</h4>
 
 <pre class="grammar"><span class="ntdfn" id="typed-binding-pattern">typed-binding-pattern</span> := <a href="#inferable-type-descriptor"><span class="ntref">inferable-type-descriptor</span></a> <a href="#binding-pattern"><span class="ntref">binding-pattern</span></a>
 <span class="ntdfn" id="inferable-type-descriptor">inferable-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> | <code>var</code>
@@ -3705,7 +3600,7 @@ will never fail at runtime.
 </p>
 </section>
 <section>
-<h4 id="section_5.10.3">5.10.3 Variable and identifier scoping</h4>
+<h4 id="section_5.9.3">5.9.3 Variable and identifier scoping</h4>
 <p>
 For every variable, there is place in the program that declares it. Variables
 are lexically scoped: every variable declaration has a scope which determines
@@ -3778,7 +3673,7 @@ same identifier in the same symbol space also with block-scope.
    | <a href="#member-access-expr"><span class="ntref">member-access-expr</span></a>
    | <a href="#function-call-expr"><span class="ntref">function-call-expr</span></a>
    | <a href="#method-call-expr"><span class="ntref">method-call-expr</span></a>
-   | <a href="#functional-constructor-expr"><span class="ntref">functional-constructor-expr</span></a>
+   | <a href="#error-constructor-expr"><span class="ntref">error-constructor-expr</span></a>
    | <a href="#anonymous-function-expr"><span class="ntref">anonymous-function-expr</span></a>
    | <a href="#let-expr"><span class="ntref">let-expr</span></a>
    | <a href="#type-cast-expr"><span class="ntref">type-cast-expr</span></a>
@@ -4075,10 +3970,6 @@ type widened to contain the entire basic type of which it is a subtype. For
 example, the precise type of the string literal <code>"X"</code> is the
 singleton type <code>"X"</code>, but the broad type is <code>string</code>.
 </p>
-<p>
-For a type-cast-expr, the precise type and the broad type are the type
-specified in the cast.
-</p>
 </section>
 </section>
 <section>
@@ -4117,7 +4008,7 @@ string that has a constituent character for each singleton item in the
    | <a href="#raw-template-expr"><span class="ntref">raw-template-expr</span></a>
    | <a href="#structural-constructor-expr"><span class="ntref">structural-constructor-expr</span></a>
    | <a href="#object-constructor-expr"><span class="ntref">object-constructor-expr</span></a>
-   | <a href="#functional-constructor-expr"><span class="ntref">functional-constructor-expr</span></a>
+   | <a href="#error-constructor-expr"><span class="ntref">error-constructor-expr</span></a>
    | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
    | <a href="#type-cast-expr"><span class="ntref">type-cast-expr</span></a>
    | <a href="#unary-expr"><span class="ntref">unary-expr</span></a>
@@ -4139,8 +4030,7 @@ its read-only bit on.
 </p>
 <p>
 Within a <code>const-expr</code>, any nested expression must also be a
-const-expr. A <code>functional-constructor-expr</code> within a
-<code>const-expr</code> must not construct an error value.
+const-expr.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="constant-reference-expr">constant-reference-expr</span> := <a href="#variable-reference-expr"><span class="ntref">variable-reference-expr</span></a>
@@ -4608,19 +4498,9 @@ If there is a <code>type-reference</code>, then the referenced type is included
 in the object's type in the same was as an <code>object-type-inclusion</code>.
 The type-ids of the constructed object are type ids of the referenced type.
 </p>
-<p>
-An <code>object-constructor-expr</code> will construct an object with its
-read-only bit set if it occurs within a <code>const-expr</code> or if the the
-applicable contextually expected type is a subtype of readonly. In this case,
-the read-only bit of every field will also be set and the contextually expected
-type for a field-initializer will be the intersection of readonly and the type
-specified in the type-descriptor of the object-field. Conversely, if every field
-is specified to be <code>readonly</code>, then the read-only bit of the
-constructed object will be set.
-</p>
 
 <pre class="grammar"><span class="ntdfn" id="object-field">object-field</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<code>readonly</code>]
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<code>final</code>]
    <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<code>=</code> <a href="#field-initializer"><span class="ntref">field-initializer</span></a>] <code>;</code>
 <span class="ntdfn" id="field-initializer">field-initializer</span> := <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
@@ -4628,12 +4508,25 @@ constructed object will be set.
 An <code>object-field</code> declares and initializes a field of the object.
 </p>
 <p>
-If <code>readonly</code> is present, the read-only bit of the field will be set.
-</p>
-<p>
 If a field does not specify a field-initializer, then there must be an <code>init</code>
 method and the <code>init</code> method must initialize the field.
 </p>
+<p>
+If <code>final</code> is present, then the field must be assigned to exactly
+once, either by its initializer or in the <code>init</code> method.
+</p>
+<p>
+An <code>object-constructor-expr</code> will construct an object with its
+read-only bit set if
+</p>
+<ul>
+<li>every object-field is declared as <code>final</code> and has a
+type-descriptor that is a subtype of readonly; or</li>
+<li>it occurs within a <code>const-expr</code> or the applicable contextually
+expected type is a subtype of readonly; in this case, the contextually expected
+type for a field-initializer will be the intersection of readonly and the type
+specified in the type-descriptor of the object-field.</li>
+</ul>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn">method-defn</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<a href="#remote-qual"><span class="ntref">remote-qual</span></a>]
@@ -4793,7 +4686,7 @@ where the namespace-uri comes from xml-namespace-uri specified in the
 xmlns-decl, and the local-name comes from the identifier following the colon.
 </p>
 <p>
-If the variable-reference references a type defined with a type definition, then
+If the variable-reference references a type defined with a module type definition, then
 the result of evaluating the variable-reference-expr is a typedesc value for
 that type.
 </p>
@@ -5096,10 +4989,6 @@ abruptly with a panic. The static type of the function-call-expr is the return
 type of the function type.
 </p>
 <p>
-A function-call-expr where the function-reference refers to a type is interpreted
-as a functional-constructor-expr.
-</p>
-<p>
 The variable-reference must refer to a variable with function type. The type
 descriptor of that function type is used to construct an argument list from the
 specified arg-list. Note that it is the type descriptor of the declared type of
@@ -5124,9 +5013,7 @@ array type. If there is rest-arg, then no parameter defaults are added.
 <p>
 If there is no rest-arg, then each non-rest parameter that was not supplied by
 positional argument is added in order from a named argument, if there is one,
-and otherwise using the parameter default. An arg-list can only use a named
-argument to specify a parameter if the name of the parameter is visible at the
-point where the arg-list occurs. The contextually expected type for
+and otherwise using the parameter default. The contextually expected type for
 the expression specifying a named argument is the type declared for the
 corresponding parameter. A default parameter is computed by calling the closure
 in the type descriptor, passing it the previous arguments in the argument list.
@@ -5192,34 +5079,47 @@ the constraints that would apply if it has been written explicitly as a
 </p>
 </section>
 <section>
-<h3 id="section_6.18">6.18 Functional constructor</h3>
+<h3 id="section_6.18">6.18 Error constructor</h3>
 
-<pre class="grammar"><span class="ntdfn" id="functional-constructor-expr">functional-constructor-expr</span> := <a href="#functionally-constructible-type-reference"><span class="ntref">functionally-constructible-type-reference</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
+<pre class="grammar"><span class="ntdfn" id="error-constructor-expr">error-constructor-expr</span> := <code>error</code> [<a href="#error-type-reference"><span class="ntref">error-type-reference</span></a>] <code>(</code> <a href="#error-arg-list"><span class="ntref">error-arg-list</span></a> <code>)</code>
+<span class="ntdfn" id="error-arg-list">error-arg-list</span> := <a href="#positional-arg"><span class="ntref">positional-arg</span></a> [<code>,</code> <a href="#positional-arg"><span class="ntref">positional-arg</span></a>] (<code>,</code> <a href="#named-arg"><span class="ntref">named-arg</span></a>)*
 </pre>
 <p>
-A functional constructor uses functional syntax to construct a new value of a <a href="#functionally_constructible_types">functionally constructible type</a>. The
-functionally-constructible-type-reference identifies the type of value to be
-constructed.
+An error constructor constructs a new error value. If an error-type-reference is
+specified, it must denote a type that is a subtype of error; the effect is the
+same as making the contextually expected type be that specified by the
+error-type-reference. If there is no applicable contextually expected type, then
+it is the same as if there were a contextually expected type of
+<code>error</code>.
 </p>
 <p>
-An argument list consisting of positional and named argument values is
-constructed by evaluating the expressions in the <code>arg-list</code>. The
-construction parameter types determine the contextually expected type of each of
-the expressions. If there is no argument for a construction parameter that can
-be defaulted, then an argument for that parameter is added to the argument list
-with the default value.
+The applicable contextually expected type E must be definite. The type-ids of
+the constructed error value are those induced by E. Note that it is allowed for
+E to refer to an intersection-type-descriptor.
 </p>
 <p>
-When constructing an error value, the ImmutableClone abstract operation is
-applied to each named argument. The detail record is constructed as immutable.
-The stack trace describes the execution stack at the point where the functional
-constructor was evaluated. Any fields of the detail record that were not
-specified by a named argument can be defaulted using the defaults specified in
-the detail record type.
+The first positional-arg is of type string and specifies the error message; the
+second positional-arg, if present, is of type <code>error?</code>, with a
+default of nil, and specifies the cause.
 </p>
 <p>
-A functional-constructor-expr occurring within a const-expr will construct a
-value with its read-only bit on.
+Evaluating the error-constructor-expr constructs a new detail mapping. Each
+named-arg specifies a field of the error detail mapping; the static type of each
+named-arg must be a subtype of <code>value:Cloneable</code>. The type descriptor
+E implies a type descriptor D for the detail mapping. The arg-name of every
+named-arg must be specified as the field-name of an individual-field-descriptor
+occurring in D, unless there are no are no such field names. Fields with default
+values will also be added to the detail record based on D in the same way as the
+mapping-constructor-expr adds fields with default values based on the
+contextually expected type. The contextually expected type for each named-arg is
+determined from D in the same way as for a mapping-constructor-expr. The detail
+mapping is constructed as immutable, with its members being the result of
+appplying the ImmutableClone abstract operation to the result of evaluating each
+named-arg and every defaultable arg.
+</p>
+<p>
+The stack trace in the constructed error value describes the execution stack at
+the point where the error constructor was evaluated.
 </p>
 
 </section>
@@ -5909,6 +5809,7 @@ comprehensions; future versions will provided richer functionality.
    | <a href="#where-clause"><span class="ntref">where-clause</span></a>
    | <a href="#let-clause"><span class="ntref">let-clause</span></a>
    | <a href="#join-clause"><span class="ntref">join-clause</span></a>
+   | <a href="#order-by-clause"><span class="ntref">order-by-clause</span></a>
    | <a href="#limit-clause"><span class="ntref">limit-clause</span></a>
 </pre>
 <p>
@@ -6464,10 +6365,10 @@ strand must be part of the same thread as the current strand.
 
 <pre class="grammar"><span class="ntdfn" id="block-function-body">block-function-body</span> :=
    <code>{</code> [<a href="#default-worker-init"><span class="ntref">default-worker-init</span></a> <a href="#named-worker-decl"><span class="ntref">named-worker-decl</span></a>+] <a href="#default-worker"><span class="ntref">default-worker</span></a> <code>}</code>
-<span class="ntdfn" id="default-worker-init">default-worker-init</span> := <a href="#sequence-stmt"><span class="ntref">sequence-stmt</span></a>
-<span class="ntdfn" id="default-worker">default-worker</span> := <a href="#sequence-stmt"><span class="ntref">sequence-stmt</span></a>
+<span class="ntdfn" id="default-worker-init">default-worker-init</span> := <a href="#statement"><span class="ntref">statement</span></a>*
+<span class="ntdfn" id="default-worker">default-worker</span> := <a href="#statement"><span class="ntref">statement</span></a>*
 <span class="ntdfn" id="named-worker-decl">named-worker-decl</span> :=
-   [<a href="#annots"><span class="ntref">annots</span></a>] <code>worker</code> <a href="#worker-name"><span class="ntref">worker-name</span></a> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a> <code>{</code> <a href="#sequence-stmt"><span class="ntref">sequence-stmt</span></a> <code>}</code>
+   [<a href="#annots"><span class="ntref">annots</span></a>] <code>worker</code> <a href="#worker-name"><span class="ntref">worker-name</span></a> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 <span class="ntdfn" id="worker-name">worker-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
 <p>
@@ -6521,7 +6422,7 @@ as follows:
 <ol>
 <li>The statements in default-worker-init are executed.</li>
 <li>All the named workers are started. Each named worker executes its
-sequence-stmt on its strand.</li>
+statement-block on its strand.</li>
 <li>The statements in default-worker are executed. This happens without waiting
 for the termination of the named workers started in stage 2.</li>
 </ol>
@@ -6530,10 +6431,10 @@ Variables declared in default-worker-init are in scope within named workers,
 whereas variables declared in default-worker are not.
 </p>
 <p>
-The execution of a worker's sequence-stmt may result in the execution of a
+The execution of a worker's statements may result in the execution of a
 statement that causes the worker to terminate. For example, a return statement
 causes the worker to terminate. If this does not happen, then the worker
-terminates as soon as it has finished executing its sequence-stmt. In this case,
+terminates as soon as it has finished executing its statements. In this case,
 the worker terminates normally, and the termination value is nil. In other
 words, falling off the end of a worker is equivalent to <code>return;</code>,
 which is in turn equivalent to <code>return ();</code>.
@@ -6570,24 +6471,28 @@ In the above, function includes method, and function call includes method call.
 
 <pre class="grammar"><span class="ntdfn" id="statement">statement</span> := 
    <a href="#action-stmt"><span class="ntref">action-stmt</span></a>
-   | <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
    | <a href="#local-var-decl-stmt"><span class="ntref">local-var-decl-stmt</span></a>
-   | <a href="#local-type-defn-stmt"><span class="ntref">local-type-defn-stmt</span></a>
    | <a href="#xmlns-decl-stmt"><span class="ntref">xmlns-decl-stmt</span></a>
    | <a href="#assignment-stmt"><span class="ntref">assignment-stmt</span></a>
    | <a href="#compound-assignment-stmt"><span class="ntref">compound-assignment-stmt</span></a>
    | <a href="#destructuring-assignment-stmt"><span class="ntref">destructuring-assignment-stmt</span></a>
    | <a href="#call-stmt"><span class="ntref">call-stmt</span></a>
    | <a href="#if-else-stmt"><span class="ntref">if-else-stmt</span></a>
-   | <a href="#match-stmt"><span class="ntref">match-stmt</span></a>
-   | <a href="#foreach-stmt"><span class="ntref">foreach-stmt</span></a>
-   | <a href="#while-stmt"><span class="ntref">while-stmt</span></a>
-   | <a href="#break-stmt"><span class="ntref">break-stmt</span></a>
+   | <a href="#regular-compound-stmt"><span class="ntref">regular-compound-stmt</span></a>
    | <a href="#continue-stmt"><span class="ntref">continue-stmt</span></a>
-   | <a href="#fork-stmt"><span class="ntref">fork-stmt</span></a>
+   | <a href="#break-stmt"><span class="ntref">break-stmt</span></a>
+   | <a href="#stmt-with-on-fail"><span class="ntref">stmt-with-on-fail</span></a>
+   | <a href="#fail-stmt"><span class="ntref">fail-stmt</span></a>
    | <a href="#panic-stmt"><span class="ntref">panic-stmt</span></a>
    | <a href="#return-stmt"><span class="ntref">return-stmt</span></a>
-   | <a href="#lock-stmt"><span class="ntref">lock-stmt</span></a>
+   | <a href="#fork-stmt"><span class="ntref">fork-stmt</span></a>
+
+<span class="ntdfn" id="regular-compound-stmt">regular-compound-stmt</span> :=
+  <a href="#do-stmt"><span class="ntref">do-stmt</span></a>
+  | <a href="#match-stmt"><span class="ntref">match-stmt</span></a>
+  | <a href="#foreach-stmt"><span class="ntref">foreach-stmt</span></a>
+  | <a href="#while-stmt"><span class="ntref">while-stmt</span></a>
+  | <a href="#lock-stmt"><span class="ntref">lock-stmt</span></a>
 </pre>
 <p>
 The execution of any statement may involve the evaluation of actions and
@@ -6595,24 +6500,33 @@ expressions, and the execution of substatements. The following sections
 describes how each kind of statement is evaluated, assuming that the evaluation
 of those expressions and actions completes normally, and assuming that the
 execution of any substatements does not cause termination of the current worker.
- Except where explicitly stated to the contrary, statements handle abrupt
-completion of the evaluation of expressions and actions as follows. If in the
-course of executing a statement, the evaluation of some expression or action
-completes abruptly with associated value e, then the current worker is
-terminated with termination value e; if the abrupt termination is a check-fail,
-then the termination is normal, otherwise the termination is abnormal. If the
-execution of a substatement causes termination of the current worker, then the
-execution of the statement terminates at that point.
+Except where explicitly stated to the contrary, statements handle abrupt
+completion of the evaluation of expressions and actions as follows. There are
+two possibilities.
+</p>
+<ul>
+<li>If the abrupt termination is a check-fail, then control flow is transferred
+as if by a fail statement with an expression that evaluates to e.</li>
+<li>If the abrupt termination is a panic, then the current worker is terminated
+abnormally with termination value e. This is the same as if
+a panic statement is executed with an expression that evaluates to e.</li>
+</ul>
+<p>
+If the execution of a substatement causes termination of the current worker,
+then the execution of the statement terminates at that point.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="sequence-stmt">sequence-stmt</span> := <a href="#statement"><span class="ntref">statement</span></a>*
-<span class="ntdfn" id="block-stmt">block-stmt</span> := <code>{</code> <a href="#sequence-stmt"><span class="ntref">sequence-stmt</span></a> <code>}</code>
+<pre class="grammar">
+<span class="ntdfn" id="statement-block">statement-block</span> := <code>{</code> <a href="#statement"><span class="ntref">statement</span></a>* <code>}</code>
 </pre>
 <p>
-A <code>sequence-stmt</code> executes its statements sequentially. A
-<code>block-stmt</code> is executed by executing its <code>sequence-stmt</code>.
+A <code>statement-block</code> is a syntactic grouping of statements, which are
+executed sequentially.
 </p>
+
 </section>
+
+
 <section>
 <h3 id="section_7.5">7.5 Fork statement</h3>
 
@@ -7095,7 +7009,7 @@ that it is used only for a method with the <code>remote</code> modifier.
 <section>
 <h3 id="section_7.10">7.10 Query action</h3>
 <pre class="grammar"><span class="ntdfn" id="query-action">query-action</span> := <a href="#query-pipeline"><span class="ntref">query-pipeline</span></a> <a href="#do-clause"><span class="ntref">do-clause</span></a>
-<span class="ntdfn" id="do-clause">do-clause</span> := <code>do</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+<span class="ntdfn" id="do-clause">do-clause</span> := <code>do</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 <p>
 The clauses in the query-pipeline of query-action are executed in the same way
@@ -7103,7 +7017,7 @@ as the clauses in the query-pipeline of a query-expr.
 </p>
 <p>
 The query-action is executed as follows. For each input frame <var>f</var>
-emitted by the query-pipeline, execute the block-stmt with <var>f</var> in
+emitted by the query-pipeline, execute the statement-block with <var>f</var> in
 scope. If a clause in the query-pipeline completes early with error
 <var>e</var>, the result of the query-action is <var>e</var>. Otherwise, the
 result of the query-action is nil.
@@ -7126,7 +7040,7 @@ that is local to the block in which they occur.
 </p>
 <p>
 The scope of variables declared in a <code>local-var-decl-stmt</code> starts
-immediately after the statement and continues to the end of the block statement
+immediately after the statement and continues to the end of the statement block
 in which it occurs.
 </p>
 <p>
@@ -7267,19 +7181,7 @@ possibility of x being assigned to</li>
 </ul>
 </section>
 <section>
-<h3 id="section_7.13">7.13 Local type definition statement</h3>
-
-<pre class="grammar"><span class="ntdfn" id="local-type-defn-stmt">local-type-defn-stmt</span> :=
-   [<a href="#annots"><span class="ntref">annots</span></a>] <code>type</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>;</code>
-</pre>
-<p>
-A local-type-defn-stmt binds the identifier to a type descriptor within the
-scope of the current block. The type-descriptor is resolved when the statement
-is executed.
-</p>
-</section>
-<section>
-<h3 id="XML_namespace_declaration_statement">7.14 XML namespace declaration statement</h3>
+<h3 id="XML_namespace_declaration_statement">7.13 XML namespace declaration statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="xmlns-decl-stmt">xmlns-decl-stmt</span> := <a href="#xmlns-decl"><span class="ntref">xmlns-decl</span></a>
 <span class="ntdfn" id="xmlns-decl">xmlns-decl</span> := <code>xmlns</code> <a href="#xml-namespace-uri"><span class="ntref">xml-namespace-uri</span></a> [ <code>as</code> <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> ] <code>;</code>
@@ -7312,7 +7214,7 @@ string.
 </p>
 </section>
 <section>
-<h3 id="section_7.15">7.15 Assignment</h3>
+<h3 id="section_7.14">7.14 Assignment</h3>
 
 <p>
 There are three kinds of assignment statement:
@@ -7329,7 +7231,7 @@ last one builds on the concept of a binding pattern.
 </p>
 
 <section>
-<h4 id="section_7.15.1">7.15.1 Lvalues</h4>
+<h4 id="section_7.14.1">7.14.1 Lvalues</h4>
 
 <p>
 An lvalue is what the left hand side of an assignment evaluates to. An lvalue
@@ -7530,7 +7432,7 @@ key type for T.
 
 </section>
 <section>
-<h4 id="section_7.15.2">7.15.2 Assignment statement</h4>
+<h4 id="section_7.14.2">7.14.2 Assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="assignment-stmt">assignment-stmt</span> := <a href="#lvexpr"><span class="ntref">lvexpr</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
 </pre>
@@ -7551,7 +7453,7 @@ It is executed at as follows:
 
 </section>
 <section>
-<h4 id="section_7.15.3">7.15.3 Compound assignment statement</h4>
+<h4 id="section_7.14.3">7.14.3 Compound assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="compound-assignment-stmt">compound-assignment-stmt</span> := <a href="#lvexpr"><span class="ntref">lvexpr</span></a> <a href="#CompoundAssignmentOperator"><span class="ntref">CompoundAssignmentOperator</span></a> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
 <span class="ntdfn" id="CompoundAssignmentOperator">CompoundAssignmentOperator</span> := <a href="#BinaryOperator"><span class="ntref">BinaryOperator</span></a> <code>=</code>
@@ -7587,7 +7489,7 @@ and <var>v2</var>, resulting in a value <var>v3</var>
 
 </section>
 <section>
-<h4 id="section_7.15.4">7.15.4 Destructuring assignment statement</h4>
+<h4 id="section_7.14.4">7.14.4 Destructuring assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="destructuring-assignment-stmt">destructuring-assignment-stmt</span> :=
    <a href="#binding-pattern-not-variable-reference"><span class="ntref">binding-pattern-not-variable-reference</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
@@ -7595,7 +7497,7 @@ and <var>v2</var>, resulting in a value <var>v3</var>
    <a href="#wildcard-binding-pattern"><span class="ntref">wildcard-binding-pattern</span></a>
    | <a href="#list-binding-pattern"><span class="ntref">list-binding-pattern</span></a>
    | <a href="#mapping-binding-pattern"><span class="ntref">mapping-binding-pattern</span></a>
-   | <a href="#functional-binding-pattern"><span class="ntref">functional-binding-pattern</span></a>
+   | <a href="#error-binding-pattern"><span class="ntref">error-binding-pattern</span></a>
 </pre>
 <p>
 A destructuring assignment is executed by evaluating the action-or-expr
@@ -7610,7 +7512,7 @@ of this type.
 </section>
 </section>
 <section>
-<h3 id="section_7.16">7.16 Action statement</h3>
+<h3 id="section_7.15">7.15 Action statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="action-stmt">action-stmt</span> := <a href="#action"><span class="ntref">action</span></a> <code>;</code>
 </pre>
@@ -7621,7 +7523,7 @@ the static type of an action in an action-stmt is not nil.
 </p>
 </section>
 <section>
-<h3 id="section_7.17">7.17 Call statement</h3>
+<h3 id="section_7.16">7.16 Call statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="call-stmt">call-stmt</span> := <a href="#call-expr"><span class="ntref">call-expr</span></a> <code>;</code>
 <span class="ntdfn" id="call-expr">call-expr</span> :=
@@ -7637,33 +7539,38 @@ type of the call-expr in an call-stmt is not a subtype of nil. Note that
 </p>
 </section>
 <section>
-<h3 id="section_7.18">7.18 Conditional statement</h3>
+<h3 id="section_7.17">7.17 Conditional statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="if-else-stmt">if-else-stmt</span> :=
-   <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a> 
-   [ <code>else</code> <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a> ]* 
-   [ <code>else</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a> ]
+   <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a> 
+   [ <code>else</code> <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a> ]* 
+   [ <code>else</code> <a href="#statement-block"><span class="ntref">statement-block</span></a> ]
 </pre>
 <p>
 The if-else statement is used for conditional execution.
 </p>
 <p>
 The static type of the expression following <code>if</code> must be boolean.
-When an expression is true then the corresponding block statement is executed
+When an expression is true then the corresponding statement block is executed
 and the if statement completes. If no expression is true then, if the else block
-is present, the corresponding block statement is executed.
+is present, the corresponding statement block is executed.
 </p>
+</section>
+<section>
+<h3 id="section_7.18">7.18 Do statement</h3>
+<pre class="grammar"><span class="ntdfn" id="do-stmt">do-stmt</span> := <code>do</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+</pre>
 </section>
 <section>
 <h3 id="section_7.19">7.19 Match statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="match-stmt">match-stmt</span> := <code>match</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>{</code> <a href="#match-clause"><span class="ntref">match-clause</span></a>+ <code>}</code>
 <span class="ntdfn" id="match-clause">match-clause</span> :=
-  <a href="#match-pattern-list"><span class="ntref">match-pattern-list</span></a> [<a href="#match-guard"><span class="ntref">match-guard</span></a>] <code>=&gt;</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+  <a href="#match-pattern-list"><span class="ntref">match-pattern-list</span></a> [<a href="#match-guard"><span class="ntref">match-guard</span></a>] <code>=&gt;</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 <span class="ntdfn" id="match-guard">match-guard</span> := <code>if</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
-A match statement selects a block statement to execute based on which patterns a
+A match statement selects a statement block to execute based on which patterns a
 value matches.
 </p>
 <p>
@@ -7682,14 +7589,14 @@ created</li>
 resulting in a value b</li>
 <li>if b is false, then the execution of the match-stmt continues to the next
 match-clause</li>
-<li>otherwise, the block-stmt in the match-clause is executed</li>
+<li>otherwise, the statement-block in the match-clause is executed</li>
 <li>execution of the match-stmt completes</li>
 </ol>
 </li>
 </ol>
 <p>
 The scope of any variables created in a match-pattern-list of a match-clause is
-both the match-guard, if any, and the block-stmt in that match-clause. The
+both the match-guard, if any, and the statement-block in that match-clause. The
 static type of the expression in match-guard must be a subtype of boolean.
 </p>
 
@@ -7712,7 +7619,7 @@ variables.
    | <a href="#const-pattern"><span class="ntref">const-pattern</span></a>
    | <a href="#list-match-pattern"><span class="ntref">list-match-pattern</span></a>
    | <a href="#mapping-match-pattern"><span class="ntref">mapping-match-pattern</span></a>
-   | <a href="#functional-match-pattern"><span class="ntref">functional-match-pattern</span></a>
+   | <a href="#error-match-pattern"><span class="ntref">error-match-pattern</span></a>
 </pre>
 <p>
 A match-pattern combines the destructuring done by a binding-pattern with the
@@ -7758,16 +7665,19 @@ type any, in other words if the basic type of the value is not error.
    | [ <a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a> ] 
 <span class="ntdfn" id="field-match-pattern">field-match-pattern</span> := <a href="#field-name"><span class="ntref">field-name</span></a> <code>:</code> <a href="#match-pattern"><span class="ntref">match-pattern</span></a>
 <span class="ntdfn" id="rest-match-pattern">rest-match-pattern</span> := <code>...</code> <code>var</code> <a href="#variable-name"><span class="ntref">variable-name</span></a>
-<span class="ntdfn" id="functional-match-pattern">functional-match-pattern</span> := <a href="#functionally-constructible-type-reference"><span class="ntref">functionally-constructible-type-reference</span></a> <code>(</code> <a href="#arg-list-match-pattern"><span class="ntref">arg-list-match-pattern</span></a> <code>)</code>
-<span class="ntdfn" id="arg-list-match-pattern">arg-list-match-pattern</span> :=
-   <a href="#positional-arg-match-patterns"><span class="ntref">positional-arg-match-patterns</span></a> [<code>,</code> <a href="#other-arg-match-patterns"><span class="ntref">other-arg-match-patterns</span></a>]
-   | <a href="#other-arg-match-patterns"><span class="ntref">other-arg-match-patterns</span></a>
-<span class="ntdfn" id="positional-arg-match-patterns">positional-arg-match-patterns</span> := <a href="#positional-arg-match-pattern"><span class="ntref">positional-arg-match-pattern</span></a> (<code>,</code> <a href="#positional-arg-match-pattern"><span class="ntref">positional-arg-match-pattern</span></a>)*
-<span class="ntdfn" id="positional-arg-match-pattern">positional-arg-match-pattern</span> := <a href="#match-pattern"><span class="ntref">match-pattern</span></a>
-<span class="ntdfn" id="other-arg-match-patterns">other-arg-match-patterns</span> :=
-   <a href="#named-arg-match-patterns"><span class="ntref">named-arg-match-patterns</span></a> [<code>,</code> <a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a>]
-   | [<a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a>]
-<span class="ntdfn" id="named-arg-match-patterns">named-arg-match-patterns</span> := <a href="#named-arg-match-pattern"><span class="ntref">named-arg-match-pattern</span></a> (<code>,</code> <a href="#named-arg-match-pattern"><span class="ntref">named-arg-match-pattern</span></a>)*
+<span class="ntdfn" id="error-match-pattern">error-match-pattern</span> := <code>error</code> [<a href="#error-type-reference"><span class="ntref">error-type-reference</span></a>] <code>(</code> <a href="#error-arg-list-match-pattern"><span class="ntref">error-arg-list-match-pattern</span></a> <code>)</code>
+<span class="ntdfn" id="error-arg-list-match-pattern">error-arg-list-match-pattern</span> :=
+   <a href="#error-message-match-pattern"><span class="ntref">error-message-match-pattern</span></a> [<code>,</code> <a href="#error-cause-match-pattern"><span class="ntref">error-cause-match-pattern</span></a>] [<code>,</code> <a href="#error-field-match-patterns"><span class="ntref">error-field-match-patterns</span></a>]
+   | [<a href="#error-field-match-patterns"><span class="ntref">error-field-match-patterns</span></a>]
+<span class="ntdfn" id="error-message-match-pattern">error-message-match-pattern</span> := <a href="#simple-match-pattern"><span class="ntref">simple-match-pattern</span></a>
+<span class="ntdfn" id="error-cause-match-pattern">error-cause-match-pattern</span> := <a href="#simple-match-pattern"><span class="ntref">simple-match-pattern</span></a> | <a href="#error-match-pattern"><span class="ntref">error-match-pattern</span></a>
+<span class="ntdfn" id="simple-match-pattern">simple-match-pattern</span> :=
+   <a href="#wildcard-match-pattern"><span class="ntref">wildcard-match-pattern</span></a>
+   | <a href="#const-pattern"><span class="ntref">const-pattern</span></a>
+   | <code>var</code> <a href="#variable-name"><span class="ntref">variable-name</span></a>
+<span class="ntdfn" id="error-field-match-patterns">error-field-match-patterns</span> :=
+   <a href="#named-arg-match-pattern"><span class="ntref">named-arg-match-pattern</span></a> (<code>,</code> <a href="#named-arg-match-pattern"><span class="ntref">named-arg-match-pattern</span></a>)* [<code>,</code> <a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a>]
+   | <a href="#rest-match-pattern"><span class="ntref">rest-match-pattern</span></a>
 <span class="ntdfn" id="named-arg-match-pattern">named-arg-match-pattern</span> := <a href="#arg-name"><span class="ntref">arg-name</span></a> <code>=</code> <a href="#match-pattern"><span class="ntref">match-pattern</span></a>
 </pre>
 
@@ -7779,11 +7689,11 @@ bound to a new mapping that contains just the fields for which that did not
 match a <code>field-match-pattern</code>.
 </p>
 <p>
-For a match of a <code>functional-match-pattern</code> against a value to
-succeed, the type referenced by the functionally-constructible-type-reference
-must contain the shape of the value; because of the limited mutability of the
-xml and error basic types, this requirement is equivalent to requiring that the
-value belong to the referenced type.
+For a match of an <code>error-match-pattern</code> with an
+<code>error-type-reference</code> against an error value to succeed, the
+referenced error type must contain the shape of the error value; since errors
+are immutable, this requirement is equivalent to requiring that the error value
+belong to the referenced error type.
 </p>
 
 </section>
@@ -7791,16 +7701,16 @@ value belong to the referenced type.
 <h3 id="section_7.20">7.20 Foreach statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="foreach-stmt">foreach-stmt</span> :=
-   <code>foreach</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+   <code>foreach</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 <p>
-A foreach statement iterates over an iterable value, executing a block statement
+A foreach statement iterates over an iterable value, executing a statement block
 once for each value in the iterable value's iteration sequence. The static type
 of action-or-expr must be an iterable type with an iteration completion type of
 nil.
 </p>
 <p>
-The scope of any variables created in typed-binding-pattern is block-stmt. These
+The scope of any variables created in typed-binding-pattern is statement-block. These
 variables are implicitly final.
 </p>
 <p>
@@ -7820,7 +7730,7 @@ result of calling c.iterator()</li>
 <li>if n is nil, then terminate execution of the foreach statement</li>
 <li>match typed-binding-pattern to n.value causing assignments to any variables
 that were created in typed-binding-pattern</li>
-<li>execute block-stmt with the variable bindings from step 5 in scope; in the
+<li>execute statement-block with the variable bindings from step 5 in scope; in the
 course of so doing
 <ol>
 <li>the execution of a break-stmt terminates execution of the foreach statement</li>
@@ -7844,10 +7754,10 @@ typed-binding-pattern uses var, then the type will be inferred from the type of
 <section>
 <h3 id="section_7.21">7.21 While statement</h3>
 
-<pre class="grammar"><span class="ntdfn" id="while-stmt">while-stmt</span> := <code>while</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+<pre class="grammar"><span class="ntdfn" id="while-stmt">while-stmt</span> := <code>while</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 <p>
-A while statement repeatedly executes a block statement so long as a
+A while statement repeatedly executes a statement block so long as a
 boolean-valued expression evaluates to true.
 </p>
 <p>
@@ -7857,7 +7767,7 @@ In more detail, a while statement executes as follows:
 <li>evaluate expression;</li>
 <li>if expression evaluates to false, terminate execution of the while
 statement;</li>
-<li>execute block-stmt; in the course of so doing
+<li>execute statement-block; in the course of so doing
 <ol>
 <li>the execution of a break-stmt results in termination of execution of the
 while statement</li>
@@ -7880,7 +7790,7 @@ The static type of <code>expression</code> must be a subtype of boolean.
 A continue statement is only allowed if it is lexically enclosed within a
 while-stmt or a foreach-stmt. Executing a continue statement causes execution of
 the nearest enclosing while-stmt or foreach-stmt to jump to the end of the
-outermost block-stmt in the while-stmt or foreach-stmt.
+outermost statement-block in the while-stmt or foreach-stmt.
 </p>
 </section>
 <section>
@@ -7894,40 +7804,16 @@ while-stmt or a foreach-stmt. Executing a break statement causes the nearest
 enclosing while-stmt or foreach-stmt to terminate.
 </p>
 </section>
-<section>
-<h3 id="section_7.24">7.24 Panic statement</h3>
-
-<pre class="grammar"><span class="ntdfn" id="panic-stmt">panic-stmt</span> := <code>panic</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
-</pre>
-<p>
-A panic statement terminates the current worker abnormally. The result of
-evaluating <code>expression</code> provides the termination value of the worker.
-</p>
-<p>
-The static type of <code>expression</code> must be a subtype of error.
-</p>
-</section>
-<section>
-<h3 id="section_7.25">7.25 Return statement</h3>
-
-<pre class="grammar"><span class="ntdfn" id="return-stmt">return-stmt</span> := <code>return</code> [ <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> ] <code>;</code>
-</pre>
-<p>
-A return statement terminates the current worker normally.The result of
-evaluating the action-or-expr provides the termination value of the worker. If
-action-or-expr is omitted, then the termination value is nil.
-</p>
-</section>
 
 <section>
-<h3 id="section_7.26">7.26 Lock statement</h3>
-<pre class="grammar"><span class="ntdfn" id="lock-stmt">lock-stmt</span> := <code>lock</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+<h3 id="section_7.24">7.24 Lock statement</h3>
+<pre class="grammar"><span class="ntdfn" id="lock-stmt">lock-stmt</span> := <code>lock</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 
 <p>
-A lock-stmt executing in the context of some strand must execute its block-stmt
+A lock-stmt executing in the context of some strand must execute its statement-block
 in such a way that the effect on the state of the program is consistent with the
-execution of the block-stmt not being interleaved with the execution of a
+execution of the statement-block not being interleaved with the execution of a
 lock-stmt on any other strand.
 </p>
 <p>
@@ -7948,6 +7834,73 @@ there is a function call lexically within the lock-stmt that might result
 directly or indirectly in a call to that defined function.
 </p>
 
+</section>
+
+<section>
+<h3 id="section_7.25">7.25 On fail clause</h3>
+<pre class="grammar"><span class="ntdfn" id="stmt-with-on-fail">stmt-with-on-fail</span> := <a href="#regular-compound-stmt"><span class="ntref">regular-compound-stmt</span></a> <a href="#on-fail-clause"><span class="ntref">on-fail-clause</span></a>
+<span class="ntdfn" id="on-fail-clause">on-fail-clause</span> := <code>on</code> <code>fail</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+</pre>
+<p>
+A <code>stmt-with-on-fail</code> is executed by executing the
+<code>regular-compound-stmt</code>. A <code>check</code> expression or action,
+or a <code>fail</code> statement may cause control to transfer to the
+<code>on-fail-cause</code>. In this case, the <code>typed-binding-pattern</code>
+is matched to the associated error value, binding the variables occurring within
+the <code>typed-binding-pattern</code>; the <code>statement-block</code> is then
+executed with these bindings in scope. Otherwise, the
+<code>on-fail-clause</code> is not executed.
+</p>
+<p>
+The static type of the associated error value is determined from the static type
+of the relevant <code>check</code> expressions and actions, and
+<code>fail</code> statements. It is a compile error unless the match of the
+<code>typed-binding-pattern</code> with the associated error value is guaranteed
+to succeed by the static type of the associated error value.
+</p>
+</section>
+
+<section>
+<h3 id="section_7.26">7.26 Fail statement</h3>
+<pre class="grammar"><span class="ntdfn" id="fail-stmt">fail-stmt</span> := <code>fail</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
+</pre>
+<p>
+Executing a fail-stmt will cause control flow to transfer to the on-fail-clause
+of the nearest lexically enclosing statement that has an on-fail-clause. If
+there is no such statement, it terminates the current worker.
+</p>
+<p>
+The static type of the expression must be a subtype of error. Execution of the
+fail-stmt evaluates the expression; the resulting error value is passed to the
+on-fail-clause or becomes the termination value of the current worker.
+</p>
+
+</section>
+
+<section>
+<h3 id="section_7.27">7.27 Panic statement</h3>
+
+<pre class="grammar"><span class="ntdfn" id="panic-stmt">panic-stmt</span> := <code>panic</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
+</pre>
+<p>
+A panic statement terminates the current worker abnormally. The result of
+evaluating <code>expression</code> provides the termination value of the worker.
+</p>
+<p>
+The static type of <code>expression</code> must be a subtype of error.
+</p>
+</section>
+
+<section>
+<h3 id="section_7.28">7.28 Return statement</h3>
+
+<pre class="grammar"><span class="ntdfn" id="return-stmt">return-stmt</span> := <code>return</code> [ <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> ] <code>;</code>
+</pre>
+<p>
+A return statement terminates the current worker normally.The result of
+evaluating the action-or-expr provides the termination value of the worker. If
+action-or-expr is omitted, then the termination value is nil.
+</p>
 </section>
 
 </section>
@@ -8258,6 +8211,13 @@ it must have no parameters.
    <a href="#metadata"><span class="ntref">metadata</span></a>
    [<code>public</code>] <code>type</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>;</code>
 </pre>
+
+<p>
+A module-type-defn binds the identifier to the specified type descriptor. The
+binding is in the main symbol space. The type-descriptor is resolved as part of
+module initialization.
+</p>
+
 </section>
 
 
@@ -8294,9 +8254,10 @@ object type descriptor that is a subtype of the class's type.
 </p>
 <p>
 If <code>class-type-quals</code> contains <code>readonly</code>, then an object
-constructed using the class and all its fields will have their read-only bits
-set; furthermore, an object shape belongs to the class's type only of it has the
-read-only bit set.
+constructed using the class will have its read-only bit set; the effective type
+of each field is thus the intersection of the specified type and
+<code>readonly</code>; furthermore, an object shape belongs to the class's type
+only if its read-only bit is set.
 </p>
 <p>
 If an object-type-inclusion references a type-descriptor that is a class, then
@@ -8597,7 +8558,7 @@ The available attachment points are described in the following table.
   </tr>
   <tr>
    <td>type</td>
-   <td>module-type-defn, local-type-defn-stmt, module-enum-decl, type-cast-expr</td>
+   <td>module-type-defn, module-enum-decl, type-cast-expr</td>
    <td>defined type</td>
   </tr>
   <tr>
@@ -8996,9 +8957,10 @@ The <code>int:Unsigned8</code> type is equivalent to the predefined
 descriptors are what was previously called <em>abstract</em>: they declare
 methods but do not define them. Objects are now created either by using an
 object constructor expression, which includes method definitions, or by applying
-<code>new</code> to the name of a class defined by a class definition.</li>
-<li>The <code>readonly</code> type has been added. Fields of records and objects
-can also be declared as <code>readonly</code>.</li>
+<code>new</code> to the name of a class defined by a class definition. Classes
+and object constructors can declare fields as final.</li>
+<li>The <code>readonly</code> type has been added. Fields of records can also be
+declared as <code>readonly</code>.</li>
 <li>Intersection types have been added.</li>
 <li>Distinct types have been added; these provide the functionality of nominal
 types with the framework of a structural type system.</li>
@@ -9007,6 +8969,8 @@ an error value having a reason string for categorizing the error and separate
 message string in the detail record, an error value has a message string in the
 error and distinct types are used for categorizing. The cause has also moved
 from the detail record into the error value.</li>
+<li>The syntax for an error constructor that uses a user-defined type name now
+includes the <code>error</code> keyword before the type name.</li>
 <li>Language-defined abstract object types now make use of distinct types,
 instead of using names prefixed with double underscore.</li>
 <li>The <code>__init</code> method of object and the <code>__init</code> function
@@ -9018,8 +8982,6 @@ structural types and no longer has preview status.</li>
 <li>Enum declarations have been added.</li>
 <li>The return type of a function with an external body can depend on the value
 of a parameter of typedesc type.</li>
-<li>The XML item-specific subtypes can be used as constructors, both in
-expressions and in binding patterns.</li>
 <li>Query expressions support some new clauses: <code>join</code> clause,
 <code>order by</code> clause, <code>limit</code> clause and <code>on
 conflict</code> clause.</li>
@@ -9028,6 +8990,14 @@ extended to apply to more than just numeric types.</li>
 <li>Raw template expressions have been added.</li>
 <li>A value of type <code>xml:Text</code> can be implicitly converted to a
 string.</li>
+<li>The ability to specify the visibility of parameter names has been removed: a
+parameter can always be specified by name as well as position; a parameter
+cannot be declared as <code>public</code>.</li>
+<li>Local type definitions have been removed.</li>
+<li>The <code>fail</code> statement has been added, along with a <code>on
+fail</code> clause for compound statements. If a <code>check</code> expression
+or action fails, it behaves like a <code>fail</code> statement rather than a
+<code>return</code> statement.</li>
 </ol>
 </section>
 <section>

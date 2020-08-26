@@ -385,30 +385,7 @@
   ],
   "constants": [],
   "annotations": [],
-  "errors": [
-    {
-      "detailType": {
-        "orgName": "ballerina",
-        "moduleName": "lang.error",
-        "name": "DetailType",
-        "category": "records",
-        "isAnonymousUnionType": false,
-        "isArrayType": false,
-        "isNullable": false,
-        "isTuple": false,
-        "isRestParam": false,
-        "isLambda": false,
-        "isDeprecated": false,
-        "generateUserDefinedTypeLink": true,
-        "memberTypes": [],
-        "paramTypes": [],
-        "arrayDimensions": 0
-      },
-      "name": "$anonType$0",
-      "description": "",
-      "isDeprecated": false
-    }
-  ],
+  "errors": [],
   "finiteTypes": [],
   "unionTypes": [],
   "resources": []

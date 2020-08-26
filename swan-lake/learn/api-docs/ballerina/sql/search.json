@@ -7,11 +7,6 @@
   ],
   "objects": [
     {
-      "id": "T6",
-      "description": "",
-      "moduleId": "sql"
-    },
-    {
       "id": "ArrayValue",
       "description": "\u003cp\u003eRepresents ArrayValue SQL field.\u003c/p\u003e",
       "moduleId": "sql"
@@ -77,6 +72,11 @@
       "moduleId": "sql"
     },
     {
+      "id": "InOutParameter",
+      "description": "\u003cp\u003eRepresents SQL InOutParameter used in procedure calls.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
       "id": "IntegerValue",
       "description": "\u003cp\u003eRepresents Integer SQL field.\u003c/p\u003e",
       "moduleId": "sql"
@@ -102,8 +102,23 @@
       "moduleId": "sql"
     },
     {
+      "id": "OutParameter",
+      "description": "\u003cp\u003eRepresents SQL OutParameter used in procedure calls.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ParameterizedCallQuery",
+      "description": "\u003cp\u003eRepresents Parameterized Call SQL Statement.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
       "id": "ParameterizedQuery",
-      "description": "\u003cp\u003eRepresents Parameterised SQL query.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents Parameterized SQL query.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ProcedureCallResult",
+      "description": "\u003cp\u003eObject that is used to return stored procedure call results.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
@@ -181,11 +196,6 @@
   ],
   "records": [
     {
-      "id": "T14",
-      "description": "",
-      "moduleId": "sql"
-    },
-    {
       "id": "BatchExecuteErrorDetail",
       "description": "\u003cp\u003eRepresents the properties belonging to a \u003ccode\u003eBatchExecuteError\u003c/code\u003e.\u003c/p\u003e",
       "moduleId": "sql"
@@ -220,16 +230,6 @@
   ],
   "errors": [
     {
-      "id": "$anonType$4",
-      "description": "",
-      "moduleId": "sql"
-    },
-    {
-      "id": "$anonType$5",
-      "description": "",
-      "moduleId": "sql"
-    },
-    {
       "id": "ApplicationError",
       "description": "\u003cp\u003eRepresents an error originating from application-level causes.\u003c/p\u003e",
       "moduleId": "sql"
@@ -249,6 +249,11 @@
     {
       "id": "Error",
       "description": "\u003cp\u003eRepresents a database or application level error returned from JDBC client remote functions.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "Parameter",
+      "description": "\u003cp\u003eRepresents all the parameters used in SQL stored procedure call.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {

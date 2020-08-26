@@ -70,11 +70,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/functions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -118,7 +118,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -130,7 +130,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printValue(string value) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printValue(string value) {
     io:println(value);
 }
 </code></pre></div>
@@ -151,7 +151,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function add(int a, int b) returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>function add(int a, int b) returns int {
     return a + b;
 }
 </code></pre></div>
@@ -173,7 +173,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printAndReturnValue(string s) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>function printAndReturnValue(string s) returns string {
     string t = &quot;Hello &quot;.concat(s);
     io:println(t);
     return t;
@@ -189,7 +189,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -209,7 +209,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printValue(&quot;This is a sample text&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    printValue(&quot;This is a sample text&quot;);
 </code></pre></div>
 
                                 </td>
@@ -228,7 +228,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int result = add(5, 6);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int result = add(5, 6);
 </code></pre></div>
 
                                 </td>
@@ -247,7 +247,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(result);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(result);
 </code></pre></div>
 
                                 </td>
@@ -266,7 +266,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = printAndReturnValue(&quot;World&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = printAndReturnValue(&quot;World&quot;);
 }
 </code></pre></div>
 

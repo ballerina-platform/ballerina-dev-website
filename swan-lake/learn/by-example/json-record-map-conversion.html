@@ -31,10 +31,10 @@ redirect_from:
             <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">theRevenant</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="kt">json</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">.</span><span class="nx">writer</span><span class="p">.</span><span class="nx">lname</span><span class="p">);</span>
+    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">theRevenantJson</span> <span class="p">=</span> <span class="nx">theRevenant</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="kt">json</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">theRevenantJson</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">theRevenantJson</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">theRevenantJson</span><span class="p">.</span><span class="nx">writer</span><span class="p">.</span><span class="nx">lname</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">movieMap</span> <span class="p">=</span> <span class="nx">theRevenant</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">MapAnydata</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">movieMap</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;)</span> <span class="p">{</span>
@@ -43,7 +43,7 @@ redirect_from:
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">writer</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kt">json</span> <span class="nx">inceptionJ</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="kt">json</span> <span class="nx">inceptionJson</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">title</span><span class="p">:</span> <span class="s">&quot;Inception&quot;</span><span class="p">,</span>
         <span class="nx">year</span><span class="p">:</span> <span class="s">&quot;2010&quot;</span><span class="p">,</span>
         <span class="nx">released</span><span class="p">:</span> <span class="s">&quot;16 Jul 2010&quot;</span><span class="p">,</span>
@@ -53,7 +53,7 @@ redirect_from:
             <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="nx">Movie</span><span class="p">|</span><span class="nx">error</span> <span class="nx">inception</span> <span class="p">=</span> <span class="nx">inceptionJ</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">Movie</span><span class="p">);</span>
+    <span class="nx">Movie</span><span class="p">|</span><span class="nx">error</span> <span class="nx">inception</span> <span class="p">=</span> <span class="nx">inceptionJson</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">Movie</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">inception</span> <span class="nx">is</span> <span class="nx">Movie</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">inception</span><span class="p">);</span>
     <span class="p">}</span>
@@ -240,10 +240,10 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    json|error j = theRevenant.cloneWithType(json);
-    if (j is json) {
-        io:println(j.toJsonString());
-        io:println(j.writer.lname);
+                                    <div class="highlight"><pre><code class=language-ballerina>    json|error theRevenantJson = theRevenant.cloneWithType(json);
+    if (theRevenantJson is json) {
+        io:println(theRevenantJson.toJsonString());
+        io:println(theRevenantJson.writer.lname);
     }
 </code></pre></div>
 
@@ -290,7 +290,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    json inceptionJ = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    json inceptionJson = {
         title: &quot;Inception&quot;,
         year: &quot;2010&quot;,
         released: &quot;16 Jul 2010&quot;,
@@ -300,7 +300,7 @@ redirect_from:
             age: 30
         }
     };
-    Movie|error inception = inceptionJ.cloneWithType(Movie);
+    Movie|error inception = inceptionJson.cloneWithType(Movie);
     if (inception is Movie) {
         io:println(inception);
     }

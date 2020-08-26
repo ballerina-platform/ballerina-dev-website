@@ -108,11 +108,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/json-csv/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/json-csv/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -154,7 +154,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/log;
 </code></pre></div>
 
@@ -167,7 +167,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getFields(map&lt;json&gt; rec) returns [string[], string[]] {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getFields(map&lt;json&gt; rec) returns [string[], string[]] {
     string [] fields = [];
     foreach var field in rec {
         fields[fields.length()] = field.toString();
@@ -193,7 +193,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function writeCsv(json[] content, string path) returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function writeCsv(json[] content, string path) returns @tainted error? {
     io:WritableCSVChannel csvch = check io:openWritableCsvFile(path);
     int recIndex = 0;
     int recLen = content.length();
@@ -219,7 +219,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            check csvch.write(headers);
+                                    <div class="highlight"><pre><code class=language-ballerina>            check csvch.write(headers);
         }
         check csvch.write(fields);
         recIndex = recIndex + 1;
@@ -243,7 +243,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -255,7 +255,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json sample = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    json sample = {
             &quot;employees&quot;: {
                 &quot;employee&quot;: [
                     {
@@ -296,7 +296,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string path = &quot;./files/sample.csv&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string path = &quot;./files/sample.csv&quot;;
 </code></pre></div>
 
                                 </td>
@@ -315,7 +315,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = writeCsv(&lt;json[]&gt; sample.employees.employee, path);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var result = writeCsv(&lt;json[]&gt; sample.employees.employee, path);
     if (result is error) {
         log:printError(&quot;Error occurred while writing csv record :&quot;,
                         err = result);

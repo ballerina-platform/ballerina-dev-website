@@ -134,11 +134,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/crypto/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/crypto/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -234,7 +234,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/crypto;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/crypto;
 import ballerina/io;
 import ballerina/math;
 import ballerina/lang.&#39;string as strings;
@@ -249,7 +249,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -261,7 +261,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string input = &quot;Hello Ballerina!&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string input = &quot;Hello Ballerina!&quot;;
     byte[] inputArr = input.toBytes();
 </code></pre></div>
 
@@ -281,7 +281,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    byte[] output = crypto:hashMd5(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = crypto:hashMd5(inputArr);
     io:println(&quot;Hex encoded hash with MD5: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -301,7 +301,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    output = crypto:hashSha1(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha1(inputArr);
     io:println(&quot;Base64 encoded hash with SHA1: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -321,7 +321,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    output = crypto:hashSha256(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha256(inputArr);
     io:println(&quot;Hex encoded hash with SHA256: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -341,7 +341,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    output = crypto:hashSha384(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha384(inputArr);
     io:println(&quot;Base64 encoded hash with SHA384: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -361,7 +361,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    output = crypto:hashSha512(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha512(inputArr);
     io:println(&quot;Hex encoded hash with SHA512: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -381,7 +381,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string key = &quot;somesecret&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    string key = &quot;somesecret&quot;;
     byte[] keyArr = key.toBytes();
 </code></pre></div>
 
@@ -401,7 +401,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    output = crypto:hmacMd5(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hmacMd5(inputArr, keyArr);
     io:println(&quot;Hex encoded HMAC with MD5: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -421,7 +421,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    output = crypto:hmacSha1(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hmacSha1(inputArr, keyArr);
     io:println(&quot;Base64 encoded HMAC with SHA1: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -441,7 +441,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    output = crypto:hmacSha256(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hmacSha256(inputArr, keyArr);
     io:println(&quot;Hex encoded HMAC with SHA256: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -461,7 +461,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    output = crypto:hmacSha384(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hmacSha384(inputArr, keyArr);
     io:println(&quot;Base64 encoded HMAC with SHA384: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -481,7 +481,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    output = crypto:hmacSha512(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hmacSha512(inputArr, keyArr);
     io:println(&quot;Hex encoded HMAC with SHA512: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -501,7 +501,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;CRC32B for text: &quot; + crypto:crc32b(inputArr));
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;CRC32B for text: &quot; + crypto:crc32b(inputArr));
 </code></pre></div>
 
                                 </td>
@@ -520,7 +520,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml xmlContent = xml `&lt;foo&gt;Hello Ballerina&lt;/foo&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml xmlContent = xml `&lt;foo&gt;Hello Ballerina&lt;/foo&gt;`;
     io:println(&quot;CRC32 for xml content: &quot; + crypto:crc32b(xmlContent.toString().toBytes()));
 </code></pre></div>
 
@@ -540,7 +540,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    crypto:KeyStore keyStore = { path: &quot;./sampleKeystore.p12&quot;, password: &quot;ballerina&quot; };
+                                    <div class="highlight"><pre><code class=language-ballerina>    crypto:KeyStore keyStore = { path: &quot;./sampleKeystore.p12&quot;, password: &quot;ballerina&quot; };
     var privateKey = crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
 </code></pre></div>
 
@@ -560,7 +560,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (privateKey is crypto:PrivateKey) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (privateKey is crypto:PrivateKey) {
 </code></pre></div>
 
                                 </td>
@@ -572,7 +572,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        output = check crypto:signRsaMd5(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>        output = check crypto:signRsaMd5(inputArr, privateKey);
         io:println(&quot;Hex encoded RSA-MD5 signature: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -592,7 +592,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        output = check crypto:signRsaSha1(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>        output = check crypto:signRsaSha1(inputArr, privateKey);
         io:println(&quot;Base64 encoded RSA-SHA1 signature: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -612,7 +612,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        output = check crypto:signRsaSha256(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>        output = check crypto:signRsaSha256(inputArr, privateKey);
         io:println(&quot;Hex encoded RSA-SHA256 signature: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -632,7 +632,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        output = check crypto:signRsaSha384(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>        output = check crypto:signRsaSha384(inputArr, privateKey);
         io:println(&quot;Base64 encoded RSA-SHA384 signature: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -652,7 +652,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        output = check crypto:signRsaSha512(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>        output = check crypto:signRsaSha512(inputArr, privateKey);
         io:println(&quot;Hex encoded RSA-SHA512 signature: &quot; + output.toBase16());
     } else {
         io:println(&quot;Invalid private key&quot;);
@@ -675,7 +675,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     byte[16] rsaKeyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                    <div class="highlight"><pre><code class=language-ballerina>     byte[16] rsaKeyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
      foreach var i in 0...15 {
         rsaKeyArr[i] = &lt;byte&gt;(math:randomInRange(0, 255));
      }
@@ -697,7 +697,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     byte[16] ivArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                    <div class="highlight"><pre><code class=language-ballerina>     byte[16] ivArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
      foreach var i in 0...15 {
         ivArr[i] = &lt;byte&gt;(math:randomInRange(0, 255));
      }
@@ -719,7 +719,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>     output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr);
      output = check crypto:decryptAesCbc(output, rsaKeyArr, ivArr);
      io:println(&quot;AES CBC PKCS5 decrypted value: &quot; + check strings:fromBytes(output));
 </code></pre></div>
@@ -740,7 +740,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr, crypto:NONE);
+                                    <div class="highlight"><pre><code class=language-ballerina>     output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr, crypto:NONE);
      output = check crypto:decryptAesCbc(output, rsaKeyArr, ivArr, crypto:NONE);
      io:println(&quot;AES CBC no padding decrypted value: &quot; + check strings:fromBytes(output));
 </code></pre></div>
@@ -761,7 +761,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>     output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr);
      output = check crypto:decryptAesGcm(output, rsaKeyArr, ivArr);
      io:println(&quot;AES GCM PKCS5 decrypted value: &quot; + check strings:fromBytes(output));
 </code></pre></div>
@@ -782,7 +782,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr, crypto:NONE);
+                                    <div class="highlight"><pre><code class=language-ballerina>     output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr, crypto:NONE);
      output = check crypto:decryptAesGcm(output, rsaKeyArr, ivArr, crypto:NONE);
      io:println(&quot;AES GCM no padding decrypted value: &quot; + check strings:fromBytes(output));
 </code></pre></div>
@@ -803,7 +803,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptAesEcb(inputArr, rsaKeyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>     output = check crypto:encryptAesEcb(inputArr, rsaKeyArr);
      output = check crypto:decryptAesEcb(output, rsaKeyArr);
      io:println(&quot;AES ECB PKCS5 decrypted value: &quot; + check strings:fromBytes(output));
 </code></pre></div>
@@ -824,7 +824,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptAesEcb(inputArr, rsaKeyArr, crypto:NONE);
+                                    <div class="highlight"><pre><code class=language-ballerina>     output = check crypto:encryptAesEcb(inputArr, rsaKeyArr, crypto:NONE);
      output = check crypto:decryptAesEcb(output, rsaKeyArr, crypto:NONE);
      io:println(&quot;AES ECB no padding decrypted value: &quot; + check strings:fromBytes(output));
 </code></pre></div>
@@ -845,7 +845,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     crypto:PublicKey rsaPublicKey = check crypto:decodePublicKey(keyStore, &quot;ballerina&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>     crypto:PublicKey rsaPublicKey = check crypto:decodePublicKey(keyStore, &quot;ballerina&quot;);
 </code></pre></div>
 
                                 </td>
@@ -864,7 +864,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     crypto:PrivateKey rsaPrivateKey = check crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>     crypto:PrivateKey rsaPrivateKey = check crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
 </code></pre></div>
 
                                 </td>
@@ -883,7 +883,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptRsaEcb(inputArr, rsaPublicKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>     output = check crypto:encryptRsaEcb(inputArr, rsaPublicKey);
      output = check crypto:decryptRsaEcb(output, rsaPrivateKey);
      io:println(&quot;RSA ECB PKCS1 decrypted value: &quot; + check strings:fromBytes(output));
 </code></pre></div>
@@ -904,7 +904,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptRsaEcb(inputArr, rsaPublicKey, crypto:OAEPwithSHA512andMGF1);
+                                    <div class="highlight"><pre><code class=language-ballerina>     output = check crypto:encryptRsaEcb(inputArr, rsaPublicKey, crypto:OAEPwithSHA512andMGF1);
      output = check crypto:decryptRsaEcb(output, rsaPrivateKey, crypto:OAEPwithSHA512andMGF1);
      io:println(&quot;RSA ECB OAEPwithSHA512andMGF1 decrypted value: &quot; + check strings:fromBytes(output));
 }

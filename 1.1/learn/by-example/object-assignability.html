@@ -87,11 +87,11 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-assignability/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/object-assignability/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -137,7 +137,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -149,7 +149,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type Person object {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Person object {
     public int age = 0;
     public string name = &quot;&quot;;
 </code></pre></div>
@@ -170,7 +170,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public function getName() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function getName() returns string {
         return self.name;
     }
 };
@@ -185,7 +185,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public type Employee object {
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Employee object {
     public int age;
     public string name;
     public string address;
@@ -207,7 +207,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public function __init(int age, string name, string address) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function __init(int age, string name, string address) {
         self.age = age;
         self.name = name;
         self.address = address;
@@ -223,7 +223,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public function getName() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function getName() returns string {
         return self.name + &quot; Doe&quot;;
     }
 </code></pre></div>
@@ -237,7 +237,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public function getAge() returns int {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function getAge() returns int {
         return self.age;
     }
 };
@@ -252,7 +252,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -264,7 +264,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p1 = new Employee(50, &quot;John&quot;, &quot;street1&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p1 = new Employee(50, &quot;John&quot;, &quot;street1&quot;);
 </code></pre></div>
 
                                 </td>
@@ -283,7 +283,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(p1.getName());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(p1.getName());
 }
 </code></pre></div>
 

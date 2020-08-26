@@ -145,14 +145,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -238,7 +242,13 @@ can be created by wrapping this generic HTTP actions implementation.</p>
             
                 
                     <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a>? config)</p>
+
+    <p>Gets invoked to initialize the native <code>client</code>. During initialization, the configurations are provided through the
+<code>config</code>. The <code>HttpClient</code> lies inside every type of client in the chain holding the native client connector.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a>? config)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -272,85 +282,101 @@ can be created by wrapping this generic HTTP actions implementation.</p>
                         <tr>
                             <td class="module-title truncate functions" title="post"><a
                                     class="functions" href="#post">post</a></td>
-                            <td class="module-desc"><p>The <code>HttpClient.</td>
+                            <td class="module-desc"><p>The <code>HttpClient.post()</code> function can be used to send HTTP POST requests to HTTP endpoints.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="head"><a
                                     class="functions" href="#head">head</a></td>
-                            <td class="module-desc"><p>The <code>HttpClient.</td>
+                            <td class="module-desc"><p>The <code>HttpClient.head()</code> function can be used to send HTTP HEAD requests to HTTP endpoints.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="put"><a
                                     class="functions" href="#put">put</a></td>
-                            <td class="module-desc"><p>The <code>HttpClient.</td>
+                            <td class="module-desc"><p>The <code>HttpClient.put()</code> function can be used to send HTTP PUT requests to HTTP endpoints.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="execute"><a
                                     class="functions" href="#execute">execute</a></td>
-                            <td class="module-desc"><p>Invokes an HTTP call with the specified HTTP verb.</td>
+                            <td class="module-desc"><p>Invokes an HTTP call with the specified HTTP verb.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="patch"><a
                                     class="functions" href="#patch">patch</a></td>
-                            <td class="module-desc"><p>The <code>HttpClient.</td>
+                            <td class="module-desc"><p>The <code>HttpClient.patch()</code> function can be used to send HTTP PATCH requests to HTTP endpoints.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="delete"><a
                                     class="functions" href="#delete">delete</a></td>
-                            <td class="module-desc"><p>The <code>HttpClient.</td>
+                            <td class="module-desc"><p>The <code>HttpClient.delete()</code> function can be used to send HTTP DELETE requests to HTTP endpoints.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="get"><a
                                     class="functions" href="#get">get</a></td>
-                            <td class="module-desc"><p>The <code>HttpClient.</td>
+                            <td class="module-desc"><p>The <code>HttpClient.get()</code> function can be used to send HTTP GET requests to HTTP endpoints.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="options"><a
                                     class="functions" href="#options">options</a></td>
-                            <td class="module-desc"><p>The <code>HttpClient.</td>
+                            <td class="module-desc"><p>The <code>HttpClient.options()</code> function can be used to send HTTP OPTIONS requests to HTTP endpoints.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="forward"><a
                                     class="functions" href="#forward">forward</a></td>
-                            <td class="module-desc"><p>The <code>HttpClient.</td>
+                            <td class="module-desc"><p>The <code>HttpClient.forward()</code> function can be used to invoke an HTTP call with inbound request's HTTP verb</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="submit"><a
                                     class="functions" href="#submit">submit</a></td>
-                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.</td>
+                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.
+The <code>HttpClient-&gt;submit()</code> function does not give out an <code>http:Response</code> as the result.
+Rather, it returns an <code>http:HttpFuture</code> which can be used to do further interactions with the endpoint.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getResponse"><a
                                     class="functions" href="#getResponse">getResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously-submitted request.</td>
+                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously-submitted request.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="hasPromise"><a
                                     class="functions" href="#hasPromise">hasPromise</a></td>
-                            <td class="module-desc"><p>Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.</td>
+                            <td class="module-desc"><p>Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getNextPromise"><a
                                     class="functions" href="#getNextPromise">getNextPromise</a></td>
-                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</td>
+                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPromisedResponse"><a
                                     class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the promised server push <code>http:Response</code> message.</td>
+                            <td class="module-desc"><p>Retrieves the promised server push <code>http:Response</code> message.</p>
+</td>
                         </tr>
                     
                         <tr>

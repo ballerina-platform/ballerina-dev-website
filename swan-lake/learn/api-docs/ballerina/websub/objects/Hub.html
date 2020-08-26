@@ -105,14 +105,18 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
-            <li>
-                <a  data="objects" href="../../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
             <li>
@@ -199,7 +203,13 @@
             
                 
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> subscriptionUrl, <span class="builtin-type">string</span> publishUrl, <a href="../../http/listeners/Listener.html">Listener</a> hubHttpListener)</p>
+
+    The initialization method for the Hub. Users of the <code>ballerina/websub</code> module must use the
+function <code>startHub()</code> to initialize a <code>websub:Hub</code> object.
+
+
+</br></br>
+<h3>__init</h3><p>(<span class="builtin-type">string</span> subscriptionUrl, <span class="builtin-type">string</span> publishUrl, <a href="../../http/listeners/Listener.html">Listener</a> hubHttpListener)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -248,7 +258,9 @@
     </div>
     <div class="param-details">
         
-        <p>Stops the started up Ballerina WebSub Hub.
+        <p>Stops the started up Ballerina WebSub Hub.</p>
+
+
     </div>
 </div>
 
@@ -260,7 +272,9 @@
     </div>
     <div class="param-details">
         
-        <p>Publishes an update against the topic in the initialized Ballerina Hub.
+        <p>Publishes an update against the topic in the initialized Ballerina Hub.</p>
+
+
     </div>
 </div>
 
@@ -272,7 +286,9 @@
     </div>
     <div class="param-details">
         
-        <p>Registers a topic in the Ballerina Hub.
+        <p>Registers a topic in the Ballerina Hub.</p>
+
+
     </div>
 </div>
 
@@ -284,7 +300,9 @@
     </div>
     <div class="param-details">
         
-        <p>Unregisters a topic in the Ballerina Hub.
+        <p>Unregisters a topic in the Ballerina Hub.</p>
+
+
     </div>
 </div>
 
@@ -296,7 +314,9 @@
     </div>
     <div class="param-details">
         
-        <p>Removes a subscription from the Ballerina Hub, without verifying intent.
+        <p>Removes a subscription from the Ballerina Hub, without verifying intent.</p>
+
+
     </div>
 </div>
 
@@ -308,7 +328,9 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves topics currently recognized by the Hub.
+        <p>Retrieves topics currently recognized by the Hub.</p>
+
+
     </div>
 </div>
 
@@ -320,7 +342,9 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves details of subscribers registered to receive updates for a particular topic.
+        <p>Retrieves details of subscribers registered to receive updates for a particular topic.</p>
+
+
     </div>
 </div>
 

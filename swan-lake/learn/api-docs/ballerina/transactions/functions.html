@@ -137,9 +137,11 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../transactions/index.html#records" onclick="menuLinkClick()">Records</a>
-        </li>
+            
+                <li>
+                    <a data="records" href="../transactions/index.html#records" onclick="menuLinkClick()">Records</a>
+                </li>
+            
         
         
         
@@ -262,6 +264,13 @@
                                     <span class="stab">Deprecated</span>
                                 
                                 When a transaction block in Ballerina code begins, it will call this function to begin a transaction.
+If this is a new transaction (transactionId == () ), then this instance will become the initiator and will
+create a new transaction context.
+If the participant and initiator are in the same process, this transaction block will register with the local
+initiator via a local function call.
+If the participant and initiator are in different processes, this transaction block will register with the remote
+initiator via a network call.
+
                             </div>
                         </td>
                     </tr>
@@ -274,6 +283,7 @@
                                     <span class="stab">Deprecated</span>
                                 
                                 Cleanup the transaction context.
+
                             </div>
                         </td>
                     </tr>
@@ -286,6 +296,10 @@
                                     <span class="stab">Deprecated</span>
                                 
                                 When a transaction block in Ballerina code ends, it will call this function to end a transaction.
+Ending a transaction by a participant has no effect because it is the initiator who can decide whether to
+commit or abort a transaction.
+Depending on the state of the transaction, the initiator decides to commit or abort the transaction.
+
                             </div>
                         </td>
                     </tr>
@@ -298,6 +312,7 @@
                                     <span class="stab">Deprecated</span>
                                 
                                 Get and Cleanup the failure.
+
                             </div>
                         </td>
                     </tr>
@@ -322,6 +337,7 @@
                                     <span class="stab">Deprecated</span>
                                 
                                 Rollback the transaction.
+
                             </div>
                         </td>
                     </tr>
@@ -334,6 +350,7 @@
                                     <span class="stab">Deprecated</span>
                                 
                                 Set the transactionContext.
+
                             </div>
                         </td>
                     </tr>

@@ -100,11 +100,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/records/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/records/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -162,7 +162,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -174,7 +174,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string name;
     int age;
     Grades grades;
@@ -199,7 +199,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Address record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Address record {|
     string city;
     string country;
 |};
@@ -222,7 +222,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Grades record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Grades record {|
     int maths;
     int physics;
     int chemistry;
@@ -245,7 +245,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int...;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int...;
 |};
 </code></pre></div>
 
@@ -265,7 +265,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -277,7 +277,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student john = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student john = {
         name: &quot;John Doe&quot;,
         age: 17,
         grades: {
@@ -307,7 +307,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(john.name);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(john.name);
 </code></pre></div>
 
                                 </td>
@@ -327,7 +327,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(john[&quot;name&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(john[&quot;name&quot;]);
 </code></pre></div>
 
                                 </td>
@@ -349,7 +349,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(john.grades.maths);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(john.grades.maths);
 </code></pre></div>
 
                                 </td>
@@ -368,7 +368,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student peter = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student peter = {
         name: &quot;Peter&quot;,
         age: 19,
         grades: {
@@ -388,7 +388,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    peter.age = 16;
+                                    <div class="highlight"><pre><code class=language-ballerina>    peter.age = 16;
 </code></pre></div>
 
                                 </td>
@@ -408,7 +408,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(peter);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(peter);
     io:println(john);
 </code></pre></div>
 
@@ -421,7 +421,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    peter[&quot;address&quot;] = &lt;Address&gt;{ city: &quot;Colombo&quot;, country: &quot;Sri Lanka&quot; };
+                                    <div class="highlight"><pre><code class=language-ballerina>    peter[&quot;address&quot;] = &lt;Address&gt;{ city: &quot;Colombo&quot;, country: &quot;Sri Lanka&quot; };
     io:println(peter);
 </code></pre></div>
 
@@ -442,7 +442,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Grades grades = { maths: 80, physics: 75, chemistry: 65, &quot;english&quot;: 90 };
+                                    <div class="highlight"><pre><code class=language-ballerina>    Grades grades = { maths: 80, physics: 75, chemistry: 65, &quot;english&quot;: 90 };
     io:println(grades);
 </code></pre></div>
 
@@ -466,7 +466,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    int? english = grades[&quot;english&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int? english = grades[&quot;english&quot;];
     io:println(english);
 }
 </code></pre></div>

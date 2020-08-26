@@ -135,9 +135,11 @@ or non-blocking manner.
     <ul>
         
         
-            <li>
-                <a  data="objects" href="../../io/index.html#objects" onclick="menuLinkClick()">Objects</a>
-            </li>
+            
+                <li>
+                    <a  data="objects" href="../../io/index.html#objects" onclick="menuLinkClick()">Objects</a>
+                </li>
+            
         
         
         
@@ -212,7 +214,12 @@ or non-blocking manner.
             
                 
                 <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> byteChannel, <span class="builtin-type">string</span> charset)</p>
+
+    <p>Constructs a <code>ReadableCharacterChannel</code> from a given <code>ReadableByteChannel</code> and <code>Charset</code>.</p>
+
+
+</br></br>
+<h3>__init</h3><p>(<a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> byteChannel, <span class="builtin-type">string</span> charset)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
@@ -263,7 +270,9 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Reads a JSON from the given channel.
+        <p>Reads a JSON from the given channel.</p>
+
+
     </div>
 </div>
 
@@ -275,7 +284,37 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Reads an XML from the given channel.
+        <p>Reads an XML from the given channel.</p>
+
+
+    </div>
+</div>
+
+                    
+                        
+<div class="param-sum">
+    <div class="param-name " title="readProperty">
+        <a href="#readProperty">readProperty </a>
+    </div>
+    <div class="param-details">
+        
+        <p>Reads a property from a .properties file with a default value.</p>
+
+
+    </div>
+</div>
+
+                    
+                        
+<div class="param-sum">
+    <div class="param-name " title="readAllProperties">
+        <a href="#readAllProperties">readAllProperties </a>
+    </div>
+    <div class="param-details">
+        
+        <p>Reads all properties from a .properties file.</p>
+
+
     </div>
 </div>
 
@@ -287,7 +326,9 @@ or non-blocking manner.
     </div>
     <div class="param-details">
         
-        <p>Closes a given character channel.
+        <p>Closes a given character channel.</p>
+
+
     </div>
 </div>
 
@@ -421,6 +462,115 @@ An <code>io:EofError</code> will return once the channel reaches the end.</p>
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
                 <li><p>The read XML or else an <code>io:Error</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+            
+                <div class="method-content">
+    <div class="main-method-title here" id="readProperty" title="readProperty">
+             <a class="url-link" href="#readProperty">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > readProperty </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">string</span> defaultValue)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../../io/types.html#Error">Error</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Reads a property from a .properties file with a default value.</p>
+<pre><code class="language-ballerina"> string|io:Error result = readableCharChannel.readProperty(key, defaultValue);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >key</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The property key needs to read.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >defaultValue</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Default value to be return.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
+                <li><p>The read property value or else an <code>io:Error</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+            
+                <div class="method-content">
+    <div class="main-method-title here" id="readAllProperties" title="readAllProperties">
+             <a class="url-link" href="#readAllProperties">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > readAllProperties </h2>
+        <span class="method-types">
+            <p>()</p>
+            
+                <b> returns </b><span class="builtin-type">map</span><<span class="builtin-type">string</span>> | <a href="../../io/types.html#Error">Error</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Reads all properties from a .properties file.</p>
+<pre><code class="language-ballerina"> map&lt;string&gt;|io:Error result = readableCharChannel.readAllProperties();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span><<span class="builtin-type">string</span>> | <a href="../../io/types.html#Error">Error</a></span>)</li>
+                <li><p>A map that contains all properties</p>
 </li>
             </ul>
         </div>

@@ -22,36 +22,36 @@ redirect_from:
     <span class="p">}</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="p">[</span><span class="nx">country</span><span class="p">,</span> <span class="nx">capital</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">countryCapitals</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Country: &quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">,</span> <span class="s">&quot;, Capital: &quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON object: &quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON object:- &quot;</span><span class="p">);</span>
     <span class="kt">json</span> <span class="nx">apple</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">colors</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">],</span> <span class="nx">price</span><span class="p">:</span> <span class="mi">5</span> <span class="p">};</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">mapValue</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span> <span class="nx">apple</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">mapValue</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Key: &quot;</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="s">&quot; Value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON array: &quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON array:- &quot;</span><span class="p">);</span>
     <span class="kt">json</span><span class="p">[]</span> <span class="nx">colors</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span> <span class="nx">apple</span><span class="p">.</span><span class="nx">colors</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">color</span> <span class="nx">in</span> <span class="nx">colors</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Color: &quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating an XML: &quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating an XML:- &quot;</span><span class="p">);</span>
     <span class="kt">xml</span> <span class="nx">books</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;books&gt;</span>
 <span class="s">                       &lt;book&gt;&lt;name&gt;Sherlock Holmes&lt;/name&gt;&lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;&lt;/book&gt;</span>
 <span class="s">                       &lt;book&gt;&lt;name&gt;Harry Potter&lt;/name&gt;&lt;author&gt;J.K. Rowling&lt;/author&gt;&lt;/book&gt;                       </span>
 <span class="s">                     &lt;/books&gt;`</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">book</span> <span class="nx">in</span> <span class="nx">books</span><span class="o">/</span><span class="p">&lt;</span><span class="o">*</span><span class="p">&gt;</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Book: &quot;</span><span class="p">,</span> <span class="nx">book</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a table: &quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a table:- &quot;</span><span class="p">);</span>
     <span class="nx">EmployeeTable</span> <span class="nx">employeeTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">300.50</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Bella&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">500.50</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">750.0</span><span class="p">}</span>
     <span class="p">];</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">employee</span> <span class="nx">in</span> <span class="nx">employeeTab</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee: &quot;</span><span class="p">,</span> <span class="nx">employee</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a closed integer range: &quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a closed integer range:- &quot;</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">endValue</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mf">1.</span><span class="p">..</span><span class="nx">endValue</span> <span class="p">{</span>
         <span class="nx">sum</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Summation from 1 to &quot;</span><span class="p">,</span> <span class="nx">endValue</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a half open integer range: &quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Summation from 1 to &quot;</span><span class="p">,</span> <span class="nx">endValue</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a half open integer range:- &quot;</span><span class="p">);</span>
     <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mf">1.</span><span class="p">.&lt;</span> <span class="nx">endValue</span> <span class="p">{</span>
         <span class="nx">sum</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
@@ -73,18 +73,18 @@ redirect_from:
 <span class="nx">Capital</span><span class="p">:</span> <span class="nx">London</span>
 <span class="nx">Country</span><span class="p">:</span> <span class="nx">USA</span><span class="p">,</span> <span class="nx">Capital</span><span class="p">:</span> <span class="nx">Washington</span><span class="p">,</span> <span class="nx">D</span><span class="p">.</span><span class="nx">C</span><span class="p">.</span>
 <span class="nx">Country</span><span class="p">:</span> <span class="nx">Sri</span> <span class="nx">Lanka</span><span class="p">,</span> <span class="nx">Capital</span><span class="p">:</span> <span class="nx">Colombo</span>
-<span class="nx">Country</span><span class="p">:</span> <span class="nx">England</span><span class="p">,</span> <span class="nx">Capital</span><span class="p">:</span> <span class="nx">LondonIterating</span> <span class="nx">a</span> <span class="nx">JSON</span> <span class="nx">object</span><span class="p">:</span> 
+<span class="nx">Country</span><span class="p">:</span> <span class="nx">England</span><span class="p">,</span> <span class="nx">Capital</span><span class="p">:</span> <span class="nx">LondonIterating</span> <span class="nx">a</span> <span class="nx">JSON</span> <span class="nx">object</span><span class="p">:</span><span class="o">-</span> 
 <span class="nx">Key</span><span class="p">:</span> <span class="nx">name</span> <span class="nx">Value</span><span class="p">:</span> <span class="nx">apple</span>
 <span class="nx">Key</span><span class="p">:</span> <span class="nx">colors</span> <span class="nx">Value</span><span class="p">:</span> <span class="nx">red</span> <span class="nx">green</span>
-<span class="nx">Key</span><span class="p">:</span> <span class="nx">price</span> <span class="nx">Value</span><span class="p">:</span> <span class="mi">5</span><span class="nx">Iterating</span> <span class="nx">a</span> <span class="nx">JSON</span> <span class="nx">array</span><span class="p">:</span> 
+<span class="nx">Key</span><span class="p">:</span> <span class="nx">price</span> <span class="nx">Value</span><span class="p">:</span> <span class="mi">5</span><span class="nx">Iterating</span> <span class="nx">a</span> <span class="nx">JSON</span> <span class="nx">array</span><span class="p">:</span><span class="o">-</span> 
 <span class="nx">Color</span><span class="p">:</span> <span class="nx">red</span>
-<span class="nx">Color</span><span class="p">:</span> <span class="nx">greenIterating</span> <span class="nx">an</span> <span class="nx">XML</span><span class="p">:</span> 
+<span class="nx">Color</span><span class="p">:</span> <span class="nx">greenIterating</span> <span class="nx">an</span> <span class="nx">XML</span><span class="p">:</span><span class="o">-</span> 
 <span class="nx">Book</span><span class="p">:</span> <span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Sherlock</span> <span class="nx">Holmes</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;&lt;</span><span class="nx">author</span><span class="p">&gt;</span><span class="nx">Sir</span> <span class="nx">Arthur</span> <span class="nx">Conan</span> <span class="nx">Doyle</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">author</span><span class="p">&gt;&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span>
-<span class="nx">Book</span><span class="p">:</span> <span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Harry</span> <span class="nx">Potter</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;&lt;</span><span class="nx">author</span><span class="p">&gt;</span><span class="nx">J</span><span class="p">.</span><span class="nx">K</span><span class="p">.</span> <span class="nx">Rowling</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">author</span><span class="p">&gt;&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">Iterating</span> <span class="nx">a</span> <span class="nx">table</span><span class="p">:</span> 
+<span class="nx">Book</span><span class="p">:</span> <span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Harry</span> <span class="nx">Potter</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;&lt;</span><span class="nx">author</span><span class="p">&gt;</span><span class="nx">J</span><span class="p">.</span><span class="nx">K</span><span class="p">.</span> <span class="nx">Rowling</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">author</span><span class="p">&gt;&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">Iterating</span> <span class="nx">a</span> <span class="nx">table</span><span class="p">:</span><span class="o">-</span> 
 <span class="nx">Employee</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">300.5</span>
 <span class="nx">Employee</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">2</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Bella</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">500.5</span>
-<span class="nx">Employee</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">750.0</span><span class="nx">Iterating</span> <span class="nx">a</span> <span class="nx">closed</span> <span class="nx">integer</span> <span class="k">range</span><span class="p">:</span> 
-<span class="nx">Summation</span> <span class="nx">from</span> <span class="mi">1</span> <span class="nx">to</span> <span class="mi">10</span> <span class="nx">is</span> <span class="mi">55</span><span class="nx">Iterating</span> <span class="nx">a</span> <span class="nx">half</span> <span class="nx">open</span> <span class="nx">integer</span> <span class="k">range</span><span class="p">:</span> 
+<span class="nx">Employee</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">750.0</span><span class="nx">Iterating</span> <span class="nx">a</span> <span class="nx">closed</span> <span class="nx">integer</span> <span class="k">range</span><span class="p">:</span><span class="o">-</span> 
+<span class="nx">Summation</span> <span class="nx">from</span> <span class="mi">1</span> <span class="nx">to</span> <span class="mi">10</span> <span class="nx">is</span> <span class="mi">55</span><span class="nx">Iterating</span> <span class="nx">a</span> <span class="nx">half</span> <span class="nx">open</span> <span class="nx">integer</span> <span class="k">range</span><span class="p">:</span><span class="o">-</span> 
 <span class="nx">Summation</span> <span class="nx">from</span> <span class="mi">1</span> <span class="nx">to</span> <span class="mi">10</span> <span class="p">(</span><span class="nx">exclusive</span><span class="p">)</span> <span class="nx">is</span> <span class="mi">45</span>
 </pre></div>
 
@@ -305,7 +305,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a JSON object: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a JSON object:- &quot;);
     json apple = { name: &quot;apple&quot;, colors: [&quot;red&quot;, &quot;green&quot;], price: 5 };
 </code></pre></div>
 
@@ -341,7 +341,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a JSON array: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a JSON array:- &quot;);
 </code></pre></div>
 
                                 </td>
@@ -375,7 +375,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating an XML: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating an XML:- &quot;);
     xml books = xml `&lt;books&gt;
                        &lt;book&gt;&lt;name&gt;Sherlock Holmes&lt;/name&gt;&lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;&lt;/book&gt;
                        &lt;book&gt;&lt;name&gt;Harry Potter&lt;/name&gt;&lt;author&gt;J.K. Rowling&lt;/author&gt;&lt;/book&gt;                       
@@ -412,7 +412,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a table: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a table:- &quot;);
 </code></pre></div>
 
                                 </td>
@@ -461,7 +461,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a closed integer range: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a closed integer range:- &quot;);
     int endValue = 10;
     int sum = 0;
 </code></pre></div>
@@ -498,7 +498,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a half open integer range: &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nIterating a half open integer range:- &quot;);
     sum = 0;
 </code></pre></div>
 
@@ -640,7 +640,7 @@ Country: England, Capital: London
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Iterating a JSON object: 
+                                    <div class="highlight"><pre><code class=shell-session>Iterating a JSON object:- 
 Key: name Value: apple
 Key: colors Value: red green
 Key: price Value: 5
@@ -655,7 +655,7 @@ Key: price Value: 5
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Iterating a JSON array: 
+                                    <div class="highlight"><pre><code class=shell-session>Iterating a JSON array:- 
 Color: red
 Color: green
 </code></pre></div>
@@ -669,7 +669,7 @@ Color: green
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Iterating an XML: 
+                                    <div class="highlight"><pre><code class=shell-session>Iterating an XML:- 
 Book: &lt;book&gt;&lt;name&gt;Sherlock Holmes&lt;/name&gt;&lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;&lt;/book&gt;
 Book: &lt;book&gt;&lt;name&gt;Harry Potter&lt;/name&gt;&lt;author&gt;J.K. Rowling&lt;/author&gt;&lt;/book&gt;
 </code></pre></div>
@@ -683,7 +683,7 @@ Book: &lt;book&gt;&lt;name&gt;Harry Potter&lt;/name&gt;&lt;author&gt;J.K. Rowlin
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Iterating a table: 
+                                    <div class="highlight"><pre><code class=shell-session>Iterating a table:- 
 Employee: id=1 name=John salary=300.5
 Employee: id=2 name=Bella salary=500.5
 Employee: id=3 name=Peter salary=750.0
@@ -698,7 +698,7 @@ Employee: id=3 name=Peter salary=750.0
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Iterating a closed integer range: 
+                                    <div class="highlight"><pre><code class=shell-session>Iterating a closed integer range:- 
 Summation from 1 to 10 is 55
 </code></pre></div>
 
@@ -711,7 +711,7 @@ Summation from 1 to 10 is 55
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Iterating a half open integer range: 
+                                    <div class="highlight"><pre><code class=shell-session>Iterating a half open integer range:- 
 Summation from 1 to 10 (exclusive) is 45
 </code></pre></div>
 

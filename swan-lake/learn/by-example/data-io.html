@@ -69,14 +69,14 @@ redirect_from:
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">dc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">return</span> <span class="nx">person</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">writeRecordToFile</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">p</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+<span class="kd">function</span> <span class="nx">writeRecordToFile</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">p</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">wc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
     <span class="nx">serialize</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">wc</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">readRecordFromFile</span><span class="p">(</span><span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted Person|error {</span>
+<span class="kd">function</span> <span class="nx">readRecordFromFile</span><span class="p">(</span><span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">rc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">deserialize</span><span class="p">(</span><span class="nx">rc</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">wPerson</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
@@ -422,7 +422,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function writeRecordToFile(Person p, string path) returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function writeRecordToFile(Person p, string path) returns error? {
     io:WritableByteChannel wc = check io:openWritableFile(path);
     serialize(p, wc);
 }
@@ -444,7 +444,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function readRecordFromFile(string path) returns @tainted Person|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function readRecordFromFile(string path) returns Person|error {
     io:ReadableByteChannel rc = check io:openReadableFile(path);
     return deserialize(rc);
 }
@@ -466,7 +466,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
     Person wPerson = {
         name: &quot;Ballerina&quot;,
         age: 21,

@@ -79,11 +79,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/range-expressions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/range-expressions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -125,7 +125,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -137,7 +137,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -149,7 +149,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;foreach for 25 ... 28&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;foreach for 25 ... 28&quot;);
     foreach int i in 25 ... 28 {
         io:println(i);
     }
@@ -172,7 +172,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nforeach for 25 ..&lt; 28&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nforeach for 25 ..&lt; 28&quot;);
     foreach int i in 25 ..&lt; 28 {
         io:println(i);
     }
@@ -195,7 +195,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>    abstract object {
         public function __iterator() returns
             abstract object {
                 public function next() returns record {|int value;|}?;
@@ -220,7 +220,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>    abstract object {
             public function next() returns (record {|int value;|}?);
     } iterator = iterableObj.__iterator();
 </code></pre></div>
@@ -234,7 +234,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\niterable object for 25 ..&lt; 28&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\niterable object for 25 ..&lt; 28&quot;);
     while (true) {
         record {| int value; |}? r = iterator.next();
         if (r is record {| int value; |}) {
@@ -251,7 +251,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            break;
+                                    <div class="highlight"><pre><code class=language-ballerina>            break;
         }
     }
 }

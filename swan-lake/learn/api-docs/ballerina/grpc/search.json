@@ -26,11 +26,6 @@
   ],
   "records": [
     {
-      "id": "T20",
-      "description": "",
-      "moduleId": "grpc"
-    },
-    {
       "id": "ClientConfiguration",
       "description": "\u003cp\u003eRepresents client endpoint configuration.\u003c/p\u003e",
       "moduleId": "grpc"

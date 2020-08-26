@@ -11,7 +11,7 @@ redirect_from:
   - /swan-lake/learn/testing-ballerina-code/testing-quick-start
 ---
 
-# Quick Start
+# Testing Quick Start
 
 The Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enable the programmers to write comprehensive tests.
 
@@ -130,7 +130,7 @@ For more information on the command, see [Structuring Ballerina Code](/swan-lake
     ```
  
  
-## What's Next
+## What's Next?
 
 Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
  features in the [Writing Tests](/swan-lake/learn/testing-ballerina-code/writing-tests) section.

@@ -11,6 +11,12 @@ redirect_from:
 
 # Executing Tests
 
+- [Executing Tests Using CLI Commands](#executing-tests-using-cli-commands)
+- [Test Report](#test-report)
+- [Code Coverage Report](#code-coverage-report)
+
+## Executing Tests Using CLI Commands
+
 Tests will be automatically executed when you run the build command or you can explicitly run them using the test command. 
 
 Execute tests within the specified module with the following command.

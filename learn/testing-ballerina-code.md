@@ -21,13 +21,17 @@ Developers and testers can cover multiple levels of the test pyramid including u
 
 Testerina design and usage is aligned with project and module semantics of Ballerina. You can test the project modules while you are building the project in a seamless manner using the test constructs. 
 
-## Overview
- 
 * Ballerina programmers can place their test code in a **tests** folder in a **module**
 * Ballerina tests are defined using a set of **annotations**
 * Test **assertions** can be used to verify the set of program behaviour expectations 
 * Data providers can be used to feed in the test data sets 
 * Function mocks can be used to mock a function in a module that you are testing or a function of an imported module
+
+- [Writing and Running Tests](#writing-and-running-tests)
+    - [Project Structure](#project-structure)
+- [Annotations](#annotations)
+- [Assertions](#assertions)
+- [Function Mocks](#function-mocks)
 
 ## Writing and Running Tests 
 

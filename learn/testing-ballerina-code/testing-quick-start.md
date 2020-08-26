@@ -134,7 +134,7 @@ For more information on the command, see [Structuring Ballerina Code](/learn/str
     ```
  
  
-## What's Next
+## What's Next?
 
 Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
  features in [Writing Tests](/learn/testing-ballerina-code/writing-tests).

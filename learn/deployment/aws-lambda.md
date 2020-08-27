@@ -11,7 +11,7 @@ redirect_from:
 
 # AWS Lambda
 
-The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. This is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json|EventType) returns json|error`. The second parameter in the function is either a `json` or a domain specific event type such as `awslambda:S3Event`. If the user does not provide a domain specific event type, the JSON representation of the incoming event will be sent to the function. 
+The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. This is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json|EventType) returns json|error`. The second parameter in the function is either a `json` or a domain-specific event type such as `awslambda:S3Event`. If the user does not provide a domain specific event type, the JSON representation of the incoming event will be sent to the function. 
 
 The following code presents a few examples on how to expose functions in AWS Lambda, which contain a generic `json` event input and other functions, which provide the event information using domain-specific event types.
 

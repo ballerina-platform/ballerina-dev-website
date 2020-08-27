@@ -11,7 +11,9 @@ redirect_from:
 
 # AWS Lambda
 
-The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. This is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json|EventType) returns json|error`. The second parameter in the function is either a `json` or a domain-specific event type such as `awslambda:S3Event`. If the user does not provide a domain specific event type, the JSON representation of the incoming event will be sent to the function. 
+The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. This is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json|EventType) returns json|error`. 
+
+The second parameter in the function is either a `json` or a domain-specific event type such as `awslambda:S3Event`. If the user does not provide a domain specific event type, the JSON representation of the incoming event will be sent to the function. 
 
 The following code presents a few examples on how to expose functions in AWS Lambda, which contain a generic `json` event input and other functions, which provide the event information using domain-specific event types.
 
@@ -50,7 +52,9 @@ public function apigwRequest(awslambda:Context ctx, awslambda:APIGatewayProxyReq
 }
 ```
 
-The first parameter with the [awslambda:Context](/learn/api-docs/ballerina/awslambda/objects/Context.html) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. The second parameter contains the input request data. This input value will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response or else in an error situation, the function will return an `error` value, which provides information on the error to the system. You can also provide functions, which do not return anything at all, which implicitly signals a successful execution without a returning result.
+The first parameter with the [awslambda:Context](/learn/api-docs/ballerina/awslambda/objects/Context.html) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. The second parameter contains the input request data. This input value will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). 
+
+The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response or else in an error situation, the function will return an `error` value, which provides information on the error to the system. You can also provide functions, which do not return anything at all, which implicitly signals a successful execution without a returning result.
 
 The AWS Lambda functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 

@@ -211,30 +211,68 @@
                               <div class="section">
                                  <h1 id="how-to-observe-ballerina-services">How to Observe Ballerina Services</h1>
 
-<h2 id="introduction">Introduction</h2>
-<p>Observability is a measure of how well internal states of a system can be inferred from knowledge of its external
-outputs. Monitoring, logging, and distributed tracing are key methods that reveal the internal state of the system to
-provide the observability. Ballerina becomes fully observable by exposing itself via these three methods to various 
-external systems allowing to monitor metrics such as request count and response time statistics, analyze logs, and
-perform distributed tracing.</p>
+<p>Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs. Monitoring, logging, and distributed tracing are key methods that reveal the internal state of the system to provide the observability. Ballerina becomes fully observable by exposing itself via these three methods to various external systems allowing to monitor metrics such as request count and response time statistics, analyze logs, and perform distributed tracing.</p>
 
-<p>HTTP/HTTPS based Ballerina services and any client connectors are observable by default. HTTP/HTTPS and SQL client
-connectors use semantic tags to make tracing and metrics monitoring more informative.</p>
+<p>HTTP/HTTPS based Ballerina services and any client connectors are observable by default. HTTP/HTTPS and SQL client connectors use semantic tags to make tracing and metrics monitoring more informative.</p>
 
-<h2 id="getting-started">Getting Started</h2>
 <p>This section focuses on enabling Ballerina service observability with some of its default supported systems.
 <a href="https://prometheus.io/">Prometheus</a> and <a href="https://grafana.com/">Grafana</a> are used for metrics monitoring, and <a href="https://www.jaegertracing.io/">Jaeger</a> is used for distributed tracing. 
-Ballerina logs can be fed to any external log monitoring system like <a href="https://www.elastic.co/">Elastic Stack</a> to perform log monitoring and 
-analysis.</p>
+Ballerina logs can be fed to any external log monitoring system like <a href="https://www.elastic.co/">Elastic Stack</a> to perform log monitoring and analysis.</p>
 
-<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+  <li><a href="#observing-a-ballerina-service">Observing a Ballerina Service</a><ul>
+  <li><a href="#step-1---setting-up-the-prerequisites">Step 1 - Setting up the Prerequisites</a></li>
+  <li><a href="#step-2---installing-and-configuring-the-external-systems">Step 2 - Installing and Configuring the External Systems</a></li>
+  <li><a href="#step-3---creating-a-hello-world-ballerina-service">Step 3 - Creating a Hello World Ballerina Service</a></li>
+  <li><a href="#step-4---observing-the-hello-world-ballerina-service">Step 4 - Observing the Hello World Ballerina Service</a><ul>
+  <li><a href="#starting-the-service-using-a-flag">Starting the Service Using a Flag</a></li>
+  <li><a href="#starting-the-service-using-a-configuration-file">Starting the Service Using a Configuration File</a></li>
+  </ul>
+  </li>
+  <li><a href="#step-5---sending-few-requests">Step 5 - Sending Few Requests</a></li>
+  <li><a href="#step-6---viewing-tracing-and-metrics-in-the-dashboard">Step 6 - Viewing Tracing and Metrics in the Dashboard</a></li>
+  <li><a href="#step-7---visualizing-the-logs">Step 7 - Visualizing the Logs</a></li>
+  </ul>
+  </li>
+  <li><a href="#monitoring-metrics">Monitoring Metrics</a><ul>
+  <li><a href="#configuring-advanced-metrics-for-ballerina">Configuring Advanced Metrics for Ballerina</a></li>
+  <li><a href="#setting-up-the-external-systems-for-metrics">Setting Up the External Systems for Metrics</a><ul>
+  <li><a href="#setting-up-prometheus">Setting Up Prometheus</a></li>
+  <li><a href="#setting-up-grafana">Setting Up Grafana</a></li>
+  </ul>
+  </li>
+  </ul>
+  </li>
+  <li><a href="#distributed-tracing">Distributed Tracing</a><ul>
+  <li><a href="#configuring-advanced-tracing-for-ballerina">Configuring Advanced Tracing for Ballerina</a><ul>
+  <li><a href="#using-the-jaeger-client">Using the Jaeger Client</a></li>
+  <li><a href="#using-the-zipkin-client">Using the Zipkin Client</a></li>
+  </ul>
+  </li>
+  <li><a href="#setting-up-the-external-systems-for-tracing">Setting Up the External Systems for Tracing</a><ul>
+  <li><a href="#setting-up-the-jaeger-server">Setting Up the Jaeger Server</a></li>
+  <li><a href="#setting-up-the-zipkin-server">Setting Up the Zipkin Server</a></li>
+  </ul>
+  </li>
+  </ul>
+  </li>
+  <li><a href="#distributed-logging">Distributed Logging</a><ul>
+  <li><a href="#setting-up-the-external-systems-for-log-analytics">Setting Up the External Systems for Log Analytics</a><ul>
+  <li><a href="#setting-up-elastic-stack">Setting Up Elastic Stack</a></li>
+  </ul>
+  </li>
+  </ul>
+  </li>
+  </ul>
+
+<h2 id="observing-a-ballerina-service">Observing a Ballerina Service</h2>
+  <p>Follow the steps below to observe a sample Ballerina service.</p>
+<h3 id="step-1---setting-up-the-prerequisites">Step 1 - Setting up the Prerequisites</h3>
 
 <p>Make sure you have already installed <a href="https://www.docker.com/">Docker</a> to setup external products such as Jaeger,
 Prometheus, etc. You can follow <a href="https://docs.docker.com/install/">Docker documentation</a> to install Docker.</p>
 
-<h3 id="steps">Steps</h3>
-
-<p><strong>Step 1:</strong> Install and configure Prometheus, Grafana, Jeager and Elastic Stack to Observe Ballerina.</p>
+<h3 id="step-2---installing-and-configuring-the-external-systems">Step 2 - Installing and Configuring the External Systems</h3>
 
 <ul>
   <li>Setup Prometheus for collecting metrics information by following section on <a href="#prometheus">Setting up Prometheus</a></li>
@@ -243,7 +281,7 @@ Prometheus, etc. You can follow <a href="https://docs.docker.com/install/">Docke
   <li>Setup Elastic Stack only if you are interested in analysing logs by following section on <a href="#elastic-stack">Setting up Elastic Stack</a></li>
 </ul>
 
-<p><strong>Step 2:</strong> Create Hello World Ballerina service.</p>
+<h3 id="step-3---creating-a-hello-world-ballerina-service">Step 3 - Creating a Hello World Ballerina Service</h3>
 
 <p>Create a Service as shown below and save it as <code class="highlighter-rouge">hello_world_service.bal</code>.</p>
 
@@ -264,7 +302,7 @@ service hello on new http:Listener(9090) {
 }
 </code></pre>
 
-<p><strong>Step 3:</strong> Observe Hello World Ballerina service</p>
+<h3 id="step-4---observing-the-hello-world-ballerina-service">Step 4 - Observing the Hello World Ballerina Service</h3>
 
 <p>Observability is disabled by default and can be enabled by using the <code class="highlighter-rouge">--b7a.observability.enabled=true</code> flag or updating the configurations.</p>
 
@@ -275,7 +313,7 @@ the metrics HTTP endpoint in Ballerina.</p>
 <p>Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
 pushed to <a href="#distributed-logging">Elastic Stack</a> to perform the log analysis.</p>
 
-<p><strong>Start the service using <code class="highlighter-rouge">--b7a.observability.enabled=true</code> flag:</strong></p>
+<h4 id="starting-the-service-using-a-flag">Starting the Service Using a Flag</h4>
 
 <p>The Ballerina service is observable with default settings when the <code class="highlighter-rouge">--b7a.observability.enabled=true</code> flag is used along with the Ballerina
 <code class="highlighter-rouge">run</code> command to start the service.
@@ -296,10 +334,10 @@ ballerina: started publishing tracers to Jaeger on localhost:5775
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">nohup </span>ballerina run hello_world_service.bal <span class="nt">--b7a</span>.observability.enabled<span class="o">=</span><span class="nb">true</span> <span class="o">&gt;</span> ballerina.log &amp;
 </code></pre></div></div>
 
-<p><strong>Start the service using a configuration file:</strong></p>
+<h4 id="starting-the-service-using-a-configuration-file">Starting the Service Using a Configuration File</h4>
 
 <p>Observability of Ballerina service can also be enabled from the configuration. Create a configuration file such as 
-<code class="highlighter-rouge">ballerina.conf</code> and add the below configuration that starts metrics monitoring and distributed tracing with default 
+<code class="highlighter-rouge">ballerina.conf</code> and add the configuration below that starts metrics monitoring and distributed tracing with default 
 settings.</p>
 
 <div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[b7a.observability.metrics]</span>
@@ -328,7 +366,7 @@ ballerina: started publishing tracers to Jaeger on localhost:5775
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">nohup </span>ballerina run hello_world_service.bal <span class="nt">--b7a</span>.config.file<span class="o">=</span>&lt;path-to-conf&gt;/ballerina.conf <span class="o">&gt;</span> ballerina.log &amp;
 </code></pre></div></div>
 
-<p><strong>Step 4:</strong> Send few requests.</p>
+<h3 id="step-5---sending-few-requests">Step 5 - Sending Few Requests</h3>
 
 <p>Send few requests to <a href="http://localhost:9090/hello/sayHello">http://localhost:9090/hello/sayHello</a></p>
 
@@ -337,7 +375,7 @@ ballerina: started publishing tracers to Jaeger on localhost:5775
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl http://localhost:9090/hello/sayHello
 </code></pre></div></div>
 
-<p><strong>Step 5:</strong> View tracing and metrics in dashboard.</p>
+<h3 id="step-6---viewing-tracing-and-metrics-in-the-dashboard">Step 6 - Viewing Tracing and Metrics in the Dashboard</h3>
 
 <p>View the tracing information on Jaeger via <a href="http://localhost:16686/">http://localhost:16686/</a> and view metrics information from Grafana
 dashboard on <a href="http://localhost:3000/">http://localhost:3000/</a>.</p>
@@ -348,7 +386,7 @@ dashboard on <a href="http://localhost:3000/">http://localhost:3000/</a>.</p>
 <p>Sample view of Grafana dashboard for hello_world_service.bal is shown below. 
 <img src="../images/grafana-sample-hello-world-service-stats.png" alt="Grafana Sample Dashboard" title="Grafana HelloWorld Service Sample Dashboard" /></p>
 
-<p><strong>Step 6:</strong> Visualize the logs.</p>
+<h3 id="step-7---visualizing-the-logs">Step 7 - Visualizing the Logs</h3>
 
 <p>If you have configured log analytics, view the logs in Kibana via <a href="http://localhost:5601">http://localhost:5601</a></p>
 
@@ -364,7 +402,7 @@ Therefore, it is imperative to continuously measure the code in production.</p>
 <p>Metrics, by default, supports Prometheus. In order to support Prometheus, an HTTP endpoint starts with the context
 of <code class="highlighter-rouge">/metrics</code> in default port 9797 when starting the Ballerina service.</p>
 
-<h3 id="advanced-metrics-configuration-for-ballerina">Advanced Metrics Configuration for Ballerina</h3>
+<h3 id="configuring-advanced-metrics-for-ballerina">Configuring Advanced Metrics for Ballerina</h3>
 <p>This section focuses on the Ballerina configurations that are available for metrics monitoring with Prometheus,
 and the sample configuration is provided below.</p>
 
@@ -416,11 +454,11 @@ and the sample configuration is provided below.</p>
   </tbody>
 </table>
 
-<h3 id="setup-external-systems-for-metrics">Setup External Systems for Metrics</h3>
+<h3 id="setting-up-the-external-systems-for-metrics">Setting Up the External Systems for Metrics</h3>
 <p>There are mainly two systems involved in collecting and visualizing the metrics. <a href="https://prometheus.io/">Prometheus</a> is used to collect the
 metrics from the Ballerina service and <a href="https://grafana.com/">Grafana</a> can connect to Prometheus and visualize the metrics in the dashboard.</p>
 
-<h4 id="prometheus">Prometheus</h4>
+<h4 id="setting-up-prometheus">Setting Up Prometheus</h4>
 <p><a href="https://prometheus.io/">Prometheus</a> is used as the monitoring system, which pulls out the metrics collected from the Ballerina service
 ‘/metrics’. This section focuses on the quick installation of Prometheus with Docker, and configure it to collect 
 metrics from Ballerina service with default configurations. Below provided steps needs to be followed to configure 
@@ -454,11 +492,11 @@ If you need more information refer <a href="https://prometheus.io/docs/introduct
 <p><strong>Step 4:</strong> Go to <a href="http://localhost:19090/">http://localhost:19090/</a> and check whether you can see the Prometheus graph.
 Ballerina metrics should appear in Prometheus graph’s metrics list when Ballerina service is started.</p>
 
-<h4 id="grafana">Grafana</h4>
+<h4 id="setting-up-grafana">Setting Up Grafana</h4>
 <p>Let’s use <a href="https://grafana.com/">Grafana</a> to visualize metrics in a dashboard. For this, we need to install Grafana, and configure
-Prometheus as a datasource. Follow the below provided steps and configure Grafana.</p>
+Prometheus as a datasource. Follow the steps below to configure Grafana.</p>
 
-<p><strong>Step 1:</strong> Start Grafana as Docker container with below command.</p>
+<p><strong>Step 1:</strong> Start Grafana as Docker container with the command below.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">--name</span><span class="o">=</span>grafana <span class="nt">-p</span> 3000:3000 grafana/grafana
 </code></pre></div></div>
@@ -514,7 +552,7 @@ can be traced using OpenTracing implementations like <a href="http://www.jaegert
 <p>Semantic tags used by Ballerina also follow the <a href="https://github.com/opentracing/specification/blob/master/semantic_conventions.md">semantic conventions defined in OpenTracing
 specification.</a></p>
 
-<h3 id="advanced-tracing-configuration-for-ballerina">Advanced Tracing Configuration for Ballerina</h3>
+<h3 id="configuring-advanced-tracing-for-ballerina">Configuring Advanced Tracing for Ballerina</h3>
 
 <p>Tracing can be enabled in Ballerina with <code class="highlighter-rouge">--b7a.observability.enabled=true</code> flag as mentioned in the <a href="#getting-started">Getting Started</a> section, as well as configuration option. This section mainly focuses on the configuration options with description and possible values.</p>
 
@@ -525,7 +563,7 @@ specification.</a></p>
 <span class="py">name</span><span class="p">=</span><span class="s">"jaeger"</span>
 </code></pre></div></div>
 
-<p>The below table provides the descriptions of each configuration option and possible values that can be assigned.</p>
+<p>The table below provides the descriptions of each configuration option and possible values that can be assigned.</p>
 
 <table>
   <thead>
@@ -552,7 +590,7 @@ specification.</a></p>
   </tbody>
 </table>
 
-<h4 id="jaeger-client">Jaeger Client</h4>
+<h4 id="using-the-jaeger-client">Using the Jaeger Client</h4>
 <p>Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
 the Jaeger.</p>
 
@@ -575,7 +613,7 @@ the Jaeger.</p>
 <span class="py">spans</span><span class="p">=</span><span class="mi">1000</span>
 </code></pre></div></div>
 
-<p>The below table provides the descriptions of each configuration option and possible values that can be assigned.</p>
+<p>The table below provides the descriptions of each configuration option and possible values that can be assigned.</p>
 
 <table>
   <thead>
@@ -626,16 +664,16 @@ the Jaeger.</p>
   </tbody>
 </table>
 
-<h4 id="zipkin-client">Zipkin Client</h4>
+<h4 id="using-the-zipkin-client">Using the Zipkin Client</h4>
 <p>The tracing of Ballerina service can be done via Zipkin as well, but the required dependencies are not included in
-default Ballerina distribution. Follow the below steps to add the required dependencies to the Ballerina distribution.</p>
+default Ballerina distribution. Follow the steps below to add the required dependencies to the Ballerina distribution.</p>
 
 <p><strong>Step 1:</strong> Go to <a href="https://github.com/ballerina-platform/ballerina-observability">ballerina-observability</a> and clone
 the GitHub repository in any preferred location.</p>
 
 <p><strong>Step 2:</strong> Make sure you have installed <a href="http://maven.apache.org/">Apache Maven</a>.</p>
 
-<p><strong>Step 3:</strong> Open the command line and build the repository by using <a href="http://maven.apache.org/">Apache Maven</a> with below command, while being in the root project directory <code class="highlighter-rouge">ballerina-observability</code>.</p>
+<p><strong>Step 3:</strong> Open the command line and build the repository by using <a href="http://maven.apache.org/">Apache Maven</a> with the command below while being in the root project directory <code class="highlighter-rouge">ballerina-observability</code>.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mvn clean <span class="nb">install</span>
 </code></pre></div></div>
@@ -728,7 +766,7 @@ of the default Jaeger tracer.</p>
 <span class="py">enabled</span><span class="p">=</span><span class="kc">true</span>
 </code></pre></div></div>
 
-<p>The below table provides the descriptions of each configuration option and possible values that can be assigned.</p>
+<p>The table below provides the descriptions of each configuration option and possible values that can be assigned.</p>
 
 <table>
   <thead>
@@ -773,11 +811,11 @@ of the default Jaeger tracer.</p>
   </tbody>
 </table>
 
-<h3 id="setup-external-systems-for-tracing">Setup External Systems for Tracing</h3>
+<h3 id="setting-up-the-external-systems-for-tracing">Setting Up the External Systems for Tracing</h3>
 <p>Ballerina by default supports Jaerger and Zipkin for distributed tracing. This section focuses on configuring the
 Jaeger and Zipkin with Dockers as a quick installation.</p>
 
-<h4 id="jaeger-server">Jaeger Server</h4>
+<h4 id="setting-up-the-jaeger-server">Setting Up the Jaeger Server</h4>
 <p>Jaeger is the default distributed tracing system that is supported. There are many possible ways to deploy Jaeger and you can find more information on this <a href="https://www.jaegertracing.io/docs/deployment/">link</a>. Here we focus on all in one deployment with Docker.</p>
 
 <p><strong>Step 1:</strong> Install Jaeger via Docker and start the Docker container by executing below command.</p>
@@ -787,11 +825,11 @@ Jaeger and Zipkin with Dockers as a quick installation.</p>
 
 <p><strong>Step 2:</strong> Go to <a href="http://localhost:16686">http://localhost:16686</a> and load the web UI of the Jaeger to make sure it is functioning properly.</p>
 
-<p>The below image is the sample tracing information you can see from Jaeger.</p>
+<p>The image below is the sample tracing information you can see from Jaeger.</p>
 
 <p><img src="../images/jaeger-tracing-dashboard.png" alt="Jaeger Tracing Dashboard" title="Jaeger Tracing Dashboard" /></p>
 
-<h4 id="zipkin-server">Zipkin Server</h4>
+<h4 id="setting-up-the-zipkin-server">Setting Up the Zipkin Server</h4>
 <p>Similar to Jaeger, Zipkin is another distributed tracing system that is supported by the Ballerina. There are many
 different configurations and deployment exist for Zipkin, please go to <a href="https://github.com/openzipkin/zipkin">link</a>
 for more information. Here we focus on all in one deployment with Docker.</p>
@@ -802,7 +840,7 @@ for more information. Here we focus on all in one deployment with Docker.</p>
 </code></pre></div></div>
 
 <p><strong>Step 2:</strong> Go to <a href="http://localhost:9411/zipkin/">http://localhost:9411/zipkin/</a> and load the web UI of the Zipkin to make sure it is functioning
-properly. The below shown is the sample Zipkin dashboard for the hello world sample in the <a href="/v1-0/learn/quick-tour">Quick Start</a></p>
+properly. The Zipkin dashboard for the hello world sample in the <a href="/v1-0/learn/quick-tour">Quick Start</a>is shown below.</p>
 
 <p><img src="../images/zipkin-sample.png" alt="Zipkin Sample" title="Zipkin Sample" /></p>
 
@@ -815,14 +853,14 @@ the console. In order to monitor the logs, the Ballerina standard output needs t
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">nohup </span>ballerina run hello_world_service.bal <span class="o">&gt;</span> ballerina.log &amp;
 </code></pre></div></div>
 
-<p>You can view the logs with below command.</p>
+<p>You can view the logs with the command below.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">tail</span> <span class="nt">-f</span> ~/wso2-ballerina/workspace/ballerina.log
 </code></pre></div></div>
 
-<h3 id="setup-external-systems-for-log-analytics">Setup External Systems for Log Analytics</h3>
+<h3 id="setting-up-the-external-systems-for-log-analytics">Setting Up the External Systems for Log Analytics</h3>
 
-<h4 id="elastic-stack">Elastic Stack</h4>
+<h4 id="setting-up-elastic-stack">Setting Up Elastic Stack</h4>
 <p>The elastic stack comprises of the following components.</p>
 
 <ol>

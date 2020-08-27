@@ -344,6 +344,8 @@ td.cDescTD {
     width: 40%;
 }
 
+
+
 @media (max-width: 1200px) {
     .cButtonInfoContainer {
         width: 45%;
@@ -445,4 +447,8 @@ body, ol, ul {
 
 ol, ul {
     padding: 0;
+}
+
+.cLeftTD li {
+    list-style: disc !important;
 }

@@ -39,7 +39,8 @@ redirect_from:
 <span class="p">}</span><span class="err">#</span> <span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">RabbitMQ</span> <span class="nx">broker</span> <span class="nx">running</span><span class="p">.</span>
 <span class="err">#</span>
 <span class="err">#</span> <span class="nx">Navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="err">&#39;</span><span class="nx">rabbitmq_consumer_with_data_binding</span><span class="p">.</span><span class="nx">bal</span><span class="err">&#39;</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">issue</span> <span class="nx">the</span> <span class="err">&#39;</span><span class="nx">ballerina</span> <span class="nx">run</span><span class="err">&#39;</span> <span class="nx">command</span> <span class="k">as</span> <span class="nx">follows</span><span class="p">.</span>
+<span class="err">#</span> <span class="err">&#39;</span><span class="nx">rabbitmq_consumer_with_data_binding</span><span class="p">.</span><span class="nx">bal</span><span class="err">&#39;</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">issue</span> <span class="nx">the</span> <span class="err">&#39;</span><span class="nx">ballerina</span> <span class="nx">run</span><span class="err">&#39;</span> <span class="nx">command</span> <span class="k">as</span> <span class="nx">follows</span><span class="p">.</span><span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">rabbitmq_consumer_with_data_binding</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">RabbitMQ</span> <span class="nx">consumer</span> <span class="nx">runs</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="kd">service</span> <span class="nx">and</span> <span class="nx">listens</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">subscribed</span> <span class="nx">queue</span><span class="mf">.2019</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mi">13</span> <span class="mi">13</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">611</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">The</span> <span class="kt">message</span> <span class="nx">received</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">from</span> <span class="nx">Ballerina</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mi">13</span> <span class="mi">13</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">612</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">The</span> <span class="kt">message</span> <span class="nx">received</span> <span class="nx">from</span> <span class="nx">data</span> <span class="nx">binding</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">from</span> <span class="nx">Ballerina</span>
 </pre></div>
 
             </div>
@@ -87,11 +88,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/rabbitmq-consumer-with-data-binding/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/rabbitmq-consumer-with-data-binding/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -137,7 +138,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/log;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
 import ballerina/rabbitmq;
 </code></pre></div>
 
@@ -150,7 +151,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>rabbitmq:Connection connection = new ({host: &quot;localhost&quot;, port: 5672});
+                                    <div class="highlight"><pre><code class=language-ballerina>rabbitmq:Connection connection = new ({host: &quot;localhost&quot;, port: 5672});
 </code></pre></div>
 
                                 </td>
@@ -169,7 +170,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener rabbitmq:Listener channelListener = new (connection);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener rabbitmq:Listener channelListener = new (connection);
 </code></pre></div>
 
                                 </td>
@@ -181,7 +182,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@rabbitmq:ServiceConfig {
+                                    <div class="highlight"><pre><code class=language-ballerina>@rabbitmq:ServiceConfig {
     queueConfig: {
         queueName: &quot;MyQueue&quot;
     },
@@ -198,7 +199,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service dataBindingConsumer on channelListener {
+                                    <div class="highlight"><pre><code class=language-ballerina>service dataBindingConsumer on channelListener {
 </code></pre></div>
 
                                 </td>
@@ -217,7 +218,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(rabbitmq:Message message, string stringMessage) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(rabbitmq:Message message, string stringMessage) {
 </code></pre></div>
 
                                 </td>
@@ -236,7 +237,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var messageContent = message.getTextContent();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var messageContent = message.getTextContent();
         if (messageContent is string) {
             log:printInfo(&quot;The message received: &quot; + messageContent);
         } else {
@@ -260,7 +261,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        log:printInfo(&quot;The message received from data binding: &quot; + stringMessage);
+                                    <div class="highlight"><pre><code class=language-ballerina>        log:printInfo(&quot;The message received from data binding: &quot; + stringMessage);
 </code></pre></div>
 
                                 </td>
@@ -280,7 +281,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = message-&gt;basicAck();
+                                    <div class="highlight"><pre><code class=language-ballerina>        var result = message-&gt;basicAck();
         if (result is error) {
             log:printError(&quot;Error occurred while acknowledging the message.&quot;);
         }
@@ -303,7 +304,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(rabbitmq:Message message, error err) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(rabbitmq:Message message, error err) {
         log:printError(&quot;Error from connector: &quot; + err.reason() + &quot; - &quot;
                                                   + &lt;string&gt;err.detail()?.message);
     }
@@ -366,7 +367,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina run rabbitmq_consumer_with_data_binding.bal
+                                    <div class="highlight"><pre><code class=shell-session>ballerina run rabbitmq_consumer_with_data_binding.bal
 </code></pre></div>
 
                                 </td>

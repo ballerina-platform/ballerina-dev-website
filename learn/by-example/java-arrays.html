@@ -22,7 +22,11 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">numWords</span><span class="p">);</span>
     <span class="nx">handle</span> <span class="nx">secondWord</span> <span class="p">=</span> <span class="nx">jarrays</span><span class="p">:</span><span class="nx">get</span><span class="p">(</span><span class="nx">words</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">secondWord</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">java_arrays</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">2</span>
+<span class="nx">world</span>
 </pre></div>
 
             </div>
@@ -66,11 +70,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/java-arrays/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/java-arrays/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -110,7 +114,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java;
 import ballerina/java.arrays as jarrays;
 </code></pre></div>
@@ -124,7 +128,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function splitString(handle receiver, handle regex) returns handle = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function splitString(handle receiver, handle regex) returns handle = @java:Method {
     name: &quot;split&quot;,
     class: &quot;java/lang/String&quot;
 } external;
@@ -139,7 +143,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -151,7 +155,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handle helloString = java:fromString(&quot;Hello world&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handle helloString = java:fromString(&quot;Hello world&quot;);
     handle regex = java:fromString(&quot; &quot;);
 </code></pre></div>
 
@@ -171,7 +175,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handle words = splitString(helloString, regex);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handle words = splitString(helloString, regex);
 </code></pre></div>
 
                                 </td>
@@ -190,7 +194,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int numWords = jarrays:getLength(words);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int numWords = jarrays:getLength(words);
     io:println(numWords);
 </code></pre></div>
 
@@ -203,7 +207,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    handle secondWord = jarrays:get(words, 1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    handle secondWord = jarrays:get(words, 1);
     io:println(secondWord);
 }
 </code></pre></div>
@@ -238,8 +242,8 @@ import ballerina/java.arrays as jarrays;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run java_arrays.bal
+# `.bal` file and use the `ballerina run` command below.
+ballerina run java_arrays.bal
 2
 world
 </code></pre></div>

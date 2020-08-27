@@ -1,9 +1,9 @@
 ---
 layout: ballerina-landing-page
-title: Release Notes
+title: Stable Archived Versions
 permalink: /downloads/archived/
 ---
-<script src="{{ "/js/download/archived_download.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/download/swan_lake_archived_download.js" | prepend: site.baseurl }}"></script>
 <link rel="stylesheet" href="/css/download-page.css" />
 <div class="row cBallerina-io-Gray-row">
     <div class="container">
@@ -18,7 +18,7 @@ permalink: /downloads/archived/
         </div> -->
         <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers" id="archived-versions">
-                <h2>Archived Versions</h2>
+                <h2>Stable Archived Versions</h2>
             </div>            
         </div>
     </div>

@@ -5,6 +5,7 @@ permalink: /1.1/learn/how-to-test-ballerina-code/
 redirect_from:
   - /v1-1/learn/how-to-test-ballerina-code/
   - /v1-1/learn/how-to-test-ballerina-code
+  - /1.1/learn/how-to-test-ballerina-code
 ---
 
 # How to Test Ballerina Code
@@ -14,14 +15,18 @@ Ballerina has a built-in test framework named Testerina. Testerina enables devel
 Developers and testers can cover multiple levels of the test pyramid including unit testing, integration testing and end to end testing with the building blocks the framework provides. It provides the flexibility to programmers and testers to build intelligent tests that suit the domain and application needs.
 
 Testerina design and usage is aligned with project and module semantics of Ballerina. You can test the project modules while you are building the project in a seamless manner using the test constructs. 
-
-## Overview
  
 * Ballerina programmers can place their test code in a **tests** folder in a **module**
 * Ballerina tests are defined using a set of **annotations**
 * Test **assertions** can be used to verify the set of program behaviour expectations 
 * Data providers can be used to feed in the test data sets 
 * Service calls can be tested using service skeletons in the test phase of the project until the system is connected to the real service
+
+- [Writing and Running Tests](#writing-and-running-tests)
+    - [Project Structure](#project-structure)
+- [Annotations](#annotations)
+- [Assertions](#assertions)
+- [Service Skeleton Start and Stop Utility](#service-skeleton-start-and-stop-utility)
 
 ## Writing and Running Tests 
 
@@ -345,7 +350,7 @@ function foo() {
 }
 ```
 
-## Service Skeleton Start/Stop Utility
+## Service Skeleton Start and Stop Utility
 
 Testerina provides the functionality to start/stop service skeletons generated from OpenAPI definitions.
 

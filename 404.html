@@ -2,6 +2,7 @@
 layout: ballerina-inner-page
 ---
 
+<script src="/js/redirections.js" type="application/javascript"></script>
 <!-- <style type="text/css" media="screen">
   .container {
     margin: 10px auto;
@@ -16,17 +17,20 @@ layout: ballerina-inner-page
   }
 </style> -->
 <script>
-  //Handling bulk redirections
-  var pathname = window.location.pathname;
-  var redirection = validate_redirection(pathname);
-
-  if (redirection) {
-    var new_path = pathname.replace('v', '').replace('-', '.');
-    document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');
-  } else {
-    $('body').show();
-  }
-</script>
+    //Handling bulk redirections
+    var pathname = window.location.pathname;
+    var redirection = validate_redirection(pathname);
+  
+    if (redirection.type == "versioned") {
+      var new_path = pathname.replace('v', '').replace('-', '.');
+      document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');
+    } else if(redirection.type == "path" && typeof redirection.dest != "undefined"){
+          var new_path = redirection.dest;
+          document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');
+    }else {
+      $('body').show();
+    }
+  </script>
 
 <div class="container">
   <h1>404</h1>

@@ -1,6 +1,8 @@
 import json
+import sys
 
-with open('_data/latest/metadata.json') as f:
+metadata_json_path = sys.argv[1]
+with open(metadata_json_path) as f:
     json_data =json.load(f)
 
 version = json_data['version'] 
@@ -8,6 +10,9 @@ version = json_data['version']
 with open('RN.md', 'r') as myfile:
   data = myfile.read().replace('\n', '\\n')
   data = data.replace('\"', '\\"')
+  #There can be strings which have been already escaped. This is to revert
+  #changes done to those
+  data = data.replace('\\\\"', '\\"')
 
 output='{{\"tag_name\": \"v{}\", \"target_commitish\": \"master\", \"name\": \"Ballerina {} Released!\", \"body\": \"{}\", \"draft\": false, \"prerelease\": false}}'.format(version, version, data)
 

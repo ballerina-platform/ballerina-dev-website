@@ -5,7 +5,7 @@ on:
     branches:
       - prod-sync
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
     
 jobs:
   publish_idea_plugin:
@@ -18,17 +18,27 @@ jobs:
     - name: Install jq for json manipulation
       run: sudo apt-get install jq
 
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8 
-
     - name: Clone ballerina-lang repo
       run: git clone https://github.com/ballerina-platform/ballerina-lang.git
           
-    - name: Build and publish plugin
+    - name: Set oracle jdk, build and publish plugin
       run: |
-        version="`jq -r '.version' _data/latest/metadata.json`"
+        CURRENT_DIR=$PWD
+        sudo apt-get install wget
+        wget --header "Cookie: oraclelicense=accept-securebackup-cookie" https://javadl.oracle.com/webapps/download/GetFile/1.8.0_261-b12/a4634525489241b9a9e1aa73d9e118e6/linux-i586/jdk-8u261-linux-x64.tar.gz
+        DWNLD_PATH=$PWD
+        cd /usr/lib/jvm
+        sudo rm -rfv /usr/lib/jvm/*
+        sudo tar -xvzf $DWNLD_PATH/jdk-8u261-linux-x64.tar.gz
+        JDK_PATH=$PWD
+        echo 'export JAVA_HOME=$JDK_PATH/jdk1.8.0_261' >> ~/.bash_profile
+        echo 'export PATH=$PATH:$JDK_PATH/jdk1.8.0_261/bin' >> ~/.bash_profile
+        source ~/.bash_profile
+        java -version
+        echo $JAVA_HOME
+        cd $CURRENT_DIR
+
+        version="`jq -r '.version' _data/stable-latest/metadata.json`"
         BAL_VERSION="v${version}"
 
         cd ballerina-lang/tool-plugins/intellij/

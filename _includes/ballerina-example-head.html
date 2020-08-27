@@ -76,9 +76,11 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css"> -->
 
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<!-- <script type="text/javascript" src="/js/highlight.pack.js"></script> -->
+
+<link rel="stylesheet" href="{{ "/css/prism.css" | prepend: site.baseurl }}">
 
 <script src="/js/ballerina-common.js"></script>
 <link rel=stylesheet href="/css/ballerina-io.css">
@@ -95,4 +97,11 @@
     var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
     var dev_download_url = 'https://product-dist.ballerina.io/dev';
     var base_download_url = 'https://dist.ballerina.io/downloads';
+
+
+    $(document).ready(function() {
+    $("table").removeClass('table-striped');
+    $(".ballerina").addClass('language-ballerina');
+    $("pre").addClass('language-ballerina');
+});
 </script>

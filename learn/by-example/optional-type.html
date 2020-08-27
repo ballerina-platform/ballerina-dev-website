@@ -29,7 +29,11 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;s is ()&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">optional_type</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Length</span> <span class="nx">of</span> <span class="nx">the</span> <span class="kt">string</span><span class="p">:</span> <span class="mi">11</span>
+<span class="nx">s</span> <span class="nx">is</span> <span class="p">()</span>
 </pre></div>
 
             </div>
@@ -75,11 +79,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/optional-type/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/optional-type/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -119,7 +123,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -131,7 +135,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getValue(string key) returns string? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function getValue(string key) returns string? {
     if (key == &quot;string&quot;) {
         return &quot;hello world&quot;;
     }
@@ -153,7 +157,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    return ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    return ();
 }
 </code></pre></div>
 
@@ -178,7 +182,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -190,7 +194,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? s = getValue(&quot;string&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? s = getValue(&quot;string&quot;);
 </code></pre></div>
 
                                 </td>
@@ -211,7 +215,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (s is string) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (s is string) {
         io:println(&quot;Length of the string: &quot;, s.length());
     } else {
         io:println(&quot;s is ()&quot;);
@@ -234,7 +238,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    s = ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    s = ();
     if (s is string) {
         io:println(&quot;Length of the string: &quot;, s.length());
     } else {
@@ -273,8 +277,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run optional_type.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run optional_type.bal
 Length of the string: 11
 s is ()
 </code></pre></div>

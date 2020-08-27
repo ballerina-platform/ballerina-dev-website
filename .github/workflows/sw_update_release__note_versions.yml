@@ -1,0 +1,48 @@
+name: Push changes of new Swan Lake Release-notes/Archive pages
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '_data/swanlake-latest/**'
+
+jobs:
+  update-sl-rn-archive-pages:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.WEBSITE_TOKEN }}
+      
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+
+    - name: Generate the new release-notes-json file
+      run: python3 .github/scripts/publish_json.py _data/swanlake_release_notes_versions.json _data/swanlake-latest/metadata.json
+
+    - name: Copy newly generated release-notes-json file
+      run: cp .github/scripts/target/release_notes_versions.json _data/swanlake_release_notes_versions.json
+
+    - name: Commit release-notes-versions json file
+      run: |
+        git pull origin master
+        
+        git config --global user.email "ballerina-bot@ballerina.org"
+        git config --global user.name "ballerina-bot"
+        git add _data/swanlake_release_notes_versions.json
+        git commit --allow-empty -m '[Automated] Update swan lake release notes json'
+        
+    - name: Push changes for new Release-notes/Archive pages
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub push
+      env:
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

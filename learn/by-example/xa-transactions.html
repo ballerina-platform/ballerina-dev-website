@@ -62,7 +62,21 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="o">--</span><span class="nx">experimental</span> <span class="nx">xa_transactions</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">Create</span> <span class="nx">CUSTOMER</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Create</span> <span class="nx">SALARY</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">16</span> <span class="mi">10</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">658</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Created</span> <span class="nx">transaction</span><span class="p">:</span> <span class="nx">ab7cc71e</span><span class="o">-</span><span class="mi">30</span><span class="nx">f0</span><span class="o">-</span><span class="mi">45</span><span class="nx">ac</span><span class="o">-</span><span class="mf">982e-01</span><span class="nx">e0a0e39875</span>
+<span class="nx">Inserted</span> <span class="nx">row</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Generated</span> <span class="nx">key</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Insert</span> <span class="nx">to</span> <span class="nx">SALARY</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">1</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">16</span> <span class="mi">10</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">672</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Running</span> <span class="mi">2</span><span class="o">-</span><span class="nx">phase</span> <span class="nx">commit</span> <span class="k">for</span> <span class="nx">transaction</span><span class="p">:</span> <span class="nx">ab7cc71e</span><span class="o">-</span><span class="mi">30</span><span class="nx">f0</span><span class="o">-</span><span class="mi">45</span><span class="nx">ac</span><span class="o">-</span><span class="mf">982e-01</span><span class="nx">e0a0e39875</span><span class="p">:</span><span class="err">$</span><span class="nx">anon</span><span class="err">$</span><span class="p">.</span><span class="err">$</span><span class="mi">0</span>
+<span class="nx">Transaction</span> <span class="nx">committed</span>
+<span class="nx">Drop</span> <span class="nx">Table</span> <span class="nx">CUSTOMER</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Drop</span> <span class="nx">Table</span> <span class="nx">SALARY</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">10.100.7.118</span><span class="p">:</span><span class="mi">52159</span>
+<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">stopped</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">10.100.7.118</span><span class="p">:</span><span class="mi">52159</span>
 </pre></div>
 
             </div>
@@ -110,11 +124,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/xa-transactions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/xa-transactions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -164,7 +178,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerinax/java.jdbc;
 </code></pre></div>
 
@@ -177,7 +191,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB1 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jdbc:Client testDB1 = new ({
     url: &quot;jdbc:h2:file:./xa-transactions/Testdb1&quot;,
     username: &quot;test&quot;,
     password: &quot;test&quot;,
@@ -202,7 +216,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB2 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jdbc:Client testDB2 = new ({
     url: &quot;jdbc:h2:file:./xa-transactions/Testdb2&quot;,
     username: &quot;test&quot;,
     password: &quot;test&quot;,
@@ -227,7 +241,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -239,7 +253,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var ret = testDB1-&gt;update(&quot;CREATE TABLE CUSTOMER (ID INTEGER &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    var ret = testDB1-&gt;update(&quot;CREATE TABLE CUSTOMER (ID INTEGER &quot; +
                               &quot;AUTO_INCREMENT, NAME VARCHAR(30))&quot;);
     handleUpdate(ret, &quot;Create CUSTOMER table&quot;);
 </code></pre></div>
@@ -260,7 +274,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB2-&gt;update(&quot;CREATE TABLE SALARY (ID INT, VALUE FLOAT)&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB2-&gt;update(&quot;CREATE TABLE SALARY (ID INT, VALUE FLOAT)&quot;);
     handleUpdate(ret, &quot;Create SALARY table&quot;);
 </code></pre></div>
 
@@ -280,7 +294,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    transaction {
+                                    <div class="highlight"><pre><code class=language-ballerina>    transaction {
 </code></pre></div>
 
                                 </td>
@@ -299,7 +313,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        ret = testDB1-&gt;update(&quot;INSERT INTO CUSTOMER(NAME) &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>        ret = testDB1-&gt;update(&quot;INSERT INTO CUSTOMER(NAME) &quot; +
                               &quot;VALUES (&#39;Anne&#39;)&quot;);
         int key = -1;
         if (ret is jdbc:UpdateResult) {
@@ -330,7 +344,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        ret = testDB2-&gt;update(&quot;INSERT INTO SALARY (ID, VALUE) VALUES (?, ?)&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>        ret = testDB2-&gt;update(&quot;INSERT INTO SALARY (ID, VALUE) VALUES (?, ?)&quot;,
                               key, 2500);
         handleUpdate(ret, &quot;Insert to SALARY table&quot;);
     } onretry {
@@ -359,7 +373,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB1-&gt;update(&quot;DROP TABLE CUSTOMER&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB1-&gt;update(&quot;DROP TABLE CUSTOMER&quot;);
     handleUpdate(ret, &quot;Drop Table CUSTOMER&quot;);
 </code></pre></div>
 
@@ -379,7 +393,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB2-&gt;update(&quot;DROP TABLE SALARY&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB2-&gt;update(&quot;DROP TABLE SALARY&quot;);
     handleUpdate(ret, &quot;Drop Table SALARY&quot;);
 }
 </code></pre></div>
@@ -393,7 +407,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(jdbc:UpdateResult|error returned, string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleUpdate(jdbc:UpdateResult|error returned, string message) {
     if (returned is jdbc:UpdateResult) {
         io:println(message, &quot; status: &quot;, returned.updatedRowCount);
     } else {
@@ -432,8 +446,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run --experimental xa_transactions.bal
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run --experimental xa_transactions.bal
 Create CUSTOMER table status: 0
 Create SALARY table status: 0
 2019-12-16 10:25:35,658 INFO  [ballerina/transactions] - Created transaction: ab7cc71e-30f0-45ac-982e-01e0a0e39875

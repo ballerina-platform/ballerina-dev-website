@@ -8,6 +8,19 @@ redirect_from:
   - /1.1/learn/tools-ides
   - /1.1/learn/tools-ides/
   - /v1-1/learn/
+  - /1.1/learn
+  - /1.1/learn/faqs
+  - /1.1/learn/faqs/
+  - /1.1/learn/faq
+  - /1.1/learn/faq/
+  - /1.1/learn/by-guide
+  - /1.1/learn/by-guide/
+  - /v1-1/learn/faqs
+  - /v1-1/learn/faqs/
+  - /v1-1/learn/faq
+  - /v1-1/learn/faq/
+  - /v1-1/learn/by-guide
+  - /v1-1/learn/by-guide/
 ---
 
 <h1>Let’s learn Ballerina!</h1>

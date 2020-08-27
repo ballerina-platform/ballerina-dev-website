@@ -29,7 +29,7 @@ function updateReleaseTable(allData) {
                 '<li class="toctree-l3"><a href="#' + getReleaseNotesDivId(version) + '">' + version + '</a></li>'
             );
         });
-        $("#release-notes").after(elements);
+        $("#stable-release-notes").after(elements);
         allData.forEach(function(item) {
             var version = item["version"];
             var releaseNoteUrl = getReleaseNoteURL(version);

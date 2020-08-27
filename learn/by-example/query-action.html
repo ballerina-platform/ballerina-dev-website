@@ -28,7 +28,11 @@ redirect_from:
     <span class="p">};</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">name</span> <span class="nx">in</span> <span class="nx">nameList</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_action</span><span class="p">.</span><span class="nx">balfirstName</span><span class="p">=</span><span class="nx">Alex</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">George</span>
+<span class="nx">firstName</span><span class="p">=</span><span class="nx">Ranjan</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Fonseka</span>
+<span class="nx">firstName</span><span class="p">=</span><span class="nx">John</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">David</span>
 </pre></div>
 
             </div>
@@ -74,11 +78,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/query-action/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/query-action/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -122,7 +126,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -134,7 +138,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string firstName;
     string lastName;
     float score;
@@ -150,7 +154,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type FullName record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type FullName record {|
     string firstName;
     string lastName;
 |};
@@ -165,7 +169,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
     Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, score: 1.5};
     Student s2 = {firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, score: 0.9};
     Student s3 = {firstName: &quot;John&quot;, lastName: &quot;David&quot;, score: 1.2};
@@ -180,7 +184,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student[] studentList = [s1, s2, s3];
+                                    <div class="highlight"><pre><code class=language-ballerina>    Student[] studentList = [s1, s2, s3];
 </code></pre></div>
 
                                 </td>
@@ -192,7 +196,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    FullName[] nameList = [];
+                                    <div class="highlight"><pre><code class=language-ballerina>    FullName[] nameList = [];
 </code></pre></div>
 
                                 </td>
@@ -204,7 +208,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var e = from var student in studentList
+                                    <div class="highlight"><pre><code class=language-ballerina>    var e = from var student in studentList
 </code></pre></div>
 
                                 </td>
@@ -226,7 +230,7 @@ It can be either an error or ().</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    do {
+                                    <div class="highlight"><pre><code class=language-ballerina>    do {
         FullName fullName = {firstName: student.firstName, lastName: student.lastName};
         nameList.push(fullName);
     };
@@ -248,7 +252,7 @@ It can be either an error or ().</p>
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var name in nameList {
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var name in nameList {
         io:println(name);
     }
 }
@@ -281,8 +285,8 @@ It can be either an error or ().</p>
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run query_action.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run query_action.bal
 </code></pre></div>
 
                                 </td>

@@ -1,0 +1,62 @@
+# Github action to open a PR in Homebrew/homebrew-core when a new release of ballerina is being published
+name: Publish Homebrew
+
+on:
+  push:
+    branches:
+      - prod-sync
+    paths:
+      - '_data/stable-latest/**'
+
+jobs:
+  publish-homebrew:
+    runs-on: ubuntu-latest
+    env:
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+    steps:
+      - name: Clone ballerina-bot/homebrew-core repo 
+        run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-bot/homebrew-core.git
+
+      - name: Synch local homebrow-core repo with remote upstream
+        run: |
+          cd homebrew-core
+          git pull origin master
+          
+          git config --global user.email "ballerina+bot@ballerina.org"
+          git config --global user.name "ballerina-bot"
+
+          git remote add upstream https://github.com/Homebrew/homebrew-core.git
+          
+          git fetch upstream
+          git checkout master
+          git reset --hard upstream/master
+          git push origin master --force
+
+          echo 'Successfully pushed to ballerina-bot/homebrew-core branch'
+
+      - name: Install jq for json manipulation
+        run: sudo apt-get install jq
+
+      - name: Check out repository.
+        uses: actions/checkout@v2
+      
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+        
+      - name: Send the PR to Homebrew
+        run: |
+          python -m pip install --upgrade pip
+          pip install PyGithub
+          VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
+          dist_url="https://dist.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip"
+          checksum="$(curl -fsSL "$dist_url" | shasum -a 256 -b | awk '{print $1}')"
+
+          if [ -z "$checksum" ]; then
+            echo "ERROR: calculating the checksum failed for $dist_url" >&2
+            exit 1
+          fi
+
+          python3 ./.github/scripts/publish_homebrew.py ${{ secrets.WEBSITE_TOKEN }} "$VERSION" "$checksum" "$dist_url"
+      

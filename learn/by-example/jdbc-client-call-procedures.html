@@ -94,7 +94,24 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">At</span> <span class="nx">the</span> <span class="nx">command</span> <span class="nx">line</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jdbc_client_call_procedures</span><span class="p">.</span><span class="nx">bal</span>
+<span class="nx">The</span> <span class="nx">update</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">Creating</span> <span class="nx">table</span> <span class="nx">and</span> <span class="nx">procedures</span><span class="p">:</span>
+<span class="nx">Create</span> <span class="nx">student</span> <span class="nx">table</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">IN</span> <span class="nx">param</span> <span class="nx">creation</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">INOUT</span><span class="o">/</span><span class="nx">OUT</span> <span class="nx">param</span> <span class="nx">creation</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">result</span> <span class="nx">set</span> <span class="k">return</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span><span class="nx">The</span> <span class="nx">call</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">With</span> <span class="nx">IN</span> <span class="nx">params</span>
+<span class="nx">Call</span> <span class="nx">operation</span> <span class="nx">with</span> <span class="nx">IN</span> <span class="nx">params</span> <span class="nx">successfulThe</span> <span class="nx">call</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">With</span> <span class="nx">INOUT</span><span class="o">/</span><span class="nx">OUT</span> <span class="nx">params</span>
+<span class="nx">Call</span> <span class="nx">operation</span> <span class="nx">with</span> <span class="nx">INOUT</span> <span class="nx">and</span> <span class="nx">OUT</span> <span class="nx">params</span> <span class="nx">successful</span>
+<span class="nx">Student</span> <span class="nx">ID</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">student</span> <span class="nx">with</span> <span class="nx">age</span> <span class="nx">of</span> <span class="mi">20</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Student</span> <span class="nx">count</span> <span class="nx">with</span> <span class="nx">age</span> <span class="nx">of</span> <span class="mi">20</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Data</span> <span class="nx">in</span> <span class="nx">students</span> <span class="nx">table</span><span class="p">:</span>
+<span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">age</span><span class="p">=</span><span class="mi">20</span> <span class="nx">name</span><span class="p">=</span><span class="nx">GeorgeThe</span> <span class="nx">update</span> <span class="nx">operation</span> <span class="o">-</span> <span class="nx">Drop</span> <span class="nx">the</span> <span class="nx">tables</span> <span class="nx">and</span> <span class="nx">procedures</span>
+<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">student</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Drop</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="nx">INSERTDATA</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Drop</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="nx">GETCOUNT</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nx">Drop</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="nx">GETSTUDENTS</span> <span class="nx">status</span><span class="p">:</span> <span class="mi">0</span>
 </pre></div>
 
             </div>
@@ -140,11 +157,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/jdbc-client-call-procedures/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/jdbc-client-call-procedures/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -210,7 +227,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerinax/java.jdbc;
 </code></pre></div>
 
@@ -223,7 +240,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>jdbc:Client testDB = new ({
     url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
     username: &quot;test&quot;,
     password: &quot;test&quot;,
@@ -248,7 +265,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Student record {
     int id;
     int age;
     string name;
@@ -271,7 +288,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -283,7 +300,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;The update operation - Creating table and procedures:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;The update operation - Creating table and procedures:&quot;);
     var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot; +
         &quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
     handleUpdate(ret, &quot;Create student table&quot;);
@@ -305,7 +322,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE INSERTDATA(IN pAge INT, &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE INSERTDATA(IN pAge INT, &quot; +
         &quot;IN pName VARCHAR(255)) &quot; +
         &quot;BEGIN &quot; +
         &quot;INSERT INTO student(age, name) VALUES (pAge, pName); &quot; +
@@ -329,7 +346,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE GETCOUNT (INOUT pID INT, &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE GETCOUNT (INOUT pID INT, &quot; +
         &quot;OUT pCount INT) &quot; +
         &quot;BEGIN &quot; +
         &quot;SELECT id INTO pID FROM student WHERE age = pID; &quot; +
@@ -355,7 +372,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE GETSTUDENTS() &quot; +
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE GETSTUDENTS() &quot; +
         &quot;BEGIN SELECT * FROM student; END&quot;);
     handleUpdate(ret, &quot;Stored procedure with result set return&quot;);
 </code></pre></div>
@@ -369,7 +386,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe call operation - With IN params&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe call operation - With IN params&quot;);
 </code></pre></div>
 
                                 </td>
@@ -389,7 +406,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var retCall = testDB-&gt;call(&quot;{CALL INSERTDATA(?,?)}&quot;, (), 20, &quot;George&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    var retCall = testDB-&gt;call(&quot;{CALL INSERTDATA(?,?)}&quot;, (), 20, &quot;George&quot;);
     if (retCall is error) {
         io:println(&quot;Stored procedure call failed: &quot;,
                     &lt;string&gt;retCall.detail()?.message);
@@ -414,7 +431,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe call operation - With INOUT/OUT params&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe call operation - With INOUT/OUT params&quot;);
 </code></pre></div>
 
                                 </td>
@@ -433,7 +450,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Parameter pId = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Parameter pId = {
         sqlType: jdbc:TYPE_INTEGER,
         value: 20,
         direction: jdbc:DIRECTION_INOUT
@@ -460,7 +477,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    retCall = testDB-&gt;call(&quot;{CALL GETCOUNT(?,?)}&quot;, (), pId, pCount);
+                                    <div class="highlight"><pre><code class=language-ballerina>    retCall = testDB-&gt;call(&quot;{CALL GETCOUNT(?,?)}&quot;, (), pId, pCount);
     if (retCall is error) {
         io:println(&quot;Stored procedure call failed: &quot;,
                     &lt;string&gt;retCall.detail()?.message);
@@ -487,7 +504,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    retCall = testDB-&gt;call(&quot;{CALL GETSTUDENTS()}&quot;, [Student]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    retCall = testDB-&gt;call(&quot;{CALL GETSTUDENTS()}&quot;, [Student]);
     if (retCall is error) {
         io:println(&quot;Stored procedure call failed: &quot;,
                     &lt;string&gt;retCall.detail()?.message);
@@ -509,7 +526,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    } else if retCall is table&lt;record {}&gt;[] {
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else if retCall is table&lt;record {}&gt;[] {
         io:println(&quot;Data in students table:&quot;);
         foreach var row in retCall[0] {
             io:println(row);
@@ -528,7 +545,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe update operation - Drop the tables and procedures&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe update operation - Drop the tables and procedures&quot;);
     ret = testDB-&gt;update(&quot;DROP TABLE student&quot;);
     handleUpdate(ret, &quot;Drop table student&quot;);
 </code></pre></div>
@@ -549,7 +566,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;DROP PROCEDURE INSERTDATA&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;DROP PROCEDURE INSERTDATA&quot;);
     handleUpdate(ret, &quot;Drop stored procedure INSERTDATA&quot;);
 </code></pre></div>
 
@@ -562,7 +579,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;DROP PROCEDURE GETCOUNT&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;DROP PROCEDURE GETCOUNT&quot;);
     handleUpdate(ret, &quot;Drop stored procedure GETCOUNT&quot;);
 </code></pre></div>
 
@@ -575,7 +592,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;DROP PROCEDURE GETSTUDENTS&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;DROP PROCEDURE GETSTUDENTS&quot;);
     handleUpdate(ret, &quot;Drop stored procedure GETSTUDENTS&quot;);
 }
 </code></pre></div>
@@ -589,7 +606,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
     if (returned is jdbc:UpdateResult) {
         io:println(message, &quot; status: &quot;, returned.updatedRowCount);
     } else {
@@ -640,8 +657,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># At the command line, navigate to the directory that contains the
-# `.bal` file and run the `ballerina run` command.
-$ ballerina run jdbc_client_call_procedures.bal
+# `.bal` file and run the `ballerina run` command below.
+ballerina run jdbc_client_call_procedures.bal
 The update operation - Creating table and procedures:
 Create student table status: 0
 Stored procedure with IN param creation status: 0

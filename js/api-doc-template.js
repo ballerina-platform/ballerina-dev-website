@@ -27,14 +27,15 @@ $(document).ready(function () {
         '                            </li>\n' +
         '                            <li class="cVersionItem">\n' +
         '                                <div class="cVersionContainer">\n' +
-        '                                    <lable class="cVlable">Version</lable>\n' +
         '                                    <select name="versions" id="versions" class="select-css">\n' +
-        '                                        <option value="1.2" data-value="latest">1.2</option>\n' +
-        '                                        <option value="1.1">1.1</option>\n' +
-        '                                        <option value="1.0">1.0</option>\n' +
-        '                                        <option value="0.991">0.991</option>\n' +
-        '                                    </select>\n' +
+        '                                        <option value="1.2" data-value="latest">v1.2</option>\n' +
+        '                                        <option value="swan-lake">Swan Lake</option>\n' +        
+        '                                        <option value="1.1">v1.1</option>\n' +
+        '                                        <option value="1.0">v1.0</option>\n' +
+        '                                     </select>\n' +
         '                                </div>\n' +
+        '                            </li>\n' +
+        '                           <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>\n' +
         '                            </li>\n' +
         '                        </ul>\n' +
         '                    </div>\n' +
@@ -71,4 +72,35 @@ $(document).ready(function () {
 
     $('#iMainNavigation').append(menu);
     $('#iBallerinaFooter').append(footer);
+
+ 
 });
+
+
+$(window).scroll(function () {
+    var bodyclass = document.body;
+
+    if ($(this).scrollTop() > 100) {
+        $('.cLeftNavContainer').addClass('cFixNav');
+        $('.cLeftNavWrapper').addClass('cFixNav');
+
+ 
+     
+    } else {
+        $('.cLeftNavContainer').removeClass('cFixNav');
+        $('.cLeftNavWrapper').removeClass('cFixNav');
+    
+    }
+
+ 
+
+});
+
+
+// $(window).scroll(function() {
+//     $(".cLeftNavContainer").removeClass("test");
+//     if($(window).scrollTop() + $(window).height() == $(document).height()) {
+//         //you are at bottom
+//         $(".cLeftNavContainer").addClass("test");
+//     }
+//  });

@@ -1,0 +1,40 @@
+{
+  "modules": [
+    {
+      "id": "awslambda",
+      "description": "\u003cp\u003eThis module offers the capabilities of creating AWS Lambda functions using ballerina.\u003c/p\u003e"
+    }
+  ],
+  "objects": [
+    {
+      "id": "Context",
+      "description": "\u003cp\u003eObject to represent an AWS Lambda function execution context.\u003c/p\u003e",
+      "moduleId": "awslambda"
+    }
+  ],
+  "functions": [
+    {
+      "id": "__process",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "__register",
+      "description": "",
+      "moduleId": "awslambda"
+    }
+  ],
+  "records": [],
+  "constants": [],
+  "errors": [],
+  "types": [],
+  "clients": [],
+  "listeners": [],
+  "annotations": [
+    {
+      "id": "Function",
+      "description": "\u003cp\u003e@awslambda:Function annotation\u003c/p\u003e\n",
+      "moduleId": "awslambda"
+    }
+  ]
+}

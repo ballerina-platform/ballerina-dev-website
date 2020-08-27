@@ -1,0 +1,48 @@
+name: Push changes of new Swan Lake Release-note
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '_data/swanlake-latest/**'
+
+jobs:
+  add-sl-release-note:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.WEBSITE_TOKEN}}
+
+    steps:    
+    - name: Install jq for json manipulation
+      run: sudo apt-get install jq
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.WEBSITE_TOKEN }}
+
+    - name: Create new release note
+      run: |
+        VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
+        mkdir downloads/swan-lake-release-notes/$VERSION
+        cp downloads/RELEASE_NOTE.md downloads/swan-lake-release-notes/$VERSION
+
+    - name: Commit changes for the new release note
+      run: |
+        git pull origin master
+        
+        git config --global user.email "ballerina-bot@ballerina.org"
+        git config --global user.name "ballerina-bot"
+        
+        VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
+        git add downloads/swan-lake-release-notes/$VERSION
+        git commit --allow-empty -m '[Automated] Add releaste note template for the new release'
+        
+    - name: Push changes for the new release note
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub push
+      env:
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

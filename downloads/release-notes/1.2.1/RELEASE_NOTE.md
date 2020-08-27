@@ -3,7 +3,7 @@ layout: release-note
 title: Release note
 ---
 
-# Overview of jBallerina 1.2.1
+### Overview of jBallerina 1.2.1
 
 The jBallerina 1.2.1 patch release improves upon the 1.2.0 release by introducing the features listed below and addressing a number of [bugs](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.1%22+label%3AType%2FBug+is%3Aclosed) and [improvements](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.1%22+is%3Aclosed+label%3AType%2FImprovement).
 
@@ -24,23 +24,23 @@ However, you need to use the following commands instead of the above if you have
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
-## Language
+#### Language
 - Deprecation support for annotations, function parameters, and object fields
 - Runtime validations added to the XML attributes map.
 - Support for map to record assignment
 
-## Standard Library
+#### Standard Library
 - Support for Avro key serialization/deserialization in the `ballerina/kafka` module
 - Automatic failover support for the WebSocket client
 - Provide the base64-encoded end user certificate along with the mutual SSL status
 	
-## Dev tools
+#### Dev tools
 - Support for mocking object methods in Testerina
 - Support for subtypes in Java for the bindgen tool
 - Support for formatting of streams
 - Code coverage report
 
-## Deployment
+#### Deployment
 - Default permissions mode support for Kubernetes configmap and secret annotations
 - Node selector support for Kubernetes deployments and job annotations
 

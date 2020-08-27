@@ -26,7 +26,11 @@ redirect_from:
 <span class="p">|};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">designation</span><span class="p">;</span>
-<span class="p">|};</span>
+<span class="p">|};</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
+<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">expression_bodied_functions</span><span class="p">.</span><span class="nx">bal</span>
+<span class="mi">30</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">designation</span><span class="p">=</span><span class="nx">Software</span> <span class="nx">Engineer</span>
 </pre></div>
 
             </div>
@@ -70,11 +74,11 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/expression-bodied-functions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/expression-bodied-functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -118,7 +122,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -130,7 +134,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function add(int a, int b) returns int =&gt; a + b;
+                                    <div class="highlight"><pre><code class=language-ballerina>function add(int a, int b) returns int =&gt; a + b;
 </code></pre></div>
 
                                 </td>
@@ -153,7 +157,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -165,7 +169,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int sum = add(10, 20);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int sum = add(10, 20);
     io:println(sum);
 </code></pre></div>
 
@@ -185,7 +189,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var toEmployee = function (Person p, string pos) returns Employee =&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>    var toEmployee = function (Person p, string pos) returns Employee =&gt; {
         name: p.fname + &quot; &quot; + p.lname,
         designation: pos
     };
@@ -209,7 +213,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person john = { fname: &quot;John&quot;, lname: &quot;Doe&quot;, age: 25 };
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person john = { fname: &quot;John&quot;, lname: &quot;Doe&quot;, age: 25 };
     Employee johnEmp = toEmployee(john, &quot;Software Engineer&quot;);
 </code></pre></div>
 
@@ -222,7 +226,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(johnEmp);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(johnEmp);
 }
 </code></pre></div>
 
@@ -235,7 +239,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person record {|
     string fname;
     string lname;
     int age;
@@ -251,7 +255,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {|
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {|
     string name;
     string designation;
 |};
@@ -280,8 +284,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run expression_bodied_functions.bal
+# `.bal` file and execute the `ballerina run` command below.
+ballerina run expression_bodied_functions.bal
 30
 name=John Doe designation=Software Engineer
 </code></pre></div>

@@ -1,32 +1,37 @@
 ---
-layout: ballerina-inner-page
-title: How to Test Ballerina Code
-permalink: /1.1/learn/how-to-test-ballerina-code/
+layout: ballerina-left-nav-pages
+title: Testing Ballerina Code
+description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
+keywords: ballerina, programming language, testing
+permalink: /learn/testing-ballerina-code/
+active: testing-ballerina-code
 redirect_from:
-  - /v1-1/learn/how-to-test-ballerina-code/
-  - /v1-1/learn/how-to-test-ballerina-code
-  - /1.1/learn/how-to-test-ballerina-code
+  - /learn/how-to-test-ballerina-code
+  - /learn/how-to-test-ballerina-code/
+  - /v1-2/learn/how-to-test-ballerina-code
+  - /v1-2/learn/how-to-test-ballerina-code/
+  - /learn/testing-ballerina-code
 ---
 
-# How to Test Ballerina Code
+# Testing Ballerina Code
 
 Ballerina has a built-in test framework named Testerina. Testerina enables developers to write testable code. The test framework provides a set of building blocks to help write tests and a set of tools to help test. 
 
 Developers and testers can cover multiple levels of the test pyramid including unit testing, integration testing and end to end testing with the building blocks the framework provides. It provides the flexibility to programmers and testers to build intelligent tests that suit the domain and application needs.
 
 Testerina design and usage is aligned with project and module semantics of Ballerina. You can test the project modules while you are building the project in a seamless manner using the test constructs. 
- 
+
 * Ballerina programmers can place their test code in a **tests** folder in a **module**
 * Ballerina tests are defined using a set of **annotations**
 * Test **assertions** can be used to verify the set of program behaviour expectations 
 * Data providers can be used to feed in the test data sets 
-* Service calls can be tested using service skeletons in the test phase of the project until the system is connected to the real service
+* Function mocks can be used to mock a function in a module that you are testing or a function of an imported module
 
 - [Writing and Running Tests](#writing-and-running-tests)
     - [Project Structure](#project-structure)
 - [Annotations](#annotations)
 - [Assertions](#assertions)
-- [Service Skeleton Start and Stop Utility](#service-skeleton-start-and-stop-utility)
+- [Function Mocks](#function-mocks)
 
 ## Writing and Running Tests 
 
@@ -350,64 +355,81 @@ function foo() {
 }
 ```
 
-## Service Skeleton Start and Stop Utility
+## Function Mocks
 
-Testerina provides the functionality to start/stop service skeletons generated from OpenAPI definitions.
+Ballerina test framework provides the capability to mock a function. Using the mocking feature you can easily mock a function in a module that you are testing or a function of an imported module. This feature will help you to test your Ballerina code independently from other modules and functions
 
-#### test:startServiceSkeleton(string moduleName, string openApiFilePath) (boolean isSuccessful)
+#### @test:Mock {}
 
-Start a service skeleton from a given OpenAPI definition in the given Ballerina module. If it is successful, it returns true. Alternatively, it returns false or throws an exception. For example: 
+The function specified with the `@test:Mock {}` annotation will be considered as a mock function that gets triggered every time the original function is called. The original function that will be mocked should be defined using the annotation parameters.
+
+##### Annotation Value Fields
+
+`moduleName : "<moduleName>"` : Name of the module where the function to be mocked resides in. If the function is within the same module, this can be left blank or "." (No module) can be passed. If the function is in a different module, but within the same project, just passing the module name will suffice. For functions in completely seperate modules, the fully qualified module name must be passed, which includes the `orgName` and the `version`. ie. `orgName/module:version`. For native function, the ballerina module needs to be specified. 
+
+`functionName : "<functionName>"` : Name of the function to be mocked.
+
+Sample :
+
+The following is an example for function mocking.
+
+The following is the function definition in the module that we are trying to mock in the test case
 
 ```ballerina
-boolean isSuccessful = test:startServiceSkeleton("petstore.service.skeleton", "/tmp/petstore.yaml");
+
+public function intAdd(int a, int b) returns (int) {
+    return (a + b);
+}
+
 ```
 
-When the tests are executing service skeleton related to the Ballerina service definition will be generated and started. The host names and ports you have defined in the OpenAPI definition will be used when starting the services. You can then invoke this service skeleton using a HTTP client endpoint, just like a normal Ballerina service.
-
-#### test:stopServiceSkeleton (string moduleName) 
-
-Stop a service skeleton and cleanup created directories of a given Ballerina module. This function would first try to stop the service that was created using test:startServiceSkeleton function and then would try to clean up the directories created.
+The following is the Ballerina test file where the function mocking takes place
 
 ```ballerina
-test:stopServiceSkeleton(“petstore.service.skeleton”);
-```
-
-The following sample explains how you can start and stop a skeleton service based on an OpenAPI definition.
-
-```ballerina
-import ballerina/http;
+import ballerina/io;
 import ballerina/test;
+import ballerina/math;
 
-string uri = "http://0.0.0.0:9095/v1";
-boolean isServiceSkeletonStarted = false;
 
-function init() {
-    // Starting the OpenAPI based service
-    isServiceSkeletonStarted = test:startServiceSkeleton("mymodule",
-        "<PATH_TO_OPENAPI_DEFINITION>/petstore.yaml");
+// This is the mock function which will replace the real `intAdd` function
+@test:Mock {
+    // Since the function is defined in the same module, "." can be passed as the current module.
+    // This can also be left blank.
+    moduleName : ".",
+    functionName : "intAdd"
+}
+// The mock function signature should match the actual function signature.
+public function mockIntAdd(int a, int b) returns (int) {
+    io:println("I am the mockIntAdd function");
+    return (a - b);
 }
 
-function clean() {
-    // Stopping the swager based service
-    test:stopServiceSkeleton("mymodule");
+
+// This test function calls the local `intAdd()` function but it expects the mocked result
+@test:Config {}  
+function test_intAdd() {
+    int answer = 0;
+    answer = intAdd(5, 3);
+    test:assertEquals(answer, 2, msg = "function mocking failed");
 }
 
-@test:Config {
-    before: "init", 
-    after: "clean"
-}
-function testService() {
-    http:Client clientEndpoint = new(uri);
-    test:assertTrue(isServiceSkeletonStarted, msg = "Service skeleton failed to start");
+// This test function calls the native `sqrt()` function but it expects the mocked result
+@test:Config {}  
+function test_sqrt() {
+    float answer = 0;
+    answer = math:sqrt(5);
 
-    // Send a GET request to the specified endpoint
-    var response = clientEndpoint->get("/pets");
-    if (response is http:Response) {
-         var strRes = response.getTextPayload();
-         string expected = "Sample listPets Response";
-         test:assertEquals(strRes, expected);
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint: " + uri);
-    }
+    test:assertEquals(answer, 125.0, "mocking did not take place");
 }
+
+// This is a mock function which will replace `sqrt()` by `ballerina/math`.
+@test:Mock {
+    moduleName : "ballerina/math",
+    functionName : "sqrt"
+}
+function mocksqrt(float a) returns (float) {
+    io:println("I am the mocksqrt function");
+    return a*a*a;
+}
+
 ```

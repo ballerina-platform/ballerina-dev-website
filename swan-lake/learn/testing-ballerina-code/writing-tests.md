@@ -12,6 +12,15 @@ redirect_from:
 
 # Writing Tests
 
+- [Project Structure](#project-structure)
+- [Test Source Files](#test-source-files)
+- [Test Resources](#test-resources)
+- [Defining a Test](#defining-a-test)
+- [Visibility of Symbols](#visibility-of-symbols)
+- [Using Assertions](#using-assertions)
+- [Setup and Teardown](#setup-and-teardown)
+- [Test Configurations](#test-configurations)
+
 ## Project Structure
 
 
@@ -30,7 +39,7 @@ project-name/
 
 
 
-## Test source files
+## Test Source Files
 
 Unit tests bound to a module need to be placed in a sub folder called ***tests/*** within the module. In a standard
  Ballerina project, a module is mapped to a test suite. All tests within a module’s *tests/* subfolder are
@@ -45,7 +54,7 @@ The test source files could have any name. The test functions are just Ballerina
 The resources sub directory found within the *tests/* directory is meant to contain any files or resources that are
  exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the project root.
 
-## Defining a test
+## Defining a Test
 
 The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is essential in order to write Ballerina tests.
 
@@ -126,7 +135,7 @@ function testFunction3() {
 }
 ```
 
-## Visibility of symbols
+## Visibility of Symbols
 
 The functions, services, and the global variables defined in a module are accessible from within the test files. Hence, you cannot redefine a symbol in the test files if it is already declared in the module. 
 
@@ -502,7 +511,7 @@ Configurations for testing can be provided using the Config API. For information
  [Config Module](/swan-lake/learn/api-docs/ballerina/config/index.html).
 
 
-## What's Next
+## What's Next?
 
  As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock
  backends for these external endpoints will be a tedious task (e.g., email client, spaceforce client).

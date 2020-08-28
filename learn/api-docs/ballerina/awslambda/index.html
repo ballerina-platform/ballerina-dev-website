@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module offers the capabilities of creating AWS Lambda functions using ballerina.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,awslambda">
+
+    <title>API Docs - ballerinax/awslambda</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v0.0.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../awslambda/index.html" onclick="menuLinkClick()">
+            <h3>awslambda</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../awslambda/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../awslambda/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../awslambda/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="annotations" href="../awslambda/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
+            </li>
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../awslambda/index.html">awslambda</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">awslambda</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p>This module offers the capabilities of creating AWS Lambda functions using ballerina.</p>
+<ul>
+<li>For information on the operations, which you can perform with this module, see <a href="/learn/api-docs/ballerina/awslambda/index.html#objects">Objects</a>.</li>
+<li>For information on the deployment, see the <a href="/learn/deployment/aws-lambda/">AWS Lambda Deployment Guide</a>.</li>
+<li>For examples on the usage of the operations, see the <a href="/learn/by-example/aws-lambda-deployment.html">AWS Lambda Deployment Example</a>.</li>
+</ul>
+<h3>Annotation Usage Sample:</h3>
+<pre><code class="language-ballerina">import ballerinax/awslambda;
+import ballerina/system;
+import ballerina/io;
+
+@awslambda:Function
+public function echo(awslambda:Context ctx, json input) returns json {
+   return input;
+}
+
+@awslambda:Function
+public function uuid(awslambda:Context ctx, json input) returns json {
+   return system:uuid();
+}
+
+@awslambda:Function
+public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
+   json result = { RequestID: ctx.getRequestId(),
+                   DeadlineMS: ctx.getDeadlineMs(),
+                   InvokedFunctionArn: ctx.getInvokedFunctionArn(),
+                   TraceID: ctx.getTraceId(),
+                   RemainingExecTime: ctx.getRemainingExecutionTime() };
+   return result;
+}
+
+@awslambda:Function
+public function notifySQS(awslambda:Context ctx, awslambda:SQSEvent event) returns json {
+    return event.Records[0].body;
+}
+
+@awslambda:Function
+public function notifyS3(awslambda:Context ctx, awslambda:S3Event event) returns json {
+    return event.Records[0].s3.'object.key;
+}
+
+@awslambda:Function
+public function notifyDynamoDB(awslambda:Context ctx, awslambda:DynamoDBEvent event) returns json {
+    return event.Records[0].dynamodb.Keys.toString();
+}
+
+@awslambda:Function
+public function notifySES(awslambda:Context ctx, awslambda:SESEvent event) returns json {
+    return event.Records[0].ses.mail.commonHeaders.subject;
+}
+
+@awslambda:Function
+public function apigwRequest(awslambda:Context ctx, awslambda:APIGatewayProxyRequest request) {
+    io:println(&quot;Path: &quot;, request.path);
+}
+</code></pre>
+<p>The output of the Ballerina build is as follows:</p>
+<pre><code class="language-bash">$ ballerina build functions.bal 
+Compiling source
+	functions.bal
+
+Generating executables
+	functions.jar
+	@awslambda:Function: echo, uuid, ctxinfo, notifySQS, notifyS3, notifyDynamoDB, notifySES, apigwRequest
+
+	Run the following command to deploy each Ballerina AWS Lambda function:
+	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --layers arn:aws:lambda:&lt;REGION_ID&gt;:141896495686:layer:ballerina:2
+
+	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
+	aws lambda update-function-code --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip
+</code></pre>
+
+
+            
+            
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="APIGatewayProxyRequest" title="APIGatewayProxyRequest">
+                                <a class="records " href="records/APIGatewayProxyRequest.html">APIGatewayProxyRequest</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="DynamoDBEvent" title="DynamoDBEvent">
+                                <a class="records " href="records/DynamoDBEvent.html">DynamoDBEvent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="DynamoDBRecord" title="DynamoDBRecord">
+                                <a class="records " href="records/DynamoDBRecord.html">DynamoDBRecord</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="DynamoDBStreamRecord" title="DynamoDBStreamRecord">
+                                <a class="records " href="records/DynamoDBStreamRecord.html">DynamoDBStreamRecord</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="NameValue" title="NameValue">
+                                <a class="records " href="records/NameValue.html">NameValue</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Bucket" title="S3Bucket">
+                                <a class="records " href="records/S3Bucket.html">S3Bucket</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Element" title="S3Element">
+                                <a class="records " href="records/S3Element.html">S3Element</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Event" title="S3Event">
+                                <a class="records " href="records/S3Event.html">S3Event</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Identity" title="S3Identity">
+                                <a class="records " href="records/S3Identity.html">S3Identity</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Object" title="S3Object">
+                                <a class="records " href="records/S3Object.html">S3Object</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Record" title="S3Record">
+                                <a class="records " href="records/S3Record.html">S3Record</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESAction" title="SESAction">
+                                <a class="records " href="records/SESAction.html">SESAction</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESCommonHeaders" title="SESCommonHeaders">
+                                <a class="records " href="records/SESCommonHeaders.html">SESCommonHeaders</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESElement" title="SESElement">
+                                <a class="records " href="records/SESElement.html">SESElement</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESEvent" title="SESEvent">
+                                <a class="records " href="records/SESEvent.html">SESEvent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESMail" title="SESMail">
+                                <a class="records " href="records/SESMail.html">SESMail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESReceipt" title="SESReceipt">
+                                <a class="records " href="records/SESReceipt.html">SESReceipt</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESRecord" title="SESRecord">
+                                <a class="records " href="records/SESRecord.html">SESRecord</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESVerdict" title="SESVerdict">
+                                <a class="records " href="records/SESVerdict.html">SESVerdict</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SQSEvent" title="SQSEvent">
+                                <a class="records " href="records/SQSEvent.html">SQSEvent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SQSRecord" title="SQSRecord">
+                                <a class="records " href="records/SQSRecord.html">SQSRecord</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                </table>
+            </section>
+            
+            
+
+            
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Context" title="Context">
+                                <a class="objects " href="objects/Context.html">Context</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Object to represent an AWS Lambda function execution context.
+                            </td>
+                        </tr>
+                    
+                    
+                </table>
+             </section>
+            
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="__process" title="__process">
+                                <a class="functions " href="functions.html#__process">__process</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="__register" title="__register">
+                                <a class="functions " href="functions.html#__register">__register</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+
+            
+            <section class="method-content" id="annotations">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#annotations">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Annotations </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="Function" title="Function">
+                                <a class="annotations " href="annotations.html#Function">Function</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>@awslambda:Function annotation</p>
+
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+
+            
+        </div>
+    </div>
+
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

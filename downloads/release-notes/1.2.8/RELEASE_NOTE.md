@@ -17,20 +17,18 @@ If you are already using jBallerina version 1.2.0, or above, you can directly up
 However, you need to use the following commands instead of the above if you have installed:
 
 - jBallerina 1.2.0 but switched to a previous version: `$ ballerina dist pull jballerina-{{ site.data.stable-latest.metadata.version }}`
-- a jBallerina version below 1.1.0: install via the [installers](https://ballerina.io/downloads/)
+- a jBallerina version below 1.1.0: install via the [installers](/downloads/)
 
 **For new users:**
 
-If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
+If you have not installed jBallerina, then download the [installers](/downloads/) to install.
 
 #### Code to Cloud
 
 ##### Azure Functions
 
-The fix for [Pure HTTP Functions Not Working](https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues/33).
-
-For more information, see [Azure Functions](/learn/deployment/azure-functions/).
+The fix for [Pure HTTP Functions Not Working](https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues/33). For more information, see [Azure Functions](/learn/deployment/azure-functions/).
 
 ##### AWS Lambda
 
-Added support for domain-specific event types. For more information, see [AWS Lambda](/learn/deployment/aws-lambda/).
+Added the support for domain-specific event types. For more information, see [AWS Lambda](/learn/deployment/aws-lambda/).

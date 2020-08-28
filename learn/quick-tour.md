@@ -15,6 +15,10 @@ redirect_from:
 
 Now, that you know a little bit of Ballerina, let's take it for a spin!
 
+- [Install Ballerina](#install-ballerina)
+- [Write a Service, Run It, and Invoke It](#write-a-service-run-it-and-invoke-it)
+- [Use a Client to Interact with a Network-Accessible Service](#use-a-client-to-interact-with-a-network-accessible-service)
+
 ## Install Ballerina
 
 1. [Download](https://ballerina.io/downloads) Ballerina based on the Operating System you are using. 
@@ -77,7 +81,7 @@ Hello Ballerina!
 
 Alternatively, you can use a Ballerina HTTP client to invoke the service.
 
-## Use a Client to Interact with a Network Accessible Service
+## Use a Client to Interact with a Network-Accessible Service
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 
@@ -177,14 +181,10 @@ $ ballerina run sunrise_client.bal
 
 This should print out the sunrise/sunset details.
 
-## Follow the Repo
-
-<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p> <p data-button="iGitWatchText">"Watch"</p></div>
-
-Star [GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to Ballerina maintainers for their work. Watch the repo to keep track of Ballerina issues.
-
-## What's Next
+## What's Next?
 
 Now, that you have taken Ballerina around for a quick tour, you can explore Ballerina more.
 
 * Go through the [Ballerina by Examples](/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
+* Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues.
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>

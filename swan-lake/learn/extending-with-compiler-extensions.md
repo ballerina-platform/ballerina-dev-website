@@ -13,6 +13,19 @@ redirect_from:
 
 # Extending with Compiler Extensions 
 
+- [Annotations](#annotations)
+- [Hello World: The Annotation Way](#hello-world-the-annotation-way)
+- [Defining a Custom Annotation](#defining-a-custom-annotation)
+    - [Creating the Annotation](#creating-the-annotation)
+    - [Verifying the Annotation](#verifying-the-annotation)
+- [Writing the Compiler Extension](#writing-the-compiler-extension)
+    - [Setting up the Project](#setting-up-the-project)
+    - [Adding the Code for the Extension](#adding-the-code-for-the-extension)
+- [Putting It All Together](#putting-it-all-together)
+- [Learning More About Writing Compiler Extensions](#learning-more-about-writing-compiler-extensions)
+
+## Annotations
+
 Annotations can be used to provide structured metadata about a particular construct. Annotations are not executable. However, they can be used to alter the behavior of constructs they are attached to.
 
 Annotations can be attached to:

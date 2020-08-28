@@ -217,8 +217,6 @@
 
 <p>Testerina design and usage is aligned with project and module semantics of Ballerina. You can test the project modules while you are building the project in a seamless manner using the test constructs.</p>
 
-<h2 id="overview">Overview</h2>
-
 <ul>
   <li>Ballerina programmers can place their test code in a <strong>tests</strong> folder in a <strong>module</strong></li>
   <li>Ballerina tests are defined using a set of <strong>annotations</strong></li>
@@ -227,6 +225,17 @@
   <li>Service calls can be tested using service skeletons in the test phase of the project until the system is connected to the real service</li>
   <li>Function mocks can be used to mimic third party function calls to enable testing a project module in isolation</li>
 </ul>
+
+<ul>
+    <li><a href="#writing-and-running-tests">Writing and Running Tests</a><ul>
+    <li><a href="#project-structure">Project Structure</a></li>
+    </ul>
+    </li>
+    <li><a href="#annotations">Annotations</a></li>
+    <li><a href="#assertions">Assertions</a></li>
+    <li><a href="#service-skeleton-start-and-stop-utility">Service Skeleton Start and Stop Utility</a></li>
+    <li><a href="#function-mocks">Function Mocks</a></li>
+    </ul>
 
 <h2 id="writing-and-running-tests">Writing and Running Tests</h2>
 
@@ -532,7 +541,7 @@ function foo() {
 }
 </code></pre>
 
-<h2 id="service-skeleton-startstop-utility">Service Skeleton Start/Stop Utility</h2>
+<h2 id="service-skeleton-start-and-stop-utility">Service Skeleton Start and Stop Utility</h2>
 
 <p>Testerina provides the functionality to start/stop service skeletons generated from OpenAPI definitions.</p>
 

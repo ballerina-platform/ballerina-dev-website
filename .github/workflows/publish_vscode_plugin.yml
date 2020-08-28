@@ -3,7 +3,7 @@ name: Publish VS-Code plugin
 on:
   push:
     branches:
-      - prod-sync
+      - prod-syncx
     paths:
       - '_data/stable-latest/**'
                         

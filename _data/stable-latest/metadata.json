@@ -1,22 +1,22 @@
 {
-    "version":"1.2.7",
-    "release-date":"2020-08-12",
-    "windows-installer":"ballerina-windows-installer-x64-1.2.7.msi",
+    "version":"1.2.8",
+    "release-date":"2020-08-27",
+    "windows-installer":"ballerina-windows-installer-x64-1.2.8.msi",
     "windows-installer-size":"135mb",
-    "zip-installer":"ballerina-1.2.7.zip",
-    "zip-installer-size":"114mb",
-    "linux-installer":"ballerina-linux-installer-x64-1.2.7.deb",
-    "linux-installer-size":"128mb",
-    "macos-installer":"ballerina-macos-installer-x64-1.2.7.pkg",
+    "zip-installer":"ballerina-1.2.8.zip",
+    "zip-installer-size":"110mb",
+    "linux-installer":"ballerina-linux-installer-x64-1.2.8.deb",
+    "linux-installer-size":"129mb",
+    "macos-installer":"ballerina-macos-installer-x64-1.2.8.pkg",
     "macos-installer-size":"145mb",
-    "rpm-installer":"ballerina-linux-installer-x64-1.2.7.rpm",
-    "rpm-installer-size":"142mb",
+    "rpm-installer":"ballerina-linux-installer-x64-1.2.8.rpm",
+    "rpm-installer-size":"136mb",
     "other-artefacts":[
-        "ballerina-1.2.7.zip",
-        "ballerina-linux-installer-x64-1.2.7.rpm",
-        "ballerina-1.2.7.vsix",
+        "ballerina-1.2.8.zip",
+        "ballerina-linux-installer-x64-1.2.8.rpm",
+        "ballerina-1.2.8.vsix",
         "ballerina-metrics-grafana-dashboard-prometheus.json"
     ],
-    "api-docs":"ballerina-api-docs-1.2.7.zip",
-    "release-notes":"ballerina-release-notes-1.2.7.md"
+    "api-docs":"ballerina-api-docs-1.2.8.zip",
+    "release-notes":"ballerina-release-notes-1.2.8.md"
 }

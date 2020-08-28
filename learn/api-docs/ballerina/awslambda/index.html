@@ -73,6 +73,10 @@
     
     <ul>
         
+        <li>
+            <a data="records" href="../awslambda/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
         
             <li>
                 <a  data="objects" href="../awslambda/index.html#objects" onclick="menuLinkClick()">Objects</a>
@@ -138,14 +142,15 @@
 <h3>Annotation Usage Sample:</h3>
 <pre><code class="language-ballerina">import ballerinax/awslambda;
 import ballerina/system;
+import ballerina/io;
 
 @awslambda:Function
-public function echo(awslambda:Context ctx, json input) returns json|error {
+public function echo(awslambda:Context ctx, json input) returns json {
    return input;
 }
 
 @awslambda:Function
-public function uuid(awslambda:Context ctx, json input) returns json|error {
+public function uuid(awslambda:Context ctx, json input) returns json {
    return system:uuid();
 }
 
@@ -158,24 +163,315 @@ public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
                    RemainingExecTime: ctx.getRemainingExecutionTime() };
    return result;
 }
+
+@awslambda:Function
+public function notifySQS(awslambda:Context ctx, awslambda:SQSEvent event) returns json {
+    return event.Records[0].body;
+}
+
+@awslambda:Function
+public function notifyS3(awslambda:Context ctx, awslambda:S3Event event) returns json {
+    return event.Records[0].s3.'object.key;
+}
+
+@awslambda:Function
+public function notifyDynamoDB(awslambda:Context ctx, awslambda:DynamoDBEvent event) returns json {
+    return event.Records[0].dynamodb.Keys.toString();
+}
+
+@awslambda:Function
+public function notifySES(awslambda:Context ctx, awslambda:SESEvent event) returns json {
+    return event.Records[0].ses.mail.commonHeaders.subject;
+}
+
+@awslambda:Function
+public function apigwRequest(awslambda:Context ctx, awslambda:APIGatewayProxyRequest request) {
+    io:println(&quot;Path: &quot;, request.path);
+}
 </code></pre>
 <p>The output of the Ballerina build is as follows:</p>
 <pre><code class="language-bash">$ ballerina build functions.bal 
 Compiling source
-    functions.bal
+	functions.bal
 
-Generating executable
-    functions.jar
-	@awslambda:Function: echo, uuid, ctxinfo
+Generating executables
+	functions.jar
+	@awslambda:Function: echo, uuid, ctxinfo, notifySQS, notifyS3, notifyDynamoDB, notifySES, apigwRequest
 
 	Run the following command to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --layers &lt;BALLERINA_LAYER_ARN&gt;
+	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --layers arn:aws:lambda:&lt;REGION_ID&gt;:141896495686:layer:ballerina:2
 
 	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
 	aws lambda update-function-code --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip
 </code></pre>
 
 
+            
+            
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="APIGatewayProxyRequest" title="APIGatewayProxyRequest">
+                                <a class="records " href="records/APIGatewayProxyRequest.html">APIGatewayProxyRequest</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="DynamoDBEvent" title="DynamoDBEvent">
+                                <a class="records " href="records/DynamoDBEvent.html">DynamoDBEvent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="DynamoDBRecord" title="DynamoDBRecord">
+                                <a class="records " href="records/DynamoDBRecord.html">DynamoDBRecord</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="DynamoDBStreamRecord" title="DynamoDBStreamRecord">
+                                <a class="records " href="records/DynamoDBStreamRecord.html">DynamoDBStreamRecord</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="NameValue" title="NameValue">
+                                <a class="records " href="records/NameValue.html">NameValue</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Bucket" title="S3Bucket">
+                                <a class="records " href="records/S3Bucket.html">S3Bucket</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Element" title="S3Element">
+                                <a class="records " href="records/S3Element.html">S3Element</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Event" title="S3Event">
+                                <a class="records " href="records/S3Event.html">S3Event</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Identity" title="S3Identity">
+                                <a class="records " href="records/S3Identity.html">S3Identity</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Object" title="S3Object">
+                                <a class="records " href="records/S3Object.html">S3Object</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="S3Record" title="S3Record">
+                                <a class="records " href="records/S3Record.html">S3Record</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESAction" title="SESAction">
+                                <a class="records " href="records/SESAction.html">SESAction</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESCommonHeaders" title="SESCommonHeaders">
+                                <a class="records " href="records/SESCommonHeaders.html">SESCommonHeaders</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESElement" title="SESElement">
+                                <a class="records " href="records/SESElement.html">SESElement</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESEvent" title="SESEvent">
+                                <a class="records " href="records/SESEvent.html">SESEvent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESMail" title="SESMail">
+                                <a class="records " href="records/SESMail.html">SESMail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESReceipt" title="SESReceipt">
+                                <a class="records " href="records/SESReceipt.html">SESReceipt</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESRecord" title="SESRecord">
+                                <a class="records " href="records/SESRecord.html">SESRecord</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SESVerdict" title="SESVerdict">
+                                <a class="records " href="records/SESVerdict.html">SESVerdict</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SQSEvent" title="SQSEvent">
+                                <a class="records " href="records/SQSEvent.html">SQSEvent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SQSRecord" title="SQSRecord">
+                                <a class="records " href="records/SQSRecord.html">SQSRecord</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                    
+                </table>
+            </section>
+            
             
 
             

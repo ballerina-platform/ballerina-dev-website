@@ -11,9 +11,11 @@ redirect_from:
 
 # AWS Lambda
 
-The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. This is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json) returns json|error`. 
+The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. This is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json|EventType) returns json|error`. 
 
-The following Ballerina code gives an example on how to expose a function in AWS Lambda, which generates a SHA256 hash from the given input. 
+The second parameter in the function is either a `json` or a domain-specific event type such as `awslambda:S3Event`. If the user does not provide a domain specific event type, the JSON representation of the incoming event will be sent to the function. 
+
+The following code presents a few examples on how to expose functions in AWS Lambda, which contain a generic `json` event input and other functions, which provide the event information using domain-specific event types.
 
 ```ballerina
 import ballerinax/awslambda;
@@ -23,9 +25,36 @@ import ballerina/crypto;
 public function hash(awslambda:Context ctx, json input) returns json|error {
     return crypto:hashSha256(input.toJsonString().toBytes()).toBase16();
 }
+
+@awslambda:Function
+public function notifySQS(awslambda:Context ctx, awslambda:SQSEvent event) returns json {
+    return event.Records[0].body;
+}
+
+@awslambda:Function
+public function notifyS3(awslambda:Context ctx, awslambda:S3Event event) returns json {
+    return event.Records[0].s3.'object.key;
+}
+
+@awslambda:Function
+public function notifyDynamoDB(awslambda:Context ctx, awslambda:DynamoDBEvent event) returns json {
+    return event.Records[0].dynamodb.Keys.toString();
+}
+
+@awslambda:Function
+public function notifySES(awslambda:Context ctx, awslambda:SESEvent event) returns json {
+    return event.Records[0].ses.mail.commonHeaders.subject;
+}
+
+@awslambda:Function
+public function apigwRequest(awslambda:Context ctx, awslambda:APIGatewayProxyRequest request) {
+    io:println("Path: ", request.path);
+}
 ```
 
-The first parameter with the [awslambda:Context](/learn/api-docs/ballerina/awslambda/objects/Context.html) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function e.g., an AWS S3 bucket update event. The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response or else in an error situation, the function will return an `error` value, which provides information on the error to the system.
+The first parameter with the [awslambda:Context](/learn/api-docs/ballerina/awslambda/objects/Context.html) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. The second parameter contains the input request data. This input value will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). 
+
+The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response or else in an error situation, the function will return an `error` value, which provides information on the error to the system. You can also provide functions, which do not return anything at all, which implicitly signals a successful execution without a returning result.
 
 The AWS Lambda functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
@@ -36,11 +65,10 @@ Compiling source
 
 Generating executables
 	functions.jar
-	@awslambda:Function: hash
+	@awslambda:Function: echo, uuid, ctxinfo, notifySQS, notifyS3, notifyDynamoDB, notifySES, apigwRequest
 
-	Run the following commands to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.<FUNCTION_NAME> --runtime provided --role <LAMBDA_ROLE_ARN> --timeout 10 --memory-size 1024
-	aws lambda update-function-configuration --function-name <FUNCTION_NAME> --layers arn:aws:lambda:<REGION_ID>:141896495686:layer:ballerina:2
+	Run the following command to deploy each Ballerina AWS Lambda function:
+	aws lambda create-function --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.<FUNCTION_NAME> --runtime provided --role <LAMBDA_ROLE_ARN> --layers arn:aws:lambda:<REGION_ID>:141896495686:layer:ballerina:2
 
 	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
 	aws lambda update-function-code --function-name <FUNCTION_NAME> --zip-file fileb://aws-ballerina-lambda-functions.zip
@@ -91,4 +119,4 @@ $ cat response.txt
 "dd9446a11b2021b753a5df48d11f339055375b59cd81d7559d36b652aaff849d"
 ```
 
-In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to [AWS Lambda event source mapping documentation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
+For more information on how to connect external event sources such as Amazon DynamoDB and Amazon S3 to Lambda Functions, go to [AWS Lambda event source mapping documentation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).

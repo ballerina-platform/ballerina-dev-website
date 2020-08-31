@@ -7,7 +7,7 @@ const nofollow = ["_site/0.990", "_site/0.991",
                 "_site/1.0", "_site/1.1", "_site/img", "_site/assets",
                 "_site/downloads/release-notes", "_site/hbs", "_site/js", "_site/learn/faqs", "_site/404.html",
                 "_site/learn/faqs.html","_site/why","_site/learn/api-docs/ballerinax/index,html","_site/jekyll","_site/spec/lang",
-                "_site/v1-1", "_site/v1-0", "_site/v0-991", "_site/v0-990"];
+                "_site/v1-1", "_site/v1-0", "_site/v0-991", "_site/v0-990","_site/learn/api-docs/ballerina-new"];
 
 walk("_site/", function (err, results) {
     if (err) throw err;

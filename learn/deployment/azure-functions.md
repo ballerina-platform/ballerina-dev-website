@@ -14,7 +14,7 @@ redirect_from:
 The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform. This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation. 
 
 - [Triggers and Bindings](#triggers-and-bindings)
-- [Writing an Example Function](#writing-an-example-function)
+- [Writing a Function](#writing-a-function)
 - [Building the Function](#building-the-function)
 - [Deploying the Function](#deploying-the-function)
 - [Invoking the Function](#invoking-the-function)
@@ -31,7 +31,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB [trigger](/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBTrigger), [input](/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBInput) binding, and [output](/learn/api-docs/ballerina/azure.functions/annotations.html#CosmosDBOutput) binding
 - Timer [trigger](/learn/api-docs/ballerina/azure.functions/annotations.html#TimerTrigger)
 
-## Writing an Example Function
+## Writing a Function
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
 

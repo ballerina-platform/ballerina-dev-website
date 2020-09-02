@@ -38,6 +38,13 @@ service hello on ep1 {
         
 ```
 
+- [Imports](#imports)
+- [Function Definition](#function-definition)
+- [Service Definition](#service-definition)
+- [Object Definition](#object-definition)
+- [Record Definition](#record-definition)
+- [Referencing Record or Abstract Object](#referencing-record-or-abstract-object)
+
 ## Imports
 
 * Do not keep spaces between the organization name, divider `/`, and module name.

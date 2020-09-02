@@ -10,6 +10,10 @@ redirect_from:
 
 # How to Publish a Module
 
+- [CLI Command](#cli-command)
+- [Setting Up](#setting-up)
+- [Organizations](#organizations)
+
 ## CLI Command
 
 Pushing a module uploads it to [Ballerina Central](https://central.ballerina.io/).
@@ -18,7 +22,7 @@ Pushing a module uploads it to [Ballerina Central](https://central.ballerina.io/
 ballerina push <module-name>
 ```
 
-## Setting up
+## Setting Up
 
 Before you push your module, you must enter your Ballerina Central access token in `Settings.toml` in your home repository (`<USER_HOME>/.ballerina/`).
 

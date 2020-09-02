@@ -15,15 +15,15 @@ Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framewo
 
 Developers can write the documentation inline with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language. They can document special constructs such as parameters, return values, fields, etc. within the code using documentation attributes. Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `ballerina doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
 
-Ballerina documentation design and usage is aligned with project and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
-
-- [Overview](#overview)
+- [Generating Documentation for Modules](#generating-documentation-for-modules)
 - [Writing Ballerina Documentation](#writing-ballerina-documentation)
   - [Sample Usage](#sample-usage)
 - [Documenting a Module](#documenting-a-module)
 - [Generating Ballerina Documentation](#generating-ballerina-documentation)
 
-## Overview
+## Generating Documentation for Modules
+
+Ballerina documentation design and usage is aligned with project and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
 
 * Ballerina programmers can place the documentation inline with the source code using the documentation syntax.
 * Ballerina type definitions, global variables, annotations, listeners, etc. can be documented using the documentation syntax.

@@ -26,7 +26,17 @@ Code generation from OpenAPI to Ballerina can produce `ballerina mock services` 
 
 For build time client stub generation, annotation support is provided.
 
-### Mock service from OpenAPI
+- [Mock Service from OpenAPI](#mock-service-from-openapi)
+- [Client Stub from OpenAPI](#client-stub-from-openapi)
+- [Service to OpenAPI Export](#service-to-openapi-export)
+- [Client Stub for Service](#client-stub-for-service)
+- [Samples](#samples)
+    - [Mock Service from OpenAPI Sample](#mock-service-from-openapi-sample)
+    - [Client Stub from OpenAPI Sample](#client-stub-from-openapi-sample)
+    - [OpenAPI from Service Sample](#openapi-from-service-sample)
+    - [Client Stub from Service Sample](#client-stub-from-service-sample)
+
+## Mock Service from OpenAPI
 
 ```
 ballerina openapi gen-service <moduleName>:<serivceName> 
@@ -39,7 +49,7 @@ Generates a Ballerina service for the OpenAPI file.
 
 This generated service is a mock version of the actual Ballerina service. Generated sources contain the service definition in `src/<module-name>/` and the OpenAPI contract that used to generate will be copied to `src/<module-name>/resources`. 
 
-### Client stub from OpenAPI
+## Client Stub from OpenAPI
 
 ```
 ballerina openapi gen-client [<moduleName>]:<clientName> 
@@ -50,7 +60,7 @@ Generates a Ballerina client stub for the service defined in a OpenAPI file.
 
 This client can be used in client applications to call the service defined in the OpenAPI file.
 
-### Service to OpenAPI export
+## Service to OpenAPI Export
 
 ```
 ballerina openapi gen-contract [<moduleName>:]<serviceName> 
@@ -62,7 +72,7 @@ ballerina openapi gen-contract [<moduleName>:]<serviceName>
 Export the Ballerina service to a definition of OpenApi Specification 3.0.
 For the export to work properly, the input Ballerina service should be defined using basic service and resource level HTTP annotations.
 
-### Client stub for service
+## Client Stub for Service
 
 Generates a Ballerina client stub to communicate with a Ballerina service.
 
@@ -71,7 +81,7 @@ The `@openapi:ClientConfig { generate: true }` annotation is used to enable or d
 
 ## Samples
 
-### Mock service from OpenAPI
+### Mock Service from OpenAPI
 
 ```
 ballerina openapi gen-service helloworld:helloService hello_service.yaml
@@ -80,7 +90,7 @@ ballerina openapi gen-service helloworld:helloService hello_service.yaml
 This will generate a Ballerina service, for `hello_service.yaml` OpenAPI contract, named `helloService` in the module named `helloworld`.
 This command should be executed inside a Ballerina project. 
 
-### Client stub from OpenAPI
+### Client Stub from OpenAPI
 
 ```
 ballerina openapi gen-client hello_client hello_service.yaml
@@ -89,7 +99,7 @@ ballerina openapi gen-client hello_client hello_service.yaml
 This will generate a Client named `hello_client` in a module named `client` for the service documented in `hello_service.yaml`.
 This command should be executed inside a Ballerina project. 
 
-### OpenAPI from service
+### OpenAPI from Service
 
 ```
 ballerina openapi gen-contract hello -i src/helloS/hello.bal
@@ -97,7 +107,7 @@ ballerina openapi gen-contract hello -i src/helloS/hello.bal
 
 This will generate the OpenAPI contract for the Ballerina service `hello` which is in `hello.bal` Ballerina file.
 
-### Client stub from service
+### Client Stub from Service
 
 Apply annotation to say that client generation is enabled by adding `@openapi:ClientConfig { generate: true }`
 and point the client endpoint to be applied on generation by adding `@openapi:ClientEndpoint` annotation to the client endpoint.

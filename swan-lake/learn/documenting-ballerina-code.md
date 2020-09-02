@@ -19,6 +19,11 @@ Developers can write the documentation inline with the Ballerina source code usi
 
 Ballerina documentation design and usage is aligned with project and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
 
+- [Overview](#overview)
+- [Writing Ballerina Documentation](#writing-ballerina-documentation)
+  - [Sample Usage](#sample-usage)
+- [Documenting a Module](#documenting-a-module)
+- [Generating Ballerina Documentation](#generating-ballerina-documentation)
 
 ## Overview
 
@@ -82,7 +87,7 @@ The supported structure of documentation syntax is as follows:
 public function submit(@sensitive string httpVerb, string path, Request request) returns HttpFuture|error;
 ```
 
-## Documenting A Module
+## Documenting a Module
 
 A Ballerina module can have a `Module.md` file which describes the module and its usage.
 

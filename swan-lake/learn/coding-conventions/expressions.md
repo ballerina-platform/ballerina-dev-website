@@ -11,7 +11,15 @@ redirect_from:
 
 # Expressions
 
-## Function invocation
+- [Function Invocation](#function-invocation)
+- [Record Literal](#record-literal)
+- [Map Literal](#map-literal)
+- [Tuple](#tuple)
+- [Array Literal](#array-literal)
+- [Type Casting](#type-casting)
+- [Table Literal](#table-literal)
+
+## Function Invocation
 
 * Do not keep spaces between the function name and opening parentheses `(`.
   
@@ -27,7 +35,7 @@ setAgeForEmployee(
    );
 ```
 
-## Record literal
+## Record Literal
 
 * If empty, keep it as an empty block.
       
@@ -87,7 +95,7 @@ Person p = {
     age: 20};
 ```
 
-## Map literal
+## Map Literal
 
 * For Map literals, follow the same formatting guidelines as [record literals](/swan-lake/learn/style-guide/expressions#record-literal). 
   
@@ -124,7 +132,7 @@ map<string> mapOfString2 = {
 (nameOfEmployee, ageOfTheEmployee);
 ```
 
-## Array literal
+## Array Literal
 
 * Place simple arrays in a single line.
 * Do not keep any spaces between the opening bracket, value, and the closing bracket.
@@ -150,7 +158,7 @@ string[] names = [
     
 ```
 
-## Type casting
+## Type Casting
 
 * Do not keep spaces between the type and the angle brackets (i.e., `<string>`).
 * Do not keep spaces between the closing angle bracket and value reference, which will be casted.
@@ -177,7 +185,7 @@ string name = <string>json.name;
 >
 ```
 
-## Table literal
+## Table Literal
 
 * Follow [record literals](/swan-lake/learn/style-guide/expressions#record-literal) formatting when formatting a table block.
   

@@ -16,6 +16,11 @@ Buffer definition. The code generation tool can produce `ballerina stub` and `ba
 > In Ballerina, Protocol Buffers serialization is only supported in the gRPC module. Therefore, you can only use
 > this tool to generate Ballerina source code for gRPC service definitions.
 
+- [CLI Command](#cli-command)
+  - [CLI Command Options](#cli-command-options)
+- [Sample](#sample)
+  - [Executing the Sample](#Executing-the-sample)
+
 ## CLI Command
 
 You can generate Ballerina source code using the following command:
@@ -24,7 +29,7 @@ You can generate Ballerina source code using the following command:
 ./ballerina grpc --input <proto-file-path> [--output <path>] [--mode client | service]
 ```
 
-____**Options**____
+### CLI Command Options
 
 `--input`  - Path of the input .proto file. This is a mandatory field. You need to provide the path of the definition
  file.
@@ -56,6 +61,8 @@ message HelloResponse {
 	string message = 1;
 }
 ```
+
+### Executing the Sample
 
 * You can run the following command to generate the client/service stub and service template.
 ```

@@ -11,6 +11,27 @@ redirect_from:
 
 # How to Run and Deploy Ballerina Programs
 
+- [Running Ballerina Programs and Services](#running-ballerina-programs-and-services)
+    - [Running Standalone Source Code](#running-standalone-source-code)
+    - [Running a Project](#running-a-project)
+    - [Configuring Your Ballerina Runtimes](#configuring-your-ballerina-runtimes)
+  - [Ballerina Runtime Configuration Files](#ballerina-runtime-configuration-files)
+    - [Sourcing Parameters Into Ballerina Programs](#sourcing-parameters-into-ballerina-programs)
+         - [Sourcing CLI Parameters](#sourcing-cli-parameters)
+         - [Sourcing Configuration Values](#sourcing-configuration-values)
+    - [Configuring Secrets as Configuration Items](#configuring-secrets-as-configuration-items)
+        - [Creating a Secured Value](#creating-a-secured-value)
+        - [Using the Secured Value at Runtime](#using-the-secured-value-at-runtime)
+        - [Decrypting the Value](#decrypting-the-value)
+- [Deploying Ballerina Programs and Services](#deploying-ballerina-programs-and-services)
+    - [How Deployment Works](#how-deployment-works)
+    - [How to Enable Deployment](#how-to-enable-deployment)
+        - [Docker-Based Deployment](#docker---based-deployment)
+            - [Supported Docker Annotations](#supported-docker-annotations)
+        - [Kubernetes-Based Deployment](#kubernetes---based-deployment)
+            - [Supported Kubernetes Annotations](#supported-kubernetes-annotations)
+    - [Extending Ballerina Deployment and Annotations](#extending-ballerina-deployment-and-annotations)
+
 ## Running Ballerina Programs and Services
 A Ballerina application can have:
 
@@ -634,5 +655,5 @@ $ curl -v -X POST -d '{"name":"Alice", "age":20,"ssn":123456789,"employeeId":1}'
 |password|Password for the Docker registry|null|
 |baseImage|Base image to create the Docker image|ballerina/ballerina:latest|
   
-### Extend Ballerina Deployment and Annotations
+### Extending Ballerina Deployment and Annotations
 Ballerina can be augmented with your own annotations that represent your own unique deployment artifacts. You can also write builder extensions that generate these files during compilation.

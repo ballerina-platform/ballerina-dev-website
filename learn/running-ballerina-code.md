@@ -27,7 +27,19 @@ These applications can be structured into a single program file or a Ballerina m
 
 Source files and modules can contain zero or more entrypoints, and the runtime engine has precedence and sequence rules for choosing which entrypoint to execute.
 
-### Running Standalone Source Code
+- [Running Standalone Source Code](#running-standalone-source-code)
+- [Running a Project](#running-a-project)
+- [Configuring Your Ballerina Runtimes](#configuring-your-ballerina-runtimes)
+  - [Ballerina Runtime Configuration Files](#ballerina-runtime-configuration-files)
+  - [Sourcing Parameters Into Ballerina Programs](#sourcing-parameters-into-ballerina-programs)
+    - [Sourcing CLI Parameters](#sourcing-cli-parameters)
+    - [Sourcing Configuration Values](#sourcing-configuration-values)
+  - [Configuring Secrets as Configuration Items](#configuring-secrets-as-configuration-items)
+    - [Creating a Secured Value](#creating-a-secured-value)
+    - [Using the Secured Value at Runtime](#using-the-secured-value-at-runtime)
+    - [Decrypting the Value](#decrypting-the-value)
+
+## Running Standalone Source Code
 A single Ballerina source code file can be placed into any folder. 
 
 If the source file contains at least one entry point, it can be executed using the `run` command.
@@ -47,7 +59,7 @@ And you can run `.jar` files directly:
 $ ballerina run filename.jar
 ```
 
-### Running a Project
+## Running a Project
 A project is a folder that manages modules as part of a common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/learn/how-to-structure-ballerina-code) for in-depth structuring of projects.
 
 Build all modules of a project:
@@ -118,10 +130,10 @@ $ ballerina run main.bal --b7a.config.file=path/to/conf/file/custom-config-file-
 Hello, Ballerina !
 ```
 
-#### Configure Secrets as Configuration Items
+### Configuring Secrets as Configuration Items
 Ballerina provides support for encrypting sensitive data such as passwords and allows access to them securely through the configuration API in the code.
 
-##### Creating a Secured Value
+#### Creating a Secured Value
 The `ballerina encrypt` command will encrypt parameters that can be securely sourced from your code files. For example, let's create a secure parameter named `Ballerina` with the value `12345` as the secret.
 
 ```ballerina
@@ -136,7 +148,7 @@ Or add to the runtime command line:
 --<key>=@encrypted:{Z1CfAJwCEzmv2JNXIPnR/9AXHqOJqnDaaAQ7HsggGLQ=}
 ```
 
-##### Using the Secured Value at Runtime
+#### Using the Secured Value at Runtime
 The secured value can be placed in a config file as a value or passed on the command line. 
 
 ```
@@ -153,7 +165,7 @@ ballerina: enter secret for config value decryption:
 Hello, Ballerina !
 ```
 
-##### Decrypting the Value
+#### Decrypting the Value
 If a configuration contains an encrypted value, Ballerina looks for a `secret.txt` file in the directory where the source files are located. The `secret.txt` should contain the secret used to encrypt the value. The `secret.txt` file will be deleted after it is read.
 ```bash
 $ echo 12345 > secret.txt

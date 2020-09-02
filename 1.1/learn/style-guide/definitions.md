@@ -1,9 +1,9 @@
 ---
 layout: ballerina-inner-page
-title: Top Level definitions
+title: Top-Level Definitions
 ---
 
-# Top Level definitions
+# Top-Level Definitions
 
 * Do not indent the top level definitions. 
   
@@ -37,6 +37,13 @@ service hello on ep1 {
     }
         
 ```
+
+- [Imports](#imports)
+- [Function Definition](#function-definition)
+- [Service Definition](#service-definition)
+- [Object Definition](#object-definition)
+- [Record Definition](#record-definition)
+- [Referencing Record or Abstract Object](#referencing-record-or-abstract-object)
 
 ## Imports
 

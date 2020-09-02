@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages
-title: Operators, keywords, and types
+title: Operators, Keywords, and Types
 active: operators_keywords_and_types
 permalink: /learn/coding-conventions/operators_keywords_and_types/
 redirect_from:
@@ -11,9 +11,12 @@ redirect_from:
   - /learn/coding-conventions/operators_keywords_and_types
 ---
 
-# Operators, keywords, and types
+# Operators, Keywords, and Types
 
-## Keywords and types
+- [Keywords and types](#keywords-and-types)
+- [Operators](#operators)
+
+## Keywords and Types
 * Do not keep spaces between the type and the pipe operator when it is in an union type (e.g., `string|int`).
   
 **Example,**

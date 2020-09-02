@@ -1,11 +1,14 @@
 ---
 layout: ballerina-inner-page
-title: Operators, keywords, and types
+title: Operators, Keywords, and Types
 ---
 
-# Operators, keywords, and types
+# Operators, Keywords, and Types
 
-## Keywords and types
+- [Keywords and types](#keywords-and-types)
+- [Operators](#operators)
+
+## Keywords and Types
 * Keep only a single space between the type and the pipe operator when it is in an union type (e.g., `string | int`).
   
 **Example,**

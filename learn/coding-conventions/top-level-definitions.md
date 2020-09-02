@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages
-title: Top Level definitions
+title: Top-Level Definitions
 active: definitions
 permalink: /learn/coding-conventions/top-level-definitions/
 redirect_from:
@@ -12,7 +12,7 @@ redirect_from:
   - /learn/coding-conventions/top-level-definitions
 ---
 
-# Top Level definitions
+# Top-Level Definitions
 
 * Do not indent the top level definitions. 
   

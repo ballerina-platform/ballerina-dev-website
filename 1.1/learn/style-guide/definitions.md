@@ -1,9 +1,9 @@
 ---
 layout: ballerina-inner-page
-title: Top Level definitions
+title: Top-Level Definitions
 ---
 
-# Top Level definitions
+# Top-Level Definitions
 
 * Do not indent the top level definitions. 
   

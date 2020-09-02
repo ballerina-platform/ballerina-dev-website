@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Top Level definitions
+title: Top-Level Definitions
 active: definitions
 permalink: /swan-lake/learn/coding-conventions/top-level-definitions/
 redirect_from:
@@ -10,7 +10,7 @@ redirect_from:
   - /swan-lake/learn/coding-conventions/top-level-definitions
 ---
 
-# Top Level definitions
+# Top-Level Definitions
 
 * Do not indent the top level definitions. 
   

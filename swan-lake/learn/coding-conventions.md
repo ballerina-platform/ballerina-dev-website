@@ -17,13 +17,25 @@ This Ballerina Style Guide aims at maintaining a standard coding style among the
 
 You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.
 
-## Indentation and line length
+- [Indentation and Line Length](#indentation-and-line-length)
+- [Line Spacing](#line-spacing)
+- [Blank Lines](#blank-lines)
+- [Blocks](#blocks)
+- [Parentheses and Brackets](#parentheses-and-brackets)
+- [Line Breaks](#line-breaks)
+- [Top-Level Definitions](#top-level-definitions)
+    - [Operators, Keywords, and Types](#operators-keywords-and-types)
+    - [Statements](#statements)
+    - [Expressions](#expressions)
+    - [Annotations, Documentation, and Comments](#annotations-documentation-and-comments)
+
+## Indentation and Line Length
 * Use four spaces (not tabs) for each level of indentation.
 * Keep the maximum length of a line to 120 characters. 
 
 > **Note:** You can configure tools and plugins to use tabs when indenting and to change the number of maximum characters of the line length.
 
-## Line spacing
+## Line Spacing
 
 * Use only a single space to separate keywords, types, and identifiers. 
    
@@ -80,7 +92,7 @@ function foo(string name, int id) {}
 service hello on ep1, ep2 {...}
 ```
 
-## Blank lines
+## Blank Lines
 
 Separate both statements and top level definitions by zero or one blank lines.
 
@@ -190,7 +202,7 @@ setValue("value");
 int|() result = getResult();
 ```
   
-## Line breaks
+## Line Breaks
 
 * Have only one statement in a line.
 * When splitting lines, which contains operator(s), split them right before an operator.
@@ -282,7 +294,7 @@ table<Employee> employee = table {
     };
 ```
 
-## Top Level Definitions
+## Top-Level Definitions
 
 For style guidelines on imports, service definition, object definition, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/swan-lake/learn/style-guide/definitions).
 

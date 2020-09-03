@@ -25,8 +25,12 @@ The VS Code Ballerina extension gives you the  same debugging experience as the 
 
 Thus, you can run or debug your Ballerina programs easily via the VS Code Ballerina extension by launching its debugger. 
 
-Follow the steps below to start a 
-debug session. 
+- [Starting a Debug Session](#starting-a-debug-session)
+- [Troubleshooting](#troubleshooting)
+
+## Starting a Debug Session
+
+Follow the steps below to start a debug session. 
 
 1. Click the **Debug** icon in the left menu or press the **Control + Shift + D** keys, to launch the Debugger view.
 2. Add the debug points you require by clicking on the respective line numbers of the file.

@@ -18,6 +18,12 @@ The IntelliJ Ballerina plugin provides the Ballerina development capabilities in
 
 - [Prerequisites](#prerequisites)
 - [Installing the plugin](#installing-the-plugin)
+  - [Installing via the IntelliJ IDE](#installing-via-the-intellij-ide)
+  - [Installing Using the ZIP File](#installing-using-the-zip-file)
+    - [Obtaining the ZIP File](#obtaining-the-zip-file)
+    - [Downloading from the JetBrains Plugin Repository](#downloading-from-the-jetbrains-plugin-repository)
+    - [Building from the Source](#building-from-the-source)
+    - [Installing the ZIP File via the IDE](#installing-the-zip-file-via-the-ide)
 - [Using the plugin](#using-the-plugin)
 - [Using the features of the plugin](#using-the-features-of-the-plugin)
 
@@ -34,7 +40,7 @@ You need [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) installed.
 0.982.0 - 0.991.0|IntelliJ IDEA 2017.3+
 0.991.1+ | IntelliJ IDEA 2018.3+
 
-## Installing the plugin
+## Installing the Plugin
 
 Use either of the below approaches to install the IntelliJ Ballerina plugin.
 
@@ -53,14 +59,14 @@ Use either of the below approaches to install the IntelliJ Ballerina plugin.
 
 This downloads the plugin and installs it.
 
-### Installing using the ZIP file
+### Installing Using the ZIP File
 
 Follow the steps below to install the plugin using its ZIP file.
 
 1. [Obtaining the ZIP file](#obtaining-the-zip-file)
 2. [Installing the ZIP file via the IDE](#installing-the-zip-file-via-the-ide)
 
-#### Obtaining the ZIP file
+#### Obtaining the ZIP File
 
 Follow either of the below approaches to obtain the ZIP file of the Ballerina plugin.
 
@@ -72,7 +78,7 @@ Follow either of the below approaches to obtain the ZIP file of the Ballerina pl
 Download the [IntelliJ Ballerina plugin](https://plugins.jetbrains.com/plugin/9520-ballerina).
 
 
-##### Building from the source
+##### Building from the Source
 
 Follow the steps below to obtain the ZIP file by building it from its source.
 
@@ -87,7 +93,7 @@ Follow the steps below to obtain the ZIP file by building it from its source.
 
 This creates the `/build/distributions/ballerina-intellij-idea-plugin-[VERSION].zip` file locally in the `<CLONED_BALLERINA_DIRECTORY>/tool-plugins/intellij` directory.
 
-#### Installing the ZIP file via the IDE
+#### Installing the ZIP File via the IDE
 
 After obtaining the ZIP file using either of the above approaches, follow the steps below to install it using the IntelliJ IDE.
 
@@ -101,7 +107,7 @@ After obtaining the ZIP file using either of the above approaches, follow the st
 
 ![Install using the Preferences option of the IDE.](/1.1/learn/images/install-via-editor-preferences.gif)
 
-## Using the plugin
+## Using the Plugin
 
 The below sections include information on using the IntelliJ Ballerina plugin to write Ballerina programs.
 
@@ -110,7 +116,7 @@ The below sections include information on using the IntelliJ Ballerina plugin to
 - [Creating a new Ballerina file](/1.1/learn/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-file)
 - [Configuring the plugin settings](/1.1/learn/intellij-plugin/using-the-intellij-plugin#configuring-the-plugin-settings)
 
-## Using the features of the plugin
+## Using the Features of the Plugin
 
 The below sections include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 

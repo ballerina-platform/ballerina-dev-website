@@ -68,6 +68,19 @@ The supported structure of documentation syntax is as follows:
 #            <return_parameter_description_line_2>
 ```
 
+>**Tip:** As a best practice, do not add a full stop at the end of the first sentence of the parameter and return type descriptions. Instead, add a fullstop only at the end of a function description. For Example,
+
+```
+# Description for the function.
+#
+# + i - One sentence only
+# + s - Sentence one. Sentence two.
+# + return - Return description
+public function foo(int i, string s) returns boolean {
+return true;
+}
+```
+
 ### Sample Usage
 
 ```ballerina
@@ -84,14 +97,14 @@ The supported structure of documentation syntax is as follows:
 # + httpVerb - The HTTP verb value
 # + path - The resource path
 # + request - An HTTP outbound request message
-# + return - An `HttpFuture` that represents an asynchronous service invocation, 
+# + return - An `HttpFuture` that represents an asynchronous service invocation 
 #            or an `error` if the submission fails
 public function submit(@sensitive string httpVerb, string path, Request request) returns HttpFuture|error;
 ```
 
 ## Documenting A Module
 
-A Ballerina module can have a `Module.md` file which describes the module and its usage.
+A Ballerina module can have a `Module.md` file, which describes the module and its usage.
 
 A typical project structure of a Ballerina project is like this:
 
@@ -124,7 +137,7 @@ Check [HTTP module documentation](/learn/api-docs/ballerina/http/index.html) for
 
 ## Generating Ballerina Documentation
 
-Ballerina provides a `doc` command which can be executed against a given Ballerina project. This command will result in generating the Ballerina documentation as HTML files, for all the modules in the project.
+Ballerina provides a `doc` command, which can be executed against a given Ballerina project. This command will result in generating the Ballerina documentation as HTML files, for all the modules in the project.
 
 First, let's create a new Ballerina project:
 ```

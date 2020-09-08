@@ -937,6 +937,12 @@ a.cMobileLogo {
     font-size: 16px;
     margin-top: 20px;
 }
+
+a.cGTMDownload {
+    width: 30px;
+    display: inline-block;
+}
+
 .wy-nav-content .releaseNoteDiv>h2:first-child {
     margin-top: 50px;
 }

@@ -26,9 +26,9 @@ redirect_from:
 - [Deploying Ballerina Programs and Services](#deploying-ballerina-programs-and-services)
     - [How Deployment Works](#how-deployment-works)
     - [How to Enable Deployment](#how-to-enable-deployment)
-        - [Docker-Based Deployment](#docker---based-deployment)
+        - [Docker-Based Deployment](#docker-based-deployment)
             - [Supported Docker Annotations](#supported-docker-annotations)
-        - [Kubernetes-Based Deployment](#kubernetes---based-deployment)
+        - [Kubernetes-Based Deployment](#kubernetes-based-deployment)
             - [Supported Kubernetes Annotations](#supported-kubernetes-annotations)
     - [Extending Ballerina Deployment and Annotations](#extending-ballerina-deployment-and-annotations)
 
@@ -137,7 +137,7 @@ Hello, Ballerina !
 ```
 
 
-#### Configure Secrets as Configuration Items
+#### Configureing Secrets as Configuration Items
 Ballerina provides support for encrypting sensitive data such as passwords and allows access to them securely through the configuration API in the code.
 
 ##### Creating a Secured Value

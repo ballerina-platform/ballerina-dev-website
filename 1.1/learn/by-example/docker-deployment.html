@@ -77,11 +77,14 @@ Docker should be configured to run the sample.</p>
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-docker/tree/ballerina-1.1.x/docker-extension-examples/examples/docker-deployment"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0dff782b6e7324ca97f2d1487f7ab400&file=docker_deployment.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -117,7 +120,7 @@ Docker should be configured to run the sample.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 import ballerina/docker;
 </code></pre></div>
@@ -131,7 +134,7 @@ import ballerina/docker;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@docker:Expose {}
+                                    <div class="highlight"><pre><code class=language-ballerina>@docker:Expose {}
 listener http:Listener helloWorldEP = new(9090);
 </code></pre></div>
 
@@ -151,7 +154,7 @@ listener http:Listener helloWorldEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@docker:Config {
+                                    <div class="highlight"><pre><code class=language-ballerina>@docker:Config {
 </code></pre></div>
 
                                 </td>
@@ -171,7 +174,7 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    name: &quot;helloworld&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    name: &quot;helloworld&quot;,
 </code></pre></div>
 
                                 </td>
@@ -190,7 +193,7 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    tag: &quot;v1.0&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    tag: &quot;v1.0&quot;
 }
 @http:ServiceConfig {
     basePath: &quot;/helloWorld&quot;

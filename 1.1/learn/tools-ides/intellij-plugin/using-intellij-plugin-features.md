@@ -32,7 +32,6 @@ The below sections include information on the various capabilities that are faci
 - [Checking Spellings](#checking-spellings)
 - [Analyzing Semantics](#analyzing-semantics)
 - [Code Folding](#code-folding)
-- [Go to Definition](#go-to-definition)
 
 ## Running Ballerina Programs
 

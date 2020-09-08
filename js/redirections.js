@@ -207,6 +207,7 @@ let redirections = {
     "/1.1/learn/api-docs/ballerina/knative/index.html": "/1.1/page-not-available.html",
     "/1.0/learn/api-docs/ballerina/knative/index.html": "/1.0/page-not-available.html",
     "/1.1/learn/by-example/awslambda-deployment.html":"/1.1/learn/by-example/aws-lambda-deployment.html",
-    "/1.0/learn/by-example/awslambda-deployment.html":"/1.0/learn/by-example/aws-lambda-deployment.html"
+    "/1.0/learn/by-example/awslambda-deployment.html":"/1.0/learn/by-example/aws-lambda-deployment.html",
+    "/1.0/learn/how-to-keep-ballerina-up-to-date/":"/1.0/page-not-available.html"
 
 };

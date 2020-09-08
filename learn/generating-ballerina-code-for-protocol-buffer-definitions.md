@@ -25,7 +25,7 @@ Buffer definition. The code generation tool can produce `ballerina stub` and `ba
 - [CLI Command](#cli-command)
   - [CLI Command Options](#cli-command-options)
 - [Sample](#sample)
-  - [Executing the Sample](#Executing-the-sample)
+  - [Executing the Sample](#executing-the-sample)
 
 ## CLI Command
 

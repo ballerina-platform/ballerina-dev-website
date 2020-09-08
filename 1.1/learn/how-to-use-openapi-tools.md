@@ -81,7 +81,7 @@ The `@openapi:ClientConfig { generate: true }` annotation is used to enable or d
 
 ## Samples
 
-### Mock Service from OpenAPI
+### Mock Service from OpenAPI Sample
 
 ```
 ballerina openapi gen-service helloworld:helloService hello_service.yaml
@@ -90,7 +90,7 @@ ballerina openapi gen-service helloworld:helloService hello_service.yaml
 This will generate a Ballerina service, for `hello_service.yaml` OpenAPI contract, named `helloService` in the module named `helloworld`.
 This command should be executed inside a Ballerina project. 
 
-### Client Stub from OpenAPI
+### Client Stub from OpenAPI Sample
 
 ```
 ballerina openapi gen-client hello_client hello_service.yaml
@@ -99,7 +99,7 @@ ballerina openapi gen-client hello_client hello_service.yaml
 This will generate a Client named `hello_client` in a module named `client` for the service documented in `hello_service.yaml`.
 This command should be executed inside a Ballerina project. 
 
-### OpenAPI from Service
+### OpenAPI from Service Sample
 
 ```
 ballerina openapi gen-contract hello -i src/helloS/hello.bal
@@ -107,7 +107,7 @@ ballerina openapi gen-contract hello -i src/helloS/hello.bal
 
 This will generate the OpenAPI contract for the Ballerina service `hello` which is in `hello.bal` Ballerina file.
 
-### Client Stub from Service
+### Client Stub from Service Sample
 
 Apply annotation to say that client generation is enabled by adding `@openapi:ClientConfig { generate: true }`
 and point the client endpoint to be applied on generation by adding `@openapi:ClientEndpoint` annotation to the client endpoint.

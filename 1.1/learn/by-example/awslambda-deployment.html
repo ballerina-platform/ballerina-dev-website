@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: AWS Lambda Deployment
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /1.1/learn/by-example/aws-lambda-deployment
+permalink: /1.1/learn/by-example/awslambda-deployment
 redirect_from:
-  - /v1-1/learn/by-example/aws-lambda-deployment
-  - /v1-1/learn/by-example/aws-lambda-deployment.html
+  - /v1-1/learn/by-example/awslambda-deployment
+  - /v1-1/learn/by-example/awslambda-deployment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -45,27 +45,38 @@ redirect_from:
                         </td>
                         <td class="cRightTD">
                             <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="openshift-deployment.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>OpenShift Deployment</p>
+                                    </a>
+                                </div>
                                  
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="http-client-endpoint.html">
+                                        <span>NEXT ></span>
+                                        <p>Client Endpoint</p>
+                                    </a>
+                                </div>
+                                
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div class="example" id="aws-lambda-deployment">
+            <div class="example" id="awslambda-deployment">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/module-ballerinax-aws.lambda/tree/ballerina-1.1.x/awslambda-examples/examples/aws-lambda-deployment"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=47dd162d639a36a1799107653b9d3e57&file=aws_lambda_deployment.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/module-ballerinax-aws.lambda/tree/ballerina-1.1.x/awslambda-examples/examples/aws-lambda-deployment"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -101,7 +112,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerinax/awslambda;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerinax/awslambda;
 import ballerina/system;
 </code></pre></div>
 
@@ -114,7 +125,7 @@ import ballerina/system;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
+                                    <div class="highlight"><pre><code class=ballerina>@awslambda:Function
 public function echo(awslambda:Context ctx, json input) returns json|error {
    return input;
 }
@@ -137,7 +148,7 @@ public function echo(awslambda:Context ctx, json input) returns json|error {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
+                                    <div class="highlight"><pre><code class=ballerina>@awslambda:Function
 public function uuid(awslambda:Context ctx, json input) returns json|error {
    return system:uuid();
 }
@@ -152,7 +163,7 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
+                                    <div class="highlight"><pre><code class=ballerina>@awslambda:Function
 </code></pre></div>
 
                                 </td>
@@ -164,7 +175,7 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
+                                    <div class="highlight"><pre><code class=ballerina>public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
    json result = { RequestID: ctx.getRequestId(),
                    DeadlineMS: ctx.getDeadlineMs(),
                    InvokedFunctionArn: ctx.getInvokedFunctionArn(),

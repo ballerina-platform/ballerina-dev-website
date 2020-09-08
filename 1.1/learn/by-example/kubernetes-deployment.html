@@ -86,8 +86,7 @@ Kubernetes should be enabled to run the example.
 This example deploys an HTTPS service, which retrieves values from a config file to Kubernetes.
 Before running the sample, create a directory named <code>security</code> inside current working directory
 from where the ballerina build command will be issued.
-Then copy the ballerinaKeystore.p12 and ballerinaTruststore.p12 files
-located in <a href="https://github.com/ballerina-platform/ballerina-lang/tree/master/examples/resources/">https://github.com/ballerina-platform/ballerina-lang/tree/master/examples/resources/</a>
+Then copy the <a href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.1.x/examples/resources">ballerinaKeystore.p12 and ballerinaTruststore.p12 files</a>
 to the security folder.</p>
 </p>
 
@@ -121,14 +120,11 @@ to the security folder.</p>
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/ballerina-1.1.x/kubernetes-extension-examples/examples/kubernetes-deployment/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d8d7dcdc3460fcc2eceb00fa213b44a4&file=kubernetes_deployment.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/ballerina-1.1.x/kubernetes-extension-examples/examples/kubernetes-deployment"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -180,7 +176,7 @@ to the security folder.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/config;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
 import ballerina/http;
 import ballerina/log;
 import ballerina/kubernetes;
@@ -195,7 +191,7 @@ import ballerina/kubernetes;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@kubernetes:Service {
+                                    <div class="highlight"><pre><code class=ballerina>@kubernetes:Service {
 </code></pre></div>
 
                                 </td>
@@ -214,7 +210,7 @@ import ballerina/kubernetes;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    serviceType: &quot;NodePort&quot;
+                                    <div class="highlight"><pre><code class=ballerina>    serviceType: &quot;NodePort&quot;
 }
 </code></pre></div>
 
@@ -234,7 +230,7 @@ import ballerina/kubernetes;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@kubernetes:Ingress {
+                                    <div class="highlight"><pre><code class=ballerina>@kubernetes:Ingress {
 </code></pre></div>
 
                                 </td>
@@ -253,7 +249,7 @@ import ballerina/kubernetes;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    hostname: &quot;abc.com&quot;
+                                    <div class="highlight"><pre><code class=ballerina>    hostname: &quot;abc.com&quot;
 }
 listener http:Listener helloWorldEP = new(9090, config = {
 </code></pre></div>
@@ -274,7 +270,7 @@ listener http:Listener helloWorldEP = new(9090, config = {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
+                                    <div class="highlight"><pre><code class=ballerina>    secureSocket: {
         keyStore: {
             path: &quot;./security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
@@ -304,7 +300,7 @@ annotation is added to the endpoint.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@kubernetes:ConfigMap {
+                                    <div class="highlight"><pre><code class=ballerina>@kubernetes:ConfigMap {
 </code></pre></div>
 
                                 </td>
@@ -323,7 +319,7 @@ annotation is added to the endpoint.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    conf: &quot;./ballerina.conf&quot;
+                                    <div class="highlight"><pre><code class=ballerina>    conf: &quot;./ballerina.conf&quot;
 }
 </code></pre></div>
 
@@ -344,7 +340,7 @@ If a releative path is provided, the path should be releative to where the <code
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@kubernetes:Deployment {
+                                    <div class="highlight"><pre><code class=ballerina>@kubernetes:Deployment {
 </code></pre></div>
 
                                 </td>
@@ -363,7 +359,7 @@ If a releative path is provided, the path should be releative to where the <code
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    livenessProbe: true,
+                                    <div class="highlight"><pre><code class=ballerina>    livenessProbe: true,
 </code></pre></div>
 
                                 </td>
@@ -382,7 +378,7 @@ If a releative path is provided, the path should be releative to where the <code
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    image: &quot;kubernetes:v.1.0&quot;
+                                    <div class="highlight"><pre><code class=ballerina>    image: &quot;kubernetes:v.1.0&quot;
 </code></pre></div>
 
                                 </td>
@@ -401,7 +397,7 @@ If a releative path is provided, the path should be releative to where the <code
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
+                                    <div class="highlight"><pre><code class=ballerina>}
 @http:ServiceConfig {
     basePath: &quot;/helloWorld&quot;
 }
@@ -444,7 +440,7 @@ service helloWorld on helloWorldEP {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function getConfigValue(string instanceId, string property) returns (string) {
+                                    <div class="highlight"><pre><code class=ballerina>function getConfigValue(string instanceId, string property) returns (string) {
     string key = &lt;@untainted string&gt; (instanceId + &quot;.&quot; + property);
     return config:getAsString(key, &quot;Invalid User&quot;);
 }

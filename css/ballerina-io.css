@@ -938,7 +938,7 @@ a.cMobileLogo {
     margin-top: 20px;
 }
 
-a.cGTMDownload {
+#archived-versions a.cGTMDownload {
     width: 30px;
     display: inline-block;
 }

@@ -4260,7 +4260,6 @@ string that has a constituent character for each singleton item in the
    | <a href="#xml-template-expr"><span class="ntref">xml-template-expr</span></a>
    | <a href="#raw-template-expr"><span class="ntref">raw-template-expr</span></a>
    | <a href="#structural-constructor-expr"><span class="ntref">structural-constructor-expr</span></a>
-   | <a href="#object-constructor-expr"><span class="ntref">object-constructor-expr</span></a>
    | <a href="#error-constructor-expr"><span class="ntref">error-constructor-expr</span></a>
    | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
    | <a href="#type-cast-expr"><span class="ntref">type-cast-expr</span></a>
@@ -4746,9 +4745,16 @@ evaluated. This means that every object resulting from the evaluation of an
 <code>object-constructor-expr</code> has its own type descriptor.
 </p>
 <p>
+If the applicable contextually expected type is a subtype of readonly, then the
+object will be constructed with its read-only bit on.
+</p>
+<p>
 If there is a <code>type-reference</code>, then the referenced type is included
-in the object's type in the same was as an <code>object-type-inclusion</code>.
-The type-ids of the constructed object are type ids of the referenced type.
+in the object's type in the same was as an <code>object-type-inclusion</code>,
+and the type-ids of the constructed object are type-ids of the referenced type.
+If there is no <code>type-reference</code>, then the applicable contextually
+expected type T must be definite, and the type-ids of the constructed object are
+the type-ids, if any, induced by T.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="object-field">object-field</span> :=
@@ -4922,8 +4928,8 @@ nil.
 </pre>
 <p>
 A variable-reference can refer to a variable, a parameter, a constant (defined
-with a module constant declaration), a function or a type (defined with a type
-definition).
+with a module constant declaration), a function, a type (defined with a module
+type definition) or a class (defined with a module class definition).
 </p>
 <p>
 When the variable reference has a prefix and the prefix has been declared using
@@ -4938,9 +4944,10 @@ where the namespace-uri comes from xml-namespace-uri specified in the
 xmlns-decl, and the local-name comes from the identifier following the colon.
 </p>
 <p>
-If the variable-reference references a type defined with a module type definition, then
-the result of evaluating the variable-reference-expr is a typedesc value for
-that type.
+If the variable-reference references a type defined with a module type
+definition or a class defined with a module class definition, then the result of
+evaluating the variable-reference-expr is a typedesc value for that type or
+class.
 </p>
 </section>
 <section>
@@ -8548,6 +8555,12 @@ object-type-inclusion to include an object type T, then each method declared in
 T must be defined in the class using a <code>method-defn</code> with the same
 visibility. If T has a method or field with module-level visibility, then C must
 be in the same module.
+</p>
+<p>
+If <code>class-type-quals</code> contains <code>distinct</code>, then the
+primary type-id of the class will the type-id of that occurrence of
+<code>distinct</code>, and the secondary type-ids will be the union of the
+type-ids of the included object types.
 </p>
 <p>
 An object of a class is initialized by:

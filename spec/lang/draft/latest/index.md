@@ -1,3 +1,3 @@
 ---
-redirect_to: /spec/lang/draft/v2020-06-18/
+redirect_to: /spec/lang/draft/v2020-09-16/
 ---

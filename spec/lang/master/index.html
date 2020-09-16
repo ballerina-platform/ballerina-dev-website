@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-09-15</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-09-16</h1>
 <p>
 Primary contributors:
 </p>
@@ -6997,7 +6997,7 @@ added to the queue.
 <p>
 A send-action sends a message to the worker that is identified by peer-worker. A
 send-action starts by evaluating the expression, resulting in a value
-<code><var>v</var></code>; the Clone abstract operation to
+<code><var>v</var></code>; the Clone abstract operation is then applied to
 <code><var>v</var></code> resulting in value <code><var>c</var></code>. This
 value <code><var>c</var></code> is added to the message queue maintained by the
 sending worker for messages to be sent to the sending worker;this queue

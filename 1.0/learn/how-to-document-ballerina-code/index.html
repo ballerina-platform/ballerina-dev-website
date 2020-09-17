@@ -246,21 +246,21 @@
 
 <p>Ballerina Flavored Markdown documentation is a first class syntax in the Ballerina language. The <code class="highlighter-rouge">#</code> at the beginning of a line denotes a line of documentation. If necessary, you can have multiple lines of documentation, which you can group together.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># &lt;documentation line 1&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="language-ballerina"># &lt;documentation line 1&gt;
 # &lt;documentation line 2&gt;
 # ...
 </code></pre></div></div>
 
 <p>When you write documentation, you can use the markdown documentation syntax given above. For example:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Provides the HTTP actions for interacting with an HTTP server. Apart from the standard 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="language-ballerina"># Provides the HTTP actions for interacting with an HTTP server. Apart from the standard 
 # HTTP methods, `forward()` and `execute()` functions are provided.
 # ...
 </code></pre></div></div>
 
 <p>The supported structure of documentation syntax is as follows:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># &lt;description_line_1&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="language-ballerina"># &lt;description_line_1&gt;
 # &lt;description_line_2&gt;
 # ...
 # + &lt;parameter_name/field_name&gt; - &lt;description_line_1&gt;
@@ -276,7 +276,7 @@
 <blockquote>
     <p><strong>Tip:</strong> Always, add a full stop at the end of a function description. However, as a best practice, omit the full stop if you have only one sentence in the parameter and return type descriptions. If there are multiple sentences for a parameter or return type description, add the full stop at the end of the first sentence and in the succeding ones. For example,</p>
     </blockquote>
-    <pre><code># Description for the function.
+    <pre><code class="language-ballerina"># Description for the function.
     #
     # + i - One sentence only
     # + s - Sentence one. Sentence two.
@@ -333,7 +333,7 @@ public function submit(@sensitive string httpVerb, string path, Request request)
   target/              # Compiled executables and other artifacts end up here
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">ballerina doc</code> command will read the <code class="highlighter-rouge">Module.md</code> and prepend it to the generated HTML file.</p>
+<p>The <code class="highlighter-rouge">ballerina doc</code> command will read the <code class="highlighter-rouge">Module.md</code> and prepend it to the generated HTML file.</p>
 
 <p>Check <a href="/v1-0/learn/api-docs/ballerina/http/index.html">HTTP module documentation</a> for sample HTML that has <code class="highlighter-rouge">Module.md</code> content at the top, followed by the other module constructs.</p>
 

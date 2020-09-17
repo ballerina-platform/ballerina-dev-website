@@ -64,7 +64,7 @@ The supported structure of documentation syntax is as follows:
 #            <return_parameter_description_line_2>
 ```
 
->**Tip:** As a best practice, do not add a full stop at the end of the first sentence of the parameter and return type descriptions. Instead, add a fullstop only at the end of a function description. For Example,
+>**Tip:** Always, add a full stop at the end of a function description. However, as a best practice, omit the full stop if you have only one sentence in the parameter and return type descriptions. For example,
 
 ```
 # Description for the function.
@@ -73,7 +73,7 @@ The supported structure of documentation syntax is as follows:
 # + s - Sentence one. Sentence two.
 # + return - Return description
 public function foo(int i, string s) returns boolean {
-return true;
+    return true;
 }
 ```
 

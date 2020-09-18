@@ -38,7 +38,7 @@ Ballerina documentation design and usage is aligned with project and module sema
 
 Ballerina Flavored Markdown documentation is a first class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. If necessary, you can have multiple lines of documentation, which you can group together.
 
-```
+```ballerina
 # <documentation line 1>
 # <documentation line 2>
 # ...
@@ -46,7 +46,7 @@ Ballerina Flavored Markdown documentation is a first class syntax in the Balleri
 
 When you write documentation, you can use the markdown documentation syntax given above. For example:
 
-```
+```ballerina
 # Provides the HTTP actions for interacting with an HTTP server. Apart from the standard 
 # HTTP methods, `forward()` and `execute()` functions are provided.
 # ...
@@ -54,7 +54,7 @@ When you write documentation, you can use the markdown documentation syntax give
 
 The supported structure of documentation syntax is as follows:
 
-```
+```ballerina
 # <description_line_1>
 # <description_line_2>
 # ...
@@ -68,16 +68,16 @@ The supported structure of documentation syntax is as follows:
 #            <return_parameter_description_line_2>
 ```
 
->**Tip:** As a best practice, do not add a full stop at the end of the first sentence of the parameter and return type descriptions. Instead, add a fullstop only at the end of a function description. For Example,
+>**Tip:** Always, add a full stop at the end of a function description. However, as a best practice, omit the full stop if you have only one sentence in the parameter and return type descriptions. If there are multiple sentences for a parameter or return type description, add the full stop at the end of the first sentence and in the succeding ones. For example,
 
-```
+```ballerina
 # Description for the function.
 #
 # + i - One sentence only
 # + s - Sentence one. Sentence two.
 # + return - Return description
 public function foo(int i, string s) returns boolean {
-return true;
+    return true;
 }
 ```
 
@@ -130,7 +130,7 @@ A typical project structure of a Ballerina project is like this:
   target/              # Compiled executables and other artifacts end up here
 ```
 
-`ballerina doc` command will read the `Module.md` and prepend it to the generated HTML file.
+The `ballerina doc` command will read the `Module.md` and prepend it to the generated HTML file.
 
 Check [HTTP module documentation](/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
@@ -140,26 +140,27 @@ Check [HTTP module documentation](/learn/api-docs/ballerina/http/index.html) for
 Ballerina provides a `doc` command, which can be executed against a given Ballerina project. This command will result in generating the Ballerina documentation as HTML files, for all the modules in the project.
 
 First, let's create a new Ballerina project:
-```
+
+```bash
 $ ballerina new myproject
 Created new Ballerina project at myproject
+```
 
-Next:
-    Move into the project directory and use `ballerina add <module-name>` to
-    add a new Ballerina module.
+Next, move into the project directory and execute `ballerina add <module-name>` to add a new Ballerina module.
+
+```bash
 $ cd myproject/
 $ ballerina add math -t service
 Added new ballerina module at 'src/math'
 $ ballerina add time -t service
 Added new ballerina module at 'src/time'
-
 ```
 Now, let's generate documentation of the project:
-```
+```bash
 $ ballerina doc -a
 ```
 Output:
-```
+```bash
 Compiling source
         foo/time:0.1.0
         foo/math:0.1.0

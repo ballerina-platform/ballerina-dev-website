@@ -125,7 +125,8 @@ This command will generate the `helloworld-openapi.yaml` file that is related to
 
 ###Client Stub from Service
 Apply an annotation to say that client generation is enabled by adding `@openapi:ClientConfig { generate: true }` and
- point the client endpoint to be applied on  generation by adding `@openapi:ClientEndpoint` annotation to the client
+ point the client endpoint to be applied on the generation by adding the `@openapi:ClientEndpoint` annotation to the
+  client
   endpoint.
 
 ```ballerina
@@ -162,16 +163,16 @@ service Hello on helloEp {
 
 ##OpenAPI Validator Compiler Plugin
 
-OpenAPI Validator Compiler plugin was implemented which validates a service with a given OpenAPI contract. 
-The compiler plugin is activated if a service has `openapi:ServiceInfo` annotation. This plugin compares 
+The OpenAPI Validator Compiler plugin validates a service with a given OpenAPI contract. 
+The compiler plugin is activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares 
 the service and the OpenAPI Contract and validates both against a predefined set of validation rules. 
-If any of the rules fail the plugin will result in one or more compilation errors.
+If any of the rules fail, the plugin will give the result as one or more compilation errors.
 
-###Annotation for validator plugin 
-We will use “@openapi:ServiceInfo” annotation to bind the service with an OpenAPI Contract. Users need to add 
+###Annotation for validator Plugin 
+The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI Contract. You need to add 
 this annotation to the service file with the required values for enabling the validations.  
-Following is an example of annotation usage.
-```
+The following is an example of annotation usage.
+```ballerina
 @openapi:ServiceInfo{
     contract: “/path/to/openapi.json|yaml”,
     [ tag : “store” ],
@@ -186,22 +187,23 @@ service greet on new http:Listener(9090) {
 ```
  **Annotation support the following attributes:**
 - **Contract** (Required) : **string**  :
-Here you can provide a path to the OpenAPI contract as a string and OpenAPI file can either be .yaml or .json
+Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`
 This is a required attribute.
 
 - **Tag** (Optional) : **string[]?**     :
-The compiler will only validate resources against operations which are tagged with a tag specified in the list.
+The compiler will only validate resources against operations, which are tagged with a tag specified in the list.
 If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract. 
 
 - **Operations** (Optional): **string[]?**  :
 Should contain a list of operation names that need to be validated against the resources in the service.
 If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract. 
 
-If tags and operations both are defined it will validate against the union set of resources.
+If both tags and operations are defined, it will validate against the union set of the resources.
 
 - **ExcludeTags** (Optional) : **string[]?**    :
 This feature is for users to store the tag. It does not need to be validated.
-At the same time excludeTag and Tag cannot store, It will generate warning messages regarding it.
+At the same time, the `excludeTag` and `Tag` cannot store and the plugin will generate warning messages regarding
+ it.
 
 - **ExcludeOperations** (Optional) : **string[]?**  :
 This feature is for users to store the operations that do not need to be validated.

@@ -113,7 +113,7 @@ named `hello-service` and client named `hello-client`. The above command can be 
 It is not mandatory  to run it from inside the Ballerina project.
 
 Output:
-```
+```bash
 The service generation process is complete. The following files were created.
 -- hello-service.bal
 -- hello-client.bal

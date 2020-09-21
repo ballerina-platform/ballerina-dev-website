@@ -187,7 +187,7 @@ service greet on new http:Listener(9090) {
 Here you can provide a path to the OpenAPI contract as a string and OpenAPI file can either be .yaml or .json
 This is a required attribute.
 
-- **Tag**(Optional) : **string[]?**     :
+- **Tag** (Optional) : **string[]?**     :
 The compiler will only validate resources against operations which are tagged with a tag specified in the list.
 If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract. 
 

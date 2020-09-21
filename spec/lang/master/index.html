@@ -2461,7 +2461,7 @@ the object has been constructed.
 
 <pre class="grammar"><span class="ntdfn" id="method-decl">method-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a>
-   [<code>public</code>] [<a href="#remote-qual"><span class="ntref">remote-qual</span></a>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   [<code>public</code>] <a href="#method-quals"><span class="ntref">method-quals</span></a>
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
 <span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
@@ -2475,10 +2475,15 @@ every <code>object-field-descriptor</code> in the
 The <code>method-name</code> in a <code>method-decl</code> must not be
 <code>init</code>.
 </p>
+
+<pre class="grammar"><span class="ntdfn" id="method-quals">method-quals</span> := (<a href="#remote-qual"><span class="ntref">remote-qual</span></a> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
+</pre>
 <p>
-The <code>isolated-qual</code> together with the <code>function-signature</code>
-give the function type of the method. An isolated method has the same access to
-the object on which the method is invoked that it has to parameters.
+Both <code>remote-qual</code> and <code>isolated-qual</code> must occur at most
+once in <code>method-quals</code>. The <code>isolated-qual</code> together with
+the <code>function-signature</code> give the function type of the method. An
+isolated method has the same access to the object on which the method is invoked
+that it has to parameters.
 </p>
 <pre class="grammar"><span class="ntdfn" id="remote-qual">remote-qual</span> := <code>remote</code>
 </pre>
@@ -4833,7 +4838,7 @@ specified in the type-descriptor of the object-field.</li>
 </ul>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn">method-defn</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] [<a href="#remote-qual"><span class="ntref">remote-qual</span></a>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] <a href="#method-quals"><span class="ntref">method-quals</span></a>
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
 <span class="ntdfn" id="method-defn-body">method-defn-body</span> := <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
 </pre>
@@ -4946,15 +4951,17 @@ is not a class or stream type.
 <pre class="grammar"><span class="ntdfn" id="service-constructor-expr">service-constructor-expr</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>service</code> <a href="#service-body-block"><span class="ntref">service-body-block</span></a>
 <span class="ntdfn" id="service-body-block">service-body-block</span> := <code>{</code> <a href="#service-method-defn"><span class="ntref">service-method-defn</span></a>* <code>}</code>
 <span class="ntdfn" id="service-method-defn">service-method-defn</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a>
-   [<code>resource</code>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#service-method-quals"><span class="ntref">service-method-quals</span></a>
    <code>function</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
+<span class="ntdfn" id="service-method-quals">service-method-quals</span> := (<code>resource</code> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
 </pre>
 <p>
 A <code>service-constructor-expr</code> constructs a service value. The result
 of evaluating a service-constructor-expr is a value of type service. If a
 service-method-defn contains a <code>resource</code> qualifier, then it defines
-a resource method. The self variable can be used in a method-defn-body of a
+a resource method. Both the <code>resource</code> and <code>isolated</code>
+qualifiers can occur at most once in a service-method-defn. The
+<code>self</code> variable can be used in a method-defn-body of a
 service-method-defn in the same way as for objects.
 </p>
 <p>

@@ -203,7 +203,7 @@ At the same time excludeTag and Tag cannot store, It will generate warning messa
 
 - **ExcludeOperations** (Optional) : **string[]?**  :
 This feature is for users to store the operations that do not need to be validated.
-At the same time excludeOperations and  Operations can not store, it will generate warning messages.
+At the same time, the `excludeOperations` and  `Operations` can not store and they will generate warning messages.
 Tag feature can store with excludeOperations , that time all the tag operations validate except the exclude operations.
  
 - **FailOnErrors** (Optional) : **boolean value**   :

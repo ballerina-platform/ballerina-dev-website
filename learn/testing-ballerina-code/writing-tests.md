@@ -108,7 +108,7 @@ function testFunction1() {
     test:assertTrue(true, msg = "Failed!");
 }
 
-// This test function depends on `testFunction3`.
+// This test function depends on the `testFunction3`.
 @test:Config{  
     before: "beforeFunc",
     after: "afterFunc",

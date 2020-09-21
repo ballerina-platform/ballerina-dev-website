@@ -9,7 +9,8 @@
 # Order is important. The last matching pattern has the most precedence.
 # So if a pull request only touches javascript files, only these owners
 # will be requested to review.
-*.md    @opraneesha @github/md
+*.md    @praneesha @github/md
+*.html  @praneesha @github/html
 
 # You can also use email addresses if you prefer.
 learn/* praneesha@wso2.com

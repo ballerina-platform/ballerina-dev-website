@@ -61,9 +61,9 @@ you can use this parameter in the command.
 You can give the specific tags and operations that you need to document as services without documenting all the operations using these optional `--tags` and `--operations` commands.
 
 `(-o|--output)` is an optional parameter. You can give the output path for the generated files. 
-If not it will take the execution path as the output path.
+If not, it will take the execution path as the output path.
 
-####Mock service from OpenAPI
+####Mock Service from OpenAPI
 ```
 ballerina openapi   -i <openapi-contract> --mode service
                     [(-o|--output) outputFile]
@@ -76,53 +76,55 @@ Generates a Ballerina service for the OpenAPI file. This generated service is a 
 ballerina openapi   -i <openapi-contract> --mode client
                     [(-o|--output) outputFile]
 ```
-Generates a Ballerina client stub for the service defined in a OpenAPI file. This client can be used in client 
+Generates a Ballerina client stub for the service defined in an OpenAPI file. This client can be used in client 
 applications to call the service defined in the OpenAPI file.
 
 ###Ballerina to OpenAPI
-####Service to OpenAPI export
+####Service to OpenAPI Export
 ```
-ballerina openapi   -i <ballerina file> 
+$ballerina openapi   -i <ballerina file> 
                     [(-o|--output) output openapi File]
 ```
 Export the Ballerina service to an  OpenApi Specification 3.0 definition. For the export to work properly, 
-the input Ballerina service should be defined using basic service and resource level HTTP annotations.
-If a user needs to document an OpenAPI contract for only one given service, then the user can use this command.
-``ballerina openapi -i <ballerina file> (-s | --service) <service name>``
+the input Ballerina service should be defined using basic service and resource-level HTTP annotations.
+If you need to document an OpenAPI contract for only one given service, then use this command.
+``$ballerina openapi -i <ballerina file> (-s | --service) <service name>``
 
-###Client stub for service
+###Client Stub for Service
 Generates a Ballerina client stub to communicate with a Ballerina service.
 All endpoint(s) that are used for client stub generation should be marked with the 
-`@openapi:ClientEndpoint` annotation. If not, there might be errors during client stub generation. Endpoints that are not marked with 
+`@openapi:ClientEndpoint` annotation. If not, there might be errors during the client stub generation. Endpoints that
+ are not marked with 
 this annotation are not picked for client stub generation. The `@openapi:ClientConfig { generate: true }` 
 annotation is used to enable or disable client stub generation per service.
 
 
-##Samples for openAPI commands
-###Mock service and client stub from OpenAPI
+##Samples for OpenAPI Commands
+###Mock Service and Client Stub from OpenAPI
 
 `ballerina openapi -i hello.yaml`
 
-This will generate a Ballerina service and Client stub, for `hello.yaml` OpenAPI contract, 
+This will generate a Ballerina service and Client stub for `hello.yaml` OpenAPI contract 
 named `hello-service` and client named `hello-client`. The above command can be run anywhere on the execution path. 
-It is not mandatory  to run inside the ballerina project.
+It is not mandatory  to run it from inside the Ballerina project.
 
 Output:
 ```
-The service generation process is complete. Following files were created.
+The service generation process is complete. The following files were created.
 -- hello-service.bal
 -- hello-client.bal
 -- schema.bal
 ```
-###OpenAPI from service
+###OpenAPI from Service
 
 - `ballerina openapi -i src/helloworld/helloService.bal`
-This will generate the OpenAPI contracts for the Ballerina services which are in `hello.bal` Ballerina file.
+This will generate the OpenAPI contracts for the Ballerina services, which are in the `hello.bal` Ballerina file.
 - `ballerina openapi -i src/helloworld/helloService.bal (-s | --service) helloworld`
-This command will generate the `helloworld-openapi.yaml` file that related to helloworld service inside the helloService.bal file
+This command will generate the `helloworld-openapi.yaml` file that is related to the `helloworld` service inside the
+ `helloService.bal` file
 
-###Client stub from service
-Apply annotation to say that client generation is enabled by adding `@openapi:ClientConfig { generate: true }` and
+###Client Stub from Service
+Apply an annotation to say that client generation is enabled by adding `@openapi:ClientConfig { generate: true }` and
  point the client endpoint to be applied on  generation by adding `@openapi:ClientEndpoint` annotation to the client
   endpoint.
 

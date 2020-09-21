@@ -11,11 +11,11 @@
 # will be requested to review.
 *.md    @praneesha @github/md
 *.html  @praneesha @github/html
+*learn/*    @praneesha
+*swan-lake/*    @praneesha
+*1.1/*    @praneesha
+*1.0/*    @praneesha
+*0.990/*    @praneesha
+*community/*    @Samallama
 
 # You can also use email addresses if you prefer.
-learn/* praneesha@wso2.com
-swan-lake/* praneesha@wso2.com
-1.1/* praneesha@wso2.com
-1.0/* praneesha@wso2.com
-0.990/* praneesha@wso2.com
-community/* samudra@wso2.com

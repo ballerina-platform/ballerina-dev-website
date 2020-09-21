@@ -20,16 +20,6 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">
-                    <tr class="event-expiry" style="display:none" data-expiry="July 8, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">July 8, 2020</span>
-                      <p class="cEventLocation">Pittsburgh, Pennsylvania, USA</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://devsecopsdayspittsburgh2020.sched.com/"><h4>DevSecOps Days Pittsburgh 2020</h4></a>
-                        <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
-                            <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://devsecopsdayspittsburgh2020.sched.com/event/coX2/code-to-kubernetes-deployment-shouldnt-be-an-afterthought" target="_blank">More Info</a></td> 
-                  </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="September 29, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">September 28 - 29, 2020</span>
                       <p class="cEventLocation">Seattle, Washington, USA</p>
@@ -38,8 +28,7 @@ redirect_from:
                         <h5>Code to Kubernetes: Languages of Infrastructure</h5>
                             <b>Sameera Jayasoma,</b> Senior Director, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
-                  </tr>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/global/conference/cloud/schedule/" target="_blank">More Info</a></td> 
                     <tr class="event-expiry" style="display:none" data-expiry="October 21, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">October 19 - 21, 2020</span>
                       <p class="cEventLocation">Munich, Germany</p>
@@ -49,6 +38,39 @@ redirect_from:
                             <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More Info</a></td> 
+                  </tr>
+                        <tr class="event-expiry" style="display:none" data-expiry="October 29, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">October 27 - 29, 2020</span>
+                      <p class="cEventLocation">Virtual</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://apiworld.co/"><h4>API World Virtual</h4></a>
+                        <h5>Automatic Microservices Observability with Ballerina</h5>
+                            <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td> 
+                  </tr>
+                    </tr>
+                  </tr>
+                        <tr class="event-expiry" style="display:none" data-expiry="October 28, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">October 28, 2020</span>
+                      <p class="cEventLocation">Virtual</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://apiworld.co/"><h4>API World Virtual</h4></a>
+                        <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
+                            <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td> 
+                  </tr>
+                    </tr>
+                      <tr class="event-expiry" style="display:none" data-expiry="October 30, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">October 30, 2020</span>
+                      <p class="cEventLocation">Munich, Germany</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://emamo.com/event/developerweek-global-cloud-2020"><h4>Developer Week Global Cloud</h4></a>
+                        <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
+                            <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://emamo.com/event/developerweek-global-cloud-2020/s/open-talk-code-to-kubernetes-deployment-shouldnt-be-an-afterthought-NyPYlo" target="_blank">More Info</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">December 14 - 16, 2020</span>

@@ -28,7 +28,8 @@ redirect_from:
                         <h5>Code to Kubernetes: Languages of Infrastructure</h5>
                             <b>Sameera Jayasoma,</b> Senior Director, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/global/conference/cloud/schedule/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/global/conference/cloud/schedule/" target="_blank">More Info</a></td>
+                  </tr>
                     <tr class="event-expiry" style="display:none" data-expiry="October 21, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">October 19 - 21, 2020</span>
                       <p class="cEventLocation">Munich, Germany</p>
@@ -50,7 +51,6 @@ redirect_from:
                <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td> 
                   </tr>
                     </tr>
-                  </tr>
                         <tr class="event-expiry" style="display:none" data-expiry="October 28, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">October 28, 2020</span>
                       <p class="cEventLocation">Virtual</p>
@@ -61,7 +61,6 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td> 
                   </tr>
-                    </tr>
                       <tr class="event-expiry" style="display:none" data-expiry="October 30, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">October 30, 2020</span>
                       <p class="cEventLocation">Munich, Germany</p>

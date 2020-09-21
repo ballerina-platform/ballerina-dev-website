@@ -92,23 +92,23 @@ import ballerina/io;
 import ballerina/test;
 
 function beforeFunc() {
-    // This is function, which will be executed before the Test functions.
+    // This is the function, which will be executed before the Test functions.
 }
 
 function afterFunc() {
-    // This is function, which will be executed after the Test functions.
+    // This is the function, which will be executed after the Test functions.
 }
 
 // This test function will not be executed.
 @test:Config {
-enable: false,
+    enable: false
 }
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// This test function depends on `testFunction1`.
+// This test function depends on the `testFunction3`.
 @test:Config{  
     before: "beforeFunc",
     after: "afterFunc",
@@ -126,7 +126,7 @@ function dataGen() returns (int[][]) {
 }
 
 // This is a random test function. This will randomly execute without depending on the other functions.
-// However, note that other functions do depend on this.
+// However, note that `testFunction2` depends on this.
 @test:Config {
     groups: ["g1", "g2"]
 }
@@ -335,7 +335,7 @@ function testFunction1() {
 }
 
 // The `AfterSuite` function is executed after all the test functions in this module.
-@test:AfterSuite
+@test:AfterSuite {}
 function afterFunc() {
     io:println("I'm the after suite function!");
 }

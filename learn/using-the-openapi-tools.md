@@ -44,7 +44,7 @@ For build time client stub generation, annotation support is provided.
 
 ###OpenAPI to Ballerina
 ####Mock Service and Client Stub from OpenAPI
-```
+```bash
 ballerina openapi   -i <openapi-contract> 
                [--service-name: generated files name]
                [--tags: tags list]
@@ -64,7 +64,7 @@ You can give the specific tags and operations that you need to document as servi
 If not, it will take the execution path as the output path.
 
 ####Mock Service from OpenAPI
-```
+```bash
 ballerina openapi   -i <openapi-contract> --mode service
                     [(-o|--output) outputFile]
 ```
@@ -72,7 +72,7 @@ Generates a Ballerina service for the OpenAPI file. This generated service is a 
 
 
 ####Client stub from OpenAPI
-```
+```bash
 ballerina openapi   -i <openapi-contract> --mode client
                     [(-o|--output) outputFile]
 ```
@@ -81,14 +81,16 @@ applications to call the service defined in the OpenAPI file.
 
 ###Ballerina to OpenAPI
 ####Service to OpenAPI Export
-```
+```bash
 ballerina openapi   -i <ballerina file> 
                     [(-o|--output) output openapi File]
 ```
 Export the Ballerina service to an  OpenApi Specification 3.0 definition. For the export to work properly, 
 the input Ballerina service should be defined using basic service and resource-level HTTP annotations.
 If you need to document an OpenAPI contract for only one given service, then use this command.
-```ballerina openapi -i <ballerina file> (-s | --service) <service name>```
+```bash
+    ballerina openapi -i <ballerina file> (-s | --service) <service name>
+```
 
 ###Client Stub for Service
 Generates a Ballerina client stub to communicate with a Ballerina service.
@@ -102,7 +104,9 @@ annotation is used to enable or disable client stub generation per service.
 ##Samples for OpenAPI Commands
 ###Mock Service and Client Stub from OpenAPI
 
-```ballerina openapi -i hello.yaml```
+```bash
+    ballerina openapi -i hello.yaml
+```
 
 This will generate a Ballerina service and Client stub for `hello.yaml` OpenAPI contract 
 named `hello-service` and client named `hello-client`. The above command can be run anywhere on the execution path. 
@@ -117,9 +121,13 @@ The service generation process is complete. The following files were created.
 ```
 ###OpenAPI from Service
 
-- ```ballerina openapi -i src/helloworld/helloService.bal```
+ ```bash
+    ballerina openapi -i src/helloworld/helloService.bal
+  ```
 This will generate the OpenAPI contracts for the Ballerina services, which are in the `hello.bal` Ballerina file.
-- ```ballerina openapi -i src/helloworld/helloService.bal (-s | --service) helloworld```
+ ```bash 
+    ballerina openapi -i src/helloworld/helloService.bal (-s | --service) helloworld
+  ```
 This command will generate the `helloworld-openapi.yaml` file that is related to the `helloworld` service inside the
  `helloService.bal` file
 

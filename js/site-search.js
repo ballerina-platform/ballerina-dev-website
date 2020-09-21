@@ -14,7 +14,7 @@ $(function () {
     let search = function () {
         $('#searchResult').empty();
         $('h2').html("");
-        $('.searchStatus').html("Loading ...");
+        
         let text = $('#searchText').val();
         if (text != null && text != "") {
 
@@ -45,6 +45,9 @@ $(function () {
     let init = function () {
         let searchText = decodeURI(window.location.search.slice(1));
         $('#searchText').val(searchText);
+        if(searchText.length == 0){
+            $('.searchStatus').hide();
+        }
         search();
     };
 

@@ -198,7 +198,7 @@ If not specified, the compiler will validate resources against all the operation
 If tags and operations both are defined it will validate against the union set of resources.
 
 - **ExcludeTags** (Optional) : **string[]?**    :
-This feature for users to store the tag does not need to be validated.
+This feature is for users to store the tag. It does not need to be validated.
 At the same time excludeTag and Tag cannot store, It will generate warning messages regarding it.
 
 - **ExcludeOperations** (Optional) : **string[]?**  :

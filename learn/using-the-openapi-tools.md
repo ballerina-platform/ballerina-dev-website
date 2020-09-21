@@ -53,7 +53,7 @@ ballerina openapi   -i <openapi-contract>
 ```
 Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file. 
 
-This parameter `-i <openapi-contract>` of the command is mandatory. As an input it will take the path to the resource file. 
+This `-i <openapi-contract>` parameter of the command is mandatory. As an input, it will take the path to the resource file. 
 
 `--service-name`  This is an optional parameter. If you are interested in naming generated files by given name, 
 you can use this parameter with command. 

@@ -60,8 +60,8 @@ you can use this parameter with command.
 
 You can give the specific tags and operations that you need to document as services without documenting all the operations using these optional commands `--tags` and `--operations`.
 
-`(-o|--output)` is the optional parameter. You can give the specific direction path to generate the files. 
-If not it will take the execution path as the target path.
+`(-o|--output)` is an optional parameter. You can give the output path for the generated files. 
+If not it will take the execution path as the output path.
 
 ####Mock service from OpenAPI
 ```

@@ -85,7 +85,7 @@ applications to call the service defined in the OpenAPI file.
 ballerina openapi   -i <ballerina file> 
                     [(-o|--output) output openapi File]
 ```
-Export the Ballerina service to a definition of OpenApi Specification 3.0. For the export to work properly, 
+Export the Ballerina service to an  OpenApi Specification 3.0 definition. For the export to work properly, 
 the input Ballerina service should be defined using basic service and resource level HTTP annotations.
 If a user needs to document an OpenAPI contract for only one given service, then the user can use this command.
 ``ballerina openapi -i <ballerina file> (-s | --service) <service name>``

@@ -43,7 +43,7 @@ For build time client stub generation, annotation support is provided.
      
 
 ###OpenAPI to Ballerina
-####Mock service and Client stub from OpenAPI
+####Mock Service and Client Stub from OpenAPI
 ```
 ballerina openapi   -i <openapi-contract> 
                [--service-name: generated files name]

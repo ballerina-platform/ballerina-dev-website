@@ -58,8 +58,7 @@ This parameter `-i <openapi-contract>` of the command is mandatory. As an input 
 `--service-name`  This is an optional parameter. If you are interested in naming generated files by given name, 
 you can use this parameter with command. 
 
-You can give the specific tags and operations that you need to document as services without documenting the 
-whole operation using these optional commands `--tags` and `--operations`.
+You can give the specific tags and operations that you need to document as services without documenting all the operations using these optional commands `--tags` and `--operations`.
 
 `(-o|--output)` is the optional parameter. You can give the specific direction path to generate the files. 
 If not it will take the execution path as the target path.
@@ -209,4 +208,3 @@ Tag feature can store with excludeOperations , that time all the tag operations 
  
 - **FailOnErrors** (Optional) : **boolean value**   :
 If the user needs to turn off the validation user can put this in to annotation with the value as false.
-

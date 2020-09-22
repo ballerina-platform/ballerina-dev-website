@@ -136,7 +136,7 @@ function getReleaseNotesDivId(version) {
 }
 
 function getReleaseNoteURL(version) {
-    return base_releasenote_url + "/" + version + "/" + releaseNoteFilename;
+    return base_swanlake_releasenote_url + "/" + version + "/" + releaseNoteFilename;
 }
 
 function isIdeaPlugin(artifact) {

@@ -1,6 +1,6 @@
 ---
-layout: release-note
-title: Release note
+layout: ballerina-inner-page
+title: Swan Lake Release Notes
 ---
 
 ## swan-lake-preview3 (Aug 14, 2020)

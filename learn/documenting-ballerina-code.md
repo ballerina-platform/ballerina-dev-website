@@ -185,7 +185,7 @@ public class Person {
     public string address;
     public float wealth = 0;
 
-    # Gets invoked to initialize the Person object
+    # Gets invoked to initialize the `Person` object.
     #
     # + name - Name of the person for constructor
     # + age - Age of the person for constructor

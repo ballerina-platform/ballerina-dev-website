@@ -452,7 +452,7 @@ A Java class will be mapped onto a Ballerina object. This Ballerina object will 
 E.g., Generated Ballerina object of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
 @java:Binding {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 }
 type ArrayDeque object {
 
@@ -538,7 +538,7 @@ E.g., Generated external interop function for `close()` method of `java.io.FileI
 ```ballerina
 function java_io_FileInputStream_close(handle receiver) returns error? = @java:Method {
     name: "close",
-    class: "java.io.FileInputStream",
+    'class: "java.io.FileInputStream",
     paramTypes: []
 } external;
 ```
@@ -743,7 +743,7 @@ import ballerina/java;
 
 function doSomething(int i) returns string = @java:Method {
 	name: "doSomethingInJava"
-	class: "a.b.c.Foo"
+	'class: "a.b.c.Foo"
 } external;
 ```
 
@@ -765,7 +765,7 @@ import ballerina/java;
 
 function randomUUID() returns handle = @java:Method {
     name: "randomUUID",
-    class: "java.util.UUID"
+    'class: "java.util.UUID"
 } external;
 ```
 
@@ -806,7 +806,7 @@ public function main() {
 }
 
 function newArrayDeque() returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 ```
 
@@ -828,7 +828,7 @@ type ArrayDeque object {
 };
 
 function newArrayDeque() returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 ```
@@ -850,16 +850,16 @@ Here, is the updated Ballerina code.
 import ballerina/java;
 
 function newArrayDeque() returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 function newArrayDequeWithSize(int numElements) returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque",
+    'class: "java.util.ArrayDeque",
     paramTypes: ["int"]
 } external;
 
 function newArrayDequeWithCollection(handle c) returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque",
+    'class: "java.util.ArrayDeque",
     paramTypes: ["java.util.Collection"]
 } external;
 ```
@@ -906,12 +906,12 @@ Here, is the corresponding Ballerina code.
 import ballerina/java;
 
 function builderWithPersonList(handle list, int index) returns handle = @java:Constructor {
-    class: "a.b.c.Builder",
+    'class: "a.b.c.Builder",
     paramTypes: [{class: "a.b.c.Person", dimensions:2}, "int"]
 } external;
 
 function builderWithStudentList(handle list, int index) returns handle = @java:Constructor {
-    class: "a.b.c.Builder",
+    'class: "a.b.c.Builder",
     paramTypes: [{class: "a.b.c.Student", dimensions:2}, "int"]
 } external;
 ```
@@ -928,7 +928,7 @@ import ballerina/io;
 
 function randomUUID() returns handle = @java:Method {
    name: "randomUUID",
-   class: "java.util.UUID"
+   'class: "java.util.UUID"
 } external;
 
 public function main() {
@@ -941,7 +941,7 @@ The `name` field is optional here. If the Ballerina function name is the same as
 
 ```ballerina
 function randomUUID() returns handle = @java:Method {
-   class: "java.util.UUID"
+   'class: "java.util.UUID"
 } external;
 ```
 
@@ -957,11 +957,11 @@ Here, are the corresponding Ballerina functions that are linked to these methods
 
 ```ballerina
 function pop(handle arrayDequeObj) returns handle = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function push(handle arrayDequeObj, handle e) = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external; 
 ```
 
@@ -1010,15 +1010,15 @@ public type StringStack object {
 };
 
 function newArrayDeque() returns handle = @java:Constructor {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function pop(handle receiver) returns handle = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function push(handle receiver, handle element) = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 ```
 
@@ -1049,31 +1049,31 @@ Here, is the set of Ballerina functions that are linked with the above Java meth
 function appendBool(handle sbObj, boolean b) returns handle = @java:Method {
    name: "append",
    paramTypes: ["boolean"],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 
 function appendInt(handle sbObj, int i) returns handle = @java:Method {
    name: "append",
    paramTypes: ["int"],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 
 function appendCharArray(handle sbObj, handle str) returns handle = @java:Method {
    name: "append",
    paramTypes: [{class: "char", dimensions: 1}],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 
 function appendString(handle sbObj, handle str) returns handle = @java:Method {
    name: "append",
    paramTypes: ["java.lang.String"],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 
 function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Method {
    name: "append",
    paramTypes: ["java.lang.StringBuffer"],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 ```
 
@@ -1095,11 +1095,11 @@ The following example tries to pop an element out of an empty queue. The `pop` m
 import ballerina/java;
 
 function newArrayDeque() returns handle = @java:Constructor {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function pop(handle receiver) returns handle = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 public function main() {
@@ -1146,7 +1146,7 @@ Since this Java constructor throws a checked exception,  the `newZipfile` Baller
 import ballerina/java;
 
 function newZipFile(handle filename) returns handle | error = @java:Constructor {
-   class: "java.util.zip.ZipFile",
+   'class: "java.util.zip.ZipFile",
    paramTypes: ["java.lang.String"]
 } external;
 
@@ -1178,16 +1178,16 @@ Let’s look at an example, which deals with Java null. The following code uses 
 import ballerina/java;
 
 function newArrayDeque() returns handle = @java:Constructor {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function peek(handle receiver) returns handle = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 // Linked with the `java.lang.Object.toString()` method in Java.
 function toString(handle objInstance) returns handle = @java:Method {
-   class: "java.lang.Object"
+   'class: "java.lang.Object"
 } external;
 
 public function main() {
@@ -1262,7 +1262,7 @@ import ballerina/java;
 
 public function pi() returns float = @java:FieldGet {
    name:"PI",
-   class:"java/lang/Math"
+   'class:"java/lang/Math"
 } external;
 
 public function main() {

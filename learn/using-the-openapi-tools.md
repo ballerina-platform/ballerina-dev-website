@@ -15,19 +15,20 @@ redirect_from:
 
 # Ballerina OpenAPI Tools
 
-OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources 
-and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina
- OpenAPI tooling will make it easy for users to start development of a service documented in the OpenAPI contract in
- Ballerina by generating Ballerina service and client skeletons. The OpenAPI tools provide the following capabilities.
+The OpenAPI Specification is a specification, which creates a RESTFUL contract for APIs detailing all of its resources 
+and operations in a human and machine readable format for easy development, discovery, and integration. Ballerina
+ OpenAPI tooling will make it easy for users to start development of a service documented in the OpenAPI contract 
+  by generating the Ballerina service and client skeletons. The OpenAPI tools provide the following capabilities.
  
- 1. Generate the Ballerina Service or Client code for a given OpenAPI definition. 
+ 1. Generate the Ballerina service or client code for a given OpenAPI definition. 
  2. Export the OpenAPI definition of a Ballerina service.
- 3. Validate service implementation for a given OpenAPI Contract.
+ 3. Validate service implementation of a given OpenAPI Contract.
     
-The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerina to OpenAPI code generation. 
+The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerina to OpenAPI code generations. 
 Code generation from OpenAPI to Ballerina can produce `ballerina service stubs` and `ballerina client stubs`.
-OpenAPI compiler plugin will allow you to validate a service implementation against a OpenAPI contract during compile time. 
-This plugin ensures the implementation of a service does not deviate from OpenAPI contract.
+The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during
+ compile time. 
+This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract.
 
 - [OpenAPI to Ballerina](#openAPI-to-ballerina)
     - [Generate Service and Client Stub from OpenAPI Contract](#generate-service-and-client-stub-from-openapi-contract)
@@ -53,24 +54,25 @@ ballerina openapi   -i <openapi-contract>
 ```
 Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file.
 
-This `-i <openapi-contract>` parameter of the command is mandatory. As an input, it will take the path to the OpenAPI contract file ie `my-api.yaml` or `my-api.json`. 
+This `-i <openapi-contract>` parameter of the command is mandatory. As an input, it will take the path to the OpenAPI
+ contract file (i.e., `my-api.yaml` or `my-api.json`). 
 
-`--service-name`  This is an optional parameter which allows you to change the generated service name.
+The `--service-name`  is an optional parameter, which allows you to change the generated service name.
 
 You can give the specific tags and operations that you need to document as services without documenting all the operations using these optional `--tags` and `--operations` commands.
 
-`(-o|--output)` is an optional parameter. You can give the output path for the generated files.
+`(-o|--output)` is an optional parameter. You can use this to give the output path for the generated files.
 If not, it will take the execution path as the output path.
 
 ##### Modes
-If you only want to generate a service you can set the mode as `service` in the openapi tool
+If you  want to generate a Service only, you can set the mode as `service` in the OpenAPI tool.
 
 ```bash
 ballerina openapi   -i <openapi-contract> --mode service
                                [(-o|--output) output file path]
 ```
 
-If you only want to generate a client you can set the mode as  `client` in the openapi tool. 
+If you want to generate a Client only, you can set the mode as  `client` in the OpenAPI tool. 
 This client can be used in client applications to call the service defined in the OpenAPI file.
 
 ```bash
@@ -84,8 +86,8 @@ ballerina openapi   -i <openapi-contract> --mode client
 ballerina openapi   -i <ballerina file> 
                     [(-o|--output) output openapi file path]
 ```
-Export the Ballerina service to an  OpenApi Specification 3.0 definition. For the export to work properly, 
-the input Ballerina service should be defined using basic service and resource-level HTTP annotations.
+Export the Ballerina service to an  OpenAPI Specification 3.0 definition. For the export to work properly, 
+the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
 If you need to document an OpenAPI contract for only one given service, then use this command.
 ```bash
     ballerina openapi -i <ballerina file> (-s | --service) <service name>
@@ -97,8 +99,9 @@ If you need to document an OpenAPI contract for only one given service, then use
     ballerina openapi -i hello.yaml
 ```
 
-This will generate a Ballerina service and Client stub for `hello.yaml` OpenAPI contract 
-named `hello-service` and client named `hello-client`. The above command can be run anywhere on the execution path. 
+This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract 
+named `hello-service` and client named `hello-client`. The above command can be run from anywhere on the execution
+ path. 
 It is not mandatory  to run it from inside the Ballerina project.
 
 Output:
@@ -122,15 +125,15 @@ This command will generate the `helloworld-openapi.yaml` file that is related to
 
 ## OpenAPI Validator Compiler Plugin
 
-The OpenAPI Validator Compiler plugin validates a service with a given OpenAPI contract. 
-The compiler plugin is activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares 
-the service and the OpenAPI Contract and validates both against a predefined set of validation rules. 
+The OpenAPI Validator Compiler plugin validates a service again a given OpenAPI contract. 
+The Compiler Plugin is activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares 
+the service and the OpenAPI Contract and validates both against a pre-defined set of validation rules. 
 If any of the rules fail, the plugin will give the result as one or more compilation errors.
 
 ### Annotation for validator Plugin 
 The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI Contract. You need to add 
 this annotation to the service file with the required values for enabling the validations.  
-The following is an example of annotation usage.
+The following is an example of the annotation usage.
 ```ballerina
 @openapi:ServiceInfo{
     contract: “/path/to/openapi.json|yaml”,
@@ -165,7 +168,8 @@ At the same time, the `excludeTag` and `Tag` cannot store and the plugin will ge
 - **ExcludeOperations** (Optional) : **string[]?**  :
 This feature is for users to store the operations that do not need to be validated.
 At the same time, the `excludeOperations` and  `Operations` can not store and they will generate warning messages.
-Tag feature can store with `excludeOperations`, that time all the tag operations validate except the exclude operations.
+The `Tag` feature can store with `excludeOperations`. Then, all the tag operations will be validated except the `exclude`
+ operations.
  
 - **FailOnErrors** (Optional) : **boolean value**   :
-If you need to turn off the validation, add this in to the annotation with the value as `false`.
+If you need to turn off the validation, add this to the annotation with the value as `false`.

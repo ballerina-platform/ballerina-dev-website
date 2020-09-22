@@ -199,7 +199,7 @@ public class Person {
         return self.address ;
     }
 
-    # Add wealth to person
+    # Add wealth of the person.
     #
     # + amt - Amount to be added
     # + rate - Interest rate

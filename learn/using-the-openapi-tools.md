@@ -49,7 +49,7 @@ ballerina openapi   -i <openapi-contract>
                [--tags: tags list]
                [--operations: operationsID list]
                [--mode service|client ]
-               [(-o|--output): outputFile path]
+               [(-o|--output): output file path]
 ```
 Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file.
 
@@ -67,7 +67,7 @@ If you only want to generate a service you can set the mode as `service` in the 
 
 ```bash
 ballerina openapi   -i <openapi-contract> --mode service
-                               [(-o|--output) outputFile]
+                               [(-o|--output) output file path]
 ```
 
 If you only want to generate a client you can set the mode as  `client` in the openapi tool. 
@@ -75,14 +75,14 @@ This client can be used in client applications to call the service defined in th
 
 ```bash
 ballerina openapi   -i <openapi-contract> --mode client
-                               [(-o|--output) outputFile]
+                               [(-o|--output) output file path]
 ```
 
 ### Ballerina to OpenAPI
 #### Service to OpenAPI Export
 ```bash
 ballerina openapi   -i <ballerina file> 
-                    [(-o|--output) output openapi File]
+                    [(-o|--output) output openapi file path]
 ```
 Export the Ballerina service to an  OpenApi Specification 3.0 definition. For the export to work properly, 
 the input Ballerina service should be defined using basic service and resource-level HTTP annotations.

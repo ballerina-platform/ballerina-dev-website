@@ -101,8 +101,8 @@ this annotation are not picked for client stub generation. The `@openapi:ClientC
 annotation is used to enable or disable client stub generation per service.
 
 
-##Samples for OpenAPI Commands
-###Mock Service and Client Stub from OpenAPI
+###Samples for OpenAPI Commands
+####Mock Service and Client Stub from OpenAPI
 
 ```bash
     ballerina openapi -i hello.yaml
@@ -119,7 +119,7 @@ The service generation process is complete. The following files were created.
 -- hello-client.bal
 -- schema.bal
 ```
-###OpenAPI from Service
+####OpenAPI from Service
 
  ```bash
     ballerina openapi -i src/helloworld/helloService.bal
@@ -131,7 +131,7 @@ This will generate the OpenAPI contracts for the Ballerina services, which are i
 This command will generate the `helloworld-openapi.yaml` file that is related to the `helloworld` service inside the
  `helloService.bal` file
 
-###Client Stub from Service
+####Client Stub from Service
 Apply an annotation to say that client generation is enabled by adding `@openapi:ClientConfig { generate: true }` and
  point the client endpoint to be applied on the generation by adding the `@openapi:ClientEndpoint` annotation to the
   client
@@ -193,7 +193,7 @@ service greet on new http:Listener(9090) {
     ...
 }
 ```
- **Annotation support the following attributes:**
+####Annotation support the following attributes:
 - **Contract** (Required) : **string**  :
 Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`
 This is a required attribute.

@@ -1,5 +1,5 @@
 ---
-layout: release-note
+layout: ballerina-inner-page
 title: Release note
 ---
 ### Overview of jBallerina 1.2.2

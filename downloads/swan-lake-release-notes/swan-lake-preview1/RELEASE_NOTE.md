@@ -1,5 +1,5 @@
 ---
-layout: release-note
+layout: ballerina-inner-page
 title: Release note
 ---
 ### Overview of Ballerina Swan Lake - Preview 1

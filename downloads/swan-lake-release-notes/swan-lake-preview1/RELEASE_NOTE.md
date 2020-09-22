@@ -143,7 +143,7 @@ type Error0 error;
 type Error1 error<map<string>>;
 type Error2 error<record {| int code; |}>;
 ```
-####### Revised error constructor
+**Revised error constructor**
 
 Error values of user-defined types are created using the error constructor of that type. The first mandatory positional augment of the error constructor is the error message and it must be a subtype of `string`. The second optional positional argument can be provided to pass an `error` cause. Error details are provided as named arguments in the error constructor.
 
@@ -152,7 +152,7 @@ type AppError error<record {| string buildNo; string userId; |};
 
 AppError appError = AppError("Failed to delete the order line", buildNo=getBuildNo(), userId=userId);
 ```
-####### Inferring the type of the error
+**Inferring the type of the error**
 
 A type of `error<*>` means that the type is a subtype of `error`, where the precise subtype is to be inferred from the context.
 

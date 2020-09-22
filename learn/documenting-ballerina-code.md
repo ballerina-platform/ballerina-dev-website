@@ -192,7 +192,7 @@ public class Person {
     public function init(string name, int age) {
     }
 
-    # Get the address of the person
+    # Get the address of the person.
     #
     # + return - New address of the person
     public function getAddress() returns string {

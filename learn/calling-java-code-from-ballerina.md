@@ -62,6 +62,7 @@ Ballerina offers a straightforward way to call the existing Java code from Balle
     - [Calling Java Methods](#calling-java-methods)
         - [Calling Static Methods](#calling-static-methods)
         - [Calling Instance Methods](#calling-instance-methods)
+        - [Calling Methods Asynchronously](#calling-methods-asynchronously)
         - [Mapping Java Classes into Ballerina Objects](#mapping-java-classes-into-ballerina-objects)
         - [Calling Overloaded Java Methods](#calling-overloaded-java-methods)
     - [Java Exceptions as Ballerina Errors](#java-exceptions-as-ballerina-errors)
@@ -782,6 +783,7 @@ The following subsections explain how to call Java code from Ballerina.
 - [Calling Java Methods](#calling-java-methods)
      - [Calling Static Methods](#calling-static-methods)
      - [Calling Instance Methods](#calling-instance-methods)
+     - [Calling Methods Asynchronously](#calling-methods-asynchronously)
      - [Mapping Java Classes into Ballerina Objects](#mapping-java-classes-into-ballerina-objects)
      - [Calling Overloaded Java Methods](#calling-overloaded-java-methods)
 - [Java Exceptions as Ballerina Errors](#java-exceptions-as-ballerina-errors)
@@ -982,6 +984,32 @@ public function main() {
 ```
 
 As you can see, you need to first construct an instance of the `ArrayDeque` class. The `arrayDequeObj` variable refers to an `ArrayDeque` object. Then, you need to pass this variable to both the `pop` and `push` functions because the corresponding Java methods are instance methods of the`ArrayDeque` class. Therefore, you need an instance of the `ArrayDeque` class in order to invoke its instance methods. You can think of the `arrayDequeObj` variable as the method receiver.
+
+
+#### Calling Methods Asynchronously
+
+Ballerina internally uses a fixed number of threads. Therefore, when calling a Java method, it should return in a reasonable time frame in order to avoid starvation in the Ballerina code execution.
+
+If the given Java method executes a time consuming (i.e., blocking) task such as an IO operation, better to do that in a separate thread while yielding the original thread to continue the Ballerina code execution.
+In this case, Ballerina Scheduler needs to be informed that the work is being completed asynchronously by invoking the `markAsync` method in the `BalEnv` object. When the work is completed, the `complete` method has to be called with the return value. 
+
+>**Note:** The original return value is ignored.
+```java
+public static long getFileCountRecursively(BalEnv env, BString path) {
+     BalFuture balFuture = env.markAsync();
+     new Thread(() -> {
+         long result = // slow operation ;
+         balFuture.complete(result);
+     }).start(); // in a production system this can be a thread pool/nio pool
+     return -38263; // this value is ignored
+ }
+```
+
+```ballerina
+public function getFileCountRecursively(string path) returns int = @java:Method {
+    'class:"my/test/DirOperations"
+} external;
+```
 
 #### Mapping Java Classes into Ballerina Objects
 The following pattern is useful if you want to present a clearer Ballerina API, which calls to the underneath Java code. This pattern creates wrapper Ballerina objects for each Java class that you want to expose via your API. 

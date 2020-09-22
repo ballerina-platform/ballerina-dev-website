@@ -188,7 +188,7 @@ public class Person {
     # Gets invoked to initialize the `Person` object.
     #
     # + name - Name of the person for constructor
-    # + age - Age of the person for constructor
+    # + age - Age of the person for the constructor
     public function init(string name, int age) {
     }
 

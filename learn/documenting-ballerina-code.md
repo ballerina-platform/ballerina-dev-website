@@ -155,7 +155,7 @@ Added new ballerina module at 'src/math'
 $ ballerina add world
 Added new ballerina module at 'src/world'
 ```
-Now, let's add a function to be documented to the `math` module. Copy and paste the following code in to `myproject/src/math/main.bal`.
+Now, let's add a function to the `math` module to be documented. Copy and paste the following code in to the `myproject/src/math/main.bal` file.
 
 ```ballerina
 # Calculates the value of the 'a' raised to the power of 'b'.

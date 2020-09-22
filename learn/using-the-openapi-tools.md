@@ -13,71 +13,70 @@ redirect_from:
   - /learn/using-the-openapi-tools
 ---
 
-# Using the OpenAPI Tools
+# Ballerina OpenAPI Tools
 
-OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start development of a service documented in OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
-
-The OpenAPI tools provides following capabilities.
-
-1. Generate the Ballerina Service or Client code for a given OpenAPI definition.
-2. Generate the client stub for an existing Ballerina service at build time.
-3. Export the OpenAPI definition of a Ballerina service.
-
-The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerina to OpenAPI code generation.
-Code generation from OpenAPI to Ballerina can produce `ballerina mock services` and `ballerina client stubs`.
-
-For build time client stub generation, annotation support is provided.
+OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources 
+and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina
+ OpenAPI tooling will make it easy for users to start development of a service documented in the OpenAPI contract in
+ Ballerina by generating Ballerina service and client skeletons. The OpenAPI tools provide the following capabilities.
+ 
+ 1. Generate the Ballerina Service or Client code for a given OpenAPI definition. 
+ 2. Export the OpenAPI definition of a Ballerina service.
+ 3. Validate service implementation for a given OpenAPI Contract.
+    
+The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerina to OpenAPI code generation. 
+Code generation from OpenAPI to Ballerina can produce `ballerina service stubs` and `ballerina client stubs`.
+OpenAPI compiler plugin will allow you to validate a service implementation against a OpenAPI contract during compile time. 
+This plugin ensures the implementation of a service does not deviate from OpenAPI contract.
 
 - [OpenAPI to Ballerina](#openAPI-to-ballerina)
-    - [Mock Service from OpenAPI](#mock-service-from-openapi)
-    - [Client Stub from OpenAPI](#client-stub-from-openapi)
+    - [Generate Service and Client Stub from OpenAPI Contract](#generate-service-and-client-stub-from-openapi-contract)
+        - [Modes](#modes)
 - [Ballerina to OpenAPI](#ballerina-to-openAPI)    
     - [Service to OpenAPI Export](#service-to-openapi-export)
-- [Client Stub for Service](#client-stub-for-service)    
 - [Samples](#samples)
-    - [Mock Service from OpenAPI Sample](#mock-service-from-openapi-sample)
-    - [Client Stub from OpenAPI Sample](#client-stub-from-openapi-sample)
-    - [OpenAPI from Service Sample](#openapi-from-service-sample)
-    - [Client Stub from Service Sample](#client-stub-from-service-sample)
+    - [Generate Service and Client Stub from OpenAPI](#generate-service-and-client-stub-from-openAPI)
+    - [Generate OpenAPI contract from Service](#generate-openAPI-contract-from-service)
 - [OpenAPI Validator Compiler Plugin](#openAPI-validator-compiler-plugin)
      
 
 ### OpenAPI to Ballerina
-#### Mock Service and Client Stub from OpenAPI
+#### Generate Service and Client stub from OpenAPI Contract
+
 ```bash
 ballerina openapi   -i <openapi-contract> 
                [--service-name: generated files name]
                [--tags: tags list]
                [--operations: operationsID list]
-               [(-o|--output): outputFile]
+               [--mode service|client ]
+               [(-o|--output): outputFile path]
 ```
-Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file. 
+Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file.
 
-This `-i <openapi-contract>` parameter of the command is mandatory. As an input, it will take the path to the resource file. 
+This `-i <openapi-contract>` parameter of the command is mandatory. As an input, it will take the path to the OpenAPI contract file ie `my-api.yaml` or `my-api.json`. 
 
-`--service-name`  This is an optional parameter. If you are interested in naming generated files by the given name, 
-you can use this parameter in the command. 
+`--service-name`  This is an optional parameter which allows you to change the generated service name.
 
 You can give the specific tags and operations that you need to document as services without documenting all the operations using these optional `--tags` and `--operations` commands.
 
-`(-o|--output)` is an optional parameter. You can give the output path for the generated files. 
+`(-o|--output)` is an optional parameter. You can give the output path for the generated files.
 If not, it will take the execution path as the output path.
 
-#### Mock Service from OpenAPI
+##### Modes
+If you only want to generate a service you can set the mode as `service` in the openapi tool
+
 ```bash
 ballerina openapi   -i <openapi-contract> --mode service
-                    [(-o|--output) outputFile]
+                               [(-o|--output) outputFile]
 ```
-Generates a Ballerina service for the OpenAPI file. This generated service is a mock version of the actual Ballerina service.
 
+If you only want to generate a client you can set the mode as  `client` in the openapi tool. 
+This client can be used in client applications to call the service defined in the OpenAPI file.
 
-#### Client stub from OpenAPI
 ```bash
 ballerina openapi   -i <openapi-contract> --mode client
-                    [(-o|--output) outputFile]
+                               [(-o|--output) outputFile]
 ```
-Generates a Ballerina client stub for the service defined in an OpenAPI file. This client can be used in client 
-applications to call the service defined in the OpenAPI file.
 
 ### Ballerina to OpenAPI
 #### Service to OpenAPI Export
@@ -92,18 +91,8 @@ If you need to document an OpenAPI contract for only one given service, then use
     ballerina openapi -i <ballerina file> (-s | --service) <service name>
 ```
 
-### Client Stub for Service
-Generates a Ballerina client stub to communicate with a Ballerina service.
-All endpoint(s) that are used for client stub generation should be marked with the 
-`@openapi:ClientEndpoint` annotation. If not, there might be errors during the client stub generation. Endpoints that
- are not marked with 
-this annotation are not picked for client stub generation. The `@openapi:ClientConfig { generate: true }` 
-annotation is used to enable or disable client stub generation per service.
-
-
 ### Samples for OpenAPI Commands
-#### Mock Service and Client Stub from OpenAPI
-
+#### Generate Service and Client Stub from OpenAPI
 ```bash
     ballerina openapi -i hello.yaml
 ```
@@ -119,7 +108,7 @@ The service generation process is complete. The following files were created.
 -- hello-client.bal
 -- schema.bal
 ```
-#### OpenAPI from Service
+#### Generate OpenAPI contract from Service
 
  ```bash
     ballerina openapi -i src/helloworld/helloService.bal
@@ -129,45 +118,7 @@ This will generate the OpenAPI contracts for the Ballerina services, which are i
     ballerina openapi -i src/helloworld/helloService.bal (-s | --service) helloworld
   ```
 This command will generate the `helloworld-openapi.yaml` file that is related to the `helloworld` service inside the
- `helloService.bal` file
-
-#### Client Stub from Service
-Apply an annotation to say that client generation is enabled by adding `@openapi:ClientConfig { generate: true }` and
- point the client endpoint to be applied on the generation by adding the `@openapi:ClientEndpoint` annotation to the
-  client
-  endpoint.
-
-```ballerina
-import ballerina/http;
-import ballerina/log;
-import ballerina/openapi;
-
-// Define this endpoint as a selected endpoint for client generation.
-@openapi:ClientEndpoint
-listener http:Listener helloEp = new(9090);
-
-// Enable client code generation for this service.
-@openapi:ClientConfig {
-    generate: true
-}
-@http:ServiceConfig {
-    basePath: "/sample"
-}
-service Hello on helloEp {    
-    @http:ResourceConfig {
-        methods: ["GET"],
-        path: "/hello"
-    }
-    resource function hello(http:Caller caller, http:Request req) {
-        http:Response res = new;
-        res.setPayload("Hello");
-        var result = caller->respond(res);
-        if (result is error) {
-            log:printError("Error when responding", err = result);
-        }
-    }
-}
-```
+ `helloService.bal` file.
 
 ## OpenAPI Validator Compiler Plugin
 
@@ -204,9 +155,7 @@ If not specified, the compiler will validate resources against all the operation
 
 - **Operations** (Optional): **string[]?**  :
 Should contain a list of operation names that need to be validated against the resources in the service.
-If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract. 
-
-If both tags and operations are defined, it will validate against the union set of the resources.
+If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract. If both tags and operations are defined, it will validate against the union set of the resources.
 
 - **ExcludeTags** (Optional) : **string[]?**    :
 This feature is for users to store the tag. It does not need to be validated.

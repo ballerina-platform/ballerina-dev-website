@@ -50,7 +50,6 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td> 
                   </tr>
-                    </tr>
                         <tr class="event-expiry" style="display:none" data-expiry="October 28, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">October 28, 2020</span>
                       <p class="cEventLocation">Virtual</p>

@@ -42,8 +42,8 @@ For build time client stub generation, annotation support is provided.
 - [OpenAPI Validator Compiler Plugin](#openAPI-validator-compiler-plugin)
      
 
-###OpenAPI to Ballerina
-####Mock Service and Client Stub from OpenAPI
+### OpenAPI to Ballerina
+#### Mock Service and Client Stub from OpenAPI
 ```bash
 ballerina openapi   -i <openapi-contract> 
                [--service-name: generated files name]
@@ -63,7 +63,7 @@ You can give the specific tags and operations that you need to document as servi
 `(-o|--output)` is an optional parameter. You can give the output path for the generated files. 
 If not, it will take the execution path as the output path.
 
-####Mock Service from OpenAPI
+#### Mock Service from OpenAPI
 ```bash
 ballerina openapi   -i <openapi-contract> --mode service
                     [(-o|--output) outputFile]
@@ -71,7 +71,7 @@ ballerina openapi   -i <openapi-contract> --mode service
 Generates a Ballerina service for the OpenAPI file. This generated service is a mock version of the actual Ballerina service.
 
 
-####Client stub from OpenAPI
+#### Client stub from OpenAPI
 ```bash
 ballerina openapi   -i <openapi-contract> --mode client
                     [(-o|--output) outputFile]
@@ -79,8 +79,8 @@ ballerina openapi   -i <openapi-contract> --mode client
 Generates a Ballerina client stub for the service defined in an OpenAPI file. This client can be used in client 
 applications to call the service defined in the OpenAPI file.
 
-###Ballerina to OpenAPI
-####Service to OpenAPI Export
+### Ballerina to OpenAPI
+#### Service to OpenAPI Export
 ```bash
 ballerina openapi   -i <ballerina file> 
                     [(-o|--output) output openapi File]
@@ -92,7 +92,7 @@ If you need to document an OpenAPI contract for only one given service, then use
     ballerina openapi -i <ballerina file> (-s | --service) <service name>
 ```
 
-###Client Stub for Service
+### Client Stub for Service
 Generates a Ballerina client stub to communicate with a Ballerina service.
 All endpoint(s) that are used for client stub generation should be marked with the 
 `@openapi:ClientEndpoint` annotation. If not, there might be errors during the client stub generation. Endpoints that
@@ -101,8 +101,8 @@ this annotation are not picked for client stub generation. The `@openapi:ClientC
 annotation is used to enable or disable client stub generation per service.
 
 
-###Samples for OpenAPI Commands
-####Mock Service and Client Stub from OpenAPI
+### Samples for OpenAPI Commands
+#### Mock Service and Client Stub from OpenAPI
 
 ```bash
     ballerina openapi -i hello.yaml
@@ -119,7 +119,7 @@ The service generation process is complete. The following files were created.
 -- hello-client.bal
 -- schema.bal
 ```
-####OpenAPI from Service
+#### OpenAPI from Service
 
  ```bash
     ballerina openapi -i src/helloworld/helloService.bal
@@ -131,7 +131,7 @@ This will generate the OpenAPI contracts for the Ballerina services, which are i
 This command will generate the `helloworld-openapi.yaml` file that is related to the `helloworld` service inside the
  `helloService.bal` file
 
-####Client Stub from Service
+#### Client Stub from Service
 Apply an annotation to say that client generation is enabled by adding `@openapi:ClientConfig { generate: true }` and
  point the client endpoint to be applied on the generation by adding the `@openapi:ClientEndpoint` annotation to the
   client
@@ -169,14 +169,14 @@ service Hello on helloEp {
 }
 ```
 
-##OpenAPI Validator Compiler Plugin
+## OpenAPI Validator Compiler Plugin
 
 The OpenAPI Validator Compiler plugin validates a service with a given OpenAPI contract. 
 The compiler plugin is activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares 
 the service and the OpenAPI Contract and validates both against a predefined set of validation rules. 
 If any of the rules fail, the plugin will give the result as one or more compilation errors.
 
-###Annotation for validator Plugin 
+### Annotation for validator Plugin 
 The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI Contract. You need to add 
 this annotation to the service file with the required values for enabling the validations.  
 The following is an example of annotation usage.
@@ -193,7 +193,7 @@ service greet on new http:Listener(9090) {
     ...
 }
 ```
-####Annotation support the following attributes:
+#### Annotation support the following attributes:
 - **Contract** (Required) : **string**  :
 Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`
 This is a required attribute.

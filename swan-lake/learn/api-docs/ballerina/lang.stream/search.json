@@ -5,13 +5,7 @@
       "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003estream\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "T8",
-      "description": "",
-      "moduleId": "lang.stream"
-    }
-  ],
+  "classes": [],
   "functions": [
     {
       "id": "close",
@@ -49,22 +43,12 @@
       "moduleId": "lang.stream"
     }
   ],
-  "records": [
-    {
-      "id": "T2",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T7",
-      "description": "",
-      "moduleId": "lang.stream"
-    }
-  ],
+  "records": [],
   "constants": [],
   "errors": [],
   "types": [],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

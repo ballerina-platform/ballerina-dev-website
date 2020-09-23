@@ -102,18 +102,15 @@ below functionalities.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../nats/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
             <li>
@@ -192,59 +189,6 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Creates a new <code>nats:StreamingProducer</code> instance.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../nats/objects/Connection.html">Connection</a> connection, <span class="builtin-type">string?</span> clientId, <span class="builtin-type">string</span> clusterId, <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>? streamingConfig)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>connection</b><span class="type">  <a href="../../nats/objects/Connection.html">Connection</a></span> </li>
-                <li>
-                    <p>An established NATS connection</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>clientId</b><span class="type">  <span class="builtin-type">string?</span></span> ()</li>
-                <li>
-                    <p>A unique identifier of the client</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>clusterId</b><span class="type">  <span class="builtin-type">string</span></span> test-cluster</li>
-                <li>
-                    <p>The unique identifier of the cluster configured in the NATS server</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>streamingConfig</b><span class="type">  <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>?</span> ()</li>
-                <li>
-                    <p>The configuration related to the NATS streaming connectivity</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -253,9 +197,7 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
                         <tr>
                             <td class="module-title truncate functions" title="publish"><a
                                     class="functions" href="#publish">publish</a></td>
-                            <td class="module-desc"><p>Publishes data to a given subject.
-<code>ballerina string|error result = producer-&gt;publish(subject, &lt;@untainted&gt;message);</code></p>
-</td>
+                            <td class="module-desc"><p>Publishes data to a given subject.</td>
                         </tr>
                     
                 </table>
@@ -272,8 +214,7 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
     </div>
     <div class="param-details">
         
-        <p>Close the producer.</p>
-
+        <p>Close the producer.</p> 
     </div>
 </div>
 
@@ -300,6 +241,9 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Publishes data to a given subject.
 <code>ballerina string|error result = producer-&gt;publish(subject, &lt;@untainted&gt;message);</code></p>
@@ -382,6 +326,9 @@ is completed</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Close the producer.</p>
 

@@ -93,6 +93,10 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
         </li>
     
         <li >
+            <a href="#OffsetResetMethod" onclick="menuLinkClick()">OffsetResetMethod</a>
+        </li>
+    
+        <li >
             <a href="#ProducerAcks" onclick="menuLinkClick()">ProducerAcks</a>
         </li>
     
@@ -117,18 +121,15 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+        
+            <li>
+                <a  data="classes" href="../kafka/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -251,6 +252,21 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
             
                 <div class="params-listing">
                     <ul>
+                        <li id="OffsetResetMethod">
+                            <b >OffsetResetMethod</b>
+                            
+                                <span class="type">  <a href="../kafka/constants.html#OFFSET_RESET_EARLIEST">OFFSET_RESET_EARLIEST</a> | <a href="../kafka/constants.html#OFFSET_RESET_LATEST">OFFSET_RESET_LATEST</a> | <a href="../kafka/constants.html#OFFSET_RESET_NONE">OFFSET_RESET_NONE</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Represents the differnet types of offset-reset mothods for Kafka consumer</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
                         <li id="ProducerAcks">
                             <b >ProducerAcks</b>
                             
@@ -269,7 +285,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
                         <li id="SecurityProtocol">
                             <b >SecurityProtocol</b>
                             
-                                <span class="type">  <a href="../kafka/constants.html#PROTOCOL_SASL_PLAINTEXT">PROTOCOL_SASL_PLAINTEXT</a> | <a href="../kafka/constants.html#PROTOCOL_SASL_SSL">PROTOCOL_SASL_SSL</a></span></li>
+                                <span class="type">  <a href="../kafka/constants.html#PROTOCOL_PLAINTEXT">PROTOCOL_PLAINTEXT</a> | <a href="../kafka/constants.html#PROTOCOL_SASL_PLAINTEXT">PROTOCOL_SASL_PLAINTEXT</a> | <a href="../kafka/constants.html#PROTOCOL_SASL_SSL">PROTOCOL_SASL_SSL</a> | <a href="../kafka/constants.html#PROTOCOL_SSL">PROTOCOL_SSL</a></span></li>
                             
                         <li>
                             

@@ -153,10 +153,7 @@
     
     <ul>
         
-            
         
-        
-            
         
         
         
@@ -213,11 +210,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Adds a member <code>val</code> to table <code>t</code>.
-It will be added as the last member.
-It panics if <code>val</code> has the same key as an existing member of <code>t</code>,
-or if <code>val</code> is inconsistent with the inherent type of <code>t</code>.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -227,8 +223,8 @@ or if <code>val</code> is inconsistent with the inherent type of <code>t</code>.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Selects the members from a table for which a function returns true.</p>
-
+                                
+                                <p>Selects the members from a table for which a function returns true.</p> 
                             </div>
                         </td>
                     </tr>
@@ -238,9 +234,8 @@ or if <code>val</code> is inconsistent with the inherent type of <code>t</code>.
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Applies a function to each member of a table.
-The <code>func</code> is applied to each member of <code>t</code>.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -250,10 +245,10 @@ The <code>func</code> is applied to each member of <code>t</code>.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Returns the member of table <code>t</code> with key <code>k</code>.
-This for use in a case where it is known that the table has a specific key,
-and accordingly panics if <code>t</code> does not have a member with key <code>k</code>.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -263,8 +258,10 @@ and accordingly panics if <code>t</code> does not have a member with key <code>k
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Tests whether <code>t</code> has a member with key <code>k</code>.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Tests whether <code>t</code> has a member with key <code>k</code>.</p> 
                             </div>
                         </td>
                     </tr>
@@ -274,11 +271,10 @@ and accordingly panics if <code>t</code> does not have a member with key <code>k
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Returns an iterator over a table.
-The iterator will iterate over the members of the table not the keys.
-The <code>entries</code> function can be used to iterate over the keys and members together.
-The <code>keys</code> function can be used to iterator over just the keys.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -288,8 +284,10 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a list of all the keys of table <code>t</code>.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns a list of all the keys of table <code>t</code>.</p> 
                             </div>
                         </td>
                     </tr>
@@ -299,8 +297,10 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns number of members of a table.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns number of members of a table.</p> 
                             </div>
                         </td>
                     </tr>
@@ -310,9 +310,8 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Applies a function each member of a table and returns a table of the result.
-The resulting table will have the same keys as the argument table.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -322,8 +321,10 @@ The resulting table will have the same keys as the argument table.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the next available integer key.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the next available integer key.</p> 
                             </div>
                         </td>
                     </tr>
@@ -333,12 +334,10 @@ The resulting table will have the same keys as the argument table.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Adds a member <code>val</code> to table <code>t</code>, replacing any member with the same key value.
-If <code>val</code> replaces an existing member, it will have the same position
-in the order of the members as the existing member;
-otherwise, it will be added as the last member.
-It panics if <code>val</code> is inconsistent with the inherent type of <code>t</code>.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -348,10 +347,8 @@ It panics if <code>val</code> is inconsistent with the inherent type of <code>t<
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Combines the members of a table using a combining function.
-The combining function takes the combined value so far and a member of the table,
-and returns a new combined value.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -361,8 +358,10 @@ and returns a new combined value.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Removes a member of a table.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Removes a member of a table.</p> 
                             </div>
                         </td>
                     </tr>
@@ -372,9 +371,10 @@ and returns a new combined value.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Removes all members of a table.
-This panics if any member cannot be removed.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -384,8 +384,10 @@ This panics if any member cannot be removed.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Removes a member of a table with a given key, if the table has member with the key.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Removes a member of a table with a given key, if the table has member with the key.</p> 
                             </div>
                         </td>
                     </tr>
@@ -395,8 +397,10 @@ This panics if any member cannot be removed.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a list of all the members of a table.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns a list of all the members of a table.</p> 
                             </div>
                         </td>
                     </tr>
@@ -419,6 +423,9 @@ This panics if any member cannot be removed.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Adds a member <code>val</code> to table <code>t</code>.
 It will be added as the last member.
@@ -484,6 +491,7 @@ or if <code>val</code> is inconsistent with the inherent type of <code>t</code>.
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Selects the members from a table for which a function returns true.</p>
 
@@ -555,6 +563,7 @@ or if <code>val</code> is inconsistent with the inherent type of <code>t</code>.
     </div>
     <div class="function-desc">
         
+        
         <p>Applies a function to each member of a table.
 The <code>func</code> is applied to each member of <code>t</code>.</p>
 
@@ -617,6 +626,9 @@ The <code>func</code> is applied to each member of <code>t</code>.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns the member of table <code>t</code> with key <code>k</code>.
 This for use in a case where it is known that the table has a specific key,
@@ -692,6 +704,9 @@ and accordingly panics if <code>t</code> does not have a member with key <code>k
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Tests whether <code>t</code> has a member with key <code>k</code>.</p>
 
     </div>
@@ -758,11 +773,14 @@ and accordingly panics if <code>t</code> does not have a member with key <code>k
         <span class="method-types">
             <p>(<span class="builtin-type">table</span> t)</p>
             
-                <b> returns </b><a href="../lang.table/objects/T2.html">T2</a> 
+                <b> returns </b><span class="builtin-type">object { public function next () returns (record {| (any|error) value; |}?); }</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns an iterator over a table.
 The iterator will iterate over the members of the table not the keys.
@@ -798,7 +816,7 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.table/objects/T2.html">T2</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">object { public function next () returns (record {| (any|error) value; |}?); }</span></span>)</li>
                 <li><p>a new iterator object that will iterate over the members of <code>t</code></p>
 </li>
             </ul>
@@ -821,6 +839,9 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns a list of all the keys of table <code>t</code>.</p>
 
@@ -877,6 +898,9 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns number of members of a table.</p>
 
     </div>
@@ -931,6 +955,7 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Applies a function each member of a table and returns a table of the result.
 The resulting table will have the same keys as the argument table.</p>
@@ -1005,6 +1030,9 @@ The resulting table will have the same keys as the argument table.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the next available integer key.</p>
 
     </div>
@@ -1060,6 +1088,9 @@ Provides similar functionality to auto-increment</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Adds a member <code>val</code> to table <code>t</code>, replacing any member with the same key value.
 If <code>val</code> replaces an existing member, it will have the same position
@@ -1126,6 +1157,7 @@ It panics if <code>val</code> is inconsistent with the inherent type of <code>t<
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Combines the members of a table using a combining function.
 The combining function takes the combined value so far and a member of the table,
@@ -1218,6 +1250,9 @@ and returns a new combined value.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Removes a member of a table.</p>
 
     </div>
@@ -1290,6 +1325,9 @@ It panics if there is no such member.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Removes all members of a table.
 This panics if any member cannot be removed.</p>
 
@@ -1335,6 +1373,9 @@ This panics if any member cannot be removed.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Removes a member of a table with a given key, if the table has member with the key.</p>
 
@@ -1409,6 +1450,9 @@ otherwise it returns <code>()</code>.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns a list of all the members of a table.</p>
 

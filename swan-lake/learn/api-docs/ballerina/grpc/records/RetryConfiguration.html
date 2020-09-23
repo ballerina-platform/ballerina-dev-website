@@ -141,18 +141,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../grpc/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../grpc/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -164,10 +165,6 @@
                 <a data="listeners" href="../../grpc/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
-        
-            <li>
-                <a data="functions" href="../../grpc/index.html#functions" onclick="menuLinkClick()">Functions</a>
-            </li>
         
         
             <li>
@@ -228,16 +225,22 @@
                 
             </h1>
             
+
     <p>
         
         <p>Represents grpc client retry functionality configurations.</p>
 
     </p>
+    
+        <div class="ui horizontal label" data-tooltip="A record with a fixed set of fields" data-position="top left">Closed record</div>
+    
+
     <div class="constants">
         
         
-        <h2>Fields</h2>
-        <div class="data-wrapper">
+            
+            <h2>Fields</h2>
+            <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -307,7 +310,7 @@
         <ul>
             <li> <span >errorTypes</span>
                 <span class="type">  <span class="array-type"><span class="builtin-type">ErrorType</span>[]</span></span>
-                 <span class="default">(default [<typedesc<ballerina/grpc:0.7.0:InternalError>> InternalError])</span> 
+                 <span class="default">(default defaultErrorTypes)</span> 
             </li>
             <li>
                 <p>
@@ -376,7 +379,7 @@ function displayMenu() {
     };
 </script>
 
-        
+            
         
     </div>
 

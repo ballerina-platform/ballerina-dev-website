@@ -5,15 +5,15 @@
       "description": "\u003cp\u003eThis module provides the capability to connect with NATS and NATS Streaming servers and performs the\nbelow functionalities.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "Connection",
-      "description": "\u003cp\u003eRepresents a single network connection to the NATS server.\u003c/p\u003e",
-      "moduleId": "nats"
-    },
+  "classes": [
     {
       "id": "Message",
       "description": "\u003cp\u003eRepresents the message, which a NATS server sends to its subscribed services.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "Connection",
+      "description": "\u003cp\u003eRepresents a single network connection to the NATS server.\u003c/p\u003e",
       "moduleId": "nats"
     }
   ],
@@ -156,5 +156,6 @@
       "description": "\u003cp\u003eThe annotation, which is used to configure the basic subscription.\u003c/p\u003e",
       "moduleId": "nats"
     }
-  ]
+  ],
+  "abstractObjects": []
 }

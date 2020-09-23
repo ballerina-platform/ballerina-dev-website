@@ -5,13 +5,7 @@
       "description": "\u003cp\u003eThis module provides the API for Java interoperability in Ballerina.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "JObject",
-      "description": "\u003cp\u003eThe Ballerina abstract object which is to be extended by Ballerina\nobjects representing Ballerina bindings for Java classes.\u003c/p\u003e",
-      "moduleId": "java"
-    }
-  ],
+  "classes": [],
   "functions": [
     {
       "id": "cast",
@@ -111,6 +105,13 @@
     {
       "id": "Method",
       "description": "\u003cp\u003eDescribes a Java method, which provides an implementation of a Ballerina function of which the body is marked as\n\u003ccode\u003eexternal\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "java"
+    }
+  ],
+  "abstractObjects": [
+    {
+      "id": "JObject",
+      "description": "\u003cp\u003eThe Ballerina abstract object which is to be extended by Ballerina\nobjects representing Ballerina bindings for Java classes.\u003c/p\u003e",
       "moduleId": "java"
     }
   ]

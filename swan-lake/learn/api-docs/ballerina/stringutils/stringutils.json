@@ -5,11 +5,13 @@
   "orgName": "ballerina",
   "version": "0.5.0",
   "records": [],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -89,6 +91,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -168,6 +171,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -224,6 +228,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -303,6 +308,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -382,6 +388,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -484,6 +491,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -586,6 +594,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -688,6 +697,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -781,6 +791,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [

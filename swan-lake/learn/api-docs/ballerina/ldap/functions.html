@@ -101,18 +101,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../ldap/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../ldap/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../ldap/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../ldap/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -177,9 +174,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Authenticates with the username and password.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Authenticates with the username and password.</p>   
                             </div>
                         </td>
                     </tr>
@@ -189,9 +187,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the group(s) of the user related to the provided username.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Retrieves the group(s) of the user related to the provided username.</p>   
                             </div>
                         </td>
                     </tr>
@@ -201,9 +200,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Initailizes the LDAP connection context.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Initailizes the LDAP connection context.</p>   
                             </div>
                         </td>
                     </tr>
@@ -228,6 +228,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Authenticates with the username and password.</p>
 <pre><code class="language-ballerina"> boolean|ldap:Error result = ldap:doAuthenticate(ldapConnection, username, password);
@@ -320,6 +323,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the group(s) of the user related to the provided username.</p>
 <pre><code class="language-ballerina"> string[]|ldap:Error groups = ldap:getGroups(ldapConnection, username);
 </code></pre>
@@ -393,6 +399,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Initailizes the LDAP connection context.</p>
 <pre><code class="language-ballerina"> ldap:LdapConnection|ldap:Error connection = ldap:initLdapConnectionContext(ldapConnectionConfig, instanceId);

@@ -97,6 +97,7 @@
         
         
         
+        
             <li>
                 <a data="functions" href="../xslt/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
@@ -153,9 +154,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.</p>   
                             </div>
                         </td>
                     </tr>
@@ -180,6 +182,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.</p>
 <pre><code class="language-ballerina"> xml|error target = xslt:transform(sourceXml, xsl);

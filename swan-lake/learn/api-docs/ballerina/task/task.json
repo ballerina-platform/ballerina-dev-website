@@ -88,7 +88,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "AppointmentConfiguration",
       "description": "\u003cp\u003eConfigurations related to an appointment, which are used to define the behavior of an appointment when initializing\nthe \u003ccode\u003etask:Listener\u003c/code\u003e.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -257,7 +257,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "AppointmentData",
       "description": "\u003cp\u003eThe CRON expression required for scheduling an appointment.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -334,84 +334,18 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "TimerConfiguration",
       "description": "\u003cp\u003eConfigurations related to a timer, which are used to define the behavior of a timer when initializing the\n\u003ccode\u003etask:Listener\u003c/code\u003e.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [
     {
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "task",
-                "category": "types",
-                "isAnonymousUnionType": true,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [
-                  {
-                    "orgName": "ballerina",
-                    "moduleName": "task",
-                    "name": "TimerConfiguration",
-                    "category": "records",
-                    "isAnonymousUnionType": false,
-                    "isArrayType": false,
-                    "isNullable": false,
-                    "isTuple": false,
-                    "isRestParam": false,
-                    "isLambda": false,
-                    "isDeprecated": false,
-                    "generateUserDefinedTypeLink": true,
-                    "memberTypes": [],
-                    "paramTypes": [],
-                    "arrayDimensions": 0
-                  },
-                  {
-                    "orgName": "ballerina",
-                    "moduleName": "task",
-                    "name": "AppointmentConfiguration",
-                    "category": "records",
-                    "isAnonymousUnionType": false,
-                    "isArrayType": false,
-                    "isNullable": false,
-                    "isTuple": false,
-                    "isRestParam": false,
-                    "isLambda": false,
-                    "isDeprecated": false,
-                    "generateUserDefinedTypeLink": true,
-                    "memberTypes": [],
-                    "paramTypes": [],
-                    "arrayDimensions": 0
-                  }
-                ],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "configuration",
-              "description": "\u003cp\u003eThe \u003ccode\u003etask:TimerConfiguration\u003c/code\u003e or \u003ccode\u003etask:AppointmentConfiguration\u003c/code\u003e record to define the\n\u003ccode\u003etask:Sceduler\u003c/code\u003e behavior\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eInitializes a \u003ccode\u003etask:Scheduler\u003c/code\u003e object. This may panic if the initialization causes any error due to\na configuration error.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -505,6 +439,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -561,6 +496,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -593,6 +529,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -625,6 +562,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -657,6 +595,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -689,6 +628,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -721,75 +661,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "task",
-              "category": "types",
-              "isAnonymousUnionType": true,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [
-                {
-                  "orgName": "ballerina",
-                  "moduleName": "task",
-                  "name": "TimerConfiguration",
-                  "category": "records",
-                  "isAnonymousUnionType": false,
-                  "isArrayType": false,
-                  "isNullable": false,
-                  "isTuple": false,
-                  "isRestParam": false,
-                  "isLambda": false,
-                  "isDeprecated": false,
-                  "generateUserDefinedTypeLink": true,
-                  "memberTypes": [],
-                  "paramTypes": [],
-                  "arrayDimensions": 0
-                },
-                {
-                  "orgName": "ballerina",
-                  "moduleName": "task",
-                  "name": "AppointmentConfiguration",
-                  "category": "records",
-                  "isAnonymousUnionType": false,
-                  "isArrayType": false,
-                  "isNullable": false,
-                  "isTuple": false,
-                  "isRestParam": false,
-                  "isLambda": false,
-                  "isDeprecated": false,
-                  "generateUserDefinedTypeLink": true,
-                  "memberTypes": [],
-                  "paramTypes": [],
-                  "arrayDimensions": 0
-                }
-              ],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "configuration",
-            "description": "\u003cp\u003eThe \u003ccode\u003etask:TimerConfiguration\u003c/code\u003e or \u003ccode\u003etask:AppointmentConfiguration\u003c/code\u003e record to define the\n\u003ccode\u003etask:Sceduler\u003c/code\u003e behavior\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eInitializes a \u003ccode\u003etask:Scheduler\u003c/code\u003e object. This may panic if the initialization causes any error due to\na configuration error.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -883,6 +757,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -939,6 +814,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -971,6 +847,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1003,6 +880,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1035,6 +913,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1067,6 +946,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1099,17 +979,18 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Scheduler",
       "description": "\u003cp\u003eRepresents a ballerina task Scheduler, which can be used to run jobs periodically, using the given configurations.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [
     {
       "lifeCycleMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1137,7 +1018,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1189,6 +1070,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1224,73 +1106,7 @@
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "task",
-                "category": "types",
-                "isAnonymousUnionType": true,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [
-                  {
-                    "orgName": "ballerina",
-                    "moduleName": "task",
-                    "name": "TimerConfiguration",
-                    "category": "records",
-                    "isAnonymousUnionType": false,
-                    "isArrayType": false,
-                    "isNullable": false,
-                    "isTuple": false,
-                    "isRestParam": false,
-                    "isLambda": false,
-                    "isDeprecated": false,
-                    "generateUserDefinedTypeLink": true,
-                    "memberTypes": [],
-                    "paramTypes": [],
-                    "arrayDimensions": 0
-                  },
-                  {
-                    "orgName": "ballerina",
-                    "moduleName": "task",
-                    "name": "AppointmentConfiguration",
-                    "category": "records",
-                    "isAnonymousUnionType": false,
-                    "isArrayType": false,
-                    "isNullable": false,
-                    "isTuple": false,
-                    "isRestParam": false,
-                    "isLambda": false,
-                    "isDeprecated": false,
-                    "generateUserDefinedTypeLink": true,
-                    "memberTypes": [],
-                    "paramTypes": [],
-                    "arrayDimensions": 0
-                  }
-                ],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "configuration",
-              "description": "\u003cp\u003eThe \u003ccode\u003etask:TimerConfiguration\u003c/code\u003e or \u003ccode\u003etask:AppointmentConfiguration\u003c/code\u003e record to define the\n\u003ccode\u003etask:Listener\u003c/code\u003e behavior\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eInitializes the \u003ccode\u003etask:Listener\u003c/code\u003e object. This may panic if the initialization is failed due to a configuration\nerror.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1318,7 +1134,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1370,6 +1186,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1426,6 +1243,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1458,6 +1276,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1490,6 +1309,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1522,6 +1342,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1554,6 +1375,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1586,75 +1408,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "task",
-              "category": "types",
-              "isAnonymousUnionType": true,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [
-                {
-                  "orgName": "ballerina",
-                  "moduleName": "task",
-                  "name": "TimerConfiguration",
-                  "category": "records",
-                  "isAnonymousUnionType": false,
-                  "isArrayType": false,
-                  "isNullable": false,
-                  "isTuple": false,
-                  "isRestParam": false,
-                  "isLambda": false,
-                  "isDeprecated": false,
-                  "generateUserDefinedTypeLink": true,
-                  "memberTypes": [],
-                  "paramTypes": [],
-                  "arrayDimensions": 0
-                },
-                {
-                  "orgName": "ballerina",
-                  "moduleName": "task",
-                  "name": "AppointmentConfiguration",
-                  "category": "records",
-                  "isAnonymousUnionType": false,
-                  "isArrayType": false,
-                  "isNullable": false,
-                  "isTuple": false,
-                  "isRestParam": false,
-                  "isLambda": false,
-                  "isDeprecated": false,
-                  "generateUserDefinedTypeLink": true,
-                  "memberTypes": [],
-                  "paramTypes": [],
-                  "arrayDimensions": 0
-                }
-              ],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "configuration",
-            "description": "\u003cp\u003eThe \u003ccode\u003etask:TimerConfiguration\u003c/code\u003e or \u003ccode\u003etask:AppointmentConfiguration\u003c/code\u003e record to define the\n\u003ccode\u003etask:Listener\u003c/code\u003e behavior\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eInitializes the \u003ccode\u003etask:Listener\u003c/code\u003e object. This may panic if the initialization is failed due to a configuration\nerror.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1711,6 +1467,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1743,6 +1500,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1775,6 +1533,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1807,6 +1566,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1839,7 +1599,6 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Listener",
       "description": "\u003cp\u003eRepresents a ballerina task listener, which can be used to schedule and execute tasks periodically.\u003c/p\u003e\n",
       "isDeprecated": false

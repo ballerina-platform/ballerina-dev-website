@@ -77,11 +77,7 @@
                         
     
         <li >
-            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
-        </li>
-    
-        <li >
-            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
         </li>
     
         <li >
@@ -93,15 +89,11 @@
         </li>
     
         <li >
-            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
-        </li>
-    
-        <li >
-            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
-        </li>
-    
-        <li >
             <a href="HttpClient.html" onclick="menuLinkClick()">HttpClient</a>
+        </li>
+    
+        <li >
+            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
         </li>
     
         <li >
@@ -109,15 +101,23 @@
         </li>
     
         <li >
-            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
+            <a href="RedirectClient.html" onclick="menuLinkClick()">RedirectClient</a>
         </li>
     
         <li >
-            <a href="RedirectClient.html" onclick="menuLinkClick()">RedirectClient</a>
+            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
+        </li>
+    
+        <li >
+            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
         </li>
     
         <li class="active active-item">
             <a href="RetryClient.html" onclick="menuLinkClick()">RetryClient</a>
+        </li>
+    
+        <li >
+            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
         </li>
     
         <li >
@@ -145,18 +145,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -239,60 +240,6 @@ to provide retrying over HTTP requests.</p>
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Provides the HTTP remote functions for interacting with an HTTP endpoint. This is created by wrapping the HTTP
-client to provide retrying over HTTP requests.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a> config, <a href="../../http/records/RetryInferredConfig.html">RetryInferredConfig</a> retryInferredConfig, <a href="../../http/clients/HttpClient.html">HttpClient</a> httpClient)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
-                <li>
-                    <p>Target service url</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span> </li>
-                <li>
-                    <p>HTTP ClientConfiguration to be used for HTTP client invocation</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>retryInferredConfig</b><span class="type">  <a href="../../http/records/RetryInferredConfig.html">RetryInferredConfig</a></span> </li>
-                <li>
-                    <p>Derived set of configurations associated with retry</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>httpClient</b><span class="type">  <a href="../../http/clients/HttpClient.html">HttpClient</a></span> </li>
-                <li>
-                    <p>HTTP client for outbound HTTP requests</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -301,33 +248,25 @@ client to provide retrying over HTTP requests.</p>
                         <tr>
                             <td class="module-title truncate functions" title="post"><a
                                     class="functions" href="#post">post</a></td>
-                            <td class="module-desc"><p>The <code>RetryClient.post()</code> function wraps the underlying HTTP remote functions in a way to provide
-retrying functionality for a given endpoint to recover from network level failures.</p>
-</td>
+                            <td class="module-desc"><p>The <code>RetryClient.post()</code> function wraps the underlying HTTP remote functions in a way to provide retrying functionality for a given endpoint to recover from network level failures.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="head"><a
                                     class="functions" href="#head">head</a></td>
-                            <td class="module-desc"><p>The <code>RetryClient.head()</code> function wraps the underlying HTTP remote functions in a way to provide
-retrying functionality for a given endpoint to recover from network level failures.</p>
-</td>
+                            <td class="module-desc"><p>The <code>RetryClient.head()</code> function wraps the underlying HTTP remote functions in a way to provide retrying functionality for a given endpoint to recover from network level failures.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="put"><a
                                     class="functions" href="#put">put</a></td>
-                            <td class="module-desc"><p>The <code>RetryClient.put()</code> function wraps the underlying HTTP remote function in a way to provide
-retrying functionality for a given endpoint to recover from network level failures.</p>
-</td>
+                            <td class="module-desc"><p>The <code>RetryClient.put()</code> function wraps the underlying HTTP remote function in a way to provide retrying functionality for a given endpoint to recover from network level failures.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="forward"><a
                                     class="functions" href="#forward">forward</a></td>
-                            <td class="module-desc"><p>The <code>RetryClient.forward()</code> function wraps the underlying HTTP remote function in a way to provide retrying
-functionality for a given endpoint with inbound request's HTTP verb to recover from network level failures.</p>
-</td>
+                            <td class="module-desc"><p>The <code>RetryClient.forward()</code> function wraps the underlying HTTP remote function in a way to provide retrying functionality for a given endpoint with inbound request's HTTP verb to recover from network level failures.</p> </td>
                         </tr>
                     
                         <tr>
@@ -339,78 +278,61 @@ functionality for a given endpoint with inbound request's HTTP verb to recover f
                         <tr>
                             <td class="module-title truncate functions" title="patch"><a
                                     class="functions" href="#patch">patch</a></td>
-                            <td class="module-desc"><p>The <code>RetryClient.patch()</code> function wraps the underlying HTTP remote function in a way to provide
-retrying functionality for a given endpoint to recover from network level failures.</p>
-</td>
+                            <td class="module-desc"><p>The <code>RetryClient.patch()</code> function wraps the underlying HTTP remote function in a way to provide retrying functionality for a given endpoint to recover from network level failures.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="delete"><a
                                     class="functions" href="#delete">delete</a></td>
-                            <td class="module-desc"><p>The <code>RetryClient.delete()</code> function wraps the underlying HTTP remote function in a way to provide
-retrying functionality for a given endpoint to recover from network level failures.</p>
-</td>
+                            <td class="module-desc"><p>The <code>RetryClient.delete()</code> function wraps the underlying HTTP remote function in a way to provide retrying functionality for a given endpoint to recover from network level failures.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="get"><a
                                     class="functions" href="#get">get</a></td>
-                            <td class="module-desc"><p>The <code>RetryClient.get()</code> function wraps the underlying HTTP remote function in a way to provide
-retrying functionality for a given endpoint to recover from network level failures.</p>
-</td>
+                            <td class="module-desc"><p>The <code>RetryClient.get()</code> function wraps the underlying HTTP remote function in a way to provide retrying functionality for a given endpoint to recover from network level failures.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="options"><a
                                     class="functions" href="#options">options</a></td>
-                            <td class="module-desc"><p>The <code>RetryClient.options()</code> function wraps the underlying HTTP remote function in a way to provide
-retrying functionality for a given endpoint to recover from network level failures.</p>
-</td>
+                            <td class="module-desc"><p>The <code>RetryClient.options()</code> function wraps the underlying HTTP remote function in a way to provide retrying functionality for a given endpoint to recover from network level failures.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="submit"><a
                                     class="functions" href="#submit">submit</a></td>
-                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.
-The <code>RetryClient.submit()</code> function does not give out a <code>http:Response</code> as the result.
-Rather it returns an <code>http:HttpFuture</code>, which can be used to do further interactions with the endpoint.</p>
-</td>
+                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getResponse"><a
                                     class="functions" href="#getResponse">getResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously submitted request.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously submitted request.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="hasPromise"><a
                                     class="functions" href="#hasPromise">hasPromise</a></td>
-                            <td class="module-desc"><p>Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.</p>
-</td>
+                            <td class="module-desc"><p>Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getNextPromise"><a
                                     class="functions" href="#getNextPromise">getNextPromise</a></td>
-                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPromisedResponse"><a
                                     class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the promised server push <code>http:Response</code> message.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the promised server push <code>http:Response</code> message.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="rejectPromise"><a
                                     class="functions" href="#rejectPromise">rejectPromise</a></td>
-                            <td class="module-desc"><p>Rejects an <code>http:PushPromise</code>.
-When an <code>http:PushPromise</code> is rejected, there is no chance of fetching a promised response using the rejected promise.</p>
-</td>
+                            <td class="module-desc"><p>Rejects an <code>http:PushPromise</code>.</td>
                         </tr>
                     
                 </table>
@@ -560,11 +482,12 @@ function displayMenu() {
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The <code>RetryClient.post()</code> function wraps the underlying HTTP remote functions in a way to provide
 retrying functionality for a given endpoint to recover from network level failures.</p>
@@ -616,7 +539,7 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -634,11 +557,12 @@ retrying functionality for a given endpoint to recover from network level failur
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The <code>RetryClient.head()</code> function wraps the underlying HTTP remote functions in a way to provide
 retrying functionality for a given endpoint to recover from network level failures.</p>
@@ -670,7 +594,7 @@ retrying functionality for a given endpoint to recover from network level failur
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -690,7 +614,7 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -708,11 +632,12 @@ retrying functionality for a given endpoint to recover from network level failur
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The <code>RetryClient.put()</code> function wraps the underlying HTTP remote function in a way to provide
 retrying functionality for a given endpoint to recover from network level failures.</p>
@@ -764,7 +689,7 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -780,13 +705,14 @@ retrying functionality for a given endpoint to recover from network level failur
             </a>
             <h2 > forward </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/objects/Request.html">Request</a> request)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/classes/Request.html">Request</a> request)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The <code>RetryClient.forward()</code> function wraps the underlying HTTP remote function in a way to provide retrying
 functionality for a given endpoint with inbound request's HTTP verb to recover from network level failures.</p>
@@ -817,7 +743,7 @@ functionality for a given endpoint with inbound request's HTTP verb to recover f
                 <ul>
                     <li>
                         <span >request</span>
-                        <span class="type">  <a href="../../http/objects/Request.html">Request</a> </span>
+                        <span class="type">  <a href="../../http/classes/Request.html">Request</a> </span>
                         
                     </li>
                     <li>
@@ -837,7 +763,7 @@ functionality for a given endpoint with inbound request's HTTP verb to recover f
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -855,11 +781,12 @@ functionality for a given endpoint with inbound request's HTTP verb to recover f
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The <code>RetryClient.execute()</code> sends an HTTP request to a service with the specified HTTP verb. The function wraps
 the underlying HTTP remote function in a way to provide retrying functionality for a given endpoint to recover
@@ -929,7 +856,7 @@ from network level failures.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -947,11 +874,12 @@ from network level failures.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The <code>RetryClient.patch()</code> function wraps the underlying HTTP remote function in a way to provide
 retrying functionality for a given endpoint to recover from network level failures.</p>
@@ -1003,7 +931,7 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1021,11 +949,12 @@ retrying functionality for a given endpoint to recover from network level failur
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The <code>RetryClient.delete()</code> function wraps the underlying HTTP remote function in a way to provide
 retrying functionality for a given endpoint to recover from network level failures.</p>
@@ -1057,7 +986,7 @@ retrying functionality for a given endpoint to recover from network level failur
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1077,7 +1006,7 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message, or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1095,11 +1024,12 @@ retrying functionality for a given endpoint to recover from network level failur
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The <code>RetryClient.get()</code> function wraps the underlying HTTP remote function in a way to provide
 retrying functionality for a given endpoint to recover from network level failures.</p>
@@ -1131,7 +1061,7 @@ retrying functionality for a given endpoint to recover from network level failur
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1151,7 +1081,7 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1169,11 +1099,12 @@ retrying functionality for a given endpoint to recover from network level failur
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The <code>RetryClient.options()</code> function wraps the underlying HTTP remote function in a way to provide
 retrying functionality for a given endpoint to recover from network level failures.</p>
@@ -1205,7 +1136,7 @@ retrying functionality for a given endpoint to recover from network level failur
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1225,7 +1156,7 @@ retrying functionality for a given endpoint to recover from network level failur
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1243,11 +1174,12 @@ retrying functionality for a given endpoint to recover from network level failur
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Submits an HTTP request to a service with the specified HTTP verb.
 The <code>RetryClient.submit()</code> function does not give out a <code>http:Response</code> as the result.
@@ -1317,7 +1249,7 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:HttpFuture</code> that represents an asynchronous service invocation or else an <code>http:ClientError</code> if the submission fails</p>
 </li>
             </ul>
@@ -1333,13 +1265,14 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
             </a>
             <h2 > getResponse </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves the <code>http:Response</code> for a previously submitted request.</p>
 
@@ -1352,7 +1285,7 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1372,7 +1305,7 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1388,13 +1321,14 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
             </a>
             <h2 > hasPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
                 <b> returns </b><span class="builtin-type">boolean</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.</p>
 
@@ -1407,7 +1341,7 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1443,13 +1377,14 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
             </a>
             <h2 > getNextPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
-                <b> returns </b><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p>
 
@@ -1462,7 +1397,7 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1482,7 +1417,7 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:PushPromise</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1498,13 +1433,14 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
             </a>
             <h2 > getPromisedResponse </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves the promised server push <code>http:Response</code> message.</p>
 
@@ -1517,7 +1453,7 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>
@@ -1537,7 +1473,7 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>A promised <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1553,11 +1489,12 @@ Rather it returns an <code>http:HttpFuture</code>, which can be used to do furth
             </a>
             <h2 > rejectPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise)</p>
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Rejects an <code>http:PushPromise</code>.
 When an <code>http:PushPromise</code> is rejected, there is no chance of fetching a promised response using the rejected promise.</p>
@@ -1571,7 +1508,7 @@ When an <code>http:PushPromise</code> is rejected, there is no chance of fetchin
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>

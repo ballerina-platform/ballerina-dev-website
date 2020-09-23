@@ -93,18 +93,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../rabbitmq/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
             <li>
@@ -183,52 +180,6 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
     <div class="constants">
         <div class="method-sum">
         
-            
-                <h2>Constructor</h2>
-
-    <p>Initializes a Listener object with the given <code>rabbitmq:Connection</code> object or connection configurations.
-Creates a <code>rabbitmq:Connection</code> object if only the connection configuration is given. Sets the global QoS settings,
-which will be applied to the entire <code>rabbitmq:Channel</code>.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a> connectionOrConnectionConfig, <span class="builtin-type">int?</span> prefetchCount, <span class="builtin-type">int?</span> prefetchSize)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>connectionOrConnectionConfig</b><span class="type">  <a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a></span> </li>
-                <li>
-                    <p>A <code>rabbitmq:Connection</code> object or the connection configurations.</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>prefetchCount</b><span class="type">  <span class="builtin-type">int?</span></span> ()</li>
-                <li>
-                    <p>Maximum number of messages that the server will deliver. Give the value as 0 if unlimited.
-Unless explicitly given, this value is 10 by default.</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>prefetchSize</b><span class="type">  <span class="builtin-type">int?</span></span> ()</li>
-                <li>
-                    <p>Maximum amount of content (measured in octets) that the server will deliver and 0 if unlimited</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-            
-        
 
         
             <h2>Methods</h2>
@@ -241,8 +192,7 @@ Unless explicitly given, this value is 10 by default.</p>
     </div>
     <div class="param-details">
         
-        <p>Stops consuming messages and detaches the service from the <code>rabbitmq:Listener</code> endpoint.</p>
-
+        <p>Stops consuming messages and detaches the service from the <code>rabbitmq:Listener</code> endpoint.</p> 
     </div>
 </div>
 
@@ -254,8 +204,7 @@ Unless explicitly given, this value is 10 by default.</p>
     </div>
     <div class="param-details">
         
-        <p>Stops consuming messages through all consumer services by terminating the connection and all its channels.</p>
-
+        <p>Stops consuming messages through all consumer services by terminating the connection and all its channels.</p> 
     </div>
 </div>
 
@@ -267,9 +216,7 @@ Unless explicitly given, this value is 10 by default.</p>
     </div>
     <div class="param-details">
         
-        <p>Stops consuming messages through all the consumer services and terminates the connection
-with the server.</p>
-
+        <p>Stops consuming messages through all the consumer services and terminates the connection with the server.</p> 
     </div>
 </div>
 
@@ -281,8 +228,7 @@ with the server.</p>
     </div>
     <div class="param-details">
         
-        <p>Retrieve the <code>rabbitmq:Channel</code>, which initializes this <code>rabbitmq:Listener</code>.</p>
-
+        <p>Retrieve the <code>rabbitmq:Channel</code>, which initializes this <code>rabbitmq:Listener</code>.</p> 
     </div>
 </div>
 
@@ -301,8 +247,7 @@ with the server.</p>
     </div>
     <div class="param-details">
         
-        <p>Attaches the service to the <code>rabbitmq:Listener</code> endpoint.</p>
-
+        <p>Attaches the service to the <code>rabbitmq:Listener</code> endpoint.</p> 
     </div>
 </div>
 
@@ -314,8 +259,7 @@ with the server.</p>
     </div>
     <div class="param-details">
         
-        <p>Starts consuming the messages on all the attached services.</p>
-
+        <p>Starts consuming the messages on all the attached services.</p> 
     </div>
 </div>
 
@@ -343,6 +287,9 @@ with the server.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops consuming messages and detaches the service from the <code>rabbitmq:Listener</code> endpoint.</p>
 
@@ -399,6 +346,9 @@ with the server.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops consuming messages through all consumer services by terminating the connection and all its channels.</p>
 
     </div>
@@ -431,6 +381,9 @@ with the server.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops consuming messages through all the consumer services and terminates the connection
 with the server.</p>
@@ -465,6 +418,9 @@ with the server.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieve the <code>rabbitmq:Channel</code>, which initializes this <code>rabbitmq:Listener</code>.</p>
 
@@ -503,6 +459,9 @@ with the server.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Attaches the service to the <code>rabbitmq:Listener</code> endpoint.</p>
 
@@ -575,6 +534,9 @@ with the server.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Starts consuming the messages on all the attached services.</p>
 

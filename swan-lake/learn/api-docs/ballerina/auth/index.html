@@ -70,18 +70,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../auth/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../auth/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../auth/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../auth/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../auth/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
         
@@ -158,128 +159,115 @@ invocationContext.token = &quot;eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9l
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="BasicAuthConfig" title="BasicAuthConfig">
                             <a class="records " href="records/BasicAuthConfig.html">BasicAuthConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the inbound Basic Authentication configurations.</p>
-
+                            <p>Represents the inbound Basic Authentication configurations.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="Credential" title="Credential">
                             <a class="records " href="records/Credential.html">Credential</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the Basic Authentication configurations, which are used by the HTTP endpoint.</p>
-
+                            <p>Represents the Basic Authentication configurations, which are used by the HTTP endpoint.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="InvocationContext" title="InvocationContext">
                             <a class="records " href="records/InvocationContext.html">InvocationContext</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the <code>auth:InvocationContext</code>.</p>
-
+                            <p>Represents the <code>auth:InvocationContext</code>.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
                     <tr>
-                        <td class="module-title truncate objects" id="InboundAuthProvider" title="InboundAuthProvider">
-                            <a class="objects " href="objects/InboundAuthProvider.html">InboundAuthProvider</a>
+                        <td class="module-title truncate classes" id="InboundBasicAuthProvider" title="InboundBasicAuthProvider">
+                            <a class="classes " href="classes/InboundBasicAuthProvider.html">InboundBasicAuthProvider</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the inbound Auth provider, which could be used to authenticate endpoints.
+                            <p>Represents the configuration file based inbound Basic Auth provider, which is an implementation of the <code>auth:InboundAuthProvider</code> interface.</p>   <p>A user is denoted by a section in the Ballerina configuration file.
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="InboundBasicAuthProvider" title="InboundBasicAuthProvider">
-                            <a class="objects " href="objects/InboundBasicAuthProvider.html">InboundBasicAuthProvider</a>
-                        </td>
-                        <td class="module-desc">
-                            
-                            <p>Represents the configuration file based inbound Basic Auth provider, which is an implementation of the
-<code>auth:InboundAuthProvider</code> interface.</p>
-
-<p>A user is denoted by a section in the Ballerina configuration file.
-                        </td>
-                    </tr>
-                    
-                    
-                    
-                    <tr>
-                        <td class="module-title truncate objects" id="OutboundAuthProvider" title="OutboundAuthProvider">
-                            <a class="objects " href="objects/OutboundAuthProvider.html">OutboundAuthProvider</a>
-                        </td>
-                        <td class="module-desc">
-                            
-                            <p>Represents the outbound Auth provider, which could be used to authenticate external endpoints.
-                        </td>
-                    </tr>
-                    
-                    
-                    
-                    <tr>
-                        <td class="module-title truncate objects" id="OutboundBasicAuthProvider" title="OutboundBasicAuthProvider">
-                            <a class="objects " href="objects/OutboundBasicAuthProvider.html">OutboundBasicAuthProvider</a>
+                        <td class="module-title truncate classes" id="OutboundBasicAuthProvider" title="OutboundBasicAuthProvider">
+                            <a class="classes " href="classes/OutboundBasicAuthProvider.html">OutboundBasicAuthProvider</a>
                         </td>
                         <td class="module-desc">
                             
                             <p>Represents the outbound Basic Auth authenticator, which is an implementation of the <code>auth:OutboundAuthProvider</code> interface.
-This uses the usernames and passwords provided by the Ballerina configurations to authenticate external endpoints.</p>
-
-
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
+    
+        <section class="method-content" id="absobjects">
+            <div class="main-method-title here">
+                <a class="url-link" href="#absobjects">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Abstract Objects </h2>
+            </div>
+            <table>
+                
+                <tr>
+                    <td class="module-title truncate objects" id="InboundAuthProvider" title="InboundAuthProvider">
+                        <a class="objects " href="abstractobjects/InboundAuthProvider.html">InboundAuthProvider</a>
+                    </td>
+                    <td class="module-desc">
+                        
+                        <p>Represents the inbound Auth provider, which could be used to authenticate endpoints.
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="module-title truncate objects" id="OutboundAuthProvider" title="OutboundAuthProvider">
+                        <a class="objects " href="abstractobjects/OutboundAuthProvider.html">OutboundAuthProvider</a>
+                    </td>
+                    <td class="module-desc">
+                        
+                        <p>Represents the outbound Auth provider, which could be used to authenticate external endpoints.
+                    </td>
+                </tr>
+                
+            </table>
+        </section>
     
 
     
@@ -303,8 +291,10 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Checks whether the scopes of the user match the scopes of the resource.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Checks whether the scopes of the user match the scopes of the resource.</p> 
                 </td>
             </tr>
             
@@ -314,9 +304,10 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Extracts the username and the password from the base64-encoded <code>username:password</code> value.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Extracts the username and the password from the base64-encoded <code>username:password</code> value.</p>   
                 </td>
             </tr>
             
@@ -326,9 +317,10 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the <code>auth:InvocationContext</code> instance.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the <code>auth:InvocationContext</code> instance.</p>   
                 </td>
             </tr>
             
@@ -338,9 +330,10 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Sets the authentication-related values to the invocation context.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Sets the authentication-related values to the invocation context.</p>   
                 </td>
             </tr>
             
@@ -365,8 +358,7 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Default charset to be used with password hashing.</p>
-
+                    <p>Default charset to be used with password hashing.</p> 
                 </td>
             </tr>
             
@@ -376,8 +368,7 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote special configuration values.</p>
-
+                    <p>Prefix used to denote special configuration values.</p> 
                 </td>
             </tr>
             
@@ -387,8 +378,7 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote that the config value is a SHA-256 hash.</p>
-
+                    <p>Prefix used to denote that the config value is a SHA-256 hash.</p> 
                 </td>
             </tr>
             
@@ -398,8 +388,7 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote that the config value is a SHA-384 hash.</p>
-
+                    <p>Prefix used to denote that the config value is a SHA-384 hash.</p> 
                 </td>
             </tr>
             
@@ -409,8 +398,7 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote that the config value is a SHA-512 hash.</p>
-
+                    <p>Prefix used to denote that the config value is a SHA-512 hash.</p> 
                 </td>
             </tr>
             
@@ -420,8 +408,7 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prefix used to denote Basic Authentication scheme.</p>
-
+                    <p>Prefix used to denote Basic Authentication scheme.</p> 
                 </td>
             </tr>
             
@@ -431,8 +418,7 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>The prefix used to denote the Bearer Authentication scheme.</p>
-
+                    <p>The prefix used to denote the Bearer Authentication scheme.</p> 
                 </td>
             </tr>
             
@@ -459,8 +445,7 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the Auth module related error.</p>
-
+                    <p>Represents the Auth module related error.</p> 
                 </td>
             </tr>
             

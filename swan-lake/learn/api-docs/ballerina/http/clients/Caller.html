@@ -76,12 +76,8 @@
                     <ul>
                         
     
-        <li class="active active-item">
-            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
-        </li>
-    
         <li >
-            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
         </li>
     
         <li >
@@ -93,15 +89,11 @@
         </li>
     
         <li >
-            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
-        </li>
-    
-        <li >
-            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
-        </li>
-    
-        <li >
             <a href="HttpClient.html" onclick="menuLinkClick()">HttpClient</a>
+        </li>
+    
+        <li class="active active-item">
+            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
         </li>
     
         <li >
@@ -109,15 +101,23 @@
         </li>
     
         <li >
-            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
-        </li>
-    
-        <li >
             <a href="RedirectClient.html" onclick="menuLinkClick()">RedirectClient</a>
         </li>
     
         <li >
+            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
+        </li>
+    
+        <li >
+            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+        </li>
+    
+        <li >
             <a href="RetryClient.html" onclick="menuLinkClick()">RetryClient</a>
+        </li>
+    
+        <li >
+            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
         </li>
     
         <li >
@@ -145,18 +145,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -246,71 +247,61 @@
                         <tr>
                             <td class="module-title truncate functions" title="respond"><a
                                     class="functions" href="#respond">respond</a></td>
-                            <td class="module-desc"><p>Sends the outbound response to the caller.</p>
-</td>
+                            <td class="module-desc"><p>Sends the outbound response to the caller.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="promise"><a
                                     class="functions" href="#promise">promise</a></td>
-                            <td class="module-desc"><p>Pushes a promise to the caller.</p>
-</td>
+                            <td class="module-desc"><p>Pushes a promise to the caller.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="pushPromisedResponse"><a
                                     class="functions" href="#pushPromisedResponse">pushPromisedResponse</a></td>
-                            <td class="module-desc"><p>Sends a promised push response to the caller.</p>
-</td>
+                            <td class="module-desc"><p>Sends a promised push response to the caller.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="acceptWebSocketUpgrade"><a
                                     class="functions" href="#acceptWebSocketUpgrade">acceptWebSocketUpgrade</a></td>
-                            <td class="module-desc"><p>Sends an upgrade request with custom headers.</p>
-</td>
+                            <td class="module-desc"><p>Sends an upgrade request with custom headers.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="cancelWebSocketUpgrade"><a
                                     class="functions" href="#cancelWebSocketUpgrade">cancelWebSocketUpgrade</a></td>
-                            <td class="module-desc"><p>Cancels the handshake.</p>
-</td>
+                            <td class="module-desc"><p>Cancels the handshake.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="continue"><a
                                     class="functions" href="#continue">continue</a></td>
-                            <td class="module-desc"><p>Sends a <code>100-continue</code> response to the caller.</p>
-</td>
+                            <td class="module-desc"><p>Sends a <code>100-continue</code> response to the caller.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="redirect"><a
                                     class="functions" href="#redirect">redirect</a></td>
-                            <td class="module-desc"><p>Sends a redirect response to the user with the specified redirection status code.</p>
-</td>
+                            <td class="module-desc"><p>Sends a redirect response to the user with the specified redirection status code.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="ok"><a
                                     class="functions" href="#ok">ok</a></td>
-                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 200 OK.</p>
-</td>
+                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 200 OK.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="created"><a
                                     class="functions" href="#created">created</a></td>
-                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 201 Created.</p>
-</td>
+                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 201 Created.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="accepted"><a
                                     class="functions" href="#accepted">accepted</a></td>
-                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 202 Accepted.</p>
-</td>
+                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 202 Accepted.</p> </td>
                         </tr>
                     
                         <tr>
@@ -322,25 +313,19 @@
                         <tr>
                             <td class="module-title truncate functions" title="badRequest"><a
                                     class="functions" href="#badRequest">badRequest</a></td>
-                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 400 Bad Request.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 400 Bad Request.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="notFound"><a
                                     class="functions" href="#notFound">notFound</a></td>
-                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 404 Not Found.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 404 Not Found.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="internalServerError"><a
                                     class="functions" href="#internalServerError">internalServerError</a></td>
-                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 500 Internal Server Error.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends the outbound response to the caller with the status 500 Internal Server Error.</p>   </td>
                         </tr>
                     
                 </table>
@@ -496,6 +481,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sends the outbound response to the caller.</p>
 
     </div>
@@ -508,7 +496,7 @@ function displayMenu() {
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Response|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -544,13 +532,16 @@ function displayMenu() {
             </a>
             <h2 > promise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise)</p>
             
                 <b> returns </b><a href="../../http/types.html#ListenerError">ListenerError</a>? 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Pushes a promise to the caller.</p>
 
@@ -563,7 +554,7 @@ function displayMenu() {
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>
@@ -599,13 +590,16 @@ function displayMenu() {
             </a>
             <h2 > pushPromisedResponse </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise, <a href="../../http/objects/Response.html">Response</a> response)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise, <a href="../../http/classes/Response.html">Response</a> response)</p>
             
                 <b> returns </b><a href="../../http/types.html#ListenerError">ListenerError</a>? 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sends a promised push response to the caller.</p>
 
@@ -618,7 +612,7 @@ function displayMenu() {
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>
@@ -635,7 +629,7 @@ function displayMenu() {
                 <ul>
                     <li>
                         <span >response</span>
-                        <span class="type">  <a href="../../http/objects/Response.html">Response</a> </span>
+                        <span class="type">  <a href="../../http/classes/Response.html">Response</a> </span>
                         
                     </li>
                     <li>
@@ -678,6 +672,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sends an upgrade request with custom headers.</p>
 
@@ -733,6 +730,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Cancels the handshake.</p>
 
@@ -807,6 +807,9 @@ This error status code need to be 4xx or 5xx else the default status code would 
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sends a <code>100-continue</code> response to the caller.</p>
 
     </div>
@@ -832,13 +835,16 @@ This error status code need to be 4xx or 5xx else the default status code would 
             </a>
             <h2 > redirect </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/Response.html">Response</a> response, <a href="../../http/types.html#RedirectCode">RedirectCode</a> code, <span class="array-type"><span class="builtin-type">string</span>[]</span> locations)</p>
+            <p>(<a href="../../http/classes/Response.html">Response</a> response, <a href="../../http/types.html#RedirectCode">RedirectCode</a> code, <span class="array-type"><span class="builtin-type">string</span>[]</span> locations)</p>
             
                 <b> returns </b><a href="../../http/types.html#ListenerError">ListenerError</a>? 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sends a redirect response to the user with the specified redirection status code.</p>
 
@@ -851,7 +857,7 @@ This error status code need to be 4xx or 5xx else the default status code would 
                 <ul>
                     <li>
                         <span >response</span>
-                        <span class="type">  <a href="../../http/objects/Response.html">Response</a> </span>
+                        <span class="type">  <a href="../../http/classes/Response.html">Response</a> </span>
                         
                     </li>
                     <li>
@@ -929,6 +935,9 @@ This error status code need to be 4xx or 5xx else the default status code would 
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sends the outbound response to the caller with the status 200 OK.</p>
 
     </div>
@@ -941,7 +950,7 @@ This error status code need to be 4xx or 5xx else the default status code would 
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Response|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -985,6 +994,9 @@ or <code>mime:Entity[]</code></p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sends the outbound response to the caller with the status 201 Created.</p>
 
     </div>
@@ -1014,7 +1026,7 @@ or <code>mime:Entity[]</code></p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Response|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1058,6 +1070,9 @@ or <code>mime:Entity[]</code>. This message is optional.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sends the outbound response to the caller with the status 202 Accepted.</p>
 
     </div>
@@ -1070,7 +1085,7 @@ or <code>mime:Entity[]</code>. This message is optional.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Response|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1106,13 +1121,16 @@ or <code>mime:Entity[]</code>. This message is optional.</p>
             </a>
             <h2 > noContent </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/Response.html">Response</a>? message)</p>
+            <p>(<a href="../../http/classes/Response.html">Response</a>? message)</p>
             
                 <b> returns </b><a href="../../http/types.html#ListenerError">ListenerError</a>? 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sends the outbound response to the caller with the status 204 No Content. If the given response contains a body
 that will be removed.</p>
@@ -1128,8 +1146,8 @@ that will be removed.</p>
                 <ul>
                     <li>
                         <span >message</span>
-                        <span class="type">  <a href="../../http/objects/Response.html">Response</a>? </span>
-                        <span class="default"> (default &lt;ballerina/http:1.0.0:Response?&gt; ())</span>
+                        <span class="type">  <a href="../../http/classes/Response.html">Response</a>? </span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1172,6 +1190,9 @@ that will be removed.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sends the outbound response to the caller with the status 400 Bad Request.</p>
 <pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;badRequest();
 </code></pre>
@@ -1186,7 +1207,7 @@ that will be removed.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Response|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1230,6 +1251,9 @@ or <code>mime:Entity[]</code></p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sends the outbound response to the caller with the status 404 Not Found.</p>
 <pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;notFound();
 </code></pre>
@@ -1244,7 +1268,7 @@ or <code>mime:Entity[]</code></p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Response|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1288,6 +1312,9 @@ or <code>mime:Entity[]</code></p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sends the outbound response to the caller with the status 500 Internal Server Error.</p>
 <pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;internalServerError();
 </code></pre>
@@ -1302,7 +1329,7 @@ or <code>mime:Entity[]</code></p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Response|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1349,6 +1376,9 @@ or <code>mime:Entity[]</code></p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Gets the hostname from the remote address. This method may trigger a DNS reverse lookup if the address was created
 with a literal IP address.</p>

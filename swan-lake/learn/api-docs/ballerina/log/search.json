@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides a basic API for logging.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [
     {
       "id": "printDebug",
@@ -86,5 +86,6 @@
   ],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

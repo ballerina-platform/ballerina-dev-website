@@ -77,15 +77,15 @@
                         
     
         <li >
-            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
-        </li>
-    
-        <li >
             <a href="PublisherClient.html" onclick="menuLinkClick()">PublisherClient</a>
         </li>
     
         <li class="active active-item">
             <a href="SubscriptionClient.html" onclick="menuLinkClick()">SubscriptionClient</a>
+        </li>
+    
+        <li >
+            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
         </li>
     
 
@@ -101,18 +101,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../websub/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../websub/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -194,39 +195,6 @@
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Initializes the <code>websub:SubscriptionClient</code>.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a>? config)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
-                <li>
-                    <p>The URL at which the subscription should be changed</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a>?</span> ()</li>
-                <li>
-                    <p>The <code>http:ClientConfiguration</code> for the underlying client or <code>()</code></p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -235,17 +203,13 @@
                         <tr>
                             <td class="module-title truncate functions" title="subscribe"><a
                                     class="functions" href="#subscribe">subscribe</a></td>
-                            <td class="module-desc"><p>Sends a subscription request to a WebSub Hub.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends a subscription request to a WebSub Hub.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="unsubscribe"><a
                                     class="functions" href="#unsubscribe">unsubscribe</a></td>
-                            <td class="module-desc"><p>Sends an unsubscription request to a WebSub Hub.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends an unsubscription request to a WebSub Hub.</p>   </td>
                         </tr>
                     
                 </table>
@@ -272,6 +236,7 @@
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Sends a subscription request to a WebSub Hub.</p>
 <pre><code class="language-ballerina"> websub:SubscriptionChangeResponse|error response = websubHubClientEP-&gt;subscribe(subscriptionRequest);
@@ -330,6 +295,7 @@ or else an <code>error</code> if an error occurred with the subscription request
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Sends an unsubscription request to a WebSub Hub.</p>
 <pre><code class="language-ballerina"> websub:SubscriptionChangeResponse|error response = websubHubClientEP-&gt;unsubscribe(subscriptionRequest);

@@ -82,6 +82,10 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
         </li>
     
         <li >
+            <a href="AvroGenericRecord.html" onclick="menuLinkClick()">AvroGenericRecord</a>
+        </li>
+    
+        <li >
             <a href="AvroRecord.html" onclick="menuLinkClick()">AvroRecord</a>
         </li>
     
@@ -134,18 +138,15 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+        
+            <li>
+                <a  data="classes" href="../../kafka/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -209,16 +210,22 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
                 
             </h1>
             
+
     <p>
         
         <p>Type related to consumer record.</p>
 
     </p>
+    
+        <div class="ui horizontal label" data-tooltip="A record with a fixed set of fields" data-position="top left">Closed record</div>
+    
+
     <div class="constants">
         
         
-        <h2>Fields</h2>
-        <div class="data-wrapper">
+            
+            <h2>Fields</h2>
+            <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -373,7 +380,7 @@ function displayMenu() {
     };
 </script>
 
-        
+            
         
     </div>
 

@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides functions to retrieve information about the system and the current users of the system.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
       "id": "Process",
       "description": "\u003cp\u003eThis object contains information on a process being created from Ballerina.\u003c/p\u003e",
@@ -77,5 +77,6 @@
   ],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

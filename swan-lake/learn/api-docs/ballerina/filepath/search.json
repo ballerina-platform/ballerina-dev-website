@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides a platform-independent API for working with file paths.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [
     {
       "id": "absolute",
@@ -136,5 +136,6 @@
   ],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

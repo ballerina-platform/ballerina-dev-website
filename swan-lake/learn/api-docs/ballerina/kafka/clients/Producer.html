@@ -98,18 +98,15 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+        
+            <li>
+                <a  data="classes" href="../../kafka/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -179,29 +176,6 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Creates a new Kafka <code>Producer</code>.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../kafka/records/ProducerConfiguration.html">ProducerConfiguration</a> config)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../kafka/records/ProducerConfiguration.html">ProducerConfiguration</a></span> </li>
-                <li>
-                    <p>Configurations related to initializing a Kafka <code>Producer</code></p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -210,47 +184,37 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
                         <tr>
                             <td class="module-title truncate functions" title="close"><a
                                     class="functions" href="#close">close</a></td>
-                            <td class="module-desc"><p>Closes the producer connection to the external Kafka broker.</p>
-
-</td>
+                            <td class="module-desc"><p>Closes the producer connection to the external Kafka broker.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="commitConsumer"><a
                                     class="functions" href="#commitConsumer">commitConsumer</a></td>
-                            <td class="module-desc"><p>Commits the offsets consumed by the provided consumer.</p>
-</td>
+                            <td class="module-desc"><p>Commits the offsets consumed by the provided consumer.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="commitConsumerOffsets"><a
                                     class="functions" href="#commitConsumerOffsets">commitConsumerOffsets</a></td>
-                            <td class="module-desc"><p>Commits the consumer offsets in a given transaction.</p>
-</td>
+                            <td class="module-desc"><p>Commits the consumer offsets in a given transaction.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="flushRecords"><a
                                     class="functions" href="#flushRecords">flushRecords</a></td>
-                            <td class="module-desc"><p>Flushes the batch of records already sent to the broker by the producer.</p>
-
-</td>
+                            <td class="module-desc"><p>Flushes the batch of records already sent to the broker by the producer.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getTopicPartitions"><a
                                     class="functions" href="#getTopicPartitions">getTopicPartitions</a></td>
-                            <td class="module-desc"><p>Retrieves the topic partition information for the provided topic.</p>
-
-</td>
+                            <td class="module-desc"><p>Retrieves the topic partition information for the provided topic.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="send"><a
                                     class="functions" href="#send">send</a></td>
-                            <td class="module-desc"><p>Produces records to the Kafka server.</p>
-
-</td>
+                            <td class="module-desc"><p>Produces records to the Kafka server.</p>   </td>
                         </tr>
                     
                 </table>
@@ -288,7 +252,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
             <li>
                 <p>
                     
-                    <p>Unique ID for a particular connector</p>
+                    <p>Unique ID for a particular connector to use in trasactions</p>
 
                 </p>
             </li>
@@ -373,6 +337,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Closes the producer connection to the external Kafka broker.</p>
 <pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;close();
 </code></pre>
@@ -407,6 +374,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Commits the offsets consumed by the provided consumer.</p>
 
@@ -462,6 +432,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Commits the consumer offsets in a given transaction.</p>
 
@@ -535,6 +508,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Flushes the batch of records already sent to the broker by the producer.</p>
 <pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;flushRecords();
 </code></pre>
@@ -569,6 +545,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the topic partition information for the provided topic.</p>
 <pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ProducerError result = producer-&gt;getTopicPartitions(&quot;kafka-topic&quot;);
@@ -627,6 +606,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Produces records to the Kafka server.</p>
 <pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;send(&quot;Hello World, Ballerina&quot;, &quot;kafka-topic&quot;);
 </code></pre>
@@ -675,7 +657,7 @@ function displayMenu() {
                     <li>
                         <span >key</span>
                         <span class="type">  <span class="builtin-type">anydata?</span> </span>
-                        <span class="default"> (default &lt;anydata?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -692,7 +674,7 @@ function displayMenu() {
                     <li>
                         <span >partition</span>
                         <span class="type">  <span class="builtin-type">int?</span> </span>
-                        <span class="default"> (default &lt;int?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -709,7 +691,7 @@ function displayMenu() {
                     <li>
                         <span >timestamp</span>
                         <span class="type">  <span class="builtin-type">int?</span> </span>
-                        <span class="default"> (default &lt;int?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>

@@ -100,13 +100,20 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "CallStackElement",
       "description": "\u003cp\u003eRepresentation of \u003ccode\u003eCallStackElement\u003c/code\u003e\u003c/p\u003e\n",
       "isDeprecated": false
+    },
+    {
+      "fields": [],
+      "isClosed": false,
+      "name": "Detail",
+      "description": "\u003cp\u003eThe type to which error detail records must belong.\u003c/p\u003e\n",
+      "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [
     {
       "fields": [
         {
@@ -149,16 +156,17 @@
       ],
       "methods": [],
       "otherMethods": [],
-      "isAnonymous": false,
       "name": "CallStack",
       "description": "\u003cp\u003eRepresent error call stack.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -215,6 +223,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -223,7 +232,7 @@
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.error",
-            "name": "T0",
+            "name": "error\u003cballerina/lang.error:1.0.0:Detail\u003e",
             "category": "errors",
             "isAnonymousUnionType": false,
             "isArrayType": false,
@@ -232,7 +241,7 @@
             "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
+            "generateUserDefinedTypeLink": false,
             "memberTypes": [],
             "paramTypes": [],
             "arrayDimensions": 0
@@ -271,6 +280,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -327,6 +337,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -360,7 +371,7 @@
             "orgName": "ballerina",
             "moduleName": "lang.error",
             "name": "CallStack",
-            "category": "objects",
+            "category": "classes",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,

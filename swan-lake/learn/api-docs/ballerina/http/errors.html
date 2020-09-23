@@ -148,6 +148,10 @@
         </li>
     
         <li  onclick="menuLinkClick()">
+            <a href="#LoadBalanceActionError">LoadBalanceActionError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
             <a href="#MaximumWaitTimeExceededError">MaximumWaitTimeExceededError</a>
         </li>
     
@@ -240,18 +244,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -591,6 +596,21 @@
                         <li>
                             
                             <p>Represents a cookie error that occurred when sending cookies in the response</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="LoadBalanceActionError">
+                            <b >LoadBalanceActionError </b>
+                            <span class="type"><a href="../http/records/LoadBalanceActionErrorData.html">LoadBalanceActionErrorData</a></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents an error occurred in an remote function of the Load Balance connector.</p>
 
                         </li>
                     </ul>

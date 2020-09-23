@@ -73,11 +73,10 @@ the RFC 2045 standard.
     <ul>
         
         
-            
-                <li>
-                    <a  data="objects" href="../mime/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../mime/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -153,57 +152,49 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ContentDisposition" title="ContentDisposition">
-                            <a class="objects " href="objects/ContentDisposition.html">ContentDisposition</a>
+                        <td class="module-title truncate classes" id="ContentDisposition" title="ContentDisposition">
+                            <a class="classes " href="classes/ContentDisposition.html">ContentDisposition</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents values in <code>Content-Disposition</code> header.</p>
-
+                            <p>Represents values in <code>Content-Disposition</code> header.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="Entity" title="Entity">
-                            <a class="objects " href="objects/Entity.html">Entity</a>
+                        <td class="module-title truncate classes" id="MediaType" title="MediaType">
+                            <a class="classes " href="classes/MediaType.html">MediaType</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Describes the nature of the data in the body of a MIME entity.</p> 
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="Entity" title="Entity">
+                            <a class="classes " href="classes/Entity.html">Entity</a>
                         </td>
                         <td class="module-desc">
                             
                             <p>Represents the headers and body of a message.
                         </td>
                     </tr>
-                    
-                    
-                    
-                    <tr>
-                        <td class="module-title truncate objects" id="MediaType" title="MediaType">
-                            <a class="objects " href="objects/MediaType.html">MediaType</a>
-                        </td>
-                        <td class="module-desc">
-                            
-                            <p>Describes the nature of the data in the body of a MIME entity.</p>
+                
+            </table>
+        </section>
+    
 
-                        </td>
-                    </tr>
-                    
-                    
-                </table>
-            </section>
-        
     
 
     
@@ -227,6 +218,9 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
                     <p><strong>Deprecated API</strong>.
                 </td>
             </tr>
@@ -236,6 +230,9 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                     <a class="functions " href="functions.html#base64DecodeBlob">base64DecodeBlob</a>
                 </td>
                 <td class="module-desc">
+                    
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
                     
                     <p><strong>Deprecated API</strong>.
                 </td>
@@ -247,6 +244,9 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
                     <p><strong>Deprecated API</strong>.
                 </td>
             </tr>
@@ -256,6 +256,9 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                     <a class="functions " href="functions.html#base64EncodeBlob">base64EncodeBlob</a>
                 </td>
                 <td class="module-desc">
+                    
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
                     
                     <p><strong>Deprecated API</strong>.
                 </td>
@@ -267,8 +270,10 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.</p> 
                 </td>
             </tr>
             
@@ -278,8 +283,10 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.</p> 
                 </td>
             </tr>
             
@@ -289,8 +296,10 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constructs a <code>DecodeError</code> with the given details.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Constructs a <code>DecodeError</code> with the given details.</p> 
                 </td>
             </tr>
             
@@ -300,8 +309,10 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constructs an <code>EncodeError</code> with the given details.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Constructs an <code>EncodeError</code> with the given details.</p> 
                 </td>
             </tr>
             
@@ -321,35 +332,12 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
         <table>
             
             <tr>
-                <td class="module-title truncate constant" id="LEADING" title="LEADING">
-                    <a class="constant " href="constants.html#LEADING">LEADING</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Header is placed before the payload of the request/response.</p>
-
-                </td>
-            </tr>
-            
-            <tr>
-                <td class="module-title truncate constant" id="TRAILING" title="TRAILING">
-                    <a class="constant " href="constants.html#TRAILING">TRAILING</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Header is placed after the payload of the request/response.</p>
-
-                </td>
-            </tr>
-            
-            <tr>
                 <td class="module-title truncate constant" id="APPLICATION_OCTET_STREAM" title="APPLICATION_OCTET_STREAM">
                     <a class="constant " href="constants.html#APPLICATION_OCTET_STREAM">APPLICATION_OCTET_STREAM</a>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>application/octet-stream</code> media type.</p>
-
+                    <p>Represents the <code>application/octet-stream</code> media type.</p> 
                 </td>
             </tr>
             
@@ -359,8 +347,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>application/json</code> media type.</p>
-
+                    <p>Represents the <code>application/json</code> media type.</p> 
                 </td>
             </tr>
             
@@ -370,8 +357,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>application/xml</code> media type.</p>
-
+                    <p>Represents the <code>application/xml</code> media type.</p> 
                 </td>
             </tr>
             
@@ -381,8 +367,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>application/svg+xml</code> media type.</p>
-
+                    <p>Represents the <code>application/svg+xml</code> media type.</p> 
                 </td>
             </tr>
             
@@ -392,8 +377,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>application/xhtml+xml</code> media type.</p>
-
+                    <p>Represents the <code>application/xhtml+xml</code> media type.</p> 
                 </td>
             </tr>
             
@@ -403,8 +387,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>application/soap+xml</code> media type.</p>
-
+                    <p>Represents the <code>application/soap+xml</code> media type.</p> 
                 </td>
             </tr>
             
@@ -414,8 +397,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>application/x-www-form-urlencoded</code> media type.</p>
-
+                    <p>Represents the <code>application/x-www-form-urlencoded</code> media type.</p> 
                 </td>
             </tr>
             
@@ -425,8 +407,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>application/pdf</code> media type.</p>
-
+                    <p>Represents the <code>application/pdf</code> media type.</p> 
                 </td>
             </tr>
             
@@ -436,8 +417,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>image/jpeg</code> media type.</p>
-
+                    <p>Represents the <code>image/jpeg</code> media type.</p> 
                 </td>
             </tr>
             
@@ -447,8 +427,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>image/gif</code> media type.</p>
-
+                    <p>Represents the <code>image/gif</code> media type.</p> 
                 </td>
             </tr>
             
@@ -458,8 +437,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>image/png</code> media type.</p>
-
+                    <p>Represents the <code>image/png</code> media type.</p> 
                 </td>
             </tr>
             
@@ -469,8 +447,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>multipart/form-data</code> media type.</p>
-
+                    <p>Represents the <code>multipart/form-data</code> media type.</p> 
                 </td>
             </tr>
             
@@ -480,8 +457,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>multipart/mixed</code> media type.</p>
-
+                    <p>Represents the <code>multipart/mixed</code> media type.</p> 
                 </td>
             </tr>
             
@@ -491,8 +467,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>multipart/alternative</code> media type.</p>
-
+                    <p>Represents the <code>multipart/alternative</code> media type.</p> 
                 </td>
             </tr>
             
@@ -502,8 +477,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>multipart/related</code> media type.</p>
-
+                    <p>Represents the <code>multipart/related</code> media type.</p> 
                 </td>
             </tr>
             
@@ -513,8 +487,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>multipart/parallel</code> media type.</p>
-
+                    <p>Represents the <code>multipart/parallel</code> media type.</p> 
                 </td>
             </tr>
             
@@ -524,8 +497,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>text/plain</code> media type.</p>
-
+                    <p>Represents the <code>text/plain</code> media type.</p> 
                 </td>
             </tr>
             
@@ -535,8 +507,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>text/html</code> media type.</p>
-
+                    <p>Represents the <code>text/html</code> media type.</p> 
                 </td>
             </tr>
             
@@ -546,8 +517,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the <code>text/xml</code> media type.</p>
-
+                    <p>Represents the <code>text/xml</code> media type.</p> 
                 </td>
             </tr>
             
@@ -597,8 +567,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Default charset to be used with MIME encoding and decoding.</p>
-
+                    <p>Default charset to be used with MIME encoding and decoding.</p> 
                 </td>
             </tr>
             
@@ -608,8 +577,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents <code>content-id</code> header name.</p>
-
+                    <p>Represents <code>content-id</code> header name.</p> 
                 </td>
             </tr>
             
@@ -619,8 +587,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents <code>content-length</code> header name.</p>
-
+                    <p>Represents <code>content-length</code> header name.</p> 
                 </td>
             </tr>
             
@@ -630,8 +597,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents <code>content-type</code> header name.</p>
-
+                    <p>Represents <code>content-type</code> header name.</p> 
                 </td>
             </tr>
             
@@ -641,8 +607,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents <code>content-disposition</code> header name.</p>
-
+                    <p>Represents <code>content-disposition</code> header name.</p> 
                 </td>
             </tr>
             
@@ -669,21 +634,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents MIME related errors.</p>
-
-                </td>
-            </tr>
-            
-            <tr>
-                <td class="module-title truncate types" id="HeaderPosition" title="HeaderPosition">
-                    <a class="types " href="types.html#HeaderPosition">HeaderPosition</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Defines the position of the headers in the request/response.</p>
-<p><code>LEADING</code>: Header is placed before the payload of the request/response
-<code>TRAILING</code>: Header is placed after the payload of the request/response</p>
-
+                    <p>Represents MIME related errors.</p> 
                 </td>
             </tr>
             
@@ -707,8 +658,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>DecodeError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>DecodeError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -718,8 +668,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an <code>EncodeError</code> with the message and the cause.</p>
-
+                    <p>Represents an <code>EncodeError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -729,8 +678,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>GenericMimeError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>GenericMimeError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -740,8 +688,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>HeaderNotFoundError</code> error with the message and the cause.</p>
-
+                    <p>Represents a <code>HeaderNotFoundError</code> error with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -751,8 +698,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>HeaderUnavailableError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>HeaderUnavailableError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -762,8 +708,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an <code>IdleTimeoutTriggeredError</code> with the message and the cause.</p>
-
+                    <p>Represents an <code>IdleTimeoutTriggeredError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -773,8 +718,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>InvalidContentLengthError</code> error with the message and the cause.</p>
-
+                    <p>Represents a <code>InvalidContentLengthError</code> error with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -784,8 +728,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an <code>InvalidContentTypeError</code> with the message and the cause.</p>
-
+                    <p>Represents an <code>InvalidContentTypeError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -795,8 +738,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>InvalidHeaderOperationError</code> error with the message and the cause.</p>
-
+                    <p>Represents a <code>InvalidHeaderOperationError</code> error with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -806,8 +748,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>InvalidHeaderParamError</code> error with the message and the cause.</p>
-
+                    <p>Represents a <code>InvalidHeaderParamError</code> error with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -817,8 +758,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>InvalidHeaderValueError</code> error with the message and the cause.</p>
-
+                    <p>Represents a <code>InvalidHeaderValueError</code> error with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -828,8 +768,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>NoContentError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>NoContentError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -839,8 +778,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>ParserError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>ParserError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -850,8 +788,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>SerializationError</code> error with the message and the cause.</p>
-
+                    <p>Represents a <code>SerializationError</code> error with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -861,8 +798,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>SetHeaderError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>SetHeaderError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             

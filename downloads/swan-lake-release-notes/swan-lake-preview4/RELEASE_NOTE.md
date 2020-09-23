@@ -19,7 +19,7 @@ This release is the fourth preview version of Ballerina Swan Lake. This release 
         - [Isolated functions](#isolated-functions)
         - [Improved support for quoted identifiers](#improved-support-for-quoted-identifiers)
         -  [Subsequent initialization support for local final variables](#subsequent-initialization-support-for-local-final-variables)
-        - [Support to handle errors at a single point - (the `on fail` clause)](#support-to-handle-errors-at-a-single-point-(the-on-fail-clause))
+        - [Support to handle errors at a single point - (the `on fail` clause)](#support-to-handle-errors-at-a-single-point-the-on-fail-clause)
         - [Fail statement](#fail-statement)
         - [Improved lang library functions](#improved-lang-library-functions)
     - [Runtime](#runtime)

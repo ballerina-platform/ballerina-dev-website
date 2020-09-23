@@ -55,48 +55,7 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_expect_header</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
-<span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mo">04</span> <span class="mi">21</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">36</span><span class="p">,</span><span class="mi">272</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">TEST</span> <span class="mi">100</span> <span class="nx">CONTINUE</span><span class="err">#</span><span class="nx">Run</span> <span class="nx">the</span> <span class="nx">cURL</span> <span class="nx">command</span> <span class="nx">below</span> <span class="nx">to</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="o">-</span><span class="nx">d</span> <span class="s">&quot;TEST 100 CONTINUE&quot;</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello -H &#39;Expect:100-continue&#39; -H &#39;Content-Type: text/plain&#39;</span>
-<span class="o">*</span>   <span class="nx">Trying</span> <span class="mf">127.0.0.1</span><span class="o">...</span>
-<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(</span><span class="mf">127.0.0.1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">&gt;</span> <span class="nx">POST</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.58.0</span>
-<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
-<span class="cm">&gt; Expect:100-continue</span>
-<span class="cm">&gt; Content-Length: 17</span>
-<span class="cm">&gt; Content-Type: text/plain</span>
-<span class="cm">&gt;</span>
-<span class="cm">&lt; HTTP/1.1 100 Continue</span>
-<span class="cm">* We are completely uploaded and fine</span>
-<span class="cm">&lt; HTTP/1.1 200 OK</span>
-<span class="cm">&lt; content-type: text/plain</span>
-<span class="cm">&lt; content-length: 13</span>
-<span class="cm">&lt;</span>
-<span class="cm">Hello World!</span>
-<span class="cm">* Connection #0 to host localhost left intact# Use the following client to invoke the service using an unsupported media type. Service is supposed to ignore</span>
-<span class="cm"># the payload if the content type does not matched.</span>
-<span class="cm">curl -v -d &#39;{&quot;TEST&quot;:&quot;100 CONTINUE&quot;}&#39; http://localhost:9090/hello -H &#39;Expect:100-continue&#39; -H &#39;Content-Type: application/json&#39;</span>
-<span class="cm">* Connected to localhost (127.0.0.1) port 9090 (#0)</span>
-<span class="cm">&gt; POST /hello HTTP/1.1</span>
-<span class="cm">&gt; Host: localhost:9090</span>
-<span class="cm">&gt; User-Agent: curl/7.58.0</span>
-<span class="cm">&gt; Accept: */</span><span class="o">*</span>
-<span class="p">&gt;</span> <span class="nx">Expect</span><span class="p">:</span><span class="mi">100</span><span class="o">-</span><span class="k">continue</span>
-<span class="p">&gt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span>
-<span class="p">&gt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="p">:</span> <span class="mi">25</span>
-<span class="p">&gt;</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">417</span> <span class="nx">Expectation</span> <span class="nx">Failed</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">20</span>
-<span class="o">*</span> <span class="nx">HTTP</span> <span class="nx">error</span> <span class="nx">before</span> <span class="nx">end</span> <span class="nx">of</span> <span class="nx">send</span><span class="p">,</span> <span class="nx">stop</span> <span class="nx">sending</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Closing</span> <span class="nx">connection</span> <span class="mi">0</span>
-<span class="nx">Unprocessable</span> <span class="nx">Entity</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -148,6 +107,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-100-continue/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -400,10 +360,14 @@ curl -v -d &quot;TEST 100 CONTINUE&quot; http://localhost:9090/hello -H &#39;Exp
 &gt; Content-Type: text/plain
 &gt;
 &lt; HTTP/1.1 100 Continue
+&lt; server: ballerina
+&lt; date: Tue, 22 Sep 2020 09:16:18 +0530
 * We are completely uploaded and fine
 &lt; HTTP/1.1 200 OK
 &lt; content-type: text/plain
 &lt; content-length: 13
+&lt; server: ballerina
+&lt; date: Tue, 22 Sep 2020 09:16:18 +0530
 &lt;
 Hello World!
 * Connection #0 to host localhost left intact
@@ -433,6 +397,8 @@ curl -v -d &#39;{&quot;TEST&quot;:&quot;100 CONTINUE&quot;}&#39; http://localhos
 &lt; HTTP/1.1 417 Expectation Failed
 &lt; content-type: text/plain
 &lt; content-length: 20
+&lt; server: ballerina
+&lt; date: Tue, 22 Sep 2020 09:19:53 +0530
 * HTTP error before end of send, stop sending
 &lt;
 * Closing connection 0
@@ -464,7 +430,7 @@ Unprocessable Entity
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -12,13 +12,15 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">awslambda</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">system</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
    <span class="k">return</span> <span class="nx">input</span><span class="p">;</span>
 <span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">uuid</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">uuid</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
    <span class="k">return</span> <span class="nx">system</span><span class="p">:</span><span class="nx">uuid</span><span class="p">();</span>
-<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="p">}</span>
+<span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">ctxinfo</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">input</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
    <span class="kt">json</span> <span class="nx">result</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">RequestID</span><span class="p">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">getRequestId</span><span class="p">(),</span>
                    <span class="nx">DeadlineMS</span><span class="p">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">getDeadlineMs</span><span class="p">(),</span>
@@ -26,7 +28,27 @@ redirect_from:
                    <span class="nx">TraceID</span><span class="p">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">getTraceId</span><span class="p">(),</span>
                    <span class="nx">RemainingExecTime</span><span class="p">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">getRemainingExecutionTime</span><span class="p">()</span> <span class="p">};</span>
    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Prerequisites</span><span class="p">:</span> <span class="nx">AWS</span> <span class="nx">CLI</span> <span class="nx">tools</span> <span class="nx">installation</span> <span class="nx">and</span> <span class="nx">configuration</span>
+<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">notifySQS</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
+                          <span class="nx">awslambda</span><span class="p">:</span><span class="nx">SQSEvent</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">Records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">body</span><span class="p">;</span>
+<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">notifyS3</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
+                         <span class="nx">awslambda</span><span class="p">:</span><span class="nx">S3Event</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">Records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">s3</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">object</span><span class="p">.</span><span class="nx">key</span><span class="p">;</span>
+<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">notifyDynamoDB</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
+                               <span class="nx">awslambda</span><span class="p">:</span><span class="nx">DynamoDBEvent</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">Records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">dynamodb</span><span class="p">.</span><span class="nx">Keys</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">notifySES</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
+                          <span class="nx">awslambda</span><span class="p">:</span><span class="nx">SESEvent</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">event</span><span class="p">.</span><span class="nx">Records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">ses</span><span class="p">.</span><span class="nx">mail</span><span class="p">.</span><span class="nx">commonHeaders</span><span class="p">.</span><span class="nx">subject</span><span class="p">;</span>
+<span class="p">}</span><span class="err">@</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Function</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">apigwRequest</span><span class="p">(</span><span class="nx">awslambda</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
+                             <span class="nx">awslambda</span><span class="p">:</span><span class="nx">APIGatewayProxyRequest</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Path: &quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -37,10 +59,10 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>AWS Lambda Deployment</h2>
                             <p><p>AWS Lambda is an event driven, serverless computing platform.
- Ballerina functions can be deployed in AWS Lambda by annotating
+ Ballerina functions can be deployed in AWS Lambda by annotating a
  a Ballerina function with &ldquo;@awslambda:Function&rdquo;, which should have
- the <code>function (awslambda:Context, json) returns json|error</code> function signature.<br/><br/>
- For more information, see the <a href="https://ballerina.io/swan-lake/learn/deployment/aws-lambda/">AWS Lambda Deployment Guide</a>.</p>
+ the function signature <code>function (awslambda:Context, json|EventType) returns json|error</code>.<br/><br/>
+ For more information, see the <a href="https://ballerina.io/learn/deployment/aws-lambda/">AWS Lambda Deployment Guide</a>.</p>
 </p>
 
                         </td>
@@ -79,6 +101,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/module-ballerinax-aws.lambda/tree/master/awslambda-extension-examples/examples/aws-lambda-deployment"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -105,6 +128,14 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -115,6 +146,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerinax/awslambda;
 import ballerina/system;
+import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -127,7 +159,7 @@ import ballerina/system;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
-public function echo(awslambda:Context ctx, json input) returns json|error {
+public function echo(awslambda:Context ctx, json input) returns json {
    return input;
 }
 </code></pre></div>
@@ -150,7 +182,7 @@ public function echo(awslambda:Context ctx, json input) returns json|error {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
-public function uuid(awslambda:Context ctx, json input) returns json|error {
+public function uuid(awslambda:Context ctx, json input) returns json {
    return system:uuid();
 }
 </code></pre></div>
@@ -161,22 +193,11 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
+public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
    json result = { RequestID: ctx.getRequestId(),
                    DeadlineMS: ctx.getDeadlineMs(),
                    InvokedFunctionArn: ctx.getInvokedFunctionArn(),
@@ -196,6 +217,86 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
+public function notifySQS(awslambda:Context ctx, 
+                          awslambda:SQSEvent event) returns json {
+    return event.Records[0].body;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
+public function notifyS3(awslambda:Context ctx, 
+                         awslambda:S3Event event) returns json {
+    return event.Records[0].s3.&#39;object.key;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
+public function notifyDynamoDB(awslambda:Context ctx, 
+                               awslambda:DynamoDBEvent event) returns json {
+    return event.Records[0].dynamodb.Keys.toString();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
+public function notifySES(awslambda:Context ctx, 
+                          awslambda:SESEvent event) returns json {
+    return event.Records[0].ses.mail.commonHeaders.subject;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>@awslambda:Function
+public function apigwRequest(awslambda:Context ctx, 
+                             awslambda:APIGatewayProxyRequest request) {
+    io:println(&quot;Path: &quot;, request.path);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -261,12 +362,9 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the AWS Lambda functions
-$ ./ballerina build aws_lambda_deployment.bal
+$ ballerina build functions.bal
 Compiling source
-	aws_lambda_deployment.bal
-Generating executables
-	aws_lambda_deployment-executable.jar
-	@awslambda:Function: echo, uuid, ctxinfo
+	functions.bal
 </code></pre></div>
 
                                 </td>
@@ -278,7 +376,9 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	The Ballerina AWS Lambda layer information can be found at https://ballerina.io/deployment/aws-lambda.
+                                    <div class="highlight"><pre><code class=shell-session>Generating executables
+	functions.jar
+	@awslambda:Function: echo, uuid, ctxinfo, notifySQS, notifyS3
 </code></pre></div>
 
                                 </td>
@@ -291,7 +391,7 @@ Generating executables
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment-executable.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --layers &lt;BALLERINA_LAYER_ARN&gt;
+	aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:141896495686:layer:ballerina:2 --memory-size 512 --timeout 10
 </code></pre></div>
 
                                 </td>
@@ -304,7 +404,7 @@ Generating executables
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
-	aws lambda update-function-code --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip
+	aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip
 </code></pre></div>
 
                                 </td>
@@ -316,13 +416,13 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the AWS CLI commands to create and publish the functions, and your AWS &lt;LAMBDA_ROLE_ARN&gt; and the &lt;BALLERINA_LAYER_ARN&gt; for a specific Ballerina release should be used, following values are just examples
-$ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role --role arn:aws:iam::908363916111:role/lambda-role
- --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
-$ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role --role arn:aws:iam::908363916111:role/lambda-role
- --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
-$ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role --role arn:aws:iam::908363916111:role/lambda-role
- --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
+                                    <div class="highlight"><pre><code class=shell-session># Execute the AWS CLI commands to create and publish the functions; and set your respective AWS $LAMBDA_ROLE_ARN, $REGION_ID, and $FUNCTION_NAME values; following are some examples:-
+$ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
+ --layers arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2 --memory-size 512 --timeout 10
+$ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
+ --layers arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2 --memory-size 512 --timeout 10
+$ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
+ --layers arn:aws:lambda:us-west-1:141896495686:layer:ballerina:2 --memory-size 512 --timeout 10
 </code></pre></div>
 
                                 </td>
@@ -335,7 +435,7 @@ $ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ball
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Invoke the functions
-$ aws lambda invoke --function-name echo --payload &#39;{&quot;MESSAGE&quot;:&quot;HELLO&quot;}&#39; response.txt
+$ aws lambda invoke --function-name echo --payload &#39;{&quot;MESSAGE&quot;:&quot;HELLO&quot;}&#39; echo-response.txt
 {
     &quot;ExecutedVersion&quot;: &quot;$LATEST&quot;, 
     &quot;StatusCode&quot;: 200
@@ -405,7 +505,7 @@ $ cat ctxinfo-response.txt
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

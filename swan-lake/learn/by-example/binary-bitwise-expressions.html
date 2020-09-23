@@ -29,15 +29,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int` 12345678 | `int:Signed8` -127: &quot;</span><span class="p">,</span> <span class="nx">res5</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">res6</span> <span class="p">=</span> <span class="nx">g</span> <span class="p">^</span> <span class="nx">h</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;`int` 12345678 ^ `int:Signed8` -127: &quot;</span><span class="p">,</span> <span class="nx">res6</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">binary_bitwise_expressions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="s">`int`</span> <span class="mi">385</span> <span class="o">&amp;</span> <span class="s">`int:Unsigned8`</span> <span class="mi">128</span><span class="p">:</span> <span class="mi">128</span>
-<span class="s">`int:Signed16`</span> <span class="o">-</span><span class="mi">32700</span> <span class="o">&amp;</span> <span class="s">`int`</span> <span class="mi">249</span><span class="p">:</span> <span class="mi">64</span>
-<span class="s">`int:Unsigned8`</span> <span class="mi">254</span> <span class="p">|</span> <span class="s">`int:Unsigned16`</span> <span class="mi">511</span><span class="p">:</span> <span class="mi">255</span>
-<span class="s">`int:Unsigned8`</span> <span class="mi">254</span> <span class="p">^</span> <span class="s">`int:Unsigned16`</span> <span class="mi">511</span><span class="p">:</span> <span class="mi">1</span>
-<span class="s">`int`</span> <span class="mi">12345678</span> <span class="p">|</span> <span class="s">`int:Signed8`</span> <span class="o">-</span><span class="mi">127</span><span class="p">:</span> <span class="o">-</span><span class="mi">49</span>
-<span class="s">`int`</span> <span class="mi">12345678</span> <span class="p">^</span> <span class="s">`int:Signed8`</span> <span class="o">-</span><span class="mi">127</span><span class="p">:</span> <span class="o">-</span><span class="mi">12345649</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -88,6 +80,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/binary-bitwise-expressions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -336,7 +329,7 @@ ballerina run binary_bitwise_expressions.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

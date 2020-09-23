@@ -12,9 +12,11 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">onRollbackFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span>
+                        <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #1 executed.&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">onRollbackFunc2</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">onRollbackFunc2</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span>
+                         <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #2 executed.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">onCommitFunc</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
@@ -38,14 +40,7 @@ redirect_from:
 <span class="p">}</span><span class="kd">function</span> <span class="nx">erroneousOperation</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invoke local participant function.&quot;</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Simulated Failure&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">local_transactions_with_handlers</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Transaction</span> <span class="nx">Info</span><span class="p">:</span> <span class="nx">xid</span><span class="p">=</span><span class="mi">49</span> <span class="mi">56</span> <span class="mi">50</span> <span class="mi">98</span> <span class="mi">100</span> <span class="mi">51</span> <span class="mi">48</span> <span class="mi">97</span> <span class="mi">45</span> <span class="mi">98</span> <span class="mi">56</span> <span class="mi">49</span> <span class="mi">102</span> <span class="mi">45</span> <span class="mi">52</span> <span class="mi">48</span> <span class="mi">54</span> <span class="mi">52</span> <span class="mi">45</span> <span class="mi">97</span> <span class="mi">56</span> <span class="mi">54</span> <span class="mi">98</span> <span class="mi">45</span> <span class="mi">56</span> <span class="mi">102</span> <span class="mi">56</span> <span class="mi">54</span> <span class="mi">51</span> <span class="mi">49</span> <span class="mi">55</span> <span class="mi">97</span> <span class="mi">53</span> <span class="mi">97</span> <span class="mi">57</span> <span class="mi">51</span> <span class="nx">retryNumber</span><span class="p">=</span><span class="mi">0</span> <span class="nx">startTime</span><span class="p">=</span><span class="mi">1594723961027</span> <span class="nx">prevAttempt</span><span class="p">=</span>
-<span class="nx">Invoke</span> <span class="nx">local</span> <span class="nx">participant</span> <span class="kd">function</span><span class="p">.</span>
-<span class="nx">Local</span> <span class="nx">participant</span> <span class="nx">error</span><span class="p">.</span>
-<span class="nx">Rollback</span> <span class="nx">handler</span> <span class="err">#</span><span class="mi">2</span> <span class="nx">executed</span><span class="p">.</span>
-<span class="nx">Rollback</span> <span class="nx">handler</span> <span class="err">#</span><span class="mi">1</span> <span class="nx">executed</span><span class="p">.</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -99,6 +94,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/local-transactions-with-handlers/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -160,7 +156,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc(transactions:Info info, error? cause, boolean willRetry) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc(transactions:Info info, error? cause,
+                        boolean willRetry) {
     io:println(&quot;Rollback handler #1 executed.&quot;);
 }
 </code></pre></div>
@@ -182,7 +179,8 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc2(transactions:Info info, error? cause, boolean willRetry) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function onRollbackFunc2(transactions:Info info, error? cause,
+                         boolean willRetry) {
     io:println(&quot;Rollback handler #2 executed.&quot;);
 }
 </code></pre></div>
@@ -389,7 +387,7 @@ import ballerina/io;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run local_transactions_with_handlers.bal
-Transaction Info: xid=49 56 50 98 100 51 48 97 45 98 56 49 102 45 52 48 54 52 45 97 56 54 98 45 56 102 56 54 51 49 55 97 53 97 57 51 retryNumber=0 startTime=1594723961027 prevAttempt=
+Transaction Info: {&quot;xid&quot;:[50,50,98,100,101,48,54,53,45,49,50,98,97,45,52,52,97,99,45,98,48,50,100,45,57,97,99,49,50,51,100,53,49,57,56,53],&quot;retryNumber&quot;:0,&quot;startTime&quot;:1600688819823,&quot;prevAttempt&quot;:null}
 Invoke local participant function.
 Local participant error.
 Rollback handler #2 executed.
@@ -421,7 +419,7 @@ Rollback handler #1 executed.
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

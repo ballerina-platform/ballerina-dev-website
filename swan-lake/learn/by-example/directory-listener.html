@@ -29,13 +29,7 @@ redirect_from:
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Modify: &quot;</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Before</span> <span class="nx">running</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">new</span> <span class="nx">file</span> <span class="nx">called</span> <span class="s">`test1.txt`</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">called</span> <span class="s">`observed-dir`</span> <span class="nx">and</span> <span class="nx">modify</span> <span class="nx">and</span> <span class="nx">delete</span> <span class="nx">it</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">directory_listener</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Create</span><span class="p">:</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">fs</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="kd">connector</span><span class="o">/</span><span class="nx">observed</span><span class="o">-</span><span class="nx">dir</span><span class="o">/</span><span class="nx">test1</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">Modify</span><span class="p">:</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">fs</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="kd">connector</span><span class="o">/</span><span class="nx">observed</span><span class="o">-</span><span class="nx">dir</span><span class="o">/</span><span class="nx">test1</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">Delete</span><span class="p">:</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">fs</span><span class="o">-</span><span class="nx">server</span><span class="o">-</span><span class="kd">connector</span><span class="o">/</span><span class="nx">observed</span><span class="o">-</span><span class="nx">dir</span><span class="o">/</span><span class="nx">test1</span><span class="p">.</span><span class="nx">txt</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -87,6 +81,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/directory-listener/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -296,7 +291,7 @@ Delete: /home/ballerina/fs-server-connector/observed-dir/test1.txt
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

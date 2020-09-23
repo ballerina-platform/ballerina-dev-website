@@ -1,11 +1,11 @@
 ---
 layout: ballerina-example-page
-title: Read-only Objects and Fields
+title: Final Fields
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/readonly-objects-and-fields
+permalink: /swan-lake/learn/by-example/object-final-fields
 redirect_from:
-  - /vswan-lake/learn/by-example/readonly-objects-and-fields
-  - /vswan-lake/learn/by-example/readonly-objects-and-fields.html
+  - /vswan-lake/learn/by-example/object-final-fields
+  - /vswan-lake/learn/by-example/object-final-fields.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -14,27 +14,14 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
 <span class="p">|};</span>
-<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="nx">class</span> <span class="nx">Employee</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">department</span><span class="p">;</span>
-    <span class="nx">readonly</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">department</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">final</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">department</span><span class="p">,</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">department</span> <span class="p">=</span> <span class="nx">department</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">details</span> <span class="p">=</span> <span class="nx">details</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span>
-<span class="nx">type</span> <span class="nx">Controller</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
-   <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
-   <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>   <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="nx">type</span> <span class="nx">DefaultController</span> <span class="nx">object</span> <span class="p">{</span>
-    <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
-    <span class="nx">readonly</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">id</span><span class="p">;</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">codes</span> <span class="p">=</span> <span class="nx">codes</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kt">string</span> <span class="s">`Default: ${self.id}`</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-<span class="nx">type</span> <span class="nx">MainController</span> <span class="nx">readonly</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="nx">readonly</span> <span class="nx">class</span> <span class="nx">MainController</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">id</span><span class="p">;</span>
@@ -42,25 +29,30 @@ redirect_from:
     <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kt">string</span> <span class="s">`Main: ${self.id}`</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Details</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">immutableDetails</span> <span class="p">=</span> <span class="p">{</span>
+<span class="p">}</span><span class="kt">int</span> <span class="nx">currentId</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">id</span><span class="p">:</span> <span class="mi">112233</span><span class="p">,</span>
         <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
     <span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;IT&quot;</span><span class="p">,</span> <span class="nx">immutableDetails</span><span class="p">);</span>    <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;details is immutable: &quot;</span><span class="p">,</span> <span class="nx">details</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
-    <span class="nx">DefaultController</span> <span class="nx">dc</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">1122</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;LC&quot;</span><span class="p">,</span> <span class="s">&quot;AB&quot;</span><span class="p">]);</span>
-    <span class="nx">Controller</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">controllerOne</span> <span class="p">=</span> <span class="nx">dc</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">controllerOne</span><span class="p">.</span><span class="nx">getId</span><span class="p">());</span>
-    <span class="nx">MainController</span> <span class="nx">mc</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">4246</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;AB&quot;</span><span class="p">]);</span>
-    <span class="nx">Controller</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">controllerTwo</span> <span class="p">=</span> <span class="nx">mc</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">controllerTwo</span><span class="p">.</span><span class="nx">getId</span><span class="p">());</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">readonly_objects_and_fields</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">details</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
-<span class="nx">Default</span><span class="p">:</span> <span class="mi">1122</span>
-<span class="nx">Main</span><span class="p">:</span> <span class="mi">4246</span>
+    <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;IT&quot;</span><span class="p">,</span> <span class="nx">details</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ID: &quot;</span><span class="p">,</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">Details</span> <span class="nx">empDetails</span> <span class="p">=</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">;</span>
+    <span class="nx">empDetails</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="mi">223344</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;new ID: &quot;</span><span class="p">,</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">MainController</span> <span class="nx">controller</span> <span class="p">=</span> <span class="nx">object</span> <span class="p">{</span>
+        <span class="nx">final</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+        <span class="nx">final</span> <span class="kt">string</span><span class="p">[]</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">codes</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;AB&quot;</span><span class="p">,</span> <span class="s">&quot;CD&quot;</span><span class="p">];</span>        <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">currentId</span><span class="p">;</span>
+            <span class="nx">currentId</span> <span class="p">=</span> <span class="nx">currentId</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>        <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">=&gt;</span> <span class="kt">string</span> <span class="s">`Default: ${self.id}`</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nx">Employee</span> <span class="nx">emp2</span> <span class="p">=</span> <span class="nx">object</span> <span class="p">{</span>
+        <span class="kt">string</span> <span class="nx">department</span> <span class="p">=</span> <span class="s">&quot;finance&quot;</span><span class="p">;</span>
+        <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="p">{</span>
+            <span class="nx">id</span><span class="p">:</span> <span class="mi">1001</span><span class="p">,</span>
+            <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -69,13 +61,13 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Read-only Objects and Fields</h2>
-                            <p><p>Fields of an object can be marked as <code>readonly</code>. These fields cannot be updated once the object is created and can
- only hold immutable values.
- If all the fields of an object are <code>readonly</code>, the object itself is considered to have its read-only bit set and
- can thus be used where a <code>readonly</code> (immutable) value is expected.
- An object itself can also be defined as a <code>readonly object</code>. This is equivalent to all the fields of the object being
- <code>readonly</code>. A <code>readonly object</code> value can also be used where an immutable value is expected.</p>
+                            <h2>Final Fields</h2>
+                            <p><p>Fields of a class or an object constructor expression can be marked as <code>final</code>. Values can be set for such fields
+ either using initializer expressions (default values) or in the <code>init</code> method. A value cannot be set for such a
+ field once the object is created.<br/>
+ If all the fields are <code>final</code> fields and the type of each field is a subtype of <code>readonly</code>, the object value is
+ constructed as an immutable value, which will belong to <code>readonly</code>.<br/>
+ Whether a field is <code>final</code> is not part of the type and it does not affect subtyping.</p>
 </p>
 
                         </td>
@@ -83,9 +75,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="anonymous-objects.html">
+                                    <a class="prev" href="readonly-objects.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Anonymous Objects</p>
+                                        <p>Read-only Objects</p>
                                     </a>
                                 </div>
                                  
@@ -101,7 +93,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="readonly-objects-and-fields">
+            <div class="example" id="object-final-fields">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -112,8 +104,9 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/readonly-objects-and-fields/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-final-fields/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -129,12 +122,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -213,7 +200,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Employee object {
+                                    <div class="highlight"><pre><code class=language-ballerina>class Employee {
     string department;
 </code></pre></div>
 
@@ -222,7 +209,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An object with both read-only and non-read-only fields.</p>
+                                            <p>A class definition with both <code>final</code> and non-<code>final</code> fields.</p>
 
                                         </div>
                                     </div>
@@ -233,7 +220,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    readonly Details details;
+                                    <div class="highlight"><pre><code class=language-ballerina>    final Details details;
 </code></pre></div>
 
                                 </td>
@@ -241,9 +228,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>details</code> is a <code>readonly</code> field which cannot be updated once the value is created.
- <code>details</code> also expects an immutable value, and thus the effective contextually expected type for
- <code>details</code> is <code>Details &amp; readonly</code>.</p>
+                                            <p><code>details</code> is a <code>final</code> field to which a value cannot be assigned
+ once the object value is created. However, since the type of <code>details</code> is
+ a mutable type, updates can be attempted on the <code>details</code> field.</p>
 
                                         </div>
                                     </div>
@@ -254,11 +241,11 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string department, readonly &amp; Details details) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string department, Details details) {
         self.department = department;
         self.details = details;
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -270,110 +257,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Controller abstract object {
-   int id;
-   string[] codes;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>An abstract object with non-readonly fields.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>   function getId() returns string;
-};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type DefaultController object {
-    readonly int id;
-    readonly string[] codes;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A non-abstract object with all read-only fields.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function init(int id, readonly &amp; string[] codes) {
-        self.id = id;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        self.codes = codes;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The expected type for <code>codes</code> is <code>readonly &amp; string[]</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function getId() returns string {
-        return string `Default: ${self.id}`;
-    }
-};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type MainController readonly object {
+                                    <div class="highlight"><pre><code class=language-ballerina>readonly class MainController {
     int id;
     string[] codes;
 </code></pre></div>
@@ -383,9 +267,11 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A non-abstract <code>readonly object</code>.
- If the object type-descriptor includes <code>readonly</code> all the fields in the
- object are considered to be <code>readonly</code> fields.</p>
+                                            <p>A class definition for a <code>readonly</code> object.
+ If the class definition includes <code>readonly</code>, all the fields in the
+ object are considered to be <code>final</code> fields.
+ The effective type of each field is the intersection of the
+ specified type and <code>readonly</code>.</p>
 
                                         </div>
                                     </div>
@@ -432,7 +318,19 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    function getId() returns string {
         return string `Main: ${self.id}`;
     }
-};
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>int currentId = 1000;
 </code></pre></div>
 
                                 </td>
@@ -456,7 +354,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Details &amp; readonly immutableDetails = {
+                                    <div class="highlight"><pre><code class=language-ballerina>    Details details = {
         id: 112233,
         country: &quot;Sri Lanka&quot;
     };
@@ -467,7 +365,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define an immutable <code>Details</code> value.</p>
+                                            <p>Define a mutable <code>Details</code> value.</p>
 
                                         </div>
                                     </div>
@@ -478,7 +376,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Employee emp = new (&quot;IT&quot;, immutableDetails);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee emp = new (&quot;IT&quot;, details);
 </code></pre></div>
 
                                 </td>
@@ -486,7 +384,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Use <code>immutableDetails</code> as the value for the <code>readonly</code> <code>details</code> field in <code>Employee</code>.</p>
+                                            <p>Use <code>details</code> as the value for the <code>final</code> <code>details</code> field in <code>Employee</code>.</p>
 
                                         </div>
                                     </div>
@@ -497,7 +395,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Details details = emp.details;
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;ID: &quot;, emp.details.id);
 </code></pre></div>
 
                                 </td>
@@ -509,7 +407,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;details is immutable: &quot;, details.isReadOnly());
+                                    <div class="highlight"><pre><code class=language-ballerina>    Details empDetails = emp.details;
+    empDetails.id = 223344;
+    io:println(&quot;new ID: &quot;, emp.details.id);
 </code></pre></div>
 
                                 </td>
@@ -517,7 +417,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>details</code> field of <code>emp</code> is immutable.</p>
+                                            <p>Even though the <code>details</code> field of <code>Employee</code> is <code>final</code>,
+ it can hold a mutable value. Thus, we can attempt updating
+ the <code>id</code> field of the <code>details</code> field.</p>
 
                                         </div>
                                     </div>
@@ -528,7 +430,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    DefaultController dc = new (1122, [&quot;LC&quot;, &quot;AB&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    MainController controller = object {
+        final int id;
 </code></pre></div>
 
                                 </td>
@@ -536,11 +439,10 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A <code>readonly</code> intersection (<code>T &amp; readonly</code>) can be used with an object only if it is an abstract object.
- A non-abstract object can be <code>readonly</code> either if all of its fields are <code>readonly</code> fields, or if the object
- is defined as a <code>readonly</code> object.
- In either case the fields cannot be updated once the value is created.
- Define a value of the non-abstract object type <code>DefaultController</code>.</p>
+                                            <p>Since all the fields in the object constructor expression are <code>final</code>
+ and the types are subtypes of <code>readonly</code>, it constructs an immutable
+ value, which can be assigned to a variable of type <code>MainController</code>
+ which expects immutable values.</p>
 
                                         </div>
                                     </div>
@@ -551,8 +453,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Controller &amp; readonly controllerOne = dc;
-    io:println(controllerOne.getId());
+                                    <div class="highlight"><pre><code class=language-ballerina>        final string[] &amp; readonly codes = [&quot;AB&quot;, &quot;CD&quot;];
 </code></pre></div>
 
                                 </td>
@@ -560,8 +461,10 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since all the fields of <code>DefaultController</code> are <code>readonly</code> fields, the object value itself is considered
- to be immutable. Thus, it can be used where a <code>readonly</code> value is expected.</p>
+                                            <p>A value is set for the <code>final</code> field <code>codes</code> using an initializer
+ expression.
+ A value cannot be set for this field via the <code>init</code> method or
+ once the value is created.</p>
 
                                         </div>
                                     </div>
@@ -569,10 +472,39 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        function init() {
+            self.id = currentId;
+            currentId = currentId + 1;
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        function getId() returns string =&gt; string `Default: ${self.id}`;
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    MainController mc = new (4246, [&quot;AB&quot;]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee emp2 = object {
+        string department = &quot;finance&quot;;
 </code></pre></div>
 
                                 </td>
@@ -580,7 +512,10 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define a value of the non-abstract <code>readonly object</code> type <code>MainController</code>.</p>
+                                            <p>Whether a field is <code>final</code> does not affect the type.
+ Thus, an object value belongs to a type even if the type
+ specifies <code>final</code> for a field for which the source object value
+ does not.</p>
 
                                         </div>
                                     </div>
@@ -591,8 +526,11 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Controller &amp; readonly controllerTwo = mc;
-    io:println(controllerTwo.getId());
+                                    <div class="highlight"><pre><code class=language-ballerina>        Details details = {
+            id: 1001,
+            country: &quot;Sri Lanka&quot;
+        };
+    };
 }
 </code></pre></div>
 
@@ -601,8 +539,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since the object was defined as a <code>readonly object</code>, the object value is considered immutable.
- Thus, it can be used where a <code>readonly</code> value is expected.</p>
+                                            <p>The <code>details</code> field is not <code>final</code> here even though it is
+ a <code>final</code> field in <code>Employee</code>.</p>
 
                                         </div>
                                     </div>
@@ -628,10 +566,9 @@ redirect_from:
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
-ballerina run readonly_objects_and_fields.bal
-details is immutable: true
-Default: 1122
-Main: 4246
+ballerina run object_final_fields.bal
+ID: 112233
+new ID: 223344
 </code></pre></div>
 
                                 </td>
@@ -659,7 +596,7 @@ Main: 4246
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

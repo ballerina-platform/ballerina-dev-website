@@ -31,14 +31,7 @@ redirect_from:
     <span class="kt">json</span> <span class="nx">j2</span> <span class="p">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">r5</span> <span class="p">=</span> <span class="nx">j2</span><span class="err">?</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;r5: &quot;</span><span class="p">,</span> <span class="nx">r5</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">json_access</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">r1</span><span class="p">:</span> <span class="nx">Mary</span>
-<span class="nx">r2</span><span class="p">:</span> <span class="nx">Colombo</span> <span class="mo">03</span>
-<span class="nx">r3</span><span class="p">:</span> <span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="kt">map</span><span class="p">}</span><span class="nx">KeyNotFound</span> <span class="kt">message</span><span class="p">=</span><span class="nx">Key</span> <span class="err">&#39;</span><span class="nx">age</span><span class="err">&#39;</span> <span class="nx">not</span> <span class="nx">found</span> <span class="nx">in</span> <span class="nx">JSON</span> <span class="nx">mapping</span>
-<span class="nx">r4</span><span class="p">:</span> 
-<span class="nx">r5</span><span class="p">:</span> 
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -91,6 +84,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/json-access/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -414,9 +408,9 @@ redirect_from:
 ballerina run json_access.bal
 r1: Mary
 r2: Colombo 03
-r3: error {ballerina/lang.map}KeyNotFound message=Key &#39;age&#39; not found in JSON mapping
-r4: 
-r5: 
+r3: error(&quot;{ballerina/lang.map}KeyNotFound&quot;,message=&quot;Key &#39;age&#39; not found in JSON mapping&quot;)
+r4:
+r5:
 </code></pre></div>
 
                                 </td>
@@ -444,7 +438,7 @@ r5:
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -10,13 +10,12 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">system</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">system</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">azure</span><span class="p">.</span><span class="nx">functions</span> <span class="k">as</span> <span class="nx">af</span><span class="p">;</span>
 <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">Function</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nd">@af:HTTPTrigger {</span> <span class="nx">authLevel</span><span class="p">:</span> <span class="s">&quot;anonymous&quot;</span> <span class="p">}</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> 
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nd">@af:HTTPTrigger {</span> <span class="nx">authLevel</span><span class="p">:</span> <span class="s">&quot;anonymous&quot;</span> <span class="p">}</span> <span class="kt">string</span> <span class="nx">payload</span><span class="p">)</span> 
                       <span class="nx">returns</span> <span class="nd">@af:HTTPOutput string|error {</span>
-    <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">check</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;!&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">payload</span> <span class="o">+</span> <span class="s">&quot;!&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">fromHttpToQueue</span><span class="p">(</span><span class="nx">af</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
@@ -117,7 +116,7 @@ redirect_from:
 <span class="s">public function httpTriggerCosmosDBOutput1(</span>
 <span class="s">    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) </span>
 <span class="s">    returns @af:CosmosDBOutput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
+<span class="s">                                 databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
 <span class="s">    json entry = { id: system:uuid(), name: &quot;</span><span class="nx">Saman</span><span class="s">&quot;, country: &quot;</span><span class="nx">Sri</span> <span class="nx">Lanka</span><span class="s">&quot; };</span>
 <span class="s">    hb.payload = &quot;</span><span class="nx">Adding</span> <span class="nx">entry</span><span class="p">:</span> <span class="s">&quot; + entry.toString();</span>
 <span class="s">    return entry;</span>
@@ -146,53 +145,9 @@ redirect_from:
 <span class="s">@af:Function</span>
 <span class="s">public function queuePopulationTimer(</span>
 <span class="s">            @af:TimerTrigger { schedule: &quot;</span><span class="o">*/</span><span class="mi">10</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span><span class="s">&quot; } json triggerInfo, </span>
-<span class="s">            @af:QueueOutput { queueName: &quot;</span><span class="nx">queue4</span><span class="s">&quot; } af:StringOutputBinding msg) {</span>
-<span class="s">    msg.value = triggerInfo.toString();</span>
-<span class="s">}# Prerequisites: Azure CLI tools installation and configuration# Build the Ballerina program to generate the Azure Functions</span>
-<span class="s">ballerina build azure_functions_deployment.bal</span>
-<span class="s">Compiling source</span>
-<span class="s">	azure_functions_deployment.balGenerating executables</span>
-<span class="s">	azure_functions_deployment.jar</span>
-<span class="s">	@azure.functions:Function: hello, fromHttpToQueue, fromQueueToQueue, fromBlobToQueue, httpTriggerBlobInput, httpTriggerBlobOutput, sendSMS, cosmosDBToQueue1, cosmosDBToQueue2, httpTriggerCosmosDBInput1, httpTriggerCosmosDBInput2, httpTriggerCosmosDBInput3, httpTriggerCosmosDBOutput1, httpTriggerCosmosDBOutput2, httpTriggerCosmosDBOutput3, queuePopulationTimer	Run the following command to deploy Ballerina Azure Functions:</span>
-<span class="s">	az functionapp deployment source config-zip -g &lt;resource_group&gt; -n &lt;function_app_name&gt; --src azure-functions.zip# Execute the following Azure CLI command to publish the functions (replace with your respective Azure &lt;resource_group&gt; and &lt;function_app_name&gt;)</span>
-<span class="s">az functionapp deployment source config-zip -g functions1777 -n functions1777 --src  azure-functions.zip </span>
-<span class="s">Getting scm site credentials for zip deployment</span>
-<span class="s">Starting zip deployment. This operation can take a while to complete ...</span>
-<span class="s">Deployment endpoint responded with status code 202</span>
-<span class="s">{</span>
-<span class="s">  &quot;</span><span class="nx">active</span><span class="s">&quot;: true,</span>
-<span class="s">  &quot;</span><span class="nx">author</span><span class="s">&quot;: &quot;</span><span class="nx">N</span><span class="o">/</span><span class="nx">A</span><span class="s">&quot;,</span>
-<span class="s">  &quot;</span><span class="nx">author_email</span><span class="s">&quot;: &quot;</span><span class="nx">N</span><span class="o">/</span><span class="nx">A</span><span class="s">&quot;,</span>
-<span class="s">  &quot;</span><span class="nx">complete</span><span class="s">&quot;: true,</span>
-<span class="s">  &quot;</span><span class="nx">deployer</span><span class="s">&quot;: &quot;</span><span class="nx">ZipDeploy</span><span class="s">&quot;,</span>
-<span class="s">  &quot;</span><span class="nx">end_time</span><span class="s">&quot;: &quot;</span><span class="mi">2020</span><span class="o">-</span><span class="mo">07</span><span class="o">-</span><span class="mo">02</span><span class="nx">T06</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">08.7706207</span><span class="nx">Z</span><span class="s">&quot;,</span>
-<span class="s">  &quot;</span><span class="nx">id</span><span class="s">&quot;: &quot;</span><span class="mi">2</span><span class="nx">bacf185fb114d42aab762dfd5f303dc</span><span class="s">&quot;,</span>
-<span class="s">  &quot;</span><span class="nx">is_readonly</span><span class="s">&quot;: true,</span>
-<span class="s">  &quot;</span><span class="nx">is_temp</span><span class="s">&quot;: false,</span>
-<span class="s">  &quot;</span><span class="nx">last_success_end_time</span><span class="s">&quot;: &quot;</span><span class="mi">2020</span><span class="o">-</span><span class="mo">07</span><span class="o">-</span><span class="mo">02</span><span class="nx">T06</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mf">08.7706207</span><span class="nx">Z</span><span class="s">&quot;,</span>
-<span class="s">  &quot;</span><span class="nx">log_url</span><span class="s">&quot;: &quot;</span><span class="nx">https</span><span class="p">:</span><span class="c1">//functions1777.scm.azurewebsites.net/api/deployments/latest/log&quot;,</span>
-  <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Created via a push deployment&quot;</span><span class="p">,</span>
-  <span class="s">&quot;progress&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
-  <span class="s">&quot;provisioningState&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="s">&quot;received_time&quot;</span><span class="p">:</span> <span class="s">&quot;2020-07-02T06:47:56.2756472Z&quot;</span><span class="p">,</span>
-  <span class="s">&quot;site_name&quot;</span><span class="p">:</span> <span class="s">&quot;functions1777&quot;</span><span class="p">,</span>
-  <span class="s">&quot;start_time&quot;</span><span class="p">:</span> <span class="s">&quot;2020-07-02T06:47:56.7600364Z&quot;</span><span class="p">,</span>
-  <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-  <span class="s">&quot;status_text&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
-  <span class="s">&quot;url&quot;</span><span class="p">:</span> <span class="s">&quot;https://functions1777.scm.azurewebsites.net/api/deployments/latest&quot;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Invoke</span> <span class="nx">the</span> <span class="nx">functions</span> <span class="p">(</span><span class="nx">replace</span> <span class="nx">with</span> <span class="nx">your</span> <span class="p">&lt;</span><span class="nx">auth_code</span><span class="p">&gt;</span> <span class="nx">value</span> <span class="nx">in</span> <span class="nx">authenticated</span> <span class="nx">requests</span><span class="p">)</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">d</span> <span class="s">&quot;Jack&quot;</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//functions1777.azurewebsites.net/api/hello</span>
-<span class="nx">Hello</span><span class="p">,</span> <span class="nx">Jack</span><span class="p">!</span><span class="nx">curl</span> <span class="o">-</span><span class="nx">d</span> <span class="s">&quot;ABCDE&quot;</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//functions1777.azurewebsites.net/api/fromHttpToQueue?code=&lt;auth_code&gt;</span>
-<span class="nx">Request</span><span class="p">:</span> <span class="nx">url</span><span class="p">=</span><span class="nx">https</span><span class="p">:</span><span class="c1">//functions1777.azurewebsites.net/api/fromHttpToQueue... body=ABCDEcurl &quot;https://functions1777.azurewebsites.net/api/httpTriggerBlobInput?name=input.txt&amp;code=&lt;auth_code&gt;&quot;</span>
-<span class="nx">Blob</span><span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">txt</span> <span class="nx">Length</span><span class="p">:</span> <span class="mi">6</span> <span class="nx">Content</span><span class="p">:</span> <span class="mi">65</span> <span class="mi">66</span> <span class="mi">67</span> <span class="mi">68</span> <span class="mi">69</span> <span class="mi">10</span><span class="nx">curl</span> <span class="o">-</span><span class="nx">d</span> <span class="s">&quot;123456&quot;</span> <span class="s">&quot;https://functions1777.azurewebsites.net/api/httpTriggerBlobOutput?name=payload.txt&amp;code=&lt;auth_code&gt;&quot;</span>
-<span class="nx">Blob</span><span class="p">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">txt</span> <span class="nx">Content</span><span class="p">:</span> <span class="mi">123456</span><span class="nx">curl</span> <span class="o">-</span><span class="nx">d</span> <span class="s">&quot;Hello!&quot;</span> <span class="s">&quot;https://functions1777.azurewebsites.net/api/sendSMS?to=xxxxxxxxxx&amp;code=&lt;auth_code&gt;&quot;</span>
-<span class="nx">Message</span> <span class="o">-</span> <span class="nx">to</span><span class="p">:</span> <span class="nx">xxxxxxxxxx</span> <span class="nx">body</span><span class="p">:</span> <span class="nx">Hello</span><span class="p">!</span><span class="nx">curl</span> <span class="s">&quot;https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBInput1?id=id1&amp;code=&lt;auth_code&gt;&quot;</span>
-<span class="nx">id</span><span class="p">=</span><span class="nx">id1</span> <span class="nx">_rid</span><span class="p">=</span><span class="nx">zEkwANYTRPoFAAAAAAAAAA</span><span class="o">==</span> <span class="nx">_self</span><span class="p">=</span><span class="nx">dbs</span><span class="o">/</span><span class="nx">zEkwAA</span><span class="o">==/</span><span class="nx">colls</span><span class="o">/</span><span class="nx">zEkwANYTRPo</span><span class="p">=</span><span class="o">/</span><span class="nx">docs</span><span class="o">/</span><span class="nx">zEkwANYTRPoFAAAAAAAAAA</span><span class="o">==/</span> <span class="nx">_ts</span><span class="p">=</span><span class="mi">1591201470</span> <span class="nx">_etag</span><span class="p">=</span><span class="s">&quot;10009f6c-0000-0100-0000-5ed7cebe0000&quot;</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Tom</span> <span class="nx">birthYear</span><span class="p">=</span><span class="mi">1950</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span> <span class="nx">pk</span><span class="p">=</span><span class="nx">p1curl</span> <span class="s">&quot;https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBInput2?id=id1&amp;code=&lt;auth_code&gt;&quot;</span>
-<span class="nx">id</span><span class="p">=</span><span class="nx">id1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Tom</span> <span class="nx">birthYear</span><span class="p">=</span><span class="mi">1950</span> <span class="nx">_rid</span><span class="p">=</span><span class="nx">zEkwANYTRPoFAAAAAAAAAA</span><span class="o">==</span> <span class="nx">_self</span><span class="p">=</span><span class="nx">dbs</span><span class="o">/</span><span class="nx">zEkwAA</span><span class="o">==/</span><span class="nx">colls</span><span class="o">/</span><span class="nx">zEkwANYTRPo</span><span class="p">=</span><span class="o">/</span><span class="nx">docs</span><span class="o">/</span><span class="nx">zEkwANYTRPoFAAAAAAAAAA</span><span class="o">==/</span> <span class="nx">_ts</span><span class="p">=</span><span class="mi">1591201470</span> <span class="nx">_etag</span><span class="p">=</span><span class="s">&quot;10009f6c-0000-0100-0000-5ed7cebe0000&quot;</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span> <span class="nx">pk</span><span class="p">=</span><span class="nx">p1curl</span> <span class="s">&quot;https://functions1777.azurewebsites.net/api/c1/Sri%20Lanka?code=&lt;auth_code&gt;&quot;</span>
-<span class="nx">id</span><span class="p">=</span><span class="nx">id3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Jack</span> <span class="nx">X</span> <span class="nx">birthYear</span><span class="p">=</span><span class="mi">1950</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span> <span class="nx">pk</span><span class="p">=</span><span class="nx">p1</span> <span class="nx">_rid</span><span class="p">=</span><span class="nx">zEkwANYTRPoEAAAAAAAAAA</span><span class="o">==</span> <span class="nx">_self</span><span class="p">=</span><span class="nx">dbs</span><span class="o">/</span><span class="nx">zEkwAA</span><span class="o">==/</span><span class="nx">colls</span><span class="o">/</span><span class="nx">zEkwANYTRPo</span><span class="p">=</span><span class="o">/</span><span class="nx">docs</span><span class="o">/</span><span class="nx">zEkwANYTRPoEAAAAAAAAAA</span><span class="o">==/</span> <span class="nx">_etag</span><span class="p">=</span><span class="s">&quot;1000076b-0000-0100-0000-5ed7cc110000&quot;</span> <span class="nx">_attachments</span><span class="p">=</span><span class="nx">attachments</span><span class="o">/</span> <span class="nx">_ts</span><span class="p">=</span><span class="mi">1591200785</span> <span class="nx">id</span><span class="p">=</span><span class="nx">id4</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Tom</span> <span class="nx">birthYear</span><span class="p">=</span><span class="mi">1950</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span> <span class="nx">pk</span><span class="p">=</span><span class="nx">p1</span> <span class="nx">_rid</span><span class="p">=</span><span class="nx">zEkwANYTRPoFAAAAAAAAAA</span><span class="o">==</span> <span class="nx">_self</span><span class="p">=</span><span class="nx">dbs</span><span class="o">/</span><span class="nx">zEkwAA</span><span class="o">==/</span><span class="nx">colls</span><span class="o">/</span><span class="nx">zEkwANYTRPo</span><span class="p">=</span><span class="o">/</span><span class="nx">docs</span><span class="o">/</span><span class="nx">zEkwANYTRPoFAAAAAAAAAA</span><span class="o">==/</span> <span class="nx">_etag</span><span class="p">=</span><span class="s">&quot;10009f6c-0000-0100-0000-5ed7cebe0000&quot;</span> <span class="nx">_attachments</span><span class="p">=</span><span class="nx">attachments</span><span class="o">/</span> <span class="nx">_ts</span><span class="p">=</span><span class="mi">1591201470</span><span class="nx">curl</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//functions1777.azurewebsites.net/api/httpTriggerCosmosDBOutput1?code=&lt;auth_code&gt;</span>
-<span class="nx">Adding</span> <span class="nx">entry</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="nx">abf42517</span><span class="o">-</span><span class="mi">53</span><span class="nx">d7</span><span class="o">-</span><span class="mi">4</span><span class="nx">fa3</span><span class="o">-</span><span class="nx">a30c</span><span class="o">-</span><span class="mi">87</span><span class="nx">cb65e9597d</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">birthYear</span><span class="p">=</span><span class="mi">1980</span><span class="nx">curl</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//functions1777.azurewebsites.net/api/httpTriggerCosmosDBOutput2?code=&lt;auth_code&gt;</span>
-<span class="nx">Adding</span> <span class="nx">entries</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="nx">f510e0d2</span><span class="o">-</span><span class="mi">5341</span><span class="o">-</span><span class="mi">4901</span><span class="o">-</span><span class="mi">8</span><span class="nx">c12</span><span class="o">-</span><span class="mi">9</span><span class="nx">aac1b212378</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">A</span> <span class="nx">birthYear</span><span class="p">=</span><span class="mi">1985</span> <span class="nx">id</span><span class="p">=</span><span class="nx">cc145a0f</span><span class="o">-</span><span class="nx">cb4f</span><span class="o">-</span><span class="mi">4</span><span class="nx">a5f</span><span class="o">-</span><span class="mi">8</span><span class="nx">d0f</span><span class="o">-</span><span class="nx">fbf01209aa2d</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">B</span> <span class="nx">birthYear</span><span class="p">=</span><span class="mi">1990</span><span class="nx">curl</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//functions1777.azurewebsites.net/api/httpTriggerCosmosDBOutput3?code=&lt;auth_code&gt;</span>
-<span class="p">[{</span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;4ba53cb4-47a1-4028-af7b-2515f0a9c6bf&quot;</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Jack&quot;</span><span class="p">,</span><span class="s">&quot;birthYear&quot;</span><span class="p">:</span><span class="mi">2001</span><span class="p">},{</span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="s">&quot;5b8a6697-c9e9-488d-91b3-3942574efeef&quot;</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Will&quot;</span><span class="p">,</span><span class="s">&quot;birthYear&quot;</span><span class="p">:</span><span class="mi">2005</span><span class="p">}]</span>
+<span class="s">            @af:QueueOutput { queueName: &quot;</span><span class="nx">queue4</span><span class="err">&quot;</span> <span class="p">}</span> <span class="nx">af</span><span class="p">:</span><span class="nx">StringOutputBinding</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="nx">value</span> <span class="p">=</span> <span class="nx">triggerInfo</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -243,6 +198,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/module-ballerinax-azure.functions/tree/master/azurefunctions-extension-examples/examples/azure-functions-deployment"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -303,8 +259,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/system;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/system;
 import ballerinax/azure.functions as af;
 </code></pre></div>
 
@@ -318,9 +273,9 @@ import ballerinax/azure.functions as af;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
-public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } http:Request req) 
+public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } string payload) 
                       returns @af:HTTPOutput string|error {
-    return &quot;Hello, &quot; + check &lt;@untainted&gt; req.getTextPayload() + &quot;!&quot;;
+    return &quot;Hello, &quot; + payload + &quot;!&quot;;
 }
 </code></pre></div>
 
@@ -631,7 +586,7 @@ public function httpTriggerCosmosDBInput3(
 public function httpTriggerCosmosDBOutput1(
     @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
     returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
+                                 databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
     json entry = { id: system:uuid(), name: &quot;Saman&quot;, country: &quot;Sri Lanka&quot; };
     hb.payload = &quot;Adding entry: &quot; + entry.toString();
     return entry;
@@ -1048,7 +1003,7 @@ Adding entries: id=f510e0d2-5341-4901-8c12-9aac1b212378 name=John Doe A birthYea
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

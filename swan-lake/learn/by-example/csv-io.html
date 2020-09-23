@@ -104,24 +104,7 @@ redirect_from:
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">csv_io</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Start</span> <span class="nx">processing</span> <span class="nx">the</span> <span class="nx">CSV</span> <span class="nx">file</span> <span class="nx">from</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sample</span><span class="p">.</span><span class="nx">csv</span>
-<span class="mi">1</span> <span class="nx">James</span> <span class="mi">10000</span>
-<span class="mi">2</span> <span class="nx">Nathan</span> <span class="mi">150000</span>
-<span class="mi">3</span> <span class="nx">Ronald</span> <span class="mi">120000</span>
-<span class="mi">4</span> <span class="nx">Roy</span> <span class="mi">6000</span>
-<span class="mi">5</span> <span class="nx">Oliver</span> <span class="mi">1100000</span>
-<span class="nx">Processing</span> <span class="nx">completed</span><span class="p">.</span>
-<span class="nx">Reading</span>  <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sample</span><span class="p">.</span><span class="nx">csv</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">table</span>
-<span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">James</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">10000.0</span>
-<span class="nx">id</span><span class="p">=</span><span class="mi">2</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Nathan</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">150000.0</span>
-<span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Ronald</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">120000.0</span>
-<span class="nx">id</span><span class="p">=</span><span class="mi">4</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Roy</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">6000.0</span>
-<span class="nx">id</span><span class="p">=</span><span class="mi">5</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Oliver</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">1100000.0</span>
-<span class="nx">Creating</span> <span class="nx">a</span> <span class="nx">table</span> <span class="nx">and</span> <span class="nx">adding</span> <span class="nx">data</span>
-<span class="nx">Writing</span> <span class="nx">the</span> <span class="nx">table</span> <span class="nx">to</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">output</span><span class="p">.</span><span class="nx">csv</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -172,6 +155,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/csv-io/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -640,18 +624,18 @@ import ballerina/log;
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run csv_io.bal
 Start processing the CSV file from ./files/sample.csv
-1 James 10000
-2 Nathan 150000
-3 Ronald 120000
-4 Roy 6000
-5 Oliver 1100000
+[&quot;1&quot;,&quot;James&quot;,&quot;10000&quot;]
+[&quot;2&quot;,&quot;Nathan&quot;,&quot;150000&quot;]
+[&quot;3&quot;,&quot;Ronald&quot;,&quot;120000&quot;]
+[&quot;4&quot;,&quot;Roy&quot;,&quot;6000&quot;]
+[&quot;5&quot;,&quot;Oliver&quot;,&quot;1100000&quot;]
 Processing completed.
 Reading  ./files/sample.csv as a table
-id=1 name=James salary=10000.0
-id=2 name=Nathan salary=150000.0
-id=3 name=Ronald salary=120000.0
-id=4 name=Roy salary=6000.0
-id=5 name=Oliver salary=1100000.0
+{&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;James&quot;,&quot;salary&quot;:10000.0}
+{&quot;id&quot;:&quot;2&quot;,&quot;name&quot;:&quot;Nathan&quot;,&quot;salary&quot;:150000.0}
+{&quot;id&quot;:&quot;3&quot;,&quot;name&quot;:&quot;Ronald&quot;,&quot;salary&quot;:120000.0}
+{&quot;id&quot;:&quot;4&quot;,&quot;name&quot;:&quot;Roy&quot;,&quot;salary&quot;:6000.0}
+{&quot;id&quot;:&quot;5&quot;,&quot;name&quot;:&quot;Oliver&quot;,&quot;salary&quot;:1100000.0}
 Creating a table and adding data
 Writing the table to ./files/output.csv
 </code></pre></div>
@@ -681,7 +665,7 @@ Writing the table to ./files/output.csv
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

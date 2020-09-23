@@ -38,50 +38,34 @@ redirect_from:
 <span class="s">                &lt;/samples&gt;`</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">getXsl</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kt">xml</span> <span class="s">`&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</span>
-<span class="s">                    &lt;xsl:template match=&quot;/&quot;&gt;</span>
-<span class="s">                        &lt;html&gt;</span>
-<span class="s">                            &lt;body&gt;</span>
-<span class="s">                                &lt;h2&gt;All time favourites&lt;/h2&gt;</span>
-<span class="s">                                &lt;table border=&quot;1&quot;&gt;</span>
-<span class="s">                                    &lt;tr bgcolor=&quot;#9acd33&quot;&gt;</span>
-<span class="s">                                        &lt;th&gt;Title&lt;/th&gt;</span>
-<span class="s">                                        &lt;th&gt;Artist&lt;/th&gt;</span>
-<span class="s">                                    &lt;/tr&gt;</span>
-<span class="s">                                &lt;xsl:for-each select=&quot;samples/song&quot;&gt;</span>
-<span class="s">                                    &lt;tr&gt;</span>
-<span class="s">                                        &lt;td&gt;</span>
-<span class="s">                                            &lt;xsl:value-of select=&quot;title&quot;/&gt;</span>
-<span class="s">                                        &lt;/td&gt;</span>
-<span class="s">                                        &lt;td&gt;</span>
-<span class="s">                                            &lt;xsl:value-of select=&quot;artist&quot;/&gt;</span>
-<span class="s">                                        &lt;/td&gt;</span>
-<span class="s">                                    &lt;/tr&gt;</span>
-<span class="s">                                &lt;/xsl:for-each&gt;</span>
-<span class="s">                                &lt;/table&gt;</span>
-<span class="s">                            &lt;/body&gt;</span>
-<span class="s">                        &lt;/html&gt;</span>
-<span class="s">                    &lt;/xsl:template&gt;</span>
-<span class="s">                &lt;/xsl:stylesheet&gt;`</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">xslt_transformation</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Transformed</span> <span class="kt">xml</span> <span class="p">:</span> <span class="p">&lt;</span><span class="nx">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">h2</span><span class="p">&gt;</span><span class="nx">All</span> <span class="nx">time</span> <span class="nx">favourites</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">h2</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">table</span> <span class="nx">border</span><span class="p">=</span><span class="s">&quot;1&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">tr</span> <span class="nx">bgcolor</span><span class="p">=</span><span class="s">&quot;#9acd33&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">th</span><span class="p">&gt;</span><span class="nx">Title</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">th</span><span class="p">&gt;&lt;</span><span class="nx">th</span><span class="p">&gt;</span><span class="nx">Artist</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">th</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="o">/</span><span class="nx">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">td</span><span class="p">&gt;</span><span class="nx">Summer</span> <span class="nx">of</span> <span class="mi">69</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">td</span><span class="p">&gt;&lt;</span><span class="nx">td</span><span class="p">&gt;</span><span class="nx">Bryan</span> <span class="nx">Adams</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">td</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="o">/</span><span class="nx">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nx">td</span><span class="p">&gt;</span><span class="nx">Zombie</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">td</span><span class="p">&gt;&lt;</span><span class="nx">td</span><span class="p">&gt;</span><span class="nx">Bad</span> <span class="nx">Wolves</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">td</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="o">/</span><span class="nx">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="o">/</span><span class="nx">table</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="o">/</span><span class="nx">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="o">/</span><span class="nx">html</span><span class="p">&gt;</span>
+    <span class="k">return</span> <span class="kt">xml</span>
+        <span class="s">`&lt;xsl:stylesheet version=&quot;1.0&quot;</span>
+<span class="s">                        xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</span>
+<span class="s">            &lt;xsl:template match=&quot;/&quot;&gt;</span>
+<span class="s">                &lt;html&gt;</span>
+<span class="s">                    &lt;body&gt;</span>
+<span class="s">                        &lt;h2&gt;All time favourites&lt;/h2&gt;</span>
+<span class="s">                        &lt;table border=&quot;1&quot;&gt;</span>
+<span class="s">                            &lt;tr bgcolor=&quot;#9acd33&quot;&gt;</span>
+<span class="s">                                &lt;th&gt;Title&lt;/th&gt;</span>
+<span class="s">                                &lt;th&gt;Artist&lt;/th&gt;</span>
+<span class="s">                            &lt;/tr&gt;</span>
+<span class="s">                        &lt;xsl:for-each select=&quot;samples/song&quot;&gt;</span>
+<span class="s">                            &lt;tr&gt;</span>
+<span class="s">                                &lt;td&gt;</span>
+<span class="s">                                    &lt;xsl:value-of select=&quot;title&quot;/&gt;</span>
+<span class="s">                                &lt;/td&gt;</span>
+<span class="s">                                &lt;td&gt;</span>
+<span class="s">                                    &lt;xsl:value-of select=&quot;artist&quot;/&gt;</span>
+<span class="s">                                &lt;/td&gt;</span>
+<span class="s">                            &lt;/tr&gt;</span>
+<span class="s">                        &lt;/xsl:for-each&gt;</span>
+<span class="s">                        &lt;/table&gt;</span>
+<span class="s">                    &lt;/body&gt;</span>
+<span class="s">                &lt;/html&gt;</span>
+<span class="s">            &lt;/xsl:template&gt;</span>
+<span class="s">        &lt;/xsl:stylesheet&gt;`</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -132,6 +116,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xslt-transformation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -293,31 +278,33 @@ import ballerina/xslt;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function getXsl() returns xml {
-    return xml `&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
-                    &lt;xsl:template match=&quot;/&quot;&gt;
-                        &lt;html&gt;
-                            &lt;body&gt;
-                                &lt;h2&gt;All time favourites&lt;/h2&gt;
-                                &lt;table border=&quot;1&quot;&gt;
-                                    &lt;tr bgcolor=&quot;#9acd33&quot;&gt;
-                                        &lt;th&gt;Title&lt;/th&gt;
-                                        &lt;th&gt;Artist&lt;/th&gt;
-                                    &lt;/tr&gt;
-                                &lt;xsl:for-each select=&quot;samples/song&quot;&gt;
-                                    &lt;tr&gt;
-                                        &lt;td&gt;
-                                            &lt;xsl:value-of select=&quot;title&quot;/&gt;
-                                        &lt;/td&gt;
-                                        &lt;td&gt;
-                                            &lt;xsl:value-of select=&quot;artist&quot;/&gt;
-                                        &lt;/td&gt;
-                                    &lt;/tr&gt;
-                                &lt;/xsl:for-each&gt;
-                                &lt;/table&gt;
-                            &lt;/body&gt;
-                        &lt;/html&gt;
-                    &lt;/xsl:template&gt;
-                &lt;/xsl:stylesheet&gt;`;
+    return xml
+        `&lt;xsl:stylesheet version=&quot;1.0&quot;
+                        xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
+            &lt;xsl:template match=&quot;/&quot;&gt;
+                &lt;html&gt;
+                    &lt;body&gt;
+                        &lt;h2&gt;All time favourites&lt;/h2&gt;
+                        &lt;table border=&quot;1&quot;&gt;
+                            &lt;tr bgcolor=&quot;#9acd33&quot;&gt;
+                                &lt;th&gt;Title&lt;/th&gt;
+                                &lt;th&gt;Artist&lt;/th&gt;
+                            &lt;/tr&gt;
+                        &lt;xsl:for-each select=&quot;samples/song&quot;&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt;
+                                    &lt;xsl:value-of select=&quot;title&quot;/&gt;
+                                &lt;/td&gt;
+                                &lt;td&gt;
+                                    &lt;xsl:value-of select=&quot;artist&quot;/&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/xsl:for-each&gt;
+                        &lt;/table&gt;
+                    &lt;/body&gt;
+                &lt;/html&gt;
+            &lt;/xsl:template&gt;
+        &lt;/xsl:stylesheet&gt;`;
 }
 </code></pre></div>
 
@@ -396,7 +383,7 @@ Transformed xml : &lt;html&gt;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

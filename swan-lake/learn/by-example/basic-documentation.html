@@ -20,7 +20,7 @@ redirect_from:
 <span class="err">#</span>
 <span class="err">#</span> <span class="o">+</span> <span class="nx">fieldOne</span> <span class="o">-</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">description</span> <span class="nx">of</span> <span class="nx">the</span> <span class="s">`DummyObject`</span><span class="err">&#39;</span><span class="nx">s</span> <span class="s">`fieldOne`</span> <span class="nx">field</span><span class="p">.</span>
 <span class="err">#</span> <span class="o">+</span> <span class="nx">fieldTwo</span> <span class="o">-</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">description</span> <span class="nx">of</span> <span class="nx">the</span> <span class="s">`DummyObject`</span><span class="err">&#39;</span><span class="nx">s</span> <span class="s">`fieldTwo`</span> <span class="nx">field</span><span class="p">.</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">DummyObject</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">fieldOne</span><span class="p">;</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">DummyObject</span> <span class="nx">object</span> <span class="p">{</span>    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">fieldOne</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">fieldTwo</span><span class="p">;</span>
     <span class="err">#</span> <span class="nx">The</span> <span class="s">`doThatOnObject`</span> <span class="kd">function</span> <span class="nx">is</span> <span class="nx">attached</span> <span class="nx">to</span> <span class="nx">the</span> <span class="s">`DummyObject`</span> <span class="nx">object</span><span class="p">.</span>
     <span class="err">#</span>
@@ -46,10 +46,7 @@ redirect_from:
 <span class="err">#</span> <span class="o">+</span> <span class="k">return</span> <span class="o">-</span> <span class="nx">The</span> <span class="s">`fieldTwo`</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">record</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="k">as</span> <span class="nx">an</span> <span class="nx">argument</span><span class="p">.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">dummyFunction</span><span class="p">(</span><span class="nx">DummyRecord</span> <span class="nx">recordValue</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">recordValue</span><span class="p">.</span><span class="nx">fieldTwo</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">basic_documentation</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Documentation</span> <span class="nx">attachments</span> <span class="nx">are</span> <span class="nx">non</span> <span class="nx">executable</span> <span class="nx">constructs</span><span class="p">.</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -100,6 +97,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/basic-documentation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -171,7 +169,7 @@ redirect_from:
 #
 # + fieldOne - This is the description of the `DummyObject`&#39;s `fieldOne` field.
 # + fieldTwo - This is the description of the `DummyObject`&#39;s `fieldTwo` field.
-public type DummyObject abstract object {
+public type DummyObject object {
 </code></pre></div>
 
                                 </td>
@@ -326,7 +324,7 @@ Documentation attachments are non executable constructs.
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

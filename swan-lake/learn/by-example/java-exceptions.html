@@ -14,13 +14,13 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">loadClass</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">className</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span><span class="p">|</span><span class="nx">error</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;forName&quot;</span><span class="p">,</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.Class&quot;</span>
+    <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.Class&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">newArrayDeque</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
+    <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">e</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
+    <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">classOrError</span> <span class="p">=</span> <span class="nx">loadClass</span><span class="p">(</span><span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;a.b.c.z.SomeClass&quot;</span><span class="p">));</span>
     <span class="k">if</span> <span class="nx">classOrError</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
@@ -31,11 +31,7 @@ redirect_from:
     <span class="k">if</span> <span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">java</span><span class="o">-</span><span class="nx">exceptions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">error</span> <span class="nx">java</span><span class="p">.</span><span class="nx">lang</span><span class="p">.</span><span class="nx">ClassNotFoundException</span> <span class="kt">message</span><span class="p">=</span><span class="nx">a</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nx">c</span><span class="p">.</span><span class="nx">z</span><span class="p">.</span><span class="nx">SomeClass</span>
-<span class="nx">error</span> <span class="nx">java</span><span class="p">.</span><span class="nx">lang</span><span class="p">.</span><span class="nx">NullPointerException</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -93,6 +89,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/java-exceptions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -146,7 +143,7 @@ import ballerina/java;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function loadClass(handle className) returns handle|error = @java:Method {
     name: &quot;forName&quot;,
-    class: &quot;java.lang.Class&quot;
+    &#39;class: &quot;java.lang.Class&quot;
 } external;
 </code></pre></div>
 
@@ -169,7 +166,7 @@ import ballerina/java;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function newArrayDeque() returns handle = @java:Constructor {
-    class: &quot;java.util.ArrayDeque&quot;
+    &#39;class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
 
@@ -191,7 +188,7 @@ import ballerina/java;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function offer(handle receiver, handle e) returns boolean = @java:Method {
-    class: &quot;java.util.ArrayDeque&quot;
+    &#39;class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
 
@@ -286,8 +283,8 @@ import ballerina/java;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run java-exceptions.bal
-error java.lang.ClassNotFoundException message=a.b.c.z.SomeClass
-error java.lang.NullPointerException
+error(&quot;java.lang.ClassNotFoundException&quot;,message=&quot;a.b.c.z.SomeClass&quot;)
+error(&quot;java.lang.NullPointerException&quot;)
 </code></pre></div>
 
                                 </td>
@@ -315,7 +312,7 @@ error java.lang.NullPointerException
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

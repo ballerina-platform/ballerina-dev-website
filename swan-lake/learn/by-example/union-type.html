@@ -33,12 +33,7 @@ redirect_from:
 <span class="p">};</span><span class="nx">type</span> <span class="nx">PersonTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span><span class="nx">PersonTable</span> <span class="nx">personTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
     <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;77 Grove St. Deland, FL 32720&quot;</span><span class="p">},</span>
     <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Bella&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;43 Kirkland Ave. North Attleboro, MA 02760&quot;</span><span class="p">},</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;50 Bridgeton Lane Tuckerton, NJ 08087&quot;</span><span class="p">}</span> <span class="p">];</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">union_type</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">address</span><span class="p">=</span><span class="mi">50</span> <span class="nx">Bridgeton</span> <span class="nx">Lane</span> <span class="nx">Tuckerton</span><span class="p">,</span> <span class="nx">NJ</span> <span class="mi">08087</span>
-<span class="nx">error</span> <span class="nx">id</span> <span class="err">&#39;</span><span class="nx">Jack</span><span class="err">&#39;</span> <span class="nx">not</span> <span class="nx">found</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Bella</span> <span class="nx">address</span><span class="p">=</span><span class="mi">43</span> <span class="nx">Kirkland</span> <span class="nx">Ave</span><span class="p">.</span> <span class="nx">North</span> <span class="nx">Attleboro</span><span class="p">,</span> <span class="nx">MA</span> <span class="mo">02760</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;50 Bridgeton Lane Tuckerton, NJ 08087&quot;</span><span class="p">}</span> <span class="p">];</span>
 </pre></div>
 
             </div>
@@ -90,6 +85,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/union-type/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -343,9 +339,9 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run union_type.bal
-name=Peter address=50 Bridgeton Lane Tuckerton, NJ 08087
-error id &#39;Jack&#39; not found
-name=Bella address=43 Kirkland Ave. North Attleboro, MA 02760
+{&quot;name&quot;:&quot;Peter&quot;,&quot;address&quot;:&quot;50 Bridgeton Lane Tuckerton, NJ 08087&quot;}
+error(&quot;id &#39;Jack&#39; not found&quot;)
+{&quot;name&quot;:&quot;Bella&quot;,&quot;address&quot;:&quot;43 Kirkland Ave. North Attleboro, MA 02760&quot;}
 </code></pre></div>
 
                                 </td>
@@ -373,7 +369,7 @@ name=Bella address=43 Kirkland Ave. North Attleboro, MA 02760
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

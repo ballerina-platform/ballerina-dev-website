@@ -11,12 +11,12 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+<span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="nx">private</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">validateAge</span><span class="p">(</span><span class="nx">age</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">validateAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">validateAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">age</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">age</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">age</span><span class="p">;</span>
     <span class="p">}</span>    <span class="nx">error</span> <span class="nx">invalidAge</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;The age should be between 0-100&quot;</span><span class="p">);</span>
@@ -34,11 +34,7 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">object_initializer</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">John</span>
-<span class="nx">The</span> <span class="nx">age</span> <span class="nx">should</span> <span class="nx">be</span> <span class="nx">between</span> <span class="mi">0</span><span class="o">-</span><span class="mi">100</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -48,10 +44,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Object Initializer</h2>
-                            <p><p>In Ballerina, objects can have a method named <code>__init()</code>, which is used to initialize the object when creating a
- new object. This method can have parameters as in any other method. However, the return type of the <code>__init()</code> method
- should be a subtype of <code>error|()</code>, which includes <code>()</code>. If an explicit definition for the <code>__init()</code> method
- is not specified, there will be an implicit <code>__init()</code> method, which does not accept any parameters and returns <code>()</code>.</p>
+                            <p><p>In Ballerina, objects can have a method named <code>init()</code>, which is used to initialize the object when creating a
+ new object. This method can have parameters as in any other method. However, the return type of the <code>init()</code> method
+ should be a subtype of <code>error|()</code>, which includes <code>()</code>. If an explicit definition for the <code>init()</code> method
+ is not specified, there will be an implicit <code>init()</code> method, which does not accept any parameters and returns <code>()</code>.</p>
 </p>
 
                         </td>
@@ -59,9 +55,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="objects.html">
+                                    <a class="prev" href="class-definition.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Object</p>
+                                        <p>Class Definitions</p>
                                     </a>
                                 </div>
                                  
@@ -90,6 +86,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-initializer/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -144,7 +141,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Person object {
+                                    <div class="highlight"><pre><code class=language-ballerina>class Person {
 </code></pre></div>
 
                                 </td>
@@ -152,9 +149,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines an object called <code>Person</code>. Each object has its own <code>init()</code> method, which gets
+                                            <p>Defines a class called <code>Person</code>. Each class has its own <code>init()</code> method, which gets
  invoked when creating the objects. You can place the logic for initializing the fields of the
- object within the body of the <code>init()</code> method.</p>
+ class within the body of the <code>init()</code> method.</p>
 
                                         </div>
                                     </div>
@@ -182,7 +179,7 @@ redirect_from:
         self.name = name;
         self.age = check validateAge(age);
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -330,7 +327,7 @@ The age should be between 0-100
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

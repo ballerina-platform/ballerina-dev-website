@@ -12,7 +12,8 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.&#39;xml as xmllib;xmlns &quot;http://ballerina.com/aa&quot; as ns0;public function main()</span> <span class="p">{</span>
-    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">x1</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="kt">xml</span> <span class="s">`&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`</span><span class="p">;</span>
+    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">x1</span> <span class="p">=</span>
+            <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="kt">xml</span> <span class="s">`&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">.</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">status</span><span class="p">);</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">count</span> <span class="p">=</span> <span class="nx">x1</span><span class="p">.</span><span class="nx">count</span><span class="p">;</span>
@@ -25,16 +26,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
     <span class="nx">attributeMap</span><span class="p">[</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">status</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Not Available&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">.</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">status</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">xml_attributes</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">&lt;</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">book</span> <span class="nx">xmlns</span><span class="p">:</span><span class="nx">ns0</span><span class="p">=</span><span class="s">&quot;http://ballerina.com/aa&quot;</span> <span class="nx">ns0</span><span class="p">:</span><span class="nx">status</span><span class="p">=</span><span class="s">&quot;available&quot;</span> <span class="nx">count</span><span class="p">=</span><span class="s">&quot;5&quot;</span><span class="o">/</span><span class="p">&gt;</span>
-<span class="nx">available</span>
-<span class="mi">5</span>
-<span class="kc">true</span>
-<span class="p">{</span><span class="nx">http</span><span class="p">:</span><span class="c1">//www.w3.org/2000/xmlns/}ns0=http://ballerina.com/aa {http://ballerina.com/aa}status=available count=5</span>
-<span class="nx">available</span>
-<span class="nx">Not</span> <span class="nx">Available</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -89,6 +81,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml-attributes/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -170,7 +163,8 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xmllib:Element x1 = &lt;xmllib:Element&gt; xml `&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    xmllib:Element x1 =
+            &lt;xmllib:Element&gt; xml `&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`;
     io:println(x1);
 </code></pre></div>
 
@@ -330,7 +324,7 @@ ballerina run xml_attributes.bal
 available
 5
 true
-{http://www.w3.org/2000/xmlns/}ns0=http://ballerina.com/aa {http://ballerina.com/aa}status=available count=5
+{&quot;{http://www.w3.org/2000/xmlns/}ns0&quot;:&quot;http://ballerina.com/aa&quot;,&quot;{http://ballerina.com/aa}status&quot;:&quot;available&quot;,&quot;count&quot;:&quot;5&quot;}
 available
 Not Available
 </code></pre></div>
@@ -360,7 +354,7 @@ Not Available
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

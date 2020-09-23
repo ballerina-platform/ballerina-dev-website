@@ -11,14 +11,14 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeClients</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">mysqlClient1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">mysqlClient1</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when initializing the MySQL client without any &quot;</span> <span class="o">+</span>
-            <span class="s">&quot;params. &quot;</span><span class="p">,</span> <span class="nx">mysqlClient1</span><span class="p">);</span>
+            <span class="s">&quot;params. &quot;</span><span class="p">,</span> <span class="nx">mysqlClient1</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Simple MySQL client created successfully&quot;</span><span class="p">);</span>
         <span class="nx">check</span> <span class="nx">mysqlClient1</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
@@ -66,15 +66,7 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span>  <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_init_options</span><span class="p">.</span><span class="nx">balError</span> <span class="nx">when</span> <span class="nx">initializing</span> <span class="nx">the</span> <span class="nx">MySQL</span> <span class="nx">client</span> <span class="nx">without</span> <span class="kt">any</span> <span class="nx">params</span><span class="p">.</span> <span class="nx">error</span> <span class="nx">error</span> <span class="nx">in</span> <span class="nx">sql</span> <span class="kd">connector</span> <span class="nx">configuration</span><span class="p">:</span> <span class="nx">Failed</span> <span class="nx">to</span> <span class="nx">initialize</span> <span class="nx">pool</span><span class="p">:</span> <span class="nx">Access</span> <span class="nx">denied</span> <span class="k">for</span> <span class="nx">user</span> <span class="p">&#39;&#39;@&#39;localhost&#39; (using password: NO) Caused by :Access denied for user &#39;&#39;@&#39;localhost&#39; (</span><span class="nx">using</span> <span class="nx">password</span><span class="p">:</span> <span class="nx">NO</span><span class="p">)</span>
-<span class="nx">MySQL</span> <span class="nx">client</span> <span class="nx">with</span> <span class="nx">user</span> <span class="nx">and</span> <span class="nx">password</span> <span class="nx">created</span><span class="p">.</span>
-<span class="nx">MySQL</span> <span class="nx">client</span> <span class="nx">with</span> <span class="nx">user</span> <span class="nx">and</span> <span class="nx">password</span> <span class="nx">created</span> <span class="nx">with</span> <span class="k">default</span> <span class="nx">host</span><span class="p">.</span>
-<span class="nx">MySQL</span> <span class="nx">client</span> <span class="nx">with</span> <span class="nx">host</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">database</span> <span class="nx">and</span> <span class="nx">port</span> <span class="nx">created</span><span class="p">.</span>
-<span class="nx">MySQL</span> <span class="nx">client</span> <span class="nx">with</span> <span class="nx">database</span> <span class="nx">options</span> <span class="nx">created</span><span class="p">.</span>
-<span class="nx">MySQL</span> <span class="nx">client</span> <span class="nx">with</span> <span class="nx">connection</span> <span class="nx">pool</span> <span class="nx">created</span><span class="p">.</span>
-<span class="nx">Sample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -129,6 +121,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-init-options/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -204,8 +197,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 </code></pre></div>
 
                                 </td>
@@ -254,7 +247,7 @@ string dbPassword = &quot;Test@123&quot;;
                                     <div class="highlight"><pre><code class=language-ballerina>    mysql:Client|sql:Error mysqlClient1 = new ();
     if (mysqlClient1 is sql:Error) {
         io:println(&quot;Error when initializing the MySQL client without any &quot; +
-            &quot;params. &quot;, mysqlClient1);
+            &quot;params. &quot;, mysqlClient1.message());
     } else {
         io:println(&quot;Simple MySQL client created successfully&quot;);
         check mysqlClient1.close();
@@ -717,7 +710,7 @@ ballerina run mysql_init_options.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Error when initializing the MySQL client without any params. error error in sql connector configuration: Failed to initialize pool: Access denied for user &#39;&#39;@&#39;localhost&#39; (using password: NO) Caused by :Access denied for user &#39;&#39;@&#39;localhost&#39; (using password: NO)
+                                    <div class="highlight"><pre><code class=shell-session>Error when initializing the MySQL client without any params. Error in SQL connector configuration: Failed to initialize pool: Access denied for user &#39;&#39;@&#39;localhost&#39; (using password: NO) Caused by :Access denied for user &#39;&#39;@&#39;localhost&#39; (using password: NO)
 MySQL client with user and password created.
 MySQL client with user and password created with default host.
 MySQL client with host, user, password, database and port created.
@@ -751,7 +744,7 @@ Sample executed successfully!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

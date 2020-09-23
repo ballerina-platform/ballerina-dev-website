@@ -72,57 +72,7 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">services</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_failover</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8080</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="nx">Failover</span> <span class="nx">Service</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">cURL</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/fo</span>
-<span class="err">#</span> <span class="nx">The</span> <span class="s">`FailoverClient`</span> <span class="nx">endpoint</span> <span class="nx">is</span> <span class="nx">configured</span> <span class="nx">with</span> <span class="nx">three</span> <span class="nx">target</span> <span class="nx">services</span><span class="p">.</span><span class="nx">The</span> <span class="nx">first</span> <span class="nx">two</span> <span class="nx">targets</span> <span class="nx">are</span> <span class="nx">configured</span> <span class="nx">to</span> <span class="nx">mimic</span>
-<span class="err">#</span> <span class="nx">failure</span> <span class="nx">backends</span><span class="p">.</span> <span class="nx">If</span> <span class="nx">one</span> <span class="nx">target</span> <span class="kd">service</span> <span class="nx">goes</span> <span class="nx">down</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">failover</span> <span class="nx">client</span> <span class="nx">automatically</span> <span class="nx">calls</span> <span class="nx">the</span> <span class="nx">other</span> <span class="nx">targets</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">Once</span> <span class="nx">you</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="nx">Failover</span> <span class="nx">demo</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">Failover</span> <span class="nx">client</span> <span class="nx">fails</span> <span class="nx">over</span> <span class="nx">the</span> <span class="nx">request</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">configured</span>
-<span class="err">#</span> <span class="nx">target</span> <span class="nx">endpoints</span><span class="p">.</span> <span class="nx">In</span> <span class="nx">this</span> <span class="nx">example</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">third</span> <span class="nx">target</span> <span class="nx">is</span> <span class="nx">configured</span> <span class="nx">to</span> <span class="nx">give</span> <span class="nx">a</span> <span class="nx">successful</span> <span class="nx">response</span> <span class="nx">and</span> <span class="nx">the</span> <span class="nx">following</span>
-<span class="err">#</span> <span class="nx">response</span> <span class="nx">is</span> <span class="nx">given</span> <span class="nx">when</span> <span class="nx">the</span> <span class="nx">failover</span> <span class="nx">demo</span> <span class="kd">service</span> <span class="nx">is</span> <span class="nx">invoked</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">Server</span> <span class="nx">response</span><span class="p">:</span>
-<span class="o">*</span>   <span class="nx">Trying</span> <span class="p">::</span><span class="mf">1.</span><span class="p">..</span>
-<span class="o">*</span> <span class="nx">TCP_NODELAY</span> <span class="nx">set</span>
-<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(::</span><span class="mi">1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">fo</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.54.0</span>
-<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
-<span class="cm">&gt;</span>
-<span class="cm">&lt; HTTP/1.1 200 OK</span>
-<span class="cm">&lt; content-type: text/plain</span>
-<span class="cm">&lt; date: Wed, 4 Sep 2019 15:29:37 +0530</span>
-<span class="cm">&lt; server: ballerina/1.0.0-beta</span>
-<span class="cm">&lt; content-length: 25</span>
-<span class="cm">&lt;</span>
-<span class="cm">* Connection #0 to host localhost left intact</span>
-<span class="cm">Mock Resource is Invoked.</span>
-<span class="cm"># Invoke the Failover Service again using the cURL command below.</span>
-<span class="cm">curl -v http://localhost:9090/fo</span>
-<span class="cm"># At this point, Ballerina failover client already knows that leading endpoints (in this case the first two targets)</span>
-<span class="cm"># failed in the last invocation and it got the successful response from the third target. So the failover client</span>
-<span class="cm"># resumes the failover from the last successful target. In this case it is the third target and the client will get</span>
-<span class="cm"># the immediate response for subsequent calls.</span>
-<span class="cm"># Server response:</span>
-<span class="cm">*   Trying ::1...</span>
-<span class="cm">* TCP_NODELAY set</span>
-<span class="cm">* Connected to localhost (::1) port 9090 (#0)</span>
-<span class="cm">&gt; GET /fo HTTP/1.1</span>
-<span class="cm">&gt; Host: localhost:9090</span>
-<span class="cm">&gt; User-Agent: curl/7.54.0</span>
-<span class="cm">&gt; Accept: */</span><span class="o">*</span>
-<span class="p">&gt;</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Wed</span><span class="p">,</span> <span class="mi">4</span> <span class="nx">Sep</span> <span class="mi">2019</span> <span class="mi">15</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mo">0530</span>
-<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.0.0</span><span class="o">-</span><span class="nx">beta</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">25</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
-<span class="nx">Mock</span> <span class="nx">Resource</span> <span class="nx">is</span> <span class="nx">Invoked</span><span class="p">.</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -174,6 +124,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-failover/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -645,7 +596,7 @@ Mock Resource is Invoked.
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

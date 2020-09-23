@@ -10,7 +10,8 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">array</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">[];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span>
@@ -25,6 +26,15 @@ redirect_from:
             <span class="k">return</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
         <span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Doubled: &quot;</span><span class="p">,</span> <span class="nx">doubled</span><span class="p">);</span>
+    <span class="kt">int</span><span class="p">[]</span> <span class="nx">sortedArray</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="nx">array</span><span class="p">:</span><span class="nx">DESCENDING</span><span class="p">,</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">value</span><span class="p">)</span>
+    <span class="nx">returns</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="nx">value</span><span class="p">.</span><span class="nx">toString</span><span class="p">()];</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="nx">value</span><span class="p">.</span><span class="nx">toString</span><span class="p">()];</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sorted Array: &quot;</span><span class="p">,</span> <span class="nx">sortedArray</span><span class="p">);</span>
     <span class="nx">b</span><span class="p">[</span><span class="mi">999</span><span class="p">]</span> <span class="p">=</span> <span class="mi">23</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">999</span><span class="p">]);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
@@ -39,24 +49,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
     <span class="kt">int</span><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="nx">g</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">arrays</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">0</span>
-<span class="mi">1</span>
-<span class="mi">8</span>
-<span class="nx">Reversed</span><span class="p">:</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span>
-<span class="nx">Before</span> <span class="nx">pop</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span>
-<span class="nx">Popped</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">8</span>
-<span class="nx">After</span> <span class="nx">pop</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span>
-<span class="nx">Doubled</span><span class="p">:</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">10</span> <span class="mi">12</span> <span class="mi">14</span>
-<span class="mi">23</span>
-<span class="mi">1000</span>
-<span class="mi">3</span>
-<span class="mi">3</span>
-<span class="mi">9</span>
-<span class="mi">5</span>
-<span class="mi">4</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -109,6 +102,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/arrays/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -153,6 +147,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -162,6 +158,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/lang.array;
 </code></pre></div>
 
                                 </td>
@@ -274,6 +271,37 @@ redirect_from:
                                         <div>
                                             <p>Arrays are an iterable type and arrays support functional iteration operations such as <code>.map()</code>, <code>.filter()</code>, and
  <code>.reduce()</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int[] sortedArray = b.sort(array:DESCENDING, isolated function (int value)
+    returns string[] {
+            if (value &lt; 5) {
+                return [&quot;A&quot;,value.toString()];
+            } else {
+                return [&quot;B&quot;,value.toString()];
+            }
+        });
+    io:println(&quot;Sorted Array: &quot;, sortedArray);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An array can be sorted using <code>.sort()</code>. The <code>array:DESCENDING</code> is the <code>direction</code> in which sort should be done.
+ The default sort direction is <code>ASCENDING</code>. The <code>isolated function</code> returns a <code>string[]</code> for each
+ member, which is used as a <code>key</code> to sort the members. If the member type of the array
+ is not sorted, then the <code>key</code> function must be specified.
+ It returns an <code>array</code> consisting of the members of <code>b</code> in the sorted order.</p>
 
                                         </div>
                                     </div>
@@ -447,11 +475,12 @@ ballerina run arrays.bal
 0
 1
 8
-Reversed: 8 7 6 5 4 3 2 1
-Before pop: 1 2 3 4 5 6 7 8
+Reversed: [8,7,6,5,4,3,2,1]
+Before pop: [1,2,3,4,5,6,7,8]
 Popped value: 8
-After pop: 1 2 3 4 5 6 7
-Doubled: 2 4 6 8 10 12 14
+After pop: [1,2,3,4,5,6,7]
+Doubled: [2,4,6,8,10,12,14]
+Sorted Array: [7,6,5,4,3,2,1]
 23
 1000
 3
@@ -486,7 +515,7 @@ Doubled: 2 4 6 8 10 12 14
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -11,11 +11,11 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span>
-<span class="kt">string</span> <span class="nx">dbName</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE_EXEC&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kt">string</span> <span class="nx">dbName</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS &quot;</span> <span class="o">+</span> <span class="nx">dbName</span><span class="p">);</span>
@@ -25,10 +25,12 @@ redirect_from:
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS Customers&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Drop table executed: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS Customers&quot;</span> <span class="o">+</span>
-        <span class="s">&quot;(customerId INTEGER NOT NULL AUTO_INCREMENT, firstName VARCHAR(300), &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;lastName VARCHAR(300), registrationID INTEGER UNIQUE, &quot;</span> <span class="o">+</span> 
-        <span class="s">&quot;creditLimit DOUBLE, country VARCHAR(300), PRIMARY KEY (customerId))&quot;</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span>
+                    <span class="s">&quot;CREATE TABLE IF NOT EXISTS Customers ( &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;customerId INTEGER NOT NULL AUTO_INCREMENT, &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;firstName VARCHAR(300), lastName VARCHAR(300), &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;registrationID INTEGER UNIQUE, creditLimit DOUBLE, &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;country VARCHAR(300), PRIMARY KEY (customerId))&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Create table executed: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);}</span><span class="kd">function</span> <span class="nx">insertRecords</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">insertRecords</span> <span class="p">=</span> <span class="p">[</span>
         <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Stuart&quot;</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -43,8 +45,8 @@ redirect_from:
                 <span class="nx">select</span>  <span class="s">`INSERT INTO Customers</span>
 <span class="s">                    (firstName, lastName, registrationID, creditLimit, country)</span>
 <span class="s">                    VALUES (${data.firstName}, ${data.lastName},</span>
-<span class="s">                    ${data.registrationID}, ${data.creditLimit}, ${data.country})`</span><span class="p">;</span>
-    
+<span class="s">                            ${data.registrationID}, ${data.creditLimit},</span>
+<span class="s">                            ${data.country})`</span><span class="p">;</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">[]|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">[])</span> <span class="p">{</span>
         <span class="kt">int</span><span class="p">[]</span> <span class="nx">generatedIds</span> <span class="p">=</span> <span class="p">[];</span>
@@ -68,7 +70,8 @@ redirect_from:
                 <span class="nx">select</span>  <span class="s">`INSERT INTO Customers</span>
 <span class="s">                    (firstName, lastName, registrationID, creditLimit, country)</span>
 <span class="s">                    VALUES (${data.firstName}, ${data.lastName},</span>
-<span class="s">                    ${data.registrationID}, ${data.creditLimit}, ${data.country})`</span><span class="p">;</span>
+<span class="s">                            ${data.registrationID}, ${data.creditLimit},</span>
+<span class="s">                            ${data.country})`</span><span class="p">;</span>
     <span class="nx">transaction</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">BatchExecuteError</span><span class="p">)</span> <span class="p">{</span>
@@ -89,7 +92,8 @@ redirect_from:
                 <span class="nx">simulateBatchExecuteFailure</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
                 <span class="nx">checkData</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nSample executed successfully!&quot;</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table initialization failed: &quot;</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table initialization failed: &quot;</span><span class="p">,</span>
+                                                            <span class="nx">initResult</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Table initialization failed!!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
@@ -107,19 +111,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from Customers table failed!&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
      <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_batch_execute_operation</span><span class="p">.</span><span class="nx">balDatabase</span> <span class="nx">created</span><span class="p">.</span> 
-<span class="nx">Drop</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span>
-<span class="nx">Create</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span><span class="nx">Insert</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">generated</span> <span class="nx">IDs</span> <span class="nx">are</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="nx">Error</span> <span class="k">while</span> <span class="nx">executing</span> <span class="nx">batch</span> <span class="nx">command</span> <span class="nx">starting</span> <span class="nx">with</span><span class="p">:</span> <span class="err">&#39;</span><span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="nx">Customers</span>
-                    <span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">,</span> <span class="nx">creditLimit</span><span class="p">,</span> <span class="nx">country</span><span class="p">)</span>
-                    <span class="nx">VALUES</span> <span class="p">(</span> <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">,</span>
-                     <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">)</span><span class="err">&#39;</span><span class="p">.</span><span class="nx">Duplicate</span> <span class="nx">entry</span> <span class="sc">&#39;1&#39;</span> <span class="k">for</span> <span class="nx">key</span> <span class="err">&#39;</span><span class="nx">registrationID</span><span class="err">&#39;</span><span class="p">.</span>
-<span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="o">-</span><span class="mi">3</span> <span class="nx">lastInsertId</span><span class="p">=</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span>
-<span class="nx">Rollback</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">Data</span> <span class="nx">in</span> <span class="nx">Customers</span> <span class="nx">table</span><span class="p">:</span>
-<span class="nx">customerId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">registrationID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">country</span><span class="p">=</span><span class="nx">USA</span>
-<span class="nx">customerId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Stephanie</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Mike</span> <span class="nx">registrationID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">8000.0</span> <span class="nx">country</span><span class="p">=</span><span class="nx">USA</span>
-<span class="nx">customerId</span><span class="p">=</span><span class="mi">3</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Bill</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">John</span> <span class="nx">registrationID</span><span class="p">=</span><span class="mi">3</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">3000.25</span> <span class="nx">country</span><span class="p">=</span><span class="nx">USASample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -174,6 +166,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-batch-execute-operation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -273,8 +266,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 </code></pre></div>
 
                                 </td>
@@ -288,7 +281,7 @@ import ballerina/sql;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
 string dbPassword = &quot;Test@123&quot;;
-string dbName = &quot;MYSQL_BBE_EXEC&quot;;
+string dbName = &quot;MYSQL_BBE&quot;;
 </code></pre></div>
 
                                 </td>
@@ -428,10 +421,12 @@ returns sql:Error? {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS Customers&quot; +
-        &quot;(customerId INTEGER NOT NULL AUTO_INCREMENT, firstName VARCHAR(300), &quot; +
-        &quot;lastName VARCHAR(300), registrationID INTEGER UNIQUE, &quot; + 
-        &quot;creditLimit DOUBLE, country VARCHAR(300), PRIMARY KEY (customerId))&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(
+                    &quot;CREATE TABLE IF NOT EXISTS Customers ( &quot; +
+                    &quot;customerId INTEGER NOT NULL AUTO_INCREMENT, &quot; +
+                    &quot;firstName VARCHAR(300), lastName VARCHAR(300), &quot; +
+                    &quot;registrationID INTEGER UNIQUE, creditLimit DOUBLE, &quot; +
+                    &quot;country VARCHAR(300), PRIMARY KEY (customerId))&quot;);
     io:println(&quot;Create table executed: &quot;, result);
 </code></pre></div>
 
@@ -507,8 +502,8 @@ returns sql:Error? {
                 select  `INSERT INTO Customers
                     (firstName, lastName, registrationID, creditLimit, country)
                     VALUES (${data.firstName}, ${data.lastName},
-                    ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
-    
+                            ${data.registrationID}, ${data.creditLimit},
+                            ${data.country})`;
 </code></pre></div>
 
                                 </td>
@@ -622,7 +617,8 @@ returns sql:Error? {
                 select  `INSERT INTO Customers
                     (firstName, lastName, registrationID, creditLimit, country)
                     VALUES (${data.firstName}, ${data.lastName},
-                    ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
+                            ${data.registrationID}, ${data.creditLimit},
+                            ${data.country})`;
 </code></pre></div>
 
                                 </td>
@@ -849,7 +845,8 @@ returns sql:Error? {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                io:println(&quot;\nSample executed successfully!&quot;);
             } else {
-                io:println(&quot;Customer table initialization failed: &quot;, initResult);
+                io:println(&quot;Customer table initialization failed: &quot;,
+                                                            initResult);
             }
 </code></pre></div>
 
@@ -981,8 +978,8 @@ ballerina run mysql_batch_execute_operation.bal
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Database created. 
-Drop table executed: affectedRowCount=0 lastInsertId=
-Create table executed: affectedRowCount=0 lastInsertId=
+Drop table executed: {&quot;affectedRowCount&quot;:0,&quot;lastInsertId&quot;:null}
+Create table executed: {&quot;affectedRowCount&quot;:0,&quot;lastInsertId&quot;:null}
 </code></pre></div>
 
                                 </td>
@@ -994,7 +991,7 @@ Create table executed: affectedRowCount=0 lastInsertId=
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Insert success, generated IDs are: 1 2 3
+                                    <div class="highlight"><pre><code class=shell-session>Insert success, generated IDs are: [1,2,3]
 </code></pre></div>
 
                                 </td>
@@ -1010,7 +1007,7 @@ Create table executed: affectedRowCount=0 lastInsertId=
                     (firstName, lastName, registrationID, creditLimit, country)
                     VALUES ( ? ,  ? ,
                      ? ,  ? ,  ? )&#39;.Duplicate entry &#39;1&#39; for key &#39;registrationID&#39;.
-affectedRowCount=1 lastInsertId= affectedRowCount=-3 lastInsertId= affectedRowCount=1 lastInsertId=
+[{&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null},{&quot;affectedRowCount&quot;:-3,&quot;lastInsertId&quot;:null},{&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null}]
 Rollback transaction.
 </code></pre></div>
 
@@ -1024,9 +1021,9 @@ Rollback transaction.
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Data in Customers table:
-customerId=1 firstName=Peter lastName=Stuart registrationID=1 creditLimit=5000.75 country=USA
-customerId=2 firstName=Stephanie lastName=Mike registrationID=2 creditLimit=8000.0 country=USA
-customerId=3 firstName=Bill lastName=John registrationID=3 creditLimit=3000.25 country=USA
+{&quot;customerId&quot;:1,&quot;firstName&quot;:&quot;Peter&quot;,&quot;lastName&quot;:&quot;Stuart&quot;,&quot;registrationID&quot;:1,&quot;creditLimit&quot;:5000.75,&quot;country&quot;:&quot;USA&quot;}
+{&quot;customerId&quot;:2,&quot;firstName&quot;:&quot;Stephanie&quot;,&quot;lastName&quot;:&quot;Mike&quot;,&quot;registrationID&quot;:2,&quot;creditLimit&quot;:8000.0,&quot;country&quot;:&quot;USA&quot;}
+{&quot;customerId&quot;:3,&quot;firstName&quot;:&quot;Bill&quot;,&quot;lastName&quot;:&quot;John&quot;,&quot;registrationID&quot;:3,&quot;creditLimit&quot;:3000.25,&quot;country&quot;:&quot;USA&quot;}
 </code></pre></div>
 
                                 </td>
@@ -1066,7 +1063,7 @@ customerId=3 firstName=Bill lastName=John registrationID=3 creditLimit=3000.25 c
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

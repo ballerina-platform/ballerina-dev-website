@@ -23,16 +23,13 @@ redirect_from:
     <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Martin&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Guthrie&quot;</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.7</span> <span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">];</span>    <span class="nx">FullName</span><span class="p">[]</span> <span class="nx">nameList</span> <span class="p">=</span> <span class="p">[];</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
         <span class="nx">do</span> <span class="p">{</span>
-            <span class="nx">FullName</span> <span class="nx">fullName</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">};</span>
+            <span class="nx">FullName</span> <span class="nx">fullName</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">firstName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
+                                  <span class="nx">lastName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">};</span>
             <span class="nx">nameList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">fullName</span><span class="p">);</span>
         <span class="p">};</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">name</span> <span class="nx">in</span> <span class="nx">nameList</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_action</span><span class="p">.</span><span class="nx">balfirstName</span><span class="p">=</span><span class="nx">Michelle</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Sadler</span>
-<span class="nx">firstName</span><span class="p">=</span><span class="nx">Ranjan</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Fonseka</span>
-<span class="nx">firstName</span><span class="p">=</span><span class="nx">Martin</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Guthrie</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -83,6 +80,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/query-action/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -230,7 +228,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        do {
-            FullName fullName = { firstName: student.firstName, lastName: student.lastName };
+            FullName fullName = { firstName: student.firstName,
+                                  lastName: student.lastName };
             nameList.push(fullName);
         };
 </code></pre></div>
@@ -297,9 +296,9 @@ ballerina run query_action.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>firstName=Michelle lastName=Sadler
-firstName=Ranjan lastName=Fonseka
-firstName=Martin lastName=Guthrie
+                                    <div class="highlight"><pre><code class=shell-session>{&quot;firstName&quot;:&quot;Michelle&quot;,&quot;lastName&quot;:&quot;Sadler&quot;}
+{&quot;firstName&quot;:&quot;Ranjan&quot;,&quot;lastName&quot;:&quot;Fonseka&quot;}
+{&quot;firstName&quot;:&quot;Martin&quot;,&quot;lastName&quot;:&quot;Guthrie&quot;}
 </code></pre></div>
 
                                 </td>
@@ -327,7 +326,7 @@ firstName=Martin lastName=Guthrie
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

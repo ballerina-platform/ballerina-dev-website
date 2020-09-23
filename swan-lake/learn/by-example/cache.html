@@ -19,24 +19,20 @@ redirect_from:
         <span class="nx">defaultMaxAgeInSeconds</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
         <span class="nx">cleanupIntervalInSeconds</span><span class="p">:</span> <span class="mi">3</span>
     <span class="p">});</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s">&quot;key1&quot;</span><span class="p">,</span> <span class="s">&quot;value1&quot;</span><span class="p">);</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">,</span> <span class="s">&quot;value2&quot;</span><span class="p">,</span> <span class="mi">3600</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s">&quot;key1&quot;</span><span class="p">,</span> <span class="s">&quot;value1&quot;</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">,</span> <span class="s">&quot;value2&quot;</span><span class="p">,</span> <span class="mi">3600</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="s">&quot;key1&quot;</span><span class="p">))</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;key1&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;key1: &quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">4000</span><span class="p">);</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">keys</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;keys: [&quot;</span> <span class="o">+</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;keys: &quot;</span> <span class="o">+</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="kt">int</span> <span class="nx">size</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">size</span><span class="p">();</span>
-    <span class="kt">int</span> <span class="nx">capacity</span> <span class="p">=</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">capacity</span><span class="p">();</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidate</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;size: &quot;</span><span class="p">,</span> <span class="nx">size</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidate</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;keys: &quot;</span><span class="p">,</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidateAll</span><span class="p">();</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">key1</span><span class="p">:</span> <span class="nx">value1</span>
-<span class="nx">keys</span><span class="p">:</span> <span class="p">[</span><span class="nx">key2</span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -46,9 +42,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Cache</h2>
-                            <p><p>The <code>ballerina/cache</code> module is provides capability to extend custom cache
- storage and eviction policies while providing a in-memory storage and LRU
- eviction policy by default.<br/><br/>
+                            <p><p>The Ballerina Cache API by-default provides an in-memory cache implementation with an
+ LRU algorithm based eviction policy. The caching implementation can be customized by providing different
+ storage mechanisms and eviction policies. <br/><br/>
  For more information on the underlying module,
  see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/cache/index.html">Cache module</a>.</p>
 </p>
@@ -89,6 +85,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/cache/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -104,8 +101,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -195,7 +190,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.put(&quot;key1&quot;, &quot;value1&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check cache.put(&quot;key1&quot;, &quot;value1&quot;);
 </code></pre></div>
 
                                 </td>
@@ -214,7 +209,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check cache.put(&quot;key2&quot;, &quot;value2&quot;, 3600);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check cache.put(&quot;key2&quot;, &quot;value2&quot;, 3600);
 </code></pre></div>
 
                                 </td>
@@ -282,24 +277,8 @@ import ballerina/runtime;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This sends the current worker to the sleep mode for 4 seconds.
- No execution takes place during this period.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code empty leading">
-                                    
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>During this period, the cache entry with the key &lsquo;key1&rsquo; should be removed
+ No execution takes place during this period.
+ During this time, the cache entry with the key &lsquo;key1&rsquo; should be removed
  since the max of it is set to 2 seconds by default. However, the cache
  entry with the key &lsquo;key2&rsquo; should exist in the cache.</p>
 
@@ -313,7 +292,7 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string[] keys = cache.keys();
-    io:println(&quot;keys: [&quot; + keys.toString() + &quot;]&quot;);
+    io:println(&quot;keys: &quot; + keys.toString());
 </code></pre></div>
 
                                 </td>
@@ -333,6 +312,7 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int size = cache.size();
+    io:println(&quot;size: &quot;, size);
 </code></pre></div>
 
                                 </td>
@@ -341,25 +321,6 @@ import ballerina/runtime;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Get the size of the cache.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int capacity = cache.capacity();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Get the capacity of the cache.</p>
 
                                         </div>
                                     </div>
@@ -382,6 +343,18 @@ import ballerina/runtime;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;keys: &quot;, cache.keys());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -426,7 +399,9 @@ import ballerina/runtime;
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run cache.bal
 key1: value1
-keys: [key2]
+keys: [&quot;key2&quot;]
+size: 1
+keys: []
 </code></pre></div>
 
                                 </td>
@@ -454,7 +429,7 @@ keys: [key2]
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

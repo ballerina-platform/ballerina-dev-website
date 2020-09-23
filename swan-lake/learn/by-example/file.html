@@ -12,69 +12,53 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">file</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">filepath</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Current directory: &quot;</span> <span class="o">+</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getCurrentDirectory</span><span class="p">());</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Current directory: &quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getCurrentDirectory</span><span class="p">());</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">createDirResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createDir</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">createDirResults</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Created directory path: &quot;</span> <span class="o">+</span> <span class="nx">createDirResults</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Created directory path: &quot;</span><span class="p">,</span> <span class="nx">createDirResults</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kt">string</span> <span class="nx">dirPath</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">build</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">dirPath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">build</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">);</span>
     <span class="nx">createDirResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createDir</span><span class="p">(</span><span class="nx">dirPath</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">createDirResults</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Created nested directory path: &quot;</span> <span class="o">+</span> <span class="nx">createDirResults</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Created nested directory path: &quot;</span><span class="p">,</span> <span class="nx">createDirResults</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">createFileResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">createFile</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">createFileResults</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Created file path: &quot;</span> <span class="o">+</span> <span class="nx">createFileResults</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Created file path: &quot;</span><span class="p">,</span> <span class="nx">createFileResults</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">file</span><span class="p">:</span><span class="nx">FileInfo</span><span class="p">|</span><span class="nx">error</span> <span class="nx">fileInfoResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">getFileInfo</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">fileInfoResults</span> <span class="nx">is</span> <span class="nx">file</span><span class="p">:</span><span class="nx">FileInfo</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File name: &quot;</span> <span class="o">+</span> <span class="nx">fileInfoResults</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File size: &quot;</span> <span class="o">+</span> <span class="nx">fileInfoResults</span><span class="p">.</span><span class="nx">getSize</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is directory: &quot;</span> <span class="o">+</span> <span class="nx">fileInfoResults</span><span class="p">.</span><span class="nx">isDir</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Modified at &quot;</span> <span class="o">+</span>
-                        <span class="nx">fileInfoResults</span><span class="p">.</span><span class="nx">getLastModifiedTime</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File name: &quot;</span><span class="p">,</span> <span class="nx">fileInfoResults</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File size: &quot;</span><span class="p">,</span> <span class="nx">fileInfoResults</span><span class="p">.</span><span class="nx">getSize</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is directory: &quot;</span><span class="p">,</span> <span class="nx">fileInfoResults</span><span class="p">.</span><span class="nx">isDir</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Modified at &quot;</span><span class="p">,</span> <span class="nx">fileInfoResults</span><span class="p">.</span><span class="nx">getLastModifiedTime</span><span class="p">().</span>
+            <span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="kt">boolean</span> <span class="nx">fileExists</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">exists</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file exists: &quot;</span> <span class="o">+</span> <span class="nx">fileExists</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="kt">string</span> <span class="nx">filePath</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">build</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file exists: &quot;</span><span class="p">,</span> <span class="nx">fileExists</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="kt">string</span> <span class="nx">filePath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">build</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;bar.txt&quot;</span><span class="p">);</span>
     <span class="nx">error</span><span class="p">? copyDirResults = file:copy(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">copyDirResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file is copied to new path &quot;</span> <span class="o">+</span> <span class="nx">filePath</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file is copied to new path &quot;</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kt">string</span> <span class="nx">newFilePath</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">build</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar1.txt&quot;</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">newFilePath</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">build</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar1.txt&quot;</span><span class="p">);</span>
     <span class="nx">error</span><span class="p">? renameResults = file:rename(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">newFilePath</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">renameResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file is moved to new path &quot;</span> <span class="o">+</span> <span class="nx">newFilePath</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bar.txt file is moved to new path &quot;</span><span class="p">,</span> <span class="nx">newFilePath</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kt">string</span> <span class="nx">tempDirPath</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">tempDir</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Temporary directory: &quot;</span> <span class="o">+</span> <span class="nx">tempDirPath</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Temporary directory: &quot;</span><span class="p">,</span> <span class="nx">tempDirPath</span><span class="p">);</span>
     <span class="nx">file</span><span class="p">:</span><span class="nx">FileInfo</span><span class="p">[]|</span><span class="nx">error</span> <span class="nx">readDirResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">readDir</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
     <span class="nx">error</span><span class="p">? removeResults = file:remove(</span><span class="nx">newFilePath</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">removeResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Remove file at &quot;</span> <span class="o">+</span> <span class="nx">newFilePath</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Removed file at &quot;</span><span class="p">,</span> <span class="nx">newFilePath</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">removeResults</span> <span class="p">=</span> <span class="nx">file</span><span class="p">:</span><span class="nx">remove</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">removeResults</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Remove foo directory with all child elements.&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Removed &#39;foo&#39; directory with all the children.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">file</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Current</span> <span class="nx">directory</span><span class="p">:</span> <span class="o">/</span><span class="nx">A</span><span class="o">/</span><span class="nx">B</span>
-<span class="nx">Created</span> <span class="nx">directory</span> <span class="nx">path</span><span class="p">:</span> <span class="o">/</span><span class="nx">A</span><span class="o">/</span><span class="nx">B</span><span class="o">/</span><span class="nx">foo</span>
-<span class="nx">Created</span> <span class="nx">nested</span> <span class="nx">directory</span> <span class="nx">path</span><span class="p">:</span> <span class="o">/</span><span class="nx">A</span><span class="o">/</span><span class="nx">B</span><span class="o">/</span><span class="nx">foo</span><span class="o">/</span><span class="nx">bar</span>
-<span class="nx">Created</span> <span class="nx">file</span> <span class="nx">path</span><span class="p">:</span> <span class="o">/</span><span class="nx">A</span><span class="o">/</span><span class="nx">B</span><span class="o">/</span><span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">File</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">File</span> <span class="nx">size</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Is</span> <span class="nx">directory</span><span class="p">:</span> <span class="kc">false</span>
-<span class="nx">Modified</span> <span class="nx">at</span> <span class="nx">time</span><span class="p">=</span><span class="mi">1567597039000</span> <span class="nx">zone</span><span class="p">=</span><span class="nx">id</span><span class="p">=</span><span class="nx">Z</span> <span class="nx">offset</span><span class="p">=</span><span class="mi">0</span>
-<span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span> <span class="nx">file</span> <span class="nx">exists</span><span class="p">:</span> <span class="kc">true</span>
-<span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span> <span class="nx">file</span> <span class="nx">is</span> <span class="nx">copied</span> <span class="nx">to</span> <span class="nx">new</span> <span class="nx">path</span> <span class="nx">foo</span><span class="o">/</span><span class="nx">bar</span><span class="o">/</span><span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">bar</span><span class="p">.</span><span class="nx">txt</span> <span class="nx">file</span> <span class="nx">is</span> <span class="nx">moved</span> <span class="nx">to</span> <span class="nx">new</span> <span class="nx">path</span> <span class="nx">foo</span><span class="o">/</span><span class="nx">bar1</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">Temporary</span> <span class="nx">directory</span><span class="p">:</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nx">folders</span><span class="o">/</span><span class="mi">4</span><span class="nx">z</span><span class="o">/</span><span class="nx">xvlnvsp54ks9793d6k5_6bw40000gn</span><span class="o">/</span><span class="nx">T</span><span class="o">/</span>
-<span class="nx">Remove</span> <span class="nx">file</span> <span class="nx">at</span> <span class="nx">foo</span><span class="o">/</span><span class="nx">bar1</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">Remove</span> <span class="nx">foo</span> <span class="nx">directory</span> <span class="nx">with</span> <span class="nx">all</span> <span class="nx">child</span> <span class="nx">elements</span><span class="p">.</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -125,6 +109,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/file/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -191,7 +176,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -203,7 +188,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Current directory: &quot; + file:getCurrentDirectory());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Current directory: &quot;, file:getCurrentDirectory());
 </code></pre></div>
 
                                 </td>
@@ -224,7 +209,7 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string|error createDirResults = file:createDir(&quot;foo&quot;);
     if (createDirResults is string) {
-        io:println(&quot;Created directory path: &quot; + createDirResults);
+        io:println(&quot;Created directory path: &quot;, createDirResults);
     }
 </code></pre></div>
 
@@ -244,10 +229,10 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string dirPath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string dirPath = check filepath:build(&quot;foo&quot;, &quot;bar&quot;);
     createDirResults = file:createDir(dirPath, true);
     if (createDirResults is string) {
-        io:println(&quot;Created nested directory path: &quot; + createDirResults);
+        io:println(&quot;Created nested directory path: &quot;, createDirResults);
     }
 </code></pre></div>
 
@@ -256,7 +241,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new directory with any none-existent parents.</p>
+                                            <p>Create a new directory with any non-existent parents.</p>
 
                                         </div>
                                     </div>
@@ -269,7 +254,7 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string|error createFileResults = file:createFile(&quot;bar.txt&quot;);
     if (createFileResults is string) {
-        io:println(&quot;Created file path: &quot; + createFileResults);
+        io:println(&quot;Created file path: &quot;, createFileResults);
     }
 </code></pre></div>
 
@@ -291,11 +276,11 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    file:FileInfo|error fileInfoResults = file:getFileInfo(&quot;bar.txt&quot;);
     if (fileInfoResults is file:FileInfo) {
-        io:println(&quot;File name: &quot; + fileInfoResults.getName());
-        io:println(&quot;File size: &quot; + fileInfoResults.getSize().toString());
-        io:println(&quot;Is directory: &quot; + fileInfoResults.isDir().toString());
-        io:println(&quot;Modified at &quot; +
-                        fileInfoResults.getLastModifiedTime().toString());
+        io:println(&quot;File name: &quot;, fileInfoResults.getName());
+        io:println(&quot;File size: &quot;, fileInfoResults.getSize().toString());
+        io:println(&quot;Is directory: &quot;, fileInfoResults.isDir().toString());
+        io:println(&quot;Modified at &quot;, fileInfoResults.getLastModifiedTime().
+            toString());
     }
 </code></pre></div>
 
@@ -316,7 +301,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    boolean fileExists = file:exists(&quot;bar.txt&quot;);
-    io:println(&quot;bar.txt file exists: &quot; + fileExists.toString());
+    io:println(&quot;bar.txt file exists: &quot;, fileExists.toString());
 </code></pre></div>
 
                                 </td>
@@ -335,10 +320,10 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string filePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar&quot;, &quot;bar.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string filePath = check filepath:build(&quot;foo&quot;, &quot;bar&quot;, &quot;bar.txt&quot;);
     error? copyDirResults = file:copy(&quot;bar.txt&quot;, filePath, true);
     if (copyDirResults is ()) {
-        io:println(&quot;bar.txt file is copied to new path &quot; + filePath);
+        io:println(&quot;bar.txt file is copied to new path &quot;, filePath);
     }
 </code></pre></div>
 
@@ -358,10 +343,10 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string newFilePath = checkpanic filepath:build(&quot;foo&quot;, &quot;bar1.txt&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    string newFilePath = check filepath:build(&quot;foo&quot;, &quot;bar1.txt&quot;);
     error? renameResults = file:rename(&quot;bar.txt&quot;, newFilePath);
     if (renameResults is ()) {
-        io:println(&quot;bar.txt file is moved to new path &quot; + newFilePath);
+        io:println(&quot;bar.txt file is moved to new path &quot;, newFilePath);
     }
 </code></pre></div>
 
@@ -370,7 +355,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Rename(Move) the file or directory to the new path.</p>
+                                            <p>Rename (Move) the file or directory to the new path.</p>
 
                                         </div>
                                     </div>
@@ -382,7 +367,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string tempDirPath = file:tempDir();
-    io:println(&quot;Temporary directory: &quot; + tempDirPath);
+    io:println(&quot;Temporary directory: &quot;, tempDirPath);
 </code></pre></div>
 
                                 </td>
@@ -422,7 +407,7 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    error? removeResults = file:remove(newFilePath);
     if (removeResults is ()) {
-        io:println(&quot;Remove file at &quot; + newFilePath);
+        io:println(&quot;Removed file at &quot;, newFilePath);
     }
 </code></pre></div>
 
@@ -444,7 +429,7 @@ import ballerina/io;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    removeResults = file:remove(&quot;foo&quot;, true);
     if (removeResults is ()) {
-        io:println(&quot;Remove foo directory with all child elements.&quot;);
+        io:println(&quot;Removed &#39;foo&#39; directory with all the children.&quot;);
     }
 }
 </code></pre></div>
@@ -488,13 +473,13 @@ Created file path: /A/B/bar.txt
 File name: bar.txt
 File size: 0
 Is directory: false
-Modified at time=1567597039000 zone=id=Z offset=0
+Modified at {&quot;time&quot;:1567597039000,&quot;zone&quot;:{&quot;id&quot;:&quot;Z&quot;,&quot;offset&quot;:0}}
 bar.txt file exists: true
 bar.txt file is copied to new path foo/bar/bar.txt
 bar.txt file is moved to new path foo/bar1.txt
 Temporary directory: /var/folders/4z/xvlnvsp54ks9793d6k5_6bw40000gn/T/
-Remove file at foo/bar1.txt
-Remove foo directory with all child elements.
+Removed file at foo/bar1.txt
+Removed &#39;foo&#39; directory with all the children.
 </code></pre></div>
 
                                 </td>
@@ -522,7 +507,7 @@ Remove foo directory with all child elements.
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

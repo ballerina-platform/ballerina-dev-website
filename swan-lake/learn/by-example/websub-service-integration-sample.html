@@ -25,7 +25,8 @@ redirect_from:
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">discoverPlaceOrder</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">websub</span><span class="p">:</span><span class="nx">addWebSubLinkHeader</span><span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="p">[</span><span class="nx">webSubHub</span><span class="p">.</span><span class="nx">subscriptionUrl</span><span class="p">],</span> <span class="nx">ORDER_TOPIC</span><span class="p">);</span>
+        <span class="nx">websub</span><span class="p">:</span><span class="nx">addWebSubLinkHeader</span><span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="p">[</span><span class="nx">webSubHub</span><span class="p">.</span><span class="nx">subscriptionUrl</span><span class="p">],</span>
+                                    <span class="nx">ORDER_TOPIC</span><span class="p">);</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">202</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -61,32 +62,20 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}}</span>
 <span class="kd">function</span> <span class="nx">startHubAndRegisterTopic</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">hubStartUpResult</span> <span class="p">=</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">startHub</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9191</span><span class="p">),</span> <span class="s">&quot;/websub&quot;</span><span class="p">,</span> <span class="s">&quot;/hub&quot;</span><span class="p">);</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="err">?</span> <span class="nx">hubVar</span> <span class="p">=</span> <span class="p">();</span>
+    <span class="k">var</span> <span class="nx">hubStartUpResult</span> <span class="p">=</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">startHub</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9191</span><span class="p">),</span>
+                                            <span class="s">&quot;/websub&quot;</span><span class="p">,</span> <span class="s">&quot;/hub&quot;</span><span class="p">);</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="err">?</span> <span class="nx">hubVar</span> <span class="p">=</span> <span class="p">();</span>
     <span class="k">if</span> <span class="nx">hubStartUpResult</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartupError</span> <span class="p">{</span>
         <span class="nx">panic</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">hubVar</span> <span class="p">=</span> <span class="nx">hubStartUpResult</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span>
-                            <span class="err">?</span> <span class="nx">hubStartUpResult</span><span class="p">[</span><span class="s">&quot;startedUpHub&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
+        <span class="nx">hubVar</span> <span class="p">=</span> <span class="nx">hubStartUpResult</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span> <span class="err">?</span>
+                            <span class="nx">hubStartUpResult</span><span class="p">[</span><span class="s">&quot;startedUpHub&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
     <span class="p">}</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">internalHub</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="p">&gt;</span><span class="nx">hubVar</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">internalHub</span><span class="p">.</span><span class="nx">registerTopic</span><span class="p">(</span><span class="nx">ORDER_TOPIC</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error registering topic&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">internalHub</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">This</span> <span class="nx">sample</span> <span class="nx">requires</span> <span class="nx">starting</span> <span class="nx">up</span> <span class="nx">the</span> <span class="nx">Subscriber</span> <span class="nx">Service</span> <span class="nx">after</span> <span class="nx">the</span> <span class="nx">Publisher</span> <span class="nx">Service</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">order_mgmt_service</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="nx">Ballerina</span> <span class="nx">WebSub</span> <span class="nx">Hub</span> <span class="nx">started</span> <span class="nx">up</span><span class="p">.</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="nx">Publish</span> <span class="nx">URL</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9191/websub/publish</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="nx">Subscription</span> <span class="nx">URL</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9191/websub/hub</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9191</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mo">05</span><span class="p">,</span><span class="mi">814</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Subscription</span> <span class="nx">request</span> <span class="nx">received</span> <span class="k">for</span> <span class="nx">topic</span><span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/ordermgt/ordertopic] with callback[http://localhost:8181/ordereventsubscriber]</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mo">05</span><span class="p">,</span><span class="mi">858</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Sending</span> <span class="nx">intent</span> <span class="nx">verification</span> <span class="nx">request</span> <span class="nx">to</span> <span class="nx">callback</span><span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:8181/ordereventsubscriber] for topic[http://localhost:9090/ordermgt/ordertopic]</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mo">06</span><span class="p">,</span><span class="mo">037</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Intent</span> <span class="nx">verification</span> <span class="nx">successful</span> <span class="k">for</span> <span class="nx">mode</span><span class="p">:</span> <span class="p">[</span><span class="nx">subscribe</span><span class="p">],</span> <span class="k">for</span> <span class="nx">callback</span> <span class="nx">URL</span><span class="p">:</span> <span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:8181/ordereventsubscriber]</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">58</span><span class="p">,</span><span class="mi">756</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">New</span> <span class="nx">Order</span> <span class="nx">Added</span><span class="p">:</span> <span class="mi">1001</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">POST</span> <span class="o">-</span><span class="nx">d</span> <span class="err">&#39;</span><span class="p">{</span> <span class="s">&quot;Order&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;ID&quot;</span><span class="p">:</span> <span class="s">&quot;1001&quot;</span><span class="p">,</span> <span class="s">&quot;Name&quot;</span><span class="p">:</span> <span class="s">&quot;XYZ&quot;</span> <span class="p">}</span> <span class="p">}</span><span class="err">&#39;</span> <span class="s">&quot;http://localhost:9090/ordermgt/order&quot;</span> <span class="o">-</span><span class="nx">H</span> <span class="s">&quot;Content-Type:application/json&quot;</span>
+<span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
 <span class="nx">listener</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">websubEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8181</span><span class="p">);</span>
@@ -106,13 +95,7 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload as string&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">subscriber</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8181</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mo">05</span><span class="p">,</span><span class="mi">823</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Subscription</span> <span class="nx">Request</span> <span class="nx">successfully</span> <span class="nx">sent</span> <span class="nx">to</span> <span class="nx">Hub</span><span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9191/websub/hub], for Topic[http://localhost:9090/ordermgt/ordertopic], with Callback [http://localhost:8181/ordereventsubscriber]</span>
-<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">Intent</span> <span class="nx">Verification</span> <span class="nx">agreed</span> <span class="o">-</span> <span class="nx">Mode</span> <span class="p">[</span><span class="nx">subscribe</span><span class="p">],</span> <span class="nx">Topic</span> <span class="p">[</span><span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/ordermgt/ordertopic], Lease Seconds [3600]</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">58</span><span class="p">,</span><span class="mi">892</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">WebSub</span> <span class="nx">Notification</span> <span class="nx">Received</span><span class="p">:</span> <span class="nx">New</span> <span class="nx">Order</span> <span class="nx">Added</span><span class="p">:</span> <span class="mi">1001</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -172,6 +155,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websub-service-integration-sample/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -361,7 +345,8 @@ service orderMgt on httpListener {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        websub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl], ORDER_TOPIC);
+                                    <div class="highlight"><pre><code class=language-ballerina>        websub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl],
+                                    ORDER_TOPIC);
         response.statusCode = 202;
         var result = caller-&gt;respond(response);
         if (result is error) {
@@ -481,7 +466,8 @@ service orderMgt on httpListener {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function startHubAndRegisterTopic() returns websub:Hub {
-    var hubStartUpResult = websub:startHub(new http:Listener(9191), &quot;/websub&quot;, &quot;/hub&quot;);
+    var hubStartUpResult = websub:startHub(new http:Listener(9191),
+                                            &quot;/websub&quot;, &quot;/hub&quot;);
 </code></pre></div>
 
                                 </td>
@@ -505,8 +491,8 @@ service orderMgt on httpListener {
     if hubStartUpResult is websub:HubStartupError {
         panic hubStartUpResult;
     } else {
-        hubVar = hubStartUpResult is websub:HubStartedUpError
-                            ? hubStartUpResult[&quot;startedUpHub&quot;] : hubStartUpResult;
+        hubVar = hubStartUpResult is websub:HubStartedUpError ?
+                            hubStartUpResult[&quot;startedUpHub&quot;] : hubStartUpResult;
     }
 </code></pre></div>
 
@@ -782,7 +768,7 @@ ballerina: Intent Verification agreed - Mode [subscribe], Topic [http://localhos
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

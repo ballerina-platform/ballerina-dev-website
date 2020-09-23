@@ -6,6 +6,30 @@ title: Release Note
 
 This release is the fourth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
 
+- [Updating Ballerina](#updating-ballerina)
+    - [For existing users](#for-existing-users)
+    - [For new users](#for-new-users)
+- [Highlights](#highlights)
+- [What is new in Ballerina Swan Lake Preview 4](#what-is-new-in-ballerina-swan-lake-preview-4)
+    - [Language](#language)
+        - [Class definitions](#class-definitions)
+        - [Object-constructor expressions](#object-constructor-expressions)
+        - [Distinct objects](#distinct-objects)
+        - [Final fields in objects](#final-fields-in-objects)
+        - [Isolated functions](#isolated-functions)
+        - [Improved support for quoted identifiers](#improved-support-for-quoted-identifiers)
+        -  [Subsequent initialization support for local final variables](#subsequent-initialization-support-for-local-final-variables)
+        - [Support to handle errors at a single point - (the `on fail` clause)](#support-to-handle-errors-at-a-single-point-(the-on-fail-clause))
+        - [Fail statement](#fail-statement)
+        - [Improved lang library functions](#improved-lang-library-functions)
+    - [Runtime](#runtime)
+        - [jBallerina Runtime APIs](#jballerina-runtime-apis)
+        - [Asynchronous Java interoperability](#asynchronous-java-interoperability)
+    - [Standard Library](#standard-library)
+    - [Developer Tools](#developer-tools)
+        - [The OpenAPI Tool](#the-openapi-tool)
+        - [Improvements related to code actions](#improvements-related-to-code-actions)
+
 ### Updating Ballerina
 
 You can use the update tool to update to Ballerina Swan Lake Preview 4 as follows.

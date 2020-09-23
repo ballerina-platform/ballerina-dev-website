@@ -76,15 +76,16 @@ Security-sensitive functions and remote methods of Ballerina standard libraries 
 For example, the `sqlQuery` parameter of the `ballerinax/java.jdbc` `select` remote method is annotated as `@untainted`.
 
 ```ballerina
-public remote function query(@untainted string|sql:ParameterizedQuery sqlQuery, typedesc<record {}>? rowType = ())
-    returns @tainted stream <record {}, sql:Error>
+public remote function select(@untainted string sqlQuery, 
+                              typedesc<record{}>? recordType, 
+                              Param... parameters) 
+                        returns @tainted table<record {}>|Error
 ```
 
 The following example constructs an SQL query with a tainted argument:
 
 ```ballerina
-import ballerina/java.jdbc;
-import ballerina/sql;
+import ballerinax/java.jdbc;
 
 type ResultStudent record {
     string name;
@@ -92,35 +93,43 @@ type ResultStudent record {
 
 public function main(string... args) {
 
-    jdbc:Client|sql:Error jdbcClient = new("jdbc:mysql://localhost:3306/testdb", "test", "test");
-    if (jdbcClient is jdbc:Client) {
-        // Construct student ID based on user input.
-        string studentId = "S_" + args[0];
+    jdbc:Client testDB = new({
+        url: "jdbc:mysql://localhost:3306/testdb",
+        username: "test",
+        password: "test",
+        poolOptions: { maximumPoolSize: 5 },
+        dbOptions: { useSSL: false }
+    });
 
-        // Execute select query using the untrusted (tainted) student ID
-        stream<record{}, error> resultStream = jdbcClient->query("SELECT NAME FROM STUDENT WHERE ID = " + studentId);
-        error? status = jdbcClient.close();
-    }
+   // Construct student ID based on user input.
+   string studentId = "S_" + args[0];
+
+   // Execute select query using the untrusted (tainted) student ID
+   var dt = testDB->select("SELECT NAME FROM STUDENT WHERE ID = " + studentId,
+                           ResultStudent);
+   testDB.stop();
 }
 ```
 
 The Ballerina compiler will generate an error:
 
 ```
-tainted value passed to untainted parameter 'sqlQuery'
+tainted value passed to sensitive parameter 'sqlQuery'
 ```
 
 In order to compile, the program is modified to use query parameters:
 
 ```ballerina
-stream<record{}, error> resultStream = jdbcClient->query(`SELECT NAME FROM STUDENT WHERE ID = ${<@untainted> studentId}`);
+jdbc:Parameter paramId = {sqlType:jdbc:TYPE_VARCHAR, value:studentId};
+var dt = testDB->select("SELECT NAME FROM STUDENT WHERE ID = ?", ResultStudent,
+                        paramId);
 ```
 
 Command-line arguments passed to Ballerina programs and inputs received through service resources are considered as tainted. Additionally, return values of certain functions are marked with the `@tainted` annotation to denote that the resulting value should be considered as untrusted data.
 
-For example, the `query` remote method of the `java.jdbc` client highlighted above returns a `@tainted stream <record {}, sql:Error>`. This means that any value read from a database is considered as untrusted.
+For example, the `select` remote method of the `java:jdbc` client highlighted above returns a `@tainted table<record {}>|Error`. This means that any value read from a database is considered as untrusted.
 
-When the Ballerina compiler can determine that a function is returning tainted data without tainted data being passed in as parameters to that function, it is required to annotate the function's return type `@tainted`. If not, the function author has to clean up the data before returning. For instance, if you are to read from the database and return the result, you either need to annotate that function's return type as `@tainted` or you have to clean up and make sure the returned data is not tainted.
+When the Ballerina compiler can determine that a function is returning tainted data without tainted data being passed in as parameters to that function, it is required to annotate the function's return type as `@tainted`. If not, the function author has to clean up the data before returning. For instance, if you are to read from the database and return that result, you either need to annotate that function's return type as `@tainted` or you have to clean up and make sure the returned data is not tainted.
 
 ### Securely Using Tainted Data with Security-Sensitive Parameters
 
@@ -130,7 +139,8 @@ There can be certain situations where a tainted value must be passed into a secu
 // Execute select query using the untrusted (tainted) student ID
 boolean isValid = isNumeric(studentId);
 if (isValid) {
-   var dt = jdbcClient->query("SELECT NAME FROM STUDENT WHERE ID = " + studentId)
+   var dt = testDB->select("SELECT NAME FROM STUDENT WHERE ID = " +
+                           <@untainted> studentId, ResultStudent);
 }
 // ...
 ```

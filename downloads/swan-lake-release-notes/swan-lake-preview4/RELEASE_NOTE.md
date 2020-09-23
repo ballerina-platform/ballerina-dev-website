@@ -454,10 +454,8 @@ $  ballerina openapi -i <contract>  -o <output path>
 - If you are interested in creating a service with resources having a specific tag or an `operationId`, you can do the following.
 
     ```bash
-      	$  ballerina openapi -i <contract> --tags <tags> -o <output Path>
-    ```
-    ```bash
-	    $  ballerina openapi -i <contract> --operations <operationIds> -o <output Path>
+    $  ballerina openapi -i <contract> --tags <tags> -o <output Path>
+	$  ballerina openapi -i <contract> --operations <operationIds> -o <output Path>
 	```
 
 ###### Ballerina to OpenAPI

@@ -26,7 +26,7 @@ This release is the fourth preview version of Ballerina Swan Lake. This release 
         - [Improved lang library functions](#improved-lang-library-functions)
             - [Improved lang library support for JSON](#improved-lang-library-support-for-json)
             - [Changes to `toString()`](#changes-to-toString-(-)-)
-            - [Improved `lang.array:sort()` function](#improved-lang.array:sort()-function)
+            - [Improved `lang.array:sort()` function](#improved-lang-.-array-:-downloads/swan-lake-release-notes/swan-lake-preview4/RELEASE_NOTE.mdsort()-function)
     - [Runtime](#runtime)
         - [jBallerina Runtime APIs](#jballerina-runtime-apis)
         - [Asynchronous Java interoperability](#asynchronous-java-interoperability)

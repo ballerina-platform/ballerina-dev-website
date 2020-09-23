@@ -33,35 +33,7 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">restrict_by_media_type</span><span class="p">.</span><span class="nx">bal</span>
-<span class="err">#</span> <span class="nx">Service</span> <span class="nx">deployment</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9092</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">cURL</span> <span class="nx">request</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;</span>
-<span class="err">#</span> <span class="nx">The</span> <span class="nx">server</span> <span class="nx">response</span><span class="p">.</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">xml</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">22</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
-<span class="p">&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Ballerina</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="kd">service</span> <span class="nx">using</span> <span class="nx">unsupported</span> <span class="nx">media</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">cURL</span> <span class="nx">request</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">content</span> <span class="nx">type</span> <span class="nx">of</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="nx">request</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">listed</span> <span class="nx">under</span> <span class="nx">the</span> <span class="s">`consumes`</span> <span class="kd">resource</span> <span class="nx">configuration</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:text/plain&quot; -d &quot;Hello ballerina&quot;</span>
-<span class="err">#</span> <span class="nx">The</span> <span class="nx">server</span> <span class="nx">response</span><span class="p">.</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">415</span> <span class="nx">Unsupported</span> <span class="nx">Media</span> <span class="nx">Type</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="kd">service</span> <span class="nx">with</span> <span class="nx">a</span> <span class="nx">media</span> <span class="nx">type</span> <span class="nx">that</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">acceptable</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">cURL</span> <span class="nx">request</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">media</span> <span class="nx">type</span> <span class="nx">mentioned</span>
-<span class="err">#</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">Accept</span> <span class="nx">header</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">listed</span> <span class="nx">under</span> <span class="nx">the</span> <span class="s">`produces`</span> <span class="kd">resource</span> <span class="nx">configuration</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9092/infoService -H &quot;Accept:text/html&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;</span>
-<span class="err">#</span> <span class="nx">The</span> <span class="nx">server</span> <span class="nx">response</span><span class="p">.</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">406</span> <span class="nx">Not</span> <span class="nx">Acceptable</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -113,6 +85,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/restrict-by-media-type/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -338,13 +311,22 @@ ballerina run restrict_by_media_type.bal
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the service, execute the following cURL request.
 curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;
-# The server response.
+&gt; POST /infoService HTTP/1.1
+&gt; Host: localhost:9092
+&gt; User-Agent: curl/7.64.1
+&gt; Accept:application/xml
+&gt; Content-Type:application/json
+&gt; Content-Length: 20
+&gt;
+* upload completely sent off: 20 out of 20 bytes
 &lt; HTTP/1.1 200 OK
 &lt; content-type: application/xml
 &lt; content-length: 22
+&lt; server: ballerina
+&lt; date: Wed, 23 Sep 2020 10:25:55 +0530
 &lt;
 * Connection #0 to host localhost left intact
-&lt;name&gt;Ballerina&lt;/name&gt;
+&lt;name&gt;Ballerina&lt;/name&gt;* Closing connection 0
 </code></pre></div>
 
                                 </td>
@@ -359,12 +341,22 @@ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; 
                                     <div class="highlight"><pre><code class=shell-session># To invoke the service using unsupported media type, execute the following cURL request. The content type of the
 # request is not listed under the `consumes` resource configuration.
 curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:text/plain&quot; -d &quot;Hello ballerina&quot;
-# The server response.
+&gt; POST /infoService HTTP/1.1
+&gt; Host: localhost:9092
+&gt; User-Agent: curl/7.64.1
+&gt; Accept:application/xml
+&gt; Content-Type:text/plain
+&gt; Content-Length: 15
+&gt;
+* upload completely sent off: 15 out of 15 bytes
 &lt; HTTP/1.1 415 Unsupported Media Type
 &lt; content-type: text/plain
 &lt; content-length: 0
+&lt; server: ballerina
+&lt; date: Wed, 23 Sep 2020 10:26:50 +0530
 &lt;
 * Connection #0 to host localhost left intact
+* Closing connection 0
 </code></pre></div>
 
                                 </td>
@@ -379,12 +371,22 @@ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; 
                                     <div class="highlight"><pre><code class=shell-session># To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned
 # in the Accept header is not listed under the `produces` resource configuration.
 curl -v http://localhost:9092/infoService -H &quot;Accept:text/html&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;
-# The server response.
+&gt; POST /infoService HTTP/1.1
+&gt; Host: localhost:9092
+&gt; User-Agent: curl/7.64.1
+&gt; Accept:text/html
+&gt; Content-Type:application/json
+&gt; Content-Length: 20
+&gt;
+* upload completely sent off: 20 out of 20 bytes
 &lt; HTTP/1.1 406 Not Acceptable
 &lt; content-type: text/plain
 &lt; content-length: 0
+&lt; server: ballerina
+&lt; date: Wed, 23 Sep 2020 10:27:28 +0530
 &lt;
 * Connection #0 to host localhost left intact
+* Closing connection 0
 </code></pre></div>
 
                                 </td>
@@ -412,7 +414,7 @@ curl -v http://localhost:9092/infoService -H &quot;Accept:text/html&quot; -H &qu
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

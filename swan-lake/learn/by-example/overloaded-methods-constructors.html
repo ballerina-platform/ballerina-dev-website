@@ -13,17 +13,19 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">newStringBuffer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">str</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
+    <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
     <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;java.lang.String&quot;</span><span class="p">]</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">str</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
+<span class="kd">function</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">str</span><span class="p">)</span>
+                      <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;append&quot;</span><span class="p">,</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
+    <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
     <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;java.lang.String&quot;</span><span class="p">]</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">appendStringBuffer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">strBuffer</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
+<span class="kd">function</span> <span class="nx">appendStringBuffer</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">strBuffer</span><span class="p">)</span> 
+                            <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;append&quot;</span><span class="p">,</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
+    <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">,</span>
     <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;java.lang.StringBuffer&quot;</span><span class="p">]</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">strBuffer</span> <span class="p">=</span> <span class="nx">newStringBuffer</span><span class="p">(</span><span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;Ballerina is &quot;</span><span class="p">));</span>
@@ -31,10 +33,7 @@ redirect_from:
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendString</span><span class="p">(</span><span class="nx">strBufferToAppend</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;fun.&quot;</span><span class="p">));</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">appendStringBuffer</span><span class="p">(</span><span class="nx">strBuffer</span><span class="p">,</span> <span class="nx">strBufferToAppend</span><span class="p">);</span>    <span class="kt">string</span><span class="p">? text = java:toString(</span><span class="nx">strBuffer</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">overloaded</span><span class="o">-</span><span class="nx">methods</span><span class="o">-</span><span class="nx">constructors</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Ballerina</span> <span class="nx">is</span> <span class="nx">awesome</span> <span class="nx">and</span> <span class="nx">fun</span><span class="p">.</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -88,6 +87,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/overloaded-methods-constructors/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -144,7 +144,7 @@ import ballerina/java;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function newStringBuffer(handle str) returns handle = @java:Constructor {
-    class: &quot;java.lang.StringBuffer&quot;,
+    &#39;class: &quot;java.lang.StringBuffer&quot;,
     paramTypes: [&quot;java.lang.String&quot;]
 } external;
 </code></pre></div>
@@ -167,9 +167,10 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function appendString(handle receiver, handle str) returns handle = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>function appendString(handle receiver, handle str)
+                      returns handle = @java:Method {
     name: &quot;append&quot;,
-    class: &quot;java.lang.StringBuffer&quot;,
+    &#39;class: &quot;java.lang.StringBuffer&quot;,
     paramTypes: [&quot;java.lang.String&quot;]
 } external;
 </code></pre></div>
@@ -192,9 +193,10 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function appendStringBuffer(handle receiver, handle strBuffer) returns handle = @java:Method {
+                                    <div class="highlight"><pre><code class=language-ballerina>function appendStringBuffer(handle receiver, handle strBuffer) 
+                            returns handle = @java:Method {
     name: &quot;append&quot;,
-    class: &quot;java.lang.StringBuffer&quot;,
+    &#39;class: &quot;java.lang.StringBuffer&quot;,
     paramTypes: [&quot;java.lang.StringBuffer&quot;]
 } external;
 </code></pre></div>
@@ -338,7 +340,7 @@ Ballerina is awesome and fun.
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

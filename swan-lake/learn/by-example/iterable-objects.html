@@ -11,7 +11,7 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">ArrayIterator</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="nx">class</span> <span class="nx">ArrayIterator</span> <span class="p">{</span>
     <span class="nx">private</span> <span class="kt">int</span><span class="p">[]</span> <span class="nx">integers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">];</span>
     <span class="nx">private</span> <span class="kt">int</span> <span class="nx">cursor</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span> <span class="p">{</span>
@@ -22,32 +22,20 @@ redirect_from:
         <span class="p">}</span>
         <span class="k">return</span> <span class="p">();</span>
     <span class="p">}</span>
-<span class="p">};</span>
-<span class="nx">type</span> <span class="nx">IteratorGenerator</span> <span class="nx">object</span> <span class="p">{</span>
-    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__iterator</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="nx">class</span> <span class="nx">IteratorGenerator</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__iterator</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">object</span> <span class="p">{</span>
             <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">;}</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">new</span> <span class="nx">ArrayIterator</span><span class="p">();</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">IteratorGenerator</span> <span class="nx">itrGen</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">itrGen</span> <span class="p">{</span>
         <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Element &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">iterable_objects</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Element</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">Element</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Element</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">1</span>
-<span class="nx">Element</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">2</span>
-<span class="nx">Element</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">Element</span> <span class="mi">6</span><span class="p">:</span> <span class="mi">5</span>
-<span class="nx">Element</span> <span class="mi">7</span><span class="p">:</span> <span class="mi">8</span>
-<span class="nx">Element</span> <span class="mi">8</span><span class="p">:</span> <span class="mi">13</span>
-<span class="nx">Element</span> <span class="mi">9</span><span class="p">:</span> <span class="mi">21</span>
-<span class="nx">Element</span> <span class="mi">10</span><span class="p">:</span> <span class="mi">34</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -100,6 +88,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/iterable-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -148,7 +137,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type ArrayIterator object {
+                                    <div class="highlight"><pre><code class=language-ballerina>class ArrayIterator {
     private int[] integers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
     private int cursor = -1;
 </code></pre></div>
@@ -177,7 +166,7 @@ redirect_from:
         }
         return ();
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -196,7 +185,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type IteratorGenerator object {
+                                    <div class="highlight"><pre><code class=language-ballerina>class IteratorGenerator {
 </code></pre></div>
 
                                 </td>
@@ -215,11 +204,11 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    public function __iterator() returns abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function __iterator() returns object {
             public function next() returns record {|int value;|}?;} {
         return new ArrayIterator();
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -310,7 +299,7 @@ Element 10: 34
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -97,22 +97,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from Customers table failed!&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
      <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jdbc_batch_execute_operation</span><span class="p">.</span><span class="nx">balDrop</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span>
-<span class="nx">Create</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">0</span> <span class="nx">lastInsertId</span><span class="p">=</span><span class="nx">Insert</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">generated</span> <span class="nx">IDs</span> <span class="nx">are</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="nx">Error</span> <span class="k">while</span> <span class="nx">executing</span> <span class="nx">batch</span> <span class="nx">command</span> <span class="nx">starting</span> <span class="nx">with</span><span class="p">:</span> <span class="err">&#39;</span><span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="nx">Customers</span>
-                <span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">,</span> <span class="nx">creditLimit</span><span class="p">,</span> <span class="nx">country</span><span class="p">)</span>
-                <span class="nx">VALUES</span> <span class="p">(</span> <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">,</span>
-                 <span class="p">? ,  ? ,  ? )&#39;.Unique index or primary key violation: &quot;PUBLIC.CONSTRAINT_INDEX_6 ON PUBLIC.CUSTOMERS(</span><span class="nx">REGISTRATIONID</span><span class="p">)</span> <span class="nx">VALUES</span> <span class="mi">1</span><span class="err">&quot;</span><span class="p">;</span> <span class="nx">SQL</span> <span class="nx">statement</span><span class="p">:</span>
-<span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="nx">Customers</span>
-                <span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">,</span> <span class="nx">creditLimit</span><span class="p">,</span> <span class="nx">country</span><span class="p">)</span>
-                <span class="nx">VALUES</span> <span class="p">(</span> <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">,</span>
-                 <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">,</span>  <span class="err">?</span> <span class="p">)</span> <span class="p">[</span><span class="mi">23505</span><span class="o">-</span><span class="mi">199</span><span class="p">].</span>
-<span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="o">-</span><span class="mi">3</span> <span class="nx">lastInsertId</span><span class="p">=</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span>
-<span class="nx">Rollback</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">Data</span> <span class="nx">in</span> <span class="nx">Customers</span> <span class="nx">table</span><span class="p">:</span>
-<span class="nx">CUSTOMERID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">FIRSTNAME</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">LASTNAME</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">REGISTRATIONID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">CREDITLIMIT</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">COUNTRY</span><span class="p">=</span><span class="nx">USA</span>
-<span class="nx">CUSTOMERID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">FIRSTNAME</span><span class="p">=</span><span class="nx">Stephanie</span> <span class="nx">LASTNAME</span><span class="p">=</span><span class="nx">Mike</span> <span class="nx">REGISTRATIONID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">CREDITLIMIT</span><span class="p">=</span><span class="mf">8000.0</span> <span class="nx">COUNTRY</span><span class="p">=</span><span class="nx">USA</span>
-<span class="nx">CUSTOMERID</span><span class="p">=</span><span class="mi">3</span> <span class="nx">FIRSTNAME</span><span class="p">=</span><span class="nx">Bill</span> <span class="nx">LASTNAME</span><span class="p">=</span><span class="nx">John</span> <span class="nx">REGISTRATIONID</span><span class="p">=</span><span class="mi">3</span> <span class="nx">CREDITLIMIT</span><span class="p">=</span><span class="mf">3000.25</span> <span class="nx">COUNTRY</span><span class="p">=</span><span class="nx">USASample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -168,6 +153,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/jdbc-batch-execute-operation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -804,8 +790,8 @@ ballerina run jdbc_batch_execute_operation.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Drop table executed: affectedRowCount=0 lastInsertId=
-Create table executed: affectedRowCount=0 lastInsertId=
+                                    <div class="highlight"><pre><code class=shell-session>Drop table executed: {&quot;affectedRowCount&quot;:0,&quot;lastInsertId&quot;:null}
+Create table executed: {&quot;affectedRowCount&quot;:0,&quot;lastInsertId&quot;:null}
 </code></pre></div>
 
                                 </td>
@@ -817,7 +803,7 @@ Create table executed: affectedRowCount=0 lastInsertId=
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Insert success, generated IDs are: 1 2 3
+                                    <div class="highlight"><pre><code class=shell-session>Insert success, generated IDs are: [1,2,3]
 </code></pre></div>
 
                                 </td>
@@ -837,7 +823,7 @@ INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES ( ? ,  ? ,
                  ? ,  ? ,  ? ) [23505-199].
-affectedRowCount=1 lastInsertId= affectedRowCount=-3 lastInsertId= affectedRowCount=1 lastInsertId=
+[{&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null},{&quot;affectedRowCount&quot;:-3,&quot;lastInsertId&quot;:null},{&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null}]
 Rollback transaction.
 </code></pre></div>
 
@@ -851,9 +837,9 @@ Rollback transaction.
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Data in Customers table:
-CUSTOMERID=1 FIRSTNAME=Peter LASTNAME=Stuart REGISTRATIONID=1 CREDITLIMIT=5000.75 COUNTRY=USA
-CUSTOMERID=2 FIRSTNAME=Stephanie LASTNAME=Mike REGISTRATIONID=2 CREDITLIMIT=8000.0 COUNTRY=USA
-CUSTOMERID=3 FIRSTNAME=Bill LASTNAME=John REGISTRATIONID=3 CREDITLIMIT=3000.25 COUNTRY=USA
+{&quot;CUSTOMERID&quot;:1,&quot;FIRSTNAME&quot;:&quot;Peter&quot;,&quot;LASTNAME&quot;:&quot;Stuart&quot;,&quot;REGISTRATIONID&quot;:1,&quot;CREDITLIMIT&quot;:5000.75,&quot;COUNTRY&quot;:&quot;USA&quot;}
+{&quot;CUSTOMERID&quot;:2,&quot;FIRSTNAME&quot;:&quot;Stephanie&quot;,&quot;LASTNAME&quot;:&quot;Mike&quot;,&quot;REGISTRATIONID&quot;:2,&quot;CREDITLIMIT&quot;:8000.0,&quot;COUNTRY&quot;:&quot;USA&quot;}
+{&quot;CUSTOMERID&quot;:3,&quot;FIRSTNAME&quot;:&quot;Bill&quot;,&quot;LASTNAME&quot;:&quot;John&quot;,&quot;REGISTRATIONID&quot;:3,&quot;CREDITLIMIT&quot;:3000.25,&quot;COUNTRY&quot;:&quot;USA&quot;}
 </code></pre></div>
 
                                 </td>
@@ -893,7 +879,7 @@ CUSTOMERID=3 FIRSTNAME=Bill LASTNAME=John REGISTRATIONID=3 CREDITLIMIT=3000.25 C
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

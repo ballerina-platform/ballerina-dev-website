@@ -11,13 +11,15 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nd">@untainted string secureParameter) {}type Student record {</span>
     <span class="kt">string</span> <span class="nx">firstname</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="kt">string</span><span class="o">...</span> <span class="nx">args</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;testdb&quot;</span><span class="p">,</span> <span class="mi">3306</span><span class="p">);</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span> <span class="nx">sqlQuery</span> <span class="p">=</span> <span class="s">`SELECT firstName from student WHERE registration_id = ${args[0]}`</span><span class="p">;</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;testdb&quot;</span><span class="p">,</span> <span class="mi">3306</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span> <span class="nx">sqlQuery</span> <span class="p">=</span>
+            <span class="s">`SELECT firstName from student WHERE registration_id = ${args[0]}`</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">,</span> <span class="p">());</span>
     <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">isInteger</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="p">{</span>
         <span class="nx">userDefinedSecureOperation</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
@@ -44,13 +46,7 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">secureParameter</span><span class="err">&#39;</span>
-<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">secureParameter</span><span class="err">&#39;</span>
-<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">sqlQuery</span><span class="err">&#39;</span>
-<span class="nx">error</span><span class="p">:</span> <span class="p">.::</span><span class="nx">taint_checking</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span> <span class="nx">tainted</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="nx">to</span> <span class="nx">untainted</span> <span class="nx">parameter</span> <span class="err">&#39;</span><span class="nx">secureParameter</span><span class="err">&#39;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -106,6 +102,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/taint-checking/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -173,8 +170,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/lang.&#39;int;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 </code></pre></div>
 
                                 </td>
@@ -233,7 +230,8 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main(string... args) returns error? {
-    mysql:Client dbClient = check new (&quot;localhost&quot;, &quot;root&quot;, &quot;root&quot;, &quot;testdb&quot;, 3306);
+    mysql:Client dbClient = check new (&quot;localhost&quot;, &quot;root&quot;, &quot;root&quot;,
+                                       &quot;testdb&quot;, 3306);
 </code></pre></div>
 
                                 </td>
@@ -245,7 +243,8 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery sqlQuery = `SELECT firstName from student WHERE registration_id = ${args[0]}`;
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery sqlQuery =
+            `SELECT firstName from student WHERE registration_id = ${args[0]}`;
     var result = dbClient-&gt;query(sqlQuery, ());
 </code></pre></div>
 
@@ -555,10 +554,10 @@ import ballerina/sql;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run taint_checking.bal
-error: .::taint_checking.bal:54:36: tainted value passed to untainted parameter &#39;secureParameter&#39;
-error: .::taint_checking.bal:59:36: tainted value passed to untainted parameter &#39;secureParameter&#39;
-error: .::taint_checking.bal:29:34: tainted value passed to untainted parameter &#39;sqlQuery&#39;
-error: .::taint_checking.bal:32:32: tainted value passed to untainted parameter &#39;secureParameter&#39;
+error: .::taint_checking.bal:29:0: tainted value passed to untainted parameter &#39;sqlQuery&#39;
+error: .::taint_checking.bal:32:0: tainted value passed to untainted parameter &#39;secureParameter&#39;
+error: .::taint_checking.bal:54:0: tainted value passed to untainted parameter &#39;secureParameter&#39;
+error: .::taint_checking.bal:59:0: tainted value passed to untainted parameter &#39;secureParameter&#39;
 </code></pre></div>
 
                                 </td>
@@ -586,7 +585,7 @@ error: .::taint_checking.bal:32:32: tainted value passed to untainted parameter 
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

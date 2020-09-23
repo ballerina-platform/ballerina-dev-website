@@ -27,11 +27,7 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">students</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
        <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">gpa</span> <span class="o">&gt;=</span> <span class="mf">2.0</span>
        <span class="nx">select</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">students</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_expression_to_string</span><span class="p">.</span><span class="nx">balMichelle</span> <span class="nx">Sadler</span>
-<span class="nx">Martin</span> <span class="nx">Guthrie</span>
-<span class="nx">George</span> <span class="nx">Fernando</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -82,6 +78,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/query-expression-to-string/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -318,7 +315,7 @@ George Fernando
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

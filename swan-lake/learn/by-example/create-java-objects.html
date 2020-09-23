@@ -13,21 +13,18 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">newArrayDeque</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
+    <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">newArrayDequeWithInitialCapacity</span><span class="p">(</span><span class="kt">int</span> <span class="nx">numElements</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span><span class="p">,</span>
+<span class="kd">function</span> <span class="nx">newArrayDequeWithInitialCapacity</span><span class="p">(</span><span class="kt">int</span> <span class="nx">numElements</span><span class="p">)</span>
+                                          <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Constructor {</span>
+    <span class="err">&#39;</span><span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.util.ArrayDeque&quot;</span><span class="p">,</span>
     <span class="nx">paramTypes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;int&quot;</span><span class="p">]</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">arrayDeque</span> <span class="p">=</span> <span class="nx">newArrayDeque</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">arrayDequeWithCapacity</span> <span class="p">=</span> <span class="nx">newArrayDequeWithInitialCapacity</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">arrayDequeWithCapacity</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">create</span><span class="o">-</span><span class="nx">java</span><span class="o">-</span><span class="nx">objects</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[]</span>
-<span class="p">[]</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -85,6 +82,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/create-java-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -135,7 +133,7 @@ import ballerina/java;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function newArrayDeque() returns handle = @java:Constructor {
-    class: &quot;java.util.ArrayDeque&quot;
+    &#39;class: &quot;java.util.ArrayDeque&quot;
 } external;
 </code></pre></div>
 
@@ -157,8 +155,9 @@ import ballerina/java;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function newArrayDequeWithInitialCapacity(int numElements) returns handle = @java:Constructor {
-    class: &quot;java.util.ArrayDeque&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>function newArrayDequeWithInitialCapacity(int numElements)
+                                          returns handle = @java:Constructor {
+    &#39;class: &quot;java.util.ArrayDeque&quot;,
     paramTypes: [&quot;int&quot;]
 } external;
 </code></pre></div>
@@ -283,7 +282,7 @@ ballerina run create-java-objects.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

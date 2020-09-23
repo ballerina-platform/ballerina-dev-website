@@ -66,12 +66,14 @@ redirect_from:
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">cancelWebSocketUpgrade</span><span class="p">(</span><span class="mi">401</span><span class="p">,</span>
                                  <span class="s">&quot;Unauthorized request. Please login&quot;</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to cancel the WebSocket upgrade&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to cancel the WebSocket upgrade&quot;</span><span class="p">,</span>
+                                <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">cookieService</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {subProtocols: [&quot;xml&quot;, &quot;json&quot;]} service {</span>
+<span class="kd">service</span> <span class="nx">cookieService</span> <span class="p">=</span>
+        <span class="nd">@http:WebSocketServiceConfig {subProtocols: [&quot;xml&quot;, &quot;json&quot;]} service {</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;New WebSocket connection: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
     <span class="p">}</span>
@@ -93,7 +95,8 @@ redirect_from:
         <span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">}</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9095/cookie-demo&quot;</span><span class="p">,</span> <span class="nx">clientEPConfig</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span>
+                    <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9095/cookie-demo&quot;</span><span class="p">,</span> <span class="nx">clientEPConfig</span><span class="p">);</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="kt">json</span> <span class="nx">jsonPart</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span>
@@ -105,8 +108,13 @@ redirect_from:
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Login failed&quot;</span><span class="p">,</span> <span class="nx">loginMessage</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">cookies</span> <span class="p">=</span> <span class="nx">loginResp</span><span class="p">.</span><span class="nx">getCookies</span><span class="p">();</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://localhost:9095/cookie-demo/ws&quot;</span><span class="p">,</span>
-                           <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">callbackService</span><span class="p">:</span> <span class="nx">ClientService</span><span class="p">,</span> <span class="nx">cookies</span><span class="p">:</span> <span class="nx">cookies</span><span class="p">});</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span>
+                            <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;ws://localhost:9095/cookie-demo/ws&quot;</span><span class="p">,</span>
+                                    <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+                                        <span class="nx">callbackService</span><span class="p">:</span> <span class="nx">ClientService</span><span class="p">,</span>
+                                        <span class="nx">cookies</span><span class="p">:</span> <span class="nx">cookies</span>
+                                    <span class="p">}</span>
+                                <span class="p">);</span>
             <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
@@ -117,14 +125,14 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">ClientService</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {} service {</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">conn</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">conn</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
+                             <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">services</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="p">};</span>
 </pre></div>
 
             </div>
@@ -175,6 +183,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-cookie/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -544,7 +553,8 @@ service cookieServer on new http:Listener(9095) {
                                     <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;cancelWebSocketUpgrade(401,
                                  &quot;Unauthorized request. Please login&quot;);
             if (result is error) {
-                log:printError(&quot;Failed to cancel the WebSocket upgrade&quot;, result);
+                log:printError(&quot;Failed to cancel the WebSocket upgrade&quot;,
+                                result);
             }
         }
     }
@@ -568,7 +578,8 @@ service cookieServer on new http:Listener(9095) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service cookieService = @http:WebSocketServiceConfig {subProtocols: [&quot;xml&quot;, &quot;json&quot;]} service {
+                                    <div class="highlight"><pre><code class=language-ballerina>service cookieService =
+        @http:WebSocketServiceConfig {subProtocols: [&quot;xml&quot;, &quot;json&quot;]} service {
 </code></pre></div>
 
                                 </td>
@@ -833,7 +844,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client httpClient = new(&quot;http://localhost:9095/cookie-demo&quot;, clientEPConfig);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client httpClient =
+                    new(&quot;http://localhost:9095/cookie-demo&quot;, clientEPConfig);
 </code></pre></div>
 
                                 </td>
@@ -978,8 +990,13 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            http:WebSocketClient wsClientEp = new (&quot;ws://localhost:9095/cookie-demo/ws&quot;,
-                           config = {callbackService: ClientService, cookies: cookies});
+                                    <div class="highlight"><pre><code class=language-ballerina>            http:WebSocketClient wsClientEp =
+                            new (&quot;ws://localhost:9095/cookie-demo/ws&quot;,
+                                    config = {
+                                        callbackService: ClientService,
+                                        cookies: cookies
+                                    }
+                                );
 </code></pre></div>
 
                                 </td>
@@ -1044,7 +1061,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketClient conn, string text, boolean finalFrame) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onText(http:WebSocketClient conn, string text,
+                             boolean finalFrame) {
         io:println(text);
     }
 </code></pre></div>
@@ -1146,7 +1164,7 @@ Hello World!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

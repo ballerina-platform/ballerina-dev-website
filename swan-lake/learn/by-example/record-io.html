@@ -44,13 +44,15 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">closeRc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableTextRecordChannel</span> <span class="nx">rc</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">rc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">closeResult</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
+                        <span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">closeWc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableTextRecordChannel</span> <span class="nx">wc</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">wc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">closeResult</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
+                        <span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -58,10 +60,10 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">dstFileName</span> <span class="p">=</span> <span class="s">&quot;./files/sampleResponse.txt&quot;</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableTextRecordChannel</span> <span class="nx">srcRecordChannel</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">readableChannel</span> <span class="p">=</span> <span class="nx">getReadableRecordChannel</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">,</span>
-                                                        <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s">&quot;\\r?\\n&quot;</span><span class="p">,</span> <span class="s">&quot;,&quot;</span><span class="p">);</span>
+                                                     <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s">&quot;\\r?\\n&quot;</span><span class="p">,</span> <span class="s">&quot;,&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">readableChannel</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while creating readable record channel. &quot;</span><span class="p">,</span>
-                        <span class="nx">readableChannel</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while creating readable record &quot;</span> <span class="o">+</span>
+                        <span class="s">&quot;channel. &quot;</span><span class="p">,</span> <span class="nx">readableChannel</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">srcRecordChannel</span> <span class="p">=</span> <span class="nx">readableChannel</span><span class="p">;</span>
@@ -70,8 +72,8 @@ redirect_from:
     <span class="k">var</span> <span class="nx">writableChannel</span> <span class="p">=</span> <span class="nx">getWritableRecordChannel</span><span class="p">(</span><span class="nx">dstFileName</span><span class="p">,</span>
                                                         <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s">&quot;\r\n&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">writableChannel</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while creating writable record channel. &quot;</span><span class="p">,</span>
-                        <span class="nx">writableChannel</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while creating writable record &quot;</span> <span class="o">+</span>
+                        <span class="s">&quot;channel. &quot;</span><span class="p">,</span> <span class="nx">writableChannel</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">dstRecordChannel</span> <span class="p">=</span> <span class="nx">writableChannel</span><span class="p">;</span>
@@ -79,18 +81,15 @@ redirect_from:
                <span class="s">&quot; to the text file in &quot;</span> <span class="o">+</span> <span class="nx">dstFileName</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">srcRecordChannel</span><span class="p">,</span> <span class="nx">dstRecordChannel</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while processing the records: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while processing the records: &quot;</span><span class="p">,</span>
+                        <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Processing completed. The processed file is located in &quot;</span><span class="p">,</span>
                     <span class="nx">dstFileName</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">closeRc</span><span class="p">(</span><span class="nx">srcRecordChannel</span><span class="p">);</span>
     <span class="nx">closeWc</span><span class="p">(</span><span class="nx">dstRecordChannel</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_io</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Start</span> <span class="nx">processing</span> <span class="nx">the</span> <span class="nx">CSV</span> <span class="nx">file</span> <span class="nx">from</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sample</span><span class="p">.</span><span class="nx">csv</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">text</span> <span class="nx">file</span> <span class="nx">in</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sampleResponse</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">Processing</span> <span class="nx">completed</span><span class="p">.</span> <span class="nx">The</span> <span class="nx">processed</span> <span class="nx">file</span> <span class="nx">is</span> <span class="nx">located</span> <span class="nx">in</span> <span class="p">.</span><span class="o">/</span><span class="nx">files</span><span class="o">/</span><span class="nx">sampleResponse</span><span class="p">.</span><span class="nx">txt</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -141,6 +140,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/record-io/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -440,7 +440,8 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>function closeRc(io:ReadableTextRecordChannel rc) {
     var closeResult = rc.close();
     if (closeResult is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;, closeResult);
+        log:printError(&quot;Error occurred while closing the channel: &quot;,
+                        closeResult);
     }
 }
 </code></pre></div>
@@ -464,7 +465,8 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>function closeWc(io:WritableTextRecordChannel wc) {
     var closeResult = wc.close();
     if (closeResult is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;, closeResult);
+        log:printError(&quot;Error occurred while closing the channel: &quot;,
+                        closeResult);
     }
 }
 </code></pre></div>
@@ -508,10 +510,10 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:ReadableTextRecordChannel srcRecordChannel;
     var readableChannel = getReadableRecordChannel(srcFileName,
-                                                        &quot;UTF-8&quot;, &quot;\\r?\\n&quot;, &quot;,&quot;);
+                                                     &quot;UTF-8&quot;, &quot;\\r?\\n&quot;, &quot;,&quot;);
     if (readableChannel is error) {
-        log:printError(&quot;An error occurred while creating readable record channel. &quot;,
-                        readableChannel);
+        log:printError(&quot;An error occurred while creating readable record &quot; +
+                        &quot;channel. &quot;, readableChannel);
         return;
     } else {
         srcRecordChannel = readableChannel;
@@ -539,8 +541,8 @@ import ballerina/log;
     var writableChannel = getWritableRecordChannel(dstFileName,
                                                         &quot;UTF-8&quot;, &quot;\r\n&quot;, &quot;|&quot;);
     if (writableChannel is error) {
-        log:printError(&quot;An error occurred while creating writable record channel. &quot;,
-                        writableChannel);
+        log:printError(&quot;An error occurred while creating writable record &quot; +
+                        &quot;channel. &quot;, writableChannel);
         return;
     } else {
         dstRecordChannel = writableChannel;
@@ -568,7 +570,8 @@ is a new line and the field separator is a pipe (|).</p>
                &quot; to the text file in &quot; + dstFileName);
     var result = process(srcRecordChannel, dstRecordChannel);
     if (result is error) {
-        log:printError(&quot;An error occurred while processing the records: &quot;, result);
+        log:printError(&quot;An error occurred while processing the records: &quot;,
+                        result);
     } else {
         io:println(&quot;Processing completed. The processed file is located in &quot;,
                     dstFileName);
@@ -650,7 +653,7 @@ Processing completed. The processed file is located in ./files/sampleResponse.tx
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

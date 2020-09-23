@@ -11,9 +11,9 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span>
 <span class="nx">type</span> <span class="nx">BinaryType</span> <span class="nx">record</span> <span class="p">{|</span>
@@ -100,21 +100,7 @@ redirect_from:
             <span class="s">&quot;failed!!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span>  <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_complex_type_queries</span><span class="p">.</span><span class="nx">bal</span><span class="o">------</span> <span class="nx">Query</span> <span class="nx">Binary</span> <span class="nx">Type</span> <span class="o">-------</span>
-<span class="nx">Result</span> <span class="mi">1</span><span class="p">:</span>
-<span class="nx">row_id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">blob_type</span><span class="p">=</span><span class="mi">119</span> <span class="mi">115</span> <span class="mi">111</span> <span class="mi">50</span> <span class="mi">32</span> <span class="mi">98</span> <span class="mi">97</span> <span class="mi">108</span> <span class="mi">108</span> <span class="mi">101</span> <span class="mi">114</span> <span class="mi">105</span> <span class="mi">110</span> <span class="mi">97</span> <span class="mi">32</span> <span class="mi">98</span> <span class="mi">108</span> <span class="mi">111</span> <span class="mi">98</span> <span class="mi">32</span> <span class="mi">116</span> <span class="mi">101</span> <span class="mi">115</span> <span class="mi">116</span> <span class="mi">46</span> <span class="nx">binary_type</span><span class="p">=</span><span class="mi">119</span> <span class="mi">115</span> <span class="mi">111</span> <span class="mi">50</span> <span class="mi">32</span> <span class="mi">98</span> <span class="mi">97</span> <span class="mi">108</span> <span class="mi">108</span> <span class="mi">101</span> <span class="mi">114</span> <span class="mi">105</span> <span class="mi">110</span> <span class="mi">97</span> <span class="mi">32</span> <span class="mi">98</span> <span class="mi">105</span> <span class="mi">110</span> <span class="mi">97</span> <span class="mi">114</span> <span class="mi">121</span> <span class="mi">32</span> <span class="mi">116</span> <span class="mi">101</span> <span class="mi">115</span> <span class="mi">116</span> <span class="mi">46</span>
-<span class="nx">Result</span> <span class="mi">2</span><span class="p">:</span>
-<span class="nx">row_id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">blob_type</span><span class="p">=</span><span class="mi">119</span> <span class="mi">115</span> <span class="mi">111</span> <span class="mi">50</span> <span class="mi">32</span> <span class="mi">98</span> <span class="mi">97</span> <span class="mi">108</span> <span class="mi">108</span> <span class="mi">101</span> <span class="mi">114</span> <span class="mi">105</span> <span class="mi">110</span> <span class="mi">97</span> <span class="mi">32</span> <span class="mi">98</span> <span class="mi">108</span> <span class="mi">111</span> <span class="mi">98</span> <span class="mi">32</span> <span class="mi">116</span> <span class="mi">101</span> <span class="mi">115</span> <span class="mi">116</span> <span class="mi">46</span> <span class="nx">binary_type</span><span class="p">=</span><span class="mi">119</span> <span class="mi">115</span> <span class="mi">111</span> <span class="mi">50</span> <span class="mi">32</span> <span class="mi">98</span> <span class="mi">97</span> <span class="mi">108</span> <span class="mi">108</span> <span class="mi">101</span> <span class="mi">114</span> <span class="mi">105</span> <span class="mi">110</span> <span class="mi">97</span> <span class="mi">32</span> <span class="mi">98</span> <span class="mi">105</span> <span class="mi">110</span> <span class="mi">97</span> <span class="mi">114</span> <span class="mi">121</span> <span class="mi">32</span> <span class="mi">116</span> <span class="mi">101</span> <span class="mi">115</span> <span class="mi">116</span> <span class="mi">46</span>
-<span class="o">------</span> <span class="o">*********</span> <span class="o">-------</span>
-<span class="o">------</span> <span class="nx">Query</span> <span class="nx">Date</span> <span class="nx">Time</span> <span class="nx">Type</span> <span class="o">-------</span>
-<span class="nx">Result</span> <span class="mi">1</span><span class="p">:</span>
-<span class="nx">row_id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">date_type</span><span class="p">=</span><span class="mi">2017</span><span class="o">-</span><span class="mo">05</span><span class="o">-</span><span class="mi">23</span><span class="o">+</span><span class="mo">05</span><span class="p">:</span><span class="mi">30</span> <span class="nx">time_type</span><span class="p">=</span><span class="mi">19</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">23.000</span><span class="o">+</span><span class="mo">05</span><span class="p">:</span><span class="mi">30</span> <span class="nx">timestamp_type</span><span class="p">=</span><span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">25</span><span class="nx">T22</span><span class="p">:</span><span class="mo">03</span><span class="p">:</span><span class="mf">55.000</span><span class="o">+</span><span class="mo">05</span><span class="p">:</span><span class="mi">30</span> <span class="nx">datetime_type</span><span class="p">=</span><span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">25</span><span class="nx">T22</span><span class="p">:</span><span class="mo">03</span><span class="p">:</span><span class="mf">55.000</span><span class="o">+</span><span class="mo">05</span><span class="p">:</span><span class="mi">30</span>
-<span class="nx">Result</span> <span class="mi">2</span><span class="p">:</span>
-<span class="nx">row_id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">date_type</span><span class="p">=</span><span class="mi">2017</span><span class="o">-</span><span class="mo">05</span><span class="o">-</span><span class="mi">23</span><span class="o">+</span><span class="mo">05</span><span class="p">:</span><span class="mi">30</span> <span class="nx">time_type</span><span class="p">=</span><span class="mi">51323000</span> <span class="nx">timestamp_type</span><span class="p">=</span><span class="nx">time</span><span class="p">=</span><span class="mi">1485362035000</span> <span class="nx">zone</span><span class="p">=</span><span class="nx">id</span><span class="p">=</span><span class="nx">UTC</span> <span class="nx">offset</span><span class="p">=</span><span class="mi">0</span> <span class="nx">datetime_type</span><span class="p">=</span><span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">25</span><span class="nx">T22</span><span class="p">:</span><span class="mo">03</span><span class="p">:</span><span class="mf">55.000</span><span class="o">+</span><span class="mo">05</span><span class="p">:</span><span class="mi">30</span>
-<span class="o">------</span> <span class="o">*********</span> <span class="o">-------</span>
-<span class="nx">Sample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -170,6 +156,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-complex-type-queries/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -259,9 +246,9 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
 import ballerina/time;
+import ballerinax/mysql;
 </code></pre></div>
 
                                 </td>
@@ -865,15 +852,15 @@ ballerina run mysql_complex_type_queries.bal
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>------ Query Binary Type -------
 Result 1:
-row_id=1 blob_type=119 115 111 50 32 98 97 108 108 101 114 105 110 97 32 98 108 111 98 32 116 101 115 116 46 binary_type=119 115 111 50 32 98 97 108 108 101 114 105 110 97 32 98 105 110 97 114 121 32 116 101 115 116 46
+{&quot;row_id&quot;:1,&quot;blob_type&quot;:[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,108,111,98,32,116,101,115,116,46],&quot;binary_type&quot;:[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,105,110,97,114,121,32,116,101,115,116,46]}
 Result 2:
-row_id=1 blob_type=119 115 111 50 32 98 97 108 108 101 114 105 110 97 32 98 108 111 98 32 116 101 115 116 46 binary_type=119 115 111 50 32 98 97 108 108 101 114 105 110 97 32 98 105 110 97 114 121 32 116 101 115 116 46
+{&quot;row_id&quot;:1,&quot;blob_type&quot;:[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,108,111,98,32,116,101,115,116,46],&quot;binary_type&quot;:[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,105,110,97,114,121,32,116,101,115,116,46]}
 ------ ********* -------
 ------ Query Date Time Type -------
 Result 1:
-row_id=1 date_type=2017-05-23+05:30 time_type=19:45:23.000+05:30 timestamp_type=2017-01-25T22:03:55.000+05:30 datetime_type=2017-01-25T22:03:55.000+05:30
+{&quot;row_id&quot;:1,&quot;date_type&quot;:&quot;2017-05-23+05:30&quot;,&quot;time_type&quot;:&quot;19:45:23.000+05:30&quot;,&quot;timestamp_type&quot;:&quot;2017-01-25T22:03:55.000+05:30&quot;,&quot;datetime_type&quot;:&quot;2017-01-25T22:03:55.000+05:30&quot;}
 Result 2:
-row_id=1 date_type=2017-05-23+05:30 time_type=51323000 timestamp_type=time=1485362035000 zone=id=UTC offset=0 datetime_type=2017-01-25T22:03:55.000+05:30
+{&quot;row_id&quot;:1,&quot;date_type&quot;:&quot;2017-05-23+05:30&quot;,&quot;time_type&quot;:51323000,&quot;timestamp_type&quot;:{&quot;time&quot;:1485362035000,&quot;zone&quot;:{&quot;id&quot;:&quot;UTC&quot;,&quot;offset&quot;:0}},&quot;datetime_type&quot;:&quot;2017-01-25T22:03:55.000+05:30&quot;}
 ------ ********* -------
 Sample executed successfully!
 </code></pre></div>
@@ -903,7 +890,7 @@ Sample executed successfully!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

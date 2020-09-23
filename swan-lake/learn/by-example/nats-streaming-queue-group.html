@@ -22,10 +22,11 @@ redirect_from:
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="nx">subject</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span>
+                                <span class="nx">e</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span>
-                                        <span class="o">+</span> <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
+                                      <span class="o">+</span> <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -34,12 +35,7 @@ redirect_from:
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">publisher</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Subject</span> <span class="p">:</span> <span class="nx">demo</span>
-<span class="nx">Message</span> <span class="p">:</span> <span class="nx">First</span> <span class="nx">Message</span>
-<span class="nx">GUID</span> <span class="nx">m2jS6SLLefK325DWTkkwBh</span> <span class="nx">received</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">produced</span> <span class="kt">message</span><span class="p">.</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
+<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
 <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -57,7 +53,8 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
+                              <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
@@ -75,7 +72,8 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
+                              <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
@@ -93,20 +91,12 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data&quot;</span><span class="p">);</span>
         <span class="p">}</span>
-    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span>
+                              <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
-<span class="err">#</span> <span class="s">`queue-group.bal`</span> <span class="nx">contains</span> <span class="nx">three</span> <span class="nx">services</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">same</span>
-<span class="err">#</span> <span class="nx">queue</span> <span class="nx">group</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">When</span> <span class="nx">several</span> <span class="nx">messages</span> <span class="nx">are</span> <span class="nx">published</span><span class="p">,</span> <span class="nx">it</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">noticed</span> <span class="nx">that</span>
-<span class="err">#</span> <span class="nx">each</span> <span class="kt">message</span> <span class="nx">is</span> <span class="nx">received</span> <span class="nx">by</span> <span class="nx">only</span> <span class="nx">one</span> <span class="nx">queue</span> <span class="nx">group</span> <span class="nx">member</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">queue</span><span class="o">-</span><span class="nx">group</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="nx">third</span> <span class="nx">queue</span> <span class="nx">group</span> <span class="nx">member</span><span class="p">:</span> <span class="nx">First</span> <span class="nx">Message</span>
-<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="nx">second</span> <span class="nx">queue</span> <span class="nx">group</span> <span class="nx">member</span><span class="p">:</span> <span class="nx">Second</span> <span class="nx">Message</span>
-<span class="nx">Message</span> <span class="nx">Received</span> <span class="nx">to</span> <span class="nx">first</span> <span class="nx">queue</span> <span class="nx">group</span> <span class="nx">member</span><span class="p">:</span> <span class="nx">Third</span> <span class="nx">Message</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -162,6 +152,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/nats-streaming-queue-group/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -297,10 +288,11 @@ import ballerinax/nats;
                                     <div class="highlight"><pre><code class=language-ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt;message);
             if (result is nats:Error) {
                 error e = result;
-                log:printError(&quot;Error occurred while closing the connection&quot;, e);
+                log:printError(&quot;Error occurred while closing the connection&quot;,
+                                e);
             } else {
                 log:printInfo(&quot;GUID &quot; + result
-                                        + &quot; received for the produced message.&quot;);
+                                      + &quot; received for the produced message.&quot;);
             }
         }
     }
@@ -546,7 +538,8 @@ service firstQueueGroupMember on lis {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message,
+                              nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, e);
     }
@@ -613,7 +606,8 @@ service secondQueueGroupMember on lis {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message,
+                              nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, e);
     }
@@ -680,7 +674,8 @@ service thridQueueGroupMember on lis {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onError(nats:StreamingMessage message,
+                              nats:Error errorVal) {
         error e = errorVal;
         log:printError(&quot;Error occurred: &quot;, e);
     }
@@ -746,7 +741,7 @@ Message Received to first queue group member: Third Message
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

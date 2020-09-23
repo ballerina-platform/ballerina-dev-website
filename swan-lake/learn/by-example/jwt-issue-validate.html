@@ -56,11 +56,13 @@ redirect_from:
             <span class="nx">trustStore</span><span class="p">:</span> <span class="nx">trustStore</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig1</span><span class="p">);</span>
+    <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
+                                <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig1</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
+                                                            <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtValidatorConfig</span> <span class="nx">validatorConfig2</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
@@ -79,13 +81,10 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
+                                                        <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">jwt_issue_validate</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
-<span class="nx">Issued</span> <span class="nx">JWT</span><span class="p">:</span> <span class="nx">eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QifQ</span><span class="p">.</span><span class="nx">eyJzdWIiOiJKb2huIiwgImlzcyI6IndzbzIiLCAiZXhwIjoxNTg2NDM3MzgwLCAianRpIjoiMTAwMDc4MjM0YmEyMyIsICJhdWQiOlsiYmFsbGVyaW5hIiwgImJhbGxlcmluYVNhbXBsZXMiXX0</span><span class="p">.</span><span class="nx">H67rsDKLmZJacI1NKMlYl6cCROS</span><span class="o">-</span><span class="nx">rsLfW3Z2INvvDyHrntNau0P8FFoIc98D_c7UPe_L1_uV3no0nWweoWvzqQB8wfvduB6wKNxb1KGprIUF0ilxveQN1Vzab2Mvd7SJCJ19tf6OcKort38C7ES0am5vsm0495OyaNVDAq3ixFP8WRacQW53b0ELc25QCYJJBLhjFBdXLpnx1boSjgS2vhTrg8bY8zlkoV3pJULfHmjS3JX0a_FBqqeB1yQqbIp1RxGrWzGg4nA6kPjGC1GwYvxjcCVQjY5PWWsd9GAeCnnvmFE_Xy6Xenq5lfL2RWWO4H3yF8x_8hcLS9XidERGWQ</span>
-<span class="nx">Validated</span> <span class="nx">JWT</span> <span class="nx">Payload</span><span class="p">:</span> <span class="nx">iss</span><span class="p">=</span><span class="nx">wso2</span> <span class="nx">sub</span><span class="p">=</span><span class="nx">John</span> <span class="nx">aud</span><span class="p">=</span><span class="nx">ballerina</span> <span class="nx">ballerinaSamples</span> <span class="nx">jti</span><span class="p">=</span><span class="mi">100078234</span><span class="nx">ba23</span> <span class="nx">exp</span><span class="p">=</span><span class="mi">1586437380</span> <span class="nx">customClaims</span><span class="p">=</span>
+<span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">oauth2Server</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
@@ -109,7 +108,13 @@ redirect_from:
               <span class="s">&quot;use&quot;</span><span class="p">:</span> <span class="s">&quot;sig&quot;</span><span class="p">,</span>
               <span class="s">&quot;kid&quot;</span><span class="p">:</span> <span class="s">&quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;</span><span class="p">,</span>
               <span class="s">&quot;alg&quot;</span><span class="p">:</span> <span class="s">&quot;RS256&quot;</span><span class="p">,</span>
-              <span class="s">&quot;n&quot;</span><span class="p">:</span> <span class="s">&quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJnXD3vqrUu4GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3bjpdbKjOnM98l2-i9-JP5XoedJsyDzZmml8Xd7zkKCuDqZIDtZ99poevrZKd7Gx5n2Kg0K5FStbZmDbTyX30gi0_griIZyVCXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc60Yurnjd0RQiMWA10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozSot231I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK3nZOPuqgGa8TMPs=&quot;</span>
+              <span class="s">&quot;n&quot;</span><span class="p">:</span> <span class="s">&quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJnXD3vqrUu4&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3bjpdbKjOnM98l2-i9-J&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;P5XoedJsyDzZmml8Xd7zkKCuDqZIDtZ99poevrZKd7Gx5n2Kg0K5FSt&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;bZmDbTyX30gi0_griIZyVCXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc6&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;0Yurnjd0RQiMWA10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozS&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;ot231I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK3nZ&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;OPuqgGa8TMPs=&quot;</span>
             <span class="p">}</span>
           <span class="p">]</span>
         <span class="p">};</span>
@@ -167,6 +172,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/jwt-issue-validate/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -410,11 +416,13 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    jwt:JwtPayload|jwt:Error result = jwt:validateJwt(&lt;string&gt;jwt, validatorConfig1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    jwt:JwtPayload|jwt:Error result =
+                                jwt:validateJwt(&lt;string&gt;jwt, validatorConfig1);
     if (result is jwt:JwtPayload) {
         io:println(&quot;Validated JWT Payload: &quot; + result.toString());
     } else {
-        io:println(&quot;An error occurred while validating the JWT: &quot;, result.message());
+        io:println(&quot;An error occurred while validating the JWT: &quot;,
+                                                            result.message());
     }
 </code></pre></div>
 
@@ -469,7 +477,8 @@ import ballerina/time;
     if (result is jwt:JwtPayload) {
         io:println(&quot;Validated JWT Payload: &quot; + result.toString());
     } else {
-        io:println(&quot;An error occurred while validating the JWT: &quot;, result.message());
+        io:println(&quot;An error occurred while validating the JWT: &quot;,
+                                                        result.message());
     }
 }
 </code></pre></div>
@@ -620,7 +629,13 @@ import ballerina/http;
               &quot;use&quot;: &quot;sig&quot;,
               &quot;kid&quot;: &quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;,
               &quot;alg&quot;: &quot;RS256&quot;,
-              &quot;n&quot;: &quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJnXD3vqrUu4GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3bjpdbKjOnM98l2-i9-JP5XoedJsyDzZmml8Xd7zkKCuDqZIDtZ99poevrZKd7Gx5n2Kg0K5FStbZmDbTyX30gi0_griIZyVCXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc60Yurnjd0RQiMWA10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozSot231I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK3nZOPuqgGa8TMPs=&quot;
+              &quot;n&quot;: &quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJnXD3vqrUu4&quot; +
+                    &quot;GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3bjpdbKjOnM98l2-i9-J&quot; +
+                    &quot;P5XoedJsyDzZmml8Xd7zkKCuDqZIDtZ99poevrZKd7Gx5n2Kg0K5FSt&quot; +
+                    &quot;bZmDbTyX30gi0_griIZyVCXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc6&quot; +
+                    &quot;0Yurnjd0RQiMWA10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozS&quot; +
+                    &quot;ot231I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK3nZ&quot; +
+                    &quot;OPuqgGa8TMPs=&quot;
             }
           ]
         };
@@ -655,7 +670,7 @@ import ballerina/http;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

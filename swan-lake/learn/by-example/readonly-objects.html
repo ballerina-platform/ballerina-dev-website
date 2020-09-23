@@ -1,30 +1,33 @@
 ---
 layout: ballerina-example-page
-title: Defaultable Parameters
+title: Read-only Objects
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/functions-with-defaultable-parameters
+permalink: /swan-lake/learn/by-example/readonly-objects
 redirect_from:
-  - /vswan-lake/learn/by-example/functions-with-defaultable-parameters
-  - /vswan-lake/learn/by-example/functions-with-defaultable-parameters.html
+  - /vswan-lake/learn/by-example/readonly-objects
+  - /vswan-lake/learn/by-example/readonly-objects.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="kt">int</span> <span class="nx">baseSalary</span><span class="p">,</span>
-                            <span class="kt">int</span> <span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">20</span><span class="p">,</span>
-                            <span class="kt">float</span> <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.02</span><span class="p">)</span> <span class="p">{</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base Salary: &quot;</span><span class="p">,</span> <span class="nx">baseSalary</span><span class="p">,</span> 
-                <span class="s">&quot; | Annual Increment: &quot;</span><span class="p">,</span> <span class="nx">annualIncrement</span><span class="p">,</span>
-                <span class="s">&quot; | Bonus Rate: &quot;</span><span class="p">,</span> <span class="nx">bonusRate</span><span class="p">);</span>
+<span class="nx">type</span> <span class="nx">Controller</span> <span class="nx">object</span> <span class="p">{</span>
+   <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+   <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>   <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">readonly</span> <span class="nx">class</span> <span class="nx">MainController</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">id</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">codes</span> <span class="p">=</span> <span class="nx">codes</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">string</span> <span class="s">`Main: ${self.id}`</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">);</span>
-    <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">100</span><span class="p">);</span>
-    <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
-    <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">);</span>
-    <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">);</span>
-    <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">);</span>
-    <span class="nx">printSalaryDetails</span><span class="p">(</span><span class="nx">annualIncrement</span> <span class="p">=</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">baseSalary</span> <span class="p">=</span> <span class="mi">2500</span><span class="p">,</span>
-                       <span class="nx">bonusRate</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">);</span>
+    <span class="nx">MainController</span> <span class="nx">mc</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">MainController</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;AB&quot;</span><span class="p">]);</span>
+    <span class="nx">Controller</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">immutableController</span> <span class="p">=</span> <span class="nx">mc</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;immutableController ID: &quot;</span><span class="p">,</span> <span class="nx">immutableController</span><span class="p">.</span><span class="nx">getId</span><span class="p">());</span>    <span class="nx">Controller</span> <span class="nx">controller</span> <span class="p">=</span> <span class="nx">immutableController</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;controller is immutable: &quot;</span><span class="p">,</span>
+                                        <span class="nx">controller</span> <span class="nx">is</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">Controller</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -34,14 +37,9 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Defaultable Parameters</h2>
-                            <p><p>Ballerina functions can have defaultable parameters. Defaultable parameters are optional parameters that have a default
- value. A function with defaultable parameters can be invoked without providing values for the defaultable parameters.
- When invoking the function, arguments for the defaultable parameters can be passed as key-value pairs in which case
- the placement of the arguments within the function call does not matter. However, all arguments after the first named
- argument (key-value pair) need to be passed as named arguments.
- Arguments for defaultable parameters can also be passed as positional arguments, in which case the arguments need to
- be passed in order.</p>
+                            <h2>Read-only Objects</h2>
+                            <p><p>A class can be defined as a <code>readonly class</code>. This is equivalent to all the fields of an object being
+ <code>final</code> and immutable. A <code>readonly object</code> value can be used where an immutable value is expected.</p>
 </p>
 
                         </td>
@@ -49,16 +47,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="functions-with-required-parameters.html">
+                                    <a class="prev" href="object-constructor-expression.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Required Parameters</p>
+                                        <p>Object Constructor Expressions</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="functions-with-rest-parameter.html">
+                                    <a class="next" href="object-final-fields.html">
                                         <span>NEXT ></span>
-                                        <p>Rest Parameters</p>
+                                        <p>Final Fields</p>
                                     </a>
                                 </div>
                                 
@@ -67,7 +65,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="functions-with-defaultable-parameters">
+            <div class="example" id="readonly-objects">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -78,7 +76,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/functions-with-defaultable-parameters/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/readonly-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -96,6 +94,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -139,9 +139,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function printSalaryDetails(int baseSalary,
-                            int annualIncrement = 20,
-                            float bonusRate = 0.02) {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Controller object {
+   int id;
+   string[] codes;
 </code></pre></div>
 
                                 </td>
@@ -149,12 +149,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function takes the base salary, annual increment, and bonus rate as input
- parameters and prints them. The first parameter <code>baseSalary</code> is a required
- parameter. The next two parameters <code>annualIncrement</code> and <code>bonusRate</code> are
- two defaultable parameters. They are optional parameters that have default
- values of 20 and 0.02 respectively. Defaultable parameters must always be
- defined after the required parameters.</p>
+                                            <p>An object type descriptor.</p>
 
                                         </div>
                                     </div>
@@ -165,9 +160,79 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Base Salary: &quot;, baseSalary, 
-                &quot; | Annual Increment: &quot;, annualIncrement,
-                &quot; | Bonus Rate: &quot;, bonusRate);
+                                    <div class="highlight"><pre><code class=language-ballerina>   function getId() returns string;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>readonly class MainController {
+    int id;
+    string[] codes;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A <code>readonly</code> class definition.
+ If the class definition includes <code>readonly</code>, all the fields in the
+ object are effectively <code>final</code> and the values assigned to the fields
+ have to be immutable.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(int id, readonly &amp; string[] codes) {
+        self.id = id;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        self.codes = codes;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The expected type for <code>codes</code> is <code>readonly &amp; string[]</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getId() returns string {
+        return string `Main: ${self.id}`;
+    }
 }
 </code></pre></div>
 
@@ -192,7 +257,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500);
+                                    <div class="highlight"><pre><code class=language-ballerina>    MainController mc = new MainController(123, [&quot;AB&quot;]);
 </code></pre></div>
 
                                 </td>
@@ -200,9 +265,11 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call the function by passing a value only for the <code>baseSalary</code> parameter.
- The <code>annualIncrement</code> and <code>bonusRate</code> parameters default to
- 20 and 0.02 respectively.</p>
+                                            <p>A new expression used with a <code>readonly class</code> constructs an immutable value.
+ An object constructor expression or a new expression also constructs immutable values if
+ all of its fields are <code>final</code> fields and the types of each individual field is a subtype
+ of <code>readonly</code>.
+ In either case, the fields cannot be updated once the value is created.</p>
 
                                         </div>
                                     </div>
@@ -213,7 +280,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, annualIncrement = 100);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Controller &amp; readonly immutableController = mc;
 </code></pre></div>
 
                                 </td>
@@ -221,9 +288,10 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call the function by passing values only for the <code>baseSalary</code> and <code>annualIncrement</code>
- parameters. The value for the <code>annualIncrement</code> parameter is passed as a named argument.
- The <code>bonusRate</code> parameter defaults to 0.02.</p>
+                                            <p>A <code>readonly</code> intersection (<code>T &amp; readonly</code>) can be used with an object type descriptor.
+ Only immutable values belong to such an intersection.
+ Since <code>MainController</code> is defined as a <code>readonly class</code>, the object value <code>mc</code> is considered
+ to be immutable. Thus, it can be used where a <code>readonly</code> value is expected.</p>
 
                                         </div>
                                     </div>
@@ -231,107 +299,29 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, 100);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;immutableController ID: &quot;, immutableController.getId());
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Call the function again by passing values only for the <code>baseSalary</code> and <code>annualIncrement</code>
- parameters, now passing the value for the <code>annualIncrement</code> parameter as a positional argument.
- The <code>bonusRate</code> parameter defaults to 0.02.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, bonusRate = 0.1);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Call the function by passing values only for the <code>baseSalary</code> and <code>bonusRate</code> parameters.
- The <code>annualIncrement</code> parameter defaults to 20.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, 20, 0.1);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>In order to pass the value for <code>bonusRate</code> as a positional argument, a value would
- have to be specified for the <code>annualIncrement</code> parameter too.
- All arguments are positional arguments here.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(2500, annualIncrement = 100, bonusRate = 0.1);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Call the function by passing values for all three parameters, the first argument as
- a positional argument and the rest as named arguments.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    printSalaryDetails(annualIncrement = 100, baseSalary = 2500,
-                       bonusRate = 0.1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Controller controller = immutableController;
+    io:println(&quot;controller is immutable: &quot;,
+                                        controller is readonly &amp; Controller);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Call the function by passing all three arguments as named arguments.
- Any and all arguments after the first named argument need to be specified
- as named arguments but could be specified in any order.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -354,14 +344,9 @@ redirect_from:
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
-ballerina run functions_with_defaultable_parameters.bal
-Base Salary: 2500 | Annual Increment: 20 | Bonus Rate: 0.02
-Base Salary: 2500 | Annual Increment: 100 | Bonus Rate: 0.02
-Base Salary: 2500 | Annual Increment: 100 | Bonus Rate: 0.02
-Base Salary: 2500 | Annual Increment: 20 | Bonus Rate: 0.1
-Base Salary: 2500 | Annual Increment: 20 | Bonus Rate: 0.1
-Base Salary: 2500 | Annual Increment: 100 | Bonus Rate: 0.1
-Base Salary: 2500 | Annual Increment: 100 | Bonus Rate: 0.1
+ballerina run readonly_objects.bal
+immutableController ID: Main: 123
+controller is immutable: true
 </code></pre></div>
 
                                 </td>

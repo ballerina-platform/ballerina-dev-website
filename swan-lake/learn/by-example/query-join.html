@@ -38,20 +38,16 @@ redirect_from:
     <span class="nx">Report</span><span class="p">[]</span> <span class="nx">reportList</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
        <span class="k">join</span> <span class="k">var</span> <span class="nx">department</span> <span class="nx">in</span> <span class="nx">departmentList</span>
        <span class="nx">on</span> <span class="nx">student</span><span class="p">.</span><span class="nx">deptId</span> <span class="nx">equals</span> <span class="nx">department</span><span class="p">.</span><span class="nx">deptId</span>
+       <span class="nx">limit</span> <span class="mi">3</span>
        <span class="nx">select</span> <span class="p">{</span>
               <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
               <span class="nx">deptName</span><span class="p">:</span> <span class="nx">department</span><span class="p">.</span><span class="nx">deptName</span><span class="p">,</span>
               <span class="nx">degree</span><span class="p">:</span> <span class="s">&quot;Bachelor of Science&quot;</span><span class="p">,</span>
               <span class="nx">intakeYear</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span>
-       <span class="p">}</span>
-       <span class="nx">limit</span> <span class="mi">3</span><span class="p">;</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportList</span> <span class="p">{</span>
+       <span class="p">};</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportList</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_join</span><span class="p">.</span><span class="nx">balname</span><span class="p">=</span><span class="nx">Michelle</span> <span class="nx">Sadler</span> <span class="nx">deptName</span><span class="p">=</span><span class="nx">Physics</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Science</span> <span class="nx">intakeYear</span><span class="p">=</span><span class="mi">1990</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Ranjan</span> <span class="nx">Fonseka</span> <span class="nx">deptName</span><span class="p">=</span><span class="nx">Chemistry</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Science</span> <span class="nx">intakeYear</span><span class="p">=</span><span class="mi">2001</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Martin</span> <span class="nx">Guthrie</span> <span class="nx">deptName</span><span class="p">=</span><span class="nx">Physics</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Science</span> <span class="nx">intakeYear</span><span class="p">=</span><span class="mi">2002</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -104,6 +100,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/query-join/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -323,12 +320,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>       select {
-              name: student.firstName + &quot; &quot; + student.lastName,
-              deptName: department.deptName,
-              degree: &quot;Bachelor of Science&quot;,
-              intakeYear: student.intakeYear
-       }
+                                    <div class="highlight"><pre><code class=language-ballerina>       limit 3
 </code></pre></div>
 
                                 </td>
@@ -336,7 +328,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>select</code> clause is evaluated in each iteration when the <code>on</code> condition is satisfied.</p>
+                                            <p>The <code>limit</code> clause limits the number of output items.</p>
 
                                         </div>
                                     </div>
@@ -347,7 +339,12 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>       limit 3;
+                                    <div class="highlight"><pre><code class=language-ballerina>       select {
+              name: student.firstName + &quot; &quot; + student.lastName,
+              deptName: department.deptName,
+              degree: &quot;Bachelor of Science&quot;,
+              intakeYear: student.intakeYear
+       };
 </code></pre></div>
 
                                 </td>
@@ -355,7 +352,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>limit</code> clause limits the number of output items.</p>
+                                            <p>The <code>select</code> clause is evaluated in each iteration when the <code>on</code> condition is satisfied.</p>
 
                                         </div>
                                     </div>
@@ -412,9 +409,9 @@ ballerina run query_join.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>name=Michelle Sadler deptName=Physics degree=Bachelor of Science intakeYear=1990
-name=Ranjan Fonseka deptName=Chemistry degree=Bachelor of Science intakeYear=2001
-name=Martin Guthrie deptName=Physics degree=Bachelor of Science intakeYear=2002
+                                    <div class="highlight"><pre><code class=shell-session>{&quot;name&quot;:&quot;Michelle Sadler&quot;,&quot;deptName&quot;:&quot;Physics&quot;,&quot;degree&quot;:&quot;Bachelor of Science&quot;,&quot;intakeYear&quot;:1990}
+{&quot;name&quot;:&quot;Ranjan Fonseka&quot;,&quot;deptName&quot;:&quot;Chemistry&quot;,&quot;degree&quot;:&quot;Bachelor of Science&quot;,&quot;intakeYear&quot;:2001}
+{&quot;name&quot;:&quot;Martin Guthrie&quot;,&quot;deptName&quot;:&quot;Physics&quot;,&quot;degree&quot;:&quot;Bachelor of Science&quot;,&quot;intakeYear&quot;:2002}
 </code></pre></div>
 
                                 </td>
@@ -442,7 +439,7 @@ name=Martin Guthrie deptName=Physics degree=Bachelor of Science intakeYear=2002
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

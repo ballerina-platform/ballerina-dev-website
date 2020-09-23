@@ -18,13 +18,7 @@ redirect_from:
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteArray3</span> <span class="p">=</span> <span class="nx">base64</span> <span class="s">`aGVsbG8gYmFsbGVyaW5hICEhIQ==`</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray2</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">byteArray3</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">byte_type</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">12</span>
-<span class="mi">5</span> <span class="mi">24</span> <span class="mi">56</span> <span class="mi">243</span>
-<span class="mi">174</span> <span class="mi">238</span> <span class="mi">205</span> <span class="mi">239</span> <span class="mi">171</span> <span class="mi">205</span> <span class="mi">18</span> <span class="mi">52</span> <span class="mi">85</span> <span class="mi">103</span> <span class="mi">136</span> <span class="mi">136</span> <span class="mi">34</span>
-<span class="mi">104</span> <span class="mi">101</span> <span class="mi">108</span> <span class="mi">108</span> <span class="mi">111</span> <span class="mi">32</span> <span class="mi">98</span> <span class="mi">97</span> <span class="mi">108</span> <span class="mi">108</span> <span class="mi">101</span> <span class="mi">114</span> <span class="mi">105</span> <span class="mi">110</span> <span class="mi">97</span> <span class="mi">32</span> <span class="mi">33</span> <span class="mi">33</span> <span class="mi">33</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -75,6 +69,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/byte-type/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -246,9 +241,9 @@ redirect_from:
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run byte_type.bal
 12
-5 24 56 243
-174 238 205 239 171 205 18 52 85 103 136 136 34
-104 101 108 108 111 32 98 97 108 108 101 114 105 110 97 32 33 33 33
+[5,24,56,243]
+[174,238,205,239,171,205,18,52,85,103,136,136,34]
+[104,101,108,108,111,32,98,97,108,108,101,114,105,110,97,32,33,33,33]
 </code></pre></div>
 
                                 </td>
@@ -276,7 +271,7 @@ ballerina run byte_type.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Object
+title: Object type
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /swan-lake/learn/by-example/objects
 redirect_from:
@@ -12,23 +12,33 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
-    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nx">public</span> <span class="nx">Person</span><span class="err">?</span> <span class="nx">parent</span> <span class="p">=</span> <span class="p">();</span>
-    <span class="nx">private</span> <span class="kt">string</span> <span class="nx">email</span> <span class="p">=</span> <span class="s">&quot;default@abc.com&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">address</span> <span class="p">=</span> <span class="s">&quot;No 20, Palm grove&quot;</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
-    <span class="nx">Person</span> <span class="nx">p3</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p3</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">objects</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">0</span>
-<span class="mi">0</span>
-<span class="mi">0</span>
+    <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="nx">class</span> <span class="nx">Employee</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="p">=</span> <span class="nx">firstName</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">=</span> <span class="nx">lastName</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">condition</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Employee</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
+    
+    <span class="nx">p</span><span class="p">.</span><span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -37,10 +47,11 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Object</h2>
-                            <p><p>Objects are a behaviourial type. An object is a combination of public, private, and module-level visible fields along with a
- set of associated functions (called methods) that can be used to manipulate the fields. This allows you
- to define custom-behavioural data types.</p>
+                            <h2>Object type</h2>
+                            <p><p>Objects are a behaviourial type. An object type is a combination of public and module-level visible fields along with a
+ set of associated function signatures (called methods declarations) that can be used to manipulate the fields.
+ This allows you to define custom-behavioural data types.
+ To create values that belong to an object type, you can use class definitions or object-constructor expressions.</p>
 </p>
 
                         </td>
@@ -48,16 +59,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="record-type-reference.html">
+                                    <a class="prev" href="object-assignability.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Record Type Reference</p>
+                                        <p>Object Assignability</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="object-initializer.html">
+                                    <a class="next" href="object-constructor-expression.html">
                                         <span>NEXT ></span>
-                                        <p>Object Initializer</p>
+                                        <p>Object Constructor Expressions</p>
                                     </a>
                                 </div>
                                 
@@ -79,6 +90,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -94,6 +106,12 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -134,8 +152,9 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Person object {
-    public string name = &quot;&quot;;
-    public int age = 0;
+    public int age;
+    public string firstName;
+    public string lastName;
 </code></pre></div>
 
                                 </td>
@@ -143,8 +162,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines an object called <code>Person</code>. It contains <code>public</code>, <code>private</code>, and module-level visible fields along with their types.
- For fields, the default value must be specified if an explicit object initializer method is not defined.</p>
+                                            <p>Defines an object type called <code>Person</code>. It should only contain
+ fields and method declarations. An object type cannot have
+ an initializer or method definitions.</p>
 
                                         </div>
                                     </div>
@@ -155,7 +175,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    public Person? parent = ();
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string;
 </code></pre></div>
 
                                 </td>
@@ -163,9 +183,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If you need to have a field with its own type, you need to make that field defaultable
- (i.e., able to specify a default value).
- Here, the <code>parent</code> field is made defaultable by allowing it to have nil as a value.</p>
+                                            <p>Method declarations can be within the object. However, the method cannot
+ have a body.</p>
 
                                         </div>
                                     </div>
@@ -173,41 +192,99 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    private string email = &quot;default@abc.com&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Private fields are only visible within the object and its functions.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string address = &quot;No 20, Palm grove&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    function checkAndModifyAge(int condition, int a);
 };
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class Employee {
+    public int age;
+    public string firstName;
+    public string lastName;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Protected fields (i.e., no access modifiers) are visible only within the same module.</p>
+                                            <p>Defines a <code>class</code> called <code>Employee</code>, which is structurally equivalent
+ to the <code>Person</code> type.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(int age, string firstName, string lastName) {
+        self.age = age;
+        self.firstName = firstName;
+        self.lastName = lastName;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Non-abstract objects can have initializers.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string {
+        return self.firstName + &quot; &quot; + self.lastName;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Methods should have a body.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function checkAndModifyAge(int condition, int a) {
+        if (self.age &lt; condition) {
+            self.age = a;
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -226,9 +303,29 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
+                                <td class="code empty leading">
+                                    
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An object type itself cannot be initialized. It does not have
+ an implicit initial value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Person p1 = new;
-    io:println(p1.age);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p = new Employee(5, &quot;John&quot;, &quot;Doe&quot;);
+    io:println(p.getFullName());
+    
+    p.checkAndModifyAge(10, 50);
 </code></pre></div>
 
                                 </td>
@@ -236,7 +333,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>There are three ways to initialize a <code>Person</code> object.</p>
+                                            <p>Initializes a value using the <code>Employee</code> class
+ and then assigns the value to the object-type variable.</p>
 
                                         </div>
                                     </div>
@@ -246,35 +344,13 @@ redirect_from:
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Person p2 = new ();
-    io:println(p2.age);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Person p3 = new Person();
-    io:println(p3.age);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(p.age);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This type of initialization is useful when you cannot determine the type of the object to be
- created based on the context (e.g., when the left hand side is a union of object types).</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -298,9 +374,8 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run objects.bal
-0
-0
-0
+John Doe
+50
 </code></pre></div>
 
                                 </td>
@@ -328,7 +403,7 @@ ballerina run objects.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

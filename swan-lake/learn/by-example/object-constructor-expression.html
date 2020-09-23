@@ -1,49 +1,47 @@
 ---
 layout: ballerina-example-page
-title: Anonymous Objects
+title: Object Constructor Expressions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/anonymous-objects
+permalink: /swan-lake/learn/by-example/object-constructor-expression
 redirect_from:
-  - /vswan-lake/learn/by-example/anonymous-objects
-  - /vswan-lake/learn/by-example/anonymous-objects.html
+  - /vswan-lake/learn/by-example/object-constructor-expression
+  - /vswan-lake/learn/by-example/object-constructor-expression.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Address</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-    <span class="nx">object</span> <span class="p">{</span>
-        <span class="nx">public</span> <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
-        <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="p">=</span> <span class="nx">city</span><span class="p">;</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="nx">country</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="nx">address</span><span class="p">;</span>
+    <span class="nx">Address</span> <span class="nx">address</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
-        <span class="nx">address</span><span class="p">:</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">)</span>
+        <span class="nx">address</span><span class="p">:</span> <span class="nx">object</span> <span class="nx">Address</span> <span class="p">{</span>
+                     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+                         <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="p">=</span> <span class="s">&quot;Colombo&quot;</span><span class="p">;</span>
+                         <span class="nx">self</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">;</span>
+                     <span class="p">}</span>                     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+                         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
+                     <span class="p">}</span>
+                 <span class="p">}</span>
     <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">city</span><span class="p">);</span>
-    <span class="nx">object</span> <span class="p">{</span>
-        <span class="nx">public</span> <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
-        <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="p">=</span> <span class="nx">city</span><span class="p">;</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="nx">country</span><span class="p">;</span>
-        <span class="p">}</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">country</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">anonymous_objects</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Colombo</span>
-<span class="nx">UK</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;City: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">city</span><span class="p">);</span>
+    <span class="nx">Address</span> <span class="nx">adr</span> <span class="p">=</span> <span class="nx">object</span> <span class="p">{</span>
+                      <span class="nx">public</span> <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
+                      <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>                      <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+                          <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="p">=</span> <span class="s">&quot;London&quot;</span><span class="p">;</span>
+                          <span class="nx">self</span><span class="p">.</span><span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;UK&quot;</span><span class="p">;</span>
+                      <span class="p">}</span>                      <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+                          <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
+                      <span class="p">}</span>
+                  <span class="p">};</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Address: &quot;</span><span class="p">,</span> <span class="nx">jane</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">country</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -52,10 +50,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Anonymous Objects</h2>
-                            <p><p>Object types can be defined in-line as well. These types do not have a type name associated with them.
- Such anonymous object types can be used in instances in which there is no need to refer to the object type by its name
- (e.g., objects as fields of records or objects or objects as function parameters).</p>
+                            <h2>Object Constructor Expressions</h2>
+                            <p><p>Values of object types can be defined in-line using object constructor expressions.
+ When the object type implementation does not need to be re-used,
+ an object constructor expression can be used instead of the <code>class</code> and a <code>new</code> expression.</p>
 </p>
 
                         </td>
@@ -63,16 +61,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="abstract-objects.html">
+                                    <a class="prev" href="objects.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Abstract Objects</p>
+                                        <p>Object type</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="readonly-objects-and-fields.html">
+                                    <a class="next" href="readonly-objects.html">
                                         <span>NEXT ></span>
-                                        <p>Read-only Objects and Fields</p>
+                                        <p>Read-only Objects</p>
                                     </a>
                                 </div>
                                 
@@ -81,7 +79,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="anonymous-objects">
+            <div class="example" id="object-constructor-expression">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -92,8 +90,9 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/anonymous-objects/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-constructor-expression/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -109,6 +108,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -152,64 +155,37 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public type Address object {
+    public string city;
+    public string country;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function value() returns string;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public type Person record {
     string name;
     int age;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    object {
-        public string city;
-        public string country;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is an anonymous object type descriptor. All the fields and
- methods are made public. This is done to allow the declaration of
- variables equivalent to this object type (since two public object types
- are considered unequivalent if either of the objects have
- any private members).</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        public function init(string city, string country) {
-            self.city = city;
-            self.country = country;
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        public function value() returns string {
-            return self.city + &quot;, &quot; + self.country;
-        }
-    } address;
+    Address address;
 };
 </code></pre></div>
 
@@ -237,9 +213,6 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    Person john = {
         name: &quot;John Doe&quot;,
         age: 25,
-        address: new (&quot;Colombo&quot;, &quot;Sri Lanka&quot;)
-    };
-    io:println(john.address.city);
 </code></pre></div>
 
                                 </td>
@@ -258,9 +231,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    object {
-        public string city;
-        public string country;
+                                    <div class="highlight"><pre><code class=language-ballerina>        address: object Address {
 </code></pre></div>
 
                                 </td>
@@ -268,9 +239,30 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since anonymous objects do not have a type name associated with them,
- the object descriptor itself has to be specified when declaring
- variables of an anonymous object type.</p>
+                                            <p>This object constructor expression indicates that this creates an subtype of the object of type <code>Address</code>.
+ This is similar to the type reference in class definitions and object-type definitions.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                     public function init() {
+                         self.city = &quot;Colombo&quot;;
+                         self.country = &quot;Sri Lanka&quot;;
+                     }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>In object constructor expressions, the <code>init</code> method does not take any parameters.</p>
 
                                         </div>
                                     </div>
@@ -281,10 +273,48 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        public function init(string city, string country) {
-            self.city = city;
-            self.country = country;
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>                     public function value() returns string {
+                         return self.city + &quot;, &quot; + self.country;
+                     }
+                 }
+    };
+    io:println(&quot;City: &quot;, john.address.city);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Address adr = object {
+                      public string city;
+                      public string country;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The type reference in an object constructor expression is optional.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                      public function init() {
+                          self.city = &quot;London&quot;;
+                          self.country = &quot;UK&quot;;
+                      }
 </code></pre></div>
 
                                 </td>
@@ -296,10 +326,10 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        public function value() returns string {
-            return self.city + &quot;, &quot; + self.country;
-        }
-    } adr = new (&quot;London&quot;, &quot;UK&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>                      public function value() returns string {
+                          return self.city + &quot;, &quot; + self.country;
+                      }
+                  };
 </code></pre></div>
 
                                 </td>
@@ -312,7 +342,7 @@ redirect_from:
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    Person jane = {name: &quot;Jane Doe&quot;, age: 20, address: adr};
-    io:println(jane.address.country);
+    io:println(&quot;Address: &quot;, jane.address.country);
 }
 </code></pre></div>
 
@@ -340,9 +370,9 @@ redirect_from:
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
-ballerina run anonymous_objects.bal
-Colombo
-UK
+ballerina run object-constructor-expression.bal
+City: Colombo
+Address: UK
 </code></pre></div>
 
                                 </td>
@@ -370,7 +400,7 @@ UK
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -26,7 +26,7 @@ redirect_from:
     <span class="nx">CountryCode</span> <span class="nx">countryCode</span><span class="p">;</span>
 <span class="p">|};</span>
 <span class="err">@</span><span class="nx">deprecated</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span> <span class="p">=</span> <span class="s">&quot;Doe&quot;</span><span class="p">;</span>
     <span class="nx">Address</span> <span class="nx">addr</span> <span class="p">=</span> <span class="p">{</span>
@@ -37,7 +37,7 @@ redirect_from:
     <span class="err">@</span><span class="nx">deprecated</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
-    <span class="p">}};</span>
+    <span class="p">}}</span>
 <span class="err">#</span> <span class="nx">Creates</span> <span class="nx">and</span> <span class="nx">returns</span> <span class="nx">a</span> <span class="s">`Person`</span> <span class="nx">object</span> <span class="nx">given</span> <span class="nx">the</span> <span class="nx">parameters</span><span class="p">.</span>
 <span class="err">#</span>
 <span class="err">#</span> <span class="o">+</span> <span class="nx">fname</span> <span class="o">-</span> <span class="nx">First</span> <span class="nx">name</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">person</span>
@@ -51,24 +51,16 @@ redirect_from:
 <span class="err">#</span> <span class="nx">This</span> <span class="kd">function</span> <span class="nx">is</span> <span class="nx">deprecated</span> <span class="nx">since</span> <span class="nx">the</span> <span class="s">`Person`</span> <span class="nx">type</span> <span class="nx">is</span> <span class="nx">deprecated</span><span class="p">.</span>
 <span class="err">@</span><span class="nx">deprecated</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">createPerson</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fname</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lname</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">street</span><span class="p">,</span>
-                             <span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">CountryCode</span> <span class="nx">countryCode</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
+                             <span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">CountryCode</span> <span class="nx">countryCode</span><span class="p">)</span>
+                             <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>    <span class="nx">p</span><span class="p">.</span><span class="nx">firstName</span> <span class="p">=</span> <span class="nx">fname</span><span class="p">;</span>
     <span class="nx">p</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">=</span> <span class="nx">lname</span><span class="p">;</span>
     <span class="nx">p</span><span class="p">.</span><span class="nx">addr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">street</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">countryCode</span><span class="p">};</span>
     <span class="k">return</span> <span class="nx">p</span><span class="p">;</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="s">&quot;Castro Street&quot;</span><span class="p">,</span> <span class="s">&quot;Mountain View&quot;</span><span class="p">,</span> <span class="nx">USA</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">deprecation</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">warning</span><span class="p">:</span> <span class="p">.::</span><span class="nx">deprecation</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span> <span class="nx">usage</span> <span class="nx">of</span> <span class="nx">construct</span> <span class="err">&#39;</span><span class="nx">Address</span><span class="err">&#39;</span> <span class="nx">is</span> <span class="nx">deprecated</span>
-<span class="nx">warning</span><span class="p">:</span> <span class="p">.::</span><span class="nx">deprecation</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span> <span class="nx">usage</span> <span class="nx">of</span> <span class="nx">construct</span> <span class="err">&#39;</span><span class="nx">LKA</span><span class="err">&#39;</span> <span class="nx">is</span> <span class="nx">deprecated</span>
-<span class="nx">warning</span><span class="p">:</span> <span class="p">.::</span><span class="nx">deprecation</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">65</span><span class="p">:</span><span class="mi">76</span><span class="p">:</span> <span class="nx">usage</span> <span class="nx">of</span> <span class="nx">construct</span> <span class="err">&#39;</span><span class="nx">Person</span><span class="err">&#39;</span> <span class="nx">is</span> <span class="nx">deprecated</span>
-<span class="nx">warning</span><span class="p">:</span> <span class="p">.::</span><span class="nx">deprecation</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">68</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span> <span class="nx">usage</span> <span class="nx">of</span> <span class="nx">construct</span> <span class="err">&#39;</span><span class="nx">Person</span><span class="err">&#39;</span> <span class="nx">is</span> <span class="nx">deprecated</span>
-<span class="nx">warning</span><span class="p">:</span> <span class="p">.::</span><span class="nx">deprecation</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span> <span class="nx">usage</span> <span class="nx">of</span> <span class="nx">construct</span> <span class="err">&#39;</span><span class="nx">Person</span><span class="err">&#39;</span> <span class="nx">is</span> <span class="nx">deprecated</span>
-<span class="nx">warning</span><span class="p">:</span> <span class="p">.::</span><span class="nx">deprecation</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span> <span class="nx">usage</span> <span class="nx">of</span> <span class="nx">construct</span> <span class="err">&#39;</span><span class="nx">createPerson</span><span class="p">(</span><span class="nx">Jane</span><span class="p">,</span> <span class="nx">Doe</span><span class="p">,</span> <span class="nx">Castro</span> <span class="nx">Street</span><span class="p">,</span> <span class="nx">Mountain</span> <span class="nx">View</span><span class="p">,</span> <span class="nx">USA</span><span class="p">)</span><span class="err">&#39;</span> <span class="nx">is</span> <span class="nx">deprecated</span>
-<span class="nx">warning</span><span class="p">:</span> <span class="p">.::</span><span class="nx">deprecation</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">81</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span> <span class="nx">usage</span> <span class="nx">of</span> <span class="nx">construct</span> <span class="err">&#39;</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">()</span><span class="err">&#39;</span> <span class="nx">is</span> <span class="nx">deprecated</span>
-<span class="nx">Running</span> <span class="nx">executablesJane</span> <span class="nx">Doe</span>
+    <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">createPerson</span><span class="p">(</span><span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="s">&quot;Castro Street&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;Mountain View&quot;</span><span class="p">,</span> <span class="nx">USA</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());}</span>
 </pre></div>
 
             </div>
@@ -120,6 +112,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/deprecation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -287,7 +280,7 @@ public type Address record {|
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@deprecated
-public type Person object {
+public class Person {
     public string firstName = &quot;John&quot;;
     public string lastName = &quot;Doe&quot;;
 </code></pre></div>
@@ -297,7 +290,7 @@ public type Person object {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>Person</code> object type is deprecated, but does not have the <code># # Deprecated</code> documentation.</p>
+                                            <p>The <code>Person</code> class type is deprecated, but does not have the <code># # Deprecated</code> documentation.</p>
 
                                         </div>
                                     </div>
@@ -371,7 +364,7 @@ public type Person object {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -396,7 +389,8 @@ public type Person object {
 # This function is deprecated since the `Person` type is deprecated.
 @deprecated
 public function createPerson(string fname, string lname, string street,
-                             string city, CountryCode countryCode) returns Person {
+                             string city, CountryCode countryCode)
+                             returns Person {
 </code></pre></div>
 
                                 </td>
@@ -424,7 +418,7 @@ public function createPerson(string fname, string lname, string street,
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Usage of the deprecated object <code>Person</code>.</p>
+                                            <p>Usage of the deprecated class <code>Person</code>.</p>
 
                                         </div>
                                     </div>
@@ -463,7 +457,8 @@ public function createPerson(string fname, string lname, string street,
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Person p = createPerson(&quot;Jane&quot;, &quot;Doe&quot;, &quot;Castro Street&quot;, &quot;Mountain View&quot;, USA);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person p = createPerson(&quot;Jane&quot;, &quot;Doe&quot;, &quot;Castro Street&quot;,
+                            &quot;Mountain View&quot;, USA);
 </code></pre></div>
 
                                 </td>
@@ -580,7 +575,7 @@ Running executables
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

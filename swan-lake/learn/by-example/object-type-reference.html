@@ -11,17 +11,17 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;};</span>
-<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="o">*</span><span class="nx">Person</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span> <span class="nx">salary</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span><span class="p">|</span><span class="kt">string</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Owner</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="p">};</span><span class="nx">class</span> <span class="nx">Owner</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">status</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Manager</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="p">}</span><span class="nx">class</span> <span class="nx">Manager</span> <span class="p">{</span>
     <span class="o">*</span><span class="nx">Employee</span><span class="p">;</span>
     <span class="o">*</span><span class="nx">Owner</span><span class="p">;</span>    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">dpt</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
@@ -39,19 +39,13 @@ redirect_from:
     <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Manager</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="s">&quot;Senior&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dpt</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getSalary</span><span class="p">());</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">object_type_reference</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">5</span>
-<span class="nx">HR</span>
-<span class="nx">John</span> <span class="nx">Doe</span>
-<span class="mf">2000.0</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -61,9 +55,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Object Type Reference</h2>
-                            <p><p>Object type references provide a way to copy the members from an object
- into another object. It is equivalent to specifying the members explicitly
- within the new object, thus, eliminating redundancy. An object can have
+                            <p><p>Type references in a class or object provide a way to copy the members from a class or object
+ into another class or object. It is equivalent to declaring the members explicitly
+ within the new class, thus, eliminating redundancy. A class/object can have
  zero or more type references and may have chained references as well.
  Fields and method definitions can override referenced fields and methods
  provided that they are sub-types of referenced field/method types.</p>
@@ -74,9 +68,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="readonly-objects-and-fields.html">
+                                    <a class="prev" href="object-final-fields.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Read-only Objects and Fields</p>
+                                        <p>Final Fields</p>
                                     </a>
                                 </div>
                                  
@@ -105,6 +99,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-type-reference/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -179,7 +174,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Person abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Person object {
     public int age;
     public string firstName;
     public string lastName;
@@ -190,7 +185,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines an abstract object called <code>Person</code>. It should only contain fields and the
+                                            <p>Defines an object type called <code>Person</code>. It should only contain fields and the
  method declarations.</p>
 
                                         </div>
@@ -234,7 +229,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Employee abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee object {
 </code></pre></div>
 
                                 </td>
@@ -242,7 +237,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines another abstract object called <code>Employee</code>, which references the <code>Person</code> object.</p>
+                                            <p>Defines another object type called <code>Employee</code>, which references the <code>Person</code> object.</p>
 
                                         </div>
                                     </div>
@@ -263,7 +258,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Add a reference to the <code>Person</code> object type.
- All the member fields and member methods will be copied from the <code>Person</code> object.</p>
+ All the member fields and member-method declarations will be copied from the <code>Person</code> object.</p>
 
                                         </div>
                                     </div>
@@ -287,9 +282,9 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Owner object {
+                                    <div class="highlight"><pre><code class=language-ballerina>class Owner {
     public string status = &quot;&quot;;
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -301,7 +296,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Manager object {
+                                    <div class="highlight"><pre><code class=language-ballerina>class Manager {
 </code></pre></div>
 
                                 </td>
@@ -323,7 +318,7 @@ redirect_from:
                                         <div>
                                             <p>Type references can be chained by adding a reference to the <code>Employee</code> object, which
  again has a reference to the <code>Employee</code> object. This will copy all the members from
- the <code>Employee</code> object. It will be same as defining each of those members within this object.</p>
+ the <code>Employee</code> object. It will be the same as declaring each of those members within this object.</p>
 
                                         </div>
                                     </div>
@@ -435,7 +430,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    function getSalary() returns float {
         return self.salary;
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -556,7 +551,7 @@ John Doe
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

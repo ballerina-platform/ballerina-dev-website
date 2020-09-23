@@ -50,14 +50,7 @@ redirect_from:
         <span class="nx">id</span><span class="p">:</span> <span class="mi">222288</span><span class="p">,</span>
         <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
     <span class="p">};</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_readonly_fields</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">empTwo</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">false</span>
-<span class="nx">details</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
-<span class="nx">identifier</span> <span class="nx">is</span> <span class="nx">immutable</span><span class="p">:</span> <span class="kc">true</span>
-<span class="nx">error</span><span class="p">:</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="kt">map</span><span class="p">}</span><span class="nx">InherentTypeViolation</span> <span class="kt">message</span><span class="p">=</span><span class="nx">cannot</span> <span class="nx">update</span> <span class="err">&#39;</span><span class="nx">readonly</span><span class="err">&#39;</span> <span class="nx">field</span> <span class="err">&#39;</span><span class="nx">details</span><span class="err">&#39;</span> <span class="nx">in</span> <span class="nx">record</span> <span class="nx">of</span> <span class="nx">type</span> <span class="err">&#39;</span><span class="nx">Employee</span><span class="err">&#39;</span>
-        <span class="nx">at</span> <span class="nx">record_readonly_fields</span><span class="p">:</span><span class="nx">main</span><span class="p">(</span><span class="nx">record_readonly_fields</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -109,6 +102,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/record-readonly-fields/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -535,8 +529,8 @@ ballerina run record_readonly_fields.bal
 empTwo is immutable: false
 details is immutable: true
 identifier is immutable: true
-error: {ballerina/lang.map}InherentTypeViolation message=cannot update &#39;readonly&#39; field &#39;details&#39; in record of type &#39;Employee&#39;
-        at record_readonly_fields:main(record_readonly_fields.bal:70)
+error: {ballerina/lang.map}InherentTypeViolation {&quot;message&quot;:&quot;cannot update &#39;readonly&#39; field &#39;details&#39; in record of type &#39;Employee&#39;&quot;}
+        at record_readonly_fields:main(record_readonly_fields.bal:73)
 </code></pre></div>
 
                                 </td>
@@ -564,7 +558,7 @@ error: {ballerina/lang.map}InherentTypeViolation message=cannot update &#39;read
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

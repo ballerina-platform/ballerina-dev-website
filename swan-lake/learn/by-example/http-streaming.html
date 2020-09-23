@@ -101,19 +101,14 @@ redirect_from:
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">|</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="nx">object</span> <span class="p">{</span>
         <span class="nx">public</span> <span class="kd">function</span> <span class="nx">close</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span><span class="p">;</span>
     <span class="p">}</span> <span class="nx">channelResult</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">channelResult</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_streaming</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span><span class="nx">Send</span> <span class="nx">a</span> <span class="nx">request</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">streaming</span> <span class="kd">service</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">X</span> <span class="nx">GET</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/stream/fileupload</span>
-<span class="nx">File</span> <span class="nx">Received</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -164,6 +159,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-streaming/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -547,7 +543,7 @@ by providing the file name to which the content should be written to.</p>
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function close(io:ReadableByteChannel|io:WritableByteChannel ch) {
-    abstract object {
+    object {
         public function close() returns error?;
     } channelResult = ch;
     var cr = channelResult.close();
@@ -644,7 +640,7 @@ File Received!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -45,14 +45,14 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">MockHttpClient</span> <span class="nx">client</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="nx">client</span> <span class="nx">class</span> <span class="nx">MockHttpClient</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">,</span>
-        <span class="nx">public</span> <span class="nx">http</span><span class="p">:</span><span class="nx">RequestMessage</span> <span class="kt">message</span> <span class="p">=</span> <span class="p">())</span> <span class="nx">returns</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">RequestMessage</span> <span class="kt">message</span> <span class="p">=</span> <span class="p">())</span> <span class="nx">returns</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
         <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="p">}</span><span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testTestDouble</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">,</span> <span class="nx">new</span> <span class="nx">MockHttpClient</span><span class="p">());</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
@@ -92,35 +92,7 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">mockClientUrl</span> <span class="p">=</span> <span class="s">&quot;http://foo&quot;</span><span class="p">;</span>
     <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">getMember</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockClientUrl</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">mockClientUrl</span><span class="p">);}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="nx">project</span> <span class="nx">and</span> <span class="nx">a</span> <span class="nx">module</span> <span class="nx">inside</span> <span class="nx">it</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">Replace</span> <span class="nx">the</span> <span class="nx">content</span> <span class="nx">of</span> <span class="nx">the</span> <span class="s">`main_test.bal`</span> <span class="nx">file</span> <span class="nx">residing</span> <span class="nx">inside</span> <span class="nx">the</span> <span class="nx">tests</span><span class="o">/</span> <span class="nx">directory</span>
-<span class="nx">under</span> <span class="nx">the</span> <span class="nx">created</span> <span class="nx">module</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina test`</span> <span class="nx">command</span>  <span class="nx">below</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">project</span> <span class="nx">root</span> <span class="nx">directory</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">test</span> <span class="nx">bbe_mocking</span>
-<span class="nx">Compiling</span> <span class="nx">source</span>
-        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">bbe_mocking</span><span class="p">:</span><span class="mf">0.1.0</span><span class="nx">Creating</span> <span class="nx">balos</span>
-        <span class="nx">target</span><span class="o">/</span><span class="nx">balo</span><span class="o">/</span><span class="nx">bbe_mocking</span><span class="o">-</span><span class="mi">2020</span><span class="nx">r1</span><span class="o">-</span><span class="kt">any</span><span class="o">-</span><span class="mf">0.1.0</span><span class="p">.</span><span class="nx">baloRunning</span> <span class="nx">Tests</span>
-        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">bbe_mocking</span><span class="p">:</span><span class="mf">0.1.0</span>
-<span class="nx">Executing</span> <span class="nx">the</span> <span class="mi">1</span><span class="nx">st</span> <span class="nx">GET</span> <span class="nx">request</span>
-<span class="nx">Status</span> <span class="nx">code</span><span class="p">:</span> <span class="mi">500</span>
-<span class="nx">Executing</span> <span class="nx">the</span> <span class="mi">1</span><span class="nx">st</span> <span class="nx">GET</span> <span class="nx">request</span>
-<span class="nx">Status</span> <span class="nx">code</span><span class="p">:</span> <span class="mi">200</span>
-<span class="nx">Executing</span> <span class="nx">the</span> <span class="mi">2</span><span class="nx">nd</span> <span class="nx">GET</span> <span class="nx">request</span>
-<span class="nx">Status</span> <span class="nx">code</span><span class="p">:</span> <span class="mi">200</span>
-<span class="nx">Executing</span> <span class="nx">the</span> <span class="mi">1</span><span class="nx">st</span> <span class="nx">GET</span> <span class="nx">request</span>
-<span class="nx">Status</span> <span class="nx">code</span><span class="p">:</span> <span class="mi">200</span>
-<span class="nx">Executing</span> <span class="nx">the</span> <span class="mi">2</span><span class="nx">nd</span> <span class="nx">GET</span> <span class="nx">request</span>
-<span class="nx">Status</span> <span class="nx">code</span><span class="p">:</span> <span class="mi">401</span>
-<span class="nx">Executing</span> <span class="nx">the</span> <span class="mi">1</span><span class="nx">st</span> <span class="nx">GET</span> <span class="nx">request</span>
-<span class="nx">Status</span> <span class="nx">code</span><span class="p">:</span> <span class="mi">403</span>
-<span class="nx">Executing</span> <span class="nx">the</span> <span class="mi">1</span><span class="nx">st</span> <span class="nx">GET</span> <span class="nx">request</span>
-<span class="nx">Status</span> <span class="nx">code</span><span class="p">:</span> <span class="mi">404</span>        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testMemberVariable</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testSendNotification</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testReturnSequence</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testReturnWithArgs</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testReturn</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testTestDouble</span>        <span class="mi">6</span> <span class="nx">passing</span>
-        <span class="mi">0</span> <span class="nx">failing</span>
-        <span class="mi">0</span> <span class="nx">skipped</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">mockClientUrl</span><span class="p">);}</span>
 </pre></div>
 
             </div>
@@ -138,8 +110,8 @@ redirect_from:
  Creating a test double is suitable when a single mock function/object can be used
  throughout all tests whereas stubbing is ideal when defining different behaviors for
  different test cases is required.<br/><br/>
- For more information on the underlying module,
- see <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html">The Test Module</a>.</p>
+ For more information, see <a href="https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
+ and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html">Test Module</a>.</p>
 </p>
 
                         </td>
@@ -178,6 +150,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/testerina-mocking-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -454,9 +427,9 @@ import ballerina/email;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type MockHttpClient client object {
+                                    <div class="highlight"><pre><code class=language-ballerina>public client class MockHttpClient {
     public remote function get(@untainted string path,
-        public http:RequestMessage message = ()) returns
+        http:RequestMessage message = ()) returns
             http:Response|http:ClientError {
 </code></pre></div>
 
@@ -465,8 +438,8 @@ import ballerina/email;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the test double of <code>http:Client</code> object with the
- implementation of required functions.</p>
+                                            <p>This is the test double of the <code>http:Client</code> object with the
+ implementation of the required functions.</p>
 
                                         </div>
                                     </div>
@@ -481,7 +454,7 @@ import ballerina/email;
         res.statusCode = 500;
         return res;
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -934,7 +907,7 @@ Status code: 404
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

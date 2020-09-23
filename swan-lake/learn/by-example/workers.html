@@ -11,36 +11,24 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution started&quot;</span><span class="p">);</span>
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">10000000</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="nx">n</span> <span class="p">{</span>
-            <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span><span class="p">;</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=2*3&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker 1 response: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
         <span class="p">}</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sum of first &quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="s">&quot; positive numbers = &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nd">@strand {</span>
-        <span class="nx">thread</span><span class="p">:</span><span class="s">&quot;any&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">10000000</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="nx">n</span> <span class="p">{</span>
-            <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v4/?expr=5*7&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker 2 response: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
         <span class="p">}</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sum of squares of first &quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span>
-            <span class="s">&quot; positive numbers = &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Worker execution finished&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">workers</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Worker</span> <span class="nx">execution</span> <span class="nx">started</span>
-<span class="nx">sum</span> <span class="nx">of</span> <span class="nx">first</span> <span class="mi">10000000</span> <span class="nx">positive</span> <span class="nx">numbers</span> <span class="p">=</span> <span class="mi">50000005000000</span>
-<span class="nx">sum</span> <span class="nx">of</span> <span class="nx">squares</span> <span class="nx">of</span> <span class="nx">first</span> <span class="mi">10000000</span> <span class="nx">positive</span> <span class="nx">numbers</span> <span class="p">=</span> <span class="mi">1291990006563070912</span>
-<span class="nx">Worker</span> <span class="nx">execution</span> <span class="nx">finished</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -50,11 +38,13 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Workers</h2>
-                            <p><p>Workers in Ballerina allow developers to delegate their tasks to independently running executions.
- Worker execution starts immediately after invoking the relevant function, remote function, or resource that encloses the worker(s).
- Workers can be declared within functions, remote functions, or resources.
- Worker execution starts immediately after executing the statements declared before the first worker declaration in the relevant function,
- remote function, or resource that encloses the worker(s).</p>
+                            <p><p>Ballerina&rsquo;s concurrency model is based on strands. An execution thread is divided into multiple strands.
+ In this manner, multiple strands belonging to a single thread are cooperatively multitasked.
+ This behavior is especially useful in non-blocking I/O communication in which a single thread can cooperatively
+ execute I/O operations simultaneously without a single strand blocking the thread. <br/></p>
+
+<p>A realization of a strand in Ballerina code is done using a worker. A worker represents a single strand
+ of a function execution. A function has a default worker, which is unnamed and it can also have zero or more named workers.</p>
 </p>
 
                         </td>
@@ -93,6 +83,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/workers/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -121,12 +112,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -136,6 +121,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/http;
 </code></pre></div>
 
                                 </td>
@@ -156,10 +142,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>In Ballerina, each function consists of one or more workers, which are
- independent execution paths called strands. If explicit workers are
- not mentioned within worker blocks, the function code will belong to a
- single implicit default worker. The default worker in each function wil be
+                                            <p>The code outside the named workers belong to an implicit
+ default worker. The default worker in each function wil be
  executed in the same strand as the caller function.</p>
 
                                         </div>
@@ -172,30 +156,11 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    worker w1 {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This block belongs to the worker <code>w1</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        int n = 10000000;
-        int sum = 0;
-        foreach var i in 1 ... n {
-            sum += i;
+        http:Client httpClient = new (&quot;https://api.mathjs.org&quot;);
+        var response = httpClient-&gt;get(&quot;/v4/?expr=2*3&quot;);
+        if response is http:Response {
+            io:println(&quot;Worker 1 response: &quot;, response.getTextPayload());
         }
-        io:println(&quot;sum of first &quot;, n, &quot; positive numbers = &quot;, sum);
     }
 </code></pre></div>
 
@@ -204,7 +169,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Calculates the sum(n).</p>
+                                            <p>This block belongs to the <code>w1</code> worker.</p>
 
                                         </div>
                                     </div>
@@ -212,70 +177,20 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @strand {
-        thread:&quot;any&quot;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>By default workers run on the same physical thread of the parent strand.
- By adding <code>@strand</code> annotation, this worker&rsquo;s strand is allowed to run
- on any available physical thread.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    worker w2 {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This block belongs to the worker <code>w2</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        int n = 10000000;
-        int sum = 0;
-        foreach var i in 1 ... n {
-            sum += i * i;
+        http:Client httpClient = new (&quot;https://api.mathjs.org&quot;);
+        var response = httpClient-&gt;get(&quot;/v4/?expr=5*7&quot;);
+        if response is http:Response {
+            io:println(&quot;Worker 2 response: &quot;, response.getTextPayload());
         }
-        io:println(&quot;sum of squares of first &quot;, n,
-            &quot; positive numbers = &quot;, sum);
     }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Calculates the sum(n^2).</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -332,8 +247,8 @@ redirect_from:
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run workers.bal
 Worker execution started
-sum of first 10000000 positive numbers = 50000005000000
-sum of squares of first 10000000 positive numbers = 1291990006563070912
+Worker 2 response: 35
+Worker 1 response: 6
 Worker execution finished
 </code></pre></div>
 
@@ -362,7 +277,7 @@ Worker execution finished
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

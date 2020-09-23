@@ -36,18 +36,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Converted Float Value: &quot;</span><span class="p">,</span> <span class="nx">u</span><span class="p">);</span>
     <span class="nx">value</span> <span class="p">=</span> <span class="nx">employee</span><span class="p">;</span>
     <span class="nx">Department</span> <span class="nx">department</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Department</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">type_cast</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Person</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">Jane</span> <span class="nx">Doe</span>
-<span class="nx">Person</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">25</span>
-<span class="nx">Employee</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">Jane</span> <span class="nx">Doe</span>
-<span class="nx">Employee</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">25</span>
-<span class="nx">Integer</span> <span class="nx">Value</span><span class="p">:</span> <span class="mi">100</span>
-<span class="nx">Converted</span> <span class="nx">Float</span> <span class="nx">Value</span><span class="p">:</span> <span class="mf">100.0</span>
-<span class="nx">Converted</span> <span class="nx">Float</span> <span class="nx">Value</span><span class="p">:</span> <span class="mf">100.0</span>
-<span class="nx">error</span><span class="p">:</span> <span class="p">{</span><span class="nx">ballerina</span><span class="p">}</span><span class="nx">TypeCastError</span> <span class="kt">message</span><span class="p">=</span><span class="nx">incompatible</span> <span class="nx">types</span><span class="p">:</span> <span class="err">&#39;</span><span class="nx">Employee</span><span class="err">&#39;</span> <span class="nx">cannot</span> <span class="nx">be</span> <span class="nx">cast</span> <span class="nx">to</span> <span class="err">&#39;</span><span class="nx">Department</span><span class="err">&#39;</span>
-        <span class="nx">at</span> <span class="nx">type_cast</span><span class="p">:</span><span class="nx">main</span><span class="p">(</span><span class="nx">type_cast</span><span class="p">.</span><span class="nx">bal</span><span class="p">:</span><span class="mi">56</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -101,6 +90,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/type-cast/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -394,7 +384,7 @@ Employee Age: 25
 Integer Value: 100
 Converted Float Value: 100.0
 Converted Float Value: 100.0
-error: {ballerina}TypeCastError message=incompatible types: &#39;Employee&#39; cannot be cast to &#39;Department&#39;
+error: {ballerina}TypeCastError {&quot;message&quot;:&quot;incompatible types: &#39;Employee&#39; cannot be cast to &#39;Department&#39;&quot;}
         at type_cast:main(type_cast.bal:56)
 </code></pre></div>
 
@@ -423,7 +413,7 @@ error: {ballerina}TypeCastError message=incompatible types: &#39;Employee&#39; c
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

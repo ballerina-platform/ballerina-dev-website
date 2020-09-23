@@ -53,7 +53,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 ### Highlights
 
 - Revised Ballerina object syntax, which differentiates the object type from the `class`, from which you can create object values. 
-- Introducing isolated functions to achieve concurrency safety together with read only values.  
+- Introducing `isolated` functions to achieve concurrency safety together with read-only values.  
 - Introducing `distinct` object types offering the functionality similar to what is  provided in nominal type systems.
 - Improvements to quoted identifiers to support arbitrary, non-empty strings as Ballerina identifiers.
 
@@ -475,16 +475,8 @@ The service name is not mandatory and you can give the service name if you want 
 
 ###### Azure Functions
 
-Fix for https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues/33
+Fix for https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues/33.
 
 ###### AWS Lambda
 
-Domain-specific event types support
-
-
-
-
-
-
-
-
+Added domain-specific event types support.

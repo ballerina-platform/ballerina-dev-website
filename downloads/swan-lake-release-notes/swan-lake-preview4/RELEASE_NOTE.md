@@ -133,6 +133,7 @@ public function main() {
         }
     };
 }
+```
 
 Object-constructor expressions also support a type reference in which the referenced type is included in the object type in the same way as in an object-type inclusion.
 
@@ -179,7 +180,7 @@ distinct class Manager {
 }
 
 Manager r = new ();
-Employee s = r; // this is allowed since ‘Manager’ is a distinct subtype of ‘Employee’
+Employee s = r; // This is allowed since ‘Manager’ is a distinct subtype of ‘Employee’
 
 ```
 
@@ -466,9 +467,9 @@ $  ballerina openapi -i <contract>  -o <output path>
 The service name is not mandatory and you can give the service name if you want to document a specific service. Otherwise, it will generate all the services that are included in the Ballerina source file.
 
 
-    ```bash
-      $  ballerina openapi -i <ballerina service file>  --service <service Name> -o <output path>
-    ```
+```bash
+    $  ballerina openapi -i <ballerina service file>  --service <service Name> -o <output path>
+```
 
 ##### Improvements related to code actions
 

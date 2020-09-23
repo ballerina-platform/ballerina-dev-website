@@ -208,6 +208,21 @@ let redirections = {
     "/1.0/learn/api-docs/ballerina/knative/index.html": "/1.0/page-not-available.html",
     "/1.1/learn/by-example/awslambda-deployment.html":"/1.1/learn/by-example/aws-lambda-deployment.html",
     "/1.0/learn/by-example/awslambda-deployment.html":"/1.0/learn/by-example/aws-lambda-deployment.html",
-    "/1.0/learn/how-to-keep-ballerina-up-to-date/":"/1.0/page-not-available.html"
-
+    "/1.0/learn/how-to-keep-ballerina-up-to-date/":"/1.0/page-not-available.html",
+    "/swan-lake/learn/by-example/objects.html":"/swan-lake/learn/by-example/class-definitions.html",
+    "/swan-lake/learn/by-example/abstract-objects.html":"/swan-lake/learn/by-example/object-type.html",
+    "/swan-lake/learn/by-example/anonymous-objects.html":"/swan-lake/learn/by-example/object-constructor-expressions.html",
+    "/swan-lake/learn/by-example/readonly-objects-and-fields.html":"/swan-lake/learn/by-example/readonly-objects.html",
+    "/learn/by-example/object-final-fields.html":"/learn/page-not-available.html",
+    "/1.1/learn/by-example/object-final-fields.html":"/1.1/page-not-available.html",
+    "/1.0/learn/by-example/object-final-fields.html":"/1.0/page-not-available.html",
+    "/learn/by-example/isolated-functions.html":"/learn/page-not-available.html",
+    "/1.1/learn/by-example/isolated-functions.html":"/1.1/page-not-available.html",
+    "/1.0/learn/by-example/isolated-functions.html":"/1.0/page-not-available.html",
+    "/learn/by-example/error-handling-in-single-place.html":"/learn/page-not-available.html",
+    "1.1/learn/by-example/error-handling-in-single-place.html":"/1.1/page-not-available.html",
+    "1.0/learn/by-example/error-handling-in-single-place.html":"/1.0/page-not-available.html",
+    "/learn/by-example/fail.html":"/learn/page-not-available.html",
+    "1.1/learn/by-example/fail.html":"/1.1/page-not-available.html",
+    "1.0/learn/by-example/fail.html":"/1.0/page-not-available.html",
 };

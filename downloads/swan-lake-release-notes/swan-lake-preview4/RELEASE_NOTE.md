@@ -455,6 +455,8 @@ $  ballerina openapi -i <contract>  -o <output path>
 
     ```bash
       	$  ballerina openapi -i <contract> --tags <tags> -o <output Path>
+    ```
+    ```bash
 	    $  ballerina openapi -i <contract> --operations <operationIds> -o <output Path>
 	```
 
@@ -475,7 +477,7 @@ The service name is not mandatory and you can give the service name if you want 
 
 ###### Azure Functions
 
-Fix for https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues/33.
+Fix for https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues/33
 
 ###### AWS Lambda
 

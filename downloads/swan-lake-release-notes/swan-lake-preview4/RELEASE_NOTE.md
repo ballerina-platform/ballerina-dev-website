@@ -246,7 +246,7 @@ public function main() {
 
     string message = 'get_ɱȅșșȧǧȅ_with\#(5);
 
-    // Quoted Identifiers with hexadecimal code points.
+    // Quoted identifiers with hexadecimal code points.
     string 'unicode_\u{2324} = "John Doe";
 }
 ```

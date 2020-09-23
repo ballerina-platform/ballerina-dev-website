@@ -31,7 +31,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ClientInformation",
       "description": "\u003cp\u003eConfiguration elements for client code generation.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -233,13 +233,14 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ServiceInformation",
       "description": "\u003cp\u003eService validation codee\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [],

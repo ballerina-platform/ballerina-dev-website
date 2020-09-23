@@ -70,18 +70,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../rabbitmq/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
             <li>
@@ -148,7 +145,7 @@
             </h1>
             
     
-    <div>Version : 1.0.2</div>
+    <div>Version : 1.0.3</div>
     
     <h2>Module Overview</h2>
 <p><a href="https://www.rabbitmq.com/">RabbitMQ</a> is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.</p>
@@ -295,126 +292,103 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="BasicProperties" title="BasicProperties">
                             <a class="records " href="records/BasicProperties.html">BasicProperties</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Basic properties of the message - routing headers etc.</p>
-
+                            <p>Basic properties of the message - routing headers etc.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ConnectionConfiguration" title="ConnectionConfiguration">
                             <a class="records " href="records/ConnectionConfiguration.html">ConnectionConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations used to create a <code>rabbitmq:Connection</code>.</p>
-
+                            <p>Configurations used to create a <code>rabbitmq:Connection</code>.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ExchangeConfiguration" title="ExchangeConfiguration">
                             <a class="records " href="records/ExchangeConfiguration.html">ExchangeConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations used to declare an exchange.</p>
-
+                            <p>Configurations used to declare an exchange.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="QueueConfiguration" title="QueueConfiguration">
                             <a class="records " href="records/QueueConfiguration.html">QueueConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations used to declare a queue.</p>
-
+                            <p>Configurations used to declare a queue.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="RabbitMQServiceConfig" title="RabbitMQServiceConfig">
                             <a class="records " href="records/RabbitMQServiceConfig.html">RabbitMQServiceConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations required to create a subscription.</p>
-
+                            <p>Configurations required to create a subscription.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="SecureSocket" title="SecureSocket">
                             <a class="records " href="records/SecureSocket.html">SecureSocket</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations for facilitating secure connections.</p>
-
+                            <p>Configurations for facilitating secure connections.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
                     <tr>
-                        <td class="module-title truncate objects" id="Connection" title="Connection">
-                            <a class="objects " href="objects/Connection.html">Connection</a>
+                        <td class="module-title truncate classes" id="Connection" title="Connection">
+                            <a class="classes " href="classes/Connection.html">Connection</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a single network connection to the RabbitMQ broker.</p>
-
+                            <p>Represents a single network connection to the RabbitMQ broker.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -433,8 +407,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                 </td>
                 <td class="module-desc">
                     
-                    <p>The Ballerina interface to provide AMQP Channel related functionality.</p>
-
+                    <p>The Ballerina interface to provide AMQP Channel related functionality.</p> 
                 </td>
             </tr>
             
@@ -444,8 +417,7 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                 </td>
                 <td class="module-desc">
                     
-                    <p>Provides the functionality to manipulate the messages received by the consumer services.</p>
-
+                    <p>Provides the functionality to manipulate the messages received by the consumer services.</p> 
                 </td>
             </tr>
             
@@ -470,8 +442,6 @@ The default acknowledgement mode is auto-ack (messages are acknowledged immediat
                 <td class="module-desc">
                     
                     <p>Ballerina RabbitMQ Message Listener.
-Provides a listener to consume messages from the RabbitMQ server.</p>
-
                 </td>
             </tr>
             
@@ -499,8 +469,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constant for the RabbitMQ Direct Exchange type.</p>
-
+                    <p>Constant for the RabbitMQ Direct Exchange type.</p> 
                 </td>
             </tr>
             
@@ -510,8 +479,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constant for the RabbitMQ Fan-out Exchange type.</p>
-
+                    <p>Constant for the RabbitMQ Fan-out Exchange type.</p> 
                 </td>
             </tr>
             
@@ -521,8 +489,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constant for the RabbitMQ Topic Exchange type.</p>
-
+                    <p>Constant for the RabbitMQ Topic Exchange type.</p> 
                 </td>
             </tr>
             
@@ -532,8 +499,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constant for the RabbitMQ auto acknowledgement mode.</p>
-
+                    <p>Constant for the RabbitMQ auto acknowledgement mode.</p> 
                 </td>
             </tr>
             
@@ -543,8 +509,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constant for the RabbitMQ client acknowledgement mode.</p>
-
+                    <p>Constant for the RabbitMQ client acknowledgement mode.</p> 
                 </td>
             </tr>
             
@@ -569,8 +534,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>The annotation, which is used to configure the subscription.</p>
-
+                    <p>The annotation, which is used to configure the subscription.</p> 
                 </td>
             </tr>
             
@@ -594,8 +558,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Types of acknowledgement modes supported by the Ballerina RabbitMQ Connector.</p>
-
+                    <p>Types of acknowledgement modes supported by the Ballerina RabbitMQ Connector.</p> 
                 </td>
             </tr>
             
@@ -605,8 +568,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>The union of the RabbitMQ module related errors.</p>
-
+                    <p>The union of the RabbitMQ module related errors.</p> 
                 </td>
             </tr>
             
@@ -616,8 +578,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Types of message content that can be published.</p>
-
+                    <p>Types of message content that can be published.</p> 
                 </td>
             </tr>
             
@@ -641,8 +602,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the RabbitMQ module related errors.</p>
-
+                    <p>Represents the RabbitMQ module related errors.</p> 
                 </td>
             </tr>
             

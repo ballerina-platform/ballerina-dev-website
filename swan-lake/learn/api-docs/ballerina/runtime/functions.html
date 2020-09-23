@@ -101,11 +101,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../runtime/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../runtime/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -163,9 +162,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.</p>   
                             </div>
                         </td>
                     </tr>
@@ -175,9 +175,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the <code>runtime:InvocationContext</code> instance.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the <code>runtime:InvocationContext</code> instance.</p>   
                             </div>
                         </td>
                     </tr>
@@ -187,9 +188,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Halts the current strand for a predefined amount of time.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Halts the current strand for a predefined amount of time.</p>   
                             </div>
                         </td>
                     </tr>
@@ -214,6 +216,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.</p>
 <pre><code class="language-ballerina"> runtime:CallStackElement[] callStackElements = runtime:getCallStack();
@@ -250,6 +255,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the <code>runtime:InvocationContext</code> instance.</p>
 <pre><code class="language-ballerina"> runtime:InvocationContext invocationContext = runtime:getInvocationContext();
 </code></pre>
@@ -282,6 +290,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Halts the current strand for a predefined amount of time.</p>
 <pre><code class="language-ballerina"> runtime:sleep(1000);

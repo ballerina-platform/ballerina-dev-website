@@ -77,11 +77,7 @@
                         
     
         <li >
-            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
-        </li>
-    
-        <li class="active active-item">
-            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
         </li>
     
         <li >
@@ -93,15 +89,11 @@
         </li>
     
         <li >
-            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
-        </li>
-    
-        <li >
-            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
-        </li>
-    
-        <li >
             <a href="HttpClient.html" onclick="menuLinkClick()">HttpClient</a>
+        </li>
+    
+        <li >
+            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
         </li>
     
         <li >
@@ -109,15 +101,23 @@
         </li>
     
         <li >
-            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
-        </li>
-    
-        <li >
             <a href="RedirectClient.html" onclick="menuLinkClick()">RedirectClient</a>
         </li>
     
         <li >
+            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
+        </li>
+    
+        <li class="active active-item">
+            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+        </li>
+    
+        <li >
             <a href="RetryClient.html" onclick="menuLinkClick()">RetryClient</a>
+        </li>
+    
+        <li >
+            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
         </li>
     
         <li >
@@ -145,18 +145,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -238,69 +239,6 @@
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>A Circuit Breaker implementation which can be used to gracefully handle network failures.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a> config, <a href="../../http/records/CircuitBreakerInferredConfig.html">CircuitBreakerInferredConfig</a> circuitBreakerInferredConfig, <a href="../../http/clients/HttpClient.html">HttpClient</a> httpClient, <a href="../../http/records/CircuitHealth.html">CircuitHealth</a> circuitHealth)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
-                <li>
-                    <p>The URL of the target service</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span> </li>
-                <li>
-                    <p>The configurations of the client endpoint associated with this <code>CircuitBreaker</code> instance</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>circuitBreakerInferredConfig</b><span class="type">  <a href="../../http/records/CircuitBreakerInferredConfig.html">CircuitBreakerInferredConfig</a></span> </li>
-                <li>
-                    <p>Configurations derived from the <code>http:CircuitBreakerConfig</code></p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>httpClient</b><span class="type">  <a href="../../http/clients/HttpClient.html">HttpClient</a></span> </li>
-                <li>
-                    <p>The underlying <code>HttpActions</code> instance, which will be making the actual network calls</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>circuitHealth</b><span class="type">  <a href="../../http/records/CircuitHealth.html">CircuitHealth</a></span> </li>
-                <li>
-                    <p>The circuit health monitor</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -327,9 +265,7 @@
                         <tr>
                             <td class="module-title truncate functions" title="execute"><a
                                     class="functions" href="#execute">execute</a></td>
-                            <td class="module-desc"><p>This wraps the <code>CircuitBreakerClient.post()</code> function of the underlying HTTP remote functions provider.
-The <code>CircuitBreakerClient.execute()</code> function can be used to invoke an HTTP call with the given HTTP verb.</p>
-</td>
+                            <td class="module-desc"><p>This wraps the <code>CircuitBreakerClient.post()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
@@ -359,25 +295,19 @@ The <code>CircuitBreakerClient.execute()</code> function can be used to invoke a
                         <tr>
                             <td class="module-title truncate functions" title="forward"><a
                                     class="functions" href="#forward">forward</a></td>
-                            <td class="module-desc"><p>This wraps the <code>CircuitBreakerClient.forward()</code> function of the underlying HTTP remote functions provider.
-The Forward remote function can be used to forward an incoming request to an upstream service as it is.</p>
-</td>
+                            <td class="module-desc"><p>This wraps the <code>CircuitBreakerClient.forward()</code> function of the underlying HTTP remote functions provider.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="submit"><a
                                     class="functions" href="#submit">submit</a></td>
-                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.
-The <code>CircuitBreakerClient.submit()</code> function does not give out a <code>Response</code> as the result.
-Rather it returns an <code>http:HttpFuture</code> which can be used to do further interactions with the endpoint.</p>
-</td>
+                            <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getResponse"><a
                                     class="functions" href="#getResponse">getResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously-submitted request.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously-submitted request.</p> </td>
                         </tr>
                     
                         <tr>
@@ -389,15 +319,13 @@ Rather it returns an <code>http:HttpFuture</code> which can be used to do furthe
                         <tr>
                             <td class="module-title truncate functions" title="getNextPromise"><a
                                     class="functions" href="#getNextPromise">getNextPromise</a></td>
-                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPromisedResponse"><a
                                     class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                            <td class="module-desc"><p>Retrieves the promised server push <code>Response</code> message.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the promised server push <code>Response</code> message.</p> </td>
                         </tr>
                     
                         <tr>
@@ -420,9 +348,7 @@ Rather it returns an <code>http:HttpFuture</code> which can be used to do furthe
     </div>
     <div class="param-details">
         
-        <p>Force the circuit into a closed state in which it will allow requests regardless of the error percentage
-until the failure threshold exceeds.</p>
-
+        <p>Force the circuit into a closed state in which it will allow requests regardless of the error percentage until the failure threshold exceeds.</p> 
     </div>
 </div>
 
@@ -434,9 +360,7 @@ until the failure threshold exceeds.</p>
     </div>
     <div class="param-details">
         
-        <p>Force the circuit into a open state in which it will suspend all requests
-until <code>resetTimeInMillis</code> interval exceeds.</p>
-
+        <p>Force the circuit into a open state in which it will suspend all requests until <code>resetTimeInMillis</code> interval exceeds.</p> 
     </div>
 </div>
 
@@ -448,8 +372,7 @@ until <code>resetTimeInMillis</code> interval exceeds.</p>
     </div>
     <div class="param-details">
         
-        <p>Provides the <code>http:CircuitState</code> of the circuit breaker.</p>
-
+        <p>Provides the <code>http:CircuitState</code> of the circuit breaker.</p> 
     </div>
 </div>
 
@@ -630,11 +553,12 @@ function displayMenu() {
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The POST remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.post()</code>
 function of the underlying HTTP remote functions provider.</p>
@@ -686,7 +610,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream
 server</p>
 </li>
@@ -705,11 +629,12 @@ server</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The HEAD remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.head()</code>
 function of the underlying HTTP remote functions provider.</p>
@@ -741,7 +666,7 @@ function of the underlying HTTP remote functions provider.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -761,7 +686,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream
 server</p>
 </li>
@@ -780,11 +705,12 @@ server</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The PUT remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.put()</code>
 function of the underlying HTTP remote functions provider.</p>
@@ -836,7 +762,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream
 server</p>
 </li>
@@ -855,11 +781,12 @@ server</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>CircuitBreakerClient.post()</code> function of the underlying HTTP remote functions provider.
 The <code>CircuitBreakerClient.execute()</code> function can be used to invoke an HTTP call with the given HTTP verb.</p>
@@ -928,7 +855,7 @@ The <code>CircuitBreakerClient.execute()</code> function can be used to invoke a
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream
 server</p>
 </li>
@@ -947,11 +874,12 @@ server</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The PATCH remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.patch()</code>
 function of the underlying HTTP remote functions provider.</p>
@@ -1003,7 +931,7 @@ function of the underlying HTTP remote functions provider.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream
 server</p>
 </li>
@@ -1022,11 +950,12 @@ server</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The DELETE remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.delete()</code>
 function of the underlying HTTP remote functions provider.</p>
@@ -1058,7 +987,7 @@ function of the underlying HTTP remote functions provider.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1078,7 +1007,7 @@ function of the underlying HTTP remote functions provider.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream
 server</p>
 </li>
@@ -1097,11 +1026,12 @@ server</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The GET remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.get()</code>
 function of the underlying HTTP remote functions provider.</p>
@@ -1133,7 +1063,7 @@ function of the underlying HTTP remote functions provider.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1153,7 +1083,7 @@ function of the underlying HTTP remote functions provider.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream
 server</p>
 </li>
@@ -1172,11 +1102,12 @@ server</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The OPTIONS remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.options()</code>
 function of the underlying HTTP remote functions provider.</p>
@@ -1208,7 +1139,7 @@ function of the underlying HTTP remote functions provider.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1228,7 +1159,7 @@ function of the underlying HTTP remote functions provider.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream
 server</p>
 </li>
@@ -1245,13 +1176,14 @@ server</p>
             </a>
             <h2 > forward </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/objects/Request.html">Request</a> request)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/classes/Request.html">Request</a> request)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>CircuitBreakerClient.forward()</code> function of the underlying HTTP remote functions provider.
 The Forward remote function can be used to forward an incoming request to an upstream service as it is.</p>
@@ -1282,7 +1214,7 @@ The Forward remote function can be used to forward an incoming request to an ups
                 <ul>
                     <li>
                         <span >request</span>
-                        <span class="type">  <a href="../../http/objects/Request.html">Request</a> </span>
+                        <span class="type">  <a href="../../http/classes/Request.html">Request</a> </span>
                         
                     </li>
                     <li>
@@ -1302,7 +1234,7 @@ The Forward remote function can be used to forward an incoming request to an ups
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream
 server</p>
 </li>
@@ -1321,11 +1253,12 @@ server</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Submits an HTTP request to a service with the specified HTTP verb.
 The <code>CircuitBreakerClient.submit()</code> function does not give out a <code>Response</code> as the result.
@@ -1395,7 +1328,7 @@ Rather it returns an <code>http:HttpFuture</code> which can be used to do furthe
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:HttpFuture</code> that represents an asynchronous service invocation or else an <code>http:ClientError</code> if the submission
 fails</p>
 </li>
@@ -1412,13 +1345,14 @@ fails</p>
             </a>
             <h2 > getResponse </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves the <code>http:Response</code> for a previously-submitted request.</p>
 
@@ -1431,7 +1365,7 @@ fails</p>
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1451,7 +1385,7 @@ fails</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1467,13 +1401,14 @@ fails</p>
             </a>
             <h2 > hasPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
                 <b> returns </b><span class="builtin-type">boolean</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Circuit breaking is not supported. The default value is the <code>CircuitBreakerClient.hasPromise()</code> function of the underlying
 HTTP remote functions provider.</p>
@@ -1487,7 +1422,7 @@ HTTP remote functions provider.</p>
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1523,13 +1458,14 @@ HTTP remote functions provider.</p>
             </a>
             <h2 > getNextPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
-                <b> returns </b><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p>
 
@@ -1542,7 +1478,7 @@ HTTP remote functions provider.</p>
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1562,7 +1498,7 @@ HTTP remote functions provider.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:PushPromise</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1578,13 +1514,14 @@ HTTP remote functions provider.</p>
             </a>
             <h2 > getPromisedResponse </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves the promised server push <code>Response</code> message.</p>
 
@@ -1597,7 +1534,7 @@ HTTP remote functions provider.</p>
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>
@@ -1617,7 +1554,7 @@ HTTP remote functions provider.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>A promised <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1633,11 +1570,12 @@ HTTP remote functions provider.</p>
             </a>
             <h2 > rejectPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise)</p>
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Circuit breaking is not supported. The default value is the <code>CircuitBreakerClient.rejectPromise()</code> function of the underlying
 HTTP remote functions provider.</p>
@@ -1651,7 +1589,7 @@ HTTP remote functions provider.</p>
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>
@@ -1687,6 +1625,7 @@ HTTP remote functions provider.</p>
     </div>
     <div class="function-desc">
         
+        
         <p>Force the circuit into a closed state in which it will allow requests regardless of the error percentage
 until the failure threshold exceeds.</p>
 
@@ -1708,6 +1647,7 @@ until the failure threshold exceeds.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Force the circuit into a open state in which it will suspend all requests
 until <code>resetTimeInMillis</code> interval exceeds.</p>
@@ -1732,6 +1672,7 @@ until <code>resetTimeInMillis</code> interval exceeds.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Provides the <code>http:CircuitState</code> of the circuit breaker.</p>
 

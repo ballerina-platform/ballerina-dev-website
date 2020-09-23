@@ -97,11 +97,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../socket/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../socket/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -172,39 +171,6 @@
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Initializes the UDP client based on the provided configurations.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../socket/records/Address.html">Address</a>? localAddress, <a href="../../socket/records/UdpClientConfig.html">UdpClientConfig</a>? config)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>localAddress</b><span class="type">  <a href="../../socket/records/Address.html">Address</a>?</span> ()</li>
-                <li>
-                    <p>Local binding of the interface and port</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../socket/records/UdpClientConfig.html">UdpClientConfig</a>?</span> ()</li>
-                <li>
-                    <p>The configurations for the UDP client</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -213,9 +179,7 @@
                         <tr>
                             <td class="module-title truncate functions" title="sendTo"><a
                                     class="functions" href="#sendTo">sendTo</a></td>
-                            <td class="module-desc"><p>Sends the given data to the specified remote client.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends the given data to the specified remote client.</p>   </td>
                         </tr>
                     
                         <tr>
@@ -227,9 +191,7 @@
                         <tr>
                             <td class="module-title truncate functions" title="close"><a
                                     class="functions" href="#close">close</a></td>
-                            <td class="module-desc"><p>Closes the client socket connection.</p>
-
-</td>
+                            <td class="module-desc"><p>Closes the client socket connection.</p>   </td>
                         </tr>
                     
                 </table>
@@ -368,6 +330,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sends the given data to the specified remote client.</p>
 <pre><code class="language-ballerina"> int|socket:Error result = socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
 </code></pre>
@@ -442,6 +407,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
 are received from the client. Else, it returns the data available in the OS buffer or waits until the data is received.
 If the request length is lesser than the data in the buffer, then the rest will be discarded.</p>
@@ -501,6 +469,9 @@ or else a <code>socket:Error</code> if the data can't be read from the client</p
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Closes the client socket connection.</p>
 <pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();

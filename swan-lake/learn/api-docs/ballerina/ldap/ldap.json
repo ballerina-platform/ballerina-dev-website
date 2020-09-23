@@ -31,7 +31,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "LdapConnection",
       "description": "\u003cp\u003eRepresets the LDAP connection.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -536,7 +536,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "LdapConnectionConfig",
       "description": "\u003cp\u003eRepresents the configurations that are required for an LDAP auth store.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -590,73 +590,18 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "SecureSocket",
       "description": "\u003cp\u003eConfigures the SSL/TLS options to be used for LDAP communication.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [
     {
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "ldap",
-                "name": "LdapConnectionConfig",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "ldapConnectionConfig",
-              "description": "\u003cp\u003eThe \u003ccode\u003eldap:LdapConnectionConfig\u003c/code\u003e instance\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "instanceId",
-              "description": "\u003cp\u003eInstance ID of the endpoint\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eCreates an LDAP auth store with the given configurations.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -747,64 +692,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "ldap",
-              "name": "LdapConnectionConfig",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "ldapConnectionConfig",
-            "description": "\u003cp\u003eThe \u003ccode\u003eldap:LdapConnectionConfig\u003c/code\u003e instance\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "string",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "instanceId",
-            "description": "\u003cp\u003eInstance ID of the endpoint\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eCreates an LDAP auth store with the given configurations.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -895,16 +785,17 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "InboundLdapAuthProvider",
       "description": "\u003cp\u003eRepresents the inbound LDAP auth provider. This connects to an active directory or an LDAP, retrieves the necessary\nuser information, and performs authentication and authorization.\nThe \u003ccode\u003eldap:InboundLdapAuthProvider\u003c/code\u003e is another implementation of the \u003ccode\u003eauth:InboundAuthProvider\u003c/code\u003e interface.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e ldap:InboundLdapAuthProvider inboundLdapAuthProvider \u003d new(ldapConfig, \u0026quot;instanceId\u0026quot;);\n\u003c/code\u003e\u003c/pre\u003e\n",
       "isDeprecated": false
     }
   ],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1041,6 +932,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1168,6 +1060,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [

@@ -114,7 +114,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Info",
       "description": "",
       "isDeprecated": false
@@ -237,7 +237,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "TransactionContext",
       "description": "",
       "isDeprecated": false
@@ -353,17 +353,19 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "TransactionParticipantConfig",
       "description": "\u003cp\u003eContains the configurations for local transaction participant function.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [],
@@ -394,6 +396,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [],
@@ -424,6 +427,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [],
@@ -454,6 +458,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [],
@@ -484,6 +489,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [],
@@ -514,6 +520,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -673,6 +680,7 @@
       "isDeprecated": true
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -706,6 +714,7 @@
       "isDeprecated": true
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -819,6 +828,7 @@
       "isDeprecated": true
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],
@@ -851,6 +861,7 @@
       "isDeprecated": true
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],
@@ -883,6 +894,7 @@
       "isDeprecated": true
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -939,6 +951,7 @@
       "isDeprecated": true
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [

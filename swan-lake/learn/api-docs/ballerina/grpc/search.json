@@ -5,10 +5,10 @@
       "description": "\u003cp\u003eThis module provides support for the gRPC messaging protocol.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
-      "id": "AbstractClientEndpoint",
-      "description": "\u003cp\u003eRepresents the abstract gRPC client endpoint.\u003c/p\u003e",
+      "id": "ConnectionManager",
+      "description": "",
       "moduleId": "grpc"
     },
     {
@@ -17,13 +17,7 @@
       "moduleId": "grpc"
     }
   ],
-  "functions": [
-    {
-      "id": "ballerina/grpc:0.7.0.\u003cinit\u003e0",
-      "description": "",
-      "moduleId": "grpc"
-    }
-  ],
+  "functions": [],
   "records": [
     {
       "id": "ClientConfiguration",
@@ -340,6 +334,13 @@
     {
       "id": "ServiceDescriptor",
       "description": "\u003cp\u003eService descriptor annotation.\u003c/p\u003e",
+      "moduleId": "grpc"
+    }
+  ],
+  "abstractObjects": [
+    {
+      "id": "AbstractClientEndpoint",
+      "description": "\u003cp\u003eRepresents the abstract gRPC client endpoint.\u003c/p\u003e",
       "moduleId": "grpc"
     }
   ]

@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides an implementation for connecting and interacting with HTTP, HTTP2, and WebSocket endpoints.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
       "id": "AuthnFilter",
       "description": "\u003cp\u003eRepresentation of the Authentication filter.\u003c/p\u003e",
@@ -32,6 +32,21 @@
       "moduleId": "http"
     },
     {
+      "id": "HttpCache",
+      "description": "\u003cp\u003eImplements a cache for storing HTTP responses.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "RequestCacheControl",
+      "description": "\u003cp\u003eConfigures the cache control directives for an \u003ccode\u003ehttp:Request\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "ResponseCacheControl",
+      "description": "\u003cp\u003eConfigures cache control directives for an \u003ccode\u003ehttp:Response\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "Cookie",
       "description": "\u003cp\u003eRepresents a Cookie.\u003c/p\u003e",
       "moduleId": "http"
@@ -47,43 +62,8 @@
       "moduleId": "http"
     },
     {
-      "id": "FilterContext",
-      "description": "\u003cp\u003eRepresentation of request filter Context.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "HttpCache",
-      "description": "\u003cp\u003eImplements a cache for storing HTTP responses.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
       "id": "HttpFuture",
       "description": "\u003cp\u003eRepresents a \u0027future\u0027 that returns as a result of an asynchronous HTTP request submission.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "InboundAuthHandler",
-      "description": "\u003cp\u003eThe representation of an inbound authentication handler for HTTP traffic.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "LoadBalancerRoundRobinRule",
-      "description": "\u003cp\u003eImplementation of round robin load balancing strategy.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "LoadBalancerRule",
-      "description": "\u003cp\u003eLoadBalancerRule provides a required interfaces to implement different algorithms.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "OutboundAuthHandler",
-      "description": "\u003cp\u003eThe representation of an outbound authentication handler for HTTP traffic.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "PersistentCookieHandler",
-      "description": "\u003cp\u003eThe representation of a persistent cookie handler for managing persistent cookies.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -92,18 +72,13 @@
       "moduleId": "http"
     },
     {
+      "id": "FilterContext",
+      "description": "\u003cp\u003eRepresentation of request filter Context.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "Request",
       "description": "\u003cp\u003eRepresents an HTTP request.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "RequestCacheControl",
-      "description": "\u003cp\u003eConfigures the cache control directives for an \u003ccode\u003ehttp:Request\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "RequestFilter",
-      "description": "\u003cp\u003eAbstract Representation of a HTTP Request Filter.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -112,13 +87,8 @@
       "moduleId": "http"
     },
     {
-      "id": "ResponseCacheControl",
-      "description": "\u003cp\u003eConfigures cache control directives for an \u003ccode\u003ehttp:Response\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "ResponseFilter",
-      "description": "\u003cp\u003eAbstract Representation of a HTTP Response Filter.\u003c/p\u003e",
+      "id": "LoadBalancerRoundRobinRule",
+      "description": "\u003cp\u003eImplementation of round robin load balancing strategy.\u003c/p\u003e",
       "moduleId": "http"
     }
   ],
@@ -126,21 +96,6 @@
     {
       "id": "addCookies",
       "description": "\u003cp\u003eAdds cookies to the custom header.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "ballerina/http:1.0.0.\u003cinit\u003e0",
-      "description": "",
-      "moduleId": "http"
-    },
-    {
-      "id": "ballerina/http:1.0.0.\u003cinit\u003e1",
-      "description": "",
-      "moduleId": "http"
-    },
-    {
-      "id": "ballerina/http:1.0.0.\u003cinit\u003e2",
-      "description": "",
       "moduleId": "http"
     },
     {
@@ -518,6 +473,46 @@
       "moduleId": "http"
     },
     {
+      "id": "REDIRECT_MULTIPLE_CHOICES_300",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e300 - Multiple Choices\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_MOVED_PERMANENTLY_301",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e301 - Moved Permanently\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_FOUND_302",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e302 - Found\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_SEE_OTHER_303",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e303 - See Other\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_NOT_MODIFIED_304",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e304 - Not Modified\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_USE_PROXY_305",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e305 - Use Proxy\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_TEMPORARY_REDIRECT_307",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e307 - Temporary Redirect\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_PERMANENT_REDIRECT_308",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e308 - Permanent Redirect\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "MULTIPART_AS_PRIMARY_TYPE",
       "description": "\u003cp\u003eRepresents multipart primary type\u003c/p\u003e\n",
       "moduleId": "http"
@@ -603,43 +598,13 @@
       "moduleId": "http"
     },
     {
-      "id": "REDIRECT_MULTIPLE_CHOICES_300",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e300 - Multiple Choices\u003c/code\u003e.\u003c/p\u003e",
+      "id": "LEADING",
+      "description": "\u003cp\u003eHeader is placed before the payload of the request/response.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
-      "id": "REDIRECT_MOVED_PERMANENTLY_301",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e301 - Moved Permanently\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_FOUND_302",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e302 - Found\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_SEE_OTHER_303",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e303 - See Other\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_NOT_MODIFIED_304",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e304 - Not Modified\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_USE_PROXY_305",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e305 - Use Proxy\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_TEMPORARY_REDIRECT_307",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e307 - Temporary Redirect\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_PERMANENT_REDIRECT_308",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e308 - Permanent Redirect\u003c/code\u003e.\u003c/p\u003e",
+      "id": "TRAILING",
+      "description": "\u003cp\u003eHeader is placed after the payload of the request/response.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -1120,6 +1085,11 @@
       "moduleId": "http"
     },
     {
+      "id": "LoadBalanceActionError",
+      "description": "\u003cp\u003eRepresents an error occurred in an remote function of the Load Balance connector.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "MaximumWaitTimeExceededError",
       "description": "\u003cp\u003eRepresents a client error that occurred exceeding maximum wait time\u003c/p\u003e\n",
       "moduleId": "http"
@@ -1257,6 +1227,11 @@
       "moduleId": "http"
     },
     {
+      "id": "HeaderPosition",
+      "description": "\u003cp\u003eDefines the position of the headers in the request/response.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "HttpOperation",
       "description": "\u003cp\u003eDefines the HTTP operations related to circuit breaker, failover and load balancer.\u003c/p\u003e",
       "moduleId": "http"
@@ -1289,11 +1264,6 @@
     {
       "id": "ListenerError",
       "description": "\u003cp\u003eDefines the possible listener error types\u003c/p\u003e\n",
-      "moduleId": "http"
-    },
-    {
-      "id": "LoadBalanceActionError",
-      "description": "\u003cp\u003eRepresents an error occurred in an remote function of the Load Balance connector.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -1344,13 +1314,8 @@
   ],
   "clients": [
     {
-      "id": "Caller",
-      "description": "\u003cp\u003eThe caller actions for responding to client requests.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "CircuitBreakerClient",
-      "description": "\u003cp\u003eA Circuit Breaker implementation which can be used to gracefully handle network failures.\u003c/p\u003e",
+      "id": "HttpCachingClient",
+      "description": "\u003cp\u003eAn HTTP caching client implementation which takes an \u003ccode\u003eHttpActions\u003c/code\u003e instance and wraps it with an HTTP caching layer.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -1364,18 +1329,13 @@
       "moduleId": "http"
     },
     {
-      "id": "FailoverClient",
-      "description": "\u003cp\u003eAn HTTP client endpoint which provides failover support over multiple HTTP clients.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "HttpCachingClient",
-      "description": "\u003cp\u003eAn HTTP caching client implementation which takes an \u003ccode\u003eHttpActions\u003c/code\u003e instance and wraps it with an HTTP caching layer.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
       "id": "HttpClient",
       "description": "\u003cp\u003eProvides the HTTP actions for interacting with an HTTP server.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "Caller",
+      "description": "\u003cp\u003eThe caller actions for responding to client requests.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -1384,18 +1344,28 @@
       "moduleId": "http"
     },
     {
-      "id": "LoadBalanceClient",
-      "description": "\u003cp\u003eLoadBalanceClient endpoint provides load balancing functionality over multiple HTTP clients.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
       "id": "RedirectClient",
       "description": "\u003cp\u003eProvides redirect functionality for HTTP client remote functions.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
+      "id": "FailoverClient",
+      "description": "\u003cp\u003eAn HTTP client endpoint which provides failover support over multiple HTTP clients.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "CircuitBreakerClient",
+      "description": "\u003cp\u003eA Circuit Breaker implementation which can be used to gracefully handle network failures.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "RetryClient",
       "description": "\u003cp\u003eProvides the HTTP remote functions for interacting with an HTTP endpoint.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "LoadBalanceClient",
+      "description": "\u003cp\u003eLoadBalanceClient endpoint provides load balancing functionality over multiple HTTP clients.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -1416,13 +1386,13 @@
   ],
   "listeners": [
     {
-      "id": "Listener",
-      "description": "\u003cp\u003eThis is used for creating HTTP server endpoints.\u003c/p\u003e",
+      "id": "MockListener",
+      "description": "\u003cp\u003eMock server endpoint which does not open a listening port.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
-      "id": "MockListener",
-      "description": "\u003cp\u003eMock server endpoint which does not open a listening port.\u003c/p\u003e",
+      "id": "Listener",
+      "description": "\u003cp\u003eThis is used for creating HTTP server endpoints.\u003c/p\u003e",
       "moduleId": "http"
     }
   ],
@@ -1440,6 +1410,38 @@
     {
       "id": "WebSocketServiceConfig",
       "description": "\u003cp\u003eThe annotation which is used to configure a WebSocket service.\u003c/p\u003e",
+      "moduleId": "http"
+    }
+  ],
+  "abstractObjects": [
+    {
+      "id": "InboundAuthHandler",
+      "description": "\u003cp\u003eThe representation of an inbound authentication handler for HTTP traffic.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "LoadBalancerRule",
+      "description": "\u003cp\u003eLoadBalancerRule provides a required interfaces to implement different algorithms.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "OutboundAuthHandler",
+      "description": "\u003cp\u003eThe representation of an outbound authentication handler for HTTP traffic.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "PersistentCookieHandler",
+      "description": "\u003cp\u003eThe representation of a persistent cookie handler for managing persistent cookies.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "RequestFilter",
+      "description": "\u003cp\u003eAbstract Representation of a HTTP Request Filter.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "ResponseFilter",
+      "description": "\u003cp\u003eAbstract Representation of a HTTP Response Filter.\u003c/p\u003e",
       "moduleId": "http"
     }
   ]

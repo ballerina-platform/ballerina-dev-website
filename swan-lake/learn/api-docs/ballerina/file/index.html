@@ -71,18 +71,15 @@ file/directory, and retrieve metadata of the file.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../file/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../file/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../file/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../file/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -141,7 +138,7 @@ file/directory, and retrieve metadata of the file.
             </h1>
             
     
-    <div>Version : 0.5.0</div>
+    <div>Version : 0.5.1</div>
     
     <h2>Module Overview</h2>
 <p>This module contains functions to perform file system based operations such as create, delete, rename the
@@ -153,75 +150,63 @@ file/directory, and retrieve metadata of the file.</p>
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="FileEvent" title="FileEvent">
                             <a class="records " href="records/FileEvent.html">FileEvent</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents an event which will trigger when there is a changes to listining direcotry.</p>
-
+                            <p>Represents an event which will trigger when there is a changes to listining direcotry.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ListenerConfig" title="ListenerConfig">
                             <a class="records " href="records/ListenerConfig.html">ListenerConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents configurations that required for directory listener.</p>
-
+                            <p>Represents configurations that required for directory listener.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
                     <tr>
-                        <td class="module-title truncate objects" id="FileInfo" title="FileInfo">
-                            <a class="objects " href="objects/FileInfo.html">FileInfo</a>
+                        <td class="module-title truncate classes" id="FileInfo" title="FileInfo">
+                            <a class="classes " href="classes/FileInfo.html">FileInfo</a>
                         </td>
                         <td class="module-desc">
                             
                             <p>FileInfo record contains metadata information of a file.
-This record is returned by getFileInfo function is os module.</p>
-
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -242,8 +227,7 @@ This record is returned by getFileInfo function is os module.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the directory listener endpoint, which is used to listen to a directory in the local file system.</p>
-
+                    <p>Represents the directory listener endpoint, which is used to listen to a directory in the local file system.</p> 
                 </td>
             </tr>
             
@@ -268,10 +252,8 @@ This record is returned by getFileInfo function is os module.</p>
                 </td>
                 <td class="module-desc">
                     
+                    
                     <p>Copy the file/directory in the old path to the new path.
-If a file already exists in the new path, this replaces that file.</p>
-
-
                 </td>
             </tr>
             
@@ -281,10 +263,8 @@ If a file already exists in the new path, this replaces that file.</p>
                 </td>
                 <td class="module-desc">
                     
+                    
                     <p>Creates a new directory with the specified file name.
-If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.</p>
-
-
                 </td>
             </tr>
             
@@ -294,10 +274,8 @@ If the <code>parentDirs</code> flag is true, it creates a directory in the speci
                 </td>
                 <td class="module-desc">
                     
+                    
                     <p>Creates a file in the specified file path.
-Truncates if the file already exists in the given path.</p>
-
-
                 </td>
             </tr>
             
@@ -307,9 +285,10 @@ Truncates if the file already exists in the given path.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Reports whether the file or directory exists in the given the path.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Reports whether the file or directory exists in the given the path.</p>   
                 </td>
             </tr>
             
@@ -319,9 +298,10 @@ Truncates if the file already exists in the given path.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the current working directory.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the current working directory.</p>   
                 </td>
             </tr>
             
@@ -331,9 +311,10 @@ Truncates if the file already exists in the given path.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the metadata information of the file specified in the file path.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the metadata information of the file specified in the file path.</p>   
                 </td>
             </tr>
             
@@ -343,10 +324,8 @@ Truncates if the file already exists in the given path.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Reads the directory and returns a list of files and directories
-inside the specified directory.</p>
-
-
+                    
+                    <p>Reads the directory and returns a list of files and directories inside the specified directory.</p>   
                 </td>
             </tr>
             
@@ -356,10 +335,8 @@ inside the specified directory.</p>
                 </td>
                 <td class="module-desc">
                     
+                    
                     <p>Removes the specified file or directory.
-If the recursive flag is true, it removes the path and any children it contains.</p>
-
-
                 </td>
             </tr>
             
@@ -369,10 +346,8 @@ If the recursive flag is true, it removes the path and any children it contains.
                 </td>
                 <td class="module-desc">
                     
+                    
                     <p>Renames(Moves) the old path with the new path.
-If the new path already exists and it is not a directory, this replaces the file.</p>
-
-
                 </td>
             </tr>
             
@@ -382,9 +357,10 @@ If the new path already exists and it is not a directory, this replaces the file
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the default directory to use for temporary files.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the default directory to use for temporary files.</p>   
                 </td>
             </tr>
             
@@ -414,8 +390,7 @@ If the new path already exists and it is not a directory, this replaces the file
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents file system related errors.</p>
-
+                    <p>Represents file system related errors.</p> 
                 </td>
             </tr>
             
@@ -439,8 +414,7 @@ If the new path already exists and it is not a directory, this replaces the file
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error that occurs when the file/directory does not exist at the given filepath.</p>
-
+                    <p>Represents an error that occurs when the file/directory does not exist at the given filepath.</p> 
                 </td>
             </tr>
             
@@ -450,8 +424,7 @@ If the new path already exists and it is not a directory, this replaces the file
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error that occurs when a file system operation fails.</p>
-
+                    <p>Represents an error that occurs when a file system operation fails.</p> 
                 </td>
             </tr>
             
@@ -461,8 +434,7 @@ If the new path already exists and it is not a directory, this replaces the file
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error that occurs when a file system operation is denied due to invalidity.</p>
-
+                    <p>Represents an error that occurs when a file system operation is denied due to invalidity.</p> 
                 </td>
             </tr>
             
@@ -472,8 +444,7 @@ If the new path already exists and it is not a directory, this replaces the file
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error that occurs when a file system operation is denied, due to the absence of file permission.</p>
-
+                    <p>Represents an error that occurs when a file system operation is denied, due to the absence of file permission.</p> 
                 </td>
             </tr>
             

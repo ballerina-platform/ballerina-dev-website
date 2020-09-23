@@ -81,6 +81,14 @@ module JDBC.
             <a href="#ApplicationError">ApplicationError</a>
         </li>
     
+        <li  onclick="menuLinkClick()">
+            <a href="#BatchExecuteError">BatchExecuteError</a>
+        </li>
+    
+        <li  onclick="menuLinkClick()">
+            <a href="#DatabaseError">DatabaseError</a>
+        </li>
+    
 
                     </ul>
                 </div>
@@ -94,23 +102,20 @@ module JDBC.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
-        
-        
-            
-                <li>
-                    <a  data="objects" href="../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
             <li>
-                <a data="clients" href="../sql/index.html#clients" onclick="menuLinkClick()">Clients</a>
+                <a  data="classes" href="../sql/index.html#classes" onclick="menuLinkClick()">Classes</a>
             </li>
+        
+        
+            <li>
+                <a  data="classes" href="../sql/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
+        
         
         
         
@@ -182,6 +187,37 @@ module JDBC.
                         <li>
                             
                             <p>Represents an error originating from application-level causes.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="BatchExecuteError">
+                            <b >BatchExecuteError </b>
+                            <span class="type"><a href="../sql/records/BatchExecuteErrorDetail.html">BatchExecuteErrorDetail</a></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents an error occurred when a batch execution is running.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="DatabaseError">
+                            <b >DatabaseError </b>
+                            <span class="type"><a href="../sql/records/DatabaseErrorDetail.html">DatabaseErrorDetail</a></span>
+                            
+                        </li>
+                        <li>
+                            
+                            <p>Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,
+database resource clean-up, and other similar scenarios.</p>
 
                         </li>
                     </ul>

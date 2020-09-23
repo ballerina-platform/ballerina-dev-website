@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eAnnotation based Azure Functions extension implementation for Ballerina.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
       "id": "Context",
       "description": "\u003cp\u003eThe request context holder.\u003c/p\u003e",
@@ -348,5 +348,6 @@
       "description": "\u003cp\u003e@azurefunctions:TwilioSmsOutput annotation.\u003c/p\u003e",
       "moduleId": "azure.functions"
     }
-  ]
+  ],
+  "abstractObjects": []
 }

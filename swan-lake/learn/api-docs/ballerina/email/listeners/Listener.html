@@ -93,11 +93,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../email/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../email/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -172,28 +171,6 @@
     <div class="constants">
         <div class="method-sum">
         
-            
-                <h2>Constructor</h2>
-
-    <p>Gets invoked during the <code>email:Listener</code> initialization.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../email/records/ListenerConfig.html">ListenerConfig</a> listenerConfig)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>listenerConfig</b><span class="type">  <a href="../../email/records/ListenerConfig.html">ListenerConfig</a></span> </li>
-                <li>
-                    
-                </li>
-            </ul>
-        </div>
-    
-</div>
-            
-        
 
         
             <h2>Methods</h2>
@@ -206,9 +183,7 @@
     </div>
     <div class="param-details">
         
-        <p>Stops consuming messages and detaches the service from the <code>email:Listener</code>.</p>
-
-
+        <p>Stops consuming messages and detaches the service from the <code>email:Listener</code>.</p>   
     </div>
 </div>
 
@@ -220,9 +195,7 @@
     </div>
     <div class="param-details">
         
-        <p>Stops the <code>email:Listener</code> forcefully.</p>
-
-
+        <p>Stops the <code>email:Listener</code> forcefully.</p>   
     </div>
 </div>
 
@@ -234,9 +207,7 @@
     </div>
     <div class="param-details">
         
-        <p>Stops the <code>email:Listener</code> gracefully.</p>
-
-
+        <p>Stops the <code>email:Listener</code> gracefully.</p>   
     </div>
 </div>
 
@@ -248,9 +219,7 @@
     </div>
     <div class="param-details">
         
-        <p>Registers for the Email service.</p>
-
-
+        <p>Registers for the Email service.</p>   
     </div>
 </div>
 
@@ -269,9 +238,7 @@
     </div>
     <div class="param-details">
         
-        <p>Starts the <code>email:Listener</code>.</p>
-
-
+        <p>Starts the <code>email:Listener</code>.</p>   
     </div>
 </div>
 
@@ -283,9 +250,7 @@
     </div>
     <div class="param-details">
         
-        <p>Stops the <code>email:Listener</code>.</p>
-
-
+        <p>Stops the <code>email:Listener</code>.</p>   
     </div>
 </div>
 
@@ -297,9 +262,7 @@
     </div>
     <div class="param-details">
         
-        <p>Binds a service to the <code>email:Listener</code>.</p>
-
-
+        <p>Binds a service to the <code>email:Listener</code>.</p>   
     </div>
 </div>
 
@@ -327,6 +290,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops consuming messages and detaches the service from the <code>email:Listener</code>.</p>
 <pre><code class="language-ballerina"> email:Error? result = emailListener.__detach(helloService);
@@ -385,6 +351,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops the <code>email:Listener</code> forcefully.</p>
 <pre><code class="language-ballerina"> email:Error? result = emailListener.__immediateStop();
 </code></pre>
@@ -420,6 +389,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops the <code>email:Listener</code> gracefully.</p>
 <pre><code class="language-ballerina"> email:Error? result = emailListener.__gracefulStop();
 </code></pre>
@@ -452,6 +424,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Registers for the Email service.</p>
 <pre><code class="language-ballerina"> emailListener.register(helloService, hello);
@@ -522,6 +497,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Starts the <code>email:Listener</code>.</p>
 <pre><code class="language-ballerina"> email:Error? result = emailListener.__start();
 </code></pre>
@@ -557,6 +535,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops the <code>email:Listener</code>.</p>
 <pre><code class="language-ballerina"> email:Error? result = emailListener.__stop();
 </code></pre>
@@ -591,6 +572,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Binds a service to the <code>email:Listener</code>.</p>
 <pre><code class="language-ballerina"> email:Error? result = emailListener.__attach(helloService, hello);

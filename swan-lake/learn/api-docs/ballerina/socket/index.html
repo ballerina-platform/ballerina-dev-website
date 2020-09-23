@@ -70,11 +70,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../socket/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../socket/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -134,7 +133,7 @@
             </h1>
             
     
-    <div>Version : 0.6.7</div>
+    <div>Version : 0.6.8</div>
     
     <h2>Module Overview</h2>
 <p>This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for both connection-oriented and connectionless protocols.</p>
@@ -184,71 +183,59 @@ service echoServer on server {
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="Address" title="Address">
                             <a class="records " href="records/Address.html">Address</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>This represent the IP socket address.</p>
-
+                            <p>This represent the IP socket address.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ClientConfig" title="ClientConfig">
                             <a class="records " href="records/ClientConfig.html">ClientConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations for the socket client.</p>
-
+                            <p>Configurations for the socket client.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ListenerConfig" title="ListenerConfig">
                             <a class="records " href="records/ListenerConfig.html">ListenerConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the socket server configuration.</p>
-
+                            <p>Represents the socket server configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="UdpClientConfig" title="UdpClientConfig">
                             <a class="records " href="records/UdpClientConfig.html">UdpClientConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations for the UDP client.</p>
-
+                            <p>Configurations for the UDP client.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -269,8 +256,7 @@ service echoServer on server {
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the socket client and related remote functions.</p>
-
+                    <p>Represents the socket client and related remote functions.</p> 
                 </td>
             </tr>
             
@@ -280,8 +266,7 @@ service echoServer on server {
                 </td>
                 <td class="module-desc">
                     
-                    <p>Initializes the UDP client based on the provided configurations.</p>
-
+                    <p>Initializes the UDP client based on the provided configurations.</p> 
                 </td>
             </tr>
             
@@ -305,8 +290,7 @@ service echoServer on server {
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the socket listener on which the socket listener service is registered and started.</p>
-
+                    <p>Represents the socket listener on which the socket listener service is registered and started.</p> 
                 </td>
             </tr>
             
@@ -340,8 +324,6 @@ service echoServer on server {
                 <td class="module-desc">
                     
                     <p>Represents caller object in socket service resources and client callback service resources.
-This has all the remote functions expose by socket:Client.</p>
-
                 </td>
             </tr>
             
@@ -351,8 +333,7 @@ This has all the remote functions expose by socket:Client.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents socket module related errors.</p>
-
+                    <p>Represents socket module related errors.</p> 
                 </td>
             </tr>
             
@@ -376,8 +357,7 @@ This has all the remote functions expose by socket:Client.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents generic socket error, which contains the information related to the error.</p>
-
+                    <p>Represents generic socket error, which contains the information related to the error.</p> 
                 </td>
             </tr>
             
@@ -387,8 +367,7 @@ This has all the remote functions expose by socket:Client.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>This will returns once the given read timed out time exceed for socket reads.</p>
-
+                    <p>This will returns once the given read timed out time exceed for socket reads.</p> 
                 </td>
             </tr>
             

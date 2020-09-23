@@ -94,18 +94,15 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../task/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../task/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../task/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../task/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -171,31 +168,6 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.
     <div class="constants">
         <div class="method-sum">
         
-            
-                <h2>Constructor</h2>
-
-    <p>Initializes the <code>task:Listener</code> object. This may panic if the initialization is failed due to a configuration
-error.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a> configuration)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>configuration</b><span class="type">  <a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a></span> </li>
-                <li>
-                    <p>The <code>task:TimerConfiguration</code> or <code>task:AppointmentConfiguration</code> record to define the
-<code>task:Listener</code> behavior</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-            
-        
 
         
             <h2>Methods</h2>
@@ -208,8 +180,7 @@ error.</p>
     </div>
     <div class="param-details">
         
-        <p>Detaches the given <code>service</code> from the <code>task:Listener</code>.</p>
-
+        <p>Detaches the given <code>service</code> from the <code>task:Listener</code>.</p> 
     </div>
 </div>
 
@@ -245,8 +216,7 @@ error.</p>
     </div>
     <div class="param-details">
         
-        <p>Pauses the <code>task:Listener</code> and the attached services.</p>
-
+        <p>Pauses the <code>task:Listener</code> and the attached services.</p> 
     </div>
 </div>
 
@@ -318,6 +288,9 @@ error.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Detaches the given <code>service</code> from the <code>task:Listener</code>.</p>
 
     </div>
@@ -373,6 +346,9 @@ error.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops the <code>task:Listener</code> and the attached services gracefully. It will wait if there are any tasks still to be
 completed. This may panic if the stopping causes any error.</p>
 
@@ -406,6 +382,9 @@ completed. This may panic if the stopping causes any error.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops the <code>task:Listener</code> and the attached services immediately. This will cancel any ongoing tasks. This may
 panic if the stopping causes any error.</p>
@@ -441,6 +420,9 @@ panic if the stopping causes any error.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Pauses the <code>task:Listener</code> and the attached services.</p>
 
     </div>
@@ -473,6 +455,9 @@ panic if the stopping causes any error.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Resumes a paused <code>task:Listener</code>. Calling this on an already-running <code>task:Listener</code> will not cause any error.</p>
 
@@ -512,6 +497,9 @@ panic if the stopping causes any error.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Attaches the given <code>service</code> to the <code>task:Listener</code>. This may panic if the service attachment is fails.</p>
 
     </div>
@@ -541,7 +529,7 @@ panic if the stopping causes any error.</p>
                     <li>
                         <span >name</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -583,6 +571,9 @@ panic if the stopping causes any error.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Starts dispatching the services attached to the <code>task:Listener</code>. This may panic if the service dispatching causes
 any error.</p>

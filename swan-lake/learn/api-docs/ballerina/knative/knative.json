@@ -1,7 +1,7 @@
 {
   "id": "knative",
   "summary": "\u003cp\u003eThis module offers an annotation based Knative extension implementation for Ballerina.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation based Knative extension implementation for Ballerina.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/knative/index.html#objects\"\u003eObjects\u003c/a\u003e. For examples on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/knative-deployment.html\"\u003eAWS Lambda Deployment Example\u003c/a\u003e.\u003c/p\u003e\n\u003ch3\u003eAnnotation Usage Sample:\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/http;\nimport ballerina/log;\nimport ballerina/knative;\n\n@knative:Service {\n    name:\u0026quot;hello\u0026quot;\n}\nlistener http:Listener helloEP \u003d new(9090);\n\n@http:ServiceConfig {\n    basePath: \u0026quot;/helloWorld\u0026quot;\n}\nservice helloWorld on helloEP {\n    resource function sayHello(http:Caller caller, http:Request request) {\n        var responseResult \u003d caller-\u0026gt;respond(\u0026quot;Hello, World from service helloWorld ! \u0026quot;);\n        if (responseResult is error) {\n            log:printError(\u0026quot;error responding\u0026quot;, responseResult);\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation based Knative extension implementation for Ballerina.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFor information on the operations, which you can perform with this module, see \u003ca href\u003d\"/swan-lake/learn/api-docs/ballerina/knative/index.html#objects\"\u003eObjects\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor examples on the usage of the operations, see the \u003ca href\u003d\"/swan-lake/learn/by-example/knative-deployment.html\"\u003eAWS Lambda Deployment Example\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eAnnotation Usage Sample:\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/http;\nimport ballerina/log;\nimport ballerina/knative;\n\n@knative:Service {\n    name:\u0026quot;hello\u0026quot;\n}\nlistener http:Listener helloEP \u003d new(9090);\n\n@http:ServiceConfig {\n    basePath: \u0026quot;/helloWorld\u0026quot;\n}\nservice helloWorld on helloEP {\n    resource function sayHello(http:Caller caller, http:Request request) {\n        var responseResult \u003d caller-\u0026gt;respond(\u0026quot;Hello, World from service helloWorld ! \u0026quot;);\n        if (responseResult is error) {\n            log:printError(\u0026quot;error responding\u0026quot;, responseResult);\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n",
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [
@@ -91,7 +91,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ConfigMap",
       "description": "\u003cp\u003eKnative Config Map volume mount.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -122,7 +122,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ConfigMapKeyRef",
       "description": "\u003cp\u003eValue from config map key.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -176,7 +176,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ConfigMapKeyValue",
       "description": "\u003cp\u003eValue for config map key.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -240,11 +240,11 @@
             }
           },
           "name": "configMaps",
-          "description": "\u003cp\u003eArray of \u003ca href\u003d\"kubernetes.html#ConfigMap\"\u003eConfigMap\u003c/a\u003e\u003c/p\u003e\n",
+          "description": "\u003cp\u003eArray of configuration maps\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ConfigMapMount",
       "description": "\u003cp\u003eSecret volume mount configurations for knative.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -275,7 +275,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "FieldRef",
       "description": "\u003cp\u003eValue from field.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -306,7 +306,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "FieldValue",
       "description": "\u003cp\u003eValue for a field.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -360,7 +360,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "FileConfig",
       "description": "\u003cp\u003eExternal file type for docker.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -471,7 +471,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Metadata",
       "description": "\u003cp\u003eKnative annotation configuration.\nMetadata for artifacts.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -525,7 +525,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "PodAutoscalerConfig",
       "description": "\u003cp\u003eKnative Horizontal Pod Autoscaler configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -648,7 +648,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "PodTolerationConfiguration",
       "description": "\u003cp\u003ePod toleration configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -725,7 +725,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ProbeConfiguration",
       "description": "\u003cp\u003eProbing configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -756,7 +756,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ResourceFieldRef",
       "description": "\u003cp\u003eValue from resource field.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -810,7 +810,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ResourceFieldValue",
       "description": "\u003cp\u003eValue for resource field.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -901,7 +901,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Secret",
       "description": "\u003cp\u003eKnative secret volume mount.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -932,7 +932,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "SecretKeyRef",
       "description": "\u003cp\u003eValue from secret key.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -986,7 +986,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "SecretKeyValue",
       "description": "\u003cp\u003eValue for a secret key.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1027,11 +1027,11 @@
             }
           },
           "name": "secrets",
-          "description": "\u003cp\u003eArray of \u003ca href\u003d\"knative.html#Secret\"\u003eSecret\u003c/a\u003e\u003c/p\u003e\n",
+          "description": "\u003cp\u003eArray of secrets\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "SecretMount",
       "description": "\u003cp\u003eSecret volume mount configurations for knative.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1279,7 +1279,7 @@
             }
           },
           "name": "copyFiles",
-          "description": "\u003cp\u003eArray of \u003ca href\u003d\"kubernetes#FileConfig\"\u003eExternal files\u003c/a\u003e for docker image\u003c/p\u003e\n",
+          "description": "\u003cp\u003eArray of file configurations for docker image\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
@@ -1834,13 +1834,14 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ServiceConfiguration",
       "description": "\u003cp\u003eKnative service configuration.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [],
@@ -2049,7 +2050,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "function, service",
+      "attachmentPoints": "service, function",
       "name": "ConfigMap",
       "description": "\u003cp\u003e@knative:ConfigMap annotation to configure config maps.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -2072,7 +2073,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "function, service",
+      "attachmentPoints": "service, function",
       "name": "HPA",
       "description": "\u003cp\u003e@knative:HPA annotation to configure horizontal pod autoscaler yaml.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -2095,7 +2096,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "function, service",
+      "attachmentPoints": "service, function",
       "name": "Secret",
       "description": "\u003cp\u003e@knative:Secret annotation to configure secrets.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -2118,7 +2119,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "service, function, listener",
+      "attachmentPoints": "function, listener, service",
       "name": "Service",
       "description": "",
       "isDeprecated": false

@@ -117,6 +117,7 @@
         
         
         
+        
             <li>
                 <a data="functions" href="../java.arrays/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
@@ -169,9 +170,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a Ballerina array for a handle that holds a Java array.</p>
-
-
+                                
+                                <p>Returns a Ballerina array for a handle that holds a Java array.</p>   
                             </div>
                         </td>
                     </tr>
@@ -180,6 +180,7 @@
                         <td width="30%"><a class="functions " href="#get">get</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 <p>Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array.
                             </div>
@@ -191,9 +192,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the length of the given Java array.</p>
-
-
+                                
+                                <p>Returns the length of the given Java array.</p>   
                             </div>
                         </td>
                     </tr>
@@ -202,6 +202,7 @@
                         <td width="30%"><a class="functions " href="#newInstance">newInstance</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 <p>Returns a new Java array instance with the specified element type and dimensions.
                             </div>
@@ -213,6 +214,7 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Replaces the indexed element at the specified index in the given Java array with the specified element.
                             </div>
                         </td>
@@ -223,9 +225,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a handle value representation for a Ballerina array.</p>
-
-
+                                
+                                <p>Returns a handle value representation for a Ballerina array.</p>   
                             </div>
                         </td>
                     </tr>
@@ -250,6 +251,7 @@
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Returns a Ballerina array for a handle that holds a Java array.</p>
 <pre><code class="language-ballerina"> int[] array = &lt;int[]&gt; check jarrays:fromHandle(arrayHandle, &quot;int&quot;);
@@ -342,6 +344,7 @@
     </div>
     <div class="function-desc">
         
+        
         <p>Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array. This function
 completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does not refer
 to a Java array.</p>
@@ -419,6 +422,7 @@ to a Java array.</p>
     </div>
     <div class="function-desc">
         
+        
         <p>Returns the length of the given Java array.</p>
 <pre><code class="language-ballerina"> handle array = getArray();
  int length = java.arrays:getLength(array);
@@ -469,13 +473,14 @@ to a Java array.</p>
             </a>
             <h2 > newInstance </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">handle</span> class, <span class="array-type"><span class="builtin-type">int</span>...</span> dimensions)</p>
+            <p>(<span class="builtin-type">handle</span> classType, <span class="array-type"><span class="builtin-type">int</span>...</span> dimensions)</p>
             
                 <b> returns </b><span class="builtin-type">handle</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Returns a new Java array instance with the specified element type and dimensions. This function completes abruptly
 with a <code>panic</code> if the specified handle refers to a Java null or if zero dimensions have been provided.</p>
@@ -491,7 +496,7 @@ with a <code>panic</code> if the specified handle refers to a Java null or if ze
             <div class="params-listing">
                 <ul>
                     <li>
-                        <span >class</span>
+                        <span >classType</span>
                         <span class="type">  <span class="builtin-type">handle</span> </span>
                         
                     </li>
@@ -550,6 +555,7 @@ with a <code>panic</code> if the specified handle refers to a Java null or if ze
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Replaces the indexed element at the specified index in the given Java array with the specified element. This
 function completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does
@@ -634,6 +640,7 @@ not refer to a Java array.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Returns a handle value representation for a Ballerina array.</p>
 <pre><code class="language-ballerina"> handle handleValue = check java.arrays:toHandle(array, &quot;char&quot;);

@@ -72,18 +72,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -446,6 +447,118 @@ where the <code>cache-control</code> header and either the <code>etag</code> or 
             
                 <div class="params-listing">
                     <ul>
+                        <li id="REDIRECT_MULTIPLE_CHOICES_300">
+                            <b >REDIRECT_MULTIPLE_CHOICES_300</b>
+                            <span class="type">  <span class="builtin-type">int</span></span> 300
+                        </li>
+                        <li>
+                            
+                            <p>Represents the HTTP redirect status code <code>300 - Multiple Choices</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="REDIRECT_MOVED_PERMANENTLY_301">
+                            <b >REDIRECT_MOVED_PERMANENTLY_301</b>
+                            <span class="type">  <span class="builtin-type">int</span></span> 301
+                        </li>
+                        <li>
+                            
+                            <p>Represents the HTTP redirect status code <code>301 - Moved Permanently</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="REDIRECT_FOUND_302">
+                            <b >REDIRECT_FOUND_302</b>
+                            <span class="type">  <span class="builtin-type">int</span></span> 302
+                        </li>
+                        <li>
+                            
+                            <p>Represents the HTTP redirect status code <code>302 - Found</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="REDIRECT_SEE_OTHER_303">
+                            <b >REDIRECT_SEE_OTHER_303</b>
+                            <span class="type">  <span class="builtin-type">int</span></span> 303
+                        </li>
+                        <li>
+                            
+                            <p>Represents the HTTP redirect status code <code>303 - See Other</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="REDIRECT_NOT_MODIFIED_304">
+                            <b >REDIRECT_NOT_MODIFIED_304</b>
+                            <span class="type">  <span class="builtin-type">int</span></span> 304
+                        </li>
+                        <li>
+                            
+                            <p>Represents the HTTP redirect status code <code>304 - Not Modified</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="REDIRECT_USE_PROXY_305">
+                            <b >REDIRECT_USE_PROXY_305</b>
+                            <span class="type">  <span class="builtin-type">int</span></span> 305
+                        </li>
+                        <li>
+                            
+                            <p>Represents the HTTP redirect status code <code>305 - Use Proxy</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="REDIRECT_TEMPORARY_REDIRECT_307">
+                            <b >REDIRECT_TEMPORARY_REDIRECT_307</b>
+                            <span class="type">  <span class="builtin-type">int</span></span> 307
+                        </li>
+                        <li>
+                            
+                            <p>Represents the HTTP redirect status code <code>307 - Temporary Redirect</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="REDIRECT_PERMANENT_REDIRECT_308">
+                            <b >REDIRECT_PERMANENT_REDIRECT_308</b>
+                            <span class="type">  <span class="builtin-type">int</span></span> 308
+                        </li>
+                        <li>
+                            
+                            <p>Represents the HTTP redirect status code <code>308 - Permanent Redirect</code>.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
                         <li id="MULTIPART_AS_PRIMARY_TYPE">
                             <b >MULTIPART_AS_PRIMARY_TYPE</b>
                             <span class="type">  <span class="builtin-type">string</span></span> multipart/
@@ -686,13 +799,13 @@ outbound request/response accept-encoding/content-encoding option.</p>
             
                 <div class="params-listing">
                     <ul>
-                        <li id="REDIRECT_MULTIPLE_CHOICES_300">
-                            <b >REDIRECT_MULTIPLE_CHOICES_300</b>
-                            <span class="type">  <span class="builtin-type">int</span></span> 300
+                        <li id="LEADING">
+                            <b >LEADING</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> leading
                         </li>
                         <li>
                             
-                            <p>Represents the HTTP redirect status code <code>300 - Multiple Choices</code>.</p>
+                            <p>Header is placed before the payload of the request/response.</p>
 
                         </li>
                     </ul>
@@ -700,97 +813,13 @@ outbound request/response accept-encoding/content-encoding option.</p>
             
                 <div class="params-listing">
                     <ul>
-                        <li id="REDIRECT_MOVED_PERMANENTLY_301">
-                            <b >REDIRECT_MOVED_PERMANENTLY_301</b>
-                            <span class="type">  <span class="builtin-type">int</span></span> 301
+                        <li id="TRAILING">
+                            <b >TRAILING</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> trailing
                         </li>
                         <li>
                             
-                            <p>Represents the HTTP redirect status code <code>301 - Moved Permanently</code>.</p>
-
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="params-listing">
-                    <ul>
-                        <li id="REDIRECT_FOUND_302">
-                            <b >REDIRECT_FOUND_302</b>
-                            <span class="type">  <span class="builtin-type">int</span></span> 302
-                        </li>
-                        <li>
-                            
-                            <p>Represents the HTTP redirect status code <code>302 - Found</code>.</p>
-
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="params-listing">
-                    <ul>
-                        <li id="REDIRECT_SEE_OTHER_303">
-                            <b >REDIRECT_SEE_OTHER_303</b>
-                            <span class="type">  <span class="builtin-type">int</span></span> 303
-                        </li>
-                        <li>
-                            
-                            <p>Represents the HTTP redirect status code <code>303 - See Other</code>.</p>
-
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="params-listing">
-                    <ul>
-                        <li id="REDIRECT_NOT_MODIFIED_304">
-                            <b >REDIRECT_NOT_MODIFIED_304</b>
-                            <span class="type">  <span class="builtin-type">int</span></span> 304
-                        </li>
-                        <li>
-                            
-                            <p>Represents the HTTP redirect status code <code>304 - Not Modified</code>.</p>
-
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="params-listing">
-                    <ul>
-                        <li id="REDIRECT_USE_PROXY_305">
-                            <b >REDIRECT_USE_PROXY_305</b>
-                            <span class="type">  <span class="builtin-type">int</span></span> 305
-                        </li>
-                        <li>
-                            
-                            <p>Represents the HTTP redirect status code <code>305 - Use Proxy</code>.</p>
-
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="params-listing">
-                    <ul>
-                        <li id="REDIRECT_TEMPORARY_REDIRECT_307">
-                            <b >REDIRECT_TEMPORARY_REDIRECT_307</b>
-                            <span class="type">  <span class="builtin-type">int</span></span> 307
-                        </li>
-                        <li>
-                            
-                            <p>Represents the HTTP redirect status code <code>307 - Temporary Redirect</code>.</p>
-
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="params-listing">
-                    <ul>
-                        <li id="REDIRECT_PERMANENT_REDIRECT_308">
-                            <b >REDIRECT_PERMANENT_REDIRECT_308</b>
-                            <span class="type">  <span class="builtin-type">int</span></span> 308
-                        </li>
-                        <li>
-                            
-                            <p>Represents the HTTP redirect status code <code>308 - Permanent Redirect</code>.</p>
+                            <p>Header is placed after the payload of the request/response.</p>
 
                         </li>
                     </ul>

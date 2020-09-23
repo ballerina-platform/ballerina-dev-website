@@ -98,18 +98,15 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+        
+            <li>
+                <a  data="classes" href="../../kafka/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -179,29 +176,6 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Creates a new Kafka <code>Consumer</code>.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../kafka/records/ConsumerConfiguration.html">ConsumerConfiguration</a> config)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../kafka/records/ConsumerConfiguration.html">ConsumerConfiguration</a></span> </li>
-                <li>
-                    <p>Configurations related to consumer endpoint</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -210,183 +184,145 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
                         <tr>
                             <td class="module-title truncate functions" title="assign"><a
                                     class="functions" href="#assign">assign</a></td>
-                            <td class="module-desc"><p>Assigns consumer to a set of topic partitions.</p>
-</td>
+                            <td class="module-desc"><p>Assigns consumer to a set of topic partitions.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="close"><a
                                     class="functions" href="#close">close</a></td>
-                            <td class="module-desc"><p>Closes the consumer connection of the external Kafka broker.</p>
-
-</td>
+                            <td class="module-desc"><p>Closes the consumer connection of the external Kafka broker.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="commit"><a
                                     class="functions" href="#commit">commit</a></td>
-                            <td class="module-desc"><p>Commits the current consumed offsets for the consumer.</p>
-
-</td>
+                            <td class="module-desc"><p>Commits the current consumed offsets for the consumer.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="commitOffset"><a
                                     class="functions" href="#commitOffset">commitOffset</a></td>
-                            <td class="module-desc"><p>Commits given offsets and partitions for the given topics, for consumer.</p>
-</td>
+                            <td class="module-desc"><p>Commits given offsets and partitions for the given topics, for consumer.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="connect"><a
                                     class="functions" href="#connect">connect</a></td>
-                            <td class="module-desc"><p>Connects the consumer to the provided host in the consumer configs.</p>
-
-</td>
+                            <td class="module-desc"><p>Connects the consumer to the provided host in the consumer configs.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getAssignment"><a
                                     class="functions" href="#getAssignment">getAssignment</a></td>
-                            <td class="module-desc"><p>Retrieves the currently-assigned partitions for the consumer.</p>
-
-</td>
+                            <td class="module-desc"><p>Retrieves the currently-assigned partitions for the consumer.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getAvailableTopics"><a
                                     class="functions" href="#getAvailableTopics">getAvailableTopics</a></td>
-                            <td class="module-desc"><p>Retrieves the available list of topics for a particular consumer.</p>
-
-</td>
+                            <td class="module-desc"><p>Retrieves the available list of topics for a particular consumer.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getBeginningOffsets"><a
                                     class="functions" href="#getBeginningOffsets">getBeginningOffsets</a></td>
-                            <td class="module-desc"><p>Retrieves the start offsets for given set of partitions.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the start offsets for given set of partitions.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getCommittedOffset"><a
                                     class="functions" href="#getCommittedOffset">getCommittedOffset</a></td>
-                            <td class="module-desc"><p>Retrieves the last committed offsets for the given topic partitions.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the last committed offsets for the given topic partitions.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getEndOffsets"><a
                                     class="functions" href="#getEndOffsets">getEndOffsets</a></td>
-                            <td class="module-desc"><p>Retrieves the last offsets for given set of partitions.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the last offsets for given set of partitions.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPausedPartitions"><a
                                     class="functions" href="#getPausedPartitions">getPausedPartitions</a></td>
-                            <td class="module-desc"><p>Retrieves the partitions, which are currently paused.</p>
-
-</td>
+                            <td class="module-desc"><p>Retrieves the partitions, which are currently paused.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPositionOffset"><a
                                     class="functions" href="#getPositionOffset">getPositionOffset</a></td>
-                            <td class="module-desc"><p>Retrieves the offset of the next record that will be fetched, if a records exists in that position.</p>
-</td>
+                            <td class="module-desc"><p>Retrieves the offset of the next record that will be fetched, if a records exists in that position.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getSubscription"><a
                                     class="functions" href="#getSubscription">getSubscription</a></td>
-                            <td class="module-desc"><p>Retrieves the set of topics, which are currently subscribed by the consumer.</p>
-
-</td>
+                            <td class="module-desc"><p>Retrieves the set of topics, which are currently subscribed by the consumer.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getTopicPartitions"><a
                                     class="functions" href="#getTopicPartitions">getTopicPartitions</a></td>
-                            <td class="module-desc"><p>Retrieves the set of partitions to which the topic belongs.</p>
-
-</td>
+                            <td class="module-desc"><p>Retrieves the set of partitions to which the topic belongs.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="pause"><a
                                     class="functions" href="#pause">pause</a></td>
-                            <td class="module-desc"><p>Pauses retrieving messages from a set of partitions.</p>
-</td>
+                            <td class="module-desc"><p>Pauses retrieving messages from a set of partitions.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="poll"><a
                                     class="functions" href="#poll">poll</a></td>
-                            <td class="module-desc"><p>Polls the consumer for the records of an external broker.</p>
-
-</td>
+                            <td class="module-desc"><p>Polls the consumer for the records of an external broker.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="resume"><a
                                     class="functions" href="#resume">resume</a></td>
-                            <td class="module-desc"><p>Resumes consumer retrieving messages from set of partitions which were paused earlier.</p>
-</td>
+                            <td class="module-desc"><p>Resumes consumer retrieving messages from set of partitions which were paused earlier.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="seek"><a
                                     class="functions" href="#seek">seek</a></td>
-                            <td class="module-desc"><p>Seeks for a given offset in a topic partition.</p>
-</td>
+                            <td class="module-desc"><p>Seeks for a given offset in a topic partition.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="seekToBeginning"><a
                                     class="functions" href="#seekToBeginning">seekToBeginning</a></td>
-                            <td class="module-desc"><p>Seeks the beginning of the offsets for the given set of topic partitions.</p>
-</td>
+                            <td class="module-desc"><p>Seeks the beginning of the offsets for the given set of topic partitions.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="seekToEnd"><a
                                     class="functions" href="#seekToEnd">seekToEnd</a></td>
-                            <td class="module-desc"><p>Seeks end of the offsets for the given set of topic partitions.</p>
-</td>
+                            <td class="module-desc"><p>Seeks end of the offsets for the given set of topic partitions.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="subscribe"><a
                                     class="functions" href="#subscribe">subscribe</a></td>
-                            <td class="module-desc"><p>Subscribes the consumer to the provided set of topics.</p>
-
-</td>
+                            <td class="module-desc"><p>Subscribes the consumer to the provided set of topics.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="subscribeToPattern"><a
                                     class="functions" href="#subscribeToPattern">subscribeToPattern</a></td>
-                            <td class="module-desc"><p>Subscribes the consumer to the topics, which match the provided pattern.</p>
-
-</td>
+                            <td class="module-desc"><p>Subscribes the consumer to the topics, which match the provided pattern.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="subscribeWithPartitionRebalance"><a
                                     class="functions" href="#subscribeWithPartitionRebalance">subscribeWithPartitionRebalance</a></td>
-                            <td class="module-desc"><p>Subscribes to the provided set of topics with rebalance listening enabled.
-This function can be used inside a service, to subscribe to a set of topics, while rebalancing the patition
-assignment of the consumers.</p>
-</td>
+                            <td class="module-desc"><p>Subscribes to the provided set of topics with rebalance listening enabled.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="unsubscribe"><a
                                     class="functions" href="#unsubscribe">unsubscribe</a></td>
-                            <td class="module-desc"><p>Unsubscribes from all the topic subscriptions.</p>
-
-</td>
+                            <td class="module-desc"><p>Unsubscribes from all the topic subscriptions.</p>   </td>
                         </tr>
                     
                 </table>
@@ -403,8 +339,7 @@ assignment of the consumers.</p>
     </div>
     <div class="param-details">
         
-        <p>Starts the registered services.</p>
-
+        <p>Starts the registered services.</p> 
     </div>
 </div>
 
@@ -416,8 +351,7 @@ assignment of the consumers.</p>
     </div>
     <div class="param-details">
         
-        <p>Stops the kafka listener.</p>
-
+        <p>Stops the kafka listener.</p> 
     </div>
 </div>
 
@@ -429,8 +363,7 @@ assignment of the consumers.</p>
     </div>
     <div class="param-details">
         
-        <p>Stops the kafka listener.</p>
-
+        <p>Stops the kafka listener.</p> 
     </div>
 </div>
 
@@ -442,8 +375,7 @@ assignment of the consumers.</p>
     </div>
     <div class="param-details">
         
-        <p>Gets called every time a service attaches itself to the listener.</p>
-
+        <p>Gets called every time a service attaches itself to the listener.</p> 
     </div>
 </div>
 
@@ -455,8 +387,7 @@ assignment of the consumers.</p>
     </div>
     <div class="param-details">
         
-        <p>Detaches a consumer service from the listener.</p>
-
+        <p>Detaches a consumer service from the listener.</p> 
     </div>
 </div>
 
@@ -563,6 +494,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Assigns consumer to a set of topic partitions.</p>
 
     </div>
@@ -617,6 +551,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Closes the consumer connection of the external Kafka broker.</p>
 <pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;close();
@@ -675,6 +612,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Commits the current consumed offsets for the consumer.</p>
 <pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;commit();
 </code></pre>
@@ -709,6 +649,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Commits given offsets and partitions for the given topics, for consumer.</p>
 
@@ -782,6 +725,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Connects the consumer to the provided host in the consumer configs.</p>
 <pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;connect();
 </code></pre>
@@ -817,6 +763,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the currently-assigned partitions for the consumer.</p>
 <pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ConsumerError result = consumer-&gt;getAssignment();
 </code></pre>
@@ -851,6 +800,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the available list of topics for a particular consumer.</p>
 <pre><code class="language-ballerina"> string[]|kafka:ConsumerError result = consumer-&gt;getAvailableTopics();
@@ -909,6 +861,9 @@ a <code>kafka:ConsumerError</code></p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the start offsets for given set of partitions.</p>
 
@@ -976,11 +931,14 @@ a <code>kafka:ConsumerError</code></p>
         <span class="method-types">
             <p>(<a href="../../kafka/records/TopicPartition.html">TopicPartition</a> partition, <span class="builtin-type">int</span> duration)</p>
             
-                <b> returns </b><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a> 
+                <b> returns </b><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>? 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the last committed offsets for the given topic partitions.</p>
 
@@ -1030,9 +988,9 @@ a <code>kafka:ConsumerError</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a></span>)</li>
-                <li><p>Committed offset for the consumer for the given partition if executes successfully or else
-<code>kafka:ConsumerError</code></p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a> | <a href="../../kafka/errors.html#ConsumerError">ConsumerError</a>?</span>)</li>
+                <li><p>The last committed offset for the consumer for the given partition if there is a committed offset
+present, <code>()</code> if there are no committed offsets or else a <code>kafka:ConsumerError</code></p>
 </li>
             </ul>
         </div>
@@ -1054,6 +1012,9 @@ a <code>kafka:ConsumerError</code></p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the last offsets for given set of partitions.</p>
 
@@ -1127,6 +1088,9 @@ a <code>kafka:ConsumerError</code></p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the partitions, which are currently paused.</p>
 <pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ConsumerError result = consumer-&gt;getPausedPartitions();
 </code></pre>
@@ -1162,6 +1126,9 @@ a <code>kafka:ConsumerError</code></p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the offset of the next record that will be fetched, if a records exists in that position.</p>
 
@@ -1236,6 +1203,9 @@ the operation fails</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the set of topics, which are currently subscribed by the consumer.</p>
 <pre><code class="language-ballerina"> string[]|kafka:ConsumerError result = consumer-&gt;getSubscription();
 </code></pre>
@@ -1270,6 +1240,9 @@ the operation fails</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the set of partitions to which the topic belongs.</p>
 <pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ConsumerError result = consumer-&gt;getTopicPartitions(&quot;kafka-topic&quot;);
@@ -1345,6 +1318,9 @@ the operation fails</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Pauses retrieving messages from a set of partitions.</p>
 
     </div>
@@ -1399,6 +1375,9 @@ the operation fails</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Polls the consumer for the records of an external broker.</p>
 <pre><code class="language-ballerina"> kafka:ConsumerRecord[]|kafka:ConsumerError result = consumer-&gt;poll(1000);
@@ -1457,6 +1436,9 @@ the operation fails</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Resumes consumer retrieving messages from set of partitions which were paused earlier.</p>
 
     </div>
@@ -1511,6 +1493,9 @@ the operation fails</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Seeks for a given offset in a topic partition.</p>
 
@@ -1567,6 +1552,9 @@ the operation fails</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Seeks the beginning of the offsets for the given set of topic partitions.</p>
 
     </div>
@@ -1622,6 +1610,9 @@ the operation fails</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Seeks end of the offsets for the given set of topic partitions.</p>
 
     </div>
@@ -1676,6 +1667,9 @@ the operation fails</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Subscribes the consumer to the provided set of topics.</p>
 <pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;subscribe([&quot;kafka-topic-1&quot;, &quot;kafka-topic-2&quot;]);
@@ -1734,6 +1728,9 @@ the operation fails</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Subscribes the consumer to the topics, which match the provided pattern.</p>
 <pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;subscribeToPattern(&quot;kafka.*&quot;);
 </code></pre>
@@ -1790,6 +1787,9 @@ the operation fails</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Subscribes to the provided set of topics with rebalance listening enabled.
 This function can be used inside a service, to subscribe to a set of topics, while rebalancing the patition
@@ -1882,6 +1882,9 @@ assignment of the consumers.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Unsubscribes from all the topic subscriptions.</p>
 <pre><code class="language-ballerina"> kafka:ConsumerError? result = consumer-&gt;unsubscribe();
 </code></pre>
@@ -1921,6 +1924,9 @@ assignment of the consumers.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Starts the registered services.</p>
 
     </div>
@@ -1953,6 +1959,9 @@ assignment of the consumers.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops the kafka listener.</p>
 
@@ -1987,6 +1996,9 @@ assignment of the consumers.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops the kafka listener.</p>
 
     </div>
@@ -2020,6 +2032,9 @@ assignment of the consumers.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Gets called every time a service attaches itself to the listener.</p>
 
     </div>
@@ -2049,7 +2064,7 @@ assignment of the consumers.</p>
                     <li>
                         <span >name</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -2091,6 +2106,9 @@ assignment of the consumers.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Detaches a consumer service from the listener.</p>
 

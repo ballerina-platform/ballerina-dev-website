@@ -137,11 +137,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../transactions/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../transactions/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -212,6 +211,7 @@
                             <div class="function-desc">
                                 
                                 
+                                
                             </div>
                         </td>
                     </tr>
@@ -220,6 +220,7 @@
                         <td width="30%"><a class="functions " href="#ballerina/transactions:0.5.0.&lt;init&gt;1">ballerina/transactions:0.5.0.&lt;init&gt;1</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 
                             </div>
@@ -232,6 +233,7 @@
                             <div class="function-desc">
                                 
                                 
+                                
                             </div>
                         </td>
                     </tr>
@@ -240,6 +242,7 @@
                         <td width="30%"><a class="functions " href="#ballerina/transactions:0.5.0.&lt;init&gt;3">ballerina/transactions:0.5.0.&lt;init&gt;3</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 
                             </div>
@@ -252,6 +255,7 @@
                             <div class="function-desc">
                                 
                                 
+                                
                             </div>
                         </td>
                     </tr>
@@ -261,16 +265,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                     <span class="stab">Deprecated</span>
                                 
                                 When a transaction block in Ballerina code begins, it will call this function to begin a transaction.
-If this is a new transaction (transactionId == () ), then this instance will become the initiator and will
-create a new transaction context.
-If the participant and initiator are in the same process, this transaction block will register with the local
-initiator via a local function call.
-If the participant and initiator are in different processes, this transaction block will register with the remote
-initiator via a network call.
-
                             </div>
                         </td>
                     </tr>
@@ -280,10 +278,10 @@ initiator via a network call.
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                     <span class="stab">Deprecated</span>
                                 
                                 Cleanup the transaction context.
-
                             </div>
                         </td>
                     </tr>
@@ -293,13 +291,10 @@ initiator via a network call.
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                     <span class="stab">Deprecated</span>
                                 
                                 When a transaction block in Ballerina code ends, it will call this function to end a transaction.
-Ending a transaction by a participant has no effect because it is the initiator who can decide whether to
-commit or abort a transaction.
-Depending on the state of the transaction, the initiator decides to commit or abort the transaction.
-
                             </div>
                         </td>
                     </tr>
@@ -309,10 +304,10 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                     <span class="stab">Deprecated</span>
                                 
                                 Get and Cleanup the failure.
-
                             </div>
                         </td>
                     </tr>
@@ -321,6 +316,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                         <td width="30%"><a class="functions strike" href="#getCurrentTransactionId">getCurrentTransactionId</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                     <span class="stab">Deprecated</span>
                                 
@@ -334,10 +330,10 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                     <span class="stab">Deprecated</span>
                                 
                                 Rollback the transaction.
-
                             </div>
                         </td>
                     </tr>
@@ -347,10 +343,10 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                     <span class="stab">Deprecated</span>
                                 
                                 Set the transactionContext.
-
                             </div>
                         </td>
                     </tr>
@@ -375,6 +371,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         </span>
     </div>
     <div class="function-desc">
+        
         
         
     </div>
@@ -408,6 +405,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
     <div class="function-desc">
         
         
+        
     </div>
     
 
@@ -437,6 +435,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         </span>
     </div>
     <div class="function-desc">
+        
         
         
     </div>
@@ -470,6 +469,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
     <div class="function-desc">
         
         
+        
     </div>
     
 
@@ -499,6 +499,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         </span>
     </div>
     <div class="function-desc">
+        
         
         
     </div>
@@ -532,6 +533,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
     <div class="function-desc">
         
             <span class="stab">Deprecated</span>
+        
         
         When a transaction block in Ballerina code begins, it will call this function to begin a transaction.
 If this is a new transaction (transactionId == () ), then this instance will become the initiator and will
@@ -647,6 +649,7 @@ If this is a participant in an existing transaction, then it will have a value.<
         
             <span class="stab">Deprecated</span>
         
+        
         Cleanup the transaction context.
 
     </div>
@@ -693,6 +696,7 @@ If this is a participant in an existing transaction, then it will have a value.<
     <div class="function-desc">
         
             <span class="stab">Deprecated</span>
+        
         
         When a transaction block in Ballerina code ends, it will call this function to end a transaction.
 Ending a transaction by a participant has no effect because it is the initiator who can decide whether to
@@ -771,6 +775,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
             <span class="stab">Deprecated</span>
         
+        
         Get and Cleanup the failure.
 
     </div>
@@ -806,6 +811,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         
             <span class="stab">Deprecated</span>
         
+        
         Get the current transaction id. This function is useful for user code to save state against a transaction ID,
 so that when the <code>oncommit</code> or <code>onabort</code> functions registered for a transaction can retrieve that state using the
 transaction  that is passed in to those functions.
@@ -840,6 +846,7 @@ transaction  that is passed in to those functions.
     <div class="function-desc">
         
             <span class="stab">Deprecated</span>
+        
         
         Rollback the transaction.
 
@@ -902,6 +909,7 @@ transaction  that is passed in to those functions.
     <div class="function-desc">
         
             <span class="stab">Deprecated</span>
+        
         
         Set the transactionContext.
 

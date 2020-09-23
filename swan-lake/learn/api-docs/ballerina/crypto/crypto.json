@@ -206,7 +206,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Certificate",
       "description": "\u003cp\u003eX509 public key certificate information.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -260,7 +260,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "KeyStore",
       "description": "\u003cp\u003eKey store related configurations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -291,7 +291,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "PrivateKey",
       "description": "\u003cp\u003ePrivate key used in cryptographic operations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -345,7 +345,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "PublicKey",
       "description": "\u003cp\u003ePublic key used in cryptographic operations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -399,17 +399,19 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "TrustStore",
       "description": "\u003cp\u003eTrust store related configurations.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -523,6 +525,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -593,6 +596,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -763,6 +767,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -910,6 +915,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1025,7 +1031,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003c(NONE|PKCS5)\u003e PKCS5",
+          "defaultValue": "PKCS5",
           "type": {
             "orgName": "ballerina",
             "moduleName": "crypto",
@@ -1125,6 +1131,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1203,7 +1210,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003c(NONE|PKCS5)\u003e PKCS5",
+          "defaultValue": "PKCS5",
           "type": {
             "orgName": "ballerina",
             "moduleName": "crypto",
@@ -1303,6 +1310,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1418,7 +1426,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003c(NONE|PKCS5)\u003e PKCS5",
+          "defaultValue": "PKCS5",
           "type": {
             "orgName": "ballerina",
             "moduleName": "crypto",
@@ -1541,6 +1549,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1639,7 +1648,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003c(PKCS1|OAEPwithMD5andMGF1|OAEPWithSHA1AndMGF1|OAEPWithSHA256AndMGF1|OAEPwithSHA384andMGF1|OAEPwithSHA512andMGF1)\u003e PKCS1",
+          "defaultValue": "PKCS1",
           "type": {
             "orgName": "ballerina",
             "moduleName": "crypto",
@@ -1739,6 +1748,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1854,7 +1864,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003c(NONE|PKCS5)\u003e PKCS5",
+          "defaultValue": "PKCS5",
           "type": {
             "orgName": "ballerina",
             "moduleName": "crypto",
@@ -1954,6 +1964,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2032,7 +2043,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003c(NONE|PKCS5)\u003e PKCS5",
+          "defaultValue": "PKCS5",
           "type": {
             "orgName": "ballerina",
             "moduleName": "crypto",
@@ -2132,6 +2143,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2247,7 +2259,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003c(NONE|PKCS5)\u003e PKCS5",
+          "defaultValue": "PKCS5",
           "type": {
             "orgName": "ballerina",
             "moduleName": "crypto",
@@ -2370,6 +2382,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2468,7 +2481,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003c(PKCS1|OAEPwithMD5andMGF1|OAEPWithSHA1AndMGF1|OAEPWithSHA256AndMGF1|OAEPwithSHA384andMGF1|OAEPwithSHA512andMGF1)\u003e PKCS1",
+          "defaultValue": "PKCS1",
           "type": {
             "orgName": "ballerina",
             "moduleName": "crypto",
@@ -2568,6 +2581,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2652,6 +2666,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2736,6 +2751,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2820,6 +2836,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2904,6 +2921,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2988,6 +3006,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -3109,6 +3128,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -3230,6 +3250,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -3351,6 +3372,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -3472,6 +3494,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -3593,6 +3616,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -3734,6 +3758,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -3875,6 +3900,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -4016,6 +4042,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -4157,6 +4184,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -4298,6 +4326,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -4462,6 +4491,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -4626,6 +4656,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -4790,6 +4821,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -4954,6 +4986,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [

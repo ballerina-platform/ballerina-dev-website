@@ -93,18 +93,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../websub/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../websub/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../websub/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -186,39 +187,6 @@
     <div class="constants">
         <div class="method-sum">
         
-            
-                <h2>Constructor</h2>
-
-    <p>Creates a new <code>websub:Listener</code>.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<span class="builtin-type">int</span> port, <a href="../../websub/records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a>? config)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>port</b><span class="type">  <span class="builtin-type">int</span></span> </li>
-                <li>
-                    <p>The port number of the remote service</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../websub/records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a>?</span> ()</li>
-                <li>
-                    <p>The configurations related to the <code>websub:Listener</code></p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-            
-        
 
         
             <h2>Methods</h2>
@@ -231,9 +199,7 @@
     </div>
     <div class="param-details">
         
-        <p>Stops consuming messages and detaches the service from the <code>websub:Listener</code>.</p>
-
-
+        <p>Stops consuming messages and detaches the service from the <code>websub:Listener</code>.</p>   
     </div>
 </div>
 
@@ -245,9 +211,7 @@
     </div>
     <div class="param-details">
         
-        <p>Stops the <code>websub:Listener</code> gracefully.</p>
-
-
+        <p>Stops the <code>websub:Listener</code> gracefully.</p>   
     </div>
 </div>
 
@@ -259,9 +223,7 @@
     </div>
     <div class="param-details">
         
-        <p>Stops the <code>websub:Listener</code> forcefully.</p>
-
-
+        <p>Stops the <code>websub:Listener</code> forcefully.</p>   
     </div>
 </div>
 
@@ -280,9 +242,7 @@
     </div>
     <div class="param-details">
         
-        <p>Binds a service to the <code>websub:Listener</code>.</p>
-
-
+        <p>Binds a service to the <code>websub:Listener</code>.</p>   
     </div>
 </div>
 
@@ -294,9 +254,7 @@
     </div>
     <div class="param-details">
         
-        <p>Starts the <code>websub:Listener</code>.</p>
-
-
+        <p>Starts the <code>websub:Listener</code>.</p>   
     </div>
 </div>
 
@@ -404,6 +362,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops consuming messages and detaches the service from the <code>websub:Listener</code>.</p>
 <pre><code class="language-ballerina"> error? result = websubListener.__detach(helloService);
 </code></pre>
@@ -461,6 +422,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops the <code>websub:Listener</code> gracefully.</p>
 <pre><code class="language-ballerina"> error? result = websubListener.__gracefulStop();
 </code></pre>
@@ -495,6 +459,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops the <code>websub:Listener</code> forcefully.</p>
 <pre><code class="language-ballerina"> error? result = websubListener.__immediateStop();
@@ -535,6 +502,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Binds a service to the <code>websub:Listener</code>.</p>
 <pre><code class="language-ballerina"> error? result = websubListener.__attach(helloService);
@@ -609,6 +579,7 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Starts the <code>websub:Listener</code>.</p>
 <pre><code class="language-ballerina"> error? result = websubListener.__start();

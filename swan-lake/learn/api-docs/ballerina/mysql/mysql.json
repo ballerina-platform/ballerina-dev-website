@@ -2,15 +2,15 @@
   "id": "mysql",
   "summary": "\u003cp\u003eThis module provides the functionality required to access and manipulate data stored in a MySQL database.\u003c/p\u003e\n",
   "description": "\u003ch2\u003eModule overview\u003c/h2\u003e\n\u003cp\u003eThis module provides the functionality required to access and manipulate data stored in a MySQL database.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePrerequisite:\u003c/strong\u003e Add the MySQL driver JAR as a native library dependency in your Ballerina project.\nThis module uses database properties from the MySQL version 8.0.x onwards. Therefore, it is recommended to use a\nMySQL driver version greater than 8.0.x. Then, once you build the project by executing the \u003ccode\u003eballerina build\u003c/code\u003e\ncommand, you should be able to run the resultant JAR by executing the \u003ccode\u003ejava -jar\u003c/code\u003e command.\u003c/p\u003e\n\u003cp\u003eE.g., The \u003ccode\u003eBallerina.toml\u003c/code\u003e content.\nChange the path to the JDBC driver appropriately.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-toml\"\u003e[project]\norg-name\u003d \u0026quot;sample\u0026quot;\nversion\u003d \u0026quot;0.1.0\u0026quot;\n\n[platform]\ntarget \u003d \u0026quot;java8\u0026quot;\n\n    [[platform.libraries]]\n    artafactId \u003d \u0026quot;mysql-connector-java\u0026quot;\n    version \u003d \u0026quot;8.0.17\u0026quot;\n    path \u003d \u0026quot;/path/to/mysql-connector-java-8.0.17.jar\u0026quot;\n    groupId \u003d \u0026quot;mysql\u0026quot;\n    modules \u003d [\u0026quot;samplemodule\u0026quot;]\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eElse, if you\u0027re trying to run a single BAL file, you can copy the JDBC driver into the \u003ccode\u003e${BALLERINA_HOME}/bre/lib\u003c/code\u003e directory and\nrun the BAL file by executing the \u003ccode\u003eballerina run\u003c/code\u003e command.\u003c/p\u003e\n\u003ch3\u003eClient\u003c/h3\u003e\n\u003cp\u003eTo access a database, you must first create a\n\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/mysql/clients/Client.html\"\u003emysql:Client\u003c/a\u003e object.\nThe examples for creating a MySQL client can be found below.\u003c/p\u003e\n\u003ch4\u003eCreating a client\u003c/h4\u003e\n\u003cp\u003eThis example shows different ways of creating the \u003ccode\u003emysql:Client\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003eThe client can be created with an empty constructor and hence, the client will be initialized with the default properties.\nThe first example with the \u003ccode\u003edbClient1\u003c/code\u003e demonstrates this.\u003c/p\u003e\n\u003cp\u003eThe \u003ccode\u003edbClient2\u003c/code\u003e receives the host, username, and password. Since the properties are passed in the same order as it is defined\nin the \u003ccode\u003ejdbc:Client\u003c/code\u003e, you can pass it without named params.\u003c/p\u003e\n\u003cp\u003eThe \u003ccode\u003edbClient3\u003c/code\u003e uses the named params to pass the attributes since it is skipping some params in the constructor.\nFurther \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/mysql/records/Options.html\"\u003emysql:Options\u003c/a\u003e\nis passed to configure the SSL and connection timeout in the MySQL client.\u003c/p\u003e\n\u003cp\u003eSimilarly, the \u003ccode\u003edbClient4\u003c/code\u003e uses the named params and it provides an unshared connection pool in the type of\n\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/sql/records/ConnectionPool.html\"\u003esql:ConnectionPool\u003c/a\u003e\nto be used within the client.\nFor more details about connection pooling, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/sql/index.html\"\u003eSQL Module\u003c/a\u003e.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003emysql:Client|sql:Error dbClient1 \u003d new ();\nmysql:Client|sql:Error dbClient2 \u003d new (\u0026quot;localhost\u0026quot;, \u0026quot;rootUser\u0026quot;, \u0026quot;rooPass\u0026quot;, \n                              \u0026quot;information_schema\u0026quot;, 3306);\n                              \nmysql:Options mysqlOptions \u003d {\n  ssl: {\n    mode: mysql:SSL_PREFERRED\n  },\n  connectTimeoutInSeconds: 10\n};\nmysql:Client|sql:Error dbClient3 \u003d new (user \u003d \u0026quot;rootUser\u0026quot;, password \u003d \u0026quot;rootPass\u0026quot;,\n                              options \u003d mysqlOptions);\nmysql:Client|sql:Error dbClient4 \u003d new (user \u003d \u0026quot;rootUser\u0026quot;, password \u003d \u0026quot;rootPass\u0026quot;,\n                              connectionPool \u003d {maxOpenConnections: 5});\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eYou can find more details about each property in the\n\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/mysql/clients/Client.html\"\u003emysql:Client\u003c/a\u003e constructor.\u003c/p\u003e\n\u003cp\u003eThe \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/mysql/clients/Client.html\"\u003emysql:Client\u003c/a\u003e references\n\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/sql/clients/Client.html\"\u003esql:Client\u003c/a\u003e and all the operations\ndefined by the \u003ccode\u003esql:Client\u003c/code\u003e will be supported by the \u003ccode\u003emysql:Client\u003c/code\u003e as well.\u003c/p\u003e\n\u003cp\u003eFor more information on all the operations supported by the \u003ccode\u003emysql:Client\u003c/code\u003e, which include the below, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/sql/index.html\"\u003eSQL Module\u003c/a\u003e.\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003eConnection Pooling\u003c/li\u003e\n\u003cli\u003eQuerying data\u003c/li\u003e\n\u003cli\u003eInserting data\u003c/li\u003e\n\u003cli\u003eUpdating data\u003c/li\u003e\n\u003cli\u003eDeleting data\u003c/li\u003e\n\u003cli\u003eBatch insert and update data\u003c/li\u003e\n\u003cli\u003eExecute stored procedures\u003c/li\u003e\n\u003cli\u003eClosing client\u003c/li\u003e\n\u003c/ol\u003e\n",
-  "orgName": "ballerina",
-  "version": "0.5.0",
+  "orgName": "ballerinax",
+  "version": "0.6.0",
   "records": [
     {
       "fields": [
         {
           "defaultValue": " {}",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "mysql",
             "name": "SSLConfig",
             "category": "records",
@@ -100,7 +100,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Options",
       "description": "\u003cp\u003eMySQL database options.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -110,7 +110,7 @@
         {
           "defaultValue": "SSL_PREFERRED",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "mysql",
             "name": "SSLMode",
             "category": "types",
@@ -177,24 +177,26 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "SSLConfig",
       "description": "\u003cp\u003eSSL Configuration to be used when connecting to mysql server.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [
     {
       "remoteMethods": [
         {
+          "isIsolated": false,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -227,7 +229,7 @@
                     "orgName": "ballerina",
                     "moduleName": "sql",
                     "name": "ParameterizedQuery",
-                    "category": "objects",
+                    "category": "abstractobjects",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
                     "isNullable": false,
@@ -249,7 +251,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003ctypedesc\u003crecord {| anydata...; |}\u003e?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -267,9 +269,9 @@
                 "paramTypes": [],
                 "arrayDimensions": 0,
                 "constraint": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "mysql",
-                  "name": "record {| anydata...; |}",
+                  "name": "record {}",
                   "category": "records",
                   "isAnonymousUnionType": false,
                   "isArrayType": false,
@@ -306,9 +308,9 @@
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "mysql",
-                    "name": "record {| anydata...; |}",
+                    "name": "record {}",
                     "category": "records",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
@@ -353,13 +355,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -392,7 +395,7 @@
                     "orgName": "ballerina",
                     "moduleName": "sql",
                     "name": "ParameterizedQuery",
-                    "category": "objects",
+                    "category": "abstractobjects",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
                     "isNullable": false,
@@ -417,7 +420,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -477,6 +480,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -499,7 +503,7 @@
                   "orgName": "ballerina",
                   "moduleName": "sql",
                   "name": "ParameterizedQuery",
-                  "category": "objects",
+                  "category": "abstractobjects",
                   "isAnonymousUnionType": false,
                   "isArrayType": false,
                   "isNullable": false,
@@ -521,7 +525,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -595,13 +599,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -634,7 +639,7 @@
                     "orgName": "ballerina",
                     "moduleName": "sql",
                     "name": "ParameterizedCallQuery",
-                    "category": "objects",
+                    "category": "abstractobjects",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
                     "isNullable": false,
@@ -687,9 +692,9 @@
                   "paramTypes": [],
                   "arrayDimensions": 0,
                   "constraint": {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "mysql",
-                    "name": "record {| anydata...; |}",
+                    "name": "record {}",
                     "category": "records",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
@@ -713,7 +718,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -729,7 +734,7 @@
                     "orgName": "ballerina",
                     "moduleName": "sql",
                     "name": "ProcedureCallResult",
-                    "category": "objects",
+                    "category": "abstractobjects",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
                     "isNullable": false,
@@ -776,207 +781,14 @@
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "localhost",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "host",
-              "description": "\u003cp\u003eHostname of the mysql server to be connected\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "\u003cstring?\u003e ()",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "user",
-              "description": "\u003cp\u003eIf the mysql server is secured, the username to be used to connect to the mysql server\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "\u003cstring?\u003e ()",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "password",
-              "description": "\u003cp\u003eThe password of provided username of the database\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "\u003cstring?\u003e ()",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "database",
-              "description": "\u003cp\u003eThe name fo the database to be connected\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "3306",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "int",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "port",
-              "description": "\u003cp\u003ePort number of the mysql server to be connected\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "\u003cballerina/mysql:0.5.0:Options?\u003e ()",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "mysql",
-                "name": "Options",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "options",
-              "description": "\u003cp\u003eThe Database specific JDBC client properties\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "\u003cballerina/sql:0.5.0:ConnectionPool?\u003e ()",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "sql",
-                "name": "ConnectionPool",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "connectionPool",
-              "description": "\u003cp\u003eThe \u003ccode\u003esql:ConnectionPool\u003c/code\u003e object to be used within the jdbc client.\nIf there is no connectionPool is provided, the global connection pool will be used and it will\nbe shared by other clients which has same properties.\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "sql",
-                "name": "Error",
-                "category": "types",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "init",
-          "description": "\u003cp\u003eInitialize MySQL Client.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": false,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -1009,7 +821,7 @@
                     "orgName": "ballerina",
                     "moduleName": "sql",
                     "name": "ParameterizedQuery",
-                    "category": "objects",
+                    "category": "abstractobjects",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
                     "isNullable": false,
@@ -1031,7 +843,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003ctypedesc\u003crecord {| anydata...; |}\u003e?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1049,9 +861,9 @@
                 "paramTypes": [],
                 "arrayDimensions": 0,
                 "constraint": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "mysql",
-                  "name": "record {| anydata...; |}",
+                  "name": "record {}",
                   "category": "records",
                   "isAnonymousUnionType": false,
                   "isArrayType": false,
@@ -1088,9 +900,9 @@
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "mysql",
-                    "name": "record {| anydata...; |}",
+                    "name": "record {}",
                     "category": "records",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
@@ -1135,13 +947,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -1174,7 +987,7 @@
                     "orgName": "ballerina",
                     "moduleName": "sql",
                     "name": "ParameterizedQuery",
-                    "category": "objects",
+                    "category": "abstractobjects",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
                     "isNullable": false,
@@ -1199,7 +1012,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -1259,6 +1072,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -1281,7 +1095,7 @@
                   "orgName": "ballerina",
                   "moduleName": "sql",
                   "name": "ParameterizedQuery",
-                  "category": "objects",
+                  "category": "abstractobjects",
                   "isAnonymousUnionType": false,
                   "isArrayType": false,
                   "isNullable": false,
@@ -1303,7 +1117,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -1377,13 +1191,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -1416,7 +1231,7 @@
                     "orgName": "ballerina",
                     "moduleName": "sql",
                     "name": "ParameterizedCallQuery",
-                    "category": "objects",
+                    "category": "abstractobjects",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
                     "isNullable": false,
@@ -1469,9 +1284,9 @@
                   "paramTypes": [],
                   "arrayDimensions": 0,
                   "constraint": {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "mysql",
-                    "name": "record {| anydata...; |}",
+                    "name": "record {}",
                     "category": "records",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
@@ -1495,7 +1310,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "mysql",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -1511,7 +1326,7 @@
                     "orgName": "ballerina",
                     "moduleName": "sql",
                     "name": "ProcedureCallResult",
-                    "category": "objects",
+                    "category": "abstractobjects",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
                     "isNullable": false,
@@ -1555,6 +1370,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1587,202 +1403,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "localhost",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "string",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "host",
-            "description": "\u003cp\u003eHostname of the mysql server to be connected\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "\u003cstring?\u003e ()",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "string",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "user",
-            "description": "\u003cp\u003eIf the mysql server is secured, the username to be used to connect to the mysql server\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "\u003cstring?\u003e ()",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "string",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "password",
-            "description": "\u003cp\u003eThe password of provided username of the database\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "\u003cstring?\u003e ()",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "string",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "database",
-            "description": "\u003cp\u003eThe name fo the database to be connected\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "3306",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "int",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "port",
-            "description": "\u003cp\u003ePort number of the mysql server to be connected\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "\u003cballerina/mysql:0.5.0:Options?\u003e ()",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "mysql",
-              "name": "Options",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "options",
-            "description": "\u003cp\u003eThe Database specific JDBC client properties\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "\u003cballerina/sql:0.5.0:ConnectionPool?\u003e ()",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "sql",
-              "name": "ConnectionPool",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "connectionPool",
-            "description": "\u003cp\u003eThe \u003ccode\u003esql:ConnectionPool\u003c/code\u003e object to be used within the jdbc client.\nIf there is no connectionPool is provided, the global connection pool will be used and it will\nbe shared by other clients which has same properties.\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [
-          {
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "sql",
-              "name": "Error",
-              "category": "types",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "",
-            "description": "",
-            "isDeprecated": false
-          }
-        ],
-        "name": "init",
-        "description": "\u003cp\u003eInitialize MySQL Client.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1815,7 +1438,6 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Client",
       "description": "\u003cp\u003eRepresents a MySQL database client.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1934,7 +1556,7 @@
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "mysql",
           "name": "SSL_PREFERRED",
           "category": "constants",
@@ -1951,7 +1573,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "mysql",
           "name": "SSL_REQUIRED",
           "category": "constants",
@@ -1968,7 +1590,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "mysql",
           "name": "SSL_VERIFY_CERT",
           "category": "constants",
@@ -1985,7 +1607,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "mysql",
           "name": "SSL_VERIFY_IDENTITY",
           "category": "constants",

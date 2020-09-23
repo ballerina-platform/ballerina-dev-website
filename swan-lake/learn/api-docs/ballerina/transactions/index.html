@@ -70,11 +70,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../transactions/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../transactions/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -170,17 +169,15 @@ transaction {
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="Info" title="Info">
                             <a class="records " href="records/Info.html">Info</a>
@@ -190,9 +187,7 @@ transaction {
                             
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="TransactionContext" title="TransactionContext">
                             <a class="records " href="records/TransactionContext.html">TransactionContext</a>
@@ -202,24 +197,21 @@ transaction {
                             
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="TransactionParticipantConfig" title="TransactionParticipantConfig">
                             <a class="records " href="records/TransactionParticipantConfig.html">TransactionParticipantConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Contains the configurations for local transaction participant function.</p>
-
+                            <p>Contains the configurations for local transaction participant function.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -246,6 +238,7 @@ transaction {
                 <td class="module-desc">
                     
                     
+                    
                 </td>
             </tr>
             
@@ -254,6 +247,7 @@ transaction {
                     <a class="functions " href="functions.html#ballerina/transactions:0.5.0.&lt;init&gt;1">ballerina/transactions:0.5.0.&lt;init&gt;1</a>
                 </td>
                 <td class="module-desc">
+                    
                     
                     
                 </td>
@@ -266,6 +260,7 @@ transaction {
                 <td class="module-desc">
                     
                     
+                    
                 </td>
             </tr>
             
@@ -274,6 +269,7 @@ transaction {
                     <a class="functions " href="functions.html#ballerina/transactions:0.5.0.&lt;init&gt;3">ballerina/transactions:0.5.0.&lt;init&gt;3</a>
                 </td>
                 <td class="module-desc">
+                    
                     
                     
                 </td>
@@ -286,6 +282,7 @@ transaction {
                 <td class="module-desc">
                     
                     
+                    
                 </td>
             </tr>
             
@@ -295,16 +292,10 @@ transaction {
                 </td>
                 <td class="module-desc">
                     
+                    
                     <span class="stab">Deprecated</span>
                     
                     When a transaction block in Ballerina code begins, it will call this function to begin a transaction.
-If this is a new transaction (transactionId == () ), then this instance will become the initiator and will
-create a new transaction context.
-If the participant and initiator are in the same process, this transaction block will register with the local
-initiator via a local function call.
-If the participant and initiator are in different processes, this transaction block will register with the remote
-initiator via a network call.
-
                 </td>
             </tr>
             
@@ -314,10 +305,10 @@ initiator via a network call.
                 </td>
                 <td class="module-desc">
                     
+                    
                     <span class="stab">Deprecated</span>
                     
                     Cleanup the transaction context.
-
                 </td>
             </tr>
             
@@ -327,13 +318,10 @@ initiator via a network call.
                 </td>
                 <td class="module-desc">
                     
+                    
                     <span class="stab">Deprecated</span>
                     
                     When a transaction block in Ballerina code ends, it will call this function to end a transaction.
-Ending a transaction by a participant has no effect because it is the initiator who can decide whether to
-commit or abort a transaction.
-Depending on the state of the transaction, the initiator decides to commit or abort the transaction.
-
                 </td>
             </tr>
             
@@ -343,10 +331,10 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                 </td>
                 <td class="module-desc">
                     
+                    
                     <span class="stab">Deprecated</span>
                     
                     Get and Cleanup the failure.
-
                 </td>
             </tr>
             
@@ -355,6 +343,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                     <a class="functions strike" href="functions.html#getCurrentTransactionId">getCurrentTransactionId</a>
                 </td>
                 <td class="module-desc">
+                    
                     
                     <span class="stab">Deprecated</span>
                     
@@ -368,10 +357,10 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                 </td>
                 <td class="module-desc">
                     
+                    
                     <span class="stab">Deprecated</span>
                     
                     Rollback the transaction.
-
                 </td>
             </tr>
             
@@ -381,10 +370,10 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                 </td>
                 <td class="module-desc">
                     
+                    
                     <span class="stab">Deprecated</span>
                     
                     Set the transactionContext.
-
                 </td>
             </tr>
             
@@ -444,8 +433,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                 </td>
                 <td class="module-desc">
                     
-                    <p>The annotation which is used to configure local transaction participant function.</p>
-
+                    <p>The annotation which is used to configure local transaction participant function.</p> 
                 </td>
             </tr>
             
@@ -471,8 +459,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>TransactionError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>TransactionError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             

@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module contains functions to perform file system based operations such as create, delete, rename the\nfile/directory, and retrieve metadata of the file.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
       "id": "FileInfo",
       "description": "\u003cp\u003eFileInfo record contains metadata information of a file.\u003c/p\u003e",
@@ -114,5 +114,6 @@
       "moduleId": "file"
     }
   ],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

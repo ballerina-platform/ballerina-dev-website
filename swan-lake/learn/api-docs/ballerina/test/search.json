@@ -5,10 +5,10 @@
       "description": "\u003cp\u003eThis module facilitates developers to write automation tests for ballerina code in a simple manner.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
-      "id": "FunctionStub",
-      "description": "\u003cp\u003eRepresents an object that allows stubbing function invocations\u003c/p\u003e\n",
+      "id": "MockObject",
+      "description": "\u003cp\u003eRepresents a Mock object in which to create stubs for member functions and variables\u003c/p\u003e\n",
       "moduleId": "test"
     },
     {
@@ -27,8 +27,8 @@
       "moduleId": "test"
     },
     {
-      "id": "MockObject",
-      "description": "\u003cp\u003eRepresents a Mock object in which to create stubs for member functions and variables\u003c/p\u003e\n",
+      "id": "FunctionStub",
+      "description": "\u003cp\u003eRepresents an object that allows stubbing function invocations\u003c/p\u003e\n",
       "moduleId": "test"
     }
   ],
@@ -230,5 +230,6 @@
       "description": "\u003cp\u003eIdentifies the MockFunction object\u003c/p\u003e\n",
       "moduleId": "test"
     }
-  ]
+  ],
+  "abstractObjects": []
 }

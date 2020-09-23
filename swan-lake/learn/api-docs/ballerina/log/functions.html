@@ -117,6 +117,7 @@
         
         
         
+        
             <li>
                 <a data="functions" href="../log/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
@@ -177,9 +178,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Logs the specified value at DEBUG level.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Logs the specified value at DEBUG level.</p>   
                             </div>
                         </td>
                     </tr>
@@ -189,9 +191,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Logs the specified message at ERROR level.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Logs the specified message at ERROR level.</p>   
                             </div>
                         </td>
                     </tr>
@@ -201,9 +204,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Logs the specified message at INFO level.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Logs the specified message at INFO level.</p>   
                             </div>
                         </td>
                     </tr>
@@ -213,9 +217,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Logs the specified message at TRACE level.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Logs the specified message at TRACE level.</p>   
                             </div>
                         </td>
                     </tr>
@@ -225,9 +230,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Logs the specified message at WARN level.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Logs the specified message at WARN level.</p>   
                             </div>
                         </td>
                     </tr>
@@ -236,6 +242,9 @@
                         <td width="30%"><a class="functions " href="#setModuleLogLevel">setModuleLogLevel</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 <p>Sets the module log level.
                             </div>
@@ -260,6 +269,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Logs the specified value at DEBUG level.</p>
 <pre><code class="language-ballerina"> log:printDebug(&quot;debug log&quot;);
@@ -306,6 +318,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Logs the specified message at ERROR level.</p>
 <pre><code class="language-ballerina"> error e = error(&quot;error occurred&quot;);
  log:printError(&quot;error log with cause&quot;, err = e);
@@ -338,7 +353,7 @@
                     <li>
                         <span >err</span>
                         <span class="type">  <span class="builtin-type">error?</span> </span>
-                        <span class="default"> (default &lt;error?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -368,6 +383,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Logs the specified message at INFO level.</p>
 <pre><code class="language-ballerina"> log:printInfo(&quot;info log&quot;);
@@ -414,6 +432,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Logs the specified message at TRACE level.</p>
 <pre><code class="language-ballerina"> log:printTrace(&quot;trace log&quot;);
 </code></pre>
@@ -458,6 +479,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Logs the specified message at WARN level.</p>
 <pre><code class="language-ballerina"> log:printWarn(&quot;warn log&quot;);
@@ -504,6 +528,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sets the module log level. If a module name is not specified, the log level will be set to the current module.
 Following log levels are allowed.</p>
 <p>ERROR - error log level</p>
@@ -544,7 +571,7 @@ Following log levels are allowed.</p>
                     <li>
                         <span >moduleName</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>

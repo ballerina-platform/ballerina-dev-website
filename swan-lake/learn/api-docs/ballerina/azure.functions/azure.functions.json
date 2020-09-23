@@ -1,7 +1,7 @@
 {
   "id": "azure.functions",
   "summary": "\u003cp\u003eAnnotation based Azure Functions extension implementation for Ballerina.\u003c/p\u003e\n",
-  "description": "\u003ch1\u003eModule Overview\u003c/h1\u003e\n\u003cp\u003eAnnotation based Azure Functions extension implementation for Ballerina.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFor information on the operations, which you can perform with this module, see \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/azure.functions/index.html#objects\"\u003eObjects\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor more information on the deployment, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/deployment/azure-functions/\"\u003eAzure Functions Deployment Guide\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor examples on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/azure-functions-deployment.html\"\u003eAzure Functions Deployment Example\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eAzure Setup\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003eAn Azure \u0026quot;Function App\u0026quot; needs to be created in a given resource group with the following requirements\n\u003cul\u003e\n\u003cli\u003eRuntime stack - \u0026quot;Java 8\u0026quot;\u003c/li\u003e\n\u003cli\u003eHosting operating system - \u0026quot;Windows\u0026quot; (default; Linux is not supported in Azure for custom handlers at the moment)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eSupported Annotations:\u003c/h2\u003e\n\u003ch3\u003e@azure.functions:Function\u003c/h3\u003e\n\u003ch4\u003eCustom \u0027host.json\u0027\u003c/h4\u003e\n\u003cp\u003eA custom \u003ca href\u003d\"https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json\"\u003ehost.json\u003c/a\u003e file for the functions deployment can be optionally provided by placing a \u0027host.json\u0027 file in the current working directory where the Ballerina build is done. The required host.json properties are provided/overridden by the values derived from the source code by the compiler extension.\u003c/p\u003e\n\u003ch4\u003eUsage Sample:\u003c/h4\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/http;\nimport ballerina/system;\nimport ballerinax/azure.functions as af;\n\n// HTTP request/response with no authentication\n@af:Function\npublic function hello(@af:HTTPTrigger { authLevel: \u0026quot;anonymous\u0026quot; } http:Request req) \n                      returns @af:HTTPOutput string|error {\n    return \u0026quot;Hello, \u0026quot; + check \u0026lt;@untainted\u0026gt; req.getTextPayload() + \u0026quot;!\u0026quot;;\n}\n\n// HTTP request to add data to a queue\n@af:Function\npublic function fromHttpToQueue(af:Context ctx, \n            @af:HTTPTrigger {} af:HTTPRequest req, \n            @af:QueueOutput { queueName: \u0026quot;queue1\u0026quot; } af:StringOutputBinding msg) \n            returns @af:HTTPOutput af:HTTPBinding {\n    msg.value \u003d req.body;\n    return { statusCode: 200, payload: \u0026quot;Request: \u0026quot; + req.toString() };\n}\n\n// A message put to a queue is copied to another queue\n@af:Function\npublic function fromQueueToQueue(af:Context ctx, \n        @af:QueueTrigger { queueName: \u0026quot;queue2\u0026quot; } string inMsg,\n        @af:QueueOutput { queueName: \u0026quot;queue3\u0026quot; } af:StringOutputBinding outMsg) {\n    ctx.log(\u0026quot;In Message: \u0026quot; + inMsg);\n    ctx.log(\u0026quot;Metadata: \u0026quot; + ctx.metadata.toString());\n    outMsg.value \u003d inMsg;\n}\n\n// A blob added to a container is copied to a queue\n@af:Function\npublic function fromBlobToQueue(af:Context ctx, \n        @af:BlobTrigger { path: \u0026quot;bpath1/{name}\u0026quot; } byte[] blobIn,\n        @af:BindingName { } string name,\n        @af:QueueOutput { queueName: \u0026quot;queue3\u0026quot; } af:StringOutputBinding outMsg) \n        returns error? {\n    outMsg.value \u003d \u0026quot;Name: \u0026quot; + name + \u0026quot; Content: \u0026quot; + blobIn.toString();\n}\n\n// HTTP request to read a blob value\n@af:Function\npublic function httpTriggerBlobInput(@af:HTTPTrigger { } af:HTTPRequest req, \n                    @af:BlobInput { path: \u0026quot;bpath1/{Query.name}\u0026quot; } byte[]? blobIn)\n                    returns @af:HTTPOutput string {\n    int length \u003d 0;\n    if blobIn is byte[] {\n        length \u003d blobIn.length();\n    }\n    return \u0026quot;Blob: \u0026quot; + req.query[\u0026quot;name\u0026quot;].toString() + \u0026quot; Length: \u0026quot; + \n            length.toString() + \u0026quot; Content: \u0026quot; + blobIn.toString();\n}\n\n// HTTP request to add a new blob\n@af:Function\npublic function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req, \n        @af:BlobOutput { path: \u0026quot;bpath1/{Query.name}\u0026quot; } af:StringOutputBinding bb)\n        returns @af:HTTPOutput string|error {\n    bb.value \u003d req.body;\n    return \u0026quot;Blob: \u0026quot; + req.query[\u0026quot;name\u0026quot;].toString() + \u0026quot; Content: \u0026quot; + \n            bb?.value.toString();\n}\n\n// Sending an SMS\n@af:Function\npublic function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req, \n                        @af:TwilioSmsOutput { fromNumber: \u0026quot;+12069845840\u0026quot; } \n                                              af:TwilioSmsOutputBinding tb)\n                        returns @af:HTTPOutput string {\n    tb.to \u003d req.query[\u0026quot;to\u0026quot;].toString();\n    tb.body \u003d req.body.toString();\n    return \u0026quot;Message - to: \u0026quot; + tb?.to.toString() + \u0026quot; body: \u0026quot; + tb?.body.toString();\n}\n\npublic type Person record {\n    string id;\n    string name;\n    string country;\n};\n\n// CosmosDB record trigger\n@af:Function\npublic function cosmosDBToQueue1(@af:CosmosDBTrigger { \n        connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, databaseName: \u0026quot;db1\u0026quot;,\n        collectionName: \u0026quot;c1\u0026quot; } Person[] req, \n        @af:QueueOutput { queueName: \u0026quot;queue3\u0026quot; } af:StringOutputBinding outMsg) {\n    outMsg.value \u003d req.toString();\n}\n\n@af:Function\npublic function cosmosDBToQueue2(@af:CosmosDBTrigger { \n        connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, databaseName: \u0026quot;db1\u0026quot;, \n        collectionName: \u0026quot;c2\u0026quot; } json req,\n        @af:QueueOutput { queueName: \u0026quot;queue3\u0026quot; } af:StringOutputBinding outMsg) {\n    outMsg.value \u003d req.toString();\n}\n\n// HTTP request to read CosmosDB records\n@af:Function\npublic function httpTriggerCosmosDBInput1(\n            @af:HTTPTrigger { } af:HTTPRequest httpReq, \n            @af:CosmosDBInput { connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n                databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot;, \n                id: \u0026quot;{Query.id}\u0026quot;, partitionKey: \u0026quot;{Query.country}\u0026quot; } json dbReq)\n                returns @af:HTTPOutput string|error {\n    return dbReq.toString();\n}\n\n@af:Function\npublic function httpTriggerCosmosDBInput2(\n            @af:HTTPTrigger { } af:HTTPRequest httpReq, \n            @af:CosmosDBInput { connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n                databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot;, \n                id: \u0026quot;{Query.id}\u0026quot;, partitionKey: \u0026quot;{Query.country}\u0026quot; } Person? dbReq)\n                returns @af:HTTPOutput string|error {\n    return dbReq.toString();\n}\n\n@af:Function\npublic function httpTriggerCosmosDBInput3(\n        @af:HTTPTrigger { route: \u0026quot;c1/{country}\u0026quot; } af:HTTPRequest httpReq, \n        @af:CosmosDBInput { connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n        databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot;, \n        sqlQuery: \u0026quot;select * from c1 where c1.country \u003d {country}\u0026quot; } \n        Person[] dbReq)\n        returns @af:HTTPOutput string|error {\n    return dbReq.toString();\n}\n\n// HTTP request to write records to CosmosDB\n@af:Function\npublic function httpTriggerCosmosDBOutput1(\n    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) \n    returns @af:CosmosDBOutput { connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n                                databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot; } json {\n    json entry \u003d { id: system:uuid(), name: \u0026quot;Saman\u0026quot;, country: \u0026quot;Sri Lanka\u0026quot; };\n    hb.payload \u003d \u0026quot;Adding entry: \u0026quot; + entry.toString();\n    return entry;\n}\n\n@af:Function\npublic function httpTriggerCosmosDBOutput2(\n        @af:HTTPTrigger { } af:HTTPRequest httpReq, \n        @af:HTTPOutput af:HTTPBinding hb) \n        returns @af:CosmosDBOutput { \n            connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n            databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot; } json {\n    json entry \u003d [{ id: system:uuid(), name: \u0026quot;John Doe A\u0026quot;, country: \u0026quot;USA\u0026quot; }, \n                  { id: system:uuid(), name: \u0026quot;John Doe B\u0026quot;, country: \u0026quot;USA\u0026quot; }];\n    hb.payload \u003d \u0026quot;Adding entries: \u0026quot; + entry.toString();\n    return entry;\n}\n\n@af:Function\npublic function httpTriggerCosmosDBOutput3(\n                    @af:HTTPTrigger { } af:HTTPRequest httpReq) \n                    returns @af:CosmosDBOutput { \n                        connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n                        databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot; } Person[] {\n    Person[] persons \u003d [];\n    persons.push({id: system:uuid(), name: \u0026quot;Jack\u0026quot;, country: \u0026quot;UK\u0026quot;});\n    persons.push({id: system:uuid(), name: \u0026quot;Will\u0026quot;, country: \u0026quot;UK\u0026quot;});\n    return persons;\n}\n\n// A timer function which is executed every 10 seconds.\n@af:Function\npublic function queuePopulationTimer(\n            @af:TimerTrigger { schedule: \u0026quot;*/10 * * * * *\u0026quot; } json triggerInfo, \n            @af:QueueOutput { queueName: \u0026quot;queue4\u0026quot; } af:StringOutputBinding msg) {\n    msg.value \u003d triggerInfo.toString();\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe output of the Ballerina build is as follows:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-bash\"\u003e$ ballerina build azure_functions_deployment.bal \nCompiling source\n        azure_functions_deployment.bal\n\nGenerating executables\n        azure_functions_deployment.jar\n        @azure.functions:Function: hello, fromHttpToQueue, fromQueueToQueue, fromBlobToQueue, httpTriggerBlobInput, httpTriggerBlobOutput, sendSMS, cosmosDBToQueue1, cosmosDBToQueue2, httpTriggerCosmosDBInput1, httpTriggerCosmosDBInput2, httpTriggerCosmosDBInput3, httpTriggerCosmosDBOutput1, httpTriggerCosmosDBOutput2, httpTriggerCosmosDBOutput3, queuePopulationTimer\n\u003c/code\u003e\u003c/pre\u003e\n",
+  "description": "\u003ch1\u003eModule Overview\u003c/h1\u003e\n\u003cp\u003eAnnotation based Azure Functions extension implementation for Ballerina.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFor information on the operations, which you can perform with this module, see \u003ca href\u003d\"/swan-lake/learn/api-docs/ballerina/azure.functions/index.html#objects\"\u003eObjects\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor more information on the deployment, see the \u003ca href\u003d\"/swan-lake/learn/deployment/azure-functions/\"\u003eAzure Functions Deployment Guide\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor examples on the usage of the operations, see the \u003ca href\u003d\"/swan-lake/learn/by-example/azure-functions-deployment.html\"\u003eAzure Functions Deployment Example\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eAzure Setup\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003eAn Azure \u0026quot;Function App\u0026quot; needs to be created in a given resource group with the following requirements\n\u003cul\u003e\n\u003cli\u003eRuntime stack - \u0026quot;Java 8\u0026quot;\u003c/li\u003e\n\u003cli\u003eHosting operating system - \u0026quot;Windows\u0026quot; (default; Linux is not supported in Azure for custom handlers at the moment)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eSupported Annotations:\u003c/h2\u003e\n\u003ch3\u003e@azure.functions:Function\u003c/h3\u003e\n\u003ch4\u003eCustom \u0027host.json\u0027\u003c/h4\u003e\n\u003cp\u003eA custom \u003ca href\u003d\"https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json\"\u003ehost.json\u003c/a\u003e file for the functions deployment can be optionally provided by placing a \u0027host.json\u0027 file in the current working directory where the Ballerina build is done. The required host.json properties are provided/overridden by the values derived from the source code by the compiler extension.\u003c/p\u003e\n\u003ch4\u003eUsage Sample:\u003c/h4\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/system;\nimport ballerinax/azure.functions as af;\n\n// HTTP request/response with no authentication\n@af:Function\npublic function hello(@af:HTTPTrigger { authLevel: \u0026quot;anonymous\u0026quot; } string payload) \n                      returns @af:HTTPOutput string|error {\n    return \u0026quot;Hello, \u0026quot; + payload + \u0026quot;!\u0026quot;;\n}\n\n// HTTP request to add data to a queue\n@af:Function\npublic function fromHttpToQueue(af:Context ctx, \n            @af:HTTPTrigger {} af:HTTPRequest req, \n            @af:QueueOutput { queueName: \u0026quot;queue1\u0026quot; } af:StringOutputBinding msg) \n            returns @af:HTTPOutput af:HTTPBinding {\n    msg.value \u003d req.body;\n    return { statusCode: 200, payload: \u0026quot;Request: \u0026quot; + req.toString() };\n}\n\n// A message put to a queue is copied to another queue\n@af:Function\npublic function fromQueueToQueue(af:Context ctx, \n        @af:QueueTrigger { queueName: \u0026quot;queue2\u0026quot; } string inMsg,\n        @af:QueueOutput { queueName: \u0026quot;queue3\u0026quot; } af:StringOutputBinding outMsg) {\n    ctx.log(\u0026quot;In Message: \u0026quot; + inMsg);\n    ctx.log(\u0026quot;Metadata: \u0026quot; + ctx.metadata.toString());\n    outMsg.value \u003d inMsg;\n}\n\n// A blob added to a container is copied to a queue\n@af:Function\npublic function fromBlobToQueue(af:Context ctx, \n        @af:BlobTrigger { path: \u0026quot;bpath1/{name}\u0026quot; } byte[] blobIn,\n        @af:BindingName { } string name,\n        @af:QueueOutput { queueName: \u0026quot;queue3\u0026quot; } af:StringOutputBinding outMsg) \n        returns error? {\n    outMsg.value \u003d \u0026quot;Name: \u0026quot; + name + \u0026quot; Content: \u0026quot; + blobIn.toString();\n}\n\n// HTTP request to read a blob value\n@af:Function\npublic function httpTriggerBlobInput(@af:HTTPTrigger { } af:HTTPRequest req, \n                    @af:BlobInput { path: \u0026quot;bpath1/{Query.name}\u0026quot; } byte[]? blobIn)\n                    returns @af:HTTPOutput string {\n    int length \u003d 0;\n    if blobIn is byte[] {\n        length \u003d blobIn.length();\n    }\n    return \u0026quot;Blob: \u0026quot; + req.query[\u0026quot;name\u0026quot;].toString() + \u0026quot; Length: \u0026quot; + \n            length.toString() + \u0026quot; Content: \u0026quot; + blobIn.toString();\n}\n\n// HTTP request to add a new blob\n@af:Function\npublic function httpTriggerBlobOutput(@af:HTTPTrigger { } af:HTTPRequest req, \n        @af:BlobOutput { path: \u0026quot;bpath1/{Query.name}\u0026quot; } af:StringOutputBinding bb)\n        returns @af:HTTPOutput string|error {\n    bb.value \u003d req.body;\n    return \u0026quot;Blob: \u0026quot; + req.query[\u0026quot;name\u0026quot;].toString() + \u0026quot; Content: \u0026quot; + \n            bb?.value.toString();\n}\n\n// Sending an SMS\n@af:Function\npublic function sendSMS(@af:HTTPTrigger { } af:HTTPRequest req, \n                        @af:TwilioSmsOutput { fromNumber: \u0026quot;+12069845840\u0026quot; } \n                                              af:TwilioSmsOutputBinding tb)\n                        returns @af:HTTPOutput string {\n    tb.to \u003d req.query[\u0026quot;to\u0026quot;].toString();\n    tb.body \u003d req.body.toString();\n    return \u0026quot;Message - to: \u0026quot; + tb?.to.toString() + \u0026quot; body: \u0026quot; + tb?.body.toString();\n}\n\npublic type Person record {\n    string id;\n    string name;\n    string country;\n};\n\n// CosmosDB record trigger\n@af:Function\npublic function cosmosDBToQueue1(@af:CosmosDBTrigger { \n        connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, databaseName: \u0026quot;db1\u0026quot;,\n        collectionName: \u0026quot;c1\u0026quot; } Person[] req, \n        @af:QueueOutput { queueName: \u0026quot;queue3\u0026quot; } af:StringOutputBinding outMsg) {\n    outMsg.value \u003d req.toString();\n}\n\n@af:Function\npublic function cosmosDBToQueue2(@af:CosmosDBTrigger { \n        connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, databaseName: \u0026quot;db1\u0026quot;, \n        collectionName: \u0026quot;c2\u0026quot; } json req,\n        @af:QueueOutput { queueName: \u0026quot;queue3\u0026quot; } af:StringOutputBinding outMsg) {\n    outMsg.value \u003d req.toString();\n}\n\n// HTTP request to read CosmosDB records\n@af:Function\npublic function httpTriggerCosmosDBInput1(\n            @af:HTTPTrigger { } af:HTTPRequest httpReq, \n            @af:CosmosDBInput { connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n                databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot;, \n                id: \u0026quot;{Query.id}\u0026quot;, partitionKey: \u0026quot;{Query.country}\u0026quot; } json dbReq)\n                returns @af:HTTPOutput string|error {\n    return dbReq.toString();\n}\n\n@af:Function\npublic function httpTriggerCosmosDBInput2(\n            @af:HTTPTrigger { } af:HTTPRequest httpReq, \n            @af:CosmosDBInput { connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n                databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot;, \n                id: \u0026quot;{Query.id}\u0026quot;, partitionKey: \u0026quot;{Query.country}\u0026quot; } Person? dbReq)\n                returns @af:HTTPOutput string|error {\n    return dbReq.toString();\n}\n\n@af:Function\npublic function httpTriggerCosmosDBInput3(\n        @af:HTTPTrigger { route: \u0026quot;c1/{country}\u0026quot; } af:HTTPRequest httpReq, \n        @af:CosmosDBInput { connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n        databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot;, \n        sqlQuery: \u0026quot;select * from c1 where c1.country \u003d {country}\u0026quot; } \n        Person[] dbReq)\n        returns @af:HTTPOutput string|error {\n    return dbReq.toString();\n}\n\n// HTTP request to write records to CosmosDB\n@af:Function\npublic function httpTriggerCosmosDBOutput1(\n    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) \n    returns @af:CosmosDBOutput { connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n                                 databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot; } json {\n    json entry \u003d { id: system:uuid(), name: \u0026quot;Saman\u0026quot;, country: \u0026quot;Sri Lanka\u0026quot; };\n    hb.payload \u003d \u0026quot;Adding entry: \u0026quot; + entry.toString();\n    return entry;\n}\n\n@af:Function\npublic function httpTriggerCosmosDBOutput2(\n        @af:HTTPTrigger { } af:HTTPRequest httpReq, \n        @af:HTTPOutput af:HTTPBinding hb) \n        returns @af:CosmosDBOutput { \n            connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n            databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot; } json {\n    json entry \u003d [{ id: system:uuid(), name: \u0026quot;John Doe A\u0026quot;, country: \u0026quot;USA\u0026quot; }, \n                  { id: system:uuid(), name: \u0026quot;John Doe B\u0026quot;, country: \u0026quot;USA\u0026quot; }];\n    hb.payload \u003d \u0026quot;Adding entries: \u0026quot; + entry.toString();\n    return entry;\n}\n\n@af:Function\npublic function httpTriggerCosmosDBOutput3(\n                    @af:HTTPTrigger { } af:HTTPRequest httpReq) \n                    returns @af:CosmosDBOutput { \n                        connectionStringSetting: \u0026quot;CosmosDBConnection\u0026quot;, \n                        databaseName: \u0026quot;db1\u0026quot;, collectionName: \u0026quot;c1\u0026quot; } Person[] {\n    Person[] persons \u003d [];\n    persons.push({id: system:uuid(), name: \u0026quot;Jack\u0026quot;, country: \u0026quot;UK\u0026quot;});\n    persons.push({id: system:uuid(), name: \u0026quot;Will\u0026quot;, country: \u0026quot;UK\u0026quot;});\n    return persons;\n}\n\n// A timer function which is executed every 10 seconds.\n@af:Function\npublic function queuePopulationTimer(\n            @af:TimerTrigger { schedule: \u0026quot;*/10 * * * * *\u0026quot; } json triggerInfo, \n            @af:QueueOutput { queueName: \u0026quot;queue4\u0026quot; } af:StringOutputBinding msg) {\n    msg.value \u003d triggerInfo.toString();\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe output of the Ballerina build is as follows:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-bash\"\u003e$ ballerina build azure_functions_deployment.bal \nCompiling source\n        azure_functions_deployment.bal\n\nGenerating executables\n        azure_functions_deployment.jar\n        @azure.functions:Function: hello, fromHttpToQueue, fromQueueToQueue, fromBlobToQueue, httpTriggerBlobInput, httpTriggerBlobOutput, sendSMS, cosmosDBToQueue1, cosmosDBToQueue2, httpTriggerCosmosDBInput1, httpTriggerCosmosDBInput2, httpTriggerCosmosDBInput3, httpTriggerCosmosDBOutput1, httpTriggerCosmosDBOutput2, httpTriggerCosmosDBOutput3, queuePopulationTimer\n\u003c/code\u003e\u003c/pre\u003e\n",
   "orgName": "ballerinax",
   "version": "0.0.0",
   "records": [
@@ -31,7 +31,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "BindingNameConfiguration",
       "description": "\u003cp\u003eBindingName annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -85,7 +85,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "BlobConfiguration",
       "description": "\u003cp\u003eBlob annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -130,7 +130,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "BytesOutputBinding",
       "description": "\u003cp\u003eByte array output binding data.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -350,7 +350,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "CosmosDBInputConfiguration",
       "description": "\u003cp\u003eCosmosDB input annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -542,7 +542,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "CosmosDBOutputConfiguration",
       "description": "\u003cp\u003eCosmosDB output annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -941,7 +941,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "CosmosDBTriggerConfiguration",
       "description": "\u003cp\u003eCosmosDB trigger annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -995,7 +995,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "HTTPBinding",
       "description": "\u003cp\u003eHTTP binding data.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1243,7 +1243,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "HTTPRequest",
       "description": "\u003cp\u003eHTTP request binding data.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1297,7 +1297,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "HTTPTriggerConfiguration",
       "description": "\u003cp\u003eHTTPTrigger annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1310,7 +1310,7 @@
             "orgName": "ballerina",
             "moduleName": "http",
             "name": "Request",
-            "category": "objects",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -1333,7 +1333,7 @@
             "orgName": "ballerina",
             "moduleName": "http",
             "name": "Response",
-            "category": "objects",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -1397,7 +1397,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "HandlerParams",
       "description": "\u003cp\u003eINTERNAL stucture - the request handler parameter data.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1451,7 +1451,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "QueueConfiguration",
       "description": "\u003cp\u003eQueue annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1482,7 +1482,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "StringOutputBinding",
       "description": "\u003cp\u003eString output binding data.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1536,7 +1536,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "TimerTriggerConfiguration",
       "description": "\u003cp\u003eTimerTrigger annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1613,7 +1613,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "TwilioSmsConfiguration",
       "description": "\u003cp\u003eTwilio annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1667,13 +1667,13 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "TwilioSmsOutputBinding",
       "description": "\u003cp\u003eTwilion SMS output binding data.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [
     {
       "fields": [
         {
@@ -1702,85 +1702,7 @@
       ],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerinax",
-                "moduleName": "azure.functions",
-                "name": "HandlerParams",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "hparams",
-              "description": "",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "boolean",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "populateMetadata",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "error",
-                "category": "errors",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "init",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1814,87 +1736,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerinax",
-              "moduleName": "azure.functions",
-              "name": "HandlerParams",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "hparams",
-            "description": "",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "boolean",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "populateMetadata",
-            "description": "",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [
-          {
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "error",
-              "category": "errors",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "",
-            "description": "",
-            "isDeprecated": false
-          }
-        ],
-        "name": "init",
-        "description": "",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1928,16 +1772,17 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Context",
       "description": "\u003cp\u003eThe request context holder.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -1994,6 +1839,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2063,7 +1909,7 @@
                 "orgName": "ballerinax",
                 "moduleName": "azure.functions",
                 "name": "Context",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -2107,6 +1953,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2260,6 +2107,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2413,6 +2261,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2517,6 +2366,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2630,6 +2480,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2757,6 +2608,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2870,6 +2722,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2916,7 +2769,7 @@
                 "orgName": "ballerina",
                 "moduleName": "http",
                 "name": "Request",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -2960,6 +2813,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3050,6 +2904,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3163,6 +3018,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3276,6 +3132,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3389,6 +3246,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3479,6 +3337,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3632,6 +3491,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3759,6 +3619,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3872,6 +3733,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3985,6 +3847,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4098,6 +3961,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4188,6 +4052,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4301,6 +4166,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4414,6 +4280,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4493,6 +4360,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4595,6 +4463,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4697,6 +4566,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4799,6 +4669,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4901,6 +4772,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -4980,6 +4852,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -5059,6 +4932,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -5138,6 +5012,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -5217,6 +5092,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -5296,6 +5172,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -5398,6 +5275,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -5477,6 +5355,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -5795,7 +5674,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "return, parameter",
+      "attachmentPoints": "parameter, return",
       "name": "QueueOutput",
       "description": "\u003cp\u003e@azurefunctions:QueueOutput annotation.\u003c/p\u003e\n",
       "isDeprecated": false

@@ -97,18 +97,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../rabbitmq/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
             <li>
@@ -186,30 +183,6 @@
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Initializes a <code>rabbitmq:Channel</code> object with the given <code>rabbitmq:Connection</code> object or connection configuration.
-Creates a <code>rabbitmq:Connection</code> object if only the connection configuration is given.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a> connectionOrConnectionConfig)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>connectionOrConnectionConfig</b><span class="type">  <a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a></span> </li>
-                <li>
-                    <p>A <code>rabbitmq:Connection</code> object or a connection configuration</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -218,26 +191,19 @@ Creates a <code>rabbitmq:Connection</code> object if only the connection configu
                         <tr>
                             <td class="module-title truncate functions" title="queueDeclare"><a
                                     class="functions" href="#queueDeclare">queueDeclare</a></td>
-                            <td class="module-desc"><p>Declares a non-exclusive, auto-delete, or non-durable queue with the given configurations.</p>
-
-</td>
+                            <td class="module-desc"><p>Declares a non-exclusive, auto-delete, or non-durable queue with the given configurations.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="exchangeDeclare"><a
                                     class="functions" href="#exchangeDeclare">exchangeDeclare</a></td>
-                            <td class="module-desc"><p>Declares a non-auto-delete, non-durable exchange with no extra arguments.
-If the arguments are specified, then the exchange is declared accordingly.</p>
-
-</td>
+                            <td class="module-desc"><p>Declares a non-auto-delete, non-durable exchange with no extra arguments.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="queueBind"><a
                                     class="functions" href="#queueBind">queueBind</a></td>
-                            <td class="module-desc"><p>Binds a queue to an exchange with the given binding key.</p>
-
-</td>
+                            <td class="module-desc"><p>Binds a queue to an exchange with the given binding key.</p>   </td>
                         </tr>
                     
                         <tr>
@@ -249,34 +215,25 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
                         <tr>
                             <td class="module-title truncate functions" title="queueDelete"><a
                                     class="functions" href="#queueDelete">queueDelete</a></td>
-                            <td class="module-desc"><p>Deletes the queue with the given name although it is in use or has messages in it.
-If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the queue is checked before deleting.</p>
-
-</td>
+                            <td class="module-desc"><p>Deletes the queue with the given name although it is in use or has messages in it.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="exchangeDelete"><a
                                     class="functions" href="#exchangeDelete">exchangeDelete</a></td>
-                            <td class="module-desc"><p>Deletes the exchange with the given name.</p>
-
-</td>
+                            <td class="module-desc"><p>Deletes the exchange with the given name.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="queuePurge"><a
                                     class="functions" href="#queuePurge">queuePurge</a></td>
-                            <td class="module-desc"><p>Purges the content of the given queue.</p>
-
-</td>
+                            <td class="module-desc"><p>Purges the content of the given queue.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="basicGet"><a
                                     class="functions" href="#basicGet">basicGet</a></td>
-                            <td class="module-desc"><p>Retrieves a message synchronously from the given queue providing direct access to the messages in the queue.</p>
-
-</td>
+                            <td class="module-desc"><p>Retrieves a message synchronously from the given queue providing direct access to the messages in the queue.</p>   </td>
                         </tr>
                     
                 </table>
@@ -293,9 +250,7 @@ If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the q
     </div>
     <div class="param-details">
         
-        <p>Retrieves the connection, which carries this channel.</p>
-
-
+        <p>Retrieves the connection, which carries this channel.</p>   
     </div>
 </div>
 
@@ -307,9 +262,7 @@ If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the q
     </div>
     <div class="param-details">
         
-        <p>Closes the <code>rabbitmq:Channel</code>.</p>
-
-
+        <p>Closes the <code>rabbitmq:Channel</code>.</p>   
     </div>
 </div>
 
@@ -348,6 +301,9 @@ If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the q
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Declares a non-exclusive, auto-delete, or non-durable queue with the given configurations.</p>
 <pre><code class="language-ballerina"> string|rabbitmq:Error? queueResult = newChannel-&gt;queueDeclare();
@@ -406,6 +362,9 @@ generated with the given parameters, or else a <code>rabbitmq:Error</code> if an
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Declares a non-auto-delete, non-durable exchange with no extra arguments.
 If the arguments are specified, then the exchange is declared accordingly.</p>
@@ -468,6 +427,9 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Binds a queue to an exchange with the given binding key.</p>
 <pre><code class="language-ballerina"> rabbitmq:Error? bindResult = newChannel.queueBind(&quot;MyQueue&quot;, &quot;MyExchange&quot;, &quot;routing-key&quot;);
@@ -559,6 +521,9 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Publishes a message. Publishing to a non-existent exchange will result in a channel-level
 protocol error, which closes the channel.</p>
@@ -669,6 +634,9 @@ protocol error, which closes the channel.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Deletes the queue with the given name although it is in use or has messages in it.
 If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the queue is checked before deleting.</p>
 <pre><code class="language-ballerina"> rabbitmq:Error? deleteResult = newChannel-&gt;queueDelete(&quot;MyQueue&quot;);
@@ -761,6 +729,9 @@ If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the q
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Deletes the exchange with the given name.</p>
 <pre><code class="language-ballerina"> rabbitmq:Error? deleteResult = newChannel-&gt;exchangeDelete(&quot;MyExchange&quot;);
 </code></pre>
@@ -818,6 +789,9 @@ If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the q
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Purges the content of the given queue.</p>
 <pre><code class="language-ballerina"> rabbitmq:Error? purgeResult = newChannel-&gt;queuePurge(&quot;MyQueue&quot;);
 </code></pre>
@@ -874,6 +848,9 @@ If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the q
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves a message synchronously from the given queue providing direct access to the messages in the queue.</p>
 <pre><code class="language-ballerina"> rabbitmq:Message|rabbitmq:Error getResult = newChannel-&gt;basicGet(&quot;MyQueue&quot;, rabbitmq:AUTO_ACK);
@@ -948,11 +925,14 @@ I/O error is encountered</p>
         <span class="method-types">
             <p>()</p>
             
-                <b> returns </b><a href="../../rabbitmq/objects/Connection.html">Connection</a> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+                <b> returns </b><a href="../../rabbitmq/classes/Connection.html">Connection</a> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the connection, which carries this channel.</p>
 <pre><code class="language-ballerina"> rabbitmq:Connection|rabbitmq:Error connResult = newChannel.getConnection();
@@ -965,7 +945,7 @@ I/O error is encountered</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/objects/Connection.html">Connection</a> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/classes/Connection.html">Connection</a> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
                 <li><p>A <code>rabbitmq:Connection</code> object or else a <code>rabbitmq:Error</code> if an I/O error is encountered</p>
 </li>
             </ul>
@@ -988,6 +968,9 @@ I/O error is encountered</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Closes the <code>rabbitmq:Channel</code>.</p>
 <pre><code class="language-ballerina"> rabbitmq:Error? closeResult = newChannel.close();
@@ -1063,6 +1046,9 @@ I/O error is encountered</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Aborts the RabbitMQ <code>rabbitmq:Channel</code>. Forces the <code>rabbitmq:Channel</code> to close and waits for all the close operations
 to complete. Any encountered exceptions in the close operations are discarded silently.</p>

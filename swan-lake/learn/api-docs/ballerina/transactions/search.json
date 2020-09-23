@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides Ballerina transaction manager implementation.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [
     {
       "id": "ballerina/transactions:0.5.0.\u003cinit\u003e0",
@@ -113,5 +113,6 @@
       "description": "\u003cp\u003eThe annotation which is used to configure local transaction participant function.\u003c/p\u003e",
       "moduleId": "transactions"
     }
-  ]
+  ],
+  "abstractObjects": []
 }

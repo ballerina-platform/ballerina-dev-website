@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides the Config API to read configurations from environment variables, TOML files, and command-line parameters and build a consolidated set of configurations.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [
     {
       "id": "contains",
@@ -54,5 +54,6 @@
   "types": [],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

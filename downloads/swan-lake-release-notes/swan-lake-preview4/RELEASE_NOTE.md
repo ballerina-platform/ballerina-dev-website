@@ -432,23 +432,23 @@ $  ballerina openapi -i <contract>  -o <output path>
     **Command output example:**
 
     ``` bash
-        $ ballerina openapi -i petstore.yaml  
-        The service generation process is complete. The following files were created.
-        -- petstore-service.bal
-        -- petstore-client.bal
-        -- schema.bal
+    $ ballerina openapi -i petstore.yaml  
+    The service generation process is complete. The following files were created.
+    -- petstore-service.bal
+    -- petstore-client.bal
+    -- schema.bal
     ```
 
 - If you are interested in creating only a service, you can use the `mode` option to give the required mode. The `mode` can be a service or a client.
 
     ```bash
-      	$  ballerina openapi -i <contract> --mode (service | client ) -o <output Path>
+    $  ballerina openapi -i <contract> --mode (service | client ) -o <output Path>
 	```
 
 - You can specify the output path with the `-o` option.
 
     ```bash
-      	$  ballerina openapi -i <contract> --service-name <service name> -o <output Path>
+    $  ballerina openapi -i <contract> --service-name <service name> -o <output Path>
 	```
 
 - If you are interested in creating a service with resources having a specific tag or an `operationId`, you can do the following.

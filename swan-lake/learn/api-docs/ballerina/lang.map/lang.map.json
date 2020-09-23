@@ -4,120 +4,14 @@
   "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides lang library map operations defined by the language specification 2020R1.\u003c/p\u003e\n",
   "orgName": "ballerina",
   "version": "1.1.0",
-  "records": [
-    {
-      "fields": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.map",
-            "name": "Type",
-            "category": "types",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": false,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "value",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": true,
-      "name": "T1",
-      "description": "",
-      "isDeprecated": false
-    }
-  ],
-  "objects": [
-    {
-      "fields": [],
-      "methods": [
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.map",
-                "name": "T1",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "next",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "otherMethods": [
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.map",
-                "name": "T1",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "next",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": true,
-      "name": "T2",
-      "description": "",
-      "isDeprecated": false
-    }
-  ],
+  "records": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -240,6 +134,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -384,6 +279,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -488,6 +384,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -584,6 +481,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -680,6 +578,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -729,8 +628,8 @@
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.map",
-            "name": "T2",
-            "category": "objects",
+            "name": "object { public function next () returns (record {| (any|error) value; |}?); }",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -738,7 +637,7 @@
             "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
+            "generateUserDefinedTypeLink": false,
             "memberTypes": [],
             "paramTypes": [],
             "arrayDimensions": 0
@@ -753,6 +652,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -874,6 +774,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -981,6 +882,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1125,6 +1027,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1292,6 +1195,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1388,6 +1292,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1472,6 +1377,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1568,6 +1474,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [

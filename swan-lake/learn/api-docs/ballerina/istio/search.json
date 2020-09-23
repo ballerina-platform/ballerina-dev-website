@@ -2,10 +2,10 @@
   "modules": [
     {
       "id": "istio",
-      "description": "\u003cp\u003eThis module offers an annotation based Istio extension implementation for Ballerina.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module offers an annotation-based Istio extension implementation for Ballerina.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [],
   "records": [
     {
@@ -76,5 +76,6 @@
       "description": "\u003cp\u003e@istio:VirtualService annotation to generate istio virtual service.\u003c/p\u003e",
       "moduleId": "istio"
     }
-  ]
+  ],
+  "abstractObjects": []
 }

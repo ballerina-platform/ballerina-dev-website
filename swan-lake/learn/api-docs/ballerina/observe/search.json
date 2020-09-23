@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides apis for observing Ballerina services.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
       "id": "Counter",
       "description": "\u003cp\u003eThis represents the metric type - counter, that can be only increased by an integer number.\u003c/p\u003e",
@@ -92,5 +92,6 @@
       "description": "",
       "moduleId": "observe"
     }
-  ]
+  ],
+  "abstractObjects": []
 }

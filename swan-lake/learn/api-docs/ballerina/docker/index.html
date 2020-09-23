@@ -70,11 +70,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../docker/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../docker/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -161,58 +160,59 @@ service helloWorld on helloWorldEP {
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="DockerConfiguration" title="DockerConfiguration">
                             <a class="records " href="records/DockerConfiguration.html">DockerConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Docker annotation configuration.</p>
-
+                            <p>Docker annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
+                    <tr>
+                        <td class="module-title truncate records" id="ExposeConfig" title="ExposeConfig">
+                            <a class="records " href="records/ExposeConfig.html">ExposeConfig</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Expose ports for docker.</p> 
+                        </td>
+                    </tr>
+                
                     <tr>
                         <td class="module-title truncate records" id="FileConfig" title="FileConfig">
                             <a class="records " href="records/FileConfig.html">FileConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>External file type for docker.</p>
-
+                            <p>External file type for docker.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="FileConfigs" title="FileConfigs">
                             <a class="records " href="records/FileConfigs.html">FileConfigs</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>External File configurations for docker.</p>
-
+                            <p>External File configurations for docker.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -244,8 +244,7 @@ service helloWorld on helloWorldEP {
                 </td>
                 <td class="module-desc">
                     
-                    <p>@docker:Config annotation to configure docker artifact generation.</p>
-
+                    <p>@docker:Config annotation to configure docker artifact generation.</p> 
                 </td>
             </tr>
             
@@ -255,8 +254,7 @@ service helloWorld on helloWorldEP {
                 </td>
                 <td class="module-desc">
                     
-                    <p>@docker:CopyFile annotation to copy external files to docker image.</p>
-
+                    <p>@docker:CopyFile annotation to copy external files to docker image.</p> 
                 </td>
             </tr>
             
@@ -266,8 +264,7 @@ service helloWorld on helloWorldEP {
                 </td>
                 <td class="module-desc">
                     
-                    <p>@docker:Expose annotation to expose ballerina ports.</p>
-
+                    <p>@docker:Expose annotation to expose ballerina ports.</p> 
                 </td>
             </tr>
             

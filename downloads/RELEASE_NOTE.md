@@ -1,5 +1,5 @@
 ---
-layout: release-note
+layout: ballerina-inner-page
 title: Release note
 ---
 ### Overview of jBallerina {{ site.data.stable-latest.metadata.version }}

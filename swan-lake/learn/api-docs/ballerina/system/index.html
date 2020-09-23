@@ -71,11 +71,10 @@
     <ul>
         
         
-            
-                <li>
-                    <a  data="objects" href="../system/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../system/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -140,33 +139,29 @@
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
                     <tr>
-                        <td class="module-title truncate objects" id="Process" title="Process">
-                            <a class="objects " href="objects/Process.html">Process</a>
+                        <td class="module-title truncate classes" id="Process" title="Process">
+                            <a class="classes " href="classes/Process.html">Process</a>
                         </td>
                         <td class="module-desc">
                             
                             <p>This object contains information on a process being created from Ballerina.
-This is returned from the <code>exec</code> function in the <code>system</code> module.</p>
-
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -190,9 +185,10 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Executes an operating system command as a subprocess of the current process.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Executes an operating system command as a subprocess of the current process.</p>   
                 </td>
             </tr>
             
@@ -202,9 +198,10 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the environment variable value associated with the provided name.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the environment variable value associated with the provided name.</p>   
                 </td>
             </tr>
             
@@ -214,9 +211,10 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the current user's home directory path.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the current user's home directory path.</p>   
                 </td>
             </tr>
             
@@ -226,9 +224,10 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the current user's name.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the current user's name.</p>   
                 </td>
             </tr>
             
@@ -238,9 +237,10 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns a random UUID string.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns a random UUID string.</p>   
                 </td>
             </tr>
             
@@ -270,8 +270,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>The union of all the System related errors.</p>
-
+                    <p>The union of all the System related errors.</p> 
                 </td>
             </tr>
             
@@ -295,8 +294,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>FileNotFoundError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>FileNotFoundError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -306,8 +304,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>FileSystemError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>FileSystemError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -317,8 +314,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an <code>InvalidOperationError</code> with the message and the cause.</p>
-
+                    <p>Represents an <code>InvalidOperationError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -328,8 +324,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a <code>PermissionError</code> with the message and the cause.</p>
-
+                    <p>Represents a <code>PermissionError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             
@@ -339,8 +334,7 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an <code>ProcessExecError</code> with the message and the cause.</p>
-
+                    <p>Represents an <code>ProcessExecError</code> with the message and the cause.</p> 
                 </td>
             </tr>
             

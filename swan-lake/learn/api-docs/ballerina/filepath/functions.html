@@ -149,6 +149,7 @@
         
         
         
+        
             <li>
                 <a data="functions" href="../filepath/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
@@ -209,9 +210,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the absolute path from the provided location.</p>
-
-
+                                
+                                <p>Retrieves the absolute path from the provided location.</p>   
                             </div>
                         </td>
                     </tr>
@@ -221,9 +221,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Joins any number of path elements into a single path.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Joins any number of path elements into a single path.</p>   
                             </div>
                         </td>
                     </tr>
@@ -233,11 +234,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Retrieves the extension of the file path.
-The extension is the suffix beginning at the final dot in the final element of the path.
-It is empty if there is no dot.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -247,11 +247,10 @@ It is empty if there is no dot.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the base name of the file from the provided location,
-which is the last element of the path.
-Trailing path separators are removed before extracting the last element.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Retrieves the base name of the file from the provided location, which is the last element of the path.
                             </div>
                         </td>
                     </tr>
@@ -261,9 +260,10 @@ Trailing path separators are removed before extracting the last element.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the path variable's separating character for paths of the underlying operating system.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the path variable's separating character for paths of the underlying operating system.</p>   
                             </div>
                         </td>
                     </tr>
@@ -273,9 +273,10 @@ Trailing path separators are removed before extracting the last element.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the path separator of the underlying operating system.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the path separator of the underlying operating system.</p>   
                             </div>
                         </td>
                     </tr>
@@ -285,12 +286,10 @@ Trailing path separators are removed before extracting the last element.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Reports whether the path is absolute.
-A path is absolute if it is independent of the current directory.
-On Unix, a path is absolute if it starts with the root.
-On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -300,10 +299,10 @@ On Windows, a path is absolute if it has a prefix and starts with the root: c:\w
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Reports whether the filename is reserved.
-Reserved words only exist in Windows.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -313,10 +312,8 @@ Reserved words only exist in Windows.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
-An error is returned if the pattern is malformed.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -326,12 +323,10 @@ An error is returned if the pattern is malformed.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Returns the shortest path name equivalent to the given path.
-Replace the multiple separator elements with a single one.
-Eliminate each &quot;.&quot; path name element (the current directory).
-Eliminate each inner &quot;..&quot; path name element (the parent directory).</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -341,11 +336,10 @@ Eliminate each inner &quot;..&quot; path name element (the parent directory).</p
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Returns the enclosing parent directory.
-If the path is empty, parent returns &quot;.&quot;.
-The returned path does not end in a separator unless it is the root directory.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -355,11 +349,10 @@ The returned path does not end in a separator unless it is the root directory.</
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
-intervening separator.
-An error is returned if the target path cannot be made relative to the base path.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns a relative path, which is logically equivalent to the target path when joined to the base path with an intervening separator.
                             </div>
                         </td>
                     </tr>
@@ -369,12 +362,8 @@ An error is returned if the target path cannot be made relative to the base path
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Returns the filepath after the evaluation of any symbolic links.
-If the path is relative, the result will be relative to the current directory
-unless one of the components is an absolute symbolic link.
-Resolves normalising the calls on the result.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -384,9 +373,10 @@ Resolves normalising the calls on the result.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Splits a list of paths joined by the OS-specific path separator.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Splits a list of paths joined by the OS-specific path separator.</p>   
                             </div>
                         </td>
                     </tr>
@@ -411,6 +401,7 @@ Resolves normalising the calls on the result.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves the absolute path from the provided location.</p>
 <pre><code class="language-ballerina">  string|filepath:Error absolutePath = filepath:absolute(&lt;@untainted&gt; &quot;test.txt&quot;);
@@ -469,6 +460,9 @@ Resolves normalising the calls on the result.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Joins any number of path elements into a single path.</p>
 <pre><code class="language-ballerina">  string|filepath:Error path = filepath:build(&quot;/&quot;, &quot;foo&quot;, &quot;bar&quot;);
 </code></pre>
@@ -525,6 +519,9 @@ Resolves normalising the calls on the result.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the extension of the file path.
 The extension is the suffix beginning at the final dot in the final element of the path.
@@ -586,6 +583,9 @@ or else a <code>filepath:Error</code> if the path is invalid</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the base name of the file from the provided location,
 which is the last element of the path.
 Trailing path separators are removed before extracting the last element.</p>
@@ -645,6 +645,9 @@ Trailing path separators are removed before extracting the last element.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the path variable's separating character for paths of the underlying operating system.</p>
 <pre><code class="language-ballerina">  string pathListSeparator = filepath:getPathListSeparator();
 </code></pre>
@@ -680,6 +683,9 @@ Trailing path separators are removed before extracting the last element.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the path separator of the underlying operating system.</p>
 <pre><code class="language-ballerina">  string pathSeparator = filepath:getPathSeparator();
 </code></pre>
@@ -714,6 +720,9 @@ Trailing path separators are removed before extracting the last element.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Reports whether the path is absolute.
 A path is absolute if it is independent of the current directory.
@@ -776,6 +785,9 @@ occurred if the path is invalid</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Reports whether the filename is reserved.
 Reserved words only exist in Windows.</p>
 <pre><code class="language-ballerina">  boolean|filepath:Error path = filepath:isReservedName(&quot;abc.txt&quot;);
@@ -833,6 +845,7 @@ Reserved words only exist in Windows.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
 An error is returned if the pattern is malformed.</p>
@@ -910,6 +923,9 @@ or else an <code>filepath:Error</code> if the path or pattern is invalid</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the shortest path name equivalent to the given path.
 Replace the multiple separator elements with a single one.
 Eliminate each &quot;.&quot; path name element (the current directory).
@@ -970,6 +986,9 @@ Eliminate each inner &quot;..&quot; path name element (the parent directory).</p
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the enclosing parent directory.
 If the path is empty, parent returns &quot;.&quot;.
 The returned path does not end in a separator unless it is the root directory.</p>
@@ -1029,6 +1048,9 @@ if an error occurred while getting the parent directory</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
 intervening separator.
@@ -1107,6 +1129,7 @@ An error is returned if the target path cannot be made relative to the base path
     </div>
     <div class="function-desc">
         
+        
         <p>Returns the filepath after the evaluation of any symbolic links.
 If the path is relative, the result will be relative to the current directory
 unless one of the components is an absolute symbolic link.
@@ -1166,6 +1189,9 @@ Resolves normalising the calls on the result.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Splits a list of paths joined by the OS-specific path separator.</p>
 <pre><code class="language-ballerina">  string[]|filepath:Error parts = filepath:split(&quot;/A/B/C&quot;);

@@ -50,12 +50,8 @@ $(document).ready(function() {
 
     // Get it from Liquid variables. To do so I have added a front-matter at the top
     // of this file.
-    var latestVersion = "{{ site.data.stable-latest.metadata.version }}";
-    var latestSLVersion = "{{ site.data.swanlake-latest.metadata.version }}";
-    var stData = {{ site.data.release_notes_versions | jsonify }};
-    var slData = {{ site.data.swanlake_release_notes_versions | jsonify }};
-
-    var data = slData.concat(stData);
+    var latestVersion = "{{ site.data.swanlake-latest.metadata.version }}";
+    var data = {{ site.data.swanlake_release_notes_versions | jsonify }};
 
     // remove latest version
     var ltestIndex = data.findIndex(function(element) {
@@ -65,16 +61,6 @@ $(document).ready(function() {
     if (ltestIndex !== -1) {
         data.splice(ltestIndex, 1);
     }
-
-    //Remove latest Swan Lake release
-    var ltestSLIndex = data.findIndex(function(element) {
-        return element["version"].replace(/ /g, "-").toLowerCase() == latestSLVersion.replace(/ /g, "-").toLowerCase();
-    });
-
-    if (ltestSLIndex !== -1) {
-        data.splice(ltestSLIndex, 1);
-    }
-
     data.sort(function(a, b) {
         return new Date(b["release-date"]) - new Date(a["release-date"]);
     });
@@ -150,7 +136,7 @@ function getReleaseNotesDivId(version) {
 }
 
 function getReleaseNoteURL(version) {
-    return base_releasenote_url + "/" + version + "/" + releaseNoteFilename;
+    return base_swanlake_releasenote_url + "/" + version + "/" + releaseNoteFilename;
 }
 
 function isIdeaPlugin(artifact) {

@@ -98,18 +98,15 @@ below functionalities.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../nats/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
             <li>
@@ -188,60 +185,6 @@ receive messages of the corresponding subscription.</p>
     <div class="constants">
         <div class="method-sum">
         
-            
-                <h2>Constructor</h2>
-
-    <p>Creates a new Streaming Listener.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../nats/objects/Connection.html">Connection</a> connection, <span class="builtin-type">string?</span> clientId, <span class="builtin-type">string</span> clusterId, <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>? streamingConfig)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>connection</b><span class="type">  <a href="../../nats/objects/Connection.html">Connection</a></span> </li>
-                <li>
-                    <p>An established NATS connection</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>clientId</b><span class="type">  <span class="builtin-type">string?</span></span> ()</li>
-                <li>
-                    <p>The unique identifier of the client. The <code>clientId</code> should be unique across all the subscriptions.
-Therefore, multilpe subscription services cannot be bound to a single listener</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>clusterId</b><span class="type">  <span class="builtin-type">string</span></span> test-cluster</li>
-                <li>
-                    <p>The unique identifier of the cluster configured in the NATS server. The default value is <code>test-cluster</code></p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>streamingConfig</b><span class="type">  <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>?</span> ()</li>
-                <li>
-                    <p>The configuration related to the NATS streaming connectivity</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-            
-        
 
         
             <h2>Methods</h2>
@@ -254,8 +197,7 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
     </div>
     <div class="param-details">
         
-        <p>Stops consuming messages and detaches the service from the <code>nats:StreamingListener</code>.</p>
-
+        <p>Stops consuming messages and detaches the service from the <code>nats:StreamingListener</code>.</p> 
     </div>
 </div>
 
@@ -267,8 +209,7 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
     </div>
     <div class="param-details">
         
-        <p>Stops the <code>nats:StreamingListener</code> gracefully.</p>
-
+        <p>Stops the <code>nats:StreamingListener</code> gracefully.</p> 
     </div>
 </div>
 
@@ -280,8 +221,7 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
     </div>
     <div class="param-details">
         
-        <p>Stops the <code>nats:StreamingListener</code> forcefully.</p>
-
+        <p>Stops the <code>nats:StreamingListener</code> forcefully.</p> 
     </div>
 </div>
 
@@ -300,8 +240,7 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
     </div>
     <div class="param-details">
         
-        <p>Binds a service to the <code>nats:StreamingListener</code>.</p>
-
+        <p>Binds a service to the <code>nats:StreamingListener</code>.</p> 
     </div>
 </div>
 
@@ -313,8 +252,7 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
     </div>
     <div class="param-details">
         
-        <p>Starts the <code>nats:StreamingListener</code>.</p>
-
+        <p>Starts the <code>nats:StreamingListener</code>.</p> 
     </div>
 </div>
 
@@ -342,6 +280,9 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops consuming messages and detaches the service from the <code>nats:StreamingListener</code>.</p>
 
@@ -398,6 +339,9 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops the <code>nats:StreamingListener</code> gracefully.</p>
 
     </div>
@@ -430,6 +374,9 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops the <code>nats:StreamingListener</code> forcefully.</p>
 
@@ -468,6 +415,9 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Binds a service to the <code>nats:StreamingListener</code>.</p>
 
@@ -540,6 +490,9 @@ Therefore, multilpe subscription services cannot be bound to a single listener</
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Starts the <code>nats:StreamingListener</code>.</p>
 

@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides functions to interact with the Ballerina runtime and the runtime invocation context.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [
     {
       "id": "getCallStack",
@@ -40,5 +40,6 @@
   "types": [],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

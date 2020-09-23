@@ -97,6 +97,7 @@
         
         
         
+        
             <li>
                 <a data="functions" href="../lang.future/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
@@ -149,11 +150,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Requests cancellation of a future.
-This sets the cancellation flag in the strand corresponding to <code>f</code>.
-Each time that a strand yields, it will check the cancellation flag
-and terminate abnormally if the flag is set.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -176,6 +176,9 @@ and terminate abnormally if the flag is set.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Requests cancellation of a future.
 This sets the cancellation flag in the strand corresponding to <code>f</code>.

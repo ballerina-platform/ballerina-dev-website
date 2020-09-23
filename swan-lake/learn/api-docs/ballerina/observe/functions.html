@@ -122,18 +122,15 @@ Ballerina supports Observability out of the box. This module provides user api's
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../observe/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../observe/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../observe/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../observe/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -194,8 +191,10 @@ Ballerina supports Observability out of the box. This module provides user api's
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Add a key value pair as a tag to the span.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Add a key value pair as a tag to the span.</p> 
                             </div>
                         </td>
                     </tr>
@@ -204,6 +203,7 @@ Ballerina supports Observability out of the box. This module provides user api's
                         <td width="30%"><a class="functions " href="#ballerina/observe:0.8.0.&lt;init&gt;0">ballerina/observe:0.8.0.&lt;init&gt;0</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 
                             </div>
@@ -215,8 +215,8 @@ Ballerina supports Observability out of the box. This module provides user api's
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Finish the current span.</p>
-
+                                
+                                <p>Finish the current span.</p> 
                             </div>
                         </td>
                     </tr>
@@ -226,8 +226,8 @@ Ballerina supports Observability out of the box. This module provides user api's
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.</p>
-
+                                
+                                <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.</p> 
                             </div>
                         </td>
                     </tr>
@@ -237,8 +237,10 @@ Ballerina supports Observability out of the box. This module provides user api's
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Checks of either metrics or tracing had been enabled.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Checks of either metrics or tracing had been enabled.</p> 
                             </div>
                         </td>
                     </tr>
@@ -248,8 +250,8 @@ Ballerina supports Observability out of the box. This module provides user api's
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the specific metric that is described by the given name and tags.</p>
-
+                                
+                                <p>Retrieves the specific metric that is described by the given name and tags.</p> 
                             </div>
                         </td>
                     </tr>
@@ -259,8 +261,8 @@ Ballerina supports Observability out of the box. This module provides user api's
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Start a span with no parent span.</p>
-
+                                
+                                <p>Start a span with no parent span.</p> 
                             </div>
                         </td>
                     </tr>
@@ -270,8 +272,8 @@ Ballerina supports Observability out of the box. This module provides user api's
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Start a span and create child relationship to current active span or user specified span.</p>
-
+                                
+                                <p>Start a span and create child relationship to current active span or user specified span.</p> 
                             </div>
                         </td>
                     </tr>
@@ -296,6 +298,9 @@ Ballerina supports Observability out of the box. This module provides user api's
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Add a key value pair as a tag to the span.</p>
 
@@ -387,6 +392,7 @@ Ballerina supports Observability out of the box. This module provides user api's
     <div class="function-desc">
         
         
+        
     </div>
     
 
@@ -416,6 +422,7 @@ Ballerina supports Observability out of the box. This module provides user api's
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Finish the current span.</p>
 
@@ -472,6 +479,7 @@ Ballerina supports Observability out of the box. This module provides user api's
     </div>
     <div class="function-desc">
         
+        
         <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.</p>
 
     </div>
@@ -505,6 +513,9 @@ Ballerina supports Observability out of the box. This module provides user api's
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Checks of either metrics or tracing had been enabled.</p>
 
     </div>
@@ -532,11 +543,12 @@ Ballerina supports Observability out of the box. This module provides user api's
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> name, <span class="builtin-type">map</span><<span class="builtin-type">string</span>> tags)</p>
             
-                <b> returns </b><a href="../observe/objects/Counter.html">Counter</a> | <a href="../observe/objects/Gauge.html">Gauge</a>? 
+                <b> returns </b><a href="../observe/classes/Counter.html">Counter</a> | <a href="../observe/classes/Gauge.html">Gauge</a>? 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves the specific metric that is described by the given name and tags.</p>
 
@@ -586,7 +598,7 @@ Ballerina supports Observability out of the box. This module provides user api's
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../observe/objects/Counter.html">Counter</a> | <a href="../observe/objects/Gauge.html">Gauge</a>?</span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../observe/classes/Counter.html">Counter</a> | <a href="../observe/classes/Gauge.html">Gauge</a>?</span>)</li>
                 <li><p>The metric instance.</p>
 </li>
             </ul>
@@ -609,6 +621,7 @@ Ballerina supports Observability out of the box. This module provides user api's
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Start a span with no parent span.</p>
 
@@ -681,6 +694,7 @@ Ballerina supports Observability out of the box. This module provides user api's
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Start a span and create child relationship to current active span or user specified span.</p>
 

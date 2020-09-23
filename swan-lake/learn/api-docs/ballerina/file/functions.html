@@ -130,18 +130,15 @@ file/directory, and retrieve metadata of the file.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../file/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../file/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../file/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../file/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -210,10 +207,8 @@ file/directory, and retrieve metadata of the file.
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Copy the file/directory in the old path to the new path.
-If a file already exists in the new path, this replaces that file.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -223,10 +218,8 @@ If a file already exists in the new path, this replaces that file.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Creates a new directory with the specified file name.
-If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -236,10 +229,8 @@ If the <code>parentDirs</code> flag is true, it creates a directory in the speci
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Creates a file in the specified file path.
-Truncates if the file already exists in the given path.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -249,9 +240,10 @@ Truncates if the file already exists in the given path.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Reports whether the file or directory exists in the given the path.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Reports whether the file or directory exists in the given the path.</p>   
                             </div>
                         </td>
                     </tr>
@@ -261,9 +253,10 @@ Truncates if the file already exists in the given path.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the current working directory.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the current working directory.</p>   
                             </div>
                         </td>
                     </tr>
@@ -273,9 +266,10 @@ Truncates if the file already exists in the given path.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the metadata information of the file specified in the file path.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the metadata information of the file specified in the file path.</p>   
                             </div>
                         </td>
                     </tr>
@@ -285,10 +279,8 @@ Truncates if the file already exists in the given path.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Reads the directory and returns a list of files and directories
-inside the specified directory.</p>
-
-
+                                
+                                <p>Reads the directory and returns a list of files and directories inside the specified directory.</p>   
                             </div>
                         </td>
                     </tr>
@@ -298,10 +290,8 @@ inside the specified directory.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Removes the specified file or directory.
-If the recursive flag is true, it removes the path and any children it contains.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -311,10 +301,8 @@ If the recursive flag is true, it removes the path and any children it contains.
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Renames(Moves) the old path with the new path.
-If the new path already exists and it is not a directory, this replaces the file.</p>
-
-
                             </div>
                         </td>
                     </tr>
@@ -324,9 +312,10 @@ If the new path already exists and it is not a directory, this replaces the file
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the default directory to use for temporary files.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the default directory to use for temporary files.</p>   
                             </div>
                         </td>
                     </tr>
@@ -351,6 +340,7 @@ If the new path already exists and it is not a directory, this replaces the file
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Copy the file/directory in the old path to the new path.
 If a file already exists in the new path, this replaces that file.</p>
@@ -444,6 +434,7 @@ If a file already exists in the new path, this replaces that file.</p>
     </div>
     <div class="function-desc">
         
+        
         <p>Creates a new directory with the specified file name.
 If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.</p>
 <pre><code class="language-ballerina"> string | error results = file:createDir(&quot;foo/bar&quot;);
@@ -519,6 +510,7 @@ If the <code>parentDirs</code> flag is true, it creates a directory in the speci
     </div>
     <div class="function-desc">
         
+        
         <p>Creates a file in the specified file path.
 Truncates if the file already exists in the given path.</p>
 <pre><code class="language-ballerina"> string | error results = file:createFile(&quot;bar.txt&quot;);
@@ -577,6 +569,9 @@ Truncates if the file already exists in the given path.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Reports whether the file or directory exists in the given the path.</p>
 <pre><code class="language-ballerina"> boolean result = file:exists(&quot;foo/bar.txt&quot;);
 </code></pre>
@@ -634,6 +629,9 @@ Truncates if the file already exists in the given path.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the current working directory.</p>
 <pre><code class="language-ballerina"> string dirPath = file:getCurrentDirectory();
 </code></pre>
@@ -663,11 +661,14 @@ Truncates if the file already exists in the given path.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
             
-                <b> returns </b><a href="../file/objects/FileInfo.html">FileInfo</a> | <a href="../file/types.html#Error">Error</a> 
+                <b> returns </b><a href="../file/classes/FileInfo.html">FileInfo</a> | <a href="../file/types.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns the metadata information of the file specified in the file path.</p>
 <pre><code class="language-ballerina"> file:FileInfo | error result = file:getFileInfo(&quot;foo/bar.txt&quot;);
@@ -702,7 +703,7 @@ Truncates if the file already exists in the given path.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/objects/FileInfo.html">FileInfo</a> | <a href="../file/types.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/classes/FileInfo.html">FileInfo</a> | <a href="../file/types.html#Error">Error</a></span>)</li>
                 <li><p>The <code>FileInfo</code> instance with the file metadata or else an <code>file:Error</code></p>
 </li>
             </ul>
@@ -720,11 +721,12 @@ Truncates if the file already exists in the given path.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <span class="builtin-type">int</span> maxDepth)</p>
             
-                <b> returns </b><span class="array-type"><a href="../file/objects/FileInfo.html">FileInfo</a>[]</span> | <a href="../file/types.html#Error">Error</a> 
+                <b> returns </b><span class="array-type"><a href="../file/classes/FileInfo.html">FileInfo</a>[]</span> | <a href="../file/types.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Reads the directory and returns a list of files and directories
 inside the specified directory.</p>
@@ -777,7 +779,7 @@ inside the specified directory.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../file/objects/FileInfo.html">FileInfo</a>[]</span> | <a href="../file/types.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../file/classes/FileInfo.html">FileInfo</a>[]</span> | <a href="../file/types.html#Error">Error</a></span>)</li>
                 <li><p>The <code>FileInfo</code> array or else an <code>file:Error</code> if there is an error while changing the mode.</p>
 </li>
             </ul>
@@ -800,6 +802,7 @@ inside the specified directory.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Removes the specified file or directory.
 If the recursive flag is true, it removes the path and any children it contains.</p>
@@ -876,6 +879,7 @@ If the recursive flag is true, it removes the path and any children it contains.
     </div>
     <div class="function-desc">
         
+        
         <p>Renames(Moves) the old path with the new path.
 If the new path already exists and it is not a directory, this replaces the file.</p>
 <pre><code class="language-ballerina"> file:error? results = file:rename(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;);
@@ -950,6 +954,9 @@ If the new path already exists and it is not a directory, this replaces the file
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns the default directory to use for temporary files.</p>
 <pre><code class="language-ballerina"> string results = file:tempDir();

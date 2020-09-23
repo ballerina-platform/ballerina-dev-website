@@ -5,11 +5,12 @@
   "orgName": "ballerina",
   "version": "0.6.0",
   "records": [],
-  "objects": [
+  "classes": [
     {
       "fields": [],
       "methods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -76,6 +77,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -142,6 +144,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -151,6 +154,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -160,7 +164,7 @@
                 "orgName": "ballerina",
                 "moduleName": "io",
                 "name": "WritableByteChannel",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -183,6 +187,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -192,7 +197,7 @@
                 "orgName": "ballerina",
                 "moduleName": "io",
                 "name": "ReadableByteChannel",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -215,6 +220,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -224,7 +230,7 @@
                 "orgName": "ballerina",
                 "moduleName": "io",
                 "name": "ReadableByteChannel",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -247,6 +253,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -256,7 +263,7 @@
                 "orgName": "ballerina",
                 "moduleName": "system",
                 "name": "Process",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -280,7 +287,7 @@
                 "orgName": "ballerina",
                 "moduleName": "system",
                 "name": "Process",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -305,6 +312,7 @@
       ],
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -371,6 +379,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -437,6 +446,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -446,6 +456,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -455,7 +466,7 @@
                 "orgName": "ballerina",
                 "moduleName": "io",
                 "name": "WritableByteChannel",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -478,6 +489,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -487,7 +499,7 @@
                 "orgName": "ballerina",
                 "moduleName": "io",
                 "name": "ReadableByteChannel",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -510,6 +522,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -519,7 +532,7 @@
                 "orgName": "ballerina",
                 "moduleName": "io",
                 "name": "ReadableByteChannel",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -542,6 +555,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -551,7 +565,7 @@
                 "orgName": "ballerina",
                 "moduleName": "system",
                 "name": "Process",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -575,7 +589,7 @@
                 "orgName": "ballerina",
                 "moduleName": "system",
                 "name": "Process",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -598,16 +612,17 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Process",
       "description": "\u003cp\u003eThis object contains information on a process being created from Ballerina.\nThis is returned from the \u003ccode\u003eexec\u003c/code\u003e function in the \u003ccode\u003esystem\u003c/code\u003e module.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -675,7 +690,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003cstring?\u003e ()",
+          "defaultValue": "()",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -754,7 +769,7 @@
                 "orgName": "ballerina",
                 "moduleName": "system",
                 "name": "Process",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -798,6 +813,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -854,6 +870,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],
@@ -886,6 +903,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],
@@ -918,6 +936,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [],

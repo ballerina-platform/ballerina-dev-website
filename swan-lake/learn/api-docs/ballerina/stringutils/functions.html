@@ -133,6 +133,7 @@
         
         
         
+        
             <li>
                 <a data="functions" href="../stringutils/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
@@ -185,9 +186,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Checks whether the given string contains a particular substring.</p>
-
-
+                                
+                                <p>Checks whether the given string contains a particular substring.</p>   
                             </div>
                         </td>
                     </tr>
@@ -197,9 +197,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Checks if two strings are equal ignoring the case of the strings.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Checks if two strings are equal ignoring the case of the strings.</p>   
                             </div>
                         </td>
                     </tr>
@@ -209,9 +210,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a hash code for a given string.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns a hash code for a given string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -221,9 +223,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the last index of the provided substring within a string.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the last index of the provided substring within a string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -233,9 +236,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Checks whether the given string matches the provided regex.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Checks whether the given string matches the provided regex.</p>   
                             </div>
                         </td>
                     </tr>
@@ -245,10 +249,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Replaces each occurrence of the provided <code>substring</code> inside the provided
-<code>originalString</code> with the specified <code>replacement</code> string.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Replaces each occurrence of the provided <code>substring</code> inside the provided <code>originalString</code> with the specified <code>replacement</code> string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -258,11 +262,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Replaces each occurrence of the substrings, which matches the provided
-regular expression from the given original string value with the
-provided replacement string.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Replaces each occurrence of the substrings, which matches the provided regular expression from the given original string value with the provided replacement string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -272,10 +275,10 @@ provided replacement string.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Replaces the first substring that matches the given regular expression with
-the provided <code>replacement</code> string.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Replaces the first substring that matches the given regular expression with the provided <code>replacement</code> string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -285,10 +288,10 @@ the provided <code>replacement</code> string.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns an array of strings by splitting a string using the provided
-delimiter.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns an array of strings by splitting a string using the provided delimiter.</p>   
                             </div>
                         </td>
                     </tr>
@@ -298,9 +301,10 @@ delimiter.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a boolean value of a given string.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns a boolean value of a given string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -325,6 +329,7 @@ delimiter.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Checks whether the given string contains a particular substring.</p>
 <pre><code class="language-ballerina"> boolean contains = stringutils:contains(&quot;Ballerina&quot;, &quot;in&quot;);
@@ -401,6 +406,9 @@ or else <code>false</code></p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Checks if two strings are equal ignoring the case of the strings.</p>
 <pre><code class="language-ballerina"> boolean isEqual = stringutils:equalsIgnoreCase(&quot;BaLLerinA&quot;, &quot;ballERina&quot;);
 </code></pre>
@@ -475,6 +483,9 @@ or else <code>false</code></p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns a hash code for a given string.</p>
 <pre><code class="language-ballerina"> int hashCode = stringutils:hashCode(&quot;Ballerina&quot;);
 </code></pre>
@@ -531,6 +542,9 @@ or else <code>false</code></p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns the last index of the provided substring within a string.</p>
 <pre><code class="language-ballerina"> int lastIndex = stringutils:lastIndexOf(&quot;int values in Ballerina&quot;, &quot;in&quot;);
@@ -607,6 +621,9 @@ if the <code>originalString</code> contains the <code>substring</code> or else <
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Checks whether the given string matches the provided regex.</p>
 <pre><code class="language-ballerina"> boolean isMatched = stringutils:matches(&quot;Ballerina is great&quot;, &quot;Ba[a-z ]+&quot;);
 </code></pre>
@@ -681,6 +698,9 @@ if the <code>originalString</code> contains the <code>substring</code> or else <
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Replaces each occurrence of the provided <code>substring</code> inside the provided
 <code>originalString</code> with the specified <code>replacement</code> string.</p>
@@ -774,6 +794,9 @@ the <code>stringToReplace</code></p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Replaces each occurrence of the substrings, which matches the provided
 regular expression from the given original string value with the
@@ -870,6 +893,9 @@ match the <code>regex</code></p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Replaces the first substring that matches the given regular expression with
 the provided <code>replacement</code> string.</p>
 <pre><code class="language-ballerina"> string result = stringutils:replaceFirst(&quot;Ballerina is great&quot;, &quot;\s+&quot;, &quot;_&quot;);
@@ -965,6 +991,9 @@ matches the <code>regex</code></p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns an array of strings by splitting a string using the provided
 delimiter.</p>
 <pre><code class="language-ballerina"> string[] result = stringutils:split(&quot;Ballerina is great&quot;, &quot; &quot;);
@@ -1039,6 +1068,9 @@ delimiter.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns a boolean value of a given string.</p>
 <pre><code class="language-ballerina"> boolean result = stringutils:toBoolean(&quot;true&quot;);

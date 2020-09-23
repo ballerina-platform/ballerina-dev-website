@@ -5,11 +5,13 @@
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -56,10 +58,11 @@
         }
       ],
       "name": "clone",
-      "description": "\u003cp\u003eReturns a clone of \u003ccode\u003ev\u003c/code\u003e.\nA clone is a deep copy that does not copy immutable subtrees.\nA clone can therefore safely be used concurrently with the original.\nIt corresponds to the Clone(v) abstract operation,\ndefined in the Ballerina Language Specification.\u003c/p\u003e\n",
+      "description": "\u003cp\u003eReturns a clone of \u003ccode\u003ev\u003c/code\u003e.\nA clone is a deep copy that does not copy immutable subtrees.\nA clone can therefore safely be used concurrently with the original.\nIt corresponds to the Clone(v) operation,\ndefined in the Ballerina Language Specification.\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -106,10 +109,11 @@
         }
       ],
       "name": "cloneReadOnly",
-      "description": "\u003cp\u003eReturns a clone of \u003ccode\u003ev\u003c/code\u003e that is read-only, i.e. immutable.\nIt corresponds to the ImmutableClone(v) abstract operation,\ndefined in the Ballerina Language Specification.\u003c/p\u003e\n",
+      "description": "\u003cp\u003eReturns a clone of \u003ccode\u003ev\u003c/code\u003e that is read-only, i.e. immutable.\nIt corresponds to the ImmutableClone(v) operation,\ndefined in the Ballerina Language Specification.\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -234,6 +238,189 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
+      "isRemote": false,
+      "isExtern": true,
+      "parameters": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "string",
+            "category": "builtin",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "str",
+          "description": "\u003cp\u003estring representation of json\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "returnParameters": [
+        {
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.value",
+            "category": "types",
+            "isAnonymousUnionType": true,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "json",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "error",
+                "category": "errors",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              }
+            ],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "",
+          "description": "\u003cp\u003e\u003ccode\u003estr\u003c/code\u003e parsed to json or error\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "name": "fromJsonDecimalString",
+      "description": "\u003cp\u003eParses a string in JSON format and returns the value that it represents.\nAll numbers in the JSON will be represented as decimal values.\nReturns an error if the string cannot be parsed.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "isIsolated": true,
+      "isRemote": false,
+      "isExtern": true,
+      "parameters": [
+        {
+          "defaultValue": "",
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.annotations",
+            "name": "string",
+            "category": "builtin",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "str",
+          "description": "\u003cp\u003estring representation of json\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "returnParameters": [
+        {
+          "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.value",
+            "category": "types",
+            "isAnonymousUnionType": true,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "json",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "error",
+                "category": "errors",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              }
+            ],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "",
+          "description": "\u003cp\u003e\u003ccode\u003estr\u003c/code\u003e parsed to json or error\u003c/p\u003e\n",
+          "isDeprecated": false
+        }
+      ],
+      "name": "fromJsonFloatString",
+      "description": "\u003cp\u003eParses a string in JSON format and returns the value that it represents.\nAll numbers in the JSON will be represented as float values.\nReturns an error if the string cannot be parsed.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -320,10 +507,11 @@
         }
       ],
       "name": "fromJsonString",
-      "description": "\u003cp\u003eParses a string in JSON format and returns the the value that it represents.\nAll numbers in the JSON will be represented as float values.\nReturns an error if the string cannot be parsed.\u003c/p\u003e\n",
+      "description": "\u003cp\u003eParses a string in JSON format and returns the the value that it represents.\nAll integer numbers in the JSON will be represented as integer values.\nAll decimal numbers except -0.0 in the JSON will be represent as decimal values.\n-0.0 in the JSON will be represent as float value.\nReturns an error if the string cannot be parsed.\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -454,6 +642,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -584,6 +773,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -640,6 +830,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -753,6 +944,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -809,6 +1001,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -865,6 +1058,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [

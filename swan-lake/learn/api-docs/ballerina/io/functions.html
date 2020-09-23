@@ -127,11 +127,10 @@ or non-blocking manner.
     <ul>
         
         
-            
-                <li>
-                    <a  data="objects" href="../io/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../io/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -200,9 +199,8 @@ or non-blocking manner.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Creates an in-memory channel, which will be a reference stream of bytes.</p>
-
-
+                                
+                                <p>Creates an in-memory channel, which will be a reference stream of bytes.</p>   
                             </div>
                         </td>
                     </tr>
@@ -212,9 +210,8 @@ or non-blocking manner.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves a readable CSV channel from a given file path.</p>
-
-
+                                
+                                <p>Retrieves a readable CSV channel from a given file path.</p>   
                             </div>
                         </td>
                     </tr>
@@ -224,9 +221,8 @@ or non-blocking manner.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves a <code>ReadableByteChannel</code> from a given file path.</p>
-
-
+                                
+                                <p>Retrieves a <code>ReadableByteChannel</code> from a given file path.</p>   
                             </div>
                         </td>
                     </tr>
@@ -236,9 +232,8 @@ or non-blocking manner.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves a writable CSV channel from a given file path.</p>
-
-
+                                
+                                <p>Retrieves a writable CSV channel from a given file path.</p>   
                             </div>
                         </td>
                     </tr>
@@ -248,9 +243,8 @@ or non-blocking manner.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves a <code>WritableByteChannel</code> from a given file path.</p>
-
-
+                                
+                                <p>Retrieves a <code>WritableByteChannel</code> from a given file path.</p>   
                             </div>
                         </td>
                     </tr>
@@ -260,9 +254,10 @@ or non-blocking manner.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.</p>   
                             </div>
                         </td>
                     </tr>
@@ -272,9 +267,10 @@ or non-blocking manner.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.</p>   
                             </div>
                         </td>
                     </tr>
@@ -284,9 +280,8 @@ or non-blocking manner.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the input read from the STDIN.</p>
-
-
+                                
+                                <p>Retrieves the input read from the STDIN.</p>   
                             </div>
                         </td>
                     </tr>
@@ -295,6 +290,9 @@ or non-blocking manner.
                         <td width="30%"><a class="functions " href="#sprintf">sprintf</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 <p>Returns a formatted string using the specified format string and arguments.
                             </div>
@@ -316,11 +314,12 @@ or non-blocking manner.
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> content)</p>
             
-                <b> returns </b><a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a> 
+                <b> returns </b><a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Creates an in-memory channel, which will be a reference stream of bytes.</p>
 <pre><code class="language-ballerina"> var byteChannel = io:createReadableChannel(content);
@@ -355,7 +354,7 @@ or non-blocking manner.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
                 <li><p>The <code>ByteChannel</code> representation to read the memory content or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
@@ -373,11 +372,12 @@ or non-blocking manner.
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../io/types.html#Separator">Separator</a> fieldSeparator, <span class="builtin-type">string</span> charset, <span class="builtin-type">int</span> skipHeaders)</p>
             
-                <b> returns </b><a href="../io/objects/ReadableCSVChannel.html">ReadableCSVChannel</a> | <a href="../io/types.html#Error">Error</a> 
+                <b> returns </b><a href="../io/classes/ReadableCSVChannel.html">ReadableCSVChannel</a> | <a href="../io/types.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves a readable CSV channel from a given file path.</p>
 <pre><code class="language-ballerina"> io:ReadableCSVChannel rCsvChannel = check io:openReadableCsvFile(srcFileName);
@@ -410,7 +410,7 @@ or non-blocking manner.
                     <li>
                         <span >fieldSeparator</span>
                         <span class="type">  <a href="../io/types.html#Separator">Separator</a> </span>
-                        <span class="default"> (default &lt;(,|	|:|string)&gt; ,)</span>
+                        <span class="default"> (default ,)</span>
                     </li>
                     <li>
                         <p>
@@ -463,7 +463,7 @@ or non-blocking manner.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/ReadableCSVChannel.html">ReadableCSVChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/classes/ReadableCSVChannel.html">ReadableCSVChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
                 <li><p>The <code>ReadableCSVChannel</code>, which could be used to iterate through the CSV records or else an <code>io:Error</code> if any error occurred.</p>
 </li>
             </ul>
@@ -481,11 +481,12 @@ or non-blocking manner.
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
             
-                <b> returns </b><a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a> 
+                <b> returns </b><a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves a <code>ReadableByteChannel</code> from a given file path.</p>
 <pre><code class="language-ballerina"> io:ReadableByteChannel readableFieldResult = check io:openReadableFile(&quot;./files/sample.txt&quot;);
@@ -520,7 +521,7 @@ or non-blocking manner.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
                 <li><p>The <code>ByteChannel</code> representation of the file resource or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
@@ -538,11 +539,12 @@ or non-blocking manner.
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../io/types.html#Separator">Separator</a> fieldSeparator, <span class="builtin-type">string</span> charset, <span class="builtin-type">int</span> skipHeaders)</p>
             
-                <b> returns </b><a href="../io/objects/WritableCSVChannel.html">WritableCSVChannel</a> | <a href="../io/types.html#Error">Error</a> 
+                <b> returns </b><a href="../io/classes/WritableCSVChannel.html">WritableCSVChannel</a> | <a href="../io/types.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves a writable CSV channel from a given file path.</p>
 <pre><code class="language-ballerina"> io:WritableCSVChannel wCsvChannel = check io:openWritableCsvFile(srcFileName);
@@ -575,7 +577,7 @@ or non-blocking manner.
                     <li>
                         <span >fieldSeparator</span>
                         <span class="type">  <a href="../io/types.html#Separator">Separator</a> </span>
-                        <span class="default"> (default &lt;(,|	|:|string)&gt; ,)</span>
+                        <span class="default"> (default ,)</span>
                     </li>
                     <li>
                         <p>
@@ -628,7 +630,7 @@ or non-blocking manner.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/WritableCSVChannel.html">WritableCSVChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/classes/WritableCSVChannel.html">WritableCSVChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
                 <li><p>The <code>WritableCSVChannel</code>, which could be used to write the CSV records or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
@@ -646,11 +648,12 @@ or non-blocking manner.
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <span class="builtin-type">boolean</span> append)</p>
             
-                <b> returns </b><a href="../io/objects/WritableByteChannel.html">WritableByteChannel</a> | <a href="../io/types.html#Error">Error</a> 
+                <b> returns </b><a href="../io/classes/WritableByteChannel.html">WritableByteChannel</a> | <a href="../io/types.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves a <code>WritableByteChannel</code> from a given file path.</p>
 <pre><code class="language-ballerina"> io:WritableByteChannel writableFileResult = check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
@@ -702,7 +705,7 @@ or non-blocking manner.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/WritableByteChannel.html">WritableByteChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/classes/WritableByteChannel.html">WritableByteChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
                 <li><p>The <code>ByteChannel</code> representation of the file resource or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
@@ -723,6 +726,9 @@ or non-blocking manner.
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.</p>
 <pre><code class="language-ballerina">io:print(&quot;Start processing the CSV file from &quot;, srcFileName);
@@ -768,6 +774,9 @@ or non-blocking manner.
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.</p>
 <pre><code class="language-ballerina">io:println(&quot;Start processing the CSV file from &quot;, srcFileName);
@@ -815,6 +824,7 @@ or non-blocking manner.
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves the input read from the STDIN.</p>
 <pre><code class="language-ballerina"> string choice = io:readln(&quot;Enter choice 1 - 5: &quot;);
@@ -872,6 +882,9 @@ or non-blocking manner.
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns a formatted string using the specified format string and arguments. Following format specifiers are allowed.</p>
 <p>b - boolean</p>

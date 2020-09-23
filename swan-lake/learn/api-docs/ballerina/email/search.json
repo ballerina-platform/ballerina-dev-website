@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module contains functions to perform email operations such as sending and reading emails using the SMTP, POP3, and IMAP4 protocols.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [],
   "records": [
     {
@@ -89,5 +89,6 @@
       "moduleId": "email"
     }
   ],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

@@ -109,18 +109,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../jwt/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../jwt/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../jwt/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../jwt/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -189,9 +186,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Builds the header string from the <code>jwt:JwtHeader</code> record.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Builds the header string from the <code>jwt:JwtHeader</code> record.</p>   
                             </div>
                         </td>
                     </tr>
@@ -201,9 +199,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Builds the payload string from the <code>jwt:JwtPayload</code> record.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Builds the payload string from the <code>jwt:JwtPayload</code> record.</p>   
                             </div>
                         </td>
                     </tr>
@@ -213,9 +212,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Decodes the given JWT string.</p>
-
-
+                                
+                                <p>Decodes the given JWT string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -224,6 +222,9 @@
                         <td width="30%"><a class="functions " href="#issueJwt">issueJwt</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 <p>Issues a JWT based on the provided header and payload.
                             </div>
@@ -235,9 +236,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Validates the given JWT string.</p>
-
-
+                                
+                                <p>Validates the given JWT string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -262,6 +262,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Builds the header string from the <code>jwt:JwtHeader</code> record.</p>
 <pre><code class="language-ballerina"> string|jwt:Error jwtHeader = buildHeaderString(header);
@@ -320,6 +323,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Builds the payload string from the <code>jwt:JwtPayload</code> record.</p>
 <pre><code class="language-ballerina"> string|jwt:Error jwtPayload = jwt:buildPayloadString(payload);
 </code></pre>
@@ -377,6 +383,7 @@
     </div>
     <div class="function-desc">
         
+        
         <p>Decodes the given JWT string.</p>
 <pre><code class="language-ballerina"> [jwt:JwtHeader, jwt:JwtPayload]|jwt:Error [header, payload] = jwt:decodeJwt(jwt);
 </code></pre>
@@ -433,6 +440,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Issues a JWT based on the provided header and payload. JWT will be signed (JWS) if <code>crypto:KeyStore</code> information is
 provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> field of the <code>jwt:JwtHeader</code> is not <code>jwt:NONE</code>.</p>
@@ -525,6 +535,7 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Validates the given JWT string.</p>
 <pre><code class="language-ballerina"> jwt:JwtPayload|jwt:Error result = jwt:validateJwt(jwt, validatorConfig);

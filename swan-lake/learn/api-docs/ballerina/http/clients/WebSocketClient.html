@@ -77,11 +77,7 @@
                         
     
         <li >
-            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
-        </li>
-    
-        <li >
-            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
         </li>
     
         <li >
@@ -93,15 +89,11 @@
         </li>
     
         <li >
-            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
-        </li>
-    
-        <li >
-            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
-        </li>
-    
-        <li >
             <a href="HttpClient.html" onclick="menuLinkClick()">HttpClient</a>
+        </li>
+    
+        <li >
+            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
         </li>
     
         <li >
@@ -109,15 +101,23 @@
         </li>
     
         <li >
-            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
-        </li>
-    
-        <li >
             <a href="RedirectClient.html" onclick="menuLinkClick()">RedirectClient</a>
         </li>
     
         <li >
+            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
+        </li>
+    
+        <li >
+            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+        </li>
+    
+        <li >
             <a href="RetryClient.html" onclick="menuLinkClick()">RetryClient</a>
+        </li>
+    
+        <li >
+            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
         </li>
     
         <li >
@@ -145,18 +145,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -238,39 +239,6 @@
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Initializes the client when called.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/WebSocketClientConfiguration.html">WebSocketClientConfiguration</a>? config)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
-                <li>
-                    <p>URL of the target service</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../http/records/WebSocketClientConfiguration.html">WebSocketClientConfiguration</a>?</span> &lt;ballerina/http:1.0.0:WebSocketClientConfiguration?&gt; ()</li>
-                <li>
-                    <p>The configurations to be used when initializing the client</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -303,8 +271,7 @@
                         <tr>
                             <td class="module-title truncate functions" title="close"><a
                                     class="functions" href="#close">close</a></td>
-                            <td class="module-desc"><p>Closes the connection.</p>
-</td>
+                            <td class="module-desc"><p>Closes the connection.</p> </td>
                         </tr>
                     
                         <tr>
@@ -327,8 +294,7 @@
     </div>
     <div class="param-details">
         
-        <p>Initializes the endpoint.</p>
-
+        <p>Initializes the endpoint.</p> 
     </div>
 </div>
 
@@ -340,8 +306,7 @@
     </div>
     <div class="param-details">
         
-        <p>Sets a connection-related attribute.</p>
-
+        <p>Sets a connection-related attribute.</p> 
     </div>
 </div>
 
@@ -353,8 +318,7 @@
     </div>
     <div class="param-details">
         
-        <p>Gets connection-related attributes if any.</p>
-
+        <p>Gets connection-related attributes if any.</p> 
     </div>
 </div>
 
@@ -366,8 +330,7 @@
     </div>
     <div class="param-details">
         
-        <p>Removes connection related attribute if any.</p>
-
+        <p>Removes connection related attribute if any.</p> 
     </div>
 </div>
 
@@ -379,8 +342,7 @@
     </div>
     <div class="param-details">
         
-        <p>Gives the connection id associated with this connection.</p>
-
+        <p>Gives the connection id associated with this connection.</p> 
     </div>
 </div>
 
@@ -392,8 +354,7 @@
     </div>
     <div class="param-details">
         
-        <p>Gives the subprotocol if any that is negotiated with the client.</p>
-
+        <p>Gives the subprotocol if any that is negotiated with the client.</p> 
     </div>
 </div>
 
@@ -405,8 +366,7 @@
     </div>
     <div class="param-details">
         
-        <p>Gives the secured status of the connection.</p>
-
+        <p>Gives the secured status of the connection.</p> 
     </div>
 </div>
 
@@ -418,8 +378,7 @@
     </div>
     <div class="param-details">
         
-        <p>Gives the open or closed status of the connection.</p>
-
+        <p>Gives the open or closed status of the connection.</p> 
     </div>
 </div>
 
@@ -431,8 +390,7 @@
     </div>
     <div class="param-details">
         
-        <p>Gives the HTTP response if any received for the client handshake request.</p>
-
+        <p>Gives the HTTP response if any received for the client handshake request.</p> 
     </div>
 </div>
 
@@ -459,6 +417,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Pushes text to the connection. If an error occurs while sending the text message to the connection, that message
 will be lost.</p>
@@ -533,6 +494,9 @@ will be lost.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Pushes binary data to the connection. If an error occurs while sending the binary message to the connection,
 that message will be lost.</p>
 
@@ -606,6 +570,9 @@ that message will be lost.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Pings the connection. If an error occurs while sending the ping frame to the server, that frame will be lost.</p>
 
     </div>
@@ -660,6 +627,9 @@ that message will be lost.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
 frame will be lost.</p>
@@ -717,6 +687,9 @@ frame will be lost.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Closes the connection.</p>
 
     </div>
@@ -729,7 +702,7 @@ frame will be lost.</p>
                     <li>
                         <span >statusCode</span>
                         <span class="type">  <span class="builtin-type">int?</span> </span>
-                        <span class="default"> (default &lt;int?&gt; 1000)</span>
+                        <span class="default"> (default 1000)</span>
                     </li>
                     <li>
                         <p>
@@ -746,7 +719,7 @@ frame will be lost.</p>
                     <li>
                         <span >reason</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -810,6 +783,9 @@ endpoint within the waiting period, the connection is terminated immediately.</p
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Calls when the endpoint is ready to receive messages. It can be called only once per endpoint. For the
 WebSocketListener, it can be called only in the <code>upgrade</code> or <code>onOpen</code> resources.</p>
 
@@ -846,6 +822,9 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Initializes the endpoint.</p>
 
     </div>
@@ -866,6 +845,9 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sets a connection-related attribute.</p>
 
@@ -929,6 +911,9 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Gets connection-related attributes if any.</p>
 
     </div>
@@ -983,6 +968,9 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Removes connection related attribute if any.</p>
 
@@ -1039,6 +1027,9 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Gives the connection id associated with this connection.</p>
 
     </div>
@@ -1071,6 +1062,9 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Gives the subprotocol if any that is negotiated with the client.</p>
 
@@ -1105,6 +1099,9 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Gives the secured status of the connection.</p>
 
     </div>
@@ -1138,6 +1135,9 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Gives the open or closed status of the connection.</p>
 
     </div>
@@ -1165,11 +1165,14 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         <span class="method-types">
             <p>()</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a>? 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a>? 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Gives the HTTP response if any received for the client handshake request.</p>
 
@@ -1180,7 +1183,7 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a>?</span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a>?</span>)</li>
                 <li><p>The HTTP response received from the client handshake request</p>
 </li>
             </ul>

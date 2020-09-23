@@ -71,18 +71,15 @@ Ballerina supports Observability out of the box. This module provides user api's
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../observe/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../observe/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../observe/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../observe/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -140,7 +137,7 @@ Ballerina supports Observability out of the box. This module provides user api's
 Ballerina supports Observability out of the box. This module provides user api's to make Ballerina Observability more flexible for the user.</p>
 <p>To observe Ballerina code, the '--b7a.observability.enabled=true' property should be given when starting the service.
 i.e. `ballerina run hello_world.bal --b7a.observability.enabled=true'
-For more information on Ballerina observability, see <a href="/swan-lake/learn/observing-ballerina-code/">Observing Ballerina Code</a>.</p>
+For more information on Ballerina Observability visit <a href="https://ballerina.io/swan-lake/learn/how-to-observe-ballerina-code/">How to Observe Ballerina Services</a>.</p>
 <h2>Tracing</h2>
 <p>Tracing provides information regarding the roundtrip of a service invocation based on the concept of spans, which are
 structured in a hierarchy based on the cause and effect concept. The tracing API allows users to tap into that
@@ -368,114 +365,93 @@ if metric is observe:Counter {
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="Metric" title="Metric">
                             <a class="records " href="records/Metric.html">Metric</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>This represents the generic metric record that can represent both counter and gauge.</p>
-
+                            <p>This represents the generic metric record that can represent both counter and gauge.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="PercentileValue" title="PercentileValue">
                             <a class="records " href="records/PercentileValue.html">PercentileValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>This represents the percentile value record.</p>
-
+                            <p>This represents the percentile value record.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="Snapshot" title="Snapshot">
                             <a class="records " href="records/Snapshot.html">Snapshot</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>This represents the snapshot of the statistics calculation of the gauge.</p>
-
+                            <p>This represents the snapshot of the statistics calculation of the gauge.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="StatisticConfig" title="StatisticConfig">
                             <a class="records " href="records/StatisticConfig.html">StatisticConfig</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>This represents the statistic configuration that can be used to instatiate gauge metric.</p>
-
+                            <p>This represents the statistic configuration that can be used to instatiate gauge metric.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
                     <tr>
-                        <td class="module-title truncate objects" id="Counter" title="Counter">
-                            <a class="objects " href="objects/Counter.html">Counter</a>
+                        <td class="module-title truncate classes" id="Counter" title="Counter">
+                            <a class="classes " href="classes/Counter.html">Counter</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>This represents the metric type - counter, that can be only increased by an integer number.</p>
-
+                            <p>This represents the metric type - counter, that can be only increased by an integer number.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="Gauge" title="Gauge">
-                            <a class="objects " href="objects/Gauge.html">Gauge</a>
+                        <td class="module-title truncate classes" id="Gauge" title="Gauge">
+                            <a class="classes " href="classes/Gauge.html">Gauge</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
-during the usage.</p>
-
+                            <p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value during the usage.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -499,8 +475,10 @@ during the usage.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Add a key value pair as a tag to the span.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Add a key value pair as a tag to the span.</p> 
                 </td>
             </tr>
             
@@ -509,6 +487,7 @@ during the usage.</p>
                     <a class="functions " href="functions.html#ballerina/observe:0.8.0.&lt;init&gt;0">ballerina/observe:0.8.0.&lt;init&gt;0</a>
                 </td>
                 <td class="module-desc">
+                    
                     
                     
                 </td>
@@ -520,8 +499,8 @@ during the usage.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Finish the current span.</p>
-
+                    
+                    <p>Finish the current span.</p> 
                 </td>
             </tr>
             
@@ -531,8 +510,8 @@ during the usage.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.</p>
-
+                    
+                    <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.</p> 
                 </td>
             </tr>
             
@@ -542,8 +521,10 @@ during the usage.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Checks of either metrics or tracing had been enabled.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Checks of either metrics or tracing had been enabled.</p> 
                 </td>
             </tr>
             
@@ -553,8 +534,8 @@ during the usage.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Retrieves the specific metric that is described by the given name and tags.</p>
-
+                    
+                    <p>Retrieves the specific metric that is described by the given name and tags.</p> 
                 </td>
             </tr>
             
@@ -564,8 +545,8 @@ during the usage.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Start a span with no parent span.</p>
-
+                    
+                    <p>Start a span with no parent span.</p> 
                 </td>
             </tr>
             
@@ -575,8 +556,8 @@ during the usage.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Start a span and create child relationship to current active span or user specified span.</p>
-
+                    
+                    <p>Start a span and create child relationship to current active span or user specified span.</p> 
                 </td>
             </tr>
             

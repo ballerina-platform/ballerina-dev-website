@@ -1,0 +1,435 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module is designed to support input and output operations via channels in a canonical way, either in a blocking,
+or non-blocking manner.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,io">
+
+    <title>API Docs - Class : ReadableTextRecordChannel</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+                <div class="primary-list">
+                    <h3>
+    Classes
+</h3>
+                    <ul>
+                        
+    
+        <li >
+            <a href="ReadableByteChannel.html" onclick="menuLinkClick()">ReadableByteChannel</a>
+        </li>
+    
+        <li >
+            <a href="ReadableCharacterChannel.html" onclick="menuLinkClick()">ReadableCharacterChannel</a>
+        </li>
+    
+        <li >
+            <a href="ReadableCSVChannel.html" onclick="menuLinkClick()">ReadableCSVChannel</a>
+        </li>
+    
+        <li >
+            <a href="ReadableDataChannel.html" onclick="menuLinkClick()">ReadableDataChannel</a>
+        </li>
+    
+        <li class="active">
+            <a href="ReadableTextRecordChannel.html" onclick="menuLinkClick()">ReadableTextRecordChannel</a>
+        </li>
+    
+        <li >
+            <a href="StringReader.html" onclick="menuLinkClick()">StringReader</a>
+        </li>
+    
+        <li >
+            <a href="WritableByteChannel.html" onclick="menuLinkClick()">WritableByteChannel</a>
+        </li>
+    
+        <li >
+            <a href="WritableCharacterChannel.html" onclick="menuLinkClick()">WritableCharacterChannel</a>
+        </li>
+    
+        <li >
+            <a href="WritableCSVChannel.html" onclick="menuLinkClick()">WritableCSVChannel</a>
+        </li>
+    
+        <li >
+            <a href="WritableDataChannel.html" onclick="menuLinkClick()">WritableDataChannel</a>
+        </li>
+    
+        <li >
+            <a href="WritableTextRecordChannel.html" onclick="menuLinkClick()">WritableTextRecordChannel</a>
+        </li>
+    
+
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+            
+            <div class="primary-list module">
+    
+        <a href="../../io/index.html" onclick="menuLinkClick()">
+            <h3>io</h3>
+        </a>
+    
+    <ul>
+        
+        
+            <li>
+                <a  data="classes" href="../../io/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../../io/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../io/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../../io/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../io/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl" class="search-bar"></div>
+            <div id="main">
+            <h1>
+                <a class="breadcrumb-home" href="
+                    ../../index.html">
+                    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+                </a>
+                <span class="title-type">
+                    
+                    
+    Class
+
+                    
+                        -
+                    
+                </span>
+                
+                    <a href="../../io/index.html"><span class="modules">io</span></a>
+                
+                 :
+                    
+    <span class="classes ">ReadableTextRecordChannel</span>
+
+                
+            </h1>
+            
+    <p>
+        
+        <p>Represents a channel which will allow to read</p>
+
+    </p>
+
+    <div class="constants">
+        <div class="method-sum">
+            
+
+        
+            
+                <h2>Methods</h2>
+                <div class="method-list">
+                    
+                        
+<div class="param-sum">
+    <div class="param-name " title="hasNext">
+        <a href="#hasNext">hasNext </a>
+    </div>
+    <div class="param-details">
+        
+        <p>Checks whether there's a record left to be read.</p>   
+    </div>
+</div>
+
+                    
+                        
+<div class="param-sum">
+    <div class="param-name " title="getNext">
+        <a href="#getNext">getNext </a>
+    </div>
+    <div class="param-details">
+        
+        <p>Get the next record from the input/output resource.</p>   
+    </div>
+</div>
+
+                    
+                        
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
+    </div>
+    <div class="param-details">
+        
+        <p>Closes a given record channel.</p>   
+    </div>
+</div>
+
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            
+                <div class="method-content">
+    <div class="main-method-title here" id="hasNext" title="hasNext">
+             <a class="url-link" href="#hasNext">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > hasNext </h2>
+        <span class="method-types">
+            <p>()</p>
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+        <p>Checks whether there's a record left to be read.</p>
+<pre><code class="language-ballerina"> boolean hasNext = readableRecChannel.hasNext();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>True if there's a record left to be read</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+            
+                <div class="method-content">
+    <div class="main-method-title here" id="getNext" title="getNext">
+             <a class="url-link" href="#getNext">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getNext </h2>
+        <span class="method-types">
+            <p>()</p>
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> | <a href="../../io/types.html#Error">Error</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+        <p>Get the next record from the input/output resource.</p>
+<pre><code class="language-ballerina"> string[]|io:Error record = readableRecChannel.getNext();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
+                <li><p>Set of fields included in the record or else <code>io:Error</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+            
+                <div class="method-content">
+    <div class="main-method-title here" id="close" title="close">
+             <a class="url-link" href="#close">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > close </h2>
+        <span class="method-types">
+            <p>()</p>
+            
+                <b> returns </b><a href="../../io/types.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+        <p>Closes a given record channel.</p>
+<pre><code class="language-ballerina"> io:Error err = readableRecChannel.close();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
+                <li><p>An <code>io:Error</code> if the record channel could not be closed properly</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+            
+        
+    </div>
+
+        </div>
+        </div>
+    </div>
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+

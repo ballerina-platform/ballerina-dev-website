@@ -4,120 +4,14 @@
   "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides lang library list operations defined by the language specification 2020R1.\u003c/p\u003e\n",
   "orgName": "ballerina",
   "version": "1.1.0",
-  "records": [
-    {
-      "fields": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.array",
-            "name": "Type",
-            "category": "types",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": false,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "value",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": true,
-      "name": "T0",
-      "description": "",
-      "isDeprecated": false
-    }
-  ],
-  "objects": [
-    {
-      "fields": [],
-      "methods": [
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.array",
-                "name": "T0",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "next",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "otherMethods": [
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.array",
-                "name": "T0",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "next",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": true,
-      "name": "T1",
-      "description": "",
-      "isDeprecated": false
-    }
-  ],
+  "records": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -234,6 +128,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -372,6 +267,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -473,6 +369,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -577,6 +474,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -681,6 +579,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -797,6 +696,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -843,8 +743,8 @@
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.array",
-            "name": "T1",
-            "category": "objects",
+            "name": "object { public function next () returns (record {| (any|error) value; |}?); }",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -852,7 +752,7 @@
             "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
+            "generateUserDefinedTypeLink": false,
             "memberTypes": [],
             "paramTypes": [],
             "arrayDimensions": 0
@@ -867,6 +767,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -983,6 +884,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1087,6 +989,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1225,6 +1128,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1295,6 +1199,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1379,6 +1284,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1543,6 +1449,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1636,6 +1543,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1717,6 +1625,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1801,6 +1710,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1905,6 +1815,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1975,6 +1886,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2105,6 +2017,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2142,15 +2055,38 @@
             }
           },
           "name": "arr",
-          "description": "\u003cp\u003ethe array to be sorted\u003c/p\u003e\n",
+          "description": "\u003cp\u003ethe array to be sorted;\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
-          "defaultValue": "",
+          "defaultValue": "\u003c(descending|ascending)\u003e \u003cascending\u003e ascending",
           "type": {
+            "orgName": "ballerina",
+            "moduleName": "lang.array",
+            "name": "SortDirection",
+            "category": "types",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "direction",
+          "description": "\u003cp\u003edirection in which to sort\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "defaultValue": "\u003cisolated function ((any|error)) returns ((boolean|int|float|decimal|string|(boolean|int|float|decimal|string)?[])?)?\u003e ()",
+          "type": {
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": true,
             "isTuple": false,
             "isRestParam": false,
             "isLambda": true,
@@ -2174,31 +2110,14 @@
                 "memberTypes": [],
                 "paramTypes": [],
                 "arrayDimensions": 0
-              },
-              {
-                "orgName": "ballerina",
-                "moduleName": "lang.array",
-                "name": "Type",
-                "category": "types",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": false,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
               }
             ],
             "arrayDimensions": 0,
             "returnType": {
               "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "int",
-              "category": "builtin",
+              "moduleName": "lang.array",
+              "name": "OrderedType",
+              "category": "types",
               "isAnonymousUnionType": false,
               "isArrayType": false,
               "isNullable": false,
@@ -2206,14 +2125,14 @@
               "isRestParam": false,
               "isLambda": false,
               "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
+              "generateUserDefinedTypeLink": false,
               "memberTypes": [],
               "paramTypes": [],
               "arrayDimensions": 0
             }
           },
-          "name": "func",
-          "description": "\u003cp\u003ecomparator function\u003c/p\u003e\n",
+          "name": "key",
+          "description": "\u003cp\u003efunction that returns a key to use to sort the members\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
@@ -2251,15 +2170,16 @@
             }
           },
           "name": "",
-          "description": "\u003cp\u003e\u003ccode\u003earr\u003c/code\u003e with its members sorted\u003c/p\u003e\n",
+          "description": "\u003cp\u003ea new array consisting of the members of \u003ccode\u003earr\u003c/code\u003e in sorted order\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
       "name": "sort",
-      "description": "\u003cp\u003eSorts an array using a comparator function.\nThe comparator function must return a value less than, equal to or greater than zero\naccording as its first argument is to be ordered before, equal to or after its second argument.\u003c/p\u003e\n",
+      "description": "\u003cp\u003eSorts an array.\nIf the member type of the array is not sorted, then the \u003ccode\u003ekey\u003c/code\u003e function\nmust be specified.\nSorting works the same as with the \u003ccode\u003esort\u003c/code\u003e clause of query expressions.\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2330,6 +2250,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2400,6 +2321,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2488,6 +2410,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2572,10 +2495,108 @@
       "isDeprecated": false
     }
   ],
-  "constants": [],
+  "constants": [
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "lang.annotations",
+        "name": "string",
+        "category": "builtin",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "value": "ascending",
+      "name": "ASCENDING",
+      "description": "",
+      "isDeprecated": false
+    },
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "lang.annotations",
+        "name": "string",
+        "category": "builtin",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "value": "descending",
+      "name": "DESCENDING",
+      "description": "",
+      "isDeprecated": false
+    }
+  ],
   "annotations": [],
   "errors": [],
   "finiteTypes": [],
-  "unionTypes": [],
+  "unionTypes": [
+    {
+      "name": "SortDirection",
+      "description": "",
+      "isAnonymousUnionType": false,
+      "isArrayType": false,
+      "isNullable": false,
+      "isTuple": false,
+      "isRestParam": false,
+      "isLambda": false,
+      "isDeprecated": false,
+      "generateUserDefinedTypeLink": true,
+      "memberTypes": [
+        {
+          "orgName": "ballerina",
+          "moduleName": "lang.array",
+          "name": "DESCENDING",
+          "category": "types",
+          "isAnonymousUnionType": false,
+          "isArrayType": false,
+          "isNullable": false,
+          "isTuple": false,
+          "isRestParam": false,
+          "isLambda": false,
+          "isDeprecated": false,
+          "generateUserDefinedTypeLink": true,
+          "memberTypes": [],
+          "paramTypes": [],
+          "arrayDimensions": 0
+        },
+        {
+          "orgName": "ballerina",
+          "moduleName": "lang.array",
+          "name": "ASCENDING",
+          "category": "types",
+          "isAnonymousUnionType": false,
+          "isArrayType": false,
+          "isNullable": false,
+          "isTuple": false,
+          "isRestParam": false,
+          "isLambda": false,
+          "isDeprecated": false,
+          "generateUserDefinedTypeLink": true,
+          "memberTypes": [],
+          "paramTypes": [],
+          "arrayDimensions": 0
+        }
+      ],
+      "paramTypes": [],
+      "arrayDimensions": 0
+    }
+  ],
   "resources": []
 }

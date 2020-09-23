@@ -1,8 +1,8 @@
 {
   "id": "kafka",
   "summary": "\u003cp\u003eThis module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.\nThis module supports Kafka 1.x.x and 2.0.0 versions.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.\nThis module supports Kafka 1.x.x and 2.0.0 versions.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e.\nFor examples on the usage of the operations, see the following.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka-producer.html\"\u003eProducer Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka-consumer-service.html\"\u003eConsumer Service Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka-consumer-client.html\"\u003eConsumer Client Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka-producer-transactional.html\"\u003eTransactional Producer Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka-consumer-group-service.html\"\u003eConsumer Groups Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka-authentication-sasl-plain-consumer.html\"\u003eConsumer with SASL Authentication Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka-authentication-sasl-plain-producer.html\"\u003eProducer with SASL Authentication Example\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eBasic Usages\u003c/h4\u003e\n\u003ch5\u003ePublishing Messages\u003c/h5\u003e\n\u003col\u003e\n\u003cli\u003eInitialize the Kafka message producer.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003ekafka:ProducerConfiguration producerConfiguration \u003d {\n    bootstrapServers: \u0026quot;localhost:9092\u0026quot;,\n    clientId: \u0026quot;basic-producer\u0026quot;,\n    acks: \u0026quot;all\u0026quot;,\n    retryCount: 3,\n    valueSerializerType: kafka:SER_STRING,\n    keySerializerType: kafka:SER_INT\n};\n\nkafka:Producer kafkaProducer \u003d new (producerConfiguration);\n\u003c/code\u003e\u003c/pre\u003e\n\u003col start\u003d\"2\"\u003e\n\u003cli\u003eUse the \u003ccode\u003ekafka:Producer\u003c/code\u003e to publish messages.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003estring message \u003d \u0026quot;Hello World, Ballerina\u0026quot;;\nkafka:ProducerError? result \u003d kafkaProducer-\u0026gt;send(message, \u0026quot;kafka-topic\u0026quot;, key \u003d 1);\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch5\u003eConsuming Messages\u003c/h5\u003e\n\u003col\u003e\n\u003cli\u003eInitializing the Kafka message consumer.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003ekafka:ConsumerConfiguration consumerConfiguration \u003d {\n    bootstrapServers: \u0026quot;localhost:9092\u0026quot;,\n    groupId: \u0026quot;group-id\u0026quot;,\n    offsetReset: \u0026quot;earliest\u0026quot;,\n    topics: [\u0026quot;kafka-topic\u0026quot;]\n};\n\nkafka:Consumer consumer \u003d new (consumerConfiguration);\n\u003c/code\u003e\u003c/pre\u003e\n\u003col start\u003d\"2\"\u003e\n\u003cli\u003eUse the \u003ccode\u003ekafka:Consumer\u003c/code\u003e as a simple record consumer.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003ekafka:ConsumerRecord[]|kafka:ConsumerError result \u003d consumer-\u0026gt;poll(1000);\n\u003c/code\u003e\u003c/pre\u003e\n\u003col start\u003d\"3\"\u003e\n\u003cli\u003eUse the \u003ccode\u003ekafka:Consumer\u003c/code\u003e as a listener.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003elistener kafka:Consumer consumer \u003d new (consumerConfiguration);\n\nservice kafkaService on consumer {\n    // This resource will be executed when a message is published to the\n    // subscribed topic/topics.\n    resource function onMessage(kafka:Consumer kafkaConsumer,\n            kafka:ConsumerRecord[] records) {\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eSend Data Using Avro\u003c/h4\u003e\n\u003cp\u003eThe Ballerina Kafka module supports Avro serialization and deserialization.\u003c/p\u003e\n\u003cp\u003eTo try this, create a new Ballerina project and two modules inside it.\u003c/p\u003e\n\u003cp\u003eExecute the below commands to do this.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003eballerina new kafka_avro_sample\ncd kafka_avro_sample\nballerina add producer\nballerina add consumer\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch5\u003eDependencies\u003c/h5\u003e\n\u003cp\u003eTo use Avro, you need to add the necessary dependencies to the Ballerina project you created.\nTo do so, download the necessary dependencies and add them inside the \u003ccode\u003eresources\u003c/code\u003e directory. Also, add those dependencies to the \u003ccode\u003eBallerina.toml\u003c/code\u003e file of your project.\nThe following is a sample \u003ccode\u003eBallerina.toml\u003c/code\u003e file with the dependencies.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-toml\"\u003e    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/kafka-avro-serializer-5.4.1.jar\u0026quot;\n    artifactId \u003d \u0026quot;kafka-avro-serializer\u0026quot;\n    version \u003d \u0026quot;5.4.1\u0026quot;\n    groupId \u003d \u0026quot;io.confluent\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/kafka-schema-registry-client-5.4.1.jar\u0026quot;\n    artifactId \u003d \u0026quot;kafka-schema-registry-client\u0026quot;\n    version \u003d \u0026quot;5.4.1\u0026quot;\n    groupId \u003d \u0026quot;io.confluent\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/common-config-5.4.1.jar\u0026quot;\n    artifactId \u003d \u0026quot;common-config\u0026quot;\n    version \u003d \u0026quot;5.4.1\u0026quot;\n    groupId \u003d \u0026quot;io.confluent\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/common-utils-5.4.1.jar\u0026quot;\n    artifactId \u003d \u0026quot;common-utils\u0026quot;\n    version \u003d \u0026quot;5.4.1\u0026quot;\n    groupId \u003d \u0026quot;io.confluent\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/avro-1.9.2.jar\u0026quot;\n    artifactId \u003d \u0026quot;avro\u0026quot;\n    version \u003d \u0026quot;1.9.2\u0026quot;\n    groupId \u003d \u0026quot;org.apache.avro\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/jackson-core-2.10.3.jar\u0026quot;\n    artifactId \u003d \u0026quot;jackson-core\u0026quot;\n    version \u003d \u0026quot;1.9.2\u0026quot;\n    groupId \u003d \u0026quot;com.fasterxml.jackson.core\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/jackson-databind-2.10.3.jar\u0026quot;\n    artifactId \u003d \u0026quot;jackson-databind\u0026quot;\n    version \u003d \u0026quot;2.10.3\u0026quot;\n    groupId \u003d \u0026quot;com.fasterxml.jackson.core\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/jackson-annotations-2.10.3.jar\u0026quot;\n    artifactId \u003d \u0026quot;jackson-annotations\u0026quot;\n    version \u003d \u0026quot;2.10.3\u0026quot;\n    groupId \u003d \u0026quot;com.fasterxml.jackson.core\u0026quot;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNow, the directory structure will look like below (some of the files are ignored).\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003e├── Ballerina.toml\n├── resources\n│   ├── avro-1.9.2.jar\n│   ├── common-config-5.4.1.jar\n│   ├── common-utils-5.4.1.jar\n│   ├── jackson-annotations-2.10.3.jar\n│   ├── jackson-core-2.10.3.jar\n│   ├── jackson-databind-2.10.3.jar\n│   ├── kafka-avro-serializer-5.4.1.jar\n│   └── kafka-schema-registry-client-5.4.1.jar\n└── src\n    ├── consumer\n    │   └── main.bal\n    └── producer\n        └── main.bal\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch5\u003eAvro Producer\u003c/h5\u003e\n\u003cp\u003eThe \u003ccode\u003ekafka:Proucer\u003c/code\u003e can be configured to send data using Avro by providing the following configurations.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ccode\u003eschemaString\u003c/code\u003e: This is the schema string, which is used to define the Avro schema.\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003edataRecord\u003c/code\u003e: The data record you want to send through Kafka.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003esrc/producer/main.bal:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/io;\nimport ballerina/kafka;\n\npublic type Person record {\n    string name;\n    int age;\n};\n\nkafka:ProducerConfiguration configs \u003d {\n    bootstrapServers: \u0026quot;\u0026lt;KAFKA_BROKER_HOST_AND_PORT\u0026gt;\u0026quot;,\n    // Other configurations\n    valueSerializerType: kafka:SER_AVRO,\n    schemaRegistryUrl: \u0026quot;\u0026lt;SCHEMA_REGISTRY_URL\u0026gt;\u0026quot;\n};\n\nstring schema \u003d \u0026quot;{\\\u0026quot;type\\\u0026quot; : \\\u0026quot;record\\\u0026quot;,\u0026quot; +\n                  \u0026quot;\\\u0026quot;namespace\\\u0026quot; : \\\u0026quot;Thisaru\\\u0026quot;,\u0026quot; +\n                  \u0026quot;\\\u0026quot;name\\\u0026quot; : \\\u0026quot;person\\\u0026quot;,\u0026quot; +\n                  \u0026quot;\\\u0026quot;fields\\\u0026quot; : [\u0026quot; + \n                    \u0026quot;{ \\\u0026quot;name\\\u0026quot; : \\\u0026quot;name\\\u0026quot;, \\\u0026quot;type\\\u0026quot; : \\\u0026quot;string\\\u0026quot; },\u0026quot; +\n                    \u0026quot;{ \\\u0026quot;name\\\u0026quot; : \\\u0026quot;age\\\u0026quot;, \\\u0026quot;type\\\u0026quot; : \\\u0026quot;int\\\u0026quot; }\u0026quot; +\n                  \u0026quot;]}\u0026quot;;\n\npublic function main() {\n    kafka:Producer producer \u003d new(configs);\n\n    Person person \u003d {\n        name: \u0026quot;Lahiru Perera\u0026quot;,\n        age: 28\n    };\n\n    kafka:AvroRecord avroRecord \u003d {\n        schemaString: schema,\n        dataRecord: person\n    };\n\n    kafka:ProducerError? result \u003d producer-\u0026gt;send(avroRecord, \u0026quot;add-person\u0026quot;);\n    if (result is kafka:ProducerError) {\n        io:println(result);    \n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch5\u003eAvro Consumer\u003c/h5\u003e\n\u003cp\u003eThe Kafka implementation of Ballerina currently supports Avro deserialization only for generic records.\nThe Consumer will return a \u003ccode\u003ekafka:AvroGenericRecord\u003c/code\u003e with the data received from Avro.\u003c/p\u003e\n\u003cp\u003eThe following is a sample consumer.\u003c/p\u003e\n\u003cp\u003esrc/producer/main.bal:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/io;\nimport ballerina/kafka;\n\nkafka:ConsumerConfiguration configs \u003d {\n    bootstrapServers: \u0026quot;\u0026lt;KAFKA_BROKER_HOST_AND_PORT\u0026gt;\u0026quot;,\n    groupId: \u0026quot;test-group\u0026quot;,\n    // Other configurations\n    topics: [\u0026quot;add-person\u0026quot;],\n    valueDeserializerType: kafka:DES_AVRO,\n    schemaRegistryUrl: \u0026quot;\u0026lt;SCHEMA_REGISTRY_URL\u0026gt;\u0026quot;\n};\n\nlistener kafka:Consumer consumer \u003d new(configs);\n\nservice KafkaService on consumer {\n    resource function onMessage(kafka:Consumer consumer, kafka:ConsumerRecord[] records) {\n        io:println(\u0026quot;Records received\u0026quot;);\n        foreach var kafkaRecord in records {\n            anydata value \u003d kafkaRecord.value;\n            if (value is kafka:AvroGenericRecord) {\n                io:println(value);\n            } else {\n                io:println(\u0026quot;Invalid record type\u0026quot;);\n            }\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNow, execute the below command to run the consumer:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003eballerina run consumer\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis will start the Kafka service to listen. You can verify it by the following messages, which will be displayed on the screen.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003e[ballerina/kafka] kafka servers: \u0026lt;KAFKA_BROKER_HOST_AND_PORT\u0026gt;\n[ballerina/kafka] subscribed topics: add-person\n[ballerina/kafka] started kafka listener\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThen, open another terminal and execute the below command to run the producer:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003eballerina run producer\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNow, the consumer will receive the data and the received data will be printed on the Console as follows.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003eRecords received\nname\u003dLahiru Perera age\u003d28\n\u003c/code\u003e\u003c/pre\u003e\n",
-  "orgName": "ballerina",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.\nThis module supports Kafka 1.x.x and 2.0.0 versions.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e.\nFor examples on the usage of the operations, see the following.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka_producer.html\"\u003eProducer Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka_consumer_service.html\"\u003eConsumer Service Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka_consumer_client.html\"\u003eConsumer Client Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka_producer_transactional.html\"\u003eTransactional Producer Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka-authentication-sasl-plain-consumer.html\"\u003eConsumer with SASL Authentication Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/kafka-authentication-sasl-plain-producer.html\"\u003eProducer with SASL Authentication Example\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eBasic Usages\u003c/h4\u003e\n\u003ch5\u003ePublishing Messages\u003c/h5\u003e\n\u003col\u003e\n\u003cli\u003eInitialize the Kafka message producer.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003ekafka:ProducerConfiguration producerConfiguration \u003d {\n    bootstrapServers: \u0026quot;localhost:9092\u0026quot;,\n    clientId: \u0026quot;basic-producer\u0026quot;,\n    acks: \u0026quot;all\u0026quot;,\n    retryCount: 3,\n    valueSerializerType: kafka:SER_STRING,\n    keySerializerType: kafka:SER_INT\n};\n\nkafka:Producer kafkaProducer \u003d new (producerConfiguration);\n\u003c/code\u003e\u003c/pre\u003e\n\u003col start\u003d\"2\"\u003e\n\u003cli\u003eUse the \u003ccode\u003ekafka:Producer\u003c/code\u003e to publish messages.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003estring message \u003d \u0026quot;Hello World, Ballerina\u0026quot;;\nkafka:ProducerError? result \u003d kafkaProducer-\u0026gt;send(message, \u0026quot;kafka-topic\u0026quot;, key \u003d 1);\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch5\u003eConsuming Messages\u003c/h5\u003e\n\u003col\u003e\n\u003cli\u003eInitializing the Kafka message consumer.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003ekafka:ConsumerConfiguration consumerConfiguration \u003d {\n    bootstrapServers: \u0026quot;localhost:9092\u0026quot;,\n    groupId: \u0026quot;group-id\u0026quot;,\n    offsetReset: \u0026quot;earliest\u0026quot;,\n    topics: [\u0026quot;kafka-topic\u0026quot;]\n};\n\nkafka:Consumer consumer \u003d new (consumerConfiguration);\n\u003c/code\u003e\u003c/pre\u003e\n\u003col start\u003d\"2\"\u003e\n\u003cli\u003eUse the \u003ccode\u003ekafka:Consumer\u003c/code\u003e as a simple record consumer.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003ekafka:ConsumerRecord[]|kafka:ConsumerError result \u003d consumer-\u0026gt;poll(1000);\n\u003c/code\u003e\u003c/pre\u003e\n\u003col start\u003d\"3\"\u003e\n\u003cli\u003eUse the \u003ccode\u003ekafka:Consumer\u003c/code\u003e as a listener.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003elistener kafka:Consumer consumer \u003d new (consumerConfiguration);\n\nservice kafkaService on consumer {\n    // This resource will be executed when a message is published to the\n    // subscribed topic/topics.\n    resource function onMessage(kafka:Consumer kafkaConsumer,\n            kafka:ConsumerRecord[] records) {\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eSend Data Using Avro\u003c/h4\u003e\n\u003cp\u003eThe Ballerina Kafka module supports Avro serialization and deserialization.\u003c/p\u003e\n\u003cp\u003eTo try this, create a new Ballerina project and two modules inside it.\u003c/p\u003e\n\u003cp\u003eExecute the below commands to do this.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003eballerina new kafka_avro_sample\ncd kafka_avro_sample\nballerina add producer\nballerina add consumer\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch5\u003eDependencies\u003c/h5\u003e\n\u003cp\u003eTo use Avro, you need to add the necessary dependencies to the Ballerina project you created.\nTo do so, download the necessary dependencies and add them inside the \u003ccode\u003eresources\u003c/code\u003e directory. Also, add those dependencies to the \u003ccode\u003eBallerina.toml\u003c/code\u003e file of your project.\nThe following is a sample \u003ccode\u003eBallerina.toml\u003c/code\u003e file with the dependencies.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-toml\"\u003e    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/kafka-avro-serializer-5.4.1.jar\u0026quot;\n    artifactId \u003d \u0026quot;kafka-avro-serializer\u0026quot;\n    version \u003d \u0026quot;5.4.1\u0026quot;\n    groupId \u003d \u0026quot;io.confluent\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/kafka-schema-registry-client-5.4.1.jar\u0026quot;\n    artifactId \u003d \u0026quot;kafka-schema-registry-client\u0026quot;\n    version \u003d \u0026quot;5.4.1\u0026quot;\n    groupId \u003d \u0026quot;io.confluent\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/common-config-5.4.1.jar\u0026quot;\n    artifactId \u003d \u0026quot;common-config\u0026quot;\n    version \u003d \u0026quot;5.4.1\u0026quot;\n    groupId \u003d \u0026quot;io.confluent\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/common-utils-5.4.1.jar\u0026quot;\n    artifactId \u003d \u0026quot;common-utils\u0026quot;\n    version \u003d \u0026quot;5.4.1\u0026quot;\n    groupId \u003d \u0026quot;io.confluent\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/avro-1.9.2.jar\u0026quot;\n    artifactId \u003d \u0026quot;avro\u0026quot;\n    version \u003d \u0026quot;1.9.2\u0026quot;\n    groupId \u003d \u0026quot;org.apache.avro\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/jackson-core-2.10.3.jar\u0026quot;\n    artifactId \u003d \u0026quot;jackson-core\u0026quot;\n    version \u003d \u0026quot;1.9.2\u0026quot;\n    groupId \u003d \u0026quot;com.fasterxml.jackson.core\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/jackson-databind-2.10.3.jar\u0026quot;\n    artifactId \u003d \u0026quot;jackson-databind\u0026quot;\n    version \u003d \u0026quot;2.10.3\u0026quot;\n    groupId \u003d \u0026quot;com.fasterxml.jackson.core\u0026quot;\n\n    [[platform.libraries]]\n    module \u003d \u0026quot;producer\u0026quot;\n    path \u003d \u0026quot;./resources/jackson-annotations-2.10.3.jar\u0026quot;\n    artifactId \u003d \u0026quot;jackson-annotations\u0026quot;\n    version \u003d \u0026quot;2.10.3\u0026quot;\n    groupId \u003d \u0026quot;com.fasterxml.jackson.core\u0026quot;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNow, the directory structure will look like below (some of the files are ignored).\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003e├── Ballerina.toml\n├── resources\n│   ├── avro-1.9.2.jar\n│   ├── common-config-5.4.1.jar\n│   ├── common-utils-5.4.1.jar\n│   ├── jackson-annotations-2.10.3.jar\n│   ├── jackson-core-2.10.3.jar\n│   ├── jackson-databind-2.10.3.jar\n│   ├── kafka-avro-serializer-5.4.1.jar\n│   └── kafka-schema-registry-client-5.4.1.jar\n└── src\n    ├── consumer\n    │   └── main.bal\n    └── producer\n        └── main.bal\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch5\u003eAvro Producer\u003c/h5\u003e\n\u003cp\u003eThe \u003ccode\u003ekafka:Proucer\u003c/code\u003e can be configured to send data using Avro by providing the following configurations.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ccode\u003eschemaString\u003c/code\u003e: This is the schema string, which is used to define the Avro schema.\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003edataRecord\u003c/code\u003e: The data record you want to send through Kafka.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003esrc/producer/main.bal:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/io;\nimport ballerina/kafka;\n\npublic type Person record {\n    string name;\n    int age;\n};\n\nkafka:ProducerConfiguration configs \u003d {\n    bootstrapServers: \u0026quot;\u0026lt;KAFKA_BROKER_HOST_AND_PORT\u0026gt;\u0026quot;,\n    // Other configurations\n    valueSerializerType: kafka:SER_AVRO,\n    schemaRegistryUrl: \u0026quot;\u0026lt;SCHEMA_REGISTRY_URL\u0026gt;\u0026quot;\n};\n\nstring schema \u003d \u0026quot;{\\\u0026quot;type\\\u0026quot; : \\\u0026quot;record\\\u0026quot;,\u0026quot; +\n                  \u0026quot;\\\u0026quot;namespace\\\u0026quot; : \\\u0026quot;Thisaru\\\u0026quot;,\u0026quot; +\n                  \u0026quot;\\\u0026quot;name\\\u0026quot; : \\\u0026quot;person\\\u0026quot;,\u0026quot; +\n                  \u0026quot;\\\u0026quot;fields\\\u0026quot; : [\u0026quot; + \n                    \u0026quot;{ \\\u0026quot;name\\\u0026quot; : \\\u0026quot;name\\\u0026quot;, \\\u0026quot;type\\\u0026quot; : \\\u0026quot;string\\\u0026quot; },\u0026quot; +\n                    \u0026quot;{ \\\u0026quot;name\\\u0026quot; : \\\u0026quot;age\\\u0026quot;, \\\u0026quot;type\\\u0026quot; : \\\u0026quot;int\\\u0026quot; }\u0026quot; +\n                  \u0026quot;]}\u0026quot;;\n\npublic function main() {\n    kafka:Producer producer \u003d new(configs);\n\n    Person person \u003d {\n        name: \u0026quot;Lahiru Perera\u0026quot;,\n        age: 28\n    };\n\n    kafka:AvroRecord avroRecord \u003d {\n        schemaString: schema,\n        dataRecord: person\n    };\n\n    kafka:ProducerError? result \u003d producer-\u0026gt;send(avroRecord, \u0026quot;add-person\u0026quot;);\n    if (result is kafka:ProducerError) {\n        io:println(result);    \n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch5\u003eAvro Consumer\u003c/h5\u003e\n\u003cp\u003eThe Kafka implementation of Ballerina currently supports Avro deserialization only for generic records.\nThe Consumer will return a \u003ccode\u003ekafka:AvroGenericRecord\u003c/code\u003e with the data received from Avro.\u003c/p\u003e\n\u003cp\u003eThe following is a sample consumer.\u003c/p\u003e\n\u003cp\u003esrc/producer/main.bal:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/io;\nimport ballerina/kafka;\n\nkafka:ConsumerConfiguration configs \u003d {\n    bootstrapServers: \u0026quot;\u0026lt;KAFKA_BROKER_HOST_AND_PORT\u0026gt;\u0026quot;,\n    groupId: \u0026quot;test-group\u0026quot;,\n    // Other configurations\n    topics: [\u0026quot;add-person\u0026quot;],\n    valueDeserializerType: kafka:DES_AVRO,\n    schemaRegistryUrl: \u0026quot;\u0026lt;SCHEMA_REGISTRY_URL\u0026gt;\u0026quot;\n};\n\nlistener kafka:Consumer consumer \u003d new(configs);\n\nservice KafkaService on consumer {\n    resource function onMessage(kafka:Consumer consumer, kafka:ConsumerRecord[] records) {\n        io:println(\u0026quot;Records received\u0026quot;);\n        foreach var kafkaRecord in records {\n            anydata value \u003d kafkaRecord.value;\n            if (value is kafka:AvroGenericRecord) {\n                io:println(value);\n            } else {\n                io:println(\u0026quot;Invalid record type\u0026quot;);\n            }\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNow, execute the below command to run the consumer:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003eballerina run consumer\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis will start the Kafka service to listen. You can verify it by the following messages, which will be displayed on the screen.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003e[ballerina/kafka] kafka servers: \u0026lt;KAFKA_BROKER_HOST_AND_PORT\u0026gt;\n[ballerina/kafka] subscribed topics: add-person\n[ballerina/kafka] started kafka listener\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThen, open another terminal and execute the below command to run the producer:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003eballerina run producer\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNow, the consumer will receive the data and the received data will be printed on the Console as follows.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-shell\"\u003eRecords received\nname\u003dLahiru Perera age\u003d28\n\u003c/code\u003e\u003c/pre\u003e\n",
+  "orgName": "ballerinax",
   "version": "2.0.0",
   "records": [
     {
@@ -10,7 +10,7 @@
         {
           "defaultValue": "AUTH_SASL_PLAIN",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "AuthenticationMechanism",
             "category": "constants",
@@ -27,30 +27,7 @@
             "arrayDimensions": 0
           },
           "name": "mechanism",
-          "description": "\u003cp\u003eType of the authentication mechanism. Currently, SASL_PLAIN and SCRAM are supported. See\n\u003ccode\u003ekafka:AuthennticationType\u003c/code\u003e for more information\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "PROTOCOL_SASL_PLAINTEXT",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "securityProtocol",
-          "description": "\u003cp\u003eType of the security protocol to use in the broker connection\u003c/p\u003e\n",
+          "description": "\u003cp\u003eType of the authentication mechanism. Currently, SASL_PLAIN and SCRAM are supported. See\n\u003ccode\u003ekafka:AuthenticationMechanism\u003c/code\u003e for more information\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
@@ -100,9 +77,16 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "AuthenticationConfiguration",
       "description": "\u003cp\u003eConfigurations related to Kafka authentication mechanisms.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "fields": [],
+      "isClosed": false,
+      "name": "AvroGenericRecord",
+      "description": "\u003cp\u003eRepresents a generic Avro record. This is the type of the value returned from an Avro deserializer consumer.\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
@@ -154,7 +138,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "AvroRecord",
       "description": "\u003cp\u003eDefines a record to send data using Avro serialization.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -247,10 +231,10 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
+            "orgName": "ballerinax",
+            "moduleName": "kafka",
+            "name": "OffsetResetMethod",
+            "category": "types",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": true,
@@ -385,7 +369,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "IsolationLevel",
             "category": "types",
@@ -408,7 +392,7 @@
         {
           "defaultValue": "DES_BYTE_ARRAY",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "DeserializerType",
             "category": "types",
@@ -431,7 +415,7 @@
         {
           "defaultValue": "DES_BYTE_ARRAY",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "DeserializerType",
             "category": "types",
@@ -454,10 +438,10 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "Deserializer",
-            "category": "objects",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": true,
@@ -477,10 +461,10 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "Deserializer",
-            "category": "objects",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": true,
@@ -556,8 +540,8 @@
               "arrayDimensions": 0
             }
           },
-          "name": "properties",
-          "description": "\u003cp\u003eAdditional properties for the property fields not provided by Ballerina Kafka module. Use this with\ncaution since this can override any of the fields. It is not recomendded to use this field except\nin an extreme situation\u003c/p\u003e\n",
+          "name": "additionalProperties",
+          "description": "\u003cp\u003eAdditional properties for the property fields not provided by Ballerina Kafka module. Use\nthis with caution since this can override any of the fields. It is not recomendded to use\nthis field except in an extreme situation\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
@@ -1184,7 +1168,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "SecureSocket",
             "category": "records",
@@ -1207,7 +1191,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "AuthenticationConfiguration",
             "category": "records",
@@ -1226,9 +1210,32 @@
           "name": "authenticationConfiguration",
           "description": "\u003cp\u003eAuthentication-related configurations for the Kafka consumer\u003c/p\u003e\n",
           "isDeprecated": false
+        },
+        {
+          "defaultValue": "PROTOCOL_PLAINTEXT",
+          "type": {
+            "orgName": "ballerinax",
+            "moduleName": "kafka",
+            "name": "SecurityProtocol",
+            "category": "types",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "securityProtocol",
+          "description": "\u003cp\u003eType of the security protocol to use in the broker connection\u003c/p\u003e\n",
+          "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ConsumerConfiguration",
       "description": "\u003cp\u003eConfigurations related to consumer endpoint.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1374,7 +1381,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ConsumerRecord",
       "description": "\u003cp\u003eType related to consumer record.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1474,7 +1481,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "KeyStore",
       "description": "\u003cp\u003eConfigurations related to the KeyStore.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1484,7 +1491,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "TopicPartition",
             "category": "records",
@@ -1528,7 +1535,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "PartitionOffset",
       "description": "\u003cp\u003eRepresents the topic partition position in which the consumed record is stored.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1561,7 +1568,7 @@
         {
           "defaultValue": "ACKS_SINGLE",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "ProducerAcks",
             "category": "types",
@@ -1584,7 +1591,7 @@
         {
           "defaultValue": "COMPRESSION_NONE",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "CompressionType",
             "category": "types",
@@ -1745,7 +1752,7 @@
         {
           "defaultValue": "SER_BYTE_ARRAY",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "SerializerType",
             "category": "types",
@@ -1768,7 +1775,7 @@
         {
           "defaultValue": "SER_BYTE_ARRAY",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "SerializerType",
             "category": "types",
@@ -1791,10 +1798,10 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "Serializer",
-            "category": "objects",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": true,
@@ -1814,10 +1821,10 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "Serializer",
-            "category": "objects",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": true,
@@ -1893,8 +1900,8 @@
               "arrayDimensions": 0
             }
           },
-          "name": "properties",
-          "description": "\u003cp\u003eAdditional properties for the property fields not provided by Ballerina Kafka module. Use this with\ncaution since this can override any of the fields. It is not recomendded to use this field except\nin an extreme situation\u003c/p\u003e\n",
+          "name": "additionalProperties",
+          "description": "\u003cp\u003eAdditional properties for the property fields not provided by Ballerina Kafka module. Use\nthis with caution since this can override any of the fields. It is not recomendded to use\nthis field except in an extreme situation\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
@@ -1985,8 +1992,8 @@
             "paramTypes": [],
             "arrayDimensions": 0
           },
-          "name": "linger",
-          "description": "\u003cp\u003eDelay to allow other records to be batched\u003c/p\u003e\n",
+          "name": "lingerInMillis",
+          "description": "\u003cp\u003eDelay to allow other records to be batched before sending them to the Kafka server\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
@@ -2146,7 +2153,7 @@
             "paramTypes": [],
             "arrayDimensions": 0
           },
-          "name": "maxBlock",
+          "name": "maxBlockInMillis",
           "description": "\u003cp\u003eMaximum block time during which the sending is blocked when the buffer is full\u003c/p\u003e\n",
           "isDeprecated": false
         },
@@ -2337,7 +2344,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "SecureSocket",
             "category": "records",
@@ -2360,7 +2367,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "AuthenticationConfiguration",
             "category": "records",
@@ -2379,22 +2386,14 @@
           "name": "authenticationConfiguration",
           "description": "\u003cp\u003eAuthentication-related configurations for the Kafka producer\u003c/p\u003e\n",
           "isDeprecated": false
-        }
-      ],
-      "isAnonymous": false,
-      "name": "ProducerConfiguration",
-      "description": "\u003cp\u003eRepresents the Kafka Producer configuration.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
-      "fields": [
+        },
         {
-          "defaultValue": "",
+          "defaultValue": "PROTOCOL_PLAINTEXT",
           "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
+            "orgName": "ballerinax",
+            "moduleName": "kafka",
+            "name": "SecurityProtocol",
+            "category": "types",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -2408,9 +2407,17 @@
             "arrayDimensions": 0
           },
           "name": "securityProtocol",
-          "description": "\u003cp\u003eThe protocol used to communicate with brokers.\u003c/p\u003e\n",
+          "description": "\u003cp\u003eType of the security protocol to use in the broker connection\u003c/p\u003e\n",
           "isDeprecated": false
-        },
+        }
+      ],
+      "isClosed": true,
+      "name": "ProducerConfiguration",
+      "description": "\u003cp\u003eRepresents the Kafka Producer configuration.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "fields": [
         {
           "defaultValue": "",
           "type": {
@@ -2458,7 +2465,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Protocols",
       "description": "\u003cp\u003eConfigurations related to the SSL/TLS protocol and the versions to be used.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -2468,7 +2475,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "KeyStore",
             "category": "records",
@@ -2491,7 +2498,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "TrustStore",
             "category": "records",
@@ -2514,7 +2521,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "Protocols",
             "category": "records",
@@ -2650,7 +2657,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "SecureSocket",
       "description": "\u003cp\u003eConfigurations for facilitating secure communication with the Kafka server.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -2704,7 +2711,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "TopicPartition",
       "description": "\u003cp\u003eRepresents a topic partition.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -2804,26 +2811,29 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "TrustStore",
       "description": "\u003cp\u003eConfigurations related to the TrustStore.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [],
+  "abstractObjects": [
     {
       "fields": [],
       "methods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [],
           "name": "close",
-          "description": "",
+          "description": "\u003cp\u003eCloses the deserialization process. This function runs after the deserialization process is done.\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -2861,7 +2871,7 @@
                 }
               },
               "name": "data",
-              "description": "",
+              "description": "\u003cp\u003eData, which should be deserialized\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
@@ -2885,97 +2895,15 @@
                 "arrayDimensions": 0
               },
               "name": "",
-              "description": "",
+              "description": "\u003cp\u003eThe deserialized value\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
           "name": "deserialize",
-          "description": "",
+          "description": "\u003cp\u003eDeserializes the provided data. Implement this to deserialize a \u003ccode\u003ebyte[]\u003c/code\u003e and return any data type.\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "otherMethods": [
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [],
-          "name": "close",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "category": "UNKNOWN",
-                "isAnonymousUnionType": false,
-                "isArrayType": true,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 1,
-                "elementType": {
-                  "orgName": "ballerina",
-                  "moduleName": "lang.annotations",
-                  "name": "byte",
-                  "category": "builtin",
-                  "isAnonymousUnionType": false,
-                  "isArrayType": false,
-                  "isNullable": false,
-                  "isTuple": false,
-                  "isRestParam": false,
-                  "isLambda": false,
-                  "isDeprecated": false,
-                  "generateUserDefinedTypeLink": true,
-                  "memberTypes": [],
-                  "paramTypes": [],
-                  "arrayDimensions": 0
-                }
-              },
-              "name": "data",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "any",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "deserialize",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": false,
       "name": "Deserializer",
       "description": "\u003cp\u003eRepresents a Kafka deserializer object. This object can be used to create custom deserializers for Ballerina Kafka\nconsumers.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -2984,15 +2912,17 @@
       "fields": [],
       "methods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [],
           "name": "close",
-          "description": "",
+          "description": "\u003cp\u003eCloses the serialization process. This function runs after the serialization process is done.\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -3016,7 +2946,7 @@
                 "arrayDimensions": 0
               },
               "name": "data",
-              "description": "",
+              "description": "\u003cp\u003eData, which should be serialized\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
@@ -3054,97 +2984,15 @@
                 }
               },
               "name": "",
-              "description": "",
+              "description": "\u003cp\u003eSerialized \u003ccode\u003ebyte[]\u003c/code\u003e value\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
           "name": "serialize",
-          "description": "",
+          "description": "\u003cp\u003eSerializes the provided data. Implement this to serialize any data type and return the \u003ccode\u003ebyte[]\u003c/code\u003e value to use in\nthe Kafka producer.\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "otherMethods": [
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [],
-          "name": "close",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "any",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "data",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "category": "UNKNOWN",
-                "isAnonymousUnionType": false,
-                "isArrayType": true,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 1,
-                "elementType": {
-                  "orgName": "ballerina",
-                  "moduleName": "lang.annotations",
-                  "name": "byte",
-                  "category": "builtin",
-                  "isAnonymousUnionType": false,
-                  "isArrayType": false,
-                  "isNullable": false,
-                  "isTuple": false,
-                  "isRestParam": false,
-                  "isLambda": false,
-                  "isDeprecated": false,
-                  "generateUserDefinedTypeLink": true,
-                  "memberTypes": [],
-                  "paramTypes": [],
-                  "arrayDimensions": 0
-                }
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "serialize",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": false,
       "name": "Serializer",
       "description": "\u003cp\u003eRepresents a Kafka serializer object. This object can be used to create custom serializers for the Ballerina Kafka\nproducers.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -3154,6 +3002,7 @@
     {
       "remoteMethods": [
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3173,7 +3022,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -3198,7 +3047,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -3224,6 +3073,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3254,7 +3104,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -3280,13 +3130,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -3312,6 +3163,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3331,7 +3183,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "PartitionOffset",
                   "category": "records",
@@ -3379,7 +3231,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -3405,13 +3257,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -3437,13 +3290,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -3469,7 +3323,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -3487,7 +3341,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -3517,6 +3371,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3547,7 +3402,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -3591,7 +3446,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -3621,6 +3476,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3640,7 +3496,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -3688,7 +3544,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -3714,7 +3570,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "PartitionOffset",
                       "category": "records",
@@ -3732,7 +3588,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -3762,13 +3618,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "TopicPartition",
                 "category": "records",
@@ -3815,7 +3672,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -3828,7 +3685,7 @@
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "PartitionOffset",
                     "category": "records",
@@ -3845,13 +3702,13 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
-                    "isNullable": false,
+                    "isNullable": true,
                     "isTuple": false,
                     "isRestParam": false,
                     "isLambda": false,
@@ -3866,7 +3723,7 @@
                 "arrayDimensions": 0
               },
               "name": "",
-              "description": "\u003cp\u003eCommitted offset for the consumer for the given partition if executes successfully or else\n\u003ccode\u003ekafka:ConsumerError\u003c/code\u003e\u003c/p\u003e\n",
+              "description": "\u003cp\u003eThe last committed offset for the consumer for the given partition if there is a committed offset\npresent, \u003ccode\u003e()\u003c/code\u003e if there are no committed offsets or else a \u003ccode\u003ekafka:ConsumerError\u003c/code\u003e\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
@@ -3875,6 +3732,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3894,7 +3752,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -3942,7 +3800,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -3968,7 +3826,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "PartitionOffset",
                       "category": "records",
@@ -3986,7 +3844,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -4016,13 +3874,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -4048,7 +3907,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -4066,7 +3925,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -4096,13 +3955,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "TopicPartition",
                 "category": "records",
@@ -4149,7 +4009,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -4179,7 +4039,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -4209,13 +4069,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -4259,7 +4120,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -4289,6 +4150,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4342,7 +4204,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -4368,7 +4230,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -4386,7 +4248,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -4416,6 +4278,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4435,7 +4298,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -4460,7 +4323,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -4486,6 +4349,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4516,7 +4380,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -4542,7 +4406,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "ConsumerRecord",
                       "category": "records",
@@ -4560,7 +4424,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -4590,6 +4454,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4609,7 +4474,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -4634,7 +4499,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -4660,13 +4525,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "PartitionOffset",
                 "category": "records",
@@ -4690,7 +4556,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -4716,6 +4582,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4735,7 +4602,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -4760,7 +4627,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -4786,6 +4653,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4805,7 +4673,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -4830,7 +4698,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -4856,6 +4724,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4900,7 +4769,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -4926,6 +4795,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4956,7 +4826,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -4982,6 +4852,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -5036,7 +4907,7 @@
                 "memberTypes": [],
                 "paramTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "Consumer",
                     "category": "clients",
@@ -5066,7 +4937,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -5121,7 +4992,7 @@
                 "memberTypes": [],
                 "paramTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "Consumer",
                     "category": "clients",
@@ -5151,7 +5022,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -5196,7 +5067,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -5222,13 +5093,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -5258,7 +5130,7 @@
         {
           "defaultValue": "",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "ConsumerConfiguration",
             "category": "records",
@@ -5281,39 +5153,7 @@
       ],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "kafka",
-                "name": "ConsumerConfiguration",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "config",
-              "description": "\u003cp\u003eConfigurations related to consumer endpoint\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eCreates a new Kafka \u003ccode\u003eConsumer\u003c/code\u003e.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -5346,6 +5186,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -5378,6 +5219,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -5410,6 +5252,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -5437,7 +5280,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -5489,6 +5332,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -5545,6 +5389,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -5564,7 +5409,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -5589,7 +5434,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -5615,6 +5460,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -5645,7 +5491,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -5671,13 +5517,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -5703,6 +5550,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -5722,7 +5570,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "PartitionOffset",
                   "category": "records",
@@ -5770,7 +5618,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -5796,13 +5644,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -5828,13 +5677,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -5860,7 +5710,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -5878,7 +5728,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -5908,6 +5758,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -5938,7 +5789,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -5982,7 +5833,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -6012,6 +5863,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -6031,7 +5883,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -6079,7 +5931,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -6105,7 +5957,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "PartitionOffset",
                       "category": "records",
@@ -6123,7 +5975,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -6153,13 +6005,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "TopicPartition",
                 "category": "records",
@@ -6206,7 +6059,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -6219,7 +6072,7 @@
                 "generateUserDefinedTypeLink": true,
                 "memberTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "PartitionOffset",
                     "category": "records",
@@ -6236,13 +6089,13 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
                     "isAnonymousUnionType": false,
                     "isArrayType": false,
-                    "isNullable": false,
+                    "isNullable": true,
                     "isTuple": false,
                     "isRestParam": false,
                     "isLambda": false,
@@ -6257,7 +6110,7 @@
                 "arrayDimensions": 0
               },
               "name": "",
-              "description": "\u003cp\u003eCommitted offset for the consumer for the given partition if executes successfully or else\n\u003ccode\u003ekafka:ConsumerError\u003c/code\u003e\u003c/p\u003e\n",
+              "description": "\u003cp\u003eThe last committed offset for the consumer for the given partition if there is a committed offset\npresent, \u003ccode\u003e()\u003c/code\u003e if there are no committed offsets or else a \u003ccode\u003ekafka:ConsumerError\u003c/code\u003e\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
@@ -6266,6 +6119,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -6285,7 +6139,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -6333,7 +6187,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -6359,7 +6213,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "PartitionOffset",
                       "category": "records",
@@ -6377,7 +6231,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -6407,13 +6261,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -6439,7 +6294,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -6457,7 +6312,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -6487,13 +6342,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "TopicPartition",
                 "category": "records",
@@ -6540,7 +6396,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -6570,7 +6426,7 @@
                     "arrayDimensions": 0
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -6600,13 +6456,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -6650,7 +6507,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -6680,6 +6537,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -6733,7 +6591,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -6759,7 +6617,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -6777,7 +6635,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -6807,6 +6665,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -6826,7 +6685,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -6851,7 +6710,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -6877,6 +6736,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -6907,7 +6767,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -6933,7 +6793,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "ConsumerRecord",
                       "category": "records",
@@ -6951,7 +6811,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ConsumerError",
                     "category": "errors",
@@ -6981,6 +6841,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -7000,7 +6861,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -7025,7 +6886,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -7051,13 +6912,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "PartitionOffset",
                 "category": "records",
@@ -7081,7 +6943,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -7107,6 +6969,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -7126,7 +6989,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -7151,7 +7014,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -7177,6 +7040,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -7196,7 +7060,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "TopicPartition",
                   "category": "records",
@@ -7221,7 +7085,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -7247,6 +7111,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -7291,7 +7156,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -7317,6 +7182,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -7347,7 +7213,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -7373,6 +7239,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -7427,7 +7294,7 @@
                 "memberTypes": [],
                 "paramTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "Consumer",
                     "category": "clients",
@@ -7457,7 +7324,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -7512,7 +7379,7 @@
                 "memberTypes": [],
                 "paramTypes": [
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "Consumer",
                     "category": "clients",
@@ -7542,7 +7409,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -7587,7 +7454,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -7613,13 +7480,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ConsumerError",
                 "category": "errors",
@@ -7645,41 +7513,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "kafka",
-              "name": "ConsumerConfiguration",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "config",
-            "description": "\u003cp\u003eConfigurations related to consumer endpoint\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eCreates a new Kafka \u003ccode\u003eConsumer\u003c/code\u003e.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -7712,6 +7548,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -7744,6 +7581,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -7776,6 +7614,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -7803,7 +7642,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -7855,6 +7694,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -7911,7 +7751,6 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Consumer",
       "description": "\u003cp\u003eRepresents a Kafka consumer endpoint.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -7919,13 +7758,14 @@
     {
       "remoteMethods": [
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -7951,13 +7791,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "Consumer",
                 "category": "clients",
@@ -7981,7 +7822,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -8007,6 +7848,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -8026,7 +7868,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "PartitionOffset",
                   "category": "records",
@@ -8074,7 +7916,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -8100,13 +7942,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -8132,6 +7975,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -8162,7 +8006,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -8188,7 +8032,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -8206,7 +8050,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ProducerError",
                     "category": "errors",
@@ -8236,6 +8080,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -8286,7 +8131,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003canydata?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -8309,7 +8154,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -8332,7 +8177,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -8358,7 +8203,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -8388,7 +8233,7 @@
         {
           "defaultValue": "()",
           "type": {
-            "orgName": "ballerina",
+            "orgName": "ballerinax",
             "moduleName": "kafka",
             "name": "ProducerConfiguration",
             "category": "records",
@@ -8428,52 +8273,20 @@
             "arrayDimensions": 0
           },
           "name": "connectorId",
-          "description": "\u003cp\u003eUnique ID for a particular connector\u003c/p\u003e\n",
+          "description": "\u003cp\u003eUnique ID for a particular connector to use in trasactions\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "kafka",
-                "name": "ProducerConfiguration",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "config",
-              "description": "\u003cp\u003eConfigurations related to initializing a Kafka \u003ccode\u003eProducer\u003c/code\u003e\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eCreates a new Kafka \u003ccode\u003eProducer\u003c/code\u003e.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -8499,13 +8312,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
             {
               "defaultValue": "",
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "Consumer",
                 "category": "clients",
@@ -8529,7 +8343,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -8555,6 +8369,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -8574,7 +8389,7 @@
                 "paramTypes": [],
                 "arrayDimensions": 1,
                 "elementType": {
-                  "orgName": "ballerina",
+                  "orgName": "ballerinax",
                   "moduleName": "kafka",
                   "name": "PartitionOffset",
                   "category": "records",
@@ -8622,7 +8437,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -8648,13 +8463,14 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -8680,6 +8496,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -8710,7 +8527,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "category": "types",
                 "isAnonymousUnionType": true,
@@ -8736,7 +8553,7 @@
                     "paramTypes": [],
                     "arrayDimensions": 1,
                     "elementType": {
-                      "orgName": "ballerina",
+                      "orgName": "ballerinax",
                       "moduleName": "kafka",
                       "name": "TopicPartition",
                       "category": "records",
@@ -8754,7 +8571,7 @@
                     }
                   },
                   {
-                    "orgName": "ballerina",
+                    "orgName": "ballerinax",
                     "moduleName": "kafka",
                     "name": "ProducerError",
                     "category": "errors",
@@ -8784,6 +8601,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -8834,7 +8652,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003canydata?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -8857,7 +8675,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -8880,7 +8698,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cint?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -8906,7 +8724,7 @@
           "returnParameters": [
             {
               "type": {
-                "orgName": "ballerina",
+                "orgName": "ballerinax",
                 "moduleName": "kafka",
                 "name": "ProducerError",
                 "category": "errors",
@@ -8932,41 +8750,7 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "kafka",
-              "name": "ProducerConfiguration",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "config",
-            "description": "\u003cp\u003eConfigurations related to initializing a Kafka \u003ccode\u003eProducer\u003c/code\u003e\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eCreates a new Kafka \u003ccode\u003eProducer\u003c/code\u003e.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [],
-      "isAnonymous": false,
       "name": "Producer",
       "description": "\u003cp\u003eRepresents a Kafka producer endpoint.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -9157,6 +8941,75 @@
       "value": "read_uncommitted",
       "name": "ISOLATION_UNCOMMITTED",
       "description": "\u003cp\u003eConfigures the consumer to read all the messages including the aborted ones.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "lang.annotations",
+        "name": "string",
+        "category": "builtin",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "value": "earliest",
+      "name": "OFFSET_RESET_EARLIEST",
+      "description": "\u003cp\u003eAutomatically reset the consumer offset to the earliest offset\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "lang.annotations",
+        "name": "string",
+        "category": "builtin",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "value": "latest",
+      "name": "OFFSET_RESET_LATEST",
+      "description": "\u003cp\u003eAutomatically reset the consumer offset to the latest offset\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "lang.annotations",
+        "name": "string",
+        "category": "builtin",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "value": "none",
+      "name": "OFFSET_RESET_NONE",
+      "description": "\u003cp\u003eIf the \u003ccode\u003eoffsetReset\u003c/code\u003e is set to \u003ccode\u003eOFFSET_RESET_NONE\u003c/code\u003e, the consumer will give an error if no previous offset is found\nfor the consumer group\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
@@ -9522,9 +9375,32 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
+      "value": "PLAINTEXT",
+      "name": "PROTOCOL_PLAINTEXT",
+      "description": "\u003cp\u003eRepresents Kafka un-authenticated, non-encrypted channel\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "lang.annotations",
+        "name": "string",
+        "category": "builtin",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
       "value": "SASL_PLAINTEXT",
       "name": "PROTOCOL_SASL_PLAINTEXT",
-      "description": "",
+      "description": "\u003cp\u003eRepresents Kafka authenticated, non-encrypted channel\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
@@ -9547,7 +9423,30 @@
       },
       "value": "SASL_SSL",
       "name": "PROTOCOL_SASL_SSL",
-      "description": "",
+      "description": "\u003cp\u003eRepresents Kafka SASL authenticated, SSL channel\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "type": {
+        "orgName": "ballerina",
+        "moduleName": "lang.annotations",
+        "name": "string",
+        "category": "builtin",
+        "isAnonymousUnionType": false,
+        "isArrayType": false,
+        "isNullable": false,
+        "isTuple": false,
+        "isRestParam": false,
+        "isLambda": false,
+        "isDeprecated": false,
+        "generateUserDefinedTypeLink": true,
+        "memberTypes": [],
+        "paramTypes": [],
+        "arrayDimensions": 0
+      },
+      "value": "SSL",
+      "name": "PROTOCOL_SSL",
+      "description": "\u003cp\u003eRepresents Kafka SSL channel\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
@@ -9584,7 +9483,7 @@
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "AUTH_SASL_PLAIN",
           "category": "constants",
@@ -9617,7 +9516,7 @@
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "COMPRESSION_NONE",
           "category": "constants",
@@ -9634,7 +9533,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "COMPRESSION_GZIP",
           "category": "constants",
@@ -9651,7 +9550,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "COMPRESSION_SNAPPY",
           "category": "constants",
@@ -9668,7 +9567,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "COMPRESSION_LZ4",
           "category": "constants",
@@ -9685,7 +9584,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "COMPRESSION_ZSTD",
           "category": "constants",
@@ -9718,7 +9617,7 @@
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "DES_BYTE_ARRAY",
           "category": "constants",
@@ -9735,7 +9634,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "DES_STRING",
           "category": "constants",
@@ -9752,7 +9651,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "DES_INT",
           "category": "constants",
@@ -9769,7 +9668,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "DES_FLOAT",
           "category": "constants",
@@ -9786,7 +9685,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "DES_AVRO",
           "category": "constants",
@@ -9803,7 +9702,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "DES_CUSTOM",
           "category": "constants",
@@ -9836,7 +9735,7 @@
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "ISOLATION_COMMITTED",
           "category": "constants",
@@ -9853,9 +9752,76 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "ISOLATION_UNCOMMITTED",
+          "category": "constants",
+          "isAnonymousUnionType": false,
+          "isArrayType": false,
+          "isNullable": false,
+          "isTuple": false,
+          "isRestParam": false,
+          "isLambda": false,
+          "isDeprecated": false,
+          "generateUserDefinedTypeLink": true,
+          "memberTypes": [],
+          "paramTypes": [],
+          "arrayDimensions": 0
+        }
+      ],
+      "paramTypes": [],
+      "arrayDimensions": 0
+    },
+    {
+      "name": "OffsetResetMethod",
+      "description": "\u003cp\u003eRepresents the differnet types of offset-reset mothods for Kafka consumer\u003c/p\u003e\n",
+      "isAnonymousUnionType": false,
+      "isArrayType": false,
+      "isNullable": false,
+      "isTuple": false,
+      "isRestParam": false,
+      "isLambda": false,
+      "isDeprecated": false,
+      "generateUserDefinedTypeLink": true,
+      "memberTypes": [
+        {
+          "orgName": "ballerinax",
+          "moduleName": "kafka",
+          "name": "OFFSET_RESET_EARLIEST",
+          "category": "constants",
+          "isAnonymousUnionType": false,
+          "isArrayType": false,
+          "isNullable": false,
+          "isTuple": false,
+          "isRestParam": false,
+          "isLambda": false,
+          "isDeprecated": false,
+          "generateUserDefinedTypeLink": true,
+          "memberTypes": [],
+          "paramTypes": [],
+          "arrayDimensions": 0
+        },
+        {
+          "orgName": "ballerinax",
+          "moduleName": "kafka",
+          "name": "OFFSET_RESET_LATEST",
+          "category": "constants",
+          "isAnonymousUnionType": false,
+          "isArrayType": false,
+          "isNullable": false,
+          "isTuple": false,
+          "isRestParam": false,
+          "isLambda": false,
+          "isDeprecated": false,
+          "generateUserDefinedTypeLink": true,
+          "memberTypes": [],
+          "paramTypes": [],
+          "arrayDimensions": 0
+        },
+        {
+          "orgName": "ballerinax",
+          "moduleName": "kafka",
+          "name": "OFFSET_RESET_NONE",
           "category": "constants",
           "isAnonymousUnionType": false,
           "isArrayType": false,
@@ -9886,7 +9852,7 @@
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "ACKS_ALL",
           "category": "constants",
@@ -9903,7 +9869,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "ACKS_NONE",
           "category": "constants",
@@ -9920,7 +9886,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "ACKS_SINGLE",
           "category": "constants",
@@ -9953,7 +9919,24 @@
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
+          "moduleName": "kafka",
+          "name": "PROTOCOL_PLAINTEXT",
+          "category": "constants",
+          "isAnonymousUnionType": false,
+          "isArrayType": false,
+          "isNullable": false,
+          "isTuple": false,
+          "isRestParam": false,
+          "isLambda": false,
+          "isDeprecated": false,
+          "generateUserDefinedTypeLink": true,
+          "memberTypes": [],
+          "paramTypes": [],
+          "arrayDimensions": 0
+        },
+        {
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "PROTOCOL_SASL_PLAINTEXT",
           "category": "constants",
@@ -9970,9 +9953,26 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "PROTOCOL_SASL_SSL",
+          "category": "constants",
+          "isAnonymousUnionType": false,
+          "isArrayType": false,
+          "isNullable": false,
+          "isTuple": false,
+          "isRestParam": false,
+          "isLambda": false,
+          "isDeprecated": false,
+          "generateUserDefinedTypeLink": true,
+          "memberTypes": [],
+          "paramTypes": [],
+          "arrayDimensions": 0
+        },
+        {
+          "orgName": "ballerinax",
+          "moduleName": "kafka",
+          "name": "PROTOCOL_SSL",
           "category": "constants",
           "isAnonymousUnionType": false,
           "isArrayType": false,
@@ -10003,7 +10003,7 @@
       "generateUserDefinedTypeLink": true,
       "memberTypes": [
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "SER_BYTE_ARRAY",
           "category": "constants",
@@ -10020,7 +10020,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "SER_STRING",
           "category": "constants",
@@ -10037,7 +10037,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "SER_INT",
           "category": "constants",
@@ -10054,7 +10054,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "SER_FLOAT",
           "category": "constants",
@@ -10071,7 +10071,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "SER_AVRO",
           "category": "constants",
@@ -10088,7 +10088,7 @@
           "arrayDimensions": 0
         },
         {
-          "orgName": "ballerina",
+          "orgName": "ballerinax",
           "moduleName": "kafka",
           "name": "SER_CUSTOM",
           "category": "constants",

@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module offers an annotation based Kubernetes extension implementation for Ballerina.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [],
   "records": [
     {
@@ -327,5 +327,6 @@
       "description": "\u003cp\u003e@kubernetes:Service annotation to configure service yaml.\u003c/p\u003e",
       "moduleId": "kubernetes"
     }
-  ]
+  ],
+  "abstractObjects": []
 }

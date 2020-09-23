@@ -110,11 +110,10 @@
     <ul>
         
         
-            
-                <li>
-                    <a  data="objects" href="../system/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../system/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -179,9 +178,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Executes an operating system command as a subprocess of the current process.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Executes an operating system command as a subprocess of the current process.</p>   
                             </div>
                         </td>
                     </tr>
@@ -191,9 +191,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the environment variable value associated with the provided name.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the environment variable value associated with the provided name.</p>   
                             </div>
                         </td>
                     </tr>
@@ -203,9 +204,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the current user's home directory path.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the current user's home directory path.</p>   
                             </div>
                         </td>
                     </tr>
@@ -215,9 +217,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the current user's name.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the current user's name.</p>   
                             </div>
                         </td>
                     </tr>
@@ -227,9 +230,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns a random UUID string.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns a random UUID string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -249,11 +253,14 @@
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> command, <span class="builtin-type">map</span><<span class="builtin-type">string</span>> env, <span class="builtin-type">string?</span> dir, <span class="array-type"><span class="builtin-type">string</span>...</span> args)</p>
             
-                <b> returns </b><a href="../system/objects/Process.html">Process</a> | <a href="../system/types.html#Error">Error</a> 
+                <b> returns </b><a href="../system/classes/Process.html">Process</a> | <a href="../system/types.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Executes an operating system command as a subprocess of the current process.</p>
 <pre><code class="language-ballerina"> system:Process|system:Error proc = system:exec(&quot;ls&quot;, {}, &quot;/&quot;, &quot;-la&quot;)
@@ -303,7 +310,7 @@
                     <li>
                         <span >dir</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -339,7 +346,7 @@
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../system/objects/Process.html">Process</a> | <a href="../system/types.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../system/classes/Process.html">Process</a> | <a href="../system/types.html#Error">Error</a></span>)</li>
                 <li><p>A <code>system:Process</code> object if successful or else a <code>system:Error</code> if a failure occurs</p>
 </li>
             </ul>
@@ -362,6 +369,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns the environment variable value associated with the provided name.</p>
 <pre><code class="language-ballerina"> string port = system:getEnv(&quot;HTTP_PORT&quot;);
@@ -420,6 +430,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the current user's home directory path.</p>
 <pre><code class="language-ballerina"> string userHome = system:getUserHome();
 </code></pre>
@@ -455,6 +468,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the current user's name.</p>
 <pre><code class="language-ballerina"> string username = system:getUsername();
 </code></pre>
@@ -489,6 +505,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns a random UUID string.</p>
 <pre><code class="language-ballerina"> string providerId = system:uuid();

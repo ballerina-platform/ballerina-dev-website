@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides the functionality required to access and manipulate data stored in a MySQL database.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [],
   "records": [
     {
@@ -57,5 +57,6 @@
     }
   ],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

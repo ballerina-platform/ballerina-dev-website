@@ -93,18 +93,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../grpc/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../grpc/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -116,10 +117,6 @@
                 <a data="listeners" href="../../grpc/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
-        
-            <li>
-                <a data="functions" href="../../grpc/index.html#functions" onclick="menuLinkClick()">Functions</a>
-            </li>
         
         
             <li>
@@ -187,39 +184,6 @@ service through this listener.</p>
     <div class="constants">
         <div class="method-sum">
         
-            
-                <h2>Constructor</h2>
-
-    <p>Gets called when the endpoint is being initialized during the module init time.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<span class="builtin-type">int</span> port, <a href="../../grpc/records/ListenerConfiguration.html">ListenerConfiguration</a>? config)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>port</b><span class="type">  <span class="builtin-type">int</span></span> </li>
-                <li>
-                    <p>Listener port</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../grpc/records/ListenerConfiguration.html">ListenerConfiguration</a>?</span> &lt;ballerina/grpc:0.7.0:ListenerConfiguration?&gt; ()</li>
-                <li>
-                    <p>The <code>grpc:ListenerConfiguration</code> of the endpoint</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-            
-        
 
         
             <h2>Methods</h2>
@@ -244,9 +208,7 @@ service through this listener.</p>
     </div>
     <div class="param-details">
         
-        <p>Stops the registered service.</p>
-
-
+        <p>Stops the registered service.</p>   
     </div>
 </div>
 
@@ -277,9 +239,7 @@ service through this listener.</p>
     </div>
     <div class="param-details">
         
-        <p>Starts the registered service.</p>
-
-
+        <p>Starts the registered service.</p>   
     </div>
 </div>
 
@@ -291,9 +251,7 @@ service through this listener.</p>
     </div>
     <div class="param-details">
         
-        <p>Gets called every time a service attaches itself to this endpoint - also happens at module init time.</p>
-
-
+        <p>Gets called every time a service attaches itself to this endpoint - also happens at module init time.</p>   
     </div>
 </div>
 
@@ -321,6 +279,9 @@ service through this listener.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops the service listener gracefully. Already-accepted requests will be served before the connection closure.</p>
 <pre><code class="language-ballerina"> error? result = listenerEp.__gracefulStop();
@@ -357,6 +318,9 @@ service through this listener.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops the registered service.</p>
 <pre><code class="language-ballerina"> error? result = listenerEp.__immediateStop();
 </code></pre>
@@ -391,6 +355,9 @@ service through this listener.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Detaches an HTTP or WebSocket service from the listener. Note that detaching a WebSocket service would not affect
 the functionality of the existing connections.</p>
@@ -455,6 +422,9 @@ the functionality of the existing connections.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Starts the registered service.</p>
 <pre><code class="language-ballerina"> error? result = listenerEp.__start();
 </code></pre>
@@ -490,6 +460,9 @@ the functionality of the existing connections.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Gets called every time a service attaches itself to this endpoint - also happens at module init time.</p>
 <pre><code class="language-ballerina"> error? result = listenerEp.__attach(helloService);
 </code></pre>
@@ -521,7 +494,7 @@ the functionality of the existing connections.</p>
                     <li>
                         <span >name</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>

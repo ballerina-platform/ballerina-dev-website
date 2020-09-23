@@ -26,7 +26,7 @@ This release is the fourth preview version of Ballerina Swan Lake. This release 
         - [Improved lang library functions](#improved-lang-library-functions)
             - [Improved lang library support for JSON](#improved-lang-library-support-for-json)
             - [Changes to `toString()`](#changes-to-toString-(-)-)
-            - [Improved `lang.array:sort()` function](#improved-lang.array:sort-(-)-function)
+            - [Improved `lang.array:sort()` function](#improved-lang\.array\:sort-function)
     - [Runtime](#runtime)
         - [jBallerina Runtime APIs](#jballerina-runtime-apis)
         - [Asynchronous Java interoperability](#asynchronous-java-interoperability)
@@ -71,7 +71,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 #### Language
 
-The language implementation is based on the [Ballerina Language Specifications Draft 2020-09-22](https://ballerina.io/spec/lang/draft/v2020-09-22/) and the new [Transaction Proposal](https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/transaction/transaction.md).
+The language implementation is based on the [Ballerina Language Specifications Draft 2020-09-22](https://ballerina.io/spec/lang/draft/v2020-09-22/) and the new [Transactions proposal](https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/transaction/transaction.md).
 
 ##### Class definitions
 
@@ -463,8 +463,8 @@ $  ballerina openapi -i <contract>  -o <output path>
 - If you are interested in creating a service with resources having a specific tag or an `operationId`, you can do the following.
 
     ```bash
-      	 $  ballerina openapi -i <contract> --tags <tags> -o <output Path>
-	     $  ballerina openapi -i <contract> --operations <operationIds> -o <output Path>
+      	$  ballerina openapi -i <contract> --tags <tags> -o <output Path>
+	    $  ballerina openapi -i <contract> --operations <operationIds> -o <output Path>
 	```
 
 ###### Ballerina to OpenAPI
@@ -473,7 +473,8 @@ $  ballerina openapi -i <contract>  -o <output path>
      $  ballerina openapi -i <ballerina service file>   -o <output path> 
 ```
 
-The Service name is not mandatory and you can give the service name if you want to document a specific service. Otherwise, it will generate all the services that are included in the Ballerina source file.
+The service name is not mandatory and you can give the service name if you want to document a specific service. Otherwise, it will generate all the services that are included in the Ballerina source file.
+
 
     ```bash
       $  ballerina openapi -i <ballerina service file>  --service <service Name> -o <output path>

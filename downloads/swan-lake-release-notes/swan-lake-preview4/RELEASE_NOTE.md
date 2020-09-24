@@ -53,7 +53,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 ### Highlights
 
 - Revised Ballerina object syntax, which differentiates the object type from the `class`, from which you can create object values. 
-- Introducing `isolated` functions to achieve concurrency safety together with read-only values.  
+- Introducing `isolated` functions to achieve concurrency safety together with `readonly` values.  
 - Introducing `distinct` object types offering the functionality similar to what is  provided in nominal type systems.
 - Improvements to quoted identifiers to support arbitrary, non-empty strings as Ballerina identifiers.
 
@@ -205,7 +205,7 @@ class Controller {
 
 ##### Isolated functions
 
-A function that accesses mutable values only via its parameters can now be marked as an isolated function. Concurrency safety can be guaranteed when `isolated` functions are used with immutable values or by controlling the arguments passed to the `isolated` function.
+A function that accesses mutable values only via its parameters can now be marked as an `isolated` function. Concurrency safety can be guaranteed when `isolated` functions are used with immutable values or by controlling the arguments passed to the `isolated` function.
 
 ```ballerina
 isolated function addSum(int[] arr, int i, int j) {
@@ -214,7 +214,7 @@ isolated function addSum(int[] arr, int i, int j) {
 ```
 
 A function can be marked as `isolated` if it
-- accesses the global state only if it is immutable (i.e., variables that are implicitly or explicitly `final` and the type is a subtype of `read-only` (immutable values)) 
+- accesses the global state only if it is immutable (i.e., variables that are implicitly or explicitly `final` and the type is a subtype of `readonly` (immutable values)) 
 - calls a function or a method only if that function or method is `isolated`
 - does not start new workers
 
@@ -273,7 +273,7 @@ function addLength(string key, string|string[] value) {
 }
 ```
 
-##### Support to handle errors at a single point (the `on fail` clause) 
+##### Handle errors at a single place with the `on fail` clause 
 
 Ballerina supports handling errors at a single place using the `on fail` clause. The `on fail` clause can be used optionally with statements such as `while`, `foreach`, `do`, `transaction`, `retry`, `lock`, and `match`. 
 
@@ -292,9 +292,9 @@ Ballerina supports handling errors at a single place using the `on fail` clause.
 
 ```
 
-##### Fail statement
+##### `fail` statement
 
-Executing a `fail` Statement will cause the control flow to transfer to the `on fail` clause of the nearest lexically-enclosing statement that has an `on fail`clause. If there is no `on fail` clause, then it breaks the current execution and returns an error.
+Executing a `fail` Statement will cause the control flow to transfer to the `on fail` clause of the nearest lexically-enclosing statement that has an `on fail` clause. If there is no `on fail` clause, then it breaks the current execution and returns an error.
 
 ```ballerina
     do {

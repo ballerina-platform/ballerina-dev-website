@@ -11,7 +11,7 @@ redirect_from:
   - /swan-lake/learn/using-the-cli-tools
 ---
 
- Using the CLI Tools
+# Using the CLI Tools
 
 The `ballerina` command is your one-stop-shop for all the things you do in Ballerina. You can use it in the below format.
 

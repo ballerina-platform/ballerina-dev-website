@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-blank-page
 title:  Stable Release Notes
 permalink: /downloads/release-notes/
 ---

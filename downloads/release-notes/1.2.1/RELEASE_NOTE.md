@@ -1,6 +1,6 @@
 ---
-layout: ballerina-inner-page
-title: Release note
+layout: ballerina-blank-page
+title: Release Note
 ---
 
 ### Overview of jBallerina 1.2.1

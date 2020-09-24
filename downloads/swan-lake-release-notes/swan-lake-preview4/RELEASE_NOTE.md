@@ -379,8 +379,8 @@ The jBallerina runtime APIs were moved to the `org.ballerinalang.jvm.api` packag
 |---------------|--------------------|
 | BValueCreator | Create ballerina value instances.|
 | BErrorCreator | Create ballerina error instances.|
-| BErrorCreator | The entry point from the server connector side to the Ballerina side.  After doing the dispatching and finding the resource, server connectors, you can use this API to invoke the Ballerina engine.|
-| BExecutor     | The external API to be used by the interop users to control the Ballerina runtime behavior.|
+| BExecutor | The entry point from the server connector side to the Ballerina side.  After finding the resource, server connector implementations can use this API to invoke the Ballerina engine.|
+| BRuntime     | The external API to be used by the interop users to control the Ballerina runtime behavior.|
 | BStringUtils  | Common utility methods used for string manipulation.|
 
 ##### Asynchronous Java interoperability 

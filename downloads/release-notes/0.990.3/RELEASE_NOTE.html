@@ -5,7 +5,7 @@
 <ul>
 <li>The record <code>rest-fields</code> descriptor should now be followed by a semi colon.</li>
 </ul>
-<pre><code class="ballerina">type Person record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person record {
     string name;
     string...;
 };
@@ -16,7 +16,7 @@
 <li>Binary integer literals are no longer supported.</li>
 <li>Use of <code>var</code> in the left hand side, with iterable operations ending with <code>map()</code> or <code>filter()</code> operations is disallowed.</li>
 </ul>
-<pre><code class="ballerina">int[] numbers = [-5, -3, 2, 7, 12];
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int[] numbers = [-5, -3, 2, 7, 12];
 
 // The following now results in a compilation error.
 var filtered = numbers.filter(function (int i) returns boolean {

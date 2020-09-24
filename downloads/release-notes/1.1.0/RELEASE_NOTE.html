@@ -77,14 +77,14 @@ ballerina update</p>
 <p>You can find the list of Language and Compiler related fixes in this release from <a href="https://github.com/ballerina-platform/ballerina-lang/issues?page=2&amp;q=is%3Aissue+milestone%3A%22Ballerina+1.1.0%22+is%3Aclosed+label%3AArea%2FLanguage&amp;utf8=%E2%9C%93">here</a>.</p>
 <h3>String Literal</h3>
 <p>The JBallerina 1.0.0 compiler allowed <code>0xA</code> and <code>0xD</code> code points in string literals even though they are invalid in a string literal. Validation has been added to disallow the same in this release.</p>
-<pre><code class="ballerina">// Following is a compile time error.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">// Following is a compile time error.
 string s = &quot;hello
 world&quot;;
 </code></pre>
 
 <h3>Foreach Statement</h3>
 <p>The compiler now validates the if the correct type is specified for record iteration. The following code should produce a compilation error now. </p>
-<pre><code class="ballerina">function testForeachRecord() {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function testForeachRecord() {
     record {| string s; anydata|error...; |} value = {s : &quot;aString&quot;};
     foreach any item in value { // Now gives a compilation error.
       // Some Code
@@ -102,14 +102,14 @@ world&quot;;
 <h3>Function Type and Value</h3>
 <p>Function type descriptors and anonymous functions now support rest parameters.</p>
 <p>Example:</p>
-<pre><code class="ballerina">var foo = function (string b, int... c) returns int {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">var foo = function (string b, int... c) returns int {
         return 5;
     };
 function (string, int...) returns int bar = foo;
 </code></pre>
 
 <p>Additionally, the 1.0.0 compiler accepted arrays in place of functions pointer rest arguments. It has now been fixed to only accept rest arguments.</p>
-<pre><code class="ballerina">function myFuncton(string b, int... c) { }
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function myFuncton(string b, int... c) { }
 
 public function main() {
     function(string, int...) func1 = myFuncton;
@@ -127,7 +127,7 @@ public function main() {
 
 <h3>Object Type</h3>
 <p><a href="https://ballerina.io/spec/lang/2019R3/#section_5.3.2.5">Object Initialization</a> specifies that if at any point in the <code>__init</code> method there are any potentially uninitialized fields, then using the <code>self</code> variable other than to access or modify the value of a field should produce a compile-time error. This validation has been added to the compiler in the 1.1.0 release. The following code should produce a compilation error now.</p>
-<pre><code class="ballerina">type Person object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person object {
     string name;
     int age = 0;
 
@@ -145,7 +145,7 @@ public function main() {
 <p>When the <code>__init</code> method is not present in an object, the 1.0.0 compiler skipped validating the arguments to the <code>new</code> expression. This behavior is corrected with the 1.1.0 release.</p>
 <h3>Iterable Objects</h3>
 <p>This release adds support for <a href="https://ballerina.io/spec/lang/2019R3/#section_5.5.2">Iterable objects</a>. Moreover the result of a range expression has also been updated to be a new object belonging to the abstract object type <code>Iterable&lt;int&gt;</code>.</p>
-<pre><code class="ballerina">import ballerina/io;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/io;
 
 type IterableObject object {
     function __iterator() returns IntIterator {
@@ -171,7 +171,7 @@ public function main() {
 <h3>Worker Actions</h3>
 <p>The 2019R3 specification defines that in a <a href="https://ballerina.io/spec/lang/2019R3/#section_7.8.2.1">single receive action</a> if the sending worker terminated with failure, the evaluation of the single receive completes normally with the result being the termination value of the sending worker, which will be an error. This validation was not enforced for the sync send action, but has been added with this release.</p>
 <p>The following results in a compilation error now.</p>
-<pre><code class="ballerina">function WorkerInteraction () {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function WorkerInteraction () {
     worker w1 returns error? {
         int i = 10;
         if (true) {
@@ -189,7 +189,7 @@ public function main() {
 <h3>Documentation String</h3>
 <p><a href="https://ballerina.io/spec/lang/2019R3/#section_9.3">Ballerina Flavored Markdown</a> syntax provides conventions for referring Ballerina-defined names from within the documentation string in a source file. This support has been added in JBallerina 1.1.0.</p>
 <p>Example:</p>
-<pre><code class="ballerina">    # Adds parameter `x` and parameter `z`
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">    # Adds parameter `x` and parameter `z`
     # + x - one thing to be added
     # + y - another thing to be added
     # + return - the sum of them

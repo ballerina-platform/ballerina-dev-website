@@ -42,7 +42,7 @@
 <p>The <code>self</code> keyword has been mandated to access object members within the object definition. The following code will not compile with this Ballerina version.</p>
 </li>
 </ul>
-<pre><code class="ballerina">type Person object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person object {
     private string name;
     function getName () returns string {
         return name;
@@ -52,7 +52,7 @@
 </code></pre>
 
 <p>Now you need to use <code>self</code> when referring to object members as follows. </p>
-<pre><code class="ballerina">type Person object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person object {
     private string name;
     function getName () returns string {
     return self.name;
@@ -62,7 +62,7 @@
 </code></pre>
 
 <p>Object constructor syntax has been changed from this release onwards. Here is the old syntax.  </p>
-<pre><code class="ballerina">type Person object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person object {
     private string name;
     new (name) {
     }
@@ -71,7 +71,7 @@
 </code></pre>
 
 <p>Here is the new syntax. With this change, we have removed the special signature in the constructor that existed in the previous release. </p>
-<pre><code class="ballerina">type Person object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person object {
      private string name;
      function __init (string name) {
           self.name = name;
@@ -91,19 +91,19 @@
 <p>Endpoints and services are the key abstractions in Ballerina that bring network programming to a higher level of abstraction when compared to traditional languages. There are two kinds of endpoints: listener endpoints and client endpoints.  We have changed the listener (inbound) endpoint variable definition syntax. Here is the old syntax.</p>
 </li>
 </ul>
-<pre><code class="ballerina">endpoint http:Listener httpEp {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">endpoint http:Listener httpEp {
     port: 9095
 };
 
 </code></pre>
 
 <p>Now listener endpoints are Ballerina objects that implement the abstract listener object. Therefore, you can create a new instance of a module-level listener endpoint as follows. For more information, refer to endpoints and services section.</p>
-<pre><code class="ballerina">listener http:Listener httpEp = new (9095);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">listener http:Listener httpEp = new (9095);
 
 </code></pre>
 
 <p>The service and resource definition syntax has been changed. Here is the old syntax.</p>
-<pre><code class="ballerina">service hello bind httpEp {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">service hello bind httpEp {
     hi (endpoint caller, http:Request req) {
         _ = caller-&gt;respond(&quot;Hello, World!&quot;);
     }
@@ -112,7 +112,7 @@
 </code></pre>
 
 <p>Now services are first-class values and are like singleton objects. Resource definition has been modified slightly. Now a resource definition looks like a function definition with the resource qualifier. For more information, refer to standard library syntax section.</p>
-<pre><code class="ballerina">service hello on httpEp {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">service hello on httpEp {
     resource function hi (http:Caller caller, http:Request req) {
         _ = caller-&gt;respond(&quot;Hello, World!&quot;);
     }
@@ -146,7 +146,7 @@
 <p>The <code>foreach</code> statement has been changed in a consistent way to match with type binding patterns. Here is the old syntax.</p>
 </li>
 </ul>
-<pre><code class="ballerina">map&lt;Student&gt; class = { ... }
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">map&lt;Student&gt; class = { ... }
 foreach name, std in class {
     string msg = name + &quot; details: &quot;;
     io:println(msg, std);
@@ -155,7 +155,7 @@ foreach name, std in class {
 </code></pre>
 
 <p>Now the <code>foreach</code> statement allows the value to be destructured, while iterating over a sequence. Here is an example.</p>
-<pre><code class="ballerina">foreach (string, Student)  (name, std) in class {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">foreach (string, Student)  (name, std) in class {
     string msg = name + &quot; details: &quot;;
     io:println(msg, std);
 }
@@ -195,7 +195,7 @@ foreach name, std in class {
 <p>Performs a deep copy of a pure value. It is a no-op operation on simple values and error values. This operation is guaranteed to succeed on pure values and preserves cycles, inherent type, and immutability of values.</p>
 <h3>Record type referencing</h3>
 <p>Record type referencing is a mechanism for copying the fields from one record type descriptor into another record type descriptor. It is equivalent to defining those fields in the new type descriptor. If the fields have explicit default values specified, those values will be copied as well.</p>
-<pre><code class="ballerina">type Person record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person record {
    string name;
    int age = 25;
    !...
@@ -210,7 +210,7 @@ type Employee record {
 </code></pre>
 
 <p>The above Employee type descriptor is equivalent to the following type descriptor:</p>
-<pre><code class="ballerina">type Employee record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Employee record {
    string name;
    int age = 25;
    string company?;
@@ -227,7 +227,7 @@ type Employee record {
 <p>We have introduced immutable values from this release onwards. Immutability is not part of the static type system in the language. It exists only in the runtime. You can use the <code>freeze</code> built-in method to make a structured value frozen at runtime. This method sets the <code>frozen</code> flags in the value. A <code>frozen</code> structured value cannot be modified afterward and any such attempts will results in panics.</p>
 <p>The <code>freeze</code> built-in method changes the value to which it is applied to be frozen and returns that value. It works in a similar way to the <code>clone</code> method.</p>
 <p>There is a <code>isFrozen()</code> built-in method on all structural basic types that returns <code>true</code> or <code>false</code> depending on whether the value is frozen. </p>
-<pre><code class="ballerina">person p1 = {name:&quot;John&quot;, age:34};
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">person p1 = {name:&quot;John&quot;, age:34};
 person p1Frozen = p1.freeze();
 boolean b = p1 === p1Frozen; // true
 
@@ -235,7 +235,7 @@ boolean b = p1 === p1Frozen; // true
 
 <h3>Type test expression</h3>
 <p>The type test can be used to determine whether a value is of a particular type.</p>
-<pre><code class="ballerina">int|string x = getValue();
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int|string x = getValue();
 if x is string {
    // x is now string after implicit narrowing
    return;
@@ -245,7 +245,7 @@ if x is string {
 
 <h3>Type assertions</h3>
 <p>Type assertions can be used to assert the inherent type of a value. Assertion fails and results in a panic, if the asserted type is not exactly the storage type.</p>
-<pre><code class="ballerina">
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">
 Employee e = { ... };
 Person p = e;
 
@@ -255,7 +255,7 @@ Person p2 = &lt;Person&gt; p; // panics since storage type is Employee
 
 <h3>Match statement</h3>
 <p>The existing match has been changed in this release from a type match to a value match statement. The match statement is a value switching construct that allows selective code execution based on the value of the expression that is being tested.</p>
-<pre><code class="ballerina">match variable {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">match variable {
     “Bal” =&gt; io:println(“Matched a String with value Bal”);
     0 =&gt; io:println(“Matched an int with value 0”);
     10 =&gt; io:println(“Matched an int with value 10”);
@@ -268,7 +268,7 @@ Person p2 = &lt;Person&gt; p; // panics since storage type is Employee
 </code></pre>
 
 <p>The <code>match</code> statement can also be used to match the structure of a value by using binding patterns. The matched value will be destructured to new variables within the scope of the match pattern. Here is an example of the structured value match.</p>
-<pre><code class="ballerina">match variable {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">match variable {
     var (var1, var2) =&gt; { // match a tuple value with two members
         io:println(var1);
         io:println(var2);
@@ -293,7 +293,7 @@ Person p2 = &lt;Person&gt; p; // panics since storage type is Employee
 <h3>The error type</h3>
 <p>The error type is a structured basic type which is used only for representing errors. A value of error type contains a reason which is a string identifier for the category of error, a detail which is a frozen mapping providing additional information and a stack trace. Error values are made immutable from this release onwards, since they can propagate across concurrent execution blocks. Allowing them to be mutable can be dangerous.</p>
 <p>Here is an example for usage of error type. The function <code>getAcctBalance</code> returns a union of <code>decimal</code> and <code>error&lt;string, AccountData&gt;</code> types.</p>
-<pre><code class="ballerina">type AccountData record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type AccountData record {
     string accountID;
 };
 
@@ -307,7 +307,7 @@ returns decimal | error&lt;string, AccountData&gt; {...}
 <p>The <code>check</code> expression is a useful unary operator in the language, which allows you to get an error out of the way in arbitrary expressions. If the type of the expression E is <code>T | error</code>, then the type of expression check E will be <code>T</code> if it evaluates to <code>T</code>. If the expression evaluates to error, then the function terminates immediately as if by <code>return E</code>. The <code>check</code> operator forces you to declare error as part of the return type of your function. </p>
 <p>In the previous release, check throws the error if the function does not have error type as part of the <code>return</code> type. This causes normal errors to become exceptions or abnormal errors due to negligence of the programmer. </p>
 <p>Here is a sample usage of check operator.</p>
-<pre><code class="ballerina">function startHTTPListener() returns Listener | error {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function startHTTPListener() returns Listener | error {
     string strVal = getValue(HTTP_PORT);
     // int.convert() has the type 'int | error'
     int port = check int.convert(strVal);
@@ -318,7 +318,7 @@ returns decimal | error&lt;string, AccountData&gt; {...}
 
 <h3>Panic statement</h3>
 <p>This is a replacement for the <code>throw</code> statement to allow programmers to create a panic, which causes the execution to stop. Function calls will unwind until the panic is stopped by trapping it and converting it into an error. Stack trace is recorded in the error value at the time of panic. </p>
-<pre><code class="ballerina">int | error i = int.convert(&quot;4t4&quot;);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int | error i = int.convert(&quot;4t4&quot;);
 if i is error {
     panic i;
 }
@@ -331,7 +331,7 @@ if i is error {
 <p>Binding patterns are used to support destructuring, which allows different parts of a single structured value each to be assigned to separate variables at the same time. Binding patterns can be used both with or without a type. Using a <code>typed binding pattern</code> will assign the destructured values to new variables, while a <code>destructure assignment binding pattern</code> will assign the destructured values to existing variable references.</p>
 <p>This release introduces two binding patterns; tuple binding pattern and record binding pattern.</p>
 <p>Tuple binding pattern destructures a <code>tuple</code> value based on the number of members in the <code>tuple</code> value. Here is an example of a tuple binding pattern.</p>
-<pre><code class="ballerina">(int, string) tupleVar = (20, “Ballerina”);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">(int, string) tupleVar = (20, “Ballerina”);
 (int, string) (intVariable, stringVariable) = tupleVar; //typed binding pattern
 io:println(intVariable + “ “ + stringVariable);
 int intVariable2;
@@ -342,7 +342,7 @@ io:println(intVariable2 + “ “ + stringVariable2);
 </code></pre>
 
 <p>Record binding pattern destructures a mapping value based on the presence of a field name. Here is an example of a record binding pattern. In this example a <code>Person</code> typed record with fields <code>name</code> and <code>age</code> will be destructured. The variable name to which the value is to be assigned can be given against a field name following a colon. Omitting a variable name will result in using the same name as the field name.</p>
-<pre><code class="ballerina">Person {name, age: personAge} = getPerson(); //typed binding pattern
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">Person {name, age: personAge} = getPerson(); //typed binding pattern
 io:println(name + “ “ + personAge);
 string personName;
 int age;
@@ -370,7 +370,7 @@ io:println(personName + “ “ + age);
 <p><code>flush</code> will wait until all the messages are sent from the current worker to the specified worker. If the receiver failed or panicked, then that error will be propagated to the waiting strand.</p>
 <h3>Lock</h3>
 <p>Lock can be used to make the concurrent access safe for a set of variables. It creates two phase deadlock-free synchronization guaranteeing unique access to each variable.</p>
-<pre><code class="ballerina">public function invokeWorkers() returns int {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">public function invokeWorkers() returns int {
     worker w1 {
         int i = 5;
         i -&gt; w2;
@@ -386,12 +386,12 @@ io:println(personName + “ “ + age);
 <h2>Variable Initialization</h2>
 <h3>Compile time constants</h3>
 <p>A compile-time constant is a typed identifier whose value is computed at compile time. Compile time reference values are <code>frozen</code> values. </p>
-<pre><code class="ballerina">const i = 10;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">const i = 10;
 </code></pre>
 
 <h3>Final variables</h3>
 <p>The modified <code>final</code> variable can be applied to a variable declaration to mean that the variable cannot be modified after it has been initialized.</p>
-<pre><code class="ballerina">final int port = getValue();
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">final int port = getValue();
 
 // Here the type is inferred from the right-hand side expression. 
 final var addr = getAddr();
@@ -409,7 +409,7 @@ final var addr = getAddr();
 <h3>Client Object</h3>
 <p>An object that has a client modifier is a client object type. A method on a client object can have a remote modifier; a method with a remote modifier is called a remote method. A remote method can be called only using a <code>remote method call</code>.  E.g., <code>clientObj-&gt;remoteFunctionName (arguments)</code>. This is previously called <code>action invocation</code>.</p>
 <p>E.g.:</p>
-<pre><code class="ballerina">    public type Twitter client object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">    public type Twitter client object {
         public remote function tweet (string message) returns error? { ... }
     };
 </code></pre>
@@ -419,7 +419,7 @@ final var addr = getAddr();
  - in a function initialization (before any worker declarations or statements).
  - as an argument to the function.</p>
 <p>Eg:</p>
-<pre><code class="ballerina">Twitter globalClient = new;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">Twitter globalClient = new;
 
 public function tweetSomething(Twitter paramClient)  {
     Twitter localClient= new;
@@ -435,7 +435,7 @@ public function tweetSomething(Twitter paramClient)  {
 
 <h3>Listeners</h3>
 <p>A listener is an object that implements the abstract listener object. It defines the life cycle of the listener.</p>
-<pre><code class="ballerina">public type AbstractListener abstract object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">public type AbstractListener abstract object {
     public function __start() returns error?;
     public function __stop() returns error?;
     public function __attach(service s, map&lt;any&gt; annotationData) returns error?;
@@ -444,7 +444,7 @@ public function tweetSomething(Twitter paramClient)  {
 
 <h3>Module Listeners</h3>
 <p>A module listener is a Listener object that is managed as part of the module’s lifecycle. It is like a final global variable but registers itself with the module life cycle. So a module starts all its module listeners after all services have been attached the listeners and stops the listeners when the module stops. Module listeners are created as follows.</p>
-<pre><code class="ballerina">listener http:Listener httpEp = new (9095);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">listener http:Listener httpEp = new (9095);
 </code></pre>
 
 <p>Module Listeners can be attached to module service.  With this change, the old endpoint declaration and endpoint bind syntax have been removed from the language. </p>
@@ -453,7 +453,7 @@ public function tweetSomething(Twitter paramClient)  {
 <p>Precise service typing is not provided in this version of Ballerina. This will be added in future versions.</p>
 <p>A service value can be constructed using the service constructor expression.</p>
 <p>Eg: </p>
-<pre><code class="ballerina">        service myService = @http:ServiceConfig { basePath : &quot;/hello&quot;} service {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">        service myService = @http:ServiceConfig { basePath : &quot;/hello&quot;} service {
                 resource function hi (http:Caller caller, http:Request request ) {
                         _ = caller -&gt; respond(self.getHelloWorld());
                 }
@@ -467,7 +467,7 @@ public function tweetSomething(Twitter paramClient)  {
 <p><code>resource</code> qualifier is used to represent the resource methods of the service. Resource methods cannot be called using the <code>method call</code> expression. They are intended to invoke in response to an incoming network request. A service’s non-resource methods can be called using a method call expression.</p>
 <h3>Module Services</h3>
 <p>A module service is a syntax for creating service value at the module level. A module service must have one or more module listeners or anonymous module listeners (created using type new expression) attached. Here is the syntax.</p>
-<pre><code class="ballerina">listener http:Listener httpEp = new (9095);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">listener http:Listener httpEp = new (9095);
 
 @http:ServiceConfig { basePath : &quot;/hello&quot;} 
 service MyService on httpEp, new http:Listener (9085) {
@@ -479,7 +479,7 @@ service MyService on httpEp, new http:Listener (9085) {
 
 <p><code>MyService</code> is a service value, which is attached to both <code>httpEP listener</code> and the new HTTP module Listener.  Previously this was referred as a services name, now it is a final module service variable.</p>
 <p>Above code is a syntactic sugar and equal to the following code, which runs at module init time. </p>
-<pre><code class="ballerina">http:Listener httpEp = new http:Listener(9085);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">http:Listener httpEp = new http:Listener(9085);
 
 service MyService = @http:ServiceConfig { basePath : &quot;/hello&quot;} service  {
     resource function hi (http:Caller caller, http:Request req) {
@@ -496,7 +496,7 @@ check anonEP.__start();
 
 <h2>Decimal type</h2>
 <p>Decimal type is a basic, simple type in Ballerina. The decimal type corresponds to the 128-bit IEEE 754-2008 decimal (radix 10) floating point number format. A decimal value has 34 decimal digits of significand and an exponent range of −6143 to +6144.</p>
-<pre><code class="ballerina">decimal d = 4.565;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">decimal d = 4.565;
 </code></pre>
 
 <p>Defining a decimal variable is very similar to defining a float variable in Ballerina
@@ -534,7 +534,7 @@ This is because of the non-representability of 0.1 (0.0001100110011..) and 0.2 (
 <h2>Micro-Transactions</h2>
 <h3>Transaction initiator statement</h3>
 <p><code>oncommit</code> and <code>onabort</code> function handlers are removed from the transaction statement and are substituted with committed and aborted blocks.</p>
-<pre><code class="ballerina">transaction with retries = 2 {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">transaction with retries = 2 {
     _ = testDB-&gt;update(&quot;Insert into Customers (firstName,lastName,registrationID,creditLimit,country)
                             values ('James', 'Clerk', 200, 5000.75, 'USA')&quot;);
     _ = testDB-&gt;update(&quot;Insert into Customers (firstName,lastName,registrationID,creditLimit,country)
@@ -553,7 +553,7 @@ This is because of the non-representability of 0.1 (0.0001100110011..) and 0.2 (
 <p>And panic propagating out of such participant is considered as transaction participant failure when deciding to commit the transaction.</p>
 <p>With this introduction of transaction participants, nesting transaction blocks are prohibited, both statically and at runtime.</p>
 <h4>Local participants</h4>
-<pre><code class="ballerina">@transactions:Participant {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">@transactions:Participant {
     oncommit:commitFunc,
     onabort:abortFunc
 }
@@ -572,7 +572,7 @@ public function participantLocal() {
 <h4>Remote participants</h4>
 <p>Similar to local transactions we can also annotate resource functions so that they are considered transaction participants. Annotated transaction participants are not allowed to have transaction blocks similar to local participants.</p>
 <p>Panic in remote participants will result in transaction failure.</p>
-<pre><code class="ballerina">@transactions:Participant {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">@transactions:Participant {
     oncommit:commitFunc,
     onabort:abortFunc
 }
@@ -586,7 +586,7 @@ resource function participantRemote(http:Caller ep, http:Request req) {
 <h2>HTTP Listener/Client</h2>
 <p>With endpoints and service syntax changes, HTTP endpoint and service are changed as follows:</p>
 <p>HTTP Listener:</p>
-<pre><code class="ballerina">listener http:Listener httpEp = new(9090, config = {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">listener http:Listener httpEp = new(9090, config = {
     secureSocket: {}
 });
 </code></pre>
@@ -595,7 +595,7 @@ resource function participantRemote(http:Caller ep, http:Request req) {
 <p><strong>Note</strong>: Listener endpoint port is the first argument which is a required parameter and other listener configurations go under the second argument. </p>
 </blockquote>
 <p>Service and resource definition:</p>
-<pre><code class="ballerina">service hello on httpEp {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">service hello on httpEp {
     resource function sayHello(http:Caller caller, http:Request req) {
         _ = caller-&gt;respond(&quot;hello ballerina!&quot;);
     }
@@ -603,14 +603,14 @@ resource function participantRemote(http:Caller ep, http:Request req) {
 </code></pre>
 
 <p>Service can get attached to a listener endpoint that is declared inline as follows.</p>
-<pre><code class="ballerina">service hello on new http:Listener(9090) {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">service hello on new http:Listener(9090) {
     //...
 }
 
 </code></pre>
 
 <p>Client endpoint:</p>
-<pre><code class="ballerina">http:Client clientEndpoint = new(&quot;https://localhost:9092&quot;, config = {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">http:Client clientEndpoint = new(&quot;https://localhost:9092&quot;, config = {
     secureSocket: {}
 });
 
@@ -622,7 +622,7 @@ resource function participantRemote(http:Caller ep, http:Request req) {
 <h2>Load Balancer</h2>
 <p>The Load Balancer exposes an abstract object to allow users to customize the routing decision making(load balancing rule) for special purposes. Only one rule is active at any time and it is specified with the lbRule in the <code>LoadBalanceClientEndpointConfiguration</code> record. By default, round robin rule is used as the load balancing strategy.</p>
 <p>Load balancer client endpoint syntax goes as follows.</p>
-<pre><code class="ballerina">http:LoadBalanceClient customLoadBalanceClient = new ({
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">http:LoadBalanceClient customLoadBalanceClient = new ({
    targets: [
        { url: &quot;http://localhost:8081/mock&quot; },
        { url: &quot;http://localhost:8082/mock&quot; },
@@ -635,12 +635,12 @@ resource function participantRemote(http:Caller ep, http:Request req) {
 
 <h2>TCP client/server</h2>
 <p>TCP server and client are completely redesigned with this release. Now users can use the TCP server similar to the WebSocket listener where there are set of predefined resources to invoke based on actions that take place. TCP client can be used to connect to a remote TCP server for data sending purpose. Additionally, callback service can be attached to the client if there is a data retrieval use case.</p>
-<pre><code class="ballerina">import ballerina/socket;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/socket;
 
 </code></pre>
 
 <p>Listener:</p>
-<pre><code class="ballerina">listener socket:Listener server = new ({ port:&lt;PORT_NUMBER&gt; });
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">listener socket:Listener server = new ({ port:&lt;PORT_NUMBER&gt; });
 service echoServer on server {
     resource function onAccept (socket:Caller caller) { }
     resource function onReadReady (socket:Caller caller, byte[] content) { }
@@ -651,7 +651,7 @@ service echoServer on server {
 </code></pre>
 
 <p>Client:</p>
-<pre><code class="ballerina">socket:Client socketClient = new({host: &quot;localhost&quot;, port: 54387, callbackService: ClientService});
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">socket:Client socketClient = new({host: &quot;localhost&quot;, port: 54387, callbackService: ClientService});
 byte[] payloadByte = “Hello Ballerina”.toByteArray(&quot;UTF-8&quot;);
 _ = socketClient-&gt;write(payloadByte);
 
@@ -667,7 +667,7 @@ service ClientService = service {
 <p><code>socket:Client/socket:Caller</code> has <code>shutdownRead</code> and <code>shutdownWrite</code> functions available in addition to the write.</p>
 <h2>MySQL Client</h2>
 <p>MySQL client syntax is changed as follows.</p>
-<pre><code class="ballerina">mysql:Client testDB = new({
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">mysql:Client testDB = new({
         host: &quot;localhost&quot;,
         port: 3306,
         name: &quot;testdb&quot;,
@@ -682,7 +682,7 @@ service ClientService = service {
 <p>Compile time validation for InMemory, Server and Embedded Mode configurations are introduced along with the
 changes in client syntax changes.</p>
 <p>Creating a client in H2 Embedded Mode</p>
-<pre><code class="ballerina">h2:Client testDB = new({
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">h2:Client testDB = new({
         path: &quot;/home/ballerina/test/&quot;,
         name: &quot;testdb&quot;,
         username: &quot;SA&quot;,
@@ -692,7 +692,7 @@ changes in client syntax changes.</p>
 </code></pre>
 
 <p>Creating a client in H2 Server Mode</p>
-<pre><code class="ballerina">h2:Client testDB = new({
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">h2:Client testDB = new({
         host: &quot;localhost&quot;,
         port: 9092,
         name: &quot;testdb&quot;,
@@ -703,7 +703,7 @@ changes in client syntax changes.</p>
 </code></pre>
 
 <p>Creating a client in H2 In-Memory Mode</p>
-<pre><code class="ballerina">h2:Client testDB = new({
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">h2:Client testDB = new({
         name: &quot;testdb&quot;,
         username: &quot;SA&quot;,
         password: &quot;&quot;,
@@ -715,7 +715,7 @@ changes in client syntax changes.</p>
 <p>gRPC is a protocol that is layered over HTTP/2 and enables client and server communication by combination of any supported languages. In gRPC, a client application can directly call methods on a server application on a different machine, making it easier for you to create distributed applications and services.</p>
 <p>With endpoints and service syntax changes, gRPC endpoint and service are changed as follows:</p>
 <p>Listener (inbound) endpoint:</p>
-<pre><code class="ballerina">listener grpc:Listener grpcEp = new (9095, config = {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">listener grpc:Listener grpcEp = new (9095, config = {
     secureSocket: {}
 });
 
@@ -725,7 +725,7 @@ changes in client syntax changes.</p>
 <p><strong>Note</strong>: Listener endpoint port is the first argument and other listener configurations go under the second argument. </p>
 </blockquote>
 <p>Service and resource definition:</p>
-<pre><code class="ballerina">service Hello on grpcEp {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">service Hello on grpcEp {
     resource function hi (grpc:Caller caller, string req) {
         _ = caller-&gt;send(&quot;Hello, World!&quot;);
     }
@@ -734,7 +734,7 @@ changes in client syntax changes.</p>
 </code></pre>
 
 <p>Client endpoint:</p>
-<pre><code class="ballerina">HelloClient helloEp = new(&quot;https://localhost:9090&quot;, config = {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">HelloClient helloEp = new(&quot;https://localhost:9090&quot;, config = {
     secureSocket: {}
 });
 
@@ -747,7 +747,7 @@ changes in client syntax changes.</p>
 <h2>WebSocket</h2>
 <p>With endpoints and service syntax changes, WebSocket endpoint and service are changed as follows:</p>
 <p>WebSocket Listener:</p>
-<pre><code class="ballerina">listener http:WebSocketListener helloListener = new(9095, config = {secureSocket: {}});
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">listener http:WebSocketListener helloListener = new(9095, config = {secureSocket: {}});
 service onTextString on helloListener {
     resource function onText(http:WebSocketCaller caller, string data, boolean finalFrame) {
         var returnVal = caller-&gt;pushText(data);
@@ -757,7 +757,7 @@ service onTextString on helloListener {
 </code></pre>
 
 <p>WebSocket Client:</p>
-<pre><code class="ballerina">http:WebSocketClient wsClientEp = new(REMOTE_BACKEND_URL, config = { callbackService: clientService });
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">http:WebSocketClient wsClientEp = new(REMOTE_BACKEND_URL, config = { callbackService: clientService });
 service clientService = @http:WebSocketServiceConfig {} service {
     resource function onText(http:WebSocketClient caller, string text) {
             var returnVal = caller-&gt;pushText(data); 
@@ -769,11 +769,11 @@ service clientService = @http:WebSocketServiceConfig {} service {
 <h2>WebSub</h2>
 <p>WebSub endpoint and service are changed as follows with the new endpoints and service syntax change</p>
 <p>Listener:</p>
-<pre><code class="ballerina">listener websub:Listener websubEP = new(8181);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">listener websub:Listener websubEP = new(8181);
 </code></pre>
 
 <p>Service and resource definition:</p>
-<pre><code class="ballerina">service websubSubscriber on websubEP {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">service websubSubscriber on websubEP {
     resource function onNotification(websub:Notification notification) {
         log:printInfo(&quot;WebSub Notification Received&quot;);
     }
@@ -783,14 +783,14 @@ service clientService = @http:WebSocketServiceConfig {} service {
 <p>WebSub Hub start up function signature is improved to accept parameters under two categories. 
 It accepts an <code>http:Listener</code>, on which the hub service will start on, as the first parameter, 
 and a <code>HubListenerConfiguration</code> record as a defaultable parameter to specify hub related configuration.  </p>
-<pre><code class="ballerina">var webSubHub = websub:startHub(new http:Listener(9090), hubConfiguration = {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">var webSubHub = websub:startHub(new http:Listener(9090), hubConfiguration = {
             leaseSeconds: 86400
     });
 
 </code></pre>
 
 <p>Improved the hub client by extending configuration to have the complete functionality of the HTTP Client.</p>
-<pre><code class="ballerina">http:ClientEndpointConfig conf = {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">http:ClientEndpointConfig conf = {
     followRedirects: { enabled: true, maxCount: 5 }
 }; 
 
@@ -804,7 +804,7 @@ websub:Client websubHubClientEP = new(&quot;https://localhost:9191/websub/hub&qu
 <blockquote>
 <p><strong>Note</strong>: JMS Connection and session definitions remain unchanged. </p>
 </blockquote>
-<pre><code class="ballerina">jms:Connection conn = new({
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">jms:Connection conn = new({
             initialContextFactory:&lt;provider specific initial context factory&gt;,
             providerUrl: &lt;provider url&gt;
 });
@@ -816,7 +816,7 @@ jms:Session jmsSession = new(conn, {
 </code></pre>
 
 <p>JMS message producer definition:</p>
-<pre><code class="ballerina">jms:QueueSender queueSender = new({
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">jms:QueueSender queueSender = new({
         session: jmsSession,
         queueName: &quot;MyQueue&quot;
 });
@@ -824,7 +824,7 @@ jms:Session jmsSession = new(conn, {
 </code></pre>
 
 <p>JMS message receiver, service, and resource definition: </p>
-<pre><code class="ballerina">listener jms:QueueReceiver consumerEndpoint = new({
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">listener jms:QueueReceiver consumerEndpoint = new({
          session: jmsSession,
              queueName: &quot;MyQueue&quot;
 });

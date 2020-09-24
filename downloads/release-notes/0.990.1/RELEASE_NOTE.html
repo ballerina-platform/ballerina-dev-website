@@ -4,20 +4,20 @@
 <h1>Improvements</h1>
 <h2>Language</h2>
 <p>Return statement is now optional for functions with optional return type signatures.</p>
-<pre><code class="ballerina">function foo(string txt) returns error? {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function foo(string txt) returns error? {
     int x = check int.convert(txt);
 }
 </code></pre>
 
 <p>The above is the same as the following code.</p>
-<pre><code class="ballerina">function foo(string txt) returns error? {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function foo(string txt) returns error? {
     int x = check int.convert(txt);
     return;
 }
 </code></pre>
 
 <p>Function invocation support for string literals.</p>
-<pre><code class="ballerina">string name = “ballerina”.toUpper();
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string name = “ballerina”.toUpper();
 </code></pre>
 
 <p>There are some updates to the underlying stream processing layer of Ballerina. It introduces a few changes in the syntax.</p>

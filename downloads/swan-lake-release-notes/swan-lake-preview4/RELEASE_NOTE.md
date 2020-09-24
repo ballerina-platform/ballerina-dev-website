@@ -375,13 +375,14 @@ string[] sortedCars = cars.sort(array:DESCENDING, isolated function(string car) 
 
 The jBallerina runtime APIs were moved to the `org.ballerinalang.jvm.api` package and new APIs were introduced. The following APIs can be used to manage various runtime constructs.
 
-| Class         | Usage                                                                                                                                                                                  |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| BValueCreator | Create ballerina value instances.                                                                                                                                                            |
-| BErrorCreator | Create ballerina error instances.                                                                                                                                                            |
-| BErrorCreator | The entry point from the server connector side to the Ballerina side.  After doing the dispatching and finding the resource, server connectors, you can use this API to invoke the Ballerina engine. |
-| BExecutor     | The external API to be used by the interop users to control the Ballerina runtime behavior.                                                                                                          |
-| BStringUtils  | Common utility methods used for string manipulation.                                                                                                                                         |
+| Class         | Usage |
+|---------------|--------------------|
+| BValueCreator | Create ballerina value instances.|
+| BErrorCreator | Create ballerina error instances.|
+| BErrorCreator | The entry point from the server connector side to the Ballerina side.  After doing the dispatching and finding the resource, server connectors, you can use this API to invoke the Ballerina engine.|
+| BExecutor     | The external API to be used by the interop users to control the Ballerina runtime behavior.|
+| BStringUtils  | Common utility methods used for string manipulation.|
+
 ##### Asynchronous Java interoperability 
 
 Calling async Java methods from Ballerina has been formalized using a new API. Previously, this was achieved by setting internal values to the Ballerina `Strand` object. With this change, any Java extern method accepting `BalEnv` as the first parameter, will be given an instance of the execution context. 

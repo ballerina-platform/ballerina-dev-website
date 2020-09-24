@@ -476,7 +476,7 @@ The service name is not mandatory and you can give the service name if you want 
 
 ###### Azure Functions
 
-Fix for https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues/33.
+Fix for [Pure HTTP Functions Not Working](https://github.com/ballerina-platform/module-ballerinax-azure.functions/issues/33).
 
 ###### AWS Lambda
 

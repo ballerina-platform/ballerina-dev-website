@@ -20,7 +20,7 @@ This release is the fourth preview version of Ballerina Swan Lake. This release 
         - [Improved support for quoted identifiers](#improved-support-for-quoted-identifiers)
         -  [Subsequent initialization support for local final variables](#subsequent-initialization-support-for-local-final-variables)
         - [Support to handle errors at a single point - (the `on fail` clause)](#support-to-handle-errors-at-a-single-point-the-on-fail-clause)
-        - [Fail statement](#fail-statement)
+        - [The Fail statement](#the-fail-statement)
         - [Improved lang library functions](#improved-lang-library-functions)
     - [Runtime](#runtime)
         - [jBallerina Runtime APIs](#jballerina-runtime-apis)
@@ -292,7 +292,7 @@ Ballerina supports handling errors at a single place using the `on fail` clause.
 
 ```
 
-##### `fail` statement
+##### The `fail` statement
 
 Executing a `fail` Statement will cause the control flow to transfer to the `on fail` clause of the nearest lexically-enclosing statement that has an `on fail` clause. If there is no `on fail` clause, then it breaks the current execution and returns an error.
 
@@ -422,7 +422,7 @@ The behavior of the OpenAPI CLI command was changed to make it easier to use. No
 
 ###### OpenAPI to Ballerina
 
- ```bash
+```bash
 $  ballerina openapi -i <contract>  -o <output path>
 ```
 
@@ -462,14 +462,14 @@ $  ballerina openapi -i <contract>  -o <output path>
 ###### Ballerina to OpenAPI
 
 ```bash
-     $  ballerina openapi -i <ballerina service file>   -o <output path> 
+$  ballerina openapi -i <ballerina service file>   -o <output path> 
 ```
 
 The service name is not mandatory and you can give the service name if you want to document a specific service. Otherwise, it will generate all the services that are included in the Ballerina source file.
 
 
 ```bash
-    $  ballerina openapi -i <ballerina service file>  --service <service Name> -o <output path>
+$  ballerina openapi -i <ballerina service file>  --service <service Name> -o <output path>
 ```
 
 ##### Improvements related to code actions

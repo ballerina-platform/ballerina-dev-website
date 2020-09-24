@@ -62,10 +62,10 @@ FooError e2 = error(code = 3456); // Also valid now, reason is set as &quot;foo&
 <ul>
 <li>A binary operator <code>.@</code> has been introduced to access annotation values at runtime.</li>
 </ul>
-<p><code>ballerina
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">ballerina
    annotation Foo annot on service;
    typedesc t = typeof serviceValue;
-   Foo? fooAnnot = t.@annot;</code></p>
+   Foo? fooAnnot = t.@annot;</code></pre>
 <ul>
 <li>
 <p>Expressions are now allowed as default values for function parameters.</p>
@@ -83,7 +83,7 @@ FooError e2 = error(code = 3456); // Also valid now, reason is set as &quot;foo&
 <ul>
 <li>Ballerina project structure should match the following.</li>
 </ul>
-<pre><code>project-name/
+<pre class="language-plaintext line-numbers basic"><code class="language-plaintext">project-name/
 - Ballerina.toml
 - src/
 -- mymodule/
@@ -104,25 +104,25 @@ FooError e2 = error(code = 3456); // Also valid now, reason is set as &quot;foo&
 <ul>
 <li>To create a new project with a hello world, use the <em>new</em> command. This initializes a new directory.</li>
 </ul>
-<pre><code>$ ballerina new &lt;project-name&gt;
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">$ ballerina new &lt;project-name&gt;
 </code></pre>
 
 <ul>
 <li>To add a module, use the <em>add</em> command inside the project.</li>
 </ul>
-<pre><code>$ ballerina add &lt;modulename&gt; [-t main|service]
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">$ ballerina add &lt;modulename&gt; [-t main|service]
 </code></pre>
 
 <ul>
 <li>To create an executable, use the <em>build</em> command.</li>
 </ul>
-<pre><code>$ ballerina build
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">$ ballerina build
 </code></pre>
 
 <ul>
 <li>To run the executable, use the <em>run</em> command.</li>
 </ul>
-<pre><code>$ ballerina run mymodule.jar
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">$ ballerina run mymodule.jar
 </code></pre>
 
 <h3>Ballerina Central</h3>

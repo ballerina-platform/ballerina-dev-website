@@ -358,7 +358,7 @@ public function main() {
 <h4>Redesigned <code>Oneof</code> field support</h4>
 <p>The <code>Oneof</code> fields in the protobuf definition are now mapped to optional fields in Ballerina. When you generate the code, the Ballerina record is generated with a new setter function for each field to restrict you from setting more than one of those fields and a valid function. </p>
 <p>For example,</p>
-<pre><code class="proto">message Person {
+<pre class="language-plaintext line-numbers basic"><code class="language-plaintext">message Person {
   oneof identity {
      string passportId = 1;
      string nic = 2;
@@ -390,7 +390,7 @@ function setPerson_Nic(Person a, string nic) {
 <h4>Redesigned Map field support</h4>
 <p>The map fields in the protobuf definition are now mapped to nested records in Ballerina.</p>
 <p>For example,</p>
-<pre><code class="proto">message HelloRequest {
+<pre class="language-plaintext line-numbers basic"><code class="language-plaintext">message HelloRequest {
     map&lt;int32, string&gt; tags = 4;
 }
 </code></pre>
@@ -678,7 +678,7 @@ service helloWorld on new http:Listener(8080) {
 </blockquote>
 <p>This CLI tool could be used to generate Ballerina bridge code for Java APIs. Here, Ballerina objects and the relevant Java interoperability mappings for specified Java classes will be auto-generated with the aim of providing a seamless coding experience to call existing Java code from Ballerina. These Ballerina bindings could be generated for Java classes residing inside Java libraries (for which the classpaths needs to be provided) or for standard Java classes. </p>
 <p><strong>Command:</strong></p>
-<pre><code class="sh">ballerina bindgen [(-cp|--classpath) &lt;classpath&gt;...]
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">ballerina bindgen [(-cp|--classpath) &lt;classpath&gt;...]
                   [(-o|--output) &lt;output&gt;]
                   (&lt;class-name&gt;...)
 </code></pre>

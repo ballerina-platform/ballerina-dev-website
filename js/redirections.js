@@ -210,7 +210,7 @@ let redirections = {
     "/1.0/learn/by-example/awslambda-deployment.html":"/1.0/learn/by-example/aws-lambda-deployment.html",
     "/1.0/learn/how-to-keep-ballerina-up-to-date/":"/1.0/page-not-available.html",
     "/swan-lake/learn/by-example/objects.html":"/swan-lake/learn/by-example/class-definition.html",
-    "/swan-lake/learn/by-example/abstract-objects.html":"/swan-lake/learn/by-example/objects.html",
+    "/swan-lake/learn/by-example/abstract-objects.html":"/swan-lake/learn/by-example/objects-type.html",
     "/swan-lake/learn/by-example/anonymous-objects.html":"/swan-lake/learn/by-example/object-constructor-expression.html",
     "/swan-lake/learn/by-example/readonly-objects-and-fields.html":"/swan-lake/learn/by-example/readonly-objects.html",
     "/learn/by-example/object-final-fields.html":"/page-not-available.html",

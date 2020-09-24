@@ -114,7 +114,7 @@
 <h2>Textual Syntax</h2>
 <p>Ballerina’s textual syntax is largely inspired by C, Java, and Go languages. The key language constructs in Ballerina are as follows. </p>
 <p><strong>Function:</strong></p>
-<pre><code class="ballerina">import ballerina/io;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/io;
 
 function add(int a, int b) returns (int) {
     return a + b;
@@ -127,7 +127,7 @@ function main(string... args) {
 </code></pre>
 
 <p><strong>Worker:</strong></p>
-<pre><code class="ballerina">import ballerina/io;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/io;
 function main(string... args) {
     worker w1 {
         io:println(&quot;Hello, World! #w1&quot;);
@@ -140,7 +140,7 @@ function main(string... args) {
 </code></pre>
 
 <p><strong>Service:</strong></p>
-<pre><code class="ballerina">import ballerina/http;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/http;
 
 service&lt;http:Service&gt; hello bind { port: 9090 } {
 
@@ -304,7 +304,7 @@ service&lt;http:Service&gt; hello bind { port: 9090 } {
 </ul>
 </li>
 </ul>
-<pre><code class="ballerina">    import ballerina/log;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">    import ballerina/log;
     import ballerina/websub;
 
     endpoint websub:Listener websubEP {
@@ -347,7 +347,7 @@ service&lt;http:Service&gt; hello bind { port: 9090 } {
 <h2>gRPC</h2>
 <p>gRPC is a protocol which is layered over HTTP/2 and enables client and server communication by combination of any supported languages. In gRPC a client application can directly call methods on a server application on a different machine, making it easier for you to create distributed applications and services.</p>
 <p>Ballerina also supports creating gRPC client and server as other supported language.  Ballerina based gRPC server/client supports interacting with server and client written either in Ballerina or any other supported languages. For example: you can easily create gRPC server in Ballerina and connect with client in Go. Syntax for writing simple gRPC unary server is like below,</p>
-<pre><code class="ballerina">endpoint grpc:Listener listener {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">endpoint grpc:Listener listener {
     port:9090,
 };
 
@@ -383,7 +383,7 @@ service SamplegRPCService bind listener {
 - Data access support via <code>select</code> operation, which allows easy access of data using returned tables.
 - Proxy table support, which allows read/delete on the actual DB table via a proxied table.
 - All operations are transaction aware. </p>
-<pre><code class="ballerina">endpoint jdbc:Client testDB {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">endpoint jdbc:Client testDB {
     url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
     username: &quot;root&quot;,
     password: &quot;root&quot;,
@@ -397,7 +397,7 @@ table&lt;Student&gt; tb = check testDB-&gt;select(&quot;SELECT * FROM student&qu
 <h2>Messaging endpoints</h2>
 <p>Messaging connectors enable the services and programs written in Ballerina to communicate with messaging backends like Ballerina Message Broker and ActiveMQ. The messaging connector API provides features like transactions, message headers, properties, and different acknowledgement mode support to address the common requirements of a modern integration engineer when integrating with a messaging system.</p>
 <p>The Ballerina JMS API provides the constructs to connect to any JMS provider as shown below.</p>
-<pre><code class="ballerina">endpoint jms:SimpleQueueReceiver consumer {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">endpoint jms:SimpleQueueReceiver consumer {
    initialContextFactory: &quot;bmbInitialContextFactory&quot;,
    providerUrl: &quot;amqp://admin:admin@ballerina/default?brokerlist='tcp://localhost:5672'&quot;,
    queueName: &quot;MyQueue&quot;
@@ -411,7 +411,7 @@ service&lt;jms:Consumer&gt; jmsListener bind consumer {
 </code></pre>
 
 <p>The Ballerina MB API provides the constructs to connect to the Ballerina Message Broker provided in the Ballerina platform, as shown below.</p>
-<pre><code class="ballerina">endpoint mb:SimpleQueueReceiver receiver {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">endpoint mb:SimpleQueueReceiver receiver {
    host: &quot;localhost&quot;,
    port: 5672,
    queueName: &quot;MyQueue&quot;
@@ -428,7 +428,7 @@ service&lt;mb:Consumer&gt; mbListener bind receiver {
 <p>The Ballerina standard library provides a set of commonly used functionalities. The following packages are available as a part of the standard library:</p>
 <h2>ballerina/auth</h2>
 <p>Provides an interface for looking up user data for authentication and authorization purposes. Also it contains a sample implementation that uses a Ballerina configuration file as user registry.</p>
-<pre><code class="ballerina">// Check if the user exists (for authentication)
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">// Check if the user exists (for authentication)
 auth:ConfigAuthProvider authProvider;
 boolean isAuthenticated = authProvider.authenticate(&lt;username&gt;, &lt;password&gt;);
 // Retrieve the scopes of the user (for authorization)
@@ -439,7 +439,7 @@ string[] scopes = authProvider.getScopes(&lt;username&gt;);
 <p>Provides a configurable in-memory caching solution that supports both time-based eviction and size-based eviction.</p>
 <h2>ballerina/config</h2>
 <p>Provides a configuration lookup and resolve mechanism, with the option for securing configurations, and an API for reading these configurations.</p>
-<pre><code class="ballerina">// Look up a string config value
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">// Look up a string config value
 string host = config:getAsString(“http.host”);
 // Look up an int config value. If the specified key cannot be
 // found, the default value is returned
@@ -450,7 +450,7 @@ int port = config:getAsInt(“http.port”, default = 9090);
 <p>Provides a set of functions for some of the commonly used hashing algorithms.</p>
 <h2>ballerina/file</h2>
 <p>Provides a directory listener that can be used to listen to directory events.</p>
-<pre><code class="ballerina">import ballerina/file;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/file;
 import ballerina/log;
 
 endpoint file:Listener localFolder {
@@ -479,7 +479,7 @@ service watcher bind localFolder {
 <ul>
 <li>Reading and writing bytes:</li>
 </ul>
-<pre><code class="ballerina">  // Retrieving a ByteChannel to the file.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">  // Retrieving a ByteChannel to the file.
   io:ByteChannel channel = io:openFile(filePath, permission);
   // Reading the bytes from the channel
   var result = channel.read(numberOfBytes)
@@ -490,7 +490,7 @@ service watcher bind localFolder {
 <ul>
 <li>Reading and writing characters:</li>
 </ul>
-<pre><code class="ballerina">  // Reading/writing characters of different encodings e.g.: utf-8
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">  // Reading/writing characters of different encodings e.g.: utf-8
   // First, get the ByteChannel representation of the file.
   io:ByteChannel channel = io:openFile(filePath, permission);
   io:CharacterChannel characterChannel = new(channel, encoding);
@@ -518,7 +518,7 @@ service watcher bind localFolder {
 <ul>
 <li>Reading and writing text records:</li>
 </ul>
-<pre><code class="ballerina">  // Reading and writing delimited text records
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">  // Reading and writing delimited text records
 
   io:ByteChannel channel = io:openFile(filePath, permission);
   // Create a `character channel` from the `byte channel` to read content as text.
@@ -535,7 +535,7 @@ service watcher bind localFolder {
 <ul>
 <li>Processing CSV records:</li>
 </ul>
-<pre><code class="ballerina">  io:CSVChannel srcCsvChannel = io:openCsvFile(&quot;./filepath&quot;);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">  io:CSVChannel srcCsvChannel = io:openCsvFile(&quot;./filepath&quot;);
 
   match channel.getNext() {
   string[] fields =&gt; {
@@ -618,7 +618,7 @@ service watcher bind localFolder {
 - Inheriting authentication/authorization rules from service level and overriding at the resource level
 - Authentication and authorization at downstream services via JWT token propagation</p>
 <p>Sample service secured with basic authentication:</p>
-<pre><code class="ballerina">import ballerina/http;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/http;
 
 // The endpoint used here is 'http:SecureListener', which by default tries to
 // authenticate and authorize each request. The developer has the option to

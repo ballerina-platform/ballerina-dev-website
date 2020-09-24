@@ -18,7 +18,7 @@ any country = tom.country; // or use tom[&quot;country&quot;]
 </code></pre>
 
 <p>Extra fields can be defined by using an optional <code>record rest descriptor</code>; <code>RecordRestType...</code> at end of the record definition. In the above example, the <strong>Person record</strong> definition is equivalent to the definition with <code>any...</code>.</p>
-<pre><code class="ballerina">type Person record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person record {
     string name,
     int age = 10,
     any...
@@ -26,7 +26,7 @@ any country = tom.country; // or use tom[&quot;country&quot;]
 </code></pre>
 
 <p>In the following record definition, the <strong>rest fields</strong> are constrained to <code>string</code>.</p>
-<pre><code class="ballerina">type Person record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person record {
     string name,
     int age = 10,
     string… // the rest descriptor
@@ -38,7 +38,7 @@ string country = tom.country;
 </code></pre>
 
 <p>If <code>RecordRestType</code> is <code>!</code>, then the record may not contain any extra fields. </p>
-<pre><code class="ballerina">type Person record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person record {
     string name,
     int age = 10,
     !... // indicates that additional fields are not allowed
@@ -51,12 +51,12 @@ Person tom = { name : &quot;tom&quot;, age : 20, country : &quot;USA&quot;}; // 
 <p>A record type including <code>!...</code> is called <code>closed</code>; a record type that is not closed is called <code>open</code>.</p>
 <h2>Fixed Length Arrays</h2>
 <p>Now the length of an array can be fixed by providing the array length with the array type descriptor. </p>
-<pre><code class="ballerina">int[5] array1 = [2, 15, 200, 1500, 5000];
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int[5] array1 = [2, 15, 200, 1500, 5000];
 int[5] array2; // Creates an integer array of size five, filled with default integer values
 </code></pre>
 
 <p>An array length of <code>!...</code> means that the length of the array is to be implied from the context as shown below:</p>
-<pre><code class="ballerina">int[!...] sealedArray = [1, 3, 5]; // Creates a sealed integer array of size 3.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int[!...] sealedArray = [1, 3, 5]; // Creates a sealed integer array of size 3.
 </code></pre>
 
 <h2>Object Syntax Change</h2>
@@ -64,7 +64,7 @@ int[5] array2; // Creates an integer array of size five, filled with default int
 <ol>
 <li>Object field definition change.</li>
 </ol>
-<pre><code class="ballerina">public type Person object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">public type Person object {
       public string name;  //visible everywhere
       private int age;        //visible only within object and its member functions
       string email;            //visible only within same package
@@ -78,11 +78,11 @@ int[5] array2; // Creates an integer array of size five, filled with default int
 <h2>Byte Type and Blob Type Change</h2>
 <p>The <code>byte</code> type represents the set of 8-bit unsigned integers. The implicit initial value of the <code>byte</code> type is <code>0</code>. Value space for <code>byte</code> is 0-255 both inclusive. </p>
 <p>The following is an example of byte definition.</p>
-<pre><code class="ballerina">byte c = 23;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">byte c = 23;
 </code></pre>
 
 <p>Along with general byte array type, there is also a special syntax for defining base64 and base16 based array of bytes. With this, blob type is replaced by byte array.</p>
-<pre><code class="ballerina">byte[] arr1 = [5, 24, 56, 243];
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">byte[] arr1 = [5, 24, 56, 243];
 byte[] arr2 = base16 `aeeecdefabcd12345567888822`;
 byte[] arr3 = base64 `aGVsbG8gYmFsbGVyaW5hICEhIQ==`;
 </code></pre>
@@ -91,7 +91,7 @@ byte[] arr3 = base64 `aGVsbG8gYmFsbGVyaW5hICEhIQ==`;
 <p>Above bitwise operations have been added for <code>byte</code> type and <code>int</code> type with the following rules.</p>
 <p>Both the right-hand-side and left-hand-side of the expression should be of the same type (<code>byte</code> or <code>int</code>), and the expected type will be also of the same type. If this is not the case, it will result in a compilation error.</p>
 <p>An explicit conversion operation should be applied if the type of one side is not the same as the other side.</p>
-<pre><code class="ballerina">byte a = 13;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">byte a = 13;
 byte b = 45;
 byte c = a &amp; b;
 byte d = a | b;
@@ -100,7 +100,7 @@ byte e = a ^ b;
 
 <h2>Table Expression Change</h2>
 <p>The table expression has changed to support the following syntax. A table is intended to be similar to the table of a relational database table. A table value contains an immutable set of column names and a set of data rows.</p>
-<pre><code class="ballerina">table&lt;Person&gt; t1 = table {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">table&lt;Person&gt; t1 = table {
     { primarykey id, primarykey salary, name, age, married }, [
          {1, 300.5, &quot;jane&quot;,  30, true},
          {2, 302.5, &quot;anne&quot;,  23, false},
@@ -109,7 +109,7 @@ byte e = a ^ b;
 };
 </code></pre>
 
-<pre><code class="ballerina">Person p1 = { id: 1, age: 30, salary: 300.50, name: &quot;jane&quot;, married: true };
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">Person p1 = { id: 1, age: 30, salary: 300.50, name: &quot;jane&quot;, married: true };
 Person p2 = { id: 1, age: 30, salary: 300.50, name: &quot;jane&quot;, married: true };
 
 table&lt;Person&gt; t1 = table {
@@ -121,7 +121,7 @@ table&lt;Person&gt; t1 = table {
 <h2>Map Access Change</h2>
 <p>Values of a map can be accessed using index-based syntax as well as field-access syntax. These two syntaxes now behave differently. Getting a value using field-access syntax returns the value if the key exists. Alternately, a runtime error is thrown. Index-based syntax also will return the value if the key exists. However, it will return a null value if the key does not exist.</p>
 <p>This would also mean that, for a constrained map, the type of the return value for the index-based syntax is always the <code>constraint_type|()</code>.</p>
-<pre><code class="ballerina">map&lt;string&gt; m = {&quot;fname&quot; : &quot;John&quot;, &quot;lname&quot; : &quot;Doe&quot;}
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">map&lt;string&gt; m = {&quot;fname&quot; : &quot;John&quot;, &quot;lname&quot; : &quot;Doe&quot;}
 
 // Field based access
 string firstName = m.fname;
@@ -152,7 +152,7 @@ string? middleName = m[&quot;mname&quot;];     // returns null
 </ul>
 </li>
 </ul>
-<pre><code class="ballerina">rollingWindow: {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">rollingWindow: {
             timeWindowMillis: 10000,
             bucketSizeMillis: 2000,
             requestVolumeThreshold: 10
@@ -190,7 +190,7 @@ string? middleName = m[&quot;mname&quot;];     // returns null
 <li>Introduced APIs such that developers can define their own trace blocks and metrics.</li>
 <li>Developers can attach the trace information of their code block to the default Ballerina traces, or a new trace.</li>
 </ul>
-<pre><code class="ballerina">   //Create and attach span to the default Ballerina request trace.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">   //Create and attach span to the default Ballerina request trace.
    int spanId = check observe:startSpan(&quot;Child Span&quot;);
        // Do Something
    _ = observe:finishSpan(spanId);
@@ -208,7 +208,7 @@ string? middleName = m[&quot;mname&quot;];     // returns null
 <ul>
 <li>Developers can create a metric (counter or gauge) and have have their own measurements. A counter is a cumulative metric that represents a single monotonically increasing value. Gauge is a single numerical value that can arbitrarily go up and down, and also based on the statistics configurations provided to the gauge, it can also report the statistics such as max, min, mean, percentiles, etc. The created metric can be registered in order to include its measurements to reporters such as Prometheus.</li>
 </ul>
-<pre><code class="ballerina">   //Create counter and register.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">   //Create counter and register.
    map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
    observe:Counter counterWithTags = new (&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
    counterWithTags.register() but {
@@ -228,7 +228,7 @@ string? middleName = m[&quot;mname&quot;];     // returns null
 <ul>
 <li>All metrics registered can be retrieved and looked up individually.</li>
 </ul>
-<pre><code class="ballerina">   //Get All Metrics
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">   //Get All Metrics
     observe:Metric[] metrics = observe:getAllMetrics();
     foreach metric in metrics {
        //do something.

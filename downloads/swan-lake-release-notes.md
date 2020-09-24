@@ -1,5 +1,5 @@
 ---
-layout: ballerina-blank-page
+layout: ballerina-inner-page
 title: Swan Lake Release Notes
 permalink: /downloads/swan-lake-release-notes/
 ---

@@ -1,0 +1,441 @@
+---
+layout: ballerina-example-page
+title: Error Handling In Single Place
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/error-handling-in-single-place
+redirect_from:
+  - /vswan-lake/learn/by-example/error-handling-in-single-place
+  - /vswan-lake/learn/by-example/error-handling-in-single-place.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">InvalidAccountIDError</span> <span class="nx">error</span><span class="p">;</span><span class="nx">type</span> <span class="nx">AccountNotFoundError</span> <span class="nx">error</span><span class="p">;</span><span class="kd">const</span> <span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">=</span> <span class="s">&quot;AccountNotFound&quot;</span><span class="p">;</span><span class="kd">const</span> <span class="nx">INVALID_ACCOUNT_ID</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountID&quot;</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">negResult</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">invalidResult</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>    <span class="nx">transaction</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="nx">parsedNum</span> <span class="p">=</span> <span class="nx">check</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;12&quot;</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="nx">parsedStr</span> <span class="p">=</span> <span class="nx">check</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;invalid&quot;</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+    <span class="p">}</span> <span class="nx">on</span> <span class="nx">fail</span> <span class="nx">error</span> <span class="nx">e</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error caught during parsing: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nb">parse</span><span class="p">(</span><span class="kt">string</span> <span class="nx">num</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">&#39;int:fromString(</span><span class="nx">num</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+       <span class="nx">do</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+             <span class="nx">InvalidAccountIDError</span> <span class="nx">invalidAccoundIdError</span>
+             <span class="p">=</span> <span class="nx">InvalidAccountIDError</span><span class="p">(</span><span class="nx">INVALID_ACCOUNT_ID</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
+             <span class="nx">fail</span> <span class="nx">invalidAccoundIdError</span><span class="p">;</span>
+         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+             <span class="nx">AccountNotFoundError</span> <span class="nx">accountNotFoundError</span>
+             <span class="p">=</span> <span class="nx">AccountNotFoundError</span><span class="p">(</span><span class="nx">ACCOUNT_NOT_FOUND</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
+             <span class="nx">fail</span> <span class="nx">accountNotFoundError</span><span class="p">;</span>
+         <span class="p">}</span>
+       <span class="p">}</span> <span class="nx">on</span> <span class="nx">fail</span> <span class="nx">InvalidAccountIDError</span><span class="p">|</span><span class="nx">AccountNotFoundError</span> <span class="nx">e</span> <span class="p">{</span>
+          <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error caught: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span><span class="s">&quot;, Account ID: &quot;</span><span class="p">,</span>
+                     <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;accountID&quot;</span><span class="p">]);</span>
+       <span class="p">}</span>
+       <span class="k">return</span> <span class="mi">600</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Error Handling In Single Place</h2>
+                            <p><p><code>On-fail</code> catches failures (from the fail statement or failure of a check expression) but not panics.
+ The <code>on-fail</code> clause is supported for <code>do</code>, <code>transactions</code>, <code>retry</code>, <code>lock</code>, <code>match</code>, <code>foreach</code>, and <code>while</code> statements.
+ <code>On-fail</code> will be executed if the block statement following the supported statement fails.
+ The type of error caught from the <code>on-fail</code> clause will be the union of the error types that can be
+ returned by the block statement.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                 
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="error-handling-in-single-place">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/error-handling-in-single-place/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type InvalidAccountIDError error;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type AccountNotFoundError error;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>const INVALID_ACCOUNT_ID = &quot;InvalidAccountID&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    int negResult = getAccountBalance(-1);
+    int invalidResult = getAccountBalance(200);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    transaction {
+        int parsedNum = check parse(&quot;12&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        int parsedStr = check parse(&quot;invalid&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Parsing a random string will return an error.
+This error will be caught within the <code>on-fail</code> clause.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        var res = commit;
+    } on fail error e {
+        io:println(&quot;Error caught during parsing: &quot;, e.message());
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function parse(string num) returns int|error {
+    return &#39;int:fromString(num);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function getAccountBalance(int accountID) returns int {
+       do {
+         if (accountID &lt; 0) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>             InvalidAccountIDError invalidAccoundIdError
+             = InvalidAccountIDError(INVALID_ACCOUNT_ID, accountID = accountID);
+             fail invalidAccoundIdError;
+         } else if (accountID &gt; 100) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Throw an error with the <code>InvalidAccountID</code> as the reason if
+the <code>accountID</code> is less than zero.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>             AccountNotFoundError accountNotFoundError
+             = AccountNotFoundError(ACCOUNT_NOT_FOUND, accountID = accountID);
+             fail accountNotFoundError;
+         }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Throw an error with the <code>AccountNotFound</code> as the reason if
+the <code>accountID</code> is greater than hundred.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>       } on fail InvalidAccountIDError|AccountNotFoundError e {
+          io:println(&quot;Error caught: &quot;, e.message(),&quot;, Account ID: &quot;,
+                     e.detail()[&quot;accountID&quot;]);
+       }
+       return 600;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The type of <code>e</code> should be the union of the error types that are
+thrown by the <code>do</code> statement.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run error_handling_in_single_place.bal
+Error caught: InvalidAccountID, Account ID: -1
+Error caught: AccountNotFound, Account ID: 200
+Error caught during parsing: {ballerina/lang.int}NumberParsingError
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

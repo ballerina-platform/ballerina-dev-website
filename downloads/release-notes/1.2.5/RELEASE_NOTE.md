@@ -1,6 +1,6 @@
 ---
-layout: release-note
-title: Release note
+layout: ballerina-blank-page
+title: Release Note
 ---
 ### Overview of jBallerina 1.2.5
 The jBallerina 1.2.5 patch release improves upon the 1.2.0 release by

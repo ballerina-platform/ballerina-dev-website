@@ -55,20 +55,21 @@ import ballerina/test;
 import ballerina/http;
  
 // An instance of this object can be used as the test double for the `clientEndpoint`.
-public type MockHttpClient client object {
-    public remote function get(@untainted string path, public http:RequestMessage message = ()) 
+public client class MockHttpClient {
+    public remote function get(@untainted string path, http:RequestMessage message = ()) 
     	returns http:Response|http:ClientError {
 
         http:Response response = new;
         response.statusCode = 500;
         return response;
     }
-};
+}
 
 @test:Config {}
 public function testGetRandomJoke() {
+
     // create and assign a test double to the `clientEndpoint` object
-    clientEndpoint=test:mock(http:Client, new MockHttpClient());
+    clientEndpoint=<http:Client>test:mock(http:Client, new MockHttpClient());
 
     // invoke the function to test
     string|error result = getRandomJoke("Sheldon");
@@ -400,6 +401,9 @@ public function mockIntAdd(int a, int b) returns int {
 This test stubs the behaviour of an imported function to substitute it with a user-defined mock function.
 
 ```ballerina
+import ballerina/test;
+import ballerina/math;
+
 @test:Mock {
     // This specifies a mock function that should replace the
     // imported function `math:sqrt`.

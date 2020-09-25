@@ -281,18 +281,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -368,6 +369,7 @@
                 
             </h1>
             
+
     <p>
         
         <p>Configurations for the WebSocket client endpoint.</p>
@@ -390,11 +392,16 @@
 </table>
 
     </p>
+    
+        <div class="ui horizontal label" data-tooltip="A record with a fixed set of fields" data-position="top left">Closed record</div>
+    
+
     <div class="constants">
         
         
-        <h2>Fields</h2>
-        <div class="data-wrapper">
+            
+            <h2>Fields</h2>
+            <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -423,156 +430,6 @@
                     
                     <p>The maximum number of milliseconds to delay a failover attempt</p>
 
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >callbackService</span>
-                <span class="type">  <a href="../../http/types.html#"></a></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >subProtocols</span>
-                <span class="type">  <span class="builtin-type"></span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >customHeaders</span>
-                <span class="type">  <span class="builtin-type">map</span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >idleTimeoutInSeconds</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >readyOnConnect</span>
-                <span class="type">  <span class="builtin-type">boolean</span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >secureSocket</span>
-                <span class="type">  <a href="../../http/types.html#"></a></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >maxFrameSize</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >webSocketCompressionEnabled</span>
-                <span class="type">  <span class="builtin-type">boolean</span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >handShakeTimeoutInSeconds</span>
-                <span class="type">  <span class="builtin-type">int</span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
-                </p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> <span >cookies</span>
-                <span class="type">  <span class="builtin-type">?</span></span>
-                
-            </li>
-            <li>
-                <p>
-                    
-                    
                 </p>
             </li>
         </ul>
@@ -635,7 +492,7 @@ function displayMenu() {
     };
 </script>
 
-        
+            
         
     </div>
 

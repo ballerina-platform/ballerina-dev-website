@@ -31,18 +31,21 @@ redirect_from:
                    <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2002</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">3.7</span> <span class="p">};</span>
     <span class="nx">Student</span> <span class="nx">s4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fernando&quot;</span><span class="p">,</span> 
                    <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2005</span><span class="p">,</span> <span class="nx">gpa</span><span class="p">:</span> <span class="mf">4.0</span> <span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
-    <span class="nx">ReportTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">reportTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+    <span class="nx">ReportTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">reportTable</span> <span class="p">=</span>
+        <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
         <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">gpa</span> <span class="o">&gt;=</span> <span class="mf">2.0</span>
         <span class="nx">let</span> <span class="kt">string</span> <span class="nx">degreeName</span> <span class="p">=</span> <span class="s">&quot;Bachelor of Medicine&quot;</span><span class="p">,</span>
         <span class="kt">int</span> <span class="nx">graduationYear</span> <span class="p">=</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">)</span>
+        <span class="nx">limit</span> <span class="mi">2</span>
         <span class="nx">select</span> <span class="p">{</span>
             <span class="nx">id</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
             <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
             <span class="nx">degree</span><span class="p">:</span> <span class="nx">degreeName</span><span class="p">,</span>
             <span class="nx">graduationYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
-        <span class="p">}</span>
-        <span class="nx">limit</span> <span class="mi">2</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">reportTable</span><span class="p">);</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">duplicateStdList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s1</span><span class="p">];</span>
-    <span class="nx">error</span> <span class="nx">onConflictError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Key Conflict&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;cannot insert report&quot;</span><span class="p">);</span>    <span class="nx">ReportTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">duplicateStdList</span>
+        <span class="p">};</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">reportTable</span><span class="p">);</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">duplicateStdList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s1</span><span class="p">];</span>
+    <span class="nx">error</span> <span class="nx">onConflictError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Key Conflict&quot;</span><span class="p">,</span>
+                                  <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;cannot insert report&quot;</span><span class="p">);</span>    <span class="nx">ReportTable</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span>
+        <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">duplicateStdList</span>
         <span class="nx">select</span> <span class="p">{</span>
             <span class="nx">id</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
             <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
@@ -52,11 +55,7 @@ redirect_from:
         <span class="nx">on</span> <span class="nx">conflict</span> <span class="nx">onConflictError</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">year</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_expression_to_table</span><span class="p">.</span><span class="nx">balid</span><span class="p">=</span><span class="mi">1</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Michelle</span> <span class="nx">Sadler</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">graduationYear</span><span class="p">=</span><span class="mi">1995</span>
-<span class="nx">id</span><span class="p">=</span><span class="mi">3</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Martin</span> <span class="nx">Guthrie</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">graduationYear</span><span class="p">=</span><span class="mi">2007</span>
-<span class="nx">error</span> <span class="nx">Key</span> <span class="nx">Conflict</span> <span class="kt">message</span><span class="p">=</span><span class="nx">cannot</span> <span class="nx">insert</span> <span class="nx">report</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -110,6 +109,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/query-expression-to-table/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -268,7 +268,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ReportTable|error reportTable = table key(id) from var student in studentList
+                                    <div class="highlight"><pre><code class=language-ballerina>    ReportTable|error reportTable =
+        table key(id) from var student in studentList
 </code></pre></div>
 
                                 </td>
@@ -330,12 +331,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        select {
-            id: student.id,
-            name: student.firstName + &quot; &quot; + student.lastName,
-            degree: degreeName,
-            graduationYear: graduationYear
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        limit 2
 </code></pre></div>
 
                                 </td>
@@ -343,8 +339,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>select</code> clause is evaluated for each iteration.
- During the construction of a <code>table</code>, each emitted value from the <code>select</code> clause is added as a new member.</p>
+                                            <p>The <code>limit</code> clause limits the number of output items.</p>
 
                                         </div>
                                     </div>
@@ -355,7 +350,12 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        limit 2;
+                                    <div class="highlight"><pre><code class=language-ballerina>        select {
+            id: student.id,
+            name: student.firstName + &quot; &quot; + student.lastName,
+            degree: degreeName,
+            graduationYear: graduationYear
+        };
 </code></pre></div>
 
                                 </td>
@@ -363,7 +363,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>limit</code> clause limits the number of output items.</p>
+                                            <p>The <code>select</code> clause is evaluated for each iteration.
+ During the construction of a <code>table</code>, each emitted value from the <code>select</code> clause is added as a new member.</p>
 
                                         </div>
                                     </div>
@@ -398,7 +399,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error onConflictError = error(&quot;Key Conflict&quot;, message = &quot;cannot insert report&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    error onConflictError = error(&quot;Key Conflict&quot;,
+                                  message = &quot;cannot insert report&quot;);
 </code></pre></div>
 
                                 </td>
@@ -417,7 +419,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ReportTable|error result = table key(id) from var student in duplicateStdList
+                                    <div class="highlight"><pre><code class=language-ballerina>    ReportTable|error result =
+        table key(id) from var student in duplicateStdList
         select {
             id: student.id,
             name: student.firstName + &quot; &quot; + student.lastName,
@@ -514,9 +517,8 @@ ballerina run query_expression_to_table.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>id=1 name=Michelle Sadler degree=Bachelor of Medicine graduationYear=1995
-id=3 name=Martin Guthrie degree=Bachelor of Medicine graduationYear=2007
-error Key Conflict message=cannot insert report
+                                    <div class="highlight"><pre><code class=shell-session>[{&quot;id&quot;:1,&quot;name&quot;:&quot;Michelle Sadler&quot;,&quot;degree&quot;:&quot;Bachelor of Medicine&quot;,&quot;graduationYear&quot;:1995},{&quot;id&quot;:3,&quot;name&quot;:&quot;Martin Guthrie&quot;,&quot;degree&quot;:&quot;Bachelor of Medicine&quot;,&quot;graduationYear&quot;:2007}]
+error(&quot;Key Conflict&quot;,message=&quot;cannot insert report&quot;)
 </code></pre></div>
 
                                 </td>
@@ -544,7 +546,7 @@ error Key Conflict message=cannot insert report
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -13,6 +13,18 @@ redirect_from:
 
 The Kubernetes builder extension offers native support for running Ballerina programs on Kubernetes with the use of annotations that you can include as part of your service code. Also, it will take care of the creation of the Docker images, so you don't need to explicitly create Docker images prior to deployment on Kubernetes.
 
+- [Supported Configurations](#supported-configurations)
+- [Using Kubernetes Annotations](#using-kubernetes-annotations)
+- [Building the Deployed Service](#building-the-deployed-service)
+- [Creating the Kubernetes Deployment](#creating-the-kubernetes-deployment)
+    - [Accessing via Node Port](#accessing-via-node-port)
+    - [Accessing via Ingress](#accessing-via-ingress)
+    - [Accessing the Service](#accessing-the-service)
+- [Supported Kubernetes Annotations](#supported-kubernetes-annotations)
+- [Extending Ballerina Deployment and Annotations](#extending-ballerina-deployment-and-annotations)
+
+## Supported Configurations
+
 The following Kubernetes configurations are supported:
 - Kubernetes deployment support
 - Kubernetes service support
@@ -31,6 +43,7 @@ The following Kubernetes configurations are supported:
 - OpenShift build config and image stream support
 - OpenShift route support
 
+## Using Kubernetes Annotations
 
 The following Ballerina code section explains how you can use some of these Kubernetes capabilities by using Kubernetes annotation support in Ballerina.
 
@@ -118,7 +131,9 @@ Minikube users please see the [Kubernetes Extension samples](https://github.com/
 
 Create a folder called `security` and copy the [ballerinaKeystore.p12](https://github.com/ballerina-platform/ballerina-lang/raw/v1.2.0/examples/resources/ballerinaKeystore.p12). This is to secure the endpoint of the service.
 
-Now you can use the following command to build the Ballerina service that we developed above. This will also create the corresponding Docker image and the Kubernetes artifacts using the Kubernetes annotations that you have configured above.
+## Building the Deployed Service
+
+Now, you can use the following command to build the Ballerina service that we developed above. This will also create the corresponding Docker image and the Kubernetes artifacts using the Kubernetes annotations that you have configured above.
 
 ```bash
 $ ballerina build user_retrieval_service.bal
@@ -166,6 +181,8 @@ $ tree
 │   └── user_retrieval_service.yaml
 
 ```
+
+## Creating the Kubernetes Deployment
 
 Now, you can create the Kubernetes deployment using:
 
@@ -221,13 +238,13 @@ The Kubernetes extension automatically passes the config file to the Ballerina p
 
 If everything is successfully deployed, you can invoke the service either via Node port or ingress.
 
-**Access via Node Port:**
+### Accessing via Node Port
 ```bash
 $ curl -k https://localhost:31417/users/john 
 {"name":"John Doe", "email":"john@ballerina.com"}
 ```
 
-**Access via Ingress:**
+### Accessing via Ingress
 
 Add an `/etc/hosts` entry to match hostname.
 
@@ -243,7 +260,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/ngin
 kubectl patch deployments -n ingress-nginx nginx-ingress-controller -p '{"spec":{"template":{"spec":{"containers":[{"name":"nginx-ingress-controller","args":["\/nginx-ingress-controller","--configmap=$(POD_NAMESPACE)\/nginx-configuration","--tcp-services-configmap=$(POD_NAMESPACE)\/tcp-services","--udp-services-configmap=$(POD_NAMESPACE)\/udp-services","--publish-service=$(POD_NAMESPACE)\/ingress-nginx","--annotations-prefix=nginx.ingress.kubernetes.io","--annotations-prefix=nginx.ingress.kubernetes.io","--enable-ssl-passthrough"]}]}}}}'
 ```
 
-Access the service:
+### Accessing the Service
 
 ```bash
 $ curl -kv https://ballerina.guides.io/users/jane 
@@ -393,5 +410,5 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |imagePullSecrets|Image pull secret's value|null|
 
   
-### Extend Ballerina Deployment and Annotations
+### Extending Ballerina Deployment and Annotations
 Ballerina can be augmented with your own annotations that represent your own unique deployment artifacts. You can also write builder extensions that generate these files during compilation. Refer to the example at https://github.com/ballerinax/hello.

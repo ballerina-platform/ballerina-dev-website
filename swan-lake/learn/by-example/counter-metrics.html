@@ -46,33 +46,7 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span>  <span class="nx">below</span> <span class="nx">with</span> <span class="nx">the</span> <span class="s">`--b7a.observability.enabled=true`</span> <span class="nx">property</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">counter_metrics</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">observability</span><span class="p">.</span><span class="nx">enabled</span><span class="p">=</span><span class="kc">true</span><span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9797</span>
-<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">Prometheus</span> <span class="nx">HTTP</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9797</span>
-<span class="nx">ballerina</span><span class="p">:</span> <span class="nx">started</span> <span class="nx">publishing</span> <span class="nx">tracers</span> <span class="nx">to</span> <span class="nx">Jaeger</span> <span class="nx">on</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">5775</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
-<span class="o">------------------------------------------</span>
-<span class="nx">Global</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">1</span>
-<span class="nx">Local</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">21</span>
-<span class="nx">Registered</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="o">------------------------------------------</span>
-<span class="o">------------------------------------------</span>
-<span class="nx">Global</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">2</span>
-<span class="nx">Local</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">21</span>
-<span class="nx">Registered</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">20</span>
-<span class="o">------------------------------------------</span>
-<span class="o">------------------------------------------</span>
-<span class="nx">Global</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">3</span>
-<span class="nx">Local</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">21</span>
-<span class="nx">Registered</span> <span class="nx">Counter</span> <span class="p">=</span> <span class="mi">30</span>
-<span class="o">------------------------------------------</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
-<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
-<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/online-store-service/make-order</span>
-<span class="nx">Order</span> <span class="nx">Processed</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -126,6 +100,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/counter-metrics/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -567,7 +542,7 @@ Order Processed!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

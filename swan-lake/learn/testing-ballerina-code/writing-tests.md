@@ -41,8 +41,8 @@ project-name/
 
 ## Test Source Files
 
-Unit tests bound to a module need to be placed in a sub folder called ***tests/*** within the module. In a standard
- Ballerina project, a module is mapped to a test suite. All tests within a module’s *tests/* subfolder are
+Unit tests bound to a module need to be placed in a sub folder called `tests/` within the module. In a standard
+ Ballerina project, a module is mapped to a test suite. All tests within a module’s `tests/` subfolder are
   considered to be part of the same test suite.
 
 The test source files could have any name. The test functions are just Ballerina functions, which use a special

@@ -215,10 +215,87 @@ build, and install Ballerina modules. These commands work with repositories that
 
 <p>Ballerina Central is a globally hosted module management system that is used to discover, download, and publish modules.</p>
 
+<ul>
+    <li><a href="#organizing-your-code">Organizing Your Code</a></li>
+    
+    <li><a href="#programs">Programs</a>
+    
+    
+    <ul>
+    <li><a href="#building-and-running-programs">Building and Running Programs</a></li></ul>
+    </li>
+    
+    <li><a href="#modules">Modules</a>
+    
+    
+    <ul>
+    <li><a href="#importing-modules">Importing Modules</a></li>
+    
+    <li><a href="#module-version-dependency">Module Version Dependency</a></li>
+    
+    <li><a href="#compiled-modules"> Compiled Modules</a></li>
+    
+    <li><a href="#running-compiled-modules">Running Compiled Modules</a></li></ul>
+    </li>
+    
+    <li><a href="#projects">Projects</a>
+    
+    
+    <ul>
+    <li><a href="#creating-a-project">Creating a Project</a></li>
+    
+    <li><a href="#adding-a-module">Adding a Module</a></li>
+    
+    <li><a href="#project-structure">Project Structure</a></li>
+    
+    <li><a href="#building-a-project">Building a Project</a></li>
+    
+    <li><a href="#building-a-module">Building a Module</a></li>
+    
+    <li><a href="#compiling-a-project">Compiling a Project</a></li>
+    
+    <li><a href="#compiling-a-module">Compiling a Module</a></li>
+    
+    <li><a href="#versioning-a-module">Versioning a Module</a></li>
+    
+    <li><a href="#assigning-an-organization-name-to-a-module">Assigning an Organization Name to a Module</a></li></ul>
+    </li>
+    
+    <li><a href="#module-caches">Module Caches</a>
+    
+    
+    <ul>
+    <li><a href="#caches">Caches</a>
+    
+    
+    <ul>
+    <li><a href="#balo-cache">BALO Cache</a></li>
+    
+    <li><a href="#bir-cache">BIR Cache</a></li>
+    
+    <li><a href="#jar-cache">JAR Cache</a></li></ul>
+    </li>
+    
+    <li><a href="#module-repository---ballerina-central">Module Repository - Ballerina Central</a>
+    
+    
+    <ul>
+    <li><a href="#organizations">Organizations</a></li>
+    
+    <li><a href="#pulling-remote-modules">Pulling Remote Modules</a></li>
+    
+    <li><a href="#pushing-modules">Pushing Modules</a></li>
+    
+    <li><a href="#configuring-ballerina-central-access">Configuring Ballerina Central Access</a></li></ul>
+    </li></ul>
+    </li>
+    </ul>
+
+<h2 id="organizing-your-code">Organizing Your Code</h2>
+
 <p>The <code class="highlighter-rouge">Ballerina Tool</code> requires you to organize your code in a specific way. This document explains the simplest way to 
 get it up and running with a Ballerina installation.</p>
 
-<h2 id="overview">Overview</h2>
 <ul>
   <li>Ballerina programmers can either place their code into a single source code file or in a <em>project</em> directory.</li>
   <li>A Ballerina program residing in a single source code file should have a <code class="highlighter-rouge">.bal</code> extension and an entry point (i.e., either a <code class="highlighter-rouge">main</code>
@@ -268,7 +345,7 @@ service hello on new http:Listener(9090) {
 }
 </code></pre>
 
-<h3 id="build-and-run-programs">Build and Run Programs</h3>
+<h3 id="building-and-running-programs">Building and Running Programs</h3>
 <p>To generate an executable <code class="highlighter-rouge">.jar</code>, you can build a Ballerina program, which contains a <code class="highlighter-rouge">main()</code> function or a service(s):</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /local/ballerina/src
@@ -384,7 +461,7 @@ into a <code class="highlighter-rouge">.jar</code>. You can run the compiled mod
 <p>Projects are managed atomically. Therefore, dependency management, compilation, unit tests, and artifact generation are done 
 collectively across the source code files and modules defined within a project.</p>
 
-<h3 id="create-a-project">Create a Project</h3>
+<h3 id="creating-a-project">Creating a Project</h3>
 <p>You can create a project using the <code class="highlighter-rouge">ballerina new</code> command:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ballerina new &lt;project-name&gt;
@@ -396,7 +473,7 @@ it will give an error.</p>
 
 <p>It will create the <code class="highlighter-rouge">Ballerina.toml</code> file, and <code class="highlighter-rouge">src</code> folder.</p>
 
-<h3 id="add-a-module">Add a Module</h3>
+<h3 id="adding-a-module">Adding a Module</h3>
 <p>Once the project is initialized, a module can be created inside the project using the <code class="highlighter-rouge">ballerina add</code> command. 
 Each subdirectory of the project <code class="highlighter-rouge">src</code> folder defines a single module. The subdirectory’s name will be used to name the 
 module.</p>
@@ -441,7 +518,7 @@ module when it is built.</p>
                 jar_cache/
 </code></pre></div></div>
 
-<h3 id="build-a-project">Build a Project</h3>
+<h3 id="building-a-project">Building a Project</h3>
 <p>A project should be built if it is required to generate the executable JAR files from the modules in the project. The
 executable JAR files will be generated only if there are entry points (main method or a service) in the module. Building
 a project will build all modules found in the project’s root folder. Building a project runs through phases including
@@ -450,7 +527,7 @@ dependency resolution, compilation, artifact generation, and unit test execution
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ballerina build <span class="nt">-a</span>
 </code></pre></div></div>
 
-<h3 id="build-a-module">Build a Module</h3>
+<h3 id="building-a-module">Building a Module</h3>
 <p>You can build a single module contained within a project:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ballerina build &lt;module-name&gt;
@@ -460,7 +537,7 @@ dependency resolution, compilation, artifact generation, and unit test execution
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ballerina build <span class="nt">--skip-tests</span> &lt;module-name&gt;
 </code></pre></div></div>
 
-<h3 id="compile-a-project">Compile a Project</h3>
+<h3 id="compiling-a-project">Compiling a Project</h3>
 <p>A project should be compiled if it is required to generate the libraries (i.e., BALOs) from the modules in the project.
 Compiling a project will compile all the modules found in the project’s root folder. Building a project runs through phases
 including dependency resolution, compilation, artifact generation, and unit test execution.</p>
@@ -468,7 +545,7 @@ including dependency resolution, compilation, artifact generation, and unit test
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ballerina build <span class="nt">-c</span> <span class="nt">-a</span>
 </code></pre></div></div>
 
-<h3 id="compile-a-module">Compile a Module</h3>
+<h3 id="compiling-a-module">Compiling a Module</h3>
 <p>You can build a single module contained within a project:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ballerina build <span class="nt">-c</span> &lt;module-name&gt;
@@ -478,7 +555,7 @@ including dependency resolution, compilation, artifact generation, and unit test
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ballerina build <span class="nt">-c</span> <span class="nt">--skip-tests</span> &lt;module-name&gt;
 </code></pre></div></div>
 
-<h3 id="version-a-module">Version a Module</h3>
+<h3 id="versioning-a-module">Versioning a Module</h3>
 <p>Modules in a project are assigned their version from within the <code class="highlighter-rouge">Ballerina.toml</code> file:</p>
 
 <div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The current version, obeying [semver](https://semver.org/)</span>
@@ -490,7 +567,7 @@ those modules should be placed into different projects.</p>
 
 <p>Version labels must follow <a href="https://semver.org/">Semantic Versioning 2.0 rules</a>.</p>
 
-<h3 id="assign-an-organization-name-to-a-module">Assign an Organization Name to a Module</h3>
+<h3 id="assigning-an-organization-name-to-a-module">Assigning an Organization Name to a Module</h3>
 <p>A module is assigned an <code class="highlighter-rouge">&lt;org-name&gt;</code> when it is pushed into a repository. The <code class="highlighter-rouge">&lt;org-name&gt;</code> is defined in the 
 <code class="highlighter-rouge">Ballerina.toml</code> and all modules in the same project are assigned the same organization name:</p>
 
@@ -575,7 +652,7 @@ It is required to build the module before pushing it to Ballerina Central.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Push a single module
 ballerina push &lt;module-name&gt;
 </code></pre></div></div>
-<h3 id="configure-ballerina-central-access">Configure Ballerina Central Access</h3>
+<h3 id="configuring-ballerina-central-access">Configuring Ballerina Central Access</h3>
 
 <p>Ballerina Central requires an account in order to push modules. Your account is represented by a CLI token that is 
 installed into your local Ballerina configuration file, i.e., <code class="highlighter-rouge">~/.ballerina/Settings.toml</code>. The CLI token is 

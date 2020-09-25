@@ -39,13 +39,9 @@ redirect_from:
     <span class="p">};</span>
     <span class="nx">Person</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source value: &quot;</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Cloned value: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source and Clone are at two different memory locations: &quot;</span><span class="p">,</span> <span class="nx">result</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">clone</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Source</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Alex</span> <span class="nx">age</span><span class="p">=</span><span class="mi">24</span> <span class="nx">married</span><span class="p">=</span><span class="kc">false</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">8000.0</span> <span class="nx">address</span><span class="p">=</span><span class="nx">country</span><span class="p">=</span><span class="nx">USA</span> <span class="nx">state</span><span class="p">=</span><span class="nx">NC</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Raleigh</span> <span class="nx">street</span><span class="p">=</span><span class="nx">Daniels</span> <span class="nx">St</span>
-<span class="nx">Cloned</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Alex</span> <span class="nx">age</span><span class="p">=</span><span class="mi">24</span> <span class="nx">married</span><span class="p">=</span><span class="kc">false</span> <span class="nx">salary</span><span class="p">=</span><span class="mf">8000.0</span> <span class="nx">address</span><span class="p">=</span><span class="nx">country</span><span class="p">=</span><span class="nx">USA</span> <span class="nx">state</span><span class="p">=</span><span class="nx">NC</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Raleigh</span> <span class="nx">street</span><span class="p">=</span><span class="nx">Daniels</span> <span class="nx">St</span>
-<span class="nx">Source</span> <span class="nx">and</span> <span class="nx">Clone</span> <span class="nx">are</span> <span class="nx">at</span> <span class="nx">two</span> <span class="nx">different</span> <span class="nx">memory</span> <span class="nx">locations</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source and Clone are at two different memory locations: &quot;</span><span class="p">,</span>
+                <span class="nx">result</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -100,6 +96,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/clone/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -299,7 +296,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Source and Clone are at two different memory locations: &quot;, result !== person);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Source and Clone are at two different memory locations: &quot;,
+                result !== person);
 }
 </code></pre></div>
 
@@ -335,8 +333,8 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run clone.bal
-Source value: name=Alex age=24 married=false salary=8000.0 address=country=USA state=NC city=Raleigh street=Daniels St
-Cloned value: name=Alex age=24 married=false salary=8000.0 address=country=USA state=NC city=Raleigh street=Daniels St
+Source value: {&quot;name&quot;:&quot;Alex&quot;,&quot;age&quot;:24,&quot;married&quot;:false,&quot;salary&quot;:8000.0,&quot;address&quot;:{&quot;country&quot;:&quot;USA&quot;,&quot;state&quot;:&quot;NC&quot;,&quot;city&quot;:&quot;Raleigh&quot;,&quot;street&quot;:&quot;Daniels St&quot;}}
+Cloned value: {&quot;name&quot;:&quot;Alex&quot;,&quot;age&quot;:24,&quot;married&quot;:false,&quot;salary&quot;:8000.0,&quot;address&quot;:{&quot;country&quot;:&quot;USA&quot;,&quot;state&quot;:&quot;NC&quot;,&quot;city&quot;:&quot;Raleigh&quot;,&quot;street&quot;:&quot;Daniels St&quot;}}
 Source and Clone are at two different memory locations: true
 </code></pre></div>
 
@@ -365,7 +363,7 @@ Source and Clone are at two different memory locations: true
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

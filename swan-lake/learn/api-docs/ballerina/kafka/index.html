@@ -12,7 +12,7 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
 ">
     <meta name="keywords" content="ballerina,ballerina lang,api docs,kafka">
 
-    <title>API Docs - ballerina/kafka</title>
+    <title>API Docs - ballerinax/kafka</title>
     <script src="../html-template-resources/jquery.min.js"></script>
 
     <!-- BIO THEME START -->
@@ -71,18 +71,15 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+        
+            <li>
+                <a  data="classes" href="../kafka/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -153,7 +150,6 @@ For examples on the usage of the operations, see the following.</p>
 <li><a href="https://ballerina.io/swan-lake/learn/by-example/kafka-consumer-service.html">Consumer Service Example</a></li>
 <li><a href="https://ballerina.io/swan-lake/learn/by-example/kafka-consumer-client.html">Consumer Client Example</a></li>
 <li><a href="https://ballerina.io/swan-lake/learn/by-example/kafka-producer-transactional.html">Transactional Producer Example</a></li>
-<li><a href="https://ballerina.io/swan-lake/learn/by-example/kafka-consumer-group-service.html">Consumer Groups Example</a></li>
 <li><a href="https://ballerina.io/swan-lake/learn/by-example/kafka-authentication-sasl-plain-consumer.html">Consumer with SASL Authentication Example</a></li>
 <li><a href="https://ballerina.io/swan-lake/learn/by-example/kafka-authentication-sasl-plain-producer.html">Producer with SASL Authentication Example</a></li>
 </ul>
@@ -396,202 +392,173 @@ name=Lahiru Perera age=28
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="AuthenticationConfiguration" title="AuthenticationConfiguration">
                             <a class="records " href="records/AuthenticationConfiguration.html">AuthenticationConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations related to Kafka authentication mechanisms.</p>
-
+                            <p>Configurations related to Kafka authentication mechanisms.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
+                    <tr>
+                        <td class="module-title truncate records" id="AvroGenericRecord" title="AvroGenericRecord">
+                            <a class="records " href="records/AvroGenericRecord.html">AvroGenericRecord</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represents a generic Avro record.
+                        </td>
+                    </tr>
+                
                     <tr>
                         <td class="module-title truncate records" id="AvroRecord" title="AvroRecord">
                             <a class="records " href="records/AvroRecord.html">AvroRecord</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Defines a record to send data using Avro serialization.</p>
-
+                            <p>Defines a record to send data using Avro serialization.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ConsumerConfiguration" title="ConsumerConfiguration">
                             <a class="records " href="records/ConsumerConfiguration.html">ConsumerConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations related to consumer endpoint.</p>
-
+                            <p>Configurations related to consumer endpoint.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ConsumerRecord" title="ConsumerRecord">
                             <a class="records " href="records/ConsumerRecord.html">ConsumerRecord</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Type related to consumer record.</p>
-
+                            <p>Type related to consumer record.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="KeyStore" title="KeyStore">
                             <a class="records " href="records/KeyStore.html">KeyStore</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations related to the KeyStore.</p>
-
+                            <p>Configurations related to the KeyStore.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="PartitionOffset" title="PartitionOffset">
                             <a class="records " href="records/PartitionOffset.html">PartitionOffset</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the topic partition position in which the consumed record is stored.</p>
-
+                            <p>Represents the topic partition position in which the consumed record is stored.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ProducerConfiguration" title="ProducerConfiguration">
                             <a class="records " href="records/ProducerConfiguration.html">ProducerConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the Kafka Producer configuration.</p>
-
+                            <p>Represents the Kafka Producer configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="Protocols" title="Protocols">
                             <a class="records " href="records/Protocols.html">Protocols</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations related to the SSL/TLS protocol and the versions to be used.</p>
-
+                            <p>Configurations related to the SSL/TLS protocol and the versions to be used.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="SecureSocket" title="SecureSocket">
                             <a class="records " href="records/SecureSocket.html">SecureSocket</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations for facilitating secure communication with the Kafka server.</p>
-
+                            <p>Configurations for facilitating secure communication with the Kafka server.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="TopicPartition" title="TopicPartition">
                             <a class="records " href="records/TopicPartition.html">TopicPartition</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a topic partition.</p>
-
+                            <p>Represents a topic partition.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="TrustStore" title="TrustStore">
                             <a class="records " href="records/TrustStore.html">TrustStore</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Configurations related to the TrustStore.</p>
-
+                            <p>Configurations related to the TrustStore.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
-                    <tr>
-                        <td class="module-title truncate objects" id="Deserializer" title="Deserializer">
-                            <a class="objects " href="objects/Deserializer.html">Deserializer</a>
-                        </td>
-                        <td class="module-desc">
-                            
-                            <p>Represents a Kafka deserializer object.
-                        </td>
-                    </tr>
-                    
-                    
-                    
-                    <tr>
-                        <td class="module-title truncate objects" id="Serializer" title="Serializer">
-                            <a class="objects " href="objects/Serializer.html">Serializer</a>
-                        </td>
-                        <td class="module-desc">
-                            
-                            <p>Represents a Kafka serializer object.
-                        </td>
-                    </tr>
-                    
-                    
-                </table>
-            </section>
-        
+
+    
+        <section class="method-content" id="absobjects">
+            <div class="main-method-title here">
+                <a class="url-link" href="#absobjects">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Abstract Objects </h2>
+            </div>
+            <table>
+                
+                <tr>
+                    <td class="module-title truncate objects" id="Deserializer" title="Deserializer">
+                        <a class="objects " href="abstractobjects/Deserializer.html">Deserializer</a>
+                    </td>
+                    <td class="module-desc">
+                        
+                        <p>Represents a Kafka deserializer object.
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="module-title truncate objects" id="Serializer" title="Serializer">
+                        <a class="objects " href="abstractobjects/Serializer.html">Serializer</a>
+                    </td>
+                    <td class="module-desc">
+                        
+                        <p>Represents a Kafka serializer object.
+                    </td>
+                </tr>
+                
+            </table>
+        </section>
     
 
     
@@ -610,8 +577,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a Kafka consumer endpoint.</p>
-
+                    <p>Represents a Kafka consumer endpoint.</p> 
                 </td>
             </tr>
             
@@ -621,8 +587,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a Kafka producer endpoint.</p>
-
+                    <p>Represents a Kafka producer endpoint.</p> 
                 </td>
             </tr>
             
@@ -652,8 +617,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>In-built Kafka byte array deserializer.</p>
-
+                    <p>In-built Kafka byte array deserializer.</p> 
                 </td>
             </tr>
             
@@ -663,8 +627,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>In-built Kafka string deserializer.</p>
-
+                    <p>In-built Kafka string deserializer.</p> 
                 </td>
             </tr>
             
@@ -674,8 +637,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>In-built Kafka int deserializer.</p>
-
+                    <p>In-built Kafka int deserializer.</p> 
                 </td>
             </tr>
             
@@ -685,8 +647,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>In-built Kafka float deserializer.</p>
-
+                    <p>In-built Kafka float deserializer.</p> 
                 </td>
             </tr>
             
@@ -696,8 +657,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>User-defined deserializer.</p>
-
+                    <p>User-defined deserializer.</p> 
                 </td>
             </tr>
             
@@ -707,8 +667,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Apache Avro deserializer.</p>
-
+                    <p>Apache Avro deserializer.</p> 
                 </td>
             </tr>
             
@@ -718,8 +677,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Configures the consumer to read the committed messages only in the transactional mode when poll() is called.</p>
-
+                    <p>Configures the consumer to read the committed messages only in the transactional mode when poll() is called.</p> 
                 </td>
             </tr>
             
@@ -729,8 +687,37 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Configures the consumer to read all the messages including the aborted ones.</p>
-
+                    <p>Configures the consumer to read all the messages including the aborted ones.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="OFFSET_RESET_EARLIEST" title="OFFSET_RESET_EARLIEST">
+                    <a class="constant " href="constants.html#OFFSET_RESET_EARLIEST">OFFSET_RESET_EARLIEST</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Automatically reset the consumer offset to the earliest offset</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="OFFSET_RESET_LATEST" title="OFFSET_RESET_LATEST">
+                    <a class="constant " href="constants.html#OFFSET_RESET_LATEST">OFFSET_RESET_LATEST</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Automatically reset the consumer offset to the latest offset</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="OFFSET_RESET_NONE" title="OFFSET_RESET_NONE">
+                    <a class="constant " href="constants.html#OFFSET_RESET_NONE">OFFSET_RESET_NONE</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>If the <code>offsetReset</code> is set to <code>OFFSET_RESET_NONE</code>, the consumer will give an error if no previous offset is found for the consumer group</p> 
                 </td>
             </tr>
             
@@ -770,8 +757,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>In-built Kafka Byte Array serializer.</p>
-
+                    <p>In-built Kafka Byte Array serializer.</p> 
                 </td>
             </tr>
             
@@ -781,8 +767,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>In-built Kafka string serializer.</p>
-
+                    <p>In-built Kafka string serializer.</p> 
                 </td>
             </tr>
             
@@ -792,8 +777,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>In-built Kafka int serializer.</p>
-
+                    <p>In-built Kafka int serializer.</p> 
                 </td>
             </tr>
             
@@ -803,8 +787,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>In-built Kafka float serializer.</p>
-
+                    <p>In-built Kafka float serializer.</p> 
                 </td>
             </tr>
             
@@ -814,8 +797,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>User-defined serializer.</p>
-
+                    <p>User-defined serializer.</p> 
                 </td>
             </tr>
             
@@ -825,8 +807,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Apache Avro serializer.</p>
-
+                    <p>Apache Avro serializer.</p> 
                 </td>
             </tr>
             
@@ -836,8 +817,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>No compression.</p>
-
+                    <p>No compression.</p> 
                 </td>
             </tr>
             
@@ -847,8 +827,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka GZIP compression type.</p>
-
+                    <p>Kafka GZIP compression type.</p> 
                 </td>
             </tr>
             
@@ -858,8 +837,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka Snappy compression type.</p>
-
+                    <p>Kafka Snappy compression type.</p> 
                 </td>
             </tr>
             
@@ -869,8 +847,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka LZ4 compression type.</p>
-
+                    <p>Kafka LZ4 compression type.</p> 
                 </td>
             </tr>
             
@@ -880,8 +857,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka ZSTD compression type.</p>
-
+                    <p>Kafka ZSTD compression type.</p> 
                 </td>
             </tr>
             
@@ -891,8 +867,17 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka SASL_PLAIN authentication mechanism</p>
-
+                    <p>Kafka SASL_PLAIN authentication mechanism</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="PROTOCOL_PLAINTEXT" title="PROTOCOL_PLAINTEXT">
+                    <a class="constant " href="constants.html#PROTOCOL_PLAINTEXT">PROTOCOL_PLAINTEXT</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents Kafka un-authenticated, non-encrypted channel</p> 
                 </td>
             </tr>
             
@@ -902,7 +887,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    
+                    <p>Represents Kafka authenticated, non-encrypted channel</p> 
                 </td>
             </tr>
             
@@ -912,7 +897,17 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
+                    <p>Represents Kafka SASL authenticated, SSL channel</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate constant" id="PROTOCOL_SSL" title="PROTOCOL_SSL">
+                    <a class="constant " href="constants.html#PROTOCOL_SSL">PROTOCOL_SSL</a>
+                </td>
+                <td class="module-desc">
                     
+                    <p>Represents Kafka SSL channel</p> 
                 </td>
             </tr>
             
@@ -939,8 +934,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the supported Kafka SASL authentication mechanisms.</p>
-
+                    <p>Represents the supported Kafka SASL authentication mechanisms.</p> 
                 </td>
             </tr>
             
@@ -950,8 +944,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka compression types to compress the messages.</p>
-
+                    <p>Kafka compression types to compress the messages.</p> 
                 </td>
             </tr>
             
@@ -961,8 +954,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka in-built deserializer type.</p>
-
+                    <p>Kafka in-built deserializer type.</p> 
                 </td>
             </tr>
             
@@ -972,8 +964,17 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka consumer isolation level type.</p>
-
+                    <p>Kafka consumer isolation level type.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate types" id="OffsetResetMethod" title="OffsetResetMethod">
+                    <a class="types " href="types.html#OffsetResetMethod">OffsetResetMethod</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents the differnet types of offset-reset mothods for Kafka consumer</p> 
                 </td>
             </tr>
             
@@ -983,8 +984,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka producer acknowledgement types.</p>
-
+                    <p>Kafka producer acknowledgement types.</p> 
                 </td>
             </tr>
             
@@ -994,8 +994,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the supported security protocols for Kafka clients.</p>
-
+                    <p>Represents the supported security protocols for Kafka clients.</p> 
                 </td>
             </tr>
             
@@ -1005,8 +1004,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Kafka in-built serializer types.</p>
-
+                    <p>Kafka in-built serializer types.</p> 
                 </td>
             </tr>
             
@@ -1030,8 +1028,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a Kafka Avro related error.</p>
-
+                    <p>Represents a Kafka Avro related error.</p> 
                 </td>
             </tr>
             
@@ -1041,8 +1038,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Error type specific to the <code>kafka:Consumer</code> object functions.</p>
-
+                    <p>Error type specific to the <code>kafka:Consumer</code> object functions.</p> 
                 </td>
             </tr>
             
@@ -1052,8 +1048,7 @@ name=Lahiru Perera age=28
                 </td>
                 <td class="module-desc">
                     
-                    <p>Error type specific to the <code>kafka:Producer</code> object functions.</p>
-
+                    <p>Error type specific to the <code>kafka:Producer</code> object functions.</p> 
                 </td>
             </tr>
             

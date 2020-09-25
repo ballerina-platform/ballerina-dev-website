@@ -105,36 +105,7 @@ redirect_from:
     <span class="nx">contentDisposition</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">partName</span><span class="p">;</span>
     <span class="nx">contentDisposition</span><span class="p">.</span><span class="nx">disposition</span> <span class="p">=</span> <span class="s">&quot;form-data&quot;</span><span class="p">;</span>
     <span class="k">return</span> <span class="nx">contentDisposition</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">request_with_multiparts</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">Start</span> <span class="nx">multipartDemoService</span>
-<span class="err">#</span> <span class="nx">The</span> <span class="nx">cURL</span> <span class="nx">command</span><span class="p">,</span> <span class="nx">which</span> <span class="nx">you</span> <span class="nx">need</span> <span class="nx">to</span> <span class="nx">execute</span> <span class="nx">to</span> <span class="nx">decode</span> <span class="nx">a</span> <span class="nx">multipart</span> <span class="nx">request</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">F</span> <span class="s">&quot;part1={\&quot;name\&quot;:\&quot;ballerina\&quot;};type=application/json&quot;</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/multiparts/decode -H &quot;Content-Type: multipart/mixed&quot; -H &#39;Expect:&#39;</span>
-<span class="o">--</span><span class="nx">ac4875939cf6b158</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">disposition</span><span class="p">:</span> <span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span><span class="nx">name</span><span class="p">=</span><span class="s">&quot;part1&quot;</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ballerina&quot;</span><span class="p">}</span>
-<span class="o">--</span><span class="nx">ac4875939cf6b158</span><span class="o">--</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">cURL</span> <span class="nx">command</span><span class="p">,</span> <span class="nx">which</span> <span class="nx">you</span> <span class="nx">need</span> <span class="nx">to</span> <span class="nx">execute</span> <span class="nx">to</span> <span class="nx">encode</span> <span class="nx">the</span> <span class="nx">parts</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">body</span> <span class="nx">and</span> <span class="nx">send</span> <span class="nx">a</span> <span class="nx">multipart</span> <span class="nx">request</span> <span class="nx">via</span> <span class="nx">the</span> <span class="nx">Ballerina</span> <span class="kd">service</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/multiparts/encode</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">multipart</span><span class="o">/</span><span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span> <span class="nx">boundary</span><span class="p">=</span><span class="mi">3</span><span class="nx">bbfa10811dcdee6</span>
-<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Thu</span><span class="p">,</span> <span class="mi">14</span> <span class="nx">Jun</span> <span class="mi">2018</span> <span class="mi">15</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">21</span> <span class="o">+</span><span class="mo">0530</span>
-<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">0.982.1</span><span class="o">-</span><span class="nx">SNAPSHOT</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">398</span>
-<span class="p">&lt;</span>
-<span class="o">--</span><span class="mi">3</span><span class="nx">bbfa10811dcdee6</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">disposition</span><span class="p">:</span> <span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span><span class="nx">name</span><span class="p">=</span><span class="s">&quot;json part&quot;</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;wso2&quot;</span><span class="p">}</span>
-<span class="o">--</span><span class="mi">3</span><span class="nx">bbfa10811dcdee6</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">xml</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">disposition</span><span class="p">:</span> <span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="p">;</span><span class="nx">name</span><span class="p">=</span><span class="s">&quot;xml file part&quot;</span>
-<span class="nx">content</span><span class="o">-</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">&lt;</span><span class="nx">ballerinalang</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nx">version</span><span class="p">&gt;</span><span class="mf">0.963</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">version</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nx">test</span><span class="p">&gt;</span><span class="nx">test</span> <span class="kt">xml</span> <span class="nx">file</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">used</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">file</span> <span class="nx">part</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">test</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="o">/</span><span class="nx">ballerinalang</span><span class="p">&gt;</span>
-<span class="o">--</span><span class="mi">3</span><span class="nx">bbfa10811dcdee6</span><span class="o">--</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -187,6 +158,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/request-with-multiparts/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -653,6 +625,13 @@ import ballerina/mime;
 # `.bal` file and use the `ballerina run` command below.
 ballerina run request_with_multiparts.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+2020-09-23 10:14:32,206 INFO  [] - {&quot;name&quot;:&quot;ballerina&quot;}
+2020-09-23 10:20:17,106 INFO  [] - {&quot;name&quot;:&quot;wso2&quot;}
+2020-09-23 10:20:17,248 INFO  [] - &lt;ballerinalang&gt;
+    &lt;version&gt;0.963&lt;/version&gt;
+    &lt;test&gt;test xml file to be used as a file part&lt;/test&gt;
+&lt;/ballerinalang&gt;
+^C[ballerina/http] stopped HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>
@@ -696,9 +675,9 @@ ballerina run request_with_multiparts.bal
                                     <div class="highlight"><pre><code class=shell-session># Start multipartDemoService
 # The cURL command, which you need to execute to decode a multipart request
 curl -F &quot;part1={\&quot;name\&quot;:\&quot;ballerina\&quot;};type=application/json&quot; http://localhost:9090/multiparts/decode -H &quot;Content-Type: multipart/mixed&quot; -H &#39;Expect:&#39;
---ac4875939cf6b158
+--f710b4a02896b88a
+content-disposition: attachment;name=&quot;part1&quot;
 content-type: application/json
-content-disposition: form-data;name=&quot;part1&quot;
 content-id: 0
 </code></pre></div>
 
@@ -712,7 +691,7 @@ content-id: 0
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>{&quot;name&quot;:&quot;ballerina&quot;}
---ac4875939cf6b158--
+--f710b4a02896b88a--
 </code></pre></div>
 
                                 </td>
@@ -726,15 +705,20 @@ content-id: 0
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The cURL command, which you need to execute to encode the parts of the body and send a multipart request via the Ballerina service
 curl -v http://localhost:9090/multiparts/encode
+&gt; GET /multiparts/encode HTTP/1.1
+&gt; Host: localhost:9090
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt;
 &lt; HTTP/1.1 200 OK
-&lt; content-type: multipart/form-data; boundary=3bbfa10811dcdee6
-&lt; date: Thu, 14 Jun 2018 15:22:21 +0530
-&lt; server: ballerina/0.982.1-SNAPSHOT
+&lt; content-type: multipart/form-data; boundary=bd7547c98465dae2
+&lt; date: Wed, 23 Sep 2020 10:20:17 +0530
+&lt; server: ballerina
 &lt; content-length: 398
 &lt;
---3bbfa10811dcdee6
-content-type: application/json
+--bd7547c98465dae2
 content-disposition: form-data;name=&quot;json part&quot;
+content-type: application/json
 content-id: 0
 </code></pre></div>
 
@@ -748,9 +732,9 @@ content-id: 0
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>{&quot;name&quot;:&quot;wso2&quot;}
---3bbfa10811dcdee6
-content-type: application/xml
+--bd7547c98465dae2
 content-disposition: form-data;name=&quot;xml file part&quot;
+content-type: application/xml
 content-id: 1
 </code></pre></div>
 
@@ -767,7 +751,9 @@ content-id: 1
     &lt;version&gt;0.963&lt;/version&gt;
     &lt;test&gt;test xml file to be used as a file part&lt;/test&gt;
 &lt;/ballerinalang&gt;
---3bbfa10811dcdee6--
+--bd7547c98465dae2--
+* Connection #0 to host localhost left intact
+* Closing connection 0
 </code></pre></div>
 
                                 </td>
@@ -795,7 +781,7 @@ content-id: 1
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

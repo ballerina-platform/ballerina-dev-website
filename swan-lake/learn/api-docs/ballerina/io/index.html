@@ -72,11 +72,10 @@ or non-blocking manner.
     <ul>
         
         
-            
-                <li>
-                    <a  data="objects" href="../io/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../io/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -140,7 +139,7 @@ or non-blocking manner.
     <h2>Module Overview</h2>
 <p>This module is designed to support input and output operations via channels in a canonical way, either in a blocking,
 or non-blocking manner.</p>
-<p><img src="resources/package-architecture.svg" alt="architecture" /></p>
+<p><img src="/swan-lake/learn/api-docs/ballerina/io/resources/package-architecture.svg" alt="architecture" /></p>
 <h3>Channels</h3>
 <p>A channel represents an I/O source or sink of some bytes, characters, or records that are opened for reading or
 writing respectively.</p>
@@ -161,160 +160,129 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ReadableByteChannel" title="ReadableByteChannel">
-                            <a class="objects " href="objects/ReadableByteChannel.html">ReadableByteChannel</a>
+                        <td class="module-title truncate classes" id="ReadableByteChannel" title="ReadableByteChannel">
+                            <a class="classes " href="classes/ReadableByteChannel.html">ReadableByteChannel</a>
                         </td>
                         <td class="module-desc">
                             
                             <p>ReadableByteChannel represents an input resource (i.e file).
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ReadableCSVChannel" title="ReadableCSVChannel">
-                            <a class="objects " href="objects/ReadableCSVChannel.html">ReadableCSVChannel</a>
+                        <td class="module-title truncate classes" id="ReadableCharacterChannel" title="ReadableCharacterChannel">
+                            <a class="classes " href="classes/ReadableCharacterChannel.html">ReadableCharacterChannel</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a ReadableCSVChannel which could be used to read records from CSV file.</p>
-
+                            <p>Represents a channel, which could be used to read characters through a given ReadableByteChannel.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ReadableCharacterChannel" title="ReadableCharacterChannel">
-                            <a class="objects " href="objects/ReadableCharacterChannel.html">ReadableCharacterChannel</a>
+                        <td class="module-title truncate classes" id="ReadableCSVChannel" title="ReadableCSVChannel">
+                            <a class="classes " href="classes/ReadableCSVChannel.html">ReadableCSVChannel</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a channel, which could be used to read characters through a given ReadableByteChannel.</p>
-
+                            <p>Represents a ReadableCSVChannel which could be used to read records from CSV file.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ReadableDataChannel" title="ReadableDataChannel">
-                            <a class="objects " href="objects/ReadableDataChannel.html">ReadableDataChannel</a>
+                        <td class="module-title truncate classes" id="ReadableDataChannel" title="ReadableDataChannel">
+                            <a class="classes " href="classes/ReadableDataChannel.html">ReadableDataChannel</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a data channel for reading data.</p>
-
+                            <p>Represents a data channel for reading data.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ReadableTextRecordChannel" title="ReadableTextRecordChannel">
-                            <a class="objects " href="objects/ReadableTextRecordChannel.html">ReadableTextRecordChannel</a>
+                        <td class="module-title truncate classes" id="ReadableTextRecordChannel" title="ReadableTextRecordChannel">
+                            <a class="classes " href="classes/ReadableTextRecordChannel.html">ReadableTextRecordChannel</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a channel which will allow to read</p>
-
+                            <p>Represents a channel which will allow to read</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="StringReader" title="StringReader">
-                            <a class="objects " href="objects/StringReader.html">StringReader</a>
+                        <td class="module-title truncate classes" id="StringReader" title="StringReader">
+                            <a class="classes " href="classes/StringReader.html">StringReader</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a reader which will wrap string content as a channel.</p>
-
+                            <p>Represents a reader which will wrap string content as a channel.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="WritableByteChannel" title="WritableByteChannel">
-                            <a class="objects " href="objects/WritableByteChannel.html">WritableByteChannel</a>
+                        <td class="module-title truncate classes" id="WritableByteChannel" title="WritableByteChannel">
+                            <a class="classes " href="classes/WritableByteChannel.html">WritableByteChannel</a>
                         </td>
                         <td class="module-desc">
                             
                             <p>WritableByteChannel represents an output resource (i.e file).
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="WritableCSVChannel" title="WritableCSVChannel">
-                            <a class="objects " href="objects/WritableCSVChannel.html">WritableCSVChannel</a>
+                        <td class="module-title truncate classes" id="WritableCharacterChannel" title="WritableCharacterChannel">
+                            <a class="classes " href="classes/WritableCharacterChannel.html">WritableCharacterChannel</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a WritableCSVChannel, which could be used to write records from the CSV file.</p>
-
+                            <p>Represents a channel which could be used to write characters through a given WritableCharacterChannel.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="WritableCharacterChannel" title="WritableCharacterChannel">
-                            <a class="objects " href="objects/WritableCharacterChannel.html">WritableCharacterChannel</a>
+                        <td class="module-title truncate classes" id="WritableCSVChannel" title="WritableCSVChannel">
+                            <a class="classes " href="classes/WritableCSVChannel.html">WritableCSVChannel</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a channel which could be used to write characters through a given WritableCharacterChannel.</p>
-
+                            <p>Represents a WritableCSVChannel, which could be used to write records from the CSV file.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="WritableDataChannel" title="WritableDataChannel">
-                            <a class="objects " href="objects/WritableDataChannel.html">WritableDataChannel</a>
+                        <td class="module-title truncate classes" id="WritableDataChannel" title="WritableDataChannel">
+                            <a class="classes " href="classes/WritableDataChannel.html">WritableDataChannel</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a WritableDataChannel for writing data.</p>
-
+                            <p>Represents a WritableDataChannel for writing data.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="WritableTextRecordChannel" title="WritableTextRecordChannel">
-                            <a class="objects " href="objects/WritableTextRecordChannel.html">WritableTextRecordChannel</a>
+                        <td class="module-title truncate classes" id="WritableTextRecordChannel" title="WritableTextRecordChannel">
+                            <a class="classes " href="classes/WritableTextRecordChannel.html">WritableTextRecordChannel</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a channel, which will allow to write records through a given WritableCharacterChannel.</p>
-
+                            <p>Represents a channel, which will allow to write records through a given WritableCharacterChannel.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -338,9 +306,8 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Creates an in-memory channel, which will be a reference stream of bytes.</p>
-
-
+                    
+                    <p>Creates an in-memory channel, which will be a reference stream of bytes.</p>   
                 </td>
             </tr>
             
@@ -350,9 +317,8 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Retrieves a readable CSV channel from a given file path.</p>
-
-
+                    
+                    <p>Retrieves a readable CSV channel from a given file path.</p>   
                 </td>
             </tr>
             
@@ -362,9 +328,8 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Retrieves a <code>ReadableByteChannel</code> from a given file path.</p>
-
-
+                    
+                    <p>Retrieves a <code>ReadableByteChannel</code> from a given file path.</p>   
                 </td>
             </tr>
             
@@ -374,9 +339,8 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Retrieves a writable CSV channel from a given file path.</p>
-
-
+                    
+                    <p>Retrieves a writable CSV channel from a given file path.</p>   
                 </td>
             </tr>
             
@@ -386,9 +350,8 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Retrieves a <code>WritableByteChannel</code> from a given file path.</p>
-
-
+                    
+                    <p>Retrieves a <code>WritableByteChannel</code> from a given file path.</p>   
                 </td>
             </tr>
             
@@ -398,9 +361,10 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.</p>   
                 </td>
             </tr>
             
@@ -410,9 +374,10 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.</p>   
                 </td>
             </tr>
             
@@ -422,9 +387,8 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Retrieves the input read from the STDIN.</p>
-
-
+                    
+                    <p>Retrieves the input read from the STDIN.</p>   
                 </td>
             </tr>
             
@@ -433,6 +397,9 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                     <a class="functions " href="functions.html#sprintf">sprintf</a>
                 </td>
                 <td class="module-desc">
+                    
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
                     
                     <p>Returns a formatted string using the specified format string and arguments.
                 </td>
@@ -469,8 +436,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Field separator will be &quot;,&quot; and the record separator will be a new line.</p>
-
+                    <p>Field separator will be &quot;,&quot; and the record separator will be a new line.</p> 
                 </td>
             </tr>
             
@@ -480,8 +446,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Field separator will be a tab and the record separator will be a new line.</p>
-
+                    <p>Field separator will be a tab and the record separator will be a new line.</p> 
                 </td>
             </tr>
             
@@ -491,8 +456,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Comma (,) will be used as the field separator.</p>
-
+                    <p>Comma (,) will be used as the field separator.</p> 
                 </td>
             </tr>
             
@@ -502,8 +466,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Tab (/t) will be use as the field separator.</p>
-
+                    <p>Tab (/t) will be use as the field separator.</p> 
                 </td>
             </tr>
             
@@ -513,8 +476,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Colon (:) will be use as the field separator.</p>
-
+                    <p>Colon (:) will be use as the field separator.</p> 
                 </td>
             </tr>
             
@@ -524,8 +486,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the record separator of the CSV file.</p>
-
+                    <p>Represents the record separator of the CSV file.</p> 
                 </td>
             </tr>
             
@@ -535,8 +496,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the colon separator, which should be used to identify colon-separated files.</p>
-
+                    <p>Represents the colon separator, which should be used to identify colon-separated files.</p> 
                 </td>
             </tr>
             
@@ -546,8 +506,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents the minimum number of headers, which will be included in the CSV.</p>
-
+                    <p>Represents the minimum number of headers, which will be included in the CSV.</p> 
                 </td>
             </tr>
             
@@ -557,8 +516,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Specifies the bytes to be in the order of most significant byte first.</p>
-
+                    <p>Specifies the bytes to be in the order of most significant byte first.</p> 
                 </td>
             </tr>
             
@@ -568,8 +526,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Specifies the byte order to be the least significant byte first.</p>
-
+                    <p>Specifies the byte order to be the least significant byte first.</p> 
                 </td>
             </tr>
             
@@ -596,8 +553,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents IO module related errors.</p>
-
+                    <p>Represents IO module related errors.</p> 
                 </td>
             </tr>
             
@@ -607,8 +563,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>The format, which will be used to represent the CSV.</p>
-<p>DEFAULT - The default value is the format specified by the CSVChannel.
+                    <p>The format, which will be used to represent the CSV.</p> <p>DEFAULT - The default value is the format specified by the CSVChannel.
                 </td>
             </tr>
             
@@ -618,11 +573,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>Field separators, which are supported by the <code>DelimitedTextRecordChannel</code>.</p>
-<p>COMMA - Delimited text records will be separated using a comma.</p>
-<p>TAB - Delimited text records will be separated using a tab.</p>
-<p>COLON - Delimited text records will be separated using a colon(:).</p>
-
+                    <p>Field separators, which are supported by the <code>DelimitedTextRecordChannel</code>.</p> <p>COMMA - Delimited text records will be separated using a comma.</p> <p>TAB - Delimited text records will be separated using a tab.</p> <p>COLON - Delimited text records will be separated using a colon(:).</p> 
                 </td>
             </tr>
             
@@ -646,8 +597,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>This will get returned due to file permission issues.</p>
-
+                    <p>This will get returned due to file permission issues.</p> 
                 </td>
             </tr>
             
@@ -657,8 +607,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>This will return when connection timed out happen when try to connect to a remote host.</p>
-
+                    <p>This will return when connection timed out happen when try to connect to a remote host.</p> 
                 </td>
             </tr>
             
@@ -668,8 +617,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>This will get returned if read operations are performed on a channel after it closed.</p>
-
+                    <p>This will get returned if read operations are performed on a channel after it closed.</p> 
                 </td>
             </tr>
             
@@ -679,8 +627,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                 </td>
                 <td class="module-desc">
                     
-                    <p>This will get returned if the file is not available in the given file path.</p>
-
+                    <p>This will get returned if the file is not available in the given file path.</p> 
                 </td>
             </tr>
             

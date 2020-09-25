@@ -3,7 +3,7 @@
   "summary": "\u003cp\u003eThis module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.\u003c/p\u003e\n",
   "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see the below \u003cstrong\u003eFunctions\u003c/strong\u003e. For examples on the usage of the operations, see the following.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/jwt-issue-validate.html\"\u003eJWT Issue/Validate Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/secured-client-with-jwt-auth.html\"\u003eSecured Client with JWT Auth Example\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href\u003d\"https://ballerina.io/learn/by-example/secured-service-with-jwt-auth.html\"\u003eSecured Service with JWT Auth Example\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n",
   "orgName": "ballerina",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "records": [
     {
       "fields": [
@@ -59,7 +59,7 @@
             "orgName": "ballerina",
             "moduleName": "cache",
             "name": "Cache",
-            "category": "objects",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": true,
@@ -77,7 +77,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "JwksConfig",
       "description": "\u003cp\u003eRepresents the JWKs endpoint configurations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -177,7 +177,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "JwtHeader",
       "description": "\u003cp\u003eRepresents JWT header.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -377,7 +377,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "JwtIssuerConfig",
       "description": "\u003cp\u003eRepresents JWT validator configurations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -454,7 +454,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "JwtKeyStoreConfig",
       "description": "\u003cp\u003eRepresents JWT key store configurations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -711,7 +711,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "JwtPayload",
       "description": "\u003cp\u003eRepresents JWT payload.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -765,7 +765,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "JwtTrustStoreConfig",
       "description": "\u003cp\u003eRepresents JWT trust store configurations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -941,7 +941,7 @@
             "orgName": "ballerina",
             "moduleName": "cache",
             "name": "Cache",
-            "category": "objects",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -959,50 +959,18 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "JwtValidatorConfig",
       "description": "\u003cp\u003eRepresents JWT validator configurations.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [
     {
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "jwt",
-                "name": "JwtValidatorConfig",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "jwtValidatorConfig",
-              "description": "\u003cp\u003eJWT validator configurations\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eProvides authentication based on the provided JWT.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1093,41 +1061,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "jwt",
-              "name": "JwtValidatorConfig",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "jwtValidatorConfig",
-            "description": "\u003cp\u003eJWT validator configurations\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eProvides authentication based on the provided JWT.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1218,7 +1154,6 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "InboundJwtAuthProvider",
       "description": "\u003cp\u003eRepresents the inbound JWT auth provider, which authenticates by validating a JWT.\nThe \u003ccode\u003ejwt:InboundJwtAuthProvider\u003c/code\u003e is another implementation of the \u003ccode\u003eauth:InboundAuthProvider\u003c/code\u003e interface.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e jwt:InboundJwtAuthProvider inboundJwtAuthProvider \u003d new({\n     issuer: \u0026quot;example\u0026quot;,\n     audience: \u0026quot;ballerina\u0026quot;,\n     signatureConfig: {\n         certificateAlias: \u0026quot;ballerina\u0026quot;,\n         trustStore: {\n             path: \u0026quot;/path/to/truststore.p12\u0026quot;,\n             password: \u0026quot;ballerina\u0026quot;\n         }\n     }\n });\n\u003c/code\u003e\u003c/pre\u003e\n",
       "isDeprecated": false
@@ -1227,39 +1162,7 @@
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "()",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "jwt",
-                "name": "JwtIssuerConfig",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "jwtIssuerConfig",
-              "description": "\u003cp\u003eJWT issuer configurations\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eProvides authentication based on the provided JWT configuration.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1326,6 +1229,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1433,41 +1337,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "()",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "jwt",
-              "name": "JwtIssuerConfig",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "jwtIssuerConfig",
-            "description": "\u003cp\u003eJWT issuer configurations\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eProvides authentication based on the provided JWT configuration.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1534,6 +1406,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1641,16 +1514,17 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "OutboundJwtAuthProvider",
       "description": "\u003cp\u003eRepresents the outbound JWT auth provider, which is used to authenticate with an external endpoint by generating a JWT.\nThe \u003ccode\u003ejwt:OutboundJwtAuthProvider\u003c/code\u003e is another implementation of the \u003ccode\u003eauth:OutboundAuthProvider\u003c/code\u003e interface.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e jwt:OutboundJwtAuthProvider jwtAuthProvider \u003d new({\n     issuer: \u0026quot;example\u0026quot;,\n     audience: [\u0026quot;ballerina\u0026quot;],\n     keyStoreConfig: {\n         keyAlias: \u0026quot;ballerina\u0026quot;,\n         keyPassword: \u0026quot;ballerina\u0026quot;,\n         keyStore: {\n             path: \u0026quot;/path/to/keystore.p12\u0026quot;,\n             password: \u0026quot;ballerina\u0026quot;\n         }\n     }\n });\n\u003c/code\u003e\u003c/pre\u003e\n",
       "isDeprecated": false
     }
   ],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -1741,6 +1615,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -1831,6 +1706,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -1953,6 +1829,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2089,6 +1966,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [

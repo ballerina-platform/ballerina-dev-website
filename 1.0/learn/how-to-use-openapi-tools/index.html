@@ -229,7 +229,30 @@ Code generation from OpenAPI to Ballerina can produce <code class="highlighter-r
 
 <p>For build time client stub generation, annotation support is provided.</p>
 
-<h3 id="mock-service-from-openapi">Mock service from OpenAPI</h3>
+<ul>
+    <li><a href="#mock-service-from-openapi">Mock Service from OpenAPI</a></li>
+    
+    <li><a href="#client-stub-from-openapi">Client Stub from OpenAPI</a></li>
+    
+    <li><a href="#service-to-openapi-export">Service to OpenAPI Export</a></li>
+    
+    <li><a href="#client-stub-for-service">Client Stub for Service</a></li>
+    
+    <li><a href="#samples">Samples</a>
+    
+    
+    <ul>
+    <li><a href="#mock-service-from-openapi-sample">Mock Service from OpenAPI Sample</a></li>
+    
+    <li><a href="#client-stub-from-openapi-sample">Client Stub from OpenAPI Sample</a></li>
+    
+    <li><a href="#openapi-from-service-sample">OpenAPI from Service Sample</a></li>
+    
+    <li><a href="#client-stub-from-service-sample">Client Stub from Service Sample</a></li></ul>
+    </li>
+    </ul>
+
+<h2 id="mock-service-from-openapi">Mock Service from OpenAPI</h2>
 <pre><code class="highlighter-rouge">ballerina openapi gen-service &lt;moduleName&gt;:&lt;serivceName&gt; 
                                &lt;openapi_contract&gt;
                                [-c: copy-contract] 
@@ -239,7 +262,7 @@ Code generation from OpenAPI to Ballerina can produce <code class="highlighter-r
 
 <p>This generated service is a mock version of the actual Ballerina service. Generated sources contain the service definition in <code class="highlighter-rouge">src/&lt;module-name&gt;/</code> and the OpenAPI contract that used to generate will be copied to <code class="highlighter-rouge">src/&lt;module-name&gt;/resources</code>.</p>
 
-<h3 id="client-stub-from-openapi">Client stub from OpenAPI</h3>
+<h2 id="client-stub-from-openapi">Client Stub from OpenAPI</h2>
 <pre><code class="highlighter-rouge">ballerina openapi gen-client [&lt;moduleName&gt;]:&lt;clientName&gt; 
                    &lt;openapi-contract&gt; [-o &lt;dir-path&gt; | --output &lt;dir-path&gt;]</code></pre>
 
@@ -247,7 +270,7 @@ Code generation from OpenAPI to Ballerina can produce <code class="highlighter-r
 
 <p>This client can be used in client applications to call the service defined in the OpenAPI file.</p>
 
-<h3 id="service-to-openapi-export">Service to OpenAPI export</h3>
+<h2 id="service-to-openapi-export">Service to OpenAPI Export</h2>
 <pre><code class="highlighter-rouge">ballerina openapi gen-contract [&lt;moduleName&gt;:]&lt;serviceName&gt; 
                                 [-i: &lt;ballerinaFile&gt; | --ballerina-file &lt;ballerina-file&gt;] 
                                 [-o: &lt;openapi-contract&gt; | --output &lt;openapi-contract&gt;] 
@@ -256,7 +279,7 @@ Code generation from OpenAPI to Ballerina can produce <code class="highlighter-r
 <p>Export the Ballerina service to a definition of OpenApi Specification 3.0.
 For the export to work properly, the input Ballerina service should be defined using basic service and resource level HTTP annotations.</p>
 
-<h3 id="client-stub-for-service">Client stub for service</h3>
+<h2 id="client-stub-for-service">Client Stub for Service</h2>
 <p>Generates a Ballerina client stub to communicate with a Ballerina service.</p>
 
 <p>All endpoint(s) that are used for client stub generation should be marked with the <code class="highlighter-rouge">@openapi:ClientEndpoint</code> annotation. If not, there might be errors during client stub generation. Endpoints that are not marked with this annotation are not picked for client stub generation.
@@ -264,21 +287,21 @@ The <code class="highlighter-rouge">@openapi:ClientConfig { generate: true }</co
 
 <h2 id="samples">Samples</h2>
 
-<h3 id="mock-service-from-openapi-1">Mock service from OpenAPI</h3>
+<h3 id="mock-service-from-openapi-sample">Mock Service from OpenAPI Sample</h3>
 <pre><code class="highlighter-rouge">ballerina openapi gen-service helloworld:helloService hello_service.yaml</code></pre>
 
 <p>This will generate a Ballerina service, for <code class="highlighter-rouge">hello_service.yaml</code> OpenAPI contract, named <code class="highlighter-rouge">helloService</code> in the module named <code class="highlighter-rouge">helloworld</code>.
 This command should be executed inside a Ballerina project.</p>
-<h3 id="client-stub-from-openapi-1">Client stub from OpenAPI</h3>
+<h3 id="client-stub-from-openapi-sample">Client Stub from OpenAPI Sample</h3>
 <pre><code class="highlighter-rouge">ballerina openapi gen-client hello_client hello_service.yaml</code></pre>
 
 <p>This will generate a Client named <code class="highlighter-rouge">hello_client</code> in a module named <code class="highlighter-rouge">client</code> for the service documented in <code class="highlighter-rouge">hello_service.yaml</code>.
 This command should be executed inside a Ballerina project.</p>
-<h3 id="openapi-from-service">OpenAPI from service</h3>
+<h3 id="openapi-from-service-sample">OpenAPI from Service Sample</h3>
 <pre><code class="highlighter-rouge">ballerina openapi gen-contract hello -i src/helloS/hello.bal</code></pre>
 
 <p>This will generate the OpenAPI contract for the Ballerina service <code class="highlighter-rouge">hello</code> which is in <code class="highlighter-rouge">hello.bal</code> Ballerina file.</p>
-<h3 id="client-stub-from-service">Client stub from service</h3>
+<h3 id="client-stub-from-service-sample">Client Stub from Service Sample</h3>
 <p>Apply annotation to say that client generation is enabled by adding <code class="highlighter-rouge">@openapi:ClientConfig { generate: true }</code>
 and point the client endpoint to be applied on generation by adding <code class="highlighter-rouge">@openapi:ClientEndpoint</code> annotation to the client endpoint.</p>
 <pre><code class="highlighter-rouge ballerina">import ballerina/http;

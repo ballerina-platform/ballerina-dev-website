@@ -88,12 +88,7 @@ redirect_from:
     <span class="nx">Person</span> <span class="nx">rPerson</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">readRecordFromFile</span><span class="p">(</span><span class="s">&quot;./files/person.bin&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reading person record from file&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">rPerson</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">data_io</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Person</span> <span class="nx">record</span> <span class="nx">successfully</span> <span class="nx">written</span> <span class="nx">to</span> <span class="nx">file</span>
-<span class="nx">Reading</span> <span class="nx">person</span> <span class="nx">record</span> <span class="nx">from</span> <span class="nx">file</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Ballerina</span> <span class="nx">age</span><span class="p">=</span><span class="mi">21</span> <span class="nx">income</span><span class="p">=</span><span class="mf">1543.12</span> <span class="nx">isMarried</span><span class="p">=</span><span class="kc">true</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -142,6 +137,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/data-io/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -544,7 +540,7 @@ import ballerina/log;
 ballerina run data_io.bal
 Person record successfully written to file
 Reading person record from file
-name=Ballerina age=21 income=1543.12 isMarried=true
+{&quot;name&quot;:&quot;Ballerina&quot;,&quot;age&quot;:21,&quot;income&quot;:1543.12,&quot;isMarried&quot;:true}
 </code></pre></div>
 
                                 </td>
@@ -572,7 +568,7 @@ name=Ballerina age=21 income=1543.12 isMarried=true
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

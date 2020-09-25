@@ -79,10 +79,6 @@ module JDBC.
                         
     
         <li >
-            <a href="#ballerina/sql:0.5.0.&lt;init&gt;0" onclick="menuLinkClick()">ballerina/sql:0.5.0.&lt;init&gt;0</a>
-        </li>
-    
-        <li >
             <a href="#generateApplicationErrorStream" onclick="menuLinkClick()">generateApplicationErrorStream</a>
         </li>
     
@@ -103,23 +99,20 @@ module JDBC.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
-        
-        
-            
-                <li>
-                    <a  data="objects" href="../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
             <li>
-                <a data="clients" href="../sql/index.html#clients" onclick="menuLinkClick()">Clients</a>
+                <a  data="classes" href="../sql/index.html#classes" onclick="menuLinkClick()">Classes</a>
             </li>
+        
+        
+            <li>
+                <a  data="classes" href="../sql/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
+        
         
         
         
@@ -183,19 +176,12 @@ module JDBC.
             <tbody>
                 
                     <tr>
-                        <td width="30%"><a class="functions " href="#ballerina/sql:0.5.0.&lt;init&gt;0">ballerina/sql:0.5.0.&lt;init&gt;0</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
                         <td width="30%"><a class="functions " href="#generateApplicationErrorStream">generateApplicationErrorStream</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 
                             </div>
@@ -206,6 +192,9 @@ module JDBC.
                         <td width="30%"><a class="functions " href="#getGlobalConnectionPool">getGlobalConnectionPool</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 
                             </div>
@@ -219,37 +208,6 @@ module JDBC.
                 <div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="ballerina/sql:0.5.0.&lt;init&gt;0" title="ballerina/sql:0.5.0.&lt;init&gt;0">
-             <a class="url-link" href="#ballerina/sql:0.5.0.&lt;init&gt;0">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > ballerina/sql:0.5.0.&lt;init&gt;0 </h2>
-        <span class="method-types">
-            <p>()</p>
-            
-                <b> returns </b><a href="../null/types.html#error?">error?</a> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../null/types.html#error?">error?</a></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
     <div class="main-method-title here" id="generateApplicationErrorStream" title="generateApplicationErrorStream">
              <a class="url-link" href="#generateApplicationErrorStream">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
@@ -258,11 +216,14 @@ module JDBC.
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> message)</p>
             
-                <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">record {| anydata...; |}</span> ,<a href="../sql/types.html#Error">Error</a>></span> 
+                <b> returns </b><span class="builtin-type">stream<<span class="builtin-type">record {}</span> ,<a href="../sql/types.html#Error">Error</a>></span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         
     </div>
@@ -293,7 +254,7 @@ module JDBC.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">record {| anydata...; |}</span> ,<a href="../sql/types.html#Error">Error</a>></span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">stream<<span class="builtin-type">record {}</span> ,<a href="../sql/types.html#Error">Error</a>></span></span>)</li>
                 <li></li>
             </ul>
         </div>
@@ -315,6 +276,9 @@ module JDBC.
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         
     </div>

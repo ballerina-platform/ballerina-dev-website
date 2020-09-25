@@ -73,18 +73,15 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../kafka/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../kafka/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+        
+            <li>
+                <a  data="classes" href="../kafka/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -254,6 +251,49 @@ This module supports Kafka 1.x.x and 2.0.0 versions.
                         <li>
                             
                             <p>Configures the consumer to read all the messages including the aborted ones.</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="OFFSET_RESET_EARLIEST">
+                            <b >OFFSET_RESET_EARLIEST</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> earliest
+                        </li>
+                        <li>
+                            
+                            <p>Automatically reset the consumer offset to the earliest offset</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="OFFSET_RESET_LATEST">
+                            <b >OFFSET_RESET_LATEST</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> latest
+                        </li>
+                        <li>
+                            
+                            <p>Automatically reset the consumer offset to the latest offset</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="OFFSET_RESET_NONE">
+                            <b >OFFSET_RESET_NONE</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> none
+                        </li>
+                        <li>
+                            
+                            <p>If the <code>offsetReset</code> is set to <code>OFFSET_RESET_NONE</code>, the consumer will give an error if no previous offset is found
+for the consumer group</p>
 
                         </li>
                     </ul>
@@ -474,13 +514,28 @@ A local log will respond without waiting FOR full acknowledgement from all the f
             
                 <div class="params-listing">
                     <ul>
+                        <li id="PROTOCOL_PLAINTEXT">
+                            <b >PROTOCOL_PLAINTEXT</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> PLAINTEXT
+                        </li>
+                        <li>
+                            
+                            <p>Represents Kafka un-authenticated, non-encrypted channel</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
                         <li id="PROTOCOL_SASL_PLAINTEXT">
                             <b >PROTOCOL_SASL_PLAINTEXT</b>
                             <span class="type">  <span class="builtin-type">string</span></span> SASL_PLAINTEXT
                         </li>
                         <li>
                             
-                            
+                            <p>Represents Kafka authenticated, non-encrypted channel</p>
+
                         </li>
                     </ul>
                 </div>
@@ -493,7 +548,22 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                         </li>
                         <li>
                             
+                            <p>Represents Kafka SASL authenticated, SSL channel</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
+                        <li id="PROTOCOL_SSL">
+                            <b >PROTOCOL_SSL</b>
+                            <span class="type">  <span class="builtin-type">string</span></span> SSL
+                        </li>
+                        <li>
                             
+                            <p>Represents Kafka SSL channel</p>
+
                         </li>
                     </ul>
                 </div>

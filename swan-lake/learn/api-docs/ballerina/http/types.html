@@ -104,6 +104,10 @@
         </li>
     
         <li >
+            <a href="#HeaderPosition" onclick="menuLinkClick()">HeaderPosition</a>
+        </li>
+    
+        <li >
             <a href="#HttpOperation" onclick="menuLinkClick()">HttpOperation</a>
         </li>
     
@@ -129,10 +133,6 @@
     
         <li >
             <a href="#ListenerError" onclick="menuLinkClick()">ListenerError</a>
-        </li>
-    
-        <li >
-            <a href="#LoadBalanceActionError" onclick="menuLinkClick()">LoadBalanceActionError</a>
         </li>
     
         <li >
@@ -184,18 +184,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -387,6 +388,23 @@ outbound request/response accept-encoding/content-encoding option
             
                 <div class="params-listing">
                     <ul>
+                        <li id="HeaderPosition">
+                            <b >HeaderPosition</b>
+                            
+                                <span class="type">  <a href="../http/constants.html#LEADING">LEADING</a> | <a href="../http/constants.html#TRAILING">TRAILING</a></span></li>
+                            
+                        <li>
+                            
+                            <p>Defines the position of the headers in the request/response.</p>
+<p><code>LEADING</code>: Header is placed before the payload of the request/response
+<code>TRAILING</code>: Header is placed after the payload of the request/response</p>
+
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="params-listing">
+                    <ul>
                         <li id="HttpOperation">
                             <b >HttpOperation</b>
                             
@@ -433,7 +451,7 @@ outbound request/response accept-encoding/content-encoding option
                         <li id="InboundAuthHandlers">
                             <b >InboundAuthHandlers</b>
                             
-                                <span class="type">  <span class="array-type"><a href="../http/objects/InboundAuthHandler.html">InboundAuthHandler</a>[]</span> | <span class="array-type"><a href="../http/objects/InboundAuthHandler.html">InboundAuthHandler</a>[][]</span></span></li>
+                                <span class="type">  <span class="array-type"><a href="../http/abstractobjects/InboundAuthHandler.html">InboundAuthHandler</a>[]</span> | <span class="array-type"><a href="../http/abstractobjects/InboundAuthHandler.html">InboundAuthHandler</a>[][]</span></span></li>
                             
                         <li>
                             
@@ -498,21 +516,6 @@ outbound request/response accept-encoding/content-encoding option
                         <li>
                             
                             <p>Defines the possible listener error types</p>
-
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="params-listing">
-                    <ul>
-                        <li id="LoadBalanceActionError">
-                            <b >LoadBalanceActionError</b>
-                            
-                                <span class="type">  <a href="../http/errors.html#T107">T107</a></span></li>
-                            
-                        <li>
-                            
-                            <p>Represents an error occurred in an remote function of the Load Balance connector.</p>
 
                         </li>
                     </ul>
@@ -585,7 +588,7 @@ outbound request/response accept-encoding/content-encoding option
                         <li id="RequestMessage">
                             <b >RequestMessage</b>
                             
-                                <span class="type">  <a href="../http/objects/Request.html">Request</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../mime/objects/Entity.html">Entity</a>[]</span> | <span class="builtin-type">()</span></span></li>
+                                <span class="type">  <a href="../http/classes/Request.html">Request</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../mime/classes/Entity.html">Entity</a>[]</span> | <span class="builtin-type">()</span></span></li>
                             
                         <li>
                             
@@ -615,7 +618,7 @@ outbound request/response accept-encoding/content-encoding option
                         <li id="ResponseMessage">
                             <b >ResponseMessage</b>
                             
-                                <span class="type">  <a href="../http/objects/Response.html">Response</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../mime/objects/Entity.html">Entity</a>[]</span> | <span class="builtin-type">()</span></span></li>
+                                <span class="type">  <a href="../http/classes/Response.html">Response</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../mime/classes/Entity.html">Entity</a>[]</span> | <span class="builtin-type">()</span></span></li>
                             
                         <li>
                             

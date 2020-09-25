@@ -70,18 +70,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../lang.error/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../lang.error/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../lang.error/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../lang.error/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -135,61 +132,63 @@
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="CallStackElement" title="CallStackElement">
                             <a class="records " href="records/CallStackElement.html">CallStackElement</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Representation of <code>CallStackElement</code></p>
-
+                            <p>Representation of <code>CallStackElement</code></p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
-    
-
-    
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="CallStack" title="CallStack">
-                            <a class="objects " href="objects/CallStack.html">CallStack</a>
+                        <td class="module-title truncate records" id="Detail" title="Detail">
+                            <a class="records " href="records/Detail.html">Detail</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represent error call stack.</p>
-
+                            <p>The type to which error detail records must belong.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
+    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
+                    <tr>
+                        <td class="module-title truncate classes" id="CallStack" title="CallStack">
+                            <a class="classes " href="classes/CallStack.html">CallStack</a>
+                        </td>
+                        <td class="module-desc">
+                            
+                            <p>Represent error call stack.</p> 
+                        </td>
+                    </tr>
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -213,8 +212,10 @@
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the error's cause.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the error's cause.</p> 
                 </td>
             </tr>
             
@@ -224,9 +225,10 @@
                 </td>
                 <td class="module-desc">
                     
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
                     <p>Returns the error's detail record.
-The returned value will be immutable.</p>
-
                 </td>
             </tr>
             
@@ -236,8 +238,10 @@ The returned value will be immutable.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the error's message.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the error's message.</p> 
                 </td>
             </tr>
             
@@ -247,8 +251,10 @@ The returned value will be immutable.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns an object representing the stack trace of the error.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns an object representing the stack trace of the error.</p> 
                 </td>
             </tr>
             

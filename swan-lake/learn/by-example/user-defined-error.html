@@ -19,7 +19,8 @@ redirect_from:
         <span class="s">&quot;checking&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
         <span class="s">&quot;savings&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">2</span><span class="p">;</span> <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">InvalidAccountTypeError</span><span class="p">(</span><span class="s">&quot;Invalid account type&quot;</span><span class="p">,</span> <span class="nx">accountType</span> <span class="p">=</span> <span class="nx">accountType</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">InvalidAccountTypeError</span><span class="p">(</span><span class="s">&quot;Invalid account type&quot;</span><span class="p">,</span>
+                                    <span class="nx">accountType</span> <span class="p">=</span> <span class="nx">accountType</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">type</span> <span class="nx">AccountErrorData</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">accountID</span><span class="p">;</span>
 <span class="p">|};</span><span class="nx">type</span> <span class="nx">AccountTransferErrorData</span> <span class="nx">record</span> <span class="p">{|</span>
@@ -30,16 +31,19 @@ redirect_from:
 <span class="nx">type</span> <span class="nx">InvalidAccountIdError</span> <span class="nx">distinct</span> <span class="nx">AccountError</span><span class="p">;</span>
 <span class="nx">type</span> <span class="nx">AccountNotFoundError</span> <span class="nx">distinct</span> <span class="nx">AccountError</span><span class="p">;</span><span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">AccountError</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">InvalidAccountIdError</span><span class="p">(</span><span class="s">&quot;Invalid account Id&quot;</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">InvalidAccountIdError</span><span class="p">(</span><span class="s">&quot;Invalid account Id&quot;</span><span class="p">,</span>
+                                      <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">AccountNotFoundError</span><span class="p">(</span><span class="s">&quot;Account not found&quot;</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="mi">600</span><span class="p">;</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">AccountTransferError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">AccountTransferErrorData</span><span class="p">&gt;;</span><span class="kd">function</span> <span class="nx">transferToAccount</span><span class="p">(</span><span class="kt">int</span> <span class="nx">fromAccountId</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">toAccountId</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">amount</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">AccountTransferError</span><span class="err">?</span> <span class="p">{</span>
+<span class="p">}</span><span class="nx">type</span> <span class="nx">AccountTransferError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">AccountTransferErrorData</span><span class="p">&gt;;</span><span class="kd">function</span> <span class="nx">transferToAccount</span><span class="p">(</span><span class="kt">int</span> <span class="nx">fromAccountId</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">toAccountId</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">amount</span><span class="p">)</span>
+                            <span class="nx">returns</span> <span class="nx">AccountTransferError</span><span class="err">?</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="nx">fromAccountId</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">AccountTransferError</span><span class="p">(</span><span class="s">&quot;Account transfer failed&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span> 
-                                    <span class="nx">fromAccountId</span> <span class="p">=</span> <span class="nx">fromAccountId</span><span class="p">,</span> <span class="nx">toAccountId</span> <span class="p">=</span> <span class="nx">toAccountId</span><span class="p">);</span>
+                                    <span class="nx">fromAccountId</span> <span class="p">=</span> <span class="nx">fromAccountId</span><span class="p">,</span>
+                                    <span class="nx">toAccountId</span> <span class="p">=</span> <span class="nx">toAccountId</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -59,16 +63,12 @@ redirect_from:
                     <span class="s">&quot;, Account ID: &quot;</span><span class="p">,</span> <span class="nx">result2</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="nx">accountID</span><span class="p">);</span>
     <span class="p">}</span>    <span class="k">var</span> <span class="nx">result3</span> <span class="p">=</span> <span class="nx">transferToAccount</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result3</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="s">&quot;, Cause: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="nx">cause</span><span class="p">());</span>        
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span>
+                    <span class="s">&quot;, Cause: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">.</span><span class="nx">cause</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transfer success&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">user_defined_error</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Error</span><span class="p">:</span> <span class="nx">Invalid</span> <span class="nx">account</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">Account</span> <span class="nx">type</span><span class="p">:</span> <span class="nx">Joined</span>
-<span class="nx">Invalid</span> <span class="nx">account</span> <span class="nx">number</span><span class="p">:</span> <span class="nx">Please</span> <span class="nx">try</span> <span class="nx">again</span><span class="p">!</span>
-<span class="nx">Error</span><span class="p">:</span> <span class="nx">Account</span> <span class="nx">transfer</span> <span class="nx">failed</span><span class="p">,</span> <span class="nx">Cause</span><span class="p">:</span> <span class="nx">error</span> <span class="nx">Invalid</span> <span class="nx">account</span> <span class="nx">Id</span> <span class="nx">accountID</span><span class="p">=</span><span class="o">-</span><span class="mi">1</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -123,6 +123,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/user-defined-error/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -261,7 +262,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    return InvalidAccountTypeError(&quot;Invalid account type&quot;, accountType = accountType);
+                                    <div class="highlight"><pre><code class=language-ballerina>    return InvalidAccountTypeError(&quot;Invalid account type&quot;,
+                                    accountType = accountType);
 }
 </code></pre></div>
 
@@ -352,7 +354,8 @@ type AccountNotFoundError distinct AccountError;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return InvalidAccountIdError(&quot;Invalid account Id&quot;, accountID = accountID);
+                                    <div class="highlight"><pre><code class=language-ballerina>        return InvalidAccountIdError(&quot;Invalid account Id&quot;,
+                                      accountID = accountID);
     } else if (accountID &gt; 100) {
 </code></pre></div>
 
@@ -424,7 +427,8 @@ type AccountNotFoundError distinct AccountError;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function transferToAccount(int fromAccountId, int toAccountId, int amount) returns AccountTransferError? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function transferToAccount(int fromAccountId, int toAccountId, int amount)
+                            returns AccountTransferError? {
     var result = getAccountBalance(fromAccountId);
     if (result is error) {
 </code></pre></div>
@@ -439,7 +443,8 @@ type AccountNotFoundError distinct AccountError;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        return AccountTransferError(&quot;Account transfer failed&quot;, result, 
-                                    fromAccountId = fromAccountId, toAccountId = toAccountId);
+                                    fromAccountId = fromAccountId,
+                                    toAccountId = toAccountId);
     } else {
 </code></pre></div>
 
@@ -567,7 +572,8 @@ type AccountNotFoundError distinct AccountError;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Error: &quot;, result3.message(), &quot;, Cause: &quot;, result3.cause());        
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Error: &quot;, result3.message(),
+                    &quot;, Cause: &quot;, result3.cause());
     } else {
         io:println(&quot;Transfer success&quot;);
     }
@@ -608,7 +614,7 @@ type AccountNotFoundError distinct AccountError;
 ballerina run user_defined_error.bal
 Error: Invalid account type, Account type: Joined
 Invalid account number: Please try again!
-Error: Account transfer failed, Cause: error Invalid account Id accountID=-1
+Error: Account transfer failed, Cause: error InvalidAccountIdError (&quot;Invalid account Id&quot;,accountID=-1)
 </code></pre></div>
 
                                 </td>
@@ -636,7 +642,7 @@ Error: Account transfer failed, Cause: error Invalid account Id accountID=-1
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

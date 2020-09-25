@@ -101,18 +101,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../grpc/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../grpc/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -124,10 +125,6 @@
                 <a data="listeners" href="../../grpc/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
-        
-            <li>
-                <a data="functions" href="../../grpc/index.html#functions" onclick="menuLinkClick()">Functions</a>
-            </li>
         
         
             <li>
@@ -202,25 +199,19 @@
                         <tr>
                             <td class="module-title truncate functions" title="send"><a
                                     class="functions" href="#send">send</a></td>
-                            <td class="module-desc"><p>Sends the request message to the server.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends the request message to the server.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="complete"><a
                                     class="functions" href="#complete">complete</a></td>
-                            <td class="module-desc"><p>Informs the server when the caller has sent all the messages.</p>
-
-</td>
+                            <td class="module-desc"><p>Informs the server when the caller has sent all the messages.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="sendError"><a
                                     class="functions" href="#sendError">sendError</a></td>
-                            <td class="module-desc"><p>Sends an error message to the server.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends an error message to the server.</p>   </td>
                         </tr>
                     
                 </table>
@@ -247,6 +238,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sends the request message to the server.</p>
 <pre><code class="language-ballerina"> grpc:Error? err = caller-&gt;send(message);
@@ -305,6 +299,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Informs the server when the caller has sent all the messages.</p>
 <pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;complete();
 </code></pre>
@@ -339,6 +336,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sends an error message to the server.</p>
 <pre><code class="language-ballerina"> grpc:Error? result = streamingClient-&gt;sendError(grpc:ABORTED, &quot;Operation aborted&quot;);

@@ -11,11 +11,11 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span>
-<span class="kt">string</span> <span class="nx">dbName</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE_EXEC&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kt">string</span> <span class="nx">dbName</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">sqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS &quot;</span> <span class="o">+</span> <span class="nx">dbName</span><span class="p">);</span>
@@ -54,9 +54,7 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">24</span><span class="p">;</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedCallQuery</span> <span class="nx">sqlQuery</span> <span class="p">=</span> 
                                 <span class="s">`CALL InsertStudent(${name}, ${age})`</span><span class="p">;</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>
-    
-    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `InsertStudent` is successful : &quot;</span><span class="p">,</span> 
                 <span class="nx">retCall</span><span class="p">.</span><span class="nx">executionResult</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -68,9 +66,7 @@ redirect_from:
     <span class="nx">sql</span><span class="p">:</span><span class="nx">OutParameter</span> <span class="nx">totalCount</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedCallQuery</span> <span class="nx">sqlQuery</span> <span class="p">=</span> 
                         <span class="s">`{CALL GetCount(${id}, ${totalCount})}`</span><span class="p">;</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>
-    
-    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">sqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `GetCount` is successful.&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age of the student with id &#39;1&#39; : &quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total student count: &quot;</span><span class="p">,</span> <span class="nx">totalCount</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
@@ -114,21 +110,7 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Database initialization failed!!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_call_stored_procedures</span><span class="p">.</span><span class="nx">balDatabase</span> <span class="nx">created</span><span class="p">.</span> 
-<span class="nx">Creating</span> <span class="nx">necessary</span> <span class="nx">table</span> <span class="nx">and</span> <span class="nx">procedures</span><span class="o">...</span>
-<span class="nx">Successfully</span> <span class="nx">dropped</span> <span class="nx">tables</span> <span class="nx">and</span> <span class="nx">procedures</span><span class="p">.</span>
-<span class="nx">Create</span> <span class="nx">Student</span> <span class="nx">table</span> <span class="nx">executed</span><span class="p">.</span>
-<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">IN</span> <span class="nx">param</span> <span class="nx">created</span><span class="p">.</span>
-<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">INOUT</span><span class="o">/</span><span class="nx">OUT</span> <span class="nx">param</span> <span class="nx">created</span><span class="p">.</span>
-<span class="nx">Stored</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">result</span> <span class="nx">set</span> <span class="nx">returned</span> <span class="nx">created</span><span class="p">.</span><span class="nx">Invoke</span> <span class="s">`InsertStudent`</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">IN</span> <span class="nx">params</span>
-<span class="nx">Call</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="s">`InsertStudent`</span> <span class="nx">is</span> <span class="nx">successful</span> <span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span><span class="nx">Invoke</span> <span class="s">`GetCount`</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">INOUT</span> <span class="o">&amp;</span> <span class="nx">OUT</span> <span class="nx">params</span>
-<span class="nx">Call</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="s">`GetCount`</span> <span class="nx">is</span> <span class="nx">successful</span><span class="p">.</span>
-<span class="nx">Age</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">student</span> <span class="nx">with</span> <span class="nx">id</span> <span class="sc">&#39;1&#39;</span> <span class="p">:</span> <span class="mi">24</span>
-<span class="nx">Total</span> <span class="nx">student</span> <span class="nx">count</span><span class="p">:</span> <span class="mi">1</span><span class="nx">Invoke</span> <span class="s">`GetStudents`</span> <span class="nx">procedure</span> <span class="nx">with</span> <span class="nx">returned</span> <span class="nx">data</span>
-<span class="nx">Call</span> <span class="nx">stored</span> <span class="nx">procedure</span> <span class="s">`InsertStudent`</span> <span class="nx">is</span> <span class="nx">successful</span><span class="p">.</span>
-<span class="nx">Student</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1</span> <span class="nx">age</span><span class="p">=</span><span class="mi">24</span> <span class="nx">name</span><span class="p">=</span><span class="nx">GeorgeSample</span> <span class="nx">executed</span> <span class="nx">successfully</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -183,6 +165,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-call-stored-procedures/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -287,6 +270,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -296,8 +283,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 </code></pre></div>
 
                                 </td>
@@ -311,7 +298,7 @@ import ballerina/sql;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
 string dbPassword = &quot;Test@123&quot;;
-string dbName = &quot;MYSQL_BBE_EXEC&quot;;
+string dbName = &quot;MYSQL_BBE&quot;;
 </code></pre></div>
 
                                 </td>
@@ -602,14 +589,6 @@ returns sql:Error? {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult|sql:Error retCall = sqlClient-&gt;call(sqlQuery);
-    
-    if (retCall is sql:ProcedureCallResult) {
-        io:println(&quot;Call stored procedure `InsertStudent` is successful : &quot;, 
-                retCall.executionResult);
-    } else {
-        io:println(&quot;Error occurred while invoking `InsertStudent`.&quot;);
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -621,6 +600,24 @@ returns sql:Error? {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (retCall is sql:ProcedureCallResult) {
+        io:println(&quot;Call stored procedure `InsertStudent` is successful : &quot;, 
+                retCall.executionResult);
+    } else {
+        io:println(&quot;Error occurred while invoking `InsertStudent`.&quot;);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -682,14 +679,6 @@ returns sql:Error? {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult|sql:Error retCall = sqlClient-&gt;call(sqlQuery);
-    
-    if (retCall is sql:ProcedureCallResult) {
-        io:println(&quot;Call stored procedure `GetCount` is successful.&quot;);
-        io:println(&quot;Age of the student with id &#39;1&#39; : &quot;, id.get(int));
-        io:println(&quot;Total student count: &quot;, totalCount.get(int));
-    } else {
-        io:println(&quot;Error occurred while invoking `GetCount`.&quot;);
-    }
 </code></pre></div>
 
                                 </td>
@@ -701,6 +690,24 @@ returns sql:Error? {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (retCall is sql:ProcedureCallResult) {
+        io:println(&quot;Call stored procedure `GetCount` is successful.&quot;);
+        io:println(&quot;Age of the student with id &#39;1&#39; : &quot;, id.get(int));
+        io:println(&quot;Total student count: &quot;, totalCount.get(int));
+    } else {
+        io:println(&quot;Error occurred while invoking `GetCount`.&quot;);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -1143,7 +1150,7 @@ Stored procedure with result set returned created.
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Invoke `InsertStudent` procedure with IN params
-Call stored procedure `InsertStudent` is successful : affectedRowCount=1 lastInsertId=
+Call stored procedure `InsertStudent` is successful : {&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null}
 </code></pre></div>
 
                                 </td>
@@ -1172,7 +1179,7 @@ Total student count: 1
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Invoke `GetStudents` procedure with returned data
 Call stored procedure `InsertStudent` is successful.
-Student details: id=1 age=24 name=George
+Student details: {&quot;id&quot;:1,&quot;age&quot;:24,&quot;name&quot;:&quot;George&quot;}
 </code></pre></div>
 
                                 </td>
@@ -1212,7 +1219,7 @@ Student details: id=1 age=24 name=George
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

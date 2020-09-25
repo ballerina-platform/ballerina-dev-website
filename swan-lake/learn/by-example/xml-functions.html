@@ -30,16 +30,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Child elements set: &quot;</span><span class="p">,</span> <span class="nx">book</span><span class="p">);</span>
     <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">strip</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stripped: &quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">xml_functions</span><span class="p">.</span><span class="nx">balElement</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">name</span>
-<span class="nx">Concat</span><span class="p">:</span> <span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Book1</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;&lt;!</span><span class="o">--</span><span class="nx">some</span> <span class="nx">comment</span><span class="o">--</span><span class="p">&gt;</span>
-<span class="nx">Equals</span><span class="p">:</span> <span class="kc">true</span>
-<span class="nx">Length</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">Subsequence</span><span class="p">:</span> <span class="p">&lt;!</span><span class="o">--</span><span class="nx">some</span> <span class="nx">comment</span><span class="o">--</span><span class="p">&gt;</span>
-<span class="nx">All</span> <span class="nx">XML</span> <span class="nx">elements</span><span class="p">:</span> <span class="p">&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Book1</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;</span>
-<span class="nx">Child</span> <span class="nx">elements</span> <span class="nx">set</span><span class="p">:</span> <span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Book1</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;&lt;!</span><span class="o">--</span><span class="nx">some</span> <span class="nx">comment</span><span class="o">--</span><span class="p">&gt;&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span>
-<span class="nx">Stripped</span><span class="p">:</span> <span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!&lt;</span><span class="nx">name</span><span class="p">&gt;</span><span class="nx">Book1</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">name</span><span class="p">&gt;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -90,6 +81,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml-functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -383,7 +375,7 @@ Stripped: Hello, World!&lt;name&gt;Book1&lt;/name&gt;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -12,7 +12,13 @@ redirect_from:
 
 # Statements
 
-## If statement
+- [If Statement](#if-statement)
+    - [Empty Block](#empty-block)
+- [Match Statement](#match-statement)
+    - [Match Patterns Clause](#match-patterns-clause)
+- [Transaction Statement](#transaction-statement)
+
+## If Statement
 
 * Always enclose the condition with parentheses in the If statement.
   

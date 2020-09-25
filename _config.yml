@@ -41,7 +41,7 @@ latest_version: 1.2
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/"]
+exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/","v1-2","v1-1","v1-0","v0-991","v-0.990","0.990"]
 #   - Gemfile.lock
 #   - node_modules
 #   - vendor/bundle/

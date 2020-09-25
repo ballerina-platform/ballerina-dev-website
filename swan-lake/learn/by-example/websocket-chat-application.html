@@ -33,7 +33,8 @@ redirect_from:
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">headers</span> <span class="p">=</span> <span class="p">{};</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span> <span class="nx">wsEp</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">acceptWebSocketUpgrade</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span> <span class="nx">wsEp</span> <span class="p">=</span>
+                                       <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">acceptWebSocketUpgrade</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">wsEp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">wsEp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">NAME</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
             <span class="kt">string</span><span class="err">?</span> <span class="nx">ageValue</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">);</span>
@@ -81,15 +82,7 @@ redirect_from:
 <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">ep</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">websocket_chat_application</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">check</span> <span class="nx">the</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">Chrome</span> <span class="nx">or</span> <span class="nx">Firefox</span> <span class="nx">JavaScript</span> <span class="nx">console</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">commands</span><span class="p">.</span> <span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
-<span class="err">#</span> <span class="nx">Run</span> <span class="nx">the</span> <span class="nx">first</span> <span class="mi">3</span> <span class="nx">lines</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">code</span> <span class="nx">in</span> <span class="nx">two</span> <span class="nx">or</span> <span class="nx">more</span> <span class="nx">different</span> <span class="nx">consoles</span> <span class="nx">and</span> <span class="nx">see</span> <span class="nx">how</span> <span class="nx">the</span> <span class="nx">messages</span> <span class="nx">are</span> <span class="nx">received</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">Change</span> <span class="nx">the</span> <span class="nx">names</span> <span class="nx">and</span><span class="o">/</span><span class="nx">or</span> <span class="nx">age</span> <span class="nx">in</span> <span class="nx">the</span> <span class="s">`/chat/fistName?age`</span> <span class="nx">URI</span> <span class="nx">so</span> <span class="nx">that</span> <span class="nx">they</span> <span class="nx">are</span> <span class="nx">different</span> <span class="k">for</span> <span class="nx">each</span> <span class="nx">client</span><span class="p">.</span>
-<span class="k">var</span> <span class="nx">ws</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="s">&quot;ws://localhost:9090/chat/bruce?age=30&quot;</span><span class="p">);</span>
-<span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">data</span><span class="p">)};</span>
-<span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">)};</span><span class="err">#</span> <span class="nx">Send</span> <span class="nx">messages</span><span class="p">.</span>
-<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -140,6 +133,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-chat-application/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -286,7 +280,8 @@ service chatAppUpgrader on new http:Listener(9090) {
             return;
         }
         map&lt;string&gt; headers = {};
-        http:WebSocketCaller|http:WebSocketError wsEp = caller-&gt;acceptWebSocketUpgrade(headers);
+        http:WebSocketCaller|http:WebSocketError wsEp =
+                                       caller-&gt;acceptWebSocketUpgrade(headers);
         if (wsEp is http:WebSocketCaller) {
 </code></pre></div>
 
@@ -568,7 +563,7 @@ ws.send(&quot;hello world&quot;);
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

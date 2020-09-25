@@ -93,18 +93,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../oauth2/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../oauth2/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../oauth2/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../oauth2/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -169,9 +166,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Validates the given OAuth2 token by calling the OAuth2 introspection endpoint.</p>
-
-
+                                
+                                <p>Validates the given OAuth2 token by calling the OAuth2 introspection endpoint.</p>   
                             </div>
                         </td>
                     </tr>
@@ -196,6 +192,7 @@
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Validates the given OAuth2 token by calling the OAuth2 introspection endpoint.</p>
 <pre><code class="language-ballerina"> oauth2:IntrospectionResponse|oauth2:Error result = oauth2:validateOAuth2Token(token, introspectionServerConfig);

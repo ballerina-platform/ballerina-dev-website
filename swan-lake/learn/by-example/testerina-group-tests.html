@@ -30,38 +30,7 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">testFunction3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the ungrouped test&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina test`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">You</span> <span class="nx">need</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">ballerina</span><span class="o">-</span><span class="nx">tools</span> <span class="nx">distribution</span>
-<span class="err">#</span> <span class="nx">installed</span> <span class="nx">to</span> <span class="nx">execute</span> <span class="nx">this</span> <span class="nx">command</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">test</span> <span class="o">--</span><span class="nx">groups</span> <span class="nx">g1</span> <span class="o">--</span><span class="nx">groups</span> <span class="nx">g2</span> <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span> 
-<span class="nx">Compiling</span> <span class="nx">tests</span>
-    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">balRunning</span> <span class="nx">tests</span>
-    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">groups</span> <span class="nx">g1</span> <span class="nx">and</span> <span class="nx">g2</span><span class="p">!</span>
-<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">group</span> <span class="nx">g1</span><span class="p">!</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction2</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction1</span>        <span class="mi">2</span> <span class="nx">passing</span>
-        <span class="mi">0</span> <span class="nx">failing</span>
-        <span class="mi">0</span> <span class="nx">skippedballerina</span> <span class="nx">test</span> <span class="o">--</span><span class="nx">groups</span> <span class="nx">g1</span> <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span> 
-<span class="nx">Compiling</span> <span class="nx">tests</span>
-    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">balRunning</span> <span class="nx">tests</span>
-    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">groups</span> <span class="nx">g1</span> <span class="nx">and</span> <span class="nx">g2</span><span class="p">!</span>
-<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">group</span> <span class="nx">g1</span><span class="p">!</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction2</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction1</span>        <span class="mi">2</span> <span class="nx">passing</span>
-        <span class="mi">0</span> <span class="nx">failing</span>
-        <span class="mi">0</span> <span class="nx">skippedballerina</span> <span class="nx">test</span> <span class="o">--</span><span class="nx">disable</span><span class="o">-</span><span class="nx">groups</span> <span class="nx">g2</span> <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span> 
-<span class="nx">Compiling</span> <span class="nx">tests</span>
-    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">balRunning</span> <span class="nx">tests</span>
-    <span class="nx">testerina_group_tests</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">the</span> <span class="nx">ungrouped</span> <span class="nx">test</span>
-<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="nx">belonging</span> <span class="nx">to</span> <span class="nx">group</span> <span class="nx">g1</span><span class="p">!</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction3</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction1</span>        <span class="mi">2</span> <span class="nx">passing</span>
-        <span class="mi">0</span> <span class="nx">failing</span>
-        <span class="mi">0</span> <span class="nx">skipped</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -76,7 +45,8 @@ redirect_from:
  In order to execute tests belonging to a selected test group, you can name the
  test groups that are to be executed when you run tests.
  Likewise, you can exclude executing selected tests as well.<br/><br/>
- For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-test-ballerina-code/">How to Test Ballerina Code</a>.</p>
+ For more information, see <a href="https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
+ and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html">Test Module</a>.</p>
 </p>
 
                         </td>
@@ -115,6 +85,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/testerina-group-tests/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -433,7 +404,7 @@ I&#39;m in test belonging to group g1!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

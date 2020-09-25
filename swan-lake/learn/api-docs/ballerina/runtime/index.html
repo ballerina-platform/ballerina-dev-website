@@ -70,11 +70,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../runtime/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../runtime/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -133,8 +132,7 @@
 invocationContext.attributes[&quot;SERVICE_NAME&quot;] = &quot;HelloService&quot;;
 </code></pre>
 <p>The following code snippet shows how to access the <code>runtime:InvocationContext</code> and get the data from the <code>attributes</code> map.</p>
-<pre><code class="language-ballerina">runtime:InvocationContext invocationContext = runtime:getInvocationContext();
-string serviceName = runtime:getInvocationContext().attributes[&quot;SERVICE_NAME&quot;].toString();
+<pre><code class="language-ballerina">string serviceName = runtime:getInvocationContext().attributes[&quot;SERVICE_NAME&quot;].toString();
 </code></pre>
 <h4>Sleep the current strand</h4>
 <p>The following is the code snippet for pausing the current strand for 1000 milliseconds.</p>
@@ -144,45 +142,39 @@ string serviceName = runtime:getInvocationContext().attributes[&quot;SERVICE_NAM
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="CallStackElement" title="CallStackElement">
                             <a class="records " href="records/CallStackElement.html">CallStackElement</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents a data holder of the current call stack element.</p>
-
+                            <p>Represents a data holder of the current call stack element.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="InvocationContext" title="InvocationContext">
                             <a class="records " href="records/InvocationContext.html">InvocationContext</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the <code>runtime:InvocationContext</code>.</p>
-
+                            <p>Represents the <code>runtime:InvocationContext</code>.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -208,9 +200,10 @@ string serviceName = runtime:getInvocationContext().attributes[&quot;SERVICE_NAM
                 </td>
                 <td class="module-desc">
                     
-                    <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Retrieves the array of <code>runtime:CallStackElement</code> instances.</p>   
                 </td>
             </tr>
             
@@ -220,9 +213,10 @@ string serviceName = runtime:getInvocationContext().attributes[&quot;SERVICE_NAM
                 </td>
                 <td class="module-desc">
                     
-                    <p>Returns the <code>runtime:InvocationContext</code> instance.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Returns the <code>runtime:InvocationContext</code> instance.</p>   
                 </td>
             </tr>
             
@@ -232,9 +226,10 @@ string serviceName = runtime:getInvocationContext().attributes[&quot;SERVICE_NAM
                 </td>
                 <td class="module-desc">
                     
-                    <p>Halts the current strand for a predefined amount of time.</p>
-
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>Halts the current strand for a predefined amount of time.</p>   
                 </td>
             </tr>
             

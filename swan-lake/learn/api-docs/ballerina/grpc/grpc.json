@@ -123,7 +123,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ClientConfiguration",
       "description": "\u003cp\u003eRepresents client endpoint configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -154,7 +154,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "GrpcServiceConfig",
       "description": "\u003cp\u003eService configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -231,7 +231,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ListenerConfiguration",
       "description": "\u003cp\u003eRepresents the gRPC server endpoint configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -308,7 +308,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ListenerOcspStapling",
       "description": "\u003cp\u003eOcspStapling record represents options related to check whether a certificate is revoked or not.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -652,7 +652,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ListenerSecureSocket",
       "description": "\u003cp\u003eConfigures the SSL/TLS options to be used for HTTP service.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -706,7 +706,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Local",
       "description": "\u003cp\u003ePresents a read-only view of the local address.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -806,7 +806,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "PoolConfiguration",
       "description": "\u003cp\u003eConfigurations for managing the gRPC client connection pool.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -874,7 +874,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Protocols",
       "description": "\u003cp\u003eProtocols record represents SSL/TLS protocol related options to be used for HTTP client/service invocation.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -928,7 +928,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Remote",
       "description": "\u003cp\u003ePresents a read-only view of the remote address.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1028,7 +1028,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "[\u003ctypedesc\u003cballerina/grpc:0.7.0:InternalError\u003e\u003e InternalError]",
+          "defaultValue": "defaultErrorTypes",
           "type": {
             "category": "UNKNOWN",
             "isAnonymousUnionType": false,
@@ -1065,7 +1065,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "RetryConfiguration",
       "description": "\u003cp\u003eRepresents grpc client retry functionality configurations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1432,7 +1432,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "SecureSocket",
       "description": "\u003cp\u003eProvides the configurations for facilitating secure communication with a remote HTTP endpoint.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1503,7 +1503,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ServiceDescriptorData",
       "description": "\u003cp\u003eService descriptor data generated at the compile time. This is for internal use.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1580,26 +1580,47 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ValidateCert",
       "description": "\u003cp\u003eValidateCert record represents options related to check whether a certificate is revoked or not.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [
     {
-      "fields": [],
+      "fields": [
+        {
+          "defaultValue": " {}",
+          "type": {
+            "category": "UNKNOWN",
+            "isAnonymousUnionType": false,
+            "isArrayType": false,
+            "isNullable": false,
+            "isTuple": false,
+            "isRestParam": false,
+            "isLambda": false,
+            "isDeprecated": false,
+            "generateUserDefinedTypeLink": true,
+            "memberTypes": [],
+            "paramTypes": [],
+            "arrayDimensions": 0
+          },
+          "name": "poolConfig",
+          "description": "",
+          "isDeprecated": false
+        }
+      ],
       "methods": [],
       "otherMethods": [],
-      "isAnonymous": false,
-      "name": "AbstractClientEndpoint",
-      "description": "\u003cp\u003eRepresents the abstract gRPC client endpoint. This abstract object is used in client endpoints generated by the\nProtocol Buffer tool.\u003c/p\u003e\n",
+      "name": "ConnectionManager",
+      "description": "",
       "isDeprecated": false
     },
     {
       "fields": [],
       "methods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1656,6 +1677,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1712,6 +1734,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1782,6 +1805,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1838,6 +1862,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1894,6 +1919,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1927,6 +1953,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1938,6 +1965,7 @@
       ],
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1994,6 +2022,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -2050,6 +2079,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -2120,6 +2150,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -2176,6 +2207,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -2232,6 +2264,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -2265,6 +2298,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -2274,9 +2308,17 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Headers",
       "description": "\u003cp\u003eProvides the actions to read/write header values in a gRPC request/response message.\u003c/p\u003e\n",
+      "isDeprecated": false
+    }
+  ],
+  "abstractObjects": [
+    {
+      "fields": [],
+      "methods": [],
+      "name": "AbstractClientEndpoint",
+      "description": "\u003cp\u003eRepresents the abstract gRPC client endpoint. This abstract object is used in client endpoints generated by the\nProtocol Buffer tool.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
@@ -2284,6 +2326,7 @@
     {
       "remoteMethods": [
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -2311,12 +2354,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -2363,6 +2406,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
@@ -2395,6 +2439,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -2445,12 +2490,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -2547,6 +2592,7 @@
       ],
       "methods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -2579,6 +2625,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -2606,12 +2653,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -2658,6 +2705,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
@@ -2690,6 +2738,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -2722,6 +2771,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -2772,12 +2822,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -2826,6 +2876,7 @@
       ],
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -2858,6 +2909,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -2890,7 +2942,6 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Caller",
       "description": "\u003cp\u003eProvides the gRPC remote functions for interacting with caller.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -2898,6 +2949,7 @@
     {
       "remoteMethods": [
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -2948,12 +3000,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -3018,7 +3070,7 @@
                         "orgName": "ballerina",
                         "moduleName": "grpc",
                         "name": "Headers",
-                        "category": "objects",
+                        "category": "classes",
                         "isAnonymousUnionType": false,
                         "isArrayType": false,
                         "isNullable": false,
@@ -3066,6 +3118,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3139,12 +3192,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -3191,6 +3244,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3241,12 +3295,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -3330,62 +3384,7 @@
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "url",
-              "description": "\u003cp\u003eThe server URL\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:ClientConfiguration?\u003e ()",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "grpc",
-                "name": "ClientConfiguration",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "config",
-              "description": "\u003cul\u003e\n\u003cli\u003eThe \u003ccode\u003egrpc:ClientConfiguration\u003c/code\u003e of the endpoint\u003c/li\u003e\n\u003c/ul\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eGets invoked to initialize the endpoint. During initialization, the configurations provided through the \u003ccode\u003econfig\u003c/code\u003e\nrecord are used for the endpoint initialization.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -3395,7 +3394,7 @@
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "AbstractClientEndpoint",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -3528,6 +3527,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3578,12 +3578,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -3648,7 +3648,7 @@
                         "orgName": "ballerina",
                         "moduleName": "grpc",
                         "name": "Headers",
-                        "category": "objects",
+                        "category": "classes",
                         "isAnonymousUnionType": false,
                         "isArrayType": false,
                         "isNullable": false,
@@ -3696,6 +3696,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3769,12 +3770,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -3821,6 +3822,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -3871,12 +3873,12 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:Headers?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "Headers",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": true,
@@ -3957,64 +3959,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "string",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "url",
-            "description": "\u003cp\u003eThe server URL\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "\u003cballerina/grpc:0.7.0:ClientConfiguration?\u003e ()",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "grpc",
-              "name": "ClientConfiguration",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "config",
-            "description": "\u003cul\u003e\n\u003cli\u003eThe \u003ccode\u003egrpc:ClientConfiguration\u003c/code\u003e of the endpoint\u003c/li\u003e\n\u003c/ul\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eGets invoked to initialize the endpoint. During initialization, the configurations provided through the \u003ccode\u003econfig\u003c/code\u003e\nrecord are used for the endpoint initialization.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -4024,7 +3971,7 @@
                 "orgName": "ballerina",
                 "moduleName": "grpc",
                 "name": "AbstractClientEndpoint",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -4157,7 +4104,6 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Client",
       "description": "\u003cp\u003eThe gRPC client endpoint provides the capability for initiating contact with a remote gRPC service. The API it\nprovides includes functions to send request/error messages.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -4165,6 +4111,7 @@
     {
       "remoteMethods": [
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4221,6 +4168,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
@@ -4253,6 +4201,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4335,6 +4284,7 @@
       "fields": [],
       "methods": [
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4391,6 +4341,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [],
@@ -4423,6 +4374,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": true,
           "isExtern": false,
           "parameters": [
@@ -4503,7 +4455,6 @@
         }
       ],
       "otherMethods": [],
-      "isAnonymous": false,
       "name": "StreamingClient",
       "description": "\u003cp\u003eProvides the gRPC streaming client actions for interacting with the gRPC server.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -4513,6 +4464,7 @@
     {
       "lifeCycleMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -4545,6 +4497,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -4572,7 +4525,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -4627,62 +4580,7 @@
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "int",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "port",
-              "description": "\u003cp\u003eListener port\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "\u003cballerina/grpc:0.7.0:ListenerConfiguration?\u003e ()",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "grpc",
-                "name": "ListenerConfiguration",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "config",
-              "description": "\u003cp\u003eThe \u003ccode\u003egrpc:ListenerConfiguration\u003c/code\u003e of the endpoint\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eGets called when the endpoint is being initialized during the module init time.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -4715,6 +4613,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -4747,6 +4646,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -4779,6 +4679,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -4806,7 +4707,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -4858,6 +4759,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -4914,64 +4816,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "int",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "port",
-            "description": "\u003cp\u003eListener port\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "\u003cballerina/grpc:0.7.0:ListenerConfiguration?\u003e ()",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "grpc",
-              "name": "ListenerConfiguration",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": true,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "config",
-            "description": "\u003cp\u003eThe \u003ccode\u003egrpc:ListenerConfiguration\u003c/code\u003e of the endpoint\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eGets called when the endpoint is being initialized during the module init time.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -5004,6 +4851,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -5036,6 +4884,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -5092,44 +4941,12 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Listener",
       "description": "\u003cp\u003eRepresents server listener where one or more services can be registered. so that ballerina program can offer\nservice through this listener.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "functions": [
-    {
-      "isRemote": false,
-      "isExtern": false,
-      "parameters": [],
-      "returnParameters": [
-        {
-          "type": {
-            "name": "error?",
-            "category": "types",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "name": "ballerina/grpc:0.7.0.\u003cinit\u003e0",
-      "description": "",
-      "isDeprecated": false
-    }
-  ],
+  "functions": [],
   "constants": [
     {
       "type": {
@@ -6179,5 +5996,7 @@
       "arrayDimensions": 0
     }
   ],
-  "resources": []
+  "resources": [
+    "/home/runner/work/module-ballerina-grpc/module-ballerina-grpc/grpc-ballerina/src/grpc/resources/.keep"
+  ]
 }

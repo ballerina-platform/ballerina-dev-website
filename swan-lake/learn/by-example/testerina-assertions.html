@@ -10,13 +10,13 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span><span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">public</span> <span class="nx">Person</span><span class="err">?</span> <span class="nx">parent</span> <span class="p">=</span> <span class="p">();</span>
     <span class="nx">private</span> <span class="kt">string</span> <span class="nx">email</span> <span class="p">=</span> <span class="s">&quot;default@abc.com&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">address</span> <span class="p">=</span> <span class="s">&quot;No 20, Palm grove&quot;</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="p">}</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertIntEquals</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">answer</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -52,7 +52,10 @@ redirect_from:
     <span class="kt">xml</span> <span class="nx">x3</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">x4</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;?target data?&gt;`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">x5</span> <span class="p">=</span> <span class="nx">x1</span> <span class="o">+</span> <span class="nx">x2</span> <span class="o">+</span> <span class="nx">x3</span> <span class="o">+</span> <span class="nx">x4</span><span class="p">;</span>
-    <span class="kt">xml</span> <span class="nx">x6</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`Hello, world!`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`&lt;?target data?&gt;`</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">x6</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span> <span class="o">+</span>
+             <span class="kt">xml</span> <span class="s">`Hello, world!`</span> <span class="o">+</span>
+             <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span> <span class="o">+</span>
+             <span class="kt">xml</span> <span class="s">`&lt;?target data?&gt;`</span><span class="p">;</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">x5</span><span class="p">,</span> <span class="nx">x6</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;XML values not equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
@@ -98,7 +101,10 @@ redirect_from:
     <span class="kt">xml</span> <span class="nx">x3</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">x4</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;?target data?&gt;`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">x5</span> <span class="p">=</span> <span class="nx">x1</span> <span class="o">+</span> <span class="nx">x2</span> <span class="o">+</span> <span class="nx">x3</span> <span class="o">+</span> <span class="nx">x4</span><span class="p">;</span>
-    <span class="kt">xml</span> <span class="nx">x6</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World -2&lt;/book&gt;`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`Hello, world!`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span> <span class="o">+</span> <span class="kt">xml</span> <span class="s">`&lt;?target data?&gt;`</span><span class="p">;</span>
+    <span class="kt">xml</span> <span class="nx">x6</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World -2&lt;/book&gt;`</span> <span class="o">+</span>
+             <span class="kt">xml</span> <span class="s">`Hello, world!`</span> <span class="o">+</span>
+             <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span> <span class="o">+</span>
+             <span class="kt">xml</span> <span class="s">`&lt;?target data?&gt;`</span><span class="p">;</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertNotEquals</span><span class="p">(</span><span class="nx">x5</span><span class="p">,</span> <span class="nx">x6</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;XML values are equal&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="nd">@test:Config {</span><span class="p">}</span>
@@ -135,29 +141,7 @@ redirect_from:
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">stringConcat</span><span class="p">(</span><span class="kt">string</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">ballerina</span> <span class="nx">test</span> <span class="nx">test_module</span>
-<span class="nx">Compiling</span> <span class="nx">source</span>
-        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span><span class="nx">Creating</span> <span class="nx">balos</span>
-        <span class="nx">target</span><span class="o">/</span><span class="nx">balo</span><span class="o">/</span><span class="nx">test_module</span><span class="o">-</span><span class="mi">2020</span><span class="nx">r1</span><span class="o">-</span><span class="kt">any</span><span class="o">-</span><span class="mf">0.1.0</span><span class="p">.</span><span class="nx">baloRunning</span> <span class="nx">tests</span>
-    <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span>        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFail</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFalse</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertTrue</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertNotExactEqualsObject</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertExactEqualsObject</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertNotEqualsXml</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertNotEqualsJson</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertNotEqualsString</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFloatArrayEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertIntArrayEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertStringArrayEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertBooleanEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertXmlEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertJsonEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertStringEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertFloatEquals</span>
-        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testAssertIntEquals</span>        <span class="mi">17</span> <span class="nx">passing</span>
-        <span class="mi">0</span> <span class="nx">failing</span>
-        <span class="mi">0</span> <span class="nx">skipped</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -170,7 +154,8 @@ redirect_from:
                             <p><p>Testerina has in-built assertions that enable users to
  assert an outcome against an expected outcome.
  This example illustrates how to use different assertions.<br/><br/>
- For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-test-ballerina-code/">How to Test Ballerina Code</a>.</p>
+ For more information, see <a href="https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
+ and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html">Test Module</a>.</p>
 </p>
 
                         </td>
@@ -209,6 +194,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/testerina-assertions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -289,13 +275,13 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Person object {
+                                    <div class="highlight"><pre><code class=language-ballerina>class Person {
     public string name = &quot;&quot;;
     public int age = 0;
     public Person? parent = ();
     private string email = &quot;default@abc.com&quot;;
     string address = &quot;No 20, Palm grove&quot;;
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -416,7 +402,10 @@ function testAssertXmlEquals() {
     xml x3 = xml `&lt;!--I am a comment--&gt;`;
     xml x4 = xml `&lt;?target data?&gt;`;
     xml x5 = x1 + x2 + x3 + x4;
-    xml x6 = xml `&lt;book&gt;The Lost World&lt;/book&gt;` + xml `Hello, world!` + xml `&lt;!--I am a comment--&gt;` + xml `&lt;?target data?&gt;`;
+    xml x6 = xml `&lt;book&gt;The Lost World&lt;/book&gt;` +
+             xml `Hello, world!` +
+             xml `&lt;!--I am a comment--&gt;` +
+             xml `&lt;?target data?&gt;`;
     test:assertEquals(x5, x6, msg = &quot;XML values not equal&quot;);
 }
 </code></pre></div>
@@ -588,7 +577,10 @@ function testAssertNotEqualsXml() {
     xml x3 = xml `&lt;!--I am a comment--&gt;`;
     xml x4 = xml `&lt;?target data?&gt;`;
     xml x5 = x1 + x2 + x3 + x4;
-    xml x6 = xml `&lt;book&gt;The Lost World -2&lt;/book&gt;` + xml `Hello, world!` + xml `&lt;!--I am a comment--&gt;` + xml `&lt;?target data?&gt;`;
+    xml x6 = xml `&lt;book&gt;The Lost World -2&lt;/book&gt;` +
+             xml `Hello, world!` +
+             xml `&lt;!--I am a comment--&gt;` +
+             xml `&lt;?target data?&gt;`;
     test:assertNotEquals(x5, x6, msg = &quot;XML values are equal&quot;);
 }
 </code></pre></div>
@@ -897,7 +889,7 @@ Compiling source
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

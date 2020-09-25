@@ -77,35 +77,11 @@
                         
     
         <li >
-            <a href="#abortResourceManagers" onclick="menuLinkClick()">abortResourceManagers</a>
-        </li>
-    
-        <li >
             <a href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;0" onclick="menuLinkClick()">ballerina/lang.transaction:0.0.1.&lt;init&gt;0</a>
         </li>
     
         <li >
             <a href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;1" onclick="menuLinkClick()">ballerina/lang.transaction:0.0.1.&lt;init&gt;1</a>
-        </li>
-    
-        <li >
-            <a href="#cleanupTransactionContext" onclick="menuLinkClick()">cleanupTransactionContext</a>
-        </li>
-    
-        <li >
-            <a href="#commitResourceManagers" onclick="menuLinkClick()">commitResourceManagers</a>
-        </li>
-    
-        <li >
-            <a href="#createTransactionContext" onclick="menuLinkClick()">createTransactionContext</a>
-        </li>
-    
-        <li >
-            <a href="#endTransaction" onclick="menuLinkClick()">endTransaction</a>
-        </li>
-    
-        <li >
-            <a href="#getAndClearFailure" onclick="menuLinkClick()">getAndClearFailure</a>
         </li>
     
         <li >
@@ -125,10 +101,6 @@
         </li>
     
         <li >
-            <a href="#isTransactional" onclick="menuLinkClick()">isTransactional</a>
-        </li>
-    
-        <li >
             <a href="#onCommit" onclick="menuLinkClick()">onCommit</a>
         </li>
     
@@ -137,27 +109,11 @@
         </li>
     
         <li >
-            <a href="#prepareResourceManagers" onclick="menuLinkClick()">prepareResourceManagers</a>
-        </li>
-    
-        <li >
-            <a href="#rollbackTransaction" onclick="menuLinkClick()">rollbackTransaction</a>
-        </li>
-    
-        <li >
             <a href="#setData" onclick="menuLinkClick()">setData</a>
         </li>
     
         <li >
             <a href="#setRollbackOnly" onclick="menuLinkClick()">setRollbackOnly</a>
-        </li>
-    
-        <li >
-            <a href="#setTransactionContext" onclick="menuLinkClick()">setTransactionContext</a>
-        </li>
-    
-        <li >
-            <a href="#startTransaction" onclick="menuLinkClick()">startTransaction</a>
         </li>
     
 
@@ -173,18 +129,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../lang.transaction/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../lang.transaction/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../lang.transaction/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../lang.transaction/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../lang.transaction/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
         
@@ -194,15 +151,7 @@
             </li>
         
         
-            <li>
-                <a data="constants" href="../lang.transaction/index.html#constants" onclick="menuLinkClick()">Constants</a>
-            </li>
         
-        
-        
-            <li>
-                <a data="types" href="../lang.transaction/index.html#types" onclick="menuLinkClick()">Types</a>
-            </li>
         
         
             <li>
@@ -249,20 +198,10 @@
             <tbody>
                 
                     <tr>
-                        <td width="30%"><a class="functions " href="#abortResourceManagers">abortResourceManagers</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>Abort local resource managers.</p>
-
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
                         <td width="30%"><a class="functions " href="#ballerina/lang.transaction:0.0.1.&lt;init&gt;0">ballerina/lang.transaction:0.0.1.&lt;init&gt;0</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 
                             </div>
@@ -275,63 +214,7 @@
                             <div class="function-desc">
                                 
                                 
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#cleanupTransactionContext">cleanupTransactionContext</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
                                 
-                                <p>Cleanup the transaction context.</p>
-
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#commitResourceManagers">commitResourceManagers</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>Commit local resource managers.</p>
-
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#createTransactionContext">createTransactionContext</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>A new transaction context is created by calling this function.
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#endTransaction">endTransaction</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>When a transaction block in Ballerina code ends, it will call this function to end a transaction.
-Ending a transaction by a participant has no effect because it is the initiator who can decide whether to
-commit or abort a transaction.
-Depending on the state of the transaction, the initiator decides to commit or abort the transaction.</p>
-
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#getAndClearFailure">getAndClearFailure</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>Get and Cleanup the failure.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -340,6 +223,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                         <td width="30%"><a class="functions " href="#getData">getData</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 
                             </div>
@@ -352,6 +236,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                             <div class="function-desc">
                                 
                                 
+                                
                             </div>
                         </td>
                     </tr>
@@ -360,6 +245,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                         <td width="30%"><a class="functions " href="#getRollbackOnly">getRollbackOnly</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 
                             </div>
@@ -372,15 +258,6 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                             <div class="function-desc">
                                 
                                 
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#isTransactional">isTransactional</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
                                 
                             </div>
                         </td>
@@ -390,6 +267,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                         <td width="30%"><a class="functions " href="#onCommit">onCommit</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 
                             </div>
@@ -402,28 +280,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                             <div class="function-desc">
                                 
                                 
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#prepareResourceManagers">prepareResourceManagers</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
                                 
-                                <p>Prepare local resource managers.</p>
-
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#rollbackTransaction">rollbackTransaction</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>Rollback the transaction.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -432,6 +289,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                         <td width="30%"><a class="functions " href="#setData">setData</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
                                 
                                 
                             </div>
@@ -444,26 +302,6 @@ Depending on the state of the transaction, the initiator decides to commit or ab
                             <div class="function-desc">
                                 
                                 
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#setTransactionContext">setTransactionContext</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
-                                <p>Set the transactionContext.</p>
-
-                            </div>
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td width="30%"><a class="functions " href="#startTransaction">startTransaction</a></td>
-                        <td width="70%">
-                            <div class="function-desc">
-                                
                                 
                             </div>
                         </td>
@@ -474,78 +312,6 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         <div>
             
                 <div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="abortResourceManagers" title="abortResourceManagers">
-             <a class="url-link" href="#abortResourceManagers">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > abortResourceManagers </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId)</p>
-            
-                <b> returns </b><span class="builtin-type">boolean</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Abort local resource managers.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Globally unique transaction ID.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionBlockId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>ID of the transaction block. Each transaction block in a process has a unique ID.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>true or false representing whether the resource manager abortion is successful or not.</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
                     
                         <div class="method-content">
     <div class="main-method-title here" id="ballerina/lang.transaction:0.0.1.&lt;init&gt;0" title="ballerina/lang.transaction:0.0.1.&lt;init&gt;0">
@@ -561,6 +327,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         </span>
     </div>
     <div class="function-desc">
+        
         
         
     </div>
@@ -594,6 +361,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
     <div class="function-desc">
         
         
+        
     </div>
     
 
@@ -603,303 +371,6 @@ Depending on the state of the transaction, the initiator decides to commit or ab
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../null/types.html#error?">error?</a></span>)</li>
                 <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="cleanupTransactionContext" title="cleanupTransactionContext">
-             <a class="url-link" href="#cleanupTransactionContext">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > cleanupTransactionContext </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> transactionBlockId)</p>
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Cleanup the transaction context.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionBlockId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>ID of the transaction block.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="commitResourceManagers" title="commitResourceManagers">
-             <a class="url-link" href="#commitResourceManagers">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > commitResourceManagers </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId)</p>
-            
-                <b> returns </b><span class="builtin-type">boolean</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Commit local resource managers.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Globally unique transaction ID.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionBlockId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>ID of the transaction block. Each transaction block in a process has a unique ID.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>true or false representing whether the commit is successful or not.</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="createTransactionContext" title="createTransactionContext">
-             <a class="url-link" href="#createTransactionContext">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > createTransactionContext </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> coordinationType, <span class="builtin-type">string</span> transactionBlockId)</p>
-            
-                <b> returns </b><a href="../lang.transaction/records/TransactionContext.html">TransactionContext</a> | <span class="builtin-type">error</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>A new transaction context is created by calling this function. At this point, a transaction object
-corresponding to the coordinationType will also be created and stored as an initiated transaction.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >coordinationType</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>The type of the coordination relevant to the transaction block for which this TransactionContext
-is being created for.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionBlockId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>The ID of the transaction block.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.transaction/records/TransactionContext.html">TransactionContext</a> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>TransactionContext if the coordination type is valid or an error in case of an invalid coordination type.</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="endTransaction" title="endTransaction">
-             <a class="url-link" href="#endTransaction">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > endTransaction </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId)</p>
-            
-                <b> returns </b><span class="builtin-type">string</span> | <a href="../lang.transaction/errors.html#Error">Error</a>? 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>When a transaction block in Ballerina code ends, it will call this function to end a transaction.
-Ending a transaction by a participant has no effect because it is the initiator who can decide whether to
-commit or abort a transaction.
-Depending on the state of the transaction, the initiator decides to commit or abort the transaction.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Globally unique transaction ID.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionBlockId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>ID of the transaction block. Each transaction block in a process has a unique ID.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../lang.transaction/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>A string or an error representing the transaction end succcess status or failure respectively.</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="getAndClearFailure" title="getAndClearFailure">
-             <a class="url-link" href="#getAndClearFailure">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > getAndClearFailure </h2>
-        <span class="method-types">
-            <p>()</p>
-            
-                <b> returns </b><span class="builtin-type">boolean</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Get and Cleanup the failure.</p>
-
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>is failed.</p>
-</li>
             </ul>
         </div>
         
@@ -920,6 +391,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         </span>
     </div>
     <div class="function-desc">
+        
         
         
     </div>
@@ -951,6 +423,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         </span>
     </div>
     <div class="function-desc">
+        
         
         
     </div>
@@ -1005,6 +478,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
     <div class="function-desc">
         
         
+        
     </div>
     
 
@@ -1036,6 +510,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
     <div class="function-desc">
         
         
+        
     </div>
     
 
@@ -1044,37 +519,6 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.transaction/records/Info.html">Info</a></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="isTransactional" title="isTransactional">
-             <a class="url-link" href="#isTransactional">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > isTransactional </h2>
-        <span class="method-types">
-            <p>()</p>
-            
-                <b> returns </b><span class="builtin-type">boolean</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
                 <li></li>
             </ul>
         </div>
@@ -1094,6 +538,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         </span>
     </div>
     <div class="function-desc">
+        
         
         
     </div>
@@ -1137,6 +582,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
     <div class="function-desc">
         
         
+        
     </div>
     
         <div class="data-wrapper">
@@ -1165,138 +611,6 @@ Depending on the state of the transaction, the initiator decides to commit or ab
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="prepareResourceManagers" title="prepareResourceManagers">
-             <a class="url-link" href="#prepareResourceManagers">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > prepareResourceManagers </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId)</p>
-            
-                <b> returns </b><span class="builtin-type">boolean</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Prepare local resource managers.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Globally unique transaction ID.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionBlockId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>ID of the transaction block. Each transaction block in a process has a unique ID.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>true or false representing whether the resource manager preparation is successful or not.</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="rollbackTransaction" title="rollbackTransaction">
-             <a class="url-link" href="#rollbackTransaction">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > rollbackTransaction </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> transactionBlockId, <span class="builtin-type">error?</span> err)</p>
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Rollback the transaction.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionBlockId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>ID of the transaction block.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >err</span>
-                        <span class="type">  <span class="builtin-type">error?</span> </span>
-                        <span class="default"> (default &lt;error?&gt; ())</span>
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>The cause of the rollback.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
-                    
-                        <div class="method-content">
     <div class="main-method-title here" id="setData" title="setData">
              <a class="url-link" href="#setData">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
@@ -1308,6 +622,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         </span>
     </div>
     <div class="function-desc">
+        
         
         
     </div>
@@ -1351,6 +666,7 @@ Depending on the state of the transaction, the initiator decides to commit or ab
     <div class="function-desc">
         
         
+        
     </div>
     
         <div class="data-wrapper">
@@ -1375,134 +691,6 @@ Depending on the state of the transaction, the initiator decides to commit or ab
         </div>
     
 
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="setTransactionContext" title="setTransactionContext">
-             <a class="url-link" href="#setTransactionContext">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > setTransactionContext </h2>
-        <span class="method-types">
-            <p>(<a href="../lang.transaction/records/TransactionContext.html">TransactionContext</a> transactionContext, <a href="../lang.transaction/records/Info.html">Info</a>? prevAttempt)</p>
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        <p>Set the transactionContext.</p>
-
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionContext</span>
-                        <span class="type">  <a href="../lang.transaction/records/TransactionContext.html">TransactionContext</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Transaction context.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >prevAttempt</span>
-                        <span class="type">  <a href="../lang.transaction/records/Info.html">Info</a>? </span>
-                        <span class="default"> (default &lt;ballerina/lang.transaction:0.0.1:Info?&gt; ())</span>
-                    </li>
-                    <li>
-                        <p>
-                            
-                            <p>Information related to previous attempt.</p>
-
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="startTransaction" title="startTransaction">
-             <a class="url-link" href="#startTransaction">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2 > startTransaction </h2>
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> transactionBlockId, <a href="../lang.transaction/records/Info.html">Info</a>? prevAttempt)</p>
-            
-                <b> returns </b><span class="builtin-type">string</span> 
-            
-        </span>
-    </div>
-    <div class="function-desc">
-        
-        
-    </div>
-    
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >transactionBlockId</span>
-                        <span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p>
-                            
-                            
-                        </p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        <span >prevAttempt</span>
-                        <span class="type">  <a href="../lang.transaction/records/Info.html">Info</a>? </span>
-                        <span class="default"> (default &lt;ballerina/lang.transaction:0.0.1:Info?&gt; ())</span>
-                    </li>
-                    <li>
-                        <p>
-                            
-                            
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li></li>
-            </ul>
-        </div>
-        
     
 </div>
                     

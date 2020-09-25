@@ -58,7 +58,7 @@ var searchData = {
     },
     {
       "id": "istio",
-      "description": "\u003cp\u003eThis module offers an annotation based Istio extension implementation for Ballerina.\u003c/p\u003e"
+      "description": "\u003cp\u003eThis module offers an annotation-based Istio extension implementation for Ballerina.\u003c/p\u003e"
     },
     {
       "id": "java",
@@ -249,20 +249,10 @@ var searchData = {
       "description": "\u003cp\u003eThis module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "InboundAuthProvider",
-      "description": "\u003cp\u003eRepresents the inbound Auth provider, which could be used to authenticate endpoints.\u003c/p\u003e",
-      "moduleId": "auth"
-    },
+  "classes": [
     {
       "id": "InboundBasicAuthProvider",
       "description": "\u003cp\u003eRepresents the configuration file based inbound Basic Auth provider, which is an implementation of the\n\u003ccode\u003eauth:InboundAuthProvider\u003c/code\u003e interface.\u003c/p\u003e",
-      "moduleId": "auth"
-    },
-    {
-      "id": "OutboundAuthProvider",
-      "description": "\u003cp\u003eRepresents the outbound Auth provider, which could be used to authenticate external endpoints.\u003c/p\u003e",
       "moduleId": "auth"
     },
     {
@@ -281,18 +271,13 @@ var searchData = {
       "moduleId": "azure.functions"
     },
     {
-      "id": "AbstractCache",
-      "description": "\u003cp\u003eThe \u003ccode\u003ecache:AbstractCache\u003c/code\u003e object is used for custom implementations of the Ballerina cache.\u003c/p\u003e",
-      "moduleId": "cache"
-    },
-    {
-      "id": "AbstractEvictionPolicy",
-      "description": "\u003cp\u003eThe \u003ccode\u003ecache:AbstractEvictionPolicy\u003c/code\u003e Ballerina  object is used for custom implementations of the eviction policy for a\nBallerina cache object.\u003c/p\u003e",
-      "moduleId": "cache"
-    },
-    {
       "id": "Cache",
       "description": "\u003cp\u003eThe \u003ccode\u003ecache:Cache\u003c/code\u003e object, which is used for all the cache-related operations.\u003c/p\u003e",
+      "moduleId": "cache"
+    },
+    {
+      "id": "LinkedList",
+      "description": "\u003cp\u003eThe \u003ccode\u003ecache:LinkedList\u003c/code\u003e object consists operations of \u003ccode\u003eLinkedList\u003c/code\u003e data structure which are related\nto LRU eviction algorithm\u003c/p\u003e\n",
       "moduleId": "cache"
     },
     {
@@ -306,8 +291,8 @@ var searchData = {
       "moduleId": "file"
     },
     {
-      "id": "AbstractClientEndpoint",
-      "description": "\u003cp\u003eRepresents the abstract gRPC client endpoint.\u003c/p\u003e",
+      "id": "ConnectionManager",
+      "description": "",
       "moduleId": "grpc"
     },
     {
@@ -341,6 +326,21 @@ var searchData = {
       "moduleId": "http"
     },
     {
+      "id": "HttpCache",
+      "description": "\u003cp\u003eImplements a cache for storing HTTP responses.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "RequestCacheControl",
+      "description": "\u003cp\u003eConfigures the cache control directives for an \u003ccode\u003ehttp:Request\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "ResponseCacheControl",
+      "description": "\u003cp\u003eConfigures cache control directives for an \u003ccode\u003ehttp:Response\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "Cookie",
       "description": "\u003cp\u003eRepresents a Cookie.\u003c/p\u003e",
       "moduleId": "http"
@@ -356,43 +356,8 @@ var searchData = {
       "moduleId": "http"
     },
     {
-      "id": "FilterContext",
-      "description": "\u003cp\u003eRepresentation of request filter Context.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "HttpCache",
-      "description": "\u003cp\u003eImplements a cache for storing HTTP responses.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
       "id": "HttpFuture",
       "description": "\u003cp\u003eRepresents a \u0027future\u0027 that returns as a result of an asynchronous HTTP request submission.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "InboundAuthHandler",
-      "description": "\u003cp\u003eThe representation of an inbound authentication handler for HTTP traffic.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "LoadBalancerRoundRobinRule",
-      "description": "\u003cp\u003eImplementation of round robin load balancing strategy.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "LoadBalancerRule",
-      "description": "\u003cp\u003eLoadBalancerRule provides a required interfaces to implement different algorithms.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "OutboundAuthHandler",
-      "description": "\u003cp\u003eThe representation of an outbound authentication handler for HTTP traffic.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "PersistentCookieHandler",
-      "description": "\u003cp\u003eThe representation of a persistent cookie handler for managing persistent cookies.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -401,18 +366,13 @@ var searchData = {
       "moduleId": "http"
     },
     {
+      "id": "FilterContext",
+      "description": "\u003cp\u003eRepresentation of request filter Context.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "Request",
       "description": "\u003cp\u003eRepresents an HTTP request.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "RequestCacheControl",
-      "description": "\u003cp\u003eConfigures the cache control directives for an \u003ccode\u003ehttp:Request\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "RequestFilter",
-      "description": "\u003cp\u003eAbstract Representation of a HTTP Request Filter.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -421,13 +381,8 @@ var searchData = {
       "moduleId": "http"
     },
     {
-      "id": "ResponseCacheControl",
-      "description": "\u003cp\u003eConfigures cache control directives for an \u003ccode\u003ehttp:Response\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "ResponseFilter",
-      "description": "\u003cp\u003eAbstract Representation of a HTTP Response Filter.\u003c/p\u003e",
+      "id": "LoadBalancerRoundRobinRule",
+      "description": "\u003cp\u003eImplementation of round robin load balancing strategy.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -436,13 +391,13 @@ var searchData = {
       "moduleId": "io"
     },
     {
-      "id": "ReadableCSVChannel",
-      "description": "\u003cp\u003eRepresents a ReadableCSVChannel which could be used to read records from CSV file.\u003c/p\u003e",
+      "id": "ReadableCharacterChannel",
+      "description": "\u003cp\u003eRepresents a channel, which could be used to read characters through a given ReadableByteChannel.\u003c/p\u003e",
       "moduleId": "io"
     },
     {
-      "id": "ReadableCharacterChannel",
-      "description": "\u003cp\u003eRepresents a channel, which could be used to read characters through a given ReadableByteChannel.\u003c/p\u003e",
+      "id": "ReadableCSVChannel",
+      "description": "\u003cp\u003eRepresents a ReadableCSVChannel which could be used to read records from CSV file.\u003c/p\u003e",
       "moduleId": "io"
     },
     {
@@ -466,13 +421,13 @@ var searchData = {
       "moduleId": "io"
     },
     {
-      "id": "WritableCSVChannel",
-      "description": "\u003cp\u003eRepresents a WritableCSVChannel, which could be used to write records from the CSV file.\u003c/p\u003e",
+      "id": "WritableCharacterChannel",
+      "description": "\u003cp\u003eRepresents a channel which could be used to write characters through a given WritableCharacterChannel.\u003c/p\u003e",
       "moduleId": "io"
     },
     {
-      "id": "WritableCharacterChannel",
-      "description": "\u003cp\u003eRepresents a channel which could be used to write characters through a given WritableCharacterChannel.\u003c/p\u003e",
+      "id": "WritableCSVChannel",
+      "description": "\u003cp\u003eRepresents a WritableCSVChannel, which could be used to write records from the CSV file.\u003c/p\u003e",
       "moduleId": "io"
     },
     {
@@ -486,11 +441,6 @@ var searchData = {
       "moduleId": "io"
     },
     {
-      "id": "JObject",
-      "description": "\u003cp\u003eThe Ballerina abstract object which is to be extended by Ballerina\nobjects representing Ballerina bindings for Java classes.\u003c/p\u003e",
-      "moduleId": "java"
-    },
-    {
       "id": "InboundJwtAuthProvider",
       "description": "\u003cp\u003eRepresents the inbound JWT auth provider, which authenticates by validating a JWT.\u003c/p\u003e",
       "moduleId": "jwt"
@@ -501,79 +451,14 @@ var searchData = {
       "moduleId": "jwt"
     },
     {
-      "id": "Deserializer",
-      "description": "\u003cp\u003eRepresents a Kafka deserializer object.\u003c/p\u003e",
-      "moduleId": "kafka"
-    },
-    {
-      "id": "Serializer",
-      "description": "\u003cp\u003eRepresents a Kafka serializer object.\u003c/p\u003e",
-      "moduleId": "kafka"
-    },
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.array"
-    },
-    {
       "id": "CallStack",
       "description": "\u003cp\u003eRepresent error call stack.\u003c/p\u003e",
       "moduleId": "lang.error"
     },
     {
-      "id": "T2",
-      "description": "",
-      "moduleId": "lang.map"
-    },
-    {
-      "id": "Listener",
-      "description": "\u003cp\u003eRepresents the shape expected from all listeners.\u003c/p\u003e",
-      "moduleId": "lang.object"
-    },
-    {
-      "id": "RawTemplate",
-      "description": "\u003cp\u003eRepresents the shape expected from all raw templates.\u003c/p\u003e",
-      "moduleId": "lang.object"
-    },
-    {
-      "id": "T8",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T2",
-      "description": "",
-      "moduleId": "lang.string"
-    },
-    {
-      "id": "T2",
-      "description": "",
-      "moduleId": "lang.table"
-    },
-    {
       "id": "DefaultRetryManager",
       "description": "",
       "moduleId": "lang.transaction"
-    },
-    {
-      "id": "LocalParticipant",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "Participant",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "RetryManager",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "T7",
-      "description": "",
-      "moduleId": "lang.xml"
     },
     {
       "id": "InboundLdapAuthProvider",
@@ -586,23 +471,23 @@ var searchData = {
       "moduleId": "mime"
     },
     {
-      "id": "Entity",
-      "description": "\u003cp\u003eRepresents the headers and body of a message.\u003c/p\u003e",
-      "moduleId": "mime"
-    },
-    {
       "id": "MediaType",
       "description": "\u003cp\u003eDescribes the nature of the data in the body of a MIME entity.\u003c/p\u003e",
       "moduleId": "mime"
     },
     {
-      "id": "Connection",
-      "description": "\u003cp\u003eRepresents a single network connection to the NATS server.\u003c/p\u003e",
-      "moduleId": "nats"
+      "id": "Entity",
+      "description": "\u003cp\u003eRepresents the headers and body of a message.\u003c/p\u003e",
+      "moduleId": "mime"
     },
     {
       "id": "Message",
       "description": "\u003cp\u003eRepresents the message, which a NATS server sends to its subscribed services.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
+      "id": "Connection",
+      "description": "\u003cp\u003eRepresents a single network connection to the NATS server.\u003c/p\u003e",
       "moduleId": "nats"
     },
     {
@@ -631,88 +516,8 @@ var searchData = {
       "moduleId": "rabbitmq"
     },
     {
-      "id": "ArrayValue",
-      "description": "\u003cp\u003eRepresents ArrayValue SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "BigIntValue",
-      "description": "\u003cp\u003eRepresents BigInt SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "BinaryValue",
-      "description": "\u003cp\u003eRepresents Binary SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "BitValue",
-      "description": "\u003cp\u003eRepresents Bit SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "BlobValue",
-      "description": "\u003cp\u003eRepresents Blob SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "BooleanValue",
-      "description": "\u003cp\u003eRepresents Boolean SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "CharValue",
-      "description": "\u003cp\u003eRepresents Char SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "ClobValue",
-      "description": "\u003cp\u003eRepresents Clob SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "DateTimeValue",
-      "description": "\u003cp\u003eRepresents DateTime SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "DateValue",
-      "description": "\u003cp\u003eRepresents Date SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "DecimalValue",
-      "description": "\u003cp\u003eRepresents Decimal SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "DoubleValue",
-      "description": "\u003cp\u003eRepresents Double SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "FloatValue",
-      "description": "\u003cp\u003eRepresents Float SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "InOutParameter",
-      "description": "\u003cp\u003eRepresents SQL InOutParameter used in procedure calls.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "IntegerValue",
-      "description": "\u003cp\u003eRepresents Integer SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "NCharValue",
-      "description": "\u003cp\u003eRepresents NChar SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "NClobValue",
-      "description": "\u003cp\u003eRepresents NClob SQL field.\u003c/p\u003e",
+      "id": "VarcharValue",
+      "description": "\u003cp\u003eRepresents Varchar SQL field.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
@@ -721,53 +526,13 @@ var searchData = {
       "moduleId": "sql"
     },
     {
-      "id": "NumericValue",
-      "description": "\u003cp\u003eRepresents Numeric SQL field.\u003c/p\u003e",
+      "id": "CharValue",
+      "description": "\u003cp\u003eRepresents Char SQL field.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
-      "id": "OutParameter",
-      "description": "\u003cp\u003eRepresents SQL OutParameter used in procedure calls.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "ParameterizedCallQuery",
-      "description": "\u003cp\u003eRepresents Parameterized Call SQL Statement.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "ParameterizedQuery",
-      "description": "\u003cp\u003eRepresents Parameterized SQL query.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "ProcedureCallResult",
-      "description": "\u003cp\u003eObject that is used to return stored procedure call results.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "RealValue",
-      "description": "\u003cp\u003eRepresents Real SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "RefValue",
-      "description": "\u003cp\u003eRepresents Ref SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "RowValue",
-      "description": "\u003cp\u003eRepresents Row SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "SmallIntValue",
-      "description": "\u003cp\u003eRepresents SmallInt SQL field.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "StructValue",
-      "description": "\u003cp\u003eRepresents Struct SQL field.\u003c/p\u003e",
+      "id": "NCharValue",
+      "description": "\u003cp\u003eRepresents NChar SQL field.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
@@ -776,18 +541,68 @@ var searchData = {
       "moduleId": "sql"
     },
     {
-      "id": "TimeValue",
-      "description": "\u003cp\u003eRepresents Time SQL field.\u003c/p\u003e",
+      "id": "ClobValue",
+      "description": "\u003cp\u003eRepresents Clob SQL field.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
-      "id": "TimestampValue",
-      "description": "\u003cp\u003eRepresents Timestamp SQL field.\u003c/p\u003e",
+      "id": "NClobValue",
+      "description": "\u003cp\u003eRepresents NClob SQL field.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
-      "id": "TypedValue",
-      "description": "\u003cp\u003eRepresents a parameter for the SQL Client remote functions when a variable needs to be passed\nto the remote function.\u003c/p\u003e",
+      "id": "SmallIntValue",
+      "description": "\u003cp\u003eRepresents SmallInt SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "IntegerValue",
+      "description": "\u003cp\u003eRepresents Integer SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BigIntValue",
+      "description": "\u003cp\u003eRepresents BigInt SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "NumericValue",
+      "description": "\u003cp\u003eRepresents Numeric SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "DecimalValue",
+      "description": "\u003cp\u003eRepresents Decimal SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "RealValue",
+      "description": "\u003cp\u003eRepresents Real SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "FloatValue",
+      "description": "\u003cp\u003eRepresents Float SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "DoubleValue",
+      "description": "\u003cp\u003eRepresents Double SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BitValue",
+      "description": "\u003cp\u003eRepresents Bit SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BooleanValue",
+      "description": "\u003cp\u003eRepresents Boolean SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BinaryValue",
+      "description": "\u003cp\u003eRepresents Binary SQL field.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
@@ -796,8 +611,63 @@ var searchData = {
       "moduleId": "sql"
     },
     {
-      "id": "VarcharValue",
-      "description": "\u003cp\u003eRepresents Varchar SQL field.\u003c/p\u003e",
+      "id": "BlobValue",
+      "description": "\u003cp\u003eRepresents Blob SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "DateValue",
+      "description": "\u003cp\u003eRepresents Date SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "TimeValue",
+      "description": "\u003cp\u003eRepresents Time SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "DateTimeValue",
+      "description": "\u003cp\u003eRepresents DateTime SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "TimestampValue",
+      "description": "\u003cp\u003eRepresents Timestamp SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ArrayValue",
+      "description": "\u003cp\u003eRepresents ArrayValue SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "RefValue",
+      "description": "\u003cp\u003eRepresents Ref SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "StructValue",
+      "description": "\u003cp\u003eRepresents Struct SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "RowValue",
+      "description": "\u003cp\u003eRepresents Row SQL field.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "OutParameter",
+      "description": "\u003cp\u003eRepresents SQL OutParameter used in procedure calls.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "InOutParameter",
+      "description": "\u003cp\u003eRepresents SQL InOutParameter used in procedure calls.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ProcedureCallResult",
+      "description": "\u003cp\u003eObject that is used to return stored procedure call results.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
@@ -811,8 +681,8 @@ var searchData = {
       "moduleId": "task"
     },
     {
-      "id": "FunctionStub",
-      "description": "\u003cp\u003eRepresents an object that allows stubbing function invocations\u003c/p\u003e\n",
+      "id": "MockObject",
+      "description": "\u003cp\u003eRepresents a Mock object in which to create stubs for member functions and variables\u003c/p\u003e\n",
       "moduleId": "test"
     },
     {
@@ -831,28 +701,23 @@ var searchData = {
       "moduleId": "test"
     },
     {
-      "id": "MockObject",
-      "description": "\u003cp\u003eRepresents a Mock object in which to create stubs for member functions and variables\u003c/p\u003e\n",
+      "id": "FunctionStub",
+      "description": "\u003cp\u003eRepresents an object that allows stubbing function invocations\u003c/p\u003e\n",
       "moduleId": "test"
     },
     {
-      "id": "Hub",
-      "description": "\u003cp\u003eRepresents the Ballerina WebSub Hub.\u003c/p\u003e",
-      "moduleId": "websub"
-    },
-    {
-      "id": "HubPersistenceStore",
-      "description": "\u003cp\u003eRepresents the hub persistence configuration and functions.\u003c/p\u003e",
-      "moduleId": "websub"
-    },
-    {
       "id": "IntentVerificationRequest",
-      "description": "\u003cp\u003eObject representing an intent verification request received.\u003c/p\u003e",
+      "description": "\u003cp\u003erepresenting an intent verification request received.\u003c/p\u003e",
       "moduleId": "websub"
     },
     {
       "id": "Notification",
       "description": "\u003cp\u003eRepresents the WebSub Content Delivery Request received.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "Hub",
+      "description": "\u003cp\u003eRepresents the Ballerina WebSub Hub.\u003c/p\u003e",
       "moduleId": "websub"
     }
   ],
@@ -1061,31 +926,6 @@ var searchData = {
       "id": "setTwilioSmsOutput",
       "description": "\u003cp\u003eINTERNAL usage - Sets the Twilio output.\u003c/p\u003e",
       "moduleId": "azure.functions"
-    },
-    {
-      "id": "addFirst",
-      "description": "\u003cp\u003eAdds a node to the start of the provided linked list.\u003c/p\u003e",
-      "moduleId": "cache"
-    },
-    {
-      "id": "addLast",
-      "description": "\u003cp\u003eAdds a node to the end of the provided linked list.\u003c/p\u003e",
-      "moduleId": "cache"
-    },
-    {
-      "id": "clear",
-      "description": "\u003cp\u003eClears the provided linked list.\u003c/p\u003e",
-      "moduleId": "cache"
-    },
-    {
-      "id": "remove",
-      "description": "\u003cp\u003eRemoves a node from the provided linked list.\u003c/p\u003e",
-      "moduleId": "cache"
-    },
-    {
-      "id": "removeLast",
-      "description": "\u003cp\u003eRemoves the last node from the provided linked list.\u003c/p\u003e",
-      "moduleId": "cache"
     },
     {
       "id": "contains",
@@ -1428,28 +1268,8 @@ var searchData = {
       "moduleId": "filepath"
     },
     {
-      "id": "ballerina/grpc:0.7.0.\u003cinit\u003e0",
-      "description": "",
-      "moduleId": "grpc"
-    },
-    {
       "id": "addCookies",
       "description": "\u003cp\u003eAdds cookies to the custom header.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "ballerina/http:1.0.0.\u003cinit\u003e0",
-      "description": "",
-      "moduleId": "http"
-    },
-    {
-      "id": "ballerina/http:1.0.0.\u003cinit\u003e1",
-      "description": "",
-      "moduleId": "http"
-    },
-    {
-      "id": "ballerina/http:1.0.0.\u003cinit\u003e2",
-      "description": "",
       "moduleId": "http"
     },
     {
@@ -1724,7 +1544,7 @@ var searchData = {
     },
     {
       "id": "sort",
-      "description": "\u003cp\u003eSorts an array using a comparator function.\u003c/p\u003e",
+      "description": "\u003cp\u003eSorts an array.\u003c/p\u003e",
       "moduleId": "lang.array"
     },
     {
@@ -2298,11 +2118,6 @@ var searchData = {
       "moduleId": "lang.table"
     },
     {
-      "id": "abortResourceManagers",
-      "description": "\u003cp\u003eAbort local resource managers.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
       "id": "ballerina/lang.transaction:0.0.1.\u003cinit\u003e0",
       "description": "",
       "moduleId": "lang.transaction"
@@ -2310,31 +2125,6 @@ var searchData = {
     {
       "id": "ballerina/lang.transaction:0.0.1.\u003cinit\u003e1",
       "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "cleanupTransactionContext",
-      "description": "\u003cp\u003eCleanup the transaction context.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "commitResourceManagers",
-      "description": "\u003cp\u003eCommit local resource managers.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "createTransactionContext",
-      "description": "\u003cp\u003eA new transaction context is created by calling this function.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "endTransaction",
-      "description": "\u003cp\u003eWhen a transaction block in Ballerina code ends, it will call this function to end a transaction.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "getAndClearFailure",
-      "description": "\u003cp\u003eGet and Cleanup the failure.\u003c/p\u003e",
       "moduleId": "lang.transaction"
     },
     {
@@ -2358,11 +2148,6 @@ var searchData = {
       "moduleId": "lang.transaction"
     },
     {
-      "id": "isTransactional",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
       "id": "onCommit",
       "description": "",
       "moduleId": "lang.transaction"
@@ -2373,32 +2158,12 @@ var searchData = {
       "moduleId": "lang.transaction"
     },
     {
-      "id": "prepareResourceManagers",
-      "description": "\u003cp\u003ePrepare local resource managers.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "rollbackTransaction",
-      "description": "\u003cp\u003eRollback the transaction.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
       "id": "setData",
       "description": "",
       "moduleId": "lang.transaction"
     },
     {
       "id": "setRollbackOnly",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "setTransactionContext",
-      "description": "\u003cp\u003eSet the transactionContext.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "startTransaction",
       "description": "",
       "moduleId": "lang.transaction"
     },
@@ -2415,6 +2180,16 @@ var searchData = {
     {
       "id": "cloneWithType",
       "description": "\u003cp\u003eConstructs a value with a specified type by cloning another value.\u003c/p\u003e",
+      "moduleId": "lang.value"
+    },
+    {
+      "id": "fromJsonDecimalString",
+      "description": "\u003cp\u003eParses a string in JSON format and returns the value that it represents.\u003c/p\u003e",
+      "moduleId": "lang.value"
+    },
+    {
+      "id": "fromJsonFloatString",
+      "description": "\u003cp\u003eParses a string in JSON format and returns the value that it represents.\u003c/p\u003e",
       "moduleId": "lang.value"
     },
     {
@@ -2933,11 +2708,6 @@ var searchData = {
       "moduleId": "runtime"
     },
     {
-      "id": "ballerina/sql:0.5.0.\u003cinit\u003e0",
-      "description": "",
-      "moduleId": "sql"
-    },
-    {
       "id": "generateApplicationErrorStream",
       "description": "",
       "moduleId": "sql"
@@ -3285,6 +3055,111 @@ var searchData = {
       "moduleId": "auth"
     },
     {
+      "id": "APIGatewayProxyRequest",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "DynamoDBEvent",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "DynamoDBRecord",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "DynamoDBStreamRecord",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "NameValue",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "S3Bucket",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "S3Element",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "S3Event",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "S3Identity",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "S3Object",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "S3Record",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SESAction",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SESCommonHeaders",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SESElement",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SESEvent",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SESMail",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SESReceipt",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SESRecord",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SESVerdict",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SQSEvent",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
+      "id": "SQSRecord",
+      "description": "",
+      "moduleId": "awslambda"
+    },
+    {
       "id": "BindingNameConfiguration",
       "description": "\u003cp\u003eBindingName annotation configuration.\u003c/p\u003e",
       "moduleId": "azure.functions"
@@ -3365,11 +3240,6 @@ var searchData = {
       "moduleId": "cache"
     },
     {
-      "id": "LinkedList",
-      "description": "\u003cp\u003eRepresents a linked list, which is used to govern the cache eviction policy.\u003c/p\u003e",
-      "moduleId": "cache"
-    },
-    {
       "id": "Node",
       "description": "\u003cp\u003eRepresents a structure to keep data and references to the adjacent nodes of the linked list.\u003c/p\u003e",
       "moduleId": "cache"
@@ -3402,6 +3272,11 @@ var searchData = {
     {
       "id": "DockerConfiguration",
       "description": "\u003cp\u003eDocker annotation configuration.\u003c/p\u003e",
+      "moduleId": "docker"
+    },
+    {
+      "id": "ExposeConfig",
+      "description": "\u003cp\u003eExpose ports for docker.\u003c/p\u003e",
       "moduleId": "docker"
     },
     {
@@ -3870,6 +3745,11 @@ var searchData = {
       "moduleId": "kafka"
     },
     {
+      "id": "AvroGenericRecord",
+      "description": "\u003cp\u003eRepresents a generic Avro record.\u003c/p\u003e",
+      "moduleId": "kafka"
+    },
+    {
       "id": "AvroRecord",
       "description": "\u003cp\u003eDefines a record to send data using Avro serialization.\u003c/p\u003e",
       "moduleId": "kafka"
@@ -4165,54 +4045,19 @@ var searchData = {
       "moduleId": "kubernetes"
     },
     {
-      "id": "T0",
-      "description": "",
-      "moduleId": "lang.array"
-    },
-    {
       "id": "CallStackElement",
       "description": "\u003cp\u003eRepresentation of \u003ccode\u003eCallStackElement\u003c/code\u003e\u003c/p\u003e\n",
       "moduleId": "lang.error"
     },
     {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.map"
-    },
-    {
-      "id": "T2",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T7",
-      "description": "",
-      "moduleId": "lang.stream"
-    },
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.string"
-    },
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.table"
+      "id": "Detail",
+      "description": "\u003cp\u003eThe type to which error detail records must belong.\u003c/p\u003e",
+      "moduleId": "lang.error"
     },
     {
       "id": "Info",
       "description": "",
       "moduleId": "lang.transaction"
-    },
-    {
-      "id": "TransactionContext",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "T6",
-      "description": "",
-      "moduleId": "lang.xml"
     },
     {
       "id": "LdapConnection",
@@ -4837,6 +4682,46 @@ var searchData = {
       "moduleId": "http"
     },
     {
+      "id": "REDIRECT_MULTIPLE_CHOICES_300",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e300 - Multiple Choices\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_MOVED_PERMANENTLY_301",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e301 - Moved Permanently\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_FOUND_302",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e302 - Found\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_SEE_OTHER_303",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e303 - See Other\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_NOT_MODIFIED_304",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e304 - Not Modified\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_USE_PROXY_305",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e305 - Use Proxy\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_TEMPORARY_REDIRECT_307",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e307 - Temporary Redirect\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "REDIRECT_PERMANENT_REDIRECT_308",
+      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e308 - Permanent Redirect\u003c/code\u003e.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "MULTIPART_AS_PRIMARY_TYPE",
       "description": "\u003cp\u003eRepresents multipart primary type\u003c/p\u003e\n",
       "moduleId": "http"
@@ -4922,43 +4807,13 @@ var searchData = {
       "moduleId": "http"
     },
     {
-      "id": "REDIRECT_MULTIPLE_CHOICES_300",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e300 - Multiple Choices\u003c/code\u003e.\u003c/p\u003e",
+      "id": "LEADING",
+      "description": "\u003cp\u003eHeader is placed before the payload of the request/response.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
-      "id": "REDIRECT_MOVED_PERMANENTLY_301",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e301 - Moved Permanently\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_FOUND_302",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e302 - Found\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_SEE_OTHER_303",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e303 - See Other\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_NOT_MODIFIED_304",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e304 - Not Modified\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_USE_PROXY_305",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e305 - Use Proxy\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_TEMPORARY_REDIRECT_307",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e307 - Temporary Redirect\u003c/code\u003e.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "REDIRECT_PERMANENT_REDIRECT_308",
-      "description": "\u003cp\u003eRepresents the HTTP redirect status code \u003ccode\u003e308 - Permanent Redirect\u003c/code\u003e.\u003c/p\u003e",
+      "id": "TRAILING",
+      "description": "\u003cp\u003eHeader is placed after the payload of the request/response.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -5462,6 +5317,21 @@ var searchData = {
       "moduleId": "kafka"
     },
     {
+      "id": "OFFSET_RESET_EARLIEST",
+      "description": "\u003cp\u003eAutomatically reset the consumer offset to the earliest offset\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "OFFSET_RESET_LATEST",
+      "description": "\u003cp\u003eAutomatically reset the consumer offset to the latest offset\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "OFFSET_RESET_NONE",
+      "description": "\u003cp\u003eIf the \u003ccode\u003eoffsetReset\u003c/code\u003e is set to \u003ccode\u003eOFFSET_RESET_NONE\u003c/code\u003e, the consumer will give an error if no previous offset is found\nfor the consumer group\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
       "id": "ACKS_ALL",
       "description": "\u003cp\u003eProducer acknowledgement type is \u0027all\u0027.\u003c/p\u003e",
       "moduleId": "kafka"
@@ -5537,13 +5407,23 @@ var searchData = {
       "moduleId": "kafka"
     },
     {
+      "id": "PROTOCOL_PLAINTEXT",
+      "description": "\u003cp\u003eRepresents Kafka un-authenticated, non-encrypted channel\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
       "id": "PROTOCOL_SASL_PLAINTEXT",
-      "description": "",
+      "description": "\u003cp\u003eRepresents Kafka authenticated, non-encrypted channel\u003c/p\u003e\n",
       "moduleId": "kafka"
     },
     {
       "id": "PROTOCOL_SASL_SSL",
-      "description": "",
+      "description": "\u003cp\u003eRepresents Kafka SASL authenticated, SSL channel\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "PROTOCOL_SSL",
+      "description": "\u003cp\u003eRepresents Kafka SSL channel\u003c/p\u003e\n",
       "moduleId": "kafka"
     },
     {
@@ -5652,6 +5532,16 @@ var searchData = {
       "moduleId": "kubernetes"
     },
     {
+      "id": "ASCENDING",
+      "description": "",
+      "moduleId": "lang.array"
+    },
+    {
+      "id": "DESCENDING",
+      "description": "",
+      "moduleId": "lang.array"
+    },
+    {
       "id": "PI",
       "description": "\u003cp\u003eThe number π\u003c/p\u003e\n",
       "moduleId": "lang.float"
@@ -5727,16 +5617,6 @@ var searchData = {
       "moduleId": "lang.int"
     },
     {
-      "id": "OUTCOME_COMMITTED",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "TWO_PHASE_COMMIT",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
       "id": "XML_NAMESPACE_URI",
       "description": "\u003cp\u003eThe namespace URI bound to the \u003ccode\u003exml\u003c/code\u003e prefix.\u003c/p\u003e",
       "moduleId": "lang.xml"
@@ -5805,16 +5685,6 @@ var searchData = {
       "id": "E",
       "description": "\u003cp\u003eBase of the natural logarithms.\u003c/p\u003e",
       "moduleId": "math"
-    },
-    {
-      "id": "LEADING",
-      "description": "\u003cp\u003eHeader is placed before the payload of the request/response.\u003c/p\u003e",
-      "moduleId": "mime"
-    },
-    {
-      "id": "TRAILING",
-      "description": "\u003cp\u003eHeader is placed after the payload of the request/response.\u003c/p\u003e",
-      "moduleId": "mime"
     },
     {
       "id": "APPLICATION_OCTET_STREAM",
@@ -6419,6 +6289,11 @@ var searchData = {
       "moduleId": "http"
     },
     {
+      "id": "LoadBalanceActionError",
+      "description": "\u003cp\u003eRepresents an error occurred in an remote function of the Load Balance connector.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "MaximumWaitTimeExceededError",
       "description": "\u003cp\u003eRepresents a client error that occurred exceeding maximum wait time\u003c/p\u003e\n",
       "moduleId": "http"
@@ -6574,11 +6449,6 @@ var searchData = {
       "moduleId": "lang.transaction"
     },
     {
-      "id": "TransactionError",
-      "description": "\u003cp\u003eRepresents the Transaction error.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
       "id": "LdapError",
       "description": "\u003cp\u003eRepresents the LDAP error type with the message and the cause.\u003c/p\u003e",
       "moduleId": "ldap"
@@ -6691,6 +6561,16 @@ var searchData = {
     {
       "id": "ApplicationError",
       "description": "\u003cp\u003eRepresents an error originating from application-level causes.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "BatchExecuteError",
+      "description": "\u003cp\u003eRepresents an error occurred when a batch execution is running.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "DatabaseError",
+      "description": "\u003cp\u003eRepresents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,\ndatabase resource clean-up, and other similar scenarios.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
@@ -6891,6 +6771,11 @@ var searchData = {
       "moduleId": "http"
     },
     {
+      "id": "HeaderPosition",
+      "description": "\u003cp\u003eDefines the position of the headers in the request/response.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "HttpOperation",
       "description": "\u003cp\u003eDefines the HTTP operations related to circuit breaker, failover and load balancer.\u003c/p\u003e",
       "moduleId": "http"
@@ -6923,11 +6808,6 @@ var searchData = {
     {
       "id": "ListenerError",
       "description": "\u003cp\u003eDefines the possible listener error types\u003c/p\u003e\n",
-      "moduleId": "http"
-    },
-    {
-      "id": "LoadBalanceActionError",
-      "description": "\u003cp\u003eRepresents an error occurred in an remote function of the Load Balance connector.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -7036,6 +6916,11 @@ var searchData = {
       "moduleId": "kafka"
     },
     {
+      "id": "OffsetResetMethod",
+      "description": "\u003cp\u003eRepresents the differnet types of offset-reset mothods for Kafka consumer\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
       "id": "ProducerAcks",
       "description": "\u003cp\u003eKafka producer acknowledgement types.\u003c/p\u003e",
       "moduleId": "kafka"
@@ -7111,9 +6996,9 @@ var searchData = {
       "moduleId": "kubernetes"
     },
     {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents the Transaction module related error.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
+      "id": "SortDirection",
+      "description": "",
+      "moduleId": "lang.array"
     },
     {
       "id": "Error",
@@ -7133,11 +7018,6 @@ var searchData = {
     {
       "id": "Error",
       "description": "\u003cp\u003eRepresents MIME related errors.\u003c/p\u003e",
-      "moduleId": "mime"
-    },
-    {
-      "id": "HeaderPosition",
-      "description": "\u003cp\u003eDefines the position of the headers in the request/response.\u003c/p\u003e",
       "moduleId": "mime"
     },
     {
@@ -7206,18 +7086,8 @@ var searchData = {
       "moduleId": "socket"
     },
     {
-      "id": "BatchExecuteError",
-      "description": "\u003cp\u003eRepresents an error occurred when a batch execution is running.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "DatabaseError",
-      "description": "\u003cp\u003eRepresents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,\ndatabase resource clean-up, and other similar scenarios.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
       "id": "Error",
-      "description": "\u003cp\u003eRepresents a database or application level error returned from JDBC client remote functions.\u003c/p\u003e",
+      "description": "\u003cp\u003eRepresents a database or application level error returned from SQL client remote functions.\u003c/p\u003e",
       "moduleId": "sql"
     },
     {
@@ -7303,13 +7173,8 @@ var searchData = {
       "moduleId": "grpc"
     },
     {
-      "id": "Caller",
-      "description": "\u003cp\u003eThe caller actions for responding to client requests.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "CircuitBreakerClient",
-      "description": "\u003cp\u003eA Circuit Breaker implementation which can be used to gracefully handle network failures.\u003c/p\u003e",
+      "id": "HttpCachingClient",
+      "description": "\u003cp\u003eAn HTTP caching client implementation which takes an \u003ccode\u003eHttpActions\u003c/code\u003e instance and wraps it with an HTTP caching layer.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -7323,18 +7188,13 @@ var searchData = {
       "moduleId": "http"
     },
     {
-      "id": "FailoverClient",
-      "description": "\u003cp\u003eAn HTTP client endpoint which provides failover support over multiple HTTP clients.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
-      "id": "HttpCachingClient",
-      "description": "\u003cp\u003eAn HTTP caching client implementation which takes an \u003ccode\u003eHttpActions\u003c/code\u003e instance and wraps it with an HTTP caching layer.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
       "id": "HttpClient",
       "description": "\u003cp\u003eProvides the HTTP actions for interacting with an HTTP server.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "Caller",
+      "description": "\u003cp\u003eThe caller actions for responding to client requests.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -7343,18 +7203,28 @@ var searchData = {
       "moduleId": "http"
     },
     {
-      "id": "LoadBalanceClient",
-      "description": "\u003cp\u003eLoadBalanceClient endpoint provides load balancing functionality over multiple HTTP clients.\u003c/p\u003e",
-      "moduleId": "http"
-    },
-    {
       "id": "RedirectClient",
       "description": "\u003cp\u003eProvides redirect functionality for HTTP client remote functions.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
+      "id": "FailoverClient",
+      "description": "\u003cp\u003eAn HTTP client endpoint which provides failover support over multiple HTTP clients.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "CircuitBreakerClient",
+      "description": "\u003cp\u003eA Circuit Breaker implementation which can be used to gracefully handle network failures.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
       "id": "RetryClient",
       "description": "\u003cp\u003eProvides the HTTP remote functions for interacting with an HTTP endpoint.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "LoadBalanceClient",
+      "description": "\u003cp\u003eLoadBalanceClient endpoint provides load balancing functionality over multiple HTTP clients.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -7428,16 +7298,6 @@ var searchData = {
       "moduleId": "socket"
     },
     {
-      "id": "Client",
-      "description": "\u003cp\u003eRepresents a SQL client.\u003c/p\u003e",
-      "moduleId": "sql"
-    },
-    {
-      "id": "Caller",
-      "description": "\u003cp\u003eThe caller remote functions to respond to client requests.\u003c/p\u003e",
-      "moduleId": "websub"
-    },
-    {
       "id": "PublisherClient",
       "description": "\u003cp\u003eThe HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.\u003c/p\u003e",
       "moduleId": "websub"
@@ -7445,6 +7305,11 @@ var searchData = {
     {
       "id": "SubscriptionClient",
       "description": "\u003cp\u003eThe HTTP based client for WebSub subscription and unsubscription.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "Caller",
+      "description": "\u003cp\u003eThe caller remote functions to respond to client requests.\u003c/p\u003e",
       "moduleId": "websub"
     }
   ],
@@ -7465,13 +7330,13 @@ var searchData = {
       "moduleId": "grpc"
     },
     {
-      "id": "Listener",
-      "description": "\u003cp\u003eThis is used for creating HTTP server endpoints.\u003c/p\u003e",
+      "id": "MockListener",
+      "description": "\u003cp\u003eMock server endpoint which does not open a listening port.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
-      "id": "MockListener",
-      "description": "\u003cp\u003eMock server endpoint which does not open a listening port.\u003c/p\u003e",
+      "id": "Listener",
+      "description": "\u003cp\u003eThis is used for creating HTTP server endpoints.\u003c/p\u003e",
       "moduleId": "http"
     },
     {
@@ -7814,6 +7679,118 @@ var searchData = {
     {
       "id": "SubscriberServiceConfig",
       "description": "\u003cp\u003eWebSub Subscriber Configuration for the service, indicating subscription related parameters.\u003c/p\u003e",
+      "moduleId": "websub"
+    }
+  ],
+  "abstractObjects": [
+    {
+      "id": "InboundAuthProvider",
+      "description": "\u003cp\u003eRepresents the inbound Auth provider, which could be used to authenticate endpoints.\u003c/p\u003e",
+      "moduleId": "auth"
+    },
+    {
+      "id": "OutboundAuthProvider",
+      "description": "\u003cp\u003eRepresents the outbound Auth provider, which could be used to authenticate external endpoints.\u003c/p\u003e",
+      "moduleId": "auth"
+    },
+    {
+      "id": "AbstractCache",
+      "description": "\u003cp\u003eThe \u003ccode\u003ecache:AbstractCache\u003c/code\u003e object is used for custom implementations of the Ballerina cache.\u003c/p\u003e",
+      "moduleId": "cache"
+    },
+    {
+      "id": "AbstractEvictionPolicy",
+      "description": "\u003cp\u003eThe \u003ccode\u003ecache:AbstractEvictionPolicy\u003c/code\u003e Ballerina  object is used for custom implementations of the eviction policy for a\nBallerina cache object.\u003c/p\u003e",
+      "moduleId": "cache"
+    },
+    {
+      "id": "AbstractClientEndpoint",
+      "description": "\u003cp\u003eRepresents the abstract gRPC client endpoint.\u003c/p\u003e",
+      "moduleId": "grpc"
+    },
+    {
+      "id": "InboundAuthHandler",
+      "description": "\u003cp\u003eThe representation of an inbound authentication handler for HTTP traffic.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "LoadBalancerRule",
+      "description": "\u003cp\u003eLoadBalancerRule provides a required interfaces to implement different algorithms.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "OutboundAuthHandler",
+      "description": "\u003cp\u003eThe representation of an outbound authentication handler for HTTP traffic.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "PersistentCookieHandler",
+      "description": "\u003cp\u003eThe representation of a persistent cookie handler for managing persistent cookies.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "RequestFilter",
+      "description": "\u003cp\u003eAbstract Representation of a HTTP Request Filter.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "ResponseFilter",
+      "description": "\u003cp\u003eAbstract Representation of a HTTP Response Filter.\u003c/p\u003e",
+      "moduleId": "http"
+    },
+    {
+      "id": "JObject",
+      "description": "\u003cp\u003eThe Ballerina abstract object which is to be extended by Ballerina\nobjects representing Ballerina bindings for Java classes.\u003c/p\u003e",
+      "moduleId": "java"
+    },
+    {
+      "id": "Deserializer",
+      "description": "\u003cp\u003eRepresents a Kafka deserializer object.\u003c/p\u003e",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "Serializer",
+      "description": "\u003cp\u003eRepresents a Kafka serializer object.\u003c/p\u003e",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "Listener",
+      "description": "\u003cp\u003eRepresents the shape expected from all listeners.\u003c/p\u003e",
+      "moduleId": "lang.object"
+    },
+    {
+      "id": "RawTemplate",
+      "description": "\u003cp\u003eRepresents the shape expected from all raw templates.\u003c/p\u003e",
+      "moduleId": "lang.object"
+    },
+    {
+      "id": "RetryManager",
+      "description": "",
+      "moduleId": "lang.transaction"
+    },
+    {
+      "id": "Client",
+      "description": "\u003cp\u003eRepresents a SQL client.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ParameterizedCallQuery",
+      "description": "\u003cp\u003eRepresents Parameterized Call SQL Statement.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "ParameterizedQuery",
+      "description": "\u003cp\u003eRepresents Parameterized SQL query.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "TypedValue",
+      "description": "\u003cp\u003eRepresents a parameter for the SQL Client remote functions when a variable needs to be passed\nto the remote function.\u003c/p\u003e",
+      "moduleId": "sql"
+    },
+    {
+      "id": "HubPersistenceStore",
+      "description": "\u003cp\u003eRepresents the hub persistence configuration and functions.\u003c/p\u003e",
       "moduleId": "websub"
     }
   ]

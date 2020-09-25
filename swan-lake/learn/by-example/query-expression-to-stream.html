@@ -32,20 +32,17 @@ redirect_from:
        <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">gpa</span> <span class="o">&gt;=</span> <span class="mf">2.0</span>
        <span class="nx">let</span> <span class="kt">string</span> <span class="nx">degreeName</span> <span class="p">=</span> <span class="s">&quot;Bachelor of Medicine&quot;</span><span class="p">,</span>
        <span class="kt">int</span> <span class="nx">graduationYear</span> <span class="p">=</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">)</span>
+       <span class="nx">limit</span> <span class="mi">2</span>
        <span class="nx">select</span> <span class="p">{</span>
               <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span>
               <span class="nx">degree</span><span class="p">:</span> <span class="nx">degreeName</span><span class="p">,</span>
               <span class="nx">graduationYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
-       <span class="p">}</span>
-       <span class="nx">limit</span> <span class="mi">2</span><span class="p">;</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportStream</span> <span class="p">{</span>
+       <span class="p">};</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportStream</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">year</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_expression_to_stream</span><span class="p">.</span><span class="nx">balname</span><span class="p">=</span><span class="nx">Michelle</span> <span class="nx">Sadler</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">graduationYear</span><span class="p">=</span><span class="mi">1995</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Martin</span> <span class="nx">Guthrie</span> <span class="nx">degree</span><span class="p">=</span><span class="nx">Bachelor</span> <span class="nx">of</span> <span class="nx">Medicine</span> <span class="nx">graduationYear</span><span class="p">=</span><span class="mi">2007</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -97,6 +94,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/query-expression-to-stream/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -284,11 +282,7 @@ When the <code>where</code> condition evaluates to false, the current iteration 
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>       select {
-              name: student.firstName + &quot; &quot; + student.lastName,
-              degree: degreeName,
-              graduationYear: graduationYear
-       }
+                                    <div class="highlight"><pre><code class=language-ballerina>       limit 2
 </code></pre></div>
 
                                 </td>
@@ -296,9 +290,7 @@ When the <code>where</code> condition evaluates to false, the current iteration 
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>select</code> clause is evaluated for each iteration.
-The result of the query expression is a stream (<code>reportStream</code>) whose members are the result of the
-<code>select</code> clause.</p>
+                                            <p>The <code>limit</code> clause limits the output items.</p>
 
                                         </div>
                                     </div>
@@ -309,7 +301,11 @@ The result of the query expression is a stream (<code>reportStream</code>) whose
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>       limit 2;
+                                    <div class="highlight"><pre><code class=language-ballerina>       select {
+              name: student.firstName + &quot; &quot; + student.lastName,
+              degree: degreeName,
+              graduationYear: graduationYear
+       };
 </code></pre></div>
 
                                 </td>
@@ -317,7 +313,9 @@ The result of the query expression is a stream (<code>reportStream</code>) whose
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>limit</code> clause limits the output items.</p>
+                                            <p>The <code>select</code> clause is evaluated for each iteration.
+The result of the query expression is a stream (<code>reportStream</code>) whose members are the result of the
+<code>select</code> clause.</p>
 
                                         </div>
                                     </div>
@@ -388,8 +386,8 @@ ballerina run query_expression_to_stream.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>name=Michelle Sadler degree=Bachelor of Medicine graduationYear=1995
-name=Martin Guthrie degree=Bachelor of Medicine graduationYear=2007
+                                    <div class="highlight"><pre><code class=shell-session>{&quot;name&quot;:&quot;Michelle Sadler&quot;,&quot;degree&quot;:&quot;Bachelor of Medicine&quot;,&quot;graduationYear&quot;:1995}
+{&quot;name&quot;:&quot;Martin Guthrie&quot;,&quot;degree&quot;:&quot;Bachelor of Medicine&quot;,&quot;graduationYear&quot;:2007}
 </code></pre></div>
 
                                 </td>
@@ -417,7 +415,7 @@ name=Martin Guthrie degree=Bachelor of Medicine graduationYear=2007
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

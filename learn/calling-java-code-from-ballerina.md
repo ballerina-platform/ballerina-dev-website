@@ -4,7 +4,7 @@ title: Calling Java Code from Ballerina
 description: See how Ballerina offers a straightforward way to call existing Java code from Ballerina and a Java API to call Ballerina code from Java.
 keywords: ballerina, programming language, java api, interoperability
 permalink: /learn/calling-java-code-from-ballerina/
-active: how-to-use-calling-java-code-from-ballerina
+active: calling-java-code-from-ballerina
 redirect_from:
   - /learn/how-to-use-java-interoperability
   - /learn/how-to-use-java-interoperability/
@@ -62,6 +62,7 @@ Ballerina offers a straightforward way to call the existing Java code from Balle
     - [Calling Java Methods](#calling-java-methods)
         - [Calling Static Methods](#calling-static-methods)
         - [Calling Instance Methods](#calling-instance-methods)
+        - [Calling Methods Asynchronously](#calling-methods-asynchronously)
         - [Mapping Java Classes into Ballerina Objects](#mapping-java-classes-into-ballerina-objects)
         - [Calling Overloaded Java Methods](#calling-overloaded-java-methods)
     - [Java Exceptions as Ballerina Errors](#java-exceptions-as-ballerina-errors)
@@ -452,7 +453,7 @@ A Java class will be mapped onto a Ballerina object. This Ballerina object will 
 E.g., Generated Ballerina object of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
 @java:Binding {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 }
 type ArrayDeque object {
 
@@ -538,7 +539,7 @@ E.g., Generated external interop function for `close()` method of `java.io.FileI
 ```ballerina
 function java_io_FileInputStream_close(handle receiver) returns error? = @java:Method {
     name: "close",
-    class: "java.io.FileInputStream",
+    'class: "java.io.FileInputStream",
     paramTypes: []
 } external;
 ```
@@ -743,7 +744,7 @@ import ballerina/java;
 
 function doSomething(int i) returns string = @java:Method {
 	name: "doSomethingInJava"
-	class: "a.b.c.Foo"
+	'class: "a.b.c.Foo"
 } external;
 ```
 
@@ -765,7 +766,7 @@ import ballerina/java;
 
 function randomUUID() returns handle = @java:Method {
     name: "randomUUID",
-    class: "java.util.UUID"
+    'class: "java.util.UUID"
 } external;
 ```
 
@@ -782,6 +783,7 @@ The following subsections explain how to call Java code from Ballerina.
 - [Calling Java Methods](#calling-java-methods)
      - [Calling Static Methods](#calling-static-methods)
      - [Calling Instance Methods](#calling-instance-methods)
+     - [Calling Methods Asynchronously](#calling-methods-asynchronously)
      - [Mapping Java Classes into Ballerina Objects](#mapping-java-classes-into-ballerina-objects)
      - [Calling Overloaded Java Methods](#calling-overloaded-java-methods)
 - [Java Exceptions as Ballerina Errors](#java-exceptions-as-ballerina-errors)
@@ -806,7 +808,7 @@ public function main() {
 }
 
 function newArrayDeque() returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 ```
 
@@ -828,7 +830,7 @@ type ArrayDeque object {
 };
 
 function newArrayDeque() returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 ```
@@ -850,16 +852,16 @@ Here, is the updated Ballerina code.
 import ballerina/java;
 
 function newArrayDeque() returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 function newArrayDequeWithSize(int numElements) returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque",
+    'class: "java.util.ArrayDeque",
     paramTypes: ["int"]
 } external;
 
 function newArrayDequeWithCollection(handle c) returns handle = @java:Constructor {
-    class: "java.util.ArrayDeque",
+    'class: "java.util.ArrayDeque",
     paramTypes: ["java.util.Collection"]
 } external;
 ```
@@ -906,12 +908,12 @@ Here, is the corresponding Ballerina code.
 import ballerina/java;
 
 function builderWithPersonList(handle list, int index) returns handle = @java:Constructor {
-    class: "a.b.c.Builder",
+    'class: "a.b.c.Builder",
     paramTypes: [{class: "a.b.c.Person", dimensions:2}, "int"]
 } external;
 
 function builderWithStudentList(handle list, int index) returns handle = @java:Constructor {
-    class: "a.b.c.Builder",
+    'class: "a.b.c.Builder",
     paramTypes: [{class: "a.b.c.Student", dimensions:2}, "int"]
 } external;
 ```
@@ -928,7 +930,7 @@ import ballerina/io;
 
 function randomUUID() returns handle = @java:Method {
    name: "randomUUID",
-   class: "java.util.UUID"
+   'class: "java.util.UUID"
 } external;
 
 public function main() {
@@ -941,7 +943,7 @@ The `name` field is optional here. If the Ballerina function name is the same as
 
 ```ballerina
 function randomUUID() returns handle = @java:Method {
-   class: "java.util.UUID"
+   'class: "java.util.UUID"
 } external;
 ```
 
@@ -957,11 +959,11 @@ Here, are the corresponding Ballerina functions that are linked to these methods
 
 ```ballerina
 function pop(handle arrayDequeObj) returns handle = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function push(handle arrayDequeObj, handle e) = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external; 
 ```
 
@@ -982,6 +984,32 @@ public function main() {
 ```
 
 As you can see, you need to first construct an instance of the `ArrayDeque` class. The `arrayDequeObj` variable refers to an `ArrayDeque` object. Then, you need to pass this variable to both the `pop` and `push` functions because the corresponding Java methods are instance methods of the`ArrayDeque` class. Therefore, you need an instance of the `ArrayDeque` class in order to invoke its instance methods. You can think of the `arrayDequeObj` variable as the method receiver.
+
+
+#### Calling Methods Asynchronously
+
+Ballerina internally uses a fixed number of threads. Therefore, when calling a Java method, it should return in a reasonable time frame in order to avoid starvation in the Ballerina code execution.
+
+If the given Java method executes a time consuming (i.e., blocking) task such as an IO operation, better to do that in a separate thread while yielding the original thread to continue the Ballerina code execution.
+In this case, Ballerina Scheduler needs to be informed that the work is being completed asynchronously by invoking the `markAsync` method in the `BalEnv` object. When the work is completed, the `complete` method has to be called with the return value. 
+
+>**Note:** The original return value is ignored.
+```java
+public static long getFileCountRecursively(BalEnv env, BString path) {
+     BalFuture balFuture = env.markAsync();
+     new Thread(() -> {
+         long result = // slow operation ;
+         balFuture.complete(result);
+     }).start(); // in a production system this can be a thread pool/nio pool
+     return -38263; // this value is ignored
+ }
+```
+
+```ballerina
+public function getFileCountRecursively(string path) returns int = @java:Method {
+    'class:"my/test/DirOperations"
+} external;
+```
 
 #### Mapping Java Classes into Ballerina Objects
 The following pattern is useful if you want to present a clearer Ballerina API, which calls to the underneath Java code. This pattern creates wrapper Ballerina objects for each Java class that you want to expose via your API. 
@@ -1010,15 +1038,15 @@ public type StringStack object {
 };
 
 function newArrayDeque() returns handle = @java:Constructor {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function pop(handle receiver) returns handle = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function push(handle receiver, handle element) = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 ```
 
@@ -1049,31 +1077,31 @@ Here, is the set of Ballerina functions that are linked with the above Java meth
 function appendBool(handle sbObj, boolean b) returns handle = @java:Method {
    name: "append",
    paramTypes: ["boolean"],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 
 function appendInt(handle sbObj, int i) returns handle = @java:Method {
    name: "append",
    paramTypes: ["int"],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 
 function appendCharArray(handle sbObj, handle str) returns handle = @java:Method {
    name: "append",
    paramTypes: [{class: "char", dimensions: 1}],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 
 function appendString(handle sbObj, handle str) returns handle = @java:Method {
    name: "append",
    paramTypes: ["java.lang.String"],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 
 function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Method {
    name: "append",
    paramTypes: ["java.lang.StringBuffer"],
-   class: "java.lang.StringBuffer"
+   'class: "java.lang.StringBuffer"
 } external;
 ```
 
@@ -1095,11 +1123,11 @@ The following example tries to pop an element out of an empty queue. The `pop` m
 import ballerina/java;
 
 function newArrayDeque() returns handle = @java:Constructor {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function pop(handle receiver) returns handle = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 public function main() {
@@ -1146,7 +1174,7 @@ Since this Java constructor throws a checked exception,  the `newZipfile` Baller
 import ballerina/java;
 
 function newZipFile(handle filename) returns handle | error = @java:Constructor {
-   class: "java.util.zip.ZipFile",
+   'class: "java.util.zip.ZipFile",
    paramTypes: ["java.lang.String"]
 } external;
 
@@ -1178,16 +1206,16 @@ Let’s look at an example, which deals with Java null. The following code uses 
 import ballerina/java;
 
 function newArrayDeque() returns handle = @java:Constructor {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 function peek(handle receiver) returns handle = @java:Method {
-   class: "java.util.ArrayDeque"
+   'class: "java.util.ArrayDeque"
 } external;
 
 // Linked with the `java.lang.Object.toString()` method in Java.
 function toString(handle objInstance) returns handle = @java:Method {
-   class: "java.lang.Object"
+   'class: "java.lang.Object"
 } external;
 
 public function main() {
@@ -1262,7 +1290,7 @@ import ballerina/java;
 
 public function pi() returns float = @java:FieldGet {
    name:"PI",
-   class:"java/lang/Math"
+   'class:"java/lang/Math"
 } external;
 
 public function main() {

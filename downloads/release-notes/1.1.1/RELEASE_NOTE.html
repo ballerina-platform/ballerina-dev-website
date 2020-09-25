@@ -29,7 +29,7 @@ and <a href="https://github.com/ballerina-platform/ballerina-lang/issues?utf8=�
 <h2>Language Specification Deviation Fixes</h2>
 <p>Previously, the implementation initialized an object field’s default value in the <code>__init()</code> function of the object, which caused the default values to be set to the field even when the <code>__init()</code> method was called explicitly. </p>
 <p>For example, the below sample prints “foo” as the value of <code>f.s</code> since the default value “foo” was set as the value of <code>f.s</code> whenever the <code>__init()</code> method was called. </p>
-<pre><code class="ballerina">import ballerina/io;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/io;
 
 type Foo object {
 

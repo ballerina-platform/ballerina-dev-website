@@ -59,27 +59,7 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span>  <span class="nx">below</span> <span class="nx">along</span> <span class="nx">with</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="nx">Ballerina</span> <span class="nx">home</span> <span class="nx">path</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">config</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">header_based_routing</span><span class="p">.</span><span class="nx">bal</span> <span class="o">--</span><span class="nx">b7a</span><span class="p">.</span><span class="nx">home</span><span class="p">=&lt;</span><span class="nx">ballerina_home_path</span><span class="p">&gt;</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">cURL</span> <span class="nx">commands</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hbr/route -H &quot;x-type:location&quot;</span>
-<span class="p">{</span>
-    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Colombo,Sri Lanka&quot;</span><span class="p">,</span>
-    <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">556.49</span><span class="p">,</span>
-    <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">257.76</span><span class="p">,</span>
-    <span class="s">&quot;altitude&quot;</span><span class="p">:</span> <span class="mi">230</span>
-<span class="p">}</span><span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hbr/route -H &quot;x-type:weather&quot;</span>
-<span class="p">{</span><span class="s">&quot;coord&quot;</span><span class="p">:{</span><span class="s">&quot;lon&quot;</span><span class="p">:</span><span class="mf">139.01</span><span class="p">,</span><span class="s">&quot;lat&quot;</span><span class="p">:</span><span class="mf">35.02</span><span class="p">},</span><span class="s">&quot;weather&quot;</span><span class="p">:[{</span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">800</span><span class="p">,</span>
-<span class="s">&quot;main&quot;</span><span class="p">:</span><span class="s">&quot;Clear&quot;</span><span class="p">,</span><span class="s">&quot;description&quot;</span><span class="p">:</span><span class="s">&quot;clear sky&quot;</span><span class="p">,</span><span class="s">&quot;icon&quot;</span><span class="p">:</span><span class="s">&quot;01n&quot;</span><span class="p">}],</span>
-<span class="s">&quot;base&quot;</span><span class="p">:</span><span class="s">&quot;stations&quot;</span><span class="p">,</span><span class="s">&quot;main&quot;</span><span class="p">:{</span><span class="s">&quot;temp&quot;</span><span class="p">:</span><span class="mf">285.514</span><span class="p">,</span><span class="s">&quot;pressure&quot;</span><span class="p">:</span><span class="mf">1013.75</span><span class="p">,</span>
-<span class="s">&quot;humidity&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="s">&quot;temp_min&quot;</span><span class="p">:</span><span class="mf">285.514</span><span class="p">,</span><span class="s">&quot;temp_max&quot;</span><span class="p">:</span><span class="mf">285.514</span><span class="p">,</span>
-<span class="s">&quot;sea_level&quot;</span><span class="p">:</span><span class="mf">1023.22</span><span class="p">,</span><span class="s">&quot;grnd_level&quot;</span><span class="p">:</span><span class="mf">1013.75</span><span class="p">},</span>
-<span class="s">&quot;wind&quot;</span><span class="p">:{</span><span class="s">&quot;speed&quot;</span><span class="p">:</span><span class="mf">5.52</span><span class="p">,</span><span class="s">&quot;deg&quot;</span><span class="p">:</span><span class="mi">311</span><span class="p">},</span><span class="s">&quot;clouds&quot;</span><span class="p">:{</span><span class="s">&quot;all&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span>
-<span class="s">&quot;dt&quot;</span><span class="p">:</span><span class="mi">1485792967</span><span class="p">,</span><span class="s">&quot;sys&quot;</span><span class="p">:{</span><span class="s">&quot;message&quot;</span><span class="p">:</span><span class="mf">0.0025</span><span class="p">,</span><span class="s">&quot;country&quot;</span><span class="p">:</span><span class="s">&quot;JP&quot;</span><span class="p">,</span>
-<span class="s">&quot;sunrise&quot;</span><span class="p">:</span><span class="mi">1485726240</span><span class="p">,</span><span class="s">&quot;sunset&quot;</span><span class="p">:</span><span class="mi">1485763863</span><span class="p">},</span>
-<span class="s">&quot;id&quot;</span><span class="p">:</span><span class="mi">1907296</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;Tawarano&quot;</span><span class="p">,</span><span class="s">&quot;cod&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -130,6 +110,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/header-based-routing/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -664,7 +645,7 @@ curl http://localhost:9090/hbr/route -H &quot;x-type:location&quot;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

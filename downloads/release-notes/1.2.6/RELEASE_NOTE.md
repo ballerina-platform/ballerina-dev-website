@@ -1,6 +1,6 @@
 ---
-layout: release-note
-title: Release note
+layout: ballerina-blank-page
+title: Release Note
 ---
 ### Overview of jBallerina 1.2.6
 The jBallerina 1.2.6 patch release includes a few [bug](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.6%22+label%3AType%2FBug+is%3Aclosed) fixes.

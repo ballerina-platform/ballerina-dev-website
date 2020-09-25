@@ -5,23 +5,17 @@
       "description": "\u003cp\u003eThis module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "Deserializer",
-      "description": "\u003cp\u003eRepresents a Kafka deserializer object.\u003c/p\u003e",
-      "moduleId": "kafka"
-    },
-    {
-      "id": "Serializer",
-      "description": "\u003cp\u003eRepresents a Kafka serializer object.\u003c/p\u003e",
-      "moduleId": "kafka"
-    }
-  ],
+  "classes": [],
   "functions": [],
   "records": [
     {
       "id": "AuthenticationConfiguration",
       "description": "\u003cp\u003eConfigurations related to Kafka authentication mechanisms.\u003c/p\u003e",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "AvroGenericRecord",
+      "description": "\u003cp\u003eRepresents a generic Avro record.\u003c/p\u003e",
       "moduleId": "kafka"
     },
     {
@@ -117,6 +111,21 @@
       "moduleId": "kafka"
     },
     {
+      "id": "OFFSET_RESET_EARLIEST",
+      "description": "\u003cp\u003eAutomatically reset the consumer offset to the earliest offset\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "OFFSET_RESET_LATEST",
+      "description": "\u003cp\u003eAutomatically reset the consumer offset to the latest offset\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "OFFSET_RESET_NONE",
+      "description": "\u003cp\u003eIf the \u003ccode\u003eoffsetReset\u003c/code\u003e is set to \u003ccode\u003eOFFSET_RESET_NONE\u003c/code\u003e, the consumer will give an error if no previous offset is found\nfor the consumer group\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
       "id": "ACKS_ALL",
       "description": "\u003cp\u003eProducer acknowledgement type is \u0027all\u0027.\u003c/p\u003e",
       "moduleId": "kafka"
@@ -192,13 +201,23 @@
       "moduleId": "kafka"
     },
     {
+      "id": "PROTOCOL_PLAINTEXT",
+      "description": "\u003cp\u003eRepresents Kafka un-authenticated, non-encrypted channel\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
       "id": "PROTOCOL_SASL_PLAINTEXT",
-      "description": "",
+      "description": "\u003cp\u003eRepresents Kafka authenticated, non-encrypted channel\u003c/p\u003e\n",
       "moduleId": "kafka"
     },
     {
       "id": "PROTOCOL_SASL_SSL",
-      "description": "",
+      "description": "\u003cp\u003eRepresents Kafka SASL authenticated, SSL channel\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "PROTOCOL_SSL",
+      "description": "\u003cp\u003eRepresents Kafka SSL channel\u003c/p\u003e\n",
       "moduleId": "kafka"
     }
   ],
@@ -241,6 +260,11 @@
       "moduleId": "kafka"
     },
     {
+      "id": "OffsetResetMethod",
+      "description": "\u003cp\u003eRepresents the differnet types of offset-reset mothods for Kafka consumer\u003c/p\u003e\n",
+      "moduleId": "kafka"
+    },
+    {
       "id": "ProducerAcks",
       "description": "\u003cp\u003eKafka producer acknowledgement types.\u003c/p\u003e",
       "moduleId": "kafka"
@@ -269,5 +293,17 @@
     }
   ],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": [
+    {
+      "id": "Deserializer",
+      "description": "\u003cp\u003eRepresents a Kafka deserializer object.\u003c/p\u003e",
+      "moduleId": "kafka"
+    },
+    {
+      "id": "Serializer",
+      "description": "\u003cp\u003eRepresents a Kafka serializer object.\u003c/p\u003e",
+      "moduleId": "kafka"
+    }
+  ]
 }

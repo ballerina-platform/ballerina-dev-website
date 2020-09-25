@@ -25,8 +25,8 @@ redirect_from:
     <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">buildQuery</span><span class="p">(</span><span class="nx">queries</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">buildQuery</span><span class="p">(</span><span class="nx">queries</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span>
 <span class="p">}</span>
-<span class="nx">type</span> <span class="nx">Query</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
-    <span class="nx">public</span> <span class="kt">string</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="nx">strings</span><span class="p">;</span>
+<span class="nx">type</span> <span class="nx">Query</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kt">string</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">strings</span><span class="p">;</span>
     <span class="nx">public</span> <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">insertions</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
@@ -34,13 +34,7 @@ redirect_from:
 <span class="p">|};</span><span class="kd">function</span> <span class="nx">buildQuery</span><span class="p">(</span><span class="nx">Query</span> <span class="nx">qu</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s%s%s%s%s&quot;</span><span class="p">,</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                         <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">insertions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">qu</span><span class="p">.</span><span class="nx">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">raw_template</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Hello</span>  <span class="p">!!!</span>
-<span class="nx">Ballerina</span>
-<span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="nx">Details</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="nx">John</span> <span class="nx">Doe</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
-<span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="nx">Details</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="nx">Jane</span> <span class="nx">Doe</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -94,6 +88,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/raw-template/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -294,7 +289,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Query abstract object {
+                                    <div class="highlight"><pre><code class=language-ballerina>type Query object {
 </code></pre></div>
 
                                 </td>
@@ -317,7 +312,7 @@ import ballerina/lang.&#39;object;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    public string[3]  & readonly strings;
+                                    <div class="highlight"><pre><code class=language-ballerina>    public string[3] &amp; readonly strings;
     public [string, int] insertions;
 };
 </code></pre></div>
@@ -411,7 +406,7 @@ import ballerina/lang.&#39;object;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run raw_template.bal
-Hello  !!!
+[&quot;Hello &quot;,&quot;!!!&quot;]
 Ballerina
 INSERT INTO Details VALUES (John Doe, 25)
 INSERT INTO Details VALUES (Jane Doe, 20)
@@ -442,7 +437,7 @@ INSERT INTO Details VALUES (Jane Doe, 20)
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

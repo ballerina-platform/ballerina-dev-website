@@ -13,15 +13,21 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/accountdb&quot;</span><span class="p">,</span> 
-                                      <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">);</span>
+    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span>
+                <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/accountdb&quot;</span><span class="p">,</span>
+                           <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS ACCOUNT &quot;</span> <span class="o">+</span>
-                                <span class="s">&quot;(ID INTEGER, BALANCE DECIMAL, PRIMARY KEY(id))&quot;</span><span class="p">);</span> 
+                                <span class="s">&quot;(ID INTEGER, BALANCE DECIMAL, &quot;</span> <span class="o">+</span>
+                                <span class="s">&quot;PRIMARY KEY(id))&quot;</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO ACCOUNT VALUES (1, 2500.0)&quot;</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO ACCOUNT VALUES (2, 1000.0)&quot;</span><span class="p">);</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">creditResult</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;UPDATE ACCOUNT SET BALANCE=BALANCE+500.0 WHERE ID=1&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">debitResult</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;UPDATE ACCOUNT SET BALANCE=BALANCE-500.0 WHERE ID=2&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">creditResult</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span>
+                                       <span class="s">&quot;UPDATE ACCOUNT &quot;</span> <span class="o">+</span>
+                                       <span class="s">&quot;SET BALANCE=BALANCE+500.0 WHERE ID=1&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">debitResult</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span>
+                                       <span class="s">&quot;UPDATE ACCOUNT &quot;</span> <span class="o">+</span>
+                                       <span class="s">&quot;SET BALANCE=BALANCE-500.0 WHERE ID=2&quot;</span><span class="p">);</span>
         <span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">transInfo</span> <span class="p">=</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">();</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction Info: &quot;</span><span class="p">,</span> <span class="nx">transInfo</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
@@ -35,13 +41,7 @@ redirect_from:
     <span class="p">}</span>    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE ACCOUNT&quot;</span><span class="p">);</span>
     
     <span class="nx">check</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">local_transactions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Transaction</span> <span class="nx">Info</span><span class="p">:</span> <span class="nx">xid</span><span class="p">=</span><span class="mi">54</span> <span class="mi">56</span> <span class="mi">54</span> <span class="mi">55</span> <span class="mi">97</span> <span class="mi">101</span> <span class="mi">57</span> <span class="mi">54</span> <span class="mi">45</span> <span class="mi">50</span> <span class="mi">99</span> <span class="mi">99</span> <span class="mi">54</span> <span class="mi">45</span> <span class="mi">52</span> <span class="mi">52</span> <span class="mi">51</span> <span class="mi">54</span> <span class="mi">45</span> <span class="mi">56</span> <span class="mi">54</span> <span class="mi">51</span> <span class="mi">97</span> <span class="mi">45</span> <span class="mi">100</span> <span class="mi">55</span> <span class="mi">51</span> <span class="mi">99</span> <span class="mi">57</span> <span class="mi">50</span> <span class="mi">56</span> <span class="mi">97</span> <span class="mi">54</span> <span class="mi">48</span> <span class="mi">56</span> <span class="mi">56</span> <span class="nx">retryNumber</span><span class="p">=</span><span class="mi">0</span> <span class="nx">startTime</span><span class="p">=</span><span class="mi">1594722243740</span> <span class="nx">prevAttempt</span><span class="p">=</span>
-<span class="nx">Transaction</span> <span class="nx">committed</span>
-<span class="nx">Account</span> <span class="nx">Credit</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span>
-<span class="nx">Account</span> <span class="nx">Debit</span><span class="p">:</span> <span class="nx">affectedRowCount</span><span class="p">=</span><span class="mi">1</span> <span class="nx">lastInsertId</span><span class="p">=</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -95,6 +95,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/local-transactions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -169,8 +170,9 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client dbClient = check new (url = &quot;jdbc:h2:file:./local-transactions/accountdb&quot;, 
-                                      user = &quot;test&quot;, password = &quot;test&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    jdbc:Client dbClient =
+                check new (url = &quot;jdbc:h2:file:./local-transactions/accountdb&quot;,
+                           user = &quot;test&quot;, password = &quot;test&quot;);
 </code></pre></div>
 
                                 </td>
@@ -190,7 +192,8 @@ import ballerina/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    _ = check dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS ACCOUNT &quot; +
-                                &quot;(ID INTEGER, BALANCE DECIMAL, PRIMARY KEY(id))&quot;); 
+                                &quot;(ID INTEGER, BALANCE DECIMAL, &quot; +
+                                &quot;PRIMARY KEY(id))&quot;);
     _ = check dbClient-&gt;execute(&quot;INSERT INTO ACCOUNT VALUES (1, 2500.0)&quot;);
     _ = check dbClient-&gt;execute(&quot;INSERT INTO ACCOUNT VALUES (2, 1000.0)&quot;);
 </code></pre></div>
@@ -232,8 +235,12 @@ import ballerina/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var creditResult = dbClient-&gt;execute(&quot;UPDATE ACCOUNT SET BALANCE=BALANCE+500.0 WHERE ID=1&quot;);
-        var debitResult = dbClient-&gt;execute(&quot;UPDATE ACCOUNT SET BALANCE=BALANCE-500.0 WHERE ID=2&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        var creditResult = dbClient-&gt;execute(
+                                       &quot;UPDATE ACCOUNT &quot; +
+                                       &quot;SET BALANCE=BALANCE+500.0 WHERE ID=1&quot;);
+        var debitResult = dbClient-&gt;execute(
+                                       &quot;UPDATE ACCOUNT &quot; +
+                                       &quot;SET BALANCE=BALANCE-500.0 WHERE ID=2&quot;);
 </code></pre></div>
 
                                 </td>
@@ -385,10 +392,10 @@ import ballerina/java.jdbc;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run local_transactions.bal
-Transaction Info: xid=54 56 54 55 97 101 57 54 45 50 99 99 54 45 52 52 51 54 45 56 54 51 97 45 100 55 51 99 57 50 56 97 54 48 56 56 retryNumber=0 startTime=1594722243740 prevAttempt=
+Transaction Info: {&quot;xid&quot;:[51,97,99,100,97,49,101,48,45,102,98,97,54,45,52,52,54,51,45,57,55,52,54,45,56,49,97,55,53,51,57,52,52,50,101,99],&quot;retryNumber&quot;:0,&quot;startTime&quot;:1600688660802,&quot;prevAttempt&quot;:null}
 Transaction committed
-Account Credit: affectedRowCount=1 lastInsertId=
-Account Debit: affectedRowCount=1 lastInsertId=
+Account Credit: {&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null}
+Account Debit: {&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null}
 </code></pre></div>
 
                                 </td>
@@ -416,7 +423,7 @@ Account Debit: affectedRowCount=1 lastInsertId=
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

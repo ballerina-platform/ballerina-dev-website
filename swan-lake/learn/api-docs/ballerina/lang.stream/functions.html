@@ -117,10 +117,7 @@
     
     <ul>
         
-            
         
-        
-            
         
         
         
@@ -177,9 +174,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Closes a stream.
-This releases any system resources being used by the stream.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -189,8 +187,8 @@ This releases any system resources being used by the stream.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Selects the members from a stream for which a function returns true.</p>
-
+                                
+                                <p>Selects the members from a stream for which a function returns true.</p> 
                             </div>
                         </td>
                     </tr>
@@ -200,9 +198,8 @@ This releases any system resources being used by the stream.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Applies a function to each member of a stream.
-The Combining function is applied to each member of stream in order.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -212,8 +209,10 @@ The Combining function is applied to each member of stream in order.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns an iterator over a stream.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns an iterator over a stream.</p> 
                             </div>
                         </td>
                     </tr>
@@ -223,8 +222,8 @@ The Combining function is applied to each member of stream in order.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Applies a function to each member of a stream and returns a stream of the results.</p>
-
+                                
+                                <p>Applies a function to each member of a stream and returns a stream of the results.</p> 
                             </div>
                         </td>
                     </tr>
@@ -234,8 +233,8 @@ The Combining function is applied to each member of stream in order.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the next element in the stream wrapped in a record or () if the stream ends.</p>
-
+                                
+                                <p>Returns the next element in the stream wrapped in a record or () if the stream ends.</p> 
                             </div>
                         </td>
                     </tr>
@@ -245,10 +244,8 @@ The Combining function is applied to each member of stream in order.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                
                                 <p>Combines the members of a stream using a combining function.
-The combining function takes the combined value so far and a member of the stream,
-and returns a new combined value.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -273,6 +270,9 @@ and returns a new combined value.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Closes a stream.
 This releases any system resources being used by the stream.</p>
@@ -329,6 +329,7 @@ This releases any system resources being used by the stream.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Selects the members from a stream for which a function returns true.</p>
 
@@ -402,6 +403,7 @@ This releases any system resources being used by the stream.</p>
     </div>
     <div class="function-desc">
         
+        
         <p>Applies a function to each member of a stream.
 The Combining function is applied to each member of stream in order.</p>
 
@@ -469,11 +471,14 @@ The Combining function is applied to each member of stream in order.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> stm)</p>
             
-                <b> returns </b><a href="../lang.stream/objects/T8.html">T8</a> 
+                <b> returns </b><span class="builtin-type">object { public function next () returns ((record {| (any|error) value; |}|error)?); }</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns an iterator over a stream.</p>
 
@@ -506,7 +511,7 @@ The Combining function is applied to each member of stream in order.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.stream/objects/T8.html">T8</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">object { public function next () returns ((record {| (any|error) value; |}|error)?); }</span></span>)</li>
                 <li><p>a new iterator object that will iterate over the members of <code>stm</code>.</p>
 </li>
             </ul>
@@ -529,6 +534,7 @@ The Combining function is applied to each member of stream in order.</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Applies a function to each member of a stream and returns a stream of the results.</p>
 
@@ -596,11 +602,12 @@ The Combining function is applied to each member of stream in order.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">stream<<span class="builtin-type">Type</span> ,<span class="builtin-type">ErrorType</span>></span> strm)</p>
             
-                <b> returns </b><a href="../lang.stream/records/T2.html">T2</a> | <span class="builtin-type">ErrorType?</span> 
+                <b> returns </b><span class="builtin-type">record {| (any|error) value; |}</span> | <span class="builtin-type">ErrorType?</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Returns the next element in the stream wrapped in a record or () if the stream ends.</p>
 
@@ -633,7 +640,7 @@ The Combining function is applied to each member of stream in order.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.stream/records/T2.html">T2</a> | <span class="builtin-type">ErrorType?</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">record {| (any|error) value; |}</span> | <span class="builtin-type">ErrorType?</span></span>)</li>
                 <li><p>If the stream has elements, return the element wrapped in a record with single field called <code>value</code>,
 otherwise returns ()</p>
 </li>
@@ -657,6 +664,7 @@ otherwise returns ()</p>
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Combines the members of a stream using a combining function.
 The combining function takes the combined value so far and a member of the stream,

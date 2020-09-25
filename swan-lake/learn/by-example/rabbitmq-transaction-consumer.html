@@ -18,27 +18,25 @@ redirect_from:
     <span class="p">},</span>
     <span class="nx">ackMode</span><span class="p">:</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">CLIENT_ACK</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">transactionConsumer</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span><span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">})</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">transactionConsumer</span> <span class="nx">on</span>
+                    <span class="nx">new</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span><span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">})</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>        <span class="k">var</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">getTextContent</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while retrieving the message content.&quot;</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
+                       <span class="s">&quot;Error occurred while retrieving the message content.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="nx">transaction</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="kt">message</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while acknowledging the message.&quot;</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
+                            <span class="s">&quot;Error occurred while acknowledging the message.&quot;</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">RabbitMQ</span> <span class="nx">broker</span> <span class="nx">running</span><span class="p">.</span>
-<span class="err">#</span>
-<span class="err">#</span> <span class="nx">Navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="err">&#39;</span><span class="nx">rabbitmq_transaction_consumer</span><span class="p">.</span><span class="nx">bal</span><span class="err">&#39;</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">run</span> <span class="nx">the</span> <span class="err">&#39;</span><span class="nx">ballerina</span> <span class="nx">run</span><span class="err">&#39;</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span><span class="nx">ballerina</span> <span class="nx">run</span> <span class="o">--</span><span class="nx">experimental</span> <span class="nx">rabbitmq_transaction_consumer</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">RabbitMQ</span> <span class="nx">transaction</span> <span class="nx">consumer</span> <span class="nx">runs</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="kd">service</span> <span class="nx">and</span> <span class="nx">listens</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">subscribed</span> <span class="nx">queue</span><span class="mf">.2019</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mo">07</span> <span class="mi">12</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">55</span><span class="p">,</span><span class="mo">02</span><span class="mi">8</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Created</span> <span class="nx">transaction</span><span class="p">:</span> <span class="mi">190</span><span class="nx">d5620</span><span class="o">-</span><span class="nx">cf94</span><span class="o">-</span><span class="mi">462</span><span class="nx">b</span><span class="o">-</span><span class="nx">b1dd</span><span class="o">-</span><span class="mi">6</span><span class="nx">fd1b372ca75</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mo">07</span> <span class="mi">12</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">55</span><span class="p">,</span><span class="mo">034</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">The</span> <span class="kt">message</span> <span class="nx">received</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">from</span> <span class="nx">Ballerina</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mo">07</span> <span class="mi">12</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">55</span><span class="p">,</span><span class="mo">034</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">]</span> <span class="o">-</span> <span class="nx">Running</span> <span class="mi">2</span><span class="o">-</span><span class="nx">phase</span> <span class="nx">commit</span> <span class="k">for</span> <span class="nx">transaction</span><span class="p">:</span> <span class="mi">190</span><span class="nx">d5620</span><span class="o">-</span><span class="nx">cf94</span><span class="o">-</span><span class="mi">462</span><span class="nx">b</span><span class="o">-</span><span class="nx">b1dd</span><span class="o">-</span><span class="mi">6</span><span class="nx">fd1b372ca75</span><span class="p">:</span><span class="err">$</span><span class="nx">anon</span><span class="err">$</span><span class="p">.</span><span class="err">$</span><span class="mi">1</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -95,6 +93,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rabbitmq-transaction-consumer/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -168,7 +167,8 @@ import ballerinax/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service transactionConsumer on new rabbitmq:Listener({host: &quot;localhost&quot;, port: 5672}) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service transactionConsumer on
+                    new rabbitmq:Listener({host: &quot;localhost&quot;, port: 5672}) {
 </code></pre></div>
 
                                 </td>
@@ -210,7 +210,8 @@ import ballerinax/rabbitmq;
         if (messageContent is string) {
             log:printInfo(&quot;The message received: &quot; + messageContent);
         } else {
-            log:printError(&quot;Error occurred while retrieving the message content.&quot;);
+            log:printError(
+                       &quot;Error occurred while retrieving the message content.&quot;);
         }
 </code></pre></div>
 
@@ -226,7 +227,8 @@ import ballerinax/rabbitmq;
                                     <div class="highlight"><pre><code class=language-ballerina>        transaction {
             var result = message-&gt;basicAck();
             if (result is error) {
-                log:printError(&quot;Error occurred while acknowledging the message.&quot;);
+                log:printError(
+                            &quot;Error occurred while acknowledging the message.&quot;);
             }
             var res = commit;
         }
@@ -346,7 +348,7 @@ import ballerinax/rabbitmq;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

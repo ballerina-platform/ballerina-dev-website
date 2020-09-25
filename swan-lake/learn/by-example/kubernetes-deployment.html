@@ -37,7 +37,7 @@ redirect_from:
 <span class="p">}</span>
 <span class="nd">@kubernetes:Deployment {</span>
     <span class="nx">livenessProbe</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">image</span><span class="p">:</span> <span class="s">&quot;kubernetes:v.1.0&quot;</span>
+    <span class="nx">image</span><span class="p">:</span> <span class="s">&quot;kubernetes:v1.0&quot;</span>
 <span class="p">}</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/helloWorld&quot;</span>
@@ -63,13 +63,7 @@ redirect_from:
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getConfigValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">instanceId</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">property</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">key</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">(</span><span class="nx">instanceId</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s">&quot;Invalid User&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Create</span> <span class="nx">a</span> <span class="s">`ballerina.conf`</span> <span class="nx">file</span> <span class="nx">with</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">content</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">same</span> <span class="nx">directory</span><span class="p">,</span> <span class="nx">which</span> <span class="nx">contains</span> <span class="nx">the</span> <span class="nx">kubernetes_deployment</span><span class="p">.</span><span class="nx">bal</span> <span class="nx">file</span><span class="p">.</span>
-<span class="p">[</span><span class="nx">john</span><span class="p">]</span>
-<span class="nx">userid</span><span class="p">=</span><span class="s">&quot;john@ballerina.com&quot;</span>
-<span class="nx">groups</span><span class="p">=</span><span class="s">&quot;apim,esb&quot;</span>
-<span class="p">[</span><span class="nx">jane</span><span class="p">]</span>
-<span class="nx">userid</span><span class="p">=</span><span class="s">&quot;jane3@ballerina.com&quot;</span>
-<span class="nx">groups</span><span class="p">=</span><span class="s">&quot;esb&quot;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -127,6 +121,7 @@ For more information, see the <a href="https://ballerina.io/swan-lake/learn/depl
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/master/kubernetes-extension-examples/examples/kubernetes-deployment"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -379,7 +374,7 @@ If a releative path is provided, the path should be releative to where the <code
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    image: &quot;kubernetes:v.1.0&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    image: &quot;kubernetes:v1.0&quot;
 </code></pre></div>
 
                                 </td>
@@ -762,7 +757,7 @@ $ minikube ip
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

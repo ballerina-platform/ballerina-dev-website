@@ -19,10 +19,39 @@ build, and install Ballerina modules. These commands work with repositories that
 
 Ballerina Central is a globally hosted module management system that is used to discover, download, and publish modules.
 
-The `Ballerina Tool` requires you to organize your code in a specific way. This document explains the simplest way to 
-get it up and running with a Ballerina installation.
+- [Organizing Your Code](#organizing-your-code)
+- [Programs](#programs)
+    - [Building and Running Programs](#building-and-running-programs)
+- [Modules](#modules)
+    - [Importing Modules](#importing-modules)
+    - [Module Version Dependency](#module-version-dependency)
+    - [ Compiled Modules](#compiled-modules)
+    - [Running Compiled Modules](#running-compiled-modules)
+- [Projects](#projects)
+    - [Creating a Project](#creating-a-project)
+    - [Adding a Module](#adding-a-module)
+    - [Project Structure](#project-structure)
+    - [Building a Project](#building-a-project)
+    - [Building a Module](#building-a-module)
+    - [Compiling a Project](#compiling-a-project)
+    - [Compiling a Module](#compiling-a-module)
+    - [Versioning a Module](#versioning-a-module)
+    - [Assigning an Organization Name to a Module](#assigning-an-organization-name-to-a-module)
+- [Module Caches](#module-caches)
+    - [Caches](#caches)
+        - [BALO Cache](#balo-cache)
+        - [BIR Cache](#bir-cache)
+        - [JAR Cache](#jar-cache)
+    - [Module Repository - Ballerina Central](#module-repository---ballerina-central)
+        - [Organizations](#organizations)
+        - [Pulling Remote Modules](#pulling-remote-modules)
+        - [Pushing Modules](#pushing-modules)
+        - [Configuring Ballerina Central Access](#configuring-ballerina-central-access)
 
-## Overview
+## Organizing Your Code
+
+The `Ballerina Tool` requires you to organize your code in a specific way. This document explains the simplest way to get it up and running with a Ballerina installation.
+
 * Ballerina programmers can either place their code into a single source code file or in a *project* directory.
 * A Ballerina program residing in a single source code file should have a `.bal` extension and an entry point (i.e., either a `main`
   method or a service).
@@ -72,7 +101,7 @@ service hello on new http:Listener(9090) {
 }
 ```
 
-### Build and Run Programs
+### Building and Running Programs
 To generate an executable `.jar`, you can build a Ballerina program, which contains a `main()` function or a service(s):
 
 ```bash
@@ -191,7 +220,7 @@ ballerina run module.jar
 Projects are managed atomically. Therefore, dependency management, compilation, unit tests, and artifact generation are done 
 collectively across the source code files and modules defined within a project.
 
-### Create a Project
+### Creating a Project
 You can create a project using the `ballerina new` command:
 
 ```bash
@@ -204,7 +233,7 @@ it will give an error.
 
 It will create the `Ballerina.toml` file, and `src` folder.
 
-### Add a Module
+### Adding a Module
 Once the project is initialized, a module can be created inside the project using the `ballerina add` command. 
 Each subdirectory of the project `src` folder defines a single module. The subdirectory's name will be used to name the 
 module. 
@@ -251,7 +280,7 @@ module when it is built.
                 jar_cache/
 ```
 
-### Build a Project
+### Building a Project
 A project should be built if it is required to generate the executable JAR files from the modules in the project. The
 executable JAR files will be generated only if there are entry points (main method or a service) in the module. Building
 a project will build all modules found in the project's root folder. Building a project runs through phases including
@@ -261,7 +290,7 @@ dependency resolution, compilation, artifact generation, and unit test execution
 ballerina build -a
 ```
 
-### Build a Module
+### Building a Module
 You can build a single module contained within a project:
 
 ```bash
@@ -274,7 +303,7 @@ ballerina build --skip-tests <module-name>
 ```
 
 
-### Compile a Project
+### Compiling a Project
 A project should be compiled if it is required to generate the libraries (i.e., BALOs) from the modules in the project.
 Compiling a project will compile all the modules found in the project's root folder. Building a project runs through phases
 including dependency resolution, compilation, artifact generation, and unit test execution.
@@ -283,7 +312,7 @@ including dependency resolution, compilation, artifact generation, and unit test
 ballerina build -c -a
 ```
 
-### Compile a Module
+### Compiling a Module
 You can build a single module contained within a project:
 
 ```bash
@@ -295,7 +324,7 @@ Use the `--skip-tests` flag with the `ballerina compile` command to skip running
 ballerina build -c --skip-tests <module-name>
 ```
 
-### Version a Module
+### Versioning a Module
 Modules in a project are assigned their version from within the `Ballerina.toml` file:
 
 ```toml
@@ -308,7 +337,7 @@ those modules should be placed into different projects.
 
 Version labels must follow [Semantic Versioning 2.0 rules](https://semver.org/).
 
-### Assign an Organization Name to a Module
+### Assigning an Organization Name to a Module
 A module is assigned an `<org-name>` when it is pushed into a repository. The `<org-name>` is defined in the 
 `Ballerina.toml` and all modules in the same project are assigned the same organization name:
 
@@ -395,7 +424,7 @@ It is required to build the module before pushing it to Ballerina Central.
 # Push a single module
 ballerina push <module-name>
 ```
-### Configure Ballerina Central Access
+### Configuring Ballerina Central Access
 
 Ballerina Central requires an account in order to push modules. Your account is represented by a CLI token that is 
 installed into your local Ballerina configuration file, i.e., `~/.ballerina/Settings.toml`. The CLI token is 

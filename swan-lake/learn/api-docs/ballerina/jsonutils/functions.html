@@ -97,11 +97,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../jsonutils/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../jsonutils/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -159,9 +158,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Converts a table to its JSON representation.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Converts a table to its JSON representation.</p>   
                             </div>
                         </td>
                     </tr>
@@ -171,9 +171,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Converts an XML object to its JSON representation.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Converts an XML object to its JSON representation.</p>   
                             </div>
                         </td>
                     </tr>
@@ -198,6 +199,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Converts a table to its JSON representation.</p>
 <pre><code class="language-ballerina"> type Employee record {
@@ -264,6 +268,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Converts an XML object to its JSON representation.</p>
 <pre><code class="language-ballerina"> xml xmlValue = xml `&lt;!-- outer comment --&gt;` + xml `&lt;name&gt;supun&lt;/name&gt;`;

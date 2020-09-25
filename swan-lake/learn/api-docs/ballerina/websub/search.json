@@ -5,25 +5,20 @@
       "description": "\u003cp\u003eThis module contains an implementation of the W3C \u003ca href\u003d\"https://www.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "Hub",
-      "description": "\u003cp\u003eRepresents the Ballerina WebSub Hub.\u003c/p\u003e",
-      "moduleId": "websub"
-    },
-    {
-      "id": "HubPersistenceStore",
-      "description": "\u003cp\u003eRepresents the hub persistence configuration and functions.\u003c/p\u003e",
-      "moduleId": "websub"
-    },
+  "classes": [
     {
       "id": "IntentVerificationRequest",
-      "description": "\u003cp\u003eObject representing an intent verification request received.\u003c/p\u003e",
+      "description": "\u003cp\u003erepresenting an intent verification request received.\u003c/p\u003e",
       "moduleId": "websub"
     },
     {
       "id": "Notification",
       "description": "\u003cp\u003eRepresents the WebSub Content Delivery Request received.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "Hub",
+      "description": "\u003cp\u003eRepresents the Ballerina WebSub Hub.\u003c/p\u003e",
       "moduleId": "websub"
     }
   ],
@@ -169,11 +164,6 @@
   ],
   "clients": [
     {
-      "id": "Caller",
-      "description": "\u003cp\u003eThe caller remote functions to respond to client requests.\u003c/p\u003e",
-      "moduleId": "websub"
-    },
-    {
       "id": "PublisherClient",
       "description": "\u003cp\u003eThe HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.\u003c/p\u003e",
       "moduleId": "websub"
@@ -181,6 +171,11 @@
     {
       "id": "SubscriptionClient",
       "description": "\u003cp\u003eThe HTTP based client for WebSub subscription and unsubscription.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "Caller",
+      "description": "\u003cp\u003eThe caller remote functions to respond to client requests.\u003c/p\u003e",
       "moduleId": "websub"
     }
   ],
@@ -200,6 +195,13 @@
     {
       "id": "SubscriberServiceConfig",
       "description": "\u003cp\u003eWebSub Subscriber Configuration for the service, indicating subscription related parameters.\u003c/p\u003e",
+      "moduleId": "websub"
+    }
+  ],
+  "abstractObjects": [
+    {
+      "id": "HubPersistenceStore",
+      "description": "\u003cp\u003eRepresents the hub persistence configuration and functions.\u003c/p\u003e",
       "moduleId": "websub"
     }
   ]

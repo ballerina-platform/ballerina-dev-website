@@ -102,18 +102,15 @@ below functionalities.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../nats/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../nats/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../nats/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
             <li>
@@ -192,29 +189,6 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Creates a new <code>nats:Producer</code>.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../nats/objects/Connection.html">Connection</a> connection)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>connection</b><span class="type">  <a href="../../nats/objects/Connection.html">Connection</a></span> </li>
-                <li>
-                    <p>An established NATS connection</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -223,17 +197,13 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
                         <tr>
                             <td class="module-title truncate functions" title="publish"><a
                                     class="functions" href="#publish">publish</a></td>
-                            <td class="module-desc"><p>Publishes data to a given subject.</p>
-
-</td>
+                            <td class="module-desc"><p>Publishes data to a given subject.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="request"><a
                                     class="functions" href="#request">request</a></td>
-                            <td class="module-desc"><p>Publishes data to a given subject and waits for a response.</p>
-
-</td>
+                            <td class="module-desc"><p>Publishes data to a given subject and waits for a response.</p>   </td>
                         </tr>
                     
                 </table>
@@ -250,8 +220,7 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
     </div>
     <div class="param-details">
         
-        <p>Closes a given connection.</p>
-
+        <p>Closes a given connection.</p> 
     </div>
 </div>
 
@@ -278,6 +247,9 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Publishes data to a given subject.</p>
 <pre><code class="language-ballerina"> nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message);
@@ -364,11 +336,14 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> subject, <a href="../../nats/types.html#Content">Content</a> data, <span class="builtin-type">int?</span> duration)</p>
             
-                <b> returns </b><a href="../../nats/objects/Message.html">Message</a> | <a href="../../nats/errors.html#Error">Error</a> 
+                <b> returns </b><a href="../../nats/classes/Message.html">Message</a> | <a href="../../nats/errors.html#Error">Error</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Publishes data to a given subject and waits for a response.</p>
 <pre><code class="language-ballerina"> nats:Message|nats:Error reqReply = producer-&gt;request(subject, &lt;@untainted&gt;message, 5000);
@@ -437,7 +412,7 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../nats/objects/Message.html">Message</a> | <a href="../../nats/errors.html#Error">Error</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../nats/classes/Message.html">Message</a> | <a href="../../nats/errors.html#Error">Error</a></span>)</li>
                 <li><p>The <code>nats:Message</code> response or else a <code>nats:Error</code> if an error is encountered</p>
 </li>
             </ul>
@@ -464,6 +439,9 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Closes a given connection.</p>
 

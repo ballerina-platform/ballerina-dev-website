@@ -101,18 +101,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../grpc/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../grpc/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -124,10 +125,6 @@
                 <a data="listeners" href="../../grpc/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
             </li>
         
-        
-            <li>
-                <a data="functions" href="../../grpc/index.html#functions" onclick="menuLinkClick()">Functions</a>
-            </li>
         
         
             <li>
@@ -202,25 +199,19 @@
                         <tr>
                             <td class="module-title truncate functions" title="send"><a
                                     class="functions" href="#send">send</a></td>
-                            <td class="module-desc"><p>Sends the outbound response to the caller.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends the outbound response to the caller.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="complete"><a
                                     class="functions" href="#complete">complete</a></td>
-                            <td class="module-desc"><p>Informs the caller, when the server has sent all the messages.</p>
-
-</td>
+                            <td class="module-desc"><p>Informs the caller, when the server has sent all the messages.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="sendError"><a
                                     class="functions" href="#sendError">sendError</a></td>
-                            <td class="module-desc"><p>Sends a server error to the caller.</p>
-
-</td>
+                            <td class="module-desc"><p>Sends a server error to the caller.</p>   </td>
                         </tr>
                     
                 </table>
@@ -237,9 +228,7 @@
     </div>
     <div class="param-details">
         
-        <p>Returns the unique identification of the caller.</p>
-
-
+        <p>Returns the unique identification of the caller.</p>   
     </div>
 </div>
 
@@ -251,9 +240,7 @@
     </div>
     <div class="param-details">
         
-        <p>Checks whether the connection is closed by the caller.</p>
-
-
+        <p>Checks whether the connection is closed by the caller.</p>   
     </div>
 </div>
 
@@ -368,13 +355,16 @@ function displayMenu() {
             </a>
             <h2 > send </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">anydata</span> res, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
+            <p>(<span class="builtin-type">anydata</span> res, <a href="../../grpc/classes/Headers.html">Headers</a>? headers)</p>
             
                 <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sends the outbound response to the caller.</p>
 <pre><code class="language-ballerina"> grpc:Error? err = caller-&gt;send(message, headers);
@@ -408,8 +398,8 @@ function displayMenu() {
                 <ul>
                     <li>
                         <span >headers</span>
-                        <span class="type">  <a href="../../grpc/objects/Headers.html">Headers</a>? </span>
-                        <span class="default"> (default &lt;ballerina/grpc:0.7.0:Headers?&gt; ())</span>
+                        <span class="type">  <a href="../../grpc/classes/Headers.html">Headers</a>? </span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -456,6 +446,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Informs the caller, when the server has sent all the messages.</p>
 <pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;complete();
 </code></pre>
@@ -483,13 +476,16 @@ function displayMenu() {
             </a>
             <h2 > sendError </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">int</span> statusCode, <span class="builtin-type">string</span> message, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
+            <p>(<span class="builtin-type">int</span> statusCode, <span class="builtin-type">string</span> message, <a href="../../grpc/classes/Headers.html">Headers</a>? headers)</p>
             
                 <b> returns </b><a href="../../grpc/types.html#Error">Error</a>? 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sends a server error to the caller.</p>
 <pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;sendError(grpc:ABORTED, &quot;Operation aborted&quot;, headers);
@@ -538,8 +534,8 @@ function displayMenu() {
                 <ul>
                     <li>
                         <span >headers</span>
-                        <span class="type">  <a href="../../grpc/objects/Headers.html">Headers</a>? </span>
-                        <span class="default"> (default &lt;ballerina/grpc:0.7.0:Headers?&gt; ())</span>
+                        <span class="type">  <a href="../../grpc/classes/Headers.html">Headers</a>? </span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -586,6 +582,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the unique identification of the caller.</p>
 <pre><code class="language-ballerina"> int result = caller.getId();
 </code></pre>
@@ -620,6 +619,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Checks whether the connection is closed by the caller.</p>
 <pre><code class="language-ballerina"> boolean result = caller.isCancelled();

@@ -20,25 +20,26 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">Address</span> <span class="nx">address</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    
-    <span class="nx">Person</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">myName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">myAge</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">myAddress</span><span class="p">,</span> <span class="o">...</span><span class="nx">otherFields</span><span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;My Name: &quot;</span><span class="p">,</span> <span class="nx">myName</span><span class="p">,</span> <span class="s">&quot; My Age: &quot;</span><span class="p">,</span> <span class="nx">myAge</span><span class="p">,</span> <span class="s">&quot; My Address: &quot;</span><span class="p">,</span> <span class="nx">myAddress</span><span class="p">,</span> <span class="s">&quot; Other Fields: &quot;</span><span class="p">,</span> <span class="nx">otherFields</span><span class="p">);</span>
+    <span class="nx">Person</span> <span class="p">{</span>
+        <span class="nx">name</span><span class="p">:</span> <span class="nx">myName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">myAge</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">myAddress</span><span class="p">,</span> <span class="o">...</span><span class="nx">otherFields</span>
+        <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;My Name: &quot;</span><span class="p">,</span> <span class="nx">myName</span><span class="p">,</span> <span class="s">&quot; My Age: &quot;</span><span class="p">,</span> <span class="nx">myAge</span><span class="p">,</span>
+                <span class="s">&quot; My Address: &quot;</span><span class="p">,</span> <span class="nx">myAddress</span><span class="p">,</span> <span class="s">&quot; Other Fields: &quot;</span><span class="p">,</span> <span class="nx">otherFields</span><span class="p">);</span>
     <span class="nx">Person</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">address</span><span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="s">&quot; Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="s">&quot; Address: &quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">);</span>
     <span class="k">var</span> <span class="p">{</span><span class="nx">street</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">zipcode</span><span class="p">}</span> <span class="p">=</span> <span class="nx">getAddress</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;City: &quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="s">&quot; State: &quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="s">&quot; State: &quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="s">&quot; Zip Code: &quot;</span><span class="p">,</span> <span class="nx">zipcode</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;City: &quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="s">&quot; State: &quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="s">&quot; State: &quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span>
+                                                    <span class="s">&quot; Zip Code: &quot;</span><span class="p">,</span> <span class="nx">zipcode</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getAddress</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Address</span> <span class="p">{</span>
-    <span class="nx">Address</span> <span class="nx">address</span> <span class="p">=</span> <span class="p">{</span><span class="nx">street</span><span class="p">:</span> <span class="s">&quot;380 Lakewood Dr.&quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Desoto&quot;</span><span class="p">,</span> <span class="nx">state</span><span class="p">:</span> <span class="s">&quot;TX&quot;</span><span class="p">,</span> <span class="nx">zipcode</span><span class="p">:</span> <span class="s">&quot;75115&quot;</span><span class="p">};</span>
+    <span class="nx">Address</span> <span class="nx">address</span> <span class="p">=</span> <span class="p">{</span><span class="nx">street</span><span class="p">:</span> <span class="s">&quot;380 Lakewood Dr.&quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Desoto&quot;</span><span class="p">,</span>
+                                                <span class="nx">state</span><span class="p">:</span> <span class="s">&quot;TX&quot;</span><span class="p">,</span> <span class="nx">zipcode</span><span class="p">:</span> <span class="s">&quot;75115&quot;</span><span class="p">};</span>
     <span class="k">return</span> <span class="nx">address</span><span class="p">;</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">Address</span> <span class="nx">address</span> <span class="p">=</span> <span class="nx">getAddress</span><span class="p">();</span>
-    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jack Smith&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="nx">address</span><span class="p">,</span> <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span><span class="p">};</span>
+    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jack Smith&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="nx">address</span><span class="p">,</span>
+                                            <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span><span class="p">};</span>
     <span class="k">return</span> <span class="nx">person</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_binding_pattern</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">My</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">Jack</span> <span class="nx">Smith</span> <span class="nx">My</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">23</span> <span class="nx">My</span> <span class="nx">Address</span><span class="p">:</span> <span class="nx">street</span><span class="p">=</span><span class="mi">380</span> <span class="nx">Lakewood</span> <span class="nx">Dr</span><span class="p">.</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Desoto</span> <span class="nx">state</span><span class="p">=</span><span class="nx">TX</span> <span class="nx">zipcode</span><span class="p">=</span><span class="mi">75115</span> <span class="nx">Other</span> <span class="nx">Fields</span><span class="p">:</span> <span class="nx">occupation</span><span class="p">=</span><span class="nx">Software</span> <span class="nx">Engineer</span>
-<span class="nx">Name</span><span class="p">:</span> <span class="nx">Jack</span> <span class="nx">Smith</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">23</span> <span class="nx">Address</span><span class="p">:</span> <span class="nx">street</span><span class="p">=</span><span class="mi">380</span> <span class="nx">Lakewood</span> <span class="nx">Dr</span><span class="p">.</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Desoto</span> <span class="nx">state</span><span class="p">=</span><span class="nx">TX</span> <span class="nx">zipcode</span><span class="p">=</span><span class="mi">75115</span>
-<span class="nx">City</span><span class="p">:</span> <span class="nx">Desoto</span> <span class="nx">State</span><span class="p">:</span> <span class="nx">TX</span> <span class="nx">State</span><span class="p">:</span> <span class="nx">TX</span> <span class="nx">Zip</span> <span class="nx">Code</span><span class="p">:</span> <span class="mi">75115</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -87,6 +88,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/record-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -186,8 +188,11 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Person {name: myName, age: myAge, address: myAddress, ...otherFields} = getPerson();
-    io:println(&quot;My Name: &quot;, myName, &quot; My Age: &quot;, myAge, &quot; My Address: &quot;, myAddress, &quot; Other Fields: &quot;, otherFields);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Person {
+        name: myName, age: myAge, address: myAddress, ...otherFields
+        } = getPerson();
+    io:println(&quot;My Name: &quot;, myName, &quot; My Age: &quot;, myAge,
+                &quot; My Address: &quot;, myAddress, &quot; Other Fields: &quot;, otherFields);
 </code></pre></div>
 
                                 </td>
@@ -233,7 +238,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var {street, city, state, zipcode} = getAddress();
-    io:println(&quot;City: &quot;, city, &quot; State: &quot;, state, &quot; State: &quot;, state, &quot; Zip Code: &quot;, zipcode);
+    io:println(&quot;City: &quot;, city, &quot; State: &quot;, state, &quot; State: &quot;, state,
+                                                    &quot; Zip Code: &quot;, zipcode);
 }
 </code></pre></div>
 
@@ -255,7 +261,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function getAddress() returns Address {
-    Address address = {street: &quot;380 Lakewood Dr.&quot;, city: &quot;Desoto&quot;, state: &quot;TX&quot;, zipcode: &quot;75115&quot;};
+    Address address = {street: &quot;380 Lakewood Dr.&quot;, city: &quot;Desoto&quot;,
+                                                state: &quot;TX&quot;, zipcode: &quot;75115&quot;};
     return address;
 }
 </code></pre></div>
@@ -271,7 +278,8 @@ redirect_from:
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function getPerson() returns Person {
     Address address = getAddress();
-    Person person = {name: &quot;Jack Smith&quot;, age: 23, address, &quot;occupation&quot;: &quot;Software Engineer&quot;};
+    Person person = {name: &quot;Jack Smith&quot;, age: 23, address,
+                                            &quot;occupation&quot;: &quot;Software Engineer&quot;};
     return person;
 }
 </code></pre></div>
@@ -301,8 +309,8 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run record_binding_pattern.bal
-My Name: Jack Smith My Age: 23 My Address: street=380 Lakewood Dr. city=Desoto state=TX zipcode=75115 Other Fields: occupation=Software Engineer
-Name: Jack Smith Age: 23 Address: street=380 Lakewood Dr. city=Desoto state=TX zipcode=75115
+My Name: Jack Smith My Age: 23 My Address: {&quot;street&quot;:&quot;380 Lakewood Dr.&quot;,&quot;city&quot;:&quot;Desoto&quot;,&quot;state&quot;:&quot;TX&quot;,&quot;zipcode&quot;:&quot;75115&quot;} Other Fields: {&quot;occupation&quot;:&quot;Software Engineer&quot;}
+Name: Jack Smith Age: 23 Address: {&quot;street&quot;:&quot;380 Lakewood Dr.&quot;,&quot;city&quot;:&quot;Desoto&quot;,&quot;state&quot;:&quot;TX&quot;,&quot;zipcode&quot;:&quot;75115&quot;}
 City: Desoto State: TX State: TX Zip Code: 75115
 </code></pre></div>
 
@@ -331,7 +339,7 @@ City: Desoto State: TX State: TX Zip Code: 75115
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

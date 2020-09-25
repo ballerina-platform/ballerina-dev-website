@@ -213,11 +213,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../kubernetes/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../kubernetes/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -278,16 +277,22 @@
                 
             </h1>
             
+
     <p>
         
         <p>Kubernetes deployment configuration.</p>
 
     </p>
+    
+        <div class="ui horizontal label" data-tooltip="A record with a fixed set of fields" data-position="top left">Closed record</div>
+    
+
     <div class="constants">
         
         
-        <h2>Fields</h2>
-        <div class="data-wrapper">
+            
+            <h2>Fields</h2>
+            <div class="data-wrapper">
         
     <div class="params-listing">
         <ul>
@@ -476,7 +481,7 @@ If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;
             <li>
                 <p>
                     
-                    <p>Array of External files for the Docker image.</p>
+                    <p>Array of file configurations for the Docker image.</p>
 
                 </p>
             </li>
@@ -828,7 +833,7 @@ function displayMenu() {
     };
 </script>
 
-        
+            
         
     </div>
 

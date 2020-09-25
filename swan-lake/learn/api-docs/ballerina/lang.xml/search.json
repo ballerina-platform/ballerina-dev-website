@@ -5,13 +5,7 @@
       "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003exml\u003c/code\u003e values defined by the language specification 2020R1.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "T7",
-      "description": "",
-      "moduleId": "lang.xml"
-    }
-  ],
+  "classes": [],
   "functions": [
     {
       "id": "children",
@@ -129,13 +123,7 @@
       "moduleId": "lang.xml"
     }
   ],
-  "records": [
-    {
-      "id": "T6",
-      "description": "",
-      "moduleId": "lang.xml"
-    }
-  ],
+  "records": [],
   "constants": [
     {
       "id": "XML_NAMESPACE_URI",
@@ -167,5 +155,6 @@
   "types": [],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

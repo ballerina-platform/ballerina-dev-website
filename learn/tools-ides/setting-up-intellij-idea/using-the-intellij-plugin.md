@@ -25,12 +25,15 @@ redirect_from:
 
 The below sections include information to start using the IntelliJ Ballerina plugin after [installing it](/learn/intellij-plugin).
 
-- [Creating a new Ballerina project](#creating-a-new-ballerina-project)
-- [Setting up Ballerina SDK for an existing project](#setting-up-ballerina-sdk-for-an-existing-project)
-- [Creating a new Ballerina file](#creating-a-new-ballerina-file)
-- [Configuring the plugin settings](#configuring-the-plugin-settings)
+- [Creating a New Ballerina Project](#creating-a-new-ballerina-project)
+- [Setting Up Ballerina SDK for an Existing Project](#setting-up-ballerina-sdk-for-an-existing-project)
+- [Creating a New Ballerina File](#creating-a-new-ballerina-file)
+- [Configuring the Plugin Settings](#configuring-the-plugin-settings)
+    - [Ballerina Home Auto Detection](#ballerina-home-auto-detection)
+    - [Experimental Features](#experimental-features)
+    - [Language Server Debug Logs](#language-server-debug-logs)
 
-## Creating a new Ballerina project
+## Creating a New Ballerina Project
 
 Follow the steps below to create a new Ballerina project.
 
@@ -53,7 +56,7 @@ Now, you have successfully created a new Ballerina project.
 
 ![New Ballerina project](/learn/images/new-ballerina-project.png)
 
-## Setting up Ballerina SDK for an existing project
+## Setting Up Ballerina SDK for an Existing Project
 
 Follow the steps below to set up Ballerina SDK for an existing project.
 
@@ -77,7 +80,7 @@ Follow the steps below to set up Ballerina SDK for an existing project.
 
  Now, you have successfully added the Ballerina SDK to an existing project.
 
-## Creating a new Ballerina file
+## Creating a New Ballerina File
 
 Follow the steps below to create a new Ballerina file within a Ballerina project.
 
@@ -95,21 +98,21 @@ Now, you have successfully created a new Ballerina file with a **main** function
 
 ![New Ballerina file with a main function](/learn/images/new-ballerina-file-with-main-function.png)
 
-## Configuring the plugin settings
+## Configuring the Plugin Settings
 
-### Ballerina Home auto detection
+### Ballerina Home Auto Detection
 
 In order to automatically detect the Ballerina Home that is being used (without setting up a Ballerina SDK), enable the **Settings** **->** **Languages and Frameworks** **->** **Ballerina** **->** **Ballerina Home Auto Detection** option.
 
 ![Ballerina Home auto detection](/learn/images/auto-detection.png)
 
-### Experimental features
+### Experimental Features
 
 Ballerina Language Specification supports a set of experimental features such as transactions syntax. In order to be compatible with the experimental features and for supporting language intelligence in IntelliJ plugin, enable the **Allow Experimental** option in **Settings** **->** **Languages and Frameworks** **->** **Ballerina** **->** **Experimental Features**.
 
 ![Experimental features](/learn/images/experimental-features.png)
 
-### Language Server Debug logs
+### Language Server Debug Logs
 
 In order to view the plugin debug logs, enable the **Settings** **->** **Languages and Frameworks** **->** **Ballerina** **->** **Language Server Debug Logs** option.
 
@@ -117,7 +120,7 @@ Then, the language server debug logs will be added to the IDEA log files. (Click
 
 ![Debug logs](/learn/images/debug-logs.png)
 
-## What's next?
+## What's Next?
 
  Next, for information on using the features of the IntelliJ Ballerina plugin, see [Using the IntelliJ plugin features](/learn/intellij-plugin/using-intellij-plugin-features).
  

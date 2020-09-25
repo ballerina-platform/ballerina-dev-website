@@ -5,13 +5,7 @@
       "description": "\u003cp\u003eThis module provides lang library string operations defined by the language specification 2020R1.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "T2",
-      "description": "",
-      "moduleId": "lang.string"
-    }
-  ],
+  "classes": [],
   "functions": [
     {
       "id": "codePointCompare",
@@ -119,17 +113,12 @@
       "moduleId": "lang.string"
     }
   ],
-  "records": [
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.string"
-    }
-  ],
+  "records": [],
   "constants": [],
   "errors": [],
   "types": [],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

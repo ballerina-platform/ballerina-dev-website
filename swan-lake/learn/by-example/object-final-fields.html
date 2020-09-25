@@ -1,0 +1,641 @@
+---
+layout: ballerina-example-page
+title: Final Fields
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/object-final-fields
+redirect_from:
+  - /vswan-lake/learn/by-example/object-final-fields
+  - /vswan-lake/learn/by-example/object-final-fields.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Details</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
+<span class="p">|};</span>
+<span class="nx">class</span> <span class="nx">Employee</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">department</span><span class="p">;</span>
+    <span class="nx">final</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">department</span><span class="p">,</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">department</span> <span class="p">=</span> <span class="nx">department</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">details</span> <span class="p">=</span> <span class="nx">details</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">readonly</span> <span class="nx">class</span> <span class="nx">MainController</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">id</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">codes</span> <span class="p">=</span> <span class="nx">codes</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">string</span> <span class="s">`Main: ${self.id}`</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kt">int</span> <span class="nx">currentId</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="p">:</span> <span class="mi">112233</span><span class="p">,</span>
+        <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
+    <span class="p">};</span>
+    <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;IT&quot;</span><span class="p">,</span> <span class="nx">details</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ID: &quot;</span><span class="p">,</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">Details</span> <span class="nx">empDetails</span> <span class="p">=</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">;</span>
+    <span class="nx">empDetails</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="mi">223344</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;new ID: &quot;</span><span class="p">,</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">MainController</span> <span class="nx">controller</span> <span class="p">=</span> <span class="nx">object</span> <span class="p">{</span>
+        <span class="nx">final</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+        <span class="nx">final</span> <span class="kt">string</span><span class="p">[]</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">codes</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;AB&quot;</span><span class="p">,</span> <span class="s">&quot;CD&quot;</span><span class="p">];</span>        <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">currentId</span><span class="p">;</span>
+            <span class="nx">currentId</span> <span class="p">=</span> <span class="nx">currentId</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>        <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">=&gt;</span> <span class="kt">string</span> <span class="s">`Default: ${self.id}`</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nx">Employee</span> <span class="nx">emp2</span> <span class="p">=</span> <span class="nx">object</span> <span class="p">{</span>
+        <span class="kt">string</span> <span class="nx">department</span> <span class="p">=</span> <span class="s">&quot;finance&quot;</span><span class="p">;</span>
+        <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="p">{</span>
+            <span class="nx">id</span><span class="p">:</span> <span class="mi">1001</span><span class="p">,</span>
+            <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Final Fields</h2>
+                            <p><p>Fields of a class or an object constructor expression can be marked as <code>final</code>. Values can be set for such fields
+ either using initializer expressions (default values) or in the <code>init</code> method. A value cannot be set for such a
+ field once the object is created.<br/>
+ If all the fields are <code>final</code> fields and the type of each field is a subtype of <code>readonly</code>, the object value is
+ constructed as an immutable value, which will belong to <code>readonly</code>.<br/>
+ Whether a field is <code>final</code> is not part of the type and it does not affect subtyping.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="readonly-objects.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Read-only Objects</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="object-type-reference.html">
+                                        <span>NEXT ></span>
+                                        <p>Object Type Reference</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="object-final-fields">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-final-fields/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Details record {|
+    int id;
+    string country;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class Employee {
+    string department;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A class definition with both <code>final</code> and non-<code>final</code> fields.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    final Details details;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>details</code> is a <code>final</code> field to which a value cannot be assigned
+ once the object value is created. However, since the type of <code>details</code> is
+ a mutable type, updates can be attempted on the <code>details</code> field.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string department, Details details) {
+        self.department = department;
+        self.details = details;
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>readonly class MainController {
+    int id;
+    string[] codes;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A class definition for a <code>readonly</code> object.
+ If the class definition includes <code>readonly</code>, all the fields in the
+ object are considered to be <code>final</code> fields.
+ The effective type of each field is the intersection of the
+ specified type and <code>readonly</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(int id, readonly &amp; string[] codes) {
+        self.id = id;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        self.codes = codes;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The expected type for <code>codes</code> is <code>readonly &amp; string[]</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function getId() returns string {
+        return string `Main: ${self.id}`;
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>int currentId = 1000;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Details details = {
+        id: 112233,
+        country: &quot;Sri Lanka&quot;
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define a mutable <code>Details</code> value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee emp = new (&quot;IT&quot;, details);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Use <code>details</code> as the value for the <code>final</code> <code>details</code> field in <code>Employee</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;ID: &quot;, emp.details.id);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Details empDetails = emp.details;
+    empDetails.id = 223344;
+    io:println(&quot;new ID: &quot;, emp.details.id);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Even though the <code>details</code> field of <code>Employee</code> is <code>final</code>,
+ it can hold a mutable value. Thus, we can attempt updating
+ the <code>id</code> field of the <code>details</code> field.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    MainController controller = object {
+        final int id;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since all the fields in the object constructor expression are <code>final</code>
+ and the types are subtypes of <code>readonly</code>, it constructs an immutable
+ value, which can be assigned to a variable of type <code>MainController</code>
+ which expects immutable values.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        final string[] &amp; readonly codes = [&quot;AB&quot;, &quot;CD&quot;];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A value is set for the <code>final</code> field <code>codes</code> using an initializer
+ expression.
+ A value cannot be set for this field via the <code>init</code> method or
+ once the value is created.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        function init() {
+            self.id = currentId;
+            currentId = currentId + 1;
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        function getId() returns string =&gt; string `Default: ${self.id}`;
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee emp2 = object {
+        string department = &quot;finance&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Whether a field is <code>final</code> does not affect the type.
+ Thus, an object value belongs to a type even if the type
+ specifies <code>final</code> for a field for which the source object value
+ does not.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>        Details details = {
+            id: 1001,
+            country: &quot;Sri Lanka&quot;
+        };
+    };
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>details</code> field is not <code>final</code> here even though it is
+ a <code>final</code> field in <code>Employee</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run object_final_fields.bal
+ID: 112233
+new ID: 223344
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

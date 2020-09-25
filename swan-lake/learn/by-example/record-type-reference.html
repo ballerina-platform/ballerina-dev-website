@@ -27,12 +27,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>    <span class="nx">Manager</span> <span class="nx">mgr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Mark&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="nx">designation</span><span class="p">:</span> <span class="s">&quot;Engineering Manager&quot;</span><span class="p">};</span>
     <span class="nx">mgr</span><span class="p">.</span><span class="nx">team</span> <span class="p">=</span> <span class="p">[</span><span class="nx">john</span><span class="p">,</span> <span class="nx">jane</span><span class="p">];</span>
     <span class="nx">mgr</span><span class="p">.</span><span class="nx">company</span> <span class="p">=</span> <span class="s">&quot;XYZ Inc.&quot;</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">mgr</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">record_type_reference</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">designation</span><span class="p">=</span><span class="nx">Software</span> <span class="nx">Engineer</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">25</span>
-<span class="nx">designation</span><span class="p">=</span><span class="nx">UX</span> <span class="nx">Engineer</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">25</span>
-<span class="nx">team</span><span class="p">=</span><span class="nx">designation</span><span class="p">=</span><span class="nx">Software</span> <span class="nx">Engineer</span> <span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">25</span> <span class="nx">designation</span><span class="p">=</span><span class="nx">UX</span> <span class="nx">Engineer</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">25</span> <span class="nx">company</span><span class="p">=</span><span class="nx">XYZ</span> <span class="nx">Inc</span><span class="p">.</span> <span class="nx">designation</span><span class="p">=</span><span class="nx">Engineering</span> <span class="nx">Manager</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Mark</span> <span class="nx">age</span><span class="p">=</span><span class="mi">35</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -62,9 +57,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="objects.html">
+                                    <a class="next" href="class-definition.html">
                                         <span>NEXT ></span>
-                                        <p>Object</p>
+                                        <p>Class Definitions</p>
                                     </a>
                                 </div>
                                 
@@ -86,6 +81,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/record-type-reference/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -326,9 +322,9 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run record_type_reference.bal
-designation=Software Engineer name=John Doe age=25
-designation=UX Engineer name=Jane Doe age=25
-team=designation=Software Engineer name=John Doe age=25 designation=UX Engineer name=Jane Doe age=25 company=XYZ Inc. designation=Engineering Manager name=Mark age=35
+{&quot;designation&quot;:&quot;Software Engineer&quot;,&quot;name&quot;:&quot;John Doe&quot;,&quot;age&quot;:25}
+{&quot;designation&quot;:&quot;UX Engineer&quot;,&quot;name&quot;:&quot;Jane Doe&quot;,&quot;age&quot;:25}
+{&quot;team&quot;:[{&quot;designation&quot;:&quot;Software Engineer&quot;,&quot;name&quot;:&quot;John Doe&quot;,&quot;age&quot;:25},{&quot;designation&quot;:&quot;UX Engineer&quot;,&quot;name&quot;:&quot;Jane Doe&quot;,&quot;age&quot;:25}],&quot;company&quot;:&quot;XYZ Inc.&quot;,&quot;designation&quot;:&quot;Engineering Manager&quot;,&quot;name&quot;:&quot;Mark&quot;,&quot;age&quot;:35}
 </code></pre></div>
 
                                 </td>
@@ -356,7 +352,7 @@ team=designation=Software Engineer name=John Doe age=25 designation=UX Engineer 
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

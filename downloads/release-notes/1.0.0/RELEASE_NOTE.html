@@ -41,7 +41,7 @@ Ballerina 1.0.0 consists of improvements to the language syntax and semantics ba
 <p>The error reason is now optional if the reason can be inferred based on the contextually-expected type.</p>
 </li>
 </ul>
-<pre><code class="ballerina">type Detail record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Detail record {
    int code;
 };
 
@@ -56,16 +56,16 @@ FooError e2 = error(code = 3456); // Also valid now, reason is set as &quot;foo&
 <ul>
 <li>A unary operator <code>typeof</code> has been introduced to retrieve a typedesc value for the runtime type of a value.</li>
 </ul>
-<pre><code class="ballerina">typedesc t = typeof valueExpr;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">typedesc t = typeof valueExpr;
 </code></pre>
 
 <ul>
 <li>A binary operator <code>.@</code> has been introduced to access annotation values at runtime.</li>
 </ul>
-<p><code>ballerina
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">ballerina
    annotation Foo annot on service;
    typedesc t = typeof serviceValue;
-   Foo? fooAnnot = t.@annot;</code></p>
+   Foo? fooAnnot = t.@annot;</code></pre>
 <ul>
 <li>
 <p>Expressions are now allowed as default values for function parameters.</p>
@@ -83,7 +83,7 @@ FooError e2 = error(code = 3456); // Also valid now, reason is set as &quot;foo&
 <ul>
 <li>Ballerina project structure should match the following.</li>
 </ul>
-<pre><code>project-name/
+<pre class="language-plaintext line-numbers basic"><code class="language-plaintext">project-name/
 - Ballerina.toml
 - src/
 -- mymodule/
@@ -104,25 +104,25 @@ FooError e2 = error(code = 3456); // Also valid now, reason is set as &quot;foo&
 <ul>
 <li>To create a new project with a hello world, use the <em>new</em> command. This initializes a new directory.</li>
 </ul>
-<pre><code>$ ballerina new &lt;project-name&gt;
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">$ ballerina new &lt;project-name&gt;
 </code></pre>
 
 <ul>
 <li>To add a module, use the <em>add</em> command inside the project.</li>
 </ul>
-<pre><code>$ ballerina add &lt;modulename&gt; [-t main|service]
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">$ ballerina add &lt;modulename&gt; [-t main|service]
 </code></pre>
 
 <ul>
 <li>To create an executable, use the <em>build</em> command.</li>
 </ul>
-<pre><code>$ ballerina build
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">$ ballerina build
 </code></pre>
 
 <ul>
 <li>To run the executable, use the <em>run</em> command.</li>
 </ul>
-<pre><code>$ ballerina run mymodule.jar
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">$ ballerina run mymodule.jar
 </code></pre>
 
 <h3>Ballerina Central</h3>
@@ -194,12 +194,12 @@ FooError e2 = error(code = 3456); // Also valid now, reason is set as &quot;foo&
 <p>Previous Syntax</p>
 </li>
 </ul>
-<pre><code class="ballerina">int|error x = int.convert(&quot;100&quot;);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int|error x = int.convert(&quot;100&quot;);
 </code></pre>
 
 <pre><code>  New Syntax
 </code></pre>
-<pre><code class="ballerina">import ballerina/lang.'int; // Need to import `lang.int`
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/lang.'int; // Need to import `lang.int`
 
 int x = 'int:fromString(&quot;100&quot;);
 </code></pre>
@@ -210,12 +210,12 @@ int x = 'int:fromString(&quot;100&quot;);
 <p>Previous Syntax</p>
 </li>
 </ul>
-<pre><code class="ballerina">json person = {&quot;name&quot;:&quot;John&quot;, &quot;age&quot;:25};
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">json person = {&quot;name&quot;:&quot;John&quot;, &quot;age&quot;:25};
 string|error str = string.convert(person);
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">json person = {&quot;name&quot;:&quot;John&quot;, &quot;age&quot;:25};
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">json person = {&quot;name&quot;:&quot;John&quot;, &quot;age&quot;:25};
 string str = person.toString();
 </code></pre>
 
@@ -227,7 +227,7 @@ string str = person.toString();
 <li>The semantics of the <code>{</code>, <code>}</code> and <code>{|</code>, <code>|}</code> delimiters have changed. A record type descriptor written using the <code>{|</code> and <code>|}</code> delimiters defines a closed record type, which only accepts mapping values with the same fields as the ones described. A record type descriptor written using the <code>{</code> and <code>}</code> delimiters define a record type, which additionally allows pure type fields apart from the described fields, i.e., <code>record {}</code> is equivalent to <code>record {| anydata…; |}</code>. </li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">// Open record with a field `a`. It additionally allows
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">// Open record with a field `a`. It additionally allows
 // `anydata|error` fields.
 type Foo record {
    string a;
@@ -248,7 +248,7 @@ type Baz record {|
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">// Open record with a field `a`. It additionally allows
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">// Open record with a field `a`. It additionally allows
 // `anydata` fields.
 type Foo record {
    string a;
@@ -272,18 +272,18 @@ type Bar record {|
 <li>The syntax to specify expressions as keys in the mapping constructor has changed. Now, expressions need to be enclosed in <code>[]</code> (e.g., <code>[expr]</code>).</li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">map&lt;string&gt; m = { getString(): &quot;value&quot; };
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">map&lt;string&gt; m = { getString(): &quot;value&quot; };
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">map&lt;string&gt; m = { [getString()]: &quot;value&quot; };
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">map&lt;string&gt; m = { [getString()]: &quot;value&quot; };
 </code></pre>
 
 <ul>
 <li>String literals can now be used as keys in the mapping constructor for a record. The key for a <code>rest</code> field should either be a string literal or an expression in the mapping constructor (i.e., cannot be an identifier). </li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">type Foo record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Foo record {
    string bar;
    int...;
 };
@@ -292,7 +292,7 @@ Foo f = { bar: &quot;test string&quot;, qux: 1 }; // `qux` is a rest field
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">type Foo record {|
+<<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Foo record {|
    string bar;
    int...;
 |};
@@ -304,14 +304,14 @@ Foo f = { bar: &quot;test string&quot;, &quot;qux&quot;: 1 }; // `qux` is a rest
 <li>Mapping values are now iterable as sequences of their members (values) instead of sequences of key-value pairs. A lang library function <code>entries()</code> is available to retrieve an array of key-value pairs for a mapping value.</li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">foreach (string, int) (k, v) in m {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">foreach (string, int) (k, v) in m {
    io:println(&quot;Key:   &quot;, k);
    io:println(&quot;Value: &quot;, v);
 }
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">// Iterating values.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">// Iterating values.
 foreach int v in m {
    io:println(&quot;Value: &quot;, v);
 }
@@ -328,12 +328,12 @@ foreach [string, int] [k, v] in m.entries() {
 <li>The requirement for array element types to have an implicit initial value to allow declaring variable-length arrays has been removed. Instead, when a value is being added to the array at runtime, the index is greater than the length of the list, and the element type does not have a filler value, it would result in a panic.  </li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">(int|string)[] arr = []; // Fails at compile time.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">(int|string)[] arr = []; // Fails at compile time.
 arr[1] = 1;
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">(int|string)[] arr = [];
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">(int|string)[] arr = [];
 arr[1] = 1; // Fails at runtime.
 </code></pre>
 
@@ -341,17 +341,17 @@ arr[1] = 1; // Fails at runtime.
 <li>Tuple types now use brackets instead of parentheses. </li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">(int, string) t = (1, &quot;hello world&quot;);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">(int, string) t = (1, &quot;hello world&quot;);
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">[int, string] t = [1, &quot;hello world&quot;];
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">[int, string] t = [1, &quot;hello world&quot;];
 </code></pre>
 
 <ul>
 <li>Tuple types now support rest descriptors. Therefore, the following syntax is valid now.</li>
 </ul>
-<pre><code class="ballerina">[int, string, boolean...] t = [1, &quot;hello world&quot;, true, true];
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">[int, string, boolean...] t = [1, &quot;hello world&quot;, true, true];
 [int...] t3 = [1, 2];
 </code></pre>
 
@@ -359,7 +359,7 @@ arr[1] = 1; // Fails at runtime.
 <ul>
 <li>Outside method definitions are no longer allowed for objects. All object function definitions need to be specified within the object itself. The following syntax is invalid now.</li>
 </ul>
-<pre><code class="ballerina">type Foo object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Foo object {
    int code = 0;
 
    function printCode();
@@ -379,7 +379,7 @@ function Foo.printCode() {
 <ul>
 <li>The error detail type must now belong to the <code>detail</code> type defined in the error lang library.</li>
 </ul>
-<pre><code class="ballerina">public type Detail record {|
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">public type Detail record {|
    string message?;
    error cause?;
    (anydata|error)...;
@@ -390,12 +390,12 @@ function Foo.printCode() {
 <li>The error constructor now accepts <code>detail</code> fields as individual named arguments as opposed to accepting a single mapping as the <code>detail</code> argument.     </li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">Detail detail = { message: &quot;error message&quot;, code: 1100 };
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">Detail detail = { message: &quot;error message&quot;, code: 1100 };
 error e = error(&quot;error reason&quot;, detail);
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">error e = error(&quot;error reason&quot;, message = &quot;error message&quot;, code = 1100);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">error e = error(&quot;error reason&quot;, message = &quot;error message&quot;, code = 1100);
 </code></pre>
 
 <h3>Annotations</h3>
@@ -403,11 +403,11 @@ error e = error(&quot;error reason&quot;, detail);
 <li>Annotation declaration syntax and attachment points have been revised. Annotations can now be declared to be available only at compile time (source only annotations) or at both compile-time and runtime.</li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">annotation&lt;service&gt; annot Foo;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">annotation&lt;service&gt; annot Foo;
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">annotation Foo annot on service;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">annotation Foo annot on service;
 </code></pre>
 
 <h3>Expressions</h3>
@@ -420,12 +420,12 @@ error e = error(&quot;error reason&quot;, detail);
 <li>Delimited identifier syntax has been changed.</li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">string ^&quot;1&quot; = &quot;identifier one&quot;;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string ^&quot;1&quot; = &quot;identifier one&quot;;
 string ^&quot;identifier two&quot; = &quot;identifier two&quot;;
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">string '1 = &quot;identifier one&quot;;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string '1 = &quot;identifier one&quot;;
 string 'identifier\ two = &quot;identifier two&quot;;
 </code></pre>
 
@@ -433,28 +433,28 @@ string 'identifier\ two = &quot;identifier two&quot;;
 <li>The <code>untaint</code> unary operator has been replaced by an annotation to mark a value as trusted.</li>
 </ul>
 <p>Previous Syntax</p>
-<pre><code class="ballerina">var untaintedValue = untaint taintedValue;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">var untaintedValue = untaint taintedValue;
 </code></pre>
 
 <p>New Syntax</p>
-<pre><code class="ballerina">var untaintedValue = &lt;@untainted&gt; taintedValue;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">var untaintedValue = &lt;@untainted&gt; taintedValue;
 </code></pre>
 
 <ul>
 <li>Concatenation with the + operator is no longer allowed between <code>string</code> values and values of other basic types. The <code>.toString()</code> method can be used on any variable to retrieve the <code>string</code> representation prior to concatenating. Alternatively, the string template expression can also be used.</li>
 </ul>
 <p>Previously Syntax</p>
-<pre><code class="ballerina">int i = 1;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int i = 1;
 string s = &quot;Value: &quot; + i;
 </code></pre>
 
 <p>Alternative I</p>
-<pre><code class="ballerina">int i = 1;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int i = 1;
 string s = &quot;Value: &quot; + i.toString();
 </code></pre>
 
 <p>Alternative II</p>
-<pre><code class="ballerina">int i = 1;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int i = 1;
 string s = string `Value: ${i}`;
 </code></pre>
 

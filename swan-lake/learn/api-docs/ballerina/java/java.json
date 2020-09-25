@@ -54,7 +54,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ArrayType",
       "description": "\u003cp\u003eRepresents a Java array type. It is used to specify the parameter types in the \u003ccode\u003ejava:Constructor\u003c/code\u003e and \u003ccode\u003ejava:Method\u003c/code\u003e\nannotations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -156,7 +156,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ConstructorData",
       "description": "\u003cp\u003eDescribes a Java constructor. If the \u003ccode\u003eparamTypes\u003c/code\u003e field is not specified, then the parameter types are inferred from\nthe corresponding Ballerina function.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -210,7 +210,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "FieldData",
       "description": "\u003cp\u003eDescribes a Java field.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -335,7 +335,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "MethodData",
       "description": "\u003cp\u003eDescribes a Java method. If the \u003ccode\u003eparamTypes\u003c/code\u003e field is not specified, then the parameter types are inferred from the\ncorresponding Ballerina function.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -366,13 +366,14 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ObjectData",
       "description": "\u003cp\u003eDescribes a Java class that corresponds to a Ballerina object.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [],
+  "abstractObjects": [
     {
       "fields": [
         {
@@ -400,8 +401,6 @@
         }
       ],
       "methods": [],
-      "otherMethods": [],
-      "isAnonymous": false,
       "name": "JObject",
       "description": "\u003cp\u003eThe Ballerina abstract object which is to be extended by Ballerina\nobjects representing Ballerina bindings for Java classes.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -411,6 +410,7 @@
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -420,7 +420,7 @@
             "orgName": "ballerina",
             "moduleName": "java",
             "name": "JObject",
-            "category": "objects",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -459,7 +459,7 @@
               "orgName": "ballerina",
               "moduleName": "java",
               "name": "JObject",
-              "category": "objects",
+              "category": "abstractobjects",
               "isAnonymousUnionType": false,
               "isArrayType": false,
               "isNullable": false,
@@ -497,7 +497,7 @@
                 "orgName": "ballerina",
                 "moduleName": "java",
                 "name": "JObject",
-                "category": "objects",
+                "category": "abstractobjects",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -541,6 +541,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],
@@ -573,6 +574,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -629,6 +631,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -719,6 +722,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -775,6 +779,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -831,6 +836,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -907,9 +913,9 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "objecttype",
+      "attachmentPoints": "class",
       "name": "Binding",
-      "description": "\u003cp\u003eDescribes the Java class representing a Ballerina binding.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e @java:Binding {\n   class: \u0026quot;java.io.File\u0026quot;\n }\n\u003c/code\u003e\u003c/pre\u003e\n",
+      "description": "\u003cp\u003eDescribes the Java class representing a Ballerina binding.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e @java:Binding {\n   \u0027class: \u0026quot;java.io.File\u0026quot;\n }\n\u003c/code\u003e\u003c/pre\u003e\n",
       "isDeprecated": false
     },
     {
@@ -932,7 +938,7 @@
       },
       "attachmentPoints": "external",
       "name": "Constructor",
-      "description": "\u003cp\u003eDescribes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as\n\u003ccode\u003eexternal\u003c/code\u003e. If the Ballerina function body is marked as \u003ccode\u003eexternal\u003c/code\u003e, it means that the implementation of the\nfunction is not provided in the Ballerina source module.\u003c/p\u003e\n\u003cp\u003eThe following code snippet shows an example usage of this annotation. Here, the \u003ccode\u003enewJavaLinkedList\u003c/code\u003e Ballerina function\u0027s\nimplementation is provided by the default constructor of the \u003ccode\u003ejava.util.LinkedList\u003c/code\u003e class.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e function newJavaLinkedList() returns handle \u003d @java:Constructor {\n      class: \u0026quot;java.util.LinkedList\u0026quot;\n } external;\n\u003c/code\u003e\u003c/pre\u003e\n",
+      "description": "\u003cp\u003eDescribes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as\n\u003ccode\u003eexternal\u003c/code\u003e. If the Ballerina function body is marked as \u003ccode\u003eexternal\u003c/code\u003e, it means that the implementation of the\nfunction is not provided in the Ballerina source module.\u003c/p\u003e\n\u003cp\u003eThe following code snippet shows an example usage of this annotation. Here, the \u003ccode\u003enewJavaLinkedList\u003c/code\u003e Ballerina function\u0027s\nimplementation is provided by the default constructor of the \u003ccode\u003ejava.util.LinkedList\u003c/code\u003e class.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e function newJavaLinkedList() returns handle \u003d @java:Constructor {\n      \u0027class: \u0026quot;java.util.LinkedList\u0026quot;\n } external;\n\u003c/code\u003e\u003c/pre\u003e\n",
       "isDeprecated": false
     },
     {
@@ -955,7 +961,7 @@
       },
       "attachmentPoints": "external",
       "name": "FieldGet",
-      "description": "\u003cp\u003eDescribes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as\n\u003ccode\u003eexternal\u003c/code\u003e.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e function getError() returns handle \u003d @java:FieldGet {\n     name:\u0026quot;err\u0026quot;,\n     class:\u0026quot;java/lang/System\u0026quot;\n } external;\n\u003c/code\u003e\u003c/pre\u003e\n",
+      "description": "\u003cp\u003eDescribes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as\n\u003ccode\u003eexternal\u003c/code\u003e.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e function getError() returns handle \u003d @java:FieldGet {\n     name:\u0026quot;err\u0026quot;,\n     \u0027class:\u0026quot;java/lang/System\u0026quot;\n } external;\n\u003c/code\u003e\u003c/pre\u003e\n",
       "isDeprecated": false
     },
     {
@@ -978,7 +984,7 @@
       },
       "attachmentPoints": "external",
       "name": "FieldSet",
-      "description": "\u003cp\u003eDescribes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as\n\u003ccode\u003eexternal\u003c/code\u003e.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e function setContractId(handle contractId) \u003d @java:FieldSet {\n   name:\u0026quot;contractId\u0026quot;,\n   class:\u0026quot;org/lang/impl/JavaFieldAccessMutate\u0026quot;\n } external;\n\u003c/code\u003e\u003c/pre\u003e\n",
+      "description": "\u003cp\u003eDescribes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as\n\u003ccode\u003eexternal\u003c/code\u003e.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e function setContractId(handle contractId) \u003d @java:FieldSet {\n   name:\u0026quot;contractId\u0026quot;,\n   \u0027class:\u0026quot;org/lang/impl/JavaFieldAccessMutate\u0026quot;\n } external;\n\u003c/code\u003e\u003c/pre\u003e\n",
       "isDeprecated": false
     },
     {
@@ -1001,7 +1007,7 @@
       },
       "attachmentPoints": "external",
       "name": "Method",
-      "description": "\u003cp\u003eDescribes a Java method, which provides an implementation of a Ballerina function of which the body is marked as\n\u003ccode\u003eexternal\u003c/code\u003e. If the Ballerina function body is marked as \u003ccode\u003eexternal\u003c/code\u003e, it means that the implementation of the\nfunction is not provided in the Ballerina source module.\u003c/p\u003e\n\u003cp\u003eThe following code snippet shows an example usage of this annotation. Here, the \u003ccode\u003egetUUID\u003c/code\u003e Ballerina function\u0027s\nimplementation is provided by the \u003ccode\u003ejava.util.UUID.randomUUID\u003c/code\u003e static method.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e function getUUID() returns handle \u003d @java:Method {\n     name: \u0026quot;randomUUID\u0026quot;,\n     class: \u0026quot;java.util.UUID\u0026quot;\n } external;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003ename\u003c/code\u003e field is optional. If it is not provided, the name of the Java method is inferred\nfrom the Ballerina function.\u003c/p\u003e\n",
+      "description": "\u003cp\u003eDescribes a Java method, which provides an implementation of a Ballerina function of which the body is marked as\n\u003ccode\u003eexternal\u003c/code\u003e. If the Ballerina function body is marked as \u003ccode\u003eexternal\u003c/code\u003e, it means that the implementation of the\nfunction is not provided in the Ballerina source module.\u003c/p\u003e\n\u003cp\u003eThe following code snippet shows an example usage of this annotation. Here, the \u003ccode\u003egetUUID\u003c/code\u003e Ballerina function\u0027s\nimplementation is provided by the \u003ccode\u003ejava.util.UUID.randomUUID\u003c/code\u003e static method.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003e function getUUID() returns handle \u003d @java:Method {\n     name: \u0026quot;randomUUID\u0026quot;,\n     \u0027class: \u0026quot;java.util.UUID\u0026quot;\n } external;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003ename\u003c/code\u003e field is optional. If it is not provided, the name of the Java method is inferred\nfrom the Ballerina function.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],

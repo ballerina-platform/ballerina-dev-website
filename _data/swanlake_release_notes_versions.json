@@ -62,7 +62,7 @@
    },
    {
       "version": "swan-lake-preview4",
-      "release-date": "2020-09-23",
+      "release-date": "2020-09-25",
       "windows-installer": "ballerina-windows-installer-x64-swan-lake-preview4.msi",
       "windows-installer-size": "210mb",
       "zip-installer": "ballerina-swan-lake-preview4.zip",

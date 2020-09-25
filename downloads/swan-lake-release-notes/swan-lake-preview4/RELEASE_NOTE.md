@@ -19,7 +19,7 @@ This release is the fourth preview version of Ballerina Swan Lake. This release 
         - [Isolated functions](#isolated-functions)
         - [Improved support for quoted identifiers](#improved-support-for-quoted-identifiers)
         -  [Subsequent initialization support for local final variables](#subsequent-initialization-support-for-local-final-variables)
-        - [Support to handle errors at a single point - (the `on fail` clause)](#support-to-handle-errors-at-a-single-point-the-on-fail-clause)
+        - [Handle errors at a single point](#handle-errors-at-a-single-point)
         - [The Fail statement](#the-fail-statement)
         - [Improved lang library functions](#improved-lang-library-functions)
     - [Runtime](#runtime)
@@ -274,8 +274,7 @@ function addLength(string key, string|string[] value) {
 }
 ```
 
-##### Handle errors at a single place with the `on fail` clause 
-
+##### Handle errors at a single point
 Ballerina supports handling errors at a single place using the `on fail` clause. The `on fail` clause can be used optionally with statements such as `while`, `foreach`, `do`, `transaction`, `retry`, `lock`, and `match`. 
 
 ```ballerina

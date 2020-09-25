@@ -138,7 +138,7 @@
     <h2>Module Overview</h2>
 <p>This module provides APIs for handle caching in Ballerina. It consists of a default implementation based on the map data structure. It also provides a default cache eviction policy object, which is based on the LRU eviction algorithm.</p>
 <p>The <code>cache:AbstractCache</code> object has the common APIs for the caching functionalities. Custom implementations of the cache can be done with different data storages like file, database, etc. with the structural equivalency to the <code>cache:AbstractCacheObject</code> object.</p>
-<pre><code class="language-ballerina">public type AbstractCache object {
+<pre><code class="language-ballerina">public type AbstractCache abstract object {
     public function put(string key, any value, int maxAgeInSeconds) returns Error?;
     public function get(string key) returns any|Error;
     public function invalidate(string key) returns Error?;
@@ -149,17 +149,17 @@
     public function capacity() returns int;
 };
 </code></pre>
-<p>The <code>cache:AbstractEvictionPolicy</code> object has the common APIs for the cache eviction functionalities. Custom implementations of the eviction policy can be done by maintaining the <code>cache:LinkedList</code> class according to the eviction algorithm.</p>
-<pre><code class="language-ballerina">public type AbstractEvictionPolicy object {
-    public function get(Node node);
-    public function put(Node node);
-    public function remove(Node node);
-    public function replace(Node newNode, Node oldNode);
-    public function clear();
-    public function evict() returns Node?;
+<p>The <code>cache:AbstractEvictionPolicy</code> object has the common APIs for the cache eviction functionalities. Custom implementations of the eviction policy can be done by maintaining the <code>cache:LinkedList</code> data structure according to the eviction algorithm.</p>
+<pre><code class="language-ballerina">public type AbstractEvictionPolicy abstract object {
+    public function get(LinkedList list, Node node);
+    public function put(LinkedList list, Node node);
+    public function remove(LinkedList list, Node node);
+    public function replace(LinkedList list, Node newNode, Node oldNode);
+    public function clear(LinkedList list);
+    public function evict(LinkedList list) returns Node?;
 };
 </code></pre>
-<p>The Ballerina Cache module provides the <code>cache:Cache</code> object, which is a <code>map</code> data structure based implementation of the <code>cache:AbstractCache</code> object. It is not recommended to insert <code>()</code> as the value of the cache since it doesn't make sense to cache a nil. Also, it provides the <code>cache:LruEvictionPolicy</code> class, which is based on the LRU eviction algorithm.</p>
+<p>The Ballerina Cache module provides the <code>cache:Cache</code> object, which is a <code>map</code> data structure based implementation of the <code>cache:AbstractCache</code> object. It is not recommended to insert <code>()</code> as the value of the cache since it doesn't make sense to cache a nil. Also, it provides the <code>cache:LruEvictionPolicy</code> object, which is based on the LRU eviction algorithm.</p>
 <p>While initializing the <code>cache:Cache</code>, you need to pass the following parameters as the cache configurations.</p>
 <ul>
 <li><code>capacity</code> - Maximum number of entries allowed for the cache</li>
@@ -186,7 +186,7 @@ This is an optional parameter.</li>
 <li>If <code>cleanupIntervalInSeconds</code> (optional property) is configured, the timer task will remove the expired cache entries based on the configured interval.</li>
 </ol>
 <p>The main benefit of using the <code>cleanupIntervalInSeconds</code> (optional) property is that the developer can optimize the memory usage while adding some additional CPU costs and vice versa. The default behaviour is the CPU-optimized method.</p>
-<p>The concept of the default <code>cache:Cache</code> object is based on the Ballerina <code>map</code> data structure and the <code>cache:LinkedList</code> class. The key of the map entry would be a string and the value of the map entry would be a node of the linked list.</p>
+<p>The concept of the default <code>cache:Cache</code> object is based on the Ballerina <code>map</code> data structure and the <code>cache:LinkedList</code> data structure. The key of the map entry would be a string and the value of the map entry would be a node of the linked list.</p>
 <pre><code class="language-ballerina">public type Node record {|
     any value;
     Node? prev = ();
@@ -256,7 +256,7 @@ This is an optional parameter.</li>
                         </td>
                         <td class="module-desc">
                             
-                            <p>The <code>cache:Cache</code> class, which is used for all the cache-related operations.
+                            <p>The <code>cache:Cache</code> object, which is used for all the cache-related operations.
                         </td>
                     </tr>
                 
@@ -266,7 +266,7 @@ This is an optional parameter.</li>
                         </td>
                         <td class="module-desc">
                             
-                            <p>The <code>cache:LinkedList</code> class consists operations of <code>LinkedList</code> data structure which are related to LRU eviction algorithm</p>
+                            <p>The <code>cache:LinkedList</code> object consists operations of <code>LinkedList</code> data structure which are related to LRU eviction algorithm</p> 
                         </td>
                     </tr>
                 
@@ -276,7 +276,7 @@ This is an optional parameter.</li>
                         </td>
                         <td class="module-desc">
                             
-                            <p>The <code>cache:LruEvictionPolicy</code> class consists of the LRU eviction algorithm related operations based on a linked list data structure.</p>
+                            <p>The <code>cache:LruEvictionPolicy</code> object consists of the LRU eviction algorithm related operations based on a linked list data structure.</p> 
                         </td>
                     </tr>
                 

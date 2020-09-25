@@ -29,6 +29,7 @@ This release is the fourth preview version of Ballerina Swan Lake. This release 
     - [Developer Tools](#developer-tools)
         - [The OpenAPI Tool](#the-openapi-tool)
         - [Improvements related to code actions](#improvements-related-to-code-actions)
+        - [Code formatting](#code-formatting)
 
 ### Updating Ballerina
 
@@ -481,3 +482,7 @@ Fix for [Pure HTTP Functions Not Working](https://github.com/ballerina-platform/
 ###### AWS Lambda
 
 Added domain-specific event types support.
+
+##### Code formatting
+
+A new formatter is introduced with a limited support for language features.

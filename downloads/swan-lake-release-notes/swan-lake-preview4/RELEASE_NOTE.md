@@ -364,7 +364,6 @@ The `sort()` function returns an array consisting of the members of the original
 ```ballerina
 string[] cars = ["Ford", "Toyota", "Mitsubishi", "BMW", "Tesla"];
 string[] sortedCars = cars.sort(array:DESCENDING, car => car.length());
-
 ```
 
 #### Runtime

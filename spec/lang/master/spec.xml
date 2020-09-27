@@ -14,7 +14,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-09-21</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-09-27</h1>
 <p>
 Primary contributors:
 </p>
@@ -5753,11 +5753,11 @@ will complete abruptly with a panic.
 If the query-expr starts with <code>table</code>, then the query-expr will
 construct a table; the key-specifier specifies the key sequence of the
 constructed table in the same way as with a table-constructor-expr. Otherwise,
-the applicable contextually expected type determines which basic type is
-constructed. If there is no contextually expected type, then it is determined
-from the static type of the expression in the initial <code>from</code> clause;
-it is a compile-time error if this static type is not a subtype of one of the
-basic types that a query expression can construct.
+the applicable contextually expected type determines the basic type of the value
+constructed. If there is no contextually expected type, then the basic type of
+the value constructed is the basic type of expression following <code>in</code>;
+it is a compile-time error if the static type of this expression is not a
+subtype of one of the basic types that a query expression can construct.
 </p>
 <p>
 When during the construction of a table, an emitted value is added as a new
@@ -7896,7 +7896,7 @@ class="grammar"><dfn>fail-stmt</dfn> := <code>fail</code> <abbr>expression</abbr
 <p>
 Executing a fail-stmt will cause control flow to transfer to the on-fail-clause
 of the nearest lexically enclosing statement that has an on-fail-clause. If
-there is no such statement, it terminates the current worker.
+there is no such statement, it terminates the current worker normally.
 </p>
 <p>
 The static type of the expression must be a subtype of error. Execution of the

@@ -26,7 +26,7 @@ redirect_from:
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/CloudEdition/"><h4>DeveloperWeek Seattle: Cloud Edition</h4></a>
                         <h5>Code to Kubernetes: Languages of Infrastructure</h5>
-                            <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                            <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/global/conference/cloud/schedule/" target="_blank">More Info</a></td>
                   </tr>

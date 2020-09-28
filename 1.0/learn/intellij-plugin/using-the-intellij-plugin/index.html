@@ -221,13 +221,25 @@
 <p>The below sections include information to start using the IntelliJ Ballerina plugin after <a href="/v1-0/learn/intellij-plugin">installing it</a>.</p>
 
 <ul>
-  <li><a href="#creating-a-new-ballerina-project">Creating a new Ballerina project</a></li>
-  <li><a href="#setting-up-ballerina-sdk-for-an-existing-project">Setting up Ballerina SDK for an existing project</a></li>
-  <li><a href="#creating-a-new-ballerina-file">Creating a new Ballerina file</a></li>
-  <li><a href="#configuring-the-plugin-settings">Configuring the plugin settings</a></li>
-</ul>
+  <li><a href="#creating-a-new-ballerina-project">Creating a New Ballerina Project</a></li>
+  
+  <li><a href="#setting-up-ballerina-sdk-for-an-existing-project">Setting Up Ballerina SDK for an Existing Project</a></li>
+  
+  <li><a href="#creating-a-new-ballerina-file">Creating a New Ballerina File</a></li>
+  
+  <li><a href="#configuring-the-plugin-settings">Configuring the Plugin Settings</a>
+  
+  
+  <ul>
+  <li><a href="#ballerina-home-auto-detection">Ballerina Home Auto Detection</a></li>
+  
+  <li><a href="#experimental-features">Experimental Features</a></li>
+  
+  <li><a href="#language-server-debug-logs">Language Server Debug Logs</a></li></ul>
+  </li>
+  </ul>
 
-<h2 id="creating-a-new-ballerina-project">Creating a new Ballerina project</h2>
+<h2 id="creating-a-new-ballerina-project">Creating a New Ballerina Project</h2>
 
 <p>Follow the steps below to create a new Ballerina project.</p>
 
@@ -237,7 +249,7 @@
   </li>
   <li>
     <p>Select <strong>Ballerina</strong> as the type of the project, and click <strong>Next</strong>.
-<img src="/v1-0/learn/images/select-project-type.png" alt="Install the plugin via IntelliJ IDEA" /></p>
+<img src="/1.0/learn/images/select-project-type.png" alt="Install the plugin via IntelliJ IDEA" /></p>
   </li>
   <li>
     <p>Select a Ballerina SDK for the project, and click <strong>Next</strong>.</p>
@@ -246,20 +258,20 @@
       <p><strong>Tip:</strong> <strong>If you do not have an already-configured Ballerina SDK to select,</strong> click <strong>Configure</strong>, select the location of the Ballerina distribution, click <strong>Open</strong>, and then click <strong>Next</strong> to continue with the project creation. However, if you do not configure, the plugin will auto detect the Ballerina Home by executing the <code class="highlighter-rouge">ballerina home</code> command.</p>
     </blockquote>
 
-    <p><img src="/v1-0/learn/images/select-sdk.png" alt="Select a Ballerina SDK" /></p>
+    <p><img src="/1.0/learn/images/select-sdk.png" alt="Select a Ballerina SDK" /></p>
   </li>
   <li>
     <p>Enter a name for the project, a location to save it, and click <strong>Finish</strong>.</p>
 
-    <p><img src="/v1-0/learn/images/enter-project-name-and-location.png" alt="Enter project name and location" /></p>
+    <p><img src="/1.0/learn/images/enter-project-name-and-location.png" alt="Enter project name and location" /></p>
   </li>
 </ol>
 
 <p>Now, you have successfully created a new Ballerina project.</p>
 
-<p><img src="/v1-0/learn/images/new-ballerina-project.png" alt="New Ballerina project" /></p>
+<p><img src="/1.0/learn/images/new-ballerina-project.png" alt="New Ballerina project" /></p>
 
-<h2 id="setting-up-ballerina-sdk-for-an-existing-project">Setting up Ballerina SDK for an existing project</h2>
+<h2 id="setting-up-ballerina-sdk-for-an-existing-project">Setting Up Ballerina SDK for an Existing Project</h2>
 
 <p>Follow the steps below to set up Ballerina SDK for an existing project.</p>
 
@@ -268,7 +280,7 @@
   <li>
     <p>In the IDE, click <strong>File</strong> in the top menu, and then click <strong>Project Structure</strong>.</p>
 
-    <p><img src="/v1-0/learn/images/open-project-structure.png" alt="Open the project structure" /></p>
+    <p><img src="/1.0/learn/images/open-project-structure.png" alt="Open the project structure" /></p>
   </li>
   <li>
     <p>If you do not have an already-configured Ballerina SDK, in the <strong>Project</strong> tab, click <strong>New</strong> under <strong>Project SDK:</strong>, click <strong>Ballerina SDK</strong>, and then click <strong>OK</strong>.</p>
@@ -277,17 +289,17 @@
       <p><strong>Tip:</strong> If you have already-configured Ballerina SDKs, select one under <strong>Project SDK:</strong>, and click <strong>OK</strong> to continue.</p>
     </blockquote>
 
-    <p><img src="/v1-0/learn/images/add-new-sdk.png" alt="Add a new Ballerina SDK" /></p>
+    <p><img src="/1.0/learn/images/add-new-sdk.png" alt="Add a new Ballerina SDK" /></p>
   </li>
   <li>
     <p>Select the location of the Ballerina distribution and click <strong>Open</strong>.</p>
 
-    <p><img src="/v1-0/learn/images/select-ballerina-distribution.png" alt="Select the Ballerina distribution" /></p>
+    <p><img src="/1.0/learn/images/select-ballerina-distribution.png" alt="Select the Ballerina distribution" /></p>
   </li>
   <li>
     <p>Click <strong>Apply</strong> to save the changes.</p>
 
-    <p><img src="/v1-0/learn/images/apply-changes.png" alt="Restart IntelliJ to apply the changes" /></p>
+    <p><img src="/1.0/learn/images/apply-changes.png" alt="Restart IntelliJ to apply the changes" /></p>
 
     <blockquote>
       <p><strong>Tip</strong> This prompts a restart request. Click <strong>Restart</strong> to apply the changes.</p>
@@ -297,7 +309,7 @@
 
 <p>Now, you have successfully added the Ballerina SDK to an existing project.</p>
 
-<h2 id="creating-a-new-ballerina-file">Creating a new Ballerina file</h2>
+<h2 id="creating-a-new-ballerina-file">Creating a New Ballerina File</h2>
 
 <p>Follow the steps below to create a new Ballerina file within a Ballerina project.</p>
 
@@ -305,7 +317,7 @@
   <li>
     <p>Right-click on the name of the project, click <strong>New</strong>, and then click <strong>Ballerina File</strong>.</p>
 
-    <p><img src="/v1-0/learn/images/create-new-ballerina-file.png" alt="Create a new Ballerina file" /></p>
+    <p><img src="/1.0/learn/images/create-new-ballerina-file.png" alt="Create a new Ballerina file" /></p>
   </li>
   <li>
     <p>Enter a name for the file, and click <strong>OK</strong>.</p>
@@ -314,39 +326,39 @@
       <p><strong>Tip:</strong> In this example, since the default <strong>Main</strong> template is selected as the <strong>Kind</strong>, it creates a new file with a main function.</p>
     </blockquote>
 
-    <p><img src="/v1-0/learn/images/select-file-kind.png" alt="Select the type of the file template" /></p>
+    <p><img src="/1.0/learn/images/select-file-kind.png" alt="Select the type of the file template" /></p>
   </li>
 </ol>
 
 <p>Now, you have successfully created a new Ballerina file with a <strong>main</strong> function.</p>
 
-<p><img src="/v1-0/learn/images/new-ballerina-file-with-main-function.png" alt="New Ballerina file with a main function" /></p>
+<p><img src="/1.0/learn/images/new-ballerina-file-with-main-function.png" alt="New Ballerina file with a main function" /></p>
 
-<h2 id="configuring-the-plugin-settings">Configuring the plugin settings</h2>
+<h2 id="configuring-the-plugin-settings">Configuring the Plugin Settings</h2>
 
-<h3 id="ballerina-home-auto-detection">Ballerina Home auto detection</h3>
+<h3 id="ballerina-home-auto-detection">Ballerina Home Auto Detection</h3>
 
 <p>In order to automatically detect the Ballerina Home that is being used (without setting up a Ballerina SDK), enable the <strong>Settings</strong> <strong>-&gt;</strong> <strong>Languages and Frameworks</strong> <strong>-&gt;</strong> <strong>Ballerina</strong> <strong>-&gt;</strong> <strong>Ballerina Home Auto Detection</strong> option.</p>
 
-<p><img src="/v1-0/learn/images/auto-detection.png" alt="Ballerina Home auto detection" /></p>
+<p><img src="/1.0/learn/images/auto-detection.png" alt="Ballerina Home auto detection" /></p>
 
-<h3 id="experimental-features">Experimental features</h3>
+<h3 id="experimental-features">Experimental Features</h3>
 
 <p>Ballerina Language Specification supports a set of experimental features such as transactions syntax. In order to be compatible with the experimental features and for supporting language intelligence in IntelliJ plugin, enable the <strong>Allow Experimental</strong> option in <strong>Settings</strong> <strong>-&gt;</strong> <strong>Languages and Frameworks</strong> <strong>-&gt;</strong> <strong>Ballerina</strong> <strong>-&gt;</strong> <strong>Experimental Features</strong>.</p>
 
-<p><img src="/v1-0/learn/images/experimental-features.png" alt="Experimental features" /></p>
+<p><img src="/1.0/learn/images/experimental-features.png" alt="Experimental features" /></p>
 
-<h3 id="language-server-debug-logs">Language Server Debug logs</h3>
+<h3 id="language-server-debug-logs">Language Server Debug Logs</h3>
 
 <p>In order to view the plugin debug logs, enable the <strong>Settings</strong> <strong>-&gt;</strong> <strong>Languages and Frameworks</strong> <strong>-&gt;</strong> <strong>Ballerina</strong> <strong>-&gt;</strong> <strong>Language Server Debug Logs</strong> option.</p>
 
 <p>Then, the language server debug logs will be added to the IDEA log files. (Click <strong>Help</strong> <strong>-&gt;</strong> <strong>Show Log In Files</strong> option to view them).</p>
 
-<p><img src="/v1-0/learn/images/debug-logs.png" alt="Debug logs" /></p>
+<p><img src="/1.0/learn/images/debug-logs.png" alt="Debug logs" /></p>
 
 <h2 id="whats-next">What’s next?</h2>
 
-<p>Next, for information on using the features of the IntelliJ Ballerina plugin, see <a href="/v1-0/learn/intellij-plugin/using-intellij-plugin-features">Using the IntelliJ plugin features</a>.</p>
+<p>Next, for information on using the features of the IntelliJ Ballerina plugin, see <a href="/1.0/learn/intellij-plugin/using-intellij-plugin-features">Using the IntelliJ plugin features</a>.</p>
 
 
                               </div>

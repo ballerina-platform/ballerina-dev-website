@@ -105,18 +105,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../lang.error/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../lang.error/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../lang.error/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../lang.error/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -173,8 +170,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the error's cause.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the error's cause.</p> 
                             </div>
                         </td>
                     </tr>
@@ -184,9 +183,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Returns the error's detail record.
-The returned value will be immutable.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -196,8 +196,10 @@ The returned value will be immutable.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the error's message.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the error's message.</p> 
                             </div>
                         </td>
                     </tr>
@@ -207,8 +209,10 @@ The returned value will be immutable.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns an object representing the stack trace of the error.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns an object representing the stack trace of the error.</p> 
                             </div>
                         </td>
                     </tr>
@@ -233,6 +237,9 @@ The returned value will be immutable.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns the error's cause.</p>
 
@@ -281,13 +288,16 @@ The returned value will be immutable.</p>
             </a>
             <h2 > detail </h2>
         <span class="method-types">
-            <p>(<a href="../lang.error/errors.html#T0">T0</a> e)</p>
+            <p>(<span class="builtin-type">error<ballerina/lang.error:1.0.0:Detail></span> e)</p>
             
                 <b> returns </b><a href="../lang.error/records/DetailType.html">DetailType</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns the error's detail record.
 The returned value will be immutable.</p>
@@ -301,7 +311,7 @@ The returned value will be immutable.</p>
                 <ul>
                     <li>
                         <span >e</span>
-                        <span class="type">  <a href="../lang.error/errors.html#T0">T0</a> </span>
+                        <span class="type">  <span class="builtin-type">error<ballerina/lang.error:1.0.0:Detail></span> </span>
                         
                     </li>
                     <li>
@@ -344,6 +354,9 @@ The returned value will be immutable.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns the error's message.</p>
 
@@ -394,11 +407,14 @@ The returned value will be immutable.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">error</span> e)</p>
             
-                <b> returns </b><a href="../lang.error/objects/CallStack.html">CallStack</a> 
+                <b> returns </b><a href="../lang.error/classes/CallStack.html">CallStack</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Returns an object representing the stack trace of the error.</p>
 
@@ -431,7 +447,7 @@ The returned value will be immutable.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.error/objects/CallStack.html">CallStack</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.error/classes/CallStack.html">CallStack</a></span>)</li>
                 <li><p>a new object representing the stack trace of the error value</p>
 </li>
             </ul>

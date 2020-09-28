@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Azure Functions Deployment
+title: Azure Functions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/azure-functions-deployment
 redirect_from:
@@ -10,13 +10,12 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">system</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">system</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">azure</span><span class="p">.</span><span class="nx">functions</span> <span class="k">as</span> <span class="nx">af</span><span class="p">;</span>
 <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">Function</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nd">@af:HTTPTrigger {</span> <span class="nx">authLevel</span><span class="p">:</span> <span class="s">&quot;anonymous&quot;</span> <span class="p">}</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> 
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nd">@af:HTTPTrigger {</span> <span class="nx">authLevel</span><span class="p">:</span> <span class="s">&quot;anonymous&quot;</span> <span class="p">}</span> <span class="kt">string</span> <span class="nx">payload</span><span class="p">)</span> 
                       <span class="nx">returns</span> <span class="nd">@af:HTTPOutput string|error {</span>
-    <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">check</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;!&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">payload</span> <span class="o">+</span> <span class="s">&quot;!&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="err">@</span><span class="nx">af</span><span class="p">:</span><span class="nx">Function</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">fromHttpToQueue</span><span class="p">(</span><span class="nx">af</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">ctx</span><span class="p">,</span> 
@@ -117,7 +116,7 @@ redirect_from:
 <span class="s">public function httpTriggerCosmosDBOutput1(</span>
 <span class="s">    @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) </span>
 <span class="s">    returns @af:CosmosDBOutput { connectionStringSetting: &quot;</span><span class="nx">CosmosDBConnection</span><span class="s">&quot;, </span>
-<span class="s">                                databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
+<span class="s">                                 databaseName: &quot;</span><span class="nx">db1</span><span class="s">&quot;, collectionName: &quot;</span><span class="nx">c1</span><span class="s">&quot; } json {</span>
 <span class="s">    json entry = { id: system:uuid(), name: &quot;</span><span class="nx">Saman</span><span class="s">&quot;, country: &quot;</span><span class="nx">Sri</span> <span class="nx">Lanka</span><span class="s">&quot; };</span>
 <span class="s">    hb.payload = &quot;</span><span class="nx">Adding</span> <span class="nx">entry</span><span class="p">:</span> <span class="s">&quot; + entry.toString();</span>
 <span class="s">    return entry;</span>
@@ -201,7 +200,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Azure Functions Deployment</h2>
+                            <h2>Azure Functions</h2>
                             <p><p>Azure Functions is an event driven, serverless computing platform.
  Ballerina functions can be deployed in Azure Functions by annotating a Ballerina function with &ldquo;@functions:Function&rdquo;.
  For more information, see the <a href="https://ballerina.io/learn/deployment/azure-functions/">Azure Deployment Guide</a>.</p>
@@ -212,19 +211,12 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="knative-deployment.html">
+                                    <a class="prev" href="aws-lambda-deployment.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Knative Deployment</p>
+                                        <p>AWS Lambda Deployment</p>
                                     </a>
                                 </div>
                                  
-                                <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-client-endpoint.html">
-                                        <span>NEXT ></span>
-                                        <p>Client Endpoint</p>
-                                    </a>
-                                </div>
-                                
                             </div>
                         </td>
                     </tr>
@@ -237,12 +229,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <li>
+                                        <!--<li>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
+                                        </li>-->
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/module-ballerinax-azure.functions/tree/ballerina-1.2.x/azurefunctions-extension-examples/examples/azure-functions-deployment"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        <!--<li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=51ce743c299556f6f06df5d7e17f5fe9&file=azure_functions_deployment.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>-->
                                     </ul>
                                 </div>
                             </td>
@@ -303,8 +298,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/system;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/system;
 import ballerinax/azure.functions as af;
 </code></pre></div>
 
@@ -318,9 +312,9 @@ import ballerinax/azure.functions as af;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
-public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } http:Request req) 
+public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } string payload) 
                       returns @af:HTTPOutput string|error {
-    return &quot;Hello, &quot; + check &lt;@untainted&gt; req.getTextPayload() + &quot;!&quot;;
+    return &quot;Hello, &quot; + payload + &quot;!&quot;;
 }
 </code></pre></div>
 
@@ -631,7 +625,7 @@ public function httpTriggerCosmosDBInput3(
 public function httpTriggerCosmosDBOutput1(
     @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
     returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
+                                 databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
     json entry = { id: system:uuid(), name: &quot;Saman&quot;, country: &quot;Sri Lanka&quot; };
     hb.payload = &quot;Adding entry: &quot; + entry.toString();
     return entry;

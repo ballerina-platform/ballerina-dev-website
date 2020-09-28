@@ -211,6 +211,69 @@
                               <div class="section">
                                  <h1 id="how-to-run-and-deploy-ballerina-programs">How to Run and Deploy Ballerina Programs</h1>
 
+                                 <ul>
+                                  <li><a href="#running-ballerina-programs-and-services">Running Ballerina Programs and Services</a>
+                                  
+                                  
+                                  <ul>
+                                  <li><a href="#running-standalone-source-code">Running Standalone Source Code</a></li>
+                                  
+                                  <li><a href="#running-a-project">Running a Project</a></li>
+                                  
+                                  <li><a href="#configuring-your-ballerina-runtimes">Configuring Your Ballerina Runtimes</a></li>
+                                  
+                                  <li><a href="#ballerina-runtime-configuration-files">Ballerina Runtime Configuration Files</a></li>
+                                  
+                                  <li><a href="#sourcing-parameters-into-ballerina-programs">Sourcing Parameters Into Ballerina Programs</a>
+                                  
+                                  
+                                  <ul>
+                                  <li><a href="#sourcing-cli-parameters">Sourcing CLI Parameters</a></li>
+                                  
+                                  <li><a href="#sourcing-configuration-values">Sourcing Configuration Values</a></li></ul>
+                                  </li>
+                                  
+                                  <li><a href="#configuring-secrets-as-configuration-items">Configuring Secrets as Configuration Items</a>
+                                  
+                                  
+                                  <ul>
+                                  <li><a href="#creating-a-secured-value">Creating a Secured Value</a></li>
+                                  
+                                  <li><a href="#using-the-secured-value-at-runtime">Using the Secured Value at Runtime</a></li>
+                                  
+                                  <li><a href="#decrypting-the-value">Decrypting the Value</a></li></ul>
+                                  </li></ul>
+                                  </li>
+                                  
+                                  <li><a href="#deploying-ballerina-programs-and-services">Deploying Ballerina Programs and Services</a>
+                                  
+                                  
+                                  <ul>
+                                  <li><a href="#how-deployment-works">How Deployment Works</a></li>
+                                  
+                                  <li><a href="#how-to-enable-deployment">How to Enable Deployment</a>
+                                  
+                                  
+                                  <ul>
+                                  <li><a href="#docker---based-deployment">Docker-Based Deployment</a>
+                                  
+                                  
+                                  <ul>
+                                  <li><a href="#supported-docker-annotations">Supported Docker Annotations</a></li></ul>
+                                  </li>
+                                  
+                                  <li><a href="#kubernetes---based-deployment">Kubernetes-Based Deployment</a>
+                                  
+                                  
+                                  <ul>
+                                  <li><a href="#supported-kubernetes-annotations">Supported Kubernetes Annotations</a></li></ul>
+                                  </li></ul>
+                                  </li>
+                                  
+                                  <li><a href="#extending-ballerina-deployment-and-annotations">Extending Ballerina Deployment and Annotations</a></li></ul>
+                                  </li>
+                                  </ul>
+
 <h2 id="running-ballerina-programs-and-services">Running Ballerina Programs and Services</h2>
 <p>A Ballerina application can have:</p>
 
@@ -309,7 +372,7 @@ Hello, Ballerina <span class="o">!</span>
 Hello, Ballerina <span class="o">!</span>
 </code></pre></div></div>
 
-<h4 id="configure-secrets-as-configuration-items">Configure Secrets as Configuration Items</h4>
+<h4 id="configuring-secrets-as-configuration-items">Configuring Secrets as Configuration Items</h4>
 <p>Ballerina provides support for encrypting sensitive data such as passwords and allows access to them securely through the configuration API in the code.</p>
 
 <h5 id="creating-a-secured-value">Creating a Secured Value</h5>
@@ -382,7 +445,7 @@ Hello, Ballerina <span class="o">!</span>
   <li>Build the Ballerina project.</li>
 </ol>
 
-<h4 id="docker-based-deployment">Docker-Based Deployment</h4>
+<h4 id="docker---based-deployment">Docker-Based Deployment</h4>
 
 <p>See the following example on how a developer can add Docker support in the code.</p>
 
@@ -583,7 +646,7 @@ Hello, World!
 
 <p>For more information, see the <a href="https://github.com/ballerinax/docker">Docker build extension GitHub repo</a>.</p>
 
-<h4 id="kubernetes-based-deployment">Kubernetes-Based Deployment</h4>
+<h4 id="kubernetes---based-deployment">Kubernetes-Based Deployment</h4>
 
 <p>The Kubernetes builder extension offers native support for running Ballerina programs on Kubernetes with the use of annotations that you can include as part of your service code. Also, it will take care of the creation of the Docker images, so you don’t need to explicitly create Docker images prior to deployment on Kubernetes.</p>
 
@@ -1239,7 +1302,7 @@ employee-data-service-ballerina-conf-config-map   1         2m
   </tbody>
 </table>
 
-<h3 id="extend-ballerina-deployment-and-annotations">Extend Ballerina Deployment and Annotations</h3>
+<h3 id="extending-ballerina-deployment-and-annotations">Extending Ballerina Deployment and Annotations</h3>
 <p>Ballerina can be augmented with your own annotations that represent your own unique deployment artifacts. You can also write builder extensions that generate these files during compilation.</p>
 
                               </div>

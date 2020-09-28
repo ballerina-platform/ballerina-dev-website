@@ -57,11 +57,7 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client connection closed successfully.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tcp_socket_client</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">Print</span> <span class="nx">the</span> <span class="nx">response</span> <span class="nx">that</span> <span class="nx">is</span> <span class="nx">obtained</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">server</span><span class="p">.</span>
-<span class="nx">Hello</span> <span class="nx">Ballerina</span> <span class="nx">back</span>
-<span class="nx">Client</span> <span class="nx">connection</span> <span class="nx">closed</span> <span class="nx">successfully</span><span class="p">.</span>
+<span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span>
@@ -91,15 +87,16 @@ redirect_from:
                                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Number of bytes written: &quot;</span>
                                     <span class="o">+</span> <span class="nx">writeResult</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
                                 <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">writeResult</span><span class="p">;</span>
-                                <span class="nx">payloadByte</span> <span class="p">=</span> <span class="nx">payloadByte</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">writeResult</span><span class="p">,</span> <span class="nx">arrayLength</span><span class="p">);</span>
+                                <span class="nx">payloadByte</span> <span class="p">=</span> <span class="nx">payloadByte</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">writeResult</span><span class="p">,</span>
+                                                                <span class="nx">arrayLength</span><span class="p">);</span>
                             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Unable to write the content&quot;</span><span class="p">,</span>
                                     <span class="nx">writeResult</span><span class="p">);</span>
                             <span class="p">}</span>
                         <span class="p">}</span>
                     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while writing content to the caller&quot;</span><span class="p">,</span>
-                            <span class="nx">str</span><span class="p">);</span>
+                        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while writing content to &quot;</span> <span class="o">+</span>
+                                        <span class="s">&quot;the caller&quot;</span><span class="p">,</span> <span class="nx">str</span><span class="p">);</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -112,12 +109,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">er</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="nx">er</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tcp_socket_listener</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">socket</span> <span class="nx">listener</span> <span class="nx">starts</span> <span class="nx">listening</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">port</span> <span class="mi">61598</span> <span class="k">for</span> <span class="nx">incoming</span> <span class="nx">client</span> <span class="nx">requests</span><span class="p">.</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">socket</span> <span class="nx">listener</span> <span class="mi">615982019</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">18</span> <span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mi">429</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Client</span> <span class="nx">connected</span><span class="p">:</span> <span class="mi">504372137</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">18</span> <span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mi">467</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Number</span> <span class="nx">of</span> <span class="nx">bytes</span> <span class="nx">written</span><span class="p">:</span> <span class="mi">20</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mo">02</span><span class="o">-</span><span class="mi">18</span> <span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mi">487</span> <span class="nx">INFO</span>  <span class="p">[]</span> <span class="o">-</span> <span class="nx">Client</span> <span class="nx">left</span><span class="p">:</span> <span class="mi">504372137</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -170,6 +162,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/tcp-socket-listener-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -568,15 +561,16 @@ import ballerina/socket;
                                 log:printInfo(&quot;Number of bytes written: &quot;
                                     + writeResult.toString());
                                 i = i + writeResult;
-                                payloadByte = payloadByte.slice(writeResult, arrayLength);
+                                payloadByte = payloadByte.slice(writeResult,
+                                                                arrayLength);
                             } else {
                                 log:printError(&quot;Unable to write the content&quot;,
                                     writeResult);
                             }
                         }
                     } else {
-                        log:printError(&quot;Error while writing content to the caller&quot;,
-                            str);
+                        log:printError(&quot;Error while writing content to &quot; +
+                                        &quot;the caller&quot;, str);
                     }
                 }
             } else {
@@ -705,7 +699,7 @@ ballerina run tcp_socket_listener.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

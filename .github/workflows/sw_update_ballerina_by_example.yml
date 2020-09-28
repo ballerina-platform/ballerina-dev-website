@@ -1,6 +1,7 @@
 name: Create PR for new Swan Lake BBEs pages
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -46,9 +47,7 @@ jobs:
           exit 1
         fi
 
-        mv ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples/index.json ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples/all-bbes.json
-
-        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "false"
+        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "false" "false"
 
     - name: Remove old examples file
       run: git rm -r swan-lake/learn/by-example

@@ -5,7 +5,7 @@
       "description": "\u003cp\u003e\u003ca href\u003d\"https://www.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
       "id": "Connection",
       "description": "\u003cp\u003eRepresents a single network connection to the RabbitMQ broker.\u003c/p\u003e",
@@ -126,5 +126,6 @@
       "description": "\u003cp\u003eThe annotation, which is used to configure the subscription.\u003c/p\u003e",
       "moduleId": "rabbitmq"
     }
-  ]
+  ],
+  "abstractObjects": []
 }

@@ -101,18 +101,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../websub/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../websub/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../websub/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../websub/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../websub/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -193,8 +194,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Function to add link headers to a response to allow WebSub discovery.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Function to add link headers to a response to allow WebSub discovery.</p> 
                             </div>
                         </td>
                     </tr>
@@ -204,8 +207,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.</p>
-
+                                
+                                <p>Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.</p> 
                             </div>
                         </td>
                     </tr>
@@ -215,9 +218,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Starts up the Ballerina Hub.</p>
-
-
+                                
+                                <p>Starts up the Ballerina Hub.</p>   
                             </div>
                         </td>
                     </tr>
@@ -235,11 +237,14 @@
             </a>
             <h2 > addWebSubLinkHeader </h2>
         <span class="method-types">
-            <p>(<a href="../http/objects/Response.html">Response</a> response, <span class="array-type"><span class="builtin-type">string</span>[]</span> hubs, <span class="builtin-type">string</span> topic)</p>
+            <p>(<a href="../http/classes/Response.html">Response</a> response, <span class="array-type"><span class="builtin-type">string</span>[]</span> hubs, <span class="builtin-type">string</span> topic)</p>
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Function to add link headers to a response to allow WebSub discovery.</p>
 
@@ -252,7 +257,7 @@
                 <ul>
                     <li>
                         <span >response</span>
-                        <span class="type">  <a href="../http/objects/Response.html">Response</a> </span>
+                        <span class="type">  <a href="../http/classes/Response.html">Response</a> </span>
                         
                     </li>
                     <li>
@@ -312,13 +317,14 @@
             </a>
             <h2 > extractTopicAndHubUrls </h2>
         <span class="method-types">
-            <p>(<a href="../http/objects/Response.html">Response</a> response)</p>
+            <p>(<a href="../http/classes/Response.html">Response</a> response)</p>
             
                 <b> returns </b><span>[</span><span class="builtin-type">string</span>, <span class="array-type"><span class="builtin-type">string</span>[]</span><span>]</span> | <span class="builtin-type">error</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.</p>
 
@@ -331,7 +337,7 @@
                 <ul>
                     <li>
                         <span >response</span>
-                        <span class="type">  <a href="../http/objects/Response.html">Response</a> </span>
+                        <span class="type">  <a href="../http/classes/Response.html">Response</a> </span>
                         
                     </li>
                     <li>
@@ -369,11 +375,12 @@
         <span class="method-types">
             <p>(<a href="../http/listeners/Listener.html">Listener</a> hubServiceListener, <span class="builtin-type">string</span> basePath, <span class="builtin-type">string</span> subscriptionResourcePath, <span class="builtin-type">string</span> publishResourcePath, <a href="../http/records/ServiceAuth.html">ServiceAuth</a> serviceAuth, <a href="../http/records/ResourceAuth.html">ResourceAuth</a> subscriptionResourceAuth, <a href="../http/records/ResourceAuth.html">ResourceAuth</a> publisherResourceAuth, <span class="builtin-type">string?</span> publicUrl, <a href="../websub/records/HubConfiguration.html">HubConfiguration</a> hubConfiguration)</p>
             
-                <b> returns </b><a href="../websub/objects/Hub.html">Hub</a> | <a href="../websub/records/HubStartedUpError.html">HubStartedUpError</a> | <a href="../websub/errors.html#HubStartupError">HubStartupError</a> 
+                <b> returns </b><a href="../websub/classes/Hub.html">Hub</a> | <a href="../websub/records/HubStartedUpError.html">HubStartedUpError</a> | <a href="../websub/errors.html#HubStartupError">HubStartupError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Starts up the Ballerina Hub.</p>
 <pre><code class="language-ballerina">  websub:Hub|websub:HubStartedUpError|websub:HubStartupError webSubHub = websub:startHub(new http:Listener(9191),
@@ -549,7 +556,7 @@ specified, defaults to <code>http(s)://localhost:{port}/{basePath}/{publishResou
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../websub/objects/Hub.html">Hub</a> | <a href="../websub/records/HubStartedUpError.html">HubStartedUpError</a> | <a href="../websub/errors.html#HubStartupError">HubStartupError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../websub/classes/Hub.html">Hub</a> | <a href="../websub/records/HubStartedUpError.html">HubStartedUpError</a> | <a href="../websub/errors.html#HubStartupError">HubStartupError</a></span>)</li>
                 <li><p>A newly started WebSub Hub or else a <code>websub:HubStartedUpError</code> indicating
 that the hub is already started, and including the <code>websub:Hub</code> object representing the
 already started up hub</p>

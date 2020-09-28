@@ -58,13 +58,7 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">defaultCity</span> <span class="p">=</span> <span class="s">&quot;San Jose&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">city</span> <span class="p">=</span> <span class="nx">city2</span> <span class="err">?</span><span class="p">:</span> <span class="nx">defaultCity</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">city</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">optional_field_access</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Age</span><span class="p">:</span>
-<span class="nx">Age</span><span class="p">:</span> <span class="mi">24</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">age</span><span class="p">=</span><span class="mi">30</span> <span class="nx">addr</span><span class="p">=</span><span class="nx">line01</span><span class="p">=</span><span class="nx">No</span><span class="p">.</span> <span class="mi">61</span> <span class="nx">line02</span><span class="p">=</span><span class="nx">Brandon</span> <span class="nx">street</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Santa</span> <span class="nx">Clara</span> <span class="nx">state</span><span class="p">=</span><span class="nx">CA</span> <span class="nx">zipcode</span><span class="p">=</span><span class="mi">95134</span>
-<span class="nx">Santa</span> <span class="nx">ClaraSan</span> <span class="nx">Jose</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -117,6 +111,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/optional-field-access/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -558,7 +553,7 @@ redirect_from:
 ballerina run optional_field_access.bal
 Age:
 Age: 24
-name=John age=30 addr=line01=No. 61 line02=Brandon street city=Santa Clara state=CA zipcode=95134
+{&quot;name&quot;:&quot;John&quot;,&quot;age&quot;:30,&quot;addr&quot;:{&quot;line01&quot;:&quot;No. 61&quot;,&quot;line02&quot;:&quot;Brandon street&quot;,&quot;city&quot;:&quot;Santa Clara&quot;,&quot;state&quot;:&quot;CA&quot;,&quot;zipcode&quot;:&quot;95134&quot;}}
 Santa Clara
 </code></pre></div>
 
@@ -599,7 +594,7 @@ Santa Clara
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

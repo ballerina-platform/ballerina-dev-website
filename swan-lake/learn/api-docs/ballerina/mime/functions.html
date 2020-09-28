@@ -124,11 +124,10 @@ the RFC 2045 standard.
     <ul>
         
         
-            
-                <li>
-                    <a  data="objects" href="../mime/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../mime/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -197,6 +196,9 @@ the RFC 2045 standard.
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p><strong>Deprecated API</strong>.
                             </div>
                         </td>
@@ -206,6 +208,9 @@ the RFC 2045 standard.
                         <td width="30%"><a class="functions " href="#base64DecodeBlob">base64DecodeBlob</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 <p><strong>Deprecated API</strong>.
                             </div>
@@ -217,6 +222,9 @@ the RFC 2045 standard.
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p><strong>Deprecated API</strong>.
                             </div>
                         </td>
@@ -226,6 +234,9 @@ the RFC 2045 standard.
                         <td width="30%"><a class="functions " href="#base64EncodeBlob">base64EncodeBlob</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 <p><strong>Deprecated API</strong>.
                             </div>
@@ -237,8 +248,10 @@ the RFC 2045 standard.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.</p> 
                             </div>
                         </td>
                     </tr>
@@ -248,8 +261,10 @@ the RFC 2045 standard.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.</p> 
                             </div>
                         </td>
                     </tr>
@@ -259,8 +274,10 @@ the RFC 2045 standard.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Constructs a <code>DecodeError</code> with the given details.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Constructs a <code>DecodeError</code> with the given details.</p> 
                             </div>
                         </td>
                     </tr>
@@ -270,8 +287,10 @@ the RFC 2045 standard.
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Constructs an <code>EncodeError</code> with the given details.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Constructs an <code>EncodeError</code> with the given details.</p> 
                             </div>
                         </td>
                     </tr>
@@ -289,13 +308,16 @@ the RFC 2045 standard.
             </a>
             <h2 > base64Decode </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeDecoded, <span class="builtin-type">string</span> charset)</p>
+            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeDecoded, <span class="builtin-type">string</span> charset)</p>
             
-                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
+                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p><strong>Deprecated API</strong>. Decodes a given input with MIME specific Base64 encoding scheme.</p>
 
@@ -308,7 +330,7 @@ the RFC 2045 standard.
                 <ul>
                     <li>
                         <span >contentToBeDecoded</span>
-                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> </span>
                         
                     </li>
                     <li>
@@ -345,7 +367,7 @@ the RFC 2045 standard.
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a></span>)</li>
                 <li><p>A decoded <code>string</code> if the given input is of type string, a decoded <code>byte[]</code> if the given input is of
 type byte[], a decoded <code>io:ReadableByteChannel</code> if the given input is of type io:ReadableByteChannel
 or else a <code>mime:DecodeError</code> in case of errors</p>
@@ -370,6 +392,9 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p><strong>Deprecated API</strong>. Decodes a given byte[] using the Base64 encoding scheme.</p>
 
@@ -418,13 +443,16 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
             </a>
             <h2 > base64Encode </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeEncoded, <span class="builtin-type">string</span> charset)</p>
+            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeEncoded, <span class="builtin-type">string</span> charset)</p>
             
-                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
+                <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p><strong>Deprecated API</strong>. Encodes a given input with MIME specific Base64 encoding scheme.</p>
 
@@ -437,7 +465,7 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
                 <ul>
                     <li>
                         <span >contentToBeEncoded</span>
-                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> </span>
                         
                     </li>
                     <li>
@@ -474,7 +502,7 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/classes/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a></span>)</li>
                 <li><p>An encoded <code>string</code> if the given input is of type string, an encoded <code>byte[]</code> if the given input is of
 type byte[], an encoded <code>io:ReadableByteChannel</code> if the given input is of type <code>io:ReadableByteChannel</code>,
 or else a <code>mime:EncodeError</code> record in case of errors</p>
@@ -499,6 +527,9 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p><strong>Deprecated API</strong>. Encodes a given byte[] using the Base64 encoding scheme.</p>
 
@@ -549,11 +580,14 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> contentDisposition)</p>
             
-                <b> returns </b><a href="../mime/objects/ContentDisposition.html">ContentDisposition</a> 
+                <b> returns </b><a href="../mime/classes/ContentDisposition.html">ContentDisposition</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.</p>
 
@@ -586,7 +620,7 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../mime/objects/ContentDisposition.html">ContentDisposition</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../mime/classes/ContentDisposition.html">ContentDisposition</a></span>)</li>
                 <li><p>A <code>ContentDisposition</code> object</p>
 </li>
             </ul>
@@ -604,11 +638,14 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> contentType)</p>
             
-                <b> returns </b><a href="../mime/objects/MediaType.html">MediaType</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a> 
+                <b> returns </b><a href="../mime/classes/MediaType.html">MediaType</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.</p>
 
@@ -641,7 +678,7 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../mime/objects/MediaType.html">MediaType</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../mime/classes/MediaType.html">MediaType</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a></span>)</li>
                 <li><p><code>MediaType</code> object or else a <code>mime:InvalidContentTypeError</code> in case of an invalid content-type</p>
 </li>
             </ul>
@@ -664,6 +701,9 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Constructs a <code>DecodeError</code> with the given details.</p>
 
@@ -719,6 +759,9 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Constructs an <code>EncodeError</code> with the given details.</p>
 

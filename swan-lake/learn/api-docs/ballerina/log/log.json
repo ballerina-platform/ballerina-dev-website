@@ -5,11 +5,13 @@
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -90,6 +92,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -164,7 +167,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003cerror?\u003e ()",
+          "defaultValue": "()",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",
@@ -193,6 +196,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -273,6 +277,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -353,6 +358,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -433,6 +439,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -460,7 +467,7 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "\u003cstring?\u003e ()",
+          "defaultValue": "()",
           "type": {
             "orgName": "ballerina",
             "moduleName": "lang.annotations",

@@ -11,6 +11,10 @@ redirect_from:
 
 # Annotations, Documentation and Comments
 
+- [Annotations](#annotations)
+- [Comments](#comments)
+- [Documentation](#documentation)
+
 ## Annotations
 * Do not have spaces around the `@` symbol.
 * Indent annotations to align them with the starting position of the owner (statement or definition).

@@ -32,15 +32,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
     <span class="kt">json</span> <span class="nx">lastName</span> <span class="p">=</span> <span class="nx">p2</span><span class="p">[</span><span class="s">&quot;lname&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">lastName</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">json_objects</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;color&quot;</span><span class="p">:</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">}</span>
-<span class="nx">j</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;:</span> <span class="kc">true</span>
-<span class="p">{</span><span class="s">&quot;fname&quot;</span><span class="p">:</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;lname&quot;</span><span class="p">:</span><span class="s">&quot;Stallone&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span><span class="mi">30</span><span class="p">}</span>
-<span class="p">{</span><span class="s">&quot;fname&quot;</span><span class="p">:</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;lname&quot;</span><span class="p">:</span><span class="s">&quot;Stallone&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span><span class="mi">31</span><span class="p">}</span>
-<span class="p">{</span><span class="s">&quot;fname&quot;</span><span class="p">:</span><span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="s">&quot;lname&quot;</span><span class="p">:</span><span class="s">&quot;Stallone&quot;</span><span class="p">,</span> <span class="s">&quot;address&quot;</span><span class="p">:{</span><span class="s">&quot;line&quot;</span><span class="p">:</span><span class="s">&quot;20 Palm Grove&quot;</span><span class="p">,</span> <span class="s">&quot;city&quot;</span><span class="p">:</span><span class="s">&quot;Colombo 03&quot;</span><span class="p">,</span> <span class="s">&quot;country&quot;</span><span class="p">:</span><span class="s">&quot;Sri Lanka&quot;</span><span class="p">}}</span>
-<span class="nx">Stallone</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -90,6 +82,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/json-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -375,7 +368,7 @@ Stallone
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

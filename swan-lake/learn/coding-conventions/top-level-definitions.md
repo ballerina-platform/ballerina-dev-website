@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Top Level definitions
+title: Top-Level Definitions
 active: definitions
 permalink: /swan-lake/learn/coding-conventions/top-level-definitions/
 redirect_from:
@@ -10,7 +10,7 @@ redirect_from:
   - /swan-lake/learn/coding-conventions/top-level-definitions
 ---
 
-# Top Level definitions
+# Top-Level Definitions
 
 * Do not indent the top level definitions. 
   
@@ -45,6 +45,13 @@ service hello on ep1 {
         
 ```
 
+- [Imports](#imports)
+- [Function Definition](#function-definition)
+- [Service Definition](#service-definition)
+- [Object Definition](#object-definition)
+- [Record Definition](#record-definition)
+- [Referencing Record or Abstract Object](#referencing-record-or-abstract-object)
+
 ## Imports
 
 * Do not keep spaces between the organization name, divider `/`, and module name.
@@ -57,7 +64,7 @@ import ballerina/http;
 
 * Imports should be sorted alphabetically, first by the organization name and then by the module name.
 
-## Function definition
+## Function Definition
 * Do not keep spaces between the function name and the open parentheses `(` of the function signature.
 
 **Example,**
@@ -110,7 +117,7 @@ function getAddress(int value, string name) returns
 }          
 ```
 
-## Service definition
+## Service Definition
 
 * Keep the listener inline with the service signature.
   
@@ -143,7 +150,7 @@ service hello on ep1, ep2 {
 
 * Block indent each function definition, resource definition, and field definition inside a service definition.
  
-## Object definition
+## Object Definition
 
 * Block indent each field definition and each function definition on their own line.
 * Init function should be placed before all the other functions. 
@@ -179,7 +186,7 @@ type Person object {
 }
 ```
 
-## Record definition
+## Record Definition
 Block indent each of the field definitions (including the Rest field) in their own line.
 
 **Example,**
@@ -198,7 +205,7 @@ type Person record {|
 |}
 ```
 
-## Referencing record or abstract object 
+## Referencing Record or Abstract Object 
 * Do not keep spaces between the `*`, the abstract object name, or the record name.
   
 **Example,**

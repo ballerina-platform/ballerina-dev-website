@@ -114,173 +114,18 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "Info",
-      "description": "",
-      "isDeprecated": false
-    },
-    {
-      "fields": [
-        {
-          "defaultValue": "1.0",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "contextVersion",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "\"\"",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionId",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "\"\"",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionBlockId",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "\"\"",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "coordinationType",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "\"\"",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "registerAtURL",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": false,
-      "name": "TransactionContext",
       "description": "",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [
     {
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "3",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "int",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "count",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -337,41 +182,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "3",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "int",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "count",
-            "description": "",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -428,33 +241,17 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "DefaultRetryManager",
       "description": "",
       "isDeprecated": false
-    },
-    {
-      "fields": [],
-      "methods": [],
-      "otherMethods": [],
-      "isAnonymous": false,
-      "name": "LocalParticipant",
-      "description": "",
-      "isDeprecated": false
-    },
-    {
-      "fields": [],
-      "methods": [],
-      "otherMethods": [],
-      "isAnonymous": false,
-      "name": "Participant",
-      "description": "",
-      "isDeprecated": false
-    },
+    }
+  ],
+  "abstractObjects": [
     {
       "fields": [],
       "methods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -511,65 +308,6 @@
           "isDeprecated": false
         }
       ],
-      "otherMethods": [
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "error",
-                "category": "errors",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "e",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "boolean",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "shouldRetry",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": false,
       "name": "RetryManager",
       "description": "",
       "isDeprecated": false
@@ -579,85 +317,7 @@
   "listeners": [],
   "functions": [
     {
-      "isRemote": false,
-      "isExtern": true,
-      "parameters": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionId",
-          "description": "\u003cp\u003eGlobally unique transaction ID.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionBlockId",
-          "description": "\u003cp\u003eID of the transaction block. Each transaction block in a process has a unique ID.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "returnParameters": [
-        {
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "boolean",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "",
-          "description": "\u003cp\u003etrue or false representing whether the resource manager abortion is successful or not.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "name": "abortResourceManagers",
-      "description": "\u003cp\u003eAbort local resource managers.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [],
@@ -688,6 +348,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [],
@@ -718,376 +379,7 @@
       "isDeprecated": false
     },
     {
-      "isRemote": false,
-      "isExtern": true,
-      "parameters": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionBlockId",
-          "description": "\u003cp\u003eID of the transaction block.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "returnParameters": [],
-      "name": "cleanupTransactionContext",
-      "description": "\u003cp\u003eCleanup the transaction context.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
-      "isRemote": false,
-      "isExtern": true,
-      "parameters": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionId",
-          "description": "\u003cp\u003eGlobally unique transaction ID.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionBlockId",
-          "description": "\u003cp\u003eID of the transaction block. Each transaction block in a process has a unique ID.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "returnParameters": [
-        {
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "boolean",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "",
-          "description": "\u003cp\u003etrue or false representing whether the commit is successful or not.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "name": "commitResourceManagers",
-      "description": "\u003cp\u003eCommit local resource managers.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
-      "isRemote": false,
-      "isExtern": false,
-      "parameters": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "coordinationType",
-          "description": "\u003cp\u003eThe type of the coordination relevant to the transaction block for which this TransactionContext\nis being created for.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionBlockId",
-          "description": "\u003cp\u003eThe ID of the transaction block.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "returnParameters": [
-        {
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.transaction",
-            "category": "types",
-            "isAnonymousUnionType": true,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [
-              {
-                "orgName": "ballerina",
-                "moduleName": "lang.transaction",
-                "name": "TransactionContext",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "error",
-                "category": "errors",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              }
-            ],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "",
-          "description": "\u003cp\u003eTransactionContext if the coordination type is valid or an error in case of an invalid coordination type.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "name": "createTransactionContext",
-      "description": "\u003cp\u003eA new transaction context is created by calling this function. At this point, a transaction object\ncorresponding to the coordinationType will also be created and stored as an initiated transaction.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
-      "isRemote": false,
-      "isExtern": false,
-      "parameters": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionId",
-          "description": "\u003cp\u003eGlobally unique transaction ID.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionBlockId",
-          "description": "\u003cp\u003eID of the transaction block. Each transaction block in a process has a unique ID.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "returnParameters": [
-        {
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.transaction",
-            "category": "types",
-            "isAnonymousUnionType": true,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [
-              {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              {
-                "orgName": "ballerina",
-                "moduleName": "lang.transaction",
-                "name": "Error",
-                "category": "errors",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              }
-            ],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "",
-          "description": "\u003cp\u003eA string or an error representing the transaction end succcess status or failure respectively.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "name": "endTransaction",
-      "description": "\u003cp\u003eWhen a transaction block in Ballerina code ends, it will call this function to end a transaction.\nEnding a transaction by a participant has no effect because it is the initiator who can decide whether to\ncommit or abort a transaction.\nDepending on the state of the transaction, the initiator decides to commit or abort the transaction.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
-      "isRemote": false,
-      "isExtern": true,
-      "parameters": [],
-      "returnParameters": [
-        {
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "boolean",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "",
-          "description": "\u003cp\u003eis failed.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "name": "getAndClearFailure",
-      "description": "\u003cp\u003eGet and Cleanup the failure.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],
@@ -1120,6 +412,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1190,6 +483,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],
@@ -1222,6 +516,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],
@@ -1254,38 +549,7 @@
       "isDeprecated": false
     },
     {
-      "isRemote": false,
-      "isExtern": true,
-      "parameters": [],
-      "returnParameters": [
-        {
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "boolean",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "name": "isTransactional",
-      "description": "",
-      "isDeprecated": false
-    },
-    {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1319,6 +583,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1352,141 +617,7 @@
       "isDeprecated": false
     },
     {
-      "isRemote": false,
-      "isExtern": true,
-      "parameters": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionId",
-          "description": "\u003cp\u003eGlobally unique transaction ID.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionBlockId",
-          "description": "\u003cp\u003eID of the transaction block. Each transaction block in a process has a unique ID.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "returnParameters": [
-        {
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "boolean",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "",
-          "description": "\u003cp\u003etrue or false representing whether the resource manager preparation is successful or not.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "name": "prepareResourceManagers",
-      "description": "\u003cp\u003ePrepare local resource managers.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
-      "isRemote": false,
-      "isExtern": true,
-      "parameters": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionBlockId",
-          "description": "\u003cp\u003eID of the transaction block.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "\u003cerror?\u003e ()",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "error",
-            "category": "errors",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": true,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "err",
-          "description": "\u003cp\u003eThe cause of the rollback.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "returnParameters": [],
-      "name": "rollbackTransaction",
-      "description": "\u003cp\u003eRollback the transaction.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1520,6 +651,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -1551,239 +683,18 @@
       "name": "setRollbackOnly",
       "description": "",
       "isDeprecated": false
-    },
-    {
-      "isRemote": false,
-      "isExtern": true,
-      "parameters": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.transaction",
-            "name": "TransactionContext",
-            "category": "records",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionContext",
-          "description": "\u003cp\u003eTransaction context.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "\u003cballerina/lang.transaction:0.0.1:Info?\u003e ()",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.transaction",
-            "name": "Info",
-            "category": "records",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": true,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "prevAttempt",
-          "description": "\u003cp\u003eInformation related to previous attempt.\u003c/p\u003e\n",
-          "isDeprecated": false
-        }
-      ],
-      "returnParameters": [],
-      "name": "setTransactionContext",
-      "description": "\u003cp\u003eSet the transactionContext.\u003c/p\u003e\n",
-      "isDeprecated": false
-    },
-    {
-      "isRemote": false,
-      "isExtern": false,
-      "parameters": [
-        {
-          "defaultValue": "",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "transactionBlockId",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "defaultValue": "\u003cballerina/lang.transaction:0.0.1:Info?\u003e ()",
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.transaction",
-            "name": "Info",
-            "category": "records",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": true,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "prevAttempt",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "returnParameters": [
-        {
-          "type": {
-            "orgName": "ballerina",
-            "moduleName": "lang.annotations",
-            "name": "string",
-            "category": "builtin",
-            "isAnonymousUnionType": false,
-            "isArrayType": false,
-            "isNullable": false,
-            "isTuple": false,
-            "isRestParam": false,
-            "isLambda": false,
-            "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
-            "memberTypes": [],
-            "paramTypes": [],
-            "arrayDimensions": 0
-          },
-          "name": "",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "name": "startTransaction",
-      "description": "",
-      "isDeprecated": false
     }
   ],
-  "constants": [
-    {
-      "type": {
-        "orgName": "ballerina",
-        "moduleName": "lang.annotations",
-        "name": "string",
-        "category": "builtin",
-        "isAnonymousUnionType": false,
-        "isArrayType": false,
-        "isNullable": false,
-        "isTuple": false,
-        "isRestParam": false,
-        "isLambda": false,
-        "isDeprecated": false,
-        "generateUserDefinedTypeLink": true,
-        "memberTypes": [],
-        "paramTypes": [],
-        "arrayDimensions": 0
-      },
-      "value": "committed",
-      "name": "OUTCOME_COMMITTED",
-      "description": "",
-      "isDeprecated": false
-    },
-    {
-      "type": {
-        "orgName": "ballerina",
-        "moduleName": "lang.annotations",
-        "name": "string",
-        "category": "builtin",
-        "isAnonymousUnionType": false,
-        "isArrayType": false,
-        "isNullable": false,
-        "isTuple": false,
-        "isRestParam": false,
-        "isLambda": false,
-        "isDeprecated": false,
-        "generateUserDefinedTypeLink": true,
-        "memberTypes": [],
-        "paramTypes": [],
-        "arrayDimensions": 0
-      },
-      "value": "2pc",
-      "name": "TWO_PHASE_COMMIT",
-      "description": "",
-      "isDeprecated": false
-    }
-  ],
+  "constants": [],
   "annotations": [],
   "errors": [
     {
       "name": "error",
       "description": "\u003cp\u003eThis file contains default retry manager to be used with retry statement.\u003c/p\u003e\n",
       "isDeprecated": false
-    },
-    {
-      "name": "TransactionError",
-      "description": "\u003cp\u003eRepresents the Transaction error.\u003c/p\u003e\n",
-      "isDeprecated": false
     }
   ],
   "finiteTypes": [],
-  "unionTypes": [
-    {
-      "name": "Error",
-      "description": "\u003cp\u003eRepresents the Transaction module related error.\u003c/p\u003e\n",
-      "isAnonymousUnionType": false,
-      "isArrayType": false,
-      "isNullable": false,
-      "isTuple": false,
-      "isRestParam": false,
-      "isLambda": false,
-      "isDeprecated": false,
-      "generateUserDefinedTypeLink": true,
-      "memberTypes": [
-        {
-          "orgName": "ballerina",
-          "moduleName": "lang.transaction",
-          "name": "TransactionError",
-          "category": "errors",
-          "isAnonymousUnionType": false,
-          "isArrayType": false,
-          "isNullable": false,
-          "isTuple": false,
-          "isRestParam": false,
-          "isLambda": false,
-          "isDeprecated": false,
-          "generateUserDefinedTypeLink": true,
-          "memberTypes": [],
-          "paramTypes": [],
-          "arrayDimensions": 0
-        }
-      ],
-      "paramTypes": [],
-      "arrayDimensions": 0
-    }
-  ],
+  "unionTypes": [],
   "resources": []
 }

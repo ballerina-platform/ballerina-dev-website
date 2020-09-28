@@ -45,7 +45,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "AfterGroupsConfig",
       "description": "",
       "isDeprecated": false
@@ -76,7 +76,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "AfterSuiteConfig",
       "description": "",
       "isDeprecated": false
@@ -121,7 +121,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "BeforeGroupsConfig",
       "description": "",
       "isDeprecated": false
@@ -175,7 +175,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "MockConfig",
       "description": "\u003cp\u003eConfiguration of the function to be mocked.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -349,230 +349,18 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": false,
       "name": "TestConfig",
       "description": "\u003cp\u003eConfiguration set for test functions.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [
     {
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "name": "MockFunction",
-                "category": "objects",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "mockFunction",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eGets invoked during the stub registration\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "category": "types",
-                "isAnonymousUnionType": true,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [
-                  {
-                    "orgName": "ballerina",
-                    "moduleName": "lang.annotations",
-                    "name": "any",
-                    "category": "builtin",
-                    "isAnonymousUnionType": false,
-                    "isArrayType": false,
-                    "isNullable": false,
-                    "isTuple": false,
-                    "isRestParam": false,
-                    "isLambda": false,
-                    "isDeprecated": false,
-                    "generateUserDefinedTypeLink": true,
-                    "memberTypes": [],
-                    "paramTypes": [],
-                    "arrayDimensions": 0
-                  },
-                  {
-                    "orgName": "ballerina",
-                    "moduleName": "lang.annotations",
-                    "name": "error",
-                    "category": "errors",
-                    "isAnonymousUnionType": false,
-                    "isArrayType": false,
-                    "isNullable": false,
-                    "isTuple": false,
-                    "isRestParam": false,
-                    "isLambda": false,
-                    "isDeprecated": false,
-                    "generateUserDefinedTypeLink": true,
-                    "memberTypes": [],
-                    "paramTypes": [],
-                    "arrayDimensions": 0
-                  }
-                ],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "returnValue",
-              "description": "\u003cp\u003evalue or error to return\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "thenReturn",
-          "description": "\u003cp\u003eSets the value to be returned when the function is called.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "category": "UNKNOWN",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": true,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 1,
-                "elementType": {
-                  "orgName": "ballerina",
-                  "moduleName": "test",
-                  "category": "types",
-                  "isAnonymousUnionType": true,
-                  "isArrayType": false,
-                  "isNullable": false,
-                  "isTuple": false,
-                  "isRestParam": false,
-                  "isLambda": false,
-                  "isDeprecated": false,
-                  "generateUserDefinedTypeLink": true,
-                  "memberTypes": [
-                    {
-                      "orgName": "ballerina",
-                      "moduleName": "lang.annotations",
-                      "name": "anydata",
-                      "category": "builtin",
-                      "isAnonymousUnionType": false,
-                      "isArrayType": false,
-                      "isNullable": false,
-                      "isTuple": false,
-                      "isRestParam": false,
-                      "isLambda": false,
-                      "isDeprecated": false,
-                      "generateUserDefinedTypeLink": true,
-                      "memberTypes": [],
-                      "paramTypes": [],
-                      "arrayDimensions": 0
-                    },
-                    {
-                      "orgName": "ballerina",
-                      "moduleName": "lang.annotations",
-                      "name": "error",
-                      "category": "errors",
-                      "isAnonymousUnionType": false,
-                      "isArrayType": false,
-                      "isNullable": false,
-                      "isTuple": false,
-                      "isRestParam": false,
-                      "isLambda": false,
-                      "isDeprecated": false,
-                      "generateUserDefinedTypeLink": true,
-                      "memberTypes": [],
-                      "paramTypes": [],
-                      "arrayDimensions": 0
-                    }
-                  ],
-                  "paramTypes": [],
-                  "arrayDimensions": 0
-                }
-              },
-              "name": "args",
-              "description": "\u003cp\u003earguments list\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "name": "FunctionStub",
-                "category": "objects",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "\u003cp\u003eobject that allows stubbing calls to a function\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "name": "withArguments",
-          "description": "\u003cp\u003eSets the arguments list to consider when stubbing the function call.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [],
-          "name": "doNothing",
-          "description": "\u003cp\u003eSets the function behavior to do nothing when called\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -596,231 +384,99 @@
                 "arrayDimensions": 0
               },
               "name": "functionName",
-              "description": "\u003cp\u003emock function to call in place of the real\u003c/p\u003e\n",
+              "description": "\u003cp\u003efunction name to allow stubbing\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
-          "returnParameters": [],
-          "name": "call",
-          "description": "\u003cp\u003eSets a function to be invoked when the real function is called.\u003c/p\u003e\n",
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "test",
+                "name": "MemberFunctionStub",
+                "category": "classes",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eobject that allows stubbing calls to provided member function\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "when",
+          "description": "\u003cp\u003eAllows a member function to stub.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isIsolated": false,
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "fieldName",
+              "description": "\u003cp\u003efield name to allow stubbing\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "test",
+                "name": "MemberVariableStub",
+                "category": "classes",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eobject that allows stubbing retrieval of provided member variable\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getMember",
+          "description": "\u003cp\u003eAllows a member variable to stub\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "test",
-              "name": "MockFunction",
-              "category": "objects",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "mockFunction",
-            "description": "",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eGets invoked during the stub registration\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "category": "types",
-                "isAnonymousUnionType": true,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [
-                  {
-                    "orgName": "ballerina",
-                    "moduleName": "lang.annotations",
-                    "name": "any",
-                    "category": "builtin",
-                    "isAnonymousUnionType": false,
-                    "isArrayType": false,
-                    "isNullable": false,
-                    "isTuple": false,
-                    "isRestParam": false,
-                    "isLambda": false,
-                    "isDeprecated": false,
-                    "generateUserDefinedTypeLink": true,
-                    "memberTypes": [],
-                    "paramTypes": [],
-                    "arrayDimensions": 0
-                  },
-                  {
-                    "orgName": "ballerina",
-                    "moduleName": "lang.annotations",
-                    "name": "error",
-                    "category": "errors",
-                    "isAnonymousUnionType": false,
-                    "isArrayType": false,
-                    "isNullable": false,
-                    "isTuple": false,
-                    "isRestParam": false,
-                    "isLambda": false,
-                    "isDeprecated": false,
-                    "generateUserDefinedTypeLink": true,
-                    "memberTypes": [],
-                    "paramTypes": [],
-                    "arrayDimensions": 0
-                  }
-                ],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "returnValue",
-              "description": "\u003cp\u003evalue or error to return\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "thenReturn",
-          "description": "\u003cp\u003eSets the value to be returned when the function is called.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "category": "UNKNOWN",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": true,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 1,
-                "elementType": {
-                  "orgName": "ballerina",
-                  "moduleName": "test",
-                  "category": "types",
-                  "isAnonymousUnionType": true,
-                  "isArrayType": false,
-                  "isNullable": false,
-                  "isTuple": false,
-                  "isRestParam": false,
-                  "isLambda": false,
-                  "isDeprecated": false,
-                  "generateUserDefinedTypeLink": true,
-                  "memberTypes": [
-                    {
-                      "orgName": "ballerina",
-                      "moduleName": "lang.annotations",
-                      "name": "anydata",
-                      "category": "builtin",
-                      "isAnonymousUnionType": false,
-                      "isArrayType": false,
-                      "isNullable": false,
-                      "isTuple": false,
-                      "isRestParam": false,
-                      "isLambda": false,
-                      "isDeprecated": false,
-                      "generateUserDefinedTypeLink": true,
-                      "memberTypes": [],
-                      "paramTypes": [],
-                      "arrayDimensions": 0
-                    },
-                    {
-                      "orgName": "ballerina",
-                      "moduleName": "lang.annotations",
-                      "name": "error",
-                      "category": "errors",
-                      "isAnonymousUnionType": false,
-                      "isArrayType": false,
-                      "isNullable": false,
-                      "isTuple": false,
-                      "isRestParam": false,
-                      "isLambda": false,
-                      "isDeprecated": false,
-                      "generateUserDefinedTypeLink": true,
-                      "memberTypes": [],
-                      "paramTypes": [],
-                      "arrayDimensions": 0
-                    }
-                  ],
-                  "paramTypes": [],
-                  "arrayDimensions": 0
-                }
-              },
-              "name": "args",
-              "description": "\u003cp\u003earguments list\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "name": "FunctionStub",
-                "category": "objects",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "\u003cp\u003eobject that allows stubbing calls to a function\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "name": "withArguments",
-          "description": "\u003cp\u003eSets the arguments list to consider when stubbing the function call.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [],
-          "name": "doNothing",
-          "description": "\u003cp\u003eSets the function behavior to do nothing when called\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -844,58 +500,105 @@
                 "arrayDimensions": 0
               },
               "name": "functionName",
-              "description": "\u003cp\u003emock function to call in place of the real\u003c/p\u003e\n",
+              "description": "\u003cp\u003efunction name to allow stubbing\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
-          "returnParameters": [],
-          "name": "call",
-          "description": "\u003cp\u003eSets a function to be invoked when the real function is called.\u003c/p\u003e\n",
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "test",
+                "name": "MemberFunctionStub",
+                "category": "classes",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eobject that allows stubbing calls to provided member function\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "when",
+          "description": "\u003cp\u003eAllows a member function to stub.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isIsolated": false,
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "lang.annotations",
+                "name": "string",
+                "category": "builtin",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "fieldName",
+              "description": "\u003cp\u003efield name to allow stubbing\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "test",
+                "name": "MemberVariableStub",
+                "category": "classes",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eobject that allows stubbing retrieval of provided member variable\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "getMember",
+          "description": "\u003cp\u003eAllows a member variable to stub\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
-      "name": "FunctionStub",
-      "description": "\u003cp\u003eRepresents an object that allows stubbing function invocations\u003c/p\u003e\n",
+      "name": "MockObject",
+      "description": "\u003cp\u003eRepresents a Mock object in which to create stubs for member functions and variables\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "name": "T13",
-                "category": "objects",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "mockObject",
-              "description": "\u003cp\u003eobject to register\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eGets invoked during the stub registration.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -977,7 +680,7 @@
                 "orgName": "ballerina",
                 "moduleName": "test",
                 "name": "MemberFunctionStub",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -1000,6 +703,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1067,6 +771,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1148,6 +853,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1157,41 +863,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "test",
-              "name": "T13",
-              "category": "objects",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "mockObject",
-            "description": "\u003cp\u003eobject to register\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eGets invoked during the stub registration.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1273,7 +947,7 @@
                 "orgName": "ballerina",
                 "moduleName": "test",
                 "name": "MemberFunctionStub",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -1296,6 +970,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1363,6 +1038,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1444,6 +1120,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1453,7 +1130,6 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "MemberFunctionStub",
       "description": "\u003cp\u003eRepresents an object that allows stubbing member function invocations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1462,39 +1138,7 @@
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "name": "T15",
-                "category": "objects",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "mockObject",
-              "description": "\u003cp\u003eobject to register\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eGets invoked during the stub registration\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1562,41 +1206,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "test",
-              "name": "T15",
-              "category": "objects",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "mockObject",
-            "description": "\u003cp\u003eobject to register\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eGets invoked during the stub registration\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1664,7 +1276,6 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "MemberVariableStub",
       "description": "\u003cp\u003eRepresents an object that allows stubbing member variables retrieved.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1673,7 +1284,6 @@
       "fields": [],
       "methods": [],
       "otherMethods": [],
-      "isAnonymous": false,
       "name": "MockFunction",
       "description": "\u003cp\u003eRepresents a MockFunction object\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1682,6 +1292,7 @@
       "fields": [],
       "methods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1690,9 +1301,8 @@
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "test",
-                "name": "T11",
-                "category": "objects",
-                "isAnonymousUnionType": false,
+                "category": "types",
+                "isAnonymousUnionType": true,
                 "isArrayType": false,
                 "isNullable": false,
                 "isTuple": false,
@@ -1700,21 +1310,172 @@
                 "isLambda": false,
                 "isDeprecated": false,
                 "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
+                "memberTypes": [
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "lang.annotations",
+                    "name": "any",
+                    "category": "builtin",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  },
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "lang.annotations",
+                    "name": "error",
+                    "category": "errors",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  }
+                ],
                 "paramTypes": [],
                 "arrayDimensions": 0
               },
-              "name": "mockObject",
-              "description": "\u003cp\u003eobject to register stubbing\u003c/p\u003e\n",
+              "name": "returnValue",
+              "description": "\u003cp\u003evalue or error to return\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
           "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eGets invoked during the mock object preparation.\u003c/p\u003e\n",
+          "name": "thenReturn",
+          "description": "\u003cp\u003eSets the value to be returned when the function is called.\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [
+            {
+              "defaultValue": "",
+              "type": {
+                "category": "UNKNOWN",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": true,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 1,
+                "elementType": {
+                  "orgName": "ballerina",
+                  "moduleName": "test",
+                  "category": "types",
+                  "isAnonymousUnionType": true,
+                  "isArrayType": false,
+                  "isNullable": false,
+                  "isTuple": false,
+                  "isRestParam": false,
+                  "isLambda": false,
+                  "isDeprecated": false,
+                  "generateUserDefinedTypeLink": true,
+                  "memberTypes": [
+                    {
+                      "orgName": "ballerina",
+                      "moduleName": "lang.annotations",
+                      "name": "anydata",
+                      "category": "builtin",
+                      "isAnonymousUnionType": false,
+                      "isArrayType": false,
+                      "isNullable": false,
+                      "isTuple": false,
+                      "isRestParam": false,
+                      "isLambda": false,
+                      "isDeprecated": false,
+                      "generateUserDefinedTypeLink": true,
+                      "memberTypes": [],
+                      "paramTypes": [],
+                      "arrayDimensions": 0
+                    },
+                    {
+                      "orgName": "ballerina",
+                      "moduleName": "lang.annotations",
+                      "name": "error",
+                      "category": "errors",
+                      "isAnonymousUnionType": false,
+                      "isArrayType": false,
+                      "isNullable": false,
+                      "isTuple": false,
+                      "isRestParam": false,
+                      "isLambda": false,
+                      "isDeprecated": false,
+                      "generateUserDefinedTypeLink": true,
+                      "memberTypes": [],
+                      "paramTypes": [],
+                      "arrayDimensions": 0
+                    }
+                  ],
+                  "paramTypes": [],
+                  "arrayDimensions": 0
+                }
+              },
+              "name": "args",
+              "description": "\u003cp\u003earguments list\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "test",
+                "name": "FunctionStub",
+                "category": "classes",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eobject that allows stubbing calls to a function\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "withArguments",
+          "description": "\u003cp\u003eSets the arguments list to consider when stubbing the function call.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isIsolated": false,
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [],
+          "name": "doNothing",
+          "description": "\u003cp\u003eSets the function behavior to do nothing when called\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1738,130 +1499,212 @@
                 "arrayDimensions": 0
               },
               "name": "functionName",
-              "description": "\u003cp\u003efunction name to allow stubbing\u003c/p\u003e\n",
+              "description": "\u003cp\u003emock function to call in place of the real\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "name": "MemberFunctionStub",
-                "category": "objects",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "\u003cp\u003eobject that allows stubbing calls to provided member function\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "name": "when",
-          "description": "\u003cp\u003eAllows a member function to stub.\u003c/p\u003e\n",
+          "returnParameters": [],
+          "name": "call",
+          "description": "\u003cp\u003eSets a function to be invoked when the real function is called.\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "fieldName",
-              "description": "\u003cp\u003efield name to allow stubbing\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "name": "MemberVariableStub",
-                "category": "objects",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "\u003cp\u003eobject that allows stubbing retrieval of provided member variable\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "name": "getMember",
-          "description": "\u003cp\u003eAllows a member variable to stub\u003c/p\u003e\n",
+          "parameters": [],
+          "returnParameters": [],
+          "name": "callOriginal",
+          "description": "\u003cp\u003eSets the original function to be invoked.\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "test",
-              "name": "T11",
-              "category": "objects",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "mockObject",
-            "description": "\u003cp\u003eobject to register stubbing\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eGets invoked during the mock object preparation.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": false,
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [
+            {
+              "defaultValue": "",
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "test",
+                "category": "types",
+                "isAnonymousUnionType": true,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "lang.annotations",
+                    "name": "any",
+                    "category": "builtin",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  },
+                  {
+                    "orgName": "ballerina",
+                    "moduleName": "lang.annotations",
+                    "name": "error",
+                    "category": "errors",
+                    "isAnonymousUnionType": false,
+                    "isArrayType": false,
+                    "isNullable": false,
+                    "isTuple": false,
+                    "isRestParam": false,
+                    "isLambda": false,
+                    "isDeprecated": false,
+                    "generateUserDefinedTypeLink": true,
+                    "memberTypes": [],
+                    "paramTypes": [],
+                    "arrayDimensions": 0
+                  }
+                ],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "returnValue",
+              "description": "\u003cp\u003evalue or error to return\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "returnParameters": [],
+          "name": "thenReturn",
+          "description": "\u003cp\u003eSets the value to be returned when the function is called.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isIsolated": false,
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [
+            {
+              "defaultValue": "",
+              "type": {
+                "category": "UNKNOWN",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": true,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 1,
+                "elementType": {
+                  "orgName": "ballerina",
+                  "moduleName": "test",
+                  "category": "types",
+                  "isAnonymousUnionType": true,
+                  "isArrayType": false,
+                  "isNullable": false,
+                  "isTuple": false,
+                  "isRestParam": false,
+                  "isLambda": false,
+                  "isDeprecated": false,
+                  "generateUserDefinedTypeLink": true,
+                  "memberTypes": [
+                    {
+                      "orgName": "ballerina",
+                      "moduleName": "lang.annotations",
+                      "name": "anydata",
+                      "category": "builtin",
+                      "isAnonymousUnionType": false,
+                      "isArrayType": false,
+                      "isNullable": false,
+                      "isTuple": false,
+                      "isRestParam": false,
+                      "isLambda": false,
+                      "isDeprecated": false,
+                      "generateUserDefinedTypeLink": true,
+                      "memberTypes": [],
+                      "paramTypes": [],
+                      "arrayDimensions": 0
+                    },
+                    {
+                      "orgName": "ballerina",
+                      "moduleName": "lang.annotations",
+                      "name": "error",
+                      "category": "errors",
+                      "isAnonymousUnionType": false,
+                      "isArrayType": false,
+                      "isNullable": false,
+                      "isTuple": false,
+                      "isRestParam": false,
+                      "isLambda": false,
+                      "isDeprecated": false,
+                      "generateUserDefinedTypeLink": true,
+                      "memberTypes": [],
+                      "paramTypes": [],
+                      "arrayDimensions": 0
+                    }
+                  ],
+                  "paramTypes": [],
+                  "arrayDimensions": 0
+                }
+              },
+              "name": "args",
+              "description": "\u003cp\u003earguments list\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "returnParameters": [
+            {
+              "type": {
+                "orgName": "ballerina",
+                "moduleName": "test",
+                "name": "FunctionStub",
+                "category": "classes",
+                "isAnonymousUnionType": false,
+                "isArrayType": false,
+                "isNullable": false,
+                "isTuple": false,
+                "isRestParam": false,
+                "isLambda": false,
+                "isDeprecated": false,
+                "generateUserDefinedTypeLink": true,
+                "memberTypes": [],
+                "paramTypes": [],
+                "arrayDimensions": 0
+              },
+              "name": "",
+              "description": "\u003cp\u003eobject that allows stubbing calls to a function\u003c/p\u003e\n",
+              "isDeprecated": false
+            }
+          ],
+          "name": "withArguments",
+          "description": "\u003cp\u003eSets the arguments list to consider when stubbing the function call.\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isIsolated": false,
+          "isRemote": false,
+          "isExtern": false,
+          "parameters": [],
+          "returnParameters": [],
+          "name": "doNothing",
+          "description": "\u003cp\u003eSets the function behavior to do nothing when called\u003c/p\u003e\n",
+          "isDeprecated": false
+        },
+        {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1885,105 +1728,37 @@
                 "arrayDimensions": 0
               },
               "name": "functionName",
-              "description": "\u003cp\u003efunction name to allow stubbing\u003c/p\u003e\n",
+              "description": "\u003cp\u003emock function to call in place of the real\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "name": "MemberFunctionStub",
-                "category": "objects",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "\u003cp\u003eobject that allows stubbing calls to provided member function\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "name": "when",
-          "description": "\u003cp\u003eAllows a member function to stub.\u003c/p\u003e\n",
+          "returnParameters": [],
+          "name": "call",
+          "description": "\u003cp\u003eSets a function to be invoked when the real function is called.\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "fieldName",
-              "description": "\u003cp\u003efield name to allow stubbing\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "test",
-                "name": "MemberVariableStub",
-                "category": "objects",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "\u003cp\u003eobject that allows stubbing retrieval of provided member variable\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "name": "getMember",
-          "description": "\u003cp\u003eAllows a member variable to stub\u003c/p\u003e\n",
+          "parameters": [],
+          "returnParameters": [],
+          "name": "callOriginal",
+          "description": "\u003cp\u003eSets the original function to be invoked.\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
-      "name": "MockObject",
-      "description": "\u003cp\u003eRepresents a Mock object in which to create stubs for member functions and variables\u003c/p\u003e\n",
+      "name": "FunctionStub",
+      "description": "\u003cp\u003eRepresents an object that allows stubbing function invocations\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2131,6 +1906,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2278,6 +2054,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2311,6 +2088,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2367,6 +2145,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2514,6 +2293,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2661,6 +2441,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2717,6 +2498,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -2796,6 +2578,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2820,8 +2603,8 @@
             "constraint": {
               "orgName": "ballerina",
               "moduleName": "test",
-              "name": "T16",
-              "category": "objects",
+              "name": "object { }",
+              "category": "abstractobjects",
               "isAnonymousUnionType": false,
               "isArrayType": false,
               "isNullable": false,
@@ -2829,7 +2612,7 @@
               "isRestParam": false,
               "isLambda": false,
               "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
+              "generateUserDefinedTypeLink": false,
               "memberTypes": [],
               "paramTypes": [],
               "arrayDimensions": 0
@@ -2840,12 +2623,12 @@
           "isDeprecated": false
         },
         {
-          "defaultValue": "object { } $obj$ \u003d BLangTypeInit: new null ([]) ; $init$()",
+          "defaultValue": "\u003cobject { }\u003e object { } $obj$ \u003d BLangTypeInit: new $init$ ([]) ; $init$()",
           "type": {
             "orgName": "ballerina",
             "moduleName": "test",
-            "name": "T17",
-            "category": "objects",
+            "name": "object { }",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -2853,7 +2636,7 @@
             "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
+            "generateUserDefinedTypeLink": false,
             "memberTypes": [],
             "paramTypes": [],
             "arrayDimensions": 0
@@ -2877,7 +2660,7 @@
             "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
+            "generateUserDefinedTypeLink": false,
             "memberTypes": [],
             "paramTypes": [],
             "arrayDimensions": 0
@@ -2892,6 +2675,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2901,7 +2685,7 @@
             "orgName": "ballerina",
             "moduleName": "test",
             "name": "MockFunction",
-            "category": "objects",
+            "category": "classes",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -3053,6 +2837,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3061,8 +2846,8 @@
           "type": {
             "orgName": "ballerina",
             "moduleName": "test",
-            "name": "T9",
-            "category": "objects",
+            "name": "object { }",
+            "category": "abstractobjects",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -3070,7 +2855,7 @@
             "isRestParam": false,
             "isLambda": false,
             "isDeprecated": false,
-            "generateUserDefinedTypeLink": true,
+            "generateUserDefinedTypeLink": false,
             "memberTypes": [],
             "paramTypes": [],
             "arrayDimensions": 0
@@ -3086,7 +2871,7 @@
             "orgName": "ballerina",
             "moduleName": "test",
             "name": "MockObject",
-            "category": "objects",
+            "category": "classes",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -3109,6 +2894,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": false,
       "parameters": [
@@ -3118,7 +2904,7 @@
             "orgName": "ballerina",
             "moduleName": "test",
             "name": "MockFunction",
-            "category": "objects",
+            "category": "classes",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,
@@ -3142,7 +2928,7 @@
             "orgName": "ballerina",
             "moduleName": "test",
             "name": "FunctionStub",
-            "category": "objects",
+            "category": "classes",
             "isAnonymousUnionType": false,
             "isArrayType": false,
             "isNullable": false,

@@ -94,6 +94,7 @@ This example deploys an HTTP service, which responses &ldquo;Hello&rdquo; follow
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/module-ballerina-kubernetes/tree/master/kubernetes-extension-examples/examples/openshift-deployment"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -512,7 +513,7 @@ route.route.openshift.io/helloep-openshift-route created
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Trigger a build to create the Docker image.
-$ oc start-build bc/openshift-openshift-bc-openshift-bc --from-dir=. --follow
+$ oc start-build bc/openshift-openshift-bc-openshift-bc --from-dir=docker --follow
 Uploading directory &quot;.&quot; as binary input for the build ...
 ..
 Uploading finished
@@ -649,7 +650,7 @@ Hello john!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

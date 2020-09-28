@@ -8,7 +8,7 @@
 <h2>Syntax changes</h2>
 <h3>New documentation syntax</h3>
 <p>Old syntax:</p>
-<pre><code class="ballerina">documentation {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">documentation {
     Adds parameter `x` and parameter `y`.
     P{{x}} one thing to be added
     P{{y}} another thing to be added
@@ -18,7 +18,7 @@ function add(int x, int y) returns int { return x + y; }
 </code></pre>
 
 <p>New syntax:</p>
-<pre><code class="ballerina"># Adds parameter `x` and parameter `y`.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina"># Adds parameter `x` and parameter `y`.
 # + x - one thing to be added
 # + y - another thing to be added
 # + return - the sum of them
@@ -29,7 +29,7 @@ function add(int x, int y) returns int { return x + y; }
 <h3>Reorder documentation in resources</h3>
 <p>In previous versions, documentation was added after annotation attachments. With the latest changes, documentation should be added before the annotation attachment.</p>
 <p>Old syntax:</p>
-<pre><code class="ballerina">service&lt;http:Service&gt; update_token bind { port: 9295 } {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">service&lt;http:Service&gt; update_token bind { port: 9295 } {
 
     @http:ResourceConfig {
         methods:[&quot;GET&quot;]
@@ -44,7 +44,7 @@ function add(int x, int y) returns int { return x + y; }
 </code></pre>
 
 <p>New syntax:</p>
-<pre><code class="ballerina">service&lt;http:Service&gt; update_token bind { port: 9295 } {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">service&lt;http:Service&gt; update_token bind { port: 9295 } {
 
     # Updates the access token.
     #
@@ -60,7 +60,7 @@ function add(int x, int y) returns int { return x + y; }
 
 <h3>Changes to record/object field syntax</h3>
 <p>Old syntax:</p>
-<pre><code class="ballerina">type foo record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type foo record {
     string a,
     string b,
 };
@@ -72,7 +72,7 @@ type bar object {
 </code></pre>
 
 <p>New syntax:</p>
-<pre><code class="ballerina">type foo record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type foo record {
     string a;
     string b;
 };
@@ -86,14 +86,14 @@ type bar object {
 <h3>New anonymous function syntax</h3>
 <p>The syntax of the anonymous function has been changed to resemble the normal function definition.</p>
 <p>Old syntax:</p>
-<pre><code class="ballerina">var lambda = (int b) =&gt; (int) {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">var lambda = (int b) =&gt; (int) {
     int x = b * b;
     return x;
 };
 </code></pre>
 
 <p>New syntax:</p>
-<pre><code class="ballerina">var lambda = function (int b) returns (int) {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">var lambda = function (int b) returns (int) {
     int x = b * b;
     return x;
 };
@@ -104,7 +104,7 @@ type bar object {
 <h2>Runtime changes</h2>
 <h3>Removal of implicit cast from int to float</h3>
 <p>Now it is necessary to explicitly define a float with a decimal point.</p>
-<pre><code class="ballerina">float x = 0; // Compile Error
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">float x = 0; // Compile Error
 float x = 0.0; // Working Code
 </code></pre>
 
@@ -116,7 +116,7 @@ float x = 0.0; // Working Code
 <li>If a function is not specified, <code>main</code> is considered as the function to run.</li>
 <li>The function invoked via <code>ballerina run</code> (including the <code>main</code> function) will be data-binding and can have zero or more parameters of any supported type, including any number of required/defaultable parameters and a single rest parameter. This function can also return a value. For example, consider the following public function in the <code>currency</code> package:</li>
 </ul>
-<pre><code class="ballerina">  function queryChanges(string host, int port = 8080, string… params) returns float {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">  function queryChanges(string host, int port = 8080, string… params) returns float {
   }
 </code></pre>
 
@@ -134,11 +134,11 @@ float x = 0.0; // Working Code
 <p>Option vs parameter ordering is enforced with the run command, and all options need to be specified before the file/package to run. 
 Any arguments (even if they match an option recognized by the run command) specified after the file/package are now considered program arguments.
 A config file can be specified with the run command as follows:</p>
-<pre><code class="ballerina">ballerina run --config myConfig.conf calculator 4 5
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">ballerina run --config myConfig.conf calculator 4 5
 </code></pre>
 
 <p>Specifying the <code>--config</code> argument as follows does not identify it as an option:</p>
-<pre><code class="ballerina">ballerina run calculator --config myConfig.conf 4 5
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">ballerina run calculator --config myConfig.conf 4 5
 </code></pre>
 
 <h1>Ballerina Native</h1>
@@ -170,7 +170,7 @@ Run the created executable
 <li>Tracking tainted state changes of function parameters : Taint analyzer keeps track of the tainted state of the parameters in different execution conditions. This information is used to update the tainted state of the arguments used in a function invocation, and to make sure that the tainted state of arguments propagate correctly when the parameter is an out parameter or an in-out parameter.</li>
 <li>Introduction of abstract objects. An abstract object is identified by the ‘abstract’ keyword. It describes the type of each field and each method, but not the implementation of the methods. An abstract object type must not have an object constructor method and does not have an implicit initial value. An abstract object type cannot be initialized using the object initializer.</li>
 </ul>
-<pre><code class="ballerina">  public type Foo abstract object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">  public type Foo abstract object {
       public string name;
       public int id;
 
@@ -183,7 +183,7 @@ Run the created executable
 <ul>
 <li>Introduction of record iteration support. Records are now an iterable type. Therefore, the foreach loop and iterable operations can now be used with records. When iterating a record, you can either iterate over the fields (i.e., field name and value pair) or iterate only over the field values.</li>
 </ul>
-<pre><code class="ballerina">  type Person record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">  type Person record {
        string name;
        int age;
        string address;
@@ -192,14 +192,14 @@ Run the created executable
 
 <pre><code>Foreach loop can be used on an instance of this record as follows:
 </code></pre>
-<pre><code class="ballerina">  foreach field, value in person {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">  foreach field, value in person {
        io:println(field + &quot; : &quot; + &lt;string&gt;value);
   }
 </code></pre>
 
 <pre><code>Or if iterating only through the field values:
 </code></pre>
-<pre><code class="ballerina">  foreach value in person {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">  foreach value in person {
        io:println(value);
   }
 </code></pre>
@@ -208,18 +208,18 @@ Run the created executable
 <li>Introduction of Channel type. Channel is a constrained type that can be defined only as a top level node. It is introduced for communication between parallel processes in Ballerina programs. Channels can be used for message correlation by sending and receiving messages via different resources to the same channel. It can also be used for  inter-worker communication and synchronize workers.</li>
 </ul>
 <p>Defines a channel with json constrained type</p>
-<pre><code class="ballerina">channel&lt;json&gt; jsonChannel;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">channel&lt;json&gt; jsonChannel;
 </code></pre>
 
 <p>Send a message to the channel</p>
-<pre><code class="ballerina">    # One of the receivers waiting on this key receives it.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">    # One of the receivers waiting on this key receives it.
     # If there is no receiver, the message is stored and execution continues.
     # A receiver can arrive later and fetch the message.
     message -&gt; jsonChannel, key;
 </code></pre>
 
 <p>Receive a message from the channel with given key. Execution waits here if the message is not available</p>
-<pre><code class="ballerina">json result &lt;- jsonChannel, key;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">json result &lt;- jsonChannel, key;
 </code></pre>
 
 <h2>Build &amp; Package Management</h2>

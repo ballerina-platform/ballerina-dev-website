@@ -11,20 +11,18 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">address</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Jack Smith&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;380 Lakewood Dr. Desoto, TX 75115&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">address</span><span class="p">]</span> <span class="p">=</span>
+                       <span class="p">[</span><span class="s">&quot;Jack Smith&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;380 Lakewood Dr. Desoto, TX 75115&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="s">&quot; Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="s">&quot; Address: &quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">);</span>
     <span class="kt">float</span> <span class="nx">latitude</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">longitude</span><span class="p">;</span>
     <span class="p">[</span><span class="nx">latitude</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="mf">37.773972</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.431297</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Latitude: &quot;</span><span class="p">,</span> <span class="nx">latitude</span><span class="p">,</span> <span class="s">&quot; Longitude: &quot;</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">);</span>
-    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="p">[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">]][</span><span class="nx">eventId</span><span class="p">,</span> <span class="p">[</span><span class="nx">score1</span><span class="p">,</span> <span class="nx">score2</span><span class="p">,</span> <span class="nx">score3</span><span class="p">]]</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;E335&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">9.8</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">]];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Event Id: &quot;</span><span class="p">,</span> <span class="nx">eventId</span><span class="p">,</span> <span class="s">&quot; Score 1: &quot;</span><span class="p">,</span> <span class="nx">score1</span><span class="p">,</span> <span class="s">&quot; Score 2: &quot;</span><span class="p">,</span> <span class="nx">score2</span><span class="p">,</span> <span class="s">&quot; Score 3: &quot;</span><span class="p">,</span> <span class="nx">score3</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">tuple_binding_pattern</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Name</span><span class="p">:</span> <span class="nx">Jack</span> <span class="nx">Smith</span> <span class="nx">Age</span><span class="p">:</span> <span class="mi">23</span> <span class="nx">Address</span><span class="p">:</span> <span class="mi">380</span> <span class="nx">Lakewood</span> <span class="nx">Dr</span><span class="p">.</span> <span class="nx">Desoto</span><span class="p">,</span> <span class="nx">TX</span> <span class="mi">75115</span>
-<span class="nx">Latitude</span><span class="p">:</span> <span class="mf">37.773972</span> <span class="nx">Longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">122.431297</span>
-<span class="nx">Event</span> <span class="nx">Id</span><span class="p">:</span> <span class="nx">E335</span> <span class="nx">Score</span> <span class="mi">1</span><span class="p">:</span> <span class="mf">9.8</span> <span class="nx">Score</span> <span class="mi">2</span><span class="p">:</span> <span class="mf">9.6</span> <span class="nx">Score</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">9.5</span>
+    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="p">[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">]][</span><span class="nx">eventId</span><span class="p">,</span> <span class="p">[</span><span class="nx">score1</span><span class="p">,</span> <span class="nx">score2</span><span class="p">,</span> <span class="nx">score3</span><span class="p">]]</span> <span class="p">=</span>
+                                                     <span class="p">[</span><span class="s">&quot;E335&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">9.8</span><span class="p">,</span> <span class="mf">9.6</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">]];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Event Id: &quot;</span><span class="p">,</span> <span class="nx">eventId</span><span class="p">,</span> <span class="s">&quot; Score 1: &quot;</span><span class="p">,</span> <span class="nx">score1</span><span class="p">,</span>
+                <span class="s">&quot; Score 2: &quot;</span><span class="p">,</span> <span class="nx">score2</span><span class="p">,</span> <span class="s">&quot; Score 3: &quot;</span><span class="p">,</span> <span class="nx">score3</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -73,6 +71,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/tuple-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -131,7 +130,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    [string, int, string] [name, age, address] = [&quot;Jack Smith&quot;, 23, &quot;380 Lakewood Dr. Desoto, TX 75115&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    [string, int, string] [name, age, address] =
+                       [&quot;Jack Smith&quot;, 23, &quot;380 Lakewood Dr. Desoto, TX 75115&quot;];
     io:println(&quot;Name: &quot;, name, &quot; Age: &quot;, age, &quot; Address: &quot;, address);
 </code></pre></div>
 
@@ -175,8 +175,10 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    [string, [float, float, float]][eventId, [score1, score2, score3]] = [&quot;E335&quot;, [9.8, 9.6, 9.5]];
-    io:println(&quot;Event Id: &quot;, eventId, &quot; Score 1: &quot;, score1, &quot; Score 2: &quot;, score2, &quot; Score 3: &quot;, score3);
+                                    <div class="highlight"><pre><code class=language-ballerina>    [string, [float, float, float]][eventId, [score1, score2, score3]] =
+                                                     [&quot;E335&quot;, [9.8, 9.6, 9.5]];
+    io:println(&quot;Event Id: &quot;, eventId, &quot; Score 1: &quot;, score1,
+                &quot; Score 2: &quot;, score2, &quot; Score 3: &quot;, score3);
 }
 </code></pre></div>
 
@@ -242,7 +244,7 @@ Event Id: E335 Score 1: 9.8 Score 2: 9.6 Score 3: 9.5
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

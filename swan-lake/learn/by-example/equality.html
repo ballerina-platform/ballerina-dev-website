@@ -46,19 +46,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;f1 !== f2 is &quot;</span><span class="p">,</span> <span class="nx">isNotRefEqual</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getModuleEmployee</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Employee</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">moduleEmployee</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">equality</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="o">==</span> <span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="mi">1</span> <span class="mf">1.0</span> <span class="kc">false</span> <span class="o">!=</span> <span class="mi">11</span> <span class="mf">1.0</span> <span class="kc">true</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="o">!=</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="nx">is</span> <span class="kc">false</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="o">==</span> <span class="nx">name</span><span class="p">=</span><span class="nx">Anne</span> <span class="nx">id</span><span class="p">=</span><span class="mi">1100</span> <span class="nx">is</span> <span class="kc">false</span>
-<span class="nx">e4</span> <span class="o">==</span><span class="p">=</span> <span class="nx">e5</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="nx">e4</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">e5</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="nx">f1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">f2</span> <span class="nx">is</span> <span class="kc">true</span>
-<span class="nx">f1</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">f2</span> <span class="nx">is</span> <span class="kc">true</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -110,6 +98,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/equality/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -433,8 +422,8 @@ ballerina run equality.bal
 1 != 2 is true
 1 1.0 false == 1 1.0 false is true
 1 1.0 false != 11 1.0 true is true
-name=Jane id=1100 != name=Jane id=1100 is false
-name=Jane id=1100 == name=Anne id=1100 is false
+{&quot;name&quot;:&quot;Jane&quot;,&quot;id&quot;:1100} != {&quot;name&quot;:&quot;Jane&quot;,&quot;id&quot;:1100} is false
+{&quot;name&quot;:&quot;Jane&quot;,&quot;id&quot;:1100} == {&quot;name&quot;:&quot;Anne&quot;,&quot;id&quot;:1100} is false
 e4 === e5 is true
 e4 !== e5 is true
 f1 === f2 is true
@@ -466,7 +455,7 @@ f1 !== f2 is true
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

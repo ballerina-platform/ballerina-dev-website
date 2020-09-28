@@ -5,34 +5,14 @@
       "description": "\u003cp\u003eThis module provides lang library operations on \u003ccode\u003etransaction\u003c/code\u003es.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
       "id": "DefaultRetryManager",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "LocalParticipant",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "Participant",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "RetryManager",
       "description": "",
       "moduleId": "lang.transaction"
     }
   ],
   "functions": [
-    {
-      "id": "abortResourceManagers",
-      "description": "\u003cp\u003eAbort local resource managers.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
     {
       "id": "ballerina/lang.transaction:0.0.1.\u003cinit\u003e0",
       "description": "",
@@ -41,31 +21,6 @@
     {
       "id": "ballerina/lang.transaction:0.0.1.\u003cinit\u003e1",
       "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "cleanupTransactionContext",
-      "description": "\u003cp\u003eCleanup the transaction context.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "commitResourceManagers",
-      "description": "\u003cp\u003eCommit local resource managers.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "createTransactionContext",
-      "description": "\u003cp\u003eA new transaction context is created by calling this function.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "endTransaction",
-      "description": "\u003cp\u003eWhen a transaction block in Ballerina code ends, it will call this function to end a transaction.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "getAndClearFailure",
-      "description": "\u003cp\u003eGet and Cleanup the failure.\u003c/p\u003e",
       "moduleId": "lang.transaction"
     },
     {
@@ -89,11 +44,6 @@
       "moduleId": "lang.transaction"
     },
     {
-      "id": "isTransactional",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
       "id": "onCommit",
       "description": "",
       "moduleId": "lang.transaction"
@@ -101,16 +51,6 @@
     {
       "id": "onRollback",
       "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "prepareResourceManagers",
-      "description": "\u003cp\u003ePrepare local resource managers.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "rollbackTransaction",
-      "description": "\u003cp\u003eRollback the transaction.\u003c/p\u003e",
       "moduleId": "lang.transaction"
     },
     {
@@ -122,16 +62,6 @@
       "id": "setRollbackOnly",
       "description": "",
       "moduleId": "lang.transaction"
-    },
-    {
-      "id": "setTransactionContext",
-      "description": "\u003cp\u003eSet the transactionContext.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "startTransaction",
-      "description": "",
-      "moduleId": "lang.transaction"
     }
   ],
   "records": [
@@ -139,45 +69,25 @@
       "id": "Info",
       "description": "",
       "moduleId": "lang.transaction"
-    },
-    {
-      "id": "TransactionContext",
-      "description": "",
-      "moduleId": "lang.transaction"
     }
   ],
-  "constants": [
-    {
-      "id": "OUTCOME_COMMITTED",
-      "description": "",
-      "moduleId": "lang.transaction"
-    },
-    {
-      "id": "TWO_PHASE_COMMIT",
-      "description": "",
-      "moduleId": "lang.transaction"
-    }
-  ],
+  "constants": [],
   "errors": [
     {
       "id": "error",
       "description": "\u003cp\u003eThis file contains default retry manager to be used with retry statement.\u003c/p\u003e",
       "moduleId": "lang.transaction"
-    },
-    {
-      "id": "TransactionError",
-      "description": "\u003cp\u003eRepresents the Transaction error.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
     }
   ],
-  "types": [
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eRepresents the Transaction module related error.\u003c/p\u003e",
-      "moduleId": "lang.transaction"
-    }
-  ],
+  "types": [],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": [
+    {
+      "id": "RetryManager",
+      "description": "",
+      "moduleId": "lang.transaction"
+    }
+  ]
 }

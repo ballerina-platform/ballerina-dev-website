@@ -76,12 +76,12 @@
                     <ul>
                         
     
-        <li class="active">
-            <a href="Listener.html" onclick="menuLinkClick()">Listener</a>
-        </li>
-    
         <li >
             <a href="MockListener.html" onclick="menuLinkClick()">MockListener</a>
+        </li>
+    
+        <li class="active">
+            <a href="Listener.html" onclick="menuLinkClick()">Listener</a>
         </li>
     
 
@@ -97,18 +97,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -191,39 +192,6 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
     <div class="constants">
         <div class="method-sum">
         
-            
-                <h2>Constructor</h2>
-
-    <p>Gets invoked during module initialization to initialize the listener.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<span class="builtin-type">int</span> port, <a href="../../http/records/ListenerConfiguration.html">ListenerConfiguration</a>? config)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>port</b><span class="type">  <span class="builtin-type">int</span></span> </li>
-                <li>
-                    <p>Listening port of the HTTP service listener</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../http/records/ListenerConfiguration.html">ListenerConfiguration</a>?</span> &lt;ballerina/http:1.0.0:ListenerConfiguration?&gt; ()</li>
-                <li>
-                    <p>Configurations for the HTTP service listener</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-            
-        
 
         
             <h2>Methods</h2>
@@ -291,8 +259,7 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
     </div>
     <div class="param-details">
         
-        <p>Starts the registered service programmatically.</p>
-
+        <p>Starts the registered service programmatically.</p> 
     </div>
 </div>
 
@@ -304,8 +271,7 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
     </div>
     <div class="param-details">
         
-        <p>Attaches a service to the listener.</p>
-
+        <p>Attaches a service to the listener.</p> 
     </div>
 </div>
 
@@ -333,6 +299,9 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Stops the service listener gracefully. Already-accepted requests will be served before connection closure.</p>
 
@@ -367,6 +336,9 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Stops the service listener immediately. It is not implemented yet.</p>
 
     </div>
@@ -399,6 +371,9 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Detaches a Http or WebSocket service from the listener. Note that detaching a WebSocket service would not affect
 The functionality of the existing connections.</p>
@@ -457,6 +432,9 @@ The functionality of the existing connections.</p>
     <div class="function-desc">
         
         
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
+        
     </div>
     
 
@@ -492,6 +470,9 @@ The functionality of the existing connections.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Starts the registered service programmatically.</p>
 
     </div>
@@ -525,6 +506,9 @@ The functionality of the existing connections.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Attaches a service to the listener.</p>
 
     </div>
@@ -554,7 +538,7 @@ The functionality of the existing connections.</p>
                     <li>
                         <span >name</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>

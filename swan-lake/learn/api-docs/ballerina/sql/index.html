@@ -72,23 +72,20 @@ module JDBC.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
-        
-        
-            
-                <li>
-                    <a  data="objects" href="../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
             <li>
-                <a data="clients" href="../sql/index.html#clients" onclick="menuLinkClick()">Clients</a>
+                <a  data="classes" href="../sql/index.html#classes" onclick="menuLinkClick()">Classes</a>
             </li>
+        
+        
+            <li>
+                <a  data="classes" href="../sql/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
+        
         
         
         
@@ -463,30 +460,25 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="BatchExecuteErrorDetail" title="BatchExecuteErrorDetail">
                             <a class="records " href="records/BatchExecuteErrorDetail.html">BatchExecuteErrorDetail</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the properties belonging to a <code>BatchExecuteError</code>.</p>
-
+                            <p>Represents the properties belonging to a <code>BatchExecuteError</code>.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ConnectionPool" title="ConnectionPool">
                             <a class="records " href="records/ConnectionPool.html">ConnectionPool</a>
@@ -494,525 +486,411 @@ the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environme
                         <td class="module-desc">
                             
                             <p>Represents the properties which are used to configure DB connection pool.
-Default values of the fields can be set through the configuration API.</p>
-
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="DatabaseErrorDetail" title="DatabaseErrorDetail">
                             <a class="records " href="records/DatabaseErrorDetail.html">DatabaseErrorDetail</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents the properties belonging to a <code>DatabaseError</code>.</p>
-
+                            <p>Represents the properties belonging to a <code>DatabaseError</code>.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="ExecutionResult" title="ExecutionResult">
                             <a class="records " href="records/ExecutionResult.html">ExecutionResult</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>The result of the query without returning the rows.</p>
-
+                            <p>The result of the query without returning the rows.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ArrayValue" title="ArrayValue">
-                            <a class="objects " href="objects/ArrayValue.html">ArrayValue</a>
+                        <td class="module-title truncate classes" id="VarcharValue" title="VarcharValue">
+                            <a class="classes " href="classes/VarcharValue.html">VarcharValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents ArrayValue SQL field.</p>
-
+                            <p>Represents Varchar SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="BigIntValue" title="BigIntValue">
-                            <a class="objects " href="objects/BigIntValue.html">BigIntValue</a>
+                        <td class="module-title truncate classes" id="NVarcharValue" title="NVarcharValue">
+                            <a class="classes " href="classes/NVarcharValue.html">NVarcharValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents BigInt SQL field.</p>
-
+                            <p>Represents NVarchar SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="BinaryValue" title="BinaryValue">
-                            <a class="objects " href="objects/BinaryValue.html">BinaryValue</a>
+                        <td class="module-title truncate classes" id="CharValue" title="CharValue">
+                            <a class="classes " href="classes/CharValue.html">CharValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Binary SQL field.</p>
-
+                            <p>Represents Char SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="BitValue" title="BitValue">
-                            <a class="objects " href="objects/BitValue.html">BitValue</a>
+                        <td class="module-title truncate classes" id="NCharValue" title="NCharValue">
+                            <a class="classes " href="classes/NCharValue.html">NCharValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Bit SQL field.</p>
-
+                            <p>Represents NChar SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="BlobValue" title="BlobValue">
-                            <a class="objects " href="objects/BlobValue.html">BlobValue</a>
+                        <td class="module-title truncate classes" id="TextValue" title="TextValue">
+                            <a class="classes " href="classes/TextValue.html">TextValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Blob SQL field.</p>
-
+                            <p>Represents Text SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="BooleanValue" title="BooleanValue">
-                            <a class="objects " href="objects/BooleanValue.html">BooleanValue</a>
+                        <td class="module-title truncate classes" id="ClobValue" title="ClobValue">
+                            <a class="classes " href="classes/ClobValue.html">ClobValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Boolean SQL field.</p>
-
+                            <p>Represents Clob SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="CharValue" title="CharValue">
-                            <a class="objects " href="objects/CharValue.html">CharValue</a>
+                        <td class="module-title truncate classes" id="NClobValue" title="NClobValue">
+                            <a class="classes " href="classes/NClobValue.html">NClobValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Char SQL field.</p>
-
+                            <p>Represents NClob SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ClobValue" title="ClobValue">
-                            <a class="objects " href="objects/ClobValue.html">ClobValue</a>
+                        <td class="module-title truncate classes" id="SmallIntValue" title="SmallIntValue">
+                            <a class="classes " href="classes/SmallIntValue.html">SmallIntValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Clob SQL field.</p>
-
+                            <p>Represents SmallInt SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="DateTimeValue" title="DateTimeValue">
-                            <a class="objects " href="objects/DateTimeValue.html">DateTimeValue</a>
+                        <td class="module-title truncate classes" id="IntegerValue" title="IntegerValue">
+                            <a class="classes " href="classes/IntegerValue.html">IntegerValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents DateTime SQL field.</p>
-
+                            <p>Represents Integer SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="DateValue" title="DateValue">
-                            <a class="objects " href="objects/DateValue.html">DateValue</a>
+                        <td class="module-title truncate classes" id="BigIntValue" title="BigIntValue">
+                            <a class="classes " href="classes/BigIntValue.html">BigIntValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Date SQL field.</p>
-
+                            <p>Represents BigInt SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="DecimalValue" title="DecimalValue">
-                            <a class="objects " href="objects/DecimalValue.html">DecimalValue</a>
+                        <td class="module-title truncate classes" id="NumericValue" title="NumericValue">
+                            <a class="classes " href="classes/NumericValue.html">NumericValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Decimal SQL field.</p>
-
+                            <p>Represents Numeric SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="DoubleValue" title="DoubleValue">
-                            <a class="objects " href="objects/DoubleValue.html">DoubleValue</a>
+                        <td class="module-title truncate classes" id="DecimalValue" title="DecimalValue">
+                            <a class="classes " href="classes/DecimalValue.html">DecimalValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Double SQL field.</p>
-
+                            <p>Represents Decimal SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="FloatValue" title="FloatValue">
-                            <a class="objects " href="objects/FloatValue.html">FloatValue</a>
+                        <td class="module-title truncate classes" id="RealValue" title="RealValue">
+                            <a class="classes " href="classes/RealValue.html">RealValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Float SQL field.</p>
-
+                            <p>Represents Real SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="InOutParameter" title="InOutParameter">
-                            <a class="objects " href="objects/InOutParameter.html">InOutParameter</a>
+                        <td class="module-title truncate classes" id="FloatValue" title="FloatValue">
+                            <a class="classes " href="classes/FloatValue.html">FloatValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents SQL InOutParameter used in procedure calls.</p>
-
+                            <p>Represents Float SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="IntegerValue" title="IntegerValue">
-                            <a class="objects " href="objects/IntegerValue.html">IntegerValue</a>
+                        <td class="module-title truncate classes" id="DoubleValue" title="DoubleValue">
+                            <a class="classes " href="classes/DoubleValue.html">DoubleValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Integer SQL field.</p>
-
+                            <p>Represents Double SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="NCharValue" title="NCharValue">
-                            <a class="objects " href="objects/NCharValue.html">NCharValue</a>
+                        <td class="module-title truncate classes" id="BitValue" title="BitValue">
+                            <a class="classes " href="classes/BitValue.html">BitValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents NChar SQL field.</p>
-
+                            <p>Represents Bit SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="NClobValue" title="NClobValue">
-                            <a class="objects " href="objects/NClobValue.html">NClobValue</a>
+                        <td class="module-title truncate classes" id="BooleanValue" title="BooleanValue">
+                            <a class="classes " href="classes/BooleanValue.html">BooleanValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents NClob SQL field.</p>
-
+                            <p>Represents Boolean SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="NVarcharValue" title="NVarcharValue">
-                            <a class="objects " href="objects/NVarcharValue.html">NVarcharValue</a>
+                        <td class="module-title truncate classes" id="BinaryValue" title="BinaryValue">
+                            <a class="classes " href="classes/BinaryValue.html">BinaryValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents NVarchar SQL field.</p>
-
+                            <p>Represents Binary SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="NumericValue" title="NumericValue">
-                            <a class="objects " href="objects/NumericValue.html">NumericValue</a>
+                        <td class="module-title truncate classes" id="VarBinaryValue" title="VarBinaryValue">
+                            <a class="classes " href="classes/VarBinaryValue.html">VarBinaryValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Numeric SQL field.</p>
-
+                            <p>Represents VarBinary SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="OutParameter" title="OutParameter">
-                            <a class="objects " href="objects/OutParameter.html">OutParameter</a>
+                        <td class="module-title truncate classes" id="BlobValue" title="BlobValue">
+                            <a class="classes " href="classes/BlobValue.html">BlobValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents SQL OutParameter used in procedure calls.</p>
-
+                            <p>Represents Blob SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ParameterizedCallQuery" title="ParameterizedCallQuery">
-                            <a class="objects " href="objects/ParameterizedCallQuery.html">ParameterizedCallQuery</a>
+                        <td class="module-title truncate classes" id="DateValue" title="DateValue">
+                            <a class="classes " href="classes/DateValue.html">DateValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Parameterized Call SQL Statement.</p>
-
+                            <p>Represents Date SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ParameterizedQuery" title="ParameterizedQuery">
-                            <a class="objects " href="objects/ParameterizedQuery.html">ParameterizedQuery</a>
+                        <td class="module-title truncate classes" id="TimeValue" title="TimeValue">
+                            <a class="classes " href="classes/TimeValue.html">TimeValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Parameterized SQL query.</p>
-
+                            <p>Represents Time SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="ProcedureCallResult" title="ProcedureCallResult">
-                            <a class="objects " href="objects/ProcedureCallResult.html">ProcedureCallResult</a>
+                        <td class="module-title truncate classes" id="DateTimeValue" title="DateTimeValue">
+                            <a class="classes " href="classes/DateTimeValue.html">DateTimeValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Object that is used to return stored procedure call results.</p>
-
+                            <p>Represents DateTime SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="RealValue" title="RealValue">
-                            <a class="objects " href="objects/RealValue.html">RealValue</a>
+                        <td class="module-title truncate classes" id="TimestampValue" title="TimestampValue">
+                            <a class="classes " href="classes/TimestampValue.html">TimestampValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Real SQL field.</p>
-
+                            <p>Represents Timestamp SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="RefValue" title="RefValue">
-                            <a class="objects " href="objects/RefValue.html">RefValue</a>
+                        <td class="module-title truncate classes" id="ArrayValue" title="ArrayValue">
+                            <a class="classes " href="classes/ArrayValue.html">ArrayValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Ref SQL field.</p>
-
+                            <p>Represents ArrayValue SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="RowValue" title="RowValue">
-                            <a class="objects " href="objects/RowValue.html">RowValue</a>
+                        <td class="module-title truncate classes" id="RefValue" title="RefValue">
+                            <a class="classes " href="classes/RefValue.html">RefValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Row SQL field.</p>
-
+                            <p>Represents Ref SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="SmallIntValue" title="SmallIntValue">
-                            <a class="objects " href="objects/SmallIntValue.html">SmallIntValue</a>
+                        <td class="module-title truncate classes" id="StructValue" title="StructValue">
+                            <a class="classes " href="classes/StructValue.html">StructValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents SmallInt SQL field.</p>
-
+                            <p>Represents Struct SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="StructValue" title="StructValue">
-                            <a class="objects " href="objects/StructValue.html">StructValue</a>
+                        <td class="module-title truncate classes" id="RowValue" title="RowValue">
+                            <a class="classes " href="classes/RowValue.html">RowValue</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Struct SQL field.</p>
-
+                            <p>Represents Row SQL field.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="TextValue" title="TextValue">
-                            <a class="objects " href="objects/TextValue.html">TextValue</a>
+                        <td class="module-title truncate classes" id="OutParameter" title="OutParameter">
+                            <a class="classes " href="classes/OutParameter.html">OutParameter</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Text SQL field.</p>
-
+                            <p>Represents SQL OutParameter used in procedure calls.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="TimeValue" title="TimeValue">
-                            <a class="objects " href="objects/TimeValue.html">TimeValue</a>
+                        <td class="module-title truncate classes" id="InOutParameter" title="InOutParameter">
+                            <a class="classes " href="classes/InOutParameter.html">InOutParameter</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Time SQL field.</p>
-
+                            <p>Represents SQL InOutParameter used in procedure calls.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
-                        <td class="module-title truncate objects" id="TimestampValue" title="TimestampValue">
-                            <a class="objects " href="objects/TimestampValue.html">TimestampValue</a>
+                        <td class="module-title truncate classes" id="ProcedureCallResult" title="ProcedureCallResult">
+                            <a class="classes " href="classes/ProcedureCallResult.html">ProcedureCallResult</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Represents Timestamp SQL field.</p>
-
+                            <p>Object that is used to return stored procedure call results.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
-                    <tr>
-                        <td class="module-title truncate objects" id="TypedValue" title="TypedValue">
-                            <a class="objects " href="objects/TypedValue.html">TypedValue</a>
-                        </td>
-                        <td class="module-desc">
-                            
-                            <p>Represents a parameter for the SQL Client remote functions when a variable needs to be passed
-to the remote function.</p>
-
-                        </td>
-                    </tr>
-                    
-                    
-                    
-                    <tr>
-                        <td class="module-title truncate objects" id="VarBinaryValue" title="VarBinaryValue">
-                            <a class="objects " href="objects/VarBinaryValue.html">VarBinaryValue</a>
-                        </td>
-                        <td class="module-desc">
-                            
-                            <p>Represents VarBinary SQL field.</p>
-
-                        </td>
-                    </tr>
-                    
-                    
-                    
-                    <tr>
-                        <td class="module-title truncate objects" id="VarcharValue" title="VarcharValue">
-                            <a class="objects " href="objects/VarcharValue.html">VarcharValue</a>
-                        </td>
-                        <td class="module-desc">
-                            
-                            <p>Represents Varchar SQL field.</p>
-
-                        </td>
-                    </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
     
 
     
-    <section class="method-content" id="clients">
-        <div class="main-method-title here">
-            <a class="url-link" href="#clients">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> Clients </h2>
-        </div>
-        <table>
-            
-            <tr>
-                <td class="module-title truncate clients" id="Client" title="Client">
-                    <a class="clients " href="clients/Client.html">Client</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Represents a SQL client.</p>
+        <section class="method-content" id="absobjects">
+            <div class="main-method-title here">
+                <a class="url-link" href="#absobjects">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Abstract Objects </h2>
+            </div>
+            <table>
+                
+                <tr>
+                    <td class="module-title truncate objects" id="Client" title="Client">
+                        <a class="objects " href="abstractobjects/Client.html">Client</a>
+                    </td>
+                    <td class="module-desc">
+                        
+                        <p>Represents a SQL client.</p> 
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="module-title truncate objects" id="ParameterizedCallQuery" title="ParameterizedCallQuery">
+                        <a class="objects " href="abstractobjects/ParameterizedCallQuery.html">ParameterizedCallQuery</a>
+                    </td>
+                    <td class="module-desc">
+                        
+                        <p>Represents Parameterized Call SQL Statement.</p> 
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="module-title truncate objects" id="ParameterizedQuery" title="ParameterizedQuery">
+                        <a class="objects " href="abstractobjects/ParameterizedQuery.html">ParameterizedQuery</a>
+                    </td>
+                    <td class="module-desc">
+                        
+                        <p>Represents Parameterized SQL query.</p> 
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="module-title truncate objects" id="TypedValue" title="TypedValue">
+                        <a class="objects " href="abstractobjects/TypedValue.html">TypedValue</a>
+                    </td>
+                    <td class="module-desc">
+                        
+                        <p>Represents a parameter for the SQL Client remote functions when a variable needs to be passed to the remote function.</p> 
+                    </td>
+                </tr>
+                
+            </table>
+        </section>
+    
 
-                </td>
-            </tr>
-            
-        </table>
-    </section>
     
 
     
@@ -1029,20 +907,13 @@ to the remote function.</p>
         <table>
             
             <tr>
-                <td class="module-title truncate functions" id="ballerina/sql:0.5.0.&lt;init&gt;0" title="ballerina/sql:0.5.0.&lt;init&gt;0">
-                    <a class="functions " href="functions.html#ballerina/sql:0.5.0.&lt;init&gt;0">ballerina/sql:0.5.0.&lt;init&gt;0</a>
-                </td>
-                <td class="module-desc">
-                    
-                    
-                </td>
-            </tr>
-            
-            <tr>
                 <td class="module-title truncate functions" id="generateApplicationErrorStream" title="generateApplicationErrorStream">
                     <a class="functions " href="functions.html#generateApplicationErrorStream">generateApplicationErrorStream</a>
                 </td>
                 <td class="module-desc">
+                    
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
                     
                     
                 </td>
@@ -1053,6 +924,9 @@ to the remote function.</p>
                     <a class="functions " href="functions.html#getGlobalConnectionPool">getGlobalConnectionPool</a>
                 </td>
                 <td class="module-desc">
+                    
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
                     
                     
                 </td>
@@ -1079,9 +953,7 @@ to the remote function.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constant indicating that the specific batch statement executed successfully
-but that no count of the number of rows it affected is available.</p>
-
+                    <p>Constant indicating that the specific batch statement executed successfully but that no count of the number of rows it affected is available.</p> 
                 </td>
             </tr>
             
@@ -1091,8 +963,7 @@ but that no count of the number of rows it affected is available.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Constant indicating that the specific batch statement failed.</p>
-
+                    <p>Constant indicating that the specific batch statement failed.</p> 
                 </td>
             </tr>
             
@@ -1114,36 +985,12 @@ but that no count of the number of rows it affected is available.</p>
         <table>
             
             <tr>
-                <td class="module-title truncate types" id="BatchExecuteError" title="BatchExecuteError">
-                    <a class="types " href="types.html#BatchExecuteError">BatchExecuteError</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Represents an error occurred when a batch execution is running.</p>
-
-                </td>
-            </tr>
-            
-            <tr>
-                <td class="module-title truncate types" id="DatabaseError" title="DatabaseError">
-                    <a class="types " href="types.html#DatabaseError">DatabaseError</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,
-database resource clean-up, and other similar scenarios.</p>
-
-                </td>
-            </tr>
-            
-            <tr>
                 <td class="module-title truncate types" id="Error" title="Error">
                     <a class="types " href="types.html#Error">Error</a>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents a database or application level error returned from JDBC client remote functions.</p>
-
+                    <p>Represents a database or application level error returned from SQL client remote functions.</p> 
                 </td>
             </tr>
             
@@ -1153,8 +1000,7 @@ database resource clean-up, and other similar scenarios.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents all the parameters used in SQL stored procedure call.</p>
-
+                    <p>Represents all the parameters used in SQL stored procedure call.</p> 
                 </td>
             </tr>
             
@@ -1164,8 +1010,7 @@ database resource clean-up, and other similar scenarios.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Possible type of parameters that can be passed into the SQL query.</p>
-
+                    <p>Possible type of parameters that can be passed into the SQL query.</p> 
                 </td>
             </tr>
             
@@ -1189,8 +1034,27 @@ database resource clean-up, and other similar scenarios.</p>
                 </td>
                 <td class="module-desc">
                     
-                    <p>Represents an error originating from application-level causes.</p>
-
+                    <p>Represents an error originating from application-level causes.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="BatchExecuteError" title="BatchExecuteError">
+                    <a class="errors " href="errors.html#BatchExecuteError">BatchExecuteError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents an error occurred when a batch execution is running.</p> 
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="module-title truncate errors" id="DatabaseError" title="DatabaseError">
+                    <a class="errors " href="errors.html#DatabaseError">DatabaseError</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations, database resource clean-up, and other similar scenarios.</p> 
                 </td>
             </tr>
             

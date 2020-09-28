@@ -77,11 +77,7 @@
                         
     
         <li >
-            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
-        </li>
-    
-        <li >
-            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
         </li>
     
         <li >
@@ -93,23 +89,15 @@
         </li>
     
         <li >
-            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
-        </li>
-    
-        <li >
-            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
-        </li>
-    
-        <li >
             <a href="HttpClient.html" onclick="menuLinkClick()">HttpClient</a>
         </li>
     
         <li >
-            <a href="HttpSecureClient.html" onclick="menuLinkClick()">HttpSecureClient</a>
+            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
         </li>
     
-        <li class="active active-item">
-            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
+        <li >
+            <a href="HttpSecureClient.html" onclick="menuLinkClick()">HttpSecureClient</a>
         </li>
     
         <li >
@@ -117,7 +105,19 @@
         </li>
     
         <li >
+            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
+        </li>
+    
+        <li >
+            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+        </li>
+    
+        <li >
             <a href="RetryClient.html" onclick="menuLinkClick()">RetryClient</a>
+        </li>
+    
+        <li class="active active-item">
+            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
         </li>
     
         <li >
@@ -145,18 +145,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -238,29 +239,6 @@
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Load Balancer adds an additional layer to the HTTP client to make network interactions more resilient.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../http/records/LoadBalanceClientConfiguration.html">LoadBalanceClientConfiguration</a> loadBalanceClientConfig)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>loadBalanceClientConfig</b><span class="type">  <a href="../../http/records/LoadBalanceClientConfiguration.html">LoadBalanceClientConfiguration</a></span> </li>
-                <li>
-                    <p>The configurations for the load balance client endpoint</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -269,107 +247,91 @@
                         <tr>
                             <td class="module-title truncate functions" title="post"><a
                                     class="functions" href="#post">post</a></td>
-                            <td class="module-desc"><p>The POST remote function implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The POST remote function implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="head"><a
                                     class="functions" href="#head">head</a></td>
-                            <td class="module-desc"><p>The HEAD remote function implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The HEAD remote function implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="patch"><a
                                     class="functions" href="#patch">patch</a></td>
-                            <td class="module-desc"><p>The PATCH remote function implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The PATCH remote function implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="put"><a
                                     class="functions" href="#put">put</a></td>
-                            <td class="module-desc"><p>The PUT remote function implementation of the Load Balance Connector.</p>
-</td>
+                            <td class="module-desc"><p>The PUT remote function implementation of the Load Balance Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="options"><a
                                     class="functions" href="#options">options</a></td>
-                            <td class="module-desc"><p>The OPTIONS remote function implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The OPTIONS remote function implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="forward"><a
                                     class="functions" href="#forward">forward</a></td>
-                            <td class="module-desc"><p>The FORWARD remote function implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The FORWARD remote function implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="execute"><a
                                     class="functions" href="#execute">execute</a></td>
-                            <td class="module-desc"><p>The EXECUTE remote function implementation of the LoadBalancer Connector.
-The Execute remote function can be used to invoke an HTTP call with the given HTTP verb.</p>
-</td>
+                            <td class="module-desc"><p>The EXECUTE remote function implementation of the LoadBalancer Connector.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="delete"><a
                                     class="functions" href="#delete">delete</a></td>
-                            <td class="module-desc"><p>The DELETE remote function implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The DELETE remote function implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="get"><a
                                     class="functions" href="#get">get</a></td>
-                            <td class="module-desc"><p>The GET remote function implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The GET remote function implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="submit"><a
                                     class="functions" href="#submit">submit</a></td>
-                            <td class="module-desc"><p>The submit implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The submit implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getResponse"><a
                                     class="functions" href="#getResponse">getResponse</a></td>
-                            <td class="module-desc"><p>The getResponse implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The getResponse implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="hasPromise"><a
                                     class="functions" href="#hasPromise">hasPromise</a></td>
-                            <td class="module-desc"><p>The hasPromise implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The hasPromise implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getNextPromise"><a
                                     class="functions" href="#getNextPromise">getNextPromise</a></td>
-                            <td class="module-desc"><p>The getNextPromise implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The getNextPromise implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPromisedResponse"><a
                                     class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                            <td class="module-desc"><p>The getPromisedResponse implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The getPromisedResponse implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="rejectPromise"><a
                                     class="functions" href="#rejectPromise">rejectPromise</a></td>
-                            <td class="module-desc"><p>The rejectPromise implementation of the LoadBalancer Connector.</p>
-</td>
+                            <td class="module-desc"><p>The rejectPromise implementation of the LoadBalancer Connector.</p> </td>
                         </tr>
                     
                 </table>
@@ -417,7 +379,7 @@ The Execute remote function can be used to invoke an HTTP call with the given HT
     <div class="params-listing">
         <ul>
             <li> <span >lbRule</span>
-                <span class="type">  <a href="../../http/objects/LoadBalancerRule.html">LoadBalancerRule</a></span>
+                <span class="type">  <a href="../../http/abstractobjects/LoadBalancerRule.html">LoadBalancerRule</a></span>
                 
             </li>
             <li>
@@ -518,11 +480,12 @@ function displayMenu() {
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The POST remote function implementation of the LoadBalancer Connector.</p>
 
@@ -573,7 +536,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
 </li>
             </ul>
@@ -591,11 +554,12 @@ or <code>mime:Entity[]</code></p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The HEAD remote function implementation of the LoadBalancer Connector.</p>
 
@@ -626,7 +590,7 @@ or <code>mime:Entity[]</code></p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -646,7 +610,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
 </li>
             </ul>
@@ -664,11 +628,12 @@ or <code>mime:Entity[]</code></p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The PATCH remote function implementation of the LoadBalancer Connector.</p>
 
@@ -719,7 +684,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
 </li>
             </ul>
@@ -737,11 +702,12 @@ or <code>mime:Entity[]</code></p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The PUT remote function implementation of the Load Balance Connector.</p>
 
@@ -792,7 +758,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
 </li>
             </ul>
@@ -810,11 +776,12 @@ or <code>mime:Entity[]</code></p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The OPTIONS remote function implementation of the LoadBalancer Connector.</p>
 
@@ -845,7 +812,7 @@ or <code>mime:Entity[]</code></p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -865,7 +832,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
 </li>
             </ul>
@@ -881,13 +848,14 @@ or <code>mime:Entity[]</code></p>
             </a>
             <h2 > forward </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/objects/Request.html">Request</a> request)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/classes/Request.html">Request</a> request)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The FORWARD remote function implementation of the LoadBalancer Connector.</p>
 
@@ -917,7 +885,7 @@ or <code>mime:Entity[]</code></p>
                 <ul>
                     <li>
                         <span >request</span>
-                        <span class="type">  <a href="../../http/objects/Request.html">Request</a> </span>
+                        <span class="type">  <a href="../../http/classes/Request.html">Request</a> </span>
                         
                     </li>
                     <li>
@@ -937,7 +905,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
 </li>
             </ul>
@@ -955,11 +923,12 @@ or <code>mime:Entity[]</code></p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The EXECUTE remote function implementation of the LoadBalancer Connector.
 The Execute remote function can be used to invoke an HTTP call with the given HTTP verb.</p>
@@ -1028,7 +997,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
 </li>
             </ul>
@@ -1046,11 +1015,12 @@ or <code>mime:Entity[]</code></p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The DELETE remote function implementation of the LoadBalancer Connector.</p>
 
@@ -1081,7 +1051,7 @@ or <code>mime:Entity[]</code></p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1101,7 +1071,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
 </li>
             </ul>
@@ -1119,11 +1089,12 @@ or <code>mime:Entity[]</code></p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The GET remote function implementation of the LoadBalancer Connector.</p>
 
@@ -1154,7 +1125,7 @@ or <code>mime:Entity[]</code></p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1174,7 +1145,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
 </li>
             </ul>
@@ -1192,11 +1163,12 @@ or <code>mime:Entity[]</code></p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The submit implementation of the LoadBalancer Connector.</p>
 
@@ -1264,7 +1236,7 @@ or <code>mime:Entity[]</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:HttpFuture</code> that represents an asynchronous service invocation or else an <code>http:ClientError</code> if the submission
 fails</p>
 </li>
@@ -1281,13 +1253,14 @@ fails</p>
             </a>
             <h2 > getResponse </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The getResponse implementation of the LoadBalancer Connector.</p>
 
@@ -1300,7 +1273,7 @@ fails</p>
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1320,7 +1293,7 @@ fails</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1336,13 +1309,14 @@ fails</p>
             </a>
             <h2 > hasPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
                 <b> returns </b><span class="builtin-type">boolean</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The hasPromise implementation of the LoadBalancer Connector.</p>
 
@@ -1355,7 +1329,7 @@ fails</p>
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1391,13 +1365,14 @@ fails</p>
             </a>
             <h2 > getNextPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
-                <b> returns </b><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The getNextPromise implementation of the LoadBalancer Connector.</p>
 
@@ -1410,7 +1385,7 @@ fails</p>
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1430,7 +1405,7 @@ fails</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:PushPromise</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1446,13 +1421,14 @@ fails</p>
             </a>
             <h2 > getPromisedResponse </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The getPromisedResponse implementation of the LoadBalancer Connector.</p>
 
@@ -1465,7 +1441,7 @@ fails</p>
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>
@@ -1485,7 +1461,7 @@ fails</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>A promised <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1501,11 +1477,12 @@ fails</p>
             </a>
             <h2 > rejectPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise)</p>
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>The rejectPromise implementation of the LoadBalancer Connector.</p>
 
@@ -1518,7 +1495,7 @@ fails</p>
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>

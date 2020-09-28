@@ -5,13 +5,7 @@
       "description": "\u003cp\u003eThis module provides lang library list operations defined by the language specification 2020R1.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.array"
-    }
-  ],
+  "classes": [],
   "functions": [
     {
       "id": "enumerate",
@@ -110,7 +104,7 @@
     },
     {
       "id": "sort",
-      "description": "\u003cp\u003eSorts an array using a comparator function.\u003c/p\u003e",
+      "description": "\u003cp\u003eSorts an array.\u003c/p\u003e",
       "moduleId": "lang.array"
     },
     {
@@ -134,17 +128,29 @@
       "moduleId": "lang.array"
     }
   ],
-  "records": [
+  "records": [],
+  "constants": [
     {
-      "id": "T0",
+      "id": "ASCENDING",
+      "description": "",
+      "moduleId": "lang.array"
+    },
+    {
+      "id": "DESCENDING",
       "description": "",
       "moduleId": "lang.array"
     }
   ],
-  "constants": [],
   "errors": [],
-  "types": [],
+  "types": [
+    {
+      "id": "SortDirection",
+      "description": "",
+      "moduleId": "lang.array"
+    }
+  ],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

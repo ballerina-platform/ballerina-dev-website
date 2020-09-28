@@ -250,7 +250,7 @@ service RecordService on new http:Listener(8080) {
                                  <tr>
                                     <td>A request is sent with a string value given for the integer field <code>birthYear</code>. The service validates the value for the field and the request fails.</td>
                                    <td>
-                                       <span class="cTableCode">curl -d '{ "name": "John Little",  "birthYear": 1855 }' http://localhost:8080/record</span>
+                                       <span class="cTableCode">curl -d '{ "name": "John Little",  "birthYear": "1855" }' http://localhost:8080/record</span>
                                     </td>
                                     <td>
                                         <span class="cTableCode">data binding failed: error {ballerina/lang.typedesc}ConversionError message='map '<' json > ' value cannot be converted to 'Person'</span>

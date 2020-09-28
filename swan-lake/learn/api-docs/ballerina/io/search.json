@@ -5,20 +5,20 @@
       "description": "\u003cp\u003eThis module is designed to support input and output operations via channels in a canonical way, either in a blocking,\nor non-blocking manner.\u003c/p\u003e"
     }
   ],
-  "objects": [
+  "classes": [
     {
       "id": "ReadableByteChannel",
       "description": "\u003cp\u003eReadableByteChannel represents an input resource (i.\u003c/p\u003e",
       "moduleId": "io"
     },
     {
-      "id": "ReadableCSVChannel",
-      "description": "\u003cp\u003eRepresents a ReadableCSVChannel which could be used to read records from CSV file.\u003c/p\u003e",
+      "id": "ReadableCharacterChannel",
+      "description": "\u003cp\u003eRepresents a channel, which could be used to read characters through a given ReadableByteChannel.\u003c/p\u003e",
       "moduleId": "io"
     },
     {
-      "id": "ReadableCharacterChannel",
-      "description": "\u003cp\u003eRepresents a channel, which could be used to read characters through a given ReadableByteChannel.\u003c/p\u003e",
+      "id": "ReadableCSVChannel",
+      "description": "\u003cp\u003eRepresents a ReadableCSVChannel which could be used to read records from CSV file.\u003c/p\u003e",
       "moduleId": "io"
     },
     {
@@ -42,13 +42,13 @@
       "moduleId": "io"
     },
     {
-      "id": "WritableCSVChannel",
-      "description": "\u003cp\u003eRepresents a WritableCSVChannel, which could be used to write records from the CSV file.\u003c/p\u003e",
+      "id": "WritableCharacterChannel",
+      "description": "\u003cp\u003eRepresents a channel which could be used to write characters through a given WritableCharacterChannel.\u003c/p\u003e",
       "moduleId": "io"
     },
     {
-      "id": "WritableCharacterChannel",
-      "description": "\u003cp\u003eRepresents a channel which could be used to write characters through a given WritableCharacterChannel.\u003c/p\u003e",
+      "id": "WritableCSVChannel",
+      "description": "\u003cp\u003eRepresents a WritableCSVChannel, which could be used to write records from the CSV file.\u003c/p\u003e",
       "moduleId": "io"
     },
     {
@@ -218,5 +218,6 @@
   ],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

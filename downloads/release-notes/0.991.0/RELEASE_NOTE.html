@@ -13,7 +13,7 @@
 <li>Closed record syntax was updated to use the {| and |} delimiters to indicate that the record is closed.</li>
 </ul>
 <p><em>Previous syntax</em></p>
-<pre><code class="ballerina">type Person record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person record {
     string name;
     int age;
     !...;
@@ -21,7 +21,7 @@
 </code></pre>
 
 <p><em>New syntax</em></p>
-<pre><code class="ballerina">type Person record {|
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person record {|
     string name;
     int age;
 |};
@@ -31,12 +31,12 @@
 <li>The syntax for destructure binding pattern for closed records was also updated to use the {| and |} delimiters.</li>
 </ul>
 <p><em>Previous syntax</em></p>
-<pre><code class="ballerina">Person p = { name: &quot;John Doe&quot;, age: 25 };
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">Person p = { name: &quot;John Doe&quot;, age: 25 };
 Person { name: pName, age: pAge, !... } = p;
 </code></pre>
 
 <p><em>New syntax</em></p>
-<pre><code class="ballerina">Person p = { name: &quot;John Doe&quot;, age: 25 };
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">Person p = { name: &quot;John Doe&quot;, age: 25 };
 Person {| name: pName, age: pAge |} = p;
 </code></pre>
 
@@ -44,11 +44,11 @@ Person {| name: pName, age: pAge |} = p;
 <li>The syntax for closed arrays with inferred length was changed as follows.</li>
 </ul>
 <p><em>Previous syntax</em></p>
-<pre><code class="ballerina">string[!...] array = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string[!...] array = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
 </code></pre>
 
 <p><em>New syntax</em></p>
-<pre><code class="ballerina">string[*] array = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string[*] array = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
 </code></pre>
 
 <ul>
@@ -59,7 +59,7 @@ Person {| name: pName, age: pAge |} = p;
 <p>Use of the <code>null</code> literal is now restricted to JSON contexts.</p>
 </li>
 </ul>
-<pre><code class="ballerina">json response = null; // Allowed
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">json response = null; // Allowed
 string? name = null; // Compile error
 </code></pre>
 
@@ -67,22 +67,22 @@ string? name = null; // Compile error
 <li>String template expression interpolation syntax was updated.</li>
 </ul>
 <p><em>Previous syntax</em></p>
-<pre><code class="ballerina">string s = string `Hello {{name}}!`;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string s = string `Hello {{name}}!`;
 </code></pre>
 
 <p><em>New syntax</em></p>
-<pre><code class="ballerina">string s = string `Hello ${name}!`;
+<<pre class="line-numbers language-ballerina"><code class="language-ballerina">string s = string `Hello ${name}!`;
 </code></pre>
 
 <ul>
 <li>XML literal interpolation syntax was updated.</li>
 </ul>
 <p><em>Previous syntax</em></p>
-<pre><code class="ballerina">xml x = xml `&lt;Person name={{name}}&gt;{{content}}&lt;/Person&gt;`;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">xml x = xml `&lt;Person name={{name}}&gt;{{content}}&lt;/Person&gt;`;
 </code></pre>
 
 <p><em>New syntax</em></p>
-<pre><code class="ballerina">xml x = xml `&lt;Person name=${name}&gt;${content}&lt;/Person&gt;`;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">xml x = xml `&lt;Person name=${name}&gt;${content}&lt;/Person&gt;`;
 </code></pre>
 
 <ul>
@@ -94,11 +94,11 @@ string? name = null; // Compile error
 </li>
 </ul>
 <p><em>Previous syntax</em></p>
-<pre><code class="ballerina">map&lt;anydata&gt; attributeMap = map&lt;anydata&gt;.convert(x1@);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">map&lt;anydata&gt; attributeMap = map&lt;anydata&gt;.convert(x1@);
 </code></pre>
 
 <p><em>New syntax</em></p>
-<pre><code class="ballerina">map&lt;string&gt;? attributeMap = x1@;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">map&lt;string&gt;? attributeMap = x1@;
 </code></pre>
 
 <ul>
@@ -115,7 +115,7 @@ string? name = null; // Compile error
 <p>The diamond operator was updated to perform type-casting as follows:</p>
 </li>
 </ul>
-<pre><code class="ballerina">Foo f = &lt;Foo&gt; value;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">Foo f = &lt;Foo&gt; value;
 </code></pre>
 
 <p>If <code>value</code> belongs to <code>Foo</code>, casting will be successful and <code>value</code> will be assigned to <code>f</code>. Else, casting will result in a panic.</p>
@@ -130,9 +130,7 @@ string? name = null; // Compile error
 <p><code>anydata</code> was updated to include structures of pure values (values whose types are subtypes of <code>anydata|error</code>). <code>anydata</code> is now the union of the following:</p>
 </li>
 </ul>
-<pre><code class="ballerina">() | boolean | int | float | decimal | string | (anydata|error)[] | map&lt;anydata|error&gt; | xml | table
-
-</code></pre>
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">() | boolean | int | float | decimal | string | (anydata|error)[] | map&lt;anydata|error&gt; | xml | table</code></pre>
 
 <ul>
 <li>
@@ -143,22 +141,22 @@ string? name = null; // Compile error
 </li>
 </ul>
 <p><em>Previous syntax</em></p>
-<pre><code class="ballerina">extern function externFunction();
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">extern function externFunction();
 </code></pre>
 
 <p><em>New syntax</em></p>
-<pre><code class="ballerina">function externFunction() = external;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function externFunction() = external;
 </code></pre>
 
 <ul>
 <li>The signature of the <code>__attach()</code> method of <code>AbstractListener</code> has been changed as follows:</li>
 </ul>
 <p><em>Previous signature</em></p>
-<pre><code class="ballerina">public function __attach(service s, map&lt;any&gt; annotationData) returns error?
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">public function __attach(service s, map&lt;any&gt; annotationData) returns error?
 </code></pre>
 
 <p><em>New signature</em></p>
-<pre><code class="ballerina">public function __attach(service s, string? name = ()) returns error?;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">public function __attach(service s, string? name = ()) returns error?;
 </code></pre>
 
 <ul>
@@ -170,12 +168,12 @@ string? name = null; // Compile error
 <li>Ballerina crypto stdlib was made flexible enough to introduce new features and algorithms in future.</li>
 </ul>
 <p><em>Previous syntax</em></p>
-<pre><code class="ballerina">string input = &quot;Hello Ballerina&quot;;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string input = &quot;Hello Ballerina&quot;;
 crypto:hash(input, crypto:MD5)
 </code></pre>
 
 <p><em>New syntax</em></p>
-<pre><code class="ballerina">string input = &quot;Hello Ballerina&quot;;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string input = &quot;Hello Ballerina&quot;;
 byte[] inputArr = input.toByteArray(&quot;UTF-8&quot;);
 byte[] output = crypto:hashMd5(inputArr);
 </code></pre>
@@ -189,7 +187,7 @@ byte[] output = crypto:hashMd5(inputArr);
 <p>Timer was previously created by providing <code>onTrigger</code> and <code>onError</code> functions along with the <code>interval</code> and <code>delay</code> parameters. Now <code>interval</code> and <code>delay</code> parameters are provided through a <code>task:TimerConfiguration</code> record type, while <code>onTrigger</code>  function should be implemented as a resource function inside the attaching service. 
 Service can be created on top of a <code>task:Listener</code> or can be manually attached to a <code>task:Scheduler</code> object. </p>
 <p><em>Previous Syntax</em></p>
-<pre><code class="ballerina">function startTimer() {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function startTimer() {
     ((function) returns error?) onTriggerFunction = cleanup;
     function (error) onErrorFunction = cleanupError;
     timer = new task:Timer(onTriggerFunction, onErrorFunction, 1000, delay = 500);
@@ -206,7 +204,7 @@ function cleanupError(error e) {
 </code></pre>
 
 <p><em>New Syntax</em></p>
-<pre><code class="ballerina">function startTimer() {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function startTimer() {
     task:TimerConfiguration timerConfiguration = {
         interval: 1000,
         initialDelay: 500
@@ -234,7 +232,7 @@ Service timerService = service {
 </code></pre>
 
 <p>OR</p>
-<pre><code class="ballerina">task:TimerConfiguration timerConfiguration = {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">task:TimerConfiguration timerConfiguration = {
    interval: 1000,
    initialDelay: 3000
 };
@@ -250,7 +248,7 @@ Service timerService on timer {
 <p><code>task:Appointment</code> functionality can be implemented using <code>task:Listener</code> and the <code>task:Scheduler</code> objects. Previously the <code>cronExpression</code> used for the appointment given as a parameter, along with the <code>onTrigger</code> and <code>onError</code> functions. Now the <code>cronExpression</code> should be provided using <code>appointmentDetails</code> field inside the  <code>task:AppointmentConfiguration</code> record type. Alternatively, <code>task:AppointmentData</code> record can also be provided as the <code>appointmentDetails</code> field (see below examples).
 <code>onTrigger</code> function should be implemented inside a service, and the service can be created on top a <code>task:Listener</code> or the service can be attached to a <code>task:Scheduler</code> object, manually.</p>
 <p><em>Previous Syntax</em></p>
-<pre><code class="ballerina">function startAppointment() {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function startAppointment() {
     ((function) returns error?) onTriggerFunction = cleanup;
     function (error) onErrorFunction = cleanupError;
     appointment = new task:Appointment(onTriggerFunction, onErrorFunction, &quot;0/2 * * * * ?&quot;);
@@ -267,7 +265,7 @@ function cleanupError(error e) {
 </code></pre>
 
 <p><em>New Syntax</em></p>
-<pre><code class="ballerina">task:AppointmentData appointmentData = {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">task:AppointmentData appointmentData = {
     seconds: &quot;0/2&quot;,
     minutes: &quot;*&quot;,
     hours: &quot;*&quot;,
@@ -292,7 +290,7 @@ service appointmentService on appointment {
 </code></pre>
 
 <p>OR</p>
-<pre><code class="ballerina">function startAppointment() {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function startAppointment() {
     task:AppointmentConfiguration appointmentConfiguration = {
         appointmentDetails: “0/2 * * * * ?”
     };
@@ -320,11 +318,11 @@ service appointmentService = service {
 <h2>Time Library Changes</h2>
 <p>The <code>format</code>, <code>parse</code>, <code>createTime</code>and <code>toTimeZone</code>  functions are changed to return errors when there is an issue.</p>
 <p><em>Previous Syntax</em></p>
-<pre><code class="ballerina">time:Time timeVal = time:parse(&quot;2016-03-01T09:46:22.444&quot;, yyyy-MM-dd'T'HH:mm:ss.SSS&quot;);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">time:Time timeVal = time:parse(&quot;2016-03-01T09:46:22.444&quot;, yyyy-MM-dd'T'HH:mm:ss.SSS&quot;);
 </code></pre>
 
 <p><em>New Syntax</em></p>
-<pre><code class="ballerina">time:Time|error timeVal = time:parse(&quot;2016-03-01T09:46:22.444&quot;, yyyy-MM-dd'T'HH:mm:ss.SSS&quot;);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">time:Time|error timeVal = time:parse(&quot;2016-03-01T09:46:22.444&quot;, yyyy-MM-dd'T'HH:mm:ss.SSS&quot;);
 </code></pre>
 
 <h1>What&rsquo;s new in Ballerina 0.991.0</h1>
@@ -339,7 +337,7 @@ service appointmentService = service {
 <p>Error values can now be destructured using binding patterns and typed binding patterns as follows,</p>
 </li>
 </ul>
-<pre><code class="ballerina">// Usage of error typed binding pattern.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">// Usage of error typed binding pattern.
 var error (reasonString, detailMap) = getErrorValue();
 
 // Usage of error binding pattern.
@@ -356,7 +354,7 @@ error (reasonString, detailMap) = getErrorValue();
 <p>The return signature of the initializer of an object can now be <code>error?</code> (sub types of <code>error</code> allowed) or <code>()</code>.</p>
 </li>
 </ul>
-<pre><code class="ballerina">type Person object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person object {
     string name;
 
     function __init(string name) returns error? {
@@ -373,7 +371,7 @@ Person|error person = new(&quot;John Doe&quot;);
 <li>Patterns in the static value match statement now support const values.</li>
 <li>String can concatenate into XML values and the string part is automatically converted to an XML character sequence, resulting in XML concatenation. This supports both &lsquo;+&rsquo; and &lsquo;+=&rsquo; operators.</li>
 </ul>
-<pre><code class="ballerina">xml xValue = xml `&lt;name&gt;John&lt;/name&gt;`;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">xml xValue = xml `&lt;name&gt;John&lt;/name&gt;`;
 xml yValue = xValue + &quot;suf&quot;;
 yValue += &quot;fix&quot;;
 io:println(yValue);

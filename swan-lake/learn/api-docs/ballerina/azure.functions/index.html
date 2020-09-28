@@ -70,18 +70,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../azure.functions/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../azure.functions/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../azure.functions/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../azure.functions/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
         
@@ -137,7 +134,7 @@
     <h1>Module Overview</h1>
 <p>Annotation based Azure Functions extension implementation for Ballerina.</p>
 <ul>
-<li>For information on the operations, which you can perform with this module, see <a href="/swan-lake/learn/api-docs/ballerina/azure.functions/index.html#objects">Objects</a>.</li>
+<li>For information on the operations, which you can perform with this module, see <a href="/swan-lake/learn/api-docs/ballerina/azure.functions/index.html#classes">Classes</a>.</li>
 <li>For more information on the deployment, see the <a href="/swan-lake/learn/deployment/azure-functions/">Azure Functions Deployment Guide</a>.</li>
 <li>For examples on the usage of the operations, see the <a href="/swan-lake/learn/by-example/azure-functions-deployment.html">Azure Functions Deployment Example</a>.</li>
 </ul>
@@ -155,15 +152,14 @@
 <h4>Custom 'host.json'</h4>
 <p>A custom <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json">host.json</a> file for the functions deployment can be optionally provided by placing a 'host.json' file in the current working directory where the Ballerina build is done. The required host.json properties are provided/overridden by the values derived from the source code by the compiler extension.</p>
 <h4>Usage Sample:</h4>
-<pre><code class="language-ballerina">import ballerina/http;
-import ballerina/system;
+<pre><code class="language-ballerina">import ballerina/system;
 import ballerinax/azure.functions as af;
 
 // HTTP request/response with no authentication
 @af:Function
-public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } http:Request req) 
+public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; } string payload) 
                       returns @af:HTTPOutput string|error {
-    return &quot;Hello, &quot; + check &lt;@untainted&gt; req.getTextPayload() + &quot;!&quot;;
+    return &quot;Hello, &quot; + payload + &quot;!&quot;;
 }
 
 // HTTP request to add data to a queue
@@ -290,7 +286,7 @@ public function httpTriggerCosmosDBInput3(
 public function httpTriggerCosmosDBOutput1(
     @af:HTTPTrigger { } af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
     returns @af:CosmosDBOutput { connectionStringSetting: &quot;CosmosDBConnection&quot;, 
-                                databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
+                                 databaseName: &quot;db1&quot;, collectionName: &quot;c1&quot; } json {
     json entry = { id: system:uuid(), name: &quot;Saman&quot;, country: &quot;Sri Lanka&quot; };
     hb.payload = &quot;Adding entry: &quot; + entry.toString();
     return entry;
@@ -341,243 +337,193 @@ Generating executables
 
 
     
-        
-            <section class="method-content" id="records">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#records">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Records </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="records">
+            <div class="main-method-title here">
+                <a class="url-link" href="#records">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Records </h2>
+            </div>
+            <table>
+                
                     <tr>
                         <td class="module-title truncate records" id="BindingNameConfiguration" title="BindingNameConfiguration">
                             <a class="records " href="records/BindingNameConfiguration.html">BindingNameConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>BindingName annotation configuration.</p>
-
+                            <p>BindingName annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="BlobConfiguration" title="BlobConfiguration">
                             <a class="records " href="records/BlobConfiguration.html">BlobConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Blob annotation configuration.</p>
-
+                            <p>Blob annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="BytesOutputBinding" title="BytesOutputBinding">
                             <a class="records " href="records/BytesOutputBinding.html">BytesOutputBinding</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Byte array output binding data.</p>
-
+                            <p>Byte array output binding data.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="CosmosDBInputConfiguration" title="CosmosDBInputConfiguration">
                             <a class="records " href="records/CosmosDBInputConfiguration.html">CosmosDBInputConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>CosmosDB input annotation configuration.</p>
-
+                            <p>CosmosDB input annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="CosmosDBOutputConfiguration" title="CosmosDBOutputConfiguration">
                             <a class="records " href="records/CosmosDBOutputConfiguration.html">CosmosDBOutputConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>CosmosDB output annotation configuration.</p>
-
+                            <p>CosmosDB output annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="CosmosDBTriggerConfiguration" title="CosmosDBTriggerConfiguration">
                             <a class="records " href="records/CosmosDBTriggerConfiguration.html">CosmosDBTriggerConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>CosmosDB trigger annotation configuration.</p>
-
+                            <p>CosmosDB trigger annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="HTTPBinding" title="HTTPBinding">
                             <a class="records " href="records/HTTPBinding.html">HTTPBinding</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>HTTP binding data.</p>
-
+                            <p>HTTP binding data.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="HTTPRequest" title="HTTPRequest">
                             <a class="records " href="records/HTTPRequest.html">HTTPRequest</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>HTTP request binding data.</p>
-
+                            <p>HTTP request binding data.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="HTTPTriggerConfiguration" title="HTTPTriggerConfiguration">
                             <a class="records " href="records/HTTPTriggerConfiguration.html">HTTPTriggerConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>HTTPTrigger annotation configuration.</p>
-
+                            <p>HTTPTrigger annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="HandlerParams" title="HandlerParams">
                             <a class="records " href="records/HandlerParams.html">HandlerParams</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>INTERNAL stucture - the request handler parameter data.</p>
-
+                            <p>INTERNAL stucture - the request handler parameter data.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="QueueConfiguration" title="QueueConfiguration">
                             <a class="records " href="records/QueueConfiguration.html">QueueConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Queue annotation configuration.</p>
-
+                            <p>Queue annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="StringOutputBinding" title="StringOutputBinding">
                             <a class="records " href="records/StringOutputBinding.html">StringOutputBinding</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>String output binding data.</p>
-
+                            <p>String output binding data.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="TimerTriggerConfiguration" title="TimerTriggerConfiguration">
                             <a class="records " href="records/TimerTriggerConfiguration.html">TimerTriggerConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>TimerTrigger annotation configuration.</p>
-
+                            <p>TimerTrigger annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="TwilioSmsConfiguration" title="TwilioSmsConfiguration">
                             <a class="records " href="records/TwilioSmsConfiguration.html">TwilioSmsConfiguration</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Twilio annotation configuration.</p>
-
+                            <p>Twilio annotation configuration.</p> 
                         </td>
                     </tr>
-                    
-                    
-                    
+                
                     <tr>
                         <td class="module-title truncate records" id="TwilioSmsOutputBinding" title="TwilioSmsOutputBinding">
                             <a class="records " href="records/TwilioSmsOutputBinding.html">TwilioSmsOutputBinding</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>Twilion SMS output binding data.</p>
-
+                            <p>Twilion SMS output binding data.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
     
 
     
-        
-            <section class="method-content" id="objects">
-                <div class="main-method-title here">
-                    <a class="url-link" href="#objects">
-                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
-                    </a>
-                    <h2> Objects </h2>
-                </div>
-                <table>
-                    
-                    
+        <section class="method-content" id="classes">
+            <div class="main-method-title here">
+                <a class="url-link" href="#classes">
+                    <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                </a>
+                <h2> Classes </h2>
+            </div>
+            <table>
+                
                     <tr>
-                        <td class="module-title truncate objects" id="Context" title="Context">
-                            <a class="objects " href="objects/Context.html">Context</a>
+                        <td class="module-title truncate classes" id="Context" title="Context">
+                            <a class="classes " href="classes/Context.html">Context</a>
                         </td>
                         <td class="module-desc">
                             
-                            <p>The request context holder.</p>
-
+                            <p>The request context holder.</p> 
                         </td>
                     </tr>
-                    
-                    
-                </table>
-            </section>
-        
+                
+            </table>
+        </section>
+    
+
     
 
     
@@ -601,8 +547,8 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - registers a handler function.</p>
-
+                    
+                    <p>INTERNAL usage - registers a handler function.</p> 
                 </td>
             </tr>
             
@@ -612,8 +558,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - creates function context.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - creates function context.</p> 
                 </td>
             </tr>
             
@@ -623,8 +571,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns a converted Ballerina value from input data.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns a converted Ballerina value from input data.</p> 
                 </td>
             </tr>
             
@@ -634,8 +584,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the converted Ballerina value from input data - double escape.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the converted Ballerina value from input data - double escape.</p> 
                 </td>
             </tr>
             
@@ -645,8 +597,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the binary payload from the HTTP request.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the binary payload from the HTTP request.</p> 
                 </td>
             </tr>
             
@@ -656,8 +610,8 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the HTTP body value from input data.</p>
-
+                    
+                    <p>INTERNAL usage - Returns the HTTP body value from input data.</p> 
                 </td>
             </tr>
             
@@ -667,8 +621,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the binary value from input data.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the binary value from input data.</p> 
                 </td>
             </tr>
             
@@ -678,8 +634,8 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Populates the HTTP request structure from an input data entry.</p>
-
+                    
+                    <p>INTERNAL usage - Populates the HTTP request structure from an input data entry.</p> 
                 </td>
             </tr>
             
@@ -689,8 +645,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the HTTP request data.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the HTTP request data.</p> 
                 </td>
             </tr>
             
@@ -700,8 +658,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the JSON payload from the HTTP request.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the JSON payload from the HTTP request.</p> 
                 </td>
             </tr>
             
@@ -711,8 +671,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the JSON value from input data.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the JSON value from input data.</p> 
                 </td>
             </tr>
             
@@ -722,8 +684,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the JSON value from input data - double escape.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the JSON value from input data - double escape.</p> 
                 </td>
             </tr>
             
@@ -733,8 +697,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns a json value from metadata.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns a json value from metadata.</p> 
                 </td>
             </tr>
             
@@ -744,8 +710,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - extracts the metadata.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - extracts the metadata.</p> 
                 </td>
             </tr>
             
@@ -755,8 +723,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the optional converted Ballerina value from input data - double escape.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the optional converted Ballerina value from input data - double escape.</p> 
                 </td>
             </tr>
             
@@ -766,8 +736,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the optional binary value from input data.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the optional binary value from input data.</p> 
                 </td>
             </tr>
             
@@ -777,8 +749,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the optional string value converted from input binary data.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the optional string value converted from input binary data.</p> 
                 </td>
             </tr>
             
@@ -788,8 +762,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the optional string value from input data.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the optional string value from input data.</p> 
                 </td>
             </tr>
             
@@ -799,8 +775,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the string value converted from input binary data.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the string value converted from input binary data.</p> 
                 </td>
             </tr>
             
@@ -810,8 +788,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the string payload from the HTTP request.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the string payload from the HTTP request.</p> 
                 </td>
             </tr>
             
@@ -821,8 +801,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns the string value from input data.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns the string value from input data.</p> 
                 </td>
             </tr>
             
@@ -832,8 +814,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Returns a string value from metadata.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Returns a string value from metadata.</p> 
                 </td>
             </tr>
             
@@ -843,8 +827,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Converts a Ballerina value to a JSON and set the return value.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Converts a Ballerina value to a JSON and set the return value.</p> 
                 </td>
             </tr>
             
@@ -854,8 +840,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the Blob output.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the Blob output.</p> 
                 </td>
             </tr>
             
@@ -865,8 +853,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Converts a CosmosDS Ballerina value to a JSON and set the return value.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Converts a CosmosDS Ballerina value to a JSON and set the return value.</p> 
                 </td>
             </tr>
             
@@ -876,8 +866,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the CosmosDS JSON return value.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the CosmosDS JSON return value.</p> 
                 </td>
             </tr>
             
@@ -887,8 +879,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the HTTP output.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the HTTP output.</p> 
                 </td>
             </tr>
             
@@ -898,8 +892,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the HTTP binding return value.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the HTTP binding return value.</p> 
                 </td>
             </tr>
             
@@ -909,8 +905,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the JSON return value.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the JSON return value.</p> 
                 </td>
             </tr>
             
@@ -920,8 +918,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the pure HTTP output.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the pure HTTP output.</p> 
                 </td>
             </tr>
             
@@ -931,8 +931,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the pure JSON output.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the pure JSON output.</p> 
                 </td>
             </tr>
             
@@ -942,8 +944,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the pure string output.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the pure string output.</p> 
                 </td>
             </tr>
             
@@ -953,8 +957,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the string output.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the string output.</p> 
                 </td>
             </tr>
             
@@ -964,8 +970,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the string return value.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the string return value.</p> 
                 </td>
             </tr>
             
@@ -975,8 +983,10 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>INTERNAL usage - Sets the Twilio output.</p>
-
+                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                    
+                    
+                    <p>INTERNAL usage - Sets the Twilio output.</p> 
                 </td>
             </tr>
             
@@ -1004,8 +1014,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:BindingName annotation.</p>
-
+                    <p>@azurefunctions:BindingName annotation.</p> 
                 </td>
             </tr>
             
@@ -1015,8 +1024,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:BlobInput annotation.</p>
-
+                    <p>@azurefunctions:BlobInput annotation.</p> 
                 </td>
             </tr>
             
@@ -1026,8 +1034,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:BlobOutput annotation.</p>
-
+                    <p>@azurefunctions:BlobOutput annotation.</p> 
                 </td>
             </tr>
             
@@ -1037,8 +1044,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:BlobTrigger annotation.</p>
-
+                    <p>@azurefunctions:BlobTrigger annotation.</p> 
                 </td>
             </tr>
             
@@ -1048,8 +1054,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:CosmosDBInput annotation.</p>
-
+                    <p>@azurefunctions:CosmosDBInput annotation.</p> 
                 </td>
             </tr>
             
@@ -1059,8 +1064,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:CosmosDBOutput annotation.</p>
-
+                    <p>@azurefunctions:CosmosDBOutput annotation.</p> 
                 </td>
             </tr>
             
@@ -1070,8 +1074,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:CosmosDBTrigger annotation.</p>
-
+                    <p>@azurefunctions:CosmosDBTrigger annotation.</p> 
                 </td>
             </tr>
             
@@ -1081,8 +1084,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:Function annotation.</p>
-
+                    <p>@azurefunctions:Function annotation.</p> 
                 </td>
             </tr>
             
@@ -1092,8 +1094,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:HTTPOutput annotation</p>
-
+                    <p>@azurefunctions:HTTPOutput annotation</p> 
                 </td>
             </tr>
             
@@ -1103,8 +1104,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:HTTPTrigger annotation.</p>
-
+                    <p>@azurefunctions:HTTPTrigger annotation.</p> 
                 </td>
             </tr>
             
@@ -1114,8 +1114,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:QueueOutput annotation.</p>
-
+                    <p>@azurefunctions:QueueOutput annotation.</p> 
                 </td>
             </tr>
             
@@ -1125,8 +1124,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:QueueOutput annotation.</p>
-
+                    <p>@azurefunctions:QueueOutput annotation.</p> 
                 </td>
             </tr>
             
@@ -1136,8 +1134,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:TimerTrigger annotation.</p>
-
+                    <p>@azurefunctions:TimerTrigger annotation.</p> 
                 </td>
             </tr>
             
@@ -1147,8 +1144,7 @@ Generating executables
                 </td>
                 <td class="module-desc">
                     
-                    <p>@azurefunctions:TwilioSmsOutput annotation.</p>
-
+                    <p>@azurefunctions:TwilioSmsOutput annotation.</p> 
                 </td>
             </tr>
             

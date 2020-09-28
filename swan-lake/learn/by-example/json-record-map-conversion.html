@@ -57,13 +57,7 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">inception</span> <span class="nx">is</span> <span class="nx">Movie</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">inception</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">json_record_map_conversion</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">{</span><span class="s">&quot;title&quot;</span><span class="p">:</span><span class="s">&quot;The Revenant&quot;</span><span class="p">,</span> <span class="s">&quot;year&quot;</span><span class="p">:</span><span class="s">&quot;2015&quot;</span><span class="p">,</span> <span class="s">&quot;released&quot;</span><span class="p">:</span><span class="s">&quot;08 Jan 2016&quot;</span><span class="p">,</span> <span class="s">&quot;writer&quot;</span><span class="p">:{</span><span class="s">&quot;fname&quot;</span><span class="p">:</span><span class="s">&quot;Michael&quot;</span><span class="p">,</span> <span class="s">&quot;lname&quot;</span><span class="p">:</span><span class="s">&quot;Punke&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span><span class="mi">30</span><span class="p">}}</span>
-<span class="nx">Punke</span>
-<span class="mi">30</span>
-<span class="nx">title</span><span class="p">=</span><span class="nx">Inception</span> <span class="nx">year</span><span class="p">=</span><span class="mi">2010</span> <span class="nx">released</span><span class="p">=</span><span class="mi">16</span> <span class="nx">Jul</span> <span class="mi">2010</span> <span class="nx">writer</span><span class="p">=</span><span class="nx">fname</span><span class="p">=</span><span class="nx">Christopher</span> <span class="nx">lname</span><span class="p">=</span><span class="nx">Nolan</span> <span class="nx">age</span><span class="p">=</span><span class="mi">30</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -114,6 +108,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/json-record-map-conversion/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -344,7 +339,7 @@ ballerina run json_record_map_conversion.bal
 {&quot;title&quot;:&quot;The Revenant&quot;, &quot;year&quot;:&quot;2015&quot;, &quot;released&quot;:&quot;08 Jan 2016&quot;, &quot;writer&quot;:{&quot;fname&quot;:&quot;Michael&quot;, &quot;lname&quot;:&quot;Punke&quot;, &quot;age&quot;:30}}
 Punke
 30
-title=Inception year=2010 released=16 Jul 2010 writer=fname=Christopher lname=Nolan age=30
+{&quot;title&quot;:&quot;Inception&quot;,&quot;year&quot;:&quot;2010&quot;,&quot;released&quot;:&quot;16 Jul 2010&quot;,&quot;writer&quot;:{&quot;fname&quot;:&quot;Christopher&quot;,&quot;lname&quot;:&quot;Nolan&quot;,&quot;age&quot;:30}}
 </code></pre></div>
 
                                 </td>
@@ -372,7 +367,7 @@ title=Inception year=2010 released=16 Jul 2010 writer=fname=Christopher lname=No
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

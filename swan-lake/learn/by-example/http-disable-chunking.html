@@ -13,7 +13,9 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
-                                  <span class="p">{</span><span class="nx">http1Settings</span><span class="p">:</span> <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">}});</span><span class="kd">service</span> <span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+                                    <span class="p">{</span><span class="nx">http1Settings</span><span class="p">:</span>
+                                        <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">}}</span>
+                                  <span class="p">);</span><span class="kd">service</span> <span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
@@ -27,7 +29,8 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">errorResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;An error occurred while invoking the service.&quot;</span><span class="p">};</span>
+            <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span>
+                <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;An error occurred while invoking the service.&quot;</span><span class="p">};</span>
             <span class="nx">errorResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">errorResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -71,15 +74,7 @@ redirect_from:
         <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">services</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_disable_chunking</span><span class="p">.</span><span class="nx">bal</span>
-<span class="err">#</span> <span class="nx">Service</span> <span class="nx">deployment</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9092</span><span class="nx">To</span> <span class="nx">use</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">cURL</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span> 
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9092/chunkingSample</span>
-<span class="p">{</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span><span class="s">&quot;Length-20&quot;</span><span class="p">}</span><span class="nx">To</span> <span class="nx">enable</span> <span class="nx">chunking</span><span class="p">,</span> <span class="nx">change</span> <span class="nx">the</span> <span class="nx">chunking</span> <span class="nx">option</span> <span class="nx">of</span> <span class="nx">the</span> <span class="s">`clientEndpoint`</span> <span class="nx">in</span> <span class="nx">the</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">to</span> <span class="s">`http:CHUNKING_ALWAYS`</span><span class="p">.</span>
-<span class="p">{</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span><span class="s">&quot;chunked&quot;</span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -131,6 +126,7 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-disable-chunking/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -193,7 +189,9 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;,
-                                  {http1Settings: {chunking: http:CHUNKING_NEVER}});
+                                    {http1Settings:
+                                        {chunking: http:CHUNKING_NEVER}}
+                                  );
 </code></pre></div>
 
                                 </td>
@@ -255,7 +253,8 @@ import ballerina/log;
             }
         } else {
             http:Response errorResponse = new;
-            json msg = {&quot;error&quot;: &quot;An error occurred while invoking the service.&quot;};
+            json msg =
+                {&quot;error&quot;: &quot;An error occurred while invoking the service.&quot;};
             errorResponse.setPayload(msg);
             var response = caller-&gt;respond(errorResponse);
             if (response is error) {
@@ -516,7 +515,7 @@ curl http://localhost:9092/chunkingSample
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

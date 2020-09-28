@@ -125,6 +125,7 @@
         
         
         
+        
             <li>
                 <a data="functions" href="../config/index.html#functions" onclick="menuLinkClick()">Functions</a>
             </li>
@@ -177,9 +178,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Checks whether the given key is in the configuration registry.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Checks whether the given key is in the configuration registry.</p>   
                             </div>
                         </td>
                     </tr>
@@ -189,9 +191,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the specified configuration value as an array.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Retrieves the specified configuration value as an array.</p>   
                             </div>
                         </td>
                     </tr>
@@ -201,9 +204,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the specified configuration value as a boolean.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Retrieves the specified configuration value as a boolean.</p>   
                             </div>
                         </td>
                     </tr>
@@ -213,9 +217,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the specified configuration value as a float.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Retrieves the specified configuration value as a float.</p>   
                             </div>
                         </td>
                     </tr>
@@ -225,9 +230,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the specified configuration value as an int.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Retrieves the specified configuration value as an int.</p>   
                             </div>
                         </td>
                     </tr>
@@ -237,9 +243,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the specified configuration value as a map.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Retrieves the specified configuration value as a map.</p>   
                             </div>
                         </td>
                     </tr>
@@ -249,9 +256,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Retrieves the specified configuration value as a string.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Retrieves the specified configuration value as a string.</p>   
                             </div>
                         </td>
                     </tr>
@@ -261,9 +269,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Sets the specified key/value pair as a configuration.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Sets the specified key/value pair as a configuration.</p>   
                             </div>
                         </td>
                     </tr>
@@ -288,6 +297,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Checks whether the given key is in the configuration registry.</p>
 <pre><code class="language-ballerina"> boolean configAvailable = config:contains(&quot;host&quot;);
@@ -346,6 +358,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the specified configuration value as an array.</p>
 <pre><code class="language-ballerina"> int[]|error ports = config:getAsArray(&quot;ports&quot;).cloneWithType(int[]);
 </code></pre>
@@ -402,6 +417,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the specified configuration value as a boolean.</p>
 <pre><code class="language-ballerina"> boolean cachingEnabled = config:getAsBoolean(&quot;http.caching_enabled&quot;);
@@ -477,6 +495,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the specified configuration value as a float.</p>
 <pre><code class="language-ballerina"> float evictionFactor = config:getAsFloat(&quot;http.eviction_factor&quot;);
 </code></pre>
@@ -550,6 +571,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the specified configuration value as an int.</p>
 <pre><code class="language-ballerina"> int port = config:getAsInt(&quot;http.port&quot;);
@@ -625,6 +649,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the specified configuration value as a map.</p>
 <pre><code class="language-ballerina"> map&lt;anydata&gt; configValue = config:getAsMap(&quot;http.listenerConfig&quot;);
 </code></pre>
@@ -681,6 +708,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the specified configuration value as a string.</p>
 <pre><code class="language-ballerina"> string host = config:getAsString(&quot;http.host&quot;);
@@ -753,6 +783,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Sets the specified key/value pair as a configuration.</p>
 <pre><code class="language-ballerina"> config:setConfig(&quot;john.country&quot;, &quot;USA&quot;);

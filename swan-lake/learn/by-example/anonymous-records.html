@@ -35,12 +35,7 @@ redirect_from:
     <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">recField</span> <span class="nx">in</span> <span class="nx">anydataRecord</span> <span class="p">{</span>
         <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">recField</span><span class="p">);</span>
     <span class="p">}</span>    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">anonymous_records</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">25</span> <span class="nx">address</span><span class="p">=</span><span class="nx">city</span><span class="p">=</span><span class="nx">Colombo</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">Jane</span> <span class="nx">Doe</span> <span class="nx">age</span><span class="p">=</span><span class="mi">20</span> <span class="nx">address</span><span class="p">=</span><span class="nx">city</span><span class="p">=</span><span class="nx">London</span> <span class="nx">country</span><span class="p">=</span><span class="nx">UK</span>
-<span class="nx">John</span> <span class="nx">Doe</span> <span class="mi">25</span> <span class="nx">city</span><span class="p">=</span><span class="nx">Colombo</span> <span class="nx">country</span><span class="p">=</span><span class="nx">Sri</span> <span class="nx">Lanka</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -91,6 +86,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/anonymous-records/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -338,9 +334,9 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command below.
 ballerina run anonymous_records.bal
-name=John Doe age=25 address=city=Colombo country=Sri Lanka
-name=Jane Doe age=20 address=city=London country=UK
-John Doe 25 city=Colombo country=Sri Lanka
+{&quot;name&quot;:&quot;John Doe&quot;,&quot;age&quot;:25,&quot;address&quot;:{&quot;city&quot;:&quot;Colombo&quot;,&quot;country&quot;:&quot;Sri Lanka&quot;}}
+{&quot;name&quot;:&quot;Jane Doe&quot;,&quot;age&quot;:20,&quot;address&quot;:{&quot;city&quot;:&quot;London&quot;,&quot;country&quot;:&quot;UK&quot;}}
+[&quot;John Doe&quot;,25,{&quot;city&quot;:&quot;Colombo&quot;,&quot;country&quot;:&quot;Sri Lanka&quot;}]
 </code></pre></div>
 
                                 </td>
@@ -368,7 +364,7 @@ John Doe 25 city=Colombo country=Sri Lanka
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -77,11 +77,7 @@
                         
     
         <li >
-            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
-        </li>
-    
-        <li >
-            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
         </li>
     
         <li >
@@ -93,15 +89,11 @@
         </li>
     
         <li >
-            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
-        </li>
-    
-        <li >
-            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
-        </li>
-    
-        <li >
             <a href="HttpClient.html" onclick="menuLinkClick()">HttpClient</a>
+        </li>
+    
+        <li >
+            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
         </li>
     
         <li class="active active-item">
@@ -109,15 +101,23 @@
         </li>
     
         <li >
-            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
-        </li>
-    
-        <li >
             <a href="RedirectClient.html" onclick="menuLinkClick()">RedirectClient</a>
         </li>
     
         <li >
+            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
+        </li>
+    
+        <li >
+            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+        </li>
+    
+        <li >
             <a href="RetryClient.html" onclick="menuLinkClick()">RetryClient</a>
+        </li>
+    
+        <li >
+            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
         </li>
     
         <li >
@@ -145,18 +145,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../http/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../../http/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
             <li>
@@ -239,40 +240,6 @@ schemes configured in the HTTP client endpoint to secure the HTTP requests.</p>
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Gets invoked to initialize the secure <code>client</code>. Due to the secure client releated configurations provided
-through the <code>config</code> record, the <code>HttpSecureClient</code> is initialized.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a> config)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
-                <li>
-                    <p>URL of the target service</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span> </li>
-                <li>
-                    <p>The configurations to be used when initializing the <code>client</code></p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -341,36 +308,31 @@ through the <code>config</code> record, the <code>HttpSecureClient</code> is ini
                         <tr>
                             <td class="module-title truncate functions" title="getResponse"><a
                                     class="functions" href="#getResponse">getResponse</a></td>
-                            <td class="module-desc"><p>This just passes the request to the actual network call.</p>
-</td>
+                            <td class="module-desc"><p>This just passes the request to the actual network call.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="hasPromise"><a
                                     class="functions" href="#hasPromise">hasPromise</a></td>
-                            <td class="module-desc"><p>Passes the request to an actual network call.</p>
-</td>
+                            <td class="module-desc"><p>Passes the request to an actual network call.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getNextPromise"><a
                                     class="functions" href="#getNextPromise">getNextPromise</a></td>
-                            <td class="module-desc"><p>Passes the request to an actual network call.</p>
-</td>
+                            <td class="module-desc"><p>Passes the request to an actual network call.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="getPromisedResponse"><a
                                     class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                            <td class="module-desc"><p>Passes the request to an actual network call.</p>
-</td>
+                            <td class="module-desc"><p>Passes the request to an actual network call.</p> </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="rejectPromise"><a
                                     class="functions" href="#rejectPromise">rejectPromise</a></td>
-                            <td class="module-desc"><p>Passes the request to an actual network call.</p>
-</td>
+                            <td class="module-desc"><p>Passes the request to an actual network call.</p> </td>
                         </tr>
                     
                 </table>
@@ -503,11 +465,12 @@ function displayMenu() {
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.post()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers to the request and send the request to actual network call.</p>
@@ -559,7 +522,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The inbound response message or the error if one occurred while attempting to fulfill the HTTP request</p>
 </li>
             </ul>
@@ -577,11 +540,12 @@ headers to the request and send the request to actual network call.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.head()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers to the request and send the request to actual network call.</p>
@@ -613,7 +577,7 @@ headers to the request and send the request to actual network call.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -633,7 +597,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The inbound response message or the error if one occurred while attempting to fulfill the HTTP request</p>
 </li>
             </ul>
@@ -651,11 +615,12 @@ headers to the request and send the request to actual network call.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.put()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers to the request and send the request to actual network call.</p>
@@ -707,7 +672,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The inbound response message or an error occurred while attempting to fulfill the HTTP request</p>
 </li>
             </ul>
@@ -725,11 +690,12 @@ headers to the request and send the request to actual network call.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.execute()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers o the request and send the request to actual network call.</p>
@@ -798,7 +764,7 @@ headers o the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The inbound response message or an error occurred while attempting to fulfill the HTTP request</p>
 </li>
             </ul>
@@ -816,11 +782,12 @@ headers o the request and send the request to actual network call.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.patch()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers to the request and send the request to actual network call.</p>
@@ -872,7 +839,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The inbound response message or an error occurred while attempting to fulfill the HTTP request</p>
 </li>
             </ul>
@@ -890,11 +857,12 @@ headers to the request and send the request to actual network call.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.delete()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers to the request and send the request to actual network call.</p>
@@ -926,7 +894,7 @@ headers to the request and send the request to actual network call.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -946,7 +914,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The inbound response message or the error if one occurred while attempting to fulfill the HTTP request</p>
 </li>
             </ul>
@@ -964,11 +932,12 @@ headers to the request and send the request to actual network call.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.get()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers to the request and send the request to actual network call.</p>
@@ -1000,7 +969,7 @@ headers to the request and send the request to actual network call.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1020,7 +989,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The inbound response message or the error if one occurred while attempting to fulfill the HTTP request</p>
 </li>
             </ul>
@@ -1038,11 +1007,12 @@ headers to the request and send the request to actual network call.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.options()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers to the request and send the request to actual network call.</p>
@@ -1074,7 +1044,7 @@ headers to the request and send the request to actual network call.</p>
                     <li>
                         <span >message</span>
                         <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default &lt;(ballerina/http:1.0.0:Request|string|xml|json|byte[]|ballerina/io:0.5.0:ReadableByteChannel|ballerina/mime:1.0.0:Entity[])&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -1094,7 +1064,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The inbound response message or the error if one  occurred while attempting to fulfill the HTTP request</p>
 </li>
             </ul>
@@ -1110,13 +1080,14 @@ headers to the request and send the request to actual network call.</p>
             </a>
             <h2 > forward </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/objects/Request.html">Request</a> request)</p>
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/classes/Request.html">Request</a> request)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.forward()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers to the request and send the request to actual network call.</p>
@@ -1147,7 +1118,7 @@ headers to the request and send the request to actual network call.</p>
                 <ul>
                     <li>
                         <span >request</span>
-                        <span class="type">  <a href="../../http/objects/Request.html">Request</a> </span>
+                        <span class="type">  <a href="../../http/classes/Request.html">Request</a> </span>
                         
                     </li>
                     <li>
@@ -1167,7 +1138,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>The inbound response message or the error if one occurred while attempting to fulfill the HTTP request</p>
 </li>
             </ul>
@@ -1185,11 +1156,12 @@ headers to the request and send the request to actual network call.</p>
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
             
-                <b> returns </b><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This wraps the <code>HttpSecureClient.submit()</code> function of the underlying HTTP remote functions provider. Add relevant authentication
 headers to the request and send the request to actual network call.</p>
@@ -1258,7 +1230,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:HttpFuture</code> that represents an asynchronous service invocation, or else an <code>http:ClientError</code> if the submission fails</p>
 </li>
             </ul>
@@ -1274,13 +1246,14 @@ headers to the request and send the request to actual network call.</p>
             </a>
             <h2 > getResponse </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>This just passes the request to the actual network call.</p>
 
@@ -1293,7 +1266,7 @@ headers to the request and send the request to actual network call.</p>
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1313,7 +1286,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1329,13 +1302,14 @@ headers to the request and send the request to actual network call.</p>
             </a>
             <h2 > hasPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
                 <b> returns </b><span class="builtin-type">boolean</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Passes the request to an actual network call.</p>
 
@@ -1348,7 +1322,7 @@ headers to the request and send the request to actual network call.</p>
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1384,13 +1358,14 @@ headers to the request and send the request to actual network call.</p>
             </a>
             <h2 > getNextPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>(<a href="../../http/classes/HttpFuture.html">HttpFuture</a> httpFuture)</p>
             
-                <b> returns </b><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Passes the request to an actual network call.</p>
 
@@ -1403,7 +1378,7 @@ headers to the request and send the request to actual network call.</p>
                 <ul>
                     <li>
                         <span >httpFuture</span>
-                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        <span class="type">  <a href="../../http/classes/HttpFuture.html">HttpFuture</a> </span>
                         
                     </li>
                     <li>
@@ -1423,7 +1398,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>An <code>http:PushPromise</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1439,13 +1414,14 @@ headers to the request and send the request to actual network call.</p>
             </a>
             <h2 > getPromisedResponse </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise)</p>
             
-                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+                <b> returns </b><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Passes the request to an actual network call.</p>
 
@@ -1458,7 +1434,7 @@ headers to the request and send the request to actual network call.</p>
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>
@@ -1478,7 +1454,7 @@ headers to the request and send the request to actual network call.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/classes/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
                 <li><p>A promised <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
@@ -1494,11 +1470,12 @@ headers to the request and send the request to actual network call.</p>
             </a>
             <h2 > rejectPromise </h2>
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            <p>(<a href="../../http/classes/PushPromise.html">PushPromise</a> promise)</p>
             
         </span>
     </div>
     <div class="function-desc">
+        
         
         <p>Passes the request to an actual network call.</p>
 
@@ -1511,7 +1488,7 @@ headers to the request and send the request to actual network call.</p>
                 <ul>
                     <li>
                         <span >promise</span>
-                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        <span class="type">  <a href="../../http/classes/PushPromise.html">PushPromise</a> </span>
                         
                     </li>
                     <li>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-08-27</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-09-27</h1>
 <p>
 Primary contributors:
 </p>
@@ -1625,10 +1626,11 @@ A <code>default-value</code> specifies a default value for the field, which is
 used when the record type descriptor is used to construct a mapping value but no
 value is specified explicitly for the field. The type descriptor contains a
 0-argument function closure for each default value. The closure is created from
-the expression when the type descriptor is resolved. The closure is evaluated to
-create a field value each time the default is used in the construction of a
-mapping value. The default value does not affect the type described by the type
-descriptor.
+the expression when the type descriptor is resolved. The expression must meet
+the requirements for an <a href="#isolated_functions">isolated function</a>. The
+closure is evaluated to create a field value each time the default is used in
+the construction of a mapping value. The default value does not affect the type
+described by the type descriptor.
 </p>
 <p>
 A <code>record-type-inclusion</code> includes fields from a named record type.
@@ -1804,7 +1806,7 @@ a non-empty set of type-ids.
 <h4 id="functions">Functions</h4>
 
 <pre
-class="grammar"><dfn>function-type-descriptor</dfn> := <code>function</code> <abbr>function-signature</abbr>
+class="grammar"><dfn>function-type-descriptor</dfn> := [<abbr>isolated-qual</abbr>] <code>function</code> <abbr>function-signature</abbr>
 <dfn>function-signature</dfn> := <code>(</code> <abbr>param-list</abbr> <code>)</code> <abbr>return-type-descriptor</abbr>
 </pre>
 <p>
@@ -1879,7 +1881,10 @@ affect typing. The closures computing the defaultable parameters are created
 when the type descriptor is resolved; the default value is computed by calling
 the closure each time the function is called and the corresponding parameter is
 not specified. Whether a parameter is defaultable is used at compile time, but
-the closure that computes the default value is only used at runtime.
+the closure that computes the default value is only used at runtime. If the
+function-type-descriptor includes an isolated-qual, then an expression in a
+default-value must meet the requirements for an <a
+href="#isolated_functions">isolated function</a>.
 </p>
 <p>
 The name of each parameter is included in the function's type descriptor. A
@@ -1930,6 +1935,30 @@ parameter list type P' if and only if R is a subtype of R' and P' is a subtype
 of P. A function value f belongs to a function type T if the declared type of f
 is a subtype of T.
 </p>
+
+<pre
+class="grammar"><dfn>isolated-qual</dfn> := <code>isolated</code>
+</pre>
+<p>
+Every function value has an isolated bit in addition to a read-only bit. If a
+function type includes the <code>isolated-qual</code>, then a function value
+belongs to the type only if the value's isolated bit is set; if the function
+type does not include <code>isolated-qual</code>, then whether a function value
+belongs to the type is not affected by the value's isolated bit.
+</p>
+<p>
+The read-only bit of a function value is always on, because a function's code
+cannot be modified. It provides no information about what happens when the
+function is executed; this is the role of the isolated bit. A function value
+with its isolated bit on is called an isolated function. The invocation of an
+isolated function is guaranteed not to result in access to a mutable storage
+location unless the storage location is reachable from an argument of that
+function invocation and the access happens on the strand on which the function
+is invoked. Reachable here means reachable by a succession of reads. This is the
+same concept used for readonly: any storage location reachable from a read-only
+value is read-only. Thus an invocation of an isolated function with only
+readonly arguments will access only read-only storage locations.
+</p>
 </section>
 <section>
 <h4>Objects</h4>
@@ -1939,10 +1968,9 @@ value. A method of an object is a function that can be invoked on the object
 using a <code>method-call-expr</code>; when a method is invoked on an object,
 the function can access the object using the <code>self</code> variable. An
 object's methods are associated with the object when the object is constructed
-and cannot be changed thereafter. Fields and methods have names that uniqely
-identify them within their object; An object has separate symbol spaces for its
-fields and its methods; the name of a field or method is unique in its symbol
-space, but it is possible for an object to have a field and a method with the
+and cannot be changed thereafter. Fields and methods have names that uniquely
+identify them within their object; fields and methods share a single symbol
+space; it is not possible for an object to have a field and a method with the
 same name.
 </p>
 <p>
@@ -1988,9 +2016,12 @@ class="grammar"><dfn>object-field-descriptor</dfn> :=
    <abbr>metadata</abbr> [<code>public</code>] <abbr>type-descriptor</abbr> <abbr>field-name</abbr> <code>;</code>
 </pre>
 <p>
-An <code>object-field-descriptor</code> describes a field of the object. It is
-an error for an object-type-descriptor to have two fields with the same
-field-name.
+An <code>object-field-descriptor</code> describes a field of the object. The
+<code>field-name</code> of an <code>object-field-descriptor</code> must be
+distinct from the <code>field-name</code> of every other
+<code>object-field-descriptor</code> in the <code>object-type-descriptor</code>
+and from the <code>method-name</code> of every <code>method-decl</code> in the
+<code>object-type-descriptor</code>.
 </p>
 <p>
 If an object's read-only bit is set, then the read-only bit of the value of
@@ -2004,14 +2035,30 @@ the object has been constructed.
 <pre
 class="grammar"><dfn>method-decl</dfn> :=
    <abbr>metadata</abbr>
-   [<code>public</code>][<abbr>remote-qual</abbr>]
+   [<code>public</code>] <abbr>method-quals</abbr>
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
 <dfn>method-name</dfn> := <abbr>identifier</abbr>
 </pre>
 <p>
-The names of all the methods of an object must be distinct: there is no method
-overloading. The <code>method-name</code> in a <code>method-decl</code> must not
-be <code>init</code>.
+A <code>method-decl</code> describes a method of the object. The
+<code>method-name</code> of a <code>method-decl</code> must be distinct from the
+<code>method-name</code> of every other <code>method-decl</code> in the
+<code>object-type-descriptor</code> and from the <code>field-name</code> of
+every <code>object-field-descriptor</code> in the
+<code>object-type-descriptor</code>. Note that here is no method overloading.
+The <code>method-name</code> in a <code>method-decl</code> must not be
+<code>init</code>.
+</p>
+
+<pre
+class="grammar"><dfn>method-quals</dfn> := (<abbr>remote-qual</abbr> | <abbr>isolated-qual</abbr>)*
+</pre>
+<p>
+Both <code>remote-qual</code> and <code>isolated-qual</code> must occur at most
+once in <code>method-quals</code>. The <code>isolated-qual</code> together with
+the <code>function-signature</code> give the function type of the method. An
+isolated method has the same access to the object on which the method is invoked
+that it has to parameters.
 </p>
 <pre
 class="grammar"><dfn>remote-qual</dfn> := <code>remote</code>
@@ -2039,7 +2086,7 @@ containing this object type descriptor; this is called module-level visibility.
 
 <p>
 The shape of an object consists of an unordered collection of object field
-shapes and an unordered collection of object method shapes. An object field
+shapes and object method shapes. An object field
 shape or object method shape is a 4-tuple consisting of the name of the field or
 method, the visibility region, a remote flag and a
 shape for the value of the field or for the method's function.
@@ -2087,12 +2134,14 @@ descriptor will thus necessarily be definite and a subtype of object. The
 referenced type are included in the type being defined. A type-reference to a
 class is treated as a reference to the class's type; only the types of the
 methods and fields are copied from the referenced type. An
-<code>object-field-descriptor</code> or <code>object-method</code> in a
-<code>object-type-descriptor</code> can override an
-<code>object-field-descriptor</code> or <code>object-method</code> of the same
+<code>object-field-descriptor</code> or <code>method-decl</code> in a
+<code>object-type-descriptor</code> can override respectively an
+<code>object-field-descriptor</code> or <code>method-decl</code> of the same
 name in an included <code>object-type-descriptor</code>, provided the type
 declared for the field or method in the overriding descriptor is a subtype of
-the type declared in the overridden descriptor.
+the type declared in the overridden descriptor. An <code>object-field-descriptor</code>
+cannot override a <code>method-decl</code>, nor can a <code>method-decl</code>
+override an <code>object-field-descriptor</code>.
 </p>
 <p>
 An object-type-descriptor is always definite. The set of type-ids induced by an
@@ -2949,6 +2998,213 @@ according to the following table.
 </table>
 </section>
 <section>
+<h4 id="ToString">ToString</h4>
+<p>
+ToString(v,style) converts a value to a string in one of three styles. The
+conversion can be performed in one of three styles, specified by the style
+parameter, which are as follows.
+</p>
+<ul>
+<li>expression style: produces a string that looks like a Ballerina expression; there are
+two cases
+<ul>
+<li>when v belongs to anydata and does not have cycles, it will produce a string that
+is a valid Ballerina expression, such that evaluating that string will result in a value v'
+for which DeepEquals(v, v') is true</li>
+<li>otherwise, it will produce a string that is either not a valid Ballerina expression
+or is a valid Ballerina expression that evaluates to a value that does not belong type type anydata</li>
+</ul>
+</li>
+<li>informal style: similar to expression style, but does not preserve all the distinctions that
+expression style does, and avoids syntax that requires a knowledge of Ballerina</li>
+<li>direct style: this does a direct conversion of the value to a string rather than producing
+a string that describes the value
+<ul>
+<li>if v is a string, then the result of ToString(v,direct) is v</li>
+<li>if v is XML, then the result of ToString(v,direct) is v in XML syntax</li>
+<li>direct style falls back to informal style for basic types where there is no
+other natural more direct conversion</li>
+</ul>
+</li>
+</ul>
+<p>
+The following table summarizes the result of ToString(v,style) for each basic type.
+</p>
+<table>
+  <tr>
+   <td rowspan="2">Basic type of v
+   </td>
+   <td colspan="3">style
+   </td>
+  </tr>
+  <tr>
+   <td>expression
+   </td>
+   <td>informal
+   </td>
+   <td>direct
+   </td>
+  </tr>
+  <tr>
+   <td>nil
+   </td>
+   <td><code>()</code>
+   </td>
+   <td><code>null</code>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>true
+   </td>
+   <td colspan="3"><code>true</code>
+   </td>
+  </tr>
+  <tr>
+   <td>int
+   </td>
+   <td colspan="3"><code>2</code>
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="3">float
+   </td>
+   <td colspan="3"><code>1.0</code>
+   </td>
+  </tr>
+  <tr>
+   <td><code>float:NaN</code>
+   </td>
+   <td colspan="2"><code>NaN</code>
+   </td>
+  </tr>
+  <tr>
+   <td><code>float:Infinity</code>
+   </td>
+   <td colspan="2"><code>Infinity</code>
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="2">decimal
+   </td>
+   <td><code>1d</code>
+   </td>
+   <td colspan="2"><code>1</code>
+   </td>
+  </tr>
+  <tr>
+   <td><code>1.20d</code>
+   </td>
+   <td colspan="2"><code>1.20</code>
+   </td>
+  </tr>
+  <tr>
+   <td>string
+   </td>
+   <td colspan="2"><code>"xyz"</code>
+   </td>
+   <td><code>xyz</code>
+   </td>
+  </tr>
+  <tr>
+   <td>xml
+   </td>
+   <td><code>xml`&lt;d>t&lt;/d>`</code>
+   </td>
+   <td><code>`&lt;d>t&lt;/d>`</code>
+   </td>
+   <td><code>&lt;d>t&lt;/d></code>
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="2">array
+   </td>
+   <td colspan="3"><code>[<var>X</var>,<var>Y</var>]</code>
+   </td>
+  </tr>
+  <tr>
+   <td><var>X</var>, <var>Y</var> expression style
+   </td>
+   <td colspan="2"><var>X</var>,<var>Y</var> informal style
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="2">map
+   </td>
+   <td colspan="3"><code>{"x":<var>X</var>,"y":<var>Y</var>}</code>
+   </td>
+  </tr>
+  <tr>
+   <td><var>X</var>, <var>Y</var> expression style
+   </td>
+   <td colspan="2"><var>X</var>,<var>Y</var> informal style
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="2">table
+   </td>
+   <td><code>table key(k) [<var>R<sub>1</sub></var>,<var>R<sub>2</sub></var>]</code>
+   </td>
+   <td colspan="2"><code>[<var>R<sub>1</sub></var>,<var>R<sub>2</sub></var>]</code>
+   </td>
+  </tr>
+  <tr>
+   <td><var>R<sub>1</sub></var>,<var>R<sub>2</sub></var> expression style
+   </td>
+   <td colspan="2"><var>R<sub>1</sub></var>,<var>R<sub>2</sub></var> informal style
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="3">error
+   </td>
+   <td colspan="3"><code>error D<sub>1</sub>&amp;D<sub>2</sub> (M,C,F<sub>1</sub>=V<sub>1</sub>,F<sub>2</sub>=V<sub>2</sub>)</code>
+   </td>
+  </tr>
+  <tr>
+   <td>V<sub>1</sub>, V<sub>2</sub> expression style, D<sub>1</sub>,D<sub>2</sub>  in the form <code>{<var>module-id</var>}<var>local-id</var></code>, M expression style, C expression style
+   </td>
+   <td colspan="2">V<sub>1</sub>, V<sub>2</sub> informal style, just local id of D<sub>1</sub>,D<sub>2</sub>, M informal style, C informal style
+   </td>
+  </tr>
+  <tr>
+   <td colspan="3">D<sub>1</sub>,D<sub>2</sub> are type-ids, M is the error message, C is the error cause, F<sub>1</sub>=V<sub>1</sub>,F<sub>2</sub>=V<sub>2</sub> are field names and values of the error detail
+   </td>
+  </tr>
+  <tr>
+   <td>object w/o toString method
+   </td>
+   <td colspan="3"><code>object D1&amp;D2 U</code> where U is an identifier that uniquely identifies the object (objects will have the same identifier only if they are <code>===</code>)
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="2">object with toString method
+   </td>
+   <td><code>object S</code>
+   </td>
+   <td colspan="2"><code>S</code>
+   </td>
+  </tr>
+  <tr>
+    <td colspan="3"><code>S</code> in direct style where S is the result of calling the toString method</td>
+  </tr>
+  <tr>
+   <td rowspan="2"><em>cycle detected</em>
+   </td>
+   <td><code>...[N]</code>
+   </td>
+   <td colspan="2"><code>...</code>
+   </td>
+  </tr>
+  <tr>
+   <td>N is 0-based index down path from root object to object where cycle is detected
+   </td>
+   <td colspan="2">
+   </td>
+  </tr>
+</table>
+</section>
+<section>
 <h4 id="ordering">Ordering</h4>
 <p>
 There are three abstract operations related to ordering: Compare(x, y),
@@ -3611,7 +3867,6 @@ class="grammar"><dfn>const-expr</dfn> :=
    | <abbr>xml-template-expr</abbr>
    | <abbr>raw-template-expr</abbr>
    | <abbr>structural-constructor-expr</abbr>
-   | <abbr>object-constructor-expr</abbr>
    | <abbr>error-constructor-expr</abbr>
    | <abbr>constant-reference-expr</abbr>
    | <abbr>type-cast-expr</abbr>
@@ -3762,12 +4017,11 @@ interpolation must be a simple type and must not be nil. Within a
 <code>interpolation</code> is interpreted as a literal character. A
 string-template-expr is evaluated by evaluating the expression in each
 interpolation in the order in which they occur, and converting the result of the
-each evaluation to a string as if using by <code>toString</code> function of the
-<code>lang.value</code> module of the lang library. The result
-of evaluating the <code>string-template-expr</code> is a string comprising the
-literal characters and the results of evaluating and converting the
-interpolations, in the order in which they occur in the
-<code>BacktickString</code>.
+each evaluation to a string using the <a href="#ToString">ToString</a> abstract
+operation with the direct style. The result of evaluating the
+<code>string-template-expr</code> is a string comprising the literal characters
+and the results of evaluating and converting the interpolations, in the order in
+which they occur in the <code>BacktickString</code>.
 </p>
 <p>
 A literal <code>`</code> can be included in string template by using an
@@ -4112,9 +4366,16 @@ evaluated. This means that every object resulting from the evaluation of an
 <code>object-constructor-expr</code> has its own type descriptor.
 </p>
 <p>
+If the applicable contextually expected type is a subtype of readonly, then the
+object will be constructed with its read-only bit on.
+</p>
+<p>
 If there is a <code>type-reference</code>, then the referenced type is included
-in the object's type in the same was as an <code>object-type-inclusion</code>.
-The type-ids of the constructed object are type ids of the referenced type.
+in the object's type in the same was as an <code>object-type-inclusion</code>,
+and the type-ids of the constructed object are type-ids of the referenced type.
+If there is no <code>type-reference</code>, then the applicable contextually
+expected type T must be definite, and the type-ids of the constructed object are
+the type-ids, if any, induced by T.
 </p>
 
 <pre
@@ -4127,8 +4388,11 @@ class="grammar"><dfn>object-field</dfn> :=
 An <code>object-field</code> declares and initializes a field of the object.
 </p>
 <p>
-If a field does not specify a field-initializer, then there must be an <code>init</code>
-method and the <code>init</code> method must initialize the field.
+If a field does not specify a field-initializer, then there must be an
+<code>init</code> method and the <code>init</code> method must initialize the
+field. The field-initializer must be the requirements for an isolated function
+unless there the <code>init</code> method is present and not declared as
+<code>isolated</code>.
 </p>
 <p>
 If <code>final</code> is present, then the field must be assigned to exactly
@@ -4149,7 +4413,7 @@ specified in the type-descriptor of the object-field.</li>
 
 <pre
 class="grammar"><dfn>method-defn</dfn> :=
-   <abbr>metadata</abbr> [<abbr>object-visibility-qual</abbr>] [<abbr>remote-qual</abbr>]
+   <abbr>metadata</abbr> [<abbr>object-visibility-qual</abbr>] <abbr>method-quals</abbr>
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
 <dfn>method-defn-body</dfn> := <abbr>function-defn-body</abbr>
 </pre>
@@ -4197,7 +4461,11 @@ not affect when an object value belongs to a type. The <code>init</code> method
 can be called in a <code>method-call-expr</code> only when the expression
 preceding the <code>.</code> is <code>self</code>.
 </p>
-
+<p>
+A missing <code>init</code> method is equivalent to an isolated
+<code>init</code> method with no parameters and an empty body (which will always
+return nil).
+</p>
 <pre
 class="grammar"><dfn>object-visibility-qual</dfn> := <code>public</code>|<code>private</code>
 </pre>
@@ -4228,9 +4496,7 @@ class. It is a compile error if the type-descriptor if the arg-list does not
 match the signature of the class's <code>init</code> method. If the result of
 calling the <code>init</code> method is an error value e, then the result of
 evaluating the explicit-new-expr is e; otherwise the result is the newly
-initialized object. A class without an <code>init</code> method behaves as it
-had an <code>init</code> method with no parameters and an empty body (which will
-always return nil).
+initialized object.
 </p>
 <p>
 When the class-reference refers to a stream type <code>stream&lt;T,E&gt;</code>,
@@ -4264,15 +4530,17 @@ is not a class or stream type.
 class="grammar"><dfn>service-constructor-expr</dfn> := [<abbr>annots</abbr>] <code>service</code> <abbr>service-body-block</abbr>
 <dfn>service-body-block</dfn> := <code>{</code> <abbr>service-method-defn</abbr>* <code>}</code>
 <dfn>service-method-defn</dfn> :=
-   <abbr>metadata</abbr>
-   [<code>resource</code>]
+   <abbr>metadata</abbr> <abbr>service-method-quals</abbr>
    <code>function</code> <abbr>identifier</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
+<dfn>service-method-quals</dfn> := (<code>resource</code> | <abbr>isolated-qual</abbr>)*
 </pre>
 <p>
 A <code>service-constructor-expr</code> constructs a service value. The result
 of evaluating a service-constructor-expr is a value of type service. If a
 service-method-defn contains a <code>resource</code> qualifier, then it defines
-a resource method. The self variable can be used in a method-defn-body of a
+a resource method. Both the <code>resource</code> and <code>isolated</code>
+qualifiers can occur at most once in a service-method-defn. The
+<code>self</code> variable can be used in a method-defn-body of a
 service-method-defn in the same way as for objects.
 </p>
 <p>
@@ -4295,8 +4563,8 @@ class="grammar"><dfn>variable-reference-expr</dfn> := <abbr>variable-reference</
 </pre>
 <p>
 A variable-reference can refer to a variable, a parameter, a constant (defined
-with a module constant declaration), a function or a type (defined with a type
-definition).
+with a module constant declaration), a function, a type (defined with a module
+type definition) or a class (defined with a module class definition).
 </p>
 <p>
 When the variable reference has a prefix and the prefix has been declared using
@@ -4311,9 +4579,10 @@ where the namespace-uri comes from xml-namespace-uri specified in the
 xmlns-decl, and the local-name comes from the identifier following the colon.
 </p>
 <p>
-If the variable-reference references a type defined with a module type definition, then
-the result of evaluating the variable-reference-expr is a typedesc value for
-that type.
+If the variable-reference references a type defined with a module type
+definition or a class defined with a module class definition, then the result of
+evaluating the variable-reference-expr is a typedesc value for that type or
+class.
 </p>
 </section>
 <section>
@@ -4758,7 +5027,7 @@ the point where the error constructor was evaluated.
 
 <pre
 class="grammar"><dfn>anonymous-function-expr</dfn> := <abbr>explicit-anonymous-function-expr</abbr> | <abbr>infer-anonymous-function-expr</abbr>
-<dfn>explicit-anonymous-function-expr</dfn> := [<abbr>annots</abbr>] <code>function</code> <abbr>function-signature</abbr> (<abbr>block-function-body</abbr>|<abbr>expr-function-body</abbr>)
+<dfn>explicit-anonymous-function-expr</dfn> := [<abbr>annots</abbr>] [<abbr>isolated-qual</abbr>] <code>function</code> <abbr>function-signature</abbr> (<abbr>block-function-body</abbr>|<abbr>expr-function-body</abbr>)
 </pre>
 <p>
 Evaluating an anonymous-function-expr creates a closure, whose basic type is
@@ -4774,16 +5043,6 @@ reference not a copy.
 </p>
 
 <pre
-class="grammar"><dfn>expr-function-body</dfn> := <code>=></code> <abbr>expression</abbr>
-</pre>
-<p>
-An expr-function-body is used for an expression-bodied function, that is a
-function whose body is specified by an expression. An expr-function-body of the
-form <code>=> <var>E</var></code> is short for a block-function-body <code>{
-return <var>E</var >}</code>.
-</p>
-
-<pre
 class="grammar"><dfn>infer-anonymous-function-expr</dfn> := <abbr>infer-param-list</abbr> <abbr>expr-function-body</abbr>
 <dfn>infer-param-list</dfn> :=
    <abbr>identifier</abbr>
@@ -4791,7 +5050,8 @@ class="grammar"><dfn>infer-anonymous-function-expr</dfn> := <abbr>infer-param-li
 </pre>
 <p>
 An infer-anonymous-function-expr can only be used in a context where a function
-type is expected. The types of the parameters are inferred from the expected
+type is expected. Both the types of the parameters and whether the function is
+isolated are inferred from the expected
 function type. The scope of the parameters is <code>expr-function-body</code>.
 The static type of the infer-anonymous-function-expr will be a function type
 whose return type is the static type of the <code>expression</code> in
@@ -5493,11 +5753,11 @@ will complete abruptly with a panic.
 If the query-expr starts with <code>table</code>, then the query-expr will
 construct a table; the key-specifier specifies the key sequence of the
 constructed table in the same way as with a table-constructor-expr. Otherwise,
-the applicable contextually expected type determines which basic type is
-constructed. If there is no contextually expected type, then it is determined
-from the static type of the expression in the initial <code>from</code> clause;
-it is a compile-time error if this static type is not a subtype of one of the
-basic types that a query expression can construct.
+the applicable contextually expected type determines the basic type of the value
+constructed. If there is no contextually expected type, then the basic type of
+the value constructed is the basic type of expression following <code>in</code>;
+it is a compile-time error if the static type of this expression is not a
+subtype of one of the basic types that a query expression can construct.
 </p>
 <p>
 When during the construction of a table, an emitted value is added as a new
@@ -5585,11 +5845,11 @@ E<sub>2</sub></code>.
 
 <section>
 <h4>Join clause</h4>
-<pre class="grammar"><dfn>join-clause</dfn> := <code>join</code> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>expression</abbr> <abbr>join-on-condition</abbr>
+<pre class="grammar"><dfn>join-clause</dfn> := [<code>outer</code>] <code>join</code> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>expression</abbr> <abbr>join-on-condition</abbr>
 <dfn>join-on-condition</dfn> := <code>on</code> <abbr>expression</abbr> <code>equals</code> <abbr>expression</abbr>
 </pre>
 <p>
-A join clause performs an inner equijoin.
+A join clause performs an inner or left outer equijoin.
 </p>
 <p>
 A <code>join</code> clause is executed as follows:
@@ -5626,8 +5886,12 @@ in scope resulting in a value <var>k</var>;</li>
 <li>let <var>fs</var> be the list of frames for key <var>k</var> in <var>m</var>;</li>
 <li>for each frame <var>f'</var> in <var>fs</var>
 <ul>
-<li>emit a frame consisting of <var>f</var> augmented with <var>f'</var>.</li>
+<li>emit a frame consisting of <var>f</var> augmented with <var>f'</var>;</li>
 </ul>
+</li>
+<li>if <code>outer</code> was specified and <var>fs</var> is empty, then emit a
+single frame consisting of <var>f</var> augmented with a frame that binds every
+variable occurring in typed-binding-pattern to <code>()</code>.
 </li>
 </ul>
 </li>
@@ -5644,6 +5908,14 @@ following <code>in</code>, nor for the expression on the right of
 <code>equals</code>. Variables bound by the typed-binding-pattern are not in
 scope for the expression following <code>in</code>, nor for the expression on
 the left of <code>equals</code>.
+</p>
+<p>
+When <code>outer</code> is specified, the typed-binding-pattern is treated
+specially: the inferable-type-descriptor in the typed-binding-pattern must be
+<code>var</code>, and for each variable occurring in the typed-binding-pattern,
+if the type that would be inferred usually for the variable would be
+<var>T</var>, then the type inferred in this case will be
+<var>T</var><code>?</code>.
 </p>
 
 </section>
@@ -5992,7 +6264,10 @@ strand must be part of the same thread as the current strand.
 
 </section>
 <section>
-<h3>Function and worker execution</h3>
+<h3>Function bodies</h3>
+
+<section>
+<h4>Workers</h4>
 
 <pre
 class="grammar"><dfn>block-function-body</dfn> :=
@@ -6097,6 +6372,93 @@ identify the strand to wait on cannot fail at runtime.
 <p>
 In the above, function includes method, and function call includes method call.
 </p>
+</section>
+
+<section>
+<h4>Expression-bodied functions</h4>
+
+<pre
+class="grammar"><dfn>expr-function-body</dfn> := <code>=></code> <abbr>expression</abbr>
+</pre>
+
+<p>
+An expr-function-body is used for an expression-bodied function, that is a
+function whose body is specified by an expression. An expr-function-body of the
+form <code>=> <var>E</var></code> is short for a block-function-body <code>{
+return <var>E</var >}</code>.
+</p>
+
+</section>
+
+<section>
+<h4>External functions</h4>
+
+<pre
+class="grammar"><dfn>external-function-body</dfn> := <code>=</code> [<abbr>annots</abbr>] <code>external</code> 
+</pre>
+
+<p>
+An <code>external-function-body</code> means that the implementation of the
+function is not provided in the Ballerina source module. A function-defn-body
+with a function-signature that is dependently-typed must be an
+external-function-body.
+</p>
+
+</section>
+<section>
+<h4 id="isolated_functions">Isolated functions</h4>
+<p>
+The body of a function or method declared as <code>isolated</code> must meet the
+following requirements.
+</p>
+<ul>
+<li>Only isolated functions can be called:
+<ul>
+<li>in a function-call-expr, the function-reference must refer to a function
+whose static type is isolated;</li>
+<li>in a method-call-expr, the method-name must refer to a method or
+function whose static type is isolated;</li>
+<li>in a new-expr or object-constructor-expr, the init method that is called
+must be declared as isolated (a missing init method is equivalent is implicitly
+isolated).</li>
+</ul>
+</li>
+<li>Module-level state can be read only if it is immutable: in a variable-reference-expr
+<ul>
+<li>if the variable-reference refers to an identifier defined with a
+module-var-decl, the module-var-decl must include <code>final</code>; and</li>
+<li>if the variable-reference refers to an identifier defined with a
+module-var-decl, listener-decl or service-decl, the static type of the
+referenced variable must be a subtype of <code>readonly</code>.</li>
+</ul>
+</li>
+<li>Module-level state cannot be mutated: a variable-reference-lvexpr cannot
+refer to a variable defined by a module-var-decl.</li>
+<li>Captured variables must be immutable: if the body is part of an
+anonymous-function-expr, then any captured variable references must refer to
+variables that are both final (either explicitly or implicitly) and have a
+static type that is a subtype of <code>readonly</code>.</li>
+<li>New workers cannot be started: the following constructs are not allowed
+<ul>
+<li>named-worker-decl</li>
+<li>fork-stmt</li>
+<li>start-action</li>
+</ul>
+</li>
+</ul>
+<p>
+The result of these requirements is that an isolated function can only access
+mutable state that is reachable from its parameters.
+</p>
+<p>
+If an isolated function has an <code>external-function-body</code>, then the
+above requirements also apply to the external implementation as regards its
+access to the mutable state of the Ballerina program, in the sense that it must
+only access the mutable state that is reachable from the parameters passed to
+the function. In addition, the function should have well-defined behaviour if it
+is called concurrently on multiple strands.
+</p>
+</section>
 </section>
 <section>
 <h3>Statement execution</h3>
@@ -6375,7 +6737,7 @@ class="grammar"><dfn>send-action</dfn> := <abbr>sync-send-action</abbr> | <abbr>
 <p>
 A send-action sends a message to the worker that is identified by peer-worker. A
 send-action starts by evaluating the expression, resulting in a value
-<code><var>v</var></code>; the Clone abstract operation to
+<code><var>v</var></code>; the Clone abstract operation is then applied to
 <code><var>v</var></code> resulting in value <code><var>c</var></code>. This
 value <code><var>c</var></code> is added to the message queue maintained by the
 sending worker for messages to be sent to the sending worker;this queue
@@ -7534,7 +7896,7 @@ class="grammar"><dfn>fail-stmt</dfn> := <code>fail</code> <abbr>expression</abbr
 <p>
 Executing a fail-stmt will cause control flow to transfer to the on-fail-clause
 of the nearest lexically enclosing statement that has an on-fail-clause. If
-there is no such statement, it terminates the current worker.
+there is no such statement, it terminates the current worker normally.
 </p>
 <p>
 The static type of the expression must be a subtype of error. Execution of the
@@ -7641,10 +8003,27 @@ same symbol space as a <code>xmlns-namespace-prefix</code> declared by an
 symbol space used by other declarations.
 </p>
 <p>
-A module prefix of <code><var>t</var></code>, where <code><var>t</var></code> is
-one of <code>error</code>, <code>object</code> or <code>xml</code>, is
-predeclared as referring to the <code>lang.<var>t</var></code> lang library
-module, but this can be overridden by an import-decl.
+The following module prefixes are predeclared:
+</p>
+<ul>
+<li><code>boolean</code></li>
+<li><code>decimal</code></li>
+<li><code>error</code></li>
+<li><code>float</code></li>
+<li><code>future</code></li>
+<li><code>int</code></li>
+<li><code>map</code></li>
+<li><code>object</code></li>
+<li><code>stream</code></li>
+<li><code>string</code></li>
+<li><code>table</code></li>
+<li><code>typedesc</code></li>
+<li><code>xml</code></li>
+</ul>
+<p>
+Each predeclared module prefix <code><var>t</var></code> is predeclared as
+referring to the <code>lang.<var>t</var></code> lang library module, but this
+can be overridden by an import-decl.
 </p>
 <p>
 It is an error for a module to directly or indirectly import itself. In other
@@ -7843,6 +8222,34 @@ using <code><var>obj</var></code>'s <code>__attach</code> method;</li>
 fails.</li>
 </ol>
 </section>
+
+<section>
+<h4>Isolated inference</h4>
+
+<p>
+A listener object can use the isolated bit of a resource method to determine
+whether it is safe to make concurrent calls to the resource method.
+</p>
+<p>
+The compiler may infer that a resource method is isolated even it is not
+explicitly declared as such. In doing so, it analyzes a module to determine
+whether there is a set of definitions, where each definition is a
+<code>service-method-defn</code>, <code>function-defn</code> or
+<code>method-defn</code>, and no definition is explicitly declared as isolated,
+such that if all the definitions were declared as isolated, then they all would
+meet the requirements for <a href="#isolated_functions">isolated functions</a>.
+If so, the isolated bit of the function value associated with each definition is
+set.
+</p>
+<p>
+This inference is purely an optimization to improve service concurrency and is
+subject to two constraints. First, any inferences do not affect the static type
+of functions visible to other modules. Second, any functions or methods
+explicitly declared as isolated must satisfy the requirements for isolated
+functions without relying on inference.
+</p>
+
+</section>
 </section>
 
 <section>
@@ -7851,20 +8258,13 @@ fails.</li>
 <pre
 class="grammar"><dfn>function-defn</dfn> := 
    <abbr>metadata</abbr>
-   [<code>public</code>]
+   [<code>public</code>] [<abbr>isolated-qual</abbr>]
    <code>function</code> <abbr>identifier</abbr> <abbr>function-signature</abbr> <abbr>function-defn-body</abbr>
 <dfn>function-defn-body</dfn> :=
    <abbr>block-function-body</abbr>
    | <abbr>expr-function-body</abbr> <code>;</code>
    | <abbr>external-function-body</abbr> <code>;</code>
-<dfn>external-function-body</dfn> := <code>=</code> [<abbr>annots</abbr>] <code>external</code> 
 </pre>
-<p>
-An <code>external-function-body</code> means that the implementation of the
-function is not provided in the Ballerina source module. A function-defn-body
-with a function-signature that is dependently-typed must be an
-external-function-body.
-</p>
 <p>
 If a module has a function-defn with an identifier of <code>init</code>, it is
 called called automatically by the system at the end of the initialization of
@@ -7942,6 +8342,12 @@ object-type-inclusion to include an object type T, then each method declared in
 T must be defined in the class using a <code>method-defn</code> with the same
 visibility. If T has a method or field with module-level visibility, then C must
 be in the same module.
+</p>
+<p>
+If <code>class-type-quals</code> contains <code>distinct</code>, then the
+primary type-id of the class will the type-id of that occurrence of
+<code>distinct</code>, and the secondary type-ids will be the union of the
+type-ids of the included object types.
 </p>
 <p>
 An object of a class is initialized by:
@@ -8496,7 +8902,13 @@ annotation to describe generic typing as follows. When a module type definition
 has a <code>@typeParam</code> annotation, it means that this type serves as a
 type parameter when it is used in a function definition: all uses of the type
 parameter in a function definition refer to the same type; the definition of the
-type is an upper bound on the type parameter.
+type is an upper bound on the type parameter. A parameter of a function
+definition can be annotated with an <code>@isolatedParam</code> annotation; this
+is allowed when the function is declared as isolated and the type of the
+parameter is a function type; the meaning is that when the function is called in
+a context that requires it to be isolated, then the argument supplied for the
+parameter must also be isolated. In effect, the function is parameterized with
+the isolated qualifier.
 </p>
 <p>
 <strong>Note</strong> We plan to provide full support for generic types in
@@ -8628,10 +9040,13 @@ The <code>int:Unsigned8</code> type is equivalent to the predefined
 descriptors are what was previously called <em>abstract</em>: they declare
 methods but do not define them. Objects are now created either by using an
 object constructor expression, which includes method definitions, or by applying
-<code>new</code> to the name of a class defined by a class definition. Classes
-and object constructors can declare fields as final.</li>
+<code>new</code> to the name of a class defined by a class definition. The
+methods and fields of an object are not in a single symbol space. Classes and
+object constructors can declare fields as final.</li>
 <li>The <code>readonly</code> type has been added. Fields of records can also be
-declared as <code>readonly</code>.</li>
+declared as <code>readonly</code>. Functions can be declared as
+<code>isolated</code>; this works in conjunction with <code>readonly</code> to
+support concurrency safety.</li>
 <li>Intersection types have been added.</li>
 <li>Distinct types have been added; these provide the functionality of nominal
 types with the framework of a structural type system.</li>

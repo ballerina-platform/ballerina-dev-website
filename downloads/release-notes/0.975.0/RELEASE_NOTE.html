@@ -5,13 +5,13 @@
 <h2>New int range expression</h2>
 <p>Previously <code>[x .. y]</code> syntax was used to represents an integer range in a <code>foreach</code> statement. This syntax is now <code>x ... y</code> in Ballerina 0.975.0.</p>
 <p>Old syntax (0.970.1)</p>
-<pre><code class="ballerina">foreach val in [1 .. 5] {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">foreach val in [1 .. 5] {
    io:println(val);
 }
 </code></pre>
 
 <p>New syntax</p>
-<pre><code class="ballerina">foreach val in 1 ... 5 {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">foreach val in 1 ... 5 {
    io:println(val);
 }
 </code></pre>
@@ -19,14 +19,14 @@
 <h2>Syntax change in record type definitions</h2>
 <p>The record type definition syntax now requires a <code>record</code> keyword. The syntax used previously also works on Ballerina 0.975.0, but this will not be supported in future releases.</p>
 <p>Old syntax (0.970.1)</p>
-<pre><code class="ballerina">type Person {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person {
    string name,
    int age,
 };
 </code></pre>
 
 <p>New syntax</p>
-<pre><code class="ballerina">type Person record {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person record {
    string name,
    int age,
 };
@@ -35,7 +35,7 @@
 <h2>Syntax change for the next statement</h2>
 <p>The <code>next</code> statement is renamed to <code>continue</code>.</p>
 <p>Old syntax (0.970.1)</p>
-<pre><code class="ballerina">while (i &lt; 5) {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">while (i &lt; 5) {
    i = i + 1;
    if (i == 2) {
        next;
@@ -44,7 +44,7 @@
 </code></pre>
 
 <p>New syntax</p>
-<pre><code class="ballerina">while (i &lt; 5) {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">while (i &lt; 5) {
    i = i + 1;
    if (i == 2) {
        continue;
@@ -55,14 +55,14 @@
 <h2>New blob literal support</h2>
 <p><code>base16</code> and <code>base64</code> based literal values are the two types of literal values supported for blob. The <code>base16</code> type has a base 16 based character sequence and the <code>base64</code> type has a base 64 based character sequence or padded character sequence.  </p>
 <p>New syntax</p>
-<pre><code class="ballerina">blob a = base16 `aaabcfccad afcd34 1a4bdf abcd8912df`;  
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">blob a = base16 `aaabcfccad afcd34 1a4bdf abcd8912df`;  
 blob b = base64 `aaabcfccad afcd3 4bdf abcd ferf =`;
 </code></pre>
 
 <h2>Variable shadowing removed</h2>
 <p>Now variables cannot be shadowed and are required to have unique names. The only exception is in XML namespaces that already have variable shadowing support.</p>
 <p>Old syntax (0.970.1)</p>
-<pre><code class="ballerina">string name;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string name;
 
 type User object {
     private {
@@ -80,7 +80,7 @@ function print(string name) {
 </code></pre>
 
 <p>New syntax</p>
-<pre><code class="ballerina">string name;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string name;
 
 type User object {
 
@@ -105,7 +105,7 @@ function print(string n) {
 <li>Add capability to read/write fixed signed integer, float, boolean and string values via data IO APIs</li>
 <li>Error handling support for WebSocket service</li>
 </ul>
-<pre><code class="ballerina">@http:WebSocketServiceConfig {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">@http:WebSocketServiceConfig {
    path: &quot;/error/ws&quot;
 }
 service&lt;http:WebSocketService&gt; errorService bind { port: 9090 } {
@@ -118,7 +118,7 @@ service&lt;http:WebSocketService&gt; errorService bind { port: 9090 } {
 <ul>
 <li>Allow different types of payloads to be used directly with HTTP client actions and response calls. E.g.,</li>
 </ul>
-<pre><code class="ballerina">response = clientEP-&gt;post(&quot;/test&quot;, xml `&lt;color&gt;Red&lt;/color&gt;`);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">response = clientEP-&gt;post(&quot;/test&quot;, xml `&lt;color&gt;Red&lt;/color&gt;`);
 response = clientEP-&gt;post(&quot;/test&quot;, { name: &quot;apple&quot;, color: &quot;red&quot; });
 _ = caller -&gt; respond(&quot;Hello World!&quot;);
 </code></pre>
@@ -128,7 +128,7 @@ _ = caller -&gt; respond(&quot;Hello World!&quot;);
 <li>Support event notification payloads of different content types with WebSub</li>
 <li>HTTP name based virtual hosting support</li>
 </ul>
-<pre><code class="ballerina">@http:ServiceConfig {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">@http:ServiceConfig {
    basePath:&quot;/page&quot;,
    host:&quot;abc.com&quot;
 }
@@ -138,7 +138,7 @@ _ = caller -&gt; respond(&quot;Hello World!&quot;);
 <li>Improve the HTTP error handler to recover from source connection failure</li>
 <li>Enhance the API to control the circuit breaker status as per user requirements</li>
 </ul>
-<pre><code class="ballerina"> http:CircuitBreakerClient cbClient = check &lt;http:CircuitBreakerClient&gt;clientEP.getCallerActions();
+<pre class="line-numbers language-ballerina"><code class="language-ballerina"> http:CircuitBreakerClient cbClient = check &lt;http:CircuitBreakerClient&gt;clientEP.getCallerActions();
         if (counter == 2) {
             cbClient.forceOpen();
         }

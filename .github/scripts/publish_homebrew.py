@@ -9,6 +9,7 @@ sha256 = sys.argv[3]
 url = sys.argv[4]
 sha256_replacement = '  sha256 "' + sha256 + '"'
 url_replacement = '  url "' + url + '"'
+license_replacement = '  license "Apache-2.0"'
 ballerina_rb_file_contents = ""
 
 github_instance = Github(token)
@@ -30,7 +31,9 @@ for line in ballerina_rb_file.decoded_content.decode("utf-8").split("\n"):
         if(updated_line == sha256_replacement):
             print("metadata.json is not yet updated!")
             exit()
-        updated_line = sha256_replacement
+        updated_line = sha256_replacement + "\n" + license_replacement
+    elif(line.strip().startswith('license')):
+        continue
 
     ballerina_rb_file_contents += updated_line+"\n"
 

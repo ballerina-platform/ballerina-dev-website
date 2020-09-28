@@ -97,18 +97,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../../rabbitmq/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
         
         
             <li>
@@ -194,17 +191,13 @@
                         <tr>
                             <td class="module-title truncate functions" title="basicAck"><a
                                     class="functions" href="#basicAck">basicAck</a></td>
-                            <td class="module-desc"><p>Acknowledges one or several received messages.</p>
-
-</td>
+                            <td class="module-desc"><p>Acknowledges one or several received messages.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="basicNack"><a
                                     class="functions" href="#basicNack">basicNack</a></td>
-                            <td class="module-desc"><p>Rejects one or several received messages.</p>
-
-</td>
+                            <td class="module-desc"><p>Rejects one or several received messages.</p>   </td>
                         </tr>
                     
                 </table>
@@ -221,9 +214,7 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves the delivery tag of the message.</p>
-
-
+        <p>Retrieves the delivery tag of the message.</p>   
     </div>
 </div>
 
@@ -235,9 +226,7 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves the properties of the message (i.e., routing headers etc.).</p>
-
-
+        <p>Retrieves the properties of the message (i.e., routing headers etc.).</p>   
     </div>
 </div>
 
@@ -249,9 +238,7 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves the text content of the RabbitMQ message.</p>
-
-
+        <p>Retrieves the text content of the RabbitMQ message.</p>   
     </div>
 </div>
 
@@ -263,9 +250,7 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves the float content of the RabbitMQ message.</p>
-
-
+        <p>Retrieves the float content of the RabbitMQ message.</p>   
     </div>
 </div>
 
@@ -277,9 +262,7 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves the int content of the RabbitMQ message.</p>
-
-
+        <p>Retrieves the int content of the RabbitMQ message.</p>   
     </div>
 </div>
 
@@ -291,9 +274,7 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves the byte array content of the RabbitMQ message.</p>
-
-
+        <p>Retrieves the byte array content of the RabbitMQ message.</p>   
     </div>
 </div>
 
@@ -305,9 +286,7 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves the JSON content of the RabbitMQ message.</p>
-
-
+        <p>Retrieves the JSON content of the RabbitMQ message.</p>   
     </div>
 </div>
 
@@ -319,9 +298,7 @@
     </div>
     <div class="param-details">
         
-        <p>Retrieves the XML content of the RabbitMQ message.</p>
-
-
+        <p>Retrieves the XML content of the RabbitMQ message.</p>   
     </div>
 </div>
 
@@ -348,6 +325,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Acknowledges one or several received messages.</p>
 <pre><code class="language-ballerina"> rabbitmq:Error? ackResult = message-&gt;basicAck(true);
@@ -406,6 +386,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Rejects one or several received messages.</p>
 <pre><code class="language-ballerina"> rabbitmq:Error? nackResult = message-&gt;basicNack(true, requeue = false);
@@ -486,6 +469,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the delivery tag of the message.</p>
 <pre><code class="language-ballerina"> int deliveryTag = message.getDeliveryTag();
 </code></pre>
@@ -520,6 +506,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the properties of the message (i.e., routing headers etc.).</p>
 <pre><code class="language-ballerina"> rabbitmq:BasicProperties|rabbitmq:Error properties = message.getProperties();
@@ -556,6 +545,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the text content of the RabbitMQ message.</p>
 <pre><code class="language-ballerina"> string|rabbitmq:Error msgContent = message.getTextContent();
 </code></pre>
@@ -590,6 +582,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the float content of the RabbitMQ message.</p>
 <pre><code class="language-ballerina"> float|rabbitmq:Error msgContent = message.getFloatContent();
@@ -626,6 +621,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the int content of the RabbitMQ message.</p>
 <pre><code class="language-ballerina"> int|rabbitmq:Error msgContent = message.getIntContent();
 </code></pre>
@@ -660,6 +658,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the byte array content of the RabbitMQ message.</p>
 <pre><code class="language-ballerina"> byte[] msgContent = message.getIntContent();
@@ -696,6 +697,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Retrieves the JSON content of the RabbitMQ message.</p>
 <pre><code class="language-ballerina"> json|rabbitmq:Error msgContent = message.getJSONContent();
 </code></pre>
@@ -730,6 +734,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Retrieves the XML content of the RabbitMQ message.</p>
 <pre><code class="language-ballerina"> xml|rabbitmq:Error msgContent = message.getXMLContent();

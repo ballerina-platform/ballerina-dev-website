@@ -11,8 +11,8 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
 <span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">simpleQuery</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Start Simple Query -------&quot;</span><span class="p">);</span>
@@ -25,8 +25,7 @@ redirect_from:
     <span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ForEach operation on the stream failed!&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Simple Query -------&quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Simple Query -------&quot;</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">countRows</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Start Count Total Rows -------&quot;</span><span class="p">);</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
@@ -59,8 +58,7 @@ redirect_from:
     <span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Query With Type Description -------&quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Query With Type Description -------&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
@@ -97,24 +95,7 @@ redirect_from:
                 <span class="s">&quot;querying data failed!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span>  <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">mysql_query_operation</span><span class="p">.</span><span class="nx">bal</span><span class="o">------</span> <span class="nx">Start</span> <span class="nx">Simple</span> <span class="nx">Query</span> <span class="o">-------</span>
-<span class="nx">Customer</span> <span class="nx">full</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">customerId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">FirstName</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">LastName</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">RegistrationID</span><span class="p">=</span><span class="mi">1</span> <span class="nx">CreditLimit</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">Country</span><span class="p">=</span><span class="nx">USA</span>
-<span class="nx">Customer</span> <span class="nx">first</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Peter</span>
-<span class="nx">Customer</span> <span class="nx">last</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Stuart</span>
-<span class="nx">Customer</span> <span class="nx">full</span> <span class="nx">details</span><span class="p">:</span> <span class="nx">customerId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">FirstName</span><span class="p">=</span><span class="nx">Dan</span> <span class="nx">LastName</span><span class="p">=</span><span class="nx">Brown</span> <span class="nx">RegistrationID</span><span class="p">=</span><span class="mi">2</span> <span class="nx">CreditLimit</span><span class="p">=</span><span class="mf">10000.0</span> <span class="nx">Country</span><span class="p">=</span><span class="nx">UK</span>
-<span class="nx">Customer</span> <span class="nx">first</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Dan</span>
-<span class="nx">Customer</span> <span class="nx">last</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Brown</span>
-<span class="o">------</span> <span class="nx">End</span> <span class="nx">Simple</span> <span class="nx">Query</span> <span class="o">-------</span>
-<span class="o">------</span> <span class="nx">Start</span> <span class="nx">Count</span> <span class="nx">Total</span> <span class="nx">Rows</span> <span class="o">-------</span>
-<span class="nx">Total</span> <span class="nx">rows</span> <span class="nx">in</span> <span class="nx">customer</span> <span class="nx">table</span> <span class="p">:</span> <span class="mi">2</span>
-<span class="o">------</span> <span class="nx">End</span> <span class="nx">Count</span> <span class="nx">Total</span> <span class="nx">Rows</span> <span class="o">-------</span>
-<span class="o">------</span> <span class="nx">Start</span> <span class="nx">Query</span> <span class="nx">With</span> <span class="nx">Type</span> <span class="nx">Description</span> <span class="o">-------</span>
-<span class="nx">customerId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Peter</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Stuart</span> <span class="nx">registrationId</span><span class="p">=</span><span class="mi">1</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">5000.75</span> <span class="nx">country</span><span class="p">=</span><span class="nx">USA</span>
-<span class="nx">customerId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">firstName</span><span class="p">=</span><span class="nx">Dan</span> <span class="nx">lastName</span><span class="p">=</span><span class="nx">Brown</span> <span class="nx">registrationId</span><span class="p">=</span><span class="mi">2</span> <span class="nx">creditLimit</span><span class="p">=</span><span class="mf">10000.0</span> <span class="nx">country</span><span class="p">=</span><span class="nx">UK</span>
-<span class="o">------</span> <span class="nx">End</span> <span class="nx">Query</span> <span class="nx">With</span> <span class="nx">Type</span> <span class="nx">Description</span> <span class="o">-------</span>
-<span class="nx">Queried</span> <span class="nx">the</span> <span class="nx">database</span> <span class="nx">successfully</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -169,6 +150,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-query-operation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -237,10 +219,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -250,8 +228,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/mysql;
 import ballerina/sql;
+import ballerinax/mysql;
 </code></pre></div>
 
                                 </td>
@@ -364,28 +342,6 @@ string dbPassword = &quot;Test@123&quot;;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    e = resultStream.close();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>In general cases, the stream will be closed automatically
- when the stream is fully consumed or any error is encountered.
- However, in case if the stream is not fully consumed, the stream should be
- closed specifically.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR">
 
                                 <td class="code leading">
@@ -488,7 +444,10 @@ string dbPassword = &quot;Test@123&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Close the stream.</p>
+                                            <p>In general cases, the stream will be closed automatically
+ when the stream is fully consumed or any error is encountered.
+ However, in case if the stream is not fully consumed, the stream should be
+ closed specifically.</p>
 
                                         </div>
                                     </div>
@@ -609,25 +568,6 @@ and the defined field name of the record will be matched case insensitively.</p>
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Iterate the customer stream.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    e = resultStream.close();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Close the stream.</p>
 
                                         </div>
                                     </div>
@@ -827,10 +767,10 @@ ballerina run mysql_query_operation.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>------ Start Simple Query -------
-Customer full details: customerId=1 FirstName=Peter LastName=Stuart RegistrationID=1 CreditLimit=5000.75 Country=USA
+Customer full details: {&quot;customerId&quot;:1,&quot;FirstName&quot;:&quot;Peter&quot;,&quot;LastName&quot;:&quot;Stuart&quot;,&quot;RegistrationID&quot;:1,&quot;CreditLimit&quot;:5000.75,&quot;Country&quot;:&quot;USA&quot;}
 Customer first name: Peter
 Customer last name: Stuart
-Customer full details: customerId=2 FirstName=Dan LastName=Brown RegistrationID=2 CreditLimit=10000.0 Country=UK
+Customer full details: {&quot;customerId&quot;:2,&quot;FirstName&quot;:&quot;Dan&quot;,&quot;LastName&quot;:&quot;Brown&quot;,&quot;RegistrationID&quot;:2,&quot;CreditLimit&quot;:10000.0,&quot;Country&quot;:&quot;UK&quot;}
 Customer first name: Dan
 Customer last name: Brown
 ------ End Simple Query -------
@@ -838,8 +778,8 @@ Customer last name: Brown
 Total rows in customer table : 2
 ------ End Count Total Rows -------
 ------ Start Query With Type Description -------
-customerId=1 firstName=Peter lastName=Stuart registrationId=1 creditLimit=5000.75 country=USA
-customerId=2 firstName=Dan lastName=Brown registrationId=2 creditLimit=10000.0 country=UK
+{&quot;customerId&quot;:1,&quot;firstName&quot;:&quot;Peter&quot;,&quot;lastName&quot;:&quot;Stuart&quot;,&quot;registrationId&quot;:1,&quot;creditLimit&quot;:5000.75,&quot;country&quot;:&quot;USA&quot;}
+{&quot;customerId&quot;:2,&quot;firstName&quot;:&quot;Dan&quot;,&quot;lastName&quot;:&quot;Brown&quot;,&quot;registrationId&quot;:2,&quot;creditLimit&quot;:10000.0,&quot;country&quot;:&quot;UK&quot;}
 ------ End Query With Type Description -------
 Queried the database successfully!
 </code></pre></div>
@@ -869,7 +809,7 @@ Queried the database successfully!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

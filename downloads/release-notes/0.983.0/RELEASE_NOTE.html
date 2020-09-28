@@ -6,7 +6,7 @@
 <h2>Syntax Changes</h2>
 <p><strong>Object type reference syntax</strong>
 Object type references provide a way to copy the members from an abstract object into another object. It is equivalent to specifying the members explicitly within the new object.</p>
-<pre><code class="ballerina">type Person abstract object {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Person abstract object {
     public int age;
     public string firstName;
     public string lastName;
@@ -28,7 +28,7 @@ type Manager object {
 
 <p><strong>Optional fields in records</strong></p>
 <p>Fields in records can now be marked as optional by adding <code>?</code> to the end of the identifier. When creating a record, optional fields can be omitted. Omitting a required field results in a compile error. Fields with implicit initial values or explicitly defined default values are effectively optional fields even if they are not marked as optional. Explicit default values cannot be set to optional fields.</p>
-<pre><code class="ballerina">type Gender &quot;male&quot;|&quot;female&quot;;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Gender &quot;male&quot;|&quot;female&quot;;
 
 type Person record {
    string fname = &quot;default&quot;; // required field with explicit default value
@@ -47,7 +47,7 @@ public function main() {
 
 <p><strong>Table syntax</strong>
 The keyword used for the primary key of a table has changed to “key”.</p>
-<pre><code class="ballerina">table&lt;Employee&gt; tbEmployee = table {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">table&lt;Employee&gt; tbEmployee = table {
         { key id, name, salary },
         [ { 1, &quot;Mary&quot;,  300.5 },
         { 2, &quot;John&quot;,  200.5 },
@@ -59,12 +59,12 @@ The keyword used for the primary key of a table has changed to “key”.</p>
 <p><strong>Post increment and decrement operators</strong>
 These were statements in Ballerina and there was no siginificant improvement as these cannot be used as expressions. Therefore, these statements have been removed to simplify usage.</p>
 <p>Old syntax</p>
-<pre><code class="ballerina">int i = 1;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int i = 1;
 i++;
 </code></pre>
 
 <p>Alternative syntax</p>
-<pre><code class="ballerina">int i = 1;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">int i = 1;
 i += 1;
 </code></pre>
 
@@ -94,7 +94,7 @@ i += 1;
 <li>Doc preview - Shows generated API Doc of a source file in real time</li>
 <li>Script arguments and command options for the <code>launch.json</code>.</li>
 </ul>
-<pre><code class="ballerina">    &quot;scriptArguments&quot;: [&quot;foo&quot;, &quot;bar&quot;],
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">    &quot;scriptArguments&quot;: [&quot;foo&quot;, &quot;bar&quot;],
     &quot;commandOptions&quot;: [&quot;-e&quot;, &quot;b7a.log.level=DEBUG&quot;]
 </code></pre>
 

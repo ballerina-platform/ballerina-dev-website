@@ -15,15 +15,19 @@ redirect_from:
 
 # Installing Ballerina
 
-- [Installing Ballerina via installers](#installing-ballerina-via-installers)
-- [Installing via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file)
+- [Installing Ballerina via Installers](#installing-ballerina-via-installers)
+    - [Installing on macOS](#installing-on-macos)
+    - [Installing on Windows](#installing-on-windows)
+    - [Installing on Linux](#installing-on-linux)
+- [Installing via the Ballerina Language ZIP File](#installing-via-the-ballerina-language-zip-file)
 - [Updating Ballerina](#updating-ballerina)
-- [Building from source](#building-from-source)
+- [Building from Source](#building-from-source)
+    - [Setting Up the Prerequisites](#setting-up-the-prerequisites)
+    - [Obtaining the Source Code](#obtaining-the-source-code)
+    - [Building the Source](#building-the-source)
 - [Uninstalling Ballerina](#uninstalling-ballerina)
-- [Getting help](#getting-help)
-- [What is next](#what-is-next)
 
-## Installing Ballerina via installers
+## Installing Ballerina via Installers
 
 Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically uninstall the old Ballerina version if you have one already installed.
 
@@ -57,7 +61,7 @@ For example, for the RPM file:
 rpm -i ballerina-linux-installer-x64-swan-lake-preview1.rpm 
 ```
 
-## Installing via the Ballerina language ZIP file
+## Installing via the Ballerina Language ZIP File
 
 > **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the [AdoptOpenJRE](https://adoptopenjdk.net/) version 1.8 or above.
 
@@ -81,11 +85,11 @@ If you already have a jBallerina version above 1.1.0 installed, you can use the 
 
 For more information, see [Keeping Ballerina Up to Date](/learn/keeping-ballerina-up-to-date/).
   
-## Building from source
+## Building from Source
 
 Alternatively, follow the instructions below to build Ballerina from the source.
 
-### Setting up the prerequisites
+### Setting Up the Prerequisites
 
 You need to download and install the below to build the Ballerina modules.
 1. Java SE Development Kit (JDK) version 8 (from one of the following locations) 
@@ -95,7 +99,7 @@ You need to download and install the below to build the Ballerina modules.
 2. [Node.js (version 8.9.x)](https://nodejs.org/en/download/)
 3. [npm (version 5.6.0 or later)](https://www.npmjs.com/get-npm)
 
-### Obtaining the source code
+### Obtaining the Source Code
 Follow the steps below to obtain the Ballerina source code.
 
 1. Execute the command below to clone the ['ballerina-lang'](https://github.com/ballerina-platform/ballerina-lang) source repository.
@@ -115,7 +119,7 @@ Follow the steps below to obtain the Ballerina source code.
     git submodule update --init
     ```
 
-### Building the source
+### Building the Source
 
 Follow the steps below to build the project of the obtained source.
 
@@ -140,13 +144,12 @@ To remove:
 - a specific jBallerina version (via the update tool): execute `ballerina dist remove` 
 - all the installed jBallerina versions: delete the `/../Ballerina` directory in the respective installation location
 
-## Getting help
-
-To get help when you work with Ballerina, see [Community](/community).
-
-## What is next
+## What's Next?
 
 Once you have successfully installed Ballerina, click the links below to set up your IDE.
 
+>**Tip:** To get help when you work with Ballerina, see [Community](/community).
+
 - [Setting up Visual Studio Code](/swan-lake/learn/vscode-plugin/)
 - [Setting up IntelliJ IDEA](/swan-lake/learn/intellij-plugin/)
+

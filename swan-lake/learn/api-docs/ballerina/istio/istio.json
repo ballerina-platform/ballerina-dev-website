@@ -1,7 +1,7 @@
 {
   "id": "istio",
-  "summary": "\u003cp\u003eThis module offers an annotation based Istio extension implementation for Ballerina.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation based Istio extension implementation for Ballerina.\u003c/p\u003e\n\u003cp\u003eFor information on the operations, which you can perform with this module, see \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/istio/index.html#objects\"\u003eObjects\u003c/a\u003e.\u003c/p\u003e\n",
+  "summary": "\u003cp\u003eThis module offers an annotation-based Istio extension implementation for Ballerina. For information on the operations, which you can perform with this module, see \u003ca href\u003d\"/swan-lake/learn/api-docs/ballerina/istio/index.html#objects\"\u003eObjects\u003c/a\u003e.\u003c/p\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation-based Istio extension implementation for Ballerina. For information on the operations, which you can perform with this module, see \u003ca href\u003d\"/swan-lake/learn/api-docs/ballerina/istio/index.html#objects\"\u003eObjects\u003c/a\u003e.\u003c/p\u003e\n",
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [
@@ -77,7 +77,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "DestinationConfig",
       "description": "\u003cp\u003eConfiguration to a network addressable service.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -131,7 +131,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "DestinationWeightConfig",
       "description": "\u003cp\u003eConfiguration for weight for destination to traffic route.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -319,7 +319,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "GatewayConfig",
       "description": "\u003cp\u003eIstio gateway annotation configuration.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -427,7 +427,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "HTTPRouteConfig",
       "description": "\u003cp\u003eConfigurations for conditions and actions for routing HTTP.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -504,7 +504,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "PortConfig",
       "description": "\u003cp\u003ePort of a service.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -595,7 +595,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ServerConfig",
       "description": "\u003cp\u003eIstio gateway server configuration to describe the properties of the proxy on a given load balancer.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -755,7 +755,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "TLSOptionConfig",
       "description": "\u003cp\u003eIstio gateway server tls option configurations.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -977,13 +977,14 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "VirtualServiceConfig",
       "description": "\u003cp\u003eVirtual service configuration for @istio:VirtualService annotation.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [],
@@ -1030,7 +1031,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "service, listener",
+      "attachmentPoints": "listener, service",
       "name": "VirtualService",
       "description": "\u003cp\u003e@istio:VirtualService annotation to generate istio virtual service.\u003c/p\u003e\n",
       "isDeprecated": false

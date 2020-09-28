@@ -97,11 +97,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../socket/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../socket/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -172,29 +171,6 @@
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Initializes the TCP socket client with the given client configuration.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<a href="../../socket/records/ClientConfig.html">ClientConfig</a>? clientConfig)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>clientConfig</b><span class="type">  <a href="../../socket/records/ClientConfig.html">ClientConfig</a>?</span> </li>
-                <li>
-                    <p>This is used to provide the configurations like host, port, and timeout</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -203,9 +179,7 @@
                         <tr>
                             <td class="module-title truncate functions" title="write"><a
                                     class="functions" href="#write">write</a></td>
-                            <td class="module-desc"><p>Writes the given data to the client socket.</p>
-
-</td>
+                            <td class="module-desc"><p>Writes the given data to the client socket.</p>   </td>
                         </tr>
                     
                         <tr>
@@ -217,25 +191,19 @@
                         <tr>
                             <td class="module-title truncate functions" title="close"><a
                                     class="functions" href="#close">close</a></td>
-                            <td class="module-desc"><p>Closes the client socket connection.</p>
-
-</td>
+                            <td class="module-desc"><p>Closes the client socket connection.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="shutdownRead"><a
                                     class="functions" href="#shutdownRead">shutdownRead</a></td>
-                            <td class="module-desc"><p>Shuts down any further reading from the socket.</p>
-
-</td>
+                            <td class="module-desc"><p>Shuts down any further reading from the socket.</p>   </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate functions" title="shutdownWrite"><a
                                     class="functions" href="#shutdownWrite">shutdownWrite</a></td>
-                            <td class="module-desc"><p>Shuts down any further writing from the socket.</p>
-
-</td>
+                            <td class="module-desc"><p>Shuts down any further writing from the socket.</p>   </td>
                         </tr>
                     
                 </table>
@@ -406,6 +374,9 @@ function displayMenu() {
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Writes the given data to the client socket.</p>
 <pre><code class="language-ballerina"> int|socket:Error writeResult = socketClient:write(payloadByte);
 </code></pre>
@@ -462,6 +433,9 @@ function displayMenu() {
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Reads data from the client socket. If the data has the specified length, then it waits until that number of bytes
 are received from the client. Else, it returns the data available in the OS buffer.
@@ -525,6 +499,9 @@ can't be read from the client</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Closes the client socket connection.</p>
 <pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
 </code></pre>
@@ -560,6 +537,9 @@ can't be read from the client</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Shuts down any further reading from the socket.</p>
 <pre><code class="language-ballerina"> socket:Error? result = socketClient-&gt;shutdownRead();
 </code></pre>
@@ -594,6 +574,9 @@ can't be read from the client</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Shuts down any further writing from the socket.</p>
 <pre><code class="language-ballerina"> socket:Error? result = socketClient-&gt;shutdownWrite();

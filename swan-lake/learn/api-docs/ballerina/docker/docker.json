@@ -1,7 +1,7 @@
 {
   "id": "docker",
   "summary": "\u003cp\u003eThis module offers an annotation based docker extension implementation for Ballerina.\u003c/p\u003e\n",
-  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation based docker extension implementation for Ballerina.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFor information on the operations, which you can perform with this module, see \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/api-docs/ballerina/docker/index.html#records\"\u003eRecords\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor information on the deploymenr, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/deployment/docker/\"\u003eDocker Deployemnt Guide\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor examples on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/docker-deployment.html\"\u003eDocker Deployment Example\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eAnnotation Usage Sample:\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/http;\nimport ballerina/log;\nimport ballerina/docker;\n\n@docker:Expose{}\nlistener http:Listener helloWorldEP \u003d new(9090);\n\n@http:ServiceConfig {\n      basePath: \u0026quot;/helloWorld\u0026quot;\n}\n@docker:Config {\n    registry: \u0026quot;docker.abc.com\u0026quot;,\n    name: \u0026quot;helloworld\u0026quot;,\n    tag: \u0026quot;v1.0\u0026quot;\n}\nservice helloWorld on helloWorldEP {\n    resource function sayHello(http:Caller caller, http:Request request) {\n        http:Response response \u003d new;\n        response.setTextPayload(\u0026quot;Hello, World from service helloWorld ! \\n\u0026quot;);\n        var responseResult \u003d caller-\u0026gt;respond(response);\n        if (responseResult is error) {\n            log:printError(\u0026quot;error responding back to client.\u0026quot;, err \u003d responseResult);\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n",
+  "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module offers an annotation based docker extension implementation for Ballerina.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFor information on the operations, which you can perform with this module, see \u003ca href\u003d\"/swan-lake/learn/api-docs/ballerina/docker/index.html#records\"\u003eRecords\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor information on the deploymenr, see the \u003ca href\u003d\"/swan-lake/learn/deployment/docker/\"\u003eDocker Deployemnt Guide\u003c/a\u003e.\u003c/li\u003e\n\u003cli\u003eFor examples on the usage of the operations, see the \u003ca href\u003d\"/swan-lake/learn/by-example/docker-deployment.html\"\u003eDocker Deployment Example\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eAnnotation Usage Sample:\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class\u003d\"language-ballerina\"\u003eimport ballerina/http;\nimport ballerina/log;\nimport ballerina/docker;\n\n@docker:Expose{}\nlistener http:Listener helloWorldEP \u003d new(9090);\n\n@http:ServiceConfig {\n      basePath: \u0026quot;/helloWorld\u0026quot;\n}\n@docker:Config {\n    registry: \u0026quot;docker.abc.com\u0026quot;,\n    name: \u0026quot;helloworld\u0026quot;,\n    tag: \u0026quot;v1.0\u0026quot;\n}\nservice helloWorld on helloWorldEP {\n    resource function sayHello(http:Caller caller, http:Request request) {\n        http:Response response \u003d new;\n        response.setTextPayload(\u0026quot;Hello, World from service helloWorld ! \\n\u0026quot;);\n        var responseResult \u003d caller-\u0026gt;respond(response);\n        if (responseResult is error) {\n            log:printError(\u0026quot;error responding back to client.\u0026quot;, err \u003d responseResult);\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n",
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [
@@ -501,9 +501,16 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "DockerConfiguration",
       "description": "\u003cp\u003eDocker annotation configuration.\u003c/p\u003e\n",
+      "isDeprecated": false
+    },
+    {
+      "fields": [],
+      "isClosed": true,
+      "name": "ExposeConfig",
+      "description": "\u003cp\u003eExpose ports for docker.\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
@@ -578,7 +585,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "FileConfig",
       "description": "\u003cp\u003eExternal file type for docker.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -619,17 +626,18 @@
             }
           },
           "name": "files",
-          "description": "\u003cp\u003eArray of \u003ca href\u003d\"docker.html#FileConfig\"\u003eFileConfig\u003c/a\u003e\u003c/p\u003e\n",
+          "description": "\u003cp\u003eArray of file configurations.\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "FileConfigs",
       "description": "\u003cp\u003eExternal File configurations for docker.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [],
+  "classes": [],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [],
   "functions": [],
@@ -653,7 +661,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "listener, function, service",
+      "attachmentPoints": "service, listener, function",
       "name": "Config",
       "description": "\u003cp\u003e@docker:Config annotation to configure docker artifact generation.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -676,7 +684,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "function, service, listener",
+      "attachmentPoints": "service, function, listener",
       "name": "CopyFiles",
       "description": "\u003cp\u003e@docker:CopyFile annotation to copy external files to docker image.\u003c/p\u003e\n",
       "isDeprecated": false

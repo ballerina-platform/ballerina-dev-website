@@ -89,6 +89,14 @@
         </li>
     
         <li >
+            <a href="#fromJsonDecimalString" onclick="menuLinkClick()">fromJsonDecimalString</a>
+        </li>
+    
+        <li >
+            <a href="#fromJsonFloatString" onclick="menuLinkClick()">fromJsonFloatString</a>
+        </li>
+    
+        <li >
             <a href="#fromJsonString" onclick="menuLinkClick()">fromJsonString</a>
         </li>
     
@@ -132,6 +140,7 @@
         </a>
     
     <ul>
+        
         
         
         
@@ -189,12 +198,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Returns a clone of <code>v</code>.
-A clone is a deep copy that does not copy immutable subtrees.
-A clone can therefore safely be used concurrently with the original.
-It corresponds to the Clone(v) abstract operation,
-defined in the Ballerina Language Specification.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -203,6 +210,9 @@ defined in the Ballerina Language Specification.</p>
                         <td width="30%"><a class="functions " href="#cloneReadOnly">cloneReadOnly</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 <p>Returns a clone of <code>v</code> that is read-only, i.e.
                             </div>
@@ -214,8 +224,36 @@ defined in the Ballerina Language Specification.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Constructs a value with a specified type by cloning another value.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Constructs a value with a specified type by cloning another value.</p> 
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#fromJsonDecimalString">fromJsonDecimalString</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Parses a string in JSON format and returns the value that it represents.
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td width="30%"><a class="functions " href="#fromJsonFloatString">fromJsonFloatString</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Parses a string in JSON format and returns the value that it represents.
                             </div>
                         </td>
                     </tr>
@@ -225,10 +263,10 @@ defined in the Ballerina Language Specification.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Parses a string in JSON format and returns the the value that it represents.
-All numbers in the JSON will be represented as float values.
-Returns an error if the string cannot be parsed.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -238,10 +276,10 @@ Returns an error if the string cannot be parsed.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Converts a string in JSON format to a user-specified type.
-This is a combination of <code>fromJsonString</code> followed by
-<code>fromJsonWithType</code>.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -251,10 +289,10 @@ This is a combination of <code>fromJsonString</code> followed by
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Converts a value of type json to a user-specified type.
-This works the same as <code>cloneWithType</code>,
-except that it also does the inverse of the conversions done by <code>toJson</code>.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -263,6 +301,9 @@ except that it also does the inverse of the conversions done by <code>toJson</co
                         <td width="30%"><a class="functions " href="#isReadOnly">isReadOnly</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 <p>Tests whether <code>v</code> is read-only, i.e.
                             </div>
@@ -274,8 +315,10 @@ except that it also does the inverse of the conversions done by <code>toJson</co
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Merges two json values.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Merges two json values.</p> 
                             </div>
                         </td>
                     </tr>
@@ -285,18 +328,10 @@ except that it also does the inverse of the conversions done by <code>toJson</co
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Converts a value of type <code>anydata</code> to <code>json</code>.
-This does a deep copy of <code>v</code> converting values that do
-not belong to json into values that do.
-A value of type <code>xml</code> is converted into a string as if
-by the <code>toString</code> function.
-A value of type <code>table</code> is converted into a list of
-mappings one for each row.
-The inherent type of arrays in the return value will be
-<code>json[]</code> and of mappings will be <code>map&lt;json&gt;</code>.
-A new copy is made of all structural values, including
-immutable values.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -306,9 +341,10 @@ immutable values.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Returns the string that represents <code>v</code> in JSON format.
-<code>v</code> is first converted to <code>json</code> as if by the <code>toJson</code> function.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -318,11 +354,10 @@ immutable values.</p>
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
                                 <p>Performs a minimal conversion of a value to a string.
-The conversion is minimal in particular in the sense
-that the conversion applied to a value that is already
-a string does nothing.</p>
-
                             </div>
                         </td>
                     </tr>
@@ -348,10 +383,13 @@ a string does nothing.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns a clone of <code>v</code>.
 A clone is a deep copy that does not copy immutable subtrees.
 A clone can therefore safely be used concurrently with the original.
-It corresponds to the Clone(v) abstract operation,
+It corresponds to the Clone(v) operation,
 defined in the Ballerina Language Specification.</p>
 
     </div>
@@ -407,8 +445,11 @@ defined in the Ballerina Language Specification.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns a clone of <code>v</code> that is read-only, i.e. immutable.
-It corresponds to the ImmutableClone(v) abstract operation,
+It corresponds to the ImmutableClone(v) operation,
 defined in the Ballerina Language Specification.</p>
 
     </div>
@@ -463,6 +504,9 @@ defined in the Ballerina Language Specification.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Constructs a value with a specified type by cloning another value.</p>
 
@@ -544,6 +588,126 @@ to supply any missing members</li>
 </div>
                     
                         <div class="method-content">
+    <div class="main-method-title here" id="fromJsonDecimalString" title="fromJsonDecimalString">
+             <a class="url-link" href="#fromJsonDecimalString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromJsonDecimalString </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str)</p>
+            
+                <b> returns </b><span class="builtin-type">json</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
+        <p>Parses a string in JSON format and returns the value that it represents.
+All numbers in the JSON will be represented as decimal values.
+Returns an error if the string cannot be parsed.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>string representation of json</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">json</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p><code>str</code> parsed to json or error</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="fromJsonFloatString" title="fromJsonFloatString">
+             <a class="url-link" href="#fromJsonFloatString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromJsonFloatString </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str)</p>
+            
+                <b> returns </b><span class="builtin-type">json</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
+        <p>Parses a string in JSON format and returns the value that it represents.
+All numbers in the JSON will be represented as float values.
+Returns an error if the string cannot be parsed.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>string representation of json</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">json</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p><code>str</code> parsed to json or error</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="fromJsonString" title="fromJsonString">
              <a class="url-link" href="#fromJsonString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
@@ -558,8 +722,13 @@ to supply any missing members</li>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Parses a string in JSON format and returns the the value that it represents.
-All numbers in the JSON will be represented as float values.
+All integer numbers in the JSON will be represented as integer values.
+All decimal numbers except -0.0 in the JSON will be represent as decimal values.
+-0.0 in the JSON will be represent as float value.
 Returns an error if the string cannot be parsed.</p>
 
     </div>
@@ -614,6 +783,9 @@ Returns an error if the string cannot be parsed.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Converts a string in JSON format to a user-specified type.
 This is a combination of <code>fromJsonString</code> followed by
@@ -689,6 +861,9 @@ This is a combination of <code>fromJsonString</code> followed by
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Converts a value of type json to a user-specified type.
 This works the same as <code>cloneWithType</code>,
 except that it also does the inverse of the conversions done by <code>toJson</code>.</p>
@@ -763,6 +938,9 @@ except that it also does the inverse of the conversions done by <code>toJson</co
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Tests whether <code>v</code> is read-only, i.e. immutable
 Returns true if read-only, false otherwise.</p>
 
@@ -818,6 +996,9 @@ Returns true if read-only, false otherwise.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Merges two json values.</p>
 
@@ -906,6 +1087,9 @@ If the merge fails, then <code>j1</code> is unchanged.</li>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Converts a value of type <code>anydata</code> to <code>json</code>.
 This does a deep copy of <code>v</code> converting values that do
 not belong to json into values that do.
@@ -972,6 +1156,9 @@ This panics if <code>v</code> has cycles.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the string that represents <code>v</code> in JSON format.
 <code>v</code> is first converted to <code>json</code> as if by the <code>toJson</code> function.</p>
 
@@ -1027,6 +1214,9 @@ This panics if <code>v</code> has cycles.</p>
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Performs a minimal conversion of a value to a string.
 The conversion is minimal in particular in the sense

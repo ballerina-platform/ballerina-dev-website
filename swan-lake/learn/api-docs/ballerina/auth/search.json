@@ -5,20 +5,10 @@
       "description": "\u003cp\u003eThis module provides the default authentication provider configurations, which can be extended to create new authentication providers and functions to interact with the \u003ccode\u003eauth:InvocationContext\u003c/code\u003e.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "InboundAuthProvider",
-      "description": "\u003cp\u003eRepresents the inbound Auth provider, which could be used to authenticate endpoints.\u003c/p\u003e",
-      "moduleId": "auth"
-    },
+  "classes": [
     {
       "id": "InboundBasicAuthProvider",
       "description": "\u003cp\u003eRepresents the configuration file based inbound Basic Auth provider, which is an implementation of the\n\u003ccode\u003eauth:InboundAuthProvider\u003c/code\u003e interface.\u003c/p\u003e",
-      "moduleId": "auth"
-    },
-    {
-      "id": "OutboundAuthProvider",
-      "description": "\u003cp\u003eRepresents the outbound Auth provider, which could be used to authenticate external endpoints.\u003c/p\u003e",
       "moduleId": "auth"
     },
     {
@@ -119,5 +109,17 @@
   ],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": [
+    {
+      "id": "InboundAuthProvider",
+      "description": "\u003cp\u003eRepresents the inbound Auth provider, which could be used to authenticate endpoints.\u003c/p\u003e",
+      "moduleId": "auth"
+    },
+    {
+      "id": "OutboundAuthProvider",
+      "description": "\u003cp\u003eRepresents the outbound Auth provider, which could be used to authenticate external endpoints.\u003c/p\u003e",
+      "moduleId": "auth"
+    }
+  ]
 }

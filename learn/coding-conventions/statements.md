@@ -13,7 +13,13 @@ redirect_from:
 
 # Statements
 
-## If statement
+- [If Statement](#if-statement)
+    - [Empty Block](#empty-block)
+- [Match Statement](#match-statement)
+    - [Match Patterns Clause](#match-patterns-clause)
+- [Transaction Statement](#transaction-statement)
+
+## If Statement
 
 * Always enclose the condition with parentheses in the If statement.
   
@@ -41,7 +47,7 @@ if true {
 * Keep the `else` and `else if` keywords in the same line with the matching `if` or `else if` block's
   closing brace separated only by a single space.
 
-### Empty block
+### Empty Block
 
 * Do not have any empty `if`, `else if`, or `else` blocks.
 * If empty, add an empty line between the opening and closing braces.
@@ -58,9 +64,9 @@ if (inProperSallaryRange) {
 }
 ```
 
-## Match statement
+## Match Statement
 
-### Match patterns clause
+### Match Patterns Clause
 
 * Block indent each pattern clause in its own line.
 * Keep a single space before and after the `=>` sign.
@@ -107,7 +113,7 @@ match x {
 }
 ```
 
-## Transaction statement
+## Transaction Statement
 
 * Start each optional clause (`onretry`, `committed`, and `aborted`) in the same line as the closing brace of the matching clause.
 * If `transaction`, `onretry`, `committed`, and `aborted` blocks are empty, add an empty line between the braces. 

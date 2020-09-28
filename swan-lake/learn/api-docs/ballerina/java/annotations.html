@@ -108,18 +108,15 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../java/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../java/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../java/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+        
+            <li>
+                <a  data="classes" href="../java/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
         
@@ -184,12 +181,12 @@
                         <b >Binding</b>
                         <span class="type"> <span ><a href="../java/records/ObjectData.html">ObjectData</a></span></span>
                         <img class="attach-icon" src="../html-template-resources/images/attach.svg">
-                        objecttype</li>
+                        class</li>
                     <li>
                         
                         <p>Describes the Java class representing a Ballerina binding.</p>
 <pre><code class="language-ballerina"> @java:Binding {
-   class: &quot;java.io.File&quot;
+   'class: &quot;java.io.File&quot;
  }
 </code></pre>
 
@@ -212,7 +209,7 @@ function is not provided in the Ballerina source module.</p>
 <p>The following code snippet shows an example usage of this annotation. Here, the <code>newJavaLinkedList</code> Ballerina function's
 implementation is provided by the default constructor of the <code>java.util.LinkedList</code> class.</p>
 <pre><code class="language-ballerina"> function newJavaLinkedList() returns handle = @java:Constructor {
-      class: &quot;java.util.LinkedList&quot;
+      'class: &quot;java.util.LinkedList&quot;
  } external;
 </code></pre>
 
@@ -233,7 +230,7 @@ implementation is provided by the default constructor of the <code>java.util.Lin
 <code>external</code>.</p>
 <pre><code class="language-ballerina"> function getError() returns handle = @java:FieldGet {
      name:&quot;err&quot;,
-     class:&quot;java/lang/System&quot;
+     'class:&quot;java/lang/System&quot;
  } external;
 </code></pre>
 
@@ -254,7 +251,7 @@ implementation is provided by the default constructor of the <code>java.util.Lin
 <code>external</code>.</p>
 <pre><code class="language-ballerina"> function setContractId(handle contractId) = @java:FieldSet {
    name:&quot;contractId&quot;,
-   class:&quot;org/lang/impl/JavaFieldAccessMutate&quot;
+   'class:&quot;org/lang/impl/JavaFieldAccessMutate&quot;
  } external;
 </code></pre>
 
@@ -278,7 +275,7 @@ function is not provided in the Ballerina source module.</p>
 implementation is provided by the <code>java.util.UUID.randomUUID</code> static method.</p>
 <pre><code class="language-ballerina"> function getUUID() returns handle = @java:Method {
      name: &quot;randomUUID&quot;,
-     class: &quot;java.util.UUID&quot;
+     'class: &quot;java.util.UUID&quot;
  } external;
 </code></pre>
 <p>The <code>name</code> field is optional. If it is not provided, the name of the Java method is inferred

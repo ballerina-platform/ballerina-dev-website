@@ -78,14 +78,6 @@ module JDBC.
                         
     
         <li >
-            <a href="#BatchExecuteError" onclick="menuLinkClick()">BatchExecuteError</a>
-        </li>
-    
-        <li >
-            <a href="#DatabaseError" onclick="menuLinkClick()">DatabaseError</a>
-        </li>
-    
-        <li >
             <a href="#Error" onclick="menuLinkClick()">Error</a>
         </li>
     
@@ -110,23 +102,20 @@ module JDBC.
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
-        
-        
-            
-                <li>
-                    <a  data="objects" href="../sql/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../sql/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
             <li>
-                <a data="clients" href="../sql/index.html#clients" onclick="menuLinkClick()">Clients</a>
+                <a  data="classes" href="../sql/index.html#classes" onclick="menuLinkClick()">Classes</a>
             </li>
+        
+        
+            <li>
+                <a  data="classes" href="../sql/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
+        
         
         
         
@@ -188,37 +177,6 @@ module JDBC.
             
                 <div class="params-listing">
                     <ul>
-                        <li id="BatchExecuteError">
-                            <b >BatchExecuteError</b>
-                            
-                                <span class="type">  <a href="../sql/errors.html#T6">T6</a></span></li>
-                            
-                        <li>
-                            
-                            <p>Represents an error occurred when a batch execution is running.</p>
-
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="params-listing">
-                    <ul>
-                        <li id="DatabaseError">
-                            <b >DatabaseError</b>
-                            
-                                <span class="type">  <a href="../sql/errors.html#T5">T5</a></span></li>
-                            
-                        <li>
-                            
-                            <p>Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,
-database resource clean-up, and other similar scenarios.</p>
-
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="params-listing">
-                    <ul>
                         <li id="Error">
                             <b >Error</b>
                             
@@ -226,7 +184,7 @@ database resource clean-up, and other similar scenarios.</p>
                             
                         <li>
                             
-                            <p>Represents a database or application level error returned from JDBC client remote functions.</p>
+                            <p>Represents a database or application level error returned from SQL client remote functions.</p>
 
                         </li>
                     </ul>
@@ -237,7 +195,7 @@ database resource clean-up, and other similar scenarios.</p>
                         <li id="Parameter">
                             <b >Parameter</b>
                             
-                                <span class="type">  <a href="../sql/types.html#Value">Value</a> | <a href="../sql/objects/OutParameter.html">OutParameter</a> | <a href="../sql/objects/InOutParameter.html">InOutParameter</a></span></li>
+                                <span class="type">  <a href="../sql/types.html#Value">Value</a> | <a href="../sql/classes/OutParameter.html">OutParameter</a> | <a href="../sql/classes/InOutParameter.html">InOutParameter</a></span></li>
                             
                         <li>
                             
@@ -252,7 +210,7 @@ database resource clean-up, and other similar scenarios.</p>
                         <li id="Value">
                             <b >Value</b>
                             
-                                <span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">int</span> | <span class="builtin-type">boolean</span> | <span class="builtin-type">float</span> | <span class="builtin-type">decimal</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <span class="builtin-type">xml</span> | <a href="../sql/objects/TypedValue.html">TypedValue</a>?</span></li>
+                                <span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">int</span> | <span class="builtin-type">boolean</span> | <span class="builtin-type">float</span> | <span class="builtin-type">decimal</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <span class="builtin-type">xml</span> | <a href="../sql/abstractobjects/TypedValue.html">TypedValue</a>?</span></li>
                             
                         <li>
                             

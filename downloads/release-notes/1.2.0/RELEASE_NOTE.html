@@ -25,7 +25,7 @@
 <p>This release introduces a revamped XML support along with XPath-like query syntax allowing easy and safe manipulation of XML data. </p>
 <h4>XML navigation expression</h4>
 <p>XML step expressions allow to query the children of an XML element or children of members of an XML sequence.</p>
-<pre><code class="ballerina">xml x = xml `&lt;root&gt;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">xml x = xml `&lt;root&gt;
                  &lt;person&gt;
                      &lt;name&gt;
                          &lt;fname&gt;William&lt;/fname&gt;
@@ -62,7 +62,7 @@ xml allChildren = x/*;
 </code></pre>
 
 <p>XML filter expression allows filtering an XML sequence by an element name.</p>
-<pre><code class="ballerina">xml x = xml `&lt;root&gt;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">xml x = xml `&lt;root&gt;
                 &lt;rectangle length=&quot;5&quot; width=&quot;10&quot;/&gt;
                 &lt;rectangle length=&quot;5&quot; width=&quot;5&quot;/&gt;
                 &lt;circle radius=&quot;2&quot;/&gt;
@@ -73,14 +73,14 @@ xml rectangles = x/*.&lt;rectangle&gt;;
 </code></pre>
 
 <h4>XML attribute access</h4>
-<pre><code class="ballerina">xmlns &quot;www.ballerina.io/ns&quot; as ns;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">xmlns &quot;www.ballerina.io/ns&quot; as ns;
 xml val = xml `&lt;element type=&quot;fixed&quot; ns:count=&quot;2&gt;&lt;/element&gt;`;
 string|error 'type = val.'type;
 string|error count = val.ns:count;
 </code></pre>
 
 <p>XML attribute access is now lax typed. This means that compile-time type checking is relaxed and moved to runtime. Accessing a non-existent attribute or using field access expression on a non-XML element item will result in an error being returned. If optional field access syntax is used, then nil will be returned instead of an error when the field is not available. Attributes with namespace prefix are accessed using the <code>value.prefix:attrName</code> syntax where the XML prefix must be declared in the scope.</p>
-<pre><code class="ballerina">xml val = xml `&lt;element type=&quot;fixed&quot;&gt;&lt;/element&gt;`;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">xml val = xml `&lt;element type=&quot;fixed&quot;&gt;&lt;/element&gt;`;
 string|error nonEx = val.nonExsistent; // result in error
 string|error? nonExOptional = val?.nonExsistent; // result in nil
 </code></pre>
@@ -90,7 +90,7 @@ string|error? nonExOptional = val?.nonExsistent; // result in nil
 <p>A query expression provides a language-integrated query feature using SQL-like syntax. </p>
 <p>In its most basic form, a query expression consists of four kinds of clauses: <code>from</code>, <code>let</code>, <code>where</code>, and <code>select</code>. The first clause must be a <code>from</code> clause and the last clause must be a <code>select</code> clause. The result of the query expression is a list. In this basic form, a query expression is just a list comprehension.</p>
 <p>The <code>from</code> clause works similarly to a foreach statement. It creates an iterator from an iterable value and then binds variables to each value returned by the iterator. The <code>where</code> clause is a <code>boolean</code> expression, which can refer to variables bound by the <code>from</code> clause; when the <code>where</code> expression evaluates to <code>false</code>, the iteration skips following clauses. The <code>let</code> clause binds variables. The <code>select</code> clause is evaluated for each iteration; the result of the query expression is a list whose members are the result of the <code>select</code> clause. </p>
-<pre><code class="ballerina">Person[] outputPersonList =
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">Person[] outputPersonList =
        from var person in personList
        let string depName = &quot;WSO2&quot;, string replaceName = &quot;Alexander&quot;
        where person.deptAccess == &quot;A&quot; &amp;&amp; person.firstName == &quot;Alex&quot;
@@ -104,7 +104,7 @@ string|error? nonExOptional = val?.nonExsistent; // result in nil
 <p>As of now, query expressions are supported by lists and streams.</p>
 <h4>Query action</h4>
 <p>The clauses in the query pipeline of a query action are executed in the same way as the clauses in the query pipeline of a query expression. The query action is executed as follows. For each input frame <code>f</code> emitted by the query pipeline, execute the block-statement with <code>f</code> in the scope.</p>
-<pre><code class="ballerina">    error? result = from var student in studentList
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">    error? result = from var student in studentList
                     where student.score &gt; 1.0
                     do {
                         FullName fullName = {
@@ -126,7 +126,7 @@ string|error? nonExOptional = val?.nonExsistent; // result in nil
 - reduce
 - iterator</p>
 <p>The <code>map()</code> and <code>filter()</code> methods return streams and work lazily. Iterable basic types would have a <code>toStream()</code> method to convert to a stream; these should handle mutation similarly to iterators; as of now, it supports only for arrays.</p>
-<pre><code class="ballerina">stream&lt;Person, error&gt; personStream = getPersonStream();
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">stream&lt;Person, error&gt; personStream = getPersonStream();
 stream&lt;Person, error&gt; filteredPersonStream = personStream.filter(function (Person person) returns boolean {
    return person.age &gt; 100 &amp;&amp; person.name != &quot;James&quot;;
 });
@@ -134,7 +134,7 @@ stream&lt;Person, error&gt; filteredPersonStream = personStream.filter(function 
 
 <h3>Expression-bodied functions</h3>
 <p>This release introduces expression-bodied functions whose body is a single expression. The expression function body takes the form <code>=&gt; E;</code>, where <code>E</code> is any expression. It is equivalent to the block function body, <code>{ return E; }</code>. The following is an example where a <code>Person</code> record is mapped to an <code>Employee</code> record using an expression-bodied function.</p>
-<pre><code class="ballerina">function toEmployee(Person p, string pos) returns Employee =&gt; {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">function toEmployee(Person p, string pos) returns Employee =&gt; {
     name: p.fname + &quot; &quot; + p.lname,
     designation: pos
 };
@@ -142,7 +142,7 @@ stream&lt;Person, error&gt; filteredPersonStream = personStream.filter(function 
 
 <h3>Let expressions</h3>
 <p>This release introduces let expression. It takes the form <code>let T B = E1 in E2</code>, where <code>E1</code> is evaluated resulting in a value <code>v</code>. The typed binding pattern <code>T B</code> is matched to <code>v</code>, causing assignments to the variables occurring in <code>B</code>. Then <code>E2</code> is evaluated with those variables in scope; the resulting value is the result of the let expression.</p>
-<pre><code class="ballerina">const int globalVar = 2;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">const int globalVar = 2;
 public function main() {
     int b = let int x = 4, int y = 3 in x * y * globalVar; // b = 4 * 3 * 2 = 24
 }
@@ -151,7 +151,7 @@ public function main() {
 <h3>Improved mapping constructor syntax</h3>
 <h4>Spread operator</h4>
 <p>A mapping constructor expression can now have a spread field. A spread field can be used with another mapping value <code>V</code> to include all of the fields in <code>V</code> when creating the new mapping value.</p>
-<pre><code class="ballerina">type Foo record {|
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Foo record {|
     string s;
     decimal d;
 |};
@@ -175,7 +175,7 @@ public function main() {
 
 <h4>Variable names as fields of mapping constructors</h4>
 <p>A mapping constructor expression can also contain just a variable name (<code>foo</code>) as a field. This is equivalent to the key-value pair field <code>foo: foo</code>. The name of the variable is considered the key while the variable reference is considered the expression.</p>
-<pre><code class="ballerina">type Employee record {|
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">type Employee record {|
     string name;
     string department;
 |};
@@ -192,7 +192,7 @@ public function main() {
 <h3>Improvements to metadata</h3>
 <h4>Deprecation syntax</h4>
 <p>You can now mark type definitions, functions, object methods, and constants as deprecated using the <code>@deprecated</code> annotation. The compiler will generate warnings if a you use a deprecated construct. If the deprecated construct contains documentation, you need to add some additional bit of documentation called <code>Deprecated</code> documentation. The <code>Deprecated</code> documentation should ideally include details on why the construct was deprecated and suitable alternate options, which should be used instead.</p>
-<pre><code class="ballerina"># Creates and returns a `Baz` object.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina"># Creates and returns a `Baz` object.
 #
 # # Deprecated
 # This function is deprecated due to undesired side effects since it relies on module level
@@ -205,7 +205,7 @@ public function foo() returns Baz {
 
 <h4>Metadata on record and object fields</h4>
 <p>Metadata (documentation and annotations) are now allowed on record and object fields.</p>
-<pre><code class="ballerina">// An annotation allowed on record fields.
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">// An annotation allowed on record fields.
 annotation foo on record field;
 
 // An annotation allowed on object fields.
@@ -264,7 +264,7 @@ public type Obj object {
 </ul>
 </li>
 </ul>
-<pre><code class="ballerina">import ballerina/lang.'int;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/lang.'int;
 import ballerina/lang.'string;  
 
 public function main() {
@@ -275,7 +275,7 @@ public function main() {
 
 <h4>Redesigned <code>lang.xml</code> module</h4>
 <p>The XML lang module has been revamped to work with the <code>Element</code>, <code>Comment</code>, <code>ProcessingInstructions</code> and <code>Text</code> XML built-in types.  Previously, functions such as <code>getChildren()</code> and <code>getElementName()</code>, which are specific to an XML element type were allowed to be called on the <code>xml</code> type and if they were called on non-element items, it used to result in runtime errors. With <code>xml</code> built-in sub type improvements, these functions are statically type checked and only allowed on the built-in sub type <code>Element</code>. The same applies to other built-in sub types and functions.</p>
-<pre><code class="ballerina">import ballerina/lang.'xml as xmllib;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/lang.'xml as xmllib;
 
 public function main() {
      xmllib:Element element = &lt;xmllib:Element&gt; xml `&lt;elem&gt; hello &lt;/elem&gt;`;
@@ -284,7 +284,7 @@ public function main() {
 </code></pre>
 
 <p>The functions <code>isElement()</code>, <code>isProcessingInstruction()</code>, <code>isComment()</code> and <code>isText()</code> have been removed. The same functionality can be achieved using type testing as follows.</p>
-<pre><code class="ballerina">import ballerina/lang.'xml;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/lang.'xml;
 public function main() {
     xml cmnt = xml `&lt;!-- hello from comment --&gt;`;
     boolean isComment = cmnt is 'xml:Comment;
@@ -294,7 +294,7 @@ public function main() {
 <p>The functions <code>appendChildren()</code> and <code>removeChildren()</code> have been removed.</p>
 <h4>The <code>lang.boolean</code> module</h4>
 <p>The newly-added lang library module for the <code>boolean</code> basic type contains a function for parsing <code>string</code> values to <code>boolean</code> values. It accepts <code>”true”</code> or <code>”false”</code> in any combination of lower/upper case as well as <code>”1”</code> and <code>”0”</code>, which evaluates to <code>true</code> and <code>false</code> respectively. An error is returned for any other <code>string</code> value.</p>
-<pre><code class="ballerina">import ballerina/lang.'boolean;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/lang.'boolean;
 
 public function main() {
     boolean|error b = 'boolean:fromString(&quot;true&quot;);
@@ -342,7 +342,7 @@ public function main() {
 - Add persistent cookies support and add support to plug custom persistent storages.  </p>
 <h4>Trailer support</h4>
 <p>Add support to create, read, update, and delete trailing headers in the response message. All existing header functions are changed to accept a finite-typed variable. The default value is set as <code>leading</code>, which means by default, those functions apply to leading headers. In order to apply trailer headers, you need to set the position as trailing as shown below.</p>
-<pre><code class="ballerina">string trailerHeader = response.getHeader(&quot;foo&quot;, position = &quot;trailing&quot;);
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">string trailerHeader = response.getHeader(&quot;foo&quot;, position = &quot;trailing&quot;);
 </code></pre>
 
 <h4>Other changes</h4>
@@ -358,7 +358,7 @@ public function main() {
 <h4>Redesigned <code>Oneof</code> field support</h4>
 <p>The <code>Oneof</code> fields in the protobuf definition are now mapped to optional fields in Ballerina. When you generate the code, the Ballerina record is generated with a new setter function for each field to restrict you from setting more than one of those fields and a valid function. </p>
 <p>For example,</p>
-<pre><code class="proto">message Person {
+<pre class="language-plaintext line-numbers basic"><code class="language-plaintext">message Person {
   oneof identity {
      string passportId = 1;
      string nic = 2;
@@ -366,7 +366,7 @@ public function main() {
 }
 </code></pre>
 
-<pre><code class="ballerina">public type Person record {|
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">public type Person record {|
    string passportId?;
    string nic?;
 |};
@@ -390,12 +390,12 @@ function setPerson_Nic(Person a, string nic) {
 <h4>Redesigned Map field support</h4>
 <p>The map fields in the protobuf definition are now mapped to nested records in Ballerina.</p>
 <p>For example,</p>
-<pre><code class="proto">message HelloRequest {
+<pre class="language-plaintext line-numbers basic"><code class="language-plaintext">message HelloRequest {
     map&lt;int32, string&gt; tags = 4;
 }
 </code></pre>
 
-<pre><code class="ballerina">public type HelloRequest record {|
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">public type HelloRequest record {|
     record {| int key; string value; |}[] tags = [];
 |};
 </code></pre>
@@ -403,7 +403,7 @@ function setPerson_Nic(Person a, string nic) {
 <h4>Added client retry support for unary blocking calls</h4>
 <p>Client retry is only supported in unary blocking calls. This will be supported in other messaging patterns in the future. 
 Retry functionality can be enabled using the following retry configuration.</p>
-<pre><code class="ballerina">grpc:ClientConfiguration clientConfiguration = {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">grpc:ClientConfiguration clientConfiguration = {
    retryConfiguration: {
        retryCount: 5,
        intervalInMillis: 2000,
@@ -444,20 +444,20 @@ Retry functionality can be enabled using the following retry configuration.</p>
 <p>The Ballerina Task module is enhanced with multiple attachment support.</p>
 <h4>Breaking changes</h4>
 <p>Named arguments for task attachments will not work now. For example, the following code will no longer compile.</p>
-<pre><code class="ballerina">    task:Scheduler timer = new({ intervalInMillis: 1000 });
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">    task:Scheduler timer = new({ intervalInMillis: 1000 });
     Person person = { name: &quot;Sam&quot;, age: 29 };
     var attachResult = timer.attach(TimerService, attachment = p); 
 </code></pre>
 
 <p>To make it work, change it as follows.</p>
-<pre><code class="ballerina">    task:Scheduler timer = new({ intervalInMillis: 1000 });
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">    task:Scheduler timer = new({ intervalInMillis: 1000 });
     Person person = { name: &quot;Sam&quot;, age: 29 };
     var attachResult = timer.attach(TimerService, person);
 </code></pre>
 
 <h4>Multiple attachment support</h4>
 <p>Now, you can pass any number of attachments to the <code>attach()</code> function. For example,</p>
-<pre><code class="ballerina">    task:Scheduler timer = new({ intervalInMillis: 1000 });
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">    task:Scheduler timer = new({ intervalInMillis: 1000 });
     Person person = { name: &quot;Sam&quot;, age: 29 };
     Account account = { number: 188008, balance: 1233.02 };
     var attachResult = timer.attach(TimerService, person, account);
@@ -575,7 +575,7 @@ Retry functionality can be enabled using the following retry configuration.</p>
 <h2>Deployment</h2>
 <h3>Docker Annotations</h3>
 <p>Support for setting environment variables to the Docker image.</p>
-<pre><code class="ballerina">@docker:Config {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">@docker:Config {
     env:{
         testVar1: &quot;value1&quot;,
         testVar2: &quot;value2&quot;
@@ -584,14 +584,14 @@ Retry functionality can be enabled using the following retry configuration.</p>
 </code></pre>
 
 <p>The default base image for the generated Docker images have changed to <code>ballerina/jre8:v1</code>. Also, now, Docker images can be generated for <code>main()</code> functions.</p>
-<pre><code class="ballerina">@docker:Config {}
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">@docker:Config {}
 public function main() {
     io:println(&quot;Hello, World!&quot;);
 }
 </code></pre>
 
 <p>Ability to generate Docker images by only adding the import as <code>import ballerina/docker as _</code>. This will generate the Docker images with minimum configurations for services, listeners, and main functions.</p>
-<pre><code class="ballerina">import ballerina/http;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/http;
 import ballerina/docker as _;
 
 listener http:Listener helloWorldEP = new(9090);
@@ -610,7 +610,7 @@ service helloWorld on helloWorldEP {
 <ul>
 <li>Support for setting a port for Kubernetes NodePort Service types is provided.</li>
 </ul>
-<pre><code class="ballerina">@kubernetes:Service {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">@kubernetes:Service {
     nodePort: 31100,
     serviceType: &quot;NodePort&quot;
 }
@@ -619,7 +619,7 @@ service helloWorld on helloWorldEP {
 <ul>
 <li>Support for mounting the <code>ballerina.conf</code> file as a Kubernetes Secret is provided.</li>
 </ul>
-<pre><code class="ballerina">@kubernetes:Secret {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">@kubernetes:Secret {
     conf: &quot;./conf/ballerina.conf&quot;
 }
 </code></pre>
@@ -627,7 +627,7 @@ service helloWorld on helloWorldEP {
 <ul>
 <li>Support for enabling Rolling Updates for Kubernetes Deployments is provided.</li>
 </ul>
-<pre><code class="ballerina">@kubernetes:Deployment {
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">@kubernetes:Deployment {
     updateStrategy: {
             strategyType: kubernetes:STRATEGY_ROLLING_UPDATE,
             maxUnavailable: 3,
@@ -639,7 +639,7 @@ service helloWorld on helloWorldEP {
 <ul>
 <li>Ability to generate Kubernetes artifacts by only adding the import as <code>import ballerina/docker as _</code> is provided. This will generate the Kubernetes artifacts with minimum configurations for services, listeners, and main functions.</li>
 </ul>
-<pre><code class="ballerina">import ballerina/http;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/http;
 import ballerina/kubernetes as _;
 
 listener http:Listener helloWorldEP = new(9090);
@@ -656,7 +656,7 @@ service helloWorld on helloWorldEP {
 
 <h3>Knative Annotations</h3>
 <p>A new <code>@knative:Service</code> annotation is introduced. It allows you to generate Knative Service artifacts for Knative.</p>
-<pre><code class="ballerina">import ballerina/http;
+<pre class="line-numbers language-ballerina"><code class="language-ballerina">import ballerina/http;
 import ballerina/knative;
 
 @knative:Service {}
@@ -678,7 +678,7 @@ service helloWorld on new http:Listener(8080) {
 </blockquote>
 <p>This CLI tool could be used to generate Ballerina bridge code for Java APIs. Here, Ballerina objects and the relevant Java interoperability mappings for specified Java classes will be auto-generated with the aim of providing a seamless coding experience to call existing Java code from Ballerina. These Ballerina bindings could be generated for Java classes residing inside Java libraries (for which the classpaths needs to be provided) or for standard Java classes. </p>
 <p><strong>Command:</strong></p>
-<pre><code class="sh">ballerina bindgen [(-cp|--classpath) &lt;classpath&gt;...]
+<pre class="highlight line-numbers  language-bash"><code class="  language-bash">ballerina bindgen [(-cp|--classpath) &lt;classpath&gt;...]
                   [(-o|--output) &lt;output&gt;]
                   (&lt;class-name&gt;...)
 </code></pre>

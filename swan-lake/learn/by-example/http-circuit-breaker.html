@@ -75,214 +75,7 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="nx">services</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_circuit_breaker</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8080</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mo">02</span><span class="p">,</span><span class="mi">595</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="o">/</span><span class="nx">resiliency</span><span class="p">]</span> <span class="o">-</span> <span class="nx">CircuitBreaker</span> <span class="nx">failure</span> <span class="nx">threshold</span> <span class="nx">exceeded</span><span class="p">.</span> <span class="nx">Circuit</span> <span class="nx">tripped</span> <span class="nx">from</span> <span class="nx">CLOSE</span> <span class="nx">to</span> <span class="nx">OPEN</span> <span class="nx">state</span><span class="p">.</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="mi">514</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="o">/</span><span class="nx">resiliency</span><span class="p">]</span> <span class="o">-</span> <span class="nx">CircuitBreaker</span> <span class="nx">reset</span> <span class="k">timeout</span> <span class="nx">reached</span><span class="p">.</span> <span class="nx">Circuit</span> <span class="nx">switched</span> <span class="nx">from</span> <span class="nx">OPEN</span> <span class="nx">to</span> <span class="nx">HALF_OPEN</span> <span class="nx">state</span><span class="p">.</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="mi">993</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="o">/</span><span class="nx">resiliency</span><span class="p">]</span> <span class="o">-</span> <span class="nx">CircuitBreaker</span> <span class="nx">trial</span> <span class="nx">run</span>  <span class="nx">was</span> <span class="nx">successful</span><span class="p">.</span> <span class="nx">Circuit</span> <span class="nx">switched</span> <span class="nx">from</span> <span class="nx">HALF_OPEN</span> <span class="nx">to</span> <span class="nx">CLOSE</span> <span class="nx">state</span><span class="p">.</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="mo">003</span> <span class="nx">ERROR</span> <span class="p">[]</span> <span class="o">-</span> <span class="nx">Error</span> <span class="nx">sending</span> <span class="nx">response</span> <span class="nx">from</span> <span class="nx">mock</span> <span class="kd">service</span> <span class="p">:</span> <span class="nx">error</span> <span class="p">{</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">}</span><span class="nx">GenericListenerError</span> <span class="kt">message</span><span class="p">=</span><span class="nx">Connection</span> <span class="nx">between</span> <span class="nx">remote</span> <span class="nx">client</span> <span class="nx">and</span> <span class="nx">host</span> <span class="nx">is</span> <span class="nx">closed</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span><span class="mi">082</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="o">/</span><span class="nx">resiliency</span><span class="p">]</span> <span class="o">-</span> <span class="nx">CircuitBreaker</span> <span class="nx">failure</span> <span class="nx">threshold</span> <span class="nx">exceeded</span><span class="p">.</span> <span class="nx">Circuit</span> <span class="nx">tripped</span> <span class="nx">from</span> <span class="nx">CLOSE</span> <span class="nx">to</span> <span class="nx">OPEN</span> <span class="nx">state</span><span class="p">.</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span><span class="mi">755</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="o">/</span><span class="nx">resiliency</span><span class="p">]</span> <span class="o">-</span> <span class="nx">CircuitBreaker</span> <span class="nx">reset</span> <span class="k">timeout</span> <span class="nx">reached</span><span class="p">.</span> <span class="nx">Circuit</span> <span class="nx">switched</span> <span class="nx">from</span> <span class="nx">OPEN</span> <span class="nx">to</span> <span class="nx">HALF_OPEN</span> <span class="nx">state</span><span class="p">.</span>
-<span class="mi">2019</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mo">04</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="mi">268</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="o">/</span><span class="nx">resiliency</span><span class="p">]</span> <span class="o">-</span> <span class="nx">CircuitBreaker</span> <span class="nx">trial</span> <span class="nx">run</span>  <span class="nx">was</span> <span class="nx">successful</span><span class="p">.</span> <span class="nx">Circuit</span> <span class="nx">switched</span> <span class="nx">from</span> <span class="nx">HALF_OPEN</span> <span class="nx">to</span> <span class="nx">CLOSE</span> <span class="nx">state</span><span class="p">.</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">first</span> <span class="nx">two</span> <span class="nx">requests</span> <span class="nx">complete</span> <span class="nx">without</span> <span class="kt">any</span> <span class="nx">errors</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/cb</span>
-<span class="o">*</span>   <span class="nx">Trying</span> <span class="p">::</span><span class="mf">1.</span><span class="p">..</span>
-<span class="o">*</span> <span class="nx">TCP_NODELAY</span> <span class="nx">set</span>
-<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(::</span><span class="mi">1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">cb</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.54.0</span>
-<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
-<span class="cm">&gt;</span>
-<span class="cm">&lt; HTTP/1.1 200 OK</span>
-<span class="cm">&lt; content-type: text/plain</span>
-<span class="cm">&lt; date: Wed, 4 Sep 2019 17:07:58 +0530</span>
-<span class="cm">&lt; server: ballerina/1.0.0-beta</span>
-<span class="cm">&lt; content-length: 14</span>
-<span class="cm">&lt;</span>
-<span class="cm">* Connection #0 to host localhost left intact</span>
-<span class="cm">Hello World!!!curl -v http://localhost:9090/cb</span>
-<span class="cm">*   Trying ::1...</span>
-<span class="cm">* TCP_NODELAY set</span>
-<span class="cm">* Connected to localhost (::1) port 9090 (#0)</span>
-<span class="cm">&gt; GET /cb HTTP/1.1</span>
-<span class="cm">&gt; Host: localhost:9090</span>
-<span class="cm">&gt; User-Agent: curl/7.54.0</span>
-<span class="cm">&gt; Accept: */</span><span class="o">*</span>
-<span class="p">&gt;</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Wed</span><span class="p">,</span> <span class="mi">4</span> <span class="nx">Sep</span> <span class="mi">2019</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mo">00</span> <span class="o">+</span><span class="mo">0530</span>
-<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.0.0</span><span class="o">-</span><span class="nx">beta</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">14</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
-<span class="nx">Hello</span> <span class="nx">World</span><span class="p">!!!</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">third</span> <span class="nx">request</span> <span class="nx">responds</span> <span class="nx">with</span> <span class="nx">a</span> <span class="s">`500 Internal Server Error`</span> <span class="nx">because</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="nx">mock</span> <span class="kd">service</span> <span class="nx">sends</span> <span class="nx">a</span> <span class="s">`500`</span> <span class="nx">http</span> <span class="nx">status</span> <span class="nx">code</span> <span class="nx">when</span> <span class="nx">responding</span> <span class="nx">to</span> <span class="nx">every</span> <span class="nx">third</span>
-<span class="err">#</span> <span class="nx">request</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/cb</span>
-<span class="o">*</span>   <span class="nx">Trying</span> <span class="p">::</span><span class="mf">1.</span><span class="p">..</span>
-<span class="o">*</span> <span class="nx">TCP_NODELAY</span> <span class="nx">set</span>
-<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(::</span><span class="mi">1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">cb</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.54.0</span>
-<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
-<span class="cm">&gt;</span>
-<span class="cm">&lt; HTTP/1.1 500 Internal Server Error</span>
-<span class="cm">&lt; content-type: text/plain</span>
-<span class="cm">&lt; date: Wed, 4 Sep 2019 17:08:00 +0530</span>
-<span class="cm">&lt; server: ballerina/1.0.0-beta</span>
-<span class="cm">&lt; content-length: 53</span>
-<span class="cm">&lt;</span>
-<span class="cm">* Connection #0 to host localhost left intact</span>
-<span class="cm">Internal error occurred while processing the request.# Subsequent requests fail immediately since the reset timeout period has not</span>
-<span class="cm"># elapsed.</span>
-<span class="cm">curl -v http://localhost:9090/cb</span>
-<span class="cm">*   Trying ::1...</span>
-<span class="cm">* TCP_NODELAY set</span>
-<span class="cm">* Connected to localhost (::1) port 9090 (#0)</span>
-<span class="cm">&gt; GET /cb HTTP/1.1</span>
-<span class="cm">&gt; Host: localhost:9090</span>
-<span class="cm">&gt; User-Agent: curl/7.54.0</span>
-<span class="cm">&gt; Accept: */</span><span class="o">*</span>
-<span class="p">&gt;</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">500</span> <span class="nx">Internal</span> <span class="nx">Server</span> <span class="nx">Error</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">99</span>
-<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.0.0</span><span class="o">-</span><span class="nx">beta</span>
-<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Wed</span><span class="p">,</span> <span class="mi">4</span> <span class="nx">Sep</span> <span class="mi">2019</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mo">02</span> <span class="o">+</span><span class="mo">0530</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
-<span class="nx">Upstream</span> <span class="kd">service</span> <span class="nx">unavailable</span><span class="p">.</span> <span class="nx">Requests</span> <span class="nx">to</span> <span class="nx">upstream</span> <span class="kd">service</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">suspended</span> <span class="k">for</span> <span class="mi">8340</span> <span class="nx">milliseconds</span><span class="p">.</span><span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/cb</span>
-<span class="o">*</span>   <span class="nx">Trying</span> <span class="p">::</span><span class="mf">1.</span><span class="p">..</span>
-<span class="o">*</span> <span class="nx">TCP_NODELAY</span> <span class="nx">set</span>
-<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(::</span><span class="mi">1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">cb</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.54.0</span>
-<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
-<span class="cm">&gt;</span>
-<span class="cm">&lt; HTTP/1.1 500 Internal Server Error</span>
-<span class="cm">&lt; content-type: text/plain</span>
-<span class="cm">&lt; content-length: 99</span>
-<span class="cm">&lt; server: ballerina/1.0.0-beta</span>
-<span class="cm">&lt; date: Wed, 4 Sep 2019 17:08:04 +0530</span>
-<span class="cm">&lt;</span>
-<span class="cm">* Connection #0 to host localhost left intact</span>
-<span class="cm">Upstream service unavailable. Requests to upstream service will be suspended for 6079 milliseconds.curl -v http://localhost:9090/cb</span>
-<span class="cm">*   Trying ::1...</span>
-<span class="cm">* TCP_NODELAY set</span>
-<span class="cm">* Connected to localhost (::1) port 9090 (#0)</span>
-<span class="cm">&gt; GET /cb HTTP/1.1</span>
-<span class="cm">&gt; Host: localhost:9090</span>
-<span class="cm">&gt; User-Agent: curl/7.54.0</span>
-<span class="cm">&gt; Accept: */</span><span class="o">*</span>
-<span class="p">&gt;</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">500</span> <span class="nx">Internal</span> <span class="nx">Server</span> <span class="nx">Error</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">99</span>
-<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.0.0</span><span class="o">-</span><span class="nx">beta</span>
-<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Wed</span><span class="p">,</span> <span class="mi">4</span> <span class="nx">Sep</span> <span class="mi">2019</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mo">07</span> <span class="o">+</span><span class="mo">0530</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
-<span class="nx">Upstream</span> <span class="kd">service</span> <span class="nx">unavailable</span><span class="p">.</span> <span class="nx">Requests</span> <span class="nx">to</span> <span class="nx">upstream</span> <span class="kd">service</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">suspended</span> <span class="k">for</span> <span class="mi">3475</span> <span class="nx">milliseconds</span><span class="p">.</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">request</span> <span class="nx">sent</span> <span class="nx">immediately</span> <span class="nx">after</span> <span class="nx">the</span> <span class="k">timeout</span> <span class="nx">period</span> <span class="nx">expires</span><span class="p">,</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">trial</span>
-<span class="err">#</span> <span class="nx">request</span><span class="p">.</span> <span class="nx">It</span> <span class="nx">is</span> <span class="nx">sent</span> <span class="nx">to</span> <span class="nx">see</span> <span class="k">if</span> <span class="nx">the</span> <span class="nx">backend</span> <span class="kd">service</span> <span class="nx">is</span> <span class="nx">back</span> <span class="nx">to</span> <span class="nx">normal</span><span class="p">.</span>
-<span class="err">#</span> <span class="nx">If</span> <span class="nx">this</span> <span class="nx">request</span> <span class="nx">is</span> <span class="nx">successful</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">circuit</span> <span class="nx">is</span> <span class="nx">set</span> <span class="nx">to</span> <span class="s">`close`</span> <span class="nx">and</span> <span class="nx">normal</span>
-<span class="err">#</span> <span class="nx">functionality</span> <span class="nx">resumes</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/cb</span>
-<span class="o">*</span>   <span class="nx">Trying</span> <span class="p">::</span><span class="mf">1.</span><span class="p">..</span>
-<span class="o">*</span> <span class="nx">TCP_NODELAY</span> <span class="nx">set</span>
-<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(::</span><span class="mi">1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">cb</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.54.0</span>
-<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
-<span class="cm">&gt;</span>
-<span class="cm">&lt; HTTP/1.1 200 OK</span>
-<span class="cm">&lt; content-type: text/plain</span>
-<span class="cm">&lt; date: Wed, 4 Sep 2019 17:08:12 +0530</span>
-<span class="cm">&lt; server: ballerina/1.0.0-beta</span>
-<span class="cm">&lt; content-length: 14</span>
-<span class="cm">&lt;</span>
-<span class="cm">* Connection #0 to host localhost left intact</span>
-<span class="cm">Hello World!!!# The fifth request times out because the mock service times out when</span>
-<span class="cm"># responding to every fifth request.</span>
-<span class="cm">curl -v http://localhost:9090/cb</span>
-<span class="cm">*   Trying ::1...</span>
-<span class="cm">* TCP_NODELAY set</span>
-<span class="cm">* Connected to localhost (::1) port 9090 (#0)</span>
-<span class="cm">&gt; GET /cb HTTP/1.1</span>
-<span class="cm">&gt; Host: localhost:9090</span>
-<span class="cm">&gt; User-Agent: curl/7.54.0</span>
-<span class="cm">&gt; Accept: */</span><span class="o">*</span>
-<span class="p">&gt;</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">500</span> <span class="nx">Internal</span> <span class="nx">Server</span> <span class="nx">Error</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">57</span>
-<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.0.0</span><span class="o">-</span><span class="nx">beta</span>
-<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Wed</span><span class="p">,</span> <span class="mi">4</span> <span class="nx">Sep</span> <span class="mi">2019</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">17</span> <span class="o">+</span><span class="mo">0530</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
-<span class="nx">Idle</span> <span class="k">timeout</span> <span class="nx">triggered</span> <span class="nx">before</span> <span class="nx">initiating</span> <span class="nx">inbound</span> <span class="nx">response</span><span class="err">#</span> <span class="nx">Subsequent</span> <span class="nx">requests</span> <span class="nx">fail</span> <span class="nx">immediately</span> <span class="nx">since</span> <span class="nx">the</span> <span class="nx">reset</span> <span class="k">timeout</span> <span class="nx">period</span> <span class="nx">has</span> <span class="nx">not</span>
-<span class="err">#</span> <span class="nx">elapsed</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/cb</span>
-<span class="o">*</span>   <span class="nx">Trying</span> <span class="p">::</span><span class="mf">1.</span><span class="p">..</span>
-<span class="o">*</span> <span class="nx">TCP_NODELAY</span> <span class="nx">set</span>
-<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(::</span><span class="mi">1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">cb</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.54.0</span>
-<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
-<span class="cm">&gt;</span>
-<span class="cm">&lt; HTTP/1.1 500 Internal Server Error</span>
-<span class="cm">&lt; content-type: text/plain</span>
-<span class="cm">&lt; content-length: 99</span>
-<span class="cm">&lt; server: ballerina/1.0.0-beta</span>
-<span class="cm">&lt; date: Wed, 4 Sep 2019 17:08:22 +0530</span>
-<span class="cm">&lt;</span>
-<span class="cm">* Connection #0 to host localhost left intact</span>
-<span class="cm">Upstream service unavailable. Requests to upstream service will be suspended for 4917 milliseconds.# The request sent immediately after the timeout period expires, is the trial</span>
-<span class="cm"># request. It is sent to see if the backend service is back to normal.</span>
-<span class="cm"># If this request is successful, the circuit is set to `close` and normal</span>
-<span class="cm"># functionality resumes.</span>
-<span class="cm">curl -v http://localhost:9090/cb</span>
-<span class="cm">*   Trying ::1...</span>
-<span class="cm">* TCP_NODELAY set</span>
-<span class="cm">* Connected to localhost (::1) port 9090 (#0)</span>
-<span class="cm">&gt; GET /cb HTTP/1.1</span>
-<span class="cm">&gt; Host: localhost:9090</span>
-<span class="cm">&gt; User-Agent: curl/7.54.0</span>
-<span class="cm">&gt; Accept: */</span><span class="o">*</span>
-<span class="p">&gt;</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Wed</span><span class="p">,</span> <span class="mi">4</span> <span class="nx">Sep</span> <span class="mi">2019</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">32</span> <span class="o">+</span><span class="mo">0530</span>
-<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.0.0</span><span class="o">-</span><span class="nx">beta</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">14</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
-<span class="nx">Hello</span> <span class="nx">World</span><span class="p">!!!</span><span class="err">#</span> <span class="nx">Since</span> <span class="nx">the</span> <span class="nx">immediate</span> <span class="nx">request</span> <span class="nx">after</span> <span class="nx">the</span> <span class="k">timeout</span> <span class="nx">expired</span> <span class="nx">was</span> <span class="nx">successful</span><span class="p">,</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="nx">requests</span> <span class="nx">sent</span> <span class="nx">after</span> <span class="nx">that</span> <span class="nx">complete</span> <span class="nx">normally</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/cb</span>
-<span class="o">*</span>   <span class="nx">Trying</span> <span class="p">::</span><span class="mf">1.</span><span class="p">..</span>
-<span class="o">*</span> <span class="nx">TCP_NODELAY</span> <span class="nx">set</span>
-<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(::</span><span class="mi">1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">&gt;</span> <span class="nx">GET</span> <span class="o">/</span><span class="nx">cb</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.54.0</span>
-<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*/*</span>
-<span class="p">&gt;</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="nx">OK</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">date</span><span class="p">:</span> <span class="nx">Wed</span><span class="p">,</span> <span class="mi">4</span> <span class="nx">Sep</span> <span class="mi">2019</span> <span class="mi">17</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">35</span> <span class="o">+</span><span class="mo">0530</span>
-<span class="p">&lt;</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.0.0</span><span class="o">-</span><span class="nx">beta</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">14</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="nx">to</span> <span class="nx">host</span> <span class="nx">localhost</span> <span class="nx">left</span> <span class="nx">intact</span>
-<span class="nx">Hello</span> <span class="nx">World</span><span class="p">!!!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -333,6 +126,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-circuit-breaker/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -954,8 +748,8 @@ curl -v http://localhost:9090/cb
 &gt;
 &lt; HTTP/1.1 200 OK
 &lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:07:58 +0530
-&lt; server: ballerina/1.0.0-beta
+&lt; date: Mon, 21 Sep 2020 17:07:58 +0530
+&lt; server: ballerina
 &lt; content-length: 14
 &lt;
 * Connection #0 to host localhost left intact
@@ -982,8 +776,8 @@ Hello World!!!
 &gt;
 &lt; HTTP/1.1 200 OK
 &lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:00 +0530
-&lt; server: ballerina/1.0.0-beta
+&lt; date: Mon, 21 Sep 2020 17:08:00 +0530
+&lt; server: ballerina
 &lt; content-length: 14
 &lt;
 * Connection #0 to host localhost left intact
@@ -1013,8 +807,8 @@ curl -v http://localhost:9090/cb
 &gt;
 &lt; HTTP/1.1 500 Internal Server Error
 &lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:00 +0530
-&lt; server: ballerina/1.0.0-beta
+&lt; date: Mon, 21 Sep 2020 17:08:00 +0530
+&lt; server: ballerina
 &lt; content-length: 53
 &lt;
 * Connection #0 to host localhost left intact
@@ -1044,8 +838,8 @@ curl -v http://localhost:9090/cb
 &lt; HTTP/1.1 500 Internal Server Error
 &lt; content-type: text/plain
 &lt; content-length: 99
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:02 +0530
+&lt; server: ballerina
+&lt; date: Mon, 21 Sep 2020 17:08:02 +0530
 &lt;
 * Connection #0 to host localhost left intact
 Upstream service unavailable. Requests to upstream service will be suspended for 8340 milliseconds.
@@ -1072,8 +866,8 @@ Upstream service unavailable. Requests to upstream service will be suspended for
 &lt; HTTP/1.1 500 Internal Server Error
 &lt; content-type: text/plain
 &lt; content-length: 99
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:04 +0530
+&lt; server: ballerina
+&lt; date: Mon, 21 Sep 2020 17:08:04 +0530
 &lt;
 * Connection #0 to host localhost left intact
 Upstream service unavailable. Requests to upstream service will be suspended for 6079 milliseconds.
@@ -1100,8 +894,8 @@ Upstream service unavailable. Requests to upstream service will be suspended for
 &lt; HTTP/1.1 500 Internal Server Error
 &lt; content-type: text/plain
 &lt; content-length: 99
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:07 +0530
+&lt; server: ballerina
+&lt; date: Mon, 21 Sep 2020 17:08:07 +0530
 &lt;
 * Connection #0 to host localhost left intact
 Upstream service unavailable. Requests to upstream service will be suspended for 3475 milliseconds.
@@ -1131,8 +925,8 @@ curl -v http://localhost:9090/cb
 &gt;
 &lt; HTTP/1.1 200 OK
 &lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:12 +0530
-&lt; server: ballerina/1.0.0-beta
+&lt; date: Mon, 21 Sep 2020 17:08:12 +0530
+&lt; server: ballerina
 &lt; content-length: 14
 &lt;
 * Connection #0 to host localhost left intact
@@ -1162,8 +956,8 @@ curl -v http://localhost:9090/cb
 &lt; HTTP/1.1 500 Internal Server Error
 &lt; content-type: text/plain
 &lt; content-length: 57
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:17 +0530
+&lt; server: ballerina
+&lt; date: Mon, 21 Sep 2020 17:08:17 +0530
 &lt;
 * Connection #0 to host localhost left intact
 Idle timeout triggered before initiating inbound response
@@ -1192,8 +986,8 @@ curl -v http://localhost:9090/cb
 &lt; HTTP/1.1 500 Internal Server Error
 &lt; content-type: text/plain
 &lt; content-length: 99
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:22 +0530
+&lt; server: ballerina
+&lt; date: Mon, 21 Sep 2020 17:08:22 +0530
 &lt;
 * Connection #0 to host localhost left intact
 Upstream service unavailable. Requests to upstream service will be suspended for 4917 milliseconds.
@@ -1223,8 +1017,8 @@ curl -v http://localhost:9090/cb
 &gt;
 &lt; HTTP/1.1 200 OK
 &lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:32 +0530
-&lt; server: ballerina/1.0.0-beta
+&lt; date: Mon, 21 Sep 2020 17:08:32 +0530
+&lt; server: ballerina
 &lt; content-length: 14
 &lt;
 * Connection #0 to host localhost left intact
@@ -1253,8 +1047,8 @@ curl -v http://localhost:9090/cb
 &gt;
 &lt; HTTP/1.1 200 OK
 &lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:35 +0530
-&lt; server: ballerina/1.0.0-beta
+&lt; date: Mon, 21 Sep 2020 17:08:35 +0530
+&lt; server: ballerina
 &lt; content-length: 14
 &lt;
 * Connection #0 to host localhost left intact
@@ -1286,7 +1080,7 @@ Hello World!!!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -11,13 +11,13 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">getName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="nx">public</span> <span class="nx">class</span> <span class="nx">Employee</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">address</span><span class="p">;</span>    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
@@ -29,12 +29,9 @@ redirect_from:
     <span class="p">}</span>    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">getAge</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Employee</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;street1&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">object_assignability</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">John</span> <span class="nx">Doe</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -49,8 +46,8 @@ redirect_from:
  that are applicable for objects.</p>
 
 <ul>
-<li>Both objects should have the same access modifier (i.e., either both should be public or both should be private).</li>
-<li>If both objects are private, they should be in the same package.</li>
+<li>Both objects should have the same access modifier (i.e., either both should be public or not).</li>
+<li>If both objects are not public, they should be in the same package.</li>
 <li>The right hand side (RHS) object type should at least have all the fields as well as the methods of the left hand side (LHS) type.</li>
 <li>If the objects are public object types, all the fields and methods must be public as well.</li>
 <li>The field types of the RHS object should be assignable to the field types of the LHS object.</li>
@@ -72,9 +69,9 @@ the corresponding parameters and return types of the LHS object type.</li>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="abstract-objects.html">
+                                    <a class="next" href="object-type.html">
                                         <span>NEXT ></span>
-                                        <p>Abstract Objects</p>
+                                        <p>Object type</p>
                                     </a>
                                 </div>
                                 
@@ -96,6 +93,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/object-assignability/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -152,7 +150,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type Person object {
+                                    <div class="highlight"><pre><code class=language-ballerina>public class Person {
     public int age = 0;
     public string name = &quot;&quot;;
 </code></pre></div>
@@ -176,7 +174,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                                     <div class="highlight"><pre><code class=language-ballerina>    public function getName() returns string {
         return self.name;
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -188,7 +186,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type Employee object {
+                                    <div class="highlight"><pre><code class=language-ballerina>public class Employee {
     public int age;
     public string name;
     public string address;
@@ -243,7 +241,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                                     <div class="highlight"><pre><code class=language-ballerina>    public function getAge() returns int {
         return self.age;
     }
-};
+}
 </code></pre></div>
 
                                 </td>
@@ -343,7 +341,7 @@ John Doe
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

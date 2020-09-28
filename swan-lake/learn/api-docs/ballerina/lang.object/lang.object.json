@@ -5,11 +5,13 @@
   "orgName": "ballerina",
   "version": "1.0.0",
   "records": [],
-  "objects": [
+  "classes": [],
+  "abstractObjects": [
     {
       "fields": [],
       "methods": [
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -33,7 +35,7 @@
                 "arrayDimensions": 0
               },
               "name": "s",
-              "description": "",
+              "description": "\u003cp\u003ethe service to attach\u003c/p\u003e\n",
               "isDeprecated": false
             },
             {
@@ -56,7 +58,7 @@
                 "arrayDimensions": 0
               },
               "name": "name",
-              "description": "",
+              "description": "\u003cp\u003eoptionally a name associated with the service\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
@@ -80,15 +82,16 @@
                 "arrayDimensions": 0
               },
               "name": "",
-              "description": "",
+              "description": "\u003cp\u003e\u003ccode\u003e()\u003c/code\u003e if no error occurred, and an error otherwise\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
           "name": "__attach",
-          "description": "",
+          "description": "\u003cp\u003eHandle service attachment to the listener.\nd\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -112,7 +115,7 @@
                 "arrayDimensions": 0
               },
               "name": "s",
-              "description": "",
+              "description": "\u003cp\u003ethe service to detach\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
@@ -136,15 +139,16 @@
                 "arrayDimensions": 0
               },
               "name": "",
-              "description": "",
+              "description": "\u003cp\u003e\u003ccode\u003e()\u003c/code\u003e if no error occurred, and an error otherwise\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
           "name": "__detach",
-          "description": "",
+          "description": "\u003cp\u003eHandle service detachment from the listener.\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -168,15 +172,16 @@
                 "arrayDimensions": 0
               },
               "name": "",
-              "description": "",
+              "description": "\u003cp\u003e\u003ccode\u003e()\u003c/code\u003e if no error occurred, and an error otherwise\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
           "name": "__start",
-          "description": "",
+          "description": "\u003cp\u003eHandle listener start.\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -200,15 +205,16 @@
                 "arrayDimensions": 0
               },
               "name": "",
-              "description": "",
+              "description": "\u003cp\u003e\u003ccode\u003e()\u003c/code\u003e if no error occurred, and an error otherwise\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
           "name": "__gracefulStop",
-          "description": "",
+          "description": "\u003cp\u003eHandle listener graceful stop.\u003c/p\u003e\n",
           "isDeprecated": false
         },
         {
+          "isIsolated": false,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -232,249 +238,15 @@
                 "arrayDimensions": 0
               },
               "name": "",
-              "description": "",
+              "description": "\u003cp\u003e\u003ccode\u003e()\u003c/code\u003e if no error occurred, and an error otherwise\u003c/p\u003e\n",
               "isDeprecated": false
             }
           ],
           "name": "__immediateStop",
-          "description": "",
+          "description": "\u003cp\u003eHandle listener immediate stop.\u003c/p\u003e\n",
           "isDeprecated": false
         }
       ],
-      "otherMethods": [
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "service",
-                "category": "UNKNOWN",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "s",
-              "description": "",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "\u003cstring?\u003e ()",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "name",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "error",
-                "category": "errors",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "__attach",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "service",
-                "category": "UNKNOWN",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "s",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "error",
-                "category": "errors",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "__detach",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "error",
-                "category": "errors",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "__start",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "error",
-                "category": "errors",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "__gracefulStop",
-          "description": "",
-          "isDeprecated": false
-        },
-        {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [],
-          "returnParameters": [
-            {
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "error",
-                "category": "errors",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": true,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "",
-              "description": "",
-              "isDeprecated": false
-            }
-          ],
-          "name": "__immediateStop",
-          "description": "",
-          "isDeprecated": false
-        }
-      ],
-      "isAnonymous": false,
       "name": "Listener",
       "description": "\u003cp\u003eRepresents the shape expected from all listeners.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -574,8 +346,6 @@
         }
       ],
       "methods": [],
-      "otherMethods": [],
-      "isAnonymous": false,
       "name": "RawTemplate",
       "description": "\u003cp\u003eRepresents the shape expected from all raw templates.\u003c/p\u003e\n",
       "isDeprecated": false

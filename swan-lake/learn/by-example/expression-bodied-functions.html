@@ -28,12 +28,7 @@ redirect_from:
 <span class="p">|};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">designation</span><span class="p">;</span>
-<span class="p">|};</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">expression_bodied_functions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">30</span>
-<span class="nx">name</span><span class="p">=</span><span class="nx">John</span> <span class="nx">Doe</span> <span class="nx">designation</span><span class="p">=</span><span class="nx">Software</span> <span class="nx">Engineer</span>
-<span class="kc">true</span>
+<span class="p">|};</span>
 </pre></div>
 
             </div>
@@ -83,6 +78,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/expression-bodied-functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -315,7 +311,7 @@ redirect_from:
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run expression_bodied_functions.bal
 30
-name=John Doe designation=Software Engineer
+{&quot;name&quot;:&quot;John Doe&quot;,&quot;designation&quot;:&quot;Software Engineer&quot;}
 true
 </code></pre></div>
 
@@ -344,7 +340,7 @@ true
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

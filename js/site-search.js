@@ -14,6 +14,7 @@ $(function () {
     let search = function () {
         $('#searchResult').empty();
         $('h2').html("");
+        
         let text = $('#searchText').val();
         if (text != null && text != "") {
 
@@ -24,6 +25,7 @@ $(function () {
                 let searchDescFull = refObj.summary;
                 let searchDesc = searchDescFull;
 
+                $('.searchStatus').html("");
                 $('h2').html("Search Results");
                 $('#searchResult').append('<li><h3><a href="' + refObj.page + '">' + refObj.name + '</a></h3>' +
                     '<p><a href="' + refObj.page + '"> https://ballerina.io' + refObj.page + '</a></p>'
@@ -32,6 +34,7 @@ $(function () {
             });
 
             if (searched.length <= 0) {
+                $('.searchStatus').html("");
                 $('h2').html("");
                 $('#searchResult').append('<li><h3><a>Oops!</a></h3>' +
                     '<p>Looks like we cannot find what you are looking for.</p></li>');
@@ -42,6 +45,9 @@ $(function () {
     let init = function () {
         let searchText = decodeURI(window.location.search.slice(1));
         $('#searchText').val(searchText);
+        if(searchText.length == 0){
+            $('.searchStatus').hide();
+        }
         search();
     };
 

@@ -12,76 +12,26 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">squarePlusCube</span><span class="p">(</span><span class="nx">f1</span><span class="p">);</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f1</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;SQ + CB = &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="nx">future</span><span class="p">&lt;()&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">countInfinity</span><span class="p">();</span>
-    <span class="nx">f2</span><span class="p">.</span><span class="nx">cancel</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Counting done in one second: &quot;</span> <span class="o">+</span> <span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">f3</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span><span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span> <span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f3</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">());</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f4</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">square</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">f5</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">greet</span><span class="p">(</span><span class="s">&quot;Bert&quot;</span><span class="p">);</span>
-    <span class="kt">int</span><span class="p">|</span><span class="kt">string</span> <span class="nx">anyResult</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f4</span><span class="p">|</span><span class="nx">f5</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">anyResult</span><span class="p">);</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f6</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">);</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f7</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">cube</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">f8</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">greet</span><span class="p">(</span><span class="s">&quot;Moose&quot;</span><span class="p">);</span>
-    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">resultMap</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">first_field</span><span class="p">:</span> <span class="nx">f6</span><span class="p">,</span> <span class="nx">second_field</span><span class="p">:</span> <span class="nx">f7</span><span class="p">,</span>
-                                            <span class="nx">third_field</span><span class="p">:</span> <span class="nx">f8</span><span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">resultMap</span><span class="p">);</span>
-    <span class="nx">record</span> <span class="p">{</span><span class="kt">int</span> <span class="nx">first_field</span><span class="p">;</span> <span class="kt">int</span> <span class="nx">second_field</span><span class="p">;</span> <span class="kt">string</span> <span class="nx">third_field</span><span class="p">;}</span> <span class="nx">rec</span> <span class="p">=</span>
-                    <span class="nx">wait</span> <span class="p">{</span><span class="nx">first_field</span><span class="p">:</span> <span class="nx">f6</span><span class="p">,</span> <span class="nx">second_field</span><span class="p">:</span> <span class="nx">f7</span><span class="p">,</span> <span class="nx">third_field</span><span class="p">:</span> <span class="nx">f8</span><span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;first field of record --&gt; &quot;</span> <span class="o">+</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">first_field</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;second field of record --&gt; &quot;</span> <span class="o">+</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">second_field</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;third field of record --&gt; &quot;</span> <span class="o">+</span> <span class="nx">rec</span><span class="p">.</span><span class="nx">third_field</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">square</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">n</span> <span class="o">*</span> <span class="nx">n</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">cube</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">n</span> <span class="o">*</span> <span class="nx">n</span> <span class="o">*</span> <span class="nx">n</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
-    <span class="k">return</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;!!&quot;</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">squarePlusCube</span><span class="p">(</span><span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="nx">sq</span> <span class="p">=</span> <span class="nx">square</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-        <span class="nx">sq</span> <span class="o">-&gt;</span> <span class="nx">w2</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kd">worker</span> <span class="nx">w2</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="nx">cb</span> <span class="p">=</span> <span class="nx">cube</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="nx">sq</span><span class="p">;</span>
-        <span class="nx">sq</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nx">sq</span> <span class="o">+</span> <span class="nx">cb</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">wait</span> <span class="nx">w2</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">countInfinity</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-        <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">async</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">SQ</span> <span class="o">+</span> <span class="nx">CB</span> <span class="p">=</span> <span class="mi">737100</span>
-<span class="nx">Counting</span> <span class="nx">done</span> <span class="nx">in</span> <span class="nx">one</span> <span class="nx">second</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nx">args</span><span class="p">=</span><span class="nx">test</span><span class="p">=</span><span class="mi">123</span> <span class="nx">headers</span><span class="p">=</span><span class="nx">x</span><span class="o">-</span><span class="nx">forwarded</span><span class="o">-</span><span class="nx">proto</span><span class="p">=</span><span class="nx">https</span> <span class="nx">host</span><span class="p">=</span><span class="nx">postman</span><span class="o">-</span><span class="nx">echo</span><span class="p">.</span><span class="nx">com</span> <span class="nx">user</span><span class="o">-</span><span class="nx">agent</span><span class="p">=</span><span class="nx">ballerina</span><span class="o">/</span><span class="mf">1.2.0</span> <span class="nx">x</span><span class="o">-</span><span class="nx">forwarded</span><span class="o">-</span><span class="nx">port</span><span class="p">=</span><span class="mi">80</span> <span class="nx">url</span><span class="p">=</span><span class="nx">https</span><span class="p">:</span><span class="c1">//postman-echo.com/get?test=123</span>
-<span class="mi">400</span>
-<span class="nx">first_field</span><span class="p">=</span><span class="mi">100</span> <span class="nx">second_field</span><span class="p">=</span><span class="mi">27</span> <span class="nx">third_field</span><span class="p">=</span><span class="nx">Hello</span> <span class="nx">Moose</span><span class="p">!!</span>
-<span class="nx">first</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="mi">100</span>
-<span class="nx">second</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="mi">27</span>
-<span class="nx">third</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">record</span> <span class="o">--</span><span class="p">&gt;</span> <span class="nx">Hello</span> <span class="nx">Moose</span><span class="p">!!</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;365*24&quot;</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">secondsInHour</span> <span class="p">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">hoursInYear</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">secondsInYear</span> <span class="p">=</span> <span class="nx">hoursInYear</span> <span class="o">*</span> <span class="nx">secondsInHour</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Seconds in an year = &quot;</span><span class="p">,</span> <span class="nx">secondsInYear</span><span class="p">);</span>    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f2</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;125*34&quot;</span><span class="p">);</span>
+    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f3</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">multiply</span><span class="p">(</span><span class="mi">125</span><span class="p">,</span> <span class="mi">34</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">f2</span><span class="p">|</span><span class="nx">f3</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;125*34 = &quot;</span><span class="p">,</span> <span class="nx">result1</span><span class="p">);</span>    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f4</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;9*8*7*6&quot;</span><span class="p">);</span>
+    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">f5</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">calculate</span><span class="p">(</span><span class="s">&quot;5*4*3*2*1&quot;</span><span class="p">);</span>
+    <span class="nx">record</span> <span class="p">{</span> <span class="kt">int</span> <span class="nx">r1</span><span class="p">;</span> <span class="kt">int</span> <span class="nx">r2</span><span class="p">;</span> <span class="p">}</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">r1</span><span class="p">:</span> <span class="nx">f4</span><span class="p">,</span> <span class="nx">r2</span><span class="p">:</span> <span class="nx">f5</span><span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;9! = &quot;</span><span class="p">,</span> <span class="nx">result2</span><span class="p">.</span><span class="nx">r1</span> <span class="o">*</span> <span class="nx">result2</span><span class="p">.</span><span class="nx">r2</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">calculate</span><span class="p">(</span><span class="kt">string</span> <span class="nx">expr</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.mathjs.org&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="kt">string</span> <span class="s">`/v4/?expr=${expr}`</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">checkpanic</span> <span class="p">&#39;int:fromString(</span>
+        <span class="nx">checkpanic</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">());</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -93,7 +43,12 @@ redirect_from:
                             <h2>Async</h2>
                             <p><p>Async functionality in Ballerina is a way to execute operations in an asynchronous manner by returning a <code>future</code>.
  The <code>future</code> can be used to extract the result of the async function call (if available), check the running status of an execution,
- or cancel the operation if needed. You can wait for a future to complete using the <code>wait</code> action.</p>
+ or cancel the operation if needed. You can wait for a future to complete using the <code>wait</code> action. <br/></p>
+
+<p>The <code>wait</code> action waits for one or more futures to complete and makes their return value available including any raised errors. If a future that is waited for panics, then <code>wait</code> will also panic.
+ The <code>wait</code> action currently supports two semantics: wait for any and wait for all.
+ Wait for any action will wait for any one of the given futures to complete. The value returned by the future that finishes first will be taken as the result.
+ Wait for all action will wait for all the given futures to complete. The resulting value will contain the returned values from each future either as a record or map.</p>
 </p>
 
                         </td>
@@ -132,6 +87,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/async/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -170,36 +126,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -210,31 +136,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
-import ballerina/runtime;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>int count = 0;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = new (&quot;http://postman-echo.com&quot;);
+import ballerina/lang.&#39;int;
 </code></pre></div>
 
                                 </td>
@@ -258,7 +160,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f1 = start sum(40, 50);
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f1 = start calculate(&quot;365*24&quot;);
 </code></pre></div>
 
                                 </td>
@@ -266,7 +168,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Asynchronously calls the function named <code>sum()</code>.</p>
+                                            <p>Call the &lsquo;calculate&rsquo; function asynchronously.</p>
 
                                         </div>
                                     </div>
@@ -277,7 +179,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int result = squarePlusCube(f1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int secondsInHour = 60 * 60;
 </code></pre></div>
 
                                 </td>
@@ -285,8 +187,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can pass the value of the <code>future</code> variable
- and call its results later.</p>
+                                            <p>Do some other processing.</p>
 
                                         </div>
                                     </div>
@@ -297,8 +198,9 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = wait f1;
-    io:println(&quot;SQ + CB = &quot; + result.toString());
+                                    <div class="highlight"><pre><code class=language-ballerina>    int hoursInYear = wait f1;
+    int secondsInYear = hoursInYear * secondsInHour;
+    io:println(&quot;Seconds in an year = &quot;, secondsInYear);
 </code></pre></div>
 
                                 </td>
@@ -306,244 +208,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Waits for the future <code>f1</code> to finish.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;()&gt; f2 = start countInfinity();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Calls the <code>countInfinity()</code> function, which runs forever
- in asynchronous mode.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    f2.cancel();
-    io:println(&quot;Counting done in one second: &quot; + count.toString());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Cancels the asynchronous execution.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;http:Response|error&gt; f3 = @strand {thread:&quot;any&quot;} start clientEndpoint-&gt; get(&quot;/get?test=123&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Asynchronously invokes the action call <code>get()</code>.
- By default this async call runs on the same physical thread of the caller.
- <code>@strand</code> annotation allows the invocation to run parallel.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Response|error response = wait f3;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Waits for action call <code>f3</code> to finish.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (response is http:Response) {
-        io:println(response.getJsonPayload());
-    } else {
-        io:println(response.message());
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Prints the response payload of the action call if successful or prints the
- reason for the failure.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f4 = start square(20);
-    future&lt;string&gt; f5 = start greet(&quot;Bert&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Asynchronously invokes the functions named <code>square()</code> and <code>greet()</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int|string anyResult = wait f4|f5;
-    io:println(anyResult);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>You can wait for any one of the given futures to complete.
- In this example,<code>f4</code> will finish before <code>f5</code> since <code>runtime:sleep()</code> is called
- in the <code>greet()</code> function to delay its execution. The value returned
- by the future that finishes first will be taken as the result.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f6 = start sum(40, 60);
-    future&lt;int&gt; f7 = start cube(3);
-    future&lt;string&gt; f8 = start greet(&quot;Moose&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Asynchronously invokes the functions named <code>sum()</code>, <code>cube()</code>, and <code>greet()</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(2000);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A <code>runtime:sleep</code> is added to delay the execution.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int|string&gt; resultMap = wait {first_field: f6, second_field: f7,
-                                            third_field: f8};
-    io:println(resultMap);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>You can wait for all the given futures to complete.
- The result of this <code>wait</code> action can be assigned to a map or a record.
- If the result is a map, it will contain the returned values from each
- future with the key as the name of the future (if a key is not provided).</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    record {int first_field; int second_field; string third_field;} rec =
-                    wait {first_field: f6, second_field: f7, third_field: f8};
-    io:println(&quot;first field of record --&gt; &quot; + rec.first_field.toString());
-    io:println(&quot;second field of record --&gt; &quot; + rec.second_field.toString());
-    io:println(&quot;third field of record --&gt; &quot; + rec.third_field.toString());
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If the result is a record, it will contain the returned values from each
- future with the field name as the name of the future (if a field name is
- not provided).</p>
+                                            <p>Wait for the future to finish and extract the result</p>
 
                                         </div>
                                     </div>
@@ -554,49 +219,8 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function sum(int a, int b) returns int {
-    return a + b;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function square(int n) returns int {
-    return n * n;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function cube(int n) returns int {
-    return n * n * n;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function greet(string name) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f2 = start calculate(&quot;125*34&quot;);
+    future&lt;int&gt; f3 = start multiply(125, 34);
 </code></pre></div>
 
                                 </td>
@@ -608,9 +232,8 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    runtime:sleep(2000);
-    return &quot;Hello &quot; + name + &quot;!!&quot;;
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>    int result1 = wait f2|f3;
+    io:println(&quot;125*34 = &quot;, result1);
 </code></pre></div>
 
                                 </td>
@@ -618,7 +241,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A <code>runtime:sleep</code> is added to delay the execution.</p>
+                                            <p>Wait for any of the given futures to complete. The first future that is completed will return the result.</p>
 
                                         </div>
                                     </div>
@@ -629,19 +252,8 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function squarePlusCube(future&lt;int&gt; f) returns int {
-    worker w1 {
-        int n = wait f;
-        int sq = square(n);
-        sq -&gt; w2;
-    }
-    worker w2 returns int {
-        int n = wait f;
-        int cb = cube(n);
-        int sq;
-        sq = &lt;- w1;
-        return sq + cb;
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; f4 = start calculate(&quot;9*8*7*6&quot;);
+    future&lt;int&gt; f5 = start calculate(&quot;5*4*3*2*1&quot;);
 </code></pre></div>
 
                                 </td>
@@ -653,7 +265,8 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    return wait w2;
+                                    <div class="highlight"><pre><code class=language-ballerina>    record { int r1; int r2; } result2 = wait {r1: f4, r2: f5};
+    io:println(&quot;9! = &quot;, result2.r1 * result2.r2);
 }
 </code></pre></div>
 
@@ -662,10 +275,27 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Waits for the worker <code>W2</code> to complete.</p>
+                                            <p>Wait for all the given futures to complete. The result of the <code>wait</code> action can be assigned to a map or a record.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function calculate(string expr) returns int {
+    http:Client httpClient = new (&quot;https://api.mathjs.org&quot;);
+    var response = checkpanic httpClient-&gt;get(string `/v4/?expr=${expr}`);
+    return checkpanic &#39;int:fromString(
+        checkpanic &lt;@untainted&gt; response.getTextPayload());
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -673,11 +303,8 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function countInfinity() {
-    while (true) {
-        runtime:sleep(1);
-        count += 1;
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>function multiply(int a, int b) returns int {
+    return a * b;
 }
 </code></pre></div>
 
@@ -706,14 +333,9 @@ import ballerina/runtime;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run async.bal
-SQ + CB = 737100
-Counting done in one second: 0
-args=test=123 headers=x-forwarded-proto=https host=postman-echo.com user-agent=ballerina/1.2.0 x-forwarded-port=80 url=https://postman-echo.com/get?test=123
-400
-first_field=100 second_field=27 third_field=Hello Moose!!
-first field of record --&gt; 100
-second field of record --&gt; 27
-third field of record --&gt; Hello Moose!!
+Seconds in an year = 31536000
+125*34 = 4250
+9! = 362880
 </code></pre></div>
 
                                 </td>
@@ -741,7 +363,7 @@ third field of record --&gt; Hello Moose!!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -25,16 +25,7 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">afterFunc</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the after function!&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">ballerina</span> <span class="nx">test</span> <span class="nx">test_module</span>
-<span class="nx">Compiling</span> <span class="nx">source</span>
-        <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span><span class="nx">Creating</span> <span class="nx">balos</span>
-        <span class="nx">target</span><span class="o">/</span><span class="nx">balo</span><span class="o">/</span><span class="nx">test_module</span><span class="o">-</span><span class="mi">2020</span><span class="nx">r1</span><span class="o">-</span><span class="kt">any</span><span class="o">-</span><span class="mf">0.1.0</span><span class="p">.</span><span class="nx">baloRunning</span> <span class="nx">tests</span>
-    <span class="nx">ballerinatest</span><span class="o">/</span><span class="nx">test_module</span><span class="p">:</span><span class="mf">0.1.0</span>
-<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">the</span> <span class="nx">before</span> <span class="kd">function</span><span class="p">!</span>
-<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">in</span> <span class="nx">test</span> <span class="kd">function</span><span class="p">!</span>
-<span class="nx">I</span><span class="err">&#39;</span><span class="nx">m</span> <span class="nx">the</span> <span class="nx">after</span> <span class="kd">function</span><span class="p">!</span>        <span class="p">[</span><span class="nx">pass</span><span class="p">]</span> <span class="nx">testFunction</span>        <span class="mi">1</span> <span class="nx">passing</span>
-        <span class="mi">0</span> <span class="nx">failing</span>
-        <span class="mi">0</span> <span class="nx">skipped</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -47,7 +38,8 @@ redirect_from:
                             <p><p>The <code>before</code> attribute allows you to execute a function before a test function.
  This capability can be used for setting up prerequisites that need to be executed before executing a test.
  Similarly, the <code>after</code> attribute can be used to execute a function after a test function.<br/><br/>
- For more information, see <a href="https://ballerina.io/swan-lake/learn/how-to-test-ballerina-code/">How to Test Ballerina Code</a>.</p>
+ For more information, see <a href="https://ballerina.io/swan-lake/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
+ and the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/test/index.html">Test Module</a>.</p>
 </p>
 
                         </td>
@@ -86,6 +78,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/testerina-before-and-after-test/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -315,7 +308,7 @@ I&#39;m the after function!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

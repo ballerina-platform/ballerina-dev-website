@@ -28,19 +28,23 @@ The Graphical Editor of the VS Code Ballerina extension allows you to design you
 The bellow sections discuss how to use the Graphical Editor and explore its capabilities.
 
 - [Launching the Graphical View](#launching-the-graphical-view)
-- [Exploring the features of the Graphical View](#exploring-the-features-of-the-graphical-view)
+  - [Launching the Project Overview](#launching-the-project-overview)
+  - [Launching the File Overview](#launching-the-file-overview)
+- [Exploring the Features of the Graphical View](#exploring-the-features-of-the-graphical-view)
+  - [Viewing the Source](#viewing-the-source)
+  - [Expanding the Diagram View](#expanding-the-diagram-view)
 
 ## Launching the Graphical View
 
 The below are the two types of Graphical Views you can find in the VSCode extension.
 
-**1. Project Overview**
+### Launching the Project Overview
 
 This gives a graphical representation of a grouping of the content in the project modules. Click the name of the entity under **BALLERINA PROJECT OVERVIEW** to view its graphical representation.
 
 ![Open using the project overview](/learn/images/select-from-overview.gif)
 
-**2. File Overview**
+### Launching the File Overview
 
 This gives a graphical representation of the content of the current Ballerina file. Use one of the methods to view it.
 
@@ -50,14 +54,14 @@ This gives a graphical representation of the content of the current Ballerina fi
 
 2. Select the **Show File Overview** command option from the **Command Palette**.
 
-## Exploring the features of the Graphical View
+## Exploring the Features of the Graphical View
 
 The below sections include information to explore the features of the Graphical Editor.
 
 - [Viewing the source](#viewing-the-source)
 - [Expanding the Diagram View](#expanding-the-diagram-view)
 
-### Viewing the source
+### Viewing the Source
 
 From the design view you can jump to the respective source segment as shown below.
 
@@ -69,7 +73,7 @@ You can expand the Diagram View to show not only the control flow but also to sh
 
 ![Expanding the Diagram View](/learn/images/expand-diagram-view.gif)
 
-## What's next?
+## What's Next?
 
  - For information on the next capability of the VS Code Ballerina plugin, see [Documentation Viewer](/learn/vscode-plugin/documentation-viewer).
  - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/learn/vscode-plugin).

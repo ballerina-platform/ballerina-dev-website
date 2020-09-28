@@ -33,12 +33,7 @@ redirect_from:
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error cause not provided.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">error_handling</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Error</span><span class="p">:</span> <span class="nx">Simple</span> <span class="nx">error</span> <span class="nx">occurred</span>
-<span class="nx">Error</span><span class="p">:</span> <span class="nx">Invalid</span> <span class="nx">account</span> <span class="nx">ID</span><span class="p">,</span> <span class="nx">Account</span> <span class="nx">ID</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
-<span class="nx">Caused</span> <span class="nx">by</span><span class="p">:</span> <span class="nx">Invalid</span> <span class="nx">account</span> <span class="nx">ID</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -79,9 +74,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="check.html">
+                                    <a class="next" href="fail.html">
                                         <span>NEXT ></span>
-                                        <p>Check</p>
+                                        <p>Fail</p>
                                     </a>
                                 </div>
                                 
@@ -103,6 +98,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/error-handling/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -441,7 +437,7 @@ Caused by: Invalid account ID
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

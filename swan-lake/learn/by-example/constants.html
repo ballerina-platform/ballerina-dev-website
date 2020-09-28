@@ -14,19 +14,13 @@ redirect_from:
 <span class="kd">const</span> <span class="kt">float</span> <span class="nx">PI</span> <span class="p">=</span> <span class="mf">3.14159</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">SPEED_OF_LIGHT</span> <span class="p">=</span> <span class="mi">299792000</span><span class="p">;</span>
 <span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">data</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ID&quot;</span><span class="p">:</span> <span class="s">&quot;1234&quot;</span> <span class="p">};</span>
-<span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span> <span class="nx">complexData</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span> <span class="s">&quot;data2&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span> <span class="p">}</span> <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span> <span class="nx">complexData</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span>
+                                       <span class="s">&quot;data2&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span> <span class="p">}</span> <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;PI: &quot;</span><span class="p">,</span> <span class="nx">PI</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">distanceOfALightYear</span> <span class="p">=</span> <span class="nx">SPEED_OF_LIGHT</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Distance of a light year (meters): &quot;</span><span class="p">,</span> <span class="nx">distanceOfALightYear</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">complexData</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">complexData</span><span class="p">[</span><span class="s">&quot;data&quot;</span><span class="p">][</span><span class="s">&quot;user&quot;</span><span class="p">]);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">constant</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">PI</span><span class="p">:</span> <span class="mf">3.14159</span>
-<span class="nx">Distance</span> <span class="nx">of</span> <span class="nx">a</span> <span class="nx">light</span> <span class="nx">year</span> <span class="p">(</span><span class="nx">meters</span><span class="p">):</span> <span class="mi">9454240512000000</span>
-<span class="nx">user</span><span class="p">=</span><span class="nx">Ballerina</span> <span class="nx">ID</span><span class="p">=</span><span class="mi">1234</span>
-<span class="nx">data</span><span class="p">=</span><span class="nx">user</span><span class="p">=</span><span class="nx">Ballerina</span> <span class="nx">ID</span><span class="p">=</span><span class="mi">1234</span> <span class="nx">data2</span><span class="p">=</span><span class="nx">user</span><span class="p">=</span><span class="nx">WSO2</span>
-<span class="nx">Ballerina</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -79,6 +73,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/constants/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -194,7 +189,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>const map&lt;map&lt;string&gt;&gt; complexData = { &quot;data&quot;: data, &quot;data2&quot;: { &quot;user&quot;: &quot;WSO2&quot; } };
+                                    <div class="highlight"><pre><code class=language-ballerina>const map&lt;map&lt;string&gt;&gt; complexData = { &quot;data&quot;: data,
+                                       &quot;data2&quot;: { &quot;user&quot;: &quot;WSO2&quot; } };
 </code></pre></div>
 
                                 </td>
@@ -310,8 +306,8 @@ redirect_from:
 ballerina run constant.bal
 PI: 3.14159
 Distance of a light year (meters): 9454240512000000
-user=Ballerina ID=1234
-data=user=Ballerina ID=1234 data2=user=WSO2
+{&quot;user&quot;:&quot;Ballerina&quot;,&quot;ID&quot;:&quot;1234&quot;}
+{&quot;data&quot;:{&quot;user&quot;:&quot;Ballerina&quot;,&quot;ID&quot;:&quot;1234&quot;},&quot;data2&quot;:{&quot;user&quot;:&quot;WSO2&quot;}}
 Ballerina
 </code></pre></div>
 
@@ -340,7 +336,7 @@ Ballerina
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -19,22 +19,25 @@ redirect_from:
 
 The below sections include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 
-- [Running Ballerina programs](#running-ballerina-programs)
-- [Debugging Ballerina programs](#debugging-ballerina-programs)
-- [Viewing the sequence diagram](#viewing-the-sequence-diagram)
-- [Importing modules on the fly](#importing-modules-on-the-fly)
-- [Importing unambiguous modules](#importing-unambiguous-modules)
-- [Formatting Ballerina codes](#formatting-ballerina-codes)
-- [Viewing documentation](#viewing-documentation)
-- [Adding annotation fields via suggestions](#adding-annotation-fields-via-suggestions)
-- [Using file templates](#using-file-templates)
-- [Using code snippet templates](#using-code-snippet-templates)
-- [Checking spellings](#checking-spellings)
-- [Analyzing semantics](#analyzing-semantics)
-- [Code folding](#code-folding)
-- [Go to definition](#go-to-definition)
+- [Running Ballerina Programs](#running-ballerina-programs)
+    - [Running the Main Method](#running-the-main-method)
+    - [Running Ballerina Services](#running-ballerina-services)
+- [Debugging Ballerina Programs](#debugging-ballerina-programs)
+    - [Troubleshooting](#troubleshooting)
+- [Viewing the Sequence Diagram](#viewing-the-sequence-diagram)
+- [Importing Modules on the Fly](#importing-modules-on-the-fly)
+- [Importing Unambiguous Modules](#importing-unambiguous-modules)
+- [Formatting Ballerina Codes](#formatting-ballerina-codes)
+- [Viewing Documentation](#viewing-documentation)
+- [Adding Annotation Fields via Suggestions](#adding-annotation-fields-via-suggestions)
+- [Using File Templates](#using-file-templates)
+- [Using Code Snippet Templates](#using-code-snippet-templates)
+- [Checking Spellings](#checking-spellings)
+- [Analyzing Semantics](#analyzing-semantics)
+- [Code Folding](#code-folding)
+- [Go to Definition](#go-to-definition)
 
-## Running Ballerina programs
+## Running Ballerina Programs
 
 You can run Ballerina main/service programs with a single click without adding or changing any configurations.
 
@@ -43,7 +46,7 @@ The below sections include instructions on how to run different elements of a Ba
 - [Running the main method](#running-the-main-method)
 - [Running Ballerina services](#running-ballerina-services)
 
-### Running the main method
+### Running the Main Method
 
 Follow the steps below to run the main function of a Ballerina file.
 
@@ -61,7 +64,7 @@ This executes the main function of the Ballerina file and displays the output in
 
 > **Tip:** Alternatively, you can right click on the name of the file and run the main method of it.
 
-### Running Ballerina services
+### Running Ballerina Services
 
 Follow the steps below to run a service of a Ballerina file.
 
@@ -76,7 +79,7 @@ This starts the service and displays the output in the **Run** window. If you ha
 > **Tip:** Alternatively, you can right click on the name of the file and run the service(s) of it.
 
 
-## Debugging Ballerina programs
+## Debugging Ballerina Programs
 
 You can debug Ballerina main/service programs with a few clicks.
 
@@ -88,7 +91,7 @@ You can debug Ballerina main/service programs with a few clicks.
 - There are some cases where stepping over gives unexpected behavior
     - Eg: When there are multiple workers and a wait expression waiting for them, even though step over hit and pass wait line in source, workers are not yet finished execution.
 
-## Viewing the sequence diagram
+## Viewing the Sequence Siagram
 
 The underlying language semantics of Ballerina were designed by modeling how independent parties communicate via structured interactions. Subsequently, every Ballerina program can be displayed as a sequence diagram of its flow including endpoints as well as synchronous and asynchronous calls.
 
@@ -96,13 +99,13 @@ To view the sequence diagram of a Ballerina file, click the (![design view icon]
 
 ![HTTP circuit breaker sequence diagram](/swan-lake/learn/images/circuit-breaker-sequence-diagram.gif)
 
-## Importing modules on the fly
+## Importing Modules on the Fly
 
 You can add import declarations to your Ballerina programs on the fly. When you select the module name from the lookup list, the module declaration will be added automatically.
 
 ![Import modules on the fly](/swan-lake/learn/images/import-modules-on-the-fly.gif)
 
-## Importing unambiguous modules 
+## Importing Unambiguous Modules 
 
 When you copy and paste Ballerina code to IntelliJ, this feature allows you to import unambiguous imports. You can apply these imports by clicking on the module name and pressing **Alt + Enter** keys.
 
@@ -114,25 +117,25 @@ When you copy and paste Ballerina code to IntelliJ, this feature allows you to i
 
 ![Import unambiguous modules](/swan-lake/learn/images/import-unambiguous-modules.gif)
 
-## Formatting Ballerina codes
+## Formatting Ballerina Codes
 
 You can reformat the Ballerina codes by pressing the **Ctrl+Alt+L** keys.
 
 ![Formatting Ballerina codes](/swan-lake/learn/images/format-code.gif)
 
-## Viewing documentation
+## Viewing Documentation
 
 You can view the documentation of a function, remote function, etc. by pressing the **Ctrl+Q** keys or by hovering over the element while pressing the **Ctrl** key.
 
 ![Viewing documentation](/swan-lake/learn/images/view-documentation.gif)
 
-## Adding annotation fields via suggestions
+## Adding Annotation Fields via Suggestions
 
 You can add annotation fields to your code using the annotation field names that are suggested inside annotation attachments.
 
 ![Adding annotation fields via suggestions](/swan-lake/learn/images/annotation-field-suggestion.gif)
 
-## Using file templates
+## Using File Templates
 
 Three types of Ballerina file templates are available.
 
@@ -142,25 +145,25 @@ Three types of Ballerina file templates are available.
 
 ![Using file templates](/swan-lake/learn/images/file-templates.gif)
 
-## Using code snippet templates
+## Using Code Snippet Templates
 
 Code snippet templates contain boilerplate codes and allows you to write your code efficiently. 
 
 ![Using code snippet templates](/swan-lake/learn/images/code-snippet-templates.gif)
 
-## Checking spellings
+## Checking Spellings
 
 The spell-checker is enabled for all identifiers. You can rename all of the definitions and references as well.
 
 ![Checking spellings](/swan-lake/learn/images/check-spellings.gif)
 
-## Analyzing semantics
+## Analyzing Semantics
 
 The Ballerina IDEA plugin provides capabilities to diagnose and analyze semantics of your Ballerina programs through the Ballerina Language Server.
 
 ![Analyzing semantics](/swan-lake/learn/images/analyzing-semantics.gif)
 
-## Code folding
+## Code Folding
 
 You expand/collapse the following Ballerina code segments using the icons in the IntelliJ IDE.
 
@@ -175,13 +178,13 @@ You expand/collapse the following Ballerina code segments using the icons in the
  
 ![Code folding](/swan-lake/learn/images/code-folding.gif)
 
-## Go to definition
+## Go to Definition
 
 This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/swan-lake/learn/api-docs/ballerina/).
 
 ![Go to definition](/swan-lake/learn/images/go-to-definition-intellij.gif)
 
-## What's next?
+## What's Next?
 
 - For more information on the IntelliJ IDEA Ballerina plugin, see [IntelliJ IDEA Ballerina Plugin](/swan-lake/learn/intellij-plugin).
 - For information on all the tools and IDEs that are supported by Ballerina, see [Setting up Ballerina](/swan-lake/learn/installing-ballerina/).

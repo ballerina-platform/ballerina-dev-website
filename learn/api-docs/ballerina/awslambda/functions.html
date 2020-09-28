@@ -88,6 +88,10 @@
     
     <ul>
         
+        <li>
+            <a data="records" href="../awslambda/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
         
             <li>
                 <a  data="objects" href="../awslambda/index.html#objects" onclick="menuLinkClick()">Objects</a>
@@ -201,7 +205,7 @@
             </a>
             <h2 > __register </h2>
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> handler, <code> <span>function(</span><a href="../awslambda/objects/Context.html">Context</a>, <span class="builtin-type">json</span><span>) </span><span>returns (</span><span class="builtin-type">json</span> | <span class="builtin-type">error</span><span>)</span> </code> func)</p>
+            <p>(<span class="builtin-type">string</span> handler, <span class="builtin-type">FunctionType</span> func, <span class="builtin-type">typedesc</span> eventType)</p>
             
         </span>
     </div>
@@ -233,7 +237,23 @@
                 <ul>
                     <li>
                         <span >func</span>
-                        <span class="type">  <code> <span>function(</span><a href="../awslambda/objects/Context.html">Context</a>, <span class="builtin-type">json</span><span>) </span><span>returns (</span><span class="builtin-type">json</span> | <span class="builtin-type">error</span><span>)</span> </code> </span>
+                        <span class="type">  <span class="builtin-type">FunctionType</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >eventType</span>
+                        <span class="type">  <span class="builtin-type">typedesc</span> </span>
                         
                     </li>
                     <li>

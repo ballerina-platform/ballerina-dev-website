@@ -32,11 +32,9 @@ redirect_from:
 <span class="s">                          &lt;/student&gt;</span>
 <span class="s">                      &lt;/school&gt;`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">students</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">studentName</span> <span class="nx">in</span> <span class="nx">school</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">student</span><span class="p">&gt;</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">firstName</span><span class="p">&gt;</span>
-        <span class="nx">select</span> <span class="p">&lt;</span><span class="kt">xml</span><span class="p">&gt;</span> <span class="nx">studentName</span>
-        <span class="nx">limit</span> <span class="mi">2</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">students</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">query_expression_to_xml</span><span class="p">.</span><span class="nx">bal</span><span class="p">&lt;</span><span class="nx">firstName</span><span class="p">&gt;</span><span class="nx">Michelle</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">firstName</span><span class="p">&gt;&lt;</span><span class="nx">firstName</span><span class="p">&gt;</span><span class="nx">Ranjan</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">firstName</span><span class="p">&gt;</span>
+        <span class="nx">limit</span> <span class="mi">2</span>
+        <span class="nx">select</span> <span class="p">&lt;</span><span class="kt">xml</span><span class="p">&gt;</span> <span class="nx">studentName</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">students</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -87,6 +85,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/query-expression-to-xml/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -207,7 +206,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        select &lt;xml&gt; studentName
+                                    <div class="highlight"><pre><code class=language-ballerina>        limit 2
 </code></pre></div>
 
                                 </td>
@@ -215,8 +214,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>select</code> clause is evaluated for each iteration.
- The emitted values are concatenated to form the <code>xml</code> result.</p>
+                                            <p>The <code>limit</code> clause limits the number of output items.</p>
 
                                         </div>
                                     </div>
@@ -227,7 +225,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        limit 2;
+                                    <div class="highlight"><pre><code class=language-ballerina>        select &lt;xml&gt; studentName;
 </code></pre></div>
 
                                 </td>
@@ -235,7 +233,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>limit</code> clause limits the number of output items.</p>
+                                            <p>The <code>select</code> clause is evaluated for each iteration.
+ The emitted values are concatenated to form the <code>xml</code> result.</p>
 
                                         </div>
                                     </div>
@@ -318,7 +317,7 @@ ballerina run query_expression_to_xml.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

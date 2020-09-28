@@ -3,7 +3,7 @@
   "summary": "\u003cp\u003eThis module contains functions to perform file system based operations such as create, delete, rename the\nfile/directory, and retrieve metadata of the file.\u003c/p\u003e\n",
   "description": "\u003ch2\u003eModule Overview\u003c/h2\u003e\n\u003cp\u003eThis module contains functions to perform file system based operations such as create, delete, rename the\nfile/directory, and retrieve metadata of the file.\u003c/p\u003e\n\u003cp\u003eFor an example on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/file.html\"\u003eFile Example\u003c/a\u003e.\u003c/p\u003e\n\u003ch2\u003eDirectory Listener\u003c/h2\u003e\n\u003cp\u003eThe \u003ccode\u003eDirectory Listener\u003c/code\u003e is used to listen to a directory in the local file system. It notifies when new files are created in the directory or when the existing files are deleted or modified.\u003c/p\u003e\n\u003cp\u003eFor an example on the usage of the operations, see the \u003ca href\u003d\"https://ballerina.io/swan-lake/learn/by-example/directory-listener.html\"\u003eDirectory Listener Example\u003c/a\u003e.\u003c/p\u003e\n",
   "orgName": "ballerina",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "records": [
     {
       "fields": [
@@ -54,7 +54,7 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "FileEvent",
       "description": "\u003cp\u003eRepresents an event which will trigger when there is a changes to listining direcotry.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -108,142 +108,18 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
+      "isClosed": true,
       "name": "ListenerConfig",
       "description": "\u003cp\u003eRepresents configurations that required for directory listener.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
-  "objects": [
+  "classes": [
     {
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "name",
-              "description": "\u003cp\u003eName of the file\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "int",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "size",
-              "description": "\u003cp\u003eSize of the file (in bytes)\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "time",
-                "name": "Time",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "modifiedTime",
-              "description": "\u003cp\u003eThe last modified time of the file\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "boolean",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "dir",
-              "description": "\u003cp\u003eWhether the file is a directory or not\u003c/p\u003e\n",
-              "isDeprecated": false
-            },
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "lang.annotations",
-                "name": "string",
-                "category": "builtin",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "path",
-              "description": "\u003cp\u003eAbsolute path of the file\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eCreates a FileInfo object.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -276,6 +152,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -308,6 +185,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -340,6 +218,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -372,6 +251,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -404,133 +284,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "string",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "name",
-            "description": "\u003cp\u003eName of the file\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "int",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "size",
-            "description": "\u003cp\u003eSize of the file (in bytes)\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "time",
-              "name": "Time",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "modifiedTime",
-            "description": "\u003cp\u003eThe last modified time of the file\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "boolean",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "dir",
-            "description": "\u003cp\u003eWhether the file is a directory or not\u003c/p\u003e\n",
-            "isDeprecated": false
-          },
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "lang.annotations",
-              "name": "string",
-              "category": "builtin",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "path",
-            "description": "\u003cp\u003eAbsolute path of the file\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eCreates a FileInfo object.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -563,6 +319,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -595,6 +352,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -627,6 +385,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -659,6 +418,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -691,17 +451,18 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "FileInfo",
       "description": "\u003cp\u003eFileInfo record contains metadata information of a file.\nThis record is returned by getFileInfo function is os module.\u003c/p\u003e\n",
       "isDeprecated": false
     }
   ],
+  "abstractObjects": [],
   "clients": [],
   "listeners": [
     {
       "lifeCycleMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -734,6 +495,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -761,7 +523,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -816,39 +578,7 @@
       "fields": [],
       "methods": [
         {
-          "isRemote": false,
-          "isExtern": false,
-          "parameters": [
-            {
-              "defaultValue": "",
-              "type": {
-                "orgName": "ballerina",
-                "moduleName": "file",
-                "name": "ListenerConfig",
-                "category": "records",
-                "isAnonymousUnionType": false,
-                "isArrayType": false,
-                "isNullable": false,
-                "isTuple": false,
-                "isRestParam": false,
-                "isLambda": false,
-                "isDeprecated": false,
-                "generateUserDefinedTypeLink": true,
-                "memberTypes": [],
-                "paramTypes": [],
-                "arrayDimensions": 0
-              },
-              "name": "listenerConfig",
-              "description": "\u003cp\u003eThe \u003ccode\u003eListenerConfig\u003c/code\u003e record with the directory details\u003c/p\u003e\n",
-              "isDeprecated": false
-            }
-          ],
-          "returnParameters": [],
-          "name": "init",
-          "description": "\u003cp\u003eCreates a new Directory listener.\u003c/p\u003e\n",
-          "isDeprecated": false
-        },
-        {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -881,6 +611,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -913,6 +644,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -945,6 +677,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -972,7 +705,7 @@
               "isDeprecated": false
             },
             {
-              "defaultValue": "\u003cstring?\u003e ()",
+              "defaultValue": "()",
               "type": {
                 "orgName": "ballerina",
                 "moduleName": "lang.annotations",
@@ -1024,6 +757,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1080,41 +814,9 @@
           "isDeprecated": false
         }
       ],
-      "initMethod": {
-        "isRemote": false,
-        "isExtern": false,
-        "parameters": [
-          {
-            "defaultValue": "",
-            "type": {
-              "orgName": "ballerina",
-              "moduleName": "file",
-              "name": "ListenerConfig",
-              "category": "records",
-              "isAnonymousUnionType": false,
-              "isArrayType": false,
-              "isNullable": false,
-              "isTuple": false,
-              "isRestParam": false,
-              "isLambda": false,
-              "isDeprecated": false,
-              "generateUserDefinedTypeLink": true,
-              "memberTypes": [],
-              "paramTypes": [],
-              "arrayDimensions": 0
-            },
-            "name": "listenerConfig",
-            "description": "\u003cp\u003eThe \u003ccode\u003eListenerConfig\u003c/code\u003e record with the directory details\u003c/p\u003e\n",
-            "isDeprecated": false
-          }
-        ],
-        "returnParameters": [],
-        "name": "init",
-        "description": "\u003cp\u003eCreates a new Directory listener.\u003c/p\u003e\n",
-        "isDeprecated": false
-      },
       "otherMethods": [
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1147,6 +849,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [],
@@ -1179,6 +882,7 @@
           "isDeprecated": false
         },
         {
+          "isIsolated": true,
           "isRemote": false,
           "isExtern": false,
           "parameters": [
@@ -1235,7 +939,6 @@
           "isDeprecated": false
         }
       ],
-      "isAnonymous": false,
       "name": "Listener",
       "description": "\u003cp\u003eRepresents the directory listener endpoint, which is used to listen to a directory in the local file system.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -1243,6 +946,7 @@
   ],
   "functions": [
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1345,6 +1049,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1458,6 +1163,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1548,6 +1254,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1604,6 +1311,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],
@@ -1636,6 +1344,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1682,7 +1391,7 @@
                 "orgName": "ballerina",
                 "moduleName": "file",
                 "name": "FileInfo",
-                "category": "objects",
+                "category": "classes",
                 "isAnonymousUnionType": false,
                 "isArrayType": false,
                 "isNullable": false,
@@ -1726,6 +1435,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1808,7 +1518,7 @@
                   "orgName": "ballerina",
                   "moduleName": "file",
                   "name": "FileInfo",
-                  "category": "objects",
+                  "category": "classes",
                   "isAnonymousUnionType": false,
                   "isArrayType": false,
                   "isNullable": false,
@@ -1853,6 +1563,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -1932,6 +1643,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": false,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -2011,6 +1723,7 @@
       "isDeprecated": false
     },
     {
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [],

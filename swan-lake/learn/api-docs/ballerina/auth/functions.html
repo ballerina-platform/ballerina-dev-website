@@ -105,18 +105,19 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../auth/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../auth/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
         
         
-            
-                <li>
-                    <a  data="objects" href="../auth/index.html#objects" onclick="menuLinkClick()">Objects</a>
-                </li>
-            
+            <li>
+                <a  data="classes" href="../auth/index.html#classes" onclick="menuLinkClick()">Classes</a>
+            </li>
+        
+        
+            <li>
+                <a  data="classes" href="../auth/index.html#absobjects" onclick="menuLinkClick()">Abstract Objects</a>
+            </li>
         
         
         
@@ -185,8 +186,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Checks whether the scopes of the user match the scopes of the resource.</p>
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Checks whether the scopes of the user match the scopes of the resource.</p> 
                             </div>
                         </td>
                     </tr>
@@ -196,9 +199,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Extracts the username and the password from the base64-encoded <code>username:password</code> value.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Extracts the username and the password from the base64-encoded <code>username:password</code> value.</p>   
                             </div>
                         </td>
                     </tr>
@@ -208,9 +212,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Returns the <code>auth:InvocationContext</code> instance.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Returns the <code>auth:InvocationContext</code> instance.</p>   
                             </div>
                         </td>
                     </tr>
@@ -220,9 +225,10 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
-                                <p>Sets the authentication-related values to the invocation context.</p>
-
-
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Sets the authentication-related values to the invocation context.</p>   
                             </div>
                         </td>
                     </tr>
@@ -240,13 +246,16 @@
             </a>
             <h2 > checkForScopeMatch </h2>
         <span class="method-types">
-            <p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="array-type"><span class="builtin-type">string</span>[][]</span> resourceScopes, <span class="array-type"><span class="builtin-type">string</span>[]</span> userScopes, <span class="builtin-type">string</span> authzCacheKey, <a href="../cache/objects/Cache.html">Cache</a>? positiveAuthzCache, <a href="../cache/objects/Cache.html">Cache</a>? negativeAuthzCache)</p>
+            <p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="array-type"><span class="builtin-type">string</span>[][]</span> resourceScopes, <span class="array-type"><span class="builtin-type">string</span>[]</span> userScopes, <span class="builtin-type">string</span> authzCacheKey, <a href="../cache/classes/Cache.html">Cache</a>? positiveAuthzCache, <a href="../cache/classes/Cache.html">Cache</a>? negativeAuthzCache)</p>
             
                 <b> returns </b><span class="builtin-type">boolean</span> 
             
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Checks whether the scopes of the user match the scopes of the resource.</p>
 
@@ -310,7 +319,7 @@
                 <ul>
                     <li>
                         <span >positiveAuthzCache</span>
-                        <span class="type">  <a href="../cache/objects/Cache.html">Cache</a>? </span>
+                        <span class="type">  <a href="../cache/classes/Cache.html">Cache</a>? </span>
                         
                     </li>
                     <li>
@@ -327,7 +336,7 @@
                 <ul>
                     <li>
                         <span >negativeAuthzCache</span>
-                        <span class="type">  <a href="../cache/objects/Cache.html">Cache</a>? </span>
+                        <span class="type">  <a href="../cache/classes/Cache.html">Cache</a>? </span>
                         
                     </li>
                     <li>
@@ -370,6 +379,9 @@
         </span>
     </div>
     <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Extracts the username and the password from the base64-encoded <code>username:password</code> value.</p>
 <pre><code class="language-ballerina"> [string, string]|auth:Error [username, password] = auth:extractUsernameAndPassword(&quot;&lt;credential&gt;&quot;);
@@ -429,6 +441,9 @@ extracting credentials</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Returns the <code>auth:InvocationContext</code> instance.</p>
 <pre><code class="language-ballerina"> auth:InvocationContext invocationContext = auth:getInvocationContext();
 </code></pre>
@@ -462,6 +477,9 @@ extracting credentials</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Sets the authentication-related values to the invocation context.</p>
 <pre><code class="language-ballerina"> auth:setInvocationContext(&quot;jwt&quot;, &quot;&lt;credential&gt;&quot;, &quot;&lt;userID&gt;&quot;, &lt;scopes&gt;, &lt;claims&gt;);
 </code></pre>
@@ -476,7 +494,7 @@ extracting credentials</p>
                     <li>
                         <span >scheme</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -493,7 +511,7 @@ extracting credentials</p>
                     <li>
                         <span >token</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -510,7 +528,7 @@ extracting credentials</p>
                     <li>
                         <span >userId</span>
                         <span class="type">  <span class="builtin-type">string?</span> </span>
-                        <span class="default"> (default &lt;string?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -527,7 +545,7 @@ extracting credentials</p>
                     <li>
                         <span >scopes</span>
                         <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]?</span> </span>
-                        <span class="default"> (default &lt;string[]?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>
@@ -544,7 +562,7 @@ extracting credentials</p>
                     <li>
                         <span >claims</span>
                         <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">any</span>> </span>
-                        <span class="default"> (default &lt;map?&gt; ())</span>
+                        <span class="default"> (default ())</span>
                     </li>
                     <li>
                         <p>

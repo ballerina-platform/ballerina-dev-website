@@ -19,6 +19,18 @@ This Ballerina Style Guide aims at maintaining a standard coding style among the
 
 You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.
 
+- [Indentation and Line Length](#indentation-and-line-length)
+- [Line Spacing](#line-spacing)
+- [Blank Lines](#blank-lines)
+- [Blocks](#blocks)
+- [Parentheses and Brackets](#parentheses-and-brackets)
+- [Line Breaks](#line-breaks)
+- [Top-Level Definitions](#top-level-definitions)
+    - [Operators, Keywords, and Types](#operators-keywords-and-types)
+    - [Statements](#statements)
+    - [Expressions](#expressions)
+    - [Annotations, Documentation, and Comments](#annotations-documentation-and-comments)
+
 ## Indentation and line length
 * Use four spaces (not tabs) for each level of indentation.
 * Keep the maximum length of a line to 120 characters. 

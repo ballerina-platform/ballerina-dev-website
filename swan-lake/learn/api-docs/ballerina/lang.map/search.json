@@ -5,13 +5,7 @@
       "description": "\u003cp\u003eThis module provides lang library map operations defined by the language specification 2020R1.\u003c/p\u003e"
     }
   ],
-  "objects": [
-    {
-      "id": "T2",
-      "description": "",
-      "moduleId": "lang.map"
-    }
-  ],
+  "classes": [],
   "functions": [
     {
       "id": "entries",
@@ -84,17 +78,12 @@
       "moduleId": "lang.map"
     }
   ],
-  "records": [
-    {
-      "id": "T1",
-      "description": "",
-      "moduleId": "lang.map"
-    }
-  ],
+  "records": [],
   "constants": [],
   "errors": [],
   "types": [],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

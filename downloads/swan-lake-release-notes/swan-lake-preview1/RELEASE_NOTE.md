@@ -1,5 +1,5 @@
 ---
-layout: release-note
+layout: ballerina-blank-page
 title: Release note
 ---
 ### Overview of Ballerina Swan Lake - Preview 1
@@ -152,7 +152,7 @@ type AppError error<record {| string buildNo; string userId; |};
 
 AppError appError = AppError("Failed to delete the order line", buildNo=getBuildNo(), userId=userId);
 ```
-**Inferring the type of the error** 
+**Inferring the type of the error**
 
 A type of `error<*>` means that the type is a subtype of `error`, where the precise subtype is to be inferred from the context.
 

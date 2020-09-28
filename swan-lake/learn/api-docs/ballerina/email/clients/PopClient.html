@@ -101,11 +101,10 @@
     
     <ul>
         
-            
-                <li>
-                    <a data="records" href="../../email/index.html#records" onclick="menuLinkClick()">Records</a>
-                </li>
-            
+            <li>
+                <a data="records" href="../../email/index.html#records" onclick="menuLinkClick()">Records</a>
+            </li>
+        
         
         
         
@@ -180,59 +179,6 @@
     <div class="constants">
         <div class="method-sum">
             
-                
-                    <h2>Constructor</h2>
-
-    <p>Gets invoked during the <code>email:PopClient</code> initialization.</p>
-
-
-</br></br>
-<h3>__init</h3><p>(<span class="builtin-type">string</span> host, <span class="builtin-type">string</span> username, <span class="builtin-type">string</span> password, <a href="../../email/records/PopConfig.html">PopConfig</a> clientConfig)</p>
-<div class="data-wrapper">
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>host</b><span class="type">  <span class="builtin-type">string</span></span> </li>
-                <li>
-                    <p>Host of the POP Client</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>username</b><span class="type">  <span class="builtin-type">string</span></span> </li>
-                <li>
-                    <p>Username of the POP Client</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>password</b><span class="type">  <span class="builtin-type">string</span></span> </li>
-                <li>
-                    <p>Password of the POP Client</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>clientConfig</b><span class="type">  <a href="../../email/records/PopConfig.html">PopConfig</a></span>  {}</li>
-                <li>
-                    <p>Configurations for the POP Client</p>
-
-                </li>
-            </ul>
-        </div>
-    
-</div>
-                
-            
 
             
                 <h2>Remote Methods</h2>
@@ -241,9 +187,7 @@
                         <tr>
                             <td class="module-title truncate functions" title="read"><a
                                     class="functions" href="#read">read</a></td>
-                            <td class="module-desc"><p>Reads a message.</p>
-
-</td>
+                            <td class="module-desc"><p>Reads a message.</p>   </td>
                         </tr>
                     
                 </table>
@@ -271,6 +215,9 @@
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Reads a message.</p>
 <pre><code class="language-ballerina"> email:Email|email:Error? emailResponse = popClient-&gt;read();
 </code></pre>
@@ -285,7 +232,7 @@
                     <li>
                         <span >folder</span>
                         <span class="type">  <span class="builtin-type">string</span> </span>
-                        <span class="default"> (default INBOX)</span>
+                        <span class="default"> (default DEFAULT_FOLDER)</span>
                     </li>
                     <li>
                         <p>

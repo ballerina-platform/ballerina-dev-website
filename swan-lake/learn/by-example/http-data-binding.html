@@ -65,20 +65,7 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_data_binding</span><span class="p">.</span><span class="nx">bal</span>
-<span class="err">#</span><span class="nx">Service</span> <span class="nx">deployment</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="s">`bindJson`</span> <span class="kd">resource</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">HTTP</span> <span class="nx">request</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello/bindJson -d &#39;{ &quot;Details&quot;: { &quot;ID&quot;: &quot;77999&quot;, &quot;Name&quot;: &quot;XYZ&quot;} , &quot;Location&quot;: { &quot;No&quot;: &quot;01&quot;, &quot;City&quot;: &quot;Colombo&quot;}}&#39; -H &quot;Content-Type:application/json&quot;</span>
-<span class="err">#</span> <span class="nx">Server</span> <span class="nx">response</span><span class="p">:</span>
-<span class="p">{</span><span class="s">&quot;ID&quot;</span><span class="p">:</span><span class="s">&quot;77999&quot;</span><span class="p">,</span> <span class="s">&quot;Name&quot;</span><span class="p">:</span><span class="s">&quot;XYZ&quot;</span><span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="s">`bindXML`</span> <span class="kd">resource</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">HTTP</span> <span class="nx">request</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;AST\&quot; xmlns:h=\&quot;http://www.test.com\&quot;&gt;&lt;h:street&gt;Main&lt;/h:street&gt;&lt;h:city&gt;94&lt;/h:city&gt;&lt;/h:Store&gt;&quot; -H &quot;Content-Type:application/xml&quot;</span>
-<span class="err">#</span> <span class="nx">Server</span> <span class="nx">response</span><span class="p">:</span>
-<span class="p">&lt;</span><span class="nx">h</span><span class="p">:</span><span class="nx">city</span> <span class="nx">xmlns</span><span class="p">:</span><span class="nx">h</span><span class="p">=</span><span class="s">&quot;http://www.test.com&quot;</span><span class="p">&gt;</span><span class="mi">94</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">h</span><span class="p">:</span><span class="nx">city</span><span class="p">&gt;</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">invoke</span> <span class="nx">the</span> <span class="s">`bindStruct`</span> <span class="kd">resource</span><span class="p">,</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="nx">below</span> <span class="nx">HTTP</span> <span class="nx">request</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello/bindStruct -d &#39;{ &quot;Name&quot;: &quot;John&quot;, &quot;Grade&quot;: 12, &quot;Marks&quot;: {&quot;English&quot; : &quot;85&quot;, &quot;IT&quot; : &quot;100&quot;}}&#39; -H &quot;Content-Type:application/json&quot;</span>
-<span class="err">#</span> <span class="nx">Server</span> <span class="nx">response</span><span class="p">:</span>
-<span class="p">{</span><span class="s">&quot;Name&quot;</span><span class="p">:</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Grade&quot;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="s">&quot;English&quot;</span><span class="p">:</span><span class="s">&quot;85&quot;</span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -131,6 +118,7 @@ redirect_from:
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-data-binding/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </td>
@@ -454,8 +442,21 @@ ballerina run http_data_binding.bal
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the `bindJson` resource, execute the below HTTP request.
 curl -v http://localhost:9090/hello/bindJson -d &#39;{ &quot;Details&quot;: { &quot;ID&quot;: &quot;77999&quot;, &quot;Name&quot;: &quot;XYZ&quot;} , &quot;Location&quot;: { &quot;No&quot;: &quot;01&quot;, &quot;City&quot;: &quot;Colombo&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
-# Server response:
-{&quot;ID&quot;:&quot;77999&quot;, &quot;Name&quot;:&quot;XYZ&quot;}
+&gt; POST /hello/bindJson HTTP/1.1
+&gt; Host: localhost:9090
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt; Content-Type:application/json
+&gt; Content-Length: 92
+&gt;
+* upload completely sent off: 92 out of 92 bytes
+&lt; HTTP/1.1 200 OK
+&lt; content-type: application/json
+&lt; content-length: 28
+&lt; server: ballerina
+&lt;
+* Connection #0 to host localhost left intact
+{&quot;ID&quot;:&quot;77999&quot;, &quot;Name&quot;:&quot;XYZ&quot;}* Closing connection 0
 </code></pre></div>
 
                                 </td>
@@ -469,8 +470,21 @@ curl -v http://localhost:9090/hello/bindJson -d &#39;{ &quot;Details&quot;: { &q
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the `bindXML` resource, execute the below HTTP request.
 curl -v http://localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;AST\&quot; xmlns:h=\&quot;http://www.test.com\&quot;&gt;&lt;h:street&gt;Main&lt;/h:street&gt;&lt;h:city&gt;94&lt;/h:city&gt;&lt;/h:Store&gt;&quot; -H &quot;Content-Type:application/xml&quot;
-# Server response:
-&lt;h:city xmlns:h=&quot;http://www.test.com&quot;&gt;94&lt;/h:city&gt;
+&gt; POST /hello/bindXML HTTP/1.1
+&gt; Host: localhost:9090
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt; Content-Type:application/xml
+&gt; Content-Length: 104
+&gt;
+* upload completely sent off: 104 out of 104 bytes
+&lt; HTTP/1.1 200 OK
+&lt; content-type: application/xml
+&lt; content-length: 49
+&lt; server: ballerina
+&lt;
+* Connection #0 to host localhost left intact
+&lt;h:city xmlns:h=&quot;http://www.test.com&quot;&gt;94&lt;/h:city&gt;* Closing connection 0
 </code></pre></div>
 
                                 </td>
@@ -484,8 +498,21 @@ curl -v http://localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;AST
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the `bindStruct` resource, execute the below HTTP request.
 curl -v http://localhost:9090/hello/bindStruct -d &#39;{ &quot;Name&quot;: &quot;John&quot;, &quot;Grade&quot;: 12, &quot;Marks&quot;: {&quot;English&quot; : &quot;85&quot;, &quot;IT&quot; : &quot;100&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
-# Server response:
-{&quot;Name&quot;:&quot;John&quot;, &quot;Grade&quot;:12, &quot;English&quot;:&quot;85&quot;}
+&gt; POST /hello/bindStruct HTTP/1.1
+&gt; Host: localhost:9090
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt; Content-Type:application/json
+&gt; Content-Length: 73
+&gt;
+* upload completely sent off: 73 out of 73 bytes
+&lt; HTTP/1.1 200 OK
+&lt; content-type: application/json
+&lt; content-length: 43
+&lt; server: ballerina
+&lt;
+* Connection #0 to host localhost left intact
+{&quot;Name&quot;:&quot;John&quot;, &quot;Grade&quot;:12, &quot;English&quot;:&quot;85&quot;}* Closing connection 0
 </code></pre></div>
 
                                 </td>
@@ -513,7 +540,7 @@ curl -v http://localhost:9090/hello/bindStruct -d &#39;{ &quot;Name&quot;: &quot
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

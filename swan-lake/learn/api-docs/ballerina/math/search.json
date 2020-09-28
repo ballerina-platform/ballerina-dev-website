@@ -5,7 +5,7 @@
       "description": "\u003cp\u003eThis module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic.\u003c/p\u003e"
     }
   ],
-  "objects": [],
+  "classes": [],
   "functions": [
     {
       "id": "absFloat",
@@ -242,5 +242,6 @@
   ],
   "clients": [],
   "listeners": [],
-  "annotations": []
+  "annotations": [],
+  "abstractObjects": []
 }

@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-09-27</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-09-30</h1>
 <p>
 Primary contributors:
 </p>
@@ -135,23 +135,23 @@ mailing list.
 </li>
 <li>5.5.3.2 <a href="#section_5.5.3.2">Methods</a>
 </li>
-<li>5.5.3.3 <a href="#section_5.5.3.3">Visibility</a>
+<li>5.5.3.3 <a href="#section_5.5.3.3">Network interaction</a>
 </li>
-<li>5.5.3.4 <a href="#section_5.5.3.4">Typing</a>
+<li>5.5.3.4 <a href="#section_5.5.3.4">Visibility</a>
 </li>
-<li>5.5.3.5 <a href="#section_5.5.3.5">Inclusion and type-ids</a>
+<li>5.5.3.5 <a href="#section_5.5.3.5">Typing</a>
+</li>
+<li>5.5.3.6 <a href="#section_5.5.3.6">Inclusion and type-ids</a>
 </li>
 </ul>
 </li>
 <li>5.5.4 <a href="#section_5.5.4">Futures</a>
 </li>
-<li>5.5.5 <a href="#section_5.5.5">[Preview] Services</a>
+<li>5.5.5 <a href="#section_5.5.5">Type descriptors</a>
 </li>
-<li>5.5.6 <a href="#section_5.5.6">Type descriptors</a>
+<li>5.5.6 <a href="#section_5.5.6">Handles</a>
 </li>
-<li>5.5.7 <a href="#section_5.5.7">Handles</a>
-</li>
-<li>5.5.8 <a href="#section_5.5.8">[Preview] Streams</a>
+<li>5.5.7 <a href="#section_5.5.7">[Preview] Streams</a>
 </li>
 </ul>
 </li>
@@ -269,85 +269,83 @@ mailing list.
 </li>
 </ul>
 </li>
-<li>6.9 <a href="#section_6.9">Service constructor</a>
+<li>6.9 <a href="#section_6.9">Variable reference expression</a>
 </li>
-<li>6.10 <a href="#section_6.10">Variable reference expression</a>
+<li>6.10 <a href="#section_6.10">Field access expression</a>
 </li>
-<li>6.11 <a href="#section_6.11">Field access expression</a>
+<li>6.11 <a href="#section_6.11">Optional field access expression</a>
 </li>
-<li>6.12 <a href="#section_6.12">Optional field access expression</a>
+<li>6.12 <a href="#section_6.12">XML attribute access expression</a>
 </li>
-<li>6.13 <a href="#section_6.13">XML attribute access expression</a>
+<li>6.13 <a href="#section_6.13">Annotation access expression</a>
 </li>
-<li>6.14 <a href="#section_6.14">Annotation access expression</a>
+<li>6.14 <a href="#section_6.14">Member access expression</a>
 </li>
-<li>6.15 <a href="#section_6.15">Member access expression</a>
+<li>6.15 <a href="#function_call">Function call expression</a>
 </li>
-<li>6.16 <a href="#function_call">Function call expression</a>
+<li>6.16 <a href="#section_6.16">Method call expression</a>
 </li>
-<li>6.17 <a href="#section_6.17">Method call expression</a>
+<li>6.17 <a href="#section_6.17">Error constructor</a>
 </li>
-<li>6.18 <a href="#section_6.18">Error constructor</a>
+<li>6.18 <a href="#section_6.18">Anonymous function expression</a>
 </li>
-<li>6.19 <a href="#section_6.19">Anonymous function expression</a>
+<li>6.19 <a href="#section_6.19">Let expression</a>
 </li>
-<li>6.20 <a href="#section_6.20">Let expression</a>
+<li>6.20 <a href="#section_6.20">Type cast expression</a>
 </li>
-<li>6.21 <a href="#section_6.21">Type cast expression</a>
+<li>6.21 <a href="#section_6.21">Typeof expression</a>
 </li>
-<li>6.22 <a href="#section_6.22">Typeof expression</a>
+<li>6.22 <a href="#section_6.22">Unary expression</a>
 </li>
-<li>6.23 <a href="#section_6.23">Unary expression</a>
+<li>6.23 <a href="#section_6.23">Multiplicative expression</a>
 </li>
-<li>6.24 <a href="#section_6.24">Multiplicative expression</a>
+<li>6.24 <a href="#section_6.24">Additive expression</a>
 </li>
-<li>6.25 <a href="#section_6.25">Additive expression</a>
+<li>6.25 <a href="#section_6.25">Shift expression</a>
 </li>
-<li>6.26 <a href="#section_6.26">Shift expression</a>
+<li>6.26 <a href="#section_6.26">Range expression</a>
 </li>
-<li>6.27 <a href="#section_6.27">Range expression</a>
+<li>6.27 <a href="#section_6.27">Relational expression</a>
 </li>
-<li>6.28 <a href="#section_6.28">Relational expression</a>
+<li>6.28 <a href="#section_6.28">Type test expression</a>
 </li>
-<li>6.29 <a href="#section_6.29">Type test expression</a>
+<li>6.29 <a href="#section_6.29">Equality expression</a>
 </li>
-<li>6.30 <a href="#section_6.30">Equality expression</a>
+<li>6.30 <a href="#section_6.30">Binary bitwise expression</a>
 </li>
-<li>6.31 <a href="#section_6.31">Binary bitwise expression</a>
+<li>6.31 <a href="#section_6.31">Logical expression</a>
 </li>
-<li>6.32 <a href="#section_6.32">Logical expression</a>
+<li>6.32 <a href="#section_6.32">Conditional expression</a>
 </li>
-<li>6.33 <a href="#section_6.33">Conditional expression</a>
+<li>6.33 <a href="#section_6.33">Checking expression</a>
 </li>
-<li>6.34 <a href="#section_6.34">Checking expression</a>
+<li>6.34 <a href="#section_6.34">Trap expression</a>
 </li>
-<li>6.35 <a href="#section_6.35">Trap expression</a>
+<li>6.35 <a href="#section_6.35">Query expression</a><ul>
+<li>6.35.1 <a href="#section_6.35.1">From clause</a>
 </li>
-<li>6.36 <a href="#section_6.36">Query expression</a><ul>
-<li>6.36.1 <a href="#section_6.36.1">From clause</a>
+<li>6.35.2 <a href="#section_6.35.2">Where clause</a>
 </li>
-<li>6.36.2 <a href="#section_6.36.2">Where clause</a>
+<li>6.35.3 <a href="#section_6.35.3">Let clause</a>
 </li>
-<li>6.36.3 <a href="#section_6.36.3">Let clause</a>
+<li>6.35.4 <a href="#section_6.35.4">Join clause</a>
 </li>
-<li>6.36.4 <a href="#section_6.36.4">Join clause</a>
+<li>6.35.5 <a href="#section_6.35.5">Order by clause</a>
 </li>
-<li>6.36.5 <a href="#section_6.36.5">Order by clause</a>
+<li>6.35.6 <a href="#section_6.35.6">Limit clause</a>
 </li>
-<li>6.36.6 <a href="#section_6.36.6">Limit clause</a>
+<li>6.35.7 <a href="#section_6.35.7">Select clause</a>
 </li>
-<li>6.36.7 <a href="#section_6.36.7">Select clause</a>
-</li>
-<li>6.36.8 <a href="#section_6.36.8">On conflict clause</a>
+<li>6.35.8 <a href="#section_6.35.8">On conflict clause</a>
 </li>
 </ul>
 </li>
-<li>6.37 <a href="#section_6.37">XML navigation expression</a><ul>
-<li>6.37.1 <a href="#section_6.37.1">XML name pattern</a>
+<li>6.36 <a href="#section_6.36">XML navigation expression</a><ul>
+<li>6.36.1 <a href="#section_6.36.1">XML name pattern</a>
 </li>
-<li>6.37.2 <a href="#section_6.37.2">XML filter expression</a>
+<li>6.36.2 <a href="#section_6.36.2">XML filter expression</a>
 </li>
-<li>6.37.3 <a href="#section_6.37.3">XML step expression</a>
+<li>6.36.3 <a href="#section_6.36.3">XML step expression</a>
 </li>
 </ul>
 </li>
@@ -400,7 +398,7 @@ mailing list.
 </li>
 </ul>
 </li>
-<li>7.9 <a href="#section_7.9">Remote interaction</a>
+<li>7.9 <a href="#section_7.9">Outbound network interaction</a>
 </li>
 <li>7.10 <a href="#section_7.10">Query action</a>
 </li>
@@ -998,7 +996,7 @@ terms of names of fields (required keys) and value for each field</td>
 within the table by a key derived from the mapping</td>
   </tr>
   <tr>
-   <td rowspan="8">basic, behavioral</td>
+   <td rowspan="7">basic, behavioral</td>
    <td>error</td>
    <td>an indication that there has been an error, with a string identifying the
 reason for the error, and a mapping giving additional details about the error</td>
@@ -1015,10 +1013,6 @@ type</td>
   <tr>
    <td>object</td>
    <td>a combination of named fields and named methods</td>
-  </tr>
-  <tr>
-   <td>service</td>
-   <td>a collection of named methods, including resource methods</td>
   </tr>
   <tr>
    <td>typedesc</td>
@@ -2180,7 +2174,6 @@ table in order and the iteration completion value is always nil.
    | <a href="#function-type-descriptor"><span class="ntref">function-type-descriptor</span></a>
    | <a href="#object-type-descriptor"><span class="ntref">object-type-descriptor</span></a>
    | <a href="#future-type-descriptor"><span class="ntref">future-type-descriptor</span></a>
-   | <a href="#service-type-descriptor"><span class="ntref">service-type-descriptor</span></a>
    | <a href="#typedesc-type-descriptor"><span class="ntref">typedesc-type-descriptor</span></a>
    | <a href="#handle-type-descriptor"><span class="ntref">handle-type-descriptor</span></a>
    | <a href="#stream-type-descriptor"><span class="ntref">stream-type-descriptor</span></a>
@@ -2422,7 +2415,7 @@ bit. Whether an object is read-only can be described separately using a
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="object-type-descriptor">object-type-descriptor</span> :=
-   [<code>client</code>] <code>object</code> <code>{</code>
+   [<a href="#object-network-qual"><span class="ntref">object-network-qual</span></a>] <code>object</code> <code>{</code>
       <a href="#object-member-descriptor"><span class="ntref">object-member-descriptor</span></a>*
    <code>}</code>
 <span class="ntdfn" id="object-member-descriptor">object-member-descriptor</span> :=
@@ -2430,11 +2423,6 @@ bit. Whether an object is read-only can be described separately using a
    | <a href="#method-decl"><span class="ntref">method-decl</span></a>
    | <a href="#object-type-inclusion"><span class="ntref">object-type-inclusion</span></a>
 </pre>
-<p>
-If the <code>object-type-descriptor</code> specifies <code>client</code>, then
-the object type is a client object type. A client object type may have remote
-methods; other objects types must not.
-</p>
 
 <section>
 <h5 id="section_5.5.3.1">5.5.3.1 Fields</h5>
@@ -2460,8 +2448,7 @@ the object has been constructed.
 <h5 id="section_5.5.3.2">5.5.3.2 Methods</h5>
 
 <pre class="grammar"><span class="ntdfn" id="method-decl">method-decl</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a>
-   [<code>public</code>] <a href="#method-quals"><span class="ntref">method-quals</span></a>
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#method-decl-quals"><span class="ntref">method-decl-quals</span></a>
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
 <span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
@@ -2476,44 +2463,83 @@ The <code>method-name</code> in a <code>method-decl</code> must not be
 <code>init</code>.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="method-quals">method-quals</span> := (<a href="#remote-qual"><span class="ntref">remote-qual</span></a> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
+<pre class="grammar"><span class="ntdfn" id="method-decl-quals">method-decl-quals</span> :=
+   <code>public</code> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   | (<a href="#remote-qual"><span class="ntref">remote-qual</span></a> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
 </pre>
 <p>
-Both <code>remote-qual</code> and <code>isolated-qual</code> must occur at most
-once in <code>method-quals</code>. The <code>isolated-qual</code> together with
-the <code>function-signature</code> give the function type of the method. An
-isolated method has the same access to the object on which the method is invoked
-that it has to parameters.
+Neither <code>remote-qual</code> not <code>isolated-qual</code> can occur more
+than once in <code>method-decl-quals</code>. The <code>isolated-qual</code>
+together with the <code>function-signature</code> give the function type of the
+method. An isolated method has the same access to the object on which the method
+is invoked that it has to parameters.
 </p>
+
+</section>
+
+<section>
+<h5 id="section_5.5.3.3">5.5.3.3 Network interaction</h5>
+<p>
+Objects are the basis for Ballerina's network interaction primitives. There are
+two special kinds of object for network interaction: client objects and service
+objects. A client object supports network interaction with a remote system that
+is originated by the Ballerina program. A service object supports network
+interaction with a remote system that is originated by the remote system. An
+object may be a client object or a service object or neither; it cannot be both
+a client object and a service object. An object that is a client object or a
+service object is a network interaction object.
+</p>
+
+<pre class="grammar"><span class="ntdfn" id="object-network-qual">object-network-qual</span> := <code>client</code> | <code>service</code>
+</pre>
+
+<p>
+If the <code>object-network-qual</code> is <code>client</code>, then an object
+belongs to the type only if it is a client object. If the
+<code>object-network-qual</code> is <code>service</code>, then an object belongs
+to the type only if it is a service object. If <code>object-network-qual</code>
+is not present, then an object belongs to the type regardless of whether it is a
+client object or service object or neither. A <code>object-network-qual</code>
+is not allowed in conjunction with <code>public</code>.
+</p>
+
 <pre class="grammar"><span class="ntdfn" id="remote-qual">remote-qual</span> := <code>remote</code>
 </pre>
 <p>
-A method that is declared with the <code>remote</code> qualifier is a remote
-method. A remote method is allowed only in a client object. A remote method is
-invoked using a different syntax from a non-remote method.
+A method with a <code>remote-qual</code> is a remote method. Only a network
+interaction object can have a remote method. A remote method is a method for
+network interaction: a remote method of a client object is for outbound network
+interaction; a remote method of a service object is for inbound network
+interaction. A remote method cannot be called using the normal method call
+syntax. A remote method of a client object can only be invoked by a
+<code>client-remote-method-call-action</code>. A remote method of a service
+object is invoked by a Listener object provided by a library module; Ballerina
+does not yet define a mechanism to allow such a library module to be implemented
+completely in Ballerina.
 </p>
-
 </section>
 <section>
-<h5 id="section_5.5.3.3">5.5.3.3 Visibility</h5>
+<h5 id="section_5.5.3.4">5.5.3.4 Visibility</h5>
 <p>
 Each field and method of an object has a <em>visibility region</em>, which is
 the region of code within which the field or method is visible and can be
-accessed. If an <code>object-field-descriptor</code> or <code>method-decl</code>
-includes the keyword <code>public</code>, then its visibility region consists of
-all the modules of the program. Otherwise the visibility region is the module
-containing this object type descriptor; this is called module-level visibility.
+accessed. If <code>object-field-descriptor</code> or <code>method-decl</code>
+includes <code>public</code>, or if the <code>method-decl</code> includes
+<code>remote</code>, then its visibility region consists of all the modules of
+the program. Otherwise the visibility region is the module containing this
+object type descriptor; this is called module-level visibility.
 </p>
 </section>
 <section>
-<h5 id="section_5.5.3.4">5.5.3.4 Typing</h5>
+<h5 id="section_5.5.3.5">5.5.3.5 Typing</h5>
 
 <p>
-The shape of an object consists of an unordered collection of object field
-shapes and object method shapes. An object field
-shape or object method shape is a 4-tuple consisting of the name of the field or
-method, the visibility region, a remote flag and a
-shape for the value of the field or for the method's function.
+The shape of an object consists of a network interaction kind and an unordered
+collection of object field shapes and object method shapes. A network
+interaction kind has one of three values: service, client or empty. An object
+field shape or object method shape is a 4-tuple consisting of the name of the
+field or method, the visibility region, a remote flag and a shape for the value
+of the field or for the method's function.
 </p>
 <p>
 An object type is inclusive, in a similar way to an
@@ -2543,7 +2569,7 @@ of T only within the same module as T.
  
 </section>
 <section>
-<h5 id="section_5.5.3.5">5.5.3.5 Inclusion and type-ids</h5>
+<h5 id="section_5.5.3.6">5.5.3.6 Inclusion and type-ids</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-type-inclusion">object-type-inclusion</span> := <code>*</code> <a href="#type-reference"><span class="ntref">type-reference</span></a> <code>;</code>
 </pre>
@@ -2596,34 +2622,7 @@ if it has basic type future.
 </p>
 </section>
 <section>
-<h4 id="section_5.5.5">5.5.5 [Preview] Services</h4>
-
-<pre class="grammar"><span class="ntdfn" id="service-type-descriptor">service-type-descriptor</span> := <code>service</code>
-</pre>
-<p>
-A service is like an object, but differs in the following respects:
-</p>
-<ul>
-<li>a method of a service can be declared as a resource method, but cannot be
-declared as a remote method</li>
-<li>a service is stateless and does not have fields</li>
-</ul>
-<p>
-A resource method is a special kind of method, with associated configuration
-data, that is invoked in response to network messages received by a Listener. A
-service can be thought of as the dual of a client object.
-</p>
-<p>
-All service values belong to the type <code>service</code>.
-</p>
-<p>
-It is planned that a future version of Ballerina will provide a mechanism that
-allows more precise typing of services. In the meantime, implementations can use
-annotations on type definitions to support this.
-</p>
-</section>
-<section>
-<h4 id="section_5.5.6">5.5.6 Type descriptors</h4>
+<h4 id="section_5.5.5">5.5.5 Type descriptors</h4>
 <pre class="grammar"><span class="ntdfn" id="typedesc-type-descriptor">typedesc-type-descriptor</span> := <code>typedesc</code> [<a href="#type-parameter"><span class="ntref">type-parameter</span></a>]
 </pre>
 <p>
@@ -2640,7 +2639,7 @@ will result in a type descriptor value.
 
 </section>
 <section>
-<h4 id="section_5.5.7">5.5.7 Handles</h4>
+<h4 id="section_5.5.6">5.5.6 Handles</h4>
 <pre class="grammar"><span class="ntdfn" id="handle-type-descriptor">handle-type-descriptor</span> := <code>handle</code>
 </pre>
 <p>
@@ -2657,7 +2656,7 @@ A value belongs to a type <code>handle</code> if it has a basic type of handle.
 </section>
 
 <section>
-<h4 id="section_5.5.8">5.5.8 [Preview] Streams</h4>
+<h4 id="section_5.5.7">5.5.7 [Preview] Streams</h4>
 
 <pre class="grammar"><span class="ntdfn" id="stream-type-descriptor">stream-type-descriptor</span> := <code>stream</code> [<a href="#stream-type-parameters"><span class="ntref">stream-type-parameters</span></a>]
 <span class="ntdfn" id="stream-type-parameters">stream-type-parameters</span> := <code>&lt;</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<code>,</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>]<code>&gt;</code>
@@ -2828,7 +2827,6 @@ read-only bit on. These basic types are:
 <li>string</li>
 <li>error</li>
 <li>function</li>
-<li>service</li>
 <li>typedesc</li>
 <li>handle</li>
 </ul>
@@ -3116,19 +3114,21 @@ The Listener type is defined in <code>lang.object</code> as follows.
 </p>
 
 <pre>distinct object {
-   public function attach(service s, string? name = ()) returns error?;
-   public function detach(service s) returns error?;
+   public function attach(service object {} s, string? name = ()) returns error?;
+   public function detach(service object {} s) returns error?;
    public function start() returns error?;
    public function gracefulStop() returns error?;
    public function immediateStop() returns error?;
 }
 </pre>
+<!-- Fix in #615
 <p>
 Note that if an implementation does precise service typing using annotations on
 type definitions, it will need to treat Listener as being parameterized in the
 precise service type that is used to the first argument to
 <code>attach</code>.
 </p>
+-->
 </section>
 <section>
 <h4 id="section_5.7.5">5.7.5 RawTemplate</h4>
@@ -3965,7 +3965,6 @@ same identifier in the same symbol space also with block-scope.
    | <a href="#structural-constructor-expr"><span class="ntref">structural-constructor-expr</span></a>
    | <a href="#object-constructor-expr"><span class="ntref">object-constructor-expr</span></a>
    | <a href="#new-expr"><span class="ntref">new-expr</span></a>
-   | <a href="#service-constructor-expr"><span class="ntref">service-constructor-expr</span></a>
    | <a href="#variable-reference-expr"><span class="ntref">variable-reference-expr</span></a>
    | <a href="#field-access-expr"><span class="ntref">field-access-expr</span></a>
    | <a href="#optional-field-access-expr"><span class="ntref">optional-field-access-expr</span></a>
@@ -4775,9 +4774,8 @@ fields come from a separate, named class definition.
 <h4 id="section_6.8.1">6.8.1 Object constructor</h4>
 
 <pre class="grammar"><span class="ntdfn" id="object-constructor-expr">object-constructor-expr</span> :=
-   [<a href="#annots"><span class="ntref">annots</span></a>] [<code>client</code>] <code>object</code> [<a href="#type-reference"><span class="ntref">type-reference</span></a>] <code>{</code>
-      <a href="#object-member"><span class="ntref">object-member</span></a>*
-   <code>}</code>
+   [<a href="#annots"><span class="ntref">annots</span></a>] [<a href="#object-network-qual"><span class="ntref">object-network-qual</span></a>] <code>object</code> [<a href="#type-reference"><span class="ntref">type-reference</span></a>] <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+<span class="ntdfn" id="object-constructor-block">object-constructor-block</span> := <code>{</code> <a href="#object-member"><span class="ntref">object-member</span></a>* <code>}</code>
 <span class="ntdfn" id="object-member">object-member</span> := <a href="#object-field"><span class="ntref">object-field</span></a> | <a href="#method-defn"><span class="ntref">method-defn</span></a>
 </pre>
 <p>
@@ -4838,12 +4836,24 @@ specified in the type-descriptor of the object-field.</li>
 </ul>
 
 <pre class="grammar"><span class="ntdfn" id="method-defn">method-defn</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a>] <a href="#method-quals"><span class="ntref">method-quals</span></a>
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#method-defn-quals"><span class="ntref">method-defn-quals</span></a>
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
 <span class="ntdfn" id="method-defn-body">method-defn-body</span> := <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
+<span class="ntdfn" id="method-defn-quals">method-defn-quals</span> :=
+   <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+   | (<a href="#remote-qual"><span class="ntref">remote-qual</span></a> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
+<span class="ntdfn" id="object-visibility-qual">object-visibility-qual</span> := <code>public</code>|<code>private</code>
 </pre>
+
 <p>
-A <code>method-defn</code> defines a method of an object.
+A <code>method-defn</code> defines a method of an object. Neither
+<code>remote-qual</code> not <code>isolated-qual</code> can occur more than once
+in <code>method-defn-quals</code>. If <code>isolated</code> is present, then the
+method has its isolated bit set and its <code>method-defn-body</code> must
+satisfy the requirements for an <a href="isolated_functions">isolated
+function</a>. If the <code>remote</code> is present, then the method is a remote
+method; this is allowed only when an <code>object-network-qual</code> is present
+in the <code>object-constructor-expr</code>.
 </p>
 <p>
 Within a <code>method-defn-body</code>, the fields and methods of the object are
@@ -4891,8 +4901,6 @@ A missing <code>init</code> method is equivalent to an isolated
 <code>init</code> method with no parameters and an empty body (which will always
 return nil).
 </p>
-<pre class="grammar"><span class="ntdfn" id="object-visibility-qual">object-visibility-qual</span> := <code>public</code>|<code>private</code>
-</pre>
 <p>
 A visibility qualifier of <code>private</code> can be used within an
 <code>object-constructor-expr</code> expression; this means that the visibility
@@ -4946,36 +4954,7 @@ is not a class or stream type.
 </section>
 </section>
 <section>
-<h3 id="section_6.9">6.9 Service constructor</h3>
-
-<pre class="grammar"><span class="ntdfn" id="service-constructor-expr">service-constructor-expr</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>service</code> <a href="#service-body-block"><span class="ntref">service-body-block</span></a>
-<span class="ntdfn" id="service-body-block">service-body-block</span> := <code>{</code> <a href="#service-method-defn"><span class="ntref">service-method-defn</span></a>* <code>}</code>
-<span class="ntdfn" id="service-method-defn">service-method-defn</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#service-method-quals"><span class="ntref">service-method-quals</span></a>
-   <code>function</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#method-defn-body"><span class="ntref">method-defn-body</span></a>
-<span class="ntdfn" id="service-method-quals">service-method-quals</span> := (<code>resource</code> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>)*
-</pre>
-<p>
-A <code>service-constructor-expr</code> constructs a service value. The result
-of evaluating a service-constructor-expr is a value of type service. If a
-service-method-defn contains a <code>resource</code> qualifier, then it defines
-a resource method. Both the <code>resource</code> and <code>isolated</code>
-qualifiers can occur at most once in a service-method-defn. The
-<code>self</code> variable can be used in a method-defn-body of a
-service-method-defn in the same way as for objects.
-</p>
-<p>
-Each service value has its own type descriptor. (Evaluating a service
-constructor thus has an effect analogous to defining an anonymous object type
-and then creating a value of that type.)
-</p>
-<p>
-The return type of a resource method must be a subtype of <code>error?</code> and must contain
-nil.
-</p>
-</section>
-<section>
-<h3 id="section_6.10">6.10 Variable reference expression</h3>
+<h3 id="section_6.9">6.9 Variable reference expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="variable-reference-expr">variable-reference-expr</span> := <a href="#variable-reference"><span class="ntref">variable-reference</span></a>
 <span class="ntdfn" id="variable-reference">variable-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a> | <a href="#xml-qualified-name"><span class="ntref">xml-qualified-name</span></a>
@@ -5006,7 +4985,7 @@ class.
 </p>
 </section>
 <section>
-<h3 id="section_6.11">6.11 Field access expression</h3>
+<h3 id="section_6.10">6.10 Field access expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="field-access-expr">field-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#field-name"><span class="ntref">field-name</span></a>
 </pre>
@@ -5058,7 +5037,7 @@ field-name.</li>
 
 </section>
 <section>
-<h3 id="section_6.12">6.12 Optional field access expression</h3>
+<h3 id="section_6.11">6.11 Optional field access expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="optional-field-access-expr">optional-field-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>?.</code> <a href="#field-name"><span class="ntref">field-name</span></a>
 </pre>
@@ -5118,7 +5097,7 @@ field-name.</li>
 </section>
 
 <section>
-<h3 id="section_6.13">6.13 XML attribute access expression</h3>
+<h3 id="section_6.12">6.12 XML attribute access expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="xml-attribute-access-expr">xml-attribute-access-expr</span> := <a href="#xml-required-attribute-access-expr"><span class="ntref">xml-required-attribute-access-expr</span></a> | <a href="#xml-optional-attribute-access-expr"><span class="ntref">xml-optional-attribute-access-expr</span></a>
 <span class="ntdfn" id="xml-required-attribute-access-expr">xml-required-attribute-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#xml-attribute-name"><span class="ntref">xml-attribute-name</span></a>
@@ -5178,7 +5157,7 @@ xml-optional-attribute-access-expr is <code>string|error|()</code>.
 
 </section>
 <section>
-<h3 id="section_6.14">6.14 Annotation access expression</h3>
+<h3 id="section_6.13">6.13 Annotation access expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="annot-access-expr">annot-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.@</code> <a href="#annot-tag-reference"><span class="ntref">annot-tag-reference</span></a>
 </pre>
@@ -5200,7 +5179,7 @@ of the annotation tag.
 </p>
 </section>
 <section>
-<h3 id="section_6.15">6.15 Member access expression</h3>
+<h3 id="section_6.14">6.14 Member access expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="member-access-expr">member-access-expr</span> := <a href="#container-expression"><span class="ntref">container-expression</span></a> <code>[</code> (<a href="#key-expression"><span class="ntref">key-expression</span></a> | <a href="#multi-key-expression"><span class="ntref">multi-key-expression</span></a>) <code>]</code>
 <span class="ntdfn" id="container-expression">container-expression</span> := <a href="#expression"><span class="ntref">expression</span></a>
@@ -5279,7 +5258,7 @@ member-access-expr is M?, otherwise the static type is M.
 
 </section>
 <section>
-<h3 id="function_call">6.16 Function call expression</h3>
+<h3 id="function_call">6.15 Function call expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="function-call-expr">function-call-expr</span> := <a href="#function-reference"><span class="ntref">function-reference</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 <span class="ntdfn" id="function-reference">function-reference</span> := <a href="#variable-reference"><span class="ntref">variable-reference</span></a>
@@ -5344,7 +5323,7 @@ the value of the expression in a variable.
 
 </section>
 <section>
-<h3 id="section_6.17">6.17 Method call expression</h3>
+<h3 id="section_6.16">6.16 Method call expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="method-call-expr">method-call-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 </pre>
@@ -5359,13 +5338,13 @@ If the static type of <code>expression</code> is a subtype of object, and the
 object type includes a method named <code>method-name</code>, then the
 <code>method-call-expr</code> is executed by calling that method on
 <var>v</var>. A <code>method-call-expr</code> can be used within a method of a
-service to call another method of that service other than a resource method; in
+service to call another method of that service other than a remote method; in
 this case, <code>expression</code> must be <code>self</code>. The
 <code>arg-list</code> is used to construct an argument list that is passed to
 the method in the same way as with a <code>function-call-expr</code>. A
-<code>method-call-expr</code> cannot be used to call a remote method; it can
-only be called by a <code>remote-method-call-action</code>. A
-<code>method-call-expr</code> cannot be used to call a resource method.
+<code>method-call-expr</code> cannot be used to call a remote method. A remote
+method of a client object can be called by a
+<code>client-remote-method-call-action</code>.
 </p>
 <p>
 Otherwise, the <code>method-call-expr</code> will be turned into a call to a
@@ -5393,7 +5372,7 @@ the constraints that would apply if it has been written explicitly as a
 </p>
 </section>
 <section>
-<h3 id="section_6.18">6.18 Error constructor</h3>
+<h3 id="section_6.17">6.17 Error constructor</h3>
 
 <pre class="grammar"><span class="ntdfn" id="error-constructor-expr">error-constructor-expr</span> := <code>error</code> [<a href="#error-type-reference"><span class="ntref">error-type-reference</span></a>] <code>(</code> <a href="#error-arg-list"><span class="ntref">error-arg-list</span></a> <code>)</code>
 <span class="ntdfn" id="error-arg-list">error-arg-list</span> := <a href="#positional-arg"><span class="ntref">positional-arg</span></a> [<code>,</code> <a href="#positional-arg"><span class="ntref">positional-arg</span></a>] (<code>,</code> <a href="#named-arg"><span class="ntref">named-arg</span></a>)*
@@ -5438,7 +5417,7 @@ the point where the error constructor was evaluated.
 
 </section>
 <section>
-<h3 id="section_6.19">6.19 Anonymous function expression</h3>
+<h3 id="section_6.18">6.18 Anonymous function expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="anonymous-function-expr">anonymous-function-expr</span> := <a href="#explicit-anonymous-function-expr"><span class="ntref">explicit-anonymous-function-expr</span></a> | <a href="#infer-anonymous-function-expr"><span class="ntref">infer-anonymous-function-expr</span></a>
 <span class="ntdfn" id="explicit-anonymous-function-expr">explicit-anonymous-function-expr</span> := [<a href="#annots"><span class="ntref">annots</span></a>] [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a> (<a href="#block-function-body"><span class="ntref">block-function-body</span></a>|<a href="#expr-function-body"><span class="ntref">expr-function-body</span></a>)
@@ -5476,7 +5455,7 @@ the contextually expected type for <code>expression</code> in
 </section>
 
 <section>
-<h3 id="section_6.20">6.20 Let expression</h3>
+<h3 id="section_6.19">6.19 Let expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="let-expr">let-expr</span> := <code>let</code> <a href="#let-var-decl"><span class="ntref">let-var-decl</span></a> [<code>,</code> <a href="#let-var-decl"><span class="ntref">let-var-decl</span></a>]* <code>in</code> <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="let-var-decl">let-var-decl</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -5512,7 +5491,7 @@ are implicitly final.
 </section>
 
 <section>
-<h3 id="section_6.21">6.21 Type cast expression</h3>
+<h3 id="section_6.20">6.20 Type cast expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="type-cast-expr">type-cast-expr</span> := <code>&lt;</code> <a href="#type-cast-param"><span class="ntref">type-cast-param</span></a> <code>&gt;</code> <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="type-cast-param">type-cast-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> | <a href="#annots"><span class="ntref">annots</span></a>
@@ -5565,7 +5544,7 @@ the evaluation of <code>expression</code> has its read-only bit on.
 
 </section>
 <section>
-<h3 id="section_6.22">6.22 Typeof expression</h3>
+<h3 id="section_6.21">6.21 Typeof expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="typeof-expr">typeof-expr</span> := <code>typeof</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
@@ -5597,7 +5576,7 @@ static type of <code>expression</code>.
 </p>
 </section>
 <section>
-<h3 id="section_6.23">6.23 Unary expression</h3>
+<h3 id="section_6.22">6.22 Unary expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="unary-expr">unary-expr</span> :=
    <code>+</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -5641,7 +5620,7 @@ its operand is false and false if its operand is true.
 </p>
 </section>
 <section>
-<h3 id="section_6.24">6.24 Multiplicative expression</h3>
+<h3 id="section_6.23">6.23 Multiplicative expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="multiplicative-expr">multiplicative-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>*</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -5720,7 +5699,7 @@ same basic type as v.
 </p>
 </section>
 <section>
-<h3 id="section_6.25">6.25 Additive expression</h3>
+<h3 id="section_6.24">6.24 Additive expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="additive-expr">additive-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>+</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -5791,7 +5770,7 @@ with the same basic type as v.
 
 </section>
 <section>
-<h3 id="section_6.26">6.26 Shift expression</h3>
+<h3 id="section_6.25">6.25 Shift expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="shift-expr">shift-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>&lt;&lt;</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -5826,7 +5805,7 @@ result is <code>int</code>.
 </p>
 </section>
 <section>
-<h3 id="section_6.27">6.27 Range expression</h3>
+<h3 id="section_6.26">6.26 Range expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="range-expr">range-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>...</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -5858,7 +5837,7 @@ elsewhere.
 </p>
 </section>
 <section>
-<h3 id="section_6.28">6.28 Relational expression</h3>
+<h3 id="section_6.27">6.27 Relational expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="relational-expr">relational-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>&lt;</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -5890,7 +5869,7 @@ and otherwise false.
 </p>
 </section>
 <section>
-<h3 id="section_6.29">6.29 Type test expression</h3>
+<h3 id="section_6.28">6.28 Type test expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="is-expr">is-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>is</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
@@ -5905,7 +5884,7 @@ is true; otherwise the result of the is-expr is false.
 </p>
 </section>
 <section>
-<h3 id="section_6.30">6.30 Equality expression</h3>
+<h3 id="section_6.29">6.29 Equality expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="equality-expr">equality-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>==</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -5969,7 +5948,7 @@ precision of the value. For example, <code>1.0 == 1.00</code> is true but
 
 </section>
 <section>
-<h3 id="section_6.31">6.31 Binary bitwise expression</h3>
+<h3 id="section_6.30">6.30 Binary bitwise expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="binary-bitwise-expr">binary-bitwise-expr</span> :=
    <a href="#bitwise-and-expr"><span class="ntref">bitwise-and-expr</span></a>
@@ -6002,7 +5981,7 @@ is <code>int</code>.</li>
 </section>
 
 <section>
-<h3 id="section_6.32">6.32 Logical expression</h3>
+<h3 id="section_6.31">6.31 Logical expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="logical-expr">logical-expr</span> := <a href="#logical-and-expr"><span class="ntref">logical-and-expr</span></a> | <a href="#logical-or-expr"><span class="ntref">logical-or-expr</span></a>
 <span class="ntdfn" id="logical-and-expr">logical-and-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>&amp;&amp;</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -6038,7 +6017,7 @@ the right-hand expression.</li>
 </section>
 
 <section>
-<h3 id="section_6.33">6.33 Conditional expression</h3>
+<h3 id="section_6.32">6.32 Conditional expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="conditional-expr">conditional-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>?</code> <a href="#expression"><span class="ntref">expression</span></a> <code>:</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -6054,7 +6033,7 @@ L <code>?:</code> R is evaluated as follows:
 </ol>
 </section>
 <section>
-<h3 id="section_6.34">6.34 Checking expression</h3>
+<h3 id="section_6.33">6.33 Checking expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="checking-expr">checking-expr</span> := <a href="#checking-keyword"><span class="ntref">checking-keyword</span></a> <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="checking-keyword">checking-keyword</span> := <code>check</code> | <code>checkpanic</code>
@@ -6074,7 +6053,7 @@ the static type of check e is T.
 </p>
 </section>
 <section>
-<h3 id="section_6.35">6.35 Trap expression</h3>
+<h3 id="section_6.34">6.34 Trap expression</h3>
 <p>
 The trap expression stops a panic and gives access to the error value associated
 with the panic.
@@ -6098,7 +6077,7 @@ T|error.</li>
 </section>
 
 <section>
-<h3 id="section_6.36">6.36 Query expression</h3>
+<h3 id="section_6.35">6.35 Query expression</h3>
 <p>
 A query expression provides a language-integrated query feature using SQL-like
 syntax. In this version of Ballerina, the functionality is similar to a list
@@ -6188,7 +6167,7 @@ cannot be modified.
 </p>
 
 <section>
-<h4 id="section_6.36.1">6.36.1 From clause</h4>
+<h4 id="section_6.35.1">6.35.1 From clause</h4>
 <pre class="grammar"><span class="ntdfn" id="from-clause">from-clause</span> := <code>from</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
@@ -6218,7 +6197,7 @@ resulting from binding typed-binding-pattern to <var>v</var>.</li>
 </section>
 
 <section>
-<h4 id="section_6.36.2">6.36.2 Where clause</h4>
+<h4 id="section_6.35.2">6.35.2 Where clause</h4>
 <pre class="grammar"><span class="ntdfn" id="where-clause">where-clause</span> := <code>where</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
@@ -6236,7 +6215,7 @@ value <var>b</var>;</li>
 </section>
 
 <section>
-<h4 id="section_6.36.3">6.36.3 Let clause</h4>
+<h4 id="section_6.35.3">6.35.3 Let clause</h4>
 <pre class="grammar"><span class="ntdfn" id="let-clause">let-clause</span> := <code>let</code> <a href="#let-var-decl"><span class="ntref">let-var-decl</span></a> [<code>,</code> <a href="#let-var-decl"><span class="ntref">let-var-decl</span></a>]* 
 </pre>
 <p>
@@ -6261,7 +6240,7 @@ E<sub>2</sub></code>.
 </section>
 
 <section>
-<h4 id="section_6.36.4">6.36.4 Join clause</h4>
+<h4 id="section_6.35.4">6.35.4 Join clause</h4>
 <pre class="grammar"><span class="ntdfn" id="join-clause">join-clause</span> := [<code>outer</code>] <code>join</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#join-on-condition"><span class="ntref">join-on-condition</span></a>
 <span class="ntdfn" id="join-on-condition">join-on-condition</span> := <code>on</code> <a href="#expression"><span class="ntref">expression</span></a> <code>equals</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
@@ -6338,7 +6317,7 @@ if the type that would be inferred usually for the variable would be
 </section>
 
 <section>
-<h4 id="section_6.36.5">6.36.5 Order by clause</h4>
+<h4 id="section_6.35.5">6.35.5 Order by clause</h4>
 <pre class="grammar">
 <span class="ntdfn" id="order-by-clause">order-by-clause</span> := <code>order</code> <code>by</code> <a href="#order-key"><span class="ntref">order-key</span></a> [<code>,</code> <a href="#order-key"><span class="ntref">order-key</span></a>]*
 <span class="ntdfn" id="order-key">order-key</span> := <a href="#expression"><span class="ntref">expression</span></a> [<a href="#order-direction"><span class="ntref">order-direction</span></a>]
@@ -6403,7 +6382,7 @@ expression with <var>f</var> in scope</li>
 
 </section>
 <section>
-<h4 id="section_6.36.6">6.36.6 Limit clause</h4>
+<h4 id="section_6.35.6">6.35.6 Limit clause</h4>
 <pre class="grammar">
 <span class="ntdfn" id="limit-clause">limit-clause</span> := <code>limit</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
@@ -6432,7 +6411,7 @@ The static type of expression must be a subtype of <code>int</code>.
 </section>
 
 <section>
-<h4 id="section_6.36.7">6.36.7 Select clause</h4>
+<h4 id="section_6.35.7">6.35.7 Select clause</h4>
 <pre class="grammar">
 <span class="ntdfn" id="select-clause">select-clause</span> := <code>select</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
@@ -6452,7 +6431,7 @@ A <code>select</code> clause is executed as follows:
 </section>
 
 <section>
-<h4 id="section_6.36.8">6.36.8 On conflict clause</h4>
+<h4 id="section_6.35.8">6.35.8 On conflict clause</h4>
 <pre class="grammar">
 <span class="ntdfn" id="on-conflict-clause">on-conflict-clause</span> := <code>on</code> <code>conflict</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
@@ -6477,7 +6456,7 @@ function that logs an error.
 
 </section>
 <section>
-<h3 id="section_6.37">6.37 XML navigation expression</h3>
+<h3 id="section_6.36">6.36 XML navigation expression</h3>
 <p>
 XML navigation expressions allow for convenient navigation of XML element structure,
 in a similar way to XPath.
@@ -6486,7 +6465,7 @@ in a similar way to XPath.
 <pre class="grammar"><span class="ntdfn" id="xml-navigate-expr">xml-navigate-expr</span> := <a href="#xml-filter-expr"><span class="ntref">xml-filter-expr</span></a> | <a href="#xml-step-expr"><span class="ntref">xml-step-expr</span></a>
 </pre>
 <section>
-<h4 id="section_6.37.1">6.37.1 XML name pattern</h4>
+<h4 id="section_6.36.1">6.36.1 XML name pattern</h4>
 <pre class="grammar"><span class="ntdfn" id="xml-name-pattern">xml-name-pattern</span> := <a href="#xml-atomic-name-pattern"><span class="ntref">xml-atomic-name-pattern</span></a> [<code>|</code> <a href="#xml-atomic-name-pattern"><span class="ntref">xml-atomic-name-pattern</span></a>]*
 
 <span class="ntdfn" id="xml-atomic-name-pattern">xml-atomic-name-pattern</span> :=
@@ -6510,7 +6489,7 @@ name in that default namespace.
 </p>
 </section>
 <section>
-<h4 id="section_6.37.2">6.37.2 XML filter expression</h4>
+<h4 id="section_6.36.2">6.36.2 XML filter expression</h4>
 <pre class="grammar"><span class="ntdfn" id="xml-filter-expr">xml-filter-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.&lt;</code> <a href="#xml-name-pattern"><span class="ntref">xml-name-pattern</span></a> <code>&gt;</code>
 </pre>
 <p>
@@ -6521,7 +6500,7 @@ be a subtype of xml. The static type of the xml-filter-expr is
 </p>
 </section>
 <section>
-<h4 id="section_6.37.3">6.37.3 XML step expression</h4>
+<h4 id="section_6.36.3">6.36.3 XML step expression</h4>
 <p>
 An xml-step-expr provides access to the children or descendants of an element,
 similar to a location path in XPath.
@@ -6603,7 +6582,7 @@ where <code>v</code> is a variable name not used in <code><var>X</var></code>.
    | <a href="#send-action"><span class="ntref">send-action</span></a>
    | <a href="#receive-action"><span class="ntref">receive-action</span></a> 
    | <a href="#flush-action"><span class="ntref">flush-action</span></a>
-   | <a href="#remote-method-call-action"><span class="ntref">remote-method-call-action</span></a>
+   | <a href="#client-remote-method-call-action"><span class="ntref">client-remote-method-call-action</span></a>
    | <a href="#query-action"><span class="ntref">query-action</span></a>
    | <a href="#type-cast-action"><span class="ntref">type-cast-action</span></a>
    | <a href="#checking-action"><span class="ntref">checking-action</span></a>
@@ -6623,8 +6602,8 @@ shown in the sequence diagram in the graphical syntax.
 </p>
 <p>
 The syntax for actions is defined by the above grammar and precedence rules. The
-precedence rules are that a remote-method-call-action has higher precedence than
-a checking-action or a trap-action.
+precedence rules are that a client-remote-method-call-action has higher
+precedence than a checking-action or a trap-action.
 </p>
 <p>
 An action is evaluated in the same way as an expression. Static typing for
@@ -6959,7 +6938,7 @@ block-function-body.
 <section>
 <h3 id="section_7.6">7.6 Start action</h3>
 
-<pre class="grammar"><span class="ntdfn" id="start-action">start-action</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>start</code> (<a href="#function-call-expr"><span class="ntref">function-call-expr</span></a>|<a href="#method-call-expr"><span class="ntref">method-call-expr</span></a>|<a href="#remote-method-call-action"><span class="ntref">remote-method-call-action</span></a>)
+<pre class="grammar"><span class="ntdfn" id="start-action">start-action</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>start</code> (<a href="#function-call-expr"><span class="ntref">function-call-expr</span></a>|<a href="#method-call-expr"><span class="ntref">method-call-expr</span></a>|<a href="#client-remote-method-call-action"><span class="ntref">client-remote-method-call-action</span></a>)
 </pre>
 
 <p>
@@ -7390,24 +7369,25 @@ success before it has executed one member from every send set.</li>
 </section>
 
 <section>
-<h3 id="section_7.9">7.9 Remote interaction</h3>
+<h3 id="section_7.9">7.9 Outbound network interaction</h3>
 
 <p>
 A client object is a stub that allows a worker to send network messages to a
-remote process according to some protocol. A local variable declared with client
+remote system according to some protocol. A local variable declared with client
 object type will be depicted as a lifeline in the function's sequence diagram.
 The remote methods of the client object correspond to distinct network messages
 defined by the protocol for the role played by the client object. The return
 value of a remote method represents the protocol's response. A
-remote-method-call-action is depicted as a horizontal arrow from the worker
-lifeline to the client object lifeline.
+client-remote-method-call-action is depicted as a horizontal arrow from the
+worker lifeline to the client object lifeline.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="remote-method-call-action">remote-method-call-action</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>-&gt;</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
+<pre class="grammar"><span class="ntdfn" id="client-remote-method-call-action">client-remote-method-call-action</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>-&gt;</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 </pre>
 <p>
-Calls a remote method. This works the same as a method call expression, except
-that it is used only for a method with the <code>remote</code> modifier.
+Calls a remote method of a client object. This works the same as a method call
+expression, except that it is used for a client object method with the
+<code>remote</code> qualifier.
 </p>
 
 </section>
@@ -8474,25 +8454,31 @@ unsuccessful, terminates the program execution.
 <h3 id="section_8.3">8.3 Listeners and services</h3>
 
 <p>
-Services have resource methods, which are the network entry points of a
+Service objects have remote methods, which are the network entry points of a
 Ballerina program. Listeners provide the interface between the network and
-services. A listener object receives network messages from a remote process
-according to some protocol and translates the received messages into calls on
-the resource methods of service values that have been attached to the listener
-object. It is up to the listener object to determine how this translation
-happens; the type of the listener object thus constrains the type of a service
-that can be attached to the listener. (This constraint is not yet enforced by
-Ballerina's type system.)
+service objects. A listener object receives network messages from a remote
+process according to some protocol and translates the received messages into
+calls on the remote methods of service objects that have been attached to the
+listener object. It is up to the listener object to determine how this
+translation happens; the type of the listener object thus constrains the type of
+a service that can be attached to the listener. (This constraint is not yet
+enforced by Ballerina's type system.)
 </p>
 <p>
-The return type of a resource method represents whether the method successfully
-handled the protocol message. The listener typically calls a resource method
-with a client object as a parameter. The remote methods on the client object
-correspond to the distinct network messages defined by the protocol as possible
-responses to the message that the resource method is handling. A resource method
-called by a listener as a result of a network message received from a remote
-process can then use the client object to send a response message back to that
-remote process.
+An error return value is used by a service object's remote method to indicate
+that it encountered an error in processing the protocol message. The
+interpretation of other return values is dependent on the listener object. A
+listener object can allow a service object's remote method to use the return
+value to supply the response in the non-error case. This has the limitation that
+the remote method cannot control what happens if there is an error in sending a
+response. It also has the limitation that it cannot handle complex message
+exchange patterns, although returning multiple responses to a single request can
+be modelled by a remote method that returns a stream. A listener object can
+avoid these limitations by passing a client object as a parameter to the service
+object's remote method; the service object then makes calls on the remote
+methods of the client object in order to send a response back to the client. In
+this case, the service object's remote method should return nil if it does not
+return an error.
 </p>
 <p>
 The methods defined by the Listener object type allow for the
@@ -8553,8 +8539,8 @@ result of the evaluation.
 <h4 id="section_8.3.2">8.3.2 Service declaration</h4>
 
 <pre class="grammar"><span class="ntdfn" id="service-decl">service-decl</span> :=
-  <a href="#metadata"><span class="ntref">metadata</span></a>
-  <code>service</code> [<a href="#variable-name"><span class="ntref">variable-name</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#service-body-block"><span class="ntref">service-body-block</span></a>
+   <a href="#metadata"><span class="ntref">metadata</span></a>
+   <code>service</code> [<a href="#variable-name"><span class="ntref">variable-name</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
 <span class="ntdfn" id="expression-list">expression-list</span> := <a href="#expression"><span class="ntref">expression</span></a> (<code>,</code> <a href="#expression"><span class="ntref">expression</span></a>)*
 </pre>
 <p>
@@ -8564,21 +8550,17 @@ a variable declared in a final variable declaration, the variable can be
 referenced by a variable-reference, but cannot be assigned to.
 </p>
 <p>
-The service-body-block has the same semantics as in a service-constructor-expr.
-The static type of each expression in the expression list must be a subtype of
-the union of error with the Listener object type. If an implementation
-is using annotations to provide more precise typing of services, then any
-annotations on the service type that is the first parameter of the
-<code>__attach</code> method in the object type of each expression in expression
-list will constrain the type of the service value constructed by the
-service-body-block.
+The object-constructor-block has the same semantics as in an
+object-constructor-expr with a <code>service</code> qualifier. The static type
+of each expression in the expression list must be a subtype of the union of
+error with the Listener object type.
 </p>
 <p>
 A service-decl is initialized as part of module initialization as follows. The
-service-body-block is evaluated as in a service-constructor resulting in a
-service value <code><var>s</var></code>. If variable-name is specified, then the
-variable is initialized to <code><var>s</var></code>. Then for each expression
-in expression-list:
+object-constructor-block is evaluated as in an object-constructor-expr resulting
+in a service object <code><var>s</var></code>. If variable-name is specified,
+then the variable is initialized to <code><var>s</var></code>. Then for each
+expression in expression-list:
 </p>
 <ol>
 <li>the expression is evaluated resulting in a value which is either an error or
@@ -8599,19 +8581,17 @@ fails.</li>
 <h4 id="section_8.3.3">8.3.3 Isolated inference</h4>
 
 <p>
-A listener object can use the isolated bit of a resource method to determine
-whether it is safe to make concurrent calls to the resource method.
+A listener object can use the isolated bit of a service object's remote method to determine
+whether it is safe to make concurrent calls to the remote method.
 </p>
 <p>
-The compiler may infer that a resource method is isolated even it is not
-explicitly declared as such. In doing so, it analyzes a module to determine
-whether there is a set of definitions, where each definition is a
-<code>service-method-defn</code>, <code>function-defn</code> or
-<code>method-defn</code>, and no definition is explicitly declared as isolated,
-such that if all the definitions were declared as isolated, then they all would
-meet the requirements for <a href="#isolated_functions">isolated functions</a>.
-If so, the isolated bit of the function value associated with each definition is
-set.
+The compiler may infer that a service object's remote method is isolated even it
+is not explicitly declared as such. In doing so, it analyzes a module to
+determine whether there is a set of definitions, where each definition is a
+<code>function-defn</code> or <code>method-defn</code>, and no definition is
+explicitly declared as isolated, such that if all the definitions were declared
+as isolated, then they all would meet the requirements for <a href="#isolated_functions">isolated functions</a>. If so, the isolated bit of
+the function value associated with each definition is set.
 </p>
 <p>
 This inference is purely an optimization to improve service concurrency and is
@@ -8679,7 +8659,7 @@ constructed.
    [<code>public</code>] <a href="#class-type-quals"><span class="ntref">class-type-quals</span></a> <code>class</code> <a href="#identifier"><span class="ntref">identifier</span></a> <code>{</code>
       <a href="#class-member"><span class="ntref">class-member</span></a>*
   <code>}</code>
-<span class="ntdfn" id="class-type-quals">class-type-quals</span> := (<code>distinct</code> | <code>client</code> | <code>readonly</code>)*
+<span class="ntdfn" id="class-type-quals">class-type-quals</span> := (<code>distinct</code> | <code>readonly</code> | <a href="#object-network-qual"><span class="ntref">object-network-qual</span></a>)*
 <span class="ntdfn" id="class-member">class-member</span> :=
    <a href="#object-field"><span class="ntref">object-field</span></a>
    | <a href="#method-defn"><span class="ntref">method-defn</span></a>
@@ -8687,7 +8667,7 @@ constructed.
 </pre>
 <p>
 It is an error for a keyword to appear more than once in
-<code>class-type-quals</code>
+<code>class-type-quals</code>.
 </p>
 <p>
 As in an object constructor expression, a visibility qualifier of
@@ -8967,7 +8947,7 @@ descriptor is evaluated when the type descriptor is resolved.
 <span class="ntdfn" id="dual-attach-point-ident">dual-attach-point-ident</span> :=
    <code>type</code>
    | <code>class</code>
-   | [<code>object</code>|<code>resource</code>] <code>function</code>
+   | [<code>object</code>|<code>service</code> <code>remote</code>] <code>function</code>
    | <code>parameter</code>
    | <code>return</code>
    | <code>service</code>
@@ -9018,7 +8998,7 @@ The available attachment points are described in the following table.
   </tr>
   <tr>
    <td>function</td>
-   <td>function-defn, method-decl, method-defn, anonymous-function-expr, service-method-defn</td>
+   <td>function-defn, method-decl, method-defn, anonymous-function-expr</td>
    <td>type of function</td>
   </tr>
   <tr>
@@ -9027,8 +9007,8 @@ The available attachment points are described in the following table.
    <td>type of function</td>
   </tr>
   <tr>
-   <td>resource function</td>
-   <td>service-method-defn with resource modifier</td>
+   <td>service remote function</td>
+   <td>method-defn with remote qualifier on service object</td>
    <td>type of function, on service value</td>
   </tr>
   <tr>
@@ -9043,7 +9023,7 @@ The available attachment points are described in the following table.
   </tr>
   <tr>
    <td>service</td>
-   <td>service-decl, service-constructor-expr</td>
+   <td>service-decl, object-constructor-expr with service qualifier</td>
    <td>type of service</td>
   </tr>
   <tr>
@@ -9416,6 +9396,8 @@ object constructor expression, which includes method definitions, or by applying
 <code>new</code> to the name of a class defined by a class definition. The
 methods and fields of an object are not in a single symbol space. Classes and
 object constructors can declare fields as final.</li>
+<li>Services have become service objects that work in a similar way to client
+objects; resource methods on service objects have become remote methods.</li>
 <li>The <code>readonly</code> type has been added. Fields of records can also be
 declared as <code>readonly</code>. Functions can be declared as
 <code>isolated</code>; this works in conjunction with <code>readonly</code> to
@@ -9805,9 +9787,6 @@ to date and time.</li>
 <li>
 <em>Event stream processing</em> will build on the <code>stream</code> type
 to allow queries over timestamped sequences of events</li>
-<li>
-<em>Service typing</em> will allow for proper typing of service values,
-including typing of the response of resource functions.</li>
 <li>
 <em>Generic types</em> will provide types that can be instantiated with one
 or more type parameters.</li>

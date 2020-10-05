@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-09-30</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-05</h1>
 <p>
 Primary contributors:
 </p>
@@ -8526,20 +8526,25 @@ result of the evaluation.
 
 <pre class="grammar"><span class="ntdfn" id="service-decl">service-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a>
-   <code>service</code> [<a href="#variable-name"><span class="ntref">variable-name</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+   <code>service</code> [[<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] <a href="#variable-name"><span class="ntref">variable-name</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
 <span class="ntdfn" id="expression-list">expression-list</span> := <a href="#expression"><span class="ntref">expression</span></a> (<code>,</code> <a href="#expression"><span class="ntref">expression</span></a>)*
 </pre>
 <p>
-A <code>service-decl</code> creates a service and attaches it to one or more
+A <code>service-decl</code> creates a service object and attaches it to one or more
 listeners. If a variable-name is specified, it also declares a variable; as with
 a variable declared in a final variable declaration, the variable can be
 referenced by a variable-reference, but cannot be assigned to.
 </p>
 <p>
-The object-constructor-block has the same semantics as in an
-object-constructor-expr with a <code>service</code> qualifier. The static type
-of each expression in the expression list must be a subtype of the union of
-error with the Listener object type.
+The static type S for the constructed service object is specified by the
+type-descriptor if present, and otherwise is the union of a type inferred from
+each expression in the expression list as follows. Each expression in the
+expression-list must have a type L|E where L is a listener and E is a subtype of
+error; the inferred type is the type of the first parameter to the
+<code>attach</code> method of L. The object-constructor-block has the same
+semantics as in an object-constructor-expr with a <code>service</code> qualifier
+and a type-reference that refers to S. The type S is also used as the type of
+the variable declared.
 </p>
 <p>
 A service-decl is initialized as part of module initialization as follows. The

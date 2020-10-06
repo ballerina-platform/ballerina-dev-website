@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-05</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-06</h1>
 <p>
 Primary contributors:
 </p>
@@ -4785,8 +4785,8 @@ If there is a <code>type-reference</code>, then the referenced type is included
 in the object's type in the same was as an <code>object-type-inclusion</code>,
 and the type-ids of the constructed object are type-ids of the referenced type.
 If there is no <code>type-reference</code>, then the applicable contextually
-expected type T must be definite, and the type-ids of the constructed object are
-the type-ids, if any, induced by T.
+expected type T, if any, must be definite, and the type-ids of the constructed
+object are the type-ids, if any, induced by T.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="object-field">object-field</span> :=

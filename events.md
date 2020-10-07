@@ -84,6 +84,20 @@ redirect_from:
       </td>
       <td class="cEventURL"><a class="cEventRegistration" href="https://emamo.com/event/developerweek-global-cloud-2020/s/open-talk-code-to-kubernetes-deployment-shouldnt-be-an-afterthought-NyPYlo" target="_blank">More Info</a></td>
    </tr>
+   <tr class="event-expiry" style="display:none" data-expiry="December 4, 2020 12:00:00">
+      <td class="cEventDateContainer">
+         <span class="cEventDate">December 2 - 4, 2020</span>
+         <p class="cEventLocation">Virtual</p>
+      </td>
+      <td class="cEventDetail">
+         <a target="_blank" href="https://events.linuxfoundation.org/open-source-summit-japan/">
+            <h4>Open Source Summit Japan</h4>
+         </a>
+         <h5></h5>
+         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
+      </td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/open-source-summit-japan/program/schedule-at-a-glance/" target="_blank">More Info</a></td>
+   </tr>
    <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">
       <td class="cEventDateContainer">
          <span class="cEventDate">December 14 - 16, 2020</span>

@@ -454,6 +454,8 @@ function readFile(string filePath) returns  string {
 }
 ```
 
+`name.txt`
+
 This sample sends a greeting to the caller by getting the name from a text file. When this is run in a container, you need to copy the `name.txt` file into the Docker image. The `@docker:CopyFiles` annotation is used for this and you can give multiple files by following the syntax below.
 
 ```
@@ -463,6 +465,24 @@ This sample sends a greeting to the caller by getting the name from a text file.
 	{ sourceFile: "./abc.txt", target: "/home/ballerina/abc.txt" }
    ]
 }
+```
+
+>**Note:** In addition to the above, if you want to copy driver files such as JDBC, you can create a Ballerina project, add following entires to its `Ballerina.toml` file, and change the path to the JDBC driver appropriately.
+
+`Ballerina.toml`
+
+```
+[project]
+org-name= "sample"
+version= "0.1.0"
+
+[platform]
+target = "java8"
+
+    [[platform.libraries]]
+    artafactId = "mysql-connector-java"
+    version = "8.0.17"
+    path = "/path/to/mysql-connector-java-8.0.17.jar"
 ```
 
 #### Steps to run

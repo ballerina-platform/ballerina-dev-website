@@ -238,4 +238,7 @@ let redirections = {
     "/1.1/learn/by-example/readonly-objects.html":"/1.1/page-not-available.html",
     "/1.0/learn/by-example/readonly-objects.html":"/1.0/page-not-available.html",
     "/swan-lake/learn/api-docs/ballerina/*/objects/*":"/swan-lake/learn/api-docs/ballerina/*/classes/*",
+    "/learn/by-example/testerina-function-mocks.html":"/learn/by-example/testerina-mocking-functions.html",
+    "/learn/by-example/testerina-object-mocks.html":"/learn/by-example/testerina-mocking-objects.html",
+    "/learn/by-example/testerina-before-each-test.html":"/learn/by-example/testerina-before-and-after-each.html.html"
 };

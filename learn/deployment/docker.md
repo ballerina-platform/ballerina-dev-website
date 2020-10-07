@@ -467,7 +467,7 @@ This sample sends a greeting to the caller by getting the name from a text file.
 }
 ```
 
->**Note:** In addition to the above, if you want to copy driver files such as JDBC, you can create a `Ballerina.toml` file as shown below and change the path to the JDBC driver appropriately.
+>**Note:** In addition to the above, if you want to copy driver files such as JDBC, you can create a Ballerina project, add following entires to its `Ballerina.toml` file, and change the path to the JDBC driver appropriately.
 
 `Ballerina.toml`
 

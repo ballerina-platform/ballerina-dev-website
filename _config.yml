@@ -49,3 +49,27 @@ exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/","v1-2","v1-1","v1-0","v0
 #   - vendor/gems/
 #   - vendor/ruby/
 dist_server: http://dist-dev.ballerina.io
+
+# This is the config of the link checker GitHub Action (i.e., https://github.com/marketplace/actions/link-checker).
+on:
+  schedule:
+  - cron: '0 0 1 * *'
+name: Check markdown links
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Link Checker
+        uses: peter-evans/link-checker@v1
+      - name: Create Issue From File
+        uses: peter-evans/create-issue-from-file@v2
+        with:
+          title: Link Checker Report
+          content-filepath: ./link-checker/out.md
+          labels: report, automated issue
+          assignees: praneesha
+
+# This is the config of the link checker GitHub Action (i.e., https://github.com/marketplace/actions/check-spelling).
+name: Check spelling
+uses: check-spelling/check-spelling@0.0.16-alpha

@@ -70,6 +70,6 @@ jobs:
           labels: report, automated issue
           assignees: praneesha
 
-# This is the config of the link checker GitHub Action (i.e., https://github.com/marketplace/actions/check-spelling).
+# This is the config of the spell checker GitHub Action (i.e., https://github.com/marketplace/actions/check-spelling).
 name: Check spelling
 uses: check-spelling/check-spelling@0.0.16-alpha

@@ -1710,3 +1710,76 @@ pre {
 }
 
 
+
+
+
+
+/* TOC */
+
+
+ul, #toc {
+    list-style-type: none;
+  }
+
+  #toc {
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  .caret {
+    cursor: pointer;
+    user-select: none; 
+  }
+  
+
+  .caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+
+  .caret-down::before {
+    transform: rotate(90deg);
+  }
+
+  .nested {
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+
+  .caret {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 2px;
+	vertical-align: middle;
+	border-top: 10px dashed;
+	border-top: 10px solid\9;
+	border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    margin-left: -10px;
+    display: inline-block;
+    margin-top: 5px;
+    float: left;
+    margin-right: 10px;
+    color:#22b7b1;
+    
+}
+
+
+#toc li , #toc li li  , #toc li li li  {
+    padding-left: 10px;
+}
+
+#toc ul   {
+    border-left: 1px solid #e6e6e6;
+    padding-left:10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

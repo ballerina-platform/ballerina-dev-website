@@ -17,35 +17,97 @@ redirect_from:
 
 This document demonstrates different security features and controls available within Ballerina, and serves the purpose of providing guidelines on writing secure Ballerina programs.
 
-*   [Secure by Design](#secure-by-design)
-    *   [Ensuring Security of Ballerina Standard Libraries](#ensuring-security-of-ballerina-standard-libraries)
-    *   [Securely Using Tainted Data with Security-Sensitive Parameters](#securely-using-tainted-data-with-security-sensitive-parameters)
-*   [Securing Passwords and Secrets](#securing-passwords-and-secrets)
-*   [Authentication and Authorization](#authentication-and-authorization)
-    *   [Inbound Authentication and Authorization](#inbound-authentication-and-authorization)
-        *   [Inbound Advanced Use Cases](#inbound-advanced-use-cases)
-            *   [Using Multiple Auth Handlers](#using-multiple-auth-handlers)
-            *   [Using Multiple Scopes](#using-multiple-scopes)
-            *   [Per-Resource and Per-Service Customization](#per-resource-and-per-service-customization)
-            *   [Implementing Inbound Custom Authentication Mechanism](#implementing-inbound-custom-authentication-mechanism)
-            *   [Disable HTTPS Enforcement](#disable-https-enforcement)
-            *   [Modify Authentication or Authorization Filter Index](#modify-authorization-or-authentication-filter-index)
-        *   [JWT Inbound Authentication and Authorization](#jwt-inbound-authentication-and-authorization)
-        *   [OAuth2 Inbound Authentication and Authorization](#oauth2-inbound-authentication-and-authorization)
-        *   [LDAP Inbound Authentication and Authorization](#ldap-inbound-authentication-and-authorization)
-        *   [Basic Auth Inbound Authentication and Authorization](#basic-auth-inbound-authentication-and-authorization)
-    *   [Outbound Authentication and Authorization](#outbound-authentication-and-authorization)
-        *   [Outbound Advanced Use Cases](#outbound-advanced-use-cases)
-            *   [Implementing Outbound Custom Authentication Mechanism](#implementing-outbound-custom-authentication-mechanism)
-        *   [JWT Outbound Authentication](#jwt-outbound-authentication)
-        *   [OAuth2 Outbound Authentication](#oauth2-outbound-authentication)
-            *   [Client Credentials Grant Type](#client-credentials-grant-type)
-            *   [Password Grant Type](#password-grant-type)
-            *   [Direct Token Mode](#direct-token-mode)
-        *   [Basic Auth Outbound Authentication](#basic-auth-outbound-authentication)
-        *   [Token Propagation for Outbound Authentication](#token-propagation-for-outbound-authentication)
-            *   [Example One](#example-one)
-            *   [Example Two](#example-two)
+<ul id="toc">
+
+  <li><span class="caret"></span><a href="#secure-by-design">Secure by Design</a>
+    <ul class="nested">
+      <li><a href="#ensuring-security-of-ballerina-standard-libraries">Ensuring Security of Ballerina Standard Libraries</a></li>
+      <li><a href="#securely-using-tainted-data-with-security-sensitive-parameters">Securely Using Tainted Data with Security-Sensitive Parameters</a></li>
+    </ul>
+  </li>
+  <li><a href="#securing-passwords-and-secrets">Securing Passwords and Secrets</a></li>
+  <li><span class="caret"></span><a href="#authentication-and-authorization">Authentication and Authorization</a>
+    <ul class="nested">
+      <li><span class="caret"></span><a href="#inbound-authentication-and-authorization">Inbound Authentication and Authorization</a>
+        <ul class="nested">
+          <li><span class="caret"></span><a href="#inbound-advanced-use-cases">Inbound Advanced Use Cases</a>
+            <ul>
+              <li><a href="#using-multiple-auth-handlers">Using Multiple Auth Handlers</a></li>
+              <li><a href="#using-multiple-scopes">Using Multiple Scopes</a></li>
+              <li><a href="#per-resource-and-per-service-customization">Per-Resource and Per-Service Customization</a></li>
+              <li><a href="#implementing-inbound-custom-authentication-mechanism">Implementing Inbound Custom Authentication Mechanism</a></li>
+              <li><a href="#disable-https-enforcement">Disable HTTPS Enforcement</a></li>
+              <li><a href="#modify-authorization-or-authentication-filter-index">Modify Authentication or Authorization Filter Index</a></li>
+            </ul>
+          </li>
+          <li><a href="#jwt-inbound-authentication-and-authorization">JWT Inbound Authentication and Authorization</a></li>
+          <li><a href="#oauth2-inbound-authentication-and-authorization">OAuth2 Inbound Authentication and Authorization</a></li>
+          <li><a href="#ldap-inbound-authentication-and-authorization">LDAP Inbound Authentication and Authorization</a></li>
+          <li><a href="#basic-auth-inbound-authentication-and-authorization">Basic Auth Inbound Authentication and Authorization</a></li>
+        </ul>
+      </li>
+      <li><span class="caret"></span><a href="#outbound-authentication-and-authorization">Outbound Authentication and Authorization</a>
+        <ul class="nested">
+          <li><span class="caret"></span><a href="#outbound-advanced-use-cases">Outbound Advanced Use Cases</a>
+            <ul>
+              <li><a href="#implementing-outbound-custom-authentication-mechanism">Implementing Outbound Custom Authentication Mechanism</a></li>
+            </ul>
+          </li>
+          <li><a href="#jwt-outbound-authentication">JWT Outbound Authentication</a></li>
+          <li><span class="caret"></span><a href="#oauth2-outbound-authentication">OAuth2 Outbound Authentication</a>
+            <ul class="nested">
+              <li><a href="#client-credentials-grant-type">Client Credentials Grant Type</a></li>
+              <li><a href="#password-grant-type">Password Grant Type</a></li>
+              <li><a href="#direct-token-mode">Direct Token Mode</a></li>
+            </ul>
+          </li>
+          <li><a href="#basic-auth-outbound-authentication">Basic Auth Outbound Authentication</a></li>
+          <li><span class="caret"></span><a href="#token-propagation-for-outbound-authentication">Token Propagation for Outbound Authentication</a>
+            <ul class="nested">
+              <li><a href="#example-one">Example One</a></li>
+              <li><a href="#example-two">Example Two</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <li><span class="caret">lorem ipsum</span>
+    <ul class="nested">
+      <li>lorem ipsum</li>
+      <li>lorem ipsum</li>
+      <li><span class="caret">lorem ipsum</span>
+        <ul class="nested">
+          <li>lorem ipsum</li>
+          <li>lorem ipsum</li>
+          <li><span class="caret">lorem ipsum</span>
+            <ul class="nested">
+              <li>lorem ipsum</li>
+              <li>lorem ipsum</li>
+              <li>lorem ipsum</li>
+              <li>lorem ipsum</li>
+            </ul>
+          </li>
+        </ul>
+      </li>  
+    </ul>
+  </li> -->
+</ul>
+
+
 
 ## Secure by Design
 

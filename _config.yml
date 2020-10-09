@@ -50,6 +50,8 @@ exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/","v1-2","v1-1","v1-0","v0
 #   - vendor/ruby/
 dist_server: http://dist-dev.ballerina.io
 
+
+# This is the config of the link checker GitHub Action.
 on:
   schedule:
   - cron: '0 0 1 * *'
@@ -68,5 +70,10 @@ jobs:
           content-filepath: ./link-checker/out.md
           labels: report, automated issue
           assignees: praneesha
+
+# This is the config of the link checker GitHub Action.
+name: Check spelling
+uses: check-spelling/check-spelling@0.0.16-alpha
+
 
 

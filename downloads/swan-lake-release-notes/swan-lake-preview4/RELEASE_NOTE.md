@@ -317,13 +317,13 @@ Executing a `fail` Statement will cause the control flow to transfer to the `on 
 
 ##### Predeclared module prefixes
 
-The module prefix `t` (where `t` could be `boolean`, `decimal`, `error`, `float`, `future`, `int`, `map`, `object`, `stream`, `string`, `table`, `typedesc`, or `xml`) has been predeclared as referring to the `lang.t` lang library module now.
+The module prefix `t` (in which `t` could be `boolean`, `decimal`, `error`, `float`, `future`, `int`, `map`, `object`, `stream`, `string`, `table`, `typedesc`, or `xml`) has been predeclared as referring to the `lang.t` lang library module now.
 
 Such modules can now be used without explicitly importing them.
 
 ```ballerina
     public function main() {
-        int max = 'int:max(1, 2, 3);
+        int max = 'int:max(311, 22, 41234);
     }
 ```
 

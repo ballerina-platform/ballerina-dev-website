@@ -25,11 +25,11 @@ redirect_from:
 ---
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<h2>Gear Yourself Up</h2>
+<h2>Gear Youself Up</h2>
    <p>Download Ballerina, set the tools up, and take the Quick Tour.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
+   <li><a href="/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Quick Tour</a></li>
    </ul>
 

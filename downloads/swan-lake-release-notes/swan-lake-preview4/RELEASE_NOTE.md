@@ -21,6 +21,7 @@ This release is the fourth preview version of Ballerina Swan Lake. This release 
         -  [Subsequent initialization support for local final variables](#subsequent-initialization-support-for-local-final-variables)
         - [Handle errors at a single point](#handle-errors-at-a-single-point)
         - [The Fail statement](#the-fail-statement)
+        - [Predeclared module prefixes](#predeclared-module-prefixes)
         - [Improved lang library functions](#improved-lang-library-functions)
     - [Runtime](#runtime)
         - [jBallerina Runtime APIs](#jballerina-runtime-apis)
@@ -312,6 +313,18 @@ Executing a `fail` Statement will cause the control flow to transfer to the `on 
     } on fail InvalidAccountIDError|AccountNotFoundError e {
         io:println("Error occurred: ", e.message(),", Account ID: ", e.detail()["accountID"]);
     }
+```
+
+##### Predeclared module prefixes
+
+The module prefix `t` (which could be `boolean`, `decimal`, `error`, `float`, `future`, `int`, `map`, `object`, `stream`, `string`, `table`, `typedesc`, or `xml`) has been predeclared as referring to the `lang.t` lang library module now.
+
+Such modules can now be used without explicitly importing them.
+
+```ballerina
+public function main() {
+    int max = 'int:max(311, 22, 41234);
+}
 ```
 
 ##### Improved lang library functions

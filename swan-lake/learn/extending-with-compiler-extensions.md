@@ -45,7 +45,7 @@ The Ballerina compiler can be extended using compiler extensions (if required) f
 The `ballerina/docker` and `ballerina/kubernetes` modules make use of custom annotations. They introduce new annotations such as `@docker:Config` and `@kubernetes:Deployment` that can be attached to certain constructs in a Ballerina source file. The respective compiler extensions then run a post-compilation process that reads these annotations and generates the Docker and Kubernetes deployment artifacts.
 
 > **Note:** Currently, there are two caveats when writing compiler extensions:
-> 1. The Ballerina Compiler is written in Java 8. Therefore, you will need JDK 1.8.
+> 1. The Ballerina Compiler is written in Java 11. Therefore, you will need JDK 11.
 > 2. End users will have to install the extension manually.
 
 ## Hello World: The Annotation Way

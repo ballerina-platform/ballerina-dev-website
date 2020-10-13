@@ -35,7 +35,7 @@ breadcrumbs:
     hide: true  # show breadcrumbs on root/home page
     image: false # Show image or title text  
 github_username:  ballerina-platform
-git_repo: ballerina-platform.github.io
+git_repo: ballerina-dev-website
 latest_version: 1.2
 #keep_files: ['0.990','0.991',"1.1"]
 # Exclude from processing.

@@ -2,4 +2,10 @@
 
 on: [pull_request]
 name: Check spelling
-uses: check-spelling/check-spelling@0.0.16-alpha
+jobs:
+  spellChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check spelling
+      - uses: check-spelling/check-spelling@0.0.16-alpha
+  

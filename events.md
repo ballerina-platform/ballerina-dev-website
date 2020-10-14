@@ -99,7 +99,7 @@ redirect_from:
          <h5>Ballerina - A Cloud Native Programming Language</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="youtu.be/OJUYOFds-s4" target="_blank">Watch Video</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=OJUYOFds-s4&ab_channel=CloudColombo" target="_blank">Watch Video</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">

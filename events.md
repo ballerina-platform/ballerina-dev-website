@@ -139,7 +139,7 @@ redirect_from:
             <h4>Nova Code Camp</h4>
          </a>
          <h5>Let's Dance Together! Ballerina</h5>
-         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
+         <b>Vanjikumaran Sivajothy,</b> Senior Lead Solutions Engineer, WSO2
       </td>
       <td class="cEventURL"><a class="cEventRegistration" href="https://novacodecamp.org/app/speakers/aa20c381-1fa5-42c6-8095-a01ca1bab0b7" target="_blank">More Info</a></td>
    </tr>

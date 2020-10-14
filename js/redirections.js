@@ -237,5 +237,5 @@ let redirections = {
     "/learn/by-example/readonly-objects.html":"/page-not-available.html",
     "/1.1/learn/by-example/readonly-objects.html":"/1.1/page-not-available.html",
     "/1.0/learn/by-example/readonly-objects.html":"/1.0/page-not-available.html",
-    "/swan-lake/learn/api-docs/ballerina/*/objects/*":"/swan-lake/learn/api-docs/ballerina/*/classes/*",
+    "/swan-lake/learn/api-docs/ballerina/*/objects/*":"/swan-lake/learn/api-docs/ballerina/*/classes/*"
 };

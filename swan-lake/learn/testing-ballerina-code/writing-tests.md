@@ -91,23 +91,23 @@ import ballerina/io;
 import ballerina/test;
 
 function beforeFunc() {
-    // This is function, which will be executed before the Test functions.
+    // This is the function, which will be executed before the Test functions.
 }
 
 function afterFunc() {
-    // This is function, which will be executed after the Test functions.
+    // This is the function, which will be executed after the Test functions.
 }
 
 // This test function will not be executed.
 @test:Config {
-enable: false,
+enable: false
 }
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-// This test function depends on `testFunction1`.
+// This test function depends on the `testFunction3`.
 @test:Config{  
     before: "beforeFunc",
     after: "afterFunc",
@@ -125,7 +125,7 @@ function dataGen() returns (int[][]) {
 }
 
 // This is a random test function. This will randomly execute without depending on the other functions.
-// However, note that other functions do depend on this.
+// However, note that the `testFunction2` function depends on this.
 @test:Config {
     groups: ["g1", "g2"]
 }
@@ -231,7 +231,7 @@ Asserts that the actual entity is exactly equal to the expected entity with an o
 ```ballerina
 import ballerina/test;
 
-type Person object {
+class Person {
     public string name = "";
     public int age = 0;
     public Person? parent = ();
@@ -256,7 +256,7 @@ Asserts that the actual entity is not exactly equal to the expected entity with 
 ```ballerina
 import ballerina/test;
 
-type Person object {
+class Person {
     public string name = "";
     public int age = 0;
     public Person? parent = ();
@@ -338,14 +338,14 @@ For each group specified in this annotation, the function that follows the annot
 import ballerina/io;
 import ballerina/test;
 
-// The `BeforeGroups` function is executed before running all the test functions in this module. 
-@test:BeforeGroups { value:["g1"] }
+// The `BeforeGroups1` function is executed before running all the test functions in this module. 
+@test:BeforeGroups1 { value:["g1"] }
 function beforeFunc() {
     io:println("I'm the before groups function!");
 }
 
-// Another `BeforeGroups` function is executed before running all the test functions in this module. 
-@test:BeforeGroups { value:["g1", "g2"] }
+// Another `BeforeGroups2` function is executed before running all the test functions in this module. 
+@test:BeforeGroups2 { value:["g1", "g2"] }
 function beforeFunc() {
     io:println("I'm another before groups function!");
 }
@@ -358,7 +358,7 @@ function testFunction1() {
 }
 
 // A test function that belongs to the group `g2`.
-@test:Config { groups:["g2"] }}
+@test:Config { groups:["g2"] }
 function testFunction2() {
     io:println("I belong to group g2 ");
     test:assertTrue(true, msg = "Failed");
@@ -462,21 +462,21 @@ function testFunction1() {
 }
 
 // A test function that belongs to the group `g2`.
-@test:Config { groups:["g2"] }}
+@test:Config { groups:["g2"] }
 function testFunction2() {
     io:println("I belong to group g2 ");
     test:assertTrue(true, msg = "Failed");
 }
 
 // The `AfterGroups` function is executed before running all the test functions in this module. 
-@test:BeforeGroups { value:["g1"] }
-function beforeFunc() {
+@test:BeforeGroups1 { value:["g1"] }
+function beforeFunc1() {
     io:println("I'm the before groups function!");
 }
 
 // Another `AfterGroups` function is executed before running all the test functions in this module. 
-@test:BeforeGroups { value:["g1", "g2"] }
-function beforeFunc() {
+@test:BeforeGroups2 { value:["g1", "g2"] }
+function beforeFunc2() {
     io:println("I'm another before groups function!");
 }
 ```
@@ -499,7 +499,7 @@ function testFunction1() {
 }
 
 // The `AfterSuite` function is executed after all the test functions in this module.
-@test:AfterSuite
+@test:AfterSuite  {}
 function afterFunc() {
     io:println("I'm the after suite function!");
 }

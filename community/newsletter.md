@@ -20,6 +20,7 @@ This is a periodic newsletter on Ballerina with hand-picked content and regular 
 <tr><td class="cLink"><a href="/community/newsletter/2020-1"></a></td><td></td></tr>
 </table> -->
 <ul class="cInlinelinklist cPastIssues">
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-3">2020-4</a>October 15, 2020</li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/2020-3">2020-3</a>August 27, 2020</li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/2020-2">2020-2</a>July 7, 2020</li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/2020-1">2020-1</a>May 26, 2020</li>

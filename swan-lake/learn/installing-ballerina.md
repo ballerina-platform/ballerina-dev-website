@@ -92,7 +92,7 @@ Alternatively, follow the instructions below to build Ballerina from the source.
 ### Setting Up the Prerequisites
 
 You need to download and install the below to build the Ballerina modules.
-1. Open JDK 11 ([Adopt OpenJDK](https://adoptopenjdk.net/) or any other Open JDK distribution) 
+1. OpenJDK 11 ([Adopt OpenJDK](https://adoptopenjdk.net/) or any other OpenJDK distribution) 
     
 >**Info:** You can also use [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html). Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
 
@@ -152,4 +152,3 @@ Once you have successfully installed Ballerina, click the links below to set up 
 
 - [Setting up Visual Studio Code](/swan-lake/learn/vscode-plugin/)
 - [Setting up IntelliJ IDEA](/swan-lake/learn/intellij-plugin/)
-

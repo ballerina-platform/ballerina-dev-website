@@ -63,7 +63,7 @@ rpm -i ballerina-linux-installer-x64-swan-lake-preview1.rpm
 
 ## Installing via the Ballerina Language ZIP File
 
-> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the [AdoptOpenJRE](https://adoptopenjdk.net/) version 1.8 or above.
+> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the [AdoptOpenJRE](https://adoptopenjdk.net/) version 11 or above.
 
 1. <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip" class="cGTMDownload cDownload" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.zip-installer }}"> Download the Ballerina language ZIP file </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip.md5">(md5, </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip.sha1">SHA-1, </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip.asc">asc)</a> and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<VERSION> in your system.
 
@@ -92,10 +92,10 @@ Alternatively, follow the instructions below to build Ballerina from the source.
 ### Setting Up the Prerequisites
 
 You need to download and install the below to build the Ballerina modules.
-1. Java SE Development Kit (JDK) version 8 (from one of the following locations) 
-    - [Oracle](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-    - [OpenJDK](http://openjdk.java.net/install/index.html)
-    >**Note:** Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
+1. OpenJDK 11 ([Adopt OpenJDK](https://adoptopenjdk.net/) or any other OpenJDK distribution) 
+    
+    >**Info:** You can also use [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html). Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
+
 2. [Node.js (version 8.9.x)](https://nodejs.org/en/download/)
 3. [npm (version 5.6.0 or later)](https://www.npmjs.com/get-npm)
 
@@ -152,4 +152,3 @@ Once you have successfully installed Ballerina, click the links below to set up 
 
 - [Setting up Visual Studio Code](/swan-lake/learn/vscode-plugin/)
 - [Setting up IntelliJ IDEA](/swan-lake/learn/intellij-plugin/)
-

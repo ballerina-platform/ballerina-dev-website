@@ -29,7 +29,7 @@ redirect_from:
    <p>Download Ballerina, set the tools up, and take the Quick Tour.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
+   <li><a href="/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Quick Tour</a></li>
    </ul>
 

@@ -94,7 +94,7 @@ Alternatively, follow the instructions below to build Ballerina from the source.
 You need to download and install the below to build the Ballerina modules.
 1. OpenJDK 11 ([Adopt OpenJDK](https://adoptopenjdk.net/) or any other OpenJDK distribution) 
     
->**Info:** You can also use [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html). Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
+    >**Info:** You can also use [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html). Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
 
 2. [Node.js (version 8.9.x)](https://nodejs.org/en/download/)
 3. [npm (version 5.6.0 or later)](https://www.npmjs.com/get-npm)

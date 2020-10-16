@@ -14,20 +14,6 @@ redirect_from:
 <!-- <h2>No upcoming events</h2> -->
 <h2>Upcoming Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
-   <tr class="event-expiry" style="display:none" data-expiry="September 29, 2020 12:00:00">
-      <td class="cEventDateContainer">
-         <span class="cEventDate">September 28 - 29, 2020</span>
-         <p class="cEventLocation">Seattle, Washington, USA</p>
-      </td>
-      <td class="cEventDetail">
-         <a target="_blank" href="https://www.developerweek.com/CloudEdition/">
-            <h4>DeveloperWeek Seattle: Cloud Edition</h4>
-         </a>
-         <h5>Code to Kubernetes: Languages of Infrastructure</h5>
-         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
-      </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/global/conference/cloud/schedule/" target="_blank">More Info</a></td>
-   </tr>
    <tr class="event-expiry" style="display:none" data-expiry="October 21, 2020 12:00:00">
       <td class="cEventDateContainer">
          <span class="cEventDate">October 19 - 21, 2020</span>
@@ -70,19 +56,19 @@ redirect_from:
       </td>
       <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td>
    </tr>
-   <tr class="event-expiry" style="display:none" data-expiry="October 30, 2020 12:00:00">
+   <tr class="event-expiry" style="display:none" data-expiry="December 4, 2020 12:00:00">
       <td class="cEventDateContainer">
-         <span class="cEventDate">October 30, 2020</span>
-         <p class="cEventLocation">Munich, Germany</p>
+         <span class="cEventDate">December 2 - 4, 2020</span>
+         <p class="cEventLocation">Virtual</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://emamo.com/event/developerweek-global-cloud-2020">
-            <h4>Developer Week Global Cloud</h4>
+         <a target="_blank" href="https://events.linuxfoundation.org/open-source-summit-japan/">
+            <h4>Open Source Summit Japan</h4>
          </a>
-         <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
-         <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
+         <h5></h5>
+         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://emamo.com/event/developerweek-global-cloud-2020/s/open-talk-code-to-kubernetes-deployment-shouldnt-be-an-afterthought-NyPYlo" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/open-source-summit-japan/program/schedule-at-a-glance/" target="_blank">More Info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">
       <td class="cEventDateContainer">
@@ -101,6 +87,62 @@ redirect_from:
 </table>
 <h2>Past Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
+   <tr class="event-expiry" style="display:none" data-expiry="">
+      <td class="cEventDateContainer">
+         <span class="cEventDate">October 7, 2020</span>
+         <p class="cEventLocation">Virtual</p>
+      </td>
+      <td class="cEventDetail">
+         <a target="_blank" href="https://www.youtube.com/channel/UCLt6HDrCpdlZ3FUWe-tqpdQ">
+            <h4>Cloud Colombo</h4>
+         </a>
+         <h5>Ballerina - A Cloud Native Programming Language</h5>
+         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
+      </td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=OJUYOFds-s4&ab_channel=CloudColombo" target="_blank">Watch Video</a></td>
+   </tr>
+   <tr class="event-expiry" style="display:none" data-expiry="">
+      <td class="cEventDateContainer">
+         <span class="cEventDate">September 30, 2020</span>
+         <p class="cEventLocation">Virtual</p>
+      </td>
+      <td class="cEventDetail">
+         <a target="_blank" href="https://www.developerweek.com/global/conference/cloud/schedule/">
+            <h4>DeveloperWeek Global: Cloud</h4>
+         </a>
+         <h5>Code to Kubernetes: Deployment Shouldn't Be an Afterthought</h5>
+         <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
+      </td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://emamo.com/event/developerweek-global-cloud-2020/s/open-talk-code-to-kubernetes-deployment-shouldnt-be-an-afterthought-NyPYlo" target="_blank">More Info</a></td>
+   </tr>
+   <tr class="event-expiry" style="display:none" data-expiry="">
+      <td class="cEventDateContainer">
+         <span class="cEventDate">September 29, 2020</span>
+         <p class="cEventLocation">Virtual</p>
+      </td>
+      <td class="cEventDetail">
+         <a target="_blank" href="https://emamo.com/event/developerweek-global-cloud-2020/r/speaker/anjana-fernando-1">
+            <h4>DeveloperWeek Global: Cloud</h4>
+         </a>
+         <h5>Code to Kubernetes: Languages of Infrastructure</h5>
+         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
+      </td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/code-to-kubernetes-languages-of-infrastructure" target="_blank">View Slides</a></td>
+   </tr>
+   <tr class="event-expiry" style="display:none" data-expiry="">
+      <td class="cEventDateContainer">
+         <span class="cEventDate">September 26, 2020</span>
+         <p class="cEventLocation">Virtual</p>
+      </td>
+      <td class="cEventDetail">
+         <a target="_blank" href="https://novacodecamp.org/app/speakers/aa20c381-1fa5-42c6-8095-a01ca1bab0b7">
+            <h4>Nova Code Camp</h4>
+         </a>
+         <h5>Let's Dance Together! Ballerina</h5>
+         <b>Vanjikumaran Sivajothy,</b> Senior Lead Solutions Engineer, WSO2
+      </td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://novacodecamp.org/app/speakers/aa20c381-1fa5-42c6-8095-a01ca1bab0b7" target="_blank">More Info</a></td>
+   </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
          <span class="cEventDate">May 28, 2020</span>

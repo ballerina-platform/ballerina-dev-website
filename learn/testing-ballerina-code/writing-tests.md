@@ -126,7 +126,7 @@ function dataGen() returns (int[][]) {
 }
 
 // This is a random test function. This will randomly execute without depending on the other functions.
-// However, note that `testFunction2` depends on this.
+// However, note that `testFunction3` depends on this.
 @test:Config {
     groups: ["g1", "g2"]
 }

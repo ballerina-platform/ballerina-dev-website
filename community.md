@@ -35,7 +35,7 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-3/">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-4/">Latest Ballerina Newsletter</a></li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues">Past newsletter issues</a></li>
 
 </ul>

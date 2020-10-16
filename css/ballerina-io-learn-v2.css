@@ -231,4 +231,24 @@ p.cTOCcontol {
     margin-bottom: 30px;
 }
 
+/* .cPositionRelative {
+    position: relative;
+} */
  
+a.cTopLink {
+	position: fixed;
+	bottom: 30px;
+	right: 0px;
+	padding: 10px 20px;
+	background: #20b6b0;
+	color: #fff !important;
+	font-weight: 600;
+}
+a.cTopLink.dispalaynone {
+    display: none;
+}
+
+a.cTopLink:hover {
+background-color: #464646 !important;
+color: #fff !important;
+}

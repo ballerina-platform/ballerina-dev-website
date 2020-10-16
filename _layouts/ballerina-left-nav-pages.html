@@ -34,15 +34,15 @@
                         </ul>
                      </div>
                   </div>
-                  <div class="cBlallerina-io-docs-content-container">
+                  <div class="cBlallerina-io-docs-content-container cPositionRelative">
                      <div class="wy-nav-content">
                         <div class="rst-content">
                            <div role="main">
                               <div class="section">
                                  <h1>{{ page.title }}</h1>
                                  <p>{{ page.intro }}</p>
-                                 <div class="cBallerinaTocContainer">
-                                    <p class="cTOCcontol"><strong>Table of contents</strong> - <a href="#" id="tree-expand-all">Expand all</a> | <a href="#" id="tree-collapse-all">Collapse all</a></p>
+                                 <div class="cBallerinaTocContainer" id="table-of-content">
+                                    <p class="cTOCcontol" ><strong>Table of contents</strong> - <a href="#" id="tree-expand-all">Expand all</a> | <a href="#" id="tree-collapse-all">Collapse all</a></p>
                                     {% include toc.html html=content sanitize=true id="tree" %}
                                  </div>
                                  {{ content }}
@@ -50,6 +50,7 @@
                            </div>
                         </div>
                      </div>
+                     <a class="cTopLink" href="#table-of-content">Go to top &#x2934;</a>
                   </div>
                </div>
             </div>
@@ -76,6 +77,27 @@
          $(document).ready(function() {
              $('#tree').abixTreeList();
          });
+
+
+
+
+
+         $(window).scroll(function () {
+        var bodyclass = document.body;
+
+        if ($(this).scrollTop() > 200) {
+            $('.cTopLink').removeClass('dispalaynone');
+          
+        } else {
+            $('.cTopLink').addClass('dispalaynone');
+          
+        }
+
+   
+
+
+    });
+
      </script>
 
 

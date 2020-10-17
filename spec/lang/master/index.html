@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-13</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-17</h1>
 <p>
 Primary contributors:
 </p>
@@ -74,11 +74,15 @@ mailing list.
 <li>5.1 <a href="#section_5.1">Overview</a><ul>
 <li>5.1.1 <a href="#section_5.1.1">Type system fundamentals</a>
 </li>
-<li>5.1.2 <a href="#section_5.1.2">Type descriptors</a>
+<li>5.1.2 <a href="#section_5.1.2">Mutation</a>
 </li>
-<li>5.1.3 <a href="#section_5.1.3">Type-ids</a>
+<li>5.1.3 <a href="#section_5.1.3">Isolation</a>
 </li>
-<li>5.1.4 <a href="#section_5.1.4">Iterability</a>
+<li>5.1.4 <a href="#section_5.1.4">Type descriptors</a>
+</li>
+<li>5.1.5 <a href="#section_5.1.5">Type-ids</a>
+</li>
+<li>5.1.6 <a href="#section_5.1.6">Iterability</a>
 </li>
 </ul>
 </li>
@@ -437,7 +441,7 @@ mailing list.
 </li>
 <li>7.23 <a href="#section_7.23">Break statement</a>
 </li>
-<li>7.24 <a href="#section_7.24">Lock statement</a>
+<li>7.24 <a href="#lock_statement">Lock statement</a>
 </li>
 <li>7.25 <a href="#section_7.25">On fail clause</a>
 </li>
@@ -809,8 +813,7 @@ constructed from other values;</li>
 <li>structured values, like mappings and lists, which contain other values;</li>
 <li>sequence values, which combine aspects of simple values and structured
 values;</li>
-<li>behavioral values, like functions, which allow parts of Ballerina programs
-to be handled in a uniform way with other values</li>
+<li>behavioral values, like functions and objects, which are not just data</li>
 </ul>
 <p>
 There is a fundamental distinction between values that have a <em>storage
@@ -821,12 +824,12 @@ not. Storage identity for sequence values is more complicated and will be
 explained in the section on sequence values.
 </p>
 <p>
-Values can be stored in variables or as members of structures. When a value has
-no storage identity, it can be stored directly in the variable or structure.
-However, when a value has storage identity, what is stored in the variable or
-member is a reference to the location where the value is stored rather than the
-value itself. Storage identity allows values in Ballerina to represent not just
-trees but graphs.
+Values can be stored in variables or as members of structures or in constituents
+of sequences. When a value has no storage identity, it can be stored directly in
+the variable, structure or sequence. However, when a value has storage identity,
+what is stored in the variable, structure or sequence is a reference to the
+location where the value is stored rather than the value itself. Storage
+identity allows values in Ballerina to represent not just trees but graphs.
 </p>
 <p>
 Ballerina provides the ability to test whether two values have the same storage
@@ -838,13 +841,6 @@ concept of <em>copying</em>: it means to create a value that is the same, except
 for having a new storage identity. The concept of having storage identity is
 similar to the concept of a reference type in some other programming languages,
 but also accomodates the concept of a sequence value.
-</p>
-<p>
-Storage identity is tied to mutability. Mutation is only well-defined for values
-with storage identity. When a value stored in some storage location is mutated,
-the change will be visible through all variables referring to the value in that
-location. But not all values with storage identity can be mutated: a value may
-not support mutation even though it has a storage identity.
 </p>
 <p>
 Ballerina programs use types to categorize values both at compile-time and
@@ -859,47 +855,7 @@ shape of the structured value. Since shapes do not deal with storage identity,
 they represent trees rather graphs. For simple values, there is no difference
 between a shape and a value, with the exception of floating point values where
 the shape does not consider representation details that do not affect the
-mathematical value being represented. There are two important relations between
-a value and a type:
-</p>
-<ul>
-<li>a value <em>looks like</em> a type at a particular point in the execution of
-a program if its shape at that point is a member of the type;</li>
-<li>a value <em>belongs to</em> a type if it looks like the type, and it will
-necessarily continue to look like the type no matter how the value is mutated.</li>
-</ul>
-<p>
-When a Ballerina program declares a variable to have a compile-time type, this
-means that the Ballerina compiler together with the runtime system will ensure
-that the variable will only ever contain a value that belongs to the type.
-Ballerina also provides mechanisms that take a value that looks like a type and
-use it to create a value that belongs to a type.
-</p>
-<p>
-If a value cannot be mutated, looking like a type and belonging to a type are
-the same thing.
-</p>
-<p>
-Every value has a read-only bit. If the read-only bit is on, it means that the
-value is not mutable. A value's read-only bit is fixed when the value is
-constructed, and cannot be changed thereafter. Immutability is deep: the values
-contained in a structured value that has its read-only bit on will all have
-their read-only bits on. Some basic types are inherently immutable: the
-read-only bit is always on for a value that belongs to an inherently immutable
-basic type. All simple types are inherently immutable. Some basic types are
-selectively immutable: a type is selectively immutable if it is possible to
-construct both values of the type that have the read-only bit on and values
-that do not have the read-only bit on. All structured types are selectively
-immutable. Finally, some basic types are inherently mutable: the read-only bit
-is never on for a value belonging to an inherently mutable basic type.
-</p>
-<p>
-A shape is divided into two <em>aspects</em>: the <em>primary aspect</em> and
-the <em>read-only aspect</em>. A value's read-only bit is a part of the
-<em>read-only aspect</em> of the value's shape. The read-only bit of values
-contained in a structured value is part of the read-only aspect of those values
-and of the read-only aspect of the structured value. Everything about a shape
-except the read-only bits constitutes the primary aspect of the shape.
+mathematical value being represented.
 </p>
 <p>
 A value is <em>plain data</em> if it is a simple value, a sequence value or a
@@ -916,10 +872,147 @@ Plain data values can in general contain cycles of references, but in some
 contexts are restricted to be acyclic. Plain data values, including values with
 cycles, can be compared for equality.
 </p>
+<p>
+The two most important kinds of behavioural values are functions and objects. A
+function value can be executed by calling it; when a function is called, it is
+passed values and arguments and returns a value. An object encapsulates data
+with functions that operate on the data: an object's members are divided into
+fields, which hold the data, and methods, which are the functions that operate
+on the data.
+</p>
+</section>
+
+<section>
+<h4 id="section_5.1.2">5.1.2 Mutation</h4>
+<p>
+There are two kinds of things that can be mutated in Ballerina: variables and
+values. Mutation of values is tied to storage identity: mutation is only
+possible for values with storage identity. When a value stored in some storage
+location is mutated, the change will be visible through all variables referring
+to the value in that location. But not all values with storage identity can be
+mutated: a value may not support mutation even though it has a storage identity.
+</p>
+<p>
+The possibility of mutation gives rise to two relations between a value and a
+type:
+</p>
+<ul>
+<li>a value <em>looks like</em> a type at a particular point in the execution of
+a program if its shape at that point is a member of the type;</li>
+<li>a value <em>belongs to</em> a type if it looks like the type, and it will
+necessarily continue to look like the type no matter how the value is mutated.</li>
+</ul>
+<p>
+If a value cannot be mutated, looking like a type and belonging to a type are
+the same thing.
+</p>
+<p>
+When a Ballerina program declares a variable to have a compile-time type, this
+means that the Ballerina compiler together with the runtime system will ensure
+that the variable will only ever hold a value that belongs to the type.
+Ballerina also provides mechanisms that take a value that looks like a type and
+use it to create a value that belongs to a type.
+</p>
+<p>
+Every value has a read-only bit. If the read-only bit is on, it means that the
+value is immutable. A value's read-only bit is fixed when the value is
+constructed, and cannot be changed thereafter. Ballerina maintains the invariant
+that immutability is deep: any value reachable from a value with its read-only
+bit set is guaranteed to have its read-only bit set. Here <em>reachable</em>
+means reachable through read operations: every member of a structure value is
+reachable from the structure value; every constituent of a sequence value is
+reachable from the sequence value; every member of an object value is reachable
+from the object value. Reachability is transitive: if <var>t</var> is reachable
+from <var>s</var>, and <var>s</var> is reachable from <var>r</var>, then
+<var>t</var> is reachable from <var>r</var>. Reachability is also considered
+reflexive: a value is reachable from itself.
+</p>
+<p>
+Some basic types are inherently immutable: the read-only bit is always on for a
+value that belongs to an inherently immutable basic type. All simple types are
+inherently immutable as are functions. Some basic types are selectively
+immutable: a type is selectively immutable if it is possible to construct both
+values of the type that have the read-only bit on and values that do not have
+the read-only bit on. All structured types are selectively immutable as are
+objects. Finally, some basic types are inherently mutable: the read-only bit is
+never on for a value belonging to an inherently mutable basic type.
+</p>
+<p>
+It is also possible to limit the mutability of variables, by making them final.
+This means that the value that a variable holds cannot be changed after the
+variable has been initialized. Unlike immutability of variables, this is not
+deep. A final variable can hold a mutable value.
+</p>
+</section>
+
+<section>
+<h4 id="section_5.1.3">5.1.3 Isolation</h4>
+<p>
+There are three possible operations on storage: read, write and execute. The
+concept of immutability relates to reading and writing storage, and provides
+limited information about execution: execution cannot lead to mutation of how
+immutable value. For functions and objects, it is useful to have more
+information about how execution may lead to mutation. Ballerina has a concept of
+<em>isolation</em> that provides this.
+</p>
+<p>
+In addition to defining when a value is reachable from a value, we can define
+when a value is reachable from a variable: a value is reachable from a variable
+variable if the value is reachable from the value that the variable holds. We
+can also define when mutable state is reachable from a value or variable: the
+mutable state of a value v is reachable from a value or variable, if v is
+reachable from the value or variable; the mutable state of a variable v is
+reachable only from the variable v.
+</p>
+<p>
+Objects have an isolated bit in addition to a read-only bit; an object value is
+isolated if its isolated bit is set. Mutable state is defined to be <em>freely
+reachable</em> from a value or variable if it is reachable without following a
+reference to an isolated object. A variable or value is an <em>isolated
+root</em> if its mutable state is isolated from the rest of the program's
+mutable state: any mutable state that is freely reachable from the isolated root
+is reachable from outside only through the isolated root. More precisely, if
+some mutable state <var>s</var> is freely reachable from an isolated root value
+<var>r</var>, then <var>s</var> is not freely reachable from a variable or value
+that is not reachable from <var>r</var> except by following a reference through
+<var>r</var>; similarly, if some mutable state <var>s</var> is freely reachable
+from an isolated root variable <var>r</var>, then <var>s</var> is not freely
+reachable from a value that is not reachable from <var>r</var> and is not freely
+reachable from any variable other than <var>r</var>. A variable can also be
+declared to be isolated. Ballerina maintains the invariant that isolated objects
+and isolated variables are isolated roots. Ballerina also guarantees that any
+mutable state freely reachable from an isolated object or isolated variable is
+accessed only within the scope of a <a href="#lock_statement">lock
+statement</a>, which ensures that there is no data race in accessing that
+mutable state. This implies that there will be no data race accessing any
+mutable state that is reachable (not just freely reachable) from an isolated
+object or isolated variable.
+</p>
+<p>
+Functions and methods have an isolated bit in addition to a read-only bit; a
+function or method is isolated if its isolated bit is set. Ballerina guarantees
+that a call an isolated method or function will only result in access to mutable
+state if at least one of the following conditions applies:
+</p>
+<ul>
+<li>the mutable state is freely reachable from an argument passed to the
+function or method and the access happens on the strand on which the function is
+called; the object on which a method is invoked is considered as an argument for
+this purpose;</li>
+<li>the mutable state is freely reachable from an isolated variable or an
+isolated object;</li>
+<li>the mutable state is part of a new value created by the call.</li>
+</ul>
+<p>
+The caller of a function can thus ensure that a function call will not lead to a
+data race by ensuring that no data race is possible for the mutable state freely
+reachable from the arguments that it passes to the function, for example by
+passing only immutable values or isolated objects.
+</p>
 
 </section>
 <section>
-<h4 id="section_5.1.2">5.1.2 Type descriptors</h4>
+<h4 id="section_5.1.4">5.1.4 Type descriptors</h4>
 <p>
 Ballerina provides a rich variety of type descriptors, which programs use to
 describe types. For example, there is a type descriptor for each simple basic
@@ -1075,6 +1168,16 @@ values are, recursively, json</td>
   </tr>
 </table>
 <p>
+A shape is divided into two <em>aspects</em>: the <em>primary aspect</em> and
+the <em>read-only aspect</em>. A value's read-only bit is a part of the
+<em>read-only aspect</em> of the value's shape. The read-only bit of values
+contained in a structured value is part of the read-only aspect of those values
+and of the read-only aspect of the structured value. Everything about a shape
+except the read-only bits constitutes the primary aspect of the shape. If two
+plain data values compare equal, then the primary aspect of their shapes is the
+same, but there may be differences in the read-only aspect.
+</p>
+<p>
 Type descriptors other than <code>readonly</code> describes types using only the
 primary aspect of shape: whether a value belongs to the type is not affected by
 the read-only aspect of the value's shape. The <code>readonly</code> type uses
@@ -1127,7 +1230,7 @@ together with associativity.
 
 </section>
 <section>
-<h4 id="section_5.1.3">5.1.3 Type-ids</h4>
+<h4 id="section_5.1.5">5.1.5 Type-ids</h4>
 <p>
 Ballerina has a feature, called <em>distinct types</em>, which provides
 functionality similar to that provided by nominal types, but which works within
@@ -1192,7 +1295,7 @@ of those are primary.
 
 </section>
 <section>
-<h4 id="section_5.1.4">5.1.4 Iterability</h4>
+<h4 id="section_5.1.6">5.1.6 Iterability</h4>
 <p>
 Values of some basic types are <em>iterable</em>. An iterable value supports an
 iteration operation, which treats the iterable value as consisting of a sequence
@@ -1598,11 +1701,12 @@ The <code>xml:Text</code> type is inherently immutable. This implies that both
 text singletons and empty xml values always have their read-only bits on. The
 <code>xml:Element</code>, <code>xml:ProcessingInstruction</code> and
 <code>xml:Comment</code> types are selectively immutable. The read-only bit of a
-xml value with length greater than one is on if and only if the read-only bit
-of all its constituent items is on. Immutability of xml values is deep: if the
-read-only bit of an <code>xml:Element</code> is on, then the read-only bits of the
-mapping representing its attributes and of the xml value representing its
-children are also on.
+xml value with length greater than one is on if and only if the read-only bit of
+all its constituent items is on. The attributes and children of an element are
+reachable from the element. Thus, if the read-only bit of an
+<code>xml:Element</code> is on, then the read-only bits of the mapping
+representing its attributes and of the xml value representing its children are
+also on.
 </p>
 <p>
 Note that although the mutable constituents of mutable xml value can be mutated,
@@ -2233,6 +2337,7 @@ a non-empty set of type-ids.
 <h4 id="functions">5.5.2 Functions</h4>
 
 <pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>] <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a>
+<span class="ntdfn" id="isolated-qual">isolated-qual</span> := <code>isolated</code>
 <span class="ntdfn" id="function-signature">function-signature</span> := <code>(</code> <a href="#param-list"><span class="ntref">param-list</span></a> <code>)</code> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a>
 </pre>
 <p>
@@ -2358,42 +2463,27 @@ parameter list type P' if and only if R is a subtype of R' and P' is a subtype
 of P. A function value f belongs to a function type T if the declared type of f
 is a subtype of T.
 </p>
+<p>
+If a function-type-descriptor includes an <code>isolated-qual</code>, then a
+function value belongs to the type only if the value's isolated bit is set; if
+the function type does not include an <code>isolated-qual</code>, then whether a
+function value belongs to the type is not affected by the value's isolated bit.
+</p>
 
-<pre class="grammar"><span class="ntdfn" id="isolated-qual">isolated-qual</span> := <code>isolated</code>
-</pre>
-<p>
-Every function value has an isolated bit in addition to a read-only bit. If a
-function type includes the <code>isolated-qual</code>, then a function value
-belongs to the type only if the value's isolated bit is set; if the function
-type does not include <code>isolated-qual</code>, then whether a function value
-belongs to the type is not affected by the value's isolated bit.
-</p>
-<p>
-The read-only bit of a function value is always on, because a function's code
-cannot be modified. It provides no information about what happens when the
-function is executed; this is the role of the isolated bit. A function value
-with its isolated bit on is called an isolated function. The invocation of an
-isolated function is guaranteed not to result in access to a mutable storage
-location unless the storage location is reachable from an argument of that
-function invocation and the access happens on the strand on which the function
-is invoked. Reachable here means reachable by a succession of reads. This is the
-same concept used for readonly: any storage location reachable from a read-only
-value is read-only. Thus an invocation of an isolated function with only
-readonly arguments will access only read-only storage locations.
-</p>
 </section>
 <section>
 <h4 id="section_5.5.3">5.5.3 Objects</h4>
 <p>
-An object value contains fields and methods. A field of an object stores a
-value. A method of an object is a function that can be invoked on the object
-using a <code>method-call-expr</code>; when a method is invoked on an object,
-the function can access the object using the <code>self</code> variable. An
-object's methods are associated with the object when the object is constructed
-and cannot be changed thereafter. Fields and methods have names that uniquely
-identify them within their object; fields and methods share a single symbol
-space; it is not possible for an object to have a field and a method with the
-same name.
+An object value encapsulates data with functions that operate on the data. An
+object consists of named members, where each member is either a field or a
+method. A field of an object stores a value. A method of an object is a function
+that can be invoked on the object using a <code>method-call-expr</code>; when a
+method is invoked on an object, the function can access the object using the
+<code>self</code> variable. An object's methods are associated with the object
+when the object is constructed and cannot be changed thereafter. Fields and
+methods have names that uniquely identify them within their object; fields and
+methods share a single symbol space; it is not possible for an object to have a
+field and a method with the same name.
 </p>
 <p>
 The type of object values can be described using an
@@ -8178,7 +8268,7 @@ enclosing while-stmt or foreach-stmt to terminate.
 </section>
 
 <section>
-<h3 id="section_7.24">7.24 Lock statement</h3>
+<h3 id="lock_statement">7.24 Lock statement</h3>
 <pre class="grammar"><span class="ntdfn" id="lock-stmt">lock-stmt</span> := <code>lock</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 
@@ -8634,7 +8724,6 @@ module initialization.
 </p>
 
 </section>
-
 
 <section>
 <h3 id="section_8.6">8.6 Module class definition</h3>

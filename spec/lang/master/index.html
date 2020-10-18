@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-17</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-18</h1>
 <p>
 Primary contributors:
 </p>
@@ -5102,6 +5102,11 @@ class.
 A variable-reference-expr is isolated if it refers to an identifier bound by a
 let-expr to an expression that is isolated.
 </p>
+<p>
+A variable-reference-expr that refers to a variable declared by a
+module-var-decl that includes <code>isolated</code> is only allowed within a
+lock-stmt.
+</p>
 </section>
 <section>
 <h3 id="section_6.10">6.10 Field access expression</h3>
@@ -6944,17 +6949,21 @@ must be declared as isolated (a missing init method is equivalent is implicitly
 isolated).</li>
 </ul>
 </li>
-<li>Module-level state can be read only if it is immutable: in a variable-reference-expr
+<li>Non-isolated module-level state can only be read in two cases, specifically
+a variable-reference can refer to an an identifier declared by a
+module-var-decl, listener-decl or service-decl only if:
 <ul>
-<li>if the variable-reference refers to an identifier defined with a
-module-var-decl, the module-var-decl must include <code>final</code>; and</li>
-<li>if the variable-reference refers to an identifier defined with a
-module-var-decl, listener-decl or service-decl, the static type of the
-referenced variable must be a subtype of <code>readonly</code>.</li>
+<li>the identifier is declared by a module-var-decl that includes
+<code>final</code> but does not include <code>isolated</code>, or is declared by
+a listener-decl or a service-decl, and</li>
+<li>the static type of the variable is a subtype of <code>readonly</code> or of
+<code>isolated object {}</code>.</li>
 </ul>
 </li>
-<li>Module-level state cannot be mutated: a variable-reference-lvexpr cannot
-refer to a variable defined by a module-var-decl.</li>
+<li>Non-isolated module-level state cannot be mutated: an identifier in a
+variable-reference-lvexpr or in a capture-binding-pattern in a
+destructuring-assignment-stmt must not refer to a variable defined by a
+module-var-decl that does not include <code>isolated</code>.</li>
 <li>Captured variables must be immutable: if the body is part of an
 anonymous-function-expr, then any captured variable references must refer to
 variables that are both final (either explicitly or implicitly) and have a
@@ -6967,10 +6976,6 @@ static type that is a subtype of <code>readonly</code>.</li>
 </ul>
 </li>
 </ul>
-<p>
-The result of these requirements is that an isolated function can only access
-mutable state that is reachable from its parameters.
-</p>
 <p>
 If an isolated function has an <code>external-function-body</code>, then the
 above requirements also apply to the external implementation as regards its
@@ -7878,6 +7883,11 @@ variable. Its static type is the declared or inferred type of the variable. The
 lvexpr is potentially uninitialized if it is possible for execution to have
 reached this point without initializing the referenced variable.
 </p>
+<p>
+A variable-reference-lvexpr that refers to a variable declared by a
+module-var-decl that includes <code>isolated</code> is only allowed within a
+lock-stmt.
+</p>
 
 <pre class="grammar"><span class="ntdfn" id="field-access-lvexpr">field-access-lvexpr</span> := <a href="#lvexpr"><span class="ntref">lvexpr</span></a> <code>.</code> <a href="#field-name"><span class="ntref">field-name</span></a>
 </pre>
@@ -8025,6 +8035,12 @@ The binding-pattern has a static type implied by the static type of the
 variables occurring in it. The static type of action-or-expr must be a subtype
 of this type.
 </p>
+<p>
+A destructuring assignment with a binding pattern that refers to a variable
+declared by a module-var-decl that includes <code>isolated</code> is only
+allowed within a lock-stmt.
+</p>
+
 </section>
 </section>
 <section>
@@ -8853,7 +8869,10 @@ The parameter list of an <code>init</code> method within an
 <h3 id="section_8.7">8.7 Module variable declaration</h3>
 
 <pre class="grammar"><span class="ntdfn" id="module-var-decl">module-var-decl</span> := <a href="#module-init-var-decl"><span class="ntref">module-init-var-decl</span></a> | <a href="#module-no-init-var-decl"><span class="ntref">module-no-init-var-decl</span></a>
-<span class="ntdfn" id="module-init-var-decl">module-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>final</code>] <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
+<span class="ntdfn" id="module-init-var-decl">module-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#isolated-final-quals"><span class="ntref">isolated-final-quals</span></a> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
+<span class="ntdfn" id="isolated-final-quals">isolated-final-quals</span> :=
+  <code>final</code> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
+  | [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> [<code>final</code>]]
 </pre>
 <p>
 The scope of variables declared in a module-var-decl is the entire module. Note
@@ -8864,6 +8883,13 @@ of <code>expression</code>; if the module-var-decl includes <code>final</code>,
 the precise type is used, and otherwise the broad type is used. If the
 typed-binding-pattern specifies a type-descriptor, then that type-descriptor
 provides the contextually expected type for action-or-expr.
+</p>
+<p>
+If a module-init-var-decl includes an isolated-qual, then the variable declared
+is isolated. In this case, the binding-pattern in the typed-binding-pattern must
+be just a variable-name, and the expression must be an isolated expression. A
+variable declared as an isolated variable can be accessed only within a
+lock-stmt.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="module-no-init-var-decl">module-no-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>final</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#variable-name"><span class="ntref">variable-name</span></a> <code>;</code>

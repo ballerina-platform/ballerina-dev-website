@@ -231,9 +231,9 @@ p.cTOCcontol {
     margin-bottom: 30px;
 }
 
-/* .cPositionRelative {
+.cPositionRelative {
     position: relative;
-} */
+}
  
 a.cTopLink {
 	position: fixed;

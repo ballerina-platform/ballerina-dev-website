@@ -2507,14 +2507,24 @@ bit. Whether an object is read-only can be described separately using a
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="object-type-descriptor">object-type-descriptor</span> :=
-   [<a href="#object-network-qual"><span class="ntref">object-network-qual</span></a>] <code>object</code> <code>{</code>
+   <a href="#object-type-quals"><span class="ntref">object-type-quals</span></a> <code>object</code> <code>{</code>
       <a href="#object-member-descriptor"><span class="ntref">object-member-descriptor</span></a>*
    <code>}</code>
+<span class="ntdfn" id="object-type-quals">object-type-quals</span> :=
+   <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> [<a href="#object-network-qual"><span class="ntref">object-network-qual</span></a>]
+   | [<a href="#object-network-qual"><span class="ntref">object-network-qual</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]]
 <span class="ntdfn" id="object-member-descriptor">object-member-descriptor</span> :=
    <a href="#object-field-descriptor"><span class="ntref">object-field-descriptor</span></a>
    | <a href="#method-decl"><span class="ntref">method-decl</span></a>
    | <a href="#object-type-inclusion"><span class="ntref">object-type-inclusion</span></a>
 </pre>
+
+<p>
+If an isolated-qual is specified, then an object belongs to the described type
+only if the object's isolated bit is set. If an isolated-qual is not specified,
+then an object's isolated bit does not affect whether it belongs to the
+described type.
+</p>
 
 <section>
 <h5 id="section_5.5.3.1">5.5.3.1 Fields</h5>
@@ -2626,12 +2636,12 @@ object type descriptor; this is called module-level visibility.
 <h5 id="section_5.5.3.5">5.5.3.5 Typing</h5>
 
 <p>
-The shape of an object consists of a network interaction kind and an unordered
-collection of object field shapes and object method shapes. A network
-interaction kind has one of three values: service, client or empty. An object
-field shape or object method shape is a 4-tuple consisting of the name of the
-field or method, the visibility region, a remote flag and a shape for the value
-of the field or for the method's function.
+The shape of an object consists of a read-only bit, an isolated bit, a network
+interaction kind and an unordered collection of object field shapes and object
+method shapes. A network interaction kind has one of three values: service,
+client or empty. An object field shape or object method shape is a 4-tuple
+consisting of the name of the field or method, the visibility region, a remote
+flag and a shape for the value of the field or for the method's function.
 </p>
 <p>
 An object type is inclusive, in a similar way to an
@@ -4361,7 +4371,8 @@ and will not be aliased.
 Each syntactic kind of expression has a rule for when it is isolated, which may
 depend on the static type of the expression and of subexpressions. An expression
 is always isolated if its static type is immutable, i.e. a subtype of
-<code>readonly</code>.
+<code>readonly</code>, or an isolated object, i.e. a subtype of
+<code>isolated object {}</code>.
 </p>
 <p>
 In addition, the following expressions are also isolated if all their

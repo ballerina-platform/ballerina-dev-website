@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-18</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-19</h1>
 <p>
 Primary contributors:
 </p>
@@ -8889,7 +8889,9 @@ If a module-init-var-decl includes an isolated-qual, then the variable declared
 is isolated. In this case, the binding-pattern in the typed-binding-pattern must
 be just a variable-name, and the expression must be an isolated expression. A
 variable declared as an isolated variable can be accessed only within a
-lock-stmt.
+lock-stmt. The keyword <code>isolated</code> occurring immediately before
+the typed-binding-pattern is parsed as part of isolated-final-quals
+rather than as part of typed-binding-pattern.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="module-no-init-var-decl">module-no-init-var-decl</span> := <a href="#metadata"><span class="ntref">metadata</span></a> [<code>final</code>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#variable-name"><span class="ntref">variable-name</span></a> <code>;</code>

@@ -106,7 +106,7 @@ nav.cLeftNavContainer {
     margin-bottom: 20px;
     }
     .cLearnPageContentCol  {
-    min-height: 240px;
+    min-height: 340px;
     }
     ul.cLearnLandingLinks {
     margin: 20px 0 0 0;
@@ -127,5 +127,132 @@ nav.cLeftNavContainer {
     ul.cLearnLandingLinks li a {
     font-weight: 400;
     }
+    .cBoxLink {
+        padding: 30px 50px 50px 50px;
+        background-color: #f7f7f7;
+        display: inline-block;
+        min-height: 310px;
+        border: 1px solid #f7f7f7;
+    }
+
+    .cBoxLink:hover {
+        border: 1px solid #20b6b0;
+    }
+
+    .cBoxLink h2 {
+        color: #20b6b0;
+        border-color: #20b6b0;
+    }
+    .cBoxLink:hover h2 {
+        color: #585A5E;
+        border-color: #585A5E;
+    }
+    #tree li {
+        /* padding: 0 0 10px 0; */
+        padding-right: 0px;
+
+    /* padding-right: 30px; */
+
+    }
+    li.expanded {
+        /* border-left: 1px solid #20b6b0; */
+        /* margin-bottom: 10px; */
+    }
+
     
+ul#tree  {
+    padding-left: 20px;
+}
+
+#tree li a {
+    font-size: 16px !important;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+#tree li li a {
+    font-size: 16px !important;
+    font-weight: 500;
+}
+
+#tree li li li a {
+    font-size: 16px !important;
+    font-weight: 400;
+}
+
+#tree li li li li a {
+    font-size: 16px !important;
+    font-weight: 300;
+}
+
+
+
+    span.icon {
+        background-color: #20b6b0;
+        width: 14px;
+        height: 14px; 
+        display: inline-block;
+        margin-left: -20px;
+        background-size: 12px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    span.icon:hover {
+        background-color: #464646;
+    }
+
+
+
+
+    span.icon.plus-icon {
+    background-image: url("/img/plus.svg");
     
+
+}
+
+span.icon.minus-icon {
+    background-image: url("/img/minus.svg");
+    background-color: #464646;
+    
+
+}
+
+.cBallerinaTocContainer {
+    background-color: #f7f7f7;
+    display: inline-block;
+    width: 100%;
+    padding: 30px 30px 20px 30px;
+}
+
+p.cTOCcontol {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.cPositionRelative {
+    position: relative;
+}
+ 
+a.cTopLink {
+	position: fixed;
+	bottom: 30px;
+	right: 0px;
+	padding: 10px 20px;
+	background: #20b6b0;
+	color: #fff !important;
+	font-weight: 600;
+}
+a.cTopLink.dispalaynone {
+    display: none;
+}
+
+a.cTopLink:hover {
+background-color: #464646 !important;
+color: #fff !important;
+}
+
+.cBallerina-io-breadcrumbs {
+    padding: 0;
+}

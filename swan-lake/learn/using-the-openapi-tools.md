@@ -5,6 +5,7 @@ description: Check out how the Ballerina OpenAPI tooling makes it easy for users
 keywords: ballerina, programming language, openapi, open api, restful api
 permalink: /learn/using-the-openapi-tools/
 active: using-the-openapi-tools
+intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start development of a service documented in OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
 redirect_from:
   - /v1-2/learn/how-to-use-openapi-tools
   - /v1-2/learn/how-to-use-openapi-tools/
@@ -13,12 +14,9 @@ redirect_from:
   - /learn/using-the-openapi-tools
 ---
 
-# Ballerina OpenAPI Tools
+## Using the capabilities of the OpenAPI Tools
 
-The OpenAPI Specification is a specification, which creates a RESTFUL contract for APIs detailing all of its resources 
-and operations in a human and machine readable format for easy development, discovery, and integration. Ballerina
- OpenAPI tooling will make it easy for users to start development of a service documented in the OpenAPI contract 
-  by generating the Ballerina service and client skeletons. The OpenAPI tools provide the following capabilities.
+The OpenAPI tools provide the following capabilities.
  
  1. Generate the Ballerina service or client code for a given OpenAPI definition. 
  2. Export the OpenAPI definition of a Ballerina service.
@@ -28,18 +26,7 @@ The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerin
 Code generation from OpenAPI to Ballerina can produce `ballerina service stubs` and `ballerina client stubs`.
 The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during
  compile time. 
-This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract.
-
-- [OpenAPI to Ballerina](#openAPI-to-ballerina)
-    - [Generate Service and Client Stub from OpenAPI Contract](#generate-service-and-client-stub-from-openapi-contract)
-        - [Modes](#modes)
-- [Ballerina to OpenAPI](#ballerina-to-openAPI)    
-    - [Service to OpenAPI Export](#service-to-openapi-export)
-- [Samples](#samples)
-    - [Generate Service and Client Stub from OpenAPI](#generate-service-and-client-stub-from-openAPI)
-    - [Generate OpenAPI contract from Service](#generate-openAPI-contract-from-service)
-- [OpenAPI Validator Compiler Plugin](#openAPI-validator-compiler-plugin)
-     
+This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract.   
 
 ### OpenAPI to Ballerina
 #### Generate Service and Client stub from OpenAPI Contract

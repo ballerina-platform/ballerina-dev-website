@@ -5,18 +5,7 @@ description: Learn how to run Ballerina programs and services using the CLI tool
 keywords: ballerina, programming language, services
 permalink: /learn/running-ballerina-code/
 active: running-ballerina-code
-redirect_from:
-  - /learn/how-to-deploy-and-run-ballerina-programs
-  - /learn/how-to-deploy-and-run-ballerina-programs/
-  - /learn/how-to-run-ballerina-programs/
-  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs
-  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
-  - /learn/running-ballerina-code
----
-
-# Running Ballerina Code
-
-A Ballerina application can have:
+intro: A Ballerina application can have:
 
 1. A [`main()`](/learn/by-example/the-main-function.html) function that runs as a terminating process.
 
@@ -27,18 +16,14 @@ Both of these are considered as entry points for program execution.
 These applications can be structured into a single program file or a Ballerina module. A collection of modules can be managed together with versioning and dependency management as part of a Ballerina project. 
 
 Source files and modules can contain zero or more entrypoints, and the runtime engine has precedence and sequence rules for choosing which entrypoint to execute.
-
-- [Running Standalone Source Code](#running-standalone-source-code)
-- [Running a Project](#running-a-project)
-- [Configuring Your Ballerina Runtimes](#configuring-your-ballerina-runtimes)
-  - [Ballerina Runtime Configuration Files](#ballerina-runtime-configuration-files)
-  - [Sourcing Parameters Into Ballerina Programs](#sourcing-parameters-into-ballerina-programs)
-    - [Sourcing CLI Parameters](#sourcing-cli-parameters)
-    - [Sourcing Configuration Values](#sourcing-configuration-values)
-  - [Configuring Secrets as Configuration Items](#configuring-secrets-as-configuration-items)
-    - [Creating a Secured Value](#creating-a-secured-value)
-    - [Using the Secured Value at Runtime](#using-the-secured-value-at-runtime)
-    - [Decrypting the Value](#decrypting-the-value)
+redirect_from:
+  - /learn/how-to-deploy-and-run-ballerina-programs
+  - /learn/how-to-deploy-and-run-ballerina-programs/
+  - /learn/how-to-run-ballerina-programs/
+  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs
+  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
+  - /learn/running-ballerina-code
+---
 
 ## Running Standalone Source Code
 A single Ballerina source code file can be placed into any folder. 

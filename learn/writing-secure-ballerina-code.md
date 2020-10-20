@@ -5,7 +5,7 @@ description: Check out the different security features and controls available wi
 keywords: ballerina, programming language, security, secure ballerina code
 permalink: /learn/writing-secure-ballerina-code/
 active: writing-secure-ballerina-code
-intro: This document demonstrates different security features and controls available within Ballerina, and serves the purpose of providing guidelines on writing secure Ballerina programs.
+intro: The sections below include information on the different security features and controls available within Ballerina. Also, they provide guidelines on writing secure Ballerina programs.
 redirect_from:
   - /learn/how-to-write-secure-ballerina-code
   - /learn/how-to-write-secure-ballerina-code/

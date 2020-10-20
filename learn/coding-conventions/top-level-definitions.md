@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages
 title: Top-Level Definitions
 active: definitions
 permalink: /learn/coding-conventions/top-level-definitions/
+intro: The sections below include the coding conventions with respect to top-level definitions.
 redirect_from:
   - /v1-2/learn/style-guide/definitions/
   - /v1-2/learn/style-guide/definitions
@@ -12,7 +13,7 @@ redirect_from:
   - /learn/coding-conventions/top-level-definitions
 ---
 
-# Top-Level Definitions
+## General practices
 
 * Do not indent the top level definitions. 
   

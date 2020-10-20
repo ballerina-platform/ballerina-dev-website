@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages
 title: Statements
 active: statements
 permalink: /learn/coding-conventions/statements/
+intro: The sections below include the coding conventions with respect to statements.
 redirect_from:
   - /v1-2/learn/style-guide/statements/
   - /v1-2/learn/style-guide/statements
@@ -10,14 +11,6 @@ redirect_from:
   - /learn/style-guide/statements/
   - /learn/coding-conventions/statements
 ---
-
-# Statements
-
-- [If Statement](#if-statement)
-    - [Empty Block](#empty-block)
-- [Match Statement](#match-statement)
-    - [Match Patterns Clause](#match-patterns-clause)
-- [Transaction Statement](#transaction-statement)
 
 ## If Statement
 

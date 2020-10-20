@@ -5,27 +5,20 @@ description: A quick tour of the Ballerina programming language, including writi
 keywords: ballerina, quick tour, programming language, http service
 permalink: /learn/quick-tour/
 active: quick-tour
+intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
 redirect_from:
   - /learn/quick-tour
   - /v1-2/learn/quick-tour
   - /v1-2/learn/quick-tour/
 ---
 
-# Quick Tour
-
-Now, that you know a little bit of Ballerina, let's take it for a spin!
-
-- [Install Ballerina](#install-ballerina)
-- [Write a Service, Run It, and Invoke It](#write-a-service-run-it-and-invoke-it)
-- [Use a Client to Interact with a Network-Accessible Service](#use-a-client-to-interact-with-a-network-accessible-service)
-
-## Install Ballerina
+## Installing Ballerina
 
 1. [Download](https://ballerina.io/downloads) Ballerina based on the Operating System you are using. 
 1. Follow the instructions given on the [Getting Started](/learn/getting-started) page to set it up. 
 1. Follow the instructions given on the [Visual Studio Code Plugin](/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
 
-## Write a Service, Run It, and Invoke It
+## Writing a service, running it, and invoking it
 
 Write a simple Hello World HTTP service in a file with the `.bal` extension.
 
@@ -81,7 +74,7 @@ Hello Ballerina!
 
 Alternatively, you can use a Ballerina HTTP client to invoke the service.
 
-## Use a Client to Interact with a Network-Accessible Service
+## Using a client to interact with a network-accessible service
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 

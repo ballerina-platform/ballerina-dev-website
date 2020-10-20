@@ -3,6 +3,9 @@ layout: ballerina-left-nav-pages
 title: Run and Debug
 permalink: /learn/setting-up-visual-studio-code/run-and-debug/
 active: run-and-debug
+intro: The VS Code Ballerina extension gives you the  same debugging experience as the conventional VS Code Debugger.
+
+Thus, you can run or debug your Ballerina programs easily via the VS Code Ballerina extension by launching its debugger. 
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/run-and-debug
   - /v1-2/learn/tools-ides/vscode-plugin/run-and-debug/
@@ -18,15 +21,6 @@ redirect_from:
   - /learn/run-and-debug
   - /learn/run-and-debug/
 ---
-
-# Run and Debug
-
-The VS Code Ballerina extension gives you the  same debugging experience as the conventional VS Code Debugger.
-
-Thus, you can run or debug your Ballerina programs easily via the VS Code Ballerina extension by launching its debugger. 
-
-- [Starting a Debug Session](#starting-a-debug-session)
-- [Troubleshooting](#troubleshooting)
 
 ## Starting a Debug Session
 

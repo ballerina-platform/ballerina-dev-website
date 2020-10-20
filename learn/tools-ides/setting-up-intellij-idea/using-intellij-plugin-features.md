@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages
 title: Using the features of the IntelliJ plugin
 permalink: /learn/setting-up-intellij-idea/using-intellij-plugin-features/
 active: using-intellij-plugin-features
+intro: The sections below include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin/using-intellij-plugin-features
   - /v1-2/learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
@@ -18,28 +19,6 @@ redirect_from:
   - /learn/using-intellij-plugin-features
   - /learn/using-intellij-plugin-features/
 ---
-
-# Using the Features of the IntelliJ Plugin
-
-The below sections include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
-
-- [Running Ballerina Programs](#running-ballerina-programs)
-    - [Running the Main Method](#running-the-main-method)
-    - [Running Ballerina Services](#running-ballerina-services)
-- [Debugging Ballerina Programs](#debugging-ballerina-programs)
-    - [Troubleshooting](#troubleshooting)
-- [Viewing the Sequence Diagram](#viewing-the-sequence-diagram)
-- [Importing Modules on the Fly](#importing-modules-on-the-fly)
-- [Importing Unambiguous Modules](#importing-unambiguous-modules)
-- [Formatting Ballerina Codes](#formatting-ballerina-codes)
-- [Viewing Documentation](#viewing-documentation)
-- [Adding Annotation Fields via Suggestions](#adding-annotation-fields-via-suggestions)
-- [Using File Templates](#using-file-templates)
-- [Using Code Snippet Templates](#using-code-snippet-templates)
-- [Checking Spellings](#checking-spellings)
-- [Analyzing Semantics](#analyzing-semantics)
-- [Code Folding](#code-folding)
-- [Go to Definition](#go-to-definition)
 
 ## Running Ballerina Programs
 

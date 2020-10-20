@@ -5,6 +5,7 @@ description: See how Ballerina offers a straightforward way to call existing Jav
 keywords: ballerina, programming language, java api, interoperability
 permalink: /learn/calling-java-code-from-ballerina/
 active: calling-java-code-from-ballerina
+intro: Ballerina offers a straightforward way to call the existing Java code from Ballerina and also provides a Java API to call Ballerina code from Java.  Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics.
 redirect_from:
   - /learn/how-to-use-java-interoperability
   - /learn/how-to-use-java-interoperability/
@@ -14,65 +15,6 @@ redirect_from:
   - /learn/how-to-call-java-code-from-ballerina
   - /learn/calling-java-code-from-ballerina
 ---
-
-# Calling Java Code from Ballerina
-
-Ballerina offers a straightforward way to call the existing Java code from Ballerina and also provides a Java API to call Ballerina code from Java.  Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics. 
-
-- [Ballerina Bindings to Java Code](#ballerina-bindings-to-java-code)
-- [The Need to Call Java from Ballerina](#the-need-to-call-java-from-ballerina)
-- [Writing Ballerina Bindings](#writing-ballerina-bindings)
-- [Using the SnakeYAML Java Library in Ballerina](#using-the-snakeyaml-java-library-in-ballerina)
-    - [Step 1 - Writing the Java Code](#step-1---writing-the-java-code)
-    - [Step 2 - Setting Up the Ballerina Project](#step-2---setting-up-the-ballerina-project)
-        - [Creating a Ballerina Project](#creating-a-ballerina-project)
-        - [Adding a Ballerina Module to Your Project](#adding-a-ballerina-module-to-your-project)
-        - [Adding a Sample YAML File](#adding-a-sample-yaml-file)
-        - [Verifying the Project](#verifying-the-project)
-    - [Step 3 - Generating the Ballerina Bindings](#step-3---generating-the-ballerina-bindings)
-    - [Step 4 - Writing the Ballerina Code](#step-4---writing-the-ballerina-code)
-        - [Creating the `FileInputStream`](#creating-the-fileinputstream)
-        - [Creating the SnakeYAML Entry Point](#creating-the-snakeyaml-entry-point)
-        - [Loading the YAML Document](#loading-the-yaml-document)
-        - [Printing the Returned Map Instance](#printing-the-returned-map-instance)
-        - [Completing the Code](#completing-the-code)
-- [The Bindgen Tool](#the-bindgen-tool)
-- [The `bindgen` Command](#the-bindgen-command)
-    - [Generated Bridge Code](#generated-bridge-code)
-    - [Java to Ballerina Mapping](#java-to-ballerina-mapping)
-        - [Java Classes](#java-classes)
-        - [Constructors](#constructors)
-        - [Methods](#methods)
-        - [Fields](#fields)
-        - [External Interop Functions](#external-interop-functions)
-        - [Dependency Objects](#dependency-objects)
-        - [Ballerina JObject](#ballerina-jobject)
-    - [Java to Ballerina Type Mappings](#java-to-ballerina-type-mappings)
-    - [Support for Java Subtyping](#support-for-java-subtyping)
-    - [Support for Java Casting](#support-for-java-casting)
-    - [Java Exceptions to Ballerina Errors](#java-exceptions-to-ballerina-errors)
-- [Packaging Java Libraries with Ballerina Programs](#packaging-java-libraries-with-ballerina-programs)
-    - [Ballerina FFI](#ballerina-ffi)
-        - [The External Function Body](#the-external-function-body)
-        - [The Handle Type](#the-handle-type)
-- [Calling Java Programs from Ballerina](#calling-java-programs-from-ballerina)
-    - [Instantiating Java Classes](#instantiating-java-classes)
-        - [Dealing with Overloaded Constructors](#dealing-with-overloaded-constructors)
-        - [The `paramTypes` Field](#the-paramtypes-field)
-    - [Calling Java Methods](#calling-java-methods)
-        - [Calling Static Methods](#calling-static-methods)
-        - [Calling Instance Methods](#calling-instance-methods)
-        - [Calling Methods Asynchronously](#calling-methods-asynchronously)
-        - [Mapping Java Classes into Ballerina Objects](#mapping-java-classes-into-ballerina-objects)
-        - [Calling Overloaded Java Methods](#calling-overloaded-java-methods)
-    - [Java Exceptions as Ballerina Errors](#java-exceptions-as-ballerina-errors)
-        - [Java Checked Exceptions](#java-checked-exceptions)
-        - [Mapping a Java Exception to a Ballerina Error Value](#mapping-a-java-exception-to-a-ballerina-error-value)
-    - [Null Safety](#null-safety)
-    - [Mapping Java Types to Ballerina Types and Vice Versa](#mapping-java-types-to-ballerina-types-and-vice-versa)
-        - [Mapping Java Types to Ballerina Types](#mapping-java-types-to-ballerina-types)
-        - [Mapping Ballerina Types to Java Types](#mapping-ballerina-types-to-java-types)
-        - [Access or Mutate Java Fields](#access-or-mutate-java-fields)
 
 ## Ballerina Bindings to Java code
 Your task is to write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the below diagram. 

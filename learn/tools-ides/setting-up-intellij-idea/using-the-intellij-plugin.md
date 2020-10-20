@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages
 title: Using the IntelliJ Ballerina Plugin
 permalink: /learn/setting-up-intellij-idea/using-the-intellij-plugin/
 active: using-the-intellij-plugin
-intro: The below sections include information to start using the IntelliJ Ballerina plugin after [installing it](/learn/intellij-plugin).
+intro: The sections below include information to start using the IntelliJ Ballerina plugin after installing it.
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin
   - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin/

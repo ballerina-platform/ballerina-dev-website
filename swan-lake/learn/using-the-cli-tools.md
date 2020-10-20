@@ -5,27 +5,22 @@ description: Learn all the command line interface (CLI) commands need to get sta
 keywords: ballerina, cli, command line interface, programming language
 permalink: /swan-lake/learn/using-the-cli-tools/
 active: using-the-cli-tools
+intro: The `ballerina` command is your one-stop-shop for all the things you do in Ballerina. 
 redirect_from:
   - /swan-lake/learn/cli-commands
   - /swan-lake/learn/cli-commands/
   - /swan-lake/learn/using-the-cli-tools
 ---
 
-# Using the CLI Tools
-
-The `ballerina` command is your one-stop-shop for all the things you do in Ballerina. You can use it in the below format.
-
-> `ballerina <THE-COMMAND> <ITS-ARGUEMENTS>`
+## Using the `ballerina` command
 
 In the CLI, execute the `ballerina help` command to view all the actions you can perform with it as shown below:
 
 ![CLI commands](/swan-lake/learn/images/cli-commands.png)
 
-- [Core commands](#core-commands)
-- [Module commands](#module-commands)
-- [Project commands](#project-commands)
-- [Other commands](#other-commands)
-- [Update commands](#update-commands)
+You can use it in the below format.
+
+> `ballerina <THE-COMMAND> <ITS-ARGUEMENTS>`
 
 > **Tip:** You can view details of any of the commands below by executing `ballerina help <COMMAND>`. For example, the below is the output of the `ballerina help pull` command.
 

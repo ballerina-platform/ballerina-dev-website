@@ -5,38 +5,20 @@ description: Learn how to maintain your Ballerina programming language installat
 keywords: ballerina, programming language, release, update
 permalink: /swan-lake/learn/keeping-ballerina-up-to-date/
 active: keeping-ballerina-up-to-date
+intro: This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases.
 redirect_from:
   - /swan-lake/learn/how-to-keep-ballerina-up-to-date
   - /swan-lake/learn/how-to-keep-ballerina-up-to-date/
   - /swan-lake/learn/keeping-ballerina-up-to-date
 ---
 
-# Keeping Ballerina Up to Date
-
-This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases. If you haven’t installed Ballerina yet, visit [installation guide](/swan-lake/learn/installing-ballerina/).
-
-- [Terminology](#terminology)
-  - [Ballerina tool](#ballerina-tool)
-  - [Ballerina distributions](#ballerina-distributions)
-  - [Release channels](#release-channels)
-    - [Patch release channel](#patch-release-channel)
-    - [Minor release channel](#minor-release-channel)
-    - [Release maintenance](#release-maintenance)
-- [Keeping Ballerina upto date](#keeping-ballerina-upto-date)
-  - [The “active” distribution](#the-active-distribution)
-  - [The `ballerina dist` command](#the-ballerina-dist-command)
-  - [Update to the latest patch version](#update-to-the-latest-patch-version)
-  - [List local and remote distributions](#list-local-and-remote-distributions)
-  - [Remove distributions](#remove-distributions)
-  - [Change the active distribution](#change-the-active-distribution)
-  - [Pull a specific distribution](#pull-a-specific-distribution)
-  - [Update the Ballerina tool](#update-the-ballerina-tool)
+If you haven’t installed Ballerina yet, visit [installation guide](/swan-lake/learn/installing-ballerina/).
 
 ## Terminology
 
 This section introduces various terms used throughout this guide. We recommend that you read this section before proceeding to the next.  
 
-### Ballerina tool
+### The Ballerina Tool
 
 **Ballerina** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
 

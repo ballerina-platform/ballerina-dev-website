@@ -10,7 +10,7 @@ redirect_from:
   - /learn/deployment/azure-functions
 ---
 
- This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation. 
+This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation. 
 
 ## Triggers and Bindings
 

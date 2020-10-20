@@ -5,24 +5,12 @@ description: Learn how to extend Ballerina using annotations, which can be used 
 keywords: ballerina, programming language, annotations, metadata, extend ballerina
 permalink: /swan-lake/learn/extending-with-compiler-extensions/
 active: extending-with-compiler-extensions
+intro: The sections below include information about extending with compiler extensions.
 redirect_from:
   - /swan-lake/learn/how-to-extend-ballerina
   - /swan-lake/learn/how-to-extend-ballerina/
   - /swan-lake/learn/extending-with-compiler-extensions
 ---
-
-# Extending with Compiler Extensions 
-
-- [Annotations](#annotations)
-- [Hello World: The Annotation Way](#hello-world-the-annotation-way)
-- [Defining a Custom Annotation](#defining-a-custom-annotation)
-    - [Creating the Annotation](#creating-the-annotation)
-    - [Verifying the Annotation](#verifying-the-annotation)
-- [Writing the Compiler Extension](#writing-the-compiler-extension)
-    - [Setting up the Project](#setting-up-the-project)
-    - [Adding the Code for the Extension](#adding-the-code-for-the-extension)
-- [Putting It All Together](#putting-it-all-together)
-- [Learning More About Writing Compiler Extensions](#learning-more-about-writing-compiler-extensions)
 
 ## Annotations
 

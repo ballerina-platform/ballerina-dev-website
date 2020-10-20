@@ -14,7 +14,7 @@ redirect_from:
 
 ## Mocking Objects
 
-The test module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
+The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
 
 Mocking of objects can be done in two ways.
 

@@ -3,9 +3,7 @@ layout: ballerina-left-nav-pages
 title: Language Intelligence
 permalink: /learn/setting-up-visual-studio-code/language-intelligence/
 active: language-intelligence
-intro: The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency.
-
-Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
+intro: The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency. Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence/

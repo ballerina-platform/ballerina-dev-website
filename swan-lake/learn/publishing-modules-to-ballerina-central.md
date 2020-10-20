@@ -5,19 +5,14 @@ description: Learn how to use the CLI tool in the Ballerina programming language
 keywords: ballerina, programming language, ballerina central, ballerina modules
 permalink: /swan-lake/learn/publishing-modules-to-ballerina-central/
 active: publishing-modules-to-ballerina-central
+intro: The sections below include information about publishing modules to Ballerina Central.
 redirect_from:
   - /swan-lake/learn/how-to-publish-modules
   - /swan-lake/learn/how-to-publish-modules/
   - /swan-lake/learn/publishing-modules-to-ballerina-central
 ---
 
-# Publishing Modules to Ballerina Central
-
-- [CLI Command](#cli-command)
-- [Setting Up](#setting-up)
-- [Organizations](#organizations)
-
-## CLI Command
+## The CLI command
 
 Pushing a module uploads it to [Ballerina Central](https://central.ballerina.io/).
 
@@ -25,7 +20,7 @@ Pushing a module uploads it to [Ballerina Central](https://central.ballerina.io/
 ballerina push <module-name>
 ```
 
-## Setting Up
+## Setting up
 
 Before you push your module, you must enter your Ballerina Central access token in `Settings.toml` in your home repository (`<USER_HOME>/.ballerina/`).
 

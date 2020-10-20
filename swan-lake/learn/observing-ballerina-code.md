@@ -5,6 +5,7 @@ description: See how Ballerina supports observability by exposing itself via met
 keywords: ballerina, observability, metrics, tracing, logs
 permalink: /swan-lake/learn/observing-ballerina-code/
 active: how-to-observing-ballerina-code
+intro: Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs.
 redirect_from:
   - /swan-lake/learn/how-to-observe-ballerina-code
   - /swan-lake/learn/how-to-observe-ballerina-code/
@@ -13,10 +14,9 @@ redirect_from:
   - /swan-lake/learn/observing-ballerina-code
 ---
 
-# Observing Ballerina Code
+## Providing observability in Ballerina
 
-Observability is a measure of how well internal states of a system can be inferred from knowledge of its external
-outputs. Monitoring, logging, and distributed tracing are key methods that reveal the internal state of the system to provide the observability. Ballerina becomes fully observable by exposing itself via these three methods to various external systems allowing to monitor metrics such as request count and response time statistics, analyze logs, and
+Monitoring, logging, and distributed tracing are key methods that reveal the internal state of the system to provide the observability. Ballerina becomes fully observable by exposing itself via these three methods to various external systems allowing to monitor metrics such as request count and response time statistics, analyze logs, and
 perform distributed tracing. 
 
 HTTP/HTTPS based Ballerina services and any client connectors are observable by default. HTTP/HTTPS and SQL client
@@ -25,32 +25,6 @@ connectors use semantic tags to make tracing and metrics monitoring more informa
 This guide focuses on enabling Ballerina service observability with some of its default supported systems.
 [Prometheus] and [Grafana] are used for metrics monitoring, and [Jaeger] is used for distributed tracing. 
 Ballerina logs can be fed to any external log monitoring system like [Elastic Stack] to perform log monitoring and analysis.
-
-- [Observing a Ballerina Service](#observing-a-ballerina-service)
-  - [Step 1 - Setting up the Prerequisites](#step-1---setting-up-the-prerequisites)
-  - [Step 2 - Installing and Configuring the External Systems](#step-2---installing-and-configuring-the-external-systems)
-  - [Step 3 - Creating a Hello World Ballerina Service](#step-3---creating-a-hello-world-ballerina-service)
-  - [Step 4 - Observing the Hello World Ballerina Service](#step-4---observing-the-hello-world-ballerina-service)
-    - [Starting the Service Using a Flag](#starting-the-service-using-a-flag)
-    - [Starting the Service Using a Configuration File](#starting-the-service-using-a-configuration-file)
-  - [Step 5 - Sending Few Requests](#step-5---sending-few-requests)
-  - [Step 6 - Viewing Tracing and Metrics in the Dashboard](#step-6---viewing-tracing-and-metrics-in-the-dashboard)
-  - [Step 7 - Visualizing the Logs](#step-7---visualizing-the-logs)
-- [Monitoring Metrics](#monitoring-metrics)
-  - [Configuring Advanced Metrics for Ballerina](#configuring-advanced-metrics-for-ballerina)
-  - [Setting Up the External Systems for Metrics](#setting-up-the-external-systems-for-metrics)
-    - [Setting Up Prometheus](#setting-up-prometheus)
-    - [Setting Up Grafana](#setting-up-grafana)
-- [Distributed Tracing](#distributed-tracing)
-  - [Configuring Advanced Tracing for Ballerina](#configuring-advanced-tracing-for-ballerina)
-    - [Using the Jaeger Client](#using-the-jaeger-client)
-    - [Using the Zipkin Client](#using-the-zipkin-client)
-  - [Setting Up the External Systems for Tracing](#setting-up-the-external-systems-for-tracing)
-    - [Setting Up the Jaeger Server](#setting-up-the-jaeger-server)
-    - [Setting Up the Zipkin Server](#setting-up-the-zipkin-server)
-- [Distributed Logging](#distributed-logging)
-  - [Setting Up the External Systems for Log Analytics](#setting-up-the-external-systems-for-log-analytics)
-    - [Setting Up Elastic Stack](#setting-up-elastic-stack)
 
 ## Observing a Ballerina Service
 

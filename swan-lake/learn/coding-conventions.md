@@ -5,29 +5,14 @@ description: The Ballerina Style Guide aims at maintaining a standard coding sty
 keywords: ballerina, programming language, ballerina style guide
 permalink: /swan-lake/learn/coding-conventions/
 active: coding-conventions
+intro: This Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. Therefore, the Ballerina code formatting tools are based on this guide.
 redirect_from:
   - /swan-lake/learn/style-guide
   - /swan-lake/learn/style-guide/
   - /swan-lake/learn/coding-conventions
 ---
 
-# Coding Conventions
-
-This Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. Therefore, the Ballerina code formatting tools are based on this guide.
-
-You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.
-
-- [Indentation and Line Length](#indentation-and-line-length)
-- [Line Spacing](#line-spacing)
-- [Blank Lines](#blank-lines)
-- [Blocks](#blocks)
-- [Parentheses and Brackets](#parentheses-and-brackets)
-- [Line Breaks](#line-breaks)
-- [Top-Level Definitions](#top-level-definitions)
-    - [Operators, Keywords, and Types](#operators-keywords-and-types)
-    - [Statements](#statements)
-    - [Expressions](#expressions)
-    - [Annotations, Documentation, and Comments](#annotations-documentation-and-comments)
+> You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.
 
 ## Indentation and Line Length
 * Use four spaces (not tabs) for each level of indentation.

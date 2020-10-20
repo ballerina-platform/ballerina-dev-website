@@ -5,15 +5,10 @@ description: Learn how to use different options for executing Ballerina tests.
 keywords: ballerina, programming language, testing
 permalink: /swan-lake/learn/testing-ballerina-code/executing-tests/
 active: executing-tests
+intro: The sections below include information about executing tests in Ballerina.
 redirect_from:
   - /swan-lake/learn/testing-ballerina-code/executing-tests
 ---
-
-# Executing Tests
-
-- [Executing Tests Using CLI Commands](#executing-tests-using-cli-commands)
-- [Test Report](#test-report)
-- [Code Coverage Report](#code-coverage-report)
 
 ## Executing Tests Using CLI Commands
 

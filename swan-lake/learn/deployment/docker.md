@@ -5,6 +5,7 @@ description: See how the Ballerina deployment in Docker works
 keywords: ballerina, programming language, services, cloud, docker
 permalink: /swan-lake/learn/deployment/docker/
 active: docker
+intro: Docker helps to package applications and their dependencies in a binary image, which can run in various locations whether on-premise, in a public cloud, or in a private cloud. 
 redirect_from:
   - /swan-lake/learn/deployment/docker
   - /swan-lake/learn/deploying-ballerina-programs-in-the-cloud
@@ -12,22 +13,9 @@ redirect_from:
   - /swan-lake/learn/deployment/
 ---
 
-# Docker
-
-Docker helps to package applications and their dependencies in a binary image, which can run in various locations whether on-premise, in a public cloud, or in a private cloud. To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, youhave to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings. 
+To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, youhave to follow a set of [best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings. 
 
 The Ballerina compiler is capable of creating optimized Docker images out of the application source code. This guide includes step-by-step instructions on different use cases and executing the corresponding sample source code. 
-
-- [Enabling Docker support](#enabling-docker-support)
-- [Use cases](#use-cases)
-  - [Running a Ballerina service in a Docker container](#running-a-ballerina-service-in-a-docker-container)
-  - [Creating a custom Ballerina Docker image and pushing it automatically to the Docker registry](#creating-a-custom-ballerina-docker-image-and-pushing-it-automatically-to-the-Docker-registry)
-  - [Running a Ballerina HTTPS service in a Docker container](#running-a-ballerina-https-service-in-a-docker-container)
-  - [Copying additional files to the Ballerina Docker image](#copying-additional-files-to-the-ballerina-docker-image)
-  - [Using a custom base image to build Ballerina Docker images](#using-a-custom-base-image-to-build-ballerina-docker-images)
-  - [Overriding the CMD of the generated Ballerina Dockerfile](#overriding-the-cmd-of-the-generated-ballerina-dockerfile)
-  - [Creating multiple Docker images corresponding to modules of a Ballerina project](#creating-multiple-docker-images-corresponding-to-modules-of-a-ballerina-project)
-- [Troubleshooting](#troubleshooting)
 
 ## Enabling Docker support
 

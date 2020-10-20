@@ -5,6 +5,7 @@ description: Learn how to use the CLI tool in the Ballerina programming language
 keywords: ballerina, programming language, ballerina central, ballerina modules
 permalink: /learn/publishing-modules-to-ballerina-central/
 active: publishing-modules-to-ballerina-central
+intro: The sections below include information about publishing modules to Ballerina Central.
 redirect_from:
   - /learn/how-to-publish-modules
   - /learn/how-to-publish-modules/
@@ -12,12 +13,6 @@ redirect_from:
   - /v1-2/learn/how-to-publish-modules/
   - /learn/publishing-modules-to-ballerina-central
 ---
-
-# Publishing Modules to Ballerina Central
-
-- [CLI Command](#cli-command)
-- [Setting Up](#setting-up)
-- [Organizations](#organizations)
 
 ## CLI Command
 

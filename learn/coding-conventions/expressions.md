@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages
 title: Expressions
 active: expressions
 permalink: /learn/coding-conventions/expressions/
+intro: The sections below include the coding conventions with respect to expressions.
 redirect_from:
   - /v1-2/learn/style-guide/expressions/
   - /v1-2/learn/style-guide/expressions
@@ -10,16 +11,6 @@ redirect_from:
   - /learn/style-guide/expressions/
   - /learn/coding-conventions/expressions
 ---
-
-# Expressions
-
-- [Function Invocation](#function-invocation)
-- [Record Literal](#record-literal)
-- [Map Literal](#map-literal)
-- [Tuple](#tuple)
-- [Array Literal](#array-literal)
-- [Type Casting](#type-casting)
-- [Table Literal](#table-literal)
 
 ## Function Invocation
 

@@ -252,3 +252,7 @@ a.cTopLink:hover {
 background-color: #464646 !important;
 color: #fff !important;
 }
+
+.cBallerina-io-breadcrumbs {
+    padding: 0;
+}

@@ -5,10 +5,7 @@ description: Learn how to develop a Ballerina project, structure code, and use t
 keywords: ballerina, programming language, ballerina modules, structure code
 permalink: /learn/structuring-ballerina-code/
 active: structuring-ballerina-code
-intro: This document demonstrates the development of a Ballerina project and shows how to use the `Ballerina Tool` to fetch, 
-build, and install Ballerina modules. These commands work with repositories that are both local and remote.
-
-Ballerina Central is a globally hosted module management system that is used to discover, download, and publish modules.
+intro: This document demonstrates the development of a Ballerina project and shows how to use the `Ballerina Tool` to fetch, build, and install Ballerina modules. 
 redirect_from:
   - /learn/how-to-structure-ballerina-code
   - /learn/how-to-structure-ballerina-code/
@@ -18,6 +15,10 @@ redirect_from:
 ---
 
 ## Organizing Your Code
+
+> These commands work with repositories that are both local and remote.
+
+Ballerina Central is a globally hosted module management system that is used to discover, download, and publish modules.
 
 The `Ballerina Tool` requires you to organize your code in a specific way. This document explains the simplest way to get it up and running with a Ballerina installation.
 

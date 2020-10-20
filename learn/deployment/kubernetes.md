@@ -12,16 +12,6 @@ redirect_from:
 
 The Kubernetes builder extension takes care of the creation of the Docker images, so you don't need to explicitly create Docker images prior to deployment on Kubernetes.
 
-- [Supported Configurations](#supported-configurations)
-- [Using Kubernetes Annotations](#using-kubernetes-annotations)
-- [Building the Deployed Service](#building-the-deployed-service)
-- [Creating the Kubernetes Deployment](#creating-the-kubernetes-deployment)
-    - [Accessing via Node Port](#accessing-via-node-port)
-    - [Accessing via Ingress](#accessing-via-ingress)
-    - [Accessing the Service](#accessing-the-service)
-- [Supported Kubernetes Annotations](#supported-kubernetes-annotations)
-- [Extending Ballerina Deployment and Annotations](#extending-ballerina-deployment-and-annotations)
-
 ## Supported Configurations
 
 The following Kubernetes configurations are supported:

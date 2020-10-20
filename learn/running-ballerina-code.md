@@ -5,7 +5,19 @@ description: Learn how to run Ballerina programs and services using the CLI tool
 keywords: ballerina, programming language, services
 permalink: /learn/running-ballerina-code/
 active: running-ballerina-code
-intro: A Ballerina application can have:
+intro: 
+redirect_from:
+  - /learn/how-to-deploy-and-run-ballerina-programs
+  - /learn/how-to-deploy-and-run-ballerina-programs/
+  - /learn/how-to-run-ballerina-programs/
+  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs
+  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
+  - /learn/running-ballerina-code
+---
+
+## Understanding the structure
+
+A Ballerina application can have:
 
 1. A [`main()`](/learn/by-example/the-main-function.html) function that runs as a terminating process.
 
@@ -16,14 +28,6 @@ Both of these are considered as entry points for program execution.
 These applications can be structured into a single program file or a Ballerina module. A collection of modules can be managed together with versioning and dependency management as part of a Ballerina project. 
 
 Source files and modules can contain zero or more entrypoints, and the runtime engine has precedence and sequence rules for choosing which entrypoint to execute.
-redirect_from:
-  - /learn/how-to-deploy-and-run-ballerina-programs
-  - /learn/how-to-deploy-and-run-ballerina-programs/
-  - /learn/how-to-run-ballerina-programs/
-  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs
-  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
-  - /learn/running-ballerina-code
----
 
 ## Running Standalone Source Code
 A single Ballerina source code file can be placed into any folder. 

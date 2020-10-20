@@ -4,9 +4,19 @@ title: Observing Ballerina Code
 description: See how Ballerina supports observability by exposing itself via metrics, tracing and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs
 permalink: /learn/observing-ballerina-code/
-active: how-to-observing-ballerina-code
-intro: Observability is a measure of how well internal states of a system can be inferred from knowledge of its external
-outputs. 
+active: observing-ballerina-code
+intro: Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs. 
+redirect_from:
+  - /learn/how-to-observe-ballerina-code
+  - /learn/how-to-observe-ballerina-code/
+  - /v1-2/learn/how-to-observe-ballerina-code
+  - /v1-2/learn/how-to-observe-ballerina-code/
+  - /learn/how-to-observe-ballerina-services/
+  - /learn/how-to-observe-ballerina-services
+  - /learn/observing-ballerina-code
+---
+
+## Providing observability in Ballerina
 
 Monitoring, logging, and distributed tracing are key methods that reveal the internal state of the system to provide the observability. Ballerina becomes fully observable by exposing itself via these three methods to various external systems allowing to monitor metrics such as request count and response time statistics, analyze logs, and
 perform distributed tracing. 
@@ -17,15 +27,7 @@ connectors use semantic tags to make tracing and metrics monitoring more informa
 This guide focuses on enabling Ballerina service observability with some of its default supported systems.
 [Prometheus] and [Grafana] are used for metrics monitoring, and [Jaeger] is used for distributed tracing. 
 Ballerina logs can be fed to any external log monitoring system like [Elastic Stack] to perform log monitoring and analysis.
-redirect_from:
-  - /learn/how-to-observe-ballerina-code
-  - /learn/how-to-observe-ballerina-code/
-  - /v1-2/learn/how-to-observe-ballerina-code
-  - /v1-2/learn/how-to-observe-ballerina-code/
-  - /learn/how-to-observe-ballerina-services/
-  - /learn/how-to-observe-ballerina-services
-  - /learn/observing-ballerina-code
----
+
 
 ## Observing a Ballerina Service
 

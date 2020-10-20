@@ -5,6 +5,7 @@ description: The Protocol Buffers to Ballerina tool provides capabilities to gen
 keywords: ballerina, protocol buffers, programming language
 permalink: /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions/
 active: generating-ballerina-code-for-protocol-buffer-definitions
+intro: The `Protocol Buffers to Ballerina` tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions.
 redirect_from:
   - /swan-lake/learn/how-to-generate-code-for-protocol-buffers
   - /swan-lake/learn/how-to-generate-code-for-protocol-buffers/
@@ -12,18 +13,12 @@ redirect_from:
   
 ---
 
-# Generating Ballerina Code for Protocol Buffer Definitions
+## Usage of the Tool
 
-The `Protocol Buffers` to Ballerina tool provides capabilities to generate Ballerina source code for the Protocol
-Buffer definition. The code generation tool can produce `ballerina stub` and `ballerina service/client template` files.
+The code generation tool can produce `ballerina stub` and `ballerina service/client template` files.
  
 > In Ballerina, Protocol Buffers serialization is only supported in the gRPC module. Therefore, you can only use
 > this tool to generate Ballerina source code for gRPC service definitions.
-
-- [CLI Command](#cli-command)
-  - [CLI Command Options](#cli-command-options)
-- [Sample](#sample)
-  - [Executing the Sample](#executing-the-sample)
 
 ## CLI Command
 

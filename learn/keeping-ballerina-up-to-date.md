@@ -20,7 +20,7 @@ If you haven’t installed Ballerina yet, see the [Installing Ballerina](/learn/
 
 This section introduces various terms used throughout this guide. We recommend that you read this section before proceeding to the next.  
 
-### Ballerina tool
+### The Ballerina Tool
 
 **Ballerina** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build and run programs, etc. 
 

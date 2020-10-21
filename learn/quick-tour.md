@@ -74,7 +74,7 @@ Hello Ballerina!
 
 Alternatively, you can use a Ballerina HTTP client to invoke the service.
 
-## Using a Client to Interact With a Network-Accessible Service
+## Using a Client to Interact with a Network-Accessible Service
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 

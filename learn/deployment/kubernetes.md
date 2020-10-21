@@ -256,7 +256,7 @@ $ curl -kv https://ballerina.guides.io/users/jane
 {"name":"Jane Doe", "email":"jane@ballerina.com"}
 ```   
     
-##### Supported Kubernetes Annotations
+#### Supported Kubernetes Annotations
 
 **@kubernetes:Deployment{}**
 - Supported with Ballerina services, listeners and functions.

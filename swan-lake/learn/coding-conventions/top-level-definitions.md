@@ -11,7 +11,7 @@ redirect_from:
   - /swan-lake/learn/coding-conventions/top-level-definitions
 ---
 
-## General practices
+## General Practices
 
 * Do not indent the top level definitions. 
   

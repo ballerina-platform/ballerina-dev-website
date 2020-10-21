@@ -18,7 +18,7 @@ redirect_from:
   - /learn/setting-up-intellij-idea
 ---
 
-## Setting up the prerequisites
+## Setting Up the Prerequisites
 
 You need [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) installed.
 

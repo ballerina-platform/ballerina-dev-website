@@ -8,7 +8,7 @@ redirect_from:
   - /swan-lake/learn/set-up-ballerina-sdk
 ---
 
-## Setting up for a new project
+## Setting Up for a New Project
 
 Follow the steps below to set up Ballerina SDK when creating a new Ballerina project.
 
@@ -34,7 +34,7 @@ Now, you have successfully added the Ballerina SDK. Click **Next** and continue 
 
 ![The new Ballerina SDK](images/new-ballerina-sdk.png)
 
-## Setting up for an existing project
+## Setting Up for an Existing Project
 
 Follow the steps below to set up Ballerina SDK for an exisitng Ballerina project.
 

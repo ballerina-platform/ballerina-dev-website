@@ -20,7 +20,7 @@ redirect_from:
   - /learn/language-intelligence/
 ---
 
-## Semantic and syntactic diagnostics
+## Semantic and Syntactic Diagnostics
 
 When there are syntax or semantic errors in your code, you will be notified with appropriate diagnostics during the development time. 
 
@@ -28,7 +28,7 @@ When there are syntax or semantic errors in your code, you will be notified with
 
 ![Semantic and syntactic diagnostics](/learn/images/semantic-and-syntactic.gif)
 
-## Suggestions and auto completion
+## Suggestions and Auto Completion
 
 The extension provides you with suggestions on keywords, variables, and code snippets of language constructs (such as functions, services, and iterable constructs etc.).
 
@@ -36,7 +36,7 @@ The extension provides you with suggestions on keywords, variables, and code sni
 
 > **Tip**: You can use these suggestions to access the contents of the modules available in your Ballerina home repo as well as in the Ballerina distribution.
 
-## Code actions
+## Code Actions
 
 These allow you to perform the below tasks easily based on the diagnostics and the current scope where the cursor resides. 
 
@@ -50,7 +50,7 @@ For example, you can add documentation for a function as shown below.
 
  ![Code actions](/learn/images/code-actions.gif)
 
-## Hover support
+## Hover Support
 
  Hover support provides you quick access to information about a certain entity. 
  
@@ -66,7 +66,7 @@ This option allows you to view the definition of a selected variable, function, 
 
 ![Go to definition](/learn/images/go-to-definition-vscode.gif)
 
-## What's next?
+## What's Next?
 
  - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/learn/vscode-plugin/run-and-debug).
  - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/learn/vscode-plugin).

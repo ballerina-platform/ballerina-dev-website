@@ -12,7 +12,7 @@ redirect_from:
   - /swan-lake/learn/using-the-cli-tools
 ---
 
-## Using the `ballerina` command
+## Using the 'ballerina' command
 
 In the CLI, execute the `ballerina help` command to view all the actions you can perform with it as shown below:
 
@@ -26,7 +26,7 @@ You can use it in the below format.
 
 ![Ballerina help output](/swan-lake/learn/images/ballerina-help-output.png)
 
-## Core commands
+## Core Commands
 
 These everyday commands are your best friends! They address the very basics of programming in Ballerina such as compiling, running, testing programs, and generating their documentation.
 
@@ -84,7 +84,7 @@ These commands allow you to work with the Ballerina Central to share Ballerina m
 </tr>
 </table>
 
-## Project commands
+## Project Commands
 
 Ballerina projects are the way to organize real world Ballerina development tasks. 
 
@@ -101,7 +101,7 @@ Ballerina projects are the way to organize real world Ballerina development task
 </tr>
 </table>
 
-## Other commands
+## Other Commands
 
 These powerful supporting tools extend Ballerina to various ecosystem technologies that are inherently cloud-native. This functionality will grow over time and will even be developer extensible in the future.
 
@@ -134,7 +134,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 </table>
 
-## Update commands
+## Update Commands
 
 <table class="cComandTable">
 <tr>

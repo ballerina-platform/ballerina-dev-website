@@ -29,7 +29,7 @@ The sections below include instructions on how to run different elements of a Ba
 - [Running the main method](#running-the-main-method)
 - [Running Ballerina services](#running-ballerina-services)
 
-### Running the Main Method
+### Running the 'Main' Method
 
 Follow the steps below to run the main function of a Ballerina file.
 

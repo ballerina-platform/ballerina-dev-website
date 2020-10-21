@@ -85,7 +85,7 @@ Now, you have successfully created a new Ballerina file with a **main** function
 
 ## Configuring the Plugin Settings
 
-### Ballerina Home Auto Detection
+### 'Ballerina Home' Auto Detection
 
 In order to automatically detect the Ballerina Home that is being used (without setting up a Ballerina SDK), enable the **Settings** **->** **Languages and Frameworks** **->** **Ballerina** **->** **Ballerina Home Auto Detection** option.
 

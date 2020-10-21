@@ -13,7 +13,7 @@ redirect_from:
   - /swan-lake/learn/running-ballerina-code
 ---
 
-## Understanding the structure
+## Understanding the Structure
 
 A Ballerina application can have:
 
@@ -86,7 +86,7 @@ A Ballerina runtime can be configured using configuration parameters, which are 
 
 The configuration APIs accept a key and an optional default value. If a mapping does not exist for the specified key, the default value is returned as the configuration value. The default values of these optional configurations are the default values of the return types of the functions.
 
-### Sourcing Parameters Into Ballerina Programs
+### Sourcing Parameters into Ballerina Programs
 Configuration parameters for your programs and apps can be defined on the CLI, as an environment variable, or from a configuration file, with loading and override precedence in the same order.
 
 #### Sourcing CLI Parameters
@@ -172,7 +172,6 @@ $ echo 12345 > secret.txt
 $ ballerina run main.bal --b7a.config.file=ballerina.conf
 Hello, Ballerina !
 ```
-
 
 If the `secret.txt` file is not present, then CLI prompts the user for the secret. Enter secret `12345` when prompted.
 ```bash

@@ -8760,7 +8760,7 @@ result of the evaluation.
 <h4 id="section_8.3.2">8.3.2 Service declaration</h4>
 
 <pre class="grammar"><span class="ntdfn" id="service-decl">service-decl</span> :=
-   <a href="#metadata"><span class="ntref">metadata</span></a>
+   <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
    <code>service</code> [[<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] <a href="#variable-name"><span class="ntref">variable-name</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
 <span class="ntdfn" id="expression-list">expression-list</span> := <a href="#expression"><span class="ntref">expression</span></a> (<code>,</code> <a href="#expression"><span class="ntref">expression</span></a>)*
 </pre>
@@ -8779,7 +8779,9 @@ error; the inferred type is the type of the first parameter to the
 <code>attach</code> method of L. The object-constructor-block has the same
 semantics as in an object-constructor-expr with a <code>service</code> qualifier
 and a type-reference that refers to S. The type S is also used as the type of
-the variable declared.
+the variable declared. If the service-decl includes <code>isolated</code>, then
+it is equivalent to an object-constructor-expr with an <code>isolated</code>
+qualifier as well as a <code>service</code> qualifier.
 </p>
 <p>
 A service-decl is initialized as part of module initialization as follows. The

@@ -98,7 +98,7 @@ The service generation process is complete. The following files were created.
 -- hello-client.bal
 -- schema.bal
 ```
-#### Generate OpenAPI Contract from Service
+#### Generate an OpenAPI Contract from a Service
 
  ```bash
     ballerina openapi -i src/helloworld/helloService.bal

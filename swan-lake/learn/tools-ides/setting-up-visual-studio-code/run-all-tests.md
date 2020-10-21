@@ -16,7 +16,7 @@ redirect_from:
   - /swan-lake/learn/run-all-tests/
 ---
 
-## Running all tests 
+## Running All Tests 
 
 Follow the steps below to do this.
 
@@ -25,7 +25,7 @@ Follow the steps below to do this.
 
 ![Run all tests](/swan-lake/learn/images/run-all-tests.gif)
 
-## What's next?
+## What's Next?
 
 - For information on the Ballerina VSCode extension, see [The Visual Studio Code Ballerina Extension](/swan-lake/learn/vscode-plugin/).
 - For information on all the tools and IDEs that are supported by Ballerina, see [Setting up Ballerina](/swan-lake/learn/installing-ballerina/).

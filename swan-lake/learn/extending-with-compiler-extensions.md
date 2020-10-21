@@ -36,7 +36,7 @@ The `ballerina/docker` and `ballerina/kubernetes` modules make use of custom ann
 > 1. The Ballerina Compiler is written in Java 11. Therefore, you will need JDK 11.
 > 2. End users will have to install the extension manually.
 
-## Hello World: The Annotation Way
+## 'Hello World': The Annotation Way
 
 In this guide, we will take a look at how to create a custom annotation and how to write a compiler extension to read and act upon our custom annotation. The custom annotation (i.e. `@hello:Greeting`) is attachable to functions. It has an attribute called `salutation`, which will be read by the compiler extension and written to a file when building the program. The annotation can be shared with others by publishing it to [Ballerina Central](https://central.ballerina.io/). Currently, there isn’t a mechanism for sharing compiler extensions. The compiler extension has to be copied to the `<BALLERINA_HOME>/bre/lib` directory.
 
@@ -170,7 +170,7 @@ Each of the `process()` methods correspond to annotable constructs of the langua
 
 The extension will read the salutation field of the `@hello:Greeting` annotation and write its value to a file in the `/target` directory. 
 
-### Setting up the Project
+### Setting Up the Project
 
 Start by creating a Java project for the extension. It needs two classes: `HelloPlugin` and `HelloModel`. Also, create a resource file named `org.ballerinalang.compiler.plugins.CompilerPlugin` in the `resources/META-INF/services` directory. This file should contain the fully-qualified class name of the extension class (which in this case, is `xyz.foo.hello.HelloPlugin`).
 ```
@@ -341,7 +341,7 @@ class HelloModel {
 
 Finally, build the extension and place the resulting JAR file inside the `<BALLERINA_HOME>/distributions/jballerina-<BALLERINA_VERSION>/bre/lib/` directory. 
 
-## Putting It All Together
+## Putting it All Together
 
 Now, build your hello world project again. You should see an additional step logged in the console for generating the greeting.
 

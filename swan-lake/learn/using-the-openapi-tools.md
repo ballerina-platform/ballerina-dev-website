@@ -14,7 +14,7 @@ redirect_from:
   - /learn/using-the-openapi-tools
 ---
 
-## Using the capabilities of the OpenAPI Tools
+## Using the Capabilities of the OpenAPI Tools
 
 The OpenAPI tools provide the following capabilities.
  
@@ -29,7 +29,7 @@ The OpenAPI compiler plugin will allow you to validate a service implementation 
 This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract.   
 
 ### OpenAPI to Ballerina
-#### Generate Service and Client stub from OpenAPI Contract
+#### Generate Service and Client Stub from an OpenAPI Contract
 
 ```bash
 ballerina openapi   -i <openapi-contract> 
@@ -98,7 +98,7 @@ The service generation process is complete. The following files were created.
 -- hello-client.bal
 -- schema.bal
 ```
-#### Generate OpenAPI contract from Service
+#### Generate OpenAPI Contract from Service
 
  ```bash
     ballerina openapi -i src/helloworld/helloService.bal
@@ -117,7 +117,7 @@ The Compiler Plugin is activated if a service has the `openapi:ServiceInfo` anno
 the service and the OpenAPI Contract and validates both against a pre-defined set of validation rules. 
 If any of the rules fail, the plugin will give the result as one or more compilation errors.
 
-### Annotation for validator Plugin 
+### Annotation for Validator Plugin 
 The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI Contract. You need to add 
 this annotation to the service file with the required values for enabling the validations.  
 The following is an example of the annotation usage.
@@ -134,7 +134,7 @@ service greet on new http:Listener(9090) {
     ...
 }
 ```
-#### Annotation support the following attributes:
+#### Annotation Support for the Following Attributes:
 - **Contract** (Required) : **string**  :
 Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`
 This is a required attribute.

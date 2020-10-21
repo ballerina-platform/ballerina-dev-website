@@ -14,7 +14,7 @@ redirect_from:
   - /swan-lake/learn/testing-ballerina-code
 ---
 
-## Writing a simple function
+## Writing a Simple Function
 
 To get started, let's write a simple Ballerina function and test it.
 

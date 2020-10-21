@@ -14,7 +14,7 @@ redirect_from:
   - /swan-lake/learn/observing-ballerina-code
 ---
 
-## Providing observability in Ballerina
+## Providing Observability in Ballerina
 
 Monitoring, logging, and distributed tracing are key methods that reveal the internal state of the system to provide the observability. Ballerina becomes fully observable by exposing itself via these three methods to various external systems allowing to monitor metrics such as request count and response time statistics, analyze logs, and
 perform distributed tracing. 
@@ -42,7 +42,7 @@ Prometheus, etc. You can follow [Docker documentation](https://docs.docker.com/i
 * Setup Jaeger analyze tracing as mentioned in section [Setting up Jaeger](#jaeger-server)
 * Setup Elastic Stack only if you are interested in analysing logs by following section on [Setting up Elastic Stack](#elastic-stack)
 
-### Step 3 - Creating a Hello World Ballerina Service
+### Step 3 - Creating a 'Hello World' Ballerina Service
  
 Create a Service as shown below and save it as `hello_world_service.bal`.
 
@@ -64,7 +64,7 @@ service hello on new http:Listener(9090) {
 }
 ```
 
-### Step 4 - Observing the Hello World Ballerina Service
+### Step 4 - Observing the 'Hello World' Ballerina Service
 
 Observability is disabled by default and can be enabled by using the `--b7a.observability.enabled=true` flag or updating the configurations.
 

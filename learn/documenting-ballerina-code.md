@@ -93,7 +93,7 @@ public function foo(int i, string s) returns boolean {
 public function submit(@sensitive string httpVerb, string path, Request request) returns HttpFuture|error;
 ```
 
-## Documenting A Module
+## Documenting a Module
 
 A Ballerina module can have a `Module.md` file, which describes the module and its usage.
 

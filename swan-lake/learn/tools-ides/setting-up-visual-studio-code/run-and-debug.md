@@ -39,7 +39,7 @@ For more information on debugging your code using VS Code, go to [VS Code Docume
 - There are some cases where stepping over gives unexpected behavior
     - Eg: When there are multiple workers and a wait expression waiting for them, even though step over hit and pass wait line in source, workers are not yet finished execution.
 
-## What's next?
+## What's Next?
 
  - For information on the next capability of the VS Code Ballerina extension, see [Graphical View](/swan-lake/learn/vscode-plugin/graphical-editor).
  - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/swan-lake/learn/vscode-plugin).

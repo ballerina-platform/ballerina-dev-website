@@ -16,7 +16,7 @@ redirect_from:
 1. Follow the instructions given on the [Getting Started](/swan-lake/learn/getting-started) page to set it up. 
 1. Follow the instructions given on the [Visual Studio Code Plugin](/swan-lake/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/swan-lake/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
 
-## Writing a service, running it, and invoking it
+## Writing a Service, Running It, and Invoking It
 
 Write a simple Hello World HTTP service in a file with the `.bal` extension.
 
@@ -72,7 +72,7 @@ Hello Ballerina!
 
 Alternatively, you can use a Ballerina HTTP client to invoke the service.
 
-## Using a client to interact with a network-accessible service
+## Using a Client to Interact with a Network-Accessible Service
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 
@@ -172,7 +172,7 @@ $ ballerina run sunrise_client.bal
 
 This should print out the sunrise/sunset details.
 
-## What's next?
+## What's Next?
 
 Now, that you have taken Ballerina around for a quick tour, you can explore Ballerina more.
 

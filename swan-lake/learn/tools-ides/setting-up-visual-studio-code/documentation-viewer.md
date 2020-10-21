@@ -25,7 +25,7 @@ The Documentation Viewer represents the documented entities in a file in an orga
 
 ![Documentation Viewer](/swan-lake/learn/images/documentation-viewer.gif)
 
-## What's next?
+## What's Next?
 
  - For information on the next capability of the VS Code Ballerina plugin, see [Run All tests](/swan-lake/learn/vscode-plugin/run-all-tests).
  - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/swan-lake/learn/vscode-plugin).

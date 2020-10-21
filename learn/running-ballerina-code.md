@@ -15,7 +15,7 @@ redirect_from:
   - /learn/running-ballerina-code
 ---
 
-## Understanding the structure
+## Understanding the Structure
 
 A Ballerina application can have:
 

@@ -25,7 +25,7 @@ The sections below include instructions on how to run different elements of a Ba
 - [Running the main method](#running-the-main-method)
 - [Running Ballerina services](#running-ballerina-services)
 
-### Running the Main Method
+### Running the 'Main' Method
 
 Follow the steps below to run the main function of a Ballerina file.
 
@@ -70,7 +70,7 @@ You can debug Ballerina main/service programs with a few clicks.
 - There are some cases where stepping over gives unexpected behavior
     - Eg: When there are multiple workers and a wait expression waiting for them, even though step over hit and pass wait line in source, workers are not yet finished execution.
 
-## Viewing the Sequence Siagram
+## Viewing the Sequence Diagram
 
 The underlying language semantics of Ballerina were designed by modeling how independent parties communicate via structured interactions. Subsequently, every Ballerina program can be displayed as a sequence diagram of its flow including endpoints as well as synchronous and asynchronous calls.
 

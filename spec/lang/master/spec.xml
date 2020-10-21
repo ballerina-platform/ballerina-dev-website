@@ -3914,21 +3914,18 @@ singleton type <code>"X"</code>, but the broad type is <code>string</code>.
 <section>
 <h4>Isolated expressions</h4>
 <p>
-Ballerina defines requirements for when an expression is <em>isolated</em>.
-If an expression meets the requirements, then it is compile-time guaranteed
-that the value of the expression will be an isolated root
-and will not be aliased.
+Ballerina defines requirements for when an expression is <em>isolated</em>. If
+an expression meets the requirements, then it is compile-time guaranteed that
+the value of the expression will be an isolated root and will not be aliased.
 </p>
 <p>
-Each syntactic kind of expression has a rule for when it is isolated, which may
-depend on the static type of the expression and of subexpressions. An expression
-is always isolated if its static type is immutable, i.e. a subtype of
-<code>readonly</code>, or an isolated object, i.e. a subtype of
-<code>isolated object {}</code>.
+If the static type of an expression is immutable, i.e. a subtype of
+<code>readonly</code>, or an isolated object, i.e. a subtype of <code>isolated
+object {}</code>, then the expression is isolated.
 </p>
 <p>
-In addition, the following expressions are also isolated if all their
-subexpressions are isolated:
+Also, an expression of one of the following syntactic kinds is isolated if all
+its subexpressions are isolated (regardless of its static type):
 </p>
 <ul>
 <li><code>list-constructor-expr</code></li>
@@ -3942,8 +3939,8 @@ subexpressions are isolated:
 <li><code>conditional-expr</code></li>
 </ul>
 <p>
-The section for each kind of expression will describe any additional conditions
-under which that kind of expression is isolated.
+The section for each kind of expression will describe any alternative conditions
+under which that kind of expression is also isolated.
 </p>
 </section>
 </section>
@@ -5585,6 +5582,9 @@ of int.
 <p>
 A range-expr is designed to be used in a foreach statement, but it can be used
 elsewhere.
+</p>
+<p>
+A range-expr is always isolated.
 </p>
 </section>
 <section>
@@ -8381,7 +8381,7 @@ result of the evaluation.
 
 <pre
 class="grammar"><dfn>service-decl</dfn> :=
-   <abbr>metadata</abbr>
+   <abbr>metadata</abbr> [<abbr>isolated-qual</abbr>]
    <code>service</code> [[<abbr>type-descriptor</abbr>] <abbr>variable-name</abbr>] <code>on</code> <abbr>expression-list</abbr> <abbr>object-constructor-block</abbr>
 <dfn>expression-list</dfn> := <abbr>expression</abbr> (<code>,</code> <abbr>expression</abbr>)*
 </pre>
@@ -8400,7 +8400,9 @@ error; the inferred type is the type of the first parameter to the
 <code>attach</code> method of L. The object-constructor-block has the same
 semantics as in an object-constructor-expr with a <code>service</code> qualifier
 and a type-reference that refers to S. The type S is also used as the type of
-the variable declared.
+the variable declared. If the service-decl includes <code>isolated</code>, then
+it is equivalent to an object-constructor-expr with an <code>isolated</code>
+qualifier as well as a <code>service</code> qualifier.
 </p>
 <p>
 A service-decl is initialized as part of module initialization as follows. The
@@ -8545,7 +8547,9 @@ be in the same module.
 If <code>class-type-quals</code> contains <code>distinct</code>, then the
 primary type-id of the class will the type-id of that occurrence of
 <code>distinct</code>, and the secondary type-ids will be the union of the
-type-ids of the included object types.
+type-ids of the included object types. If <code>class-type-quals</code> does not
+contain <code>distinct</code>, then the type-ids of the class come from the
+included object types in the same way as with an object type descriptor.
 </p>
 <p>
 An object of a class is initialized by:

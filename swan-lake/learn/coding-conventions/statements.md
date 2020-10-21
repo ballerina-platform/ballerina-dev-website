@@ -56,9 +56,9 @@ if (inProperSallaryRange) {
 }
 ```
 
-## Match statement
+## Match Statement
 
-### Match patterns clause
+### Match Patterns Clause
 
 * Block indent each pattern clause in its own line.
 * Keep a single space before and after the `=>` sign.
@@ -105,7 +105,7 @@ match x {
 }
 ```
 
-## Transaction statement
+## Transaction Statement
 
 * Start each optional clause (`onretry`, `committed`, and `aborted`) in the same line as the closing brace of the matching clause.
 * If `transaction`, `onretry`, `committed`, and `aborted` blocks are empty, add an empty line between the braces. 

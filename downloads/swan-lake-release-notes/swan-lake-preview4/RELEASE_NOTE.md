@@ -44,7 +44,7 @@ If you are already using Ballerina, you can directly update your distribution to
 
  Next, execute the commands below to update to Swan Lake Preview 4.
 
- > `ballerina dist pull slp4` 
+ > `ballerina dist pull slp4`<br> 
  > `ballerina dist use slp4`                 
 
 However, if you are using a Ballerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).

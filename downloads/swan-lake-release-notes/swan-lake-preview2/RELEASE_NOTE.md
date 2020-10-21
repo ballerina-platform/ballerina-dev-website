@@ -15,7 +15,8 @@ If you are already using jBallerina, you can directly update your distribution t
 
  Next, execute the command below to update to Swan Lake Preview 2.
 
- > `ballerina dist pull slp2`                  
+ > `ballerina dist pull slp2`
+ > `ballerina dist use slp2`                  
 
 However, if you are using a jBallerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
 

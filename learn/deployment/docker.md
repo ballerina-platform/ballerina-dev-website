@@ -17,7 +17,7 @@ To create a Docker image, you have to create a Dockerfile by choosing a suitable
 
 The Ballerina compiler is capable of creating optimized Docker images out of the application source code. This guide includes step-by-step instructions on different use cases and executing the corresponding sample source code. 
 
-## Enabling Docker support
+## Enabling Docker Support
 
 Docker support is inbuilt and comes by default in any Ballerina distribution. You can enable Docker artifact generation by adding annotations to your Ballerina code. Follow the steps below to enable Docker support.
 
@@ -27,17 +27,17 @@ Docker support is inbuilt and comes by default in any Ballerina distribution. Yo
 
 3. Build the Ballerina source file/project (e.g., `ballerina build source.bal`).
 
-## Use cases
+## Use Cases
 
-### Running a Ballerina service in a Docker container
+### Running a Ballerina Service in a Docker Container
 
 This use case shows how to run a Ballerina service in a Docker container. The sample below demonstrates running a simple Ballerina hello world service in a Docker container. 
 
-#### Prerequisites
+#### Setting Up the Prerequisites
 
 You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
-#### Sample source code 
+#### Sample Source Code 
 
 `hello_world_docker.bal`
 ```ballerina 
@@ -55,7 +55,7 @@ service hello on new http:Listener(9090){
 
 ```
 
-#### Steps to run
+#### Steps to Run
 
 1. Compile the `hello_world_docker.bal` file.
 
@@ -163,16 +163,16 @@ service hello on new http:Listener(9090){
     > docker rmi e48123737a65
   ```
 
-### Creating a custom Ballerina Docker image and pushing it automatically to the Docker registry
+### Creating a Custom Ballerina Docker Image and Pushing it Automatically to the Docker Registry
 
 This use case shows how to run a simple Ballerina hello world service in a Docker container with annotation configurations, which can be used to create a Docker image with a custom image-name and tag, and then automatically push the created image to the Docker registry.
 
-#### Prerequisites
+#### Setting Up the Prerequisites
 
 - A machine with [Docker](https://docs.docker.com/get-docker/) installed
 - A [Docker Hub](https://hub.docker.com/) account
 
-#### Sample source code
+#### Sample Source Code
 
 `custom_docker_name.bal`
 
@@ -207,7 +207,7 @@ In this sample, the following properties are set in the `@docker:Config` annotat
 
 > The `$env` variable is used to read the environment variable values from the system.
 
-#### Steps to run
+#### Steps to Run
 
 1. Export the username and password of Docker (registry).
 
@@ -246,15 +246,15 @@ In this sample, the following properties are set in the `@docker:Config` annotat
 
     ![Docker Hub](/learn/images/docker-hub.png)
 
-### Running a Ballerina HTTPS service in a Docker container
+### Running a Ballerina HTTPS Service in a Docker Container
 
 An HTTP endpoint can be configured to communicate through HTTPS as well. To secure an endpoint using HTTPS, it needs to be configured with a keystore, a certificate, and a private key for the endpoint. When running this HTTPS service as a Docker container, it is required to copy the keystore with the custom certificate that is used to configure the HTTPS endpoint. 
 
-#### Prerequisites
+#### Setting Up the Prerequisites
 
 You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
-#### Sample source code
+#### Sample Source Code
 
 The sample below uses a separate listener endpoint and it is configured with a custom keystore. In addition to the `@docker:Config` annotation, the `@docker:Expose` annotation is used with the listener endpoint object, which helps to expose the correct service ports when creating the Docker container. 
 
@@ -286,7 +286,7 @@ service hello on helloWorldEP {
 }
 ```
 
-#### Steps to run
+#### Steps to Run
 
 1. Compile the `https_service_in_docker.bal` file.
 
@@ -393,15 +393,15 @@ service hello on helloWorldEP {
     Untagged: https-helloworld:latest
     ```
 
-### Copying additional files to the Ballerina Docker image
+### Copying Additional Files to the Ballerina Docker Image
 
 In some use cases, you need to process files in your applications. When these applications are run in a Docker container, you might need to copy these additional files into the image or mount them as external volume. This use case shows how to copy additional files into the Docker image while compiling the Ballerina source code.
 
-#### Prerequisites
+#### Setting Up the Prerequisites
 
 You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
-#### Sample source code
+#### Sample Source Code
 
 `copy_file.bal`
 
@@ -473,7 +473,7 @@ target = "java8"
     path = "/path/to/mysql-connector-java-8.0.17.jar"
 ```
 
-#### Steps to run
+#### Steps to Run
 
 1. Create a `name.txt` file in the same directory in which the `copy_file.bal` file resides.
 
@@ -580,15 +580,15 @@ target = "java8"
     > docker rmi cc198c0af86e
     ```
 
-### Using a custom base image to build Ballerina Docker images
+### Using a Custom Base Image to Build Ballerina Docker Images
 
 Ballerina ships a base image (e.g., `ballerina/jre8:v1`) with some security hardening. It is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
 
-#### Prerequisites
+#### Setting UP The Prerequisites
 
 You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
-#### Sample source code
+#### Sample Source Code
 
 `base_image.bal`
 
@@ -610,7 +610,7 @@ service hello on new http:Listener(9090){
 
 > **Note:** This sample uses `openjdk:8-jre-alpine` as the custom Docker image by using the `baseImage` property in the `@docker:Config` annotation.
 
-#### Steps to run
+#### Steps to Run
 
 1.  Compile the `base_image.bal` file.
 
@@ -705,15 +705,15 @@ service hello on new http:Listener(9090){
     Untagged: helloworld_custom_baseimage:latest
     ```
 
-### Overriding the CMD of the generated Ballerina Dockerfile
+### Overriding the CMD of the Generated Ballerina Dockerfile
 
 The Ballerina Docker image builder uses the generic CMD command to execute the created JAR file. However, sometimes, you might need to override the default CMD command. This use case shows how to override the default CMD command.
 
-### Prerequisites
+### Setting Up the Prerequisites
 
 You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
-#### Sample source code
+#### Sample Source Code
 
 `docker_cmd.bal`
 
@@ -736,7 +736,7 @@ service hello on new http:Listener(9090){
 
 This sample enables HTTP trace logs by overriding the CMD value of the generated Dockerfile. The cmd field will be as `CMD java -jar ${APP} --b7a.http.accesslog.console=true` in the `@docker:Config{}` annotation.
 
-### Steps to run
+### Steps to Run
 
 1. Compile the `base_image.bal` file.
 
@@ -847,15 +847,15 @@ This sample enables HTTP trace logs by overriding the CMD value of the generated
     Untagged: custome_cmd:latest
     ```
 
-### Creating multiple Docker images corresponding to modules of a Ballerina project
+### Creating Multiple Docker Images Corresponding to Modules of a Ballerina Project
 
 This use case shows how to add the Docker annotation to a Ballerina project to create the corresponding Docker images.
 
-### Prerequisites
+### Setting Up the Prerequisites
 
 You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 
-#### Sample source code
+#### Sample Source Code
 
 1. Ballerina project to call the restaurant:
 
@@ -916,7 +916,7 @@ You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
     }
     ```
 
-#### Steps to run
+#### Steps to Run
 
 1. Compile the Ballerina project.
 

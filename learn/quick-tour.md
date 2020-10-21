@@ -18,7 +18,7 @@ redirect_from:
 1. Follow the instructions given on the [Getting Started](/learn/getting-started) page to set it up. 
 1. Follow the instructions given on the [Visual Studio Code Plugin](/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
 
-## Writing a service, running it, and invoking it
+## Writing a Service, Running It, and Invoking It
 
 Write a simple Hello World HTTP service in a file with the `.bal` extension.
 
@@ -74,7 +74,7 @@ Hello Ballerina!
 
 Alternatively, you can use a Ballerina HTTP client to invoke the service.
 
-## Using a client to interact with a network-accessible service
+## Using a Client to Interact With a Network-Accessible Service
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 

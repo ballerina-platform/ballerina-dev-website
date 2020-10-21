@@ -12,7 +12,7 @@ redirect_from:
   - /learn/using-the-openapi-tools
 ---
 
-## Using the capabilities of the OpenAPI Tools
+## Using the Capabilities of the OpenAPI Tools
 
 The OpenAPI tools provide the following capabilities.
 

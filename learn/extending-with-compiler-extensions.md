@@ -172,7 +172,7 @@ Each of the `process()` methods correspond to annotable constructs of the langua
 
 The extension will read the salutation field of the `@hello:Greeting` annotation and write its value to a file in the `/target` directory. 
 
-### Setting up the Project
+### Setting Up the Project
 
 Start by creating a Java project for the extension. It needs two classes: `HelloPlugin` and `HelloModel`. Also, create a resource file named `org.ballerinalang.compiler.plugins.CompilerPlugin` in the `resources/META-INF/services` directory. This file should contain the fully-qualified class name of the extension class (which in this case, is `xyz.foo.hello.HelloPlugin`).
 ```
@@ -343,7 +343,7 @@ class HelloModel {
 
 Finally, build the extension and place the resulting JAR file inside the `<BALLERINA_HOME>/distributions/jballerina-<BALLERINA_VERSION>/bre/lib/` directory. 
 
-## Putting It All Together
+## Putting it All Together
 
 Now, build your hello world project again. You should see an additional step logged in the console for generating the greeting.
 

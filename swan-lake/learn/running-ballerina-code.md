@@ -167,16 +167,26 @@ Hello, Ballerina !
 
 #### Decrypting the Value
 If a configuration contains an encrypted value, Ballerina looks for a `secret.txt` file in the directory where the source files are located. The `secret.txt` should contain the secret used to encrypt the value. The `secret.txt` file will be deleted after it is read.
+
 ```bash
 $ echo 12345 > secret.txt
 $ ballerina run main.bal --b7a.config.file=ballerina.conf
 Hello, Ballerina !
 ```
 
+Alternatively, you can pass the path to this `secret.txt` file as a flag via the CLI as follows:
+
+```bash
+ ballerina run main.bal --b7a.config.secret=<PATH_TO_SECRET_FILE>
+ ```
+
 If the `secret.txt` file is not present, then CLI prompts the user for the secret. Enter secret `12345` when prompted.
+
 ```bash
 $ ballerina run main.bal --b7a.config.file=ballerina.conf
 ballerina: enter secret for config value decryption:
 
 Hello, Ballerina !
 ```
+
+

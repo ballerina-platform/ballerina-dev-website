@@ -22,19 +22,23 @@ Ballerina distribution is a term that refers to these jBallerina and nBallerina 
 
 ### Getting to know the Release Channels
 
-Ballerina distributions are released on two different release channels at the moment: patch releases and minor releases. Both these channels distribute stable versions. Ballerina yet does not have a release channel for nightly builds that give you access to the latest perhaps unstable features.
+Ballerina distributions are released via two different release channels at the moment. One is the stable 1.x release channel and the other one is the Swan Lake release channel.
 
-Ballerina distribution releases strictly follow [SemVer](https://semver.org/) with major.minor.patch version numbers.
+Ballerina yet does not have a release channel for nightly builds that give you access to the latest perhaps unstable features.
 
-#### Patch Release Channel
+#### Versioning of the releases
 
-This channel gives you access to the patch releases of Ballerina distributions that contain bug fixes and fixes for critical stability and security related issues. These releases are strictly time-bound and happen every two weeks. Occasionally,  you would see on-demand patch releases as well.
+Both the above channels of Ballerina distribution releases will strictly follow [SemVer](https://semver.org/) with major.minor.patch version numbers.
+
+#### Patch Releases
+
+Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. These releases are strictly time-bound and happen every two weeks. Occasionally,  you would see on-demand patch releases as well.
 
 *Example patch releases: 1.0.6, 1.1.5, 1.1.10*
 
-#### Minor Release Channel
+#### Minor Releases
 
-This channel gives you access to feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. There will be four minor releases a year. You will get access to a minor release on the 3rd Wednesday of the 3rd month of every quarter.
+These are feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. There will be four minor releases a year. You will get access to a minor release on the 3rd Wednesday of the 3rd month of every quarter.
 
 *Example minor releases: 1.1.0, 1.2.0, 1.3.0*
 
@@ -43,6 +47,8 @@ This channel gives you access to feature releases of Ballerina distributions. Ba
 A minor release 1.x.0 is manitained by issuing a series of patch releases as 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
 
 In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, maintaining 1.0.0 will be stopped.
+
+However, Swan Lake preview releases will not be maintained. Once the Swan Lake GA is released, its a stable release. Until that 1.2.x releases will be maintained.
 
 ## Installing Ballerina
 
@@ -186,11 +192,11 @@ The `ballerina dist remove <distribution>` command allows you to delete a partic
 Distribution 'slp1' successfully removed
 ```
 
-### Updating to the Latest Patch Version
+### Updating to the Latest Preview/Patch Version
 
 The `ballerina dist update` command updates your active distribution to the latest patch version.
 
-E.g., If the active distribution in your environment is 1.2.7 and there exists the patch version 1.2.8 in our servers, this command will fetch and set it as the active distribution.
+E.g., If the active distribution in your environment is `1.2.7` and there exists the patch version `1.2.8` in our servers, this command will fetch and set it as the active distribution.
 
 ```sh
 → sudo ballerina dist update
@@ -199,6 +205,8 @@ Fetching the '1.2.8' distribution from the remote server...
 Downloading 1.2.8 100% [==========================================================] 96/96 MB
 Successfully set the latest patch distribution '1.2.8' as the active distribution
 ```
+
+>**Note:** If If the active distribution in your environment is `slp3`, it will bump to the next Swan Lake Preview version, which is `slp4` and will update to it.
 
 ### Pulling a Specific Distribution
 

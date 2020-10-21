@@ -12,13 +12,15 @@ redirect_from:
 
 ## Installing Ballerina
 
-1. [Download](https://ballerina.io/downloads) Ballerina based on the Operating System you are using. 
-1. Follow the instructions given on the [Getting Started](/swan-lake/learn/getting-started) page to set it up. 
-1. Follow the instructions given on the [Visual Studio Code Plugin](/swan-lake/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/swan-lake/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
+1. [Download](/downloads) Ballerina based on the Operating System you are using. 
+1. [Install](/swan-lake/learn/installing-ballerina) Ballerina. 
+1. Set up [Visual Studio Code](/swan-lake/learn/tools-ides/vscode-plugin) for Ballerina.
 
-## Writing a Service, Running It, and Invoking It
+## Creating a Service and Invoking It 
 
-Write a simple Hello World HTTP service in a file with the `.bal` extension.
+### Writing a 'hello' Service
+
+Write a simple HTTP service as shown below in a file with the `.bal` extension (e.g., `hello_world.bal`).
 
 ```ballerina
 import ballerina/http;
@@ -28,7 +30,7 @@ import ballerina/io;
 # bound to port `9090`.
 service hello on new http:Listener(9090) {
 
-    # A resource respresenting an invokable API method
+    # A resource representing an invokable API method
     # accessible at `/hello/sayHello`.
     #
     # + caller - the client invoking this resource
@@ -44,7 +46,9 @@ service hello on new http:Listener(9090) {
 }
 ```
 
-Now, you can run the service by running the following command.
+### Running the 'hello' Service
+
+Run the service by executing the command below.
 
 ```bash
 $ ballerina run hello_world.bal
@@ -56,7 +60,11 @@ You get the following output.
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 
-This means your service is up and running. You can invoke the service using an HTTP client. In this case, we use cURL.
+This means your service is up and running. 
+
+### Invoking the 'hello' Service Using cURL
+
+Invoke the running service using an HTTP client. For example, execute the command below to use cURL.
 
 ```bash
 $ curl http://localhost:9090/hello/sayHello
@@ -70,37 +78,45 @@ You get the following response.
 Hello Ballerina!
 ```
 
-Alternatively, you can use a Ballerina HTTP client to invoke the service.
+Alternatively, you can create a Ballerina HTTP client and use that to invoke the service as follows.
 
-## Using a Client to Interact with a Network-Accessible Service
+## Creating a Client to Invoke the 'hello' Service
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 
 There are two kinds of clients in Ballerina, inbound (or ingress) and outbound (or egress) clients. An outbound client object can be used to send messages to a network service.
 
-Having said that, let's see how you can use a Ballerina client to invoke the Hello World service.
+### Creating the 'helloClient'
 
-First, you need to create the client with the relevant endpoint URL as follows. We will use a Ballerina program with a `main` function, which will perform the invocation.
+Follow the steps below to write an outbound Ballerina client to invoke the `hello` service.
 
-> **Note**: returning `error?` allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
-
-```ballerina
-http:Client helloClient = new("http://localhost:9090/hello");
-```
-
-As the next step, add the below code to do a `GET` request to the Hello World service.
+1. Create the client ( a `hello_client.bal` file) as a Ballerina program with a `main` function and add the relevant endpoint URL to perform the invocation.   
 
 ```ballerina
-http:Response helloResp = check helloClient->get("/sayHello");
-```
+import ballerina/http;
+import ballerina/io;
 
-The remote call would return an `http:Response` if successful, or an `error` on failure. If successful, attempt retrieving the payload as a `string` and print the payload.
+public function main() returns @tainted error? {
+    http:Client helloClient = new("http://localhost:9090/hello");
+}
+```
+2. Add the code to do a `GET` request to the `hello` service.
 
 ```ballerina
-io:println(check helloResp.getTextPayload());
+import ballerina/http;
+import ballerina/io;
+
+public function main() returns @tainted error? {
+    http:Client helloClient = new("http://localhost:9090/hello");
+    http:Response helloResp = check helloClient->get("/sayHello");
+}
 ```
 
-The complete source code should look similar to the following:
+The remote call would return an `http:Response` if successful, or an `error` on failure. 
+
+> **Note**: Returning `error?` allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
+
+3. Add the code to retrieve the payload as a `string` and print it if the response of the remote call was successful.
 
 ```ballerina
 import ballerina/http;
@@ -113,9 +129,9 @@ public function main() returns @tainted error? {
 }
 ```
 
-Make sure the service is up and running.
+### Invoking the 'hello' Service Using the 'helloClient'
 
-Now, you can run the `.bal` file containing the `main` function that invokes the service.
+Make sure the `hello` service is [up and running](#running-the-ballerina-service) and execute the command below to run the `.bal` file containing the `main` function (of the client), which invokes the service.
 
 ```bash
 $ ballerina run hello_client.bal
@@ -127,30 +143,38 @@ This would produce the following output.
 Hello Ballerina!
 ```
 
-Similarly, you can use a Ballerina HTTP client to interact with any HTTP service.
+### Creating a Client to Invoke a Service via Its API
 
-Now, let's  look at a simple HTTP client that retrieves sunrise/sunset time details for Colombo.
+Similarly, you can use a Ballerina HTTP client to interact with any HTTP service via its API.
 
-Create a client with the relevant endpoint URL as follows.
+## Creating the 'sunriseApi' Client
 
-```ballerina
-http:Client sunriseApi = new("http://api.sunrise-sunset.org");
-```
+Follow the steps below to write a simple HTTP client that retrieves sunrise/sunset time details for Colombo.
 
-As the next step, add the below code to do a `GET` request to the sunrise-sunset backend.
+1. Create a client (a `sunrise_client.bal` file) with the relevant endpoint URL as follows.
 
 ```ballerina
-http:Response sunriseResp = check sunriseApi->get("/json?lat=6.9349969&lng=79.8538463");
+import ballerina/http;
+import ballerina/io;
+
+public function main() returns @tainted error? {
+    http:Client sunriseApi = new("http://api.sunrise-sunset.org");
+}
 ```
 
-Now, add the below code snippet to retrieve the payload and print it.
+2. Add the below code to perform a `GET` request to the sunrise-sunset backend.
 
 ```ballerina
-json sunrisePayload = check sunriseResp.getJsonPayload();
-io:println(sunrisePayload);
+import ballerina/http;
+import ballerina/io;
+
+public function main() returns @tainted error? {
+    http:Client sunriseApi = new("http://api.sunrise-sunset.org");
+    http:Response sunriseResp = check sunriseApi->get("/json?lat=6.9349969&lng=79.8538463");
+}
 ```
 
-The complete source code should look similar to the following:
+3. Add the code to retrieve the payload and print it.
 
 ```ballerina
 import ballerina/http;
@@ -164,13 +188,15 @@ public function main() returns @tainted error? {
 }
 ```
 
-Now, you can invoke the service using this client by running the following command.
+### Invoking the Sunrise/Sunset Service Using the 'sunriseApi' Client
+
+Execute the command below to invoke the service using this client.
 
 ```bash
 $ ballerina run sunrise_client.bal
 ```
 
-This should print out the sunrise/sunset details.
+This should print out the sunrise/sunset details as follows.
 
 ## What's Next?
 

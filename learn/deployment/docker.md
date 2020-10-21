@@ -584,7 +584,7 @@ target = "java8"
 
 Ballerina ships a base image (e.g., `ballerina/jre8:v1`) with some security hardening. It is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
 
-#### Setting UP The Prerequisites
+#### Setting Up the Prerequisites
 
 You need a machine with [Docker](https://docs.docker.com/get-docker/) installed.
 

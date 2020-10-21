@@ -3,20 +3,13 @@ layout: ballerina-left-nav-pages-swanlake
 title: Statements
 active: statements
 permalink: /swan-lake/learn/coding-conventions/statements/
+intro: The sections below include the coding conventions with respect to statements.
 redirect_from:
   - /swan-lake/learn/style-guide/statements/
   - /swan-lake/learn/style-guide/statements
   - /swan-lake/learn/coding-conventions/statements
 
 ---
-
-# Statements
-
-- [If Statement](#if-statement)
-    - [Empty Block](#empty-block)
-- [Match Statement](#match-statement)
-    - [Match Patterns Clause](#match-patterns-clause)
-- [Transaction Statement](#transaction-statement)
 
 ## If Statement
 

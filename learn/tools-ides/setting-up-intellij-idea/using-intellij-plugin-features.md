@@ -24,7 +24,7 @@ redirect_from:
 
 You can run Ballerina main/service programs with a single click without adding or changing any configurations.
 
-The below sections include instructions on how to run different elements of a Ballerina file.
+The sections below include instructions on how to run different elements of a Ballerina file.
 
 - [Running the main method](#running-the-main-method)
 - [Running Ballerina services](#running-ballerina-services)

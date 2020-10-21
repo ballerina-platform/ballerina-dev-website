@@ -6,20 +6,10 @@ description: Learn how to use Ballerina's built-in test framework to write tests
 keywords: ballerina, programming language, testing
 permalink: /swan-lake/learn/testing-ballerina-code/writing-tests/
 active: writing-tests
+ntro: The sections below include information about writing tests in Ballerina.
 redirect_from:
   - /swan-lake/learn/testing-ballerina-code/writing-tests
 ---
-
-# Writing Tests
-
-- [Project Structure](#project-structure)
-- [Test Source Files](#test-source-files)
-- [Test Resources](#test-resources)
-- [Defining a Test](#defining-a-test)
-- [Visibility of Symbols](#visibility-of-symbols)
-- [Using Assertions](#using-assertions)
-- [Setup and Teardown](#setup-and-teardown)
-- [Test Configurations](#test-configurations)
 
 ## Project Structure
 

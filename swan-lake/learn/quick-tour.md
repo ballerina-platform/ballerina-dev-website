@@ -16,7 +16,7 @@ redirect_from:
 1. Follow the instructions given on the [Getting Started](/swan-lake/learn/getting-started) page to set it up. 
 1. Follow the instructions given on the [Visual Studio Code Plugin](/swan-lake/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/swan-lake/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
 
-## Writing a Service, Running it, and Invoking it
+## Writing a Service, Running It, and Invoking It
 
 Write a simple Hello World HTTP service in a file with the `.bal` extension.
 

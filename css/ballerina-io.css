@@ -1814,10 +1814,10 @@ padding: 10px 20px;
 display: inline-block;
 }
 
-.closebuttoon {
-
+.cBlallerina-io-docs-content-container ul li {
+    list-style: square;
 }
 
-.cBlallerina-io-docs-content-container ul li {
-    list-style: disc;
+.cBlallerina-io-docs-content-container ul.abix-tree-list li {
+    list-style: none !important;
 }

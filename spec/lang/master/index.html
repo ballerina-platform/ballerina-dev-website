@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2020-10-21</h1>
+<h1>Ballerina Language Specification, Swan Lake preview 2020-10-22</h1>
 <p>
 Primary contributors:
 </p>
@@ -8886,7 +8886,7 @@ constructed.
    [<code>public</code>] <a href="#class-type-quals"><span class="ntref">class-type-quals</span></a> <code>class</code> <a href="#identifier"><span class="ntref">identifier</span></a> <code>{</code>
       <a href="#class-member"><span class="ntref">class-member</span></a>*
   <code>}</code>
-<span class="ntdfn" id="class-type-quals">class-type-quals</span> := (<code>distinct</code> | <code>readonly</code> | <a href="#object-network-qual"><span class="ntref">object-network-qual</span></a>)*
+<span class="ntdfn" id="class-type-quals">class-type-quals</span> := (<code>distinct</code> | <code>readonly</code> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> | <a href="#object-network-qual"><span class="ntref">object-network-qual</span></a>)*
 <span class="ntdfn" id="class-member">class-member</span> :=
    <a href="#object-field"><span class="ntref">object-field</span></a>
    | <a href="#method-defn"><span class="ntref">method-defn</span></a>
@@ -8909,6 +8909,15 @@ constructed using the class will have its read-only bit set; the effective type
 of each field is thus the intersection of the specified type and
 <code>readonly</code>; furthermore, an object shape belongs to the class's type
 only if its read-only bit is set.
+</p>
+<p>
+If <code>class-type-quals</code> contains <code>isolated</code>, then the
+defined object type is an isolated type, and an object constructed using the
+type will have its isolated bit set. An <code>object-field</code> or
+<code>method-defn</code> occurring as a <code>class-member</code> in an isolated
+class is subject to same requirements as when it occurs as an
+<code>object-member</code> in an <code>object-constructor-expr</code> that is
+explicitly isolated.
 </p>
 <p>
 If an object-type-inclusion references a type-descriptor that is a class, then

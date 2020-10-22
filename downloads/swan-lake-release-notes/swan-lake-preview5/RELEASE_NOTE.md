@@ -223,7 +223,7 @@ http:Response|error res = clientEP->post("/path", req);
 
 **New syntax:**
 ```ballerina
-http:Response|http:Payload|error res = client->post("/path", req, json);
+http:Response|http:Payload|error res = clientEP->post("/path", req, json);
 // or
 json payload = <json> check clientEP->post("/path", req, json);
 ```

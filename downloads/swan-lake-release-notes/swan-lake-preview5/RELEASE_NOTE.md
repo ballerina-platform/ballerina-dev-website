@@ -137,14 +137,6 @@ acc(2);
 int val = getVal();
 ```
 
-##### Improved lang library functions
-
-Several changes and improvements have been introduced to the `ballerina/lang.value` lang library module.
-
-###### New `ensureType` function
-
-A new `ensureType` function has been introduced to convert any kind of a Ballerina value to a user-specified type.
-
 ###### Improvement in accessing simple values in a JSON
 
 A simple value in a JSON now can directly be assigned to its type variable without casting.
@@ -158,6 +150,14 @@ public function main() returns error? {
     int age = check j1.age;
 }
 ```
+
+##### Improved lang library functions
+
+Several changes and improvements have been introduced to the `ballerina/lang.value` lang library module.
+
+###### New `ensureType` function
+
+A new `ensureType` function has been introduced to convert any kind of a Ballerina value to a user-specified type.
 
 ###### New `toBalString()` and `fromBalstring()` functions
 

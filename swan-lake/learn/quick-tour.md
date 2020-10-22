@@ -74,7 +74,7 @@ curl http://localhost:9090/hello/sayHello
 
 You get the following response.
 
-```
+```bash
 Hello Ballerina!
 ```
 
@@ -139,9 +139,9 @@ Follow th steps below to invoke the 'hello' service using the 'helloClient' you 
 
 3. Execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the service.
 
-    ```bash
-    ballerina run hello_client.bal
-    ```
+```bash
+ballerina run hello_client.bal
+```
 
 This would produce the following output.
 

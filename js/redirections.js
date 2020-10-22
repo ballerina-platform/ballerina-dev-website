@@ -89,7 +89,6 @@ let redirections = {
     "/1.1/learn/keeping-ballerina-up-to-date":"/1.1/learn/how-to-keep-ballerina-up-to-date",
     "/1.0/learn/keeping-ballerina-up-to-date":"/1.0/page-not-available.html",
     "/0.991/learn/keeping-ballerina-up-to-date":"/0.991/page-not-available.html",
-    "/swan-lake/learn/using-the-openapi-tools":"/swan-lake/learn/how-to-use-openapi-tools",
     "/1.1/learn/using-the-openapi-tools":"/1.1/learn/how-to-use-openapi-tools",
     "/1.0/learn/using-the-openapi-tools":"/1.0/learn/how-to-use-openapi-tools/",
     "/0.991/learn/using-the-openapi-tools":"/0.991/page-not-available.html",

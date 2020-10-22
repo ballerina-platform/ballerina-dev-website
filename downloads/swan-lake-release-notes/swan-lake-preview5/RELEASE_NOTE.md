@@ -140,7 +140,7 @@ public function main() {
 
 ###### Improvement in accessing simple values in a JSON
 
-A simple value in a JSON now can directly be assigned to its type variable without casting.
+A non-structural value (i.e., simple value) in a JSON object can now be directly assigned to a variable of the same type, without casting.
 
 For this, the field access expression should be used with the `check` expression. The simple value should belong to one of the types: `()`, `int`, `float`, `decimal`, `string`, or  `boolean`.
 

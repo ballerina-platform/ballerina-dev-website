@@ -18,7 +18,7 @@ redirect_from:
 
 ## Creating a Service and Invoking It 
 
-### Writing a 'hello' Service
+### Writing a simple 'hello' Service
 
 Write a simple HTTP service as shown below in a file with the `.bal` extension (e.g., `hello_world.bal`).
 
@@ -92,42 +92,42 @@ Follow the steps below to write an outbound Ballerina client to invoke the `hell
 
 1. Create the client ( a `hello_client.bal` file) as a Ballerina program with a `main` function and add the relevant endpoint URL to perform the invocation.   
 
-```ballerina
-import ballerina/http;
-import ballerina/io;
+    ```ballerina
+    import ballerina/http;
+    import ballerina/io;
 
-public function main() returns @tainted error? {
-    http:Client helloClient = new("http://localhost:9090/hello");
-}
-```
+    public function main() returns @tainted error? {
+        http:Client helloClient = new("http://localhost:9090/hello");
+    }
+    ```
 2. Add the code to do a `GET` request to the `hello` service.
 
-```ballerina
-import ballerina/http;
-import ballerina/io;
+    ```ballerina
+    import ballerina/http;
+    import ballerina/io;
 
-public function main() returns @tainted error? {
-    http:Client helloClient = new("http://localhost:9090/hello");
-    http:Response helloResp = check helloClient->get("/sayHello");
-}
-```
+    public function main() returns @tainted error? {
+        http:Client helloClient = new("http://localhost:9090/hello");
+        http:Response helloResp = check helloClient->get("/sayHello");
+    }
+    ```
 
-The remote call would return an `http:Response` if successful, or an `error` on failure. 
+    The remote call would return an `http:Response` if successful, or an `error` on failure. 
 
-> **Note**: Returning `error?` allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
+    > **Note**: Returning `error?` allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
 
 3. Add the code to retrieve the payload as a `string` and print it if the response of the remote call was successful.
 
-```ballerina
-import ballerina/http;
-import ballerina/io;
+    ```ballerina
+    import ballerina/http;
+    import ballerina/io;
 
-public function main() returns @tainted error? {
-    http:Client helloClient = new("http://localhost:9090/hello");
-    http:Response helloResp = check helloClient->get("/sayHello");
-    io:println(check helloResp.getTextPayload());
-}
-```
+    public function main() returns @tainted error? {
+        http:Client helloClient = new("http://localhost:9090/hello");
+        http:Response helloResp = check helloClient->get("/sayHello");
+        io:println(check helloResp.getTextPayload());
+    }
+    ```
 
 ### Invoking the 'hello' Service Using the 'helloClient'
 
@@ -153,40 +153,40 @@ Follow the steps below to write a simple HTTP client that retrieves sunrise/suns
 
 1. Create a client (a `sunrise_client.bal` file) with the relevant endpoint URL as follows.
 
-```ballerina
-import ballerina/http;
-import ballerina/io;
+    ```ballerina
+    import ballerina/http;
+    import ballerina/io;
 
-public function main() returns @tainted error? {
-    http:Client sunriseApi = new("http://api.sunrise-sunset.org");
-}
-```
+    public function main() returns @tainted error? {
+        http:Client sunriseApi = new("http://api.sunrise-sunset.org");
+    }
+    ```
 
 2. Add the below code to perform a `GET` request to the sunrise-sunset backend.
 
-```ballerina
-import ballerina/http;
-import ballerina/io;
+    ```ballerina
+    import ballerina/http;
+    import ballerina/io;
 
-public function main() returns @tainted error? {
-    http:Client sunriseApi = new("http://api.sunrise-sunset.org");
-    http:Response sunriseResp = check sunriseApi->get("/json?lat=6.9349969&lng=79.8538463");
-}
-```
+    public function main() returns @tainted error? {
+        http:Client sunriseApi = new("http://api.sunrise-sunset.org");
+        http:Response sunriseResp = check sunriseApi->get("/json?lat=6.9349969&lng=79.8538463");
+    }
+    ```
 
 3. Add the code to retrieve the payload and print it.
 
-```ballerina
-import ballerina/http;
-import ballerina/io;
+    ```ballerina
+    import ballerina/http;
+    import ballerina/io;
 
-public function main() returns @tainted error? {
-    http:Client sunriseApi = new("http://api.sunrise-sunset.org");
-    http:Response sunriseResp = check sunriseApi->get("/json?lat=6.9349969&lng=79.8538463");
-    json sunrisePayload = check sunriseResp.getJsonPayload();
-    io:println(sunrisePayload);
-}
-```
+    public function main() returns @tainted error? {
+        http:Client sunriseApi = new("http://api.sunrise-sunset.org");
+        http:Response sunriseResp = check sunriseApi->get("/json?lat=6.9349969&lng=79.8538463");
+        json sunrisePayload = check sunriseResp.getJsonPayload();
+        io:println(sunrisePayload);
+    }
+    ```
 
 ### Invoking the Sunrise/Sunset Service Using the 'sunriseApi' Client
 

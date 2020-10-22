@@ -12,7 +12,7 @@ This release is the fifth preview version of Ballerina Swan Lake. This release i
 - [What is new in Ballerina Swan Lake Preview 5](#what-is-new-in-ballerina-swan-lake-preview-5)
     - [Language](#language)
         - [Isolated objects](#isolated-objects)
-        - [Removed XML functional constructors](#removed-xml-functional-constructors)
+        - [Lang lib functions to replace XML functional constructors](#lang-lib-functions-to-replace-xml-functional-constructors)
         - [Unified object method scope and object field scope](#unified-object-method-scope-and-object-field-scope)
         - [Improved lang library functions](#improved-lang-library-functions)
     - [Runtime](#runtime)

@@ -24,9 +24,9 @@ You can use a Ballerina HTTP client to interact with any HTTP service.
 
 ### Creating the 'sunriseApi' Client
 
-Create a client (in a `sunrise_client.bal` file) with the below content to write a simple HTTP client. This will retrieve sunrise/sunset time details for Colombo by interacting with the service API.
+Create a client with the below content to write a simple HTTP client. This will retrieve sunrise/sunset time details for Colombo by interacting with the service API.
 
-
+***sunrise_client.bal***
 ```ballerina
 import ballerina/http;
 import ballerina/io;
@@ -65,8 +65,9 @@ Now, let's create a custom Ballerina HTTP service and also an HTTP client to inv
 
 ### Writing a simple 'hello' Service
 
-Write a simple HTTP service as shown below in a file with the `.bal` extension (e.g., `hello_world.bal`).
+Write a simple HTTP service as shown below in a file with the `.bal` extension.
 
+***hello_service.bal***
 ```ballerina
 import ballerina/http;
 import ballerina/io;
@@ -93,10 +94,10 @@ service hello on new http:Listener(9090) {
 
 ### Running the 'hello' Service
 
-In the CLI, navigate to the location in which you have the `hello_world.bal` file and run the service by executing the command below.
+In the CLI, navigate to the location in which you have the `hello_service.bal` file and run the service by executing the command below.
 
 ```bash
-ballerina run hello_world.bal
+ballerina run hello_service.bal
 ```
 
 You get the following output.
@@ -119,10 +120,11 @@ Alternatively, you can create a Ballerina HTTP client and use that to invoke the
 
 There are two kinds of clients in Ballerina, inbound (or ingress) and outbound (or egress) clients. An outbound client object can be used to send messages to a network service.
 
-Create an outbound Ballerina client ( in a `hello_client.bal` file) as a Ballerina program with a `main` function with the content below to invoke the `hello` service.   
+Create an outbound Ballerina client as a Ballerina program with a `main` function with the content below to invoke the `hello` service.   
 
 > **Note**: Returning `error?` allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
 
+***hello_client.bal***
 ```ballerina
 import ballerina/http;
 import ballerina/io;

@@ -225,7 +225,7 @@ http:Response|error res = clientEP->post("/path", req);
 ```ballerina
 http:Response|http:Payload|error res = client->post("/path", req, json);
 // or
-json payload = <json> check client->post("/path", req, json);
+json payload = <json> check clientEP->post("/path", req, json);
 ```
 
 ##### SQL procedure call API improvement

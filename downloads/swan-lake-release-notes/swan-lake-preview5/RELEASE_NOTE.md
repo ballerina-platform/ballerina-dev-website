@@ -77,7 +77,7 @@ isolated class Hotels {
 }
 ```
 
-An `isolated` function can also access a `final` variable if its type is a subtype of `isolated object {}`.
+An `isolated` function can also access a `final` variable if the type of the variable is a subtype of `isolated object {}`.
 
 ```ballerina
 final Hotels hotels = new;

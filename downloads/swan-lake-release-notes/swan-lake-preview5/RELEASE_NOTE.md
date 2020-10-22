@@ -241,7 +241,7 @@ sql:OutParameter filterId = new;
 sql:IntegerOutParameter filterId = new;
 ```
 
-##### Add misfire policy
+##### Misfire policy support for tasks
 
 The task module now supports the misfire policy. A new `misfirePolicy` field has been introduced in the `task:TimerConfiguration` and `task:AppointmentConfiguration` to specify the policy.
 

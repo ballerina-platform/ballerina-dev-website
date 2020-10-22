@@ -17,7 +17,7 @@ This release is the fifth preview version of Ballerina Swan Lake. This release i
         - [Improved lang library functions](#improved-lang-library-functions)
     - [Runtime](#runtime)
     - [Standard Library](#standard-library)
-        - [HTTP client remote function API improvement with data-binding support](#http-client-remote-function-api-improvement-with-data-binding-support)
+        - [HTTP client remote method API improvement with data-binding support](#http-client-remote-method-api-improvement-with-data-binding-support)
         - [SQL procedure call API improvement](#sql-procedure-call-api-improvement)
         - [Add misfire policy](#add-misfire-policy)
     - [Developer Tools](#developer-tools)

@@ -51,7 +51,7 @@ service hello on new http:Listener(9090) {
 Run the service by executing the command below.
 
 ```bash
-$ ballerina run hello_world.bal
+ballerina run hello_world.bal
 ```
 
 You get the following output.
@@ -64,10 +64,10 @@ This means your service is up and running.
 
 ### Invoking the 'hello' Service Using cURL
 
-Invoke the running service using an HTTP client. For example, execute the command below to use cURL.
+Invoke the running service using an HTTP client. For example, execute the command below in a new CLI tab to use cURL as the client.
 
 ```bash
-$ curl http://localhost:9090/hello/sayHello
+curl http://localhost:9090/hello/sayHello
 ```
 
 > **Tip**: If you do not have cURL installed, you can download it from [https://curl.haxx.se/download.html](https://curl.haxx.se/download.html).
@@ -131,11 +131,17 @@ Follow the steps below to write an outbound Ballerina client to invoke the `hell
 
 ### Invoking the 'hello' Service Using the 'helloClient'
 
-Make sure the `hello` service is [up and running](#running-the-ballerina-service) and execute the command below to run the `.bal` file containing the `main` function (of the client), which invokes the service.
+Follow th steps below to invoke the 'hello' service using the 'helloClient' you created above.
 
-```bash
-$ ballerina run hello_client.bal
-```
+1. Make sure the `hello` service is [up and running](#running-the-ballerina-service). 
+
+2. In a new tab of the CLI, navigate to the same location in which you have the `hello_client.bal` file.
+
+3. Execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the service.
+
+    ```bash
+    ballerina run hello_client.bal
+    ```
 
 This would produce the following output.
 
@@ -193,10 +199,14 @@ Follow the steps below to write a simple HTTP client that retrieves sunrise/suns
 Execute the command below to invoke the service using this client.
 
 ```bash
-$ ballerina run sunrise_client.bal
+ballerina run sunrise_client.bal
 ```
 
 This should print out the sunrise/sunset details as follows.
+
+```bash
+{"results":{"sunrise":"12:27:04 AM","sunset":"12:22:49 PM","solar_noon":"6:24:56 AM","day_length":"11:55:45","civil_twilight_begin":"12:05:55 AM","civil_twilight_end":"12:43:57 PM","nautical_twilight_begin":"11:41:20 PM","nautical_twilight_end":"1:08:33 PM","astronomical_twilight_begin":"11:16:47 PM","astronomical_twilight_end":"1:33:06 PM"},"status":"OK"}
+```
 
 ## What's Next?
 

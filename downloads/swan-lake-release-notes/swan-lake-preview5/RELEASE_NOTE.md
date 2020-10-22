@@ -158,7 +158,7 @@ Several changes and improvements have been introduced to the `ballerina/lang.val
 
 ###### New `ensureType` function
 
-A new `ensureType` function has been introduced to convert any kind of a Ballerina value to a user-specified type.
+This method can be used to check if a value belongs to the given type similar to the type cast expression. However, instead of panicking, this method returns an error if the type test fails.
 
 ###### New `toBalString()` and `fromBalstring()` functions
 

@@ -24,7 +24,7 @@ You can use a Ballerina HTTP client to interact with any HTTP service.
 
 ### Creating the 'sunriseApi' Client
 
-Create a client (in a `sunrise_client.bal` file) with the below content to write a simple HTTP client, which retrieves sunrise/sunset time details for Colombo by interacting with the service API.
+Create a client (in a `sunrise_client.bal` file) with the below content to write a simple HTTP client. This will retrieve sunrise/sunset time details for Colombo by interacting with the service API.
 
 
 ```ballerina
@@ -59,9 +59,9 @@ This should print out the sunrise/sunset details as follows.
 {"results":{"sunrise":"12:27:04 AM","sunset":"12:22:49 PM","solar_noon":"6:24:56 AM","day_length":"11:55:45","civil_twilight_begin":"12:05:55 AM","civil_twilight_end":"12:43:57 PM","nautical_twilight_begin":"11:41:20 PM","nautical_twilight_end":"1:08:33 PM","astronomical_twilight_begin":"11:16:47 PM","astronomical_twilight_end":"1:33:06 PM"},"status":"OK"}
 ```
 
-## Creating a Service and Invoking It
+## Creating a Service and a Client to Invoke It
 
-Now, let's create a custom Ballerina service and also create a client to invoke it.
+Now, let's create a custom Ballerina HTTP service and also an HTTP client to invoke it.
 
 ### Writing a simple 'hello' Service
 
@@ -107,20 +107,10 @@ You get the following output.
 
 This means your service is up and running. 
 
-### Invoking the 'hello' Service Using cURL
-
-Invoke the running service using an HTTP client. For example, execute the command below in a new CLI tab to use cURL as the client.
+> **Note:** You can test the service by invoking it using an already-available HTTP client. For example, execute the command below in a new CLI tab to use [cURL](https://curl.haxx.se/download.html) as the client.
 
 ```bash
 curl http://localhost:9090/hello/sayHello
-```
-
-> **Tip**: If you do not have cURL installed, you can download it from [https://curl.haxx.se/download.html](https://curl.haxx.se/download.html).
-
-You get the following response.
-
-```bash
-Hello Ballerina!
 ```
 
 Alternatively, you can create a Ballerina HTTP client and use that to invoke the service as follows.

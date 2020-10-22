@@ -128,13 +128,14 @@ class Accumulator {
     }
 }
 
-Accumulator accumulator = new(0);
-var acc = accumulator.accumulate; // access method as a field
-var getVal = accumulator.get;
-
-acc(1); // similar to calling accumulator.accumulate(1);
-acc(2);
-int val = getVal();
+public function main() {
+    Accumulator accumulator = new(0);
+    var acc = accumulator.accumulate; // access a method as a field
+    var getVal = accumulator.get;
+    acc(1); // similar to calling accumulator.accumulate(1);
+    acc(2);
+    int val = getVal();
+}
 ```
 
 ###### Improvement in accessing simple values in a JSON

@@ -9,7 +9,6 @@ This release is the fifth preview version of Ballerina Swan Lake. This release i
 - [Updating Ballerina](#updating-ballerina)
     - [For existing users](#for-existing-users)
     - [For new users](#for-new-users)
-- [Highlights](#highlights)
 - [What is new in Ballerina Swan Lake Preview 4](#what-is-new-in-ballerina-swan-lake-preview-4)
     - [Language](#language)
         - [Isolated Objects](#isolated-objects)

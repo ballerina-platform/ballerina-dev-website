@@ -91,18 +91,18 @@ XML functional constructor syntax has been removed. In place of XML functional c
 
 **Disallowed syntax**
 ```xml
-    'xml:Element element = 'xml:Element("elem");
-    'xml:Comment comment = 'xml:Comment("comment content");
-    'xml:ProcessingInstruction proceInstruc = 'xml:ProcessingInstruction("DONOT", "print this");
-    'xml:Text text = 'xml:Text("this is a character sequence");
+'xml:Element element = 'xml:Element("elem");
+'xml:Comment comment = 'xml:Comment("comment content");
+'xml:ProcessingInstruction proceInstruc = 'xml:ProcessingInstruction("DONOT", "print this");
+'xml:Text text = 'xml:Text("this is a character sequence");
 ```
 
 **Valid syntax**
 ```xml
-    'xml:Element element = 'xml:createElement("elem");
-    'xml:Comment comment = 'xml:createComment("comment content");
-    'xml:ProcessingInstruction proceInstruc = 'xml:createProcessingInstruction("DONOT", "print this");
-    'xml:Text text = 'xml:createText("this is a character sequence");
+'xml:Element element = 'xml:createElement("elem");
+'xml:Comment comment = 'xml:createComment("comment content");
+'xml:ProcessingInstruction proceInstruc = 'xml:createProcessingInstruction("DONOT", "print this");
+'xml:Text text = 'xml:createText("this is a character sequence");
 ```
 
 ##### Unified object method scope and object field scope 

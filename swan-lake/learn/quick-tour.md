@@ -32,6 +32,7 @@ import ballerina/http;
 import ballerina/io;
 
 public function main() returns @tainted error? {
+    
     // Add the relevant endpoint URL to perform the invocation.
     http:Client sunriseApi = new("http://api.sunrise-sunset.org");
 

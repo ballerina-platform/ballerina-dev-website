@@ -1821,3 +1821,12 @@ display: inline-block;
 .cBlallerina-io-docs-content-container ul.abix-tree-list li {
     list-style: none !important;
 }
+
+.closebuttoon {
+    display: inline-block !important;
+float: right;
+}
+
+.closebuttoon img {
+    width: 20px;
+}

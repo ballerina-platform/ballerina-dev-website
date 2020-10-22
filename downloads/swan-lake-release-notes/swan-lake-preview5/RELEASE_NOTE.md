@@ -90,7 +90,7 @@ isolated function getCoordinates() returns Coordinates[] => hotels.getCoordinate
 XML functional constructor syntax has been removed. In place of XML functional constructors, `'xml:createXXX` functions should be used. 
 
 **Disallowed syntax**
-```xml
+```ballerina
 'xml:Element element = 'xml:Element("elem");
 'xml:Comment comment = 'xml:Comment("comment content");
 'xml:ProcessingInstruction proceInstruc = 'xml:ProcessingInstruction("DONOT", "print this");
@@ -98,7 +98,7 @@ XML functional constructor syntax has been removed. In place of XML functional c
 ```
 
 **Valid syntax**
-```xml
+```ballerina
 'xml:Element element = 'xml:createElement("elem");
 'xml:Comment comment = 'xml:createComment("comment content");
 'xml:ProcessingInstruction proceInstruc = 'xml:createProcessingInstruction("DONOT", "print this");

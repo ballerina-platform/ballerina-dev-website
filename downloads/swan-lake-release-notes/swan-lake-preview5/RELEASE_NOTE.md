@@ -85,7 +85,7 @@ final Hotels hotels = new;
 isolated function getCoordinates() returns Coordinates[] => hotels.getCoordinates().toArray();
 ```
 
-##### Removed XML functional constructors
+##### Lang lib functions to replace XML functional constructors
 
 XML functional constructor syntax has been removed. In place of XML functional constructors, `'xml:createXXX` functions should be used. 
 

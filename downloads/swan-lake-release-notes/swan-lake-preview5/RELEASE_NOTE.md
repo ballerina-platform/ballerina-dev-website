@@ -109,7 +109,7 @@ XML functional constructor syntax has been removed. In place of XML functional c
 
 Object field scope and object method scope are unified into a single scope. This means that it is no longer possible to have fields and methods with the same name.
 
-With this change, object methods can be accessed as object fields and the reference to `self` is captured in the resulting function pointer.
+With this change, object methods can be accessed similar to object fields and the reference to `self` is captured in the resulting function pointer.
 
 ```ballerina
 class Accumulator {

@@ -32,7 +32,7 @@ import ballerina/http;
 import ballerina/io;
 
 public function main() returns @tainted error? {
-    
+
     // Add the relevant endpoint URL to perform the invocation.
     http:Client sunriseApi = new("http://api.sunrise-sunset.org");
 
@@ -47,7 +47,7 @@ public function main() returns @tainted error? {
 
 ### Invoking the Sunrise/Sunset Service Using the 'sunriseApi' Client
 
-Execute the command below to invoke the service using this client.
+In the CLI, navigate to the location in which you have the `sunrise_client.bal` file and execute the command below to invoke the service using this client.
 
 ```bash
 ballerina run sunrise_client.bal
@@ -153,15 +153,11 @@ public function main() returns @tainted error? {
 }
 ```
 
-### Invoking the 'hello' Service Using the 'helloClient'
+### Invoking the 'hello' Service Using the 'helloClient'  
 
-Follow the steps below to invoke the 'hello' service using the 'helloClient' you created above.
+In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the 'helloClient' service.
 
-1. Make sure the `hello` service is [up and running](#running-the-ballerina-service). 
-
-2. In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file.
-
-3. Execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the service.
+> **Tip:** Make sure the `hello` service is [up and running](#running-the-ballerina-service).
 
 ```bash
 ballerina run hello_client.bal

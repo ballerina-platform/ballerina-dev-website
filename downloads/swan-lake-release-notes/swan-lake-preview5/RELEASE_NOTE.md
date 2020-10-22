@@ -9,15 +9,15 @@ This release is the fifth preview version of Ballerina Swan Lake. This release i
 - [Updating Ballerina](#updating-ballerina)
     - [For existing users](#for-existing-users)
     - [For new users](#for-new-users)
-- [What is new in Ballerina Swan Lake Preview 4](#what-is-new-in-ballerina-swan-lake-preview-4)
+- [What is new in Ballerina Swan Lake Preview 5](#what-is-new-in-ballerina-swan-lake-preview-5)
     - [Language](#language)
-        - [Isolated Objects](#isolated-objects)
+        - [Isolated objects](#isolated-objects)
         - [Removed XML functional constructors](#removed-xml-functional-constructors)
         - [Unified object method scope and object field scope](#unified-object-method-scope-and-object-field-scope)
         - [Improved lang library functions](#improved-lang-library-functions)
     - [Runtime](#runtime)
     - [Standard Library](#standard-library)
-        - [HTTP client remote function API improvement with data-binding support](#http-client-remote-function-api-improvement-with-data---binding-support)
+        - [HTTP client remote function API improvement with data-binding support](#http-client-remote-function-api-improvement-with-data-binding-support)
         - [SQL procedure call API improvement](#sql-procedure-call-api-improvement)
         - [Add misfire policy](#add-misfire-policy)
     - [Developer Tools](#developer-tools)
@@ -47,7 +47,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 #### Language
 
-##### Isolated Objects
+##### Isolated objects
 
 A class definition or an object-type descriptor can now be marked as `isolated`. All fields of an `isolated` object that are not `final` or are not a subtype of `readonly` or `isolated object {}` have to be `private` fields.
 

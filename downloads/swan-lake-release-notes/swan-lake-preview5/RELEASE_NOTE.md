@@ -212,7 +212,7 @@ The Ballerina runtime Java API package name has been changed from `org.ballerina
 
 #### Standard Library
 
-##### HTTP client remote function API improvement with data-binding support
+##### HTTP client remote method API improvement with data-binding support
 
 Response payload binding functionality is provided for an HTTP client by returning the payload according to the `targetType` defaultable parameter that is mentioned in the remote function.
 

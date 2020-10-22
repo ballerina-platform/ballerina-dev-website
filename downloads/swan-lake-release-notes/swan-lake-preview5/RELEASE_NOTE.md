@@ -33,7 +33,7 @@ If you are already using Ballerina, you can directly update your distribution to
                         
 > `ballerina update`
 
- Next, execute the command below to update to Swan Lake Preview 4.
+ Next, execute the command below to update to Swan Lake Preview 5.
 
  > `ballerina dist pull slp5b1`                 
 

@@ -142,7 +142,7 @@ public function main() {
 
 A simple value in a JSON now can directly be assigned to its type variable without casting.
 
-For this, the field access expression should come after the `check` keyword. The simple value should belong to one of the types: (), int, float, decimal, string, or  boolean.
+For this, the field access expression should be used with the `check` expression. The simple value should belong to one of the types: `()`, `int`, `float`, `decimal`, `string`, or  `boolean`.
 
 ```ballerina
 public function main() returns error? {

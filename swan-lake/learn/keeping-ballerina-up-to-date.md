@@ -48,7 +48,7 @@ A minor release 1.x.0 is manitained by issuing a series of patch releases as 1.x
 
 In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, maintaining 1.0.0 will be stopped.
 
-However, Swan Lake preview releases will not be maintained. Once the Swan Lake GA is released, its a stable release. Until that 1.2.x releases will be maintained.
+However, Swan Lake preview releases will not be maintained. Once the Swan Lake GA is released, it's a stable release. Until that, 1.2.x releases will be maintained.
 
 ## Installing Ballerina
 
@@ -77,7 +77,7 @@ The `distributions` is the directory, in which all your installed distributions 
   
   E.g., when you invoke `ballerina build`, the Ballerina tool dispatches this request to the active distribution.
 
-You can [change this active distribution](#changing-the-active-distribution) at any time or maange it using the Ballerina Tool. However, first, you need to update the Ballerina Tool to its latest version.
+You can [change this active distribution](#changing-the-active-distribution) at any time or manage it using the Ballerina Tool. However, first, you need to update the Ballerina Tool to its latest version.
 
 ### Updating the Ballerina Tool
 

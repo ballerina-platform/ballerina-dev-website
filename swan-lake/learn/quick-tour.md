@@ -20,11 +20,11 @@ redirect_from:
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 
-You can use a Ballerina HTTP client to interact with any HTTP service via its API.
+You can use a Ballerina HTTP client to interact with any HTTP service.
 
 ### Creating the 'sunriseApi' Client
 
-Create a client (in a `sunrise_client.bal` file) with the below content to write a simple HTTP client, which retrieves sunrise/sunset time details for Colombo
+Create a client (in a `sunrise_client.bal` file) with the below content to write a simple HTTP client, which retrieves sunrise/sunset time details for Colombo by interacting with the service API.
 
 
 ```ballerina

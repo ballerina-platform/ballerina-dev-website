@@ -218,7 +218,7 @@ Response payload binding functionality is provided for an HTTP client by returni
 
 **Previous syntax:**
 ```ballerina
-http:Response|error res = client->post("/path", req);
+http:Response|error res = clientEP->post("/path", req);
 ```
 
 **New syntax:**

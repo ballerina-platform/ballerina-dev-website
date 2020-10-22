@@ -270,7 +270,7 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |registry|Docker registry URL|null|
 |username|Username for the Docker registry|null|
 |password|Password for the Docker registry|null|
-|baseImage|Base image to create the Docker image|ballerina/jre8:v1|
+|baseImage|Base image to create the Docker image|ballerina/jre11:v1|
 |image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set ,then it will be prepended to the Docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|
 |buildImage|Building the Docker image|true|
 |push|Push the Docker image to registry. This will be effective if the `buildImage` field of the image is true|false|
@@ -382,7 +382,7 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |registry|Docker registry URL|null|
 |username|Username for the Docker registry|null|
 |password|Password for the Docker registry|null|
-|baseImage|Base image to create the Docker image|ballerina/jre8:v1|
+|baseImage|Base image to create the Docker image|ballerina/jre11:v1|
 |image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set, then it will be prepended to the Docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|
 |buildImage|Building the Docker image|true|
 |push|Push the Docker image to registry. This will be effective if the `buildImage` field of the image is true|false|

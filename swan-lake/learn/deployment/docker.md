@@ -92,7 +92,7 @@ service hello on new http:Listener(9090){
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 
@@ -325,7 +325,7 @@ service hello on helloWorldEP {
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 
@@ -517,7 +517,7 @@ target = "java8"
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 
@@ -582,7 +582,7 @@ target = "java8"
 
 ### Using a Custom Base Image to Build Ballerina Docker Images
 
-Ballerina ships a base image (e.g., `ballerina/jre8:v1`) with some security hardening. It is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
+Ballerina ships a base image (e.g., `ballerina/jre11:v1`) with some security hardening. It is used to build Docker images with the user's application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code. 
 
 #### Setting Up the Prerequisites
 
@@ -598,7 +598,7 @@ import ballerina/docker;
  
 @docker:Config {
    name: "helloworld_custom_baseimage",
-   baseImage: "openjdk:8-jre-alpine"
+   baseImage: "openjdk:11-jre-slim"
 }
 service hello on new http:Listener(9090){
  
@@ -608,7 +608,7 @@ service hello on new http:Listener(9090){
 }
 ```
 
-> **Note:** This sample uses `openjdk:8-jre-alpine` as the custom Docker image by using the `baseImage` property in the `@docker:Config` annotation.
+> **Note:** This sample uses `openjdk:11-jre-slim` as the custom Docker image by using the `baseImage` property in the `@docker:Config` annotation.
 
 #### Steps to Run
 
@@ -648,7 +648,7 @@ service hello on new http:Listener(9090){
 
     ```
     # Auto Generated Dockerfile
-    FROM openjdk:8-jre-alpine
+    FROM openjdk:11-jre-slim
 
     LABEL maintainer="dev@ballerina.io"
 
@@ -774,7 +774,7 @@ This sample enables HTTP trace logs by overriding the CMD value of the generated
 
     ```
     # Auto Generated Dockerfile
-    FROM ballerina/jre8:v1
+    FROM ballerina/jre11:v1
 
     LABEL maintainer="dev@ballerina.io"
 

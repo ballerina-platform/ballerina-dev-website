@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Keeping Ballerina Up to Date
-description: Learn how to maintain your Ballerina programming language installation and keep it up to date with the latest patch and minor releases.
+description: Learn how to maintain your Ballerina programming language installation and keep it up to date with the latest releases.
 keywords: ballerina, programming language, release, update
 permalink: /swan-lake/learn/keeping-ballerina-up-to-date/
 active: keeping-ballerina-up-to-date
@@ -14,11 +14,11 @@ redirect_from:
 
 ### Understanding Ballerina Distributions 
 
-The Ballerina compiler is a software program that validates the Ballerina source code and translates it to an executable program. Ballerina has a stable and production-ready official compiler called jBallerina, which targets the JVM.
+The Ballerina compiler is a software program, which validates the Ballerina source code and translates it to an executable program. Ballerina has a stable and production-ready official compiler called jBallerina, which targets the JVM.
 
 Also, there is a plan to develop a native compiler called nBallerina in the future, which will target platforms such as Linux, Windows and Mac OS.
 
-Ballerina distribution is a term that refers to these jBallerina and nBallerina compilers.
+Ballerina distribution is a term, which refers to these jBallerina and nBallerina compilers.
 
 ### Getting to know the Release Channels
 
@@ -28,7 +28,7 @@ Ballerina yet does not have a release channel for nightly builds that give you a
 
 #### Versioning of the releases
 
-Both the above channels of Ballerina distribution releases will strictly follow [SemVer](https://semver.org/) with major.minor.patch version numbers.
+Both the above channels of Ballerina distribution releases will strictly follow [SemVer](https://semver.org/) with `major.minor.patch` version numbers.
 
 #### Patch Releases
 
@@ -44,7 +44,7 @@ These are feature releases of Ballerina distributions. Ballerina programs that y
 
 #### Release Maintenance
 
-A minor release 1.x.0 is manitained by issuing a series of patch releases as 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
+In the 1.x stable release channel, a minor release 1.x.0 is manitained by issuing a series of patch releases as 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
 
 In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, maintaining 1.0.0 will be stopped.
 
@@ -58,17 +58,17 @@ Once the installation is complete, you would see the directory structure below i
 
 ```sh
 .
-├── bin/
-│   └── ballerina
-├── lib/
-│   └── ballerina-command-0.8.0.jar
-├── dependencies/
-│   └── jdk8u202-b08-jre/
-└── distributions/
-    ├── ballerina-version
-    ├── jballerina-1.0.5/
-    ├── jballerina-1.1.0/
-    └── jballerina-1.1.1/
+├── bin
+│   └── ballerina
+├── dependencies
+│   └── jdk8u202-b08-jre
+├── distributions
+│   ├── ballerina-slp4
+│   ├── jballerina-1.1.0-alpha
+│   ├── jballerina-1.2.8
+│   └── ballerina-version
+└── lib
+    └── ballerina-command-0.8.8.jar
 ```
 
 The `distributions` is the directory, in which all your installed distributions are maintained. Only one distribution from the above list can be active at a given time. 

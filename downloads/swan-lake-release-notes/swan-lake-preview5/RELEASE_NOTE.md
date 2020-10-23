@@ -46,7 +46,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 ### Highlights
 
-- Support for JDK 11
+- Migration from JDK 8 to JDK 11
 - Introduction of isolated objects for class definitions or object-type descriptors
 - Replacement of XML functional constructors by lang lib functions
 - Unification of the object field scope and object method scope into a single scope

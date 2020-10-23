@@ -32,7 +32,7 @@ Both the above channels of Ballerina distribution releases will strictly follow 
 
 #### Patch Releases
 
-Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. These releases are strictly time-bound and happen every two weeks. Occasionally,  you would see on-demand patch releases as well.
+Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. Occasionally,  you would see on-demand patch releases as well.
 
 *Example patch releases: 1.0.6, 1.1.5, 1.1.10*
 
@@ -48,8 +48,6 @@ In the 1.x stable release channel, a minor release 1.x.0 is manitained by issuin
 
 In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, maintaining 1.0.0 will be stopped.
 
-However, Swan Lake preview releases will not be maintained. Once the Swan Lake GA is released, it's a stable release. Until that, 1.2.x releases will be maintained.
-
 ## Installing Ballerina
 
 If you haven’t installed Ballerina yet, see [Installing Ballerina](/swan-lake/learn/installing-ballerina/) for the instructions.
@@ -64,7 +62,7 @@ Once the installation is complete, you would see the directory structure below i
 │   └── jdk8u202-b08-jre
 ├── distributions
 │   ├── ballerina-slp4
-│   ├── jballerina-1.1.0-alpha
+│   ├── jballerina-1.1.0
 │   ├── jballerina-1.2.8
 │   └── ballerina-version
 └── lib

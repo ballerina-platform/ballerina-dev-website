@@ -64,12 +64,12 @@
       url: /swan-lake/learn/deployment/azure-functions/
       active: azure-functions
 
-- title: Observability
-  url: '#' 
-  sublinks:
-    - title: Observing Ballerina Code
-      url: /swan-lake/learn/observing-ballerina-code
-      active: observing-ballerina-code
+#- title: Observability
+  #url: '#' 
+  #sublinks:
+    #- title: Observing Ballerina Code
+      #url: /swan-lake/learn/observing-ballerina-code
+      #active: observing-ballerina-code
 
 - title: Interoperability
   url: '#' 
@@ -101,12 +101,12 @@
       url: /swan-lake/learn/testing-ballerina-code/executing-tests
       active: executing-tests
 
-- title: Extending Ballerina
-  url: '#' 
-  sublinks:
-    - title: Extending with Compiler Extensions 
-      url: /swan-lake/learn/extending-with-compiler-extensions
-      active: extending-with-compiler-extensions
+#- title: Extending Ballerina
+  #url: '#' 
+  #sublinks:
+    #- title: Extending with Compiler Extensions 
+      #url: /swan-lake/learn/extending-with-compiler-extensions
+      #active: extending-with-compiler-extensions
       
  
 

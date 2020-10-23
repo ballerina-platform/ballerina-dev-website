@@ -7,7 +7,8 @@
     
       <link rel="stylesheet" href="{{ "/css/ballerina-io-docs.css?200618" | prepend: site.baseurl }}">
       <link rel="stylesheet" href=/css/ballerina-io-learn-v2.css>
-      <link href="/css/abixTreeList.css" rel="stylesheet">
+     
+      
      
    </head>
    <body class="cBallerina-io">
@@ -35,13 +36,7 @@
                         <div class="rst-content">
                            <div role="main">
                               <div class="section">
-                                 <h1>{{ page.title }}</h1>
-                                 <p>{{ page.intro }}</p>
-                                 <div class="cBallerinaTocContainer" id="table-of-content">
-                                    <p class="cTOCcontol" ><strong>Table of contents</strong> - <a href="#" id="tree-expand-all">Expand all</a> | <a href="#" id="tree-collapse-all">Collapse all</a></p>
-                                    {% include toc.html html=content sanitize=true id="tree" %}
-                                 </div>
-                                 {{ content }}
+                              {{ content }}
                               </div>
                            </div>
                         </div>
@@ -88,34 +83,7 @@
              </style>
 
 
-<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-     <script src="/js/abixTreeList.min.js"></script>
-     <script>
-         $(document).ready(function() {
-             $('#tree').abixTreeList();
-         });
 
-
-
-
-
-         $(window).scroll(function () {
-        var bodyclass = document.body;
-
-        if ($(this).scrollTop() > 200) {
-            $('.cTopLink').removeClass('dispalaynone');
-          
-        } else {
-            $('.cTopLink').addClass('dispalaynone');
-          
-        }
-
-   
-
-
-    });
-
-     </script>
 
    </body>
 </html>

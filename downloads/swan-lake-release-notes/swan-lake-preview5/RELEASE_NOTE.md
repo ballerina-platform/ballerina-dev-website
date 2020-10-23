@@ -9,6 +9,7 @@ This release is the fifth preview version of Ballerina Swan Lake. This release i
 - [Updating Ballerina](#updating-ballerina)
     - [For existing users](#for-existing-users)
     - [For new users](#for-new-users)
+- [Highlights](#highlights)
 - [What is new in Ballerina Swan Lake Preview 5](#what-is-new-in-ballerina-swan-lake-preview-5)
     - [Language](#language)
         - [Isolated objects](#isolated-objects)
@@ -42,6 +43,19 @@ However, if you are using a Ballerina version below 1.1.0, install via the [inst
 #### For new users
 
 If you have not installed Ballerina, then download the [installers](https://ballerina.io/downloads/) to install.
+
+### Highlights
+
+- Introduction of isolated objects for class definitions or object-type descriptors
+- Replacement of XML functional constructors by lang lib functions
+- Unification of the object field scope and object method scope into a single scope
+- Ability to assign a simple JSON value to a variable of the same type, without casting.
+- Improvements to  lang library functions
+- Introduction of a new `io.ballerina.api.TypeCreator` API to create Ballerina types at runtime.
+- Improved HTTP client remote method API with data-binding support
+- Improved SQL procedure call API 
+- Misfire policy support for tasks
+- Improved code formatting support for all the language features
 
 ### What is new in Ballerina Swan Lake Preview 5
 

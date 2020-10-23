@@ -154,40 +154,53 @@ Great! You are all set for the next step.
 ### Step 3 - Generating the Ballerina Bindings 
 In this step, we'll use the `bindgen` tool to generate Ballerina bindings for those four classes that we talked about in Step 1. If you want more information about the tool, you can refer [The `bindgen` tool](#the-bindgen-tool).
 
+#### Copying the SnakeYAML Library to Your Project
+Download the latest version of the SnakeYAML library and copy it to the project. We need to copy only the SnakeYAML library but for most cases, you may need to copy more than one JAR file. Make sure that you add all the direct and transitive dependencies of them. 
+
+Create a directory in your project root to store all the Java libraries. 
 ```sh
-> ballerina bindgen -mvn org.yaml:snakeyaml:1.25 -o src/yamlparser org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
+> mkdir javalibs
+> cp <path-to-snakeyaml-lib>/snakeyaml-1.25.jar javalibs
+```
 
-Ballerina project detected at: /Users/sameera/yaml-project
+#### Adding the SnakeYAML Library to the Ballerina TOML File
+Copy and paste the following TOML snippet to the `Ballerina.toml` file in your project’s root directory. This step ensures that the SnakeYAML library is always packaged with the stand-alone executable JAR generated for your Ballerina program. Refer to the [Packaging Java libraries with Ballerina programs](#packaging-java-libraries-with-ballerina-programs) for more details. 
 
-Resolving maven dependencies...
-snakeyaml-1.25.pom 100% [=================================================] 37/37 KB (0:00:00 / 0:00:00)
-snakeyaml-1.25.jar 100% [===============================================] 297/297 KB (0:00:01 / 0:00:00)
+```toml
+[platform]
+target = "java8"
 
-Updated the `Ballerina.toml` file with the new platform libraries.
+   [[platform.libraries]]
+   path = "./javalibs/snakeyaml-1.25.jar"
+   modules = ["yamlparser"]
+```
 
-The following JARs were added to the classpath:
-	snakeyaml-1.25.jar
+#### Generating the Ballerina Bindings
+```sh
+> ballerina bindgen -cp ./javalibs/snakeyaml-1.25.jar -o src/yamlparser
+ org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
 
-Generating bindings for:
+Generating bindings for: 
 	java.util.Map
 	java.io.FileInputStream
 	org.yaml.snakeyaml.Yaml
 	java.io.InputStream
 
-Generating dependency bindings for:
+Generating dependency bindings for: 
 	org.yaml.snakeyaml.introspector.BeanAccess
 	java.util.function.BiFunction
-	org.yaml.snakeyaml.DumperOptions$FlowStyle
-	...
-	...
+	org.yaml.snakeyaml.constructor.BaseConstructor
+	java.util.function.Function
+	... 
+	... 
 ```
-- The `-mvn` option specifies the Maven dependency of the Java library required to generate bindings.
+- The `-cp` option specifies the list of Java libraries required to generate bindings. 
 - The `-o` option specifies the output directory to which the generated bindings are stored. In this case, we instruct the tool to store bindings inside the `yamlparser` module. 
 - The argument list specifies the Java class names. 
 
-The `bindgen` tool generate bindings for:
-- the specified Java classes
-- the Java classes exposed in the public APIs of all the specified classes
+The `bindgen` tool generate bindings for 
+- The specified Java classes 
+- The Java classes exposed in the public APIs of all the specified classes. 
 
 
 Before we move onto the next step, let’s verify the generated code. 
@@ -339,7 +352,6 @@ The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes
 
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
-                  [(-mvn|--maven) <groupId>:<artifactId>:<version>]
                   [(-o|--output) <output>]
                   [--public]
                   (<class-name>...)
@@ -347,9 +359,6 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 
 `(-cp|--classpath) <classpath>...`
 This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or from a platform library specified in the `Ballerina.toml`, then you need not specify the classpath explicitly.
-
-`(-mvn|--maven) <groupId>:<artifactId>:<version>`
-This optional parameter could be used to specify a Maven dependency required for the generation of Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the project. If the tool is not executed inside a project or if the output path does not point to a project, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina project.
 
 `(-o|--output) <output>`
 This optional parameter could be used to specify the directory path into which the Ballerina bindings should be inserted. If this path is not specified, the output will be written onto the same directory from where the command is run. You can point the path of a Ballerina module to generate the code inside a Ballerina module. 
@@ -610,29 +619,6 @@ path = "<path-to-jar-file-2>"
 modules = ["<ballerina-module-1>","<ballerina-module-2>"]
 ```
 
-Alternatively, you can also specify Maven dependencies as platform specific libraries. These dependencies specified would then get resolved into the `target/platform-libs` directory when building the project. Here, is how you can specify a Maven dependency in the `Ballerina.toml`.
-
-```toml
-[platform]
-target = "java8"
-
-[[platform.libraries]]
-# A comma-separated list of Ballerina module names, which depends on this JAR
-modules = ["<ballerina-module-1>"]
-# Group ID of the Maven dependency
-groupId = "<group-id>"
-# Artifact ID of the Maven dependency
-artifactId = "<artifact-id>"
-# Version of the Maven dependency
-version = "<version>"
-
-[[platform.libraries]]
-modules = ["<ballerina-module-1>","<ballerina-module-2>"]
-groupId = "<group-id>"
-artifactId = "<artifact-id>"
-version = "<version>"
-```
-
 Now, let’s look at the contents of the `Ballerina.toml` file in this project.
 ```toml
 [platform] 
@@ -641,18 +627,6 @@ target = "java8"
 	[[platform.libraries]] 
 	path = "./javalibs/mysql-connector-java-<version>.jar" 
 	modules = ["ordermgt"]
-```
-
-Or, if you are adding it as a Maven dependency, it would take the following form.
-```toml
-[platform]
-target = "java8"
-
-	[[platform.libraries]]
-	modules = ["ordermgt"]
-	groupId = "mysql"
-	artifactId = "mysql-connector-java"
-	version = "<version>"
 ```
 
 If your project has only one root module, then you can attach all the JAR file dependencies to your root module as the best practise. 

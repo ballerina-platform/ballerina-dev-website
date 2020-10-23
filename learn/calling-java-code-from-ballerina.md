@@ -177,8 +177,7 @@ target = "java8"
 
 #### Generating the Ballerina Bindings
 ```sh
-> ballerina bindgen -cp ./javalibs/snakeyaml-1.25.jar -o src/yamlparser
- org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
+> ballerina bindgen -cp ./javalibs/snakeyaml-1.25.jar -o src/yamlparser org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
 
 Generating bindings for:
 	java.util.Map

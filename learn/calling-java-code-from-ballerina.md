@@ -164,7 +164,7 @@ Create a directory in your project root to store all the Java libraries.
 ```
 
 #### Adding the SnakeYAML Library to the Ballerina TOML File
-Copy and paste the following TOML snippet to the `Ballerina.toml` file in your project’s root directory. This step ensures that the SnakeYAML library is always packaged with the stand-alone executable JAR generated for your Ballerina program. Refer to the [Packaging Java libraries with Ballerina programs](#packaging-java-libraries-with-ballerina-programs) for more details. 
+Copy and paste the following TOML snippet to the `Ballerina.toml` file in your project’s root directory. This step ensures that the SnakeYAML library is always packaged with the stand-alone executable JAR generated for your Ballerina program. For more information, see [Packaging Java libraries with Ballerina programs](#packaging-java-libraries-with-ballerina-programs).
 
 ```toml
 [platform]

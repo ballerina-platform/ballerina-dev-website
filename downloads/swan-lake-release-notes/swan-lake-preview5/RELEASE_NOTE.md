@@ -65,7 +65,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 A class definition or an object-type descriptor can now be marked as `isolated`. All fields of an `isolated` object that are not `final` or are not a subtype of `readonly` or `isolated object {}` have to be `private` fields.
 
-The methods of an `isolated` object that access such fields can only refer to `self` within a `lock` statement, which ensures that mutable state is only accessed within `lock` statements. If a method accesses such a field, additional rules apply to how values are transferred in and out in order to ensure that there are no references into the object’s mutable storage except via isolated objects. The initial value expressions of the fields also need to ensure the same.
+The methods of an `isolated` object that access such fields can only refer to `self` within a `lock` statement, which ensures that there is no data race in accessing mutable state. If a method accesses such a field, additional rules apply to how values are transferred in and out in order to ensure that there are no references into the object’s mutable storage except via isolated objects. The initial value expressions of the fields also need to ensure the same.
 
 ```ballerina
 type Coordinates record {|

@@ -140,6 +140,7 @@ The `ballerina dist list` command lists the installed distributions in your loca
 Distributions available locally:
 
   [1.1.0] jballerina version 1.1.0
+  [1.2.5] jballerina version 1.2.5
 * [1.2.8] jballerina version 1.2.8
   [slp3] ballerina version slp3
 
@@ -186,8 +187,8 @@ Use 'ballerina help dist' for more information on specific commands.
 The `ballerina dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you’ve been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
 
 ```sh
-→ ballerina dist remove slp1
-Distribution 'slp1' successfully removed
+→ ballerina dist remove 1.2.5
+Distribution '1.2.5' successfully removed
 ```
 
 ### Updating to the Latest Preview/Patch Version
@@ -204,20 +205,20 @@ Downloading 1.2.8 100% [========================================================
 Successfully set the latest patch distribution '1.2.8' as the active distribution
 ```
 
->**Note:** If If the active distribution in your environment is `slp3`, it will bump to the next Swan Lake Preview version, which is `slp4` and will update to it.
+>**Note:** If If the active distribution in your environment is `1.2.7`, it will bump to the next Swan Lake Preview version, which is `1.2.8` and will update to it.
 
 ### Pulling a Specific Distribution
 
 The `ballerina dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
 
 ```sh
-→ ballerina dist pull slp4
-Fetching the 'slp4' distribution from the remote server...
-Downloading slp4 100% [=====================================================================================] 236/236 MB (0:03:33 / 0:00:00)
+→ ballerina dist pull 1.2.5
+Fetching the '1.2.5' distribution from the remote server...
+Downloading 1.2.5 100% [=====================================================================================] 236/236 MB (0:03:33 / 0:00:00)
 
-Fetching the dependencies for 'slp4' from the remote server...
+Fetching the dependencies for '1.2.5' from the remote server...
 Dependency 'jdk8u202-b08-jre' is already available locally
-'slp4' successfully set as the active distribution
+'1.2.5' successfully set as the active distribution
 ```
 
 ### Changing the Active Distribution
@@ -225,7 +226,7 @@ Dependency 'jdk8u202-b08-jre' is already available locally
 The `ballerina dist use <distribution>` command sets a particular distribution version as the active one.  See the following workflow.
 
 ```sh
-→ ballerina dist use slp4
-'slp4' is the current active distribution version
+→ ballerina dist use 1.2.5
+'1.2.5' is the current active distribution version
 ```
 

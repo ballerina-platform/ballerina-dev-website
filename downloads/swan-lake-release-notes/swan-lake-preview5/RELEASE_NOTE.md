@@ -50,7 +50,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 - Replacement of XML functional constructors by lang lib functions
 - Unification of the object field scope and object method scope into a single scope
 - Ability to assign a simple JSON value to a variable of the same type, without casting.
-- Improvements to  lang library functions
+- Improvements to the lang library functions
 - Introduction of a new `io.ballerina.api.TypeCreator` API to create Ballerina types at runtime.
 - Improved HTTP client remote method API with data-binding support
 - Improved SQL procedure call API 

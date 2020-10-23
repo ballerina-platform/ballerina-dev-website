@@ -194,7 +194,7 @@ Generating dependency bindings for:
 	... 
 ```
 - The `-cp` option specifies the list of Java libraries required to generate bindings.
-- The `-o` option specifies the output directory to which the generated bindings are stored. In this case, we instruct the tool to store bindings inside the `yamlparser` module. 
+- The `-o` option specifies the output directory in which the generated bindings are stored. In this case, the tool is instructed to store bindings inside the `yamlparser` module. 
 - The argument list specifies the Java class names. 
 
 The `bindgen` tool generate bindings for:

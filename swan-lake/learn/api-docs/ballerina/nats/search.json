@@ -84,6 +84,11 @@
   ],
   "errors": [
     {
+      "id": "Error",
+      "description": "\u003cp\u003eThe union of the NATS module related errors.\u003c/p\u003e",
+      "moduleId": "nats"
+    },
+    {
       "id": "NatsError",
       "description": "\u003cp\u003eRepresents the NATS module related errors.\u003c/p\u003e",
       "moduleId": "nats"
@@ -93,11 +98,6 @@
     {
       "id": "Content",
       "description": "\u003cp\u003eData types supported when publishing and consuming messages.\u003c/p\u003e",
-      "moduleId": "nats"
-    },
-    {
-      "id": "Error",
-      "description": "\u003cp\u003eThe union of the NATS module related errors.\u003c/p\u003e",
       "moduleId": "nats"
     },
     {

@@ -98,15 +98,14 @@
       "id": "AuthError",
       "description": "\u003cp\u003eRepresents the Auth error.\u003c/p\u003e",
       "moduleId": "auth"
-    }
-  ],
-  "types": [
+    },
     {
       "id": "Error",
       "description": "\u003cp\u003eRepresents the Auth module related error.\u003c/p\u003e",
       "moduleId": "auth"
     }
   ],
+  "types": [],
   "clients": [],
   "listeners": [],
   "annotations": [],

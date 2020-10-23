@@ -68,7 +68,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -179,7 +179,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -603,7 +603,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [
@@ -710,7 +710,7 @@
         }
       ],
       "name": "map",
-      "description": "\u003cp\u003eApplies a function each member of a table and returns a table of the result.\nThe resulting table will have the same keys as the argument table.\u003c/p\u003e\n",
+      "description": "\u003cp\u003eApplies a function each member of a table and returns a table of the result.\u003c/p\u003e\n",
       "isDeprecated": false
     },
     {
@@ -828,7 +828,7 @@
       "isDeprecated": false
     },
     {
-      "isIsolated": false,
+      "isIsolated": true,
       "isRemote": false,
       "isExtern": true,
       "parameters": [

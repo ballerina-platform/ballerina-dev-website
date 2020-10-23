@@ -97,6 +97,10 @@
         </li>
     
         <li >
+            <a href="#createText" onclick="menuLinkClick()">createText</a>
+        </li>
+    
+        <li >
             <a href="#elementChildren" onclick="menuLinkClick()">elementChildren</a>
         </li>
     
@@ -303,6 +307,19 @@
                     </tr>
                 
                     <tr>
+                        <td width="30%"><a class="functions " href="#createText">createText</a></td>
+                        <td width="70%">
+                            <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
+                                
+                                <p>Constructs an xml sequence representing zero of more parsed characters.</p> 
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
                         <td width="30%"><a class="functions " href="#elementChildren">elementChildren</a></td>
                         <td width="70%">
                             <div class="function-desc">
@@ -333,6 +350,8 @@
                         <td width="70%">
                             <div class="function-desc">
                                 
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
+                                
                                 
                                 <p>Selects the items from an xml sequence for which a function returns true.
                             </div>
@@ -343,6 +362,8 @@
                         <td width="30%"><a class="functions " href="#forEach">forEach</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
                                 
                                 
                                 <p>Applies a function to each item in an xml sequence.
@@ -471,6 +492,8 @@
                         <td width="30%"><a class="functions " href="#map">map</a></td>
                         <td width="70%">
                             <div class="function-desc">
+                                
+                                <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
                                 
                                 
                                 <p>Applies a function to each item in an xml sequence, and returns an xml sequence of the results.
@@ -866,6 +889,65 @@ and content <code>content</code></p>
 </div>
                     
                         <div class="method-content">
+    <div class="main-method-title here" id="createText" title="createText">
+             <a class="url-link" href="#createText">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > createText </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> chars)</p>
+            
+                <b> returns </b><span class="builtin-type">Text</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
+        <p>Constructs an xml sequence representing zero of more parsed characters.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >chars</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the characters</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Text</span></span>)</li>
+                <li><p>an xml sequence that is either empty or consists of one text item
+The constructed sequence will be empty when the length of <code>chars</code> is zero.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="elementChildren" title="elementChildren">
              <a class="url-link" href="#elementChildren">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
@@ -1037,6 +1119,8 @@ or, if <code>nm</code> is <code>()</code>, all element items in <code>x</code></
     <div class="function-desc">
         
         
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
+        
         <p>Selects the items from an xml sequence for which a function returns true.
 Each item is represented as a singleton value.</p>
 
@@ -1108,6 +1192,8 @@ Each item is represented as a singleton value.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Applies a function to each item in an xml sequence.
 Each item is represented as a singleton value.</p>
@@ -1718,6 +1804,8 @@ Each item is represented by an xml singleton.</p>
     </div>
     <div class="function-desc">
         
+        
+        <div class="isolated-lbl ui horizontal label">Isolated Function</div>
         
         <p>Applies a function to each item in an xml sequence, and returns an xml sequence of the results.
 Each item is represented as a singleton value.</p>

@@ -90,10 +90,6 @@
         
         
         
-            <li>
-                <a data="types" href="../ldap/index.html#types" onclick="menuLinkClick()">Types</a>
-            </li>
-        
         
             <li>
                 <a data="errors" href="../ldap/index.html#errors" onclick="menuLinkClick()">Errors</a>
@@ -133,7 +129,7 @@
             </h1>
             
     
-    <div>Version : 1.0.0</div>
+    <div>Version : 1.0.1</div>
     
     <h2>Module Overview</h2>
 <p>This module provides an inbound LDAP authentication provider, which is used to authenticate using LDAP credentials.</p>
@@ -231,9 +227,6 @@
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     <p>Authenticates with the username and password.</p>   
                 </td>
             </tr>
@@ -244,9 +237,6 @@
                 </td>
                 <td class="module-desc">
                     
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
-                    
                     <p>Retrieves the group(s) of the user related to the provided username.</p>   
                 </td>
             </tr>
@@ -256,9 +246,6 @@
                     <a class="functions " href="functions.html#initLdapConnectionContext">initLdapConnectionContext</a>
                 </td>
                 <td class="module-desc">
-                    
-                    <div class="ui horizontal label" data-tooltip="Isolated Function" data-position="top left">I</div>
-                    
                     
                     <p>Initailizes the LDAP connection context.</p>   
                 </td>
@@ -275,28 +262,6 @@
     
 
     
-    <section class="method-content" id="types">
-        <div class="main-method-title here">
-            <a class="url-link" href="#types">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> Types </h2>
-        </div>
-        <table>
-            
-            <tr>
-                <td class="module-title truncate types" id="Error" title="Error">
-                    <a class="types " href="types.html#Error">Error</a>
-                </td>
-                <td class="module-desc">
-                    
-                    <p>Represents LDAP module related errors.</p> 
-                </td>
-            </tr>
-            
-        </table>
-    </section>
-    
 
     
     <section class="method-content" id="errors">
@@ -307,6 +272,16 @@
             <h2> Errors </h2>
         </div>
         <table>
+            
+            <tr>
+                <td class="module-title truncate errors" id="Error" title="Error">
+                    <a class="errors " href="errors.html#Error">Error</a>
+                </td>
+                <td class="module-desc">
+                    
+                    <p>Represents LDAP module related errors.</p> 
+                </td>
+            </tr>
             
             <tr>
                 <td class="module-title truncate errors" id="LdapError" title="LdapError">

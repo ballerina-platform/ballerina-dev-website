@@ -231,15 +231,14 @@
       "id": "ArithmeticError",
       "description": "\u003cp\u003eRepresents an error occurred in the \u003ccode\u003emath\u003c/code\u003e operation.\u003c/p\u003e",
       "moduleId": "math"
-    }
-  ],
-  "types": [
+    },
     {
       "id": "Error",
       "description": "\u003cp\u003eThe union of all the Math related errors\u003c/p\u003e\n",
       "moduleId": "math"
     }
   ],
+  "types": [],
   "clients": [],
   "listeners": [],
   "annotations": [],

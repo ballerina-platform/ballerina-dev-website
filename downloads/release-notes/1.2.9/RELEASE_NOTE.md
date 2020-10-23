@@ -32,7 +32,7 @@ Improved logging for transactions. Redundant info logs were changed to debug log
 #### HTTP
 
 - Upgraded the Netty framework version to 4.1.50 and upgraded the SnakeYAML version to 1.26.
-- Added support for disabling SSL certificate validation for HTTP2 clients.
+- Added support for disabling the SSL certificate validation for HTTP2 clients.
 
 #### Security
 
@@ -40,6 +40,6 @@ Added support to read custom/optional fields from the OAuth2 introspection respo
 
 #### Cache
 
-Improved concurrent behavior of the cache.
+Improved the concurrent behavior of the cache.
 
 

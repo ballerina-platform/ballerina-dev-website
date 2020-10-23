@@ -360,7 +360,7 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or from a platform library specified in the `Ballerina.toml`, then you need not specify the classpath explicitly.
 
 `(-o|--output) <output>`
-This optional parameter could be used to specify the directory path into which the Ballerina bindings should be inserted. If this path is not specified, the output will be written onto the same directory from where the command is run. You can point the path of a Ballerina module to generate the code inside a Ballerina module. 
+This optional parameter could be used to specify the directory path to which the Ballerina bindings should be inserted. If this path is not specified, the output will be written to the same directory from which the command is run. You can point to the path of a Ballerina module to generate the code inside a Ballerina module. 
 
 `--public`
 Set the visibility modifier of the generated binding objects to public. By default, the generated bindings will be module private.

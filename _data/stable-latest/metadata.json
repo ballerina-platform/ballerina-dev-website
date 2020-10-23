@@ -3,6 +3,8 @@
 	"release-date":"2020-10-23",
 	"windows-installer":"ballerina-windows-installer-x64-1.2.9.msi",
 	"windows-installer-size":"136mb",
+	"zip-installer":"ballerina-1.2.9.zip",
+    "zip-installer-size":"110mb",
 	"linux-installer":"ballerina-linux-installer-x64-1.2.9.deb",
 	"linux-installer-size":"130mb",
 	"macos-installer":"ballerina-macos-installer-x64-1.2.9.pkg",

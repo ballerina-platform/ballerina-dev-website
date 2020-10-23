@@ -50,9 +50,8 @@ If you have not installed Ballerina, then download the [installers](https://ball
 - Introduction of isolated objects for class definitions or object-type descriptors
 - Replacement of XML functional constructors by lang lib functions
 - Unification of the object field scope and object method scope into a single scope
-- Ability to assign a simple JSON value to a variable of the same type, without casting.
+- Ability to assign a simple JSON value to a variable of the same type without casting
 - Improvements to the lang library functions
-- Introduction of a new `io.ballerina.api.TypeCreator` API to create Ballerina types at runtime.
 - Improved HTTP client remote method API with data-binding support
 - Improved SQL procedure call API 
 - Misfire policy support for tasks
@@ -155,7 +154,7 @@ public function main() {
 
 ###### Improvement in accessing simple values in a JSON
 
-A non-structural value (i.e., simple value) in a JSON object can now be directly assigned to a variable of the same type, without casting.
+A non-structural value (i.e., simple value) in a JSON object can now be directly assigned to a variable of the same type without casting.
 
 For this, the field access expression should be used with the `check` expression. The simple value should belong to one of the types: `()`, `int`, `float`, `decimal`, `string`, or  `boolean`.
 

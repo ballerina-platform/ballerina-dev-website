@@ -14,34 +14,34 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
     <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
     <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
     <span class="nx">clientSecret</span><span class="p">:</span>
-            <span class="s">&quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
     <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                      <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider1</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler1</span>
-    <span class="p">},</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider1</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler1</span>
+        <span class="p">},</span>
+        <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                    <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+    <span class="p">});</span>
+<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
     <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;&lt;Username for password grant authentication&gt;&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;&lt;Password for password grant authentication&gt;&quot;</span><span class="p">,</span>
@@ -51,7 +51,7 @@ redirect_from:
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                      <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -62,77 +62,77 @@ redirect_from:
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
                     <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                          <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider2</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler2</span>
-    <span class="p">},</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider2</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler2</span>
+        <span class="p">},</span>
+        <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                    <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+    <span class="p">});</span>
+<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
     <span class="nx">accessToken</span><span class="p">:</span> <span class="s">&quot;&lt;Access token for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
     <span class="nx">refreshConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for the authorization endpoint authentication&gt;&quot;</span><span class="p">,</span>
         <span class="nx">clientSecret</span><span class="p">:</span>
-                <span class="s">&quot;&lt;Client secret for the authorization endpoint authentication&gt;&quot;</span><span class="p">,</span>
+            <span class="s">&quot;&lt;Client secret for the authorization endpoint authentication&gt;&quot;</span><span class="p">,</span>
         <span class="nx">refreshToken</span><span class="p">:</span> <span class="s">&quot;&lt;Refresh token for the refresh token server&gt;&quot;</span><span class="p">,</span>
         <span class="nx">refreshUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Refresh token URL for the refresh token server&gt;&quot;</span><span class="p">,</span>
         <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
                     <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                          <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider3</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler3</span>
-    <span class="p">},</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider3</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler3</span>
+        <span class="p">},</span>
+        <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                    <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP1</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello/sayHello&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
-                    <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span> <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span> <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>    <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP2</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello/sayHello&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
-                    <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span> <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span> <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>    <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP3</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello/sayHello&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
-                    <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span> <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span> <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -253,22 +253,22 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     clientId: &quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;,
     clientSecret:
-            &quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;,
+        &quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;,
     clientConfig: {
         secureSocket: {
             trustStore: {
                 path: config:getAsString(&quot;b7a.home&quot;) +
-                      &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                    &quot;/bre/security/ballerinaTruststore.p12&quot;,
                 password: &quot;ballerina&quot;
             }
         }
     }
 });
-http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
+http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
 </code></pre></div>
 
                                 </td>
@@ -290,18 +290,18 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP1 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
-    auth: {
-        authHandler: oauth2Handler1
-    },
-    secureSocket: {
-        trustStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP1 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+        auth: {
+            authHandler: oauth2Handler1
+        },
+        secureSocket: {
+            trustStore: {
+                path: config:getAsString(&quot;b7a.home&quot;) +
+                    &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                password: &quot;ballerina&quot;
+            }
         }
-    }
-});
+    });
 </code></pre></div>
 
                                 </td>
@@ -313,7 +313,7 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     username: &quot;&lt;Username for password grant authentication&gt;&quot;,
     password: &quot;&lt;Password for password grant authentication&gt;&quot;,
@@ -323,7 +323,7 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
         secureSocket: {
             trustStore: {
                 path: config:getAsString(&quot;b7a.home&quot;) +
-                      &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                    &quot;/bre/security/ballerinaTruststore.p12&quot;,
                 password: &quot;ballerina&quot;
             }
         }
@@ -334,14 +334,14 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
             secureSocket: {
                 trustStore: {
                     path: config:getAsString(&quot;b7a.home&quot;) +
-                          &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                        &quot;/bre/security/ballerinaTruststore.p12&quot;,
                     password: &quot;ballerina&quot;
                 }
             }
         }
     }
 });
-http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
+http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
 </code></pre></div>
 
                                 </td>
@@ -365,18 +365,18 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP2 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
-    auth: {
-        authHandler: oauth2Handler2
-    },
-    secureSocket: {
-        trustStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP2 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+        auth: {
+            authHandler: oauth2Handler2
+        },
+        secureSocket: {
+            trustStore: {
+                path: config:getAsString(&quot;b7a.home&quot;) +
+                    &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                password: &quot;ballerina&quot;
+            }
         }
-    }
-});
+    });
 </code></pre></div>
 
                                 </td>
@@ -388,26 +388,26 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new({
     accessToken: &quot;&lt;Access token for the authorization endpoint&gt;&quot;,
     refreshConfig: {
         clientId: &quot;&lt;Client ID for the authorization endpoint authentication&gt;&quot;,
         clientSecret:
-                &quot;&lt;Client secret for the authorization endpoint authentication&gt;&quot;,
+            &quot;&lt;Client secret for the authorization endpoint authentication&gt;&quot;,
         refreshToken: &quot;&lt;Refresh token for the refresh token server&gt;&quot;,
         refreshUrl: &quot;&lt;Refresh token URL for the refresh token server&gt;&quot;,
         clientConfig: {
             secureSocket: {
                 trustStore: {
                     path: config:getAsString(&quot;b7a.home&quot;) +
-                          &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                        &quot;/bre/security/ballerinaTruststore.p12&quot;,
                     password: &quot;ballerina&quot;
                 }
             }
         }
     }
 });
-http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
+http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
 </code></pre></div>
 
                                 </td>
@@ -430,18 +430,18 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP3 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
-    auth: {
-        authHandler: oauth2Handler3
-    },
-    secureSocket: {
-        trustStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP3 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+        auth: {
+            authHandler: oauth2Handler3
+        },
+        secureSocket: {
+            trustStore: {
+                path: config:getAsString(&quot;b7a.home&quot;) +
+                    &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                password: &quot;ballerina&quot;
+            }
         }
-    }
-});
+    });
 </code></pre></div>
 
                                 </td>
@@ -458,9 +458,9 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
     if (response is http:Response) {
         var result = response.getTextPayload();
         log:printInfo(
-                    (result is error) ? &quot;Failed to retrieve payload.&quot; : result);
+            (result is error) ? &quot;Failed to retrieve payload.&quot; : result);
     } else {
-        log:printError(&quot;Failed to call the endpoint.&quot;, response);
+        log:printError(&quot;Failed to call the endpoint.&quot;, &lt;error&gt;response);
     }
 </code></pre></div>
 
@@ -477,9 +477,9 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
     if (response is http:Response) {
         var result = response.getTextPayload();
         log:printInfo(
-                    (result is error) ? &quot;Failed to retrieve payload.&quot; : result);
+            (result is error) ? &quot;Failed to retrieve payload.&quot; : result);
     } else {
-        log:printError(&quot;Failed to call the endpoint.&quot;, response);
+        log:printError(&quot;Failed to call the endpoint.&quot;, &lt;error&gt;response);
     }
 </code></pre></div>
 
@@ -496,9 +496,9 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
     if (response is http:Response) {
         var result = response.getTextPayload();
         log:printInfo(
-                    (result is error) ? &quot;Failed to retrieve payload.&quot; : result);
+            (result is error) ? &quot;Failed to retrieve payload.&quot; : result);
     } else {
-        log:printError(&quot;Failed to call the endpoint.&quot;, response);
+        log:printError(&quot;Failed to call the endpoint.&quot;, &lt;error&gt;response);
     }
 }
 </code></pre></div>

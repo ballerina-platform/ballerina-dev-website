@@ -11,15 +11,12 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xslt</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xslt</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">xml</span> <span class="nx">sourceXml</span> <span class="p">=</span> <span class="nx">getXml</span><span class="p">();</span>
     <span class="kt">xml</span> <span class="nx">xsl</span> <span class="p">=</span> <span class="nx">getXsl</span><span class="p">();</span>
-    <span class="kt">xml</span><span class="p">|</span><span class="nx">error</span> <span class="nx">target</span> <span class="p">=</span> <span class="nx">xslt</span><span class="p">:</span><span class="nx">transform</span><span class="p">(</span><span class="nx">sourceXml</span><span class="p">,</span> <span class="nx">xsl</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transformed xml : &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Error : &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="kt">xml</span> <span class="nx">target</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">xslt</span><span class="p">:</span><span class="nx">transform</span><span class="p">(</span><span class="nx">sourceXml</span><span class="p">,</span> <span class="nx">xsl</span><span class="p">);</span>
+    
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transformed XML: &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">getXml</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kt">xml</span> <span class="s">`&lt;samples&gt;</span>
@@ -39,8 +36,8 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">getXsl</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kt">xml</span>
-        <span class="s">`&lt;xsl:stylesheet version=&quot;1.0&quot;</span>
-<span class="s">                        xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</span>
+        <span class="s">`&lt;xsl:stylesheet version=&quot;1.0&quot; </span>
+<span class="s">                         xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</span>
 <span class="s">            &lt;xsl:template match=&quot;/&quot;&gt;</span>
 <span class="s">                &lt;html&gt;</span>
 <span class="s">                    &lt;body&gt;</span>
@@ -75,9 +72,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>XSLT Transformation</h2>
-                            <p><p>This example demonstrates how the XML content can be transformed to HTML using a given XSL transformation.
+                            <p><p>This example demonstrates how XML content can be transformed to HTML using a given XSL transformation.
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/index.html">xslt module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/index.html">XSLT module</a>.</p>
 </p>
 
                         </td>
@@ -168,7 +165,7 @@ import ballerina/xslt;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -188,7 +185,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets an <code>XML</code> object, which needs to be transformed.</p>
+                                            <p>Gets an <code>XML</code> value, which needs to be transformed.</p>
 
                                         </div>
                                     </div>
@@ -207,7 +204,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets an <code>XSL</code> style sheet represented in an XML object.</p>
+                                            <p>Gets an <code>XSL</code> style sheet represented in an XML value.</p>
 
                                         </div>
                                     </div>
@@ -218,12 +215,9 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xml|error target = xslt:transform(sourceXml, xsl);
-    if (target is xml) {
-        io:println(&quot;Transformed xml : &quot;, target);
-    } else {
-        io:print(&quot;Error : &quot;, target);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml target = check xslt:transform(sourceXml, xsl);
+    
+    io:println(&quot;Transformed XML: &quot;, target);
 }
 </code></pre></div>
 
@@ -232,7 +226,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/functions.html#transform">Transforms</a> the <code>XML</code> to another formats.</p>
+                                            <p><a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/xslt/functions.html#transform">Transforms</a> the <code>XML</code> content to another format.</p>
 
                                         </div>
                                     </div>
@@ -266,7 +260,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Returns an <code>XML</code> object, which needs to be transformed.</p>
+                                            <p>Returns an <code>XML</code> element, which needs to be transformed.</p>
 
                                         </div>
                                     </div>
@@ -279,8 +273,8 @@ import ballerina/xslt;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function getXsl() returns xml {
     return xml
-        `&lt;xsl:stylesheet version=&quot;1.0&quot;
-                        xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
+        `&lt;xsl:stylesheet version=&quot;1.0&quot; 
+                         xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
             &lt;xsl:template match=&quot;/&quot;&gt;
                 &lt;html&gt;
                     &lt;body&gt;
@@ -313,7 +307,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Returns an <code>XSL</code> style sheet represented in an XML object.</p>
+                                            <p>Returns an <code>XSL</code> style sheet represented by an XML element.</p>
 
                                         </div>
                                     </div>
@@ -340,7 +334,7 @@ import ballerina/xslt;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file and run the `ballerina run` command below.
 ballerina run xslt_transformation.bal
-Transformed xml : &lt;html&gt;
+Transformed XML: &lt;html&gt;
 &lt;body&gt;
 &lt;h2&gt;All time favourites&lt;/h2&gt;
 &lt;table border=&quot;1&quot;&gt;

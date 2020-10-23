@@ -27,10 +27,10 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Content-Type: &quot;</span> <span class="o">+</span> <span class="nx">contentType</span><span class="p">);</span>        <span class="kt">int</span> <span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span> <span class="o">+</span> <span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
-                                    <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+                            <span class="p">(&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
@@ -40,7 +40,7 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
-                                    <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+                            <span class="p">(&lt;</span><span class="nx">error</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -394,7 +394,7 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    } else {
         io:println(&quot;Error when calling the backend: &quot;,
-                                    response.message());
+                            (&lt;error&gt;response).message());
     }
 }
 </code></pre></div>
@@ -408,7 +408,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|error response) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|http:Payload|error response) {
     if (response is http:Response) {
 </code></pre></div>
 
@@ -454,7 +454,7 @@ import ballerina/io;
         }
     } else {
         io:println(&quot;Error when calling the backend: &quot;,
-                                    response.message());
+                            (&lt;error&gt;response).message());
     }
 }
 </code></pre></div>

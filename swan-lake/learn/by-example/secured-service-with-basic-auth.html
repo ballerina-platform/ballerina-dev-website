@@ -15,15 +15,15 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="nx">auth</span><span class="p">:</span><span class="nx">InboundBasicAuthProvider</span> <span class="nx">basicAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">basicAuthHandler</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">basicAuthProvider</span><span class="p">);</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">basicAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">basicAuthProvider</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">basicAuthHandler</span><span class="p">]</span>
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+                <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -179,7 +179,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>auth:InboundBasicAuthProvider basicAuthProvider = new;
-http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
+http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
 </code></pre></div>
 
                                 </td>
@@ -198,7 +198,7 @@ http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new (9090, config = {
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener ep = new(9090, config = {
     auth: {
         authHandlers: [basicAuthHandler]
     },
@@ -227,7 +227,7 @@ http:BasicAuthHandler basicAuthHandler = new (basicAuthProvider);
                                     <div class="highlight"><pre><code class=language-ballerina>    secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
+                &quot;/bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }

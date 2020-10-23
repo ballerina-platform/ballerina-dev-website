@@ -29,17 +29,16 @@ If you have not installed jBallerina, then download the [installers](/downloads/
 
 Improved logging for transactions. Redundant info logs were changed to debug logs.
 
-#### HTTP
+##### HTTP
 
 - Upgraded the Netty framework version to 4.1.50 and upgraded the SnakeYAML version to 1.26.
 - Added support for disabling the SSL certificate validation for HTTP2 clients.
 
-#### Security
+##### Security
 
 Added support to read custom/optional fields from the OAuth2 introspection response.
 
-#### Cache
+##### Cache
 
 Improved the concurrent behavior of the cache.
-
 
